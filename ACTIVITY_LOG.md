@@ -56,6 +56,13 @@
 
 **Klar for:** Admin-panel med import-flyt og godkjenning
 
+- **Opprettet `frontend_plan.md`** - Detaljert plan for frontend basert på research:
+  - Tilastopaja (utøverprofil-struktur, progression, world positions)
+  - Friidrottsstatistik.se (filter-navigasjon, årslister)
+  - World Athletics (moderne design, GraphQL)
+  - Athletic.net (engagement, tracking)
+- Definert URL-struktur, komponenter, farger, og teknisk arkitektur
+
 #### Sesjon 1 (tidligere på dagen)
 - Scrapet minfriidrettsstatistikk.info
 - Importert utøvere, klubber, stevner og resultater
