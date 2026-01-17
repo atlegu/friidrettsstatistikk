@@ -50,6 +50,12 @@
 
 **Viktig prinsipp etablert:** "Ikke bygg sider – bygg visninger av samme data"
 
+- Lagt til `competition_age_class_id` på results (konkurranseklasse vs. faktisk årsalder)
+- Opprettet `import_batches` tabell for innkommende resultatlister (staging/godkjenning)
+- Lagt til `import_batch_id` på results for sporbarhet
+
+**Klar for:** Admin-panel med import-flyt og godkjenning
+
 #### Sesjon 1 (tidligere på dagen)
 - Scrapet minfriidrettsstatistikk.info
 - Importert utøvere, klubber, stevner og resultater
