@@ -17,7 +17,7 @@
 | results | 121 695 | Importert |
 | events | 65 | Opprettet |
 | seasons | 142 | Opprettet |
-| age_classes | 20 | Opprettet |
+| age_classes | 56 | Opprettet (inkl. masters + rekrutt) |
 | event_specifications | 74 | Opprettet |
 
 ### Faser
@@ -45,6 +45,10 @@
 - **Opprettet Git-repository** med initial commit (31 filer, 5346 linjer)
 - Laget `.gitignore` (ekskluderer .env, store JSON-filer, venv, node_modules)
 - **Pushet til GitHub:** https://github.com/atlegu/friidrettsstatistikk
+- Lagt til **36 masters/rekrutt aldersklasser** (MV30-MV100, KV30-KV100, G10-G12, J10-J12)
+- Bekreftet databasestruktur for: vind, redskaps-vekt, hekkehøyde, forsøk (JSONB)
+
+**Viktig prinsipp etablert:** "Ikke bygg sider – bygg visninger av samme data"
 
 #### Sesjon 1 (tidligere på dagen)
 - Scrapet minfriidrettsstatistikk.info
