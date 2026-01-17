@@ -44,6 +44,7 @@
 - Opprettet denne aktivitetsloggen for fremtidig sporbarhet
 - **Opprettet Git-repository** med initial commit (31 filer, 5346 linjer)
 - Laget `.gitignore` (ekskluderer .env, store JSON-filer, venv, node_modules)
+- **Pushet til GitHub:** https://github.com/atlegu/friidrettsstatistikk
 
 #### Sesjon 1 (tidligere på dagen)
 - Scrapet minfriidrettsstatistikk.info
@@ -85,6 +86,9 @@
 ---
 
 ## Teknisk info
+
+### GitHub
+- **Repository:** https://github.com/atlegu/friidrettsstatistikk
 
 ### Supabase
 - **URL:** https://lwkykthpnthfcldifixg.supabase.co
