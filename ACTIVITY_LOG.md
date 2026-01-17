@@ -42,6 +42,8 @@
 - Gjennomgått all eksisterende kode og dokumentasjon
 - Bekreftet at 121 695 resultater er importert til Supabase
 - Opprettet denne aktivitetsloggen for fremtidig sporbarhet
+- **Opprettet Git-repository** med initial commit (31 filer, 5346 linjer)
+- Laget `.gitignore` (ekskluderer .env, store JSON-filer, venv, node_modules)
 
 #### Sesjon 1 (tidligere på dagen)
 - Scrapet minfriidrettsstatistikk.info
