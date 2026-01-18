@@ -36,7 +36,7 @@ export function AthleteTabs({ defaultTab = "overview", children }: AthleteTabsPr
 
   return (
     <Tabs value={currentTab} onValueChange={handleTabChange} className="w-full">
-      <TabsList className="mb-6 w-full justify-start overflow-x-auto">
+      <TabsList className="mb-4 w-full justify-start overflow-x-auto">
         <TabsTrigger value="overview">Oversikt</TabsTrigger>
         <TabsTrigger value="personal-bests">Personlige rekorder</TabsTrigger>
         <TabsTrigger value="results">Resultater</TabsTrigger>

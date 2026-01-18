@@ -49,11 +49,11 @@ function PersonalBestTable({
   if (pbs.length === 0) {
     return (
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">{title}</CardTitle>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">Ingen rekorder</p>
+          <p className="text-[13px] text-muted-foreground">Ingen rekorder</p>
         </CardContent>
       </Card>
     )
@@ -61,47 +61,47 @@ function PersonalBestTable({
 
   return (
     <Card>
-      <CardHeader className="pb-3">
-        <CardTitle className="text-lg">{title}</CardTitle>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full">
             <thead>
               <tr className="border-b bg-muted/50">
-                <th className="px-4 py-2 text-left font-medium">Øvelse</th>
-                <th className="px-4 py-2 text-left font-medium">Resultat</th>
+                <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Øvelse</th>
+                <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
                 {showWind && (
-                  <th className="hidden px-4 py-2 text-left font-medium sm:table-cell">Vind</th>
+                  <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] sm:table-cell">Vind</th>
                 )}
-                <th className="px-4 py-2 text-left font-medium">Dato</th>
-                <th className="hidden px-4 py-2 text-left font-medium md:table-cell">Sted</th>
+                <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Dato</th>
+                <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] md:table-cell">Sted</th>
               </tr>
             </thead>
             <tbody>
               {pbs.map((pb) => (
-                <tr key={pb.result_id} className="border-b last:border-0 hover:bg-muted/30">
-                  <td className="px-4 py-2">{pb.event_name}</td>
-                  <td className="px-4 py-2">
-                    <span className="font-mono font-medium">{pb.performance}</span>
+                <tr key={pb.result_id} className="border-b last:border-0 hover:bg-[var(--table-row-hover)]">
+                  <td className="px-3 py-1.5 text-[13px]">{pb.event_name}</td>
+                  <td className="px-3 py-1.5 text-[13px]">
+                    <span className="perf-value">{pb.performance}</span>
                     {pb.is_national_record && (
-                      <Badge className="ml-2 bg-amber-500 text-white hover:bg-amber-600">
+                      <Badge variant="nr" className="ml-1.5">
                         NR
                       </Badge>
                     )}
                   </td>
                   {showWind && (
-                    <td className="hidden px-4 py-2 font-mono text-muted-foreground sm:table-cell">
+                    <td className="hidden px-3 py-1.5 text-[12px] tabular-nums text-[var(--text-muted)] sm:table-cell">
                       {formatWind(pb.wind) || "–"}
                     </td>
                   )}
-                  <td className="px-4 py-2 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">
                     {formatDate(pb.date)}
                   </td>
-                  <td className="hidden px-4 py-2 md:table-cell">
+                  <td className="hidden px-3 py-1.5 text-[13px] md:table-cell">
                     <Link
                       href={`/stevner/${pb.meet_id}`}
-                      className="hover:text-primary hover:underline"
+                      className="no-underline hover:underline"
                     >
                       {pb.meet_city || pb.meet_name}
                     </Link>
@@ -132,7 +132,7 @@ export function PersonalBestsSection({ personalBests }: PersonalBestsSectionProp
   const hasWindEvents = outdoorPBs.some(pb => pb.wind !== null)
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-4 lg:grid-cols-2">
       <PersonalBestTable pbs={outdoorPBs} title="Utendørs" showWind={hasWindEvents} />
       <PersonalBestTable pbs={indoorPBs} title="Innendørs" showWind={false} />
     </div>

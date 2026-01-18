@@ -55,21 +55,21 @@ export function TopPerformancesCard({
 
   return (
     <Card>
-      <CardHeader className="cursor-pointer pb-3" onClick={() => setIsExpanded(!isExpanded)}>
+      <CardHeader className="cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {isExpanded ? (
-              <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
             ) : (
-              <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
             )}
-            <CardTitle className="text-base">{eventName}</CardTitle>
-            <Badge variant="secondary" className="text-xs">
+            <CardTitle className="text-[14px]">{eventName}</CardTitle>
+            <Badge variant="secondary" className="text-[10px]">
               Top {performances.length}
             </Badge>
           </div>
           {!isExpanded && (
-            <span className="font-mono text-sm font-medium">
+            <span className="perf-value text-[13px] text-muted-foreground">
               {bestPerformance.performance}
             </span>
           )}
@@ -77,18 +77,18 @@ export function TopPerformancesCard({
       </CardHeader>
 
       {isExpanded && (
-        <CardContent className="p-0 pt-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+        <CardContent className="p-0">
+          <div className="overflow-x-auto border-t">
+            <table className="w-full">
               <thead>
-                <tr className="border-y bg-muted/50">
-                  <th className="w-12 px-4 py-2 text-center font-medium">#</th>
-                  <th className="px-4 py-2 text-left font-medium">Resultat</th>
-                  <th className="hidden px-4 py-2 text-left font-medium sm:table-cell">
+                <tr className="border-b bg-muted/50">
+                  <th className="w-10 px-3 py-1.5 text-center text-xs font-semibold text-[var(--text-secondary)]">#</th>
+                  <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
+                  <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] sm:table-cell">
                     Vind
                   </th>
-                  <th className="px-4 py-2 text-left font-medium">Dato</th>
-                  <th className="hidden px-4 py-2 text-left font-medium md:table-cell">
+                  <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Dato</th>
+                  <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] md:table-cell">
                     Stevne
                   </th>
                 </tr>
@@ -97,29 +97,29 @@ export function TopPerformancesCard({
                 {performances.map((perf) => (
                   <tr
                     key={perf.result_id}
-                    className="border-b last:border-0 hover:bg-muted/30"
+                    className="border-b last:border-0 hover:bg-[var(--table-row-hover)]"
                   >
-                    <td className="px-4 py-2 text-center text-muted-foreground">
+                    <td className="px-3 py-1.5 text-center text-[12px] text-[var(--text-muted)]">
                       {perf.rank}
                     </td>
-                    <td className="px-4 py-2">
-                      <span className="font-mono font-medium">{perf.performance}</span>
+                    <td className="px-3 py-1.5 text-[13px]">
+                      <span className="perf-value">{perf.performance}</span>
                       {perf.is_national_record && (
-                        <Badge className="ml-2 bg-amber-500 text-white hover:bg-amber-600">
+                        <Badge variant="nr" className="ml-1.5">
                           NR
                         </Badge>
                       )}
                     </td>
-                    <td className="hidden px-4 py-2 font-mono text-muted-foreground sm:table-cell">
+                    <td className="hidden px-3 py-1.5 text-[12px] tabular-nums text-[var(--text-muted)] sm:table-cell">
                       {formatWind(perf.wind) || "–"}
                     </td>
-                    <td className="px-4 py-2 text-muted-foreground">
+                    <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">
                       {formatDate(perf.date)}
                     </td>
-                    <td className="hidden px-4 py-2 md:table-cell">
+                    <td className="hidden px-3 py-1.5 text-[13px] md:table-cell">
                       <Link
                         href={`/stevner/${perf.meet_id}`}
-                        className="hover:text-primary hover:underline"
+                        className="no-underline hover:underline"
                       >
                         {perf.meet_name}
                       </Link>
@@ -155,16 +155,16 @@ export function TopPerformancesSection({
           <CardTitle>Topp 10 prestasjoner</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">Ingen data tilgjengelig</p>
+          <p className="text-[13px] text-muted-foreground">Ingen data tilgjengelig</p>
         </CardContent>
       </Card>
     )
   }
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Topp 10 prestasjoner</h2>
-      <div className="grid gap-4">
+    <div className="space-y-3">
+      <h2 className="text-[16px] font-semibold">Topp 10 prestasjoner</h2>
+      <div className="grid gap-3">
         {eventsWithPerformances.map((event, index) => (
           <TopPerformancesCard
             key={event.id}

@@ -63,7 +63,7 @@ function formatRound(round: string | null): string | null {
     final: "Finale",
     a_final: "A-finale",
     b_final: "B-finale",
-    qualification: "Kvalifisering",
+    qualification: "Kval.",
   }
   return roundNames[round] || round
 }
@@ -151,11 +151,12 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle>Resultater</CardTitle>
+          {/* Filter bar - sticky compatible */}
           <div className="flex flex-wrap gap-2">
             <Select value={yearParam} onValueChange={(v) => updateSearchParams("year", v)}>
-              <SelectTrigger className="w-[120px]">
+              <SelectTrigger className="h-8 w-[100px] text-[13px]">
                 <SelectValue placeholder="År" />
               </SelectTrigger>
               <SelectContent>
@@ -169,7 +170,7 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
             </Select>
 
             <Select value={eventParam} onValueChange={(v) => updateSearchParams("event", v)}>
-              <SelectTrigger className="w-[150px]">
+              <SelectTrigger className="h-8 w-[130px] text-[13px]">
                 <SelectValue placeholder="Øvelse" />
               </SelectTrigger>
               <SelectContent>
@@ -186,7 +187,7 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
               value={indoorParam || "all"}
               onValueChange={(v) => updateSearchParams("indoor", v)}
             >
-              <SelectTrigger className="w-[140px]">
+              <SelectTrigger className="h-8 w-[110px] text-[13px]">
                 <SelectValue placeholder="Bane" />
               </SelectTrigger>
               <SelectContent>
@@ -200,7 +201,7 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
       </CardHeader>
       <CardContent className="p-0">
         {groupedResults.length === 0 ? (
-          <p className="p-6 text-sm text-muted-foreground">
+          <p className="p-4 text-[13px] text-muted-foreground">
             Ingen resultater funnet med gjeldende filtre.
           </p>
         ) : (
@@ -211,29 +212,28 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
                 if (!best) return curr
                 const currVal = curr.performance_value ?? 0
                 const bestVal = best.performance_value ?? 0
-                // Assuming lower is better for times (we'll improve this later)
                 return currVal < bestVal ? curr : best
               }, group.results[0])
 
               return (
                 <div key={group.event.id}>
                   <button
-                    className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-muted/30"
+                    className="flex w-full items-center justify-between px-3 py-2 text-left hover:bg-[var(--table-row-hover)]"
                     onClick={() => toggleEvent(group.event.id)}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       {isExpanded ? (
-                        <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                        <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
                       ) : (
-                        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
                       )}
-                      <span className="font-medium">{group.event.name}</span>
-                      <Badge variant="secondary" className="text-xs">
+                      <span className="text-[13px] font-medium">{group.event.name}</span>
+                      <Badge variant="secondary" className="text-[10px]">
                         {group.results.length}
                       </Badge>
                     </div>
                     {!isExpanded && (
-                      <span className="font-mono text-sm text-muted-foreground">
+                      <span className="perf-value text-[13px] text-muted-foreground">
                         SB: {bestResult.performance}
                       </span>
                     )}
@@ -241,66 +241,64 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
 
                   {isExpanded && (
                     <div className="overflow-x-auto border-t bg-muted/20">
-                      <table className="w-full text-sm">
+                      <table className="w-full">
                         <thead>
                           <tr className="border-b bg-muted/50">
-                            <th className="px-6 py-2 text-left font-medium">Dato</th>
-                            <th className="px-4 py-2 text-left font-medium">Resultat</th>
-                            <th className="hidden px-4 py-2 text-left font-medium sm:table-cell">
+                            <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Dato</th>
+                            <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
+                            <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] sm:table-cell">
                               Vind
                             </th>
-                            <th className="hidden px-4 py-2 text-left font-medium md:table-cell">
+                            <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] md:table-cell">
                               Plass
                             </th>
-                            <th className="hidden px-4 py-2 text-left font-medium lg:table-cell">
+                            <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] lg:table-cell">
                               Runde
                             </th>
-                            <th className="px-4 py-2 text-left font-medium">Stevne</th>
+                            <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Stevne</th>
                           </tr>
                         </thead>
                         <tbody>
                           {group.results.map((result) => (
                             <tr
                               key={result.id}
-                              className="border-b last:border-0 hover:bg-muted/30"
+                              className="border-b last:border-0 hover:bg-[var(--table-row-hover)]"
                             >
-                              <td className="px-6 py-2 text-muted-foreground">
+                              <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">
                                 {formatDate(result.date)}
                               </td>
-                              <td className="px-4 py-2">
-                                <span className="font-mono font-medium">
+                              <td className="px-3 py-1.5 text-[13px]">
+                                <span className="perf-value">
                                   {result.performance}
                                 </span>
                                 {result.is_pb && (
-                                  <Badge className="ml-2 bg-green-600 text-white">PB</Badge>
+                                  <Badge variant="pb" className="ml-1.5">PB</Badge>
                                 )}
                                 {result.is_sb && !result.is_pb && (
-                                  <Badge variant="secondary" className="ml-2">
-                                    SB
-                                  </Badge>
+                                  <Badge variant="sb" className="ml-1.5">SB</Badge>
                                 )}
                                 {result.is_national_record && (
-                                  <Badge className="ml-2 bg-amber-500 text-white">NR</Badge>
+                                  <Badge variant="nr" className="ml-1.5">NR</Badge>
                                 )}
                               </td>
-                              <td className="hidden px-4 py-2 font-mono text-muted-foreground sm:table-cell">
+                              <td className="hidden px-3 py-1.5 text-[12px] tabular-nums text-[var(--text-muted)] sm:table-cell">
                                 {formatWind(result.wind) || "–"}
                               </td>
-                              <td className="hidden px-4 py-2 text-muted-foreground md:table-cell">
+                              <td className="hidden px-3 py-1.5 text-[12px] text-[var(--text-muted)] md:table-cell">
                                 {result.place || "–"}
                               </td>
-                              <td className="hidden px-4 py-2 text-muted-foreground lg:table-cell">
+                              <td className="hidden px-3 py-1.5 text-[12px] text-[var(--text-muted)] lg:table-cell">
                                 {formatRound(result.round) || "–"}
                               </td>
-                              <td className="px-4 py-2">
+                              <td className="px-3 py-1.5 text-[13px]">
                                 <Link
                                   href={`/stevner/${result.meet_id}`}
-                                  className="hover:text-primary hover:underline"
+                                  className="no-underline hover:underline"
                                 >
                                   {result.meet_name}
                                 </Link>
                                 {result.meet_indoor && (
-                                  <span className="ml-1 text-xs text-muted-foreground">(i)</span>
+                                  <span className="ml-1 text-[10px] text-muted-foreground">(i)</span>
                                 )}
                               </td>
                             </tr>

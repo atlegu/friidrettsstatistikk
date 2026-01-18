@@ -121,7 +121,7 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
           <CardTitle>Progresjon</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">Ingen data tilgjengelig</p>
+          <p className="text-[13px] text-muted-foreground">Ingen data tilgjengelig</p>
         </CardContent>
       </Card>
     )
@@ -147,10 +147,10 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle>Progresjon</CardTitle>
           <Select value={selectedEventId} onValueChange={setSelectedEventId}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="h-8 w-[160px] text-[13px]">
               <SelectValue placeholder="Velg øvelse" />
             </SelectTrigger>
             <SelectContent>
@@ -165,13 +165,13 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
       </CardHeader>
       <CardContent>
         {chartData.length === 0 ? (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-[13px] text-muted-foreground">
             Ingen data for valgt øvelse
           </p>
         ) : chartData.length === 1 ? (
-          <div className="text-center py-8">
-            <p className="text-muted-foreground">
-              Kun ett datapunkt: <span className="font-mono font-medium">{chartData[0].performance}</span> ({chartData[0].year})
+          <div className="text-center py-6">
+            <p className="text-[13px] text-muted-foreground">
+              Kun ett datapunkt: <span className="perf-value font-medium">{chartData[0].performance}</span> ({chartData[0].year})
             </p>
           </div>
         ) : (
@@ -185,24 +185,24 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                   <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                   <XAxis
                     dataKey="year"
-                    className="text-xs"
-                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                    className="text-[11px]"
+                    tick={{ fill: "var(--text-muted)" }}
                   />
                   <YAxis
                     reversed={resultType === "time"}
                     domain={yDomain}
                     tickFormatter={(value) => formatYAxisTick(value, resultType)}
-                    className="text-xs"
-                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                    className="text-[11px]"
+                    tick={{ fill: "var(--text-muted)" }}
                   />
                   <Tooltip
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
                         const data = payload[0].payload
                         return (
-                          <div className="rounded-lg border bg-background p-2 shadow-sm">
-                            <div className="font-semibold">{data.year}</div>
-                            <div className="font-mono">{data.performance}</div>
+                          <div className="rounded border bg-[var(--bg-card)] px-2 py-1.5 shadow-sm">
+                            <div className="text-[12px] font-semibold">{data.year}</div>
+                            <div className="perf-value text-[13px]">{data.performance}</div>
                           </div>
                         )
                       }
@@ -212,29 +212,29 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                   <Line
                     type="monotone"
                     dataKey="value"
-                    stroke="hsl(var(--primary))"
+                    stroke="var(--accent-primary)"
                     strokeWidth={2}
-                    dot={{ fill: "hsl(var(--primary))", strokeWidth: 2 }}
-                    activeDot={{ r: 6 }}
+                    dot={{ fill: "var(--accent-primary)", strokeWidth: 2 }}
+                    activeDot={{ r: 5 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
             </div>
 
             {/* Data table below chart */}
-            <div className="mt-6 overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="mt-4 overflow-x-auto border-t">
+              <table className="w-full">
                 <thead>
-                  <tr className="border-b">
-                    <th className="px-4 py-2 text-left font-medium">År</th>
-                    <th className="px-4 py-2 text-left font-medium">Resultat</th>
+                  <tr className="border-b bg-muted/50">
+                    <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">År</th>
+                    <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
                   </tr>
                 </thead>
                 <tbody>
                   {chartData.map((row) => (
-                    <tr key={row.year} className="border-b last:border-0">
-                      <td className="px-4 py-2 text-muted-foreground">{row.year}</td>
-                      <td className="px-4 py-2 font-mono">{row.performance}</td>
+                    <tr key={row.year} className="border-b last:border-0 hover:bg-[var(--table-row-hover)]">
+                      <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">{row.year}</td>
+                      <td className="px-3 py-1.5 text-[13px]"><span className="perf-value">{row.performance}</span></td>
                     </tr>
                   ))}
                 </tbody>

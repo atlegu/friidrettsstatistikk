@@ -73,28 +73,30 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
     : null
 
   return (
-    <div className="mb-8">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-        {/* Avatar */}
+    <div className="mb-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+        {/* Avatar - smaller size */}
         <div className="flex-shrink-0">
           {athlete.profile_image_url ? (
             <img
               src={athlete.profile_image_url}
               alt={fullName}
-              className="h-24 w-24 rounded-full object-cover ring-2 ring-muted sm:h-32 sm:w-32"
+              className="h-16 w-16 rounded-full object-cover ring-1 ring-border sm:h-20 sm:w-20"
             />
           ) : (
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-3xl font-bold text-primary-foreground sm:h-32 sm:w-32 sm:text-4xl">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-semibold text-primary-foreground sm:h-20 sm:w-20 sm:text-2xl">
               {initials}
             </div>
           )}
         </div>
 
         {/* Info */}
-        <div className="flex-1">
-          <h1 className="mb-2 text-3xl font-bold sm:text-4xl">{fullName}</h1>
+        <div className="flex-1 min-w-0">
+          {/* Name - using h1 from base styles (21px) */}
+          <h1 className="mb-1 truncate">{fullName}</h1>
 
-          <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-muted-foreground">
+          {/* Meta info */}
+          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[13px] text-[var(--text-secondary)]">
             {birthInfo && (
               <span>
                 {birthInfo}
@@ -104,7 +106,7 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
             {club && (
               <Link
                 href={`/klubber/${club.id}`}
-                className="hover:text-primary hover:underline"
+                className="no-underline hover:underline"
               >
                 {club.name}
               </Link>
@@ -114,28 +116,28 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
             )}
           </div>
 
-          {/* Quick Stats */}
-          <div className="flex flex-wrap gap-2">
+          {/* Badges */}
+          <div className="flex flex-wrap gap-1.5">
             {mainEvent && (
-              <Badge variant="secondary" className="text-sm">
+              <Badge variant="secondary">
                 {mainEvent}
               </Badge>
             )}
             {stats.nationalRecordsCount > 0 && (
-              <Badge className="bg-amber-500 text-white hover:bg-amber-600">
+              <Badge variant="nr">
                 {stats.nationalRecordsCount} NR
               </Badge>
             )}
           </div>
 
-          {/* Career Stats */}
-          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted-foreground">
+          {/* Career Stats - compact */}
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-0.5 text-[12px] text-[var(--text-muted)]">
             {stats.firstYear && stats.lastYear && (
               <span>
                 {stats.firstYear === stats.lastYear
                   ? stats.firstYear
                   : `${stats.firstYear}–${stats.lastYear}`}
-                {seasonCount && seasonCount > 1 && ` | ${seasonCount} sesonger`}
+                {seasonCount && seasonCount > 1 && ` · ${seasonCount} sesonger`}
               </span>
             )}
             {stats.totalMeets > 0 && (
