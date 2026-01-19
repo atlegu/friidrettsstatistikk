@@ -11,6 +11,7 @@ interface Profile {
   avatar_url: string | null
   subscription_tier: "free" | "premium"
   subscription_expires_at: string | null
+  is_admin?: boolean
 }
 
 interface AuthContextType {
@@ -18,6 +19,7 @@ interface AuthContextType {
   profile: Profile | null
   loading: boolean
   isPremium: boolean
+  isAdmin: boolean
   signOut: () => Promise<void>
   refreshProfile: () => Promise<void>
 }
@@ -27,6 +29,7 @@ const AuthContext = createContext<AuthContextType>({
   profile: null,
   loading: true,
   isPremium: false,
+  isAdmin: false,
   signOut: async () => {},
   refreshProfile: async () => {},
 })
@@ -97,10 +100,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setProfile(null)
   }
 
+  const isAdmin = profile?.is_admin === true
+
+  // Admins have premium access, otherwise check subscription
   const isPremium =
-    profile?.subscription_tier === "premium" &&
-    (!profile.subscription_expires_at ||
-      new Date(profile.subscription_expires_at) > new Date())
+    isAdmin ||
+    (profile?.subscription_tier === "premium" &&
+      (!profile.subscription_expires_at ||
+        new Date(profile.subscription_expires_at) > new Date()))
 
   return (
     <AuthContext.Provider
@@ -109,6 +116,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         profile,
         loading,
         isPremium,
+        isAdmin,
         signOut,
         refreshProfile,
       }}

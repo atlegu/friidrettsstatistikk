@@ -23,6 +23,16 @@ const AGE_GROUPS = [
 // Age groups included in "Senior" filter (15 years and older)
 const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
 
+// Sprint events where manual times (1 decimal) should be excluded
+const SPRINT_EVENTS = ["60 meter", "100 meter", "200 meter"]
+
+// Check if a performance is a manual time (only 1 decimal)
+function isManualTime(performance: string | null): boolean {
+  if (!performance || !performance.includes(".")) return false
+  const decimals = performance.split(".")[1]?.length ?? 0
+  return decimals === 1
+}
+
 async function getEvents() {
   const supabase = await createClient()
 
@@ -36,6 +46,7 @@ async function getEvents() {
 
 async function getAllTimeResults(
   eventId: string,
+  eventName: string,
   gender: string,
   ageGroup: string,
   resultType: string,
@@ -67,10 +78,19 @@ async function getAllTimeResults(
 
   if (!data) return []
 
+  // Check if this is a sprint event (manual times should be excluded)
+  const isSprintEvent = SPRINT_EVENTS.includes(eventName)
+
   // Filter to best result per athlete
   const bestByAthlete = new Map<string, typeof data[0]>()
   for (const result of data) {
     if (!result.athlete_id) continue
+
+    // Skip manual times for sprint events
+    if (isSprintEvent && isManualTime(result.performance)) {
+      continue
+    }
+
     const existing = bestByAthlete.get(result.athlete_id)
     if (!existing) {
       bestByAthlete.set(result.athlete_id, result)
@@ -96,7 +116,7 @@ export default async function AllTimePage({
     : events[0]
 
   const results = selectedEvent
-    ? await getAllTimeResults(selectedEvent.id, gender, age, selectedEvent.result_type ?? "time")
+    ? await getAllTimeResults(selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time")
     : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"

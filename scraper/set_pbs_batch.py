@@ -65,6 +65,18 @@ events_resp = supabase.table('events').select('id, name, result_type').execute()
 events = {e['id']: e for e in events_resp.data}
 print(f"Loaded {len(events)} events")
 
+# Sprint events where manual times should be excluded
+SPRINT_EVENTS = {'60 meter', '100 meter', '200 meter'}
+sprint_event_ids = {e['id'] for e in events_resp.data if e['name'] in SPRINT_EVENTS}
+print(f"Sprint events (manual times excluded): {SPRINT_EVENTS}")
+
+def is_manual_time(performance):
+    """Check if performance is a manual time (1 decimal)."""
+    if not performance or '.' not in str(performance):
+        return False
+    decimals = len(str(performance).split('.')[-1])
+    return decimals == 1
+
 def is_better(new_value, old_value, result_type):
     if result_type == 'time':
         return new_value < old_value
@@ -87,23 +99,29 @@ print(f"Loaded {len(athletes)} athletes")
 print("\nCalculating personal bests...")
 batch_size = 1000
 offset = 0
+manual_skipped = 0
 
 best_by_athlete_event = {}  # key: (athlete_id, event_id), value: (result_id, performance_value)
 
 while True:
     results = supabase.table('results').select(
-        'id, athlete_id, event_id, performance_value'
+        'id, athlete_id, event_id, performance_value, performance'
     ).gt('performance_value', 0).range(offset, offset + batch_size - 1).execute()
 
     if not results.data:
         break
 
     for r in results.data:
-        key = (r['athlete_id'], r['event_id'])
         event = events.get(r['event_id'])
         if not event:
             continue
 
+        # Skip manual times for sprint events
+        if r['event_id'] in sprint_event_ids and is_manual_time(r['performance']):
+            manual_skipped += 1
+            continue
+
+        key = (r['athlete_id'], r['event_id'])
         result_type = event['result_type']
         value = r['performance_value']
 
@@ -118,16 +136,17 @@ while True:
     if offset % 100000 == 0:
         print(f"  Processed {offset} results...")
 
-print(f"Found {len(best_by_athlete_event)} athlete/event PBs")
+print(f"Found {len(best_by_athlete_event)} athlete/event PBs (skipped {manual_skipped} manual times)")
 
 # Calculate NRs
 print("\nCalculating national records...")
 best_by_event_gender = {}  # key: (event_id, gender), value: (result_id, performance_value)
+manual_skipped_nr = 0
 
 offset = 0
 while True:
     results = supabase.table('results').select(
-        'id, athlete_id, event_id, performance_value'
+        'id, athlete_id, event_id, performance_value, performance'
     ).gt('performance_value', 0).eq('status', 'OK').range(offset, offset + batch_size - 1).execute()
 
     if not results.data:
@@ -140,6 +159,11 @@ while True:
 
         event = events.get(r['event_id'])
         if not event:
+            continue
+
+        # Skip manual times for sprint events
+        if r['event_id'] in sprint_event_ids and is_manual_time(r['performance']):
+            manual_skipped_nr += 1
             continue
 
         key = (r['event_id'], athlete_gender)
@@ -157,7 +181,7 @@ while True:
     if offset % 100000 == 0:
         print(f"  Processed {offset} results...")
 
-print(f"Found {len(best_by_event_gender)} event/gender records")
+print(f"Found {len(best_by_event_gender)} event/gender records (skipped {manual_skipped_nr} manual times)")
 
 # Now update in batches using .in_() filter
 print("\nUpdating is_pb flags in batches...")

@@ -68,6 +68,16 @@ const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
 // Junior age groups
 const JUNIOR_AGE_GROUPS = ["U20", "U18"]
 
+// Sprint events where manual times (1 decimal) should be excluded
+const SPRINT_EVENT_CODES = ["60m", "100m", "200m"]
+
+// Check if a performance is a manual time (only 1 decimal)
+function isManualTime(performance: string | null): boolean {
+  if (!performance || !performance.includes(".")) return false
+  const decimals = performance.split(".")[1]?.length ?? 0
+  return decimals === 1
+}
+
 const AGE_CATEGORIES = [
   { value: "Senior", label: "Senior" },
   { value: "Junior", label: "Junior (U20)" },
@@ -85,7 +95,7 @@ async function getEventsByIds(eventCodes: string[]) {
   return data ?? []
 }
 
-async function getBestResult(eventId: string, gender: string, ageCategory: string, resultType: string) {
+async function getBestResult(eventId: string, eventCode: string, gender: string, ageCategory: string, resultType: string) {
   const supabase = await createClient()
 
   // For time events, lower is better (ascending)
@@ -109,9 +119,21 @@ async function getBestResult(eventId: string, gender: string, ageCategory: strin
 
   const { data } = await query
     .order("performance_value", { ascending })
-    .limit(1)
 
-  return data?.[0] ?? null
+  if (!data || data.length === 0) return null
+
+  // Check if this is a sprint event (manual times should be excluded)
+  const isSprintEvent = SPRINT_EVENT_CODES.includes(eventCode)
+
+  // Find the best result, skipping manual times for sprint events
+  for (const result of data) {
+    if (isSprintEvent && isManualTime(result.performance)) {
+      continue
+    }
+    return result
+  }
+
+  return null
 }
 
 interface RecordRowProps {
@@ -209,12 +231,12 @@ export default async function RekordsPage({
 
   // Get best results for each event
   const recordPromises = recordEvents.map(async (event) => {
-    const best = await getBestResult(event.id, gender, age, event.result_type ?? "time")
+    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time")
     return { event, record: best }
   })
 
   const bestPromises = bestEvents.map(async (event) => {
-    const best = await getBestResult(event.id, gender, age, event.result_type ?? "time")
+    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time")
     return { event, record: best }
   })
 
