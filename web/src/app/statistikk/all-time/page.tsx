@@ -1,6 +1,9 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatPerformance } from "@/lib/format-performance"
+import { getBirthYear } from "@/lib/date-utils"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 export const metadata = {
   title: "All-time lister",
@@ -49,7 +52,9 @@ async function getAllTimeResults(
     .select("*")
     .eq("event_id", eventId)
     .eq("gender", gender)
+    .eq("status", "OK")
     .not("performance_value", "is", null)
+    .gt("performance_value", 0)
 
   if (ageGroup === "Senior") {
     // Senior includes all 15+ age groups
@@ -109,8 +114,12 @@ export default async function AllTimePage({
   }
 
   return (
-    <div className="container py-8">
-      <h1 className="mb-6 text-3xl font-bold">All-time lister</h1>
+    <div className="container py-6">
+      <Breadcrumbs items={[
+        { label: "Statistikk", href: "/statistikk" },
+        { label: "All-time" }
+      ]} />
+      <h1 className="mt-4 mb-4">All-time lister</h1>
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* Sidebar - Filters */}
@@ -236,7 +245,7 @@ export default async function AllTimePage({
                         <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
                           <td className="px-3 py-2 text-sm text-muted-foreground">{index + 1}</td>
                           <td className="px-3 py-2">
-                            <span className="font-mono font-medium">{result.performance}</span>
+                            <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
                             {result.wind !== null && (
                               <span className="ml-1 text-xs text-muted-foreground">
                                 ({result.wind > 0 ? "+" : ""}{result.wind})
@@ -257,7 +266,7 @@ export default async function AllTimePage({
                             </Link>
                           </td>
                           <td className="px-3 py-2 text-sm text-muted-foreground">
-                            {result.birth_date ? new Date(result.birth_date).getFullYear() : "-"}
+                            {getBirthYear(result.birth_date) ?? "-"}
                           </td>
                           <td className="hidden px-3 py-2 text-sm md:table-cell">
                             {result.club_name ?? "-"}

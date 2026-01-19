@@ -1,6 +1,9 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatPerformance } from "@/lib/format-performance"
+import { getBirthYear } from "@/lib/date-utils"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 const AGE_GROUPS = [
   { value: "Senior", label: "Senior (15+)" },
@@ -50,7 +53,9 @@ async function getTopResults(
     .eq("event_id", eventId)
     .eq("season_year", year)
     .eq("gender", gender)
+    .eq("status", "OK")
     .not("performance_value", "is", null)
+    .gt("performance_value", 0)
 
   if (ageGroup === "Senior") {
     // Senior includes all 15+ age groups
@@ -123,8 +128,12 @@ export default async function YearListPage({
   }
 
   return (
-    <div className="container py-8">
-      <h1 className="mb-6 text-3xl font-bold">Årsliste {year}</h1>
+    <div className="container py-6">
+      <Breadcrumbs items={[
+        { label: "Statistikk", href: "/statistikk" },
+        { label: `Årsliste ${year}` }
+      ]} />
+      <h1 className="mt-4 mb-4">Årsliste {year}</h1>
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* Sidebar - Filters */}
@@ -250,7 +259,7 @@ export default async function YearListPage({
                         <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
                           <td className="px-3 py-2 text-sm text-muted-foreground">{index + 1}</td>
                           <td className="px-3 py-2">
-                            <span className="font-mono font-medium">{result.performance}</span>
+                            <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
                             {result.wind !== null && (
                               <span className="ml-1 text-xs text-muted-foreground">
                                 ({result.wind > 0 ? "+" : ""}{result.wind})
@@ -266,7 +275,7 @@ export default async function YearListPage({
                             </Link>
                           </td>
                           <td className="px-3 py-2 text-sm text-muted-foreground">
-                            {result.birth_date ? new Date(result.birth_date).getFullYear() : "-"}
+                            {getBirthYear(result.birth_date) ?? "-"}
                           </td>
                           <td className="hidden px-3 py-2 text-sm md:table-cell">
                             {result.club_name ?? "-"}

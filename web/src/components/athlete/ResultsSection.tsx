@@ -3,16 +3,8 @@
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { ChevronDown, ChevronRight } from "lucide-react"
+import { SingleFilterChip } from "@/components/ui/filter-chips"
+import { formatPerformance } from "@/lib/format-performance"
 
 interface Result {
   id: string
@@ -28,6 +20,7 @@ interface Result {
   event_id: string
   event_name: string
   event_code: string
+  result_type?: string
   meet_id: string
   meet_name: string
   meet_indoor: boolean | null
@@ -38,6 +31,14 @@ interface ResultsSectionProps {
   results: Result[]
   seasons: number[]
   events: { id: string; name: string; code: string }[]
+}
+
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  )
 }
 
 function formatDate(dateStr: string): string {
@@ -71,19 +72,14 @@ function formatRound(round: string | null): string | null {
 export function ResultsSection({ results, seasons, events }: ResultsSectionProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const [searchQuery, setSearchQuery] = useState("")
 
-  const currentYear = new Date().getFullYear()
-  const defaultYear = seasons.includes(currentYear)
-    ? currentYear.toString()
-    : seasons.length > 0
-      ? seasons[0].toString()
-      : "all"
-
-  const yearParam = searchParams.get("year") || defaultYear
+  // Default to showing all results
+  const yearParam = searchParams.get("year") || "all"
   const eventParam = searchParams.get("event") || "all"
   const indoorParam = searchParams.get("indoor")
-
-  const [expandedEvents, setExpandedEvents] = useState<Set<string>>(new Set())
+  const pbOnlyParam = searchParams.get("pb") === "true"
+  const finalsOnlyParam = searchParams.get("finals") === "true"
 
   // Filter results
   const filteredResults = useMemo(() => {
@@ -100,33 +96,24 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
       if (indoorParam === "false" && r.meet_indoor) {
         return false
       }
-      return true
-    })
-  }, [results, yearParam, eventParam, indoorParam])
-
-  // Group results by event
-  const groupedResults = useMemo(() => {
-    const groups: Record<string, { event: { id: string; name: string }; results: Result[] }> = {}
-
-    filteredResults.forEach((r) => {
-      if (!groups[r.event_id]) {
-        groups[r.event_id] = {
-          event: { id: r.event_id, name: r.event_name },
-          results: [],
+      if (pbOnlyParam && !r.is_pb) {
+        return false
+      }
+      if (finalsOnlyParam && r.round !== "final" && r.round !== "a_final") {
+        return false
+      }
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        const matchesMeet = r.meet_name?.toLowerCase().includes(query)
+        const matchesEvent = r.event_name?.toLowerCase().includes(query)
+        if (!matchesMeet && !matchesEvent) {
+          return false
         }
       }
-      groups[r.event_id].results.push(r)
+      return true
     })
-
-    // Sort results within each group by date descending
-    Object.values(groups).forEach((group) => {
-      group.results.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    })
-
-    return Object.values(groups).sort((a, b) =>
-      a.event.name.localeCompare(b.event.name, "no")
-    )
-  }, [filteredResults])
+  }, [results, yearParam, eventParam, indoorParam, pbOnlyParam, finalsOnlyParam, searchQuery])
 
   const updateSearchParams = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -138,181 +125,186 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
     router.push(`?${params.toString()}`, { scroll: false })
   }
 
-  const toggleEvent = (eventId: string) => {
-    const newExpanded = new Set(expandedEvents)
-    if (newExpanded.has(eventId)) {
-      newExpanded.delete(eventId)
-    } else {
-      newExpanded.add(eventId)
-    }
-    setExpandedEvents(newExpanded)
-  }
+  // Get recent years for filter chips (last 5 years + "All")
+  const recentYears = seasons.slice(0, 5)
+  const olderYears = seasons.slice(5)
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <CardTitle>Resultater</CardTitle>
-          {/* Filter bar - sticky compatible */}
-          <div className="flex flex-wrap gap-2">
-            <Select value={yearParam} onValueChange={(v) => updateSearchParams("year", v)}>
-              <SelectTrigger className="h-8 w-[100px] text-[13px]">
-                <SelectValue placeholder="År" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Alle år</SelectItem>
-                {seasons.map((year) => (
-                  <SelectItem key={year} value={year.toString()}>
-                    {year}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select value={eventParam} onValueChange={(v) => updateSearchParams("event", v)}>
-              <SelectTrigger className="h-8 w-[130px] text-[13px]">
-                <SelectValue placeholder="Øvelse" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Alle øvelser</SelectItem>
-                {events.map((event) => (
-                  <SelectItem key={event.id} value={event.id}>
-                    {event.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={indoorParam || "all"}
-              onValueChange={(v) => updateSearchParams("indoor", v)}
+    <div className="card-flat p-0 overflow-hidden">
+      {/* Filter bar - sticky */}
+      <div className="sticky-filter flex flex-wrap items-center gap-3 px-3 py-2">
+        {/* Year filters */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <SingleFilterChip
+            label="Alle år"
+            active={yearParam === "all"}
+            onClick={() => updateSearchParams("year", "all")}
+          />
+          {recentYears.map((year) => (
+            <SingleFilterChip
+              key={year}
+              label={year.toString()}
+              active={yearParam === year.toString()}
+              onClick={() => updateSearchParams("year", year.toString())}
+            />
+          ))}
+          {olderYears.length > 0 && (
+            <select
+              value={olderYears.includes(parseInt(yearParam)) ? yearParam : ""}
+              onChange={(e) => updateSearchParams("year", e.target.value)}
+              className="h-7 rounded border bg-transparent px-2 text-[13px]"
             >
-              <SelectTrigger className="h-8 w-[110px] text-[13px]">
-                <SelectValue placeholder="Bane" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Alle</SelectItem>
-                <SelectItem value="false">Utendørs</SelectItem>
-                <SelectItem value="true">Innendørs</SelectItem>
-              </SelectContent>
-            </Select>
+              <option value="" disabled>Eldre...</option>
+              {olderYears.map((year) => (
+                <option key={year} value={year.toString()}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
+
+        {/* Separator */}
+        <div className="h-4 w-px bg-[var(--border-default)]" />
+
+        {/* Indoor/Outdoor filters */}
+        <div className="flex items-center gap-1.5">
+          <SingleFilterChip
+            label="Alle"
+            active={!indoorParam}
+            onClick={() => updateSearchParams("indoor", "")}
+          />
+          <SingleFilterChip
+            label="Ute"
+            active={indoorParam === "false"}
+            onClick={() => updateSearchParams("indoor", "false")}
+          />
+          <SingleFilterChip
+            label="Inne"
+            active={indoorParam === "true"}
+            onClick={() => updateSearchParams("indoor", "true")}
+          />
+        </div>
+
+        {/* Separator */}
+        <div className="h-4 w-px bg-[var(--border-default)]" />
+
+        {/* PB/Finals filters */}
+        <div className="flex items-center gap-1.5">
+          <SingleFilterChip
+            label="Kun PB"
+            active={pbOnlyParam}
+            onClick={() => updateSearchParams("pb", pbOnlyParam ? "" : "true")}
+          />
+          <SingleFilterChip
+            label="Kun finaler"
+            active={finalsOnlyParam}
+            onClick={() => updateSearchParams("finals", finalsOnlyParam ? "" : "true")}
+          />
+        </div>
+
+        {/* Event filter (if many events) */}
+        {events.length > 3 && (
+          <>
+            <div className="h-4 w-px bg-[var(--border-default)]" />
+            <select
+              value={eventParam}
+              onChange={(e) => updateSearchParams("event", e.target.value)}
+              className="h-7 rounded border bg-transparent px-2 text-[13px]"
+            >
+              <option value="all">Alle øvelser</option>
+              {events.map((event) => (
+                <option key={event.id} value={event.id}>
+                  {event.name}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
+
+        {/* Search */}
+        <div className="ml-auto flex items-center">
+          <div className="relative">
+            <SearchIcon className="absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[var(--text-muted)]" />
+            <input
+              type="text"
+              placeholder="Søk stevne..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-7 w-32 rounded border bg-transparent pl-7 pr-2 text-[13px] placeholder:text-[var(--text-muted)] focus:w-48 focus:outline-none focus:ring-1 focus:ring-[var(--focus-ring)] transition-all"
+            />
           </div>
         </div>
-      </CardHeader>
-      <CardContent className="p-0">
-        {groupedResults.length === 0 ? (
-          <p className="p-4 text-[13px] text-muted-foreground">
-            Ingen resultater funnet med gjeldende filtre.
-          </p>
-        ) : (
-          <div className="divide-y">
-            {groupedResults.map((group) => {
-              const isExpanded = expandedEvents.has(group.event.id) || eventParam !== "all"
-              const bestResult = group.results.reduce((best, curr) => {
-                if (!best) return curr
-                const currVal = curr.performance_value ?? 0
-                const bestVal = best.performance_value ?? 0
-                return currVal < bestVal ? curr : best
-              }, group.results[0])
+      </div>
 
-              return (
-                <div key={group.event.id}>
-                  <button
-                    className="flex w-full items-center justify-between px-3 py-2 text-left hover:bg-[var(--table-row-hover)]"
-                    onClick={() => toggleEvent(group.event.id)}
-                  >
-                    <div className="flex items-center gap-2">
-                      {isExpanded ? (
-                        <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-                      ) : (
-                        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
-                      )}
-                      <span className="text-[13px] font-medium">{group.event.name}</span>
-                      <Badge variant="secondary" className="text-[10px]">
-                        {group.results.length}
-                      </Badge>
-                    </div>
-                    {!isExpanded && (
-                      <span className="perf-value text-[13px] text-muted-foreground">
-                        SB: {bestResult.performance}
-                      </span>
+      {/* Results count */}
+      <div className="border-b bg-[var(--bg-muted)] px-3 py-1.5">
+        <span className="text-[12px] text-[var(--text-muted)]">
+          {filteredResults.length} resultat{filteredResults.length !== 1 && "er"}
+        </span>
+      </div>
+
+      {/* Results table */}
+      {filteredResults.length === 0 ? (
+        <p className="p-4 text-[13px] text-[var(--text-muted)]">
+          Ingen resultater funnet med gjeldende filtre.
+        </p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="table-sticky">
+            <thead>
+              <tr>
+                <th>Dato</th>
+                <th>Øvelse</th>
+                <th>Resultat</th>
+                <th className="col-numeric hidden sm:table-cell">Vind</th>
+                <th className="col-numeric hidden md:table-cell">Plass</th>
+                <th className="hidden lg:table-cell">Runde</th>
+                <th>Stevne</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredResults.map((result) => (
+                <tr key={result.id}>
+                  <td className="text-[var(--text-muted)] whitespace-nowrap">
+                    {formatDate(result.date)}
+                  </td>
+                  <td className="whitespace-nowrap">{result.event_name}</td>
+                  <td className="whitespace-nowrap">
+                    <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
+                    {result.is_pb && (
+                      <span className="badge-pb ml-1.5">PB</span>
                     )}
-                  </button>
-
-                  {isExpanded && (
-                    <div className="overflow-x-auto border-t bg-muted/20">
-                      <table className="w-full">
-                        <thead>
-                          <tr className="border-b bg-muted/50">
-                            <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Dato</th>
-                            <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
-                            <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] sm:table-cell">
-                              Vind
-                            </th>
-                            <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] md:table-cell">
-                              Plass
-                            </th>
-                            <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] lg:table-cell">
-                              Runde
-                            </th>
-                            <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Stevne</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {group.results.map((result) => (
-                            <tr
-                              key={result.id}
-                              className="border-b last:border-0 hover:bg-[var(--table-row-hover)]"
-                            >
-                              <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">
-                                {formatDate(result.date)}
-                              </td>
-                              <td className="px-3 py-1.5 text-[13px]">
-                                <span className="perf-value">
-                                  {result.performance}
-                                </span>
-                                {result.is_pb && (
-                                  <Badge variant="pb" className="ml-1.5">PB</Badge>
-                                )}
-                                {result.is_sb && !result.is_pb && (
-                                  <Badge variant="sb" className="ml-1.5">SB</Badge>
-                                )}
-                                {result.is_national_record && (
-                                  <Badge variant="nr" className="ml-1.5">NR</Badge>
-                                )}
-                              </td>
-                              <td className="hidden px-3 py-1.5 text-[12px] tabular-nums text-[var(--text-muted)] sm:table-cell">
-                                {formatWind(result.wind) || "–"}
-                              </td>
-                              <td className="hidden px-3 py-1.5 text-[12px] text-[var(--text-muted)] md:table-cell">
-                                {result.place || "–"}
-                              </td>
-                              <td className="hidden px-3 py-1.5 text-[12px] text-[var(--text-muted)] lg:table-cell">
-                                {formatRound(result.round) || "–"}
-                              </td>
-                              <td className="px-3 py-1.5 text-[13px]">
-                                <Link
-                                  href={`/stevner/${result.meet_id}`}
-                                  className="no-underline hover:underline"
-                                >
-                                  {result.meet_name}
-                                </Link>
-                                {result.meet_indoor && (
-                                  <span className="ml-1 text-[10px] text-muted-foreground">(i)</span>
-                                )}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        )}
-      </CardContent>
-    </Card>
+                    {result.is_sb && !result.is_pb && (
+                      <span className="badge-sb ml-1.5">SB</span>
+                    )}
+                    {result.is_national_record && (
+                      <span className="badge-nr ml-1.5">NR</span>
+                    )}
+                  </td>
+                  <td className="col-numeric hidden text-[var(--text-muted)] sm:table-cell">
+                    {formatWind(result.wind) || "–"}
+                  </td>
+                  <td className="col-numeric hidden text-[var(--text-muted)] md:table-cell">
+                    {result.place || "–"}
+                  </td>
+                  <td className="hidden text-[var(--text-muted)] lg:table-cell">
+                    {formatRound(result.round) || "–"}
+                  </td>
+                  <td>
+                    <Link href={`/stevner/${result.meet_id}`}>
+                      {result.meet_name}
+                    </Link>
+                    {result.meet_indoor && (
+                      <span className="ml-1 text-[11px] text-[var(--text-muted)]">(i)</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
   )
 }

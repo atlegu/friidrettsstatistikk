@@ -1,13 +1,14 @@
 import { Suspense } from "react"
 import { notFound } from "next/navigation"
+import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { AthleteHeader } from "@/components/athlete/AthleteHeader"
-import { AthleteTabs } from "@/components/athlete/AthleteTabs"
 import { PersonalBestsSection } from "@/components/athlete/PersonalBestsSection"
 import { ResultsSection } from "@/components/athlete/ResultsSection"
 import { ProgressionChart } from "@/components/athlete/ProgressionChart"
-import { TopPerformancesSection } from "@/components/athlete/TopPerformancesCard"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ResultsScatterChart } from "@/components/athlete/ResultsScatterChart"
+import { formatPerformance } from "@/lib/format-performance"
 
 // Type definitions
 interface AthleteStats {
@@ -47,7 +48,6 @@ async function getAthlete(id: string) {
 async function getAthleteStats(athleteId: string): Promise<AthleteStats> {
   const supabase = await createClient()
 
-  // Get counts and date range
   const { data: statsData } = await supabase
     .from("results_full")
     .select("id, meet_id, event_id, season_year, is_national_record")
@@ -82,7 +82,6 @@ async function getAthleteStats(athleteId: string): Promise<AthleteStats> {
 async function getMainEvent(athleteId: string): Promise<string | null> {
   const supabase = await createClient()
 
-  // Find the event with most results
   const { data } = await supabase
     .from("results_full")
     .select("event_name")
@@ -187,72 +186,6 @@ async function getSeasonBests(athleteId: string) {
   }))
 }
 
-async function getTopPerformances(athleteId: string) {
-  const supabase = await createClient()
-
-  // Get all results for ranking
-  const { data } = await supabase
-    .from("results_full")
-    .select("id, event_id, event_name, performance, performance_value, date, wind, meet_id, meet_name, is_national_record, result_type")
-    .eq("athlete_id", athleteId)
-    .eq("status", "OK")
-    .not("performance_value", "is", null)
-
-  if (!data) return {}
-
-  // Group by event and rank
-  const byEvent: Record<string, typeof data> = {}
-  data.forEach((r) => {
-    if (r.event_id) {
-      if (!byEvent[r.event_id]) {
-        byEvent[r.event_id] = []
-      }
-      byEvent[r.event_id].push(r)
-    }
-  })
-
-  // Sort and take top 10 for each event
-  const result: Record<string, Array<{
-    rank: number
-    result_id: string
-    event_id: string
-    event_name: string
-    performance: string
-    date: string
-    wind: number | null
-    meet_id: string
-    meet_name: string
-    is_national_record: boolean | null
-  }>> = {}
-
-  Object.entries(byEvent).forEach(([eventId, results]) => {
-    // Determine if lower is better (times) or higher is better (distances, heights, points)
-    const resultType = results[0]?.result_type || "time"
-    const lowerIsBetter = resultType === "time"
-
-    const sorted = [...results].sort((a, b) => {
-      const valA = a.performance_value ?? 0
-      const valB = b.performance_value ?? 0
-      return lowerIsBetter ? valA - valB : valB - valA
-    })
-
-    result[eventId] = sorted.slice(0, 10).map((r, index) => ({
-      rank: index + 1,
-      result_id: r.id || "",
-      event_id: r.event_id || "",
-      event_name: r.event_name || "",
-      performance: r.performance || "",
-      date: r.date || "",
-      wind: r.wind,
-      meet_id: r.meet_id || "",
-      meet_name: r.meet_name || "",
-      is_national_record: r.is_national_record,
-    }))
-  })
-
-  return result
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const athlete = await getAthlete(id)
@@ -276,7 +209,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
   }
 
   // Fetch all data in parallel
-  const [stats, mainEvent, personalBests, results, seasons, events, seasonBests, topPerformances] =
+  const [stats, mainEvent, personalBests, results, seasons, events, seasonBests] =
     await Promise.all([
       getAthleteStats(id),
       getMainEvent(id),
@@ -285,10 +218,10 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
       getAthleteSeasons(id),
       getAthleteEvents(id),
       getSeasonBests(id),
-      getTopPerformances(id),
     ])
 
   const club = athlete.club as { id: string; name: string } | null
+  const fullName = athlete.full_name || `${athlete.first_name} ${athlete.last_name}`
 
   // Map results for ResultsSection
   const mappedResults = results.map((r) => ({
@@ -305,6 +238,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
     event_id: r.event_id || "",
     event_name: r.event_name || "",
     event_code: r.event_code || "",
+    result_type: r.result_type || "time",
     meet_id: r.meet_id || "",
     meet_name: r.meet_name || "",
     meet_indoor: r.meet_indoor,
@@ -317,6 +251,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
     event_id: pb.event_id || "",
     event_name: pb.event_name || "",
     event_code: pb.event_code || "",
+    result_type: pb.result_type || "time",
     performance: pb.performance || "",
     performance_value: pb.performance_value,
     date: pb.date || "",
@@ -329,161 +264,157 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
     event_sort_order: pb.event_sort_order,
   }))
 
-  // Create event order for top performances
-  const eventOrder = events.map((e) => ({ id: e.id, name: e.name }))
-
   return (
-    <div className="container py-8">
-      <AthleteHeader
-        athlete={{
-          id: athlete.id,
-          full_name: athlete.full_name,
-          first_name: athlete.first_name,
-          last_name: athlete.last_name,
-          birth_date: athlete.birth_date,
-          birth_year: athlete.birth_year,
-          gender: athlete.gender,
-          profile_image_url: athlete.profile_image_url,
-        }}
-        club={club}
-        stats={stats}
-        mainEvent={mainEvent}
+    <div className="container py-6">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: "Utøvere", href: "/utover" },
+          { label: fullName },
+        ]}
       />
 
-      <Suspense fallback={<div>Laster...</div>}>
-        <AthleteTabs
-          children={{
-            overview: (
-              <div className="space-y-8">
-                {/* Summary section with key stats */}
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  <Card>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-muted-foreground">
-                        Resultater
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{stats.totalResults}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-muted-foreground">
-                        Stevner
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{stats.totalMeets}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-muted-foreground">
-                        Øvelser
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{stats.totalEvents}</div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-muted-foreground">
-                        Norske rekorder
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{stats.nationalRecordsCount}</div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {/* Personal bests preview */}
-                <div>
-                  <h2 className="mb-4 text-xl font-semibold">Personlige rekorder</h2>
-                  <PersonalBestsSection personalBests={mappedPBs} />
-                </div>
-
-                {/* Recent results preview */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Siste resultater</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    {mappedResults.length > 0 ? (
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
-                          <thead>
-                            <tr className="border-b bg-muted/50">
-                              <th className="px-4 py-2 text-left font-medium">Dato</th>
-                              <th className="px-4 py-2 text-left font-medium">Øvelse</th>
-                              <th className="px-4 py-2 text-left font-medium">Resultat</th>
-                              <th className="hidden px-4 py-2 text-left font-medium md:table-cell">
-                                Stevne
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {mappedResults.slice(0, 10).map((result) => (
-                              <tr
-                                key={result.id}
-                                className="border-b last:border-0 hover:bg-muted/30"
-                              >
-                                <td className="px-4 py-2 text-muted-foreground">
-                                  {new Date(result.date).toLocaleDateString("no-NO", {
-                                    day: "numeric",
-                                    month: "short",
-                                  })}
-                                </td>
-                                <td className="px-4 py-2">{result.event_name}</td>
-                                <td className="px-4 py-2">
-                                  <span className="font-mono font-medium">
-                                    {result.performance}
-                                  </span>
-                                  {result.is_pb && (
-                                    <span className="ml-2 rounded bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-800">
-                                      PB
-                                    </span>
-                                  )}
-                                </td>
-                                <td className="hidden px-4 py-2 md:table-cell">
-                                  {result.meet_name}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ) : (
-                      <p className="p-4 text-sm text-muted-foreground">
-                        Ingen resultater registrert
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              </div>
-            ),
-            personalBests: <PersonalBestsSection personalBests={mappedPBs} />,
-            results: (
-              <ResultsSection
-                results={mappedResults}
-                seasons={seasons}
-                events={events.map((e) => ({ id: e.id, name: e.name, code: e.code }))}
-              />
-            ),
-            progression: (
-              <div className="space-y-8">
-                <ProgressionChart seasonBests={seasonBests} events={events} />
-                <TopPerformancesSection
-                  performancesByEvent={topPerformances}
-                  eventOrder={eventOrder}
-                />
-              </div>
-            ),
+      {/* Header */}
+      <div className="mt-4">
+        <AthleteHeader
+          athlete={{
+            id: athlete.id,
+            full_name: athlete.full_name,
+            first_name: athlete.first_name,
+            last_name: athlete.last_name,
+            birth_date: athlete.birth_date,
+            birth_year: athlete.birth_year,
+            gender: athlete.gender,
+            profile_image_url: athlete.profile_image_url,
           }}
+          club={club}
+          stats={stats}
+          mainEvent={mainEvent}
         />
-      </Suspense>
+      </div>
+
+      {/* Main content - "At a glance" layout */}
+      <div className="mt-6 space-y-6">
+        {/* Section 1: Personal Bests (full width, most important) */}
+        <section>
+          <h2 className="mb-3">Personlige rekorder</h2>
+          <PersonalBestsSection personalBests={mappedPBs} />
+        </section>
+
+        {/* Section 2: Two columns - Progression + Season Summary */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          {/* Left: Progression Chart */}
+          <section>
+            <Suspense fallback={<div className="h-[400px] bg-muted animate-pulse rounded" />}>
+              <ProgressionChart seasonBests={seasonBests} events={events} />
+            </Suspense>
+          </section>
+
+          {/* Right: Season Bests Summary */}
+          <section>
+            <div className="card-flat">
+              <h3 className="mb-3">Sesongbeste per år</h3>
+              {seasonBests.length > 0 ? (
+                <SeasonBestsSummary seasonBests={seasonBests} events={events} />
+              ) : (
+                <p className="text-[13px] text-[var(--text-muted)]">
+                  Ingen sesongdata tilgjengelig
+                </p>
+              )}
+            </div>
+          </section>
+        </div>
+
+        {/* Section 3: Scatter plot of all results */}
+        <section>
+          <Suspense fallback={<div className="h-[400px] bg-muted animate-pulse rounded" />}>
+            <ResultsScatterChart results={mappedResults} events={events} />
+          </Suspense>
+        </section>
+
+        {/* Section 4: All Results (filterable) */}
+        <section>
+          <h2 className="mb-3">Alle resultater</h2>
+          <Suspense fallback={<div className="h-[300px] bg-muted animate-pulse rounded" />}>
+            <ResultsSection
+              results={mappedResults}
+              seasons={seasons}
+              events={events.map((e) => ({ id: e.id, name: e.name, code: e.code }))}
+            />
+          </Suspense>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+// Helper component for season bests summary
+function SeasonBestsSummary({
+  seasonBests,
+  events,
+}: {
+  seasonBests: Array<{
+    season_year: number
+    event_id: string
+    event_name: string
+    performance: string
+    performance_value: number
+    result_type: string
+  }>
+  events: Array<{ id: string; name: string; result_type: string }>
+}) {
+  // Group by year
+  const byYear = new Map<number, typeof seasonBests>()
+  seasonBests.forEach((sb) => {
+    if (!byYear.has(sb.season_year)) {
+      byYear.set(sb.season_year, [])
+    }
+    byYear.get(sb.season_year)!.push(sb)
+  })
+
+  // Sort years descending
+  const sortedYears = Array.from(byYear.keys()).sort((a, b) => b - a)
+
+  // Get main event (most results)
+  const eventCounts = new Map<string, number>()
+  seasonBests.forEach((sb) => {
+    eventCounts.set(sb.event_id, (eventCounts.get(sb.event_id) || 0) + 1)
+  })
+  const mainEventId = Array.from(eventCounts.entries()).sort((a, b) => b[1] - a[1])[0]?.[0]
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="table-compact">
+        <thead>
+          <tr>
+            <th>År</th>
+            <th>Øvelse</th>
+            <th className="col-numeric">Beste</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedYears.slice(0, 10).map((year) => {
+            const yearBests = byYear.get(year)!
+            // Show main event for each year, or first one
+            const mainBest = yearBests.find((sb) => sb.event_id === mainEventId) || yearBests[0]
+
+            return (
+              <tr key={year}>
+                <td className="text-[var(--text-muted)] tabular-nums">{year}</td>
+                <td className="whitespace-nowrap">{mainBest.event_name}</td>
+                <td className="col-numeric">
+                  <span className="perf-value">{formatPerformance(mainBest.performance, mainBest.result_type)}</span>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      {sortedYears.length > 10 && (
+        <p className="mt-2 text-[12px] text-[var(--text-muted)]">
+          + {sortedYears.length - 10} flere sesonger
+        </p>
+      )}
     </div>
   )
 }

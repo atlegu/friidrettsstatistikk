@@ -34,48 +34,105 @@ EVENT_MAP = {
     # Road races
     '3 km': '3km', '5 km': '5km', '10 km': '10km', '1 mile': '1mile', '2 miles': '2miles',
     'Halvmaraton': 'halvmaraton', 'Maraton': 'maraton', '100 km': '100km',
-    # Hurdles - various heights
+    # Hurdles - height-specific events
+    # 30 meter hekk
+    '30 meter hekk 84,0cm': '30mh_84cm', '30 meter hekk (84,0cm)': '30mh_84cm',
+    # 40 meter hekk
+    '40 meter hekk': '40mh',
+    '40 meter hekk (76,2cm)': '40mh_76_2cm', '40 meter hekk (84,0cm)': '40mh_84cm',
+    '40 meter hekk (91,4cm)': '40mh_91_4cm', '40 meter hekk (100cm)': '40mh_100cm',
+    # 55 meter hekk
+    '55 meter hekk (84,0cm)': '55mh_84cm', '55 meter hekk (84cm)': '55mh_84cm',
+    # 60 meter hekk (indoor)
     '60 meter hekk': '60mh',
-    '60 meter hekk (60cm)': '60mh', '60 meter hekk (68,0cm)': '60mh', '60 meter hekk (76,2cm)': '60mh',
-    '60 meter hekk (84,0cm)': '60mh', '60 meter hekk (91,4cm)': '60mh',
-    '60 meter hekk (100cm)': '60mh', '60 meter hekk (106,7 cm)': '60mh',
-    '80 meter hekk (68,0cm)': '80mh', '80 meter hekk (76,2cm)': '80mh',
-    '80 meter hekk (84,0cm)': '80mh', '80 meter hekk (84,0cm/8,5m)': '80mh', '80 meter hekk (91,4cm)': '80mh',
-    '100 meter hekk': '100mh', '100 meter hekk (84,0cm)': '100mh', '100 meter hekk (91,4cm)': '100mh',
-    '110 meter hekk (106,7cm)': '110mh', '110 meter hekk (100cm)': '110mh', '110 meter hekk (91,4cm)': '110mh',
-    '200 meter hekk': '200mh', '200 meter hekk (68,0cm)': '200mh', '200 meter hekk (76,2cm)': '200mh',
-    '300 meter hekk (68,0cm)': '300mh', '300 meter hekk (76,2cm)': '300mh',
-    '300 meter hekk (84,0cm)': '300mh', '300 meter hekk (91,4cm)': '300mh', '300 meter hekk (91,4cm-8hk)': '300mh',
-    '400 meter hekk (76,2cm)': '400mh', '400 meter hekk (84,0cm)': '400mh', '400 meter hekk (91,4cm)': '400mh',
-    '40 meter hekk (76,2cm)': '40mh', '40 meter hekk (91,4cm)': '40mh',
-    # Steeplechase
-    '1500 meter hinder (76,2cm)': '1500mhinder',
-    '2000 meter hinder (76,2cm)': '2000mhinder', '2000 meter hinder (84,0cm)': '2000mhinder',
-    '2000 meter hinder (91,4cm)': '2000mhinder',
-    '3000 meter hinder (76,2cm)': '3000mhinder', '3000 meter hinder (84,0cm)': '3000mhinder',
-    '3000 meter hinder (91,4cm)': '3000mhinder',
+    '60 meter hekk (60cm)': '60mh_60cm',
+    '60 meter hekk (68,0cm)': '60mh_68cm', '60 meter hekk (68cm)': '60mh_68cm',
+    '60 meter hekk (76,2cm)': '60mh_76_2cm',
+    '60 meter hekk (84,0cm)': '60mh_84cm', '60 meter hekk (84cm)': '60mh_84cm',
+    '60 meter hekk (91,4cm)': '60mh_91_4cm',
+    '60 meter hekk (100cm)': '60mh_100cm',
+    '60 meter hekk (106,7cm)': '60mh_106_7cm', '60 meter hekk (106,7 cm)': '60mh_106_7cm',
+    # 80 meter hekk
+    '80 meter hekk': '80mh',
+    '80 meter hekk (68,0cm)': '80mh_68cm', '80 meter hekk (68cm)': '80mh_68cm',
+    '80 meter hekk (76,2cm)': '80mh_76_2cm',
+    '80 meter hekk (84,0cm)': '80mh_84cm', '80 meter hekk (84,0cm/8,5m)': '80mh_84cm', '80 meter hekk (84cm)': '80mh_84cm',
+    '80 meter hekk (91,4cm)': '80mh_91_4cm',
+    # 100 meter hekk
+    '100 meter hekk': '100mh',
+    '100 meter hekk (76,2cm)': '100mh_76_2cm',
+    '100 meter hekk (84,0cm)': '100mh_84cm', '100 meter hekk (84cm)': '100mh_84cm',
+    '100 meter hekk (91,4cm)': '100mh_91_4cm',
+    # 110 meter hekk
+    '110 meter hekk': '110mh',
+    '110 meter hekk (91,4cm)': '110mh_91_4cm',
+    '110 meter hekk (100cm)': '110mh_100cm',
+    '110 meter hekk (106,7cm)': '110mh_106_7cm',
+    # 200 meter hekk
+    '200 meter hekk': '200mh',
+    '200 meter hekk (68,0cm)': '200mh_68cm', '200 meter hekk (68cm)': '200mh_68cm',
+    '200 meter hekk (76,2cm)': '200mh_76_2cm',
+    # 300 meter hekk
+    '300 meter hekk': '300mh',
+    '300 meter hekk (68,0cm)': '300mh_68cm', '300 meter hekk (68cm)': '300mh_68cm',
+    '300 meter hekk (76,2cm)': '300mh_76_2cm',
+    '300 meter hekk (84,0cm)': '300mh_84cm', '300 meter hekk (84cm)': '300mh_84cm',
+    '300 meter hekk (91,4cm)': '300mh_91_4cm', '300 meter hekk (91,4cm-8hk)': '300mh_91_4cm',
+    # 400 meter hekk
+    '400 meter hekk': '400mh',
+    '400 meter hekk (68,0cm)': '400mh_68cm', '400 meter hekk (68cm)': '400mh_68cm',
+    '400 meter hekk (76,2cm)': '400mh_76_2cm',
+    '400 meter hekk (84,0cm)': '400mh_84cm', '400 meter hekk (84cm)': '400mh_84cm',
+    '400 meter hekk (91,4cm)': '400mh_91_4cm',
+    # Steeplechase - height-specific events
+    '1500 meter hinder': '1500mhinder',
+    '1500 meter hinder (76,2cm)': '1500mhinder_76_2cm',
+    '1500 meter hinder (91,4cm)': '1500mhinder_91_4cm',
+    '2000 meter hinder': '2000mhinder',
+    '2000 meter hinder (76,2cm)': '2000mhinder_76_2cm',
+    '2000 meter hinder (84,0cm)': '2000mhinder_84cm', '2000 meter hinder (84cm)': '2000mhinder_84cm',
+    '2000 meter hinder (91,4cm)': '2000mhinder_91_4cm',
+    '3000 meter hinder': '3000mhinder',
+    '3000 meter hinder (76,2cm)': '3000mhinder_76_2cm',
+    '3000 meter hinder (84,0cm)': '3000mhinder_84cm', '3000 meter hinder (84cm)': '3000mhinder_84cm',
+    '3000 meter hinder (91,4cm)': '3000mhinder_91_4cm',
     # Jumps
     'Høyde': 'hoyde', 'Høyde uten tilløp': 'hoyde_ut',
     'Stav': 'stav',
     'Lengde': 'lengde', 'Lengde uten tilløp': 'lengde_ut', 'Lengde (Sone 0,5m)': 'lengde',
     'Tresteg': 'tresteg', 'Tresteg uten tilløp': 'tresteg_ut', 'Tresteg (Sone 0,5m)': 'tresteg',
-    # Shot put - various weights
-    'Kule': 'kule', 'Kule 2,0kg': 'kule', 'Kule 3,0kg': 'kule', 'Kule 4,0kg': 'kule',
-    'Kule 5,0kg': 'kule', 'Kule 5,44kg (12lb)': 'kule', 'Kule 5,5kg': 'kule',
-    'Kule 6,0kg': 'kule', 'Kule 7,26kg': 'kule',
-    # Discus - various weights
-    'Diskos': 'diskos', 'Diskos 600gram': 'diskos', 'Diskos 750gram': 'diskos',
-    'Diskos 1,0kg': 'diskos', 'Diskos 1,5kg': 'diskos', 'Diskos 1,6kg': 'diskos',
-    'Diskos 1,75kg': 'diskos', 'Diskos 2,0kg': 'diskos', 'Diskos 2,5kg': 'diskos',
-    # Hammer - various weights/lengths
+    # Shot put - various weights (now mapped to specific weight events)
+    'Kule': 'kule',
+    'Kule 2,0kg': 'kule_2kg', 'Kule 2,0KG': 'kule_2kg',
+    'Kule 3,0kg': 'kule_3kg', 'Kule 3,0KG': 'kule_3kg',
+    'Kule 4,0kg': 'kule_4kg', 'Kule 4,0KG': 'kule_4kg',
+    'Kule 5,0kg': 'kule_5kg', 'Kule 5,0KG': 'kule_5kg', 'Kule 5,44kg (12lb)': 'kule_5kg', 'Kule 5,5kg': 'kule_5kg',
+    'Kule 6,0kg': 'kule_6kg', 'Kule 6,0KG': 'kule_6kg',
+    'Kule 7,26kg': 'kule_7_26kg', 'Kule 7,26KG': 'kule_7_26kg',
+    # Discus - various weights (now mapped to specific weight events)
+    'Diskos': 'diskos',
+    'Diskos 600gram': 'diskos_600g', 'Diskos 600GRAM': 'diskos_600g',
+    'Diskos 750gram': 'diskos_750g', 'Diskos 750GRAM': 'diskos_750g',
+    'Diskos 1,0kg': 'diskos_1kg', 'Diskos 1,0KG': 'diskos_1kg',
+    'Diskos 1,5kg': 'diskos_1_5kg', 'Diskos 1,5KG': 'diskos_1_5kg', 'Diskos 1,6kg': 'diskos_1_5kg',
+    'Diskos 1,75kg': 'diskos_1_75kg', 'Diskos 1,75KG': 'diskos_1_75kg',
+    'Diskos 2,0kg': 'diskos_2kg', 'Diskos 2,0KG': 'diskos_2kg', 'Diskos 2,5kg': 'diskos_2kg',
+    # Hammer - various weights/lengths (now mapped to specific weight events)
     'Slegge': 'slegge',
-    'Slegge 2,0kg/110cm': 'slegge', 'Slegge 3,0kg/110cm': 'slegge',
-    'Slegge 3,0kg/120cm': 'slegge', 'Slegge 3,0Kg (119,5cm)': 'slegge',
-    'Slegge 4,0kg/119,5cm': 'slegge', 'Slegge 4,0kg/120cm': 'slegge',
-    'Slegge 5,0kg/120cm': 'slegge', 'Slegge 6,0kg/121,5cm': 'slegge', 'Slegge 7,26kg/121,5cm': 'slegge',
-    # Javelin - various weights
-    'Spyd': 'spyd', 'Spyd 400gram': 'spyd', 'Spyd 500gram': 'spyd', 'Spyd 600gram': 'spyd',
-    'Spyd 700gram': 'spyd', 'Spyd 700 gram (2025)': 'spyd', 'Spyd 800gram': 'spyd',
+    'Slegge 2,0kg/110cm': 'slegge_2kg', 'Slegge 2,0kg': 'slegge_2kg',
+    'Slegge 3,0kg/110cm': 'slegge_3kg', 'Slegge 3,0kg/120cm': 'slegge_3kg',
+    'Slegge 3,0Kg (119,5cm)': 'slegge_3kg', 'Slegge 3,0kg': 'slegge_3kg',
+    'Slegge 4,0kg/119,5cm': 'slegge_4kg', 'Slegge 4,0kg/120cm': 'slegge_4kg', 'Slegge 4,0kg': 'slegge_4kg',
+    'Slegge 5,0kg/120cm': 'slegge_5kg', 'Slegge 5,0kg': 'slegge_5kg',
+    'Slegge 6,0kg/121,5cm': 'slegge_6kg', 'Slegge 6,0kg': 'slegge_6kg',
+    'Slegge 7,26kg/121,5cm': 'slegge_7_26kg', 'Slegge 7,26kg': 'slegge_7_26kg',
+    # Javelin - various weights (now mapped to specific weight events)
+    'Spyd': 'spyd',
+    'Spyd 400gram': 'spyd_400g', 'Spyd 400GRAM': 'spyd_400g',
+    'Spyd 500gram': 'spyd_500g', 'Spyd 500GRAM': 'spyd_500g',
+    'Spyd 600gram': 'spyd_600g', 'Spyd 600GRAM': 'spyd_600g',
+    'Spyd 700gram': 'spyd_700g', 'Spyd 700 gram (2025)': 'spyd_700g', 'Spyd 700GRAM': 'spyd_700g',
+    'Spyd 800gram': 'spyd_800g', 'Spyd 800GRAM': 'spyd_800g',
     # Throws - other
     'Liten Ball': 'litenball', 'Liten Ball 150gram': 'litenball', 'Liten Ball 300gram': 'litenball',
     'Slengball': 'slengball', 'Slengball 1,0Kg': 'slengball', 'Slengball800gr': 'slengball',
@@ -99,10 +156,44 @@ def clean_club_name(name):
     return name.strip()
 
 
-def clean_performance(perf):
+def validate_date(date_str):
+    """Validate and clean date string. Returns None if invalid."""
+    if not date_str:
+        return None
+    try:
+        # Check format
+        parts = str(date_str).split('-')
+        if len(parts) != 3:
+            return None
+        year, month, day = int(parts[0]), int(parts[1]), int(parts[2])
+        # Validate ranges
+        if year < 1900 or year > 2100:
+            return None
+        if month < 1 or month > 12:
+            return None
+        if day < 1 or day > 31:
+            return None
+        return date_str
+    except:
+        return None
+
+
+# Events where times in "M.SS" format should be interpreted as minutes:seconds
+# (not seconds.hundredths)
+LONG_DISTANCE_EVENTS = {
+    '800m', '1000m', '1500m', '2000m', '3000m', '5000m', '10000m', '20000m', '25000m',
+    '1mile', '2miles', 'halvmaraton', 'maraton', '100km',
+    '3000mhinder', '3000mhinder_76_2cm', '3000mhinder_84cm', '3000mhinder_91_4cm',
+    '2000mhinder', '2000mhinder_76_2cm', '2000mhinder_84cm', '2000mhinder_91_4cm',
+    '1500mhinder', '1500mhinder_76_2cm', '1500mhinder_91_4cm',
+}
+
+
+def clean_performance(perf, event_code=None):
     """Clean and validate performance value. Returns None if invalid.
 
     Converts time format M.SS.cc to total seconds (e.g., 1.35.23 -> 95.23).
+    For long distance events, also converts M.SS to M:SS.00 format.
     """
     if not perf:
         return None
@@ -136,6 +227,19 @@ def clean_performance(perf):
     # Invalid if contains parentheses (remaining after stripping ok)
     if '(' in perf_str or ')' in perf_str:
         return None
+
+    # Handle manual times for long distance events: "M.SS" -> convert to seconds
+    # e.g., "2.33" for 800m means 2:33 (153 seconds), not 2.33 seconds
+    if event_code and event_code in LONG_DISTANCE_EVENTS:
+        if perf_str and '.' in perf_str:
+            parts = perf_str.split('.')
+            if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
+                minutes = int(parts[0])
+                seconds = int(parts[1])
+                # If seconds part is 0-59, it's likely M.SS format (minutes.seconds)
+                if seconds < 60 and minutes < 200:  # reasonable time limits
+                    total_seconds = minutes * 60 + seconds
+                    return f"{total_seconds}.00"
 
     return perf_str if perf_str else None
 
@@ -235,7 +339,7 @@ def batch_upsert_meets(results):
     meets = {}
     for r in results:
         name = r.get('meet_name', '')
-        date = r.get('date')
+        date = validate_date(r.get('date'))
         if name and date:
             key = (name, date)
             if key not in meets:
@@ -246,20 +350,20 @@ def batch_upsert_meets(results):
                     'indoor': r.get('indoor', False),
                 }
 
-    logger.info(f"Inserting {len(meets)} meets...")
+    logger.info(f"Upserting {len(meets)} meets...")
 
-    # Insert in batches
+    # Upsert in batches (handles duplicates by name+date)
     meet_list = list(meets.values())
     batch_size = 500
     for i in tqdm(range(0, len(meet_list), batch_size), desc="Meets"):
         batch = meet_list[i:i+batch_size]
         try:
-            supabase.table('meets').insert(batch).execute()
+            supabase.table('meets').upsert(batch, on_conflict='name,start_date').execute()
         except Exception as e:
-            # Likely duplicates, try one by one
+            # Try one by one if batch fails
             for m in batch:
                 try:
-                    supabase.table('meets').insert(m).execute()
+                    supabase.table('meets').upsert([m], on_conflict='name,start_date').execute()
                 except:
                     pass
 
@@ -282,21 +386,27 @@ def batch_insert_results(results, events, seasons, clubs, athletes, meets):
     logger.info(f"Preparing {len(results)} results...")
 
     result_records = []
-    skipped = {'no_event': 0, 'no_athlete': 0, 'no_meet': 0, 'invalid_perf': 0}
+    skipped = {'no_event': 0, 'no_athlete': 0, 'no_meet': 0, 'invalid_perf': 0, 'invalid_date': 0}
 
     for r in results:
-        # Clean and validate performance value
-        perf = clean_performance(r.get('performance'))
-        if not perf:
-            skipped['invalid_perf'] += 1
-            continue
-
-        # Get event ID
+        # Get event ID first (needed for performance parsing)
         event_name = r.get('event_name', '')
         event_code = EVENT_MAP.get(event_name)
         event_id = events.get(event_code) or events.get(event_name)
         if not event_id:
             skipped['no_event'] += 1
+            continue
+
+        # Clean and validate performance value (pass event_code for proper parsing)
+        perf = clean_performance(r.get('performance'), event_code)
+        if not perf:
+            skipped['invalid_perf'] += 1
+            continue
+
+        # Validate date
+        date = validate_date(r.get('date'))
+        if not date:
+            skipped['invalid_date'] += 1
             continue
 
         # Get athlete ID
@@ -306,8 +416,8 @@ def batch_insert_results(results, events, seasons, clubs, athletes, meets):
             skipped['no_athlete'] += 1
             continue
 
-        # Get meet ID
-        meet_key = (r.get('meet_name', ''), r.get('date'))
+        # Get meet ID (use validated date)
+        meet_key = (r.get('meet_name', ''), date)
         meet_id = meets.get(meet_key)
         if not meet_id:
             skipped['no_meet'] += 1
@@ -338,7 +448,7 @@ def batch_insert_results(results, events, seasons, clubs, athletes, meets):
             'meet_id': meet_id,
             'season_id': season_id,
             'performance': perf,  # Use cleaned performance
-            'date': r.get('date'),
+            'date': date,  # Use validated date
             'wind': r.get('wind'),
             'place': r.get('place'),
             'round': round_val,
@@ -362,21 +472,42 @@ def batch_insert_results(results, events, seasons, clubs, athletes, meets):
     logger.info(f"After dedup: {len(unique_records)} unique results ({duplicates_removed} duplicates removed)")
     result_records = unique_records
 
-    # Upsert in batches (handles duplicates by updating existing records)
+    # Upsert in batches with binary search for failures
     batch_size = 1000
     inserted = 0
-    errors = 0
-    for i in tqdm(range(0, len(result_records), batch_size), desc="Results"):
-        batch = result_records[i:i+batch_size]
+    skipped_records = 0
+
+    def upsert_batch(batch):
+        """Try to upsert a batch, returns (success_count, failed_records)."""
+        if not batch:
+            return 0, []
         try:
             supabase.table('results').upsert(
                 batch,
                 on_conflict='athlete_id,event_id,meet_id,round,heat_number'
             ).execute()
-            inserted += len(batch)
+            return len(batch), []
         except Exception as e:
-            errors += 1
-            logger.error(f"Batch upsert error at {i}: {e}")
+            if len(batch) == 1:
+                # Single record failed - skip it
+                return 0, batch
+            # Binary search: split batch in half and try each
+            mid = len(batch) // 2
+            left_success, left_failed = upsert_batch(batch[:mid])
+            right_success, right_failed = upsert_batch(batch[mid:])
+            return left_success + right_success, left_failed + right_failed
+
+    for i in tqdm(range(0, len(result_records), batch_size), desc="Results"):
+        batch = result_records[i:i+batch_size]
+        success, failed = upsert_batch(batch)
+        inserted += success
+        skipped_records += len(failed)
+        if failed and skipped_records <= 20:
+            for rec in failed[:3]:  # Log first few
+                logger.debug(f"Failed: {rec.get('performance')} date={rec.get('date')}")
+
+    if skipped_records > 0:
+        logger.warning(f"Skipped {skipped_records} invalid records")
 
     logger.info(f"Inserted {inserted} results")
     return inserted
@@ -384,9 +515,76 @@ def batch_insert_results(results, events, seasons, clubs, athletes, meets):
 
 def main():
     logger.info("Loading data...")
-    with open(DATA_DIR / 'all_athlete_results.json', 'r', encoding='utf-8') as f:
-        results = json.load(f)
-    logger.info(f"Loaded {len(results)} results")
+    # Load from men and women files which include gender field
+    results = []
+
+    men_file = DATA_DIR / 'men_results_raw.json'
+    women_file = DATA_DIR / 'women_results_raw.json'
+    all_athlete_file = DATA_DIR / 'all_athlete_results.json'
+
+    # Build athlete_id -> gender map from men/women files
+    athlete_gender = {}
+
+    if men_file.exists():
+        with open(men_file, 'r', encoding='utf-8') as f:
+            men_results = json.load(f)
+            logger.info(f"Loaded {len(men_results)} men's results from rankings")
+            for r in men_results:
+                if r.get('athlete_id'):
+                    athlete_gender[r['athlete_id']] = 'M'
+            results.extend(men_results)
+
+    if women_file.exists():
+        with open(women_file, 'r', encoding='utf-8') as f:
+            women_results = json.load(f)
+            logger.info(f"Loaded {len(women_results)} women's results from rankings")
+            for r in women_results:
+                if r.get('athlete_id'):
+                    athlete_gender[r['athlete_id']] = 'F'
+            results.extend(women_results)
+
+    # Also load complete athlete results (ALL competitions, not just top results)
+    if all_athlete_file.exists() and athlete_gender:
+        with open(all_athlete_file, 'r', encoding='utf-8') as f:
+            all_athlete_results = json.load(f)
+            logger.info(f"Loaded {len(all_athlete_results)} results from individual athlete profiles")
+
+        # Create a set of existing results to avoid duplicates
+        # Key: (athlete_id, event_name, date, performance)
+        existing_keys = set()
+        for r in results:
+            key = (r.get('athlete_id'), r.get('event_name'), r.get('date'), r.get('performance'))
+            existing_keys.add(key)
+
+        # Add results from all_athlete_results that aren't duplicates
+        added = 0
+        skipped_no_gender = 0
+        skipped_duplicate = 0
+        for r in all_athlete_results:
+            aid = r.get('athlete_id')
+            if aid not in athlete_gender:
+                skipped_no_gender += 1
+                continue
+
+            key = (aid, r.get('event_name'), r.get('date'), r.get('performance'))
+            if key in existing_keys:
+                skipped_duplicate += 1
+                continue
+
+            # Add gender and include
+            r['gender'] = athlete_gender[aid]
+            results.append(r)
+            existing_keys.add(key)
+            added += 1
+
+        logger.info(f"Added {added} unique results from athlete profiles")
+        logger.info(f"Skipped {skipped_duplicate} duplicates, {skipped_no_gender} without gender")
+    elif not results:
+        logger.warning("Men/women files not found, falling back to all_athlete_results.json only")
+        with open(all_athlete_file, 'r', encoding='utf-8') as f:
+            results = json.load(f)
+
+    logger.info(f"Total loaded: {len(results)} results")
 
     logger.info("Loading lookup tables...")
     events, seasons = load_lookup_tables()

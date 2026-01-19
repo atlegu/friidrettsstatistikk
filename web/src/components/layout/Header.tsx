@@ -7,6 +7,7 @@ import { Menu, Search, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { DensityToggle } from "@/components/ui/density-toggle"
 
 const navigation = [
   {
@@ -154,6 +155,9 @@ export function Header() {
             <span className="sr-only">Søk</span>
           </Button>
         )}
+
+        {/* Density toggle (desktop only) */}
+        <DensityToggle className="ml-4 hidden lg:flex" />
 
         {/* Login button */}
         <Button variant="ghost" size="sm" className="ml-2 hidden md:inline-flex">

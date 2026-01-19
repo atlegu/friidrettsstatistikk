@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 export const metadata = {
   title: "Utøvere",
@@ -64,8 +65,9 @@ export default async function UtoverPage({
   const athletes = await getAthletes(search)
 
   return (
-    <div className="container py-8">
-      <h1 className="mb-6 text-3xl font-bold">Utøvere</h1>
+    <div className="container py-6">
+      <Breadcrumbs items={[{ label: "Utøvere" }]} />
+      <h1 className="mt-4 mb-4">Utøvere</h1>
 
       {/* Search */}
       <form className="mb-8 flex gap-2 max-w-md">

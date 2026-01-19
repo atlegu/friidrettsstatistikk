@@ -3,6 +3,8 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { Providers } from "@/components/layout/Providers"
+import { AuthErrorHandler } from "@/components/auth/AuthErrorHandler"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,13 +35,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="no">
+    <html lang="no" data-density="compact">
       <body className={`${inter.variable} font-sans`}>
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <Providers>
+          <AuthErrorHandler />
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   )

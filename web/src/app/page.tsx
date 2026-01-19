@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Users, Trophy, Calendar, Building2, ArrowRight } from "lucide-react"
+import { formatPerformance } from "@/lib/format-performance"
 
 async function getStats() {
   const supabase = await createClient()
@@ -202,7 +203,7 @@ export default async function Home() {
                         </td>
                         <td className="px-4 py-3 text-sm">{result.event_name}</td>
                         <td className="px-4 py-3">
-                          <span className="font-mono font-medium">{result.performance}</span>
+                          <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
                           {result.wind !== null && (
                             <span className="ml-1 text-xs text-muted-foreground">
                               ({result.wind > 0 ? "+" : ""}{result.wind})

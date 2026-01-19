@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
+import { CopyLink } from "@/components/ui/copy-link"
+import { calculateAge, formatDate } from "@/lib/date-utils"
 
 interface AthleteStats {
   totalResults: number
@@ -30,31 +31,9 @@ function getInitials(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()
 }
 
-function calculateAge(birthDate: string | null, birthYear: number | null): number | null {
+function formatBirthInfo(birthDate: string | null, birthYear: number | null): string | null {
   if (birthDate) {
-    const today = new Date()
-    const birth = new Date(birthDate)
-    let age = today.getFullYear() - birth.getFullYear()
-    const monthDiff = today.getMonth() - birth.getMonth()
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-      age--
-    }
-    return age
-  }
-  if (birthYear) {
-    return new Date().getFullYear() - birthYear
-  }
-  return null
-}
-
-function formatBirthDate(birthDate: string | null, birthYear: number | null): string | null {
-  if (birthDate) {
-    const date = new Date(birthDate)
-    return date.toLocaleDateString("no-NO", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    })
+    return formatDate(birthDate)
   }
   if (birthYear) {
     return `Født ${birthYear}`
@@ -65,7 +44,7 @@ function formatBirthDate(birthDate: string | null, birthYear: number | null): st
 export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeaderProps) {
   const fullName = athlete.full_name || `${athlete.first_name} ${athlete.last_name}`
   const age = calculateAge(athlete.birth_date, athlete.birth_year)
-  const birthInfo = formatBirthDate(athlete.birth_date, athlete.birth_year)
+  const birthInfo = formatBirthInfo(athlete.birth_date, athlete.birth_year)
   const initials = getInitials(athlete.first_name, athlete.last_name)
 
   const seasonCount = stats.firstYear && stats.lastYear
@@ -73,18 +52,18 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
     : null
 
   return (
-    <div className="mb-6">
+    <div className="mb-4">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-        {/* Avatar - smaller size */}
+        {/* Avatar */}
         <div className="flex-shrink-0">
           {athlete.profile_image_url ? (
             <img
               src={athlete.profile_image_url}
               alt={fullName}
-              className="h-16 w-16 rounded-full object-cover ring-1 ring-border sm:h-20 sm:w-20"
+              className="h-16 w-16 rounded-full object-cover ring-1 ring-[var(--border-default)] sm:h-20 sm:w-20"
             />
           ) : (
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-semibold text-primary-foreground sm:h-20 sm:w-20 sm:text-2xl">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--accent-primary)] text-xl font-semibold text-white sm:h-20 sm:w-20 sm:text-2xl">
               {initials}
             </div>
           )}
@@ -92,46 +71,50 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          {/* Name - using h1 from base styles (21px) */}
-          <h1 className="mb-1 truncate">{fullName}</h1>
+          {/* Name + Actions */}
+          <div className="mb-1 flex items-start justify-between gap-4">
+            <h1 className="truncate">{fullName}</h1>
+            <CopyLink className="flex-shrink-0" />
+          </div>
 
-          {/* Meta info */}
-          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[13px] text-[var(--text-secondary)]">
+          {/* Meta info - inline with separators */}
+          <div className="mb-2 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[13px]">
             {birthInfo && (
-              <span>
+              <span className="text-[var(--text-secondary)]">
                 {birthInfo}
                 {age && ` (${age} år)`}
               </span>
             )}
             {club && (
-              <Link
-                href={`/klubber/${club.id}`}
-                className="no-underline hover:underline"
-              >
-                {club.name}
-              </Link>
+              <>
+                <span className="text-[var(--text-muted)]">·</span>
+                <Link href={`/klubber/${club.id}`}>
+                  {club.name}
+                </Link>
+              </>
             )}
             {athlete.gender && (
-              <span>{athlete.gender === "M" ? "Mann" : "Kvinne"}</span>
+              <>
+                <span className="text-[var(--text-muted)]">·</span>
+                <span className="text-[var(--text-secondary)]">
+                  {athlete.gender === "M" ? "Mann" : "Kvinne"}
+                </span>
+              </>
             )}
           </div>
 
           {/* Badges */}
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 mb-2">
             {mainEvent && (
-              <Badge variant="secondary">
-                {mainEvent}
-              </Badge>
+              <span className="chip">{mainEvent}</span>
             )}
             {stats.nationalRecordsCount > 0 && (
-              <Badge variant="nr">
-                {stats.nationalRecordsCount} NR
-              </Badge>
+              <span className="badge-nr">{stats.nationalRecordsCount} NR</span>
             )}
           </div>
 
-          {/* Career Stats - compact */}
-          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-0.5 text-[12px] text-[var(--text-muted)]">
+          {/* Career Stats */}
+          <div className="flex flex-wrap gap-x-4 gap-y-0.5 text-[12px] text-[var(--text-muted)]">
             {stats.firstYear && stats.lastYear && (
               <span>
                 {stats.firstYear === stats.lastYear

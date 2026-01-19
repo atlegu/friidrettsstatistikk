@@ -255,35 +255,61 @@ def scrape_athlete_all_results(athlete_id, athlete_name=None):
 
 def main():
     """Main function - scrape all athletes."""
-    # Load existing athlete IDs from the rankings scrape
-    athletes_file = OUTPUT_DIR / 'athletes.json'
-    if not athletes_file.exists():
-        logger.error("athletes.json not found. Run scraper_v2.py first.")
+    # Load athlete IDs from men/women results (has ALL athletes from rankings)
+    men_file = OUTPUT_DIR / 'men_results_raw.json'
+    women_file = OUTPUT_DIR / 'women_results_raw.json'
+
+    if not men_file.exists() and not women_file.exists():
+        logger.error("No results files found. Run scraper first.")
         return
 
-    with open(athletes_file, 'r', encoding='utf-8') as f:
-        athletes = json.load(f)
-
-    logger.info(f"Found {len(athletes)} athletes to scrape")
-
-    # Get unique athlete IDs
+    # Collect unique athletes from both files
     athlete_ids = []
     seen = set()
-    for a in athletes:
-        ext_id = a.get('external_id')
-        if ext_id and ext_id not in seen:
-            seen.add(ext_id)
-            athlete_ids.append((ext_id, a.get('full_name', '')))
 
-    logger.info(f"Unique athlete IDs: {len(athlete_ids)}")
+    for results_file in [men_file, women_file]:
+        if results_file.exists():
+            with open(results_file, 'r', encoding='utf-8') as f:
+                results = json.load(f)
+            for r in results:
+                ext_id = r.get('athlete_id')
+                name = r.get('name', '')
+                if ext_id and ext_id not in seen:
+                    seen.add(ext_id)
+                    athlete_ids.append((ext_id, name))
 
+    logger.info(f"Found {len(athlete_ids)} unique athletes to scrape")
+
+    # Load existing results to avoid re-scraping
     all_results = []
+    already_scraped = set()
+    output_file = OUTPUT_DIR / 'all_athlete_results.json'
+    if output_file.exists():
+        with open(output_file, 'r', encoding='utf-8') as f:
+            all_results = json.load(f)
+        already_scraped = set(r.get('athlete_id') for r in all_results)
+        logger.info(f"Loaded {len(all_results)} existing results from {len(already_scraped)} athletes")
+
+    # Filter out already scraped athletes
+    athletes_to_scrape = [(aid, name) for aid, name in athlete_ids if aid not in already_scraped]
+    logger.info(f"Skipping {len(already_scraped)} already scraped, {len(athletes_to_scrape)} remaining")
     failed = []
 
-    for athlete_id, athlete_name in tqdm(athlete_ids, desc="Scraping athletes"):
+    # Save progress every N athletes
+    save_interval = 500
+    scraped_count = 0
+
+    for athlete_id, athlete_name in tqdm(athletes_to_scrape, desc="Scraping athletes"):
         try:
             results = scrape_athlete_all_results(athlete_id, athlete_name)
             all_results.extend(results)
+            scraped_count += 1
+
+            # Save periodically
+            if scraped_count % save_interval == 0:
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(all_results, f, ensure_ascii=False, indent=2, default=str)
+                logger.info(f"Progress saved: {len(all_results)} results")
 
         except Exception as e:
             logger.warning(f"Failed to scrape athlete {athlete_id}: {e}")

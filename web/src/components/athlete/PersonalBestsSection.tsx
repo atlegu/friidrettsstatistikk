@@ -1,12 +1,12 @@
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatPerformance } from "@/lib/format-performance"
 
 interface PersonalBest {
   result_id: string
   event_id: string
   event_name: string
   event_code: string
+  result_type?: string
   performance: string
   performance_value: number | null
   date: string
@@ -48,71 +48,60 @@ function PersonalBestTable({
 }) {
   if (pbs.length === 0) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>{title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-[13px] text-muted-foreground">Ingen rekorder</p>
-        </CardContent>
-      </Card>
+      <div className="card-flat">
+        <h3 className="mb-3">{title}</h3>
+        <p className="text-[13px] text-[var(--text-muted)]">Ingen rekorder</p>
+      </div>
     )
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="p-0">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b bg-muted/50">
-                <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Øvelse</th>
-                <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
-                {showWind && (
-                  <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] sm:table-cell">Vind</th>
-                )}
-                <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Dato</th>
-                <th className="hidden px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)] md:table-cell">Sted</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pbs.map((pb) => (
-                <tr key={pb.result_id} className="border-b last:border-0 hover:bg-[var(--table-row-hover)]">
-                  <td className="px-3 py-1.5 text-[13px]">{pb.event_name}</td>
-                  <td className="px-3 py-1.5 text-[13px]">
-                    <span className="perf-value">{pb.performance}</span>
-                    {pb.is_national_record && (
-                      <Badge variant="nr" className="ml-1.5">
-                        NR
-                      </Badge>
-                    )}
-                  </td>
-                  {showWind && (
-                    <td className="hidden px-3 py-1.5 text-[12px] tabular-nums text-[var(--text-muted)] sm:table-cell">
-                      {formatWind(pb.wind) || "–"}
-                    </td>
+    <div className="card-flat p-0 overflow-hidden">
+      <div className="px-3 pt-3 pb-2">
+        <h3>{title}</h3>
+      </div>
+      <div className="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Øvelse</th>
+              <th>Resultat</th>
+              {showWind && (
+                <th className="col-numeric hidden sm:table-cell">Vind</th>
+              )}
+              <th>Dato</th>
+              <th className="hidden md:table-cell">Sted</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pbs.map((pb) => (
+              <tr key={pb.result_id}>
+                <td className="whitespace-nowrap">{pb.event_name}</td>
+                <td className="whitespace-nowrap">
+                  <span className="perf-value">{formatPerformance(pb.performance, pb.result_type)}</span>
+                  {pb.is_national_record && (
+                    <span className="badge-nr ml-1.5">NR</span>
                   )}
-                  <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">
-                    {formatDate(pb.date)}
+                </td>
+                {showWind && (
+                  <td className="col-numeric hidden text-[var(--text-muted)] sm:table-cell">
+                    {formatWind(pb.wind) || "–"}
                   </td>
-                  <td className="hidden px-3 py-1.5 text-[13px] md:table-cell">
-                    <Link
-                      href={`/stevner/${pb.meet_id}`}
-                      className="no-underline hover:underline"
-                    >
-                      {pb.meet_city || pb.meet_name}
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </CardContent>
-    </Card>
+                )}
+                <td className="text-[var(--text-muted)] whitespace-nowrap">
+                  {formatDate(pb.date)}
+                </td>
+                <td className="hidden md:table-cell">
+                  <Link href={`/stevner/${pb.meet_id}`}>
+                    {pb.meet_city || pb.meet_name}
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   )
 }
 

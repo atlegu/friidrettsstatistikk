@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight } from "lucide-react"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 export const metadata = {
   title: "Statistikk",
@@ -12,8 +13,9 @@ const years = Array.from({ length: 10 }, (_, i) => currentYear - i)
 
 export default function StatistikkPage() {
   return (
-    <div className="container py-8">
-      <h1 className="mb-6 text-3xl font-bold">Statistikk</h1>
+    <div className="container py-6">
+      <Breadcrumbs items={[{ label: "Statistikk" }]} />
+      <h1 className="mt-4 mb-4">Statistikk</h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Annual lists */}

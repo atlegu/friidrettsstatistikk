@@ -2,6 +2,7 @@ import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 export const metadata = {
   title: "Stevner",
@@ -35,8 +36,9 @@ export default async function StevnerPage({
   const meets = await getMeets(search)
 
   return (
-    <div className="container py-8">
-      <h1 className="mb-6 text-3xl font-bold">Stevner</h1>
+    <div className="container py-6">
+      <Breadcrumbs items={[{ label: "Stevner" }]} />
+      <h1 className="mt-4 mb-4">Stevner</h1>
 
       {/* Search */}
       <form className="mb-8">

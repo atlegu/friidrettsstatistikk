@@ -2,6 +2,9 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatPerformance } from "@/lib/format-performance"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { BarChart3 } from "lucide-react"
 
 async function getClub(id: string) {
   const supabase = await createClient()
@@ -69,10 +72,15 @@ export default async function ClubPage({ params }: { params: Promise<{ id: strin
   ])
 
   return (
-    <div className="container py-8">
+    <div className="container py-6">
+      <Breadcrumbs items={[
+        { label: "Klubber", href: "/klubber" },
+        { label: club.name }
+      ]} />
+
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold">{club.name}</h1>
+      <div className="mt-4 mb-6">
+        <h1 className="mb-2">{club.name}</h1>
         <div className="flex flex-wrap gap-4 text-muted-foreground">
           {club.short_name && club.short_name !== club.name && (
             <span>{club.short_name}</span>
@@ -90,6 +98,13 @@ export default async function ClubPage({ params }: { params: Promise<{ id: strin
             {club.website}
           </a>
         )}
+        <Link
+          href={`/klubber/${id}/statistikk`}
+          className="mt-4 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+        >
+          <BarChart3 className="h-4 w-4" />
+          Se klubbstatistikk
+        </Link>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
@@ -161,7 +176,7 @@ export default async function ClubPage({ params }: { params: Promise<{ id: strin
                           </Link>
                         </td>
                         <td className="px-4 py-3 text-sm">{result.event_name}</td>
-                        <td className="px-4 py-3 font-mono font-medium">{result.performance}</td>
+                        <td className="px-4 py-3"><span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span></td>
                       </tr>
                     ))}
                   </tbody>

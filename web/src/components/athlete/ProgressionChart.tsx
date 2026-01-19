@@ -1,14 +1,6 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import {
   LineChart,
   Line,
@@ -18,6 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
+import { formatPerformance } from "@/lib/format-performance"
 
 interface SeasonBest {
   season_year: number
@@ -85,7 +78,6 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
     const eventBests = seasonBests.filter((sb) => sb.event_id === selectedEventId)
 
     // Group by year and keep best performance per year
-    // (there can be both indoor and outdoor seasons in the same year)
     const bestByYear = new Map<number, SeasonBest>()
     const lowerIsBetter = resultType === "time"
 
@@ -94,7 +86,6 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
       if (!existing) {
         bestByYear.set(sb.season_year, sb)
       } else {
-        // Keep the better performance
         const isBetter = lowerIsBetter
           ? sb.performance_value < existing.performance_value
           : sb.performance_value > existing.performance_value
@@ -116,14 +107,10 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
 
   if (events.length === 0) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Progresjon</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-[13px] text-muted-foreground">Ingen data tilgjengelig</p>
-        </CardContent>
-      </Card>
+      <div className="card-flat">
+        <h3 className="mb-3">Progresjon</h3>
+        <p className="text-[13px] text-[var(--text-muted)]">Ingen data tilgjengelig</p>
+      </div>
     )
   }
 
@@ -136,113 +123,107 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
     const max = Math.max(...values)
     const padding = (max - min) * 0.1 || max * 0.1
 
-    // For times, we want higher values at the bottom (lower is better)
-    // For distances/heights, we want lower values at the bottom (higher is better)
-    if (resultType === "time") {
-      return [Math.max(0, min - padding), max + padding]
-    }
     return [Math.max(0, min - padding), max + padding]
   }, [chartData, resultType])
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <CardTitle>Progresjon</CardTitle>
-          <Select value={selectedEventId} onValueChange={setSelectedEventId}>
-            <SelectTrigger className="h-8 w-[160px] text-[13px]">
-              <SelectValue placeholder="Velg øvelse" />
-            </SelectTrigger>
-            <SelectContent>
-              {events.map((event) => (
-                <SelectItem key={event.id} value={event.id}>
-                  {event.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </CardHeader>
-      <CardContent>
-        {chartData.length === 0 ? (
-          <p className="text-[13px] text-muted-foreground">
-            Ingen data for valgt øvelse
-          </p>
-        ) : chartData.length === 1 ? (
-          <div className="text-center py-6">
-            <p className="text-[13px] text-muted-foreground">
-              Kun ett datapunkt: <span className="perf-value font-medium">{chartData[0].performance}</span> ({chartData[0].year})
-            </p>
-          </div>
-        ) : (
-          <>
-            <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart
-                  data={chartData}
-                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                  <XAxis
-                    dataKey="year"
-                    className="text-[11px]"
-                    tick={{ fill: "var(--text-muted)" }}
-                  />
-                  <YAxis
-                    reversed={resultType === "time"}
-                    domain={yDomain}
-                    tickFormatter={(value) => formatYAxisTick(value, resultType)}
-                    className="text-[11px]"
-                    tick={{ fill: "var(--text-muted)" }}
-                  />
-                  <Tooltip
-                    content={({ active, payload }) => {
-                      if (active && payload && payload.length) {
-                        const data = payload[0].payload
-                        return (
-                          <div className="rounded border bg-[var(--bg-card)] px-2 py-1.5 shadow-sm">
-                            <div className="text-[12px] font-semibold">{data.year}</div>
-                            <div className="perf-value text-[13px]">{data.performance}</div>
-                          </div>
-                        )
-                      }
-                      return null
-                    }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="var(--accent-primary)"
-                    strokeWidth={2}
-                    dot={{ fill: "var(--accent-primary)", strokeWidth: 2 }}
-                    activeDot={{ r: 5 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+    <div className="card-flat">
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h3>Progresjon</h3>
+        <select
+          value={selectedEventId}
+          onChange={(e) => setSelectedEventId(e.target.value)}
+          className="h-8 w-full rounded border bg-transparent px-2 text-[13px] sm:w-[160px]"
+        >
+          {events.map((event) => (
+            <option key={event.id} value={event.id}>
+              {event.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-            {/* Data table below chart */}
-            <div className="mt-4 overflow-x-auto border-t">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b bg-muted/50">
-                    <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">År</th>
-                    <th className="px-3 py-1.5 text-left text-xs font-semibold text-[var(--text-secondary)]">Resultat</th>
+      {chartData.length === 0 ? (
+        <p className="text-[13px] text-[var(--text-muted)]">
+          Ingen data for valgt øvelse
+        </p>
+      ) : chartData.length === 1 ? (
+        <div className="py-6 text-center">
+          <p className="text-[13px] text-[var(--text-muted)]">
+            Kun ett datapunkt: <span className="perf-value font-medium">{formatPerformance(chartData[0].performance, resultType)}</span> ({chartData[0].year})
+          </p>
+        </div>
+      ) : (
+        <>
+          <div className="h-[250px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={chartData}
+                margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
+                <XAxis
+                  dataKey="year"
+                  tick={{ fill: "var(--text-muted)", fontSize: 11 }}
+                  axisLine={{ stroke: "var(--border-default)" }}
+                />
+                <YAxis
+                  reversed={resultType === "time"}
+                  domain={yDomain}
+                  tickFormatter={(value) => formatYAxisTick(value, resultType)}
+                  tick={{ fill: "var(--text-muted)", fontSize: 11 }}
+                  axisLine={{ stroke: "var(--border-default)" }}
+                  width={50}
+                />
+                <Tooltip
+                  content={({ active, payload }) => {
+                    if (active && payload && payload.length) {
+                      const data = payload[0].payload
+                      return (
+                        <div className="rounded border bg-[var(--bg-surface)] px-2 py-1.5 shadow-sm">
+                          <div className="text-[12px] font-semibold">{data.year}</div>
+                          <div className="perf-value text-[13px]">{formatPerformance(data.performance, resultType)}</div>
+                        </div>
+                      )
+                    }
+                    return null
+                  }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="var(--accent-primary)"
+                  strokeWidth={2}
+                  dot={{ fill: "var(--accent-primary)", strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 6, fill: "var(--accent-primary)" }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Data table below chart */}
+          <div className="mt-4 overflow-x-auto border-t pt-2">
+            <table className="table-compact">
+              <thead>
+                <tr>
+                  <th>År</th>
+                  <th className="col-numeric">Resultat</th>
+                </tr>
+              </thead>
+              <tbody>
+                {chartData.map((row) => (
+                  <tr key={row.year}>
+                    <td className="text-[var(--text-muted)] tabular-nums">{row.year}</td>
+                    <td className="col-numeric">
+                      <span className="perf-value">{formatPerformance(row.performance, resultType)}</span>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {chartData.map((row) => (
-                    <tr key={row.year} className="border-b last:border-0 hover:bg-[var(--table-row-hover)]">
-                      <td className="px-3 py-1.5 text-[12px] text-[var(--text-muted)]">{row.year}</td>
-                      <td className="px-3 py-1.5 text-[13px]"><span className="perf-value">{row.performance}</span></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
-        )}
-      </CardContent>
-    </Card>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </div>
   )
 }

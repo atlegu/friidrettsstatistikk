@@ -37,6 +37,22 @@
 
 ### 2025-01-16
 
+#### Sesjon 3 (Next.js setup)
+- **Opprettet Next.js 16 prosjekt** med TypeScript, Tailwind CSS, App Router
+- Installerte Shadcn/ui komponenter (button, card, input, sheet)
+- Konfigurerte Supabase SSR-klient (client.ts og server.ts)
+- Genererte TypeScript-typer fra databaseskjema
+- Opprettet layout-komponenter:
+  - `Header.tsx` - Responsiv navigasjon med mobilmeny og søk
+  - `Footer.tsx` - Footer med lenker
+- Opprettet hjemmeside (`page.tsx`) som henter ekte data fra Supabase:
+  - Statistikk-kort (antall utøvere, klubber, resultater, stevner)
+  - Siste 10 resultater fra `results_full` view
+  - Quick links til statistikksider
+- Dev server kjører på http://localhost:3000
+
+**Neste:** Bygge ut undersider (utøverprofil, årslister, stevner)
+
 #### Sesjon 2 (kl. 18:50+)
 - **Gjenopptatt arbeid** etter avbrudd
 - Gjennomgått all eksisterende kode og dokumentasjon
@@ -85,20 +101,23 @@
 
 ## Neste steg (prioritert)
 
-1. **Datakvalitet**
+1. **Frontend-sider**
+   - [ ] Utøverprofil (`/utover/[id]`)
+   - [ ] Årslister (`/statistikk/[year]`)
+   - [ ] Stevneoversikt (`/stevner`)
+   - [ ] Klubbsider (`/klubber`)
+   - [ ] Søkefunksjon
+
+2. **Admin-dashboard**
+   - [x] Sette opp Next.js prosjekt
+   - [ ] Lage autentisering med Supabase Auth
+   - [ ] Bygge import-flyt med godkjenning
+   - [ ] Dashboard med oversikt
+
+3. **Datakvalitet**
    - [ ] Sjekke antall resultater som ble hoppet over under import
    - [ ] Verifisere at øvelser matcher korrekt
    - [ ] Identifisere manglende/feil data
-
-2. **Admin-dashboard**
-   - [ ] Sette opp Next.js prosjekt
-   - [ ] Lage autentisering med Supabase Auth
-   - [ ] Bygge dashboard med oversikt
-
-3. **Frontend**
-   - [ ] Statistikksider (årslister, all-time)
-   - [ ] Utøverprofiler
-   - [ ] Søkefunksjon
 
 ---
 
@@ -117,8 +136,20 @@ Statistikk/
 ├── ACTIVITY_LOG.md          # Denne filen
 ├── plan_friidrettsstatistikk.md
 ├── utviklingsplan.md
+├── frontend_plan.md         # Frontend-arkitektur og design
 ├── import_spesifikasjon_v1.md
 ├── ER-diagram.docx
+├── web/                     # Next.js frontend
+│   ├── src/
+│   │   ├── app/             # App Router
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx     # Hjemmeside
+│   │   ├── components/
+│   │   │   ├── layout/      # Header, Footer
+│   │   │   └── ui/          # Shadcn/ui komponenter
+│   │   ├── lib/supabase/    # Supabase client (server.ts, client.ts)
+│   │   └── types/database.ts # Genererte TypeScript-typer
+│   └── .env.local           # Supabase credentials
 ├── scraper/
 │   ├── fast_import.py       # Batch import til Supabase
 │   ├── scraper_v2.py        # Hovedscraper

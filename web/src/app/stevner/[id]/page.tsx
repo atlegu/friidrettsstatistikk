@@ -2,6 +2,8 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatPerformance } from "@/lib/format-performance"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 async function getMeet(id: string) {
   const supabase = await createClient()
@@ -65,10 +67,15 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
   const eventNames = Object.keys(resultsByEvent).sort()
 
   return (
-    <div className="container py-8">
+    <div className="container py-6">
+      <Breadcrumbs items={[
+        { label: "Stevner", href: "/stevner" },
+        { label: meet.name }
+      ]} />
+
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold">{meet.name}</h1>
+      <div className="mt-4 mb-6">
+        <h1 className="mb-2">{meet.name}</h1>
         <div className="flex flex-wrap gap-4 text-muted-foreground">
           <span>
             {new Date(meet.start_date).toLocaleDateString("no-NO", {
@@ -136,7 +143,7 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
                             {result.club_name ?? "-"}
                           </td>
                           <td className="px-4 py-2">
-                            <span className="font-mono font-medium">{result.performance}</span>
+                            <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
                             {result.wind !== null && (
                               <span className="ml-1 text-xs text-muted-foreground">
                                 ({result.wind > 0 ? "+" : ""}{result.wind})

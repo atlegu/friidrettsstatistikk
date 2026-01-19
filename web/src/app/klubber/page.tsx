@@ -2,6 +2,7 @@ import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 export const metadata = {
   title: "Klubber",
@@ -15,6 +16,7 @@ async function getClubs(search?: string) {
     .from("clubs")
     .select("*")
     .eq("active", true)
+    .eq("club_type", "athletics")  // Kun friidrettsklubber
     .order("name", { ascending: true })
 
   if (search) {
@@ -35,8 +37,9 @@ export default async function KlubberPage({
   const clubs = await getClubs(search)
 
   return (
-    <div className="container py-8">
-      <h1 className="mb-6 text-3xl font-bold">Klubber</h1>
+    <div className="container py-6">
+      <Breadcrumbs items={[{ label: "Klubber" }]} />
+      <h1 className="mt-4 mb-4">Klubber</h1>
 
       {/* Search */}
       <form className="mb-8">

@@ -1,0 +1,839 @@
+# Utelatte klubber fra klubblisten
+# Disse vises IKKE på /klubber siden
+# Gå gjennom listen og gi beskjed om noen skal være med
+
+## BEDRIFTER (108 stk)
+Aanderaa Data Instruments A/S
+Aas-Jakobsen Trondheim AS
+ABB Stord BIL
+Abbott
+Acando BIL
+Adresseavisen
+Adresseavisen BIL
+Aker BP Kvarts
+Aker Solutions
+Aker Verdal BIL
+Ålesund Politi
+Ankeret B.I.L.
+Aprimo Rådgiving
+Arkitektene Vis-A-Vis
+Arkoconsult
+Artilleri
+Artilleribataljonen
+Asics Frontrunner
+Asker Entreprenør
+Asko
+Avinor BIL
+Bærumsposten
+Bama
+Bdo AS
+BDO Romerike BIL
+Bergen Politi
+Biomar BIL
+Bring Frigo BIL
+Byremo Bygg AS
+Compenso Økonomi AS
+COOP BIL
+COPNO BIL
+Deloitte BIL
+DNB BIL
+DnbNOR Oslo
+Drytech AS BIL
+Eidsiva BIL
+Ekornes BIL
+Elektrikerservice AS
+Enova BIL
+Equinor
+EY BIL
+Genus BIL
+Gjerdrum Turbil
+GKN BIL
+Hamarpost BIL
+Handelsbanken BIL
+HiST Bil
+Ht Rør AS
+Increo Interactive Creations AS
+ISS B.I.L.
+Kongsberg Seatex BIL
+Kverneland Bedriftsidretslag
+Lånekassen BIL
+Levanger Kommune BIL
+LO BIL
+Lyse BIL
+Marienborg bil
+Matiq AS
+MHWIRTH BIL
+Miljødirektoratet BIL
+MoreFish AS
+Multiconsult BIL
+Neras Direkte AS
+Nestle BIL
+NILU BIL
+Norconsult
+NRK Bil
+NTNU Bil
+OD Bil
+Ole Vig bil
+OSL BIL
+Oslo Politis Idrettslag
+Oslo Politis IL
+P A Entreprenør
+Pakkepost BIL
+PEAB BIL
+Politiet
+Politiets utlendingsenhet
+Posten
+Posten-Bring BIL
+Pwc Bil
+Q-Free AS
+Rambøll Bil
+Romerike Politi
+RTV BIL
+Sandefjord politiidrettslag
+Skog & Virke AS
+SLM-BIL
+Soko BIL
+Søndre Buskerud Politi
+Sparebank 1 Sr-Bank BIL
+Sport Holding AS
+Sporveien Oslo BIL
+Statens vegvesen BIL
+Statoil B.I.L
+Statoil BIL
+Teeness BIL
+Telemark Politi
+Telenor
+Toten Sparebank BIL
+Troisman AS
+UK BIL
+Universitetet i Oslo BIL
+Utrykningspolitiets idrettslag
+Vegvesenets BIL
+Veidekke BIL
+Veritas BIL
+
+## SKOLER (150+ stk)
+Ådnamarka Skole
+Åfarnes Skole
+Amalie Skram VGS
+American Int. School Muscat
+Arstad skole
+Ås VGS
+Asker VGS
+Aure Barneskule
+Austevoll Ungdomsskule
+Bærums Verk skole
+Bekkestua Skole
+Belset Skole
+Bigset Skule
+Billingstad skole
+Bjørnegård Skole
+Bjørnssveen Ungdomsskole
+Bø VGS
+Bore ungdomsskole
+Brattvåg Ungdomsskule
+Byåsen VGS
+Charlottenlund Vgs
+Dwight School
+Eide Skule
+Eidsvåg Skole
+Eineåsen Skole
+Elverum VGS
+Erdal Skole
+Fagerhøy leirskole
+Fagerlia Videregående skole
+Frogner skole og Kultursenter
+Garnes Skole
+Gaupen skole
+Gjettum Skole
+Gjøvik VGS
+Grimstad Ungdomsskole
+Gystadmarka skole
+Hadeland vgs
+Hakadal Ungdomsskole
+Halsen Ungdomsskole
+Hareid ungdomsskule
+Harøy Ungdomsskule
+Hasund Skule
+Hauger Skole
+Haugland Skole
+Hedemarken Friskole
+Heimdal VGS
+Helland Ungdomsskule
+Hetlevik Skole
+Hop Skole
+Hosle Skole
+Hosletoppen Skole
+Hovdebygda Skule
+Hundsund Skole
+Hustad Barne- og Ungdomsskole
+Jappa Skole
+Justvik Skole
+Kastellet Skole
+Kilde Skole
+Kjøkkelvik Skole
+Kleppe Skole
+Kleppestø Skole
+Kolbeinsvik Skule
+Kvadraturen vgs
+Lambertseter Skole
+Langnes Skole
+Lena Valle VGS
+Lena vgs
+Lillestrøm VGS
+Løkeberg skole
+Lommedalen skole
+Lone Skole
+Luftkrigsskolen
+Mathopen Skole
+Meisingset Skole
+Midt-Østerdal VGS
+Minerva Idrettsskole
+Moelv Barneskole
+Moelv Ungdomsskole
+Mølladammen Skole
+Mortensnes skole
+Munkerud skole
+Mykje Skole
+Nidaros Idrettsungdomsskole
+Nord-Gudbrandsdal VGS
+Nordbyen Skole
+Nordseter Skole
+Norheim Skole
+Øraker skole
+Ørsta Ungdomsskule
+Østerås Skole
+Ostereidet ungdomsskule
+Øvrebyen VGS
+Øystese Gymnas
+Persbråten VGS
+Politihøgskolen
+Prestrud skole
+Ramstad Skole
+Reinsvoll u.skole
+Reinsvoll Ungdomsskole
+Ringstabekk Skole
+Ringstabekk Ungdomsskole
+Rosenborg skole
+Rosendal Ungdomsskule
+Rykkinn Skole
+Selbjørn skule
+Smøla Ungdomsskole
+Sommerlyst Skole
+Sonans VGS
+Sørestranda Skule
+Spongdal Skole
+St. Olaf College
+Stabekk skole
+Stange VGS
+Stette Friskule
+Storebø skule
+Straumsnes Skole
+Strinda VGS
+Sykkylven Ungdomsskule
+Tennfjord Skule
+Thor Heyerdahl vgs
+Tingvoll Barne- og Ungdomssskole
+Tjodalyng Skole
+Tomrefjord Skule
+Torstad skole
+Torstad Ungdomskole
+Torvikbukt Skule
+Trengereid Skole
+Tromstun Skole
+Trysil Ungdomsskole
+Trysil vgs
+Tveit Skole
+Tyrifjord VGS
+UiT Norges Arktiske Universitet
+Ulstein Ungdomsskule
+Valderøy Skule
+Valdres vidaregåande skule
+Valldal Skule
+Valler VGS
+Vardenes skole
+Vatne Ungdomsskule
+Velle Skule
+Velledalen Skule
+Vik skule
+Vikemarka Skule
+Vingrom skole
+Voss Gymnas
+Vøyenenga Skole
+Wang Ungdomsskole
+Workinnmarka Skole
+Ytre Arna Skole
+
+## UTENLANDSKE (4 stk)
+Åaen Running Club
+Aarhus Fremad Atletik
+Accelerators Running Club
+AGF Atletik
+
+## ANDRE (520+ stk) - løpeklubber, andre idretter, datafeil, etc.
+
+# Løpeklubber
+Adamstuen Løpeklubb
+Årviksand Løpeklubb
+Åsløperne
+Averøy Løpeklubb
+Bergen Løpeklubb
+BFG Bergen Løpeklubb
+Bjørgvin Løpeklubb
+Bodø Bauta Løpeklubb
+Flekkerøy Løpeklubb
+Follo Løpeklubb
+Grimstad Løpeklubb
+Halden Løpeklubb
+Hell Ultraløperklubb
+Klæbu Løpeklubb
+Kristiansand Løpeklubb
+Namdal Løpeklubb
+Namsos Løpeklubb
+Nærsnes Løpeklubb
+Opptur Løpeklubb
+Roger Tangviks Løpeklubb
+Runstøren Løpeklubb
+Sankthanshaugen Løpeklubb
+Tjøme løpeklubb
+Tromsø Løpeklubb
+
+# Andre idretter (sykkel, ski, triathlon, etc.)
+Åsane CK
+Åsane håndball
+Åslia Skilag
+Aurskog Høland Triatlon
+Bergen Kunstløpklubb
+Bergen Triathlon Club
+Bjugn/Ørland Skøyteklubb
+Bø Orienteringslag
+Bodø/Glimt
+Bømlo sykkelklubb
+Bømlo Triatlon
+Bryne CK
+Bryne Triatlonklubb
+Byaasen Skiklub
+Drammens Skøiteklub
+Egersund Vollyball kl.
+Eiker O-Lag
+Falken Skøyter
+FK Haugesund
+FK Studenterna
+Follebu Skiklubb
+Førde CK
+Fredrikstad Skiklubb
+Furnes Skil.for.
+Fyllingsdalen FK
+Gjøvik Skiklubb
+Grenland Ski
+Halden Skiklubb
+Halden Svømmeklubb
+Halmsås og Omegn Ski
+Hamar Skiklubb
+Haugesund Triatlonklubb
+Kristiansand Sandvolleyballklubb
+Kristiansand Triathlon
+Kvaløysletta Skilag
+Kverneland Ski
+Kvinnherad HK
+Langesund Sykle- og triathlonklubb - Friidrett
+Langesund Triathlonklubb
+Larvik Ski
+Leirfjord Ski
+Levanger HK
+Lille Imås Triathlon
+Lillehammer Skiklub
+Lillomarka Skiklubb
+Lismarka Skilag
+Lofoten Triatlonklubb
+Lyn Ski
+Medkila Skilag
+Meløy ski og sykkelklubb
+Mesnalia Skilag
+Mjøs Ski
+Molde FK
+Namdal Sykkelklubb
+Namsos svømmeklubb
+Nannestad Skiklubb
+Nes Ski
+Nidaros Hockey
+Nittedal Skiskytterlag
+Os Roklubb
+Oslofjord Triathlon
+Oslofjord Triatlon
+Ranheim Skiklubb
+Ringkollen Skiklubb
+Riska Svømmeklubb
+Senja Ski
+Singsaker Basket
+Skatval skilag
+Sogn CK
+Sogn og Fjordane Skikrins
+Soon Triathlon Klubb
+Sortland og Omegn Ski
+Stabæk Fotball
+Stiftstaden Sykkelklubb
+Stor-Elvdal Skiklubb
+Strand Kajakklubb
+Synergy Cycling
+Tormod Skilag
+Trondheim Triatlonklubb
+Tromsø Randoneeklubb
+Tromsø Skiklubb
+Ullensaker CK
+Ullensaker Skiklubb
+Ullern Tennis
+Vang Skiløperforening
+Veldre Ski
+Vestre Aker Skiklubb
+Voss HK
+
+# Kretser/forbund (ikke klubber)
+Agder Friidrettskrets
+Innlandet Friidrettskrets
+
+# Datafeil (utøvernavn i klubbnavn, resultater i navn)
+Amundsen, Ås Idrettslag
+Andersen, Hattfjelldal IL
+Andersen, Sandnessjøen IL
+Årdalstangen IL8,45(-0,4)-4,55(+1,9)-5,59
+Aunaas, Hauger Skole
+B, Lacroise, Ytre Arna Skole
+Berntsen, Ask Friidrett
+Breimsbygda IL9,40(-0,4)-3,94(+1,3)-9,83
+Brodd IL9,06(+0,4)-4,42(+0,6)-7,99
+Bruvik, Osterøy IL
+Eidsvåg IL, Åsane
+Eidsvåg IL, Romsdal
+Eriksen, Modum FIK
+Grønnerud, Kolbukameratene
+Hagelund, Hauger Skole
+Horten Friidrettsklubb8,89-1,60-9,33-5,15-2,33-13
+IF Hellas7,87(-1,7)-4,98(-2,2)-9,13
+IF Hellas7,96(-1,7)-4,73(-0,6)-8,14
+IF Hellas8,26(-1,7)-4,71(-1.6)-7,89
+IF Hellas8,71(-1,0)-4,50(+0,3)-6,55
+IF Hellas8,88(-1,2)-4,48(-1,6)-7,43
+IF Hellas9,05(-1,2)-3,39(-1,9)-6,34
+IF Hellas9,40(-1,0)-4,00(+0,4)-7,19
+Jølster IL8,83(+0,4)-4,11(+0,4)-8,97
+Lambertseter IF9,73(-1,6)-1,20-7,43
+Moe, Vøyenenga Skole
+Moholt, Ringstabekk Skole
+Nefjen, Brandbu IF
+Rabben, Austevoll IK Friidrett
+Rogde, Ringstabekk Skole
+Rørvik, Førde IL Friidrett
+Røsand, Elverum VGS
+Sandnes IL, Finnmark
+Sandnes IL9,30-1,52-7,53-DNS-DNS
+Sørensen, NTNUI
+Stordahl, Varteig IL
+Støyva, Breimsbygda IL
+Veselinova, Sola Friidrettsklubb
+Vrålstad Vissers, Hauger Skole
+
+# MULIGE FRIIDRETTSKLUBBER (bør sjekkes)
+IK Hind
+IK Junkeren
+IK Rindals-Troll
+IK Tjalve          <-- DETTE ER EN STOR FRIIDRETTSKLUBB!
+IK Våg
+Leksvik Il
+Lindås Iidrettslag  <-- skrivefeil, bør være athletics
+Nordre Land friidrett
+SK Brann
+SK Freidig
+SK Heia
+SK Rapp
+Finnås sportsklubb
+Ready
+Vadsø Atletklubb
+
+# Diverse andre
+A-K Maskiner
+A-Laget
+AF Decom
+Algarheim
+Amende
+APL NOV
+Archer Runners
+Åsguten
+Astor, Trondheim
+At. Mijas
+Autronica
+Badnafakte
+Bakgårdskameratan
+BDO Aktiva
+Belgrave
+Bergen Brannvesen
+Berre Kommunikasjonsbyrå
+BFF
+BFG Bergen
+Bil Norske Skog
+Bilpost
+Bim Bam United
+Bjørnar
+Blatchford Sør
+Blomsterbyen
+Bordeaux, France
+Børstad Transport
+Botn pondus - og løpeklubb
+Bouvet
+BTSI
+Bxrunning
+Bygdanytt
+C.A.El Faro de L´Alfaz del Pi
+CAP, ITA
+Capp Nord
+Charlottenlund Sp,Kl
+Ciao Mamma
+Colet Court School
+Concord Academy
+Cowi
+Dalane el
+Dalane Energi
+Dalane Skule
+Danica pensjon
+Danielsen ungdsk
+Dansesenteret
+Danske Bank
+Darien High School
+Det Norske Oljeselskap
+Dips ASA
+DMMH
+DNM
+Dokumentservice
+Dølaski
+Dønna
+Dronning Mauds minne
+Dvergsnes Brygg & Løb
+EM Stjørdal
+Enso AS
+Erlend Husby FC
+Esbjerg AK
+Esbjerg AM
+EVRY
+Fåberg
+Fædrelandsvennen
+Feiringklinikken
+Fenstad
+FIDALY
+Fitnesspoint Saksvik
+Flytoget
+Folkehelseinstituttet
+Follese
+Franklin
+Fri Kameratene
+Friskis og Svettis
+FU-FIGHTERS
+Furuseth AS
+Fylkesmannen
+Fysmed Klinikken
+GBU
+Geitspranget barnehage
+Gill-St. Bernard's School
+Gjelsvik Skule
+Gjensidige Sport
+Gnagsår
+Grenland Freestyle
+Grødem Runners
+GSK Sandnes
+GTI
+Gubbetrim
+Haiene
+Hakallestranda Kondisjonslag
+Hareid barneskule
+Hauger FK
+Hausta Kapitalforvaltning
+Hausvik FK
+Heimdal Bolig
+Heimdal Storbilsenter
+Helgesen Tekniske
+Helse Nord-Trøndelag
+Helsetunet
+Hercules Wimbledon
+HHIT
+HiT
+Hofstra
+Hove Tri
+HSK
+HSK Nordkisa
+HSK-sykkel
+HSV Fotballklubb
+HTB
+Husbanken
+Hygienegruppen
+Hytteplan Sport
+Ibis Cycles
+IBM
+ICOPAL
+Idrett Setermoen
+Idrettens Hus
+Ikea
+IKM Ocean Design
+Innerdal
+Intersport Gigant Lade
+Intervallkollegiet
+Isle of Wight AC
+ISS
+Ivrig
+Jakobsli Marathon
+Jenssen's Angels
+Jernbanen
+Julefet Fellesfront
+Justneshalvøya Runners
+Juventud Atletica Elche
+K. Lerøy Metall
+Kaja Nordstad Ytterhus Løpeklubb
+Karabin AS
+KFUM-Kameratene
+Kjelstad
+Klæbu Kommune
+KLP Banken
+Kolbukameratene
+Kongen Marina Løpeklubb
+Kragerø Ski & Rønners
+Krampe
+Kristiansand Gangklubb
+Kvardagsatleten
+Kvass Ulvungen
+Lauparlaget 4x4
+LC Rafzerfeld
+Lillehammer 2016
+Lincolnshire Schs
+Lindal Langløp
+Lindheim Ølkompani
+LIU Post
+Livsglede
+Lobas
+Løpegruppa Fløtfot
+Løpegruppa Jessheim
+Løpergruppa Jessheim
+Løplabbet
+Löplabbet Trondheim
+Løpsklubben 1814
+Lordkippes Løpeklubb
+Lovstafetten Oslo
+LSK
+Lyon Athletisme
+Lyskomponenter
+Måndalen Skule
+Mårhundens venner
+Media Norge
+Mesquite Wildcats
+Midgard Hinderløpsklubb
+Mjeldalen tegning
+MK Trondhjem Racing
+MMA Trondheim
+Mostamarka
+Motek AS
+Muruvikingan Løpeklubb
+MX sport
+Namdalseid
+NCC
+Neuköllner SF
+NGI
+Nicholls State
+Nittedaljoggen
+Noco
+Nor-log Thermo
+Nordea/Vitamin Well
+Nordic Semiconductor ASA
+Norges Vel
+Northern Runners
+Notodden kom.
+Nr 1 Fitness
+NSF
+NTG Bergen
+NTG Tromsø
+NTHI
+NTNUI
+Oddersjaa
+Odense elite
+OL Gaula
+Øl og Kondis
+OL Trollelg
+Onesubsea, SLB
+Opptur Motbakkeklubb
+Orkla
+Orkla FK
+Ørnar
+Orstad
+Oseberg SL
+OSL
+Oslo Bulls
+Oslo gang- og turmarsjklubb
+Oslo Kommune
+Oslolærerne
+Øst-Bamble Løpelaug
+Osterøy Brann Redning
+Ottestad kast og styrke
+OUS
+Øyfjell
+P.I.L Drammen
+Papirpedagogan
+Pareto
+Pembridge School
+Peppes Pizza Jessheim
+Petrol
+PHS
+PHS Stavern
+Postnor Termo
+Powel
+Prima
+Prima AS
+Privat
+Privatmegleren
+Ramdal skog & utmark
+Ready
+Reber Schindler
+Ree gard
+Rema 1000
+Ringebu-Fåvang Tur og Trim
+Ringnes
+Rival/Treff
+Robust Trening og Fysioterapi
+Rokycany
+Romerike Runners Team
+Romerike Ultraløperklubb
+Romsdal Randoneeklubb
+Rosenborglærerne
+Royal Sport
+Rystad Energy
+Sætre Idrætsforening Graabein
+Sætre Sten
+Saksvik Fysioterapi & Manuell Terapi
+Sale Harriers Manchester
+Salsnes Filter
+Samnanger
+Sankthanshaugen Løpeklubb
+Santa Barbara
+SATS
+Sävedalens AIK, SWE
+SBFF
+Seadrill
+Siemens
+Siggerud
+Signicat
+Siljan
+Sintef
+Sjukehuset Indlandet
+Skadekameratene
+Skanska
+Slidre Skule
+Smievegen
+Snarøya
+Sofakameratene
+Søgne Fotballklubb
+Solvikingarna
+Sonans
+Sør-Vekkom Lauparlag
+Sørlandet sykehus
+Souk
+Southampton AC
+SpareBank1 Markets
+Sparebank1 Midt-Norge
+Sparebank1 SMN
+Sparebanken Sør
+Spenst
+Spiridon LLL
+Sport 1
+Sport1 Glexe
+Sport1 Strandtorget
+SRS
+SSB Kongsvinger
+St Olavs Løpedamer
+St. Olavs Hospital
+Stanford University
+Statsarkivet
+Stavset Running Team
+Stend Vgd. Sk.
+Sterke-Nils
+Stjørdal City
+Stjørdal Helsesport
+Stord Mottaksenter
+Støren Sp.kl
+Støtet
+Stovner Tamil Sports Club
+Stovnerkameratene
+Strongmanrun
+Studentspretten
+Suldal
+Suunto
+Svorkmo N.O.I.
+Synnfjell OK
+Systemblokk
+TAM
+Tangmoen
+Tautra U.L.
+TDM
+Team Batti
+Team BDO NHHS
+Team Braasport
+Team Drygt Magisk
+Team Einarsson
+Team Fønix
+Team Garli
+Team Gjert
+Team Hallingdal
+Team Innit
+Team Lade
+Team Leiro
+Team Løver
+Team Nava
+Team Norne
+Team NRPsport
+Team Ølvikjo
+Team One Voice
+Team Santander
+Team Storbakken
+Team Sveene 11
+Team Synergy
+Team Telemark
+Team Troisman
+Team Trøndertun
+Team Underkilt
+Team Woldvik
+Telen
+Thunestvedt AS
+Tide Buss
+Tine
+Tistedalen FL
+Tiurvegen Impuls
+TØH
+Tommehoders idr.
+Tong-ir Taekwonduklubb
+TORO
+Torrevieja Millennium Athletics Club
+Torsdagsklubben
+Tpil
+Træn Løp
+Triumf
+Trøndelag pil
+Trondheim Kommune
+Tryg
+Trysil HKK
+Trysilgutten
+TSI Langrenn
+Tureberg
+Ucrt
+ukjent
+Ulefoss SF
+Undercover Runningteam
+Unilift AS
+UP
+USF langrenn
+USK/Team Pigg
+Uvdal
+Valestrand Hjellvik
+Valle gang og turmasj
+Veni AS
+Vest-Elektro
+Vestre Gran
+Vestre Spone
+Vikapiratene
+Vørter Ultra
+W & C
+Wiig gartneri
+XL-Bygg
