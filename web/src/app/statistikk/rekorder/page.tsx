@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,59 +11,55 @@ export const metadata = {
   description: "Norske rekorder og bestenoteringer i friidrett",
 }
 
-// Official Norwegian record events (baneøvelser) - Senior
+// Event categories for better organization
+interface EventCategory {
+  name: string
+  events: string[]
+}
+
+// Official Norwegian record events - Senior
 // Based on https://www.friidrett.no/siteassets/aktivitet/statistikk/rekorder/
-const NORGESREKORDER_EVENTS = {
+const NORGESREKORDER_CATEGORIES: Record<string, EventCategory[]> = {
   M: [
-    // Sprint
-    "100m", "200m", "400m",
-    // Middle distance
-    "800m", "1000m", "1500m", "1mile", "3000m",
-    // Long distance
-    "5000m", "10000m",
-    // Hurdles (senior heights)
-    "110mh_106_7cm", "400mh_91_4cm",
-    // Steeplechase
-    "3000mhinder_91_4cm",
-    // Jumps
-    "hoyde", "stav", "lengde", "tresteg", "hoyde_ut", "lengde_ut",
-    // Throws (senior weights)
-    "kule_7_26kg", "diskos_2kg", "slegge_7_26kg", "spyd_800g",
-    // Combined
-    "5kamp", "10kamp",
+    { name: "Løp - bane", events: ["100m", "200m", "400m", "800m", "1000m", "1500m", "1mile", "3000m", "5000m", "10000m", "20000m"] },
+    { name: "Hekk / hinder", events: ["110mh_106_7cm", "200mh_76_2cm", "400mh_91_4cm", "3000mhinder_91_4cm"] },
+    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg", "hoyde_ut", "lengde_ut"] },
+    { name: "Kast", events: ["kule_7_26kg", "diskos_2kg", "slegge_7_26kg", "spyd_800g"] },
+    { name: "Mangekamp", events: ["5kamp", "10kamp"] },
+    { name: "Stafett", events: ["4x100m", "4x400m"] },
+    { name: "Kappgang", events: ["5000mg", "20kmg"] },
+    { name: "Vei", events: ["3km", "5km", "10km", "halvmaraton", "maraton", "100km"] },
   ],
   F: [
-    // Sprint
-    "100m", "200m", "400m",
-    // Middle distance
-    "800m", "1000m", "1500m", "1mile", "3000m",
-    // Long distance
-    "5000m", "10000m",
-    // Hurdles (senior heights for women)
-    "100mh_84cm", "400mh_76_2cm",
-    // Steeplechase
-    "3000mhinder_76_2cm",
-    // Jumps
-    "hoyde", "stav", "lengde", "tresteg", "hoyde_ut", "lengde_ut",
-    // Throws (senior weights for women)
-    "kule_4kg", "diskos_1kg", "slegge_4kg", "spyd_600g",
-    // Combined
-    "5kamp", "7kamp",
+    { name: "Løp - bane", events: ["100m", "200m", "400m", "800m", "1000m", "1500m", "1mile", "3000m", "5000m", "10000m"] },
+    { name: "Hekk / hinder", events: ["100mh_84cm", "200mh_76_2cm", "400mh_76_2cm", "3000mhinder_76_2cm"] },
+    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg", "hoyde_ut", "lengde_ut"] },
+    { name: "Kast", events: ["kule_4kg", "diskos_1kg", "slegge_4kg", "spyd_600g"] },
+    { name: "Mangekamp", events: ["5kamp", "7kamp"] },
+    { name: "Stafett", events: ["4x100m", "4x400m"] },
+    { name: "Kappgang", events: ["3000mg"] },
+    { name: "Vei", events: ["3km", "5km", "10km", "halvmaraton", "maraton", "100km"] },
   ],
 }
 
 // Best performances (bestenoteringer) - events without official records
-const BESTENOTERINGER_EVENTS = {
+const BESTENOTERINGER_CATEGORIES: Record<string, EventCategory[]> = {
   M: [
-    "60m", "300m", "600m", "2000m",
-    "60mh_106_7cm", "200mh_76_2cm", "300mh_91_4cm",
-    "2000mhinder_91_4cm",
+    { name: "Løp - bane", events: ["60m", "300m", "600m", "2000m", "2miles", "25000m"] },
+    { name: "Hekk / hinder", events: ["60mh_106_7cm", "300mh_91_4cm", "2000mhinder_91_4cm"] },
+    { name: "Kast", events: ["vektkast"] },
   ],
   F: [
-    "60m", "300m", "600m", "2000m",
-    "60mh_84cm", "200mh_68cm", "300mh_76_2cm",
-    "2000mhinder_76_2cm",
+    { name: "Løp - bane", events: ["60m", "300m", "600m", "2000m"] },
+    { name: "Hekk / hinder", events: ["60mh_84cm", "300mh_76_2cm", "2000mhinder_76_2cm"] },
+    { name: "Kast", events: ["vektkast"] },
+    { name: "Kappgang", events: ["10000mg", "20kmg"] },
   ],
+}
+
+// Helper to flatten categories to event codes
+function flattenCategories(categories: EventCategory[]): string[] {
+  return categories.flatMap(cat => cat.events)
 }
 
 // Age groups included in "Senior" filter (15 years and older)
@@ -199,8 +196,11 @@ export default async function RekordsPage({
 
   // Get events for the selected gender
   const genderKey = gender as "M" | "F"
-  const recordEventCodes = NORGESREKORDER_EVENTS[genderKey] ?? NORGESREKORDER_EVENTS.M
-  const bestEventCodes = BESTENOTERINGER_EVENTS[genderKey] ?? BESTENOTERINGER_EVENTS.M
+  const recordCategories = NORGESREKORDER_CATEGORIES[genderKey] ?? NORGESREKORDER_CATEGORIES.M
+  const bestCategories = BESTENOTERINGER_CATEGORIES[genderKey] ?? BESTENOTERINGER_CATEGORIES.M
+
+  const recordEventCodes = flattenCategories(recordCategories)
+  const bestEventCodes = flattenCategories(bestCategories)
 
   const [recordEvents, bestEvents] = await Promise.all([
     getEventsByIds(recordEventCodes),
@@ -223,8 +223,28 @@ export default async function RekordsPage({
     Promise.all(bestPromises),
   ])
 
-  const validRecords = records.filter((r) => r.record !== null)
-  const validBests = bests.filter((r) => r.record !== null)
+  // Create lookup for records by event code
+  const recordsByCode = new Map(records.map(r => [r.event.code, r]))
+  const bestsByCode = new Map(bests.map(r => [r.event.code, r]))
+
+  // Build categorized results
+  const categorizedRecords = recordCategories.map(category => ({
+    name: category.name,
+    results: category.events
+      .map(code => recordsByCode.get(code))
+      .filter((r): r is { event: typeof recordEvents[0], record: NonNullable<typeof records[0]["record"]> } =>
+        r !== undefined && r.record !== null
+      )
+  })).filter(cat => cat.results.length > 0)
+
+  const categorizedBests = bestCategories.map(category => ({
+    name: category.name,
+    results: category.events
+      .map(code => bestsByCode.get(code))
+      .filter((r): r is { event: typeof bestEvents[0], record: NonNullable<typeof bests[0]["record"]> } =>
+        r !== undefined && r.record !== null
+      )
+  })).filter(cat => cat.results.length > 0)
 
   return (
     <div className="container py-6">
@@ -317,16 +337,25 @@ export default async function RekordsPage({
                     </tr>
                   </thead>
                   <tbody>
-                    {validRecords.map(({ event, record }) => (
-                      <RecordRow
-                        key={event.id}
-                        event={event}
-                        record={record}
-                        gender={gender}
-                        age={age}
-                      />
+                    {categorizedRecords.map((category) => (
+                      <Fragment key={category.name}>
+                        <tr className="bg-muted/30">
+                          <td colSpan={6} className="px-3 py-2 text-sm font-semibold text-muted-foreground">
+                            {category.name}
+                          </td>
+                        </tr>
+                        {category.results.map(({ event, record }) => (
+                          <RecordRow
+                            key={event.id}
+                            event={event}
+                            record={record}
+                            gender={gender}
+                            age={age}
+                          />
+                        ))}
+                      </Fragment>
                     ))}
-                    {validRecords.length === 0 && (
+                    {categorizedRecords.length === 0 && (
                       <tr>
                         <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
                           Ingen resultater funnet
@@ -340,48 +369,52 @@ export default async function RekordsPage({
           </Card>
 
           {/* Bestenoteringer */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Bestenoteringer</CardTitle>
-              <p className="text-sm text-muted-foreground">
-                Øvelser uten offisielle norgesrekorder · {genderLabel} · {ageLabel}
-              </p>
-            </CardHeader>
-            <CardContent className="p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b bg-muted/50">
-                      <th className="px-3 py-2 text-left text-sm font-medium">Øvelse</th>
-                      <th className="px-3 py-2 text-left text-sm font-medium">Resultat</th>
-                      <th className="px-3 py-2 text-left text-sm font-medium">Utøver</th>
-                      <th className="px-3 py-2 text-left text-sm font-medium w-14">Født</th>
-                      <th className="hidden px-3 py-2 text-left text-sm font-medium md:table-cell">Sted</th>
-                      <th className="hidden px-3 py-2 text-left text-sm font-medium lg:table-cell">Dato</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {validBests.map(({ event, record }) => (
-                      <RecordRow
-                        key={event.id}
-                        event={event}
-                        record={record}
-                        gender={gender}
-                        age={age}
-                      />
-                    ))}
-                    {validBests.length === 0 && (
-                      <tr>
-                        <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
-                          Ingen bestenoteringer funnet
-                        </td>
+          {categorizedBests.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Bestenoteringer</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Øvelser uten offisielle norgesrekorder · {genderLabel} · {ageLabel}
+                </p>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b bg-muted/50">
+                        <th className="px-3 py-2 text-left text-sm font-medium">Øvelse</th>
+                        <th className="px-3 py-2 text-left text-sm font-medium">Resultat</th>
+                        <th className="px-3 py-2 text-left text-sm font-medium">Utøver</th>
+                        <th className="px-3 py-2 text-left text-sm font-medium w-14">Født</th>
+                        <th className="hidden px-3 py-2 text-left text-sm font-medium md:table-cell">Sted</th>
+                        <th className="hidden px-3 py-2 text-left text-sm font-medium lg:table-cell">Dato</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+                    </thead>
+                    <tbody>
+                      {categorizedBests.map((category) => (
+                        <Fragment key={category.name}>
+                          <tr className="bg-muted/30">
+                            <td colSpan={6} className="px-3 py-2 text-sm font-semibold text-muted-foreground">
+                              {category.name}
+                            </td>
+                          </tr>
+                          {category.results.map(({ event, record }) => (
+                            <RecordRow
+                              key={event.id}
+                              event={event}
+                              record={record}
+                              gender={gender}
+                              age={age}
+                            />
+                          ))}
+                        </Fragment>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </div>

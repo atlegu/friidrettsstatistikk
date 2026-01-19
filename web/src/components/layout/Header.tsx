@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DensityToggle } from "@/components/ui/density-toggle"
+import { UserMenu } from "@/components/auth/UserMenu"
 
 const navigation = [
   {
@@ -17,6 +18,7 @@ const navigation = [
       { name: "Årslister 2025", href: "/statistikk/2025" },
       { name: "All-time", href: "/statistikk/all-time" },
       { name: "Rekorder", href: "/statistikk/rekorder" },
+      { name: "Spør AI", href: "/spor" },
     ],
   },
   {
@@ -27,7 +29,14 @@ const navigation = [
       { name: "Resultater", href: "/stevner/resultater" },
     ],
   },
-  { name: "Utøvere", href: "/utover" },
+  {
+    name: "Utøvere",
+    href: "/utover",
+    children: [
+      { name: "Søk utøvere", href: "/utover" },
+      { name: "Sammenlign", href: "/sammenlign" },
+    ],
+  },
   { name: "Klubber", href: "/klubber" },
 ]
 
@@ -159,10 +168,8 @@ export function Header() {
         {/* Density toggle (desktop only) */}
         <DensityToggle className="ml-4 hidden lg:flex" />
 
-        {/* Login button */}
-        <Button variant="ghost" size="sm" className="ml-2 hidden md:inline-flex">
-          Logg inn
-        </Button>
+        {/* User menu */}
+        <UserMenu />
       </div>
     </header>
   )

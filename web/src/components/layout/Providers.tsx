@@ -1,6 +1,7 @@
 "use client"
 
 import { DensityProvider } from "@/components/ui/density-toggle"
+import { AuthProvider } from "@/components/auth/AuthProvider"
 
 interface ProvidersProps {
   children: React.ReactNode
@@ -8,8 +9,10 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <DensityProvider>
-      {children}
-    </DensityProvider>
+    <AuthProvider>
+      <DensityProvider>
+        {children}
+      </DensityProvider>
+    </AuthProvider>
   )
 }

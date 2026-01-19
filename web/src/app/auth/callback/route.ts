@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const code = requestUrl.searchParams.get('code')
   const token_hash = requestUrl.searchParams.get('token_hash')
   const type = requestUrl.searchParams.get('type')
-  const next = requestUrl.searchParams.get('next') ?? '/admin'
+  const next = requestUrl.searchParams.get('next') ?? '/'
 
   const cookieStore = await cookies()
 
@@ -53,5 +53,9 @@ export async function GET(request: Request) {
   }
 
   // If we get here, something went wrong
-  return NextResponse.redirect(new URL('/admin/login?error=auth_error', requestUrl.origin))
+  // Redirect to appropriate login page based on destination
+  const loginUrl = next.startsWith('/admin')
+    ? '/admin/login?error=auth_error'
+    : '/logg-inn?error=auth_error'
+  return NextResponse.redirect(new URL(loginUrl, requestUrl.origin))
 }

@@ -7,6 +7,11 @@ export type Json =
   | Json[]
 
 export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.1"
+  }
   public: {
     Tables: {
       age_classes: {
@@ -131,6 +136,13 @@ export type Database = {
             referencedRelation: "clubs"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "athletes_current_club_id_fkey"
+            columns: ["current_club_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["club_id"]
+          },
         ]
       }
       club_memberships: {
@@ -158,12 +170,42 @@ export type Database = {
           id?: string
           to_date?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "club_memberships_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "club_memberships_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "club_memberships_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "club_memberships_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["club_id"]
+          },
+        ]
       }
       clubs: {
         Row: {
           active: boolean | null
           city: string | null
+          club_type: Database["public"]["Enums"]["club_type"] | null
           county: string | null
           created_at: string | null
           federation_id: string | null
@@ -177,6 +219,7 @@ export type Database = {
         Insert: {
           active?: boolean | null
           city?: string | null
+          club_type?: Database["public"]["Enums"]["club_type"] | null
           county?: string | null
           created_at?: string | null
           federation_id?: string | null
@@ -190,6 +233,7 @@ export type Database = {
         Update: {
           active?: boolean | null
           city?: string | null
+          club_type?: Database["public"]["Enums"]["club_type"] | null
           county?: string | null
           created_at?: string | null
           federation_id?: string | null
@@ -200,7 +244,15 @@ export type Database = {
           updated_at?: string | null
           website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "clubs_federation_id_fkey"
+            columns: ["federation_id"]
+            isOneToOne: false
+            referencedRelation: "federations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       event_specifications: {
         Row: {
@@ -260,7 +312,29 @@ export type Database = {
           updated_at?: string | null
           water_jump?: boolean | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "event_specifications_age_class_id_fkey"
+            columns: ["age_class_id"]
+            isOneToOne: false
+            referencedRelation: "age_classes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "event_specifications_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "event_specifications_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["event_id"]
+          },
+        ]
       }
       events: {
         Row: {
@@ -338,7 +412,15 @@ export type Database = {
           short_name?: string | null
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "federations_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "federations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       import_batches: {
         Row: {
@@ -473,6 +555,77 @@ export type Database = {
           venue?: string | null
           website?: string | null
         }
+        Relationships: [
+          {
+            foreignKeyName: "meets_organizer_club_id_fkey"
+            columns: ["organizer_club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meets_organizer_club_id_fkey"
+            columns: ["organizer_club_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["club_id"]
+          },
+          {
+            foreignKeyName: "meets_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["season_id"]
+          },
+          {
+            foreignKeyName: "meets_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "seasons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          ai_requests_reset_at: string | null
+          ai_requests_today: number | null
+          avatar_url: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          stripe_customer_id: string | null
+          subscription_expires_at: string | null
+          subscription_tier: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          ai_requests_reset_at?: string | null
+          ai_requests_today?: number | null
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          stripe_customer_id?: string | null
+          subscription_expires_at?: string | null
+          subscription_tier?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          ai_requests_reset_at?: string | null
+          ai_requests_today?: number | null
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          stripe_customer_id?: string | null
+          subscription_expires_at?: string | null
+          subscription_tier?: string | null
+          updated_at?: string | null
+        }
         Relationships: []
       }
       results: {
@@ -581,7 +734,99 @@ export type Database = {
           verified_by?: string | null
           wind?: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["club_id"]
+          },
+          {
+            foreignKeyName: "results_competition_age_class_id_fkey"
+            columns: ["competition_age_class_id"]
+            isOneToOne: false
+            referencedRelation: "age_classes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_import_batch_id_fkey"
+            columns: ["import_batch_id"]
+            isOneToOne: false
+            referencedRelation: "import_batches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "meets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["meet_id"]
+          },
+          {
+            foreignKeyName: "results_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["season_id"]
+          },
+          {
+            foreignKeyName: "results_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "seasons"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "sources"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       seasons: {
         Row: {
@@ -695,7 +940,50 @@ export type Database = {
           result_type: Database["public"]["Enums"]["result_type"] | null
           wind: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "meets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["meet_id"]
+          },
+        ]
       }
       personal_bests_detailed: {
         Row: {
@@ -718,7 +1006,50 @@ export type Database = {
           result_type: Database["public"]["Enums"]["result_type"] | null
           wind: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "meets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["meet_id"]
+          },
+        ]
       }
       results_full: {
         Row: {
@@ -729,6 +1060,7 @@ export type Database = {
           birth_date: string | null
           club_id: string | null
           club_name: string | null
+          club_type: Database["public"]["Enums"]["club_type"] | null
           date: string | null
           event_category: Database["public"]["Enums"]["event_category"] | null
           event_code: string | null
@@ -780,7 +1112,64 @@ export type Database = {
           season_name: string | null
           wind: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "meets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["meet_id"]
+          },
+          {
+            foreignKeyName: "results_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["season_id"]
+          },
+          {
+            foreignKeyName: "results_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "seasons"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Functions: {
@@ -788,6 +1177,7 @@ export type Database = {
         Args: { birth_date: string; result_date: string }
         Returns: number
       }
+      check_is_admin: { Args: { check_user_id: string }; Returns: boolean }
       format_performance: {
         Args: {
           perf_value: number
@@ -810,7 +1200,8 @@ export type Database = {
         Args: { birth_date: string; competition_date: string }
         Returns: string
       }
-      is_admin: { Args: Record<PropertyKey, never>; Returns: boolean }
+      is_admin: { Args: never; Returns: boolean }
+      is_premium: { Args: { check_user_id: string }; Returns: boolean }
       parse_performance: {
         Args: {
           perf: string
@@ -820,6 +1211,7 @@ export type Database = {
       }
     }
     Enums: {
+      club_type: "athletics" | "company" | "school" | "foreign" | "other"
       competition_round:
         | "heat"
         | "quarter"
@@ -854,23 +1246,25 @@ export type Database = {
   }
 }
 
-type DefaultSchema = Database[Extract<keyof Database, "public">]
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-        Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof Database
+  schema: keyof DatabaseWithoutInternals
 }
-  ? (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-      Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R
     }
     ? R
@@ -888,16 +1282,16 @@ export type Tables<
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof Database
+  schema: keyof DatabaseWithoutInternals
 }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I
     }
     ? I
@@ -913,16 +1307,16 @@ export type TablesInsert<
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends {
-  schema: keyof Database
+  schema: keyof DatabaseWithoutInternals
 }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U
     }
     ? U
@@ -938,16 +1332,71 @@ export type TablesUpdate<
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never = never,
 > = DefaultSchemaEnumNameOrOptions extends {
-  schema: keyof Database
+  schema: keyof DatabaseWithoutInternals
 }
-  ? Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
     ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {
+      club_type: ["athletics", "company", "school", "foreign", "other"],
+      competition_round: [
+        "heat",
+        "quarter",
+        "semi",
+        "final",
+        "a_final",
+        "b_final",
+        "qualification",
+      ],
+      event_category: [
+        "sprint",
+        "middle_distance",
+        "long_distance",
+        "hurdles",
+        "steeplechase",
+        "relay",
+        "jumps",
+        "throws",
+        "combined",
+        "race_walk",
+      ],
+      meet_level: [
+        "local",
+        "regional",
+        "national",
+        "championship",
+        "international",
+      ],
+      result_status: ["OK", "DNS", "DNF", "DQ", "NM"],
+      result_type: ["time", "distance", "height", "points"],
+    },
+  },
+} as const
