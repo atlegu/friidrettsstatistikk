@@ -117,17 +117,27 @@ async function getBestResult(eventId: string, eventCode: string, gender: string,
     query = query.in("age_group", JUNIOR_AGE_GROUPS)
   }
 
-  const { data } = await query
-    .order("performance_value", { ascending })
-
-  if (!data || data.length === 0) return null
-
   // Check if this is a sprint event (manual times should be excluded)
   const isSprintEvent = SPRINT_EVENT_CODES.includes(eventCode)
 
-  // Find the best result, skipping manual times for sprint events
+  // For non-sprint events, just get the best result directly
+  if (!isSprintEvent) {
+    const { data } = await query
+      .order("performance_value", { ascending })
+      .limit(1)
+    return data?.[0] ?? null
+  }
+
+  // For sprint events, get top 100 and filter out manual times
+  const { data } = await query
+    .order("performance_value", { ascending })
+    .limit(100)
+
+  if (!data || data.length === 0) return null
+
+  // Find the best result, skipping manual times
   for (const result of data) {
-    if (isSprintEvent && isManualTime(result.performance)) {
+    if (isManualTime(result.performance)) {
       continue
     }
     return result

@@ -74,33 +74,46 @@ async function getAllTimeResults(
     query = query.eq("age_group", ageGroup)
   }
 
-  const { data } = await query.order("performance_value", { ascending })
-
-  if (!data) return []
-
   // Check if this is a sprint event (manual times should be excluded)
   const isSprintEvent = SPRINT_EVENTS.includes(eventName)
 
-  // Filter to best result per athlete
+  // For non-sprint events, use a simpler query with limit
+  if (!isSprintEvent) {
+    const { data } = await query
+      .order("performance_value", { ascending })
+      .limit(limit * 3) // Get extra to allow for duplicates per athlete
+
+    if (!data) return []
+
+    // Filter to best result per athlete
+    const bestByAthlete = new Map<string, typeof data[0]>()
+    for (const result of data) {
+      if (!result.athlete_id) continue
+      if (!bestByAthlete.has(result.athlete_id)) {
+        bestByAthlete.set(result.athlete_id, result)
+      }
+    }
+    return Array.from(bestByAthlete.values()).slice(0, limit)
+  }
+
+  // For sprint events, get more results to filter out manual times
+  const { data } = await query
+    .order("performance_value", { ascending })
+    .limit(limit * 10)
+
+  if (!data) return []
+
+  // Filter to best result per athlete, skipping manual times
   const bestByAthlete = new Map<string, typeof data[0]>()
   for (const result of data) {
     if (!result.athlete_id) continue
-
-    // Skip manual times for sprint events
-    if (isSprintEvent && isManualTime(result.performance)) {
-      continue
-    }
-
-    const existing = bestByAthlete.get(result.athlete_id)
-    if (!existing) {
+    if (isManualTime(result.performance)) continue
+    if (!bestByAthlete.has(result.athlete_id)) {
       bestByAthlete.set(result.athlete_id, result)
     }
-    // Since data is already sorted, first occurrence is best
   }
 
-  // Convert to array and take top N
-  const results = Array.from(bestByAthlete.values())
-  return results.slice(0, limit)
+  return Array.from(bestByAthlete.values()).slice(0, limit)
 }
 
 export default async function AllTimePage({
