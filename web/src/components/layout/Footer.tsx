@@ -87,7 +87,7 @@ export function Footer() {
 
         <div className="mt-8 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Friidrett.live. Data fra Norges Friidrettsforbund.
+            © Friidrettsresultater.no utviklet av Athlete Mindset Inc. for Norges Friidrettsforbund
           </p>
         </div>
       </div>
