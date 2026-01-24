@@ -1,0 +1,31 @@
+# Robots.txt for friidrettsresultater.no
+# Limit crawler frequency to reduce bandwidth
+
+User-agent: *
+Allow: /
+Allow: /statistikk
+Allow: /utover
+Allow: /klubber
+Allow: /stevner
+
+# Rate limit crawlers
+Crawl-delay: 10
+
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://www.friidrettsresultater.no/sitemap.xml

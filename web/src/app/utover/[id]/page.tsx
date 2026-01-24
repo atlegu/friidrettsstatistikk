@@ -4,7 +4,6 @@ import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { AthleteHeader } from "@/components/athlete/AthleteHeader"
-import { AIAnalysis } from "@/components/athlete/AIAnalysis"
 import { PersonalBestsSection } from "@/components/athlete/PersonalBestsSection"
 import { ResultsSection } from "@/components/athlete/ResultsSection"
 import { ProgressionChart } from "@/components/athlete/ProgressionChart"
@@ -296,11 +295,6 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
 
       {/* Main content - "At a glance" layout */}
       <div className="mt-6 space-y-6">
-        {/* AI Analysis Section */}
-        <section className="lg:max-w-md">
-          <AIAnalysis athleteId={id} athleteName={fullName} />
-        </section>
-
         {/* Section 1: Personal Bests (full width, most important) */}
         <section>
           <h2 className="mb-3">Personlige rekorder</h2>

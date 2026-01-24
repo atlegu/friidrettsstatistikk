@@ -69,9 +69,21 @@ export function AIAnalysis({ athleteId, athleteName }: AIAnalysisProps) {
     }
   }
 
-  // Loading state
+  // Loading state - show skeleton to avoid hydration mismatch
   if (authLoading) {
-    return null
+    return (
+      <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-200 dark:border-purple-800">
+        <CardHeader className="pb-2">
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Sparkles className="h-4 w-4 text-purple-600" />
+            AI-analyse
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-16 animate-pulse bg-muted rounded" />
+        </CardContent>
+      </Card>
+    )
   }
 
   // Not logged in - show teaser

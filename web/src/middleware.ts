@@ -1,7 +1,35 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+// Block aggressive bots
+const BLOCKED_BOTS = [
+  'AhrefsBot',
+  'SemrushBot',
+  'MJ12bot',
+  'DotBot',
+  'BLEXBot',
+  'PetalBot',
+  'Bytespider',
+  'GPTBot',
+  'ClaudeBot',
+  'anthropic-ai',
+  'CCBot',
+  'DataForSeoBot',
+  'Amazonbot',
+  'magpie-crawler',
+  'Yandex',
+  'bingbot',  // Optional: block Bing
+]
+
 export async function middleware(request: NextRequest) {
+  // Block aggressive bots
+  const userAgent = request.headers.get('user-agent') || ''
+  const isBot = BLOCKED_BOTS.some(bot => userAgent.toLowerCase().includes(bot.toLowerCase()))
+
+  if (isBot) {
+    return new NextResponse('Blocked', { status: 403 })
+  }
+
   // Skip auth callback route - it needs to process the code/token first
   if (request.nextUrl.pathname.startsWith('/auth/callback')) {
     return NextResponse.next()

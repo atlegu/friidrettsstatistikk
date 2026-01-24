@@ -77,10 +77,11 @@ async function getTopResults(
   const isSprintEvent = SPRINT_EVENTS.includes(eventName)
 
   // For non-sprint events, use a simpler query with limit
+  // Use high multiplier because top athletes may have many results
   if (!isSprintEvent) {
     const { data } = await query
       .order("performance_value", { ascending })
-      .limit(limit * 3) // Get extra to allow for duplicates per athlete
+      .limit(limit * 20)
 
     if (!data) return []
 
@@ -98,7 +99,7 @@ async function getTopResults(
   // For sprint events, get more results to filter out manual times
   const { data } = await query
     .order("performance_value", { ascending })
-    .limit(limit * 10)
+    .limit(limit * 50)
 
   if (!data) return []
 
