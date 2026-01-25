@@ -413,7 +413,7 @@ function SeasonBestsSummary({
       </table>
       {sortedYears.length > 10 && (
         <p className="mt-2 text-[12px] text-[var(--text-muted)]">
-          + {sortedYears.length - 10} flere sesonger
+          + flere sesonger
         </p>
       )}
     </div>
