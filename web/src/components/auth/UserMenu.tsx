@@ -28,7 +28,7 @@ export function UserMenu() {
 
   if (!user) {
     return (
-      <Button variant="ghost" size="sm" className="ml-2" asChild>
+      <Button variant="default" size="sm" className="ml-2" asChild>
         <Link href="/logg-inn">Logg inn</Link>
       </Button>
     )
