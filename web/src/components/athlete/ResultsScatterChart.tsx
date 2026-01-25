@@ -37,6 +37,7 @@ interface Result {
 interface ResultsScatterChartProps {
   results: Result[]
   events: { id: string; name: string; code: string; result_type: string }[]
+  pbResultIds?: Set<string>
 }
 
 // Detect divisor based on typical value ranges
@@ -106,7 +107,7 @@ function dateToTimestamp(dateStr: string): number {
   return Date.UTC(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10))
 }
 
-export function ResultsScatterChart({ results, events }: ResultsScatterChartProps) {
+export function ResultsScatterChart({ results, events, pbResultIds }: ResultsScatterChartProps) {
   const router = useRouter()
   const [selectedEventId, setSelectedEventId] = useState<string>(
     events.length > 0 ? events[0].id : ""
@@ -124,20 +125,22 @@ export function ResultsScatterChart({ results, events }: ResultsScatterChartProp
 
     return eventResults
       .map((r) => ({
+        id: r.id,
         date: r.date,
         timestamp: dateToTimestamp(r.date),
         value: r.performance_value as number,
         performance: r.performance,
         meet_id: r.meet_id,
         meet_name: r.meet_name,
-        is_pb: r.is_pb,
+        // Use pbResultIds if available, otherwise fall back to is_pb field
+        is_pb: pbResultIds ? pbResultIds.has(r.id) : r.is_pb,
         is_sb: r.is_sb,
         is_national_record: r.is_national_record,
         wind: r.wind,
         place: r.place,
       }))
       .sort((a, b) => a.timestamp - b.timestamp)
-  }, [results, selectedEventId])
+  }, [results, selectedEventId, pbResultIds])
 
   if (events.length === 0) {
     return (

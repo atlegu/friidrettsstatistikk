@@ -35,6 +35,7 @@ interface ResultsSectionProps {
   results: Result[]
   seasons: number[]
   events: { id: string; name: string; code: string }[]
+  pbResultIds?: Set<string>
 }
 
 function SearchIcon({ className }: { className?: string }) {
@@ -73,7 +74,7 @@ function formatRound(round: string | null): string | null {
   return roundNames[round] || round
 }
 
-export function ResultsSection({ results, seasons, events }: ResultsSectionProps) {
+export function ResultsSection({ results, seasons, events, pbResultIds }: ResultsSectionProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState("")
@@ -114,7 +115,9 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
       if (indoorParam === "false" && r.meet_indoor) {
         return false
       }
-      if (pbOnlyParam && !r.is_pb) {
+      // Use pbResultIds if available, otherwise fall back to is_pb field
+      const isPB = pbResultIds ? pbResultIds.has(r.id) : r.is_pb
+      if (pbOnlyParam && !isPB) {
         return false
       }
       if (finalsOnlyParam && r.round !== "final" && r.round !== "a_final") {
@@ -358,16 +361,23 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
                   </td>
                   <td className="whitespace-nowrap">{result.event_name}</td>
                   <td className="whitespace-nowrap">
-                    <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
-                    {result.is_pb && (
-                      <span className="badge-pb ml-1.5">PB</span>
-                    )}
-                    {result.is_sb && !result.is_pb && (
-                      <span className="badge-sb ml-1.5">SB</span>
-                    )}
-                    {result.is_national_record && (
-                      <span className="badge-nr ml-1.5">NR</span>
-                    )}
+                    {(() => {
+                      const isPB = pbResultIds ? pbResultIds.has(result.id) : result.is_pb
+                      return (
+                        <>
+                          <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
+                          {isPB && (
+                            <span className="badge-pb ml-1.5">PB</span>
+                          )}
+                          {result.is_sb && !isPB && (
+                            <span className="badge-sb ml-1.5">SB</span>
+                          )}
+                          {result.is_national_record && (
+                            <span className="badge-nr ml-1.5">NR</span>
+                          )}
+                        </>
+                      )
+                    })()}
                   </td>
                   <td className="col-numeric hidden text-[var(--text-muted)] sm:table-cell">
                     {formatWind(result.wind) || "–"}

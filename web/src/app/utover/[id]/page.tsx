@@ -265,6 +265,13 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
     event_sort_order: pb.event_sort_order,
   }))
 
+  // Create Set of PB result IDs for marking in charts/tables
+  const pbResultIds = new Set(
+    personalBests
+      .map((pb) => pb.result_id)
+      .filter((id): id is string => id !== null && id !== undefined)
+  )
+
   return (
     <div className="container py-6">
       {/* Breadcrumbs */}
@@ -329,7 +336,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
         {/* Section 3: Scatter plot of all results */}
         <section>
           <Suspense fallback={<div className="h-[400px] bg-muted animate-pulse rounded" />}>
-            <ResultsScatterChart results={mappedResults} events={events} />
+            <ResultsScatterChart results={mappedResults} events={events} pbResultIds={pbResultIds} />
           </Suspense>
         </section>
 
@@ -341,6 +348,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
               results={mappedResults}
               seasons={seasons}
               events={events.map((e) => ({ id: e.id, name: e.name, code: e.code }))}
+              pbResultIds={pbResultIds}
             />
           </Suspense>
         </section>
