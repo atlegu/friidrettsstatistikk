@@ -7,7 +7,7 @@ import { ChevronUp, ChevronDown } from "lucide-react"
 import { SingleFilterChip } from "@/components/ui/filter-chips"
 import { formatPerformance } from "@/lib/format-performance"
 
-type SortField = "date" | "performance"
+type SortField = "date" | "event" | "performance"
 type SortDirection = "asc" | "desc"
 
 interface Result {
@@ -138,6 +138,9 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
         const dateA = new Date(a.date).getTime()
         const dateB = new Date(b.date).getTime()
         return sortDirection === "desc" ? dateB - dateA : dateA - dateB
+      } else if (sortField === "event") {
+        const comparison = (a.event_name || "").localeCompare(b.event_name || "", "no")
+        return sortDirection === "desc" ? -comparison : comparison
       } else if (sortField === "performance" && isSingleEventSelected) {
         const valA = a.performance_value ?? 0
         const valB = b.performance_value ?? 0
@@ -315,7 +318,17 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
                     )}
                   </button>
                 </th>
-                <th>Øvelse</th>
+                <th>
+                  <button
+                    onClick={() => toggleSort("event")}
+                    className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
+                  >
+                    Øvelse
+                    {sortField === "event" && (
+                      sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
+                    )}
+                  </button>
+                </th>
                 <th>
                   {isSingleEventSelected ? (
                     <button
