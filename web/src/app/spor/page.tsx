@@ -84,6 +84,75 @@ export default function AskPage() {
     setQuestion(example)
   }
 
+  // Show premium required message immediately if not logged in or not premium
+  if (!authLoading && (!user || !isPremium)) {
+    return (
+      <div className="container py-6">
+        <Breadcrumbs items={[{ label: "Spør statistikken" }]} />
+
+        <h1 className="mt-4 mb-2">Spør statistikken</h1>
+        <p className="text-muted-foreground mb-6">
+          Still spørsmål om norsk friidrettsstatistikk og få svar fra AI-en vår.
+        </p>
+
+        <Card className="max-w-xl mx-auto bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-200 dark:border-purple-800">
+          <CardHeader className="text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900">
+              <Crown className="h-8 w-8 text-purple-600" />
+            </div>
+            <CardTitle className="text-xl">Premium-funksjon</CardTitle>
+            <CardDescription className="text-base">
+              AI-spørringer krever et Premium-abonnement
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4 text-center">
+            <p className="text-muted-foreground">
+              Med Premium kan du stille spørsmål direkte til statistikkdatabasen og få svar fra vår AI.
+            </p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
+              {!user ? (
+                <>
+                  <Button asChild size="lg">
+                    <Link href="/logg-inn?redirect=/spor">
+                      Logg inn
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href="/abonnement">
+                      Se Premium-fordeler
+                    </Link>
+                  </Button>
+                </>
+              ) : (
+                <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700">
+                  <Link href="/abonnement">
+                    <Crown className="mr-2 h-4 w-4" />
+                    Oppgrader til Premium
+                  </Link>
+                </Button>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Example questions preview */}
+        <div className="mt-8 max-w-xl mx-auto">
+          <h2 className="text-lg font-semibold mb-4 text-center">Eksempler på spørsmål du kan stille</h2>
+          <div className="space-y-2">
+            {EXAMPLE_QUESTIONS.map((example, i) => (
+              <div
+                key={i}
+                className="text-sm p-3 rounded-md border bg-muted/50 text-muted-foreground"
+              >
+                "{example}"
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (authLoading) {
     return (
       <div className="container flex min-h-[50vh] items-center justify-center py-6">
@@ -121,38 +190,23 @@ export default function AskPage() {
                 className="resize-none"
               />
 
-              {!user ? (
-                <Button asChild>
-                  <Link href="/logg-inn?redirect=/spor">
-                    Logg inn for å stille spørsmål
-                  </Link>
-                </Button>
-              ) : !isPremium ? (
-                <Button asChild>
-                  <Link href="/abonnement">
-                    <Crown className="mr-2 h-4 w-4" />
-                    Oppgrader til Premium
-                  </Link>
-                </Button>
-              ) : (
-                <Button
-                  onClick={handleAsk}
-                  disabled={!question.trim() || loading}
-                  className="bg-purple-600 hover:bg-purple-700"
-                >
-                  {loading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Tenker...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-4 w-4" />
-                      Spør AI-en
-                    </>
-                  )}
-                </Button>
-              )}
+              <Button
+                onClick={handleAsk}
+                disabled={!question.trim() || loading}
+                className="bg-purple-600 hover:bg-purple-700"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Tenker...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Spør AI-en
+                  </>
+                )}
+              </Button>
 
               {error && (
                 <div className="rounded bg-red-50 p-3 text-sm text-red-600 dark:bg-red-950 dark:text-red-400">
@@ -203,29 +257,17 @@ export default function AskPage() {
               <CardTitle className="flex items-center gap-2 text-base">
                 <Sparkles className="h-4 w-4 text-purple-600" />
                 AI-spørringer
-                {!isPremium && <Crown className="ml-auto h-4 w-4 text-yellow-600" />}
+                <Crown className="ml-auto h-4 w-4 text-yellow-600" />
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {!user ? (
-                <p className="text-sm text-muted-foreground">
-                  Logg inn og oppgrader til Premium for å stille spørsmål til statistikkdatabasen.
+              <p className="text-sm text-muted-foreground mb-2">
+                Du kan stille spørsmål om alt i statistikkdatabasen. AI-en vil analysere dataene og gi deg et svar.
+              </p>
+              {requestsRemaining !== null && (
+                <p className="text-xs text-muted-foreground">
+                  {requestsRemaining} spørringer igjen i dag
                 </p>
-              ) : !isPremium ? (
-                <p className="text-sm text-muted-foreground">
-                  Oppgrader til Premium for å få tilgang til AI-spørringer.
-                </p>
-              ) : (
-                <>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Du kan stille spørsmål om alt i statistikkdatabasen. AI-en vil analysere dataene og gi deg et svar.
-                  </p>
-                  {requestsRemaining !== null && (
-                    <p className="text-xs text-muted-foreground">
-                      {requestsRemaining} spørringer igjen i dag
-                    </p>
-                  )}
-                </>
               )}
             </CardContent>
           </Card>
