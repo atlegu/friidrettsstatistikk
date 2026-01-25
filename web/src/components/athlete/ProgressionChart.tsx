@@ -210,8 +210,8 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                     r: 6,
                     fill: "var(--accent-primary)",
                     cursor: "pointer",
-                    onClick: (_, payload) => {
-                      const data = payload?.payload
+                    onClick: (_, payload: unknown) => {
+                      const data = (payload as { payload?: { meet_id?: string } })?.payload
                       if (data?.meet_id) {
                         router.push(`/stevner/${data.meet_id}`)
                       }

@@ -3,8 +3,12 @@
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
+import { ChevronUp, ChevronDown } from "lucide-react"
 import { SingleFilterChip } from "@/components/ui/filter-chips"
 import { formatPerformance } from "@/lib/format-performance"
+
+type SortField = "date" | "performance"
+type SortDirection = "asc" | "desc"
 
 interface Result {
   id: string
@@ -73,6 +77,8 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState("")
+  const [sortField, setSortField] = useState<SortField>("date")
+  const [sortDirection, setSortDirection] = useState<SortDirection>("desc")
 
   // Default to showing all results
   const yearParam = searchParams.get("year") || "all"
@@ -81,9 +87,21 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
   const pbOnlyParam = searchParams.get("pb") === "true"
   const finalsOnlyParam = searchParams.get("finals") === "true"
 
+  // Check if a single event is selected (for performance sorting)
+  const isSingleEventSelected = eventParam !== "all"
+
+  // Get the result_type for the selected event
+  const selectedEventResultType = useMemo(() => {
+    if (!isSingleEventSelected) return null
+    const selectedEvent = events.find(e => e.id === eventParam)
+    // Find a result with this event to get the result_type
+    const sampleResult = results.find(r => r.event_id === eventParam)
+    return sampleResult?.result_type || "time"
+  }, [eventParam, events, results, isSingleEventSelected])
+
   // Filter results
   const filteredResults = useMemo(() => {
-    return results.filter((r) => {
+    const filtered = results.filter((r) => {
       if (yearParam !== "all" && r.season_year?.toString() !== yearParam) {
         return false
       }
@@ -113,7 +131,39 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
       }
       return true
     })
-  }, [results, yearParam, eventParam, indoorParam, pbOnlyParam, finalsOnlyParam, searchQuery])
+
+    // Sort results
+    return filtered.sort((a, b) => {
+      if (sortField === "date") {
+        const dateA = new Date(a.date).getTime()
+        const dateB = new Date(b.date).getTime()
+        return sortDirection === "desc" ? dateB - dateA : dateA - dateB
+      } else if (sortField === "performance" && isSingleEventSelected) {
+        const valA = a.performance_value ?? 0
+        const valB = b.performance_value ?? 0
+        // For time events, lower is better. For distance/height/points, higher is better.
+        const isTimeEvent = selectedEventResultType === "time"
+        if (sortDirection === "desc") {
+          // Best first
+          return isTimeEvent ? valA - valB : valB - valA
+        } else {
+          // Worst first
+          return isTimeEvent ? valB - valA : valA - valB
+        }
+      }
+      return 0
+    })
+  }, [results, yearParam, eventParam, indoorParam, pbOnlyParam, finalsOnlyParam, searchQuery, sortField, sortDirection, isSingleEventSelected, selectedEventResultType])
+
+  // Toggle sort
+  const toggleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === "desc" ? "asc" : "desc")
+    } else {
+      setSortField(field)
+      setSortDirection("desc")
+    }
+  }
 
   const updateSearchParams = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -254,9 +304,33 @@ export function ResultsSection({ results, seasons, events }: ResultsSectionProps
           <table>
             <thead>
               <tr>
-                <th>Dato</th>
+                <th>
+                  <button
+                    onClick={() => toggleSort("date")}
+                    className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
+                  >
+                    Dato
+                    {sortField === "date" && (
+                      sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
+                    )}
+                  </button>
+                </th>
                 <th>Øvelse</th>
-                <th>Resultat</th>
+                <th>
+                  {isSingleEventSelected ? (
+                    <button
+                      onClick={() => toggleSort("performance")}
+                      className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
+                    >
+                      Resultat
+                      {sortField === "performance" && (
+                        sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
+                      )}
+                    </button>
+                  ) : (
+                    "Resultat"
+                  )}
+                </th>
                 <th className="col-numeric hidden sm:table-cell">Vind</th>
                 <th className="col-numeric hidden md:table-cell">Plass</th>
                 <th className="hidden lg:table-cell">Runde</th>
