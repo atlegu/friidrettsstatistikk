@@ -458,13 +458,7 @@
     border-bottom: 1px solid var(--border-default);
   }
 
-  /* Sticky table header - sticks below filter bar */
-  .table-sticky thead {
-    position: sticky;
-    top: 100px; /* Below header + filter bar */
-    z-index: 8;
-  }
-
+  /* Table header styling (not sticky - filter bar provides context) */
   .table-sticky thead th {
     background-color: var(--bg-muted);
   }
