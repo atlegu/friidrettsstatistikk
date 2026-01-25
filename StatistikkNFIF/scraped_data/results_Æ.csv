@@ -1,0 +1,27 @@
+athlete_id,event,is_outdoor,year,age,result,wind,placement,club,date,venue,competition,is_approved,rejection_reason
+47094,Lengde uten tilløp,False,2018,14,"1,64",,18,Rosendal Turnlag,2018-03-13,Rosendal Samfunnshus,"Rosendal, Hopp u/t",True,
+55076,60 meter,True,2019,11,"12,007IL i BUL Tromsø22.05.19Tromsø, Treningsstevne 2Manglende informasjon om vind",,7,IL i BUL Tromsø,2019-05-22,Valhall Stadion,"Tromsø, Treningsstevne 2",False,Manglende informasjon om vind
+55076,60 meter,True,2019,11,"12,18","+2,2",5,IL i BUL Tromsø,2019-09-16,Valhall Stadion,"Tromsø, Treningsstevne 2019-4",False,For mye vind/Assisting wind
+55076,Høyde,True,2019,11,"0,90",,5,IL i BUL Tromsø,2019-05-22,Valhall Stadion,"Tromsø, Treningsstevne 2",True,
+55076,"Lengde (Sone 0,5m)",True,2019,11,"2,48","+0,6",3,IL i BUL Tromsø,2019-09-16,Valhall Stadion,"Tromsø, Treningsstevne 2019-4",True,
+55076,"Kule 2,0kg",True,2019,11,"5,97",,2,IL i BUL Tromsø,2019-09-16,Valhall Stadion,"Tromsø, Treningsstevne 2019-4",True,
+55076,"Kule 2,0kg",True,2019,11,"5,62",,3,IL i BUL Tromsø,2019-05-22,Valhall Stadion,"Tromsø, Treningsstevne 2",True,
+55076,Spyd 400gram,True,2019,11,"5,75",,2,IL i BUL Tromsø,2019-09-16,Valhall Stadion,"Tromsø, Treningsstevne 2019-4",True,
+55076,60 meter,False,2019,11,"11,73",,7-h1,IL i BUL Tromsø,2019-02-02,Tromsøhallen,"Tromsø, Tromsølekene innendørs 2019",True,
+55076,"60 meter hekk (68,0cm)",False,2019,11,"20,81",,3-h3,IL i BUL Tromsø,2019-02-03,Tromsøhallen,"Tromsø, Tromsølekene innendørs 2019",True,
+55076,Høyde,False,2019,11,"0,90",,7,IL i BUL Tromsø,2019-02-03,Tromsøhallen,"Tromsø, Tromsølekene innendørs 2019",True,
+55076,"Lengde (Sone 0,5m)",False,2019,11,"2,09",,13,IL i BUL Tromsø,2019-02-02,Tromsøhallen,"Tromsø, Tromsølekene innendørs 2019",True,
+55076,"Kule 2,0kg",False,2019,11,"5,95",,4,IL i BUL Tromsø,2019-02-03,Tromsøhallen,"Tromsø, Tromsølekene innendørs 2019",True,
+57720,60 meter,True,2021,13,"9,69","-1,2",2,Romerike Friidrett,2021-06-12,Romerike Friidrettstadion,"Lillestrøm, Klubbstevne",True,
+57720,200 meter,True,2021,13,"32,56","-0,6",2,Romerike Friidrett,2021-06-12,Romerike Friidrettstadion,"Lillestrøm, Klubbstevne",True,
+57720,"Lengde (Sone 0,5m)",True,2019,11,"3,40","-2,0",1,Romerike Friidrett,2019-09-27,Romerike Friidrettstadion,"Lillestrøm, Treningsstevne 10-14 år",True,
+57720,"Lengde (Sone 0,5m)",True,2019,11,"3,25","+0,1",(-),Romerike Friidrett,2019-05-20,Romerike Friidrettstadion,"Lillestrøm, Treningsstevne",True,
+57720,"Lengde (Sone 0,5m)",True,2019,11,"3,27","+2,2",1,Romerike Friidrett,2019-05-20,Romerike Friidrettstadion,"Lillestrøm, Treningsstevne",False,For mye vind/Assisting wind
+57720,"Kule 2,0kg",True,2019,11,"4,75",,7,Romerike Friidrett,2019-09-27,Romerike Friidrettstadion,"Lillestrøm, Treningsstevne 10-14 år",True,
+57720,"Kule 2,0kg",True,2019,11,"4,58",,6,Romerike Friidrett,2019-05-20,Romerike Friidrettstadion,"Lillestrøm, Treningsstevne",True,
+57720,"Slengball 1,0Kg",True,2019,11,"7,40",,3,Romerike Friidrett,2019-05-20,Romerike Friidrettstadion,"Lillestrøm, Treningsstevne",True,
+57720,Høyde,False,2019,11,"1,00",,1,Romerike Friidrett,2019-12-06,Skedsmohallen,"Lillestrøm, Treningsstevne",True,
+57720,Lengde uten tilløp,False,2019,11,"1,77",,1,Romerike Friidrett,2019-12-06,Skedsmohallen,"Lillestrøm, Treningsstevne",True,
+57720,"Kule 2,0kg",False,2019,11,"5,10",,1,Romerike Friidrett,2019-12-06,Skedsmohallen,"Lillestrøm, Treningsstevne",True,
+66985,200 meter,True,1982,18,"26,5","+3,9",1,Fana IL,1982-05-26,,Knarvik,False,For mye vind/Assisting wind
+66985,400 meter,True,1980,16,"1,01,4",,3,Fana IL,1980-09-21,,Bergen/Fa,True,

@@ -1,0 +1,10 @@
+# Ignore scraper and other large folders
+scraper/
+StatistikkNFIF/
+StatistikkNFIF.zip
+docs/
+ovelser/
+*.pdf
+*.docx
+*.md
+.git/

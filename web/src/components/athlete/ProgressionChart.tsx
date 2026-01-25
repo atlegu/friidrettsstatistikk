@@ -1,6 +1,8 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import {
   LineChart,
   Line,
@@ -20,6 +22,8 @@ interface SeasonBest {
   result_type: string
   performance: string
   performance_value: number
+  meet_id?: string
+  meet_name?: string
 }
 
 interface ProgressionChartProps {
@@ -65,6 +69,7 @@ function formatYAxisTick(value: number, resultType: string): string {
 }
 
 export function ProgressionChart({ seasonBests, events }: ProgressionChartProps) {
+  const router = useRouter()
   const [selectedEventId, setSelectedEventId] = useState<string>(
     events.length > 0 ? events[0].id : ""
   )
@@ -102,6 +107,7 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
         value: sb.performance_value,
         performance: sb.performance,
         displayValue: formatPerformanceForChart(sb.performance_value, resultType),
+        meet_id: sb.meet_id,
       }))
   }, [seasonBests, selectedEventId, resultType])
 
@@ -183,6 +189,11 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                         <div className="rounded border bg-[var(--bg-surface)] px-2 py-1.5 shadow-sm">
                           <div className="text-[12px] font-semibold">{data.year}</div>
                           <div className="perf-value text-[13px]">{formatPerformance(data.performance, resultType)}</div>
+                          {data.meet_id && (
+                            <div className="mt-1 text-[10px] text-[var(--accent-primary)]">
+                              Klikk for å gå til stevnet →
+                            </div>
+                          )}
                         </div>
                       )
                     }
@@ -194,8 +205,18 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                   dataKey="value"
                   stroke="var(--accent-primary)"
                   strokeWidth={2}
-                  dot={{ fill: "var(--accent-primary)", strokeWidth: 2, r: 4 }}
-                  activeDot={{ r: 6, fill: "var(--accent-primary)" }}
+                  dot={{ fill: "var(--accent-primary)", strokeWidth: 2, r: 4, cursor: "pointer" }}
+                  activeDot={{
+                    r: 6,
+                    fill: "var(--accent-primary)",
+                    cursor: "pointer",
+                    onClick: (_, payload) => {
+                      const data = payload?.payload
+                      if (data?.meet_id) {
+                        router.push(`/stevner/${data.meet_id}`)
+                      }
+                    },
+                  }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -208,6 +229,7 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                 <tr>
                   <th>År</th>
                   <th className="col-numeric">Resultat</th>
+                  <th className="hidden sm:table-cell"></th>
                 </tr>
               </thead>
               <tbody>
@@ -216,6 +238,16 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
                     <td className="text-[var(--text-muted)] tabular-nums">{row.year}</td>
                     <td className="col-numeric">
                       <span className="perf-value">{formatPerformance(row.performance, resultType)}</span>
+                    </td>
+                    <td className="hidden sm:table-cell">
+                      {row.meet_id && (
+                        <Link
+                          href={`/stevner/${row.meet_id}`}
+                          className="text-[var(--accent-primary)] hover:underline text-[12px]"
+                        >
+                          Se stevne →
+                        </Link>
+                      )}
                     </td>
                   </tr>
                 ))}

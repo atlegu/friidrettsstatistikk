@@ -1,0 +1,247 @@
+ATHLETE SAMPLE SUMMARY
+============================================================
+
+ID 1: Fabian Johansen
+  Born: 2000
+  Events: 
+  Results: ~0
+  Outdoor: False, Indoor: False
+  Has disqualified: False
+  HTML size: 1,711 bytes
+
+ID 10: Martin Berntzen Engevik
+  Born: 02.02.2000
+  Events: 2000 meter hinder (91,4cm), 5000 meter, 1500 meter hinder (76,2cm), 600 meter, 3000 meter, Høyde, 2000 meter, 1 mile, Liten Ball 150gram, Tresteg uten tilløp, 60 meter hekk (76,2cm), Kule 2,0kg, 800 meter, 60 meter, 1000 meter, Kule 3,0kg, 200 meter, 40 meter, Lengde (Sone 0,5m), Høyde uten tilløp, 1500 meter, Tresteg (Sone 0,5m), 60 meter hekk (68,0cm), Lengde uten tilløp, 400 meter, Spyd 400gram
+  Results: ~284
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 61,811 bytes
+
+ID 50: Alexander Thoresen
+  Born: 24.04.1997
+  Events: Høyde, Tresteg, 60 meter hekk (84,0cm), 100 meter, 80 meter hekk (84,0cm), Spyd 600gram, 60 meter, Lengde, 200 meter, Liten Ball 150gram
+  Results: ~39
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 13,310 bytes
+
+ID 100: Christian S. Borgen
+  Born: 07.01.1995
+  Events: 
+  Results: ~0
+  Outdoor: False, Indoor: False
+  Has disqualified: False
+  HTML size: 1,729 bytes
+
+ID 500: Fredrik Myrvang
+  Born: 29.01.1997
+  Events: 400 meter, 300 meter, 1500 meter, 800 meter, 60 meter, 200 meter, 600 meter
+  Results: ~62
+  Outdoor: True, Indoor: True
+  Has disqualified: False
+  HTML size: 15,405 bytes
+
+ID 1000: Nina Katrine Brandt
+  Born: 02.11.1985
+  Events: Tresteg, 100 meter, 300 meter, 5 km, 60 meter, 200 meter, 400 meter
+  Results: ~58
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 15,651 bytes
+
+ID 5000: Vilde Kapstad Nygaard
+  Born: 02.07.1997
+  Events: 100 meter, 60 meter, Kule 3,0kg, Lengde uten tilløp, Lengde, 200 meter, 600 meter
+  Results: ~18
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 9,137 bytes
+
+ID 10000: Marie Fimreite Ulsteen
+  Born: 29.09.2000
+  Events: Høyde, Lengde (Sone 0,5m), Høyde uten tilløp, 100 meter, Kule 2,0kg, 60 meter, Lengde uten tilløp, 200 meter, 600 meter, Spyd 400gram
+  Results: ~22
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 10,658 bytes
+
+ID 15000: Sindre Kringen
+  Born: 26.07.2000
+  Events: Lengde uten tilløp, Høyde uten tilløp, 40 meter
+  Results: ~3
+  Outdoor: False, Indoor: True
+  Has disqualified: False
+  HTML size: 3,307 bytes
+
+ID 20000: Gisle Tranås
+  Born: 04.08.2002
+  Events: Lengde (Sone 0,5m), 100 meter, Kule 4,0kg, Kule 5,0kg, 60 meter, Kule 3,0kg, Lengde, 200 meter, 600 meter
+  Results: ~25
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 11,510 bytes
+
+ID 30000: Henning Hånes
+  Born: 2006
+  Events: 
+  Results: ~0
+  Outdoor: False, Indoor: False
+  Has disqualified: False
+  HTML size: 1,725 bytes
+
+ID 40000: Andreas Fikkan
+  Born: 2005
+  Events: Lengde (Sone 0,5m), 60 meter
+  Results: ~2
+  Outdoor: False, Indoor: True
+  Has disqualified: False
+  HTML size: 2,820 bytes
+
+ID 50000: Espen Nordli-Eriksen
+  Born: 31.03.1967
+  Events: 3000 meter
+  Results: ~1
+  Outdoor: True, Indoor: False
+  Has disqualified: False
+  HTML size: 2,292 bytes
+
+ID 55000: Axel Ursin Skjønhaug
+  Born: 2011
+  Events: 
+  Results: ~0
+  Outdoor: False, Indoor: False
+  Has disqualified: False
+  HTML size: 1,731 bytes
+
+ID 60000: Even Asdøl
+  Born: 2011
+  Events: 
+  Results: ~0
+  Outdoor: False, Indoor: False
+  Has disqualified: False
+  HTML size: 1,722 bytes
+
+ID 346: Simen Guttormsen
+  Born: 19.01.2001
+  Events: Diskos 600gram, Kule 5,0kg, 110 meter hekk (100cm), 80 meter hekk (84,0cm/8,5m), 80 meter hekk (84,0cm), Spyd 700gram, Lengde, 600 meter, 6 Kamp (60m-Lengde-Kule-60mhekk-Høyde-600m), Slegge 2,0kg/110cm, Høyde, 100 meter hekk (91,4cm), Spyd 800gram, Diskos 1,5kg, 60 meter hekk (91,4cm), 110 meter hekk (91,4cm), Slegge 4,0kg/119,5cm, Spyd 600gram, 7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr, Slegge 3,0Kg (119,5cm), 60 meter hekk (100cm), Diskos 750gram, Slengball 1,0Kg, 100 meter hekk (84,0cm), 10 Kamp (100m-Lengde-Kule-Høyde-400m-110mhekk-Diskos-Stav-Spyd-1500m) Jr, Kast 5 Kamp (Slegge-Kule-Diskos-Spyd-Slengball), 9 Kamp (100m hekk-Diskos-Stav-Spyd-100m-Lengde-Kule-Høyde-1000m), 60 meter hekk (106,7 cm), Tresteg, Liten Ball 150gram, 60 meter hekk (76,2cm), Kule 2,0kg, 200 meter hekk (68,0cm), Kule 4,0kg, Diskos 1,75kg, Slegge 3,0kg/110cm, 800 meter, 60 meter, 1000 meter, Kule 3,0kg, 10 Kamp (100m hekk-Diskos-Stav-Spyd-300m-100m-Lengde-Kule-Høyde-1000m), 200 meter, Diskos 1,0kg, Kappgang 1000 meter, Kule 6,0kg, 200 meter hekk (76,2cm), Lengde (Sone 0,5m), 60 meter hekk (84,0cm), 100 meter, 300 meter, 300 meter hekk (76,2cm), 1500 meter, Tresteg (Sone 0,5m), 60 meter hekk (68,0cm), Diskos 1,6kg, Høyde uten tilløp, Lengde uten tilløp, 7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom, 400 meter, Spyd 400gram, Stav
+  Results: ~745
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 155,783 bytes
+
+ID 2500: Tiril S. Absalonsen
+  Born: 2000
+  Events: Lengde uten tilløp
+  Results: ~2
+  Outdoor: False, Indoor: True
+  Has disqualified: False
+  HTML size: 2,447 bytes
+
+ID 7500: EMPTY/INVALID
+
+ID 12500: Karoline Kibsgaard
+  Born: 2001
+  Events: Høyde, Lengde (Sone 0,5m), Kule 2,0kg, 200 meter hekk (68,0cm), 600 meter
+  Results: ~6
+  Outdoor: True, Indoor: False
+  Has disqualified: True
+  HTML size: 4,982 bytes
+
+ID 17500: Selma Holmen Grimstad
+  Born: 04.08.2003
+  Events: Høyde, Diskos 600gram, Lengde (Sone 0,5m), 60 meter hekk (76,2cm), Høyde uten tilløp, 300 meter, 60 meter, Lengde uten tilløp, 200 meter, 600 meter, Spyd 400gram
+  Results: ~32
+  Outdoor: True, Indoor: True
+  Has disqualified: True
+  HTML size: 13,046 bytes
+
+ID 25000: Trygve Helgeland Pedersen
+  Born: 24.02.1998
+  Events: Lengde, 100 meter
+  Results: ~2
+  Outdoor: True, Indoor: False
+  Has disqualified: False
+  HTML size: 2,868 bytes
+
+ID 35000: EMPTY/INVALID
+
+ID 45000: Thor Erling Nupen
+  Born: 2012
+  Events: 
+  Results: ~0
+  Outdoor: False, Indoor: False
+  Has disqualified: False
+  HTML size: 1,729 bytes
+
+
+ALL EVENTS FOUND:
+  - 1 mile
+  - 10 Kamp (100m hekk-Diskos-Stav-Spyd-300m-100m-Lengde-Kule-Høyde-1000m)
+  - 10 Kamp (100m-Lengde-Kule-Høyde-400m-110mhekk-Diskos-Stav-Spyd-1500m) Jr
+  - 100 meter
+  - 100 meter hekk (84,0cm)
+  - 100 meter hekk (91,4cm)
+  - 1000 meter
+  - 110 meter hekk (100cm)
+  - 110 meter hekk (91,4cm)
+  - 1500 meter
+  - 1500 meter hinder (76,2cm)
+  - 200 meter
+  - 200 meter hekk (68,0cm)
+  - 200 meter hekk (76,2cm)
+  - 2000 meter
+  - 2000 meter hinder (91,4cm)
+  - 300 meter
+  - 300 meter hekk (76,2cm)
+  - 3000 meter
+  - 40 meter
+  - 400 meter
+  - 5 km
+  - 5000 meter
+  - 6 Kamp (60m-Lengde-Kule-60mhekk-Høyde-600m)
+  - 60 meter
+  - 60 meter hekk (100cm)
+  - 60 meter hekk (106,7 cm)
+  - 60 meter hekk (68,0cm)
+  - 60 meter hekk (76,2cm)
+  - 60 meter hekk (84,0cm)
+  - 60 meter hekk (91,4cm)
+  - 600 meter
+  - 7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr
+  - 7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom
+  - 80 meter hekk (84,0cm)
+  - 80 meter hekk (84,0cm/8,5m)
+  - 800 meter
+  - 9 Kamp (100m hekk-Diskos-Stav-Spyd-100m-Lengde-Kule-Høyde-1000m)
+  - Diskos 1,0kg
+  - Diskos 1,5kg
+  - Diskos 1,6kg
+  - Diskos 1,75kg
+  - Diskos 600gram
+  - Diskos 750gram
+  - Høyde
+  - Høyde uten tilløp
+  - Kappgang 1000 meter
+  - Kast 5 Kamp (Slegge-Kule-Diskos-Spyd-Slengball)
+  - Kule 2,0kg
+  - Kule 3,0kg
+  - Kule 4,0kg
+  - Kule 5,0kg
+  - Kule 6,0kg
+  - Lengde
+  - Lengde (Sone 0,5m)
+  - Lengde uten tilløp
+  - Liten Ball 150gram
+  - Slegge 2,0kg/110cm
+  - Slegge 3,0Kg (119,5cm)
+  - Slegge 3,0kg/110cm
+  - Slegge 4,0kg/119,5cm
+  - Slengball 1,0Kg
+  - Spyd 400gram
+  - Spyd 600gram
+  - Spyd 700gram
+  - Spyd 800gram
+  - Stav
+  - Tresteg
+  - Tresteg (Sone 0,5m)
+  - Tresteg uten tilløp

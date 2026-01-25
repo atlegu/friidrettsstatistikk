@@ -183,6 +183,7 @@ async function getSeasonBests(athleteId: string) {
     result_type: sb.result_type || "time",
     performance: sb.performance || "",
     performance_value: sb.performance_value || 0,
+    meet_id: sb.meet_id || "",
   }))
 }
 

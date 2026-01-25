@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
 import {
   ScatterChart,
   Scatter,
@@ -106,6 +107,7 @@ function dateToTimestamp(dateStr: string): number {
 }
 
 export function ResultsScatterChart({ results, events }: ResultsScatterChartProps) {
+  const router = useRouter()
   const [selectedEventId, setSelectedEventId] = useState<string>(
     events.length > 0 ? events[0].id : ""
   )
@@ -126,6 +128,7 @@ export function ResultsScatterChart({ results, events }: ResultsScatterChartProp
         timestamp: dateToTimestamp(r.date),
         value: r.performance_value as number,
         performance: r.performance,
+        meet_id: r.meet_id,
         meet_name: r.meet_name,
         is_pb: r.is_pb,
         is_sb: r.is_sb,
@@ -265,6 +268,9 @@ export function ResultsScatterChart({ results, events }: ResultsScatterChartProp
                               </span>
                             )}
                           </div>
+                          <div className="mt-2 text-[10px] text-[var(--accent-primary)]">
+                            Klikk for å gå til stevnet →
+                          </div>
                         </div>
                       )
                     }
@@ -274,6 +280,12 @@ export function ResultsScatterChart({ results, events }: ResultsScatterChartProp
                 <Scatter
                   data={chartData}
                   fill="var(--accent-primary)"
+                  onClick={(data) => {
+                    if (data && data.meet_id) {
+                      router.push(`/stevner/${data.meet_id}`)
+                    }
+                  }}
+                  cursor="pointer"
                   shape={(props: unknown) => {
                     const { cx, cy, payload } = props as {
                       cx: number
