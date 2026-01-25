@@ -13,10 +13,10 @@ import { Badge } from "@/components/ui/badge"
 
 const EXAMPLE_QUESTIONS = [
   "Hvem har den beste 100m-tiden i Norge?",
-  "Hvilke utovere har hoppet over 2 meter i hoyde?",
+  "Hvilke utøvere har hoppet over 2 meter i høyde?",
   "Hvor mange resultater finnes fra 2024?",
-  "Hvilken klubb har flest utovere?",
-  "Hva er de 10 beste tidene pa 1500m for kvinner?",
+  "Hvilken klubb har flest utøvere?",
+  "Hva er de 10 beste tidene på 1500m for kvinner?",
 ]
 
 export default function AskPage() {
@@ -41,7 +41,7 @@ export default function AskPage() {
       const { data: { session } } = await supabase.auth.getSession()
 
       if (!session) {
-        setError("Du ma vaere logget inn")
+        setError("Du må være logget inn")
         return
       }
 
@@ -63,7 +63,7 @@ export default function AskPage() {
         if (data.requiresPremium) {
           setError("Krever Premium-abonnement")
         } else if (data.dailyLimitReached) {
-          setError("Du har brukt alle dine 10 daglige AI-sporringer")
+          setError("Du har brukt alle dine 10 daglige AI-spørringer")
         } else {
           setError(data.error || "En feil oppstod")
         }
@@ -94,11 +94,11 @@ export default function AskPage() {
 
   return (
     <div className="container py-6">
-      <Breadcrumbs items={[{ label: "Spor statistikken" }]} />
+      <Breadcrumbs items={[{ label: "Spør statistikken" }]} />
 
-      <h1 className="mt-4 mb-2">Spor statistikken</h1>
+      <h1 className="mt-4 mb-2">Spør statistikken</h1>
       <p className="text-muted-foreground mb-6">
-        Still sporsmal om norsk friidrettsstatistikk og fa svar fra AI-en var.
+        Still spørsmål om norsk friidrettsstatistikk og få svar fra AI-en vår.
       </p>
 
       <div className="grid gap-6 lg:grid-cols-3">
@@ -109,12 +109,12 @@ export default function AskPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5" />
-                Ditt sporsmal
+                Ditt spørsmål
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Textarea
-                placeholder="Skriv sporsmalet ditt her... F.eks. 'Hvem har den beste 100m-tiden i Norge?'"
+                placeholder="Skriv spørsmålet ditt her... F.eks. 'Hvem har den beste 100m-tiden i Norge?'"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 rows={3}
@@ -124,7 +124,7 @@ export default function AskPage() {
               {!user ? (
                 <Button asChild>
                   <Link href="/logg-inn?redirect=/spor">
-                    Logg inn for a stille sporsmal
+                    Logg inn for å stille spørsmål
                   </Link>
                 </Button>
               ) : !isPremium ? (
@@ -148,7 +148,7 @@ export default function AskPage() {
                   ) : (
                     <>
                       <Send className="mr-2 h-4 w-4" />
-                      Spor AI-en
+                      Spør AI-en
                     </>
                   )}
                 </Button>
@@ -202,27 +202,27 @@ export default function AskPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Sparkles className="h-4 w-4 text-purple-600" />
-                AI-sporringer
+                AI-spørringer
                 {!isPremium && <Crown className="ml-auto h-4 w-4 text-yellow-600" />}
               </CardTitle>
             </CardHeader>
             <CardContent>
               {!user ? (
                 <p className="text-sm text-muted-foreground">
-                  Logg inn og oppgrader til Premium for a stille sporsmal til statistikkdatabasen.
+                  Logg inn og oppgrader til Premium for å stille spørsmål til statistikkdatabasen.
                 </p>
               ) : !isPremium ? (
                 <p className="text-sm text-muted-foreground">
-                  Oppgrader til Premium for a fa tilgang til AI-sporringer.
+                  Oppgrader til Premium for å få tilgang til AI-spørringer.
                 </p>
               ) : (
                 <>
                   <p className="text-sm text-muted-foreground mb-2">
-                    Du kan stille sporsmal om alt i statistikkdatabasen. AI-en vil analysere dataene og gi deg et svar.
+                    Du kan stille spørsmål om alt i statistikkdatabasen. AI-en vil analysere dataene og gi deg et svar.
                   </p>
                   {requestsRemaining !== null && (
                     <p className="text-xs text-muted-foreground">
-                      {requestsRemaining} sporringer igjen i dag
+                      {requestsRemaining} spørringer igjen i dag
                     </p>
                   )}
                 </>
@@ -234,7 +234,7 @@ export default function AskPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-base">Eksempler</CardTitle>
-              <CardDescription>Klikk for a bruke</CardDescription>
+              <CardDescription>Klikk for å bruke</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               {EXAMPLE_QUESTIONS.map((example, i) => (
