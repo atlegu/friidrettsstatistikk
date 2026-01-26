@@ -24,13 +24,29 @@ const AGE_GROUPS = [
   { value: "G/J13", label: "G/J13" },
 ] as const
 
-const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
-const SPRINT_EVENTS = ["60 meter", "100 meter", "200 meter"]
+// Age group mappings for composite categories
+const AGE_GROUP_MAPPINGS: Record<string, string[]> = {
+  "Senior": ["15", "16", "17", "18-19", "20-22", "Senior"],
+  "U23": ["15", "16", "17", "18-19", "20-22"],
+  "U20": ["15", "16", "17", "18-19"],
+  "U18": ["15", "16", "17"],
+  "G/J15": ["15"],
+  "G/J14": ["14"],
+  "G/J13": ["13"],
+}
 
-function isManualTime(performance: string | null): boolean {
-  if (!performance || !performance.includes(".")) return false
-  const decimals = performance.split(".")[1]?.length ?? 0
-  return decimals === 1
+// Events where manual times should be excluded (sprint and hurdles)
+const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
+
+// Events where wind affects validity
+const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
+const WIND_AFFECTED_CATEGORIES = ["jumps"]
+
+// Determine default venue based on current date
+// Indoor: December 1 - March 31, Outdoor: April 1 - November 30
+function getDefaultVenue(): "indoor" | "outdoor" {
+  const month = new Date().getMonth() + 1 // 1-12
+  return (month >= 4 && month <= 11) ? "outdoor" : "indoor"
 }
 
 async function getEvents() {
@@ -49,6 +65,8 @@ async function getTopResults(
   gender: string,
   ageGroup: string,
   resultType: string,
+  eventCategory: string,
+  venue: string,
   limit = 25
 ) {
   const supabase = await createClient()
@@ -64,41 +82,43 @@ async function getTopResults(
     .not("performance_value", "is", null)
     .gt("performance_value", 0)
 
-  if (ageGroup === "Senior") {
-    query = query.in("age_group", SENIOR_AGE_GROUPS)
-  } else if (ageGroup !== "all") {
-    query = query.eq("age_group", ageGroup)
+  // Handle composite age groups
+  if (ageGroup !== "all") {
+    const mappedGroups = AGE_GROUP_MAPPINGS[ageGroup]
+    if (mappedGroups) {
+      query = query.in("age_group", mappedGroups)
+    } else {
+      query = query.eq("age_group", ageGroup)
+    }
   }
 
-  const isSprintEvent = SPRINT_EVENTS.includes(eventName)
+  // Filter by indoor/outdoor venue
+  if (venue === "indoor") {
+    query = query.eq("meet_indoor", true)
+  } else if (venue === "outdoor") {
+    query = query.eq("meet_indoor", false)
+  }
 
-  if (!isSprintEvent) {
-    const { data } = await query
-      .order("performance_value", { ascending })
-      .limit(limit * 20)
+  // Exclude manual times for sprint and hurdles events
+  if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_manual_time", false)
+  }
 
-    if (!data) return []
-
-    const bestByAthlete = new Map<string, typeof data[0]>()
-    for (const result of data) {
-      if (!result.athlete_id) continue
-      if (!bestByAthlete.has(result.athlete_id)) {
-        bestByAthlete.set(result.athlete_id, result)
-      }
-    }
-    return Array.from(bestByAthlete.values()).slice(0, limit)
+  // Exclude wind-assisted results for affected events
+  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_wind_legal", true)
   }
 
   const { data } = await query
     .order("performance_value", { ascending })
-    .limit(limit * 50)
+    .limit(limit * 20)
 
   if (!data) return []
 
+  // Filter to best result per athlete
   const bestByAthlete = new Map<string, typeof data[0]>()
   for (const result of data) {
     if (!result.athlete_id) continue
-    if (isManualTime(result.performance)) continue
     if (!bestByAthlete.has(result.athlete_id)) {
       bestByAthlete.set(result.athlete_id, result)
     }
@@ -110,9 +130,11 @@ async function getTopResults(
 export default async function StatistikkPage({
   searchParams,
 }: {
-  searchParams: Promise<{ event?: string; gender?: string; age?: string }>
+  searchParams: Promise<{ event?: string; gender?: string; age?: string; venue?: string }>
 }) {
-  const { event: selectedEventId, gender = "M", age = "Senior" } = await searchParams
+  const params = await searchParams
+  const { event: selectedEventId, gender = "M", age = "Senior" } = params
+  const venue = params.venue ?? getDefaultVenue()
 
   const events = await getEvents()
   const selectedEvent = selectedEventId
@@ -120,20 +142,32 @@ export default async function StatistikkPage({
     : events[0]
 
   const results = selectedEvent
-    ? await getTopResults(currentYear, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time")
+    ? await getTopResults(
+        currentYear,
+        selectedEvent.id,
+        selectedEvent.name,
+        gender,
+        age,
+        selectedEvent.result_type ?? "time",
+        selectedEvent.category ?? "",
+        venue
+      )
     : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
+  const venueLabel = venue === "indoor" ? "Innendørs" : "Utendørs"
 
-  const buildUrl = (overrides: { event?: string; gender?: string; age?: string }) => {
+  const buildUrl = (overrides: { event?: string; gender?: string; age?: string; venue?: string }) => {
     const params = new URLSearchParams()
     const eventParam = overrides.event ?? selectedEvent?.id
     const genderParam = overrides.gender ?? gender
     const ageParam = overrides.age ?? age
+    const venueParam = overrides.venue ?? venue
     if (eventParam) params.set("event", eventParam)
     if (genderParam) params.set("gender", genderParam)
     if (ageParam) params.set("age", ageParam)
+    if (venueParam) params.set("venue", venueParam)
     return `/statistikk?${params.toString()}`
   }
 
@@ -242,6 +276,37 @@ export default async function StatistikkPage({
             </CardContent>
           </Card>
 
+          {/* Venue filter (indoor/outdoor) */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">Bane</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-2">
+                <Link
+                  href={buildUrl({ venue: "outdoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "outdoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Ute
+                </Link>
+                <Link
+                  href={buildUrl({ venue: "indoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "indoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Inne
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Age group filter */}
           <Card>
             <CardHeader className="pb-2">
@@ -309,7 +374,7 @@ export default async function StatistikkPage({
                 {selectedEvent?.name ?? "Velg øvelse"}
               </CardTitle>
               <p className="text-sm text-muted-foreground">
-                {genderLabel} · {ageLabel}
+                {genderLabel} · {ageLabel} · {venueLabel}
               </p>
             </CardHeader>
             <CardContent className="p-0">

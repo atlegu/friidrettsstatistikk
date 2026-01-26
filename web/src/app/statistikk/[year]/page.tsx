@@ -32,6 +32,13 @@ const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
 const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
 const WIND_AFFECTED_CATEGORIES = ["jumps"] // lengde, tresteg
 
+// Determine default venue based on current date
+// Indoor: December 1 - March 31, Outdoor: April 1 - November 30
+function getDefaultVenue(): "indoor" | "outdoor" {
+  const month = new Date().getMonth() + 1 // 1-12
+  return (month >= 4 && month <= 11) ? "outdoor" : "indoor"
+}
+
 async function getEvents() {
   const supabase = await createClient()
 
@@ -133,7 +140,9 @@ export default async function YearListPage({
   searchParams: Promise<{ event?: string; gender?: string; age?: string; venue?: string }>
 }) {
   const { year } = await params
-  const { event: selectedEventId, gender = "M", age = "Senior", venue = "outdoor" } = await searchParams
+  const searchParamsResolved = await searchParams
+  const { event: selectedEventId, gender = "M", age = "Senior" } = searchParamsResolved
+  const venue = searchParamsResolved.venue ?? getDefaultVenue()
   const yearNum = parseInt(year)
 
   const events = await getEvents()
