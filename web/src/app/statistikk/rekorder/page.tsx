@@ -68,15 +68,13 @@ const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
 // Junior age groups
 const JUNIOR_AGE_GROUPS = ["U20", "U18"]
 
-// Sprint events where manual times (1 decimal) should be excluded
-const SPRINT_EVENT_CODES = ["60m", "100m", "200m"]
+// Events where manual times should be excluded
+const SPRINT_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m"]
+const HURDLE_EVENT_PREFIXES = ["60mh", "80mh", "100mh", "110mh", "200mh"]
 
-// Check if a performance is a manual time (only 1 decimal)
-function isManualTime(performance: string | null): boolean {
-  if (!performance || !performance.includes(".")) return false
-  const decimals = performance.split(".")[1]?.length ?? 0
-  return decimals === 1
-}
+// Events where wind affects validity
+const WIND_AFFECTED_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m", "lengde", "tresteg"]
+const WIND_AFFECTED_EVENT_PREFIXES = ["60mh", "80mh", "100mh", "110mh", "200mh"]
 
 const AGE_CATEGORIES = [
   { value: "Senior", label: "Senior" },
@@ -117,33 +115,25 @@ async function getBestResult(eventId: string, eventCode: string, gender: string,
     query = query.in("age_group", JUNIOR_AGE_GROUPS)
   }
 
-  // Check if this is a sprint event (manual times should be excluded)
+  // Check if manual times should be excluded (sprints and hurdles)
   const isSprintEvent = SPRINT_EVENT_CODES.includes(eventCode)
-
-  // For non-sprint events, just get the best result directly
-  if (!isSprintEvent) {
-    const { data } = await query
-      .order("performance_value", { ascending })
-      .limit(1)
-    return data?.[0] ?? null
+  const isHurdleEvent = HURDLE_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
+  if (isSprintEvent || isHurdleEvent) {
+    query = query.eq("is_manual_time", false)
   }
 
-  // For sprint events, get top 100 and filter out manual times
+  // Check if wind-assisted results should be excluded
+  const isWindAffected = WIND_AFFECTED_EVENT_CODES.includes(eventCode) ||
+    WIND_AFFECTED_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
+  if (isWindAffected) {
+    query = query.eq("is_wind_legal", true)
+  }
+
   const { data } = await query
     .order("performance_value", { ascending })
-    .limit(100)
+    .limit(1)
 
-  if (!data || data.length === 0) return null
-
-  // Find the best result, skipping manual times
-  for (const result of data) {
-    if (isManualTime(result.performance)) {
-      continue
-    }
-    return result
-  }
-
-  return null
+  return data?.[0] ?? null
 }
 
 interface RecordRowProps {

@@ -23,15 +23,12 @@ const AGE_GROUPS = [
 // Age groups included in "Senior" filter (15 years and older)
 const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
 
-// Sprint events where manual times (1 decimal) should be excluded
-const SPRINT_EVENTS = ["60 meter", "100 meter", "200 meter"]
+// Events where manual times should be excluded (sprint and hurdles)
+const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
 
-// Check if a performance is a manual time (only 1 decimal)
-function isManualTime(performance: string | null): boolean {
-  if (!performance || !performance.includes(".")) return false
-  const decimals = performance.split(".")[1]?.length ?? 0
-  return decimals === 1
-}
+// Events where wind affects validity (outdoor sprints ≤200m, long jump, triple jump)
+const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
+const WIND_AFFECTED_CATEGORIES = ["jumps"] // lengde, tresteg
 
 async function getEvents() {
   const supabase = await createClient()
@@ -49,7 +46,8 @@ async function getAllTimeResults(
   eventName: string,
   gender: string,
   ageGroup: string,
-  resultType: string
+  resultType: string,
+  eventCategory: string
 ) {
   const supabase = await createClient()
 
@@ -73,8 +71,15 @@ async function getAllTimeResults(
     query = query.eq("age_group", ageGroup)
   }
 
-  // Check if this is a sprint event (manual times should be excluded)
-  const isSprintEvent = SPRINT_EVENTS.includes(eventName)
+  // Exclude manual times for sprint and hurdles events
+  if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_manual_time", false)
+  }
+
+  // Exclude wind-assisted results for affected events
+  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_wind_legal", true)
+  }
 
   // Get all results (no limit for all-time lists)
   const { data } = await query.order("performance_value", { ascending })
@@ -85,8 +90,6 @@ async function getAllTimeResults(
   const bestByAthlete = new Map<string, typeof data[0]>()
   for (const result of data) {
     if (!result.athlete_id) continue
-    // Skip manual times for sprint events
-    if (isSprintEvent && isManualTime(result.performance)) continue
     if (!bestByAthlete.has(result.athlete_id)) {
       bestByAthlete.set(result.athlete_id, result)
     }
@@ -108,7 +111,7 @@ export default async function AllTimePage({
     : events[0]
 
   const results = selectedEvent
-    ? await getAllTimeResults(selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time")
+    ? await getAllTimeResults(selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "")
     : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"

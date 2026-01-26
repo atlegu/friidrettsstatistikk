@@ -18,15 +18,12 @@ const AGE_GROUPS = [
 // Age groups included in "Senior" filter (15 years and older)
 const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
 
-// Sprint events where manual times (1 decimal) should be excluded
-const SPRINT_EVENTS = ["60 meter", "100 meter", "200 meter"]
+// Events where manual times should be excluded (sprint and hurdles)
+const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
 
-// Check if a performance is a manual time (only 1 decimal)
-function isManualTime(performance: string | null): boolean {
-  if (!performance || !performance.includes(".")) return false
-  const decimals = performance.split(".")[1]?.length ?? 0
-  return decimals === 1
-}
+// Events where wind affects validity (outdoor sprints ≤200m, long jump, triple jump)
+const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
+const WIND_AFFECTED_CATEGORIES = ["jumps"] // lengde, tresteg
 
 async function getEvents() {
   const supabase = await createClient()
@@ -46,6 +43,7 @@ async function getTopResults(
   gender: string,
   ageGroup: string,
   resultType: string,
+  eventCategory: string,
   limit = 25
 ) {
   const supabase = await createClient()
@@ -54,8 +52,6 @@ async function getTopResults(
   // For distance, height, points - higher is better (descending)
   const ascending = resultType === "time"
 
-  // Get only the best result per athlete using RPC or raw query
-  // First get all results, then filter to best per athlete in JS
   let query = supabase
     .from("results_full")
     .select("*")
@@ -73,41 +69,26 @@ async function getTopResults(
     query = query.eq("age_group", ageGroup)
   }
 
-  // Check if this is a sprint event (manual times should be excluded)
-  const isSprintEvent = SPRINT_EVENTS.includes(eventName)
-
-  // For non-sprint events, use a simpler query with limit
-  // Use high multiplier because top athletes may have many results
-  if (!isSprintEvent) {
-    const { data } = await query
-      .order("performance_value", { ascending })
-      .limit(limit * 20)
-
-    if (!data) return []
-
-    // Filter to best result per athlete
-    const bestByAthlete = new Map<string, typeof data[0]>()
-    for (const result of data) {
-      if (!result.athlete_id) continue
-      if (!bestByAthlete.has(result.athlete_id)) {
-        bestByAthlete.set(result.athlete_id, result)
-      }
-    }
-    return Array.from(bestByAthlete.values()).slice(0, limit)
+  // Exclude manual times for sprint and hurdles events
+  if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_manual_time", false)
   }
 
-  // For sprint events, get more results to filter out manual times
+  // Exclude wind-assisted results for affected events
+  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_wind_legal", true)
+  }
+
   const { data } = await query
     .order("performance_value", { ascending })
-    .limit(limit * 50)
+    .limit(limit * 20)
 
   if (!data) return []
 
-  // Filter to best result per athlete, skipping manual times
+  // Filter to best result per athlete
   const bestByAthlete = new Map<string, typeof data[0]>()
   for (const result of data) {
     if (!result.athlete_id) continue
-    if (isManualTime(result.performance)) continue
     if (!bestByAthlete.has(result.athlete_id)) {
       bestByAthlete.set(result.athlete_id, result)
     }
@@ -142,7 +123,7 @@ export default async function YearListPage({
     : events[0]
 
   const results = selectedEvent
-    ? await getTopResults(yearNum, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time")
+    ? await getTopResults(yearNum, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "")
     : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
