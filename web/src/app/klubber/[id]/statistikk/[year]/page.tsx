@@ -7,16 +7,24 @@ import { getBirthYear } from "@/lib/date-utils"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 
 const AGE_GROUPS = [
-  { value: "Senior", label: "Senior (15+)" },
-  { value: "U23", label: "U23" },
-  { value: "U20", label: "U20" },
-  { value: "U18", label: "U18" },
-  { value: "G/J15", label: "G/J15" },
-  { value: "G/J14", label: "G/J14" },
-  { value: "G/J13", label: "G/J13" },
+  { value: "Senior", label: "Senior" },
+  { value: "U23", label: "Junior 15-22" },
+  { value: "U20", label: "Junior 15-19" },
+  { value: "20-22", label: "20-22 år" },
+  { value: "18-19", label: "18-19 år" },
+  { value: "17", label: "17 år" },
+  { value: "16", label: "16 år" },
+  { value: "15", label: "15 år" },
+  { value: "14", label: "14 år" },
+  { value: "13", label: "13 år" },
 ] as const
 
-const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
+// Age group mappings for composite categories
+const AGE_GROUP_MAPPINGS: Record<string, string[]> = {
+  "Senior": ["15", "16", "17", "18-19", "20-22", "Senior"],
+  "U23": ["15", "16", "17", "18-19", "20-22"],
+  "U20": ["15", "16", "17", "18-19"],
+}
 
 // Events where manual times should be excluded (sprint and hurdles)
 const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
@@ -74,10 +82,14 @@ async function getClubTopResults(
     .not("performance_value", "is", null)
     .gt("performance_value", 0)
 
-  if (ageGroup === "Senior") {
-    query = query.in("age_group", SENIOR_AGE_GROUPS)
-  } else if (ageGroup !== "all") {
-    query = query.eq("age_group", ageGroup)
+  // Handle composite age groups (Senior, U23, U20) and individual ages
+  if (ageGroup !== "all") {
+    const mappedGroups = AGE_GROUP_MAPPINGS[ageGroup]
+    if (mappedGroups) {
+      query = query.in("age_group", mappedGroups)
+    } else {
+      query = query.eq("age_group", ageGroup)
+    }
   }
 
   // Exclude manual times for sprint and hurdles events

@@ -63,10 +63,10 @@ function flattenCategories(categories: EventCategory[]): string[] {
 }
 
 // Age groups included in "Senior" filter (15 years and older)
-const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
+const SENIOR_AGE_GROUPS = ["15", "16", "17", "18-19", "20-22", "Senior"]
 
-// Junior age groups
-const JUNIOR_AGE_GROUPS = ["U20", "U18"]
+// Junior age groups (15-19)
+const JUNIOR_AGE_GROUPS = ["15", "16", "17", "18-19"]
 
 // Events where manual times should be excluded
 const SPRINT_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m"]
