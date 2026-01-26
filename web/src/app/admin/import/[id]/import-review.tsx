@@ -46,7 +46,7 @@ type Event = {
   id: string
   name: string
   code: string | null
-  event_type: string | null
+  category: string | null
 }
 
 type Meet = {
@@ -65,9 +65,9 @@ type ImportBatch = {
   id: string
   name: string
   status: string | null
-  raw_data: ParsedRow[] | null
-  validation_errors: string[] | null
-  validation_warnings: string[] | null
+  raw_data: unknown
+  validation_errors: unknown
+  validation_warnings: unknown
   meet_name: string | null
   meet_city: string | null
   meet_date: string | null
@@ -697,7 +697,8 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
       </Card>
 
       {/* Validation Warnings/Errors */}
-      {(batch.validation_errors?.length || batch.validation_warnings?.length) && (
+      {(Array.isArray(batch.validation_errors) && batch.validation_errors.length > 0) ||
+       (Array.isArray(batch.validation_warnings) && batch.validation_warnings.length > 0) ? (
         <Card className="mb-6 border-yellow-500">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-yellow-700">
@@ -707,16 +708,16 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
           </CardHeader>
           <CardContent>
             <ul className="list-inside list-disc space-y-1 text-sm">
-              {batch.validation_errors?.map((e, i) => (
-                <li key={`e-${i}`} className="text-red-600">{e}</li>
+              {Array.isArray(batch.validation_errors) && batch.validation_errors.map((e, i) => (
+                <li key={`e-${i}`} className="text-red-600">{String(e)}</li>
               ))}
-              {batch.validation_warnings?.map((w, i) => (
-                <li key={`w-${i}`} className="text-yellow-600">{w}</li>
+              {Array.isArray(batch.validation_warnings) && batch.validation_warnings.map((w, i) => (
+                <li key={`w-${i}`} className="text-yellow-600">{String(w)}</li>
               ))}
             </ul>
           </CardContent>
         </Card>
-      )}
+      ) : null}
 
       {/* Results Table */}
       <Card className="mb-6">
