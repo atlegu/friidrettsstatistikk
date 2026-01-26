@@ -18,6 +18,13 @@ const AGE_GROUPS = [
 
 const SENIOR_AGE_GROUPS = ["Senior", "U23", "U20", "U18", "G/J15"]
 
+// Events where manual times should be excluded (sprint and hurdles)
+const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
+
+// Events where wind affects validity (outdoor sprints ≤200m, long jump, triple jump)
+const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
+const WIND_AFFECTED_CATEGORIES = ["jumps"] // lengde, tresteg
+
 async function getClub(id: string) {
   const supabase = await createClient()
 
@@ -44,9 +51,11 @@ async function getEvents() {
 async function getClubBestResult(
   clubId: string,
   eventId: string,
+  eventName: string,
   gender: string,
   ageGroup: string,
-  resultType: string
+  resultType: string,
+  eventCategory: string
 ) {
   const supabase = await createClient()
 
@@ -66,6 +75,16 @@ async function getClubBestResult(
     query = query.in("age_group", SENIOR_AGE_GROUPS)
   } else if (ageGroup !== "all") {
     query = query.eq("age_group", ageGroup)
+  }
+
+  // Exclude manual times for sprint and hurdles events
+  if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_manual_time", false)
+  }
+
+  // Exclude wind-assisted results for affected events
+  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
+    query = query.eq("is_wind_legal", true)
   }
 
   const { data } = await query
@@ -121,7 +140,7 @@ export default async function ClubRecordsPage({
 
   // Get best result for each event
   const recordsPromises = events.map(async (event) => {
-    const best = await getClubBestResult(id, event.id, gender, age, event.result_type ?? "time")
+    const best = await getClubBestResult(id, event.id, event.name, gender, age, event.result_type ?? "time", event.category ?? "")
     return {
       event,
       record: best,
