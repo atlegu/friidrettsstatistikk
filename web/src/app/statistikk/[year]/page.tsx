@@ -51,6 +51,7 @@ async function getTopResults(
   ageGroup: string,
   resultType: string,
   eventCategory: string,
+  venue: string,
   limit = 25
 ) {
   const supabase = await createClient()
@@ -78,6 +79,14 @@ async function getTopResults(
       query = query.eq("age_group", ageGroup)
     }
   }
+
+  // Filter by indoor/outdoor venue
+  if (venue === "indoor") {
+    query = query.eq("meet_indoor", true)
+  } else if (venue === "outdoor") {
+    query = query.eq("meet_indoor", false)
+  }
+  // venue === "all" means no filter
 
   // Exclude manual times for sprint and hurdles events
   if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
@@ -121,10 +130,10 @@ export default async function YearListPage({
   searchParams,
 }: {
   params: Promise<{ year: string }>
-  searchParams: Promise<{ event?: string; gender?: string; age?: string }>
+  searchParams: Promise<{ event?: string; gender?: string; age?: string; venue?: string }>
 }) {
   const { year } = await params
-  const { event: selectedEventId, gender = "M", age = "Senior" } = await searchParams
+  const { event: selectedEventId, gender = "M", age = "Senior", venue = "outdoor" } = await searchParams
   const yearNum = parseInt(year)
 
   const events = await getEvents()
@@ -133,20 +142,24 @@ export default async function YearListPage({
     : events[0]
 
   const results = selectedEvent
-    ? await getTopResults(yearNum, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "")
+    ? await getTopResults(yearNum, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue)
     : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
 
-  const buildUrl = (overrides: { event?: string; gender?: string; age?: string }) => {
+  const venueLabel = venue === "indoor" ? "Innendørs" : venue === "outdoor" ? "Utendørs" : "Alle"
+
+  const buildUrl = (overrides: { event?: string; gender?: string; age?: string; venue?: string }) => {
     const params = new URLSearchParams()
     const eventParam = overrides.event ?? selectedEvent?.id
     const genderParam = overrides.gender ?? gender
     const ageParam = overrides.age ?? age
+    const venueParam = overrides.venue ?? venue
     if (eventParam) params.set("event", eventParam)
     if (genderParam) params.set("gender", genderParam)
     if (ageParam) params.set("age", ageParam)
+    if (venueParam) params.set("venue", venueParam)
     return `/statistikk/${year}?${params.toString()}`
   }
 
@@ -187,6 +200,37 @@ export default async function YearListPage({
                   }`}
                 >
                   Kvinner
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Venue filter (indoor/outdoor) */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">Bane</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-2">
+                <Link
+                  href={buildUrl({ venue: "outdoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "outdoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Ute
+                </Link>
+                <Link
+                  href={buildUrl({ venue: "indoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "indoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Inne
                 </Link>
               </div>
             </CardContent>
@@ -259,7 +303,7 @@ export default async function YearListPage({
                 {selectedEvent?.name ?? "Velg øvelse"}
               </CardTitle>
               <p className="text-sm text-muted-foreground">
-                {genderLabel} · {ageLabel}
+                {genderLabel} · {ageLabel} · {venueLabel}
               </p>
             </CardHeader>
             <CardContent className="p-0">
