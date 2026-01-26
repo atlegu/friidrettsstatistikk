@@ -1,6 +1,6 @@
 # Utviklingslogg - FRIIDRETT.LIVE
 
-## Siste oppdatering: 2026-01-25
+## Siste oppdatering: 2026-01-26
 
 ### Prosjektoversikt
 - **Frontend**: Next.js 16.1.3 med Turbopack, TypeScript, Tailwind CSS
@@ -68,6 +68,48 @@ Et komplett system for å importere resultatlister fra Excel-filer (friidrett.no
 - `events` - Øvelser
 - `meets` - Stevner
 - `seasons` - Sesonger
+
+---
+
+## Dataopprydding (26. januar 2026)
+
+### Problemet
+Import fra 2026-01-26 hadde parsing-feil som korruperte tidsformater:
+- `14.9` → `14.09` (X.Y → X.0Y) - 2,617 tilfeller
+- `112.7` → `112.007` (X.Y → X.00Y) - 2,873 tilfeller
+
+### Opprydding utført
+
+| Handling | Antall |
+|----------|--------|
+| Slettet X.0Y korrupte duplikater | 2,091 |
+| Korrigert X.0Y → X.Y | 526 |
+| Slettet X.00Y korrupte duplikater | 322 |
+| Korrigert X.00Y → X.Y | ~2,551 |
+| Slettet eksakte duplikater | 14,124 |
+| **Totalt resultater etter opprydding** | 1,133,571 |
+
+### Nytt felt: is_manual_time
+
+Lagt til felt `is_manual_time` (BOOLEAN) i results-tabellen for å markere manuelle tider.
+
+**Regler for manuelle tider (sprint/hekk under 400m):**
+- Har kun én desimal (f.eks. 14.9 ikke 14.90)
+- Skal IKKE telle som rekorder
+- Skal IKKE være med på alle-tiders lister
+- Kan vises separat med "manuell tid" markering
+
+**Statistikk:**
+- Elektroniske tider: 1,114,642
+- Manuelle tider markert: 18,929
+
+### SQL for å sjekke manuelle tider
+```sql
+SELECT * FROM results
+WHERE is_manual_time = TRUE
+  AND event_id IN (SELECT id FROM events WHERE category IN ('sprint', 'hurdles'))
+ORDER BY performance_value;
+```
 
 ---
 
