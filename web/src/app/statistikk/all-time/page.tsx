@@ -106,7 +106,8 @@ async function getAllTimeResults(
 
   // Fetch data in batches of 1000 to work around API limits
   const BATCH_SIZE = 1000
-  const allData: typeof data = []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const allData: any[] = []
   let offset = 0
   let hasMore = true
 
