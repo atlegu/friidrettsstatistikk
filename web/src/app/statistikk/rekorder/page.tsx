@@ -49,28 +49,25 @@ const NORGESREKORDER_OUTDOOR: Record<string, EventCategory[]> = {
 }
 
 // Official Norwegian INDOOR record events - Senior
+// Based on https://www.friidrett.no/siteassets/aktivitet/statistikk/rekorder/norske-rekorder-menn-senior-innendors.htm
 const NORGESREKORDER_INDOOR: Record<string, EventCategory[]> = {
   M: [
-    { name: "Løp - sprint", events: ["60m", "200m", "400m"] },
-    { name: "Løp - mellomdistanse", events: ["800m", "1000m", "1500m", "1mile"] },
-    { name: "Løp - langdistanse", events: ["3000m", "5000m"] },
+    { name: "Løp", events: ["60m", "200m", "400m", "800m", "1000m", "1500m", "1mile", "3000m", "5000m"] },
     { name: "Hekk", events: ["60mh_106_7cm"] },
-    { name: "Kappgang", events: ["3000mg", "5000mg"] },
-    { name: "Stafett", events: ["4x200m", "4x400m"] },
-    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
+    { name: "Hopp", events: ["hoyde", "hoyde_ut", "stav", "lengde", "lengde_ut", "tresteg"] },
     { name: "Kast", events: ["kule_7_26kg"] },
+    { name: "Kappgang", events: ["5000mg"] },
     { name: "Mangekamp", events: ["7kamp"] },
+    { name: "Stafett", events: ["4x200m", "4x400m", "4x800m"] },
   ],
   F: [
-    { name: "Løp - sprint", events: ["60m", "200m", "400m"] },
-    { name: "Løp - mellomdistanse", events: ["800m", "1000m", "1500m", "1mile"] },
-    { name: "Løp - langdistanse", events: ["3000m", "5000m"] },
+    { name: "Løp", events: ["60m", "200m", "400m", "800m", "1000m", "1500m", "1mile", "3000m", "5000m"] },
     { name: "Hekk", events: ["60mh_84cm"] },
-    { name: "Kappgang", events: ["3000mg"] },
-    { name: "Stafett", events: ["4x200m", "4x400m"] },
-    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
+    { name: "Hopp", events: ["hoyde", "hoyde_ut", "stav", "lengde", "lengde_ut", "tresteg"] },
     { name: "Kast", events: ["kule_4kg"] },
+    { name: "Kappgang", events: ["3000mg"] },
     { name: "Mangekamp", events: ["5kamp"] },
+    { name: "Stafett", events: ["4x200m", "4x400m", "4x800m"] },
   ],
 }
 
@@ -92,10 +89,13 @@ const BESTENOTERINGER_OUTDOOR: Record<string, EventCategory[]> = {
 // Best performances (bestenoteringer) - INDOOR
 const BESTENOTERINGER_INDOOR: Record<string, EventCategory[]> = {
   M: [
-    { name: "Løp - bane", events: ["300m", "600m", "2000m"] },
+    { name: "Løp", events: ["100m", "300m", "600m"] },
+    { name: "Hekk", events: ["110mh_106_7cm"] },
   ],
   F: [
-    { name: "Løp - bane", events: ["300m", "600m", "2000m"] },
+    { name: "Løp", events: ["100m", "300m", "600m"] },
+    { name: "Hekk", events: ["100mh_84cm", "300mh_76_2cm"] },
+    { name: "Kast", events: ["vektkast_908kg", "spyd_600g"] },
   ],
 }
 
