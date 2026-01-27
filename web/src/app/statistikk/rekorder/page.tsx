@@ -17,43 +17,85 @@ interface EventCategory {
   events: string[]
 }
 
-// Official Norwegian record events - Senior
+// Official Norwegian OUTDOOR record events - Senior
 // Based on https://www.friidrett.no/siteassets/aktivitet/statistikk/rekorder/
-const NORGESREKORDER_CATEGORIES: Record<string, EventCategory[]> = {
+const NORGESREKORDER_OUTDOOR: Record<string, EventCategory[]> = {
   M: [
-    { name: "Løp - bane", events: ["100m", "200m", "400m", "800m", "1000m", "1500m", "1mile", "3000m", "5000m", "10000m", "20000m"] },
-    { name: "Hekk / hinder", events: ["110mh_106_7cm", "200mh_76_2cm", "400mh_91_4cm", "3000mhinder_91_4cm"] },
-    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg", "hoyde_ut", "lengde_ut"] },
+    { name: "Løp - sprint", events: ["100m", "200m", "400m"] },
+    { name: "Løp - mellomdistanse", events: ["800m", "1000m", "1500m", "1mile"] },
+    { name: "Løp - langdistanse", events: ["3000m", "5000m", "10000m", "20000m", "1time"] },
+    { name: "Hekk", events: ["110mh_106_7cm", "200mh_76_2cm", "400mh_91_4cm"] },
+    { name: "Hinder", events: ["3000mhinder_91_4cm"] },
+    { name: "Kappgang", events: ["5000mg", "20kmg", "30kmg", "50kmg"] },
+    { name: "Stafett", events: ["4x100m", "4x200m", "4x400m", "4x800m", "4x1500m", "1000mstafett"] },
+    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
     { name: "Kast", events: ["kule_7_26kg", "diskos_2kg", "slegge_7_26kg", "spyd_800g"] },
     { name: "Mangekamp", events: ["5kamp", "10kamp"] },
-    { name: "Stafett", events: ["4x100m", "4x400m"] },
-    { name: "Kappgang", events: ["5000mg", "20kmg"] },
-    { name: "Vei", events: ["3km", "5km", "10km", "halvmaraton", "maraton", "100km"] },
+    { name: "Vei", events: ["3kmvei", "5kmvei", "10kmvei", "halvmaraton", "maraton", "100kmvei"] },
   ],
   F: [
-    { name: "Løp - bane", events: ["100m", "200m", "400m", "800m", "1000m", "1500m", "1mile", "3000m", "5000m", "10000m"] },
-    { name: "Hekk / hinder", events: ["100mh_84cm", "200mh_76_2cm", "400mh_76_2cm", "3000mhinder_76_2cm"] },
-    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg", "hoyde_ut", "lengde_ut"] },
+    { name: "Løp - sprint", events: ["100m", "200m", "400m"] },
+    { name: "Løp - mellomdistanse", events: ["800m", "1000m", "1500m", "1mile"] },
+    { name: "Løp - langdistanse", events: ["3000m", "5000m", "10000m"] },
+    { name: "Hekk", events: ["100mh_84cm", "200mh_76_2cm", "400mh_76_2cm"] },
+    { name: "Hinder", events: ["3000mhinder_76_2cm"] },
+    { name: "Kappgang", events: ["3000mg", "5000mg", "10000mg", "20kmg"] },
+    { name: "Stafett", events: ["4x100m", "4x200m", "4x400m", "4x800m", "1000mstafett"] },
+    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
     { name: "Kast", events: ["kule_4kg", "diskos_1kg", "slegge_4kg", "spyd_600g"] },
     { name: "Mangekamp", events: ["5kamp", "7kamp"] },
-    { name: "Stafett", events: ["4x100m", "4x400m"] },
-    { name: "Kappgang", events: ["3000mg"] },
-    { name: "Vei", events: ["3km", "5km", "10km", "halvmaraton", "maraton", "100km"] },
+    { name: "Vei", events: ["3kmvei", "5kmvei", "10kmvei", "halvmaraton", "maraton", "100kmvei"] },
   ],
 }
 
-// Best performances (bestenoteringer) - events without official records
-const BESTENOTERINGER_CATEGORIES: Record<string, EventCategory[]> = {
+// Official Norwegian INDOOR record events - Senior
+const NORGESREKORDER_INDOOR: Record<string, EventCategory[]> = {
   M: [
-    { name: "Løp - bane", events: ["60m", "300m", "600m", "2000m", "2miles", "25000m"] },
-    { name: "Hekk / hinder", events: ["60mh_106_7cm", "300mh_91_4cm", "2000mhinder_91_4cm"] },
-    { name: "Kast", events: ["spyd_800g_old", "vektkast_1588kg", "vektkast_1134kg", "vektkast_726kg"] },
+    { name: "Løp - sprint", events: ["60m", "200m", "400m"] },
+    { name: "Løp - mellomdistanse", events: ["800m", "1000m", "1500m", "1mile"] },
+    { name: "Løp - langdistanse", events: ["3000m", "5000m"] },
+    { name: "Hekk", events: ["60mh_106_7cm"] },
+    { name: "Kappgang", events: ["3000mg", "5000mg"] },
+    { name: "Stafett", events: ["4x200m", "4x400m"] },
+    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
+    { name: "Kast", events: ["kule_7_26kg"] },
+    { name: "Mangekamp", events: ["7kamp"] },
   ],
   F: [
-    { name: "Løp - bane", events: ["60m", "300m", "600m", "2000m"] },
-    { name: "Hekk / hinder", events: ["60mh_84cm", "300mh_76_2cm", "2000mhinder_76_2cm"] },
-    { name: "Kast", events: ["vektkast_908kg", "vektkast_545kg", "vektkast40kg"] },
-    { name: "Kappgang", events: ["10000mg", "20kmg"] },
+    { name: "Løp - sprint", events: ["60m", "200m", "400m"] },
+    { name: "Løp - mellomdistanse", events: ["800m", "1000m", "1500m", "1mile"] },
+    { name: "Løp - langdistanse", events: ["3000m", "5000m"] },
+    { name: "Hekk", events: ["60mh_84cm"] },
+    { name: "Kappgang", events: ["3000mg"] },
+    { name: "Stafett", events: ["4x200m", "4x400m"] },
+    { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
+    { name: "Kast", events: ["kule_4kg"] },
+    { name: "Mangekamp", events: ["5kamp"] },
+  ],
+}
+
+// Best performances (bestenoteringer) - events without official records - OUTDOOR
+const BESTENOTERINGER_OUTDOOR: Record<string, EventCategory[]> = {
+  M: [
+    { name: "Løp - bane", events: ["300m", "600m", "2000m", "2miles", "25000m"] },
+    { name: "Hekk / hinder", events: ["300mh_91_4cm", "2000mhinder_91_4cm"] },
+    { name: "Vei", events: ["15kmvei", "20kmvei", "24timer"] },
+  ],
+  F: [
+    { name: "Løp - bane", events: ["300m", "600m", "2000m"] },
+    { name: "Hekk / hinder", events: ["300mh_76_2cm", "2000mhinder_76_2cm"] },
+    { name: "Kappgang", events: ["50kmg"] },
+    { name: "Vei", events: ["15kmvei", "24timer"] },
+  ],
+}
+
+// Best performances (bestenoteringer) - INDOOR
+const BESTENOTERINGER_INDOOR: Record<string, EventCategory[]> = {
+  M: [
+    { name: "Løp - bane", events: ["300m", "600m", "2000m"] },
+  ],
+  F: [
+    { name: "Løp - bane", events: ["300m", "600m", "2000m"] },
   ],
 }
 
@@ -81,6 +123,11 @@ const AGE_CATEGORIES = [
   { value: "Junior", label: "Junior (U20)" },
 ] as const
 
+const VENUE_OPTIONS = [
+  { value: "outdoor", label: "Utendørs" },
+  { value: "indoor", label: "Innendørs" },
+] as const
+
 async function getEventsByIds(eventCodes: string[]) {
   const supabase = await createClient()
 
@@ -93,7 +140,7 @@ async function getEventsByIds(eventCodes: string[]) {
   return data ?? []
 }
 
-async function getBestResult(eventId: string, eventCode: string, gender: string, ageCategory: string, resultType: string) {
+async function getBestResult(eventId: string, eventCode: string, gender: string, ageCategory: string, resultType: string, venue: string) {
   const supabase = await createClient()
 
   // For time events, lower is better (ascending)
@@ -109,6 +156,13 @@ async function getBestResult(eventId: string, eventCode: string, gender: string,
     .not("performance_value", "is", null)
     .gt("performance_value", 0)
 
+  // Filter by venue (indoor/outdoor)
+  if (venue === "indoor") {
+    query = query.eq("meet_indoor", true)
+  } else {
+    query = query.eq("meet_indoor", false)
+  }
+
   if (ageCategory === "Senior") {
     query = query.in("age_group", SENIOR_AGE_GROUPS)
   } else if (ageCategory === "Junior") {
@@ -122,11 +176,13 @@ async function getBestResult(eventId: string, eventCode: string, gender: string,
     query = query.eq("is_manual_time", false)
   }
 
-  // Check if wind-assisted results should be excluded
-  const isWindAffected = WIND_AFFECTED_EVENT_CODES.includes(eventCode) ||
-    WIND_AFFECTED_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
-  if (isWindAffected) {
-    query = query.eq("is_wind_legal", true)
+  // Check if wind-assisted results should be excluded (only for outdoor)
+  if (venue === "outdoor") {
+    const isWindAffected = WIND_AFFECTED_EVENT_CODES.includes(eventCode) ||
+      WIND_AFFECTED_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
+    if (isWindAffected) {
+      query = query.eq("is_wind_legal", true)
+    }
   }
 
   const { data } = await query
@@ -142,16 +198,17 @@ interface RecordRowProps {
   record: any
   gender: string
   age: string
+  venue: string
 }
 
-function RecordRow({ event, record, gender, age }: RecordRowProps) {
+function RecordRow({ event, record, gender, age, venue }: RecordRowProps) {
   if (!record) return null
 
   return (
     <tr className="border-b last:border-0 hover:bg-muted/30">
       <td className="px-3 py-2">
         <Link
-          href={`/statistikk/all-time?event=${event.id}&gender=${gender}&age=${age}`}
+          href={`/statistikk/all-time?event=${event.id}&gender=${gender}&age=${age}&venue=${venue}`}
           className="font-medium hover:text-primary hover:underline"
         >
           {event.name}
@@ -200,26 +257,33 @@ function RecordRow({ event, record, gender, age }: RecordRowProps) {
 export default async function RekordsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ gender?: string; age?: string }>
+  searchParams: Promise<{ gender?: string; age?: string; venue?: string }>
 }) {
-  const { gender = "M", age = "Senior" } = await searchParams
+  const { gender = "M", age = "Senior", venue = "outdoor" } = await searchParams
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = AGE_CATEGORIES.find(a => a.value === age)?.label ?? age
+  const venueLabel = venue === "indoor" ? "Innendørs" : "Utendørs"
 
-  const buildUrl = (overrides: { gender?: string; age?: string }) => {
+  const buildUrl = (overrides: { gender?: string; age?: string; venue?: string }) => {
     const params = new URLSearchParams()
     const genderParam = overrides.gender ?? gender
     const ageParam = overrides.age ?? age
+    const venueParam = overrides.venue ?? venue
     if (genderParam) params.set("gender", genderParam)
     if (ageParam) params.set("age", ageParam)
+    if (venueParam) params.set("venue", venueParam)
     return `/statistikk/rekorder?${params.toString()}`
   }
 
-  // Get events for the selected gender
+  // Get events for the selected gender and venue
   const genderKey = gender as "M" | "F"
-  const recordCategories = NORGESREKORDER_CATEGORIES[genderKey] ?? NORGESREKORDER_CATEGORIES.M
-  const bestCategories = BESTENOTERINGER_CATEGORIES[genderKey] ?? BESTENOTERINGER_CATEGORIES.M
+  const recordCategories = venue === "indoor"
+    ? (NORGESREKORDER_INDOOR[genderKey] ?? NORGESREKORDER_INDOOR.M)
+    : (NORGESREKORDER_OUTDOOR[genderKey] ?? NORGESREKORDER_OUTDOOR.M)
+  const bestCategories = venue === "indoor"
+    ? (BESTENOTERINGER_INDOOR[genderKey] ?? BESTENOTERINGER_INDOOR.M)
+    : (BESTENOTERINGER_OUTDOOR[genderKey] ?? BESTENOTERINGER_OUTDOOR.M)
 
   const recordEventCodes = flattenCategories(recordCategories)
   const bestEventCodes = flattenCategories(bestCategories)
@@ -231,12 +295,12 @@ export default async function RekordsPage({
 
   // Get best results for each event
   const recordPromises = recordEvents.map(async (event) => {
-    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time")
+    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue)
     return { event, record: best }
   })
 
   const bestPromises = bestEvents.map(async (event) => {
-    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time")
+    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue)
     return { event, record: best }
   })
 
@@ -310,6 +374,37 @@ export default async function RekordsPage({
             </CardContent>
           </Card>
 
+          {/* Venue filter (indoor/outdoor) */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">Bane</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-2">
+                <Link
+                  href={buildUrl({ venue: "outdoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "outdoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Ute
+                </Link>
+                <Link
+                  href={buildUrl({ venue: "indoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "indoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Inne
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Age category filter */}
           <Card>
             <CardHeader className="pb-2">
@@ -340,7 +435,7 @@ export default async function RekordsPage({
           {/* Norgesrekorder */}
           <Card>
             <CardHeader>
-              <CardTitle>Norgesrekorder</CardTitle>
+              <CardTitle>Norgesrekorder - {venueLabel}</CardTitle>
               <p className="text-sm text-muted-foreground">
                 {genderLabel} · {ageLabel}
               </p>
@@ -373,6 +468,7 @@ export default async function RekordsPage({
                             record={record}
                             gender={gender}
                             age={age}
+                            venue={venue}
                           />
                         ))}
                       </Fragment>
@@ -394,7 +490,7 @@ export default async function RekordsPage({
           {categorizedBests.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>Bestenoteringer</CardTitle>
+                <CardTitle>Bestenoteringer - {venueLabel}</CardTitle>
                 <p className="text-sm text-muted-foreground">
                   Øvelser uten offisielle norgesrekorder · {genderLabel} · {ageLabel}
                 </p>
@@ -427,6 +523,7 @@ export default async function RekordsPage({
                               record={record}
                               gender={gender}
                               age={age}
+                              venue={venue}
                             />
                           ))}
                         </Fragment>
