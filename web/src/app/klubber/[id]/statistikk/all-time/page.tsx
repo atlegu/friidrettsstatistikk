@@ -56,6 +56,8 @@ async function getEvents() {
   return data ?? []
 }
 
+const RESULTS_PER_PAGE = 100
+
 async function getClubAllTimeResults(
   clubId: string,
   eventId: string,
@@ -64,7 +66,7 @@ async function getClubAllTimeResults(
   ageGroup: string,
   resultType: string,
   eventCategory: string,
-  limit = 25
+  venue: string
 ) {
   const supabase = await createClient()
 
@@ -90,6 +92,13 @@ async function getClubAllTimeResults(
     }
   }
 
+  // Filter by indoor/outdoor venue
+  if (venue === "indoor") {
+    query = query.eq("meet_indoor", true)
+  } else if (venue === "outdoor") {
+    query = query.eq("meet_indoor", false)
+  }
+
   // Exclude manual times for sprint and hurdles events
   if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
     query = query.eq("is_manual_time", false)
@@ -100,7 +109,7 @@ async function getClubAllTimeResults(
     query = query.eq("is_wind_legal", true)
   }
 
-  const { data } = await query.order("performance_value", { ascending })
+  const { data } = await query.order("performance_value", { ascending }).limit(50000)
 
   if (!data) return []
 
@@ -114,8 +123,7 @@ async function getClubAllTimeResults(
     }
   }
 
-  const results = Array.from(bestByAthlete.values())
-  return results.slice(0, limit)
+  return Array.from(bestByAthlete.values())
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -137,10 +145,11 @@ export default async function ClubAllTimePage({
   searchParams,
 }: {
   params: Promise<{ id: string }>
-  searchParams: Promise<{ event?: string; gender?: string; age?: string }>
+  searchParams: Promise<{ event?: string; gender?: string; age?: string; venue?: string; page?: string }>
 }) {
   const { id } = await params
-  const { event: selectedEventId, gender = "M", age = "Senior" } = await searchParams
+  const { event: selectedEventId, gender = "M", age = "Senior", venue = "outdoor", page = "1" } = await searchParams
+  const currentPage = Math.max(1, parseInt(page) || 1)
 
   const club = await getClub(id)
 
@@ -154,21 +163,41 @@ export default async function ClubAllTimePage({
     : events[0]
 
   const results = selectedEvent
-    ? await getClubAllTimeResults(id, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "")
+    ? await getClubAllTimeResults(id, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue)
     : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
+  const venueLabel = venue === "indoor" ? "Innendørs" : venue === "outdoor" ? "Utendørs" : "Alle"
 
-  const buildUrl = (overrides: { event?: string; gender?: string; age?: string }) => {
+  const buildUrl = (overrides: { event?: string; gender?: string; age?: string; venue?: string; page?: number }) => {
     const params = new URLSearchParams()
     const eventParam = overrides.event ?? selectedEvent?.id
     const genderParam = overrides.gender ?? gender
     const ageParam = overrides.age ?? age
+    const venueParam = overrides.venue ?? venue
+    const pageParam = overrides.page ?? (overrides.event !== undefined || overrides.gender !== undefined || overrides.age !== undefined || overrides.venue !== undefined ? 1 : currentPage)
     if (eventParam) params.set("event", eventParam)
     if (genderParam) params.set("gender", genderParam)
     if (ageParam) params.set("age", ageParam)
+    if (venueParam) params.set("venue", venueParam)
+    if (pageParam > 1) params.set("page", pageParam.toString())
     return `/klubber/${id}/statistikk/all-time?${params.toString()}`
+  }
+
+  // Pagination calculations
+  const totalResults = results.length
+  const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE)
+  const startIndex = (currentPage - 1) * RESULTS_PER_PAGE
+  const endIndex = Math.min(startIndex + RESULTS_PER_PAGE, totalResults)
+  const paginatedResults = results.slice(startIndex, endIndex)
+
+  // Generate page buttons
+  const pageButtons: { label: string; page: number }[] = []
+  for (let i = 1; i <= totalPages; i++) {
+    const start = (i - 1) * RESULTS_PER_PAGE + 1
+    const end = Math.min(i * RESULTS_PER_PAGE, totalResults)
+    pageButtons.push({ label: `${start}-${end}`, page: i })
   }
 
   return (
@@ -210,6 +239,37 @@ export default async function ClubAllTimePage({
                   }`}
                 >
                   Kvinner
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Venue filter (indoor/outdoor) */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">Bane</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-2">
+                <Link
+                  href={buildUrl({ venue: "outdoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "outdoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Ute
+                </Link>
+                <Link
+                  href={buildUrl({ venue: "indoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "indoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Inne
                 </Link>
               </div>
             </CardContent>
@@ -282,68 +342,91 @@ export default async function ClubAllTimePage({
                 {selectedEvent?.name ?? "Velg øvelse"} (All-time)
               </CardTitle>
               <p className="text-sm text-muted-foreground">
-                {genderLabel} · {ageLabel}
+                {genderLabel} · {ageLabel} · {venueLabel}
               </p>
             </CardHeader>
             <CardContent className="p-0">
-              {results.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b bg-muted/50">
-                        <th className="px-3 py-2 text-left text-sm font-medium w-10">#</th>
-                        <th className="px-3 py-2 text-left text-sm font-medium">Resultat</th>
-                        <th className="px-3 py-2 text-left text-sm font-medium">Utøver</th>
-                        <th className="px-3 py-2 text-left text-sm font-medium w-14">Født</th>
-                        <th className="hidden px-3 py-2 text-left text-sm font-medium lg:table-cell">Stevne</th>
-                        <th className="hidden px-3 py-2 text-left text-sm font-medium lg:table-cell">Dato</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {results.map((result, index) => (
-                        <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
-                          <td className="px-3 py-2 text-sm text-muted-foreground">{index + 1}</td>
-                          <td className="px-3 py-2">
-                            <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
-                            {result.wind !== null && (
-                              <span className="ml-1 text-xs text-muted-foreground">
-                                ({result.wind > 0 ? "+" : ""}{result.wind})
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-3 py-2">
-                            <Link
-                              href={`/utover/${result.athlete_id}`}
-                              className="font-medium text-primary hover:underline"
-                            >
-                              {result.athlete_name}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-2 text-sm text-muted-foreground">
-                            {getBirthYear(result.birth_date) ?? "-"}
-                          </td>
-                          <td className="hidden px-3 py-2 text-sm lg:table-cell">
-                            <Link
-                              href={`/stevner/${result.meet_id}`}
-                              className="hover:text-primary hover:underline"
-                            >
-                              {result.meet_name}
-                            </Link>
-                          </td>
-                          <td className="hidden px-3 py-2 text-sm text-muted-foreground lg:table-cell">
-                            {result.date
-                              ? new Date(result.date).toLocaleDateString("no-NO", {
-                                  day: "numeric",
-                                  month: "short",
-                                  year: "numeric",
-                                })
-                              : "-"}
-                          </td>
+              {paginatedResults.length > 0 ? (
+                <>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b bg-muted/50">
+                          <th className="px-2 py-2 text-left text-sm font-medium w-10">#</th>
+                          <th className="px-2 py-2 text-left text-sm font-medium">Resultat</th>
+                          <th className="px-2 py-2 text-left text-sm font-medium">Utøver</th>
+                          <th className="px-2 py-2 text-left text-sm font-medium w-12">Født</th>
+                          <th className="hidden px-2 py-2 text-left text-sm font-medium lg:table-cell">Stevne</th>
+                          <th className="hidden px-2 py-2 text-left text-sm font-medium lg:table-cell whitespace-nowrap w-24">Dato</th>
                         </tr>
+                      </thead>
+                      <tbody>
+                        {paginatedResults.map((result, index) => (
+                          <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
+                            <td className="px-2 py-1.5 text-sm text-muted-foreground">{startIndex + index + 1}</td>
+                            <td className="px-2 py-1.5">
+                              <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
+                              {result.wind !== null && (
+                                <span className="ml-1 text-xs text-muted-foreground">
+                                  ({result.wind > 0 ? "+" : ""}{result.wind})
+                                </span>
+                              )}
+                            </td>
+                            <td className="px-2 py-1.5">
+                              <Link
+                                href={`/utover/${result.athlete_id}`}
+                                className="font-medium text-primary hover:underline"
+                              >
+                                {result.athlete_name}
+                              </Link>
+                            </td>
+                            <td className="px-2 py-1.5 text-sm text-muted-foreground">
+                              {getBirthYear(result.birth_date) ?? "-"}
+                            </td>
+                            <td className="hidden px-2 py-1.5 text-sm lg:table-cell truncate max-w-[180px]">
+                              <Link
+                                href={`/stevner/${result.meet_id}`}
+                                className="hover:text-primary hover:underline"
+                              >
+                                {result.meet_name}
+                              </Link>
+                            </td>
+                            <td className="hidden px-2 py-1.5 text-sm text-muted-foreground lg:table-cell whitespace-nowrap">
+                              {result.date
+                                ? new Date(result.date).toLocaleDateString("no-NO", {
+                                    day: "2-digit",
+                                    month: "2-digit",
+                                    year: "numeric",
+                                  })
+                                : "-"}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex flex-wrap items-center justify-center gap-2 border-t p-4">
+                      <span className="text-sm text-muted-foreground mr-2">
+                        Viser {startIndex + 1}-{endIndex} av {totalResults}
+                      </span>
+                      {pageButtons.map((btn) => (
+                        <Link
+                          key={btn.page}
+                          href={buildUrl({ page: btn.page })}
+                          className={`rounded px-3 py-1.5 text-sm font-medium ${
+                            currentPage === btn.page
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-muted hover:bg-muted/80"
+                          }`}
+                        >
+                          {btn.label}
+                        </Link>
                       ))}
-                    </tbody>
-                  </table>
-                </div>
+                    </div>
+                  )}
+                </>
               ) : (
                 <p className="p-4 text-center text-muted-foreground">
                   {selectedEvent
