@@ -25,8 +25,8 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-primary">FRIIDRETT</span>
-              <span className="text-xl font-light">.LIVE</span>
+              <span className="text-xl font-bold text-primary">friidrettresultater</span>
+              <span className="text-xl font-light">.no</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Norsk friidrettsstatistikk - fra rekrutt til veteran.

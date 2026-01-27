@@ -5,8 +5,8 @@ import { LogoutButton } from "@/components/admin/logout-button"
 
 export const metadata = {
   title: {
-    template: "%s | Admin - Friidrett.live",
-    default: "Admin - Friidrett.live",
+    template: "%s | Admin - friidrettresultater.no",
+    default: "Admin - friidrettresultater.no",
   },
 }
 
@@ -51,7 +51,7 @@ export default async function AdminLayout({
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center gap-6">
             <Link href="/admin" className="font-semibold">
-              Friidrett.live Admin
+              friidrettresultater.no Admin
             </Link>
             <nav className="flex items-center gap-4 text-sm">
               <Link href="/admin" className="text-muted-foreground hover:text-foreground">

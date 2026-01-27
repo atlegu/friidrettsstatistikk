@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatPerformance } from "@/lib/format-performance"
 import { getBirthYear } from "@/lib/date-utils"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { EventSelector } from "@/components/events/EventSelector"
+import { getEventDisplayName } from "@/lib/event-config"
 
 export const metadata = {
   title: "All-time lister",
@@ -63,11 +65,28 @@ async function getAllTimeResults(
   // For distance, height, points - higher is better (descending)
   const ascending = resultType === "time"
 
+  // Select only the columns we need for display (optimization)
+  const selectColumns = `
+    id,
+    athlete_id,
+    athlete_name,
+    performance,
+    performance_value,
+    result_type,
+    wind,
+    is_national_record,
+    date,
+    birth_date,
+    club_name,
+    meet_id,
+    meet_name
+  `.replace(/\s+/g, '')
+
   // Build base query function (we'll call it multiple times for batching)
   const buildQuery = () => {
     let q = supabase
       .from("results_full")
-      .select("*", { count: "exact" })
+      .select(selectColumns)
       .eq("event_id", eventId)
       .eq("gender", gender)
       .eq("status", "OK")
@@ -104,49 +123,52 @@ async function getAllTimeResults(
     return q
   }
 
-  // Fetch data in batches of 1000 to work around API limits
-  const BATCH_SIZE = 1000
+  // Fetch data in batches - optimized for performance
+  const BATCH_SIZE = 500
+  const MAX_UNIQUE_ATHLETES = 1000  // Stop after finding this many unique athletes
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const allData: any[] = []
+  const seenAthletes = new Set<string>()
   let offset = 0
   let hasMore = true
 
   while (hasMore) {
-    const { data, error, count } = await buildQuery()
+    const { data, error } = await buildQuery()
       .order("performance_value", { ascending })
       .range(offset, offset + BATCH_SIZE - 1)
 
     if (error) {
-      console.error("Supabase query error:", error)
+      console.error("Supabase query error:", JSON.stringify(error, null, 2), "Code:", error.code, "Message:", error.message, "Details:", error.details)
       break
     }
 
-    if (data && data.length > 0) {
-      allData.push(...data)
+    if (data && Array.isArray(data) && data.length > 0) {
+      // Track unique athletes as we go
+      for (const result of data as any[]) {
+        if (result.athlete_id && !seenAthletes.has(result.athlete_id)) {
+          seenAthletes.add(result.athlete_id)
+          allData.push(result)
+        }
+      }
       offset += BATCH_SIZE
-      // Stop if we got fewer than BATCH_SIZE (means we're at the end)
-      // or if we've fetched enough unique athletes (optimization)
-      hasMore = data.length === BATCH_SIZE && allData.length < 50000
+
+      // Stop conditions:
+      // 1. Got fewer results than batch size (end of data)
+      // 2. Found enough unique athletes
+      // 3. Fetched too many rows (safety limit)
+      const dataLength = (data as any[]).length
+      hasMore = dataLength === BATCH_SIZE &&
+                seenAthletes.size < MAX_UNIQUE_ATHLETES &&
+                offset < 20000
     } else {
       hasMore = false
     }
   }
 
-  console.log(`[All-time] Event: ${eventName}, Gender: ${gender}, Raw results: ${allData.length}`)
+  console.log(`[All-time] Event: ${eventName}, Gender: ${gender}, Unique athletes: ${allData.length}`)
 
-  // Filter to best result per athlete
-  const bestByAthlete = new Map<string, typeof allData[0]>()
-  for (const result of allData) {
-    if (!result.athlete_id) continue
-    if (!bestByAthlete.has(result.athlete_id)) {
-      bestByAthlete.set(result.athlete_id, result)
-    }
-  }
-
-  const uniqueResults = Array.from(bestByAthlete.values())
-  console.log(`[All-time] Unique athletes: ${uniqueResults.length}`)
-
-  return uniqueResults
+  // allData already contains only the best result per athlete (filtered during fetch)
+  return allData
 }
 
 const RESULTS_PER_PAGE = 100
@@ -309,29 +331,13 @@ export default async function AllTimePage({
             </CardContent>
           </Card>
 
-          {/* Events filter */}
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm">Øvelse</CardTitle>
-            </CardHeader>
-            <CardContent className="max-h-[50vh] overflow-y-auto">
-              <div className="space-y-1">
-                {events.map((event) => (
-                  <Link
-                    key={event.id}
-                    href={buildUrl({ event: event.id })}
-                    className={`block rounded px-2 py-1 text-sm ${
-                      selectedEvent?.id === event.id
-                        ? "bg-primary text-primary-foreground"
-                        : "hover:bg-muted"
-                    }`}
-                  >
-                    {event.name}
-                  </Link>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          {/* Events filter - using smart grouped selector */}
+          <EventSelector
+            events={events}
+            selectedEventId={selectedEvent?.id}
+            gender={gender as "M" | "F"}
+            baseUrl={buildUrl({})}
+          />
         </div>
 
         {/* Main content - Results */}
@@ -339,7 +345,7 @@ export default async function AllTimePage({
           <Card>
             <CardHeader>
               <CardTitle>
-                {selectedEvent?.name ?? "Velg øvelse"} (All-time)
+                {selectedEvent ? (getEventDisplayName(selectedEvent.code) || selectedEvent.name) : "Velg øvelse"} (All-time)
               </CardTitle>
               <p className="text-sm text-muted-foreground">
                 {genderLabel} · {ageLabel} · {venueLabel} · {totalResults} utøvere totalt

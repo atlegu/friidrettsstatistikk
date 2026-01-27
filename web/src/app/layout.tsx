@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Friidrett.live - Norsk Friidrettsstatistikk",
-    template: "%s | Friidrett.live",
+    default: "friidrettresultater.no - Norsk Friidrettsstatistikk",
+    template: "%s | friidrettresultater.no",
   },
   description:
     "Komplett statistikk for norsk friidrett - årslister, rekorder, utøverprofiler og stevneresultater.",
