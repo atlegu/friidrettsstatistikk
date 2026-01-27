@@ -67,14 +67,27 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        fetchProfile(session.user.id)
+    // Get initial session with error handling for AbortError
+    const initSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        setUser(session?.user ?? null)
+        if (session?.user) {
+          await fetchProfile(session.user.id)
+        }
+      } catch (error) {
+        // Ignore AbortError - this happens when the lock times out
+        if (error instanceof Error && error.name === 'AbortError') {
+          console.warn('Auth session fetch aborted, will retry on next navigation')
+        } else {
+          console.error('Error fetching session:', error)
+        }
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
-    })
+    }
+
+    initSession()
 
     // Listen for auth changes
     const {
@@ -83,7 +96,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setUser(session?.user ?? null)
 
       if (session?.user) {
-        await fetchProfile(session.user.id)
+        try {
+          await fetchProfile(session.user.id)
+        } catch (error) {
+          console.error('Error fetching profile:', error)
+        }
       } else {
         setProfile(null)
       }

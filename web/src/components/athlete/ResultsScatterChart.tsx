@@ -38,6 +38,9 @@ interface ResultsScatterChartProps {
   results: Result[]
   events: { id: string; name: string; code: string; result_type: string }[]
   pbResultIds?: Set<string>
+  // Controlled mode props - when provided, hides internal selector
+  selectedEventId?: string
+  hideSelector?: boolean
 }
 
 // Detect divisor based on typical value ranges
@@ -107,11 +110,15 @@ function dateToTimestamp(dateStr: string): number {
   return Date.UTC(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10))
 }
 
-export function ResultsScatterChart({ results, events, pbResultIds }: ResultsScatterChartProps) {
+export function ResultsScatterChart({ results, events, pbResultIds, selectedEventId: controlledEventId, hideSelector }: ResultsScatterChartProps) {
   const router = useRouter()
-  const [selectedEventId, setSelectedEventId] = useState<string>(
+  const [internalEventId, setInternalEventId] = useState<string>(
     events.length > 0 ? events[0].id : ""
   )
+
+  // Use controlled value if provided, otherwise use internal state
+  const selectedEventId = controlledEventId ?? internalEventId
+  const setSelectedEventId = setInternalEventId
 
   const selectedEvent = events.find((e) => e.id === selectedEventId)
   const resultType = selectedEvent?.result_type || "time"
@@ -186,17 +193,19 @@ export function ResultsScatterChart({ results, events, pbResultIds }: ResultsSca
     <div className="card-flat">
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h3>Alle resultater (spredningsplott)</h3>
-        <select
-          value={selectedEventId}
-          onChange={(e) => setSelectedEventId(e.target.value)}
-          className="h-8 w-full rounded border bg-transparent px-2 text-[13px] sm:w-[160px]"
-        >
-          {events.map((event) => (
-            <option key={event.id} value={event.id}>
-              {event.name}
-            </option>
-          ))}
-        </select>
+        {!hideSelector && (
+          <select
+            value={selectedEventId}
+            onChange={(e) => setSelectedEventId(e.target.value)}
+            className="h-8 w-full rounded border bg-transparent px-2 text-[13px] sm:w-[160px]"
+          >
+            {events.map((event) => (
+              <option key={event.id} value={event.id}>
+                {event.name}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
 
       {chartData.length === 0 ? (

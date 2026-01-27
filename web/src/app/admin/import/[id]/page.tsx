@@ -93,14 +93,26 @@ async function getSeasons() {
   return data ?? []
 }
 
+async function getClubs() {
+  const supabase = await createClient()
+
+  const { data } = await supabase
+    .from("clubs")
+    .select("id, name")
+    .order("name")
+
+  return data ?? []
+}
+
 export default async function ImportDetailPage({ params }: Props) {
   const { id } = await params
-  const [batch, athletes, events, meets, seasons] = await Promise.all([
+  const [batch, athletes, events, meets, seasons, clubs] = await Promise.all([
     getImportBatch(id),
     getAthletes(),
     getEvents(),
     getMeets(),
     getSeasons(),
+    getClubs(),
   ])
 
   if (!batch) {
@@ -115,6 +127,7 @@ export default async function ImportDetailPage({ params }: Props) {
         events={events}
         meets={meets}
         seasons={seasons}
+        clubs={clubs}
       />
     </div>
   )

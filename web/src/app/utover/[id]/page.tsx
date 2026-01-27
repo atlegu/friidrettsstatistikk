@@ -6,9 +6,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { AthleteHeader } from "@/components/athlete/AthleteHeader"
 import { PersonalBestsSection } from "@/components/athlete/PersonalBestsSection"
 import { ResultsSection } from "@/components/athlete/ResultsSection"
-import { ProgressionChart } from "@/components/athlete/ProgressionChart"
-import { ResultsScatterChart } from "@/components/athlete/ResultsScatterChart"
-import { formatPerformance } from "@/lib/format-performance"
+import { AthleteChartsSection } from "@/components/athlete/AthleteChartsSection"
 
 // Type definitions
 interface AthleteStats {
@@ -309,34 +307,15 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
           <PersonalBestsSection personalBests={mappedPBs} />
         </section>
 
-        {/* Section 2: Two columns - Progression + Season Summary */}
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Left: Progression Chart */}
-          <section>
-            <Suspense fallback={<div className="h-[400px] bg-muted animate-pulse rounded" />}>
-              <ProgressionChart seasonBests={seasonBests} events={events} />
-            </Suspense>
-          </section>
-
-          {/* Right: Season Bests Summary */}
-          <section>
-            <div className="card-flat">
-              <h3 className="mb-3">Sesongbeste per år</h3>
-              {seasonBests.length > 0 ? (
-                <SeasonBestsSummary seasonBests={seasonBests} events={events} />
-              ) : (
-                <p className="text-[13px] text-[var(--text-muted)]">
-                  Ingen sesongdata tilgjengelig
-                </p>
-              )}
-            </div>
-          </section>
-        </div>
-
-        {/* Section 3: Scatter plot of all results */}
+        {/* Section 2: Charts with shared event selector */}
         <section>
           <Suspense fallback={<div className="h-[400px] bg-muted animate-pulse rounded" />}>
-            <ResultsScatterChart results={mappedResults} events={events} pbResultIds={pbResultIds} />
+            <AthleteChartsSection
+              seasonBests={seasonBests}
+              results={mappedResults}
+              events={events}
+              pbResultIds={pbResultIds}
+            />
           </Suspense>
         </section>
 
@@ -357,73 +336,3 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
   )
 }
 
-// Helper component for season bests summary
-function SeasonBestsSummary({
-  seasonBests,
-  events,
-}: {
-  seasonBests: Array<{
-    season_year: number
-    event_id: string
-    event_name: string
-    performance: string
-    performance_value: number
-    result_type: string
-  }>
-  events: Array<{ id: string; name: string; result_type: string }>
-}) {
-  // Group by year
-  const byYear = new Map<number, typeof seasonBests>()
-  seasonBests.forEach((sb) => {
-    if (!byYear.has(sb.season_year)) {
-      byYear.set(sb.season_year, [])
-    }
-    byYear.get(sb.season_year)!.push(sb)
-  })
-
-  // Sort years descending
-  const sortedYears = Array.from(byYear.keys()).sort((a, b) => b - a)
-
-  // Get main event (most results)
-  const eventCounts = new Map<string, number>()
-  seasonBests.forEach((sb) => {
-    eventCounts.set(sb.event_id, (eventCounts.get(sb.event_id) || 0) + 1)
-  })
-  const mainEventId = Array.from(eventCounts.entries()).sort((a, b) => b[1] - a[1])[0]?.[0]
-
-  return (
-    <div className="overflow-x-auto">
-      <table className="table-compact">
-        <thead>
-          <tr>
-            <th>År</th>
-            <th>Øvelse</th>
-            <th className="col-numeric">Beste</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedYears.slice(0, 10).map((year) => {
-            const yearBests = byYear.get(year)!
-            // Show main event for each year, or first one
-            const mainBest = yearBests.find((sb) => sb.event_id === mainEventId) || yearBests[0]
-
-            return (
-              <tr key={year}>
-                <td className="text-[var(--text-muted)] tabular-nums">{year}</td>
-                <td className="whitespace-nowrap">{mainBest.event_name}</td>
-                <td className="col-numeric">
-                  <span className="perf-value">{formatPerformance(mainBest.performance, mainBest.result_type)}</span>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      {sortedYears.length > 10 && (
-        <p className="mt-2 text-[12px] text-[var(--text-muted)]">
-          + flere sesonger
-        </p>
-      )}
-    </div>
-  )
-}

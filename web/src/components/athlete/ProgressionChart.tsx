@@ -29,6 +29,9 @@ interface SeasonBest {
 interface ProgressionChartProps {
   seasonBests: SeasonBest[]
   events: { id: string; name: string; code: string; result_type: string }[]
+  // Controlled mode props - when provided, hides internal selector
+  selectedEventId?: string
+  hideSelector?: boolean
 }
 
 function formatPerformanceForChart(value: number, resultType: string): string {
@@ -68,11 +71,15 @@ function formatYAxisTick(value: number, resultType: string): string {
   return value.toString()
 }
 
-export function ProgressionChart({ seasonBests, events }: ProgressionChartProps) {
+export function ProgressionChart({ seasonBests, events, selectedEventId: controlledEventId, hideSelector }: ProgressionChartProps) {
   const router = useRouter()
-  const [selectedEventId, setSelectedEventId] = useState<string>(
+  const [internalEventId, setInternalEventId] = useState<string>(
     events.length > 0 ? events[0].id : ""
   )
+
+  // Use controlled value if provided, otherwise use internal state
+  const selectedEventId = controlledEventId ?? internalEventId
+  const setSelectedEventId = setInternalEventId
 
   const selectedEvent = events.find((e) => e.id === selectedEventId)
   const resultType = selectedEvent?.result_type || "time"
@@ -136,17 +143,19 @@ export function ProgressionChart({ seasonBests, events }: ProgressionChartProps)
     <div className="card-flat">
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h3>Progresjon</h3>
-        <select
-          value={selectedEventId}
-          onChange={(e) => setSelectedEventId(e.target.value)}
-          className="h-8 w-full rounded border bg-transparent px-2 text-[13px] sm:w-[160px]"
-        >
-          {events.map((event) => (
-            <option key={event.id} value={event.id}>
-              {event.name}
-            </option>
-          ))}
-        </select>
+        {!hideSelector && (
+          <select
+            value={selectedEventId}
+            onChange={(e) => setSelectedEventId(e.target.value)}
+            className="h-8 w-full rounded border bg-transparent px-2 text-[13px] sm:w-[160px]"
+          >
+            {events.map((event) => (
+              <option key={event.id} value={event.id}>
+                {event.name}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
 
       {chartData.length === 0 ? (

@@ -86,12 +86,18 @@ type RowMapping = {
   newAthleteGender?: string
 }
 
+type Club = {
+  id: string
+  name: string
+}
+
 type Props = {
   batch: ImportBatch
   athletes: Athlete[]
   events: Event[]
   meets: Meet[]
   seasons: Season[]
+  clubs: Club[]
 }
 
 function fuzzyMatch(name: string, athletes: Athlete[], birthYear?: string): Athlete[] {
@@ -131,7 +137,7 @@ function fuzzyMatch(name: string, athletes: Athlete[], birthYear?: string): Athl
   return matches
 }
 
-export function ImportReview({ batch, athletes, events, meets, seasons }: Props) {
+export function ImportReview({ batch, athletes, events, meets, seasons, clubs }: Props) {
   const router = useRouter()
   const rows = (batch.raw_data as ParsedRow[]) || []
 
@@ -350,6 +356,44 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
         throw new Error(`Ingen sesong funnet for år ${year}`)
       }
 
+      // First, create any clubs that don't exist and build a club lookup map
+      const clubNameToId = new Map<string, string>()
+      clubs.forEach(c => clubNameToId.set(c.name.toLowerCase(), c.id))
+
+      const uniqueClubNames = new Set<string>()
+      rows.forEach(row => {
+        if (row.club) uniqueClubNames.add(row.club.trim())
+      })
+
+      for (const clubName of uniqueClubNames) {
+        const normalizedName = clubName.toLowerCase()
+        // Check if club exists (exact or partial match)
+        let existingClubId: string | null = null
+        for (const [name, id] of clubNameToId.entries()) {
+          if (name === normalizedName || name.includes(normalizedName) || normalizedName.includes(name)) {
+            existingClubId = id
+            break
+          }
+        }
+
+        if (!existingClubId) {
+          // Create new club
+          const { data: newClub, error: clubError } = await supabase
+            .from("clubs")
+            .insert({ name: clubName })
+            .select("id")
+            .single()
+
+          if (clubError) {
+            console.error("Club creation error:", clubError)
+            // Continue without club - not a critical error
+          } else if (newClub) {
+            clubNameToId.set(normalizedName, newClub.id)
+            console.log("Created new club:", clubName, newClub.id)
+          }
+        }
+      }
+
       // Create new athletes first
       const newAthleteRows = rows
         .map((row, idx) => ({ row, idx, mapping: mappings[idx] }))
@@ -362,6 +406,18 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
         const firstName = nameParts.slice(0, -1).join(" ") || nameParts[0]
         const lastName = nameParts[nameParts.length - 1]
 
+        // Get club_id for new athlete from row data
+        let newAthleteClubId: string | null = null
+        if (row.club) {
+          const normalizedClubName = row.club.trim().toLowerCase()
+          for (const [name, id] of clubNameToId.entries()) {
+            if (name === normalizedClubName || name.includes(normalizedClubName) || normalizedClubName.includes(name)) {
+              newAthleteClubId = id
+              break
+            }
+          }
+        }
+
         const { data: newAthlete, error: athleteError } = await supabase
           .from("athletes")
           .insert({
@@ -369,6 +425,7 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
             last_name: lastName,
             gender: mapping.newAthleteGender || null,
             birth_year: row.birth_year ? parseInt(row.birth_year) : null,
+            current_club_id: newAthleteClubId,
           })
           .select("id")
           .single()
@@ -395,6 +452,24 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
           throw new Error(`Mangler øvelse-ID for rad ${idx + 1} (${row.event})`)
         }
 
+        // Get club_id from the row's club name (from Excel file)
+        let clubId: string | null = null
+        if (row.club) {
+          const normalizedClubName = row.club.trim().toLowerCase()
+          // Use the clubNameToId map which includes newly created clubs
+          for (const [name, id] of clubNameToId.entries()) {
+            if (name === normalizedClubName || name.includes(normalizedClubName) || normalizedClubName.includes(name)) {
+              clubId = id
+              break
+            }
+          }
+        }
+        // Fallback to athlete's current club if no club in row
+        if (!clubId && !mapping.isNewAthlete && mapping.athleteId) {
+          const matchedAthlete = athletes.find(a => a.id === mapping.athleteId)
+          clubId = matchedAthlete?.current_club_id || null
+        }
+
         // Parse performance - convert to seconds format (e.g., "7,54,96" -> "474.96")
         const rawPerf = (row.performance || "").replace(/,/g, ".").trim()
         const performanceValue = parsePerformance(rawPerf)
@@ -406,6 +481,7 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
           event_id: eventId,
           meet_id: actualMeetId,
           season_id: season.id,
+          club_id: clubId,
           performance: perfStr,
           performance_value: performanceValue,
           date: meetDate || new Date().toISOString().split("T")[0],
@@ -438,6 +514,36 @@ export function ImportReview({ batch, athletes, events, meets, seasons }: Props)
         }
 
         insertedCount += batch.length
+      }
+
+      // Update athletes' current_club_id if they don't have one
+      const athleteClubUpdates: { athleteId: string; clubId: string }[] = []
+      rows.forEach((row, idx) => {
+        const mapping = mappings[idx]
+        if (row.club && mapping?.athleteId && !mapping.isNewAthlete) {
+          const matchedAthlete = athletes.find(a => a.id === mapping.athleteId)
+          if (matchedAthlete && !matchedAthlete.current_club_id) {
+            const normalizedClubName = row.club.trim().toLowerCase()
+            for (const [name, id] of clubNameToId.entries()) {
+              if (name === normalizedClubName || name.includes(normalizedClubName) || normalizedClubName.includes(name)) {
+                athleteClubUpdates.push({ athleteId: mapping.athleteId, clubId: id })
+                break
+              }
+            }
+          }
+        }
+      })
+
+      // Update athletes in batch
+      for (const { athleteId, clubId } of athleteClubUpdates) {
+        await supabase
+          .from("athletes")
+          .update({ current_club_id: clubId })
+          .eq("id", athleteId)
+      }
+
+      if (athleteClubUpdates.length > 0) {
+        console.log(`Updated current_club_id for ${athleteClubUpdates.length} athletes`)
       }
 
       // Update batch status

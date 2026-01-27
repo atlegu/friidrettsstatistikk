@@ -63,7 +63,8 @@ async function getClubBestResult(
   gender: string,
   ageGroup: string,
   resultType: string,
-  eventCategory: string
+  eventCategory: string,
+  venue: string
 ) {
   const supabase = await createClient()
 
@@ -99,6 +100,13 @@ async function getClubBestResult(
     query = query.eq("is_wind_legal", true)
   }
 
+  // Filter by indoor/outdoor venue
+  if (venue === "indoor") {
+    query = query.eq("meet_indoor", true)
+  } else if (venue === "outdoor") {
+    query = query.eq("meet_indoor", false)
+  }
+
   const { data } = await query
     .order("performance_value", { ascending })
     .limit(1)
@@ -125,10 +133,10 @@ export default async function ClubRecordsPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>
-  searchParams: Promise<{ gender?: string; age?: string }>
+  searchParams: Promise<{ gender?: string; age?: string; venue?: string }>
 }) {
   const { id } = await params
-  const { gender = "M", age = "Senior" } = await searchParams
+  const { gender = "M", age = "Senior", venue = "outdoor" } = await searchParams
 
   const club = await getClub(id)
 
@@ -140,19 +148,22 @@ export default async function ClubRecordsPage({
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
+  const venueLabel = venue === "indoor" ? "Innendørs" : venue === "outdoor" ? "Utendørs" : "Alle"
 
-  const buildUrl = (overrides: { gender?: string; age?: string }) => {
+  const buildUrl = (overrides: { gender?: string; age?: string; venue?: string }) => {
     const params = new URLSearchParams()
     const genderParam = overrides.gender ?? gender
     const ageParam = overrides.age ?? age
+    const venueParam = overrides.venue ?? venue
     if (genderParam) params.set("gender", genderParam)
     if (ageParam) params.set("age", ageParam)
+    if (venueParam) params.set("venue", venueParam)
     return `/klubber/${id}/statistikk/rekorder?${params.toString()}`
   }
 
   // Get best result for each event
   const recordsPromises = events.map(async (event) => {
-    const best = await getClubBestResult(id, event.id, event.name, gender, age, event.result_type ?? "time", event.category ?? "")
+    const best = await getClubBestResult(id, event.id, event.name, gender, age, event.result_type ?? "time", event.category ?? "", venue)
     return {
       event,
       record: best,
@@ -206,6 +217,37 @@ export default async function ClubRecordsPage({
             </CardContent>
           </Card>
 
+          {/* Venue filter (indoor/outdoor) */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">Bane</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-2">
+                <Link
+                  href={buildUrl({ venue: "outdoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "outdoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Ute
+                </Link>
+                <Link
+                  href={buildUrl({ venue: "indoor" })}
+                  className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                    venue === "indoor"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-muted/80"
+                  }`}
+                >
+                  Inne
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Age group filter */}
           <Card>
             <CardHeader className="pb-2">
@@ -247,7 +289,7 @@ export default async function ClubRecordsPage({
             <CardHeader>
               <CardTitle>Beste resultat per øvelse</CardTitle>
               <p className="text-sm text-muted-foreground">
-                {genderLabel} · {ageLabel}
+                {genderLabel} · {ageLabel} · {venueLabel}
               </p>
             </CardHeader>
             <CardContent className="p-0">
@@ -268,7 +310,7 @@ export default async function ClubRecordsPage({
                       <tr key={event.id} className="border-b last:border-0 hover:bg-muted/30">
                         <td className="px-3 py-2">
                           <Link
-                            href={`/klubber/${id}/statistikk/all-time?event=${event.id}&gender=${gender}&age=${age}`}
+                            href={`/klubber/${id}/statistikk/all-time?event=${event.id}&gender=${gender}&age=${age}&venue=${venue}`}
                             className="font-medium hover:text-primary hover:underline"
                           >
                             {event.name}
