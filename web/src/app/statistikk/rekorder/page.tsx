@@ -47,12 +47,12 @@ const BESTENOTERINGER_CATEGORIES: Record<string, EventCategory[]> = {
   M: [
     { name: "Løp - bane", events: ["60m", "300m", "600m", "2000m", "2miles", "25000m"] },
     { name: "Hekk / hinder", events: ["60mh_106_7cm", "300mh_91_4cm", "2000mhinder_91_4cm"] },
-    { name: "Kast", events: ["vektkast"] },
+    { name: "Kast", events: ["spyd_800g_old", "vektkast_1588kg", "vektkast_1134kg", "vektkast_726kg"] },
   ],
   F: [
     { name: "Løp - bane", events: ["60m", "300m", "600m", "2000m"] },
     { name: "Hekk / hinder", events: ["60mh_84cm", "300mh_76_2cm", "2000mhinder_76_2cm"] },
-    { name: "Kast", events: ["vektkast"] },
+    { name: "Kast", events: ["vektkast_908kg", "vektkast_545kg", "vektkast40kg"] },
     { name: "Kappgang", events: ["10000mg", "20kmg"] },
   ],
 }
