@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { CopyLink } from "@/components/ui/copy-link"
 import { calculateAge, formatDate } from "@/lib/date-utils"
+import { ArrowRightLeft } from "lucide-react"
 
 interface AthleteStats {
   totalResults: number
@@ -104,13 +105,20 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
           </div>
 
           {/* Badges */}
-          <div className="flex flex-wrap gap-1.5 mb-2">
+          <div className="flex flex-wrap items-center gap-1.5 mb-2">
             {mainEvent && (
               <span className="chip">{mainEvent}</span>
             )}
             {stats.nationalRecordsCount > 0 && (
               <span className="badge-nr">{stats.nationalRecordsCount} NR</span>
             )}
+            <Link
+              href={`/sammenlign?id1=${athlete.id}`}
+              className="chip inline-flex items-center gap-1"
+            >
+              <ArrowRightLeft className="h-3 w-3" />
+              Sammenlign
+            </Link>
           </div>
 
           {/* Career Stats */}
