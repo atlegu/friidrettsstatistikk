@@ -287,19 +287,25 @@ function CompareContent() {
   const [h2hResults2, setH2hResults2] = useState<ResultRow[]>([])
   const [loadingH2h, setLoadingH2h] = useState(false)
   const [h2hEventId, setH2hEventId] = useState<string>("all")
-  const [initialized, setInitialized] = useState(false)
+  const [initialLoadDone, setInitialLoadDone] = useState(false)
 
-  // Load athletes from URL params on mount
+  // Load athletes from URL params
   useEffect(() => {
+    if (initialLoadDone) return
+
     const id1 = searchParams.get("id1")
     const id2 = searchParams.get("id2")
     const eventParam = searchParams.get("event")
     const tabParam = searchParams.get("tab")
 
+    // Wait until searchParams are actually available (not empty when we expect them)
+    // On static pages, first render may have empty params
+    if (!id1 && !id2 && window.location.search) return
+
     if (tabParam === "h2h") setActiveTab("h2h")
 
     async function loadAthletes() {
-      if (id1 && !athlete1) {
+      if (id1) {
         const { data } = await supabase
           .from("athletes")
           .select("id, first_name, last_name, full_name, birth_year, gender")
@@ -307,7 +313,7 @@ function CompareContent() {
           .single()
         if (data) setAthlete1(data)
       }
-      if (id2 && !athlete2) {
+      if (id2) {
         const { data } = await supabase
           .from("athletes")
           .select("id, first_name, last_name, full_name, birth_year, gender")
@@ -318,15 +324,14 @@ function CompareContent() {
       if (eventParam) {
         setSelectedEventId(eventParam)
       }
-      setInitialized(true)
+      setInitialLoadDone(true)
     }
     loadAthletes()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [searchParams, initialLoadDone])
 
-  // Update URL when athletes/event/tab change (skip until initialized)
+  // Update URL when athletes/event/tab change (skip until initial load done)
   useEffect(() => {
-    if (!initialized) return
+    if (!initialLoadDone) return
     const params = new URLSearchParams()
     if (athlete1) params.set("id1", athlete1.id)
     if (athlete2) params.set("id2", athlete2.id)
@@ -334,7 +339,7 @@ function CompareContent() {
     if (activeTab === "h2h") params.set("tab", "h2h")
     const newUrl = params.toString() ? `/sammenlign?${params.toString()}` : "/sammenlign"
     router.replace(newUrl, { scroll: false })
-  }, [athlete1, athlete2, selectedEventId, activeTab, initialized, router])
+  }, [athlete1, athlete2, selectedEventId, activeTab, initialLoadDone, router])
 
   // Fetch season bests when both athletes are selected
   useEffect(() => {
