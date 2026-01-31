@@ -29,7 +29,7 @@ const NORGESREKORDER_OUTDOOR: Record<string, EventCategory[]> = {
     { name: "Kappgang", events: ["5000mg", "20kmg", "30kmg", "50kmg"] },
     { name: "Stafett", events: ["4x100m", "4x200m", "4x400m", "4x800m", "4x1500m", "1000mstafett"] },
     { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
-    { name: "Kast", events: ["kule_7_26kg", "diskos_2kg", "slegge_7_26kg", "spyd_800g"] },
+    { name: "Kast", events: ["kule_7_26kg", "diskos_2kg", "slegge_726kg/1215cm", "spyd_800g"] },
     { name: "Mangekamp", events: ["5kamp", "10kamp"] },
     { name: "Vei", events: ["3kmvei", "5kmvei", "10kmvei", "halvmaraton", "maraton", "100kmvei"] },
   ],
@@ -42,7 +42,7 @@ const NORGESREKORDER_OUTDOOR: Record<string, EventCategory[]> = {
     { name: "Kappgang", events: ["3000mg", "5000mg", "10000mg", "20kmg"] },
     { name: "Stafett", events: ["4x100m", "4x200m", "4x400m", "4x800m", "1000mstafett"] },
     { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
-    { name: "Kast", events: ["kule_4kg", "diskos_1kg", "slegge_4kg", "spyd_600g"] },
+    { name: "Kast", events: ["kule_4kg", "diskos_1kg", "slegge_40kg/1195cm", "spyd_600g"] },
     { name: "Mangekamp", events: ["5kamp", "7kamp"] },
     { name: "Vei", events: ["3kmvei", "5kmvei", "10kmvei", "halvmaraton", "maraton", "100kmvei"] },
   ],
@@ -118,6 +118,12 @@ const HURDLE_EVENT_PREFIXES = ["60mh", "80mh", "100mh", "110mh", "200mh"]
 const WIND_AFFECTED_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m", "lengde", "tresteg"]
 const WIND_AFFECTED_EVENT_PREFIXES = ["60mh", "80mh", "100mh", "110mh", "200mh"]
 
+// Events with minimum date requirements (new implement specifications)
+// Women's javelin: new specification introduced 1999-04-01
+const EVENT_MIN_DATE: Record<string, Record<string, string>> = {
+  F: { "spyd_600g": "1999-04-01" },
+}
+
 const AGE_CATEGORIES = [
   { value: "Senior", label: "Senior" },
   { value: "Junior", label: "Junior (U20)" },
@@ -140,7 +146,7 @@ async function getEventsByIds(eventCodes: string[]) {
   return data ?? []
 }
 
-async function getBestResult(eventId: string, eventCode: string, gender: string, ageCategory: string, resultType: string, venue: string) {
+async function getBestResult(eventId: string, eventCode: string, gender: string, ageCategory: string, resultType: string, venue: string, minDate?: string) {
   const supabase = await createClient()
 
   // For time events, lower is better (ascending)
@@ -167,6 +173,11 @@ async function getBestResult(eventId: string, eventCode: string, gender: string,
     query = query.in("age_group", SENIOR_AGE_GROUPS)
   } else if (ageCategory === "Junior") {
     query = query.in("age_group", JUNIOR_AGE_GROUPS)
+  }
+
+  // Filter by minimum date (e.g. new javelin specification)
+  if (minDate) {
+    query = query.gte("date", minDate)
   }
 
   // Check if manual times should be excluded (sprints and hurdles)
@@ -294,13 +305,14 @@ export default async function RekordsPage({
   ])
 
   // Get best results for each event
+  const minDatesForGender = EVENT_MIN_DATE[gender] ?? {}
   const recordPromises = recordEvents.map(async (event) => {
-    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue)
+    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue, minDatesForGender[event.code])
     return { event, record: best }
   })
 
   const bestPromises = bestEvents.map(async (event) => {
-    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue)
+    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue, minDatesForGender[event.code])
     return { event, record: best }
   })
 

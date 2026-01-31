@@ -27,31 +27,37 @@ async function getClubStats(clubId: string) {
     .eq("club_id", clubId)
 
   // Get unique athletes count
-  const { data: athletesData } = await supabase
-    .from("results_full")
-    .select("athlete_id")
+  const { count: uniqueAthletes } = await supabase
+    .from("athletes")
+    .select("id", { count: "exact", head: true })
     .eq("club_id", clubId)
-
-  const uniqueAthletes = new Set(athletesData?.map(r => r.athlete_id) ?? []).size
 
   // Get first and last year with results
-  const { data: yearsData } = await supabase
-    .from("results_full")
-    .select("season_year")
-    .eq("club_id", clubId)
-    .order("season_year", { ascending: true })
+  const [{ data: firstYearData }, { data: lastYearData }] = await Promise.all([
+    supabase
+      .from("results_full")
+      .select("season_year")
+      .eq("club_id", clubId)
+      .not("season_year", "is", null)
+      .order("season_year", { ascending: true })
+      .limit(1),
+    supabase
+      .from("results_full")
+      .select("season_year")
+      .eq("club_id", clubId)
+      .not("season_year", "is", null)
+      .order("season_year", { ascending: false })
+      .limit(1),
+  ])
 
-  const years = yearsData?.map(r => r.season_year).filter(y => y !== null) ?? []
-  const firstYear = years[0] ?? null
-  const lastYear = years[years.length - 1] ?? null
-  const activeSeasons = new Set(years).size
+  const firstYear = firstYearData?.[0]?.season_year ?? null
+  const lastYear = lastYearData?.[0]?.season_year ?? null
 
   return {
     totalResults: totalResults ?? 0,
-    uniqueAthletes,
+    uniqueAthletes: uniqueAthletes ?? 0,
     firstYear,
     lastYear,
-    activeSeasons,
   }
 }
 
@@ -104,12 +110,6 @@ export default async function ClubStatisticsPage({ params }: { params: Promise<{
           <CardContent className="pt-4">
             <p className="text-2xl font-bold">{stats.uniqueAthletes.toLocaleString("no-NO")}</p>
             <p className="text-sm text-muted-foreground">Utøvere med resultater</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="pt-4">
-            <p className="text-2xl font-bold">{stats.activeSeasons}</p>
-            <p className="text-sm text-muted-foreground">Sesonger med aktivitet</p>
           </CardContent>
         </Card>
         <Card>

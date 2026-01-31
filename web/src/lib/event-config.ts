@@ -154,6 +154,25 @@ export const EVENT_DISPLAY_NAMES: Record<string, string> = {
   '20kmg': '20 km gange',
 }
 
+// Championship events for season leaders display on the front page
+// Indoor: December–March, Outdoor: April–November
+export const INDOOR_CHAMPIONSHIP_EVENTS: Record<'M' | 'F', string[]> = {
+  M: ['60m', '200m', '400m', '800m', '1500m', '3000m', '60mh_106_7cm', 'hoyde', 'stav', 'lengde', 'tresteg', 'kule_7_26kg'],
+  F: ['60m', '200m', '400m', '800m', '1500m', '3000m', '60mh_84cm', 'hoyde', 'stav', 'lengde', 'tresteg', 'kule_4kg'],
+}
+
+export const OUTDOOR_CHAMPIONSHIP_EVENTS: Record<'M' | 'F', string[]> = {
+  M: ['100m', '200m', '400m', '800m', '1500m', '5000m', '10000m', '110mh_106_7cm', '400mh_91_4cm', '3000mhinder_91_4cm', 'hoyde', 'stav', 'lengde', 'tresteg', 'kule_7_26kg', 'diskos_2kg', 'slegge_726kg/1215cm', 'spyd_800g'],
+  F: ['100m', '200m', '400m', '800m', '1500m', '5000m', '10000m', '100mh_84cm', '400mh_76_2cm', '3000mhinder_76_2cm', 'hoyde', 'stav', 'lengde', 'tresteg', 'kule_4kg', 'diskos_1kg', 'slegge_40kg/1195cm', 'spyd_600g'],
+}
+
+// Time event codes where lower performance_value is better
+export const TIME_EVENT_CODES = new Set([
+  '60m', '100m', '200m', '400m', '800m', '1500m', '3000m', '5000m', '10000m',
+  '60mh_106_7cm', '60mh_84cm', '110mh_106_7cm', '100mh_84cm',
+  '400mh_91_4cm', '400mh_76_2cm', '3000mhinder_91_4cm', '3000mhinder_76_2cm',
+])
+
 // Minimum results to show in standard view
 export const MIN_RESULTS_STANDARD_VIEW = 50
 

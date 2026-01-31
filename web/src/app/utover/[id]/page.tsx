@@ -2,6 +2,8 @@ import { Suspense } from "react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
+
+export const dynamic = 'force-dynamic'
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { AthleteHeader } from "@/components/athlete/AthleteHeader"
 import { PersonalBestsSection } from "@/components/athlete/PersonalBestsSection"

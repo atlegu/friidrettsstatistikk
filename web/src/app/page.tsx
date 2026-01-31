@@ -4,6 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Users, Trophy, Calendar, Building2, ArrowRight } from "lucide-react"
 import { formatPerformance } from "@/lib/format-performance"
+import {
+  INDOOR_CHAMPIONSHIP_EVENTS,
+  OUTDOOR_CHAMPIONSHIP_EVENTS,
+  TIME_EVENT_CODES,
+  getEventDisplayName,
+} from "@/lib/event-config"
 
 async function getStats() {
   const supabase = await createClient()
@@ -23,21 +29,80 @@ async function getStats() {
   }
 }
 
-async function getRecentResults() {
+async function getSeasonLeaders() {
   const supabase = await createClient()
+  const month = new Date().getMonth() + 1
+  const isIndoor = month >= 12 || month <= 3
+  const currentYear = new Date().getFullYear()
 
-  const { data } = await supabase
-    .from("results_full")
-    .select("*")
-    .order("date", { ascending: false })
-    .limit(10)
+  const championshipEvents = isIndoor ? INDOOR_CHAMPIONSHIP_EVENTS : OUTDOOR_CHAMPIONSHIP_EVENTS
 
-  return data ?? []
+  async function getLeadersForGender(gender: "M" | "F") {
+    const eventCodes = championshipEvents[gender]
+    const timeEvents = eventCodes.filter((c) => TIME_EVENT_CODES.has(c))
+    const fieldEvents = eventCodes.filter((c) => !TIME_EVENT_CODES.has(c))
+
+    const selectCols =
+      "athlete_id, athlete_name, event_code, event_name, event_id, performance, performance_value, result_type, wind"
+
+    const [timeResults, fieldResults] = await Promise.all([
+      timeEvents.length > 0
+        ? supabase
+            .from("results_full")
+            .select(selectCols)
+            .in("event_code", timeEvents)
+            .eq("season_year", currentYear)
+            .eq("meet_indoor", isIndoor)
+            .eq("gender", gender)
+            .eq("status", "OK")
+            .gt("performance_value", 0)
+            .order("performance_value", { ascending: true })
+            .limit(500)
+            .then((r) => r.data ?? [])
+        : Promise.resolve([] as never[]),
+      fieldEvents.length > 0
+        ? supabase
+            .from("results_full")
+            .select(selectCols)
+            .in("event_code", fieldEvents)
+            .eq("season_year", currentYear)
+            .eq("meet_indoor", isIndoor)
+            .eq("gender", gender)
+            .eq("status", "OK")
+            .gt("performance_value", 0)
+            .order("performance_value", { ascending: false })
+            .limit(500)
+            .then((r) => r.data ?? [])
+        : Promise.resolve([] as never[]),
+    ])
+
+    // Pick first per event_code (already ordered best-first)
+    const leaders = new Map<string, (typeof timeResults)[0]>()
+    for (const result of [...timeResults, ...fieldResults]) {
+      if (!leaders.has(result.event_code!)) {
+        leaders.set(result.event_code!, result)
+      }
+    }
+
+    // Return in the configured order
+    return eventCodes
+      .map((code) => leaders.get(code))
+      .filter((r): r is NonNullable<typeof r> => r != null)
+  }
+
+  const [men, women] = await Promise.all([
+    getLeadersForGender("M"),
+    getLeadersForGender("F"),
+  ])
+
+  return { men, women, isIndoor, year: currentYear }
 }
 
 export default async function Home() {
-  const stats = await getStats()
-  const recentResults = await getRecentResults()
+  const [stats, seasonLeaders] = await Promise.all([getStats(), getSeasonLeaders()])
+
+  const venueLabel = seasonLeaders.isIndoor ? "Innendørs" : "Utendørs"
+  const venueParam = seasonLeaders.isIndoor ? "indoor" : "outdoor"
 
   return (
     <div className="container py-8 md:py-12">
@@ -161,91 +226,137 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Recent Results */}
-      {recentResults.length > 0 && (
-        <section>
-          <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">Siste resultater</h2>
-            <Button variant="ghost" asChild>
-              <Link href="/statistikk/2025">
-                Se alle <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+      {/* Season Leaders */}
+      <section>
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">
+            Årsbeste {seasonLeaders.year} – {venueLabel}
+          </h2>
+          <Button variant="ghost" asChild>
+            <Link href={`/statistikk?venue=${venueParam}`}>
+              Se årslister <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
 
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Men */}
           <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">Menn</CardTitle>
+            </CardHeader>
             <CardContent className="p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b bg-muted/50">
-                      <th className="px-4 py-3 text-left text-sm font-medium">Utøver</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium">Øvelse</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium">Resultat</th>
-                      <th className="hidden px-4 py-3 text-left text-sm font-medium md:table-cell">
-                        Stevne
-                      </th>
-                      <th className="hidden px-4 py-3 text-left text-sm font-medium lg:table-cell">
-                        Dato
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentResults.map((result) => (
-                      <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
-                        <td className="px-4 py-3">
-                          <Link
-                            href={`/utover/${result.athlete_id}`}
-                            className="font-medium text-primary hover:underline"
-                          >
-                            {result.athlete_name}
-                          </Link>
-                        </td>
-                        <td className="px-4 py-3 text-sm">{result.event_name}</td>
-                        <td className="px-4 py-3">
-                          <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
-                          {result.wind !== null && (
-                            <span className="ml-1 text-xs text-muted-foreground">
-                              ({result.wind > 0 ? "+" : ""}{result.wind})
-                            </span>
-                          )}
-                          {result.is_pb && (
-                            <span className="ml-2 rounded bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-800">
-                              PB
-                            </span>
-                          )}
-                          {result.is_sb && !result.is_pb && (
-                            <span className="ml-2 rounded bg-blue-100 px-1.5 py-0.5 text-xs font-medium text-blue-800">
-                              SB
-                            </span>
-                          )}
-                        </td>
-                        <td className="hidden px-4 py-3 text-sm md:table-cell">
-                          <Link
-                            href={`/stevner/${result.meet_id}`}
-                            className="hover:text-primary hover:underline"
-                          >
-                            {result.meet_name}
-                          </Link>
-                        </td>
-                        <td className="hidden px-4 py-3 text-sm text-muted-foreground lg:table-cell">
-                          {result.date
-                            ? new Date(result.date).toLocaleDateString("no-NO", {
-                                day: "numeric",
-                                month: "short",
-                                year: "numeric",
-                              })
-                            : "-"}
-                        </td>
+              {seasonLeaders.men.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b bg-muted/50">
+                        <th className="px-3 py-2 text-left text-xs font-medium">Øvelse</th>
+                        <th className="px-3 py-2 text-left text-xs font-medium">Resultat</th>
+                        <th className="px-3 py-2 text-left text-xs font-medium">Utøver</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {seasonLeaders.men.map((result) => (
+                        <tr key={result.event_code} className="border-b last:border-0 hover:bg-muted/30">
+                          <td className="px-3 py-1.5 text-sm">
+                            <Link
+                              href={`/statistikk?event=${result.event_id}&gender=M&venue=${venueParam}`}
+                              className="hover:text-primary hover:underline"
+                            >
+                              {getEventDisplayName(result.event_code!)}
+                            </Link>
+                          </td>
+                          <td className="px-3 py-1.5">
+                            <span className="perf-value text-sm">
+                              {formatPerformance(result.performance, result.result_type)}
+                            </span>
+                            {result.wind !== null && result.wind !== undefined && (
+                              <span className="ml-1 text-xs text-muted-foreground">
+                                ({result.wind > 0 ? "+" : ""}{result.wind})
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-3 py-1.5 text-sm">
+                            <Link
+                              href={`/utover/${result.athlete_id}`}
+                              className="font-medium text-primary hover:underline"
+                            >
+                              {result.athlete_name}
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p className="p-4 text-center text-sm text-muted-foreground">
+                  Ingen resultater ennå
+                </p>
+              )}
             </CardContent>
           </Card>
-        </section>
-      )}
+
+          {/* Women */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">Kvinner</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              {seasonLeaders.women.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b bg-muted/50">
+                        <th className="px-3 py-2 text-left text-xs font-medium">Øvelse</th>
+                        <th className="px-3 py-2 text-left text-xs font-medium">Resultat</th>
+                        <th className="px-3 py-2 text-left text-xs font-medium">Utøver</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {seasonLeaders.women.map((result) => (
+                        <tr key={result.event_code} className="border-b last:border-0 hover:bg-muted/30">
+                          <td className="px-3 py-1.5 text-sm">
+                            <Link
+                              href={`/statistikk?event=${result.event_id}&gender=F&venue=${venueParam}`}
+                              className="hover:text-primary hover:underline"
+                            >
+                              {getEventDisplayName(result.event_code!)}
+                            </Link>
+                          </td>
+                          <td className="px-3 py-1.5">
+                            <span className="perf-value text-sm">
+                              {formatPerformance(result.performance, result.result_type)}
+                            </span>
+                            {result.wind !== null && result.wind !== undefined && (
+                              <span className="ml-1 text-xs text-muted-foreground">
+                                ({result.wind > 0 ? "+" : ""}{result.wind})
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-3 py-1.5 text-sm">
+                            <Link
+                              href={`/utover/${result.athlete_id}`}
+                              className="font-medium text-primary hover:underline"
+                            >
+                              {result.athlete_name}
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p className="p-4 text-center text-sm text-muted-foreground">
+                  Ingen resultater ennå
+                </p>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     </div>
   )
 }
