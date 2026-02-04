@@ -57,118 +57,50 @@ async function getAllTimeResults(
   ageGroup: string,
   resultType: string,
   eventCategory: string,
-  venue: string
+  venue: string,
+  limit: number,
+  offset: number
 ) {
   const supabase = await createClient()
 
-  // For time events, lower is better (ascending)
-  // For distance, height, points - higher is better (descending)
   const ascending = resultType === "time"
 
-  // Select only the columns we need for display (optimization)
-  const selectColumns = `
-    id,
-    athlete_id,
-    athlete_name,
-    performance,
-    performance_value,
-    result_type,
-    wind,
-    is_national_record,
-    date,
-    birth_date,
-    club_name,
-    meet_id,
-    meet_name
-  `.replace(/\s+/g, '')
-
-  // Build base query function (we'll call it multiple times for batching)
-  const buildQuery = () => {
-    let q = supabase
-      .from("results_full")
-      .select(selectColumns)
-      .eq("event_id", eventId)
-      .eq("gender", gender)
-      .eq("status", "OK")
-      .not("performance_value", "is", null)
-      .gt("performance_value", 0)
-
-    // Handle composite age groups (Senior, U23, U20) and individual ages
-    if (ageGroup !== "all") {
-      const mappedGroups = AGE_GROUP_MAPPINGS[ageGroup]
-      if (mappedGroups) {
-        q = q.in("age_group", mappedGroups)
-      } else {
-        q = q.eq("age_group", ageGroup)
-      }
-    }
-
-    // Filter by indoor/outdoor venue
-    if (venue === "indoor") {
-      q = q.eq("meet_indoor", true)
-    } else if (venue === "outdoor") {
-      q = q.eq("meet_indoor", false)
-    }
-
-    // Exclude manual times for sprint and hurdles events
-    if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
-      q = q.eq("is_manual_time", false)
-    }
-
-    // Exclude wind-assisted results for affected events
-    if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
-      q = q.eq("is_wind_legal", true)
-    }
-
-    return q
+  // Resolve age groups
+  let ageGroups: string[] | null = null
+  if (ageGroup !== "all") {
+    const mapped = AGE_GROUP_MAPPINGS[ageGroup]
+    ageGroups = mapped ?? [ageGroup]
   }
 
-  // Fetch data in batches - optimized for performance
-  const BATCH_SIZE = 500
-  const MAX_UNIQUE_ATHLETES = 1000  // Stop after finding this many unique athletes
+  // Resolve venue
+  const indoor = venue === "indoor" ? true : venue === "outdoor" ? false : null
+
+  const excludeManual = MANUAL_TIME_CATEGORIES.includes(eventCategory)
+  const excludeWindIllegal = WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const allData: any[] = []
-  const seenAthletes = new Set<string>()
-  let offset = 0
-  let hasMore = true
+  const { data, error } = await (supabase.rpc as any)("get_all_time_best", {
+    p_event_id: eventId,
+    p_gender: gender,
+    p_age_groups: ageGroups,
+    p_indoor: indoor,
+    p_ascending: ascending,
+    p_exclude_manual: excludeManual,
+    p_exclude_wind_illegal: excludeWindIllegal,
+    p_limit: limit,
+    p_offset: offset,
+  })
 
-  while (hasMore) {
-    const { data, error } = await buildQuery()
-      .order("performance_value", { ascending })
-      .range(offset, offset + BATCH_SIZE - 1)
-
-    if (error) {
-      console.error("Supabase query error:", JSON.stringify(error, null, 2), "Code:", error.code, "Message:", error.message, "Details:", error.details)
-      break
-    }
-
-    if (data && Array.isArray(data) && data.length > 0) {
-      // Track unique athletes as we go
-      for (const result of data as any[]) {
-        if (result.athlete_id && !seenAthletes.has(result.athlete_id)) {
-          seenAthletes.add(result.athlete_id)
-          allData.push(result)
-        }
-      }
-      offset += BATCH_SIZE
-
-      // Stop conditions:
-      // 1. Got fewer results than batch size (end of data)
-      // 2. Found enough unique athletes
-      // 3. Fetched too many rows (safety limit)
-      const dataLength = (data as any[]).length
-      hasMore = dataLength === BATCH_SIZE &&
-                seenAthletes.size < MAX_UNIQUE_ATHLETES &&
-                offset < 20000
-    } else {
-      hasMore = false
-    }
+  if (error) {
+    console.error("RPC error:", error)
+    return { results: [] as any[], totalCount: 0 }
   }
 
-  console.log(`[All-time] Event: ${eventName}, Gender: ${gender}, Unique athletes: ${allData.length}`)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const results = (data ?? []) as any[]
+  const totalCount = results.length > 0 ? Number(results[0].total_count) : 0
 
-  // allData already contains only the best result per athlete (filtered during fetch)
-  return allData
+  return { results, totalCount }
 }
 
 const RESULTS_PER_PAGE = 100
@@ -186,9 +118,11 @@ export default async function AllTimePage({
     ? events.find((e) => e.id === selectedEventId)
     : events[0]
 
-  const results = selectedEvent
-    ? await getAllTimeResults(selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue)
-    : []
+  const offset = (currentPage - 1) * RESULTS_PER_PAGE
+
+  const { results: paginatedResults, totalCount: totalResults } = selectedEvent
+    ? await getAllTimeResults(selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue, RESULTS_PER_PAGE, offset)
+    : { results: [], totalCount: 0 }
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
@@ -210,11 +144,7 @@ export default async function AllTimePage({
   }
 
   // Pagination calculations
-  const totalResults = results.length
   const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE)
-  const startIndex = (currentPage - 1) * RESULTS_PER_PAGE
-  const endIndex = Math.min(startIndex + RESULTS_PER_PAGE, totalResults)
-  const paginatedResults = results.slice(startIndex, endIndex)
 
   // Generate page buttons
   const pageButtons: { label: string; page: number }[] = []
@@ -337,6 +267,7 @@ export default async function AllTimePage({
             selectedEventId={selectedEvent?.id}
             gender={gender as "M" | "F"}
             baseUrl={buildUrl({})}
+            indoor={venue === "indoor"}
           />
         </div>
 
@@ -370,7 +301,7 @@ export default async function AllTimePage({
                       <tbody>
                         {paginatedResults.map((result, index) => (
                           <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
-                            <td className="px-2 py-1.5 text-sm text-muted-foreground">{startIndex + index + 1}</td>
+                            <td className="px-2 py-1.5 text-sm text-muted-foreground">{offset + index + 1}</td>
                             <td className="px-2 py-1.5">
                               <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
                               {result.wind !== null && (
@@ -424,7 +355,7 @@ export default async function AllTimePage({
                   {totalPages > 1 && (
                     <div className="flex flex-wrap items-center justify-center gap-2 border-t p-4">
                       <span className="text-sm text-muted-foreground mr-2">
-                        Viser {startIndex + 1}-{endIndex} av {totalResults}
+                        Viser {offset + 1}-{Math.min(offset + RESULTS_PER_PAGE, totalResults)} av {totalResults}
                       </span>
                       {pageButtons.map((btn) => (
                         <Link

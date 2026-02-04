@@ -22,9 +22,10 @@ interface EventSelectorProps {
   selectedEventId?: string
   gender: "M" | "F"
   baseUrl: string  // Base URL with current params (without event param)
+  indoor?: boolean  // Show indoor-specific events (e.g. 60mh instead of 110mh)
 }
 
-export function EventSelector({ events, selectedEventId, gender, baseUrl }: EventSelectorProps) {
+export function EventSelector({ events, selectedEventId, gender, baseUrl, indoor }: EventSelectorProps) {
   // Build URL for an event
   const buildEventUrl = (eventId: string) => {
     const url = new URL(baseUrl, "http://localhost")  // Need a base for URL parsing
@@ -64,7 +65,7 @@ export function EventSelector({ events, selectedEventId, gender, baseUrl }: Even
   // Get events that don't belong to any category (for "Other" section)
   const categorizedCodes = new Set<string>()
   EVENT_CATEGORIES.forEach(cat => {
-    getCategoryEvents(cat, gender).forEach(code => categorizedCodes.add(code))
+    getCategoryEvents(cat, gender, indoor).forEach(code => categorizedCodes.add(code))
   })
 
   // Other events are shown when "show all" is enabled
@@ -82,7 +83,7 @@ export function EventSelector({ events, selectedEventId, gender, baseUrl }: Even
       <CardContent className="space-y-1">
         {/* Main categories */}
         {EVENT_CATEGORIES.map(category => {
-          const categoryEventCodes = getCategoryEvents(category, gender)
+          const categoryEventCodes = getCategoryEvents(category, gender, indoor)
           const categoryEvents = categoryEventCodes
             .map(code => eventsByCode.get(code))
             .filter((e): e is Event => e !== undefined)

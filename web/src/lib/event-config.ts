@@ -6,6 +6,7 @@ export interface EventCategory {
   name: string
   events?: string[]  // Same events for both genders
   genderEvents?: { M: string[]; F: string[] }  // Different events per gender
+  indoorGenderEvents?: { M: string[]; F: string[] }  // Indoor-specific events per gender
   defaultExpanded?: boolean
 }
 
@@ -34,6 +35,10 @@ export const EVENT_CATEGORIES: EventCategory[] = [
     genderEvents: {
       M: ['110mh_106_7cm', '400mh_91_4cm'],
       F: ['100mh_84cm', '400mh_76_2cm'],
+    },
+    indoorGenderEvents: {
+      M: ['60mh_106_7cm'],
+      F: ['60mh_84cm'],
     },
     defaultExpanded: true,
   },
@@ -108,6 +113,14 @@ export const EVENT_DISPLAY_NAMES: Record<string, string> = {
   '400mh_91_4cm': '400 meter hekk',
   '400mh_76_2cm': '400 meter hekk',
   '400mh_84cm': '400 meter hekk (J)',
+  // 60m hurdles (indoor)
+  '60mh_106_7cm': '60 meter hekk',
+  '60mh_84cm': '60 meter hekk',
+  '60mh_91_4cm': '60 meter hekk (G)',
+  '60mh_100cm': '60 meter hekk (J)',
+  '60mh_76_2cm': '60 meter hekk (J)',
+  '60mh_68cm': '60 meter hekk (rekrutt)',
+  '60mh_60cm': '60 meter hekk (yngre)',
   // Steeplechase
   '3000mhinder_91_4cm': '3000 meter hinder',
   '3000mhinder_76_2cm': '3000 meter hinder',
@@ -169,18 +182,23 @@ export const OUTDOOR_CHAMPIONSHIP_EVENTS: Record<'M' | 'F', string[]> = {
 // Time event codes where lower performance_value is better
 export const TIME_EVENT_CODES = new Set([
   '60m', '100m', '200m', '400m', '800m', '1500m', '3000m', '5000m', '10000m',
-  '60mh_106_7cm', '60mh_84cm', '110mh_106_7cm', '100mh_84cm',
+  '60mh_106_7cm', '60mh_100cm', '60mh_91_4cm', '60mh_84cm', '60mh_76_2cm', '60mh_68cm', '60mh_60cm',
+  '110mh_106_7cm', '100mh_84cm',
   '400mh_91_4cm', '400mh_76_2cm', '3000mhinder_91_4cm', '3000mhinder_76_2cm',
 ])
 
 // Minimum results to show in standard view
 export const MIN_RESULTS_STANDARD_VIEW = 50
 
-// Get events for a category based on gender
+// Get events for a category based on gender and venue
 export function getCategoryEvents(
   category: EventCategory,
-  gender: 'M' | 'F'
+  gender: 'M' | 'F',
+  indoor?: boolean
 ): string[] {
+  if (indoor && category.indoorGenderEvents) {
+    return category.indoorGenderEvents[gender] || []
+  }
   if (category.genderEvents) {
     return category.genderEvents[gender] || []
   }

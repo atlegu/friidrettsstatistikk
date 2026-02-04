@@ -43,17 +43,18 @@ EVENT_MAPPING = {
     '5000 meter': '5000m',
     '10000 meter': '10000m',
     # Hurdles - various heights
-    '60 meter hekk': '60mh',
-    '60 meter hekk (68cm)': '60mh',
-    '60 meter hekk (76cm)': '60mh',
-    '60 meter hekk (76,2cm)': '60mh',
-    '60 meter hekk (84cm)': '60mh',
-    '60 meter hekk (84,0cm)': '60mh',
-    '60 meter hekk (91cm)': '60mh',
-    '60 meter hekk (91,4cm)': '60mh',
-    '60 meter hekk (100cm)': '60mh',
-    '60 meter hekk (100,0cm)': '60mh',
-    '60 meter hekk (106,7cm)': '60mh',
+    '60 meter hekk': '60mh',  # generic fallback
+    '60 meter hekk (60cm)': '60mh_60cm',
+    '60 meter hekk (68cm)': '60mh_68cm',
+    '60 meter hekk (76cm)': '60mh_76_2cm',
+    '60 meter hekk (76,2cm)': '60mh_76_2cm',
+    '60 meter hekk (84cm)': '60mh_84cm',
+    '60 meter hekk (84,0cm)': '60mh_84cm',
+    '60 meter hekk (91cm)': '60mh_91_4cm',
+    '60 meter hekk (91,4cm)': '60mh_91_4cm',
+    '60 meter hekk (100cm)': '60mh_100cm',
+    '60 meter hekk (100,0cm)': '60mh_100cm',
+    '60 meter hekk (106,7cm)': '60mh_106_7cm',
     '100 meter hekk': '100mh',
     '110 meter hekk': '110mh',
     '400 meter hekk': '400mh',
@@ -445,15 +446,21 @@ class ResultImporter:
                 return self.events_cache[base_name]
 
         # Try prefix matching for hurdles with height specs
+        # First try exact EVENT_MAPPING match, then fall back to generic code
         hurdle_patterns = [
             ('60 meter hekk', '60mh'),
             ('100 meter hekk', '100mh'),
             ('110 meter hekk', '110mh'),
         ]
-        for pattern, code in hurdle_patterns:
+        for pattern, fallback_code in hurdle_patterns:
             if event_lower.startswith(pattern):
-                if code.lower() in self.events_cache:
-                    return self.events_cache[code.lower()]
+                # Try to find height-specific mapping first
+                if event_lower in EVENT_MAPPING:
+                    specific_code = EVENT_MAPPING[event_lower].lower()
+                    if specific_code in self.events_cache:
+                        return self.events_cache[specific_code]
+                if fallback_code.lower() in self.events_cache:
+                    return self.events_cache[fallback_code.lower()]
 
         # Try prefix matching for throws with weight specs
         throw_patterns = [

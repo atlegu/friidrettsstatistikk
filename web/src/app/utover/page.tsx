@@ -70,12 +70,13 @@ export default async function UtoverPage({
       <h1 className="mt-4 mb-4">Utøvere</h1>
 
       {/* Search */}
-      <form className="mb-8 flex gap-2 max-w-md">
+      <form className="mb-8 flex gap-2 max-w-md" autoComplete="off">
         <Input
           type="search"
           name="search"
           placeholder="Søk etter utøver..."
           defaultValue={search}
+          autoComplete="off"
         />
         <Button type="submit">Søk</Button>
       </form>
