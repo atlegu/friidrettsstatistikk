@@ -80,8 +80,8 @@ export function formatPerformanceValue(
   }
 
   if (resultType === "distance" || resultType === "height") {
-    // Value is in centimeters, display in meters
-    return (value / 100).toFixed(2)
+    // Value is in millimeters (e.g., 5730 for 5.73m), display in meters
+    return (value / 1000).toFixed(2)
   }
 
   // Points or other

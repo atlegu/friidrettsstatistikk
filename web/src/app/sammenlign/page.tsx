@@ -19,7 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
-import { formatPerformance } from "@/lib/format-performance"
+import { formatPerformance, formatPerformanceValue } from "@/lib/format-performance"
 
 interface Athlete {
   id: string
@@ -86,12 +86,14 @@ function AthleteSearch({
   onSelect,
   onClear,
   excludeId,
+  isLoading,
 }: {
   label: string
   selectedAthlete: Athlete | null
   onSelect: (athlete: Athlete) => void
   onClear: () => void
   excludeId?: string
+  isLoading?: boolean
 }) {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<Athlete[]>([])
@@ -120,6 +122,18 @@ function AthleteSearch({
 
     return () => clearTimeout(timer)
   }, [query, excludeId])
+
+  if (isLoading) {
+    return (
+      <div className="space-y-2">
+        <label className="text-sm font-medium">{label}</label>
+        <div className="flex items-center gap-2 rounded-md border bg-muted/50 p-3">
+          <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+          <span className="text-sm text-muted-foreground">Laster utøver...</span>
+        </div>
+      </div>
+    )
+  }
 
   if (selectedAthlete) {
     return (
@@ -193,39 +207,6 @@ function AthleteSearch({
   )
 }
 
-// Format helpers (same as ProgressionChart)
-function formatPerformanceForChart(value: number, resultType: string): string {
-  if (resultType === "time") {
-    const totalSeconds = value / 100
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = totalSeconds % 60
-    if (minutes > 0) {
-      return `${minutes}:${seconds.toFixed(2).padStart(5, "0")}`
-    }
-    return seconds.toFixed(2)
-  }
-  if (resultType === "distance" || resultType === "height") {
-    return (value / 100).toFixed(2)
-  }
-  return value.toString()
-}
-
-function formatYAxisTick(value: number, resultType: string): string {
-  if (resultType === "time") {
-    const totalSeconds = value / 100
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = totalSeconds % 60
-    if (minutes > 0) {
-      return `${minutes}:${seconds.toFixed(0).padStart(2, "0")}`
-    }
-    return seconds.toFixed(1)
-  }
-  if (resultType === "distance" || resultType === "height") {
-    return (value / 100).toFixed(2)
-  }
-  return value.toString()
-}
-
 function getAthleteName(a: Athlete): string {
   return a.full_name || `${a.first_name} ${a.last_name}`
 }
@@ -288,6 +269,16 @@ function CompareContent() {
   const [loadingH2h, setLoadingH2h] = useState(false)
   const [h2hEventId, setH2hEventId] = useState<string>("all")
   const [initialLoadDone, setInitialLoadDone] = useState(false)
+  const [loadingAthlete1, setLoadingAthlete1] = useState(false)
+  const [loadingAthlete2, setLoadingAthlete2] = useState(false)
+  const [initializing, setInitializing] = useState(true)
+
+  // Check URL params synchronously (runs during render, not after)
+  const { urlHasId1, urlHasId2 } = useMemo(() => {
+    if (typeof window === 'undefined') return { urlHasId1: false, urlHasId2: false }
+    const params = new URLSearchParams(window.location.search)
+    return { urlHasId1: params.has('id1'), urlHasId2: params.has('id2') }
+  }, [])
 
   // Load athletes from URL params
   useEffect(() => {
@@ -304,27 +295,48 @@ function CompareContent() {
 
     if (tabParam === "h2h") setActiveTab("h2h")
 
-    async function loadAthletes() {
-      if (id1) {
-        const { data } = await supabase
-          .from("athletes")
-          .select("id, first_name, last_name, full_name, birth_year, gender")
-          .eq("id", id1)
-          .single()
-        if (data) setAthlete1(data)
+    async function loadAthletes(retryCount = 0) {
+      try {
+        if (id1) {
+          const { data, error } = await supabase
+            .from("athletes")
+            .select("id, first_name, last_name, full_name, birth_year, gender")
+            .eq("id", id1)
+            .single()
+          if (error) throw error
+          if (data) setAthlete1(data)
+          setLoadingAthlete1(false)
+        }
+        if (id2) {
+          const { data, error } = await supabase
+            .from("athletes")
+            .select("id, first_name, last_name, full_name, birth_year, gender")
+            .eq("id", id2)
+            .single()
+          if (error) throw error
+          if (data) setAthlete2(data)
+          setLoadingAthlete2(false)
+        }
+        if (eventParam) {
+          setSelectedEventId(eventParam)
+        }
+        setInitialLoadDone(true)
+        setInitializing(false)
+      } catch (err) {
+        // Retry on AbortError (common in dev mode due to Supabase auth locks)
+        if (err instanceof Error && (err.name === 'AbortError' || err.message?.includes('aborted'))) {
+          if (retryCount < 3) {
+            console.debug('Supabase AbortError, retrying...', retryCount + 1)
+            setTimeout(() => loadAthletes(retryCount + 1), 100 * (retryCount + 1))
+            return
+          }
+        }
+        console.error('Error loading athletes:', err)
+        setLoadingAthlete1(false)
+        setLoadingAthlete2(false)
+        setInitialLoadDone(true)
+        setInitializing(false)
       }
-      if (id2) {
-        const { data } = await supabase
-          .from("athletes")
-          .select("id, first_name, last_name, full_name, birth_year, gender")
-          .eq("id", id2)
-          .single()
-        if (data) setAthlete2(data)
-      }
-      if (eventParam) {
-        setSelectedEventId(eventParam)
-      }
-      setInitialLoadDone(true)
     }
     loadAthletes()
   }, [searchParams, initialLoadDone])
@@ -640,6 +652,7 @@ function CompareContent() {
                   setSelectedEventId("")
                 }}
                 excludeId={athlete2?.id}
+                isLoading={loadingAthlete1 || (initializing && urlHasId1 && !athlete1)}
               />
               <AthleteSearch
                 label="Utøver 2"
@@ -650,6 +663,7 @@ function CompareContent() {
                   setSelectedEventId("")
                 }}
                 excludeId={athlete1?.id}
+                isLoading={loadingAthlete2 || (initializing && urlHasId2 && !athlete2)}
               />
             </div>
 
@@ -762,7 +776,7 @@ function CompareContent() {
                             <YAxis
                               reversed={resultType === "time"}
                               domain={yDomain}
-                              tickFormatter={(value) => formatYAxisTick(value, resultType)}
+                              tickFormatter={(value) => formatPerformanceValue(value, resultType)}
                               tick={{ fill: "var(--text-muted, #6b7280)", fontSize: 11 }}
                               axisLine={{ stroke: "var(--border-default, #e5e7eb)" }}
                               width={55}

@@ -46,9 +46,9 @@ function formatPerformanceForChart(value: number, resultType: string): string {
     }
     return seconds.toFixed(2)
   }
-  // Distance/height in centimeters, display in meters
+  // Distance/height in millimeters, display in meters
   if (resultType === "distance" || resultType === "height") {
-    return (value / 100).toFixed(2)
+    return (value / 1000).toFixed(2)
   }
   // Points
   return value.toString()
@@ -66,7 +66,7 @@ function formatYAxisTick(value: number, resultType: string): string {
     return seconds.toFixed(1)
   }
   if (resultType === "distance" || resultType === "height") {
-    return (value / 100).toFixed(2)
+    return (value / 1000).toFixed(2)
   }
   return value.toString()
 }

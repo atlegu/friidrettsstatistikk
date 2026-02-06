@@ -43,19 +43,12 @@ interface ResultsScatterChartProps {
   hideSelector?: boolean
 }
 
-// Detect divisor based on typical value ranges
-// Height/distance in meters: ~1-100m => stored as cm (100-10000) or mm (1000-100000)
+// Detect divisor based on result type
+// Distance/height values are stored in millimeters (e.g., 5730 for 5.73m)
+// Time values are stored in hundredths of seconds
 function detectDivisor(maxValue: number, resultType: string): number {
   if (resultType === "time") return 100 // hundredths of seconds
-  if (resultType === "distance" || resultType === "height") {
-    // If max value > 1000, likely stored in mm, need /1000
-    // If max value < 1000, likely stored in cm, need /100
-    // For pole vault: 6m = 600cm or 6000mm
-    // For throws: 80m = 8000cm or 80000mm
-    if (maxValue > 10000) return 1000 // Definitely mm (throws in mm)
-    if (maxValue > 1000) return 1000  // Likely mm (heights in mm)
-    return 100 // Likely cm
-  }
+  if (resultType === "distance" || resultType === "height") return 1000 // millimeters to meters
   return 1 // points
 }
 
