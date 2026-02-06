@@ -1,0 +1,522 @@
+[
+  {
+    "external_id": 10008413,
+    "name": "Full Moon Jump",
+    "date": "2026-01-24",
+    "arena": "Friidrottens Hus",
+    "location": "Gøteborg/SWE",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008415,
+    "name": "Vinthundsvintern och IDM",
+    "date": "2026-01-24",
+    "arena": "Sollentuna Friidrottshall",
+    "location": "Sollentuna/SWE",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008419,
+    "name": "Dr. Sander Scorcher/Columbia Challenge",
+    "date": "2026-01-23",
+    "arena": "The Armory Track & Field Center",
+    "location": "New York/NY/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008414,
+    "name": "Cyclone Open",
+    "date": "2026-01-23",
+    "arena": "Lied Recreational Center",
+    "location": "Ames/IA/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008416,
+    "name": "Dr. Martin Luther King Jr Invitational",
+    "date": "2026-01-23",
+    "arena": "Albuquerque Convention Center",
+    "location": "Albuquerque/NM/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008417,
+    "name": "Larry Wieczorek Invitational",
+    "date": "2026-01-23",
+    "arena": "Iowa Recreation Building",
+    "location": "Iowa City/IA/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008418,
+    "name": "Alachua County Sports and Event Center Invitational",
+    "date": "2026-01-23",
+    "arena": "Alachua County Sports & Events Center",
+    "location": "Gainesville/FL/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008412,
+    "name": "BAUHAUS-galan Indoor",
+    "date": "2026-01-22",
+    "arena": "Sätra Friidrottshall",
+    "location": "Stockholm/SWE",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008404,
+    "name": "Treningsstevne",
+    "date": "2026-01-21",
+    "arena": "Nordlandshallen",
+    "location": "Bodø",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008407,
+    "name": "Tampere Indoor Meeting",
+    "date": "2026-01-21",
+    "arena": "Pirkkahalli Sports Centre",
+    "location": "Tampere/FIN",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008403,
+    "name": "Seriestevne",
+    "date": "2026-01-20",
+    "arena": "Messehall A - Tønsberg",
+    "location": "Tønsberg",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008406,
+    "name": "Aarhus Sprint'n'Jump",
+    "date": "2026-01-20",
+    "arena": "Aarhus Atletik og Løbeakademi",
+    "location": "Aarhus/DEN",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008402,
+    "name": "Seriestevne 1",
+    "date": "2026-01-19",
+    "arena": "Tromsøhallen",
+    "location": "Tromsø",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008391,
+    "name": "CMCM Luxembourg Indoor Meeting",
+    "date": "2026-01-18",
+    "arena": "Coque Sport Center",
+    "location": "Kirchberg/LUX",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008398,
+    "name": "Gneist 3000 indoor",
+    "date": "2026-01-17",
+    "arena": "Gneist Arena",
+    "location": "Fana",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008411,
+    "name": "Meeting de Saut en Hauteur d'Hirson",
+    "date": "2026-01-17",
+    "arena": "Salle Georges Hébert",
+    "location": "Hirson/FRA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008401,
+    "name": "Innlagte øvelser NM mangekamp",
+    "date": "2026-01-17",
+    "arena": "Bærum Idrettspark",
+    "location": "Bærum",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008400,
+    "name": "NM-UM mangekamp innendørs",
+    "date": "2026-01-17",
+    "arena": "Bærum Idrettspark",
+    "location": "Bærum",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008389,
+    "name": "Bearson/Gathje Classic",
+    "date": "2026-01-16",
+    "arena": "Myers Field House",
+    "location": "Mankato/MN/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008387,
+    "name": "Corky Classic",
+    "date": "2026-01-16",
+    "arena": "Texas Tech-Sports Performance Center",
+    "location": "Lubbock/TX/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008386,
+    "name": "Indiana Invitational",
+    "date": "2026-01-16",
+    "arena": "Harry Gladstein Fieldhouse",
+    "location": "Bloomington/IN/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008408,
+    "name": "Quality Hotel Games",
+    "date": "2026-01-16",
+    "arena": "Telekonsult Arena",
+    "location": "Växjö/SWE",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008410,
+    "name": "Arkansas Invitational",
+    "date": "2026-01-16",
+    "arena": "Randal Tyson Track Center",
+    "location": "Fayetteville/AR/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008385,
+    "name": "Owen Hewett Invitational",
+    "date": "2026-01-16",
+    "arena": "Mosier Indoor Facility",
+    "location": "Norman/OK/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008392,
+    "name": "Januarsprint",
+    "date": "2026-01-15",
+    "arena": "Bærum Idrettspark",
+    "location": "Bærum",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008394,
+    "name": "Hoppstevne 1",
+    "date": "2026-01-15",
+    "arena": "Leikvang Friidrettshall",
+    "location": "Leikvang",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008383,
+    "name": "Jimmy Carnes Track and Field College Open and Masters",
+    "date": "2026-01-15",
+    "arena": "Alachua County Sports & Events Center",
+    "location": "Gainesville/FL/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008393,
+    "name": "Innendørsstevne 1",
+    "date": "2026-01-14",
+    "arena": "Deep Ocean Arena",
+    "location": "Haugesund",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008388,
+    "name": "Meeting du Val de Marne Indoor",
+    "date": "2026-01-14",
+    "arena": "Salle Joseph Maigrot",
+    "location": "Paris/FRA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008397,
+    "name": "Kaststevne",
+    "date": "2026-01-13",
+    "arena": "Hovlandhallen",
+    "location": "Larvik",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008395,
+    "name": "HTB Seriestevne hopp u.t.",
+    "date": "2026-01-12",
+    "arena": "Osterøyhallen",
+    "location": "Osterøy",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008396,
+    "name": "Masters innendørs II",
+    "date": "2026-01-12",
+    "arena": "Leikvang Friidrettshall",
+    "location": "Leikvang",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008381,
+    "name": "Nyttårsstevnet",
+    "date": "2026-01-11",
+    "arena": "Bærum Idrettspark",
+    "location": "Bærum",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008384,
+    "name": "Campionati Regionali Assoluti Indoor",
+    "date": "2026-01-11",
+    "arena": "Palazzetto Indoor",
+    "location": "Bra/ITA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008382,
+    "name": "Distriktskampen",
+    "date": "2026-01-10",
+    "arena": "Rimnershallen",
+    "location": "Uddevalla/SWE",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008368,
+    "name": "VARSY:n kansalliset ja hallitonnit",
+    "date": "2026-01-10",
+    "arena": "Kupittaan urheiluhalli",
+    "location": "Turku/FIN",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008370,
+    "name": "Weber State Invitational",
+    "date": "2026-01-09",
+    "arena": "Weber State-Swenson Gym",
+    "location": "Ogden/UT/USA",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008376,
+    "name": "Startskottet med iUDM 12-17 och HäcXksan",
+    "date": "2026-01-09",
+    "arena": "Friidrottens Hus",
+    "location": "Gøteborg/SWE",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008380,
+    "name": "Kengurukarusellen 1",
+    "date": "2026-01-08",
+    "arena": "Leikvang Friidrettshall",
+    "location": "Leikvang",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008379,
+    "name": "Kretsstevne",
+    "date": "2026-01-07",
+    "arena": "Allbrukshuset Berg",
+    "location": "Berg",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008378,
+    "name": "Sprintstevne",
+    "date": "2026-01-06",
+    "arena": "Østfoldhallen",
+    "location": "Fredrikstad",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008369,
+    "name": "BFTTA Indoor Series London",
+    "date": "2026-01-04",
+    "arena": "Lee Valley Athletics Centre",
+    "location": "London/GBR",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008377,
+    "name": "Fana stavhoppgalla",
+    "date": "2026-01-03",
+    "arena": "Fana Arena",
+    "location": "Fana",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008409,
+    "name": "Hoppstevne",
+    "date": "2025-12-31",
+    "arena": "Nes Arena",
+    "location": "Hvam",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008346,
+    "name": "Seriestevne",
+    "date": "2025-12-30",
+    "arena": "Messehall A - Tønsberg",
+    "location": "Tønsberg",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008362,
+    "name": "Romjulsspretten",
+    "date": "2025-12-30",
+    "arena": "Ørstahallen",
+    "location": "Ørsta",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008355,
+    "name": "Julesprint 2025",
+    "date": "2025-12-30",
+    "arena": "FIBO-hallen",
+    "location": "Lyngdal",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008373,
+    "name": "Innendørsstevne",
+    "date": "2025-12-29",
+    "arena": "Sandneshallen",
+    "location": "Sandnes",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008349,
+    "name": "Hopp uten tilløp",
+    "date": "2025-12-29",
+    "arena": "Bærum Idrettspark",
+    "location": "Bærum",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008351,
+    "name": "Kveldsstevne",
+    "date": "2025-12-29",
+    "arena": "Sandneshallen",
+    "location": "Sandnes",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008371,
+    "name": "Romjulsstemne",
+    "date": "2025-12-28",
+    "arena": "Vikahaugane Idrettspark",
+    "location": "Leirvik",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008350,
+    "name": "Treningstemne",
+    "date": "2025-12-28",
+    "arena": "Ulsteinhallen",
+    "location": "Ulsteinvik",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008352,
+    "name": "Gneist Romjulsstevne 2025",
+    "date": "2025-12-27",
+    "arena": "Gneist Arena",
+    "location": "Fana",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008358,
+    "name": "Ribbeløpet",
+    "date": "2025-12-26",
+    "arena": "Steinkjerhallen",
+    "location": "Steinkjer",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008364,
+    "name": "Julestevne",
+    "date": "2025-12-22",
+    "arena": "Håkons Hall",
+    "location": "Lillehammer",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008342,
+    "name": "Julestevne",
+    "date": "2025-12-21",
+    "arena": "Seljestadhallen",
+    "location": "Harstad",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008338,
+    "name": "Førjulsspretten",
+    "date": "2025-12-20",
+    "arena": "Bærum Idrettspark",
+    "location": "Bærum",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008336,
+    "name": "Mastersstevne",
+    "date": "2025-12-20",
+    "arena": "Nes Arena",
+    "location": "Hvam",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008363,
+    "name": "Treningsstevne",
+    "date": "2025-12-19",
+    "arena": "Gimlehallen",
+    "location": "Kristiansand",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008335,
+    "name": "Julesprint 2025",
+    "date": "2025-12-18",
+    "arena": "Deep Ocean Arena",
+    "location": "Haugesund",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008337,
+    "name": "Treningsstevne",
+    "date": "2025-12-17",
+    "arena": "Sandehallen",
+    "location": "Sande",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008333,
+    "name": "GTI Master Klubbatevne",
+    "date": "2025-12-17",
+    "arena": "Stavanger Idrettshall",
+    "location": "Stavanger",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008341,
+    "name": "Treningsstemne",
+    "date": "2025-12-16",
+    "arena": "Trivselshallen",
+    "location": "Sandane",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008360,
+    "name": "Julehopp",
+    "date": "2025-12-16",
+    "arena": "Tangvallhallen",
+    "location": "Søgne",
+    "outdoor": false
+  },
+  {
+    "external_id": 10008334,
+    "name": "Treningstemne",
+    "date": "2025-12-16",
+    "arena": "Ulsteinhallen",
+    "location": "Ulsteinvik",
+    "outdoor": false
+  }
+]

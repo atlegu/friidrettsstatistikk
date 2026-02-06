@@ -2,6 +2,56 @@
 
 ## Siste oppdatering: 2026-01-26
 
+---
+
+## Granulære aldersgrupper (26. januar 2026)
+
+### Problemet
+Aldersgruppene var for aggregerte (U18 kombinerte 16 og 17 år). Brukere ønsket mer detaljerte aldersfiltre.
+
+### Løsning
+Oppdatert `get_age_group` funksjonen i databasen til å returnere:
+
+| Alder | Aldersgruppe |
+|-------|--------------|
+| < 13 | Yngre |
+| 13 | 13 |
+| 14 | 14 |
+| 15 | 15 |
+| 16 | 16 |
+| 17 | 17 |
+| 18-19 | 18-19 |
+| 20-22 | 20-22 |
+| 23-34 | Senior |
+| 35+ | V35, V40, etc. |
+
+### Frontend-filtre
+Oppdatert alle statistikksider med nye aldersfiltre:
+
+- **Individuelle aldre**: 13 år, 14 år, 15 år, 16 år, 17 år
+- **Kombinerte**: 18-19 år, 20-22 år
+- **Kompositt**:
+  - Junior 15-19 (inkluderer 15, 16, 17, 18-19)
+  - Junior 15-22 (inkluderer 15, 16, 17, 18-19, 20-22)
+- **Senior**: Alle 15+ (inkluderer 15, 16, 17, 18-19, 20-22, Senior)
+
+### Filer oppdatert
+- `/web/src/app/statistikk/[year]/page.tsx`
+- `/web/src/app/statistikk/all-time/page.tsx`
+- `/web/src/app/statistikk/rekorder/page.tsx`
+- `/web/src/app/klubber/[id]/statistikk/[year]/page.tsx`
+- `/web/src/app/klubber/[id]/statistikk/all-time/page.tsx`
+- `/web/src/app/klubber/[id]/statistikk/rekorder/page.tsx`
+
+### Database-migrasjon
+```sql
+-- update_age_group_function
+CREATE OR REPLACE FUNCTION public.get_age_group(birth_date date, competition_date date)
+-- Returnerer nå: 13, 14, 15, 16, 17, 18-19, 20-22, Senior, V35+
+```
+
+---
+
 ### Prosjektoversikt
 - **Frontend**: Next.js 16.1.3 med Turbopack, TypeScript, Tailwind CSS
 - **Backend**: Supabase (PostgreSQL med RLS)

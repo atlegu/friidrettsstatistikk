@@ -1,7 +1,8 @@
 """
-Fix half marathon and marathon times that were imported with missing seconds.
+Fix 800m and 1500m times that were imported with missing hundredths.
 
-Problem: Times like "1,08,07" (1h 8m 7s) were stored as "1.08" losing the seconds.
+Problem: Times like "1,58,10" (1:58.10) were stored as "118.00" or "119.00"
+         losing the hundredths precision.
 Solution: Re-fetch the correct times from the source and update the database.
 """
 
@@ -23,41 +24,53 @@ session.headers.update({
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) DataVerifier/1.0',
 })
 
-DRY_RUN = False  # Set to False to actually update
+DRY_RUN = True  # Set to False to actually update
 
 
 def parse_time_to_hundredths(time_str):
-    """Parse time string like '1:08:07' or '1,08,07' to hundredths of seconds."""
+    """Parse time string like '1:58.10' to hundredths of seconds."""
     if not time_str:
         return None
 
     # Normalize separators
-    time_str = time_str.replace(',', ':').replace('.', ':')
+    time_str = time_str.replace(',', ':')
 
-    # Try H:MM:SS format
-    match = re.match(r'^(\d{1,2}):(\d{2}):(\d{2})$', time_str)
+    # Try M:SS.cc format (e.g., "1:58.10")
+    match = re.match(r'^(\d{1,2}):(\d{2})\.(\d{1,2})$', time_str)
     if match:
-        hours = int(match.group(1))
-        minutes = int(match.group(2))
-        seconds = int(match.group(3))
-        total_seconds = hours * 3600 + minutes * 60 + seconds
-        return total_seconds * 100
+        minutes = int(match.group(1))
+        seconds = int(match.group(2))
+        centiseconds = match.group(3).ljust(2, '0')
+        total_hundredths = (minutes * 60 + seconds) * 100 + int(centiseconds)
+        return total_hundredths
 
-    # Try H:MM:SS.cc format
-    match = re.match(r'^(\d{1,2}):(\d{2}):(\d{2})\.(\d{1,2})$', time_str)
+    # Try M:SS format (e.g., "1:58")
+    match = re.match(r'^(\d{1,2}):(\d{2})$', time_str)
     if match:
-        hours = int(match.group(1))
-        minutes = int(match.group(2))
-        seconds = int(match.group(3))
-        centiseconds = int(match.group(4).ljust(2, '0'))
-        total_seconds = hours * 3600 + minutes * 60 + seconds
-        return total_seconds * 100 + centiseconds
+        minutes = int(match.group(1))
+        seconds = int(match.group(2))
+        return (minutes * 60 + seconds) * 100
 
     return None
 
 
-def fetch_athlete_road_results(external_id):
-    """Fetch road race results for an athlete from the source."""
+def format_time_from_source(time_str):
+    """Convert source format (1,58,10) to display format (1:58.10)."""
+    if not time_str:
+        return None
+    # Replace commas with colons and periods
+    parts = time_str.split(',')
+    if len(parts) == 3:
+        mins, secs, centis = parts
+        return f"{mins}:{secs}.{centis.zfill(2)}"
+    elif len(parts) == 2:
+        mins, secs = parts
+        return f"{mins}:{secs}"
+    return time_str
+
+
+def fetch_athlete_results(external_id, event_filter=None):
+    """Fetch results for an athlete from the source."""
     url = f"{BASE_URL}/UtoverStatistikk.php"
     data = {'athlete': external_id, 'type': 'RES'}
 
@@ -69,16 +82,24 @@ def fetch_athlete_road_results(external_id):
 
     results = []
     current_event = None
+    current_indoor = None
 
-    for elem in soup.find_all(['h3', 'table']):
-        if elem.name == 'h3':
+    for elem in soup.find_all(['h2', 'h3', 'table']):
+        if elem.name == 'h2':
+            text = elem.get_text(strip=True).upper()
+            if 'INNENDØRS' in text:
+                current_indoor = True
+            elif 'UTENDØRS' in text:
+                current_indoor = False
+
+        elif elem.name == 'h3':
             text = elem.get_text(strip=True)
             if text and not text.startswith('Født:'):
                 current_event = text
 
         elif elem.name == 'table' and current_event:
-            # Only process halvmaraton and maraton
-            if 'maraton' not in current_event.lower():
+            # Filter for specific events if requested
+            if event_filter and not any(f in current_event for f in event_filter):
                 continue
 
             rows = elem.find_all('tr')
@@ -96,7 +117,7 @@ def fetch_athlete_road_results(external_id):
                 if len(cols) < 3:
                     continue
 
-                result_data = {'event': current_event}
+                result_data = {'event': current_event, 'indoor': current_indoor}
 
                 for i, header in enumerate(headers):
                     if i >= len(cols):
@@ -129,20 +150,21 @@ def parse_date(date_str):
     return None
 
 
-def fix_marathon_times():
-    """Find and fix marathon/half marathon times with missing seconds."""
+def fix_middle_distance_times():
+    """Find and fix 800m/1500m times with missing hundredths."""
 
     # Get event IDs
     events = supabase.table('events').select('id, code, name').in_(
-        'code', ['halvmaraton', 'maraton']
+        'code', ['800m', '1500m']
     ).execute()
 
     event_map = {e['id']: e for e in events.data}
     event_ids = list(event_map.keys())
+    event_filters = {'800m': ['800 meter'], '1500m': ['1500 meter']}
 
     print(f"Checking events: {[e['name'] for e in events.data]}")
 
-    # Find results with short performance strings (missing seconds)
+    # Find results with whole seconds (missing hundredths)
     results = supabase.table('results').select(
         'id, performance, performance_value, date, athlete_id, event_id'
     ).in_('event_id', event_ids).execute()
@@ -152,14 +174,21 @@ def fix_marathon_times():
 
     for r in results.data:
         perf = r['performance']
-        # Check if it's a truncated time (like "1.08" instead of "1:08:07")
-        if perf and re.match(r'^\d{1,2}\.\d{2}$', perf):
-            athlete_id = r['athlete_id']
-            if athlete_id not in athletes_to_fix:
-                athletes_to_fix[athlete_id] = []
-            athletes_to_fix[athlete_id].append(r)
+        # Check if it's a whole second time (like "118.00" or "119.0" or ends with ".00")
+        if perf:
+            # Match patterns like "118.00", "119.0", "120"
+            if re.match(r'^\d+\.0+$', perf) or re.match(r'^\d+\.00$', perf) or re.match(r'^\d+$', perf):
+                athlete_id = r['athlete_id']
+                if athlete_id not in athletes_to_fix:
+                    athletes_to_fix[athlete_id] = []
+                athletes_to_fix[athlete_id].append(r)
 
-    print(f"\nFound {sum(len(v) for v in athletes_to_fix.values())} results to fix across {len(athletes_to_fix)} athletes")
+    total_to_fix = sum(len(v) for v in athletes_to_fix.values())
+    print(f"\nFound {total_to_fix} results with whole seconds across {len(athletes_to_fix)} athletes")
+
+    if total_to_fix == 0:
+        print("No results to fix!")
+        return 0
 
     fixed_count = 0
 
@@ -170,17 +199,22 @@ def fix_marathon_times():
         ).eq('id', athlete_id).single().execute()
 
         if not athlete.data or not athlete.data.get('external_id'):
-            print(f"  Skipping athlete {athlete_id}: no external_id")
             continue
 
         name = f"{athlete.data['first_name']} {athlete.data['last_name']}"
         external_id = athlete.data['external_id']
 
+        # Determine which events we need
+        event_codes = set(event_map[r['event_id']]['code'] for r in bad_results)
+        filters = []
+        for code in event_codes:
+            filters.extend(event_filters.get(code, []))
+
         print(f"\n{name} (external_id: {external_id}):")
 
         # Fetch original data
         try:
-            source_results = fetch_athlete_road_results(external_id)
+            source_results = fetch_athlete_results(external_id, filters)
         except Exception as e:
             print(f"  Error fetching data: {e}")
             continue
@@ -189,7 +223,14 @@ def fix_marathon_times():
         for bad_result in bad_results:
             bad_perf = bad_result['performance']
             bad_date = bad_result['date']
+            event_code = event_map[bad_result['event_id']]['code']
             event_name = event_map[bad_result['event_id']]['name']
+
+            # Convert stored performance to approximate seconds
+            try:
+                stored_seconds = float(bad_perf.rstrip('0').rstrip('.')) if '.' in bad_perf else float(bad_perf)
+            except:
+                continue
 
             # Find matching result in source
             found = False
@@ -197,22 +238,23 @@ def fix_marathon_times():
                 src_date = parse_date(src.get('date'))
                 src_perf = src.get('performance', '')
 
-                # Check if dates match and performance starts similarly
+                # Check if dates match
                 if src_date == bad_date:
-                    # Original format might be "1,08,07" - normalize it
-                    normalized = src_perf.replace(',', ':')
+                    # Parse source performance
+                    formatted = format_time_from_source(src_perf)
+                    new_value = parse_time_to_hundredths(formatted)
 
-                    # Check if it matches our bad performance when truncated
-                    if normalized.startswith(bad_perf.replace('.', ':')):
-                        new_perf = normalized
-                        new_value = parse_time_to_hundredths(new_perf)
+                    if new_value:
+                        # Convert to seconds to compare
+                        src_seconds = new_value / 100
 
-                        if new_value:
-                            print(f"  {event_name}: {bad_perf} -> {new_perf} (value: {bad_result['performance_value']} -> {new_value})")
+                        # Check if it's close to our stored value (within 1 second)
+                        if abs(src_seconds - stored_seconds) < 1.0:
+                            print(f"  {event_name}: {bad_perf} -> {formatted} (value: {bad_result['performance_value']} -> {new_value})")
 
                             if not DRY_RUN:
                                 supabase.table('results').update({
-                                    'performance': new_perf,
+                                    'performance': formatted,
                                     'performance_value': new_value
                                 }).eq('id', bad_result['id']).execute()
 
@@ -221,21 +263,21 @@ def fix_marathon_times():
                             break
 
             if not found:
-                print(f"  {event_name}: {bad_perf} on {bad_date} - NO MATCH FOUND in source")
+                print(f"  {event_name}: {bad_perf} on {bad_date} - NO MATCH FOUND")
 
     return fixed_count
 
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("FIXING MARATHON/HALF MARATHON TIMES")
+    print("FIXING 800M/1500M TIMES (MISSING HUNDREDTHS)")
     print("=" * 60)
 
     if DRY_RUN:
         print("*** DRY RUN - ingen endringer vil bli gjort ***")
         print("Sett DRY_RUN = False for a faktisk oppdatere\n")
 
-    fixed = fix_marathon_times()
+    fixed = fix_middle_distance_times()
 
     print(f"\n{'='*60}")
     print(f"TOTALT: {fixed} resultater {'vil bli oppdatert' if DRY_RUN else 'oppdatert'}")

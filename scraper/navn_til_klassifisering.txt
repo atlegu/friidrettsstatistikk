@@ -1,0 +1,1040 @@
+# NAVN TIL KLASSIFISERING
+# Format: fornavn|fullt_navn|forslag (M/F/?)
+# Gå gjennom og korriger, så oppdaterer vi scriptet
+
+# ========================================
+# FORESLÅTT SOM KVINNER (F)
+# ========================================
+anneke|Anneke Løkken|F
+nariat|Nariat Pasheva|F
+nicolle|Nicolle Rose Garnes|F
+eileén|Eileén Storækre Harsvik|F
+elén|Elén Linchausen Skar|F
+myriam|Myriam Wang|F
+beathe|Beathe Nordås|F
+cleo|Cleo Nyborg|F
+amani|Amani Khan|F
+mariatu|Mariatu Jalloh|F
+venche|Venche Renate Brattli|F
+harrieth|Harrieth Toft Nordrum|F
+naado|Naado Muktar|F
+elice|Elice Bergmo Store|F
+tolene|Tolene Lovise F Karlsen|F
+niamh|Niamh Brekkhus|F
+hedda-marie|Hedda-Marie Nesheim|F
+clarisse|Clarisse Favé|F
+arntraut|Arntraut Götsch|F
+hill|Hill Irene Remlo|F
+kari-esther|Kari-Esther Selvaag Høgevold|F
+lineah|Lineah Elise Etnan|F
+manmeet|Manmeet Kaur Bandesha|F
+jaimee|Jaimee Connie San Pedro|F
+tifani|Tifani Litvinaite|F
+abigial|Abigial Abebe Techane|F
+neele|Neele Tincman-Aune|F
+hareeni|Hareeni Subanendrajah|F
+dione|Dione Scarlet Kolle Ekaney|F
+brigid|Brigid Mary Kormany|F
+serine-ariel|Serine-Ariel Thorsheim Turøy|F
+mina-marie|Mina-Marie Sørdahl Finsveen|F
+aile|Aile Heatta Kuhmunen|F
+marlieke|Marlieke Husslage|F
+may-brit|May-Brit Rostad|F
+ugne|Ugne Norvaisaite|F
+britt-karin|Britt-Karin Sandbakken|F
+shuruthy|Shuruthy Tharmavanan|F
+junifer|Junifer Isadora Cordelia Baggethun|F
+tehani|Tehani Ganeshalingam|F
+tille|Tille Margrethe Haukeli|F
+lisbet|Lisbet Løvstad|F
+ingalill|Ingalill Stang|F
+unn-christin|Unn-Christin Lande|F
+malin-isabel|Malin-Isabel Solvang Eliassen|F
+frøyd|Frøyd Ludviksen|F
+helén|Helén Strand|F
+aini|Aini Postila|F
+arlie|Arlie Isabella Petersen|F
+minni|Minni Elise Brandvik Aakvik|F
+lilou|Lilou Bendiksen|F
+dafne|Dafne Seeber|F
+noemi|Noemi Ambauen|F
+miliane|Miliane Ekstrand|F
+marlinn|Marlinn Inntveit|F
+tyri|Tyri Røset Finnes|F
+namreet|Namreet Kaur|F
+veide|Veide Ertsås|F
+sije|Sije Tangen Gundersen|F
+karlene|Karlene Selliken|F
+sofi|Sofi Ahmad|F
+sonje|Sonje Brøndmo|F
+lycie|Lycie Mobmo Rwitabira|F
+fanni|Fanni Jauhojärvi Markussen|F
+fernande|Fernande Kjenner|F
+synnev|Synnev Trømborg Hoviosen|F
+cecile|Cecile Brekke Rygh|F
+noomi|Noomi Kjetland|F
+abier|Abier Mohammad|F
+ariane|Ariane Lillemo|F
+shewit|Shewit Tesfaye|F
+kariann|Kariann Refvem|F
+emme|Emme Rebecka Ofstad|F
+luise|Luise Wietschorke|F
+lune|Lune Harriette van Hulst|F
+catherin|Catherin Kongmanee|F
+mahvash|Mahvash Akhtari|F
+liah|Liah Velten Klubbeng|F
+helin|Helin Zaman|F
+ovidie|Ovidie Barstad Nerbø|F
+shahd|Shahd Mahmoud Mohammad|F
+inger-liv|Inger-Liv Bjertnes|F
+annicke|Annicke Stranda|F
+audny|Audny Breivik|F
+liv-reidun|Liv-Reidun Næss|F
+amal|Amal Nakouh|F
+inger-cecilie|Inger-Cecilie Østensen|F
+linn-anneth|Linn-Anneth Myrann|F
+liv-miriam|Liv-Miriam Nordtømme|F
+nogaye|Nogaye Moe|F
+åse-marie|Åse-Marie Muggerud|F
+gertrud|Gertrud Færavaag|F
+berly|Berly Hovland|F
+may-unni|May-Unni Berglund|F
+sylvi|Sylvi Vullum|F
+edit|Edit Iren Vollsund|F
+yngvill|Yngvill Myhre|F
+minny|Minny Olavsen Malerud|F
+chaltu|Chaltu Chaltu|F
+thove|Thove Marie Johansen|F
+mari-louise|Mari-Louise Papsdorff|F
+rosalind|Rosalind Weydahl|F
+gørild|Gørild Nøkland|F
+kari-ann|Kari-Ann Myhre|F
+bergit|Bergit Andersson|F
+liss|Liss Bakke|F
+brigitte|Brigitte Kristoffersen|F
+else-marie|Else-Marie Laksnes|F
+cæcilie|Cæcilie Riis|F
+britt-elin|Britt-Elin Hjøllo|F
+siri-merete|Siri-Merete Alfheim|F
+solyane|Solyane Berhe|F
+oliane|Oliane Liholt Nilssen|F
+májjá|Májjá Johanna P. Smuk|F
+ellah|Ellah Noemi Rønning|F
+bergliot|Bergliot Aarbø Olsen|F
+christel|Christel Einan|F
+hedwig|Hedwig Mehland|F
+rebeca-miriam|Rebeca-Miriam Preda|F
+batul|Batul Mohammed|F
+shanett|Shanett Olsen Dahlskjær|F
+ahlam|Ahlam Moalim|F
+alannah|Alannah C Patel|F
+maybel|Maybel Boateng|F
+nenneh|Nenneh Janko|F
+bahati|Bahati Kahindo|F
+shideh|Shideh Sadeghi|F
+annemari|Annemari Heggdal|F
+mariet|Mariet Anna Nijmeijer|F
+roisin|Roisin Ibs|F
+emmelin|Emmelin Bjørnvik|F
+ranvi|Ranvi Overrein|F
+angelin|Angelin Therese Thomas|F
+imani|Imani Diane Modahl|F
+mireille-mëlanie|Mireille-Mëlanie Kamanda|F
+sannah|Sannah Stainsby|F
+luwam|Luwam Ghezai|F
+otilie|Otilie Børresen Bollingmo|F
+ume|Ume Salma Ahmed|F
+inger-helene|Inger-Helene Martinsen|F
+lamiae|Lamiae Hassani|F
+jilke|Jilke Scheffer|F
+otelie|Otelie Ning Strand|F
+ihne|Ihne Marie Johnsen|F
+eloise|Eloise Elisdotter Kask|F
+kaitlinn|Kaitlinn Esther Powell|F
+birgith|Birgith Kolstad Åsegg|F
+keziah|Keziah Killmer|F
+isato|Isato Nyema Jawara|F
+lilliane|Lilliane Johansen|F
+inés|Inés Stenhammer|F
+solene|Solene Cordonnier|F
+silje-emilie|Silje-Emilie Rygg|F
+oshin|Oshin Heen|F
+tsige|Tsige Gerberhan Oqbazgi|F
+kirvil|Kirvil Schau Odden|F
+madelein|Madelein Gundersen|F
+astri-louise|Astri-Louise Nevstad|F
+runi|Runi Vold|F
+mailin|Mailin Andersen|F
+mylie|Mylie Veland Thomassen|F
+rachael|Rachael Eide|F
+roselinn|Roselinn Nygård Øien|F
+haddyjatou|Haddyjatou Jobe|F
+idil|Idil Yashin|F
+linn-cecilie|Linn-Cecilie Salomonsen Sandanger|F
+bintou|Bintou Sesay|F
+else-beate|Else-Beate Lerfald|F
+ylinn|Ylinn Tennebø|F
+adelie|Adelie Lian Hoel|F
+manchari|Manchari L. Ahilan|F
+kaitesi|Kaitesi Ertzgaard|F
+thusanthi|Thusanthi Thavendren|F
+hanni|Hanni Skifjeld Arvesen|F
+melenie|Melenie Frölinghaus|F
+ghuthai|Ghuthai Zafari|F
+christense|Christense Eikenes|F
+janni|Janni Røssevold|F
+evie|Evie Kalnes Dencker|F
+rowene|Rowene Wingstad|F
+anpitkiniyal|Anpitkiniyal Kohulan|F
+eilin|Eilin Friestad|F
+karlijn|Karlijn Achterberg|F
+tiare|Tiare Oyarce|F
+siiri|Siiri Maija Sipilæ Næss|F
+oleane|Oleane Fagerli Bjørnebekk|F
+mariat|Mariat Pashaeva|F
+maylin|Maylin Olaisen. Wik|F
+mone|Mone Lurås|F
+giedre|Giedre Vainauskas|F
+solveig-marie|Solveig-Marie Huus|F
+elvie|Elvie May Buanes|F
+whydah|Whydah Uwampa Kwizera|F
+ragndi|Ragndi Thea Østbø|F
+aylin|Aylin Åsli|F
+eugenie|Eugenie W Gulowsen|F
+merel|Merel Dirksen|F
+cilje|Cilje Malin Foss|F
+dung|Dung Kim Lieu|F
+may-liss|May-Liss Sundsvik Johnsen|F
+frigg|Frigg Winther Rugset|F
+maike|Maike Verhofstad|F
+soretti|Soretti Watne|F
+inger-malene|Inger-Malene Westerås|F
+yme|Yme Seglsten Thompson|F
+veliane|Veliane Narnor|F
+emie|Emie Førre|F
+ellisif|Ellisif Luytkis Holstrøm|F
+thea-marie|Thea-Marie Pettersen|F
+yulieth|Yulieth Hagen|F
+kemi|Kemi Akinyemi|F
+noi|Noi Yotphut|F
+may-linn|May-Linn Skuland|F
+sunnive|Sunnive Myklebust|F
+adriane|Adriane Pundsnes|F
+olivie|Olivie van der Voort|F
+suvathi|Suvathi Kulam|F
+nkemdilim|Nkemdilim Okolo|F
+sanyu|Sanyu Nsubuga|F
+selin|Selin Steinkjer Inci|F
+kerene|Kerene Kasongo|F
+britney|Britney Benert|F
+eilén|Eilén Brenne|F
+id-sofie|Id-Sofie Østenstad|F
+ovedie|Ovedie Bjørndalsæter|F
+ingse|Ingse Gine Landro|F
+jenni|Jenni Askvig|F
+elizabete|Elizabete Elina Cakure|F
+masome|Masome Karimi|F
+charinrat|Charinrat P. Moe|F
+ive-mari|Ive-Mari Hallstensen|F
+zoè|Zoè Bertin|F
+marin|Marin Stray Gautadottir|F
+avril|Avril Mikkelsen Frei|F
+hanah|Hanah Larsen|F
+ahrani|Ahrani Vijijenthira|F
+ise|Ise Sveen|F
+mumbi|Mumbi Wanyoike Dalen|F
+ane-marte|Ane-Marte Borg Hanssen|F
+niat|Niat Bisrat Tesfai|F
+aislin|Aislin Féliot|F
+merjem|Merjem Muratovic|F
+kimberlee|Kimberlee Aronsveen|F
+solvei|Solvei Aunøien Råen|F
+miriel|Miriel Eriksen|F
+ibtissam|Ibtissam Abounnachat|F
+signe-marie|Signe-Marie Torvund|F
+ågot|Ågot Susann Bitustøyl|F
+kirstin|Kirstin Lovise Moen|F
+linne|Linne Ausland|F
+thiril|Thiril Erichsen|F
+nikole|Nikole Radunceva|F
+vårinn|Vårinn Kvåle|F
+akshayah|Akshayah Vijai|F
+thulasi|Thulasi Surendiran|F
+jøri|Jøri Vatten|F
+christanse|Christanse Bunes|F
+marijne|Marijne Janssens|F
+makromah|Makromah Kanneh|F
+veni|Veni Dahl-Bruheim|F
+sáve|Sáve Márjá Javo|F
+urd|Urd Dalen|F
+linh|Linh Huynh|F
+leonore|Leonore On-A-Mon Schultz-Kolberg|F
+ifrah|Ifrah Abdi|F
+eylül|Eylül Aygün|F
+ebise|Ebise Wako Liban|F
+saule|Saule Zemaitaityte|F
+tellei|Tellei Hermansen|F
+aimée|Aimée Rønnestad Nærbø|F
+annmarie|Annmarie Eriksen|F
+godelieve|Godelieve Andrea Cornelia Deckers|F
+barah|Barah Mohamed Kamal|F
+fatu|Fatu Koroma|F
+imke|Imke Jurgens|F
+desireé|Desireé H. Andersson|F
+michele|Michele Milay Delos Santos|F
+naphansiri|Naphansiri Nithuram|F
+vendelinn|Vendelinn Rosså|F
+veronje|Veronje Kristoffersen|F
+aino|Aino Kolltveit|F
+agne|Agne Skretting|F
+quinty|Quinty Frenay|F
+rim|Rim Kamboui|F
+eiri|Eiri Henriksdotter Blekken|F
+amélie|Amélie Bauer-Furnes|F
+vilde-sofie|Vilde-Sofie Torvund|F
+thu-dang|Thu-Dang Sophie Ly|F
+warisse|Warisse Anais Ljones|F
+maryam|Maryam Idowu|F
+wendel|Wendel Marie Håvardstun|F
+kamille-my|Kamille-My Bak Madsen|F
+ugné|Ugné Trijonyte|F
+camille|Camille M Urbye|F
+julienne|Julienne Simakala|F
+esmee|Esmee Vermeulen|F
+liv-amelie|Liv-Amelie Heite|F
+anfal|Anfal El Yamani Haida|F
+våri|Våri Henriksen|F
+frederikke|Frederikke Brun|F
+ingelinn|Ingelinn Frisk Remman|F
+nandini|Nandini Heyerdahl Gonjari|F
+fie|Fie Robertsen|F
+eilidh|Eilidh Macleod|F
+hatice|Hatice Hanna Tangerås|F
+cornelie|Cornelie Bjerkestrand Sandem|F
+winnie|Winnie Brækken|F
+gro-ingvild|Gro-Ingvild Bondal|F
+liyah|Liyah Velten Klubbenes|F
+elfi|Elfi Stene Dyrhaug|F
+jennyfer|Jennyfer Kouakou|F
+arthi|Arthi Suganthan|F
+rani|Rani Selvåg|F
+ariélle|Ariélle Beyer Broch|F
+mfonobong|Mfonobong Uduak Mme|F
+buthainah|Buthainah Jaber|F
+ariam|Ariam Michael Solomon|F
+desirée|Desirée Jacobsen|F
+kanutte|Kanutte Baade Eiken|F
+iril|Iril Lenasdatter Sætre|F
+inger-emilie|Inger-Emilie Dundas-Johansen|F
+linneah|Linneah Kvamsdal Guddal|F
+shurabi|Shurabi Suntharalingam|F
+aune|Aune Brandseth Norbakk|F
+hafso|Hafso Elmi|F
+umulkheer|Umulkheer Ibrahim Abdi|F
+batoul|Batoul Alnashef|F
+minnetallah|Minnetallah Abazid|F
+najmo|Najmo Mohamed Abukar|F
+janani|Janani Kandiah|F
+riziki|Riziki Allen|F
+rone|Rone Hostvedt Aarthun|F
+ranid|Ranid Vermelid|F
+fartun|Fartun Ibrahim|F
+ange|Ange Shanel Koffi|F
+maikee|Maikee Delos Santos|F
+umutoniwase|Umutoniwase Kevine Habimana|F
+lare|Lare Amin|F
+reese|Reese Bendiksen|F
+bricyn|Bricyn Barziza|F
+samsam|Samsam Seleban|F
+jess|Jess Granlund|F
+nani|Nani Kula|F
+
+# ========================================
+# FORESLÅTT SOM MENN (M)
+# ========================================
+temitope|Temitope Adeola Olalemi|M
+befrin|Befrin Mikail|M
+vetle-martines|Vetle-Martines Thorsheim Turøy|M
+gunleik|Gunleik Sandland|M
+darshih|Darshih Okbit Meleake|M
+antero|Antero Rinne|M
+shukri|Shukri Ali Isse|M
+massi|Massi Hassip|M
+chrisander|Chrisander Finsrud Dalen|M
+mesfin|Mesfin Legese|M
+mebrahtu|Mebrahtu Werede|M
+lamek|Lamek Tesfai|M
+sayom|Sayom Bhuiyan|M
+maid|Maid Nahhas|M
+gudni|Gudni Leo Peersen Mariusson|M
+armann|Armann Saastad Haugan|M
+javad|Javad Norouzi|M
+sejjad|Sejjad Noor Ali|M
+seb|Seb Anthony|M
+nicky|Nicky Thomas Draganchuk|M
+irrfe|Irrfe Renz Bagol|M
+tommie|Tommie Antonsen|M
+philipp|Philipp Einar Grubmueller|M
+rait|Rait Veesalu|M
+tesfay|Tesfay Brhane|M
+raoul|Raoul Ranveer Singh|M
+mouhamed|Mouhamed Abounnachat|M
+thach|Thach Kien Ho|M
+aimal|Aimal Khan|M
+thorkild|Thorkild Schrumpf|M
+ghebremedhn|Ghebremedhn Teklebrhan Hagos|M
+grame|Grame Monsanda|M
+mac|Mac Gustav Torsten Wredmark|M
+athmad|Athmad Nabeeh|M
+fridthjof|Fridthjof Snorrason|M
+sunlight|Sunlight Tewelde|M
+kolbeinn|Kolbeinn Boi Bjarkason|M
+mattéo|Mattéo Dupont|M
+aboltazi|Aboltazi Mousavi|M
+vidkun|Vidkun Haugli|M
+pau|Pau Sundal Gese Jarque|M
+kheiro|Kheiro Oine|M
+tollef|Tollef Otterdal Heggen|M
+gabril|Gabril Waagaard|M
+danil|Danil Przhehorlynskiy|M
+radin|Radin Kalbasi|M
+kittil|Kittil Olav Haugen|M
+gift|Gift Goronsa|M
+houssam|Houssam Maamoun Khallouf|M
+aland|Aland Muhammed|M
+dagfin|Dagfin Reium|M
+olexander|Olexander Zhekov|M
+ezekiel|Ezekiel Yoshua|M
+lukasz|Lukasz Charkiewicz|M
+fthi|Fthi Debesay Abraham|M
+edoardo|Edoardo Barbens|M
+izatullah|Izatullah Miakhail|M
+nicolaj|Nicolaj Tidemand|M
+borys|Borys Pieczkowski|M
+deil|Deil Yuwan Alba Askeland|M
+aleksandro|Aleksandro Diaz|M
+kibrom|Kibrom Tewelde|M
+rikardo|Rikardo Mikalsen Gojkovic|M
+martim|Martim De Freitas Lopes|M
+tang|Tang Gech|M
+nouri|Nouri Abdulla|M
+hein|Hein Rune Skjoldal|M
+vicente|Vicente Modahl|M
+gaël|Gaël Gelis|M
+erdi|Erdi Hiabu|M
+shadreck|Shadreck Chidiadia|M
+hvamstad|Hvamstad Hanna Skjaker|M
+staxrud|Staxrud Siri Brænden|M
+sveinulv|Sveinulv Ueland|M
+tangnes|Tangnes Tonje|M
+boss|Boss Vedal|M
+madjd|Madjd Nahas|M
+shalam|Shalam Beyene|M
+eddie|Eddie Mikal Ebbesvik|M
+l|L H Stangeland|M
+sif|Sif L.C. Bølstad|M
+valentino|Valentino Bye Vevle|M
+adonai|Adonai Kidane|M
+jul|Jul Fr. Kaltenborn|M
+eindride|Eindride Hungnes|M
+adler|Adler Haugland|M
+churt|Churt Loose|M
+aham|Aham Okeke|M
+bjørne|Bjørne Berre|M
+svei|Svei Vidar Kråkøy|M
+rønning|Rønning Tollefsen|M
+beimnet|Beimnet Haile Wolday|M
+ånund|Ånund Hansen Kjestveit|M
+raimond|Raimond Blakstad|M
+tesfaye|Tesfaye Bekele|M
+juul|Juul Fredrik Kaltenborn|M
+eigill|Eigill Fareth|M
+blu|Blu William Opland|M
+firaol|Firaol Weuweyyeson|M
+authapl|Authapl Chonpun|M
+mikel|Mikel Girma|M
+azmy|Azmy Færøy|M
+fidel|Fidel Agbor Moi|M
+gavril|Gavril Morenko|M
+karle|Karle Pulli Balsnes|M
+yannick|Yannick Lysander Hall|M
+nazim|Nazim Rizai|M
+esrin|Esrin Durak|M
+minassie|Minassie Berhane|M
+mikhael|Mikhael Velve|M
+heiki|Heiki Haugland|M
+artin|Artin Aga|M
+muqkurtaj|Muqkurtaj Durim|M
+emrah|Emrah Bol|M
+johsander|Johsander Nordvik|M
+tsegazeab|Tsegazeab Kasahun Bahta|M
+adi|Adi Trbonja|M
+bjørn-tore|Bjørn-Tore Sundet|M
+thorvild|Thorvild Thomassen|M
+ingval|Ingval Falch|M
+askill|Askill Voll|M
+elud|Elud Isak|M
+kleng|Kleng Brekkå|M
+notto|Notto T. Moseid|M
+danyil|Danyil Dromenko|M
+ingolv|Ingolv Krogstad|M
+reidulv|Reidulv Førde|M
+bertel|Bertel Bjørvik|M
+geder|Geder Gartland|M
+sahid|Sahid Aden|M
+heming|Heming Kolstad|M
+thommy|Thommy Evensen|M
+tri|Tri M. Dang|M
+chisom|Chisom Okeke|M
+jave|Jave Beloy|M
+bergfinn|Bergfinn Storlimo|M
+berndt|Berndt Johansson|M
+zahidullah|Zahidullah Baghlanai|M
+hersiddhe|Hersiddhe Tak|M
+lief|Lief Haug|M
+toivo|Toivo Skogheim|M
+torberg|Torberg Falch|M
+trygg|Trygg Syversen|M
+jeger|Jeger Koksvik|M
+gunleiv|Gunleiv Kåsa|M
+karoly|Karoly Greff|M
+kayyo|Kayyo Kissi Buli|M
+beng|Beng Mundheim|M
+dimitri|Dimitri Halseide|M
+teklu|Teklu Gebregziabher|M
+hellik|Hellik N. Livland|M
+totto|Totto Myrvang|M
+haile|Haile Tesfai Brhane|M
+samsom|Samsom Musiande|M
+abod|Abod Tamem|M
+scrasak|Scrasak Songwongyat|M
+andré-timéo|André-Timéo Kamanou|M
+wouter|Wouter Mols|M
+odd-olav|Odd-Olav Aga|M
+ekolai|Ekolai L. Bang Lunde|M
+gaile|Gaile Baskys|M
+filippo|Filippo Sanfilippo|M
+sjalg|Sjalg Løvseth Øvstehage|M
+odd-anders|Odd-Anders Grimsbø|M
+yahnick|Yahnick Adams|M
+tollak|Tollak Lunde|M
+suresh|Suresh Murugesu|M
+bjørn-jarle|Bjørn-Jarle Willassen|M
+leszek|Leszek Jan Pokrywka|M
+frank-tore|Frank-Tore Dølerud|M
+zahr|Zahr Shamiyah|M
+wilatrat|Wilatrat Yaemsa-Art|M
+dachawut|Dachawut Srihan|M
+gray|Gray Abel|M
+momoh|Momoh Sesay|M
+anyelo|Anyelo Rosario|M
+berner|Berner Skeie|M
+mahamedd|Mahamedd Jamal Ibrahim|M
+mati|Mati Koiv|M
+hazrat|Hazrat Ali Hurakel|M
+emiliano|Emiliano Vuillermoz|M
+eliezer|Eliezer de Oleo Taveras|M
+fahad|Fahad Alrantisi|M
+thile|Thile Andreas Erlandsen|M
+martijn|Martijn Langeweg|M
+halgrim|Halgrim Vebjørn Gaupeland|M
+latif|Latif Hoseini|M
+athish|Athish Ganeshalingam|M
+mickel|Mickel Segalstad-Slaatto|M
+marcelo|Marcelo Hetland Strand|M
+olivér|Olivér Wiik-Stoltz|M
+massimiliano|Massimiliano Dijkgraaf|M
+anselm|Anselm Reichenbach|M
+mourad|Mourad Touil|M
+sigge|Sigge Smedmark|M
+binhasi|Binhasi Abdigasy Mohamud|M
+eugene|Eugene Robert Løvmo Rønning|M
+iraq|Iraq Izdihar Al-Iedani|M
+remo|Remo Mathias Koht Johannessen|M
+cristiano|Cristiano Maysan Werede|M
+brieuc|Brieuc Mickael Watremetz|M
+tevje|Tevje Aunan|M
+hisham|Hisham Mohamed Abdi|M
+fawaz|Fawaz Khaled Zakaria|M
+zaki|Zaki Haidary|M
+berend|Berend Jan Nijmeijer|M
+florient|Florient Ryunosuke Marcouiller|M
+velde|Velde Pedersen|M
+anthoni|Anthoni Monkornburi|M
+emil-andre|Emil-Andre Dahl|M
+karol|Karol Krzysztof Gorny|M
+josé|José Carlos Pinto|M
+svenn-arne|Svenn-Arne Bjørkelo|M
+wim|Wim van den Broeck|M
+yobe|Yobe Najar|M
+stian-mikael|Stian-Mikael Madsen|M
+emanuels|Emanuels Egils Zaurins|M
+thivyesh|Thivyesh Ahilathasan|M
+tando|Tando Sigcau|M
+senay|Senay Amlesom Fissehatsion|M
+massod|Massod Parwany|M
+jaad|Jaad Orten|M
+seppe|Seppe Claessen|M
+hillary|Hillary Kipchumba|M
+vadim|Vadim Pecherskii|M
+mahamed|Mahamed Abukar Siidi|M
+sayed|Sayed Hussini|M
+gishe|Gishe Abdi Wako|M
+abu|Abu Mandefro Asefa|M
+leonid|Leonid Raiets|M
+halfdan-emil|Halfdan-Emil Færø|M
+jerreh|Jerreh Ceesay|M
+malky|Malky Frank|M
+hugne|Hugne Eik Sjo|M
+mhretu|Mhretu Dessalegn|M
+dag-kjetil|Dag-Kjetil Hartberg|M
+abebe|Abebe Hunde|M
+afework|Afework Amelo Genale|M
+alem|Alem Adhanom|M
+urige|Urige Arado Buta|M
+reinier|Reinier van der Spek|M
+willie|Willie Minit|M
+matthieu|Matthieu Bourg|M
+teemu|Teemu Juhani Pasanen|M
+oluf|Oluf Røsland|M
+dawt|Dawt Bik Sang Zathang|M
+jørn-atle|Jørn-Atle Erichsen|M
+tengel|Tengel Glemming Thorsen|M
+ioustiniano|Ioustiniano Phocaeon|M
+amaru|Amaru Raighendler Jeasar Wijman|M
+raji|Raji Negash Gebe|M
+ener|Ener Søberg Vaglum|M
+reiel|Reiel Daling Felde|M
+abulfazi|Abulfazi Masumi|M
+vitalo|Vitalo Vuga|M
+riquelvys|Riquelvys Rafael Santiago|M
+safiollah|Safiollah Shakibani|M
+tesfayohannes|Tesfayohannes M. Fisehti|M
+weldu|Weldu Negash Gebretsadik|M
+dadafo|Dadafo Tesama Dhaqabi|M
+ingvardt|Ingvardt Sandsund|M
+miroslaw|Miroslaw Baran|M
+alemayehu|Alemayehu Sitotaw|M
+geir-arve|Geir-Arve M Clausen|M
+lavrants|Lavrants Kongssund|M
+ånung|Ånung Viken|M
+tomasz|Tomasz Siemieniuch|M
+korneliuz|Korneliuz Papina|M
+kanisorn|Kanisorn Yasri|M
+athiwat|Athiwat Nilsen|M
+izpiak|Izpiak Zahid|M
+théo|Théo Sevestre|M
+sytze|Sytze Rijpkema|M
+nii|Nii Mensah Narh|M
+milad|Milad Habibi|M
+maxim|Maxim Tjøtta|M
+deni|Deni Khazjmenzojev|M
+adisak|Adisak Sween|M
+nouraldin|Nouraldin Nia|M
+jijo|Jijo Gamachis|M
+nuno|Nuno Luis|M
+master|Master Anan Jongjai|M
+bienmet|Bienmet Kfle|M
+kimme|Kimme Arnesen|M
+ebrahim|Ebrahim Abdulaziz|M
+aloizs|Aloizs Cacs|M
+nagmeldin|Nagmeldin Ali Abubakar|M
+sadik|Sadik Mohammed|M
+zerei|Zerei Kbrom Mezngi|M
+dan-olav|Dan-Olav Tjessem Meling|M
+freddie|Freddie Schumann|M
+valery|Valery Kakhnovich|M
+klemet|Klemet Issat Mienna|M
+nazif|Nazif Karimi|M
+knud|Knud Leerbeck|M
+najib|Najib Kakar|M
+izzatulah|Izzatulah Sultani|M
+warhel|Warhel Suleman|M
+williams|Williams Kollie|M
+fassu|Fassu Conde|M
+yann|Yann Kieffer|M
+shahez|Shahez Shwana|M
+gianni|Gianni Risbakk|M
+mihai|Mihai Anastasiu|M
+okubamichael|Okubamichael Mesfun Fissehatsion|M
+girmay|Girmay Kflemaryam|M
+dost|Dost Mohammed Sultani|M
+yaudi|Yaudi Fernandez|M
+merhawi|Merhawi Tadesse|M
+dusko|Dusko Drakic|M
+wiggo|Wiggo Bowitz|M
+arne-frithjof|Arne-Frithjof Løken|M
+jozef|Jozef Zygmuntowicz|M
+bjørge|Bjørge Ruud|M
+bjøro|Bjøro Nevland|M
+loyd|Loyd Remi Solberg|M
+mikko|Mikko Beckstrøm Lindroos|M
+joyel|Joyel Reggie Amaladas|M
+sanjay|Sanjay Satkunananthan|M
+efe|Efe Topdemir|M
+thom|Thom Robert Kroken Næsse|M
+rony|Rony Adam|M
+gerry|Gerry Bains|M
+arin|Arin Veland|M
+jawid|Jawid Ahmadi|M
+laurent|Laurent Bathgate|M
+khualpi|Khualpi Hatzaw|M
+gylfi|Gylfi Ingvar Gylfason|M
+sergey|Sergey Adyasov|M
+rasmuss|Rasmuss Wernø Waage|M
+niladri|Niladri Banerjee|M
+gullbrand|Gullbrand Julius Aas|M
+sonny|Sonny Bolin|M
+uwe|Uwe Kant|M
+vyacheslav|Vyacheslav Mukhidinov|M
+hawsoz|Hawsoz Mustafa|M
+ben-roger|Ben-Roger Dreyer|M
+zamzam|Zamzam Liyaas Mahamud|M
+stål|Stål Opdahl|M
+kentaro|Kentaro Indo|M
+hallgrim|Hallgrim Nakken|M
+jasin|Jasin Hussein Eidem|M
+karamjit|Karamjit Nahal|M
+suvaroj|Suvaroj Mingsakool|M
+sindri|Sindri Freyr Seim Sigurdsson|M
+gudleik|Gudleik Husby|M
+nobiel|Nobiel Zekarias Mehari|M
+hilal|Hilal Kataya|M
+filiph|Filiph Tilge|M
+richmond|Richmond Bendu|M
+toby|Toby Wesselingh|M
+fidele|Fidele Kinunda|M
+andi|Andi Hadri|M
+torkiel|Torkiel Westby|M
+brynjel|Brynjel Furnes Berland|M
+senam|Senam Julian Yao Asmussen|M
+dilip|Dilip Gengatharan|M
+ayo|Ayo Ranuh|M
+apisit|Apisit Saisin|M
+pandoyo|Pandoyo Ranuh|M
+sulumbek|Sulumbek Arsamakov|M
+mouhamad|Mouhamad Alsalem|M
+maikele|Maikele Tsegay|M
+ezatullah|Ezatullah Servary|M
+kalab|Kalab Birhane|M
+sergejs|Sergejs Kononovs|M
+mussie|Mussie Oukbe|M
+thamchot|Thamchot Kijlikit|M
+teame|Teame Tewelde|M
+gylve|Gylve Setlo|M
+jo-inge|Jo-Inge Sandvik|M
+parhat|Parhat Arken|M
+jörg|Jörg Törpel|M
+nickolass|Nickolass Jensen|M
+mengs|Mengs Kesete|M
+anass|Anass Safiani|M
+lukacs|Lukacs Kalentics|M
+ingebrikt|Ingebrikt Johansen Hovik|M
+corne|Corne Donkelaar|M
+sigvart|Sigvart Johan Avdal|M
+gonzalo|Gonzalo Cabello|M
+naeem|Naeem Khan|M
+osazee|Osazee Parkson|M
+malte|Malte Sallan|M
+altaieb|Altaieb Hassan Haron|M
+rami|Rami Teklemariam|M
+miller|Miller Alexander Nesse|M
+evo|Evo Rosvoll Solskjær|M
+navid|Navid Zafari|M
+eiler|Eiler Kongsrud|M
+thevaky|Thevaky Murugasimman|M
+zohrez|Zohrez Khan|M
+janaann|Janaann Jay Johanraj|M
+nikhil|Nikhil Siegrist Silfverhielm|M
+cin|Cin Sian Lian Hatzaw|M
+oatthawut|Oatthawut Panklang|M
+linujann|Linujann Balasegar|M
+modou|Modou Lamin Conteh|M
+frikk|Frikk Alvaro Embergsrud|M
+sohrab|Sohrab Lingen Shirzadi|M
+pawel|Pawel Kucaj|M
+parwiz|Parwiz Akhtari|M
+arngrim|Arngrim Sørumshaugen|M
+sanjeth|Sanjeth Suthahar|M
+tore-michael|Tore-Michael Engen|M
+merih|Merih Solomon Hailemicheal|M
+delani|Delani Reshane|M
+abhishek|Abhishek Jagga|M
+yoom|Yoom Eebbissa Nagaraa|M
+knut-ole|Knut-Ole Rogneflåten|M
+lewi|Lewi Udelhoven|M
+nerushanth|Nerushanth Varathan|M
+simeone|Simeone Dorne|M
+thime|Thime Sæterstøl|M
+zeljko|Zeljko Milosavljvic|M
+järvi|Järvi Kjetil Stielstra|M
+tasaratsing|Tasaratsing Ratnasingam Gunenthiran|M
+langrød|Langrød Takis|M
+tino|Tino Lavergne-Nielsen|M
+oleander|Oleander Austmo|M
+rares|Rares Oprea|M
+vinni|Vinni Sebastian da Rosa Lie|M
+mink|Mink Fieten|M
+yohannes|Yohannes Kasahun Bahta|M
+mård|Mård Johannes Agjeld|M
+dallin|Dallin Mead|M
+robbie|Robbie Alver|M
+danial|Danial Ahmad Rana|M
+roberts|Roberts Naumenko|M
+gerenkial|Gerenkial Kibrom Abrha|M
+yassin|Yassin Osman Mohamud|M
+fraol|Fraol Kløvstad|M
+mahmood|Mahmood Mosevi|M
+mehretab|Mehretab Tsegay|M
+torvild|Torvild Dyrdal|M
+hazratdin|Hazratdin Utmanzai|M
+jovany|Jovany Nzita|M
+arne-hugo|Arne-Hugo Hansen|M
+olger|Olger Breivik Pedersen|M
+muhanad|Muhanad Aswad|M
+børje|Børje Laastad|M
+leevi|Leevi Joonatan Puustinen|M
+knut-olai|Knut-Olai Helgesen|M
+jones|Jones Mehus Hamadeh|M
+wulff|Wulff Røvik Hunstad|M
+sokrates|Sokrates Ullebø Hool|M
+serge|Serge Lions Tambue Kamga|M
+anas-said|Anas-Said Rashid Qadi|M
+eliaz|Eliaz Eriksson|M
+estin|Estin Levorsen|M
+alexander-bork|Alexander-Bork Carlsen Stien|M
+vinter|Vinter Andersson|M
+renzo|Renzo Haugedal|M
+aleksandrs|Aleksandrs Jakovlevs|M
+israel|Israel Mampasi|M
+vebrand|Vebrand Gangås|M
+yasr|Yasr Weldemoriam|M
+deep|Deep Flaglien|M
+agash|Agash Thileep|M
+javid|Javid Alami|M
+amiin|Amiin Aden Arten|M
+surafel|Surafel Kløvstad|M
+marceano|Marceano Cadjambor Mendes Silva|M
+giovani|Giovani Dos Santos Antonio|M
+zakeo|Zakeo Concepcion Maldia|M
+niel|Niel Bernard Bråten|M
+guleed|Guleed Abdulrahman Doaale|M
+beemnet|Beemnet Teffera|M
+thanh|Thanh Nguyen|M
+timofei|Timofei Porjajev|M
+jamil|Jamil Tarakheil|M
+pál|Pál Arpad Øyaland Nyiri|M
+tesfamichael|Tesfamichael Bieday Rezene|M
+heat|Heat Hines|M
+nemetullah|Nemetullah Ghazauri|M
+dmitrij|Dmitrij Kuzkin|M
+alf-georg|Alf-Georg Joranger|M
+regin|Regin Wernersen|M
+owe|Owe André Mikkelsen|M
+iacob|Iacob Mathiesen|M
+timothée|Timothée Jung|M
+kim-andre|Kim-Andre Påhlman|M
+savez|Savez Omed|M
+hrafnkell|Hrafnkell Numi Bjarkason|M
+harni|Harni Varathan|M
+earl|Earl Aunevik|M
+jagathveek|Jagathveek Anandhan|M
+hakim|Hakim Andersen|M
+musamil|Musamil Ahmed Dahir|M
+klass|Klass Rainers Jansons|M
+owain|Owain Wyn Jones|M
+nuttaphong|Nuttaphong Somyunpon|M
+save|Save Brautaset|M
+shaho|Shaho Ostadahmadi|M
+habtom|Habtom Gebremeskel Negash|M
+timmi|Timmi Brandvik Anderl|M
+biniam|Biniam Hayleab|M
+ayne|Ayne Kifle Aalen|M
+berge|Berge Solberg|M
+jørn-are|Jørn-Are Longfjeld|M
+troels|Troels Ravn|M
+daniell|Daniell Kaarbø|M
+zyad|Zyad Qashua|M
+robil|Robil Estifanos Tesfay|M
+arsenii|Arsenii Perebyinis|M
+mortimer|Mortimer Feliot|M
+enock|Enock Buyinza|M
+olivier|Olivier Krzystek|M
+pär|Pär Christian Magnusson|M
+franciszek|Franciszek Kedzierski|M
+binhazi|Binhazi Abdigesy Mohamud|M
+emal|Emal Shinwari|M
+liloz|Liloz Aimhmod|M
+mirac|Mirac Ugur|M
+mensah|Mensah Nyarko|M
+amun|Amun Austbø Dvergsdal|M
+shehab|Shehab Amr Ibrahim|M
+soland|Soland Glad Myrbakk|M
+lionell|Lionell Luca Lundberg Larsen|M
+sverke|Sverke Såtendal|M
+marley|Marley Delvyn-Thomas Leader|M
+oleg|Oleg Buvik-Aasgard|M
+mino|Mino Ridar-Aasen|M
+mathèo|Mathèo Müller Schackt|M
+sabin|Sabin Carstea|M
+michail|Michail Alexandros Antonakopoulos|M
+anes|Anes Maksumic|M
+fynn|Fynn Luca Daniel|M
+bjørn-anders|Bjørn-Anders Eriksen|M
+vilgot|Vilgot Wold|M
+krizander|Krizander Magnussen|M
+radoslav|Radoslav Krasimirov Minchev|M
+fredric|Fredric Ndayitwayeko|M
+alf-joakim|Alf-Joakim Esosa Valde|M
+grégory|Grégory Bernage|M
+remark|Remark Rrozhani|M
+kaj-robin|Kaj-Robin Weslien|M
+david-george|David-George Stan|M
+ivo|Ivo Leidal|M
+rainer|Rainer Røssvoll|M
+krisander|Krisander Kringen|M
+pepe|Pepe Mo Heising|M
+natanael|Natanael Iver Raabjerg Wennerberg|M
+leaf|Leaf Elliott Guerithault|M
+rashid|Rashid Hassan Ahmed|M
+halle|Halle Gjerstad|M
+ludwik|Ludwik Monsrud-Sikorski|M
+hayato|Hayato Tanno|M
+ville|Ville Emil Wingstedt|M
+muaad|Muaad Abdullahi Mohammud|M
+bertin|Bertin Sæle|M
+wojciech|Wojciech Szmelter|M
+kitti|Kitti Srimuang|M
+shanurat|Shanurat Gunsa|M
+malo|Malo Quiniou|M
+esrom|Esrom Gebremedhn Weldu|M
+gunnleik|Gunnleik Langeland|M
+yoann|Yoann Rouzieres|M
+oliwier|Oliwier Damian Adamczyk|M
+kristen-andré|Kristen-André Olsen|M
+jiri|Jiri Hesselink Cornelissen|M
+nero|Nero Alexander Liebig|M
+vladislav|Vladislav Volkov|M
+indy|Indy Nicolas Laborde-Castagnet Røren|M
+damiao|Damiao Marie Humbert De Villardi De Montlaur Pagarete|M
+kesineb|Kesineb Tasfaselassie|M
+shamil|Shamil Iminov|M
+karam|Karam Ibrahim|M
+ubey|Ubey Adem|M
+sølver|Sølver Snøløs Topland|M
+nikhilkanth|Nikhilkanth Chandra Mohan|M
+mardochee|Mardochee Mbaya Mwamba|M
+pietro|Pietro Fitzhugh|M
+ersi|Ersi Rrozhani|M
+amund-emil|Amund-Emil Slåttsveen|M
+hlib|Hlib Varava|M
+sofiane|Sofiane Meslier|M
+tibo|Tibo Coremans|M
+martins|Martins Jankovskis|M
+veiko|Veiko Saarestik|M
+nito|Nito Simonsen|M
+svein-åge|Svein-Åge Karlsen|M
+dmytro|Dmytro Riepka|M
+ronnie|Ronnie Viken|M
+jander|Jander Heil|M
+amel|Amel Jodanovic|M
+bartavie|Bartavie Imanzi|M
+francin|Francin Anoj Vincent|M
+mazin|Mazin Elfadil Bakhat Hassan|M
+frank-ole|Frank-Ole Østervold Skår Sjursen|M
+ebi|Ebi Fahadi-Elmenhorst|M
+risto|Risto Reimus|M
+vlad|Vlad Filip Nanciu|M
+yaroslav|Yaroslav Kotenko|M
+alver|Alver Inderhaug|M
+boom|Boom Mrat Aung|M
+bartlomiej|Bartlomiej Grzegorz Reimus|M
+humam|Humam Milhem|M
+lutz|Lutz Mütschard|M
+ronnel|Ronnel Mathiassen|M
+kashif|Kashif Weigård Mir|M
+radoslaw|Radoslaw Uliasz|M
+quincy|Quincy Douglas|M
+feliks|Feliks Falk|M
+ger|Ger Wijnandus van Graas|M
+grzegorz|Grzegorz Bartosz Kosel|M
+lemet|Lemet Daniel Korneliussen|M
+janko|Janko Radovanovic|M
+reinhold|Reinhold Rønstad|M
+ruairi|Ruairi Timothy Long|M
+eik|Eik Viljar Nertun Jøsendal|M
+birmeji|Birmeji Geda Wayu|M
+quang|Quang Tran|M
+fahrad|Fahrad Ghanavatian|M
+sarawut|Sarawut Yupakhot|M
+tesfagabr|Tesfagabr Ayahuney|M
+jhordan-konadu|Jhordan-Konadu Mensah|M
+jøte|Jøte Toftaker|M
+fartein|Fartein Fluge|M
+svend-tore|Svend-Tore Aasvik|M
+tidemann|Tidemann Hamre|M
+nedim|Nedim Dizdarevic|M
+gabriek|Gabriek Langeland|M
+maksym|Maksym Lakatosh|M
+soheib|Soheib Abdulwahab|M
+suhayb|Suhayb Ali Omar|M
+boony|Boony Geleta|M
+lukass|Lukass Baikovs|M
+sakthi|Sakthi Prabu|M
+svenning|Svenning Veiseth|M
+silai|Silai Sarwary|M
+selihom|Selihom Amanuel Andemariam|M
+kenzo|Kenzo Coulibaly Johannessen|M
+amann|Amann Yousaf|M
+edin|Edin Jaskic|M
+tsegay|Tsegay Breketab Kidane|M
+dhiviyajothy|Dhiviyajothy Shankkar|M
+arsene|Arsene Simbi|M
+ricards|Ricards Adrians Plikausis|M
+skodre|Skodre Stensveen|M
+jori|Jori Mørkve|M
+lionel|Lionel Egou Gylland|M
+trond-august|Trond-August Flatås|M
+lowe|Lowe Gulle Brokstad|M
+habteab|Habteab Mehreteab|M
+clemens|Clemens Øxnevad|M
+javi|Javi Mertens|M
+yamah|Yamah Gbelee|M
+micho|Micho Shepard Cyiza|M
+yorsalem|Yorsalem Tesfai Berhane|M
+ukeme|Ukeme Israel Daniel|M
+lihaim|Lihaim Samuel Kifle|M
+sahed|Sahed Omar Siyam|M
+peniel|Peniel Kifleyesus|M
+namo|Namo Bourat|M
+askeld|Askeld Sætre|M
+sergei|Sergei Tsirunjan|M
+andry|Andry Kristian Strømmen Andrianjafintrimo|M
+kári|Kári Gylfason|M
+peik|Peik Ask|M
+ricce|Ricce Furnes|M
+ol-duommá|Ol-Duommá Utsi|M
+chahed|Chahed Zahreddine|M
+xin|Xin Adian Benum Luong|M
+raif|Raif Holden|M
+åro|Åro Eide|M
+denys|Denys Chechelnytskyy|M
+bjørn-inge|Bjørn-Inge Flølo Kleppe|M
+kim-petter|Kim-Petter Bakken|M
+jebril|Jebril Broma Shmeis|M
+simerjit|Simerjit Singh|M
+anve|Anve Tveit|M
+moy|Moy Iversen|M
+dawthlei|Dawthlei Za Thang|M
+marlin|Marlin Haavengen|M
+
+# ========================================
+# USIKRE - TRENGER MANUELL SJEKK (?)
+# ========================================
+haddy|Haddy Jailan Njie|?
+raz|Raz Said|?
+tang|Tang Geck|?
+siif|Sif L.C. Bølstad|?
+ol-duommá|Ol-Duommá Utsi|?
+anve|Anve Tveit|?
+khoa|Khoa Henrik Luong|M

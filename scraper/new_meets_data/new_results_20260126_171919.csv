@@ -1,0 +1,723 @@
+meet_external_id,meet_name,meet_date,event,event_class,place,athlete_name,birth_year,club,result,wind,is_indoor
+10008413,Full Moon Jump,2026-01-24,Lengde,Menn Senior,1,Simen Gimnes,2003,Sportsklubben Vidar,7.20,,True
+10008413,Full Moon Jump,2026-01-24,Tresteg,Kvinner Senior,4,Julie Margrete Gaustad,1996,Dimna IL,12.24,,True
+10008413,Full Moon Jump,2026-01-24,Tresteg,Kvinner Senior,5,Mathilde Sofie Klokseth,2003,IK Tjalve,12.20,,True
+10008413,Full Moon Jump,2026-01-24,Tresteg,Kvinner Senior,8,Elise Sanden Søvik,1997,IK Tjalve,11.71,,True
+10008413,Full Moon Jump,2026-01-24,Tresteg,Kvinner Senior,9,Guro Navelsaker Hjeltnes,2004,IK Tjalve,11.05,,True
+10008414,Cyclone Open,2026-01-23,400 meter,Menn Senior,5,Robert Hansen,1975,Ullensaker/Kisa IL,54.12,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,400 meter,Menn Senior,3,Andreas Grimerud,2003,Moelven IL,47.02,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,1500 meter,Menn Senior,1,Håkon Moe Berg,2006,Kyrksæterøra IL,3.34.32,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,1500 meter,Menn Senior,4,Andreas Kramer,1997,Ullensaker/Kisa IL,3.39.92,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,1500 meter,Menn Senior,7,Kristoffer Sagli,2002,Aure IL,3.48.91,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,Høyde,Menn Senior,5,Erlend Bolstad Raa,2000,Fyllingen IL,2.16,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,400 meter,Kvinner Senior,2,Line Al-Saiddi,2006,Idrettslaget Skjalg,55.32,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,400 meter,Kvinner Senior,3,Anne Tharaldsen Danielsen,2004,Fyllingen IL,56.22,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,1500 meter,Kvinner Senior,2,Anne Gine Løvnes,2003,IK Tjalve,4.11.66,,True
+10008412,BAUHAUS-galan Indoor,2026-01-22,Stav,Kvinner Senior,4,Kitty Augusta Friele Faye,2002,Fana IL,4.27,,True
+10008404,Treningsstevne,2026-01-21,100 meter,Gutter 13,1,Edward Sæther,2013,Bodø Friidrettsklubb,20.18,,True
+10008404,Treningsstevne,2026-01-21,"Kule 3,0kg",Gutter 13,1,Edward Sæther,2013,Bodø Friidrettsklubb,6.09,,True
+10008404,Treningsstevne,2026-01-21,100 meter,Gutter 14,1,Vebjørn Ness Gravrok,2012,Bodø Friidrettsklubb,15.67,,True
+10008404,Treningsstevne,2026-01-21,100 meter,Gutter 14,2,William Edvardsen Mella,2012,Bodø Friidrettsklubb,17.88,,True
+10008404,Treningsstevne,2026-01-21,Høyde,Gutter 14,1,Vebjørn Ness Gravrok,2012,Bodø Friidrettsklubb,1.20,,True
+10008404,Treningsstevne,2026-01-21,100 meter,Jenter 13,1,Tuva Rasmussen Koi,2013,Bodø Friidrettsklubb,16.61,,True
+10008404,Treningsstevne,2026-01-21,100 meter,Jenter 14,1,Catharina Sofie-Aune Rambjør,2012,Bodø Friidrettsklubb,13.83,,True
+10008404,Treningsstevne,2026-01-21,100 meter,Jenter 15,1,Else Isachsen Aune,2011,Bodø Friidrettsklubb,13.60,,True
+10008407,Tampere Indoor Meeting,2026-01-21,60 meter,Menn Senior,8,Sondre Matias Rudi,2000,Moelven IL,7.28,,True
+10008403,Seriestevne,2026-01-20,Lengde,Menn veteran 60-64,1,Oddvar Viulsrød,1964,Tønsberg Friidrettsklubb,5.49,,True
+10008403,Seriestevne,2026-01-20,Tresteg,Menn veteran 60-64,1,Oddvar Viulsrød,1964,Tønsberg Friidrettsklubb,11.49,,True
+10008403,Seriestevne,2026-01-20,Høyde uten tilløp,Menn veteran 80-84,1,John Erik Hoel,1943,Tønsberg Friidrettsklubb,0.95,,True
+10008403,Seriestevne,2026-01-20,Lengde,Menn veteran 80-84,1,John Erik Hoel,1943,Tønsberg Friidrettsklubb,3.17,,True
+10008403,Seriestevne,2026-01-20,Lengde uten tilløp,Menn veteran 80-84,1,John Erik Hoel,1943,Tønsberg Friidrettsklubb,2.16,,True
+10008403,Seriestevne,2026-01-20,Høyde uten tilløp,Menn veteran 85-89,1,Gunnar Olav Hansen,1938,Tønsberg Friidrettsklubb,0.75,,True
+10008403,Seriestevne,2026-01-20,Lengde,Menn veteran 85-89,1,Gunnar Olav Hansen,1938,Tønsberg Friidrettsklubb,2.47,,True
+10008403,Seriestevne,2026-01-20,Lengde uten tilløp,Menn veteran 85-89,1,Gunnar Olav Hansen,1938,Tønsberg Friidrettsklubb,1.64,,True
+10008403,Seriestevne,2026-01-20,Høyde uten tilløp,Menn veteran 90-94,1,Arne Ueland,1934,Tønsberg Friidrettsklubb,0.85,,True
+10008403,Seriestevne,2026-01-20,Lengde uten tilløp,Menn veteran 90-94,1,Arne Ueland,1934,Tønsberg Friidrettsklubb,1.66,,True
+10008403,Seriestevne,2026-01-20,Lengde,Kvinner veteran 70-74,1,Marit Huflåtten,1953,Tønsberg Friidrettsklubb,3.48,,True
+10008403,Seriestevne,2026-01-20,Lengde uten tilløp,Kvinner veteran 70-74,1,Marit Huflåtten,1953,Tønsberg Friidrettsklubb,2.07,,True
+10008403,Seriestevne,2026-01-20,Tresteg,Kvinner veteran 70-74,1,Marit Huflåtten,1953,Tønsberg Friidrettsklubb,7.51,,True
+10008403,Seriestevne,2026-01-20,Lengde,Kvinner veteran 80-84,1,Elise Wåle,1942,Larvik Turn & IF,2.44,,True
+10008403,Seriestevne,2026-01-20,Lengde uten tilløp,Kvinner veteran 80-84,1,Elise Wåle,1942,Larvik Turn & IF,1.59,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Gutter 13,1,Einar Hallanger,2013,IL i BUL Tromsø,13.17,,True
+10008402,Seriestevne 1,2026-01-19,Høyde,Gutter 13,1,Einar Hallanger,2013,IL i BUL Tromsø,0.95,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 3,0kg",Gutter 13,1,Einar Hallanger,2013,IL i BUL Tromsø,6.07,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Gutter 14,1,Sigurd Øygard Fosse,2012,IL i BUL Tromsø,8.18,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 4,0kg",Gutter 14,1,Sigurd Øygard Fosse,2012,IL i BUL Tromsø,7.35,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Gutter 17,1,Theo Høgstad,2009,IL i BUL Tromsø,7.34,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Gutter 17,2,Matheus Tønsaas,2009,IL i BUL Tromsø,7.57,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Gutter 17,3,Leonard Aleksander Hausner,2009,IL i BUL Tromsø,8.21,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Gutter 17,4,Simon Nordmo-Marvik,2009,IL i BUL Tromsø,8.92,,True
+10008402,Seriestevne 1,2026-01-19,Høyde,Gutter 17,1,Simon Nordmo-Marvik,2009,IL i BUL Tromsø,1.35,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 5,0kg",Gutter 17,1,Leonard Aleksander Hausner,2009,IL i BUL Tromsø,10.01,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 5,0kg",Gutter 17,2,Theo Høgstad,2009,IL i BUL Tromsø,7.86,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 2,0kg",Jenter 13,1,Ava Fremnesvik,2013,IL i BUL Tromsø,9.14,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 14,1,Ingeborg Norbakken Granslo,2012,IL i BUL Tromsø,9.77,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 14,2,Tuva Boardman Aarsæther,2012,IL i BUL Tromsø,10.95,,True
+10008402,Seriestevne 1,2026-01-19,Høyde,Jenter 14,1,Ingeborg Norbakken Granslo,2012,IL i BUL Tromsø,1.30,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 3,0kg",Jenter 14,1,Ingeborg Norbakken Granslo,2012,IL i BUL Tromsø,6.43,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 3,0kg",Jenter 14,2,Tuva Boardman Aarsæther,2012,IL i BUL Tromsø,5.31,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 15,1,Elsa Mækelæ Lindblad,2011,IL i BUL Tromsø,8.94,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 15,2,Ljudmila Itkin,2011,IL i BUL Tromsø,9.26,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 15,3,Vesna Itkin,2011,IL i BUL Tromsø,9.39,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 17,1,Martine Inderberg,2009,IL i BUL Tromsø,8.83,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 17,2,Aurora Molund Tangen,2009,IL i BUL Tromsø,9.11,,True
+10008402,Seriestevne 1,2026-01-19,Høyde,Jenter 17,1,Aurora Molund Tangen,2009,IL i BUL Tromsø,1.45,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 3,0kg",Jenter 17,1,Aurora Molund Tangen,2009,IL i BUL Tromsø,8.07,,True
+10008402,Seriestevne 1,2026-01-19,"Kule 3,0kg",Jenter 17,2,Martine Inderberg,2009,IL i BUL Tromsø,6.53,,True
+10008402,Seriestevne 1,2026-01-19,60 meter,Jenter 18/19,1,Tilde Edvardsen Mosli,2008,IL i BUL Tromsø,8.61,,True
+10008402,Seriestevne 1,2026-01-19,Høyde,Jenter 18/19,1,Tilde Edvardsen Mosli,2008,IL i BUL Tromsø,1.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 13,1,Aron Skaar,2013,Sarpsborg Idrettslag,1.54.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Gutter 13,1,Aron Skaar,2013,Sarpsborg Idrettslag,10.52,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Lengde (Sone 0,5m)",Gutter 13,1,Aron Skaar,2013,Sarpsborg Idrettslag,4.76,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Gutter 13,1,Aron Skaar,2013,Sarpsborg Idrettslag,9.47,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 13,1,Aron Skaar,2013,Sarpsborg Idrettslag,2888,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,1,Erik Bækkevold Kloster,2012,Sem IF,1.48.57,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,2,David Tangen Reiersen,2012,Moss IL,1.49.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,3,Alver Inderhaug,2012,IL Koll,1.49.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,4,Jakob Evensen,2012,Idrettsklubben Grane,1.51.83,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,5,Henrik Olai Lystad,2012,Sem IF,1.54.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,6,Bjørnar Rosseland,2012,Vindbjart Friidrett,1.55.08,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,7,Fredrik Heiberg-Aubert,2012,Fredrikstad IF,1.56.69,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,8,Hugo Meeks,2012,IL Koll,1.56.76,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,9,Henrik Åmli Langsholt,2012,Sarpsborg Idrettslag,2.01.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,10,Andreas Grini Krohn,2012,Fredrikstad IF,2.01.62,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Gutter 14,11,Edvin Kjenne Gaustad,2012,Fredrikstad IF,2.06.25,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,1,David Tangen Reiersen,2012,Moss IL,9.44,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,2,Bjørnar Rosseland,2012,Vindbjart Friidrett,9.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,3,Jakob Evensen,2012,Idrettsklubben Grane,10.23,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,4,Edvin Kjenne Gaustad,2012,Fredrikstad IF,11.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,5,Alver Inderhaug,2012,IL Koll,11.44,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,1,Erik Bækkevold Kloster,2012,Sem IF,9.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,2,Henrik Åmli Langsholt,2012,Sarpsborg Idrettslag,10.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,3,Andreas Grini Krohn,2012,Fredrikstad IF,10.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,4,Hugo Meeks,2012,IL Koll,11.08,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,5,Henrik Olai Lystad,2012,Sem IF,11.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 14,6,Fredrik Heiberg-Aubert,2012,Fredrikstad IF,12.47,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,1,Henrik Åmli Langsholt,2012,Sarpsborg Idrettslag,4.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,2,Bjørnar Rosseland,2012,Vindbjart Friidrett,4.76,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,3,David Tangen Reiersen,2012,Moss IL,4.74,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,4,Erik Bækkevold Kloster,2012,Sem IF,4.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,5,Jakob Evensen,2012,Idrettsklubben Grane,4.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,6,Andreas Grini Krohn,2012,Fredrikstad IF,4.48,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,7,Edvin Kjenne Gaustad,2012,Fredrikstad IF,4.44,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,8,Hugo Meeks,2012,IL Koll,4.25,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,9,Henrik Olai Lystad,2012,Sem IF,4.14,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,10,Fredrik Heiberg-Aubert,2012,Fredrikstad IF,3.77,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 14,11,Alver Inderhaug,2012,IL Koll,3.74,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,1,David Tangen Reiersen,2012,Moss IL,9.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,2,Bjørnar Rosseland,2012,Vindbjart Friidrett,8.67,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,3,Edvin Kjenne Gaustad,2012,Fredrikstad IF,8.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,4,Henrik Åmli Langsholt,2012,Sarpsborg Idrettslag,8.48,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,5,Hugo Meeks,2012,IL Koll,7.86,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,6,Andreas Grini Krohn,2012,Fredrikstad IF,7.84,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,7,Jakob Evensen,2012,Idrettsklubben Grane,7.26,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,8,Fredrik Heiberg-Aubert,2012,Fredrikstad IF,6.74,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,9,Henrik Olai Lystad,2012,Sem IF,6.14,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,10,Alver Inderhaug,2012,IL Koll,5.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 14,11,Erik Bækkevold Kloster,2012,Sem IF,5.93,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,1,David Tangen Reiersen,2012,Moss IL,3020,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,2,Bjørnar Rosseland,2012,Vindbjart Friidrett,2728,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,3,Erik Bækkevold Kloster,2012,Sem IF,2517,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,4,Jakob Evensen,2012,Idrettsklubben Grane,2498,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,5,Henrik Åmli Langsholt,2012,Sarpsborg Idrettslag,2410,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,6,Andreas Grini Krohn,2012,Fredrikstad IF,2223,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,7,Hugo Meeks,2012,IL Koll,2200,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,8,Edvin Kjenne Gaustad,2012,Fredrikstad IF,2018,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,9,Alver Inderhaug,2012,IL Koll,1973,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,10,Henrik Olai Lystad,2012,Sem IF,1930,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Gutter 14,11,Fredrik Heiberg-Aubert,2012,Fredrikstad IF,1694,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,1,Matteo Olivier Bricot,2011,IL Sandvin,7.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,2,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,7.78,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,3,Steffen Dyrnes,2011,Rjukan Idrettslag,7.89,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,4,Sturla Sigurdsson,2011,Sem IF,8.00,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,5,Olav Særvold Haanæs,2011,Byåsen IL,8.05,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,6,Sebastian Nilsen,2011,Sarpsborg Idrettslag,8.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 15,7,Ask Grimeli,2011,Flåværingen IL,8.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 15,1,Sturla Sigurdsson,2011,Sem IF,2.24.54,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 15,2,Steffen Dyrnes,2011,Rjukan Idrettslag,2.33.73,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 15,3,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,2.34.86,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 15,4,Matteo Olivier Bricot,2011,IL Sandvin,2.37.17,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 15,5,Sebastian Nilsen,2011,Sarpsborg Idrettslag,2.37.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 15,6,Ask Grimeli,2011,Flåværingen IL,2.40.57,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,1,Matteo Olivier Bricot,2011,IL Sandvin,9.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,2,Sturla Sigurdsson,2011,Sem IF,9.29,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,3,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,9.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,4,Steffen Dyrnes,2011,Rjukan Idrettslag,9.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,5,Olav Særvold Haanæs,2011,Byåsen IL,9.98,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,6,Sebastian Nilsen,2011,Sarpsborg Idrettslag,10.12,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Gutter 15,7,Ask Grimeli,2011,Flåværingen IL,11.01,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,1,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,1.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,2,Olav Særvold Haanæs,2011,Byåsen IL,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,3,Sturla Sigurdsson,2011,Sem IF,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,4,Matteo Olivier Bricot,2011,IL Sandvin,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,5,Steffen Dyrnes,2011,Rjukan Idrettslag,1.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,6,Ask Grimeli,2011,Flåværingen IL,1.52,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 15,7,Sebastian Nilsen,2011,Sarpsborg Idrettslag,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 15,1,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,3.05,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 15,2,Ask Grimeli,2011,Flåværingen IL,2.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 15,3,Sturla Sigurdsson,2011,Sem IF,2.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 15,4,Sebastian Nilsen,2011,Sarpsborg Idrettslag,2.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 15,5,Matteo Olivier Bricot,2011,IL Sandvin,2.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 15,6,Steffen Dyrnes,2011,Rjukan Idrettslag,2.25,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,1,Matteo Olivier Bricot,2011,IL Sandvin,5.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,2,Olav Særvold Haanæs,2011,Byåsen IL,5.09,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,3,Sturla Sigurdsson,2011,Sem IF,5.05,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,4,Steffen Dyrnes,2011,Rjukan Idrettslag,4.94,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,5,Ask Grimeli,2011,Flåværingen IL,4.83,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,6,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,4.72,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 15,7,Sebastian Nilsen,2011,Sarpsborg Idrettslag,4.44,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,1,Matteo Olivier Bricot,2011,IL Sandvin,12.25,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,2,Steffen Dyrnes,2011,Rjukan Idrettslag,11.26,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,3,Olav Særvold Haanæs,2011,Byåsen IL,9.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,4,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,9.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,5,Sebastian Nilsen,2011,Sarpsborg Idrettslag,8.87,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,6,Ask Grimeli,2011,Flåværingen IL,8.44,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Gutter 15,7,Sturla Sigurdsson,2011,Sem IF,7.51,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 15,1,Matteo Olivier Bricot,2011,IL Sandvin,3616,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 15,2,Magnus Hennig Lunde,2011,Kristiansands IF Friidrett,3379,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 15,3,Steffen Dyrnes,2011,Rjukan Idrettslag,3258,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 15,4,Sturla Sigurdsson,2011,Sem IF,3227,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 15,5,Sebastian Nilsen,2011,Sarpsborg Idrettslag,2693,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 15,6,Ask Grimeli,2011,Flåværingen IL,2568,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,1,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,7.92,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,2,Andreas Varem Lindberg,2010,Fredrikstad IF,7.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,3,Jon Magnus Våge,2010,Haugesund IL,8.06,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,4,Kristian Henriksen,2010,Moss IL,8.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,1,Johannes Aune Hanseth,2010,IL Nidelv,7.83,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,2,Herman Urnes Hahn,2010,Haugesund IL,7.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,3,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,8.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,4,Erik Syver Buskoven,2010,Fredrikstad IF,8.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 16,5,Jakob Slettebakken,2010,Sportsklubben Vidar,8.91,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,1,Herman Urnes Hahn,2010,Haugesund IL,2.17.32,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,2,Andreas Varem Lindberg,2010,Fredrikstad IF,2.20.03,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,3,Johannes Aune Hanseth,2010,IL Nidelv,2.21.18,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,4,Erik Syver Buskoven,2010,Fredrikstad IF,2.29.76,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,5,Kristian Henriksen,2010,Moss IL,2.30.52,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,6,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,2.31.18,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,7,Jon Magnus Våge,2010,Haugesund IL,2.31.72,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,8,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,2.32.03,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Gutter 16,9,Jakob Slettebakken,2010,Sportsklubben Vidar,2.46.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,1,Jon Magnus Våge,2010,Haugesund IL,9.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,2,Andreas Varem Lindberg,2010,Fredrikstad IF,9.81,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,3,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,10.11,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,1,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,9.34,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,2,Johannes Aune Hanseth,2010,IL Nidelv,9.36,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,3,Kristian Henriksen,2010,Moss IL,9.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,4,Herman Urnes Hahn,2010,Haugesund IL,9.62,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,5,Erik Syver Buskoven,2010,Fredrikstad IF,10.69,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 16,6,Jakob Slettebakken,2010,Sportsklubben Vidar,11.69,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,1,Jon Magnus Våge,2010,Haugesund IL,1.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,2,Andreas Varem Lindberg,2010,Fredrikstad IF,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,3,Herman Urnes Hahn,2010,Haugesund IL,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,4,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,5,Kristian Henriksen,2010,Moss IL,1.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,6,Erik Syver Buskoven,2010,Fredrikstad IF,1.52,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,7,Jakob Slettebakken,2010,Sportsklubben Vidar,1.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,8,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,1.43,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 16,9,Johannes Aune Hanseth,2010,IL Nidelv,1.40,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,1,Andreas Varem Lindberg,2010,Fredrikstad IF,3.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,2,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,3.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,3,Herman Urnes Hahn,2010,Haugesund IL,3.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,4,Jon Magnus Våge,2010,Haugesund IL,2.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,5,Erik Syver Buskoven,2010,Fredrikstad IF,2.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,6,Jakob Slettebakken,2010,Sportsklubben Vidar,2.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,7,Kristian Henriksen,2010,Moss IL,2.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,8,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,2.25,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 16,9,Johannes Aune Hanseth,2010,IL Nidelv,2.15,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,1,Andreas Varem Lindberg,2010,Fredrikstad IF,5.74,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,2,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,5.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,3,Herman Urnes Hahn,2010,Haugesund IL,5.39,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,4,Johannes Aune Hanseth,2010,IL Nidelv,5.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,5,Jon Magnus Våge,2010,Haugesund IL,5.12,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,6,Kristian Henriksen,2010,Moss IL,5.00,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,7,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,4.82,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,8,Erik Syver Buskoven,2010,Fredrikstad IF,4.50,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 16,9,Jakob Slettebakken,2010,Sportsklubben Vidar,4.27,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,1,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,10.51,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,2,Kristian Henriksen,2010,Moss IL,9.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,3,Andreas Varem Lindberg,2010,Fredrikstad IF,9.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,4,Herman Urnes Hahn,2010,Haugesund IL,8.87,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,5,Erik Syver Buskoven,2010,Fredrikstad IF,8.06,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,6,Jon Magnus Våge,2010,Haugesund IL,7.20,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,7,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,6.94,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 16,8,Jakob Slettebakken,2010,Sportsklubben Vidar,5.85,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,1,Andreas Varem Lindberg,2010,Fredrikstad IF,3700,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,2,Pelle Ihlebæk Haugarvoll,2010,Fredrikstad IF,3689,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,3,Herman Urnes Hahn,2010,Haugesund IL,3626,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,4,Jon Magnus Våge,2010,Haugesund IL,3239,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,5,Kristian Henriksen,2010,Moss IL,3152,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,6,Johannes Aune Hanseth,2010,IL Nidelv,2838,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,7,Johannes Levernes Solberg,2010,Kristiansands IF Friidrett,2709,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,8,Erik Syver Buskoven,2010,Fredrikstad IF,2671,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-800m) Ungdom,Gutter 16,9,Jakob Slettebakken,2010,Sportsklubben Vidar,2049,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 17,1,Theodor Gutvik,2009,Kristiansands IF Friidrett,7.41,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 17,2,Sondre Rosseland,2009,Vindbjart Friidrett,7.53,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 17,3,Marius Aarset Lilleskog,2009,Haugesund IL,7.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 17,4,David Sindre Risberg,2009,Sandefjord Turn & IF,7.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 17,5,Sigurd Pareli Juven,2009,Bodø Friidrettsklubb,7.73,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter 17,6,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,8.16,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter 17,1,David Sindre Risberg,2009,Sandefjord Turn & IF,2.47.63,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter 17,2,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,3.14.53,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter 17,3,Theodor Gutvik,2009,Kristiansands IF Friidrett,3.25.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter 17,4,Sondre Rosseland,2009,Vindbjart Friidrett,3.30.67,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 17,1,Sondre Rosseland,2009,Vindbjart Friidrett,8.71,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 17,2,David Sindre Risberg,2009,Sandefjord Turn & IF,8.75,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (91,4cm)",Gutter 17,3,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,10.03,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 17,1,David Sindre Risberg,2009,Sandefjord Turn & IF,1.85,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 17,2,Sondre Rosseland,2009,Vindbjart Friidrett,1.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 17,3,Theodor Gutvik,2009,Kristiansands IF Friidrett,1.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter 17,4,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,1.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 17,1,Sondre Rosseland,2009,Vindbjart Friidrett,3.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 17,2,David Sindre Risberg,2009,Sandefjord Turn & IF,3.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 17,3,Theodor Gutvik,2009,Kristiansands IF Friidrett,3.15,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter 17,4,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,2.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 17,1,Sondre Rosseland,2009,Vindbjart Friidrett,6.10,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 17,2,Theodor Gutvik,2009,Kristiansands IF Friidrett,5.87,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 17,3,David Sindre Risberg,2009,Sandefjord Turn & IF,5.69,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 17,4,Marius Aarset Lilleskog,2009,Haugesund IL,5.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 17,5,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,5.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter 17,6,Sigurd Pareli Juven,2009,Bodø Friidrettsklubb,4.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 17,1,Sondre Rosseland,2009,Vindbjart Friidrett,12.98,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 17,2,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,12.18,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 17,3,David Sindre Risberg,2009,Sandefjord Turn & IF,12.15,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 17,4,Sigurd Pareli Juven,2009,Bodø Friidrettsklubb,12.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 17,5,Theodor Gutvik,2009,Kristiansands IF Friidrett,9.93,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 5,0kg",Gutter 17,6,Marius Aarset Lilleskog,2009,Haugesund IL,8.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Ungdom,Gutter 17,1,David Sindre Risberg,2009,Sandefjord Turn & IF,4494,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Ungdom,Gutter 17,2,Sondre Rosseland,2009,Vindbjart Friidrett,4271,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Ungdom,Gutter 17,3,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,3463,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Ungdom,Gutter 17,4,Theodor Gutvik,2009,Kristiansands IF Friidrett,3082,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter U20,1,Lucas Francois Bricot,2008,IL Sandvin,7.09,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter U20,2,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,7.30,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter U20,3,Even Bogen Nørjordet,2008,IK Tjalve,7.36,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter U20,4,Melvin Tollefsen,2007,Moss IL,7.40,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter U20,5,Markus Nordviken,2007,Bøler IF,7.54,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Gutter U20,6,August Grimeli,2007,Flåværingen IL,7.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter U20,1,Markus Nordviken,2007,Bøler IF,2.54.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter U20,2,Melvin Tollefsen,2007,Moss IL,2.54.98,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter U20,3,Even Bogen Nørjordet,2008,IK Tjalve,3.01.93,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter U20,4,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,3.02.53,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Gutter U20,5,August Grimeli,2007,Flåværingen IL,3.20.43,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter hekk (100cm),Gutter U20,1,Even Bogen Nørjordet,2008,IK Tjalve,8.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter hekk (100cm),Gutter U20,2,Melvin Tollefsen,2007,Moss IL,8.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter hekk (100cm),Gutter U20,3,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,9.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter hekk (100cm),Gutter U20,4,August Grimeli,2007,Flåværingen IL,9.24,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter hekk (100cm),Gutter U20,5,Markus Nordviken,2007,Bøler IF,9.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter U20,1,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,1.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter U20,2,Melvin Tollefsen,2007,Moss IL,1.88,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter U20,3,August Grimeli,2007,Flåværingen IL,1.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter U20,4,Markus Nordviken,2007,Bøler IF,1.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Gutter U20,5,Even Bogen Nørjordet,2008,IK Tjalve,1.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter U20,1,Melvin Tollefsen,2007,Moss IL,4.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter U20,2,Even Bogen Nørjordet,2008,IK Tjalve,3.85,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter U20,3,August Grimeli,2007,Flåværingen IL,3.85,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter U20,1,Markus Nordviken,2007,Bøler IF,2.85,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Gutter U20,2,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,2.75,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter U20,1,Lucas Francois Bricot,2008,IL Sandvin,6.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter U20,2,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,6.33,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter U20,3,Markus Nordviken,2007,Bøler IF,6.21,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter U20,4,August Grimeli,2007,Flåværingen IL,6.15,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter U20,5,Even Bogen Nørjordet,2008,IK Tjalve,6.08,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Gutter U20,6,Melvin Tollefsen,2007,Moss IL,6.07,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 6,0kg",Gutter U20,1,Melvin Tollefsen,2007,Moss IL,11.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 6,0kg",Gutter U20,2,Markus Nordviken,2007,Bøler IF,10.72,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 6,0kg",Gutter U20,3,August Grimeli,2007,Flåværingen IL,10.09,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 6,0kg",Gutter U20,4,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,9.48,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 6,0kg",Gutter U20,5,Even Bogen Nørjordet,2008,IK Tjalve,8.90,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr,Gutter U20,1,Melvin Tollefsen,2007,Moss IL,4867,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr,Gutter U20,2,Amund Skogstad Sjåvik,2008,Hattfjelldal IL,4323,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr,Gutter U20,3,Even Bogen Nørjordet,2008,IK Tjalve,4244,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr,Gutter U20,4,August Grimeli,2007,Flåværingen IL,4083,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m) Jr,Gutter U20,5,Markus Nordviken,2007,Bøler IF,4018,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Menn Senior,1,Gjert Høie Sjursen,2000,IL Gneist,7.12,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Menn Senior,2,Odin August Østreim Øina,2006,Fana IL,7.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Menn Senior,3,Nikolai Stavik Moshagen,2005,Søndre Land IL,7.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter,Menn Senior,4,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,7.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Menn Senior,1,Odin August Østreim Øina,2006,Fana IL,3.02.51,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Menn Senior,2,Gjert Høie Sjursen,2000,IL Gneist,3.04.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Menn Senior,3,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,3.05.33,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (106,7 cm)",Menn Senior,1,Gjert Høie Sjursen,2000,IL Gneist,8.33,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (106,7 cm)",Menn Senior,2,Odin August Østreim Øina,2006,Fana IL,8.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Menn Senior,1,Odin August Østreim Øina,2006,Fana IL,1.82,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Menn Senior,2,Gjert Høie Sjursen,2000,IL Gneist,1.82,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Menn Senior,3,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,1.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Menn Senior,1,Odin August Østreim Øina,2006,Fana IL,4.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Menn Senior,2,Gjert Høie Sjursen,2000,IL Gneist,4.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Stav,Menn Senior,3,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,4.05,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Menn Senior,1,Gjert Høie Sjursen,2000,IL Gneist,6.84,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Menn Senior,2,Odin August Østreim Øina,2006,Fana IL,6.42,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Menn Senior,3,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,6.06,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 7,26kg",Menn Senior,1,Gjert Høie Sjursen,2000,IL Gneist,13.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 7,26kg",Menn Senior,2,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,11.19,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 7,26kg",Menn Senior,3,Odin August Østreim Øina,2006,Fana IL,10.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m),Menn Senior,1,Gjert Høie Sjursen,2000,IL Gneist,5183,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m),Menn Senior,2,Odin August Østreim Øina,2006,Fana IL,4846,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m),Menn Senior,3,Tobias Kalmo Thorbjørnsen,2006,IL Sandvin,3670,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 13,1,Sofie Lie,2013,Brandbu IF,1.48.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 13,2,Thea Lagerløv Benno,2013,Nittedal IL,1.50.63,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 13,3,Sanne Hesselink Cornelissen,2013,Nittedal IL,1.53.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 13,4,Helma Hole Rognlien,2013,IL Koll,2.05.75,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (68,0cm)",Jenter 13,1,Thea Lagerløv Benno,2013,Nittedal IL,10.21,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (68,0cm)",Jenter 13,2,Sofie Lie,2013,Brandbu IF,10.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (68,0cm)",Jenter 13,3,Sanne Hesselink Cornelissen,2013,Nittedal IL,10.54,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (68,0cm)",Jenter 13,4,Helma Hole Rognlien,2013,IL Koll,11.27,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Lengde (Sone 0,5m)",Jenter 13,1,Sofie Lie,2013,Brandbu IF,4.89,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Lengde (Sone 0,5m)",Jenter 13,2,Thea Lagerløv Benno,2013,Nittedal IL,4.23,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Lengde (Sone 0,5m)",Jenter 13,3,Sanne Hesselink Cornelissen,2013,Nittedal IL,4.16,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Lengde (Sone 0,5m)",Jenter 13,4,Helma Hole Rognlien,2013,IL Koll,4.07,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 2,0kg",Jenter 13,1,Thea Lagerløv Benno,2013,Nittedal IL,8.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 2,0kg",Jenter 13,2,Brooklyn Strand Lewis,2013,IL Sandvin,8.07,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 2,0kg",Jenter 13,3,Sofie Lie,2013,Brandbu IF,7.63,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 2,0kg",Jenter 13,4,Helma Hole Rognlien,2013,IL Koll,7.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 2,0kg",Jenter 13,5,Sanne Hesselink Cornelissen,2013,Nittedal IL,7.39,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 13,1,Sofie Lie,2013,Brandbu IF,3486,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 13,2,Thea Lagerløv Benno,2013,Nittedal IL,3453,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 13,3,Sanne Hesselink Cornelissen,2013,Nittedal IL,3143,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 13,4,Helma Hole Rognlien,2013,IL Koll,2699,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,1,Leah Anine Laksfoss Flydal,2012,Jardar IL,1.54.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,2,Amalie Urnes Hahn,2012,Haugesund IL,1.56.34,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,3,Ellen Natvik Rove,2012,Jardar IL,1.58.93,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,4,Edel Evensen,2012,Idrettsklubben Grane,1.59.57,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,5,Anna Katharina Maast,2012,Jardar IL,2.01.06,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,6,Celia Laksfoss Flydal,2012,Jardar IL,2.04.57,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,7,Sunniva Bjørnstad Seth,2012,IL Tyrving,2.05.71,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 14,8,Tiril Tepsel Sjulstad,2012,Sem IF,2.07.44,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,1,Leah Anine Laksfoss Flydal,2012,Jardar IL,10.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,2,Edel Evensen,2012,Idrettsklubben Grane,11.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,1,Ellen Natvik Rove,2012,Jardar IL,9.84,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,2,Isabella Lelis Redalen-Mansel,2012,Lambertseter IF,10.29,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,3,Sunniva Bjørnstad Seth,2012,IL Tyrving,10.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,4,Amalie Urnes Hahn,2012,Haugesund IL,11.17,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,5,Anna Katharina Maast,2012,Jardar IL,11.86,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,6,Tiril Tepsel Sjulstad,2012,Sem IF,12.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 14,7,Celia Laksfoss Flydal,2012,Jardar IL,14.14,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,1,Amalie Urnes Hahn,2012,Haugesund IL,4.73,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,2,Leah Anine Laksfoss Flydal,2012,Jardar IL,4.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,3,Ellen Natvik Rove,2012,Jardar IL,4.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,4,Isabella Lelis Redalen-Mansel,2012,Lambertseter IF,4.32,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,5,Tiril Tepsel Sjulstad,2012,Sem IF,4.10,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,6,Edel Evensen,2012,Idrettsklubben Grane,4.09,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,7,Sunniva Bjørnstad Seth,2012,IL Tyrving,3.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,8,Anna Katharina Maast,2012,Jardar IL,3.30,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 14,9,Celia Laksfoss Flydal,2012,Jardar IL,2.99,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,1,Amalie Urnes Hahn,2012,Haugesund IL,8.01,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,2,Sunniva Bjørnstad Seth,2012,IL Tyrving,6.92,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,3,Leah Anine Laksfoss Flydal,2012,Jardar IL,6.90,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,4,Ellen Natvik Rove,2012,Jardar IL,6.82,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,5,Edel Evensen,2012,Idrettsklubben Grane,6.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,6,Tiril Tepsel Sjulstad,2012,Sem IF,6.11,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,7,Anna Katharina Maast,2012,Jardar IL,5.88,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 14,8,Celia Laksfoss Flydal,2012,Jardar IL,5.24,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,1,Amalie Urnes Hahn,2012,Haugesund IL,3011,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,2,Ellen Natvik Rove,2012,Jardar IL,2984,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,3,Leah Anine Laksfoss Flydal,2012,Jardar IL,2926,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,4,Edel Evensen,2012,Idrettsklubben Grane,2574,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,5,Sunniva Bjørnstad Seth,2012,IL Tyrving,2549,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,6,Anna Katharina Maast,2012,Jardar IL,2211,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,7,Tiril Tepsel Sjulstad,2012,Sem IF,2114,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,4 Kamp (60mhekk-Lengde-Kule-600m),Jenter 14,8,Celia Laksfoss Flydal,2012,Jardar IL,1553,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,1,Tilla Sundem Barlaug,2011,Sandnes IL,1.36.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,2,Emma Eikrem,2011,Os Turnforening,1.57.73,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,3,Linnea Magnolia Reiersen,2011,Lambertseter IF,1.58.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,4,Anine Helen La Cour Olaussen,2011,Fredrikstad IF,1.58.84,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,5,Hedda Naalsund,2011,Kristiansands IF Friidrett,1.59.91,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,6,Ylva Sophie Ellevold Granberg,2011,Ullensaker/Kisa IL,2.00.11,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,7,Ella Hjeltnes,2011,Ullensaker/Kisa IL,2.02.45,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 15,8,Hazel Celile Mak Zeigler,2011,IL Koll,2.17.47,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,1,Ella Hjeltnes,2011,Ullensaker/Kisa IL,10.66,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,2,Linnea Magnolia Reiersen,2011,Lambertseter IF,10.77,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,3,Ylva Sophie Ellevold Granberg,2011,Ullensaker/Kisa IL,11.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,4,Helena Husum Heggem,2011,IL Koll,12.61,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,5,Hazel Celile Mak Zeigler,2011,IL Koll,12.77,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,1,Tilla Sundem Barlaug,2011,Sandnes IL,9.07,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,2,Hedda Naalsund,2011,Kristiansands IF Friidrett,9.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,3,Emma Eikrem,2011,Os Turnforening,9.90,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,4,Sigrun Margrethe Gjerstad Sundet,2011,IF Sturla,9.90,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 15,5,Anine Helen La Cour Olaussen,2011,Fredrikstad IF,10.15,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,1,Emma Eikrem,2011,Os Turnforening,1.52,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,2,Ella Hjeltnes,2011,Ullensaker/Kisa IL,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,3,Tilla Sundem Barlaug,2011,Sandnes IL,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,4,Hedda Naalsund,2011,Kristiansands IF Friidrett,1.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,5,Anine Helen La Cour Olaussen,2011,Fredrikstad IF,1.37,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,6,Ylva Sophie Ellevold Granberg,2011,Ullensaker/Kisa IL,1.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,7,Helena Husum Heggem,2011,IL Koll,1.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,8,Linnea Magnolia Reiersen,2011,Lambertseter IF,1.28,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 15,9,Hazel Celile Mak Zeigler,2011,IL Koll,1.22,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,1,Tilla Sundem Barlaug,2011,Sandnes IL,5.07,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,2,Emma Eikrem,2011,Os Turnforening,5.03,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,3,Hedda Naalsund,2011,Kristiansands IF Friidrett,4.66,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,4,Anine Helen La Cour Olaussen,2011,Fredrikstad IF,4.30,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,5,Linnea Magnolia Reiersen,2011,Lambertseter IF,4.04,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,6,Ella Hjeltnes,2011,Ullensaker/Kisa IL,3.89,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,7,Helena Husum Heggem,2011,IL Koll,3.86,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,8,Ylva Sophie Ellevold Granberg,2011,Ullensaker/Kisa IL,3.77,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 15,9,Hazel Celile Mak Zeigler,2011,IL Koll,2.96,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,1,Tilla Sundem Barlaug,2011,Sandnes IL,13.15,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,2,Ella Hjeltnes,2011,Ullensaker/Kisa IL,12.78,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,3,Emma Eikrem,2011,Os Turnforening,10.16,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,4,Hedda Naalsund,2011,Kristiansands IF Friidrett,9.38,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,5,Anine Helen La Cour Olaussen,2011,Fredrikstad IF,7.81,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,6,Helena Husum Heggem,2011,IL Koll,7.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,7,Ylva Sophie Ellevold Granberg,2011,Ullensaker/Kisa IL,7.51,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,8,Linnea Magnolia Reiersen,2011,Lambertseter IF,6.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 15,9,Hazel Celile Mak Zeigler,2011,IL Koll,4.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,1,Tilla Sundem Barlaug,2011,Sandnes IL,3723,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,2,Emma Eikrem,2011,Os Turnforening,3025,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,3,Hedda Naalsund,2011,Kristiansands IF Friidrett,2787,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,4,Ella Hjeltnes,2011,Ullensaker/Kisa IL,2673,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,5,Anine Helen La Cour Olaussen,2011,Fredrikstad IF,2457,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,6,Linnea Magnolia Reiersen,2011,Lambertseter IF,2130,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,7,Ylva Sophie Ellevold Granberg,2011,Ullensaker/Kisa IL,1995,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,8,Helena Husum Heggem,2011,IL Koll,1383,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 15,9,Hazel Celile Mak Zeigler,2011,IL Koll,1200,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 16,1,Hedda Barlaug Røsdal,2010,Sandnes IL,1.42.50,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 16,2,Aili Trømborg Nordrum,2010,Fredrikstad IF,1.48.82,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 16,3,Lisa-Marie Finstad,2010,Vestby Idrettslag,1.49.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 16,4,Hanna Rimstad,2010,Ullensaker/Kisa IL,1.49.62,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 16,5,Mathilda Finborud Reigstad,2010,IL Koll,1.53.06,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,600 meter,Jenter 16,6,Naomi Osmanovic,2010,Haugesund IL,1.59.39,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,1,Lisa-Marie Finstad,2010,Vestby Idrettslag,8.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,2,Hedda Barlaug Røsdal,2010,Sandnes IL,9.11,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,3,Naomi Osmanovic,2010,Haugesund IL,9.68,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,4,Hanna Rimstad,2010,Ullensaker/Kisa IL,9.78,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,5,Aili Trømborg Nordrum,2010,Fredrikstad IF,10.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,6,Mathilda Finborud Reigstad,2010,IL Koll,10.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,7,Celin Larsen,2010,Lyngdal IL,11.08,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 16,8,Signe Therese Kvalheim,2010,Halden IL,15.07,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,1,Hanna Rimstad,2010,Ullensaker/Kisa IL,1.70,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,2,Hedda Barlaug Røsdal,2010,Sandnes IL,1.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,3,Naomi Osmanovic,2010,Haugesund IL,1.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,4,Lisa-Marie Finstad,2010,Vestby Idrettslag,1.40,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,5,Aili Trømborg Nordrum,2010,Fredrikstad IF,1.34,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,6,Mathilda Finborud Reigstad,2010,IL Koll,1.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 16,7,Celin Larsen,2010,Lyngdal IL,1.20,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 16,1,Hanna Rimstad,2010,Ullensaker/Kisa IL,5.09,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 16,2,Hedda Barlaug Røsdal,2010,Sandnes IL,4.99,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 16,3,Lisa-Marie Finstad,2010,Vestby Idrettslag,4.86,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 16,4,Naomi Osmanovic,2010,Haugesund IL,4.63,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 16,5,Mathilda Finborud Reigstad,2010,IL Koll,4.59,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 16,6,Aili Trømborg Nordrum,2010,Fredrikstad IF,4.36,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 16,1,Hanna Rimstad,2010,Ullensaker/Kisa IL,12.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 16,2,Lisa-Marie Finstad,2010,Vestby Idrettslag,11.92,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 16,3,Hedda Barlaug Røsdal,2010,Sandnes IL,10.24,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 16,4,Aili Trømborg Nordrum,2010,Fredrikstad IF,9.79,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 16,5,Naomi Osmanovic,2010,Haugesund IL,8.57,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 16,6,Mathilda Finborud Reigstad,2010,IL Koll,7.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 16,1,Hanna Rimstad,2010,Ullensaker/Kisa IL,3549,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 16,2,Hedda Barlaug Røsdal,2010,Sandnes IL,3464,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 16,3,Lisa-Marie Finstad,2010,Vestby Idrettslag,3317,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 16,4,Naomi Osmanovic,2010,Haugesund IL,2765,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 16,5,Aili Trømborg Nordrum,2010,Fredrikstad IF,2667,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-600m),Jenter 16,6,Mathilda Finborud Reigstad,2010,IL Koll,2479,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter 17,1,Andrea Betten Lade,2009,Verdal Friidrettsklubb,2.39.04,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter 17,2,Vigdis Sigurdsdottir,2009,Sem IF,2.40.28,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter 17,3,Stina Pedersen,2009,Bodø Friidrettsklubb,2.49.75,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter 17,4,Embla Adele Østreim Øina,2009,Fana IL,2.50.23,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter 17,5,Maja Gundersen Palmgren,2009,Urædd Friidrett,2.55.77,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter 17,6,Isabella Neves Strand,2009,Tønsberg Friidrettsklubb,3.24.55,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 17,1,Vigdis Sigurdsdottir,2009,Sem IF,8.77,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 17,2,Embla Adele Østreim Øina,2009,Fana IL,9.00,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 17,3,Stina Pedersen,2009,Bodø Friidrettsklubb,9.42,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 17,4,Andrea Betten Lade,2009,Verdal Friidrettsklubb,9.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 17,5,Maja Gundersen Palmgren,2009,Urædd Friidrett,9.80,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Jenter 17,6,Isabella Neves Strand,2009,Tønsberg Friidrettsklubb,10.95,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 17,1,Embla Adele Østreim Øina,2009,Fana IL,1.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 17,2,Maja Gundersen Palmgren,2009,Urædd Friidrett,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 17,3,Stina Pedersen,2009,Bodø Friidrettsklubb,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 17,4,Andrea Betten Lade,2009,Verdal Friidrettsklubb,1.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 17,5,Vigdis Sigurdsdottir,2009,Sem IF,1.43,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter 17,6,Isabella Neves Strand,2009,Tønsberg Friidrettsklubb,1.34,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 17,1,Vigdis Sigurdsdottir,2009,Sem IF,5.12,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 17,2,Embla Adele Østreim Øina,2009,Fana IL,4.91,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 17,3,Maja Gundersen Palmgren,2009,Urædd Friidrett,4.69,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 17,4,Stina Pedersen,2009,Bodø Friidrettsklubb,4.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 17,5,Andrea Betten Lade,2009,Verdal Friidrettsklubb,4.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter 17,6,Isabella Neves Strand,2009,Tønsberg Friidrettsklubb,4.35,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 17,1,Andrea Betten Lade,2009,Verdal Friidrettsklubb,12.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 17,2,Maja Gundersen Palmgren,2009,Urædd Friidrett,10.63,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 17,3,Embla Adele Østreim Øina,2009,Fana IL,10.14,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 17,4,Vigdis Sigurdsdottir,2009,Sem IF,10.04,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 17,5,Stina Pedersen,2009,Bodø Friidrettsklubb,9.17,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Jenter 17,6,Isabella Neves Strand,2009,Tønsberg Friidrettsklubb,7.98,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom,Jenter 17,1,Embla Adele Østreim Øina,2009,Fana IL,3228,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom,Jenter 17,2,Vigdis Sigurdsdottir,2009,Sem IF,3197,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom,Jenter 17,3,Andrea Betten Lade,2009,Verdal Friidrettsklubb,3089,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom,Jenter 17,4,Stina Pedersen,2009,Bodø Friidrettsklubb,2841,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom,Jenter 17,5,Maja Gundersen Palmgren,2009,Urædd Friidrett,2813,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom,Jenter 17,6,Isabella Neves Strand,2009,Tønsberg Friidrettsklubb,1954,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter U20,1,Susanne Tveit Amundsen,2007,Sportsklubben Vidar,2.15.33,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter U20,2,Aurora Brennodden Venholen,2008,Hamar IL,2.48.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Jenter U20,3,Thanida Promwang Ingebrigtsen,2008,Straumsnes IL,2.54.65,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Jenter U20,1,Susanne Tveit Amundsen,2007,Sportsklubben Vidar,8.98,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Jenter U20,2,Aurora Brennodden Venholen,2008,Hamar IL,9.50,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Jenter U20,3,Thanida Promwang Ingebrigtsen,2008,Straumsnes IL,10.21,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter U20,1,Aurora Brennodden Venholen,2008,Hamar IL,1.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter U20,2,Thanida Promwang Ingebrigtsen,2008,Straumsnes IL,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Jenter U20,3,Susanne Tveit Amundsen,2007,Sportsklubben Vidar,1.46,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter U20,1,Susanne Tveit Amundsen,2007,Sportsklubben Vidar,5.57,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter U20,2,Aurora Brennodden Venholen,2008,Hamar IL,5.23,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Jenter U20,3,Thanida Promwang Ingebrigtsen,2008,Straumsnes IL,5.13,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Jenter U20,1,Susanne Tveit Amundsen,2007,Sportsklubben Vidar,12.30,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Jenter U20,2,Thanida Promwang Ingebrigtsen,2008,Straumsnes IL,8.74,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Jenter U20,3,Aurora Brennodden Venholen,2008,Hamar IL,6.84,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m),Jenter U20,1,Susanne Tveit Amundsen,2007,Sportsklubben Vidar,3780,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m),Jenter U20,2,Aurora Brennodden Venholen,2008,Hamar IL,3017,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m),Jenter U20,3,Thanida Promwang Ingebrigtsen,2008,Straumsnes IL,2741,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Kvinner Senior,1,Anastasia Schnell,2001,IL Tyrving,2.20.43,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Kvinner Senior,2,Malene Kollberg,1999,Sportsklubben Vidar,2.23.32,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Kvinner Senior,3,Brita Mehl Lode,2000,IL Gneist,2.28.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Kvinner Senior,1,Malene Kollberg,1999,Sportsklubben Vidar,8.60,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Kvinner Senior,2,Brita Mehl Lode,2000,IL Gneist,9.03,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Kvinner Senior,3,Anastasia Schnell,2001,IL Tyrving,9.31,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Kvinner Senior,1,Anastasia Schnell,2001,IL Tyrving,1.67,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Kvinner Senior,2,Brita Mehl Lode,2000,IL Gneist,1.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Kvinner Senior,3,Malene Kollberg,1999,Sportsklubben Vidar,1.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Kvinner Senior,1,Brita Mehl Lode,2000,IL Gneist,5.62,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Kvinner Senior,2,Malene Kollberg,1999,Sportsklubben Vidar,5.62,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Kvinner Senior,3,Anastasia Schnell,2001,IL Tyrving,5.51,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Kvinner Senior,1,Malene Kollberg,1999,Sportsklubben Vidar,11.26,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Kvinner Senior,2,Brita Mehl Lode,2000,IL Gneist,10.81,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 4,0kg",Kvinner Senior,3,Anastasia Schnell,2001,IL Tyrving,10.58,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m),Kvinner Senior,1,Malene Kollberg,1999,Sportsklubben Vidar,3904,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m),Kvinner Senior,2,Anastasia Schnell,2001,IL Tyrving,3752,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m),Kvinner Senior,3,Brita Mehl Lode,2000,IL Gneist,3716,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,1000 meter,Menn veteran 40-44,1,Arild Andreas Ydersbond,1982,Aurskog/Høland Friidrettslag,3.19.97,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,60 meter hekk (100cm),Menn veteran 40-44,1,Arild Andreas Ydersbond,1982,Aurskog/Høland Friidrettslag,13.08,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Menn veteran 40-44,1,Arild Andreas Ydersbond,1982,Aurskog/Høland Friidrettslag,1.64,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Menn veteran 40-44,1,Arild Andreas Ydersbond,1982,Aurskog/Høland Friidrettslag,4.12,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Menn veteran 40-44,1,Arild Andreas Ydersbond,1982,Aurskog/Høland Friidrettslag,8.17,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Lengde-Kule-Høyde-1000m) Veteran,Menn veteran 40-44,1,Arild Andreas Ydersbond,1982,Aurskog/Høland Friidrettslag,1997,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Menn veteran 60-64,1,Frode Holt,1964,IF Sturla,9.81,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (84,0cm)",Menn veteran 60-64,2,Jan Arnstein Ekenes,1965,Halden IL,13.27,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Menn veteran 60-64,1,Frode Holt,1964,IF Sturla,1.49,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Menn veteran 60-64,1,Frode Holt,1964,IF Sturla,4.67,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Menn veteran 60-64,1,Frode Holt,1964,IF Sturla,9.62,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Lengde-Kule-Høyde-1000m) Veteran,Menn veteran 60-64,1,Frode Holt,1964,IF Sturla,2869,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,800 meter,Kvinner veteran 55-59,1,Kari Nordaas Kulkarni,1971,Sandnes IL,3.06.63,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"60 meter hekk (76,2cm)",Kvinner veteran 55-59,1,Kari Nordaas Kulkarni,1971,Sandnes IL,12.19,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Høyde,Kvinner veteran 55-59,1,Kari Nordaas Kulkarni,1971,Sandnes IL,1.28,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,Lengde,Kvinner veteran 55-59,1,Kari Nordaas Kulkarni,1971,Sandnes IL,3.74,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,"Kule 3,0kg",Kvinner veteran 55-59,1,Kari Nordaas Kulkarni,1971,Sandnes IL,8.03,,True
+10008400,NM-UM mangekamp innendørs,2026-01-17,5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Veteran,Kvinner veteran 55-59,1,Kari Nordaas Kulkarni,1971,Sandnes IL,3009,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Lucas Nande Eggen,2008,IK Tjalve,7.27,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,2,Mads Hjort-Larsen,2003,IL i BUL,7.28,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Johan Magnus Bjørgan,2000,Sørild FIK,7.37,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,2,Øystein Bogstrand Løitegård,2009,IL Sandvin,7.48,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,3,Øystein Bogstrand Løitegård,2009,IL Sandvin,7.50,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,3,Kasper Ellingsen,0,Sportsklubben Vidar,7.53,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,4,Kasper Ellingsen,0,Sportsklubben Vidar,7.55,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,4,Andreas Vladimir Sandin,2010,IL Fri,7.73,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,5,Haakon Brøgger Forsbak Langfeldt,2008,IL i BUL,8.22,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,5,Haakon Brøgger Forsbak Langfeldt,2008,IL i BUL,8.23,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Levi Boniface Kodjo Normann-Afanou,2008,IK Tjalve,7.00,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Elijah Ramirez,2007,IL i BUL,7.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Marcus Devantés Gardner Stålby,2007,IK Tjalve,7.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,2,Elijah Ramirez,2007,IL i BUL,7.22,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,3,Christian Øydne,2005,Søgne IL,7.23,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,3,Marcus Devantés Gardner Stålby,2007,IK Tjalve,7.24,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,4,Lucas Nande Eggen,2008,IK Tjalve,7.24,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,5,Mads Hjort-Larsen,2003,IL i BUL,7.28,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,4,Christian Øydne,2005,Søgne IL,7.30,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,5,Josh Anthony Bjerke,2007,IL i BUL,7.35,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,6,Johan Magnus Bjørgan,2000,Sørild FIK,7.43,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,7,Zion Ramirez,2007,IL i BUL,7.56,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Mats Hjørnevik,2003,IL i BUL,6.82,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,1,Levi Boniface Kodjo Normann-Afanou,2008,IK Tjalve,6.93,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,2,Sondre Witzøe,2004,IL Sandvin,6.93,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,2,Mathias Hove Johansen,1998,Idrettslaget Skjalg,6.94,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,3,Mathias Hove Johansen,1998,Idrettslaget Skjalg,6.95,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,3,Sondre Witzøe,2004,IL Sandvin,6.99,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,4,Simen Gimnes,2003,Sportsklubben Vidar,7.09,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,4,Lukas Øiseth,2004,IL Tyrving,7.12,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,5,Franz Philip Pap Holmen,2006,IL i BUL,7.14,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,6,Lukas Øiseth,2004,IL Tyrving,7.14,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,7,Sander Steen Myrvang,2000,IL i BUL,7.15,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,5,Sander Steen Myrvang,2000,IL i BUL,7.17,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,8,Christian Wright,2006,IL i BUL,7.17,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Menn Senior,6,Christian Wright,2006,IL i BUL,7.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,1,Mathias Hove Johansen,1998,Idrettslaget Skjalg,21.61,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,2,Sander Steen Myrvang,2000,IL i BUL,22.73,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,1,Elias Solheim Sollid,2007,Sørild FIK,21.72,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,2,Lucas Nande Eggen,2008,IK Tjalve,22.98,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,1,Levi Boniface Kodjo Normann-Afanou,2008,IK Tjalve,22.06,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,2,Marcus Devantés Gardner Stålby,2007,IK Tjalve,22.66,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,1,Andreas Solheim Sollid,2004,Sørild FIK,22.13,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,2,Franz Philip Pap Holmen,2006,IL i BUL,22.13,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,3,Elijah Ramirez,2007,IL i BUL,23.08,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,1,Mads Hjort-Larsen,2003,IL i BUL,22.34,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,2,Christian Wright,2006,IL i BUL,22.51,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Menn Senior,3,Leo Mathias Alexandre Laborde-Castagnet Røren,2008,IL i BUL,26.00,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Menn Senior,1,Mads Hjort-Larsen,2003,IL i BUL,50.06,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Menn Senior,2,Rasmus Tibar,2006,Sportsklubben Vidar,50.69,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Menn Senior,3,Ole Einar Gjetrang,2006,Larvik Turn & IF,52.48,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Menn Senior,4,Jiri Hesselink Cornelissen,2011,Nittedal IL,58.47,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Menn Senior,1,Sander Oppen,2004,IF Sturla,4.85,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Menn Senior,2,Lucas Fernandes Thomaz Gjesdal,2005,IK Tjalve,4.85,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Menn Senior,3,Gustav Holmefjord,2006,Fana IL,4.55,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Menn Senior,4,Siver Olavsbråten Ebbestad,2008,IL Sandvin,4.25,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Menn Senior,5,Andreas Vladimir Sandin,2010,IL Fri,4.05,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,1,Hedda Endsjø,2008,IK Tjalve,8.01,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,1,Elise Sandvik Tornberg,2009,IL Tyrving,8.02,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,2,Elise Sandvik Tornberg,2009,IL Tyrving,8.03,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,2,Angelica Okparaebo,1997,IL i BUL,8.05,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,3,Cassandra Ødegård Nilsen,2006,Sportsklubben Vidar,8.14,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,3,Frida Johanna Valstad Elsness,2009,IK Tjalve,8.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,4,Frida Johanna Valstad Elsness,2009,IK Tjalve,8.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,4,Lara Zeida,2008,IL Tyrving,8.58,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,5,Lara Zeida,2008,IL Tyrving,8.69,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,1,Ingvild Meinseth,1999,Sørild FIK,7.52,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,1,Ingvild Meinseth,1999,Sørild FIK,7.55,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,2,Iben Carnhed,2001,Bækkelagets SK,7.66,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,2,Nora Aune,2004,IK Tjalve,7.70,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,3,Iben Carnhed,2001,Bækkelagets SK,7.71,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,3,Nora Aune,2004,IK Tjalve,7.75,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,4,Lisa Wilker,2003,Sportsklubben Vidar,7.80,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,4,Lisa Wilker,2003,Sportsklubben Vidar,7.83,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,5,Oda Asdal Hansen,2007,Idrettslaget Skjalg,7.92,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,5,Oda Asdal Hansen,2007,Idrettslaget Skjalg,7.94,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,6,Hedda Endsjø,2008,IK Tjalve,8.03,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,60 meter,Kvinner Senior,6,Angelica Okparaebo,1997,IL i BUL,8.08,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Kvinner Senior,1,Nora Aune,2004,IK Tjalve,24.91,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Kvinner Senior,2,Mathea Sofie Borgaas Sørlie,2010,Bækkelagets SK,26.73,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Kvinner Senior,3,Hanna Fiva Øiestad,2008,IL Tyrving,27.51,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Kvinner Senior,4,Helena Skepetaris Melleby,2010,IL i BUL,29.03,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,200 meter,Kvinner Senior,5,Kristine Grimstad,2010,IL i BUL,29.85,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Kvinner Senior,1,Frida Johanna Valstad Elsness,2009,IK Tjalve,58.04,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Kvinner Senior,2,Celine Krüger Henningsen,2009,IL Tyrving,1.03.43,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,400 meter,Kvinner Senior,3,Mia Mathilda Andersen,2009,IL Tyrving,1.07.22,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,"60 meter hekk (84,0cm)",Kvinner Senior,1,Oda Asdal Hansen,2007,Idrettslaget Skjalg,9.01,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,"60 meter hekk (84,0cm)",Kvinner Senior,2,Hedda Endsjø,2008,IK Tjalve,9.44,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Kvinner Senior,1,Nora Eikeng,2006,IK Tjalve,4.05,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Kvinner Senior,2,Wilma Christine Thorrud,2009,IF Sturla,3.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Kvinner Senior,3,Selma Maria Weslien,2009,Kongsberg Idrettsforening,3.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Kvinner Senior,4,Emma Louise Rolstad,2009,Bergens Turnforening,3.20,,True
+10008401,Innlagte øvelser NM mangekamp,2026-01-17,Stav,Kvinner Senior,5,Emilie Lindstad,2010,Bækkelagets SK,2.90,,True
+10008411,Meeting de Saut en Hauteur d'Hirson,2026-01-17,Høyde,Menn Senior,5,Erlend Bolstad Raa,2000,Fyllingen IL,2.12,,True
+10008410,Arkansas Invitational,2026-01-16,200 meter,Menn Senior,3,Philip Reed,2006,IL i BUL,22.52,,True
+10008410,Arkansas Invitational,2026-01-16,"60 meter hekk (106,7 cm)",Menn Senior,2,Philip Reed,2006,IL i BUL,8.10,,True
+10008410,Arkansas Invitational,2026-01-16,"60 meter hekk (106,7 cm)",Menn Senior,3,Philip Reed,2006,IL i BUL,8.13,,True
+10008408,Quality Hotel Games,2026-01-16,60 meter,Gutter 15,2,Brian Kato Aalberg,2011,Romerike Friidrett,7.73,,True
+10008408,Quality Hotel Games,2026-01-16,60 meter,Gutter 15,4,Adrian Wasswa Aalberg,2011,Romerike Friidrett,7.84,,True
+10008408,Quality Hotel Games,2026-01-16,60 meter,Gutter 15,1,Johan Le Fjeld,2011,IL Tyrving,7.30,,True
+10008408,Quality Hotel Games,2026-01-16,60 meter,Gutter 15,1,Johan Le Fjeld,2011,IL Tyrving,7.17,,True
+10008408,Quality Hotel Games,2026-01-16,200 meter,Gutter 15,1,Adrian Wasswa Aalberg,2011,Romerike Friidrett,23.88,,True
+10008408,Quality Hotel Games,2026-01-16,200 meter,Gutter 15,2,Brian Kato Aalberg,2011,Romerike Friidrett,23.95,,True
+10008408,Quality Hotel Games,2026-01-16,Lengde,Gutter 15,3,Adrian Wasswa Aalberg,2011,Romerike Friidrett,5.81,,True
+10008408,Quality Hotel Games,2026-01-16,Lengde,Gutter 15,14,Brian Kato Aalberg,2011,Romerike Friidrett,4.81,,True
+10008408,Quality Hotel Games,2026-01-16,60 meter,Menn Senior,3,Sindre Klausen Veggan,2009,IL Tyrving,7.30,,True
+10008408,Quality Hotel Games,2026-01-16,200 meter,Menn Senior,1,Andreas Ofstad Kulseng,2001,IK Tjalve,21.21,,True
+10008408,Quality Hotel Games,2026-01-16,200 meter,Menn Senior,2,Sindre Klausen Veggan,2009,IL Tyrving,22.78,,True
+10008408,Quality Hotel Games,2026-01-16,400 meter,Menn Senior,1,Andreas Ofstad Kulseng,2001,IK Tjalve,47.26,,True
+10008408,Quality Hotel Games,2026-01-16,Lengde,Kvinner Senior,17,Leah Sewali Aalberg,2008,Romerike Friidrett,5.00,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,60 meter,Gutter 15,2,Adrian Wasswa Aalberg,2011,Romerike Friidrett,7.89,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,60 meter,Gutter 15,1,Brian Kato Aalberg,2011,Romerike Friidrett,7.80,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,60 meter,Gutter 15,4,Brian Kato Aalberg,2011,Romerike Friidrett,7.84,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,60 meter,Gutter 15,5,Adrian Wasswa Aalberg,2011,Romerike Friidrett,7.89,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,Lengde,Gutter 15,1,Adrian Wasswa Aalberg,2011,Romerike Friidrett,5.99,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,Lengde,Gutter 15,2,Brian Kato Aalberg,2011,Romerike Friidrett,5.76,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,200 meter,Gutter 17,3,Brian Kato Aalberg,2011,Romerike Friidrett,24.31,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,200 meter,Gutter 17,4,Adrian Wasswa Aalberg,2011,Romerike Friidrett,24.56,,True
+10008376,Startskottet med iUDM 12-17 och HäcXksan,2026-01-09,Lengde,Menn Senior,1,Simen Gimnes,2003,Sportsklubben Vidar,7.42,,True
+10008409,Hoppstevne,2025-12-31,Høyde,Gutter 16,1,Aldric Kenarlikdjian,2009,Ullensaker/Kisa IL,1.56,,True
+10008409,Hoppstevne,2025-12-31,Høyde,Gutter 17,1,Even Ragnhildsløkken,2008,Ullensaker/Kisa IL,1.87,,True
+10008409,Hoppstevne,2025-12-31,Høyde,Jenter 15,1,Hanna Rimstad,2010,Ullensaker/Kisa IL,1.63,,True
