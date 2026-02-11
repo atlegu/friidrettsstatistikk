@@ -145,6 +145,73 @@ export type Database = {
           },
         ]
       }
+      championship_medals: {
+        Row: {
+          athlete_id: string | null
+          athlete_name: string
+          championship_type: string
+          club_name: string | null
+          created_at: string | null
+          event_name: string
+          gender: string
+          id: string
+          medal: string
+          performance: string | null
+          source_url: string | null
+          year: number
+        }
+        Insert: {
+          athlete_id?: string | null
+          athlete_name: string
+          championship_type: string
+          club_name?: string | null
+          created_at?: string | null
+          event_name: string
+          gender: string
+          id?: string
+          medal: string
+          performance?: string | null
+          source_url?: string | null
+          year: number
+        }
+        Update: {
+          athlete_id?: string | null
+          athlete_name?: string
+          championship_type?: string
+          club_name?: string | null
+          created_at?: string | null
+          event_name?: string
+          gender?: string
+          id?: string
+          medal?: string
+          performance?: string | null
+          source_url?: string | null
+          year?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "championship_medals_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "championship_medals_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "championship_medals_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+        ]
+      }
       club_memberships: {
         Row: {
           athlete_id: string
@@ -177,6 +244,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "athletes"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "club_memberships_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["athlete_id"]
           },
           {
             foreignKeyName: "club_memberships_athlete_id_fkey"
@@ -326,6 +400,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "events"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "event_specifications_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["event_id"]
           },
           {
             foreignKeyName: "event_specifications_event_id_fkey"
@@ -595,6 +676,7 @@ export type Database = {
           email: string | null
           full_name: string | null
           id: string
+          is_admin: boolean | null
           stripe_customer_id: string | null
           subscription_expires_at: string | null
           subscription_tier: string | null
@@ -608,6 +690,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id: string
+          is_admin?: boolean | null
           stripe_customer_id?: string | null
           subscription_expires_at?: string | null
           subscription_tier?: string | null
@@ -621,6 +704,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: string
+          is_admin?: boolean | null
           stripe_customer_id?: string | null
           subscription_expires_at?: string | null
           subscription_tier?: string | null
@@ -643,9 +727,11 @@ export type Database = {
           implement_weight_kg: number | null
           import_batch_id: string | null
           is_championship_record: boolean | null
+          is_manual_time: boolean | null
           is_national_record: boolean | null
           is_pb: boolean | null
           is_sb: boolean | null
+          is_wind_legal: boolean | null
           lane: number | null
           meet_id: string
           performance: string
@@ -678,9 +764,11 @@ export type Database = {
           implement_weight_kg?: number | null
           import_batch_id?: string | null
           is_championship_record?: boolean | null
+          is_manual_time?: boolean | null
           is_national_record?: boolean | null
           is_pb?: boolean | null
           is_sb?: boolean | null
+          is_wind_legal?: boolean | null
           lane?: number | null
           meet_id: string
           performance: string
@@ -713,9 +801,11 @@ export type Database = {
           implement_weight_kg?: number | null
           import_batch_id?: string | null
           is_championship_record?: boolean | null
+          is_manual_time?: boolean | null
           is_national_record?: boolean | null
           is_pb?: boolean | null
           is_sb?: boolean | null
+          is_wind_legal?: boolean | null
           lane?: number | null
           meet_id?: string
           performance?: string
@@ -741,6 +831,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "athletes"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["athlete_id"]
           },
           {
             foreignKeyName: "results_athlete_id_fkey"
@@ -781,6 +878,13 @@ export type Database = {
             foreignKeyName: "results_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
             referencedRelation: "results_full"
             referencedColumns: ["event_id"]
           },
@@ -797,6 +901,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "meets"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["meet_id"]
           },
           {
             foreignKeyName: "results_meet_id_fkey"
@@ -952,6 +1063,13 @@ export type Database = {
             foreignKeyName: "results_athlete_id_fkey"
             columns: ["athlete_id"]
             isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
             referencedRelation: "results_full"
             referencedColumns: ["athlete_id"]
           },
@@ -966,6 +1084,13 @@ export type Database = {
             foreignKeyName: "results_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
             referencedRelation: "results_full"
             referencedColumns: ["event_id"]
           },
@@ -975,6 +1100,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "meets"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["meet_id"]
           },
           {
             foreignKeyName: "results_meet_id_fkey"
@@ -997,6 +1129,7 @@ export type Database = {
           gender: string | null
           is_indoor: boolean | null
           is_national_record: boolean | null
+          javelin_spec: string | null
           meet_city: string | null
           meet_id: string | null
           meet_name: string | null
@@ -1006,50 +1139,7 @@ export type Database = {
           result_type: Database["public"]["Enums"]["result_type"] | null
           wind: number | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "results_athlete_id_fkey"
-            columns: ["athlete_id"]
-            isOneToOne: false
-            referencedRelation: "athletes"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "results_athlete_id_fkey"
-            columns: ["athlete_id"]
-            isOneToOne: false
-            referencedRelation: "results_full"
-            referencedColumns: ["athlete_id"]
-          },
-          {
-            foreignKeyName: "results_event_id_fkey"
-            columns: ["event_id"]
-            isOneToOne: false
-            referencedRelation: "events"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "results_event_id_fkey"
-            columns: ["event_id"]
-            isOneToOne: false
-            referencedRelation: "results_full"
-            referencedColumns: ["event_id"]
-          },
-          {
-            foreignKeyName: "results_meet_id_fkey"
-            columns: ["meet_id"]
-            isOneToOne: false
-            referencedRelation: "meets"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "results_meet_id_fkey"
-            columns: ["meet_id"]
-            isOneToOne: false
-            referencedRelation: "results_full"
-            referencedColumns: ["meet_id"]
-          },
-        ]
+        Relationships: []
       }
       results_full: {
         Row: {
@@ -1069,9 +1159,11 @@ export type Database = {
           first_name: string | null
           gender: string | null
           id: string | null
+          is_manual_time: boolean | null
           is_national_record: boolean | null
           is_pb: boolean | null
           is_sb: boolean | null
+          is_wind_legal: boolean | null
           last_name: string | null
           meet_city: string | null
           meet_id: string | null
@@ -1124,6 +1216,13 @@ export type Database = {
             foreignKeyName: "results_athlete_id_fkey"
             columns: ["athlete_id"]
             isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
             referencedRelation: "results_full"
             referencedColumns: ["athlete_id"]
           },
@@ -1138,6 +1237,13 @@ export type Database = {
             foreignKeyName: "results_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["event_id"]
+          },
+          {
+            foreignKeyName: "results_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
             referencedRelation: "results_full"
             referencedColumns: ["event_id"]
           },
@@ -1147,6 +1253,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "meets"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["meet_id"]
           },
           {
             foreignKeyName: "results_meet_id_fkey"
@@ -1178,6 +1291,7 @@ export type Database = {
         Returns: number
       }
       check_is_admin: { Args: { check_user_id: string }; Returns: boolean }
+      execute_readonly_query: { Args: { query_text: string }; Returns: Json }
       format_performance: {
         Args: {
           perf_value: number
@@ -1199,6 +1313,41 @@ export type Database = {
       get_age_group: {
         Args: { birth_date: string; competition_date: string }
         Returns: string
+      }
+      get_all_time_best: {
+        Args: {
+          p_age_groups?: string[]
+          p_ascending?: boolean
+          p_event_id: string
+          p_exclude_manual?: boolean
+          p_exclude_wind_illegal?: boolean
+          p_gender: string
+          p_indoor?: boolean
+          p_limit?: number
+          p_offset?: number
+        }
+        Returns: {
+          athlete_id: string
+          athlete_name: string
+          birth_date: string
+          club_name: string
+          date: string
+          id: string
+          is_national_record: boolean
+          meet_id: string
+          meet_name: string
+          performance: string
+          performance_value: number
+          result_type: string
+          total_count: number
+          wind: number
+        }[]
+      }
+      get_duplicate_result_ids: {
+        Args: { batch_limit?: number }
+        Returns: {
+          id: string
+        }[]
       }
       is_admin: { Args: never; Returns: boolean }
       is_premium: { Args: { check_user_id: string }; Returns: boolean }
@@ -1231,6 +1380,8 @@ export type Database = {
         | "throws"
         | "combined"
         | "race_walk"
+        | "walking"
+        | "other"
       meet_level:
         | "local"
         | "regional"
@@ -1387,6 +1538,8 @@ export const Constants = {
         "throws",
         "combined",
         "race_walk",
+        "walking",
+        "other",
       ],
       meet_level: [
         "local",

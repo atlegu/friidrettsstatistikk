@@ -12,6 +12,12 @@ interface AthleteStats {
   nationalRecordsCount: number
 }
 
+interface MedalCounts {
+  gold: number
+  silver: number
+  bronze: number
+}
+
 interface AthleteHeaderProps {
   athlete: {
     id: string
@@ -26,6 +32,7 @@ interface AthleteHeaderProps {
   club: { id: string; name: string } | null
   stats: AthleteStats
   mainEvent: string | null
+  medalCounts?: MedalCounts | null
 }
 
 function getInitials(firstName: string, lastName: string): string {
@@ -42,7 +49,7 @@ function formatBirthInfo(birthDate: string | null, birthYear: number | null): st
   return null
 }
 
-export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeaderProps) {
+export function AthleteHeader({ athlete, club, stats, mainEvent, medalCounts }: AthleteHeaderProps) {
   const fullName = athlete.full_name || `${athlete.first_name} ${athlete.last_name}`
   const age = calculateAge(athlete.birth_date, athlete.birth_year)
   const birthInfo = formatBirthInfo(athlete.birth_date, athlete.birth_year)
@@ -111,6 +118,28 @@ export function AthleteHeader({ athlete, club, stats, mainEvent }: AthleteHeader
             )}
             {stats.nationalRecordsCount > 0 && (
               <span className="badge-nr">{stats.nationalRecordsCount} NR</span>
+            )}
+            {medalCounts && (medalCounts.gold + medalCounts.silver + medalCounts.bronze) > 0 && (
+              <span className="badge-medals">
+                {medalCounts.gold > 0 && (
+                  <span className="inline-flex items-center gap-0.5">
+                    <span className="medal-dot medal-gold" />
+                    {medalCounts.gold}
+                  </span>
+                )}
+                {medalCounts.silver > 0 && (
+                  <span className="inline-flex items-center gap-0.5">
+                    <span className="medal-dot medal-silver" />
+                    {medalCounts.silver}
+                  </span>
+                )}
+                {medalCounts.bronze > 0 && (
+                  <span className="inline-flex items-center gap-0.5">
+                    <span className="medal-dot medal-bronze" />
+                    {medalCounts.bronze}
+                  </span>
+                )}
+              </span>
             )}
             <Link
               href={`/sammenlign?id1=${athlete.id}`}

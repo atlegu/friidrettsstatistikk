@@ -9,6 +9,7 @@ import { AthleteHeader } from "@/components/athlete/AthleteHeader"
 import { PersonalBestsSection } from "@/components/athlete/PersonalBestsSection"
 import { ResultsSection } from "@/components/athlete/ResultsSection"
 import { AthleteChartsSection } from "@/components/athlete/AthleteChartsSection"
+import { ChampionshipMedalsSection } from "@/components/athlete/ChampionshipMedalsSection"
 
 // Type definitions
 interface AthleteStats {
@@ -165,6 +166,18 @@ async function getAthleteEvents(athleteId: string) {
   )
 }
 
+async function getChampionshipMedals(athleteId: string) {
+  const supabase = await createClient()
+
+  const { data } = await supabase
+    .from("championship_medals")
+    .select("id, year, event_name, championship_type, medal, performance")
+    .eq("athlete_id", athleteId)
+    .order("year", { ascending: false })
+
+  return data ?? []
+}
+
 async function getSeasonBests(athleteId: string) {
   const supabase = await createClient()
 
@@ -210,7 +223,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
   }
 
   // Fetch all data in parallel
-  const [stats, mainEvent, personalBests, results, seasons, events, seasonBests] =
+  const [stats, mainEvent, personalBests, results, seasons, events, seasonBests, championshipMedals] =
     await Promise.all([
       getAthleteStats(id),
       getMainEvent(id),
@@ -219,10 +232,20 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
       getAthleteSeasons(id),
       getAthleteEvents(id),
       getSeasonBests(id),
+      getChampionshipMedals(id),
     ])
 
   const club = athlete.club as { id: string; name: string } | null
   const fullName = athlete.full_name || `${athlete.first_name} ${athlete.last_name}`
+
+  // Medal counts for header badge
+  const medalCounts = championshipMedals.length > 0
+    ? {
+        gold: championshipMedals.filter((m) => m.medal === "gold").length,
+        silver: championshipMedals.filter((m) => m.medal === "silver").length,
+        bronze: championshipMedals.filter((m) => m.medal === "bronze").length,
+      }
+    : null
 
   // Map results for ResultsSection
   const mappedResults = results.map((r) => ({
@@ -298,8 +321,16 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
           club={club}
           stats={stats}
           mainEvent={mainEvent}
+          medalCounts={medalCounts}
         />
       </div>
+
+      {/* Championship Medals */}
+      {championshipMedals.length > 0 && (
+        <div className="mt-6">
+          <ChampionshipMedalsSection medals={championshipMedals} />
+        </div>
+      )}
 
       {/* Main content - "At a glance" layout */}
       <div className="mt-6 space-y-6">
