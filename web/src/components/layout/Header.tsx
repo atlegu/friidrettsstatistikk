@@ -29,6 +29,14 @@ const navigation = [
     ],
   },
   {
+    name: "Mesterskap",
+    href: "/mesterskap",
+    children: [
+      { name: "NM Senior 2026", href: "/mesterskap/nm-senior-2026" },
+      { name: "NM Junior 2026", href: "/mesterskap/nm-junior-2026" },
+    ],
+  },
+  {
     name: "Utøvere",
     href: "/utover",
     children: [

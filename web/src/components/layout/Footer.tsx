@@ -6,6 +6,10 @@ const footerLinks = {
     { name: "All-time", href: "/statistikk/all-time" },
     { name: "Rekorder", href: "/statistikk/rekorder" },
   ],
+  mesterskap: [
+    { name: "NM Senior 2026", href: "/mesterskap/nm-senior-2026" },
+    { name: "NM Junior 2026", href: "/mesterskap/nm-junior-2026" },
+  ],
   stevner: [
     { name: "Kalender", href: "/stevner" },
     { name: "Resultater", href: "/stevner/resultater" },
@@ -21,7 +25,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-muted/40">
       <div className="container py-8 md:py-12">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
@@ -38,6 +42,23 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Statistikk</h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.statistikk.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Mesterskap */}
+          <div>
+            <h3 className="text-sm font-semibold">Mesterskap</h3>
+            <ul className="mt-4 space-y-2">
+              {footerLinks.mesterskap.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
