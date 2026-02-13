@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useMemo, Suspense } from "react"
-import { useSearchParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search, Loader2, X, Trophy } from "lucide-react"
 import {
@@ -251,7 +251,6 @@ function formatRound(round: string | null): string {
 }
 
 function CompareContent() {
-  const searchParams = useSearchParams()
   const router = useRouter()
   const supabase = createClient()
 
@@ -271,75 +270,57 @@ function CompareContent() {
   const [initialLoadDone, setInitialLoadDone] = useState(false)
   const [loadingAthlete1, setLoadingAthlete1] = useState(false)
   const [loadingAthlete2, setLoadingAthlete2] = useState(false)
-  const [initializing, setInitializing] = useState(true)
 
-  // Check URL params synchronously (runs during render, not after)
-  const { urlHasId1, urlHasId2 } = useMemo(() => {
-    if (typeof window === 'undefined') return { urlHasId1: false, urlHasId2: false }
-    const params = new URLSearchParams(window.location.search)
-    return { urlHasId1: params.has('id1'), urlHasId2: params.has('id2') }
-  }, [])
-
-  // Load athletes from URL params
+  // Load athletes from URL params on mount
+  // Read directly from window.location.search to avoid useSearchParams timing issues
   useEffect(() => {
     if (initialLoadDone) return
 
-    const id1 = searchParams.get("id1")
-    const id2 = searchParams.get("id2")
-    const eventParam = searchParams.get("event")
-    const tabParam = searchParams.get("tab")
+    const params = new URLSearchParams(window.location.search)
+    const id1 = params.get("id1")
+    const id2 = params.get("id2")
+    const eventParam = params.get("event")
+    const tabParam = params.get("tab")
 
-    // Wait until searchParams are actually available (not empty when we expect them)
-    // On static pages, first render may have empty params
-    if (!id1 && !id2 && window.location.search) return
+    if (!id1 && !id2) {
+      setInitialLoadDone(true)
+      return
+    }
 
+    if (id1) setLoadingAthlete1(true)
+    if (id2) setLoadingAthlete2(true)
     if (tabParam === "h2h") setActiveTab("h2h")
 
-    async function loadAthletes(retryCount = 0) {
+    async function loadAthletes() {
       try {
         if (id1) {
-          const { data, error } = await supabase
+          const { data } = await supabase
             .from("athletes")
             .select("id, first_name, last_name, full_name, birth_year, gender")
             .eq("id", id1)
             .single()
-          if (error) throw error
           if (data) setAthlete1(data)
-          setLoadingAthlete1(false)
         }
         if (id2) {
-          const { data, error } = await supabase
+          const { data } = await supabase
             .from("athletes")
             .select("id, first_name, last_name, full_name, birth_year, gender")
             .eq("id", id2)
             .single()
-          if (error) throw error
           if (data) setAthlete2(data)
-          setLoadingAthlete2(false)
         }
-        if (eventParam) {
-          setSelectedEventId(eventParam)
-        }
-        setInitialLoadDone(true)
-        setInitializing(false)
+
+        if (eventParam) setSelectedEventId(eventParam)
       } catch (err) {
-        // Retry on AbortError (common in dev mode due to Supabase auth locks)
-        if (err instanceof Error && (err.name === 'AbortError' || err.message?.includes('aborted'))) {
-          if (retryCount < 3) {
-            console.debug('Supabase AbortError, retrying...', retryCount + 1)
-            setTimeout(() => loadAthletes(retryCount + 1), 100 * (retryCount + 1))
-            return
-          }
-        }
         console.error('Error loading athletes:', err)
+      } finally {
         setLoadingAthlete1(false)
         setLoadingAthlete2(false)
         setInitialLoadDone(true)
-        setInitializing(false)
       }
     }
     loadAthletes()
-  }, [searchParams, initialLoadDone])
+  }, [initialLoadDone])
 
   // Update URL when athletes/event/tab change (skip until initial load done)
   useEffect(() => {
@@ -652,7 +633,7 @@ function CompareContent() {
                   setSelectedEventId("")
                 }}
                 excludeId={athlete2?.id}
-                isLoading={loadingAthlete1 || (initializing && urlHasId1 && !athlete1)}
+                isLoading={loadingAthlete1}
               />
               <AthleteSearch
                 label="Utøver 2"
@@ -663,7 +644,7 @@ function CompareContent() {
                   setSelectedEventId("")
                 }}
                 excludeId={athlete1?.id}
-                isLoading={loadingAthlete2 || (initializing && urlHasId2 && !athlete2)}
+                isLoading={loadingAthlete2}
               />
             </div>
 
