@@ -39,55 +39,32 @@ async function getSeasonLeaders() {
 
   async function getLeadersForGender(gender: "M" | "F") {
     const eventCodes = championshipEvents[gender]
-    const timeEvents = eventCodes.filter((c) => TIME_EVENT_CODES.has(c))
-    const fieldEvents = eventCodes.filter((c) => !TIME_EVENT_CODES.has(c))
 
     const selectCols =
       "athlete_id, athlete_name, event_code, event_name, event_id, performance, performance_value, result_type, wind"
 
-    const [timeResults, fieldResults] = await Promise.all([
-      timeEvents.length > 0
-        ? supabase
-            .from("results_full")
-            .select(selectCols)
-            .in("event_code", timeEvents)
-            .eq("season_year", currentYear)
-            .eq("meet_indoor", isIndoor)
-            .eq("gender", gender)
-            .eq("status", "OK")
-            .gt("performance_value", 0)
-            .order("performance_value", { ascending: true })
-            .limit(500)
-            .then((r) => r.data ?? [])
-        : Promise.resolve([] as never[]),
-      fieldEvents.length > 0
-        ? supabase
-            .from("results_full")
-            .select(selectCols)
-            .in("event_code", fieldEvents)
-            .eq("season_year", currentYear)
-            .eq("meet_indoor", isIndoor)
-            .eq("gender", gender)
-            .eq("status", "OK")
-            .gt("performance_value", 0)
-            .order("performance_value", { ascending: false })
-            .limit(500)
-            .then((r) => r.data ?? [])
-        : Promise.resolve([] as never[]),
-    ])
+    // Query each event individually to guarantee we get the best result per event
+    // (a combined query with .limit() misses long-distance events because their
+    // performance_value is much higher than sprint events)
+    const results = await Promise.all(
+      eventCodes.map(async (code) => {
+        const isTime = TIME_EVENT_CODES.has(code)
+        const { data } = await supabase
+          .from("results_full")
+          .select(selectCols)
+          .eq("event_code", code)
+          .eq("season_year", currentYear)
+          .eq("meet_indoor", isIndoor)
+          .eq("gender", gender)
+          .eq("status", "OK")
+          .gt("performance_value", 0)
+          .order("performance_value", { ascending: isTime })
+          .limit(1)
+        return data?.[0] ?? null
+      })
+    )
 
-    // Pick first per event_code (already ordered best-first)
-    const leaders = new Map<string, (typeof timeResults)[0]>()
-    for (const result of [...timeResults, ...fieldResults]) {
-      if (!leaders.has(result.event_code!)) {
-        leaders.set(result.event_code!, result)
-      }
-    }
-
-    // Return in the configured order
-    return eventCodes
-      .map((code) => leaders.get(code))
-      .filter((r): r is NonNullable<typeof r> => r != null)
+    return results.filter((r): r is NonNullable<typeof r> => r != null)
   }
 
   const [men, women] = await Promise.all([
