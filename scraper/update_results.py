@@ -724,6 +724,22 @@ def create_athlete(name, birth_year, gender, club_name):
     return None
 
 
+_athlete_club_updated = set()  # Track already-updated athletes this run
+
+
+def _update_athlete_club(athlete_id, club_id):
+    """Update athlete's current_club_id if changed. Only updates once per run."""
+    if athlete_id in _athlete_club_updated:
+        return
+    _athlete_club_updated.add(athlete_id)
+    try:
+        supabase.table('athletes').update(
+            {'current_club_id': club_id}
+        ).eq('id', athlete_id).neq('current_club_id', club_id).execute()
+    except Exception:
+        pass  # Non-critical, don't fail the import
+
+
 # ============================================================
 # Import a single meet's results directly to DB
 # ============================================================
@@ -789,8 +805,13 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         athlete_name = row['athlete_name']
         athlete_id = match_athlete(athlete_name, birth_year, gender)
 
+        club_id = get_or_create_club(row.get('club'))
+
         if athlete_id:
             stats['matched_existing_athlete'] += 1
+            # Update current_club_id to this meet's club (latest data)
+            if club_id:
+                _update_athlete_club(athlete_id, club_id)
         else:
             athlete_id = create_athlete(athlete_name, birth_year, gender, row.get('club'))
             if athlete_id:
@@ -798,8 +819,6 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
             else:
                 stats['skipped_no_athlete'] += 1
                 continue
-
-        club_id = get_or_create_club(row.get('club'))
 
         result_str = fix_performance_format(row['result'])
 

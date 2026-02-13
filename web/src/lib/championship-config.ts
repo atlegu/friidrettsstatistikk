@@ -34,6 +34,7 @@ export interface Championship {
   shortName: string
   year: number
   type: 'senior' | 'junior'
+  indoor?: boolean
   date: string
   venue?: string
   qualificationStart: string

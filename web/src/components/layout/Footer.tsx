@@ -108,7 +108,7 @@ export function Footer() {
 
         <div className="mt-8 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © Friidrettsresultater.no utviklet av Athlete Mindset Inc. for Norges Friidrettsforbund
+            Friidrettsresultater.no utviklet av Athlete Mindset Inc.
           </p>
         </div>
       </div>
