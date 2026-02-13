@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useMemo, Suspense } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect, useMemo, useRef, Suspense } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Search, Loader2, X, Trophy } from "lucide-react"
 import {
@@ -252,6 +252,7 @@ function formatRound(round: string | null): string {
 
 function CompareContent() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const supabase = createClient()
 
   const [athlete1, setAthlete1] = useState<Athlete | null>(null)
@@ -271,22 +272,39 @@ function CompareContent() {
   const [loadingAthlete1, setLoadingAthlete1] = useState(false)
   const [loadingAthlete2, setLoadingAthlete2] = useState(false)
 
-  // Load athletes from URL params on mount
-  // Read directly from window.location.search to avoid useSearchParams timing issues
-  useEffect(() => {
-    if (initialLoadDone) return
+  // Track which athlete IDs have been loaded from URL to prevent redundant fetches
+  const loadedUrlIdsRef = useRef<string>("")
 
-    const params = new URLSearchParams(window.location.search)
-    const id1 = params.get("id1")
-    const id2 = params.get("id2")
-    const eventParam = params.get("event")
-    const tabParam = params.get("tab")
+  // Load athletes from URL params
+  // Uses useSearchParams for reactivity + window.location.search as fallback
+  useEffect(() => {
+    // Try searchParams first (reactive to navigation changes)
+    let id1 = searchParams.get("id1")
+    let id2 = searchParams.get("id2")
+    let eventParam = searchParams.get("event")
+    let tabParam = searchParams.get("tab")
+
+    // Fallback to window.location.search if searchParams is empty
+    // (can happen on first render inside Suspense boundary)
+    if (!id1 && !id2 && typeof window !== 'undefined' && window.location.search) {
+      const params = new URLSearchParams(window.location.search)
+      id1 = params.get("id1")
+      id2 = params.get("id2")
+      eventParam = params.get("event")
+      tabParam = params.get("tab")
+    }
+
+    // Check if we've already loaded these exact IDs
+    const loadKey = `${id1 || ""}|${id2 || ""}`
+    if (loadKey === loadedUrlIdsRef.current) return
 
     if (!id1 && !id2) {
+      loadedUrlIdsRef.current = loadKey
       setInitialLoadDone(true)
       return
     }
 
+    loadedUrlIdsRef.current = loadKey
     if (id1) setLoadingAthlete1(true)
     if (id2) setLoadingAthlete2(true)
     if (tabParam === "h2h") setActiveTab("h2h")
@@ -320,7 +338,7 @@ function CompareContent() {
       }
     }
     loadAthletes()
-  }, [initialLoadDone])
+  }, [searchParams])
 
   // Update URL when athletes/event/tab change (skip until initial load done)
   useEffect(() => {
@@ -331,6 +349,10 @@ function CompareContent() {
     if (selectedEventId) params.set("event", selectedEventId)
     if (activeTab === "h2h") params.set("tab", "h2h")
     const newUrl = params.toString() ? `/sammenlign?${params.toString()}` : "/sammenlign"
+
+    // Update ref so the loading effect doesn't re-trigger from our own URL update
+    loadedUrlIdsRef.current = `${athlete1?.id || ""}|${athlete2?.id || ""}`
+
     router.replace(newUrl, { scroll: false })
   }, [athlete1, athlete2, selectedEventId, activeTab, initialLoadDone, router])
 

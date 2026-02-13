@@ -12,6 +12,26 @@ export const metadata = {
   description: "Historiske toppresultater i norsk friidrett gjennom alle tider",
 }
 
+// Historical limits: before ~2012, only results better than these were recorded
+const HISTORICAL_LIMITS: Record<string, Record<string, string>> = {
+  M: {
+    "100m": "11.43", "200m": "23.26", "400m": "51.00", "800m": "1:55.50",
+    "1500m": "3:59.99", "3000m": "8:40.00", "5000m": "15:10.00", "10000m": "32:30.00",
+    "110mh": "17.50", "400mh": "59.99", "3000mhinder": "10:00.00",
+    "hoyde": "1.90", "stav": "3.50", "lengde": "6.80", "tresteg": "13.80",
+    "kule_7_26kg": "13.80", "diskos_2kg": "42.00",
+    "slegge_726kg/1215cm": "42.00", "spyd_800g": "60.00",
+  },
+  F: {
+    "100m": "12.99", "200m": "26.99", "400m": "61.99", "800m": "2:19.30",
+    "1500m": "4:48.70", "3000m": "10:42.00", "5000m": "18:30.00", "10000m": "40:00.00",
+    "100mh": "16.99", "400mh": "72.99", "3000mhinder": "12:00.00",
+    "hoyde": "1.55", "stav": "2.01", "lengde": "5.21", "tresteg": "10.00",
+    "kule_4kg": "10.17", "diskos_1kg": "32.00",
+    "slegge_40kg/1195cm": "25.00", "spyd_600g": "32.00",
+  },
+}
+
 const AGE_GROUPS = [
   { value: "Senior", label: "Senior" },
   { value: "U23", label: "Junior 15-22" },
@@ -127,6 +147,7 @@ export default async function AllTimePage({
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
   const venueLabel = venue === "indoor" ? "Innendørs" : venue === "outdoor" ? "Utendørs" : "Alle"
+  const historicalLimit = selectedEvent ? HISTORICAL_LIMITS[gender]?.[selectedEvent.code] : null
 
   const buildUrl = (overrides: { event?: string; gender?: string; age?: string; venue?: string; page?: number }) => {
     const params = new URLSearchParams()
@@ -282,6 +303,16 @@ export default async function AllTimePage({
                 {genderLabel} · {ageLabel} · {venueLabel} · {totalResults} utøvere totalt
               </p>
             </CardHeader>
+            {historicalLimit && (
+              <div className="mx-4 mb-3 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">
+                <p>
+                  <strong>Historiske data:</strong> Resultater fra før ca. 2012 er hentet fra manuelt
+                  førte lister og inkluderer kun prestasjoner bedre
+                  enn {historicalLimit} ({genderLabel.toLowerCase()}).
+                  Listen kan derfor ha mangler for eldre resultater under dette nivået.
+                </p>
+              </div>
+            )}
             <CardContent className="p-0">
               {paginatedResults.length > 0 ? (
                 <>
