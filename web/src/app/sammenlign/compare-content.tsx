@@ -278,12 +278,13 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
   const [h2hEventId, setH2hEventId] = useState<string>("all")
   const [loadingAthlete1, setLoadingAthlete1] = useState(!!initialId1)
   const [loadingAthlete2, setLoadingAthlete2] = useState(!!initialId2)
-  const initialLoadDone = useRef(false)
+  const initialLoadStarted = useRef(false)
+  const initialLoadComplete = useRef(!initialId1 && !initialId2)
 
   // Load athletes from URL params on mount
   useEffect(() => {
-    if (initialLoadDone.current) return
-    initialLoadDone.current = true
+    if (initialLoadStarted.current) return
+    initialLoadStarted.current = true
 
     if (!initialId1 && !initialId2) return
 
@@ -310,14 +311,15 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
       } finally {
         setLoadingAthlete1(false)
         setLoadingAthlete2(false)
+        initialLoadComplete.current = true
       }
     }
     loadAthletes()
   }, [initialId1, initialId2])
 
-  // Update URL when athletes/event/tab change (skip until initial load is done)
+  // Update URL when athletes/event/tab change (skip until initial load is complete)
   useEffect(() => {
-    if (!initialLoadDone.current) return
+    if (!initialLoadComplete.current) return
     const p = new URLSearchParams()
     if (athlete1) p.set("id1", athlete1.id)
     if (athlete2) p.set("id2", athlete2.id)

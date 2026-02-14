@@ -61,7 +61,6 @@ export default async function StevnerPage({
                   <th className="px-4 py-3 text-left text-sm font-medium">Dato</th>
                   <th className="px-4 py-3 text-left text-sm font-medium">Stevne</th>
                   <th className="hidden px-4 py-3 text-left text-sm font-medium md:table-cell">Sted</th>
-                  <th className="hidden px-4 py-3 text-left text-sm font-medium lg:table-cell">Type</th>
                 </tr>
               </thead>
               <tbody>
@@ -90,14 +89,11 @@ export default async function StevnerPage({
                     <td className="hidden px-4 py-3 text-sm md:table-cell">
                       {meet.venue ? `${meet.venue}, ${meet.city}` : meet.city}
                     </td>
-                    <td className="hidden px-4 py-3 text-sm capitalize lg:table-cell">
-                      {meet.level ?? "-"}
-                    </td>
                   </tr>
                 ))}
                 {meets.length === 0 && (
                   <tr>
-                    <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">
+                    <td colSpan={3} className="px-4 py-8 text-center text-muted-foreground">
                       {search ? `Ingen stevner funnet for "${search}"` : "Ingen stevner funnet"}
                     </td>
                   </tr>
