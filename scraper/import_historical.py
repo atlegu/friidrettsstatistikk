@@ -414,7 +414,8 @@ def clean_text(text: str) -> str:
 
 def parse_date_dmy(date_str: str) -> Optional[datetime]:
     """Parse date from D.M.YY or D.M.YYYY format.
-    For 2-digit years: if result > current year, subtract 100.
+    For 2-digit years: add 2000, then subtract 100 if >= current year.
+    This ensures historical dates always resolve to the past.
     """
     if not date_str:
         return None
@@ -425,8 +426,8 @@ def parse_date_dmy(date_str: str) -> Optional[datetime]:
         if len(parts) == 3:
             day, month, year = int(parts[0]), int(parts[1]), int(parts[2])
             if year < 100:
-                year = 2000 + year if year < 30 else 1900 + year
-                if year > current_year:
+                year = 2000 + year
+                if year >= current_year:
                     year -= 100
             if 1 <= month <= 12 and 1 <= day <= 31:
                 return datetime(year, month, day)
@@ -434,8 +435,8 @@ def parse_date_dmy(date_str: str) -> Optional[datetime]:
             # M.YY — use 1st of month
             month, year = int(parts[0]), int(parts[1])
             if year < 100:
-                year = 2000 + year if year < 30 else 1900 + year
-                if year > current_year:
+                year = 2000 + year
+                if year >= current_year:
                     year -= 100
             if 1 <= month <= 12:
                 return datetime(year, month, 1)
