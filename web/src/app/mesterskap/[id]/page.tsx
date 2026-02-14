@@ -18,6 +18,7 @@ import {
   type QualificationStandard,
   type Championship,
 } from "@/lib/championship-config"
+import { ClubFilter } from "@/components/championship/ClubFilter"
 
 export const revalidate = 3600
 
@@ -37,7 +38,8 @@ async function getQualifiedAthletesForQuery(
   standard: QualificationStandard,
   gender: 'M' | 'F',
   championship: Championship,
-  ageClassId?: string
+  ageClassId?: string,
+  clubId?: string
 ) {
   const threshold = getStandardValue(standard, gender, ageClassId)
   if (!threshold) return []
@@ -78,6 +80,11 @@ async function getQualifiedAthletesForQuery(
     query = query.eq('is_wind_legal', true)
   }
 
+  // Club filter
+  if (clubId) {
+    query = query.eq('club_id', clubId)
+  }
+
   // Junior age filter
   if (ageClassId && championship.ageClasses) {
     const ac = championship.ageClasses.find(a => a.id === ageClassId)
@@ -105,13 +112,14 @@ async function getQualifiedAthletes(
   standard: QualificationStandard,
   gender: 'M' | 'F',
   championship: Championship,
-  ageClassId?: string
+  ageClassId?: string,
+  clubId?: string
 ) {
   // For junior "Alle" view: merge U23 and U20 results
   if (championship.type === 'junior' && !ageClassId && championship.ageClasses) {
     const allResults = await Promise.all(
       championship.ageClasses.map(ac =>
-        getQualifiedAthletesForQuery(standard, gender, championship, ac.id)
+        getQualifiedAthletesForQuery(standard, gender, championship, ac.id, clubId)
       )
     )
 
@@ -140,16 +148,17 @@ async function getQualifiedAthletes(
     return merged
   }
 
-  return getQualifiedAthletesForQuery(standard, gender, championship, ageClassId)
+  return getQualifiedAthletesForQuery(standard, gender, championship, ageClassId, clubId)
 }
 
 async function getQualifiedCount(
   standard: QualificationStandard,
   gender: 'M' | 'F',
   championship: Championship,
-  ageClassId?: string
+  ageClassId?: string,
+  clubId?: string
 ): Promise<number> {
-  const results = await getQualifiedAthletes(standard, gender, championship, ageClassId)
+  const results = await getQualifiedAthletes(standard, gender, championship, ageClassId, clubId)
   return results.length
 }
 
@@ -160,15 +169,27 @@ export default async function ChampionshipDetailPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>
-  searchParams: Promise<{ gender?: string; event?: string; age?: string }>
+  searchParams: Promise<{ gender?: string; event?: string; age?: string; club?: string }>
 }) {
   const { id } = await params
   const championship = getChampionship(id)
   if (!championship) notFound()
 
-  const { gender = 'M', event: eventSlug, age: ageClassId } = await searchParams
+  const { gender = 'M', event: eventSlug, age: ageClassId, club: clubId } = await searchParams
   const genderKey = (gender === 'F' ? 'F' : 'M') as 'M' | 'F'
   const validAgeClassId = championship.ageClasses?.find(ac => ac.id === ageClassId)?.id
+
+  // Look up club name if filtered
+  let clubName: string | null = null
+  if (clubId) {
+    const supabaseForClub = await createClient()
+    const { data: clubData } = await supabaseForClub
+      .from('clubs')
+      .select('name')
+      .eq('id', clubId)
+      .single()
+    clubName = clubData?.name ?? null
+  }
 
   // Filter standards to those with a value for the selected gender+age
   const filteredStandards = championship.standards.filter(s =>
@@ -180,13 +201,13 @@ export default async function ChampionshipDetailPage({
 
   // Get qualified athletes for selected event
   const results = selectedStandard
-    ? await getQualifiedAthletes(selectedStandard, genderKey, championship, validAgeClassId)
+    ? await getQualifiedAthletes(selectedStandard, genderKey, championship, validAgeClassId, clubId)
     : []
 
   // Get counts for all events in sidebar
   const counts = await Promise.all(
     filteredStandards.map(async (s) => {
-      const count = await getQualifiedCount(s, genderKey, championship, validAgeClassId)
+      const count = await getQualifiedCount(s, genderKey, championship, validAgeClassId, clubId)
       return { id: s.id, count }
     })
   )
@@ -214,6 +235,7 @@ export default async function ChampionshipDetailPage({
     if (g) p.set('gender', g)
     if (e) p.set('event', e)
     if (a) p.set('age', a)
+    if (clubId) p.set('club', clubId)
     return `/mesterskap/${id}?${p.toString()}`
   }
 
@@ -300,6 +322,20 @@ export default async function ChampionshipDetailPage({
             </Card>
           )}
 
+          {/* Club filter */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm">Klubb</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ClubFilter
+                championshipId={id}
+                currentParams={{ gender, event: selectedStandard?.id ?? '', age: ageClassId ?? '' }}
+                selectedClubName={clubName}
+              />
+            </CardContent>
+          </Card>
+
           {/* Events by category */}
           <Card>
             <CardHeader className="pb-2">
@@ -366,6 +402,7 @@ export default async function ChampionshipDetailPage({
               <p className="text-sm text-muted-foreground">
                 {genderLabel}
                 {ageLabel ? ` · ${ageLabel}` : ''}
+                {clubName ? ` · ${clubName}` : ''}
                 {displayStd ? ` · Krav: ${displayStd}` : ''}
                 {' · '}
                 {results.length} kvalifisert{results.length !== 1 ? 'e' : ''}
