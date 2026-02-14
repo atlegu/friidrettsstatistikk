@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useRef, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search, Loader2, X, Trophy } from "lucide-react"
@@ -14,10 +14,10 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts"
-import { createClient } from "@/lib/supabase/client"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { searchAthletes, fetchSeasonBests, fetchAthleteResults } from "./actions"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { formatPerformance, formatPerformanceValue } from "@/lib/format-performance"
 
@@ -99,7 +99,6 @@ function AthleteSearch({
   const [results, setResults] = useState<Athlete[]>([])
   const [loading, setLoading] = useState(false)
   const [showResults, setShowResults] = useState(false)
-  const supabase = createClient()
 
   useEffect(() => {
     if (query.length < 2) {
@@ -109,14 +108,8 @@ function AthleteSearch({
 
     const timer = setTimeout(async () => {
       setLoading(true)
-      const { data } = await supabase
-        .from("athletes")
-        .select("id, first_name, last_name, full_name, birth_year, gender")
-        .or(`first_name.ilike.%${query}%,last_name.ilike.%${query}%,full_name.ilike.%${query}%`)
-        .limit(10)
-
-      const filtered = excludeId ? data?.filter(a => a.id !== excludeId) : data
-      setResults(filtered ?? [])
+      const data = await searchAthletes(query, excludeId)
+      setResults(data as Athlete[])
       setLoading(false)
     }, 300)
 
@@ -251,18 +244,17 @@ function formatRound(round: string | null): string {
 }
 
 interface CompareContentProps {
-  initialId1: string | null
-  initialId2: string | null
+  initialAthlete1: Athlete | null
+  initialAthlete2: Athlete | null
   initialEvent: string | null
   initialTab: string | null
 }
 
-export default function CompareContent({ initialId1, initialId2, initialEvent, initialTab }: CompareContentProps) {
+export default function CompareContent({ initialAthlete1, initialAthlete2, initialEvent, initialTab }: CompareContentProps) {
   const router = useRouter()
-  const supabase = createClient()
 
-  const [athlete1, setAthlete1] = useState<Athlete | null>(null)
-  const [athlete2, setAthlete2] = useState<Athlete | null>(null)
+  const [athlete1, setAthlete1] = useState<Athlete | null>(initialAthlete1)
+  const [athlete2, setAthlete2] = useState<Athlete | null>(initialAthlete2)
   const [seasonBests1, setSeasonBests1] = useState<ProcessedSeasonBest[]>([])
   const [seasonBests2, setSeasonBests2] = useState<ProcessedSeasonBest[]>([])
   const [loadingData, setLoadingData] = useState(false)
@@ -276,54 +268,14 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
   const [h2hResults2, setH2hResults2] = useState<ResultRow[]>([])
   const [loadingH2h, setLoadingH2h] = useState(false)
   const [h2hEventId, setH2hEventId] = useState<string>("all")
-  const [loadingAthlete1, setLoadingAthlete1] = useState(!!initialId1)
-  const [loadingAthlete2, setLoadingAthlete2] = useState(!!initialId2)
-  const [initialLoadDone, setInitialLoadDone] = useState(!initialId1 && !initialId2)
+  const initialRender = useRef(true)
 
-  // Load athletes from URL params on mount
+  // Update URL when athletes/event/tab change (skip first render)
   useEffect(() => {
-    if (!initialId1 && !initialId2) return
-
-    let cancelled = false
-
-    async function loadAthletes() {
-      try {
-        if (initialId1) {
-          const { data, error } = await supabase
-            .from("athletes")
-            .select("id, first_name, last_name, full_name, birth_year, gender")
-            .eq("id", initialId1)
-            .single()
-          if (error) console.error('Error loading athlete 1:', error)
-          if (!cancelled && data) setAthlete1(data)
-        }
-        if (initialId2) {
-          const { data, error } = await supabase
-            .from("athletes")
-            .select("id, first_name, last_name, full_name, birth_year, gender")
-            .eq("id", initialId2)
-            .single()
-          if (error) console.error('Error loading athlete 2:', error)
-          if (!cancelled && data) setAthlete2(data)
-        }
-      } catch (err) {
-        console.error('Error loading athletes:', err)
-      } finally {
-        if (!cancelled) {
-          setLoadingAthlete1(false)
-          setLoadingAthlete2(false)
-          setInitialLoadDone(true)
-        }
-      }
+    if (initialRender.current) {
+      initialRender.current = false
+      return
     }
-    loadAthletes()
-    return () => { cancelled = true }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // Update URL when athletes/event/tab change (skip until initial load is complete)
-  useEffect(() => {
-    if (!initialLoadDone) return
     const p = new URLSearchParams()
     if (athlete1) p.set("id1", athlete1.id)
     if (athlete2) p.set("id2", athlete2.id)
@@ -331,7 +283,7 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
     if (activeTab === "h2h") p.set("tab", "h2h")
     const newUrl = p.toString() ? `/sammenlign?${p.toString()}` : "/sammenlign"
     router.replace(newUrl, { scroll: false })
-  }, [athlete1, athlete2, selectedEventId, activeTab, router, initialLoadDone])
+  }, [athlete1, athlete2, selectedEventId, activeTab, router])
 
   // Fetch season bests when both athletes are selected
   useEffect(() => {
@@ -341,22 +293,20 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
       return
     }
 
-    async function fetchSeasonBests() {
+    let cancelled = false
+
+    async function loadSeasonBests() {
       setLoadingData(true)
 
-      const [res1, res2] = await Promise.all([
-        supabase
-          .from("season_bests")
-          .select("event_id, event_name, event_code, result_type, performance, performance_value, season_name")
-          .eq("athlete_id", athlete1!.id),
-        supabase
-          .from("season_bests")
-          .select("event_id, event_name, event_code, result_type, performance, performance_value, season_name")
-          .eq("athlete_id", athlete2!.id),
+      const [raw1, raw2] = await Promise.all([
+        fetchSeasonBests(athlete1!.id),
+        fetchSeasonBests(athlete2!.id),
       ])
 
-      const process = (rows: SeasonBestRow[] | null): ProcessedSeasonBest[] =>
-        (rows ?? []).map((sb) => ({
+      if (cancelled) return
+
+      const process = (rows: SeasonBestRow[]): ProcessedSeasonBest[] =>
+        rows.map((sb) => ({
           season_year: parseInt(sb.season_name?.split(" ")[0] || "0"),
           event_id: sb.event_id || "",
           event_name: sb.event_name || "",
@@ -366,12 +316,13 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
           performance_value: sb.performance_value || 0,
         }))
 
-      setSeasonBests1(process(res1.data as SeasonBestRow[] | null))
-      setSeasonBests2(process(res2.data as SeasonBestRow[] | null))
+      setSeasonBests1(process(raw1 as SeasonBestRow[]))
+      setSeasonBests2(process(raw2 as SeasonBestRow[]))
       setLoadingData(false)
     }
 
-    fetchSeasonBests()
+    loadSeasonBests()
+    return () => { cancelled = true }
   }, [athlete1, athlete2])
 
   // Fetch head-to-head results when both athletes selected
@@ -382,39 +333,25 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
       return
     }
 
-    async function fetchAllResults(athleteId: string): Promise<ResultRow[]> {
-      const allRows: ResultRow[] = []
-      const pageSize = 1000
-      let from = 0
-      while (true) {
-        const { data } = await supabase
-          .from("results_full")
-          .select("id, meet_id, event_id, event_name, event_code, result_type, meet_name, date, place, performance, performance_value, round, status")
-          .eq("athlete_id", athleteId)
-          .eq("status", "OK")
-          .range(from, from + pageSize - 1)
-        if (!data || data.length === 0) break
-        allRows.push(...(data as ResultRow[]))
-        if (data.length < pageSize) break
-        from += pageSize
-      }
-      return allRows
-    }
+    let cancelled = false
 
-    async function fetchH2hResults() {
+    async function loadH2hResults() {
       setLoadingH2h(true)
 
       const [rows1, rows2] = await Promise.all([
-        fetchAllResults(athlete1!.id),
-        fetchAllResults(athlete2!.id),
+        fetchAthleteResults(athlete1!.id),
+        fetchAthleteResults(athlete2!.id),
       ])
 
-      setH2hResults1(rows1)
-      setH2hResults2(rows2)
+      if (cancelled) return
+
+      setH2hResults1(rows1 as ResultRow[])
+      setH2hResults2(rows2 as ResultRow[])
       setLoadingH2h(false)
     }
 
-    fetchH2hResults()
+    loadH2hResults()
+    return () => { cancelled = true }
   }, [athlete1, athlete2])
 
   // Build head-to-head meetings
@@ -632,7 +569,6 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
                   setSelectedEventId("")
                 }}
                 excludeId={athlete2?.id}
-                isLoading={loadingAthlete1}
               />
               <AthleteSearch
                 label="Utøver 2"
@@ -643,7 +579,6 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
                   setSelectedEventId("")
                 }}
                 excludeId={athlete1?.id}
-                isLoading={loadingAthlete2}
               />
             </div>
 
