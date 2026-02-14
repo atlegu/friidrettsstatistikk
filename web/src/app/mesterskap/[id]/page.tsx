@@ -1,4 +1,3 @@
-import { Fragment } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
@@ -20,7 +19,7 @@ import {
 } from "@/lib/championship-config"
 import { ClubFilter } from "@/components/championship/ClubFilter"
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
