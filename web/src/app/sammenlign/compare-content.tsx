@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, useMemo } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search, Loader2, X, Trophy } from "lucide-react"
@@ -278,48 +278,52 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
   const [h2hEventId, setH2hEventId] = useState<string>("all")
   const [loadingAthlete1, setLoadingAthlete1] = useState(!!initialId1)
   const [loadingAthlete2, setLoadingAthlete2] = useState(!!initialId2)
-  const initialLoadStarted = useRef(false)
-  const initialLoadComplete = useRef(!initialId1 && !initialId2)
+  const [initialLoadDone, setInitialLoadDone] = useState(!initialId1 && !initialId2)
 
   // Load athletes from URL params on mount
   useEffect(() => {
-    if (initialLoadStarted.current) return
-    initialLoadStarted.current = true
-
     if (!initialId1 && !initialId2) return
+
+    let cancelled = false
 
     async function loadAthletes() {
       try {
         if (initialId1) {
-          const { data } = await supabase
+          const { data, error } = await supabase
             .from("athletes")
             .select("id, first_name, last_name, full_name, birth_year, gender")
             .eq("id", initialId1)
             .single()
-          if (data) setAthlete1(data)
+          if (error) console.error('Error loading athlete 1:', error)
+          if (!cancelled && data) setAthlete1(data)
         }
         if (initialId2) {
-          const { data } = await supabase
+          const { data, error } = await supabase
             .from("athletes")
             .select("id, first_name, last_name, full_name, birth_year, gender")
             .eq("id", initialId2)
             .single()
-          if (data) setAthlete2(data)
+          if (error) console.error('Error loading athlete 2:', error)
+          if (!cancelled && data) setAthlete2(data)
         }
       } catch (err) {
         console.error('Error loading athletes:', err)
       } finally {
-        setLoadingAthlete1(false)
-        setLoadingAthlete2(false)
-        initialLoadComplete.current = true
+        if (!cancelled) {
+          setLoadingAthlete1(false)
+          setLoadingAthlete2(false)
+          setInitialLoadDone(true)
+        }
       }
     }
     loadAthletes()
-  }, [initialId1, initialId2])
+    return () => { cancelled = true }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Update URL when athletes/event/tab change (skip until initial load is complete)
   useEffect(() => {
-    if (!initialLoadComplete.current) return
+    if (!initialLoadDone) return
     const p = new URLSearchParams()
     if (athlete1) p.set("id1", athlete1.id)
     if (athlete2) p.set("id2", athlete2.id)
@@ -327,7 +331,7 @@ export default function CompareContent({ initialId1, initialId2, initialEvent, i
     if (activeTab === "h2h") p.set("tab", "h2h")
     const newUrl = p.toString() ? `/sammenlign?${p.toString()}` : "/sammenlign"
     router.replace(newUrl, { scroll: false })
-  }, [athlete1, athlete2, selectedEventId, activeTab, router])
+  }, [athlete1, athlete2, selectedEventId, activeTab, router, initialLoadDone])
 
   // Fetch season bests when both athletes are selected
   useEffect(() => {
