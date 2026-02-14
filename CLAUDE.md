@@ -18,9 +18,13 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 - Kildedata fra minfriidrettsstatistikk.info (primær) og friidrett.no (historisk)
 
 ### Database (Supabase)
-- Hovedtabeller: athletes, results, meets, events, seasons, clubs, season_bests
-- View: results_full (join av results + athletes + meets + events)
+- Prosjekt-ID: `lwkykthpnthfcldifixg`
+- Hovedtabeller: athletes, results, meets, events, seasons, clubs, season_bests, age_classes
+- View: results_full (join av results + athletes + meets + events + clubs)
 - **Performance-format:** `performance` = tid i sekunder som string ("214.32"), `performance_value` = millisekunder (214320). For felt: meter / centimeter.
+- **Aldersgruppe:** `get_age_group(birth_date, competition_date)` — beregner fra kalenderår, brukes i results_full view
+- **RPC:** `get_all_time_best` — henter alle-tiders-beste per utøver med filtre (kjønn, alder, bane, tidtaking, vind)
+- **is_manual_time:** NULL = ikke manuell (samme som false). Kun `true` betyr manuell. Bruk `IS NOT TRUE` i filtre.
 
 ---
 
@@ -77,6 +81,29 @@ Se `scraper/FIX_GENDER_README.md` for full plan.
 **Problem:** Nye øvelsenavn fra kilden som ikke er mappet.
 **Symptom:** "Unmapped event" warnings i update_results.py.
 **Løsning:** Legg til mapping i `EVENT_NAME_TO_CODE` i update_results.py, og opprett evt. ny event i DB.
+
+### 6. Aldersklasser — Kalenderår (VIKTIG)
+**Regel:** Norsk friidrett bruker **kalenderår** for aldersklasser: alder = konkurranseår − fødselsår.
+**IKKE** juster for om bursdag har vært. En utøver født i 1999 er G14 i HELE 2013.
+**DB-funksjon:** `get_age_group(birth_date, competition_date)` bruker `EXTRACT(YEAR FROM ...)` uten bursdagsjustering.
+**Lærdom:** Opprinnelig versjon justerte for eksakt bursdag → feil aldersklasse for utøvere med bursdag sent på året.
+
+### 7. Manuell vs elektronisk tidtaking
+**Regler:**
+- Manuell tidtaking gjelder **KUN løpsøvelser kortere enn 800m** (100m, 200m, 400m, 600m)
+- Tekniske øvelser (hopp/kast) har ALDRI manuell/elektronisk-distinksjon
+- 800m og lengre har ALDRI manuell tidtaking
+- **Deteksjon:** Bruk presisjon, IKKE desimaltegn (komma/punktum):
+  - Tideler (11.7, 12.0, 12.3) → manuell
+  - Hundredeler (11.68, 12.31) → elektronisk
+- **Frontend:** Tidtaking-filter vises KUN for løpsøvelser (`result_type === "time"`). Tekniske øvelser viser alle resultater ufiltrert.
+**Lærdom:** Komma som desimaltegn er IKKE en pålitelig indikator — friidrett.no bruker komma som norsk tallformat for alle tider i ungdomslistene.
+
+### 8. NULL-håndtering i SQL boolean-filtre
+**Regel:** Bruk `IS NOT TRUE` / `IS NOT FALSE` i stedet for `= false` / `= true` når kolonnen kan være NULL.
+- `WHERE is_manual_time = false` ekskluderer NULL-rader (feil!)
+- `WHERE is_manual_time IS NOT TRUE` inkluderer både false OG NULL (riktig!)
+**Lærdom:** 20 690 resultater ble usynlige fordi `is_manual_time = NULL` ikke matchet `= false` i RPC-funksjonen.
 
 ---
 
