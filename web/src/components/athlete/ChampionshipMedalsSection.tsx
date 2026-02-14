@@ -28,75 +28,103 @@ function MedalDot({ medal }: { medal: string }) {
   )
 }
 
-function championshipLabel(type: string): string {
-  return type === "NM_indoor" ? "NM innendørs" : "NM utendørs"
-}
-
-export function ChampionshipMedalsSection({ medals }: ChampionshipMedalsSectionProps) {
-  if (!medals || medals.length === 0) return null
-
+function MedalSummary({ medals }: { medals: ChampionshipMedal[] }) {
   const goldCount = medals.filter((m) => m.medal === "gold").length
   const silverCount = medals.filter((m) => m.medal === "silver").length
   const bronzeCount = medals.filter((m) => m.medal === "bronze").length
 
   return (
-    <section>
-      <h2 className="mb-3">NM-medaljer</h2>
-
-      {/* Summary */}
-      <p className="text-[13px] text-[var(--text-secondary)] mb-3">
-        {medals.length} medalje{medals.length !== 1 ? "r" : ""}
-        <span className="ml-2">
-          {goldCount > 0 && (
-            <span className="inline-flex items-center gap-0.5 mr-2">
-              <MedalDot medal="gold" />
-              <span className="ml-0.5">{goldCount}</span>
-            </span>
-          )}
-          {silverCount > 0 && (
-            <span className="inline-flex items-center gap-0.5 mr-2">
-              <MedalDot medal="silver" />
-              <span className="ml-0.5">{silverCount}</span>
-            </span>
-          )}
-          {bronzeCount > 0 && (
-            <span className="inline-flex items-center gap-0.5">
-              <MedalDot medal="bronze" />
-              <span className="ml-0.5">{bronzeCount}</span>
-            </span>
-          )}
+    <span className="ml-2">
+      {goldCount > 0 && (
+        <span className="inline-flex items-center gap-0.5 mr-2">
+          <MedalDot medal="gold" />
+          <span className="ml-0.5">{goldCount}</span>
         </span>
-      </p>
+      )}
+      {silverCount > 0 && (
+        <span className="inline-flex items-center gap-0.5 mr-2">
+          <MedalDot medal="silver" />
+          <span className="ml-0.5">{silverCount}</span>
+        </span>
+      )}
+      {bronzeCount > 0 && (
+        <span className="inline-flex items-center gap-0.5">
+          <MedalDot medal="bronze" />
+          <span className="ml-0.5">{bronzeCount}</span>
+        </span>
+      )}
+    </span>
+  )
+}
 
-      {/* Table */}
-      <div className="card-flat rounded-lg overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="data-table w-full">
-            <thead>
-              <tr>
-                <th className="text-left">År</th>
-                <th className="text-left">Mesterskap</th>
-                <th className="text-left">Øvelse</th>
-                <th className="text-center">Medalje</th>
-                <th className="text-right">Resultat</th>
+function MedalTable({ medals, showChampionshipColumn }: { medals: ChampionshipMedal[]; showChampionshipColumn?: boolean }) {
+  return (
+    <div className="card-flat rounded-lg overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="data-table w-full">
+          <thead>
+            <tr>
+              <th className="text-left">År</th>
+              {showChampionshipColumn && <th className="text-left">Mesterskap</th>}
+              <th className="text-left">Øvelse</th>
+              <th className="text-center">Medalje</th>
+              <th className="text-right">Resultat</th>
+            </tr>
+          </thead>
+          <tbody>
+            {medals.map((m) => (
+              <tr key={m.id}>
+                <td>{m.year}</td>
+                {showChampionshipColumn && (
+                  <td>{m.championship_type === "NM_indoor" ? "NM innendørs" : "NM utendørs"}</td>
+                )}
+                <td>{m.event_name}</td>
+                <td className="text-center">
+                  <MedalDot medal={m.medal} />
+                </td>
+                <td className="text-right tabular-nums">{m.performance || "–"}</td>
               </tr>
-            </thead>
-            <tbody>
-              {medals.map((m) => (
-                <tr key={m.id}>
-                  <td>{m.year}</td>
-                  <td>{championshipLabel(m.championship_type)}</td>
-                  <td>{m.event_name}</td>
-                  <td className="text-center">
-                    <MedalDot medal={m.medal} />
-                  </td>
-                  <td className="text-right tabular-nums">{m.performance || "–"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
+    </div>
+  )
+}
+
+export function ChampionshipMedalsSection({ medals }: ChampionshipMedalsSectionProps) {
+  if (!medals || medals.length === 0) return null
+
+  const outdoorMedals = medals.filter((m) => m.championship_type !== "NM_indoor")
+  const indoorMedals = medals.filter((m) => m.championship_type === "NM_indoor")
+
+  return (
+    <section>
+      {/* Outdoor NM — primary */}
+      {outdoorMedals.length > 0 && (
+        <>
+          <h2 className="mb-3">NM-medaljer</h2>
+          <p className="text-[13px] text-[var(--text-secondary)] mb-3">
+            {outdoorMedals.length} medalje{outdoorMedals.length !== 1 ? "r" : ""}
+            <MedalSummary medals={outdoorMedals} />
+          </p>
+          <MedalTable medals={outdoorMedals} />
+        </>
+      )}
+
+      {/* Indoor NM — secondary */}
+      {indoorMedals.length > 0 && (
+        <div className={outdoorMedals.length > 0 ? "mt-6" : ""}>
+          <h3 className="mb-2 text-[14px] font-medium text-[var(--text-secondary)]">
+            NM innendørs
+          </h3>
+          <p className="text-[12px] text-[var(--text-muted)] mb-2">
+            {indoorMedals.length} medalje{indoorMedals.length !== 1 ? "r" : ""}
+            <MedalSummary medals={indoorMedals} />
+          </p>
+          <MedalTable medals={indoorMedals} />
+        </div>
+      )}
     </section>
   )
 }

@@ -52,12 +52,8 @@ const AGE_GROUP_MAPPINGS: Record<string, string[]> = {
   "U20": ["15", "16", "17", "18-19"],
 }
 
-// Events where manual times should be excluded (sprint and hurdles)
-const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
-
-// Events where wind affects validity (outdoor sprints ≤200m, long jump, triple jump)
-const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
-const WIND_AFFECTED_CATEGORIES = ["jumps"] // lengde, tresteg
+// Wind-affected events: sprints ≤200m + horizontal jumps
+const WIND_AFFECTED_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m", "lengde", "tresteg"]
 
 async function getEvents() {
   const supabase = await createClient()
@@ -72,12 +68,12 @@ async function getEvents() {
 
 async function getAllTimeResults(
   eventId: string,
-  eventName: string,
   gender: string,
   ageGroup: string,
   resultType: string,
-  eventCategory: string,
   venue: string,
+  timing: string,
+  wind: string,
   limit: number,
   offset: number
 ) {
@@ -95,8 +91,12 @@ async function getAllTimeResults(
   // Resolve venue
   const indoor = venue === "indoor" ? true : venue === "outdoor" ? false : null
 
-  const excludeManual = MANUAL_TIME_CATEGORIES.includes(eventCategory)
-  const excludeWindIllegal = WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)
+  // Timing filter only applies to running events (result_type "time")
+  // Field events (distance/height) have no concept of electronic/manual timing
+  const isTimingRelevant = resultType === "time"
+  const excludeManual = isTimingRelevant && timing === "electronic"
+  const onlyManual = isTimingRelevant && timing === "manual"
+  const excludeWindIllegal = wind === "legal"
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabase.rpc as any)("get_all_time_best", {
@@ -107,6 +107,7 @@ async function getAllTimeResults(
     p_ascending: ascending,
     p_exclude_manual: excludeManual,
     p_exclude_wind_illegal: excludeWindIllegal,
+    p_only_manual: onlyManual,
     p_limit: limit,
     p_offset: offset,
   })
@@ -128,9 +129,9 @@ const RESULTS_PER_PAGE = 100
 export default async function AllTimePage({
   searchParams,
 }: {
-  searchParams: Promise<{ event?: string; gender?: string; age?: string; venue?: string; page?: string }>
+  searchParams: Promise<{ event?: string; gender?: string; age?: string; venue?: string; timing?: string; wind?: string; page?: string }>
 }) {
-  const { event: selectedEventId, gender = "M", age = "Senior", venue = "outdoor", page = "1" } = await searchParams
+  const { event: selectedEventId, gender = "M", age = "Senior", venue = "outdoor", timing = "electronic", wind = "all", page = "1" } = await searchParams
   const currentPage = Math.max(1, parseInt(page) || 1)
 
   const events = await getEvents()
@@ -140,26 +141,39 @@ export default async function AllTimePage({
 
   const offset = (currentPage - 1) * RESULTS_PER_PAGE
 
+  const isTimeEvent = selectedEvent?.result_type === "time"
+  const isWindAffected = selectedEvent ? WIND_AFFECTED_EVENT_CODES.includes(selectedEvent.code) : false
+
   const { results: paginatedResults, totalCount: totalResults } = selectedEvent
-    ? await getAllTimeResults(selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue, RESULTS_PER_PAGE, offset)
+    ? await getAllTimeResults(selectedEvent.id, gender, age, selectedEvent.result_type ?? "time", venue, timing, wind, RESULTS_PER_PAGE, offset)
     : { results: [], totalCount: 0 }
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
   const venueLabel = venue === "indoor" ? "Innendørs" : venue === "outdoor" ? "Utendørs" : "Alle"
-  const historicalLimit = selectedEvent ? HISTORICAL_LIMITS[gender]?.[selectedEvent.code] : null
+  const timingLabel = isTimeEvent ? (timing === "manual" ? "Manuell" : "Elektronisk") : ""
+  const windLabel = wind === "legal" ? "Kun godkjent vind" : ""
+  const isSeniorView = age === "Senior" || age === "all"
+  const isYouthView = ["13", "14", "15", "16", "17", "18-19"].includes(age)
+  const historicalLimit = selectedEvent && venue !== "indoor" && isSeniorView ? HISTORICAL_LIMITS[gender]?.[selectedEvent.code] : null
+  const isIndoorView = venue === "indoor"
 
-  const buildUrl = (overrides: { event?: string; gender?: string; age?: string; venue?: string; page?: number }) => {
+  const buildUrl = (overrides: { event?: string; gender?: string; age?: string; venue?: string; timing?: string; wind?: string; page?: number }) => {
     const params = new URLSearchParams()
     const eventParam = overrides.event ?? selectedEvent?.id
     const genderParam = overrides.gender ?? gender
     const ageParam = overrides.age ?? age
     const venueParam = overrides.venue ?? venue
-    const pageParam = overrides.page ?? (overrides.event !== undefined || overrides.gender !== undefined || overrides.age !== undefined || overrides.venue !== undefined ? 1 : currentPage)
+    const timingParam = overrides.timing ?? timing
+    const windParam = overrides.wind ?? wind
+    const hasFilterChange = overrides.event !== undefined || overrides.gender !== undefined || overrides.age !== undefined || overrides.venue !== undefined || overrides.timing !== undefined || overrides.wind !== undefined
+    const pageParam = overrides.page ?? (hasFilterChange ? 1 : currentPage)
     if (eventParam) params.set("event", eventParam)
     if (genderParam) params.set("gender", genderParam)
     if (ageParam) params.set("age", ageParam)
     if (venueParam) params.set("venue", venueParam)
+    if (timingParam && timingParam !== "electronic") params.set("timing", timingParam)
+    if (windParam && windParam !== "all") params.set("wind", windParam)
     if (pageParam > 1) params.set("page", pageParam.toString())
     return `/statistikk/all-time?${params.toString()}`
   }
@@ -248,6 +262,72 @@ export default async function AllTimePage({
             </CardContent>
           </Card>
 
+          {/* Timing filter — only for running events */}
+          {isTimeEvent && (
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm">Tidtaking</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex gap-2">
+                  <Link
+                    href={buildUrl({ timing: "electronic", wind: "all" })}
+                    className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                      timing === "electronic"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted hover:bg-muted/80"
+                    }`}
+                  >
+                    Elektr.
+                  </Link>
+                  <Link
+                    href={buildUrl({ timing: "manual", wind: "all" })}
+                    className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                      timing === "manual"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted hover:bg-muted/80"
+                    }`}
+                  >
+                    Manuell
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Wind filter — only for electronic timing on wind-affected events */}
+          {timing === "electronic" && isWindAffected && (
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm">Vindforhold</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex gap-2">
+                  <Link
+                    href={buildUrl({ wind: "all" })}
+                    className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                      wind === "all"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted hover:bg-muted/80"
+                    }`}
+                  >
+                    Alle
+                  </Link>
+                  <Link
+                    href={buildUrl({ wind: "legal" })}
+                    className={`flex-1 rounded px-3 py-2 text-center text-sm font-medium ${
+                      wind === "legal"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted hover:bg-muted/80"
+                    }`}
+                  >
+                    Godkjent
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           {/* Age group filter */}
           <Card>
             <CardHeader className="pb-2">
@@ -300,16 +380,23 @@ export default async function AllTimePage({
                 {selectedEvent ? (getEventDisplayName(selectedEvent.code) || selectedEvent.name) : "Velg øvelse"} (All-time)
               </CardTitle>
               <p className="text-sm text-muted-foreground">
-                {genderLabel} · {ageLabel} · {venueLabel} · {totalResults} utøvere totalt
+                {genderLabel} · {ageLabel} · {venueLabel}{timingLabel ? ` · ${timingLabel}` : ""}{windLabel ? ` · ${windLabel}` : ""} · {totalResults} utøvere totalt
               </p>
             </CardHeader>
-            {historicalLimit && (
+            {(historicalLimit || isIndoorView || isYouthView) && (
               <div className="mx-4 mb-3 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">
                 <p>
-                  <strong>Historiske data:</strong> Resultater fra før ca. 2012 er hentet fra manuelt
-                  førte lister og inkluderer kun prestasjoner bedre
-                  enn {historicalLimit} ({genderLabel.toLowerCase()}).
-                  Listen kan derfor ha mangler for eldre resultater under dette nivået.
+                  <strong>Historiske data:</strong>{" "}
+                  {historicalLimit
+                    ? <>Resultater fra før ca. 2012 er hentet fra manuelt
+                      førte lister og inkluderer kun prestasjoner bedre
+                      enn {historicalLimit} ({genderLabel.toLowerCase()}).
+                      Listen kan derfor ha mangler for eldre resultater under dette nivået.</>
+                    : isYouthView
+                    ? <>Listene er ikke komplette for resultater før ca. 2012.</>
+                    : <>Alle tiders-listen innendørs er ikke komplett for resultater
+                      før ca. 2012. Eldre resultater er hentet fra manuelt førte lister
+                      og kan ha mangler.</>}
                 </p>
               </div>
             )}

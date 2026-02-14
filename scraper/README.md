@@ -1,89 +1,94 @@
-# Scraper - FRIIDRETT.LIVE
+# Scraper — friidrett.live
 
-Verktøy for å scrape og importere friidrettsresultater til databasen.
+Verktøy for å scrape og importere friidrettsresultater til Supabase.
 
-## Inkrementell scraper (NYE STEVNER)
+## Aktive scripts
 
-For å holde databasen oppdatert med nye stevner fra minfriidrettsstatistikk.info:
-
+### Daglig oppdatering
 ```bash
-cd /Users/atleguttormsen/Dropbox/Aktuelt1/Florida25/Statistikk/scraper
-source venv/bin/activate
-
-# 1. Scrape nye stevner (sammenligner med DB og finner manglende)
-python scrape_new_meets.py
-
-# 2. Importer resultatene til databasen
-python import_scraped_results.py new_meets_data/new_results_*.csv
+cd scraper && source venv/bin/activate
+python update_results.py              # Auto-detect sesong, oppdater alt
+python update_results.py --dry-run    # Forhåndsvisning uten endringer
+python update_results.py --indoor     # Tving innendørs-sesong
+python update_results.py --from-date 2026-01-01  # Fra en spesifikk dato
 ```
 
-### Filer
+`update_results.py` er det eneste scriptet du trenger for daglig oppdatering. Det:
+- Scraper nye stevner fra minfriidrettsstatistikk.info
+- Sammenligner med eksisterende stevner i DB
+- Importerer resultater direkte (ingen mellom-CSV)
+- Matcher/oppretter utøvere, klubber, stevner
+- Logger alt med Python `logging`
 
-| Fil | Beskrivelse |
-|-----|-------------|
-| `scrape_new_meets.py` | Scraper stevner fra minfriidrettsstatistikk.info, sammenligner med DB, og henter resultater for manglende stevner |
-| `import_scraped_results.py` | Importerer CSV-resultater til Supabase. Matcher/oppretter utøvere, klubber, stevner og øvelser |
-
-### Output
-
-Scraperen lagrer filer i `new_meets_data/`:
-- `source_meets.json` - Alle stevner funnet på kilden
-- `missing_meets.json` - Stevner som mangler i databasen
-- `new_results_YYYYMMDD_HHMMSS.csv` - Resultater klare for import
-
-### Duplikathåndtering
-
-Import-scriptet har smart duplikatdeteksjon som:
-- Normaliserer stevnenavn (fjerner lokasjonsprefiks som "Lubbock/TX/USA, " eller "Bærum, ")
-- Matcher eksisterende stevner selv om navnene varierer litt
-- Hopper over resultater som allerede finnes i databasen
-
-## Vedlikehold: Merge duplikate stevner
-
-Hvis det har oppstått duplikate stevner i databasen (samme stevne med ulike navn):
-
+### Historisk import
 ```bash
-python merge_duplicate_meets.py
+python import_historical.py    # All-time statistikk fra friidrett.no
+```
+Brukes sjelden. Har 3-nivå duplikatdeteksjon.
+
+### Fødselsår-backfill
+```bash
+python backfill_birth_years.py --dry-run   # Forhåndsvisning
+python backfill_birth_years.py             # Kjør oppdatering
+python backfill_birth_years.py --letters A B C  # Kun spesifikke bokstaver
+```
+Henter fødselsår fra kilden for utøvere som mangler. Trygt å kjøre flere ganger.
+
+### Vedlikehold
+```bash
+python merge_duplicate_meets.py   # Slå sammen duplikate stevner
 ```
 
-Dette scriptet:
-- Finner stevner på samme dato med like navn
-- Flytter resultater til stevnet med flest resultater
-- Sletter tomme duplikater
+## Utdaterte scripts
 
-### Konfigurasjon
+Mappen inneholder ~70 scripts fra utviklingsfasen. De fleste er **engangs-scripts** som fikset spesifikke dataproblemer. Se `CLAUDE.md` i prosjektroten for liste over scripts som **ALDRI** skal kjøres igjen.
 
-I `scrape_new_meets.py`:
-- `MIN_DATE` - Minimum dato for stevner (standard: 15. desember 2025)
-- `REQUEST_DELAY` - Forsinkelse mellom requests (standard: 0.3 sek)
+Viktigste advarsler:
+- **`fix_missing_gender_batch.py`** — Skapte massiv kjønnsfeil. Se `FIX_GENDER_README.md`.
+- **`cleanup_duplicates*.py`** — Gamle versjoner. Duplikathåndtering er nå innebygd i `update_results.py`.
+- **`fix_all_times*.py`** — Gamle tidsfiks. Tidsformat håndteres nå i import-logikken.
 
-### Dataformat
+## Filstruktur
 
-**Performance-verdier lagres slik:**
-- `performance`: Tid i sekunder som string (f.eks. "214.32" for 3:34.32)
-- `performance_value`: Tid i millisekunder (f.eks. 214320)
-- For feltøvelser: meter som string, centimeter som verdi
-
-## Historisk import
-
-For stor-import av historiske data (brukes sjelden):
-
-```bash
-python import_all_historical.py
 ```
+scraper/
+  update_results.py        # Hovedscript
+  import_historical.py     # Historisk import
+  backfill_birth_years.py  # Fødselsår
+  merge_duplicate_meets.py # Duplikat-vedlikehold
+  new_meets_data/          # Midlertidige filer fra scraping
+  migrations/              # SQL-migrasjoner
+  logs/                    # Loggfiler
+  OPERATIONS_LOG.md        # Operasjonslogg — hva er kjørt og når
+  FIX_GENDER_README.md     # Dokumentasjon om kjønnsproblematikk
+```
+
+## Dataformat
+
+| Felt | Tidsøvelser | Feltøvelser |
+|------|-------------|-------------|
+| `performance` | Sekunder som string ("214.32" = 3:34.32) | Meter som string ("8.95") |
+| `performance_value` | Millisekunder (214320) | Centimeter (895) |
 
 ## Miljøvariabler
 
-Krever `.env` fil med:
+`.env` i scraper-mappen:
 ```
 SUPABASE_URL=https://xxx.supabase.co
 SUPABASE_SERVICE_KEY=eyJxxx...
 ```
 
+## Logging
+
+Alle scripts skal bruke Python `logging`-modulen. For operasjoner som endrer data, logg også til fil:
+```python
+import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+```
+
+**Husk:** Oppdater `OPERATIONS_LOG.md` etter hver kjøring.
+
 ## Sist oppdatert
 
-**2026-01-26**:
-- Importerte 885 resultater totalt (722 + 163 fra incomplete stevner)
-- Slettet 19 duplikate resultater og 57 duplikate stevner
-- Forbedret duplikatdeteksjon i import-scriptet med normalize_meet_name()
-- Opprettet merge_duplicate_meets.py for vedlikehold
+**2026-02-13**

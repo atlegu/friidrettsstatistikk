@@ -1321,6 +1321,7 @@ export type Database = {
           p_event_id: string
           p_exclude_manual?: boolean
           p_exclude_wind_illegal?: boolean
+          p_only_manual?: boolean
           p_gender: string
           p_indoor?: boolean
           p_limit?: number

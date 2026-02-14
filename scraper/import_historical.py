@@ -4,17 +4,22 @@ Import historical all-time statistics from friidrett.no into Supabase.
 Parses the Word-converted HTML pages from:
   https://www.friidrett.no/siteassets/aktivitet/statistikk/alle-tiders/
 
+Also imports indoor all-time statistics from PDF files (bestinnem.pdf, innekvinner.pdf).
+
 Features:
   - 3-level deduplication (application check, meet matching, DB constraint)
   - Fuzzy athlete matching with performance-based confirmation
   - Source and import batch tracking
   - Separate parsers for senior and youth (13-18) pages
+  - Indoor PDF parser for historical indoor statistics
 
 Usage:
     python import_historical.py --gender F --event 100 --dry-run
     python import_historical.py --gender M --event 100
     python import_historical.py --gender F --all
     python import_historical.py --gender M --event 100 --youth
+    python import_historical.py --gender M --indoor-pdf docs/bestinnem.pdf --all
+    python import_historical.py --gender F --indoor-pdf docs/innekvinner.pdf --all
 """
 
 import argparse
@@ -95,22 +100,69 @@ SENIOR_EVENTS = {
     'jt':       ('spyd_800g', 'spyd_600g'),
 }
 
-# NOTE: As of 2026-02, ALL youth pages return pages without parseable tables.
 YOUTH_EVENTS = {
+    # Running events
     '100':      ('100m', '100m'),
     '200':      ('200m', '200m'),
     '400':      ('400m', '400m'),
+    '600':      ('600m', '600m'),
     '800':      ('800m', '800m'),
+    '1000':     ('1000m', '1000m'),
     '1500':     ('1500m', '1500m'),
+    '2000':     ('2000m', '2000m'),
     '3000':     ('3000m', '3000m'),
+    '5000':     ('5000m', '5000m'),
+    # Jumps
     'hoyde':    ('hoyde', 'hoyde'),
     'stav':     ('stav', 'stav'),
     'lengde':   ('lengde', 'lengde'),
     'tresteg':  ('tresteg', 'tresteg'),
-    'kule':     ('kule_5kg', 'kule_3kg'),
-    'diskos':   ('diskos_1_5kg', 'diskos_1kg'),
-    'spyd':     ('spyd_800g', 'spyd_600g'),
+    # Kast utelatt i Fase 1 (vektklasse-kompleksitet)
 }
+
+# Indoor all-time events from PDF files (bestinnem.pdf / innekvinner.pdf)
+# PDF section header -> (event_code_M, event_code_F)
+# All results are indoor; meets will be created with indoor=True
+INDOOR_PDF_EVENTS = {
+    '60 METER':                 ('60m', '60m'),
+    '100 METER':                ('100m', '100m'),
+    '200 METER':                ('200m', '200m'),
+    '400 METER':                ('400m', '400m'),
+    '800 METER':                ('800m', '800m'),
+    '1500 METER':               ('1500m', '1500m'),
+    'MILE':                     ('1mile', '1mile'),
+    '3000 METER':               ('3000m', '3000m'),
+    '60 METER HEKK/HURDLES':    ('60mh', '60mh'),
+    '60 METER HEKK':            ('60mh', '60mh'),
+    '110 METER HEKK/HURDLES':   ('110mh', None),
+    '110 METER HEKK':           ('110mh', None),
+    '100 METER HEKK/HURDLES':   (None, '100mh'),
+    '100 METER HEKK':           (None, '100mh'),
+    'HØYDE/HJ':                 ('hoyde', None),
+    'HØYDE/HIGH JUMP':          (None, 'hoyde'),
+    'HØYDE':                    ('hoyde', 'hoyde'),
+    'STAV/PV':                  ('stav', 'stav'),
+    'STAV':                     ('stav', 'stav'),
+    'LENGDE/LJ':                ('lengde', None),
+    'LENGDE/LONG JUMP':         (None, 'lengde'),
+    'LENGDE':                   ('lengde', 'lengde'),
+    'TRESTEG/TJ':               ('tresteg', None),
+    'TRESTEG/TRIPLE JUMP':      (None, 'tresteg'),
+    'TRESTEG':                  ('tresteg', 'tresteg'),
+    'KULE/SP':                  ('kule_7_26kg', None),
+    'KULE/SHOT':                (None, 'kule_4kg'),
+    'KULE':                     ('kule_7_26kg', 'kule_4kg'),
+    'VEKTKAST/WEIGHT THROW':    ('vektkast_1588kg', 'vektkast_908kg'),
+    'VEKTKAST':                 ('vektkast_1588kg', 'vektkast_908kg'),
+}
+
+# Indoor PDF sections to skip (standing events, multi-events)
+INDOOR_PDF_SKIP_SECTIONS = [
+    'HØYDE UTEN TILLØP',
+    'LENGDE UTEN TILLØP',
+    '7-KAMP', '7 KAMP', 'HEPTATHLON',
+    '5-KAMP', '5 KAMP', 'PENTATHLON',
+]
 
 # Sections to skip on senior pages
 SKIP_SECTION_KEYWORDS = [
@@ -332,7 +384,12 @@ def fetch_page(url: str) -> Optional[str]:
     try:
         response = session.get(url, timeout=30)
         response.raise_for_status()
-        if response.apparent_encoding:
+        # Youth pages use windows-1252 encoding (Word-exported HTML)
+        # Check meta tag or use apparent_encoding
+        content_lower = response.content[:1000].lower()
+        if b'windows-1252' in content_lower:
+            response.encoding = 'windows-1252'
+        elif response.apparent_encoding:
             response.encoding = response.apparent_encoding
         else:
             response.encoding = 'utf-8'
@@ -686,6 +743,10 @@ def parse_senior_page(html: str, gender: str, event_code: str) -> List[Dict]:
                 if not last_name:
                     continue
 
+                if not first_name:
+                    logger.warning(f"Skipping result with no first name: '{last_name}' - {perf_raw} on {comp_date_str}")
+                    continue
+
                 comp_date = parse_date_dmy(comp_date_str)
                 if not comp_date:
                     continue
@@ -737,124 +798,478 @@ def parse_senior_page(html: str, gender: str, event_code: str) -> List[Dict]:
 # ============================================================
 
 def parse_youth_page(html: str, gender: str, event_code: str) -> List[Dict]:
-    """Parse a youth all-time page.
+    """Parse a youth all-time page (Word-converted HTML, windows-1252).
 
-    Single table with age group headers as rows.
-    Data columns: empty, perf(+wind), place/heat, name, club, birth_date, city, comp_date
+    HTML structure:
+    - Single <table class=MsoNormalTable> with ALL data
+    - Age group headers: bold rows like "100 METER GUTTER 13 AR"
+    - Sub-section headers: "Ubekreftede resultater:", "Uklare vindforhold:",
+      "MANUELT SUPPLEMENT"
+    - Data rows (8 cells): [spacer] [perf+wind] [ranking] [name] [club]
+      [birth_date] [location] [comp_date]
+    - Comma decimal = manual time, period decimal = electronic time
+    - Indoor: 'i' suffix on performance (e.g. "11.00i")
     """
     soup = BeautifulSoup(html, 'html.parser')
     results = []
 
-    tables = soup.find_all('table')
-    if not tables:
-        logger.error("No tables found in youth HTML")
+    table = soup.find('table', class_='MsoNormalTable')
+    if not table:
+        # Fallback: try any table
+        table = soup.find('table')
+    if not table:
+        logger.error("No table found in youth HTML")
         return results
 
     current_age = None
     current_age_class = None
     is_manual_section = False
+    is_unclear_wind_section = False
     gender_prefix = 'G' if gender == 'M' else 'J'
+    electronic_count = 0
+    manual_count = 0
 
-    for table in tables:
-        rows = table.find_all('tr')
-        for row in rows:
-            cells = row.find_all('td')
-            if not cells:
+    rows = table.find_all('tr')
+    for row in rows:
+        cells = row.find_all('td')
+        if not cells:
+            continue
+
+        cell_texts = [clean_text(c.get_text()) for c in cells]
+        # Check for header/section rows by looking for bold text with colspan
+        bold_text = ''
+        for cell in cells:
+            b_tag = cell.find('b')
+            if b_tag:
+                bold_text = clean_text(b_tag.get_text())
+                break
+
+        if bold_text:
+            bold_upper = bold_text.upper()
+            # Normalize Å variants for matching
+            bold_clean = bold_upper.replace('\ufffd', 'A').replace('Å', 'A')
+
+            # Check for age group header: "100 METER GUTTER 13 AR" or "GUTTER 14 AR"
+            age_match = re.search(r'(\d{1,2})\s*AR\b', bold_clean)
+            if age_match and ('GUTTER' in bold_clean or 'JENTER' in bold_clean):
+                age = int(age_match.group(1))
+                if 13 <= age <= 19:
+                    current_age = age
+                    # 18 maps to G18-19/J18-19, rest map directly
+                    if age == 18:
+                        current_age_class = f"{gender_prefix}18-19"
+                    else:
+                        current_age_class = f"{gender_prefix}{age}"
+
+                    # Check if this is a manual supplement header
+                    is_manual_section = 'MANUELT' in bold_clean or 'SUPPLEMENT' in bold_clean
+                    is_unclear_wind_section = False
+                    continue
+
+            # Check for sub-section headers within an age group
+            if 'MANUELT' in bold_clean or 'SUPPLEMENT' in bold_clean:
+                is_manual_section = True
+                is_unclear_wind_section = False
                 continue
 
-            cell_texts = [clean_text(c.get_text()) for c in cells]
-            combined = ' '.join(t for t in cell_texts if t).upper()
-
-            # Check for age group header row
-            # Pattern: "100 METER JENTER 13 ÅR" or "100 METER GUTTER 14 ÅR — MANUELT SUPPLEMENT"
-            age_match = re.search(r'(\d{2})\s*[ÅåA]\s*[Rr]', combined.replace('\ufffd', 'Å'))
-            if age_match and ('JENTER' in combined or 'GUTTER' in combined or 'METER' in combined):
-                current_age = int(age_match.group(1))
-                current_age_class = f"{gender_prefix}{current_age}"
-                is_manual_section = 'MANUELT' in combined or 'SUPPLEMENT' in combined
+            if 'UBEKREFTEDE' in bold_clean:
+                # Unconfirmed results — import normally (not manual)
+                is_manual_section = False
+                is_unclear_wind_section = False
                 continue
 
-            # Skip rank marker rows (just a number like "10" or "20")
-            non_empty = [t for t in cell_texts if t]
-            if len(non_empty) == 1 and non_empty[0].isdigit():
+            if 'UKLARE' in bold_clean and 'VIND' in bold_clean:
+                # Unclear wind conditions — import with wind=NULL
+                is_unclear_wind_section = True
+                is_manual_section = False
                 continue
 
-            if not current_age:
-                continue
+        # Skip if no age group yet
+        if not current_age:
+            continue
 
-            # Need at least 7 cells for data
-            if len(cells) < 7:
-                continue
+        # Need at least 7 cells for a data row (spacer + 7 data cells)
+        if len(cells) < 7:
+            continue
 
-            # Columns: [empty], perf+wind, place/heat, name, club, birth_date, city, comp_date
-            perf_raw = cell_texts[1] if len(cell_texts) > 1 else ''
-            name_raw = cell_texts[3] if len(cell_texts) > 3 else ''
-            club_raw = cell_texts[4] if len(cell_texts) > 4 else ''
-            birth_raw = cell_texts[5] if len(cell_texts) > 5 else ''
-            city_raw = cell_texts[6] if len(cell_texts) > 6 else ''
-            date_raw = cell_texts[7] if len(cell_texts) > 7 else ''
+        # Extract data columns (8 cells: spacer, perf, rank, name, club, birth, loc, date)
+        perf_raw = cell_texts[1] if len(cell_texts) > 1 else ''
+        name_raw = cell_texts[3] if len(cell_texts) > 3 else ''
+        club_raw = cell_texts[4] if len(cell_texts) > 4 else ''
+        birth_raw = cell_texts[5] if len(cell_texts) > 5 else ''
+        city_raw = cell_texts[6] if len(cell_texts) > 6 else ''
+        date_raw = cell_texts[7] if len(cell_texts) > 7 else ''
 
-            if not perf_raw or not name_raw:
-                continue
+        if not perf_raw or not name_raw:
+            continue
 
-            # Parse performance and wind (combined: "12.54 -0.6" or "12,43")
-            perf_parts = perf_raw.split()
-            perf_str = perf_parts[0] if perf_parts else ''
-            wind_str = perf_parts[1] if len(perf_parts) > 1 else None
+        # Skip separator rows (just "*" or similar)
+        if perf_raw.strip() in ('*', '**', '***', '-'):
+            continue
 
-            # Detect indoor 'i' suffix
-            is_indoor = False
-            if perf_str.endswith('i'):
-                is_indoor = True
-                perf_str = perf_str[:-1]
+        # Parse performance and wind from combined cell
+        # Electronic: "12.17 +0.0" or "12.17 -1.3"
+        # Manual: "12,43" (comma decimal, no wind)
+        perf_parts = perf_raw.split()
+        perf_str = perf_parts[0] if perf_parts else ''
+        wind_str = perf_parts[1] if len(perf_parts) > 1 else None
 
-            perf_clean = perf_str.replace(',', '.')
-            perf_formatted = fix_performance_format(perf_clean)
+        # Detect indoor 'i' suffix
+        is_indoor = False
+        if perf_str.endswith('i'):
+            is_indoor = True
+            perf_str = perf_str[:-1]
 
-            wind = parse_wind_value(wind_str) if wind_str else None
+        # Manual timing only applies to short running events (<800m)
+        # Field events and 800m+ are never marked as manual
+        MANUAL_ELIGIBLE_EVENTS = ('100m', '200m', '400m', '600m')
 
-            # Skip if not starting with digit
-            if not perf_formatted or not re.match(r'^\d', perf_formatted):
-                continue
+        perf_clean = perf_str.replace(',', '.')
+        perf_formatted = fix_performance_format(perf_clean)
 
-            # Parse name (single cell: "Fornavn Etternavn")
-            name_parts = name_raw.split()
-            if len(name_parts) >= 2:
-                first_name = ' '.join(name_parts[:-1])
-                last_name = name_parts[-1]
-            elif name_parts:
-                first_name = ''
-                last_name = name_parts[0]
+        if event_code in MANUAL_ELIGIBLE_EVENTS:
+            # Manual = tenths-only precision (e.g. 12.3, 11.7, 12.0)
+            # Electronic = hundredths precision (e.g. 12.31, 11.68)
+            # Check decimal places in the cleaned performance
+            if '.' in perf_clean:
+                decimals = perf_clean.split('.')[-1]
+                has_hundredths = len(decimals) >= 2 and decimals[-1] != '0'
             else:
-                continue
+                has_hundredths = False
+            is_manual = not has_hundredths
+        else:
+            is_manual = False
 
-            birth_year = parse_youth_birth_date(birth_raw)
+        # Parse wind
+        wind = None
+        if wind_str:
+            wind = parse_wind_value(wind_str)
 
-            comp_date = parse_youth_comp_date(date_raw)
-            if not comp_date:
-                continue
+        # Clear wind for unclear wind section
+        if is_unclear_wind_section:
+            wind = None
 
-            results.append({
-                'performance': perf_formatted,
-                'wind': wind,
-                'lane': None,
-                'athlete_name': name_raw,
-                'first_name': first_name,
-                'last_name': last_name,
-                'club': club_raw,
-                'birth_year': birth_year,
-                'gender': gender,
-                'location': city_raw,
-                'date': comp_date,
-                'date_str': comp_date.strftime('%Y-%m-%d'),
-                'is_manual_time': is_manual_section,
-                'is_indoor': is_indoor,
-                'event_code': event_code,
-                'age_class': current_age_class,
-            })
+        # Validate performance starts with digit
+        if not perf_formatted or not re.match(r'^\d', perf_formatted):
+            continue
 
-    logger.info(f"Parsed {len(results)} results from youth page")
+        # Parse name (single cell: "Fornavn Etternavn")
+        name_parts = name_raw.split()
+        if len(name_parts) >= 2:
+            first_name = ' '.join(name_parts[:-1])
+            last_name = name_parts[-1]
+        else:
+            logger.warning(f"Skipping youth result with single-word name: '{name_raw}'")
+            continue
+
+        birth_year = parse_youth_birth_date(birth_raw)
+
+        comp_date = parse_youth_comp_date(date_raw)
+        if not comp_date:
+            continue
+
+        if is_manual:
+            manual_count += 1
+        else:
+            electronic_count += 1
+
+        results.append({
+            'performance': perf_formatted,
+            'wind': wind,
+            'lane': None,
+            'athlete_name': name_raw,
+            'first_name': first_name,
+            'last_name': last_name,
+            'club': club_raw,
+            'birth_year': birth_year,
+            'gender': gender,
+            'location': city_raw,
+            'date': comp_date,
+            'date_str': comp_date.strftime('%Y-%m-%d'),
+            'is_manual_time': is_manual,
+            'is_indoor': is_indoor,
+            'event_code': event_code,
+            'age_class': current_age_class,
+        })
+
+    logger.info(f"Parsed {len(results)} results from youth page "
+                f"(electronic: {electronic_count}, manual: {manual_count})")
     return results
+
+
+# ============================================================
+# Indoor PDF parser
+# ============================================================
+
+def parse_indoor_pdf(pdf_path: str, gender: str) -> Dict[str, List[Dict]]:
+    """Parse indoor all-time PDF into results grouped by event code.
+
+    PDF format per line:
+      PERFORMANCE  (RANK_INFO)  Name, Club  BIRTH_DATE  City[, Country]  COMP_DATE
+
+    Returns dict: event_code -> list of parsed result dicts.
+    """
+    import pdfplumber
+
+    logger.info(f"Reading PDF: {pdf_path}")
+
+    all_text_lines = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            if text:
+                for line in text.split('\n'):
+                    all_text_lines.append(line.strip())
+
+    logger.info(f"Extracted {len(all_text_lines)} lines from PDF")
+
+    results_by_event: Dict[str, List[Dict]] = {}
+    current_event_code = None
+    is_manual_section = False
+    is_skip_section = False
+    lines_parsed = 0
+    lines_skipped = 0
+
+    for line in all_text_lines:
+        if not line:
+            continue
+
+        line_upper = line.upper().strip()
+
+        # Check for section headers — they are all-caps lines without digits at start
+        # e.g. "60 METER", "800 METER", "HØYDE/HJ", "MILE", "STAV/PV"
+        if _is_section_header(line_upper):
+            # Check if it's a skip section
+            is_skip_section = any(skip in line_upper for skip in INDOOR_PDF_SKIP_SECTIONS)
+            if is_skip_section:
+                current_event_code = None
+                logger.info(f"  Skipping section: {line.strip()}")
+                continue
+
+            # Check for manual supplement
+            if 'MANUELT' in line_upper or 'SUPPLEMENT' in line_upper or 'HANDTIMING' in line_upper:
+                is_manual_section = True
+                continue
+
+            # Try to match event
+            matched_code = _match_indoor_event_header(line_upper, gender)
+            if matched_code:
+                current_event_code = matched_code
+                is_manual_section = False
+                if current_event_code not in results_by_event:
+                    results_by_event[current_event_code] = []
+                logger.info(f"  Event section: {line.strip()} -> {current_event_code}")
+            continue
+
+        if not current_event_code or is_skip_section:
+            continue
+
+        # Try to parse as a result line
+        parsed = _parse_indoor_pdf_line(line, gender, current_event_code, is_manual_section)
+        if parsed:
+            results_by_event[current_event_code].append(parsed)
+            lines_parsed += 1
+        else:
+            lines_skipped += 1
+
+    total = sum(len(v) for v in results_by_event.values())
+    logger.info(f"Parsed {total} results across {len(results_by_event)} events "
+                f"({lines_parsed} lines parsed, {lines_skipped} skipped)")
+    return results_by_event
+
+
+def _is_section_header(line_upper: str) -> bool:
+    """Check if a line is an event section header (not a result line)."""
+    # Result lines start with a digit (performance value)
+    if not line_upper:
+        return False
+    if line_upper[0].isdigit():
+        # Could be a result OR a section like "60 METER", "100 METER", "3000 METER"
+        # Section headers contain "METER" or known keywords
+        if 'METER' in line_upper or 'MILE' in line_upper:
+            # It's "60 METER" style header — but not "60.55 (1) ..."
+            # Check: if first token is a round number and contains METER
+            first_token = line_upper.split()[0]
+            if first_token.isdigit():
+                return True
+        return False
+    # Non-digit start: check for known section keywords
+    if any(kw in line_upper for kw in [
+        'METER', 'MILE', 'HEKK', 'HURDLE', 'HØYDE', 'HIGH JUMP',
+        'STAV', 'LENGDE', 'LONG JUMP', 'TRESTEG', 'TRIPLE',
+        'KULE', 'SHOT', 'VEKTKAST', 'WEIGHT', 'KAMP', 'PENTATHLON', 'HEPTATHLON',
+        'MANUELT', 'SUPPLEMENT', 'HANDTIMING',
+    ]):
+        return True
+    # Single short line like "Menn/Men" or "Kvinner/women" — skip
+    if line_upper in ('MENN/MEN', 'KVINNER/WOMEN', 'MENN', 'KVINNER'):
+        return True
+    return False
+
+
+def _match_indoor_event_header(line_upper: str, gender: str) -> Optional[str]:
+    """Match a section header to an event code."""
+    # Strip manual supplement markers
+    clean = line_upper.replace('MANUELT SUPPLEMENT/HANDTIMING:', '').replace(
+        'MANUELT SUPPLEMENT/HAND TIMING:', '').replace(
+        'MANUELT SUPPLEMENT:', '').strip()
+    if not clean:
+        return None
+
+    # Try exact match first
+    for header, (m_code, f_code) in INDOOR_PDF_EVENTS.items():
+        if clean == header.upper():
+            return m_code if gender == 'M' else f_code
+
+    # Try partial match (header contained in line)
+    for header, (m_code, f_code) in INDOOR_PDF_EVENTS.items():
+        if header.upper() in clean:
+            code = m_code if gender == 'M' else f_code
+            if code:
+                return code
+
+    return None
+
+
+def _parse_indoor_pdf_line(line: str, gender: str, event_code: str,
+                           is_manual: bool) -> Optional[Dict]:
+    """Parse a single result line from the indoor PDF.
+
+    Format: PERFORMANCE  (RANK_INFO)  Name, Club  BIRTH_DATE  City[, Country]  COMP_DATE
+
+    The challenge is that fields are separated by variable whitespace.
+    Strategy: extract performance + rank from the start, date from the end,
+    then parse the middle portion.
+    """
+    line = line.strip()
+    if not line:
+        return None
+
+    # Skip sub-result lines for multi-events (contain dash-separated scores)
+    if line.startswith('(') and re.match(r'^\(\d', line):
+        return None
+
+    # Performance: first token, must start with digit
+    # Handle times like "1:46.28" and distances like "7.81"
+    # Also handle "1:51.68Y" (Y suffix for yards conversion)
+    perf_match = re.match(r'^(\d[\d:.,]+[>*]?)\s+', line)
+    if not perf_match:
+        return None
+
+    perf_raw = perf_match.group(1).rstrip('>*')
+    rest = line[perf_match.end():].strip()
+
+    # Clean performance
+    perf_clean = perf_raw.replace(',', '.')
+    # Handle "Y" suffix (yards conversion) — skip these
+    if perf_clean.endswith('Y') or perf_clean.endswith('y'):
+        return None
+    # Handle "p" suffix (pending) — strip it
+    perf_clean = perf_clean.rstrip('p')
+    perf_formatted = fix_performance_format(perf_clean)
+
+    # Validate: must be a reasonable number
+    try:
+        test_val = performance_to_value(perf_formatted)
+        if test_val is None or test_val <= 0:
+            return None
+    except (ValueError, TypeError):
+        return None
+
+    # Extract rank info in parentheses from the start of rest
+    # Patterns: (1), (2)A, (1)h2, (1)U23, (1)s1, (3)Ah2, (1)1819, (2)J1/19, etc.
+    rank_match = re.match(r'^\([\d\s\-\.]*\)\S*\s+', rest)
+    if rank_match:
+        rest = rest[rank_match.end():].strip()
+    else:
+        # Sometimes rank is just a number without parens: "1" or "(  )"
+        num_match = re.match(r'^[\d]+\s+', rest)
+        if num_match:
+            rest = rest[num_match.end():].strip()
+
+    # Extract competition date from the end (DD.MM.YY or DD.MM.YYYY or DD.-DD.MM.YY)
+    # Competition date is the last date-like pattern
+    comp_date_match = re.search(r'(\d{1,2}[\.\-]\d{1,2}[\.\-]?\d{2,4})\s*$', rest)
+    if not comp_date_match:
+        return None
+
+    comp_date_str = comp_date_match.group(1)
+    rest = rest[:comp_date_match.start()].strip()
+
+    # Handle multi-day date ranges like "03.-04.03.18" or "24.-25.02.06"
+    # Use the first day
+    range_match = re.match(r'^(\d{1,2})\.-', comp_date_str)
+    if range_match:
+        comp_date_str = comp_date_str[len(range_match.group(0)):]
+
+    comp_date = parse_date_dmy(comp_date_str)
+    if not comp_date:
+        return None
+
+    # Now rest should be: "Name, Club  BIRTH_DATE  City[, Country]"
+    # Birth date is DD.MM.YY — find it
+    # The birth date and city+country are separated by whitespace
+    # Strategy: find the birth date pattern, then split around it
+
+    # Find birth date pattern (DD.MM.YY or DDMMYY without dots — the latter is rare)
+    birth_match = re.search(r'\b(\d{2}\.\d{2}\.\d{2,4})\b', rest)
+    if birth_match:
+        name_club_part = rest[:birth_match.start()].strip()
+        birth_date_str = birth_match.group(1)
+        location_part = rest[birth_match.end():].strip()
+    else:
+        # No birth date found — try splitting by last sequence of tokens
+        # Name, Club  City  (no birth date)
+        name_club_part = rest
+        birth_date_str = ''
+        location_part = ''
+
+    # Parse name and club from "Name, Club" — comma-separated
+    # But the name itself might not have a comma if club is missing
+    name_club_part = name_club_part.strip().rstrip(',')
+    if ',' in name_club_part:
+        # Split on FIRST comma — name is before, club is after
+        comma_idx = name_club_part.index(',')
+        athlete_name = name_club_part[:comma_idx].strip()
+        club = name_club_part[comma_idx + 1:].strip()
+    else:
+        athlete_name = name_club_part.strip()
+        club = ''
+
+    if not athlete_name:
+        return None
+
+    # Parse first/last name — require at least two parts
+    name_parts = athlete_name.split()
+    if len(name_parts) >= 2:
+        first_name = ' '.join(name_parts[:-1])
+        last_name = name_parts[-1]
+    else:
+        # Single-word name — cannot determine first/last, skip
+        logger.warning(f"Skipping indoor PDF result with single-word name: '{athlete_name}'")
+        return None
+
+    # Parse birth year
+    birth_year = parse_birth_date_to_year(birth_date_str, comp_date.year) if birth_date_str else None
+
+    return {
+        'performance': perf_formatted,
+        'wind': None,  # Indoor — no wind
+        'lane': None,
+        'athlete_name': athlete_name,
+        'first_name': first_name,
+        'last_name': last_name,
+        'club': club,
+        'birth_year': birth_year,
+        'gender': gender,
+        'location': location_part.strip(),
+        'date': comp_date,
+        'date_str': comp_date.strftime('%Y-%m-%d'),
+        'is_manual_time': is_manual,
+        'is_indoor': True,  # Always indoor
+        'event_code': event_code,
+        'age_class': None,
+    }
 
 
 # ============================================================
@@ -947,6 +1362,11 @@ def create_athlete(name: str, birth_year: Optional[int], gender: str,
     name_parts = name.split() if name else []
     first_name = name_parts[0] if name_parts else ''
     last_name = ' '.join(name_parts[1:]) if len(name_parts) > 1 else ''
+
+    # Safety: never create an athlete with only a first name and no last name
+    if not last_name:
+        logger.warning(f"Refusing to create athlete with no last name: '{name}' (birth_year={birth_year}, gender={gender})")
+        return None
 
     club_id = get_or_create_club(club_name) if club_name else None
 
@@ -1283,6 +1703,7 @@ def parse_args():
     parser.add_argument('--event', help='Event key (e.g. 100, 200, hoyde, kule)')
     parser.add_argument('--all', action='store_true', help='Import all events')
     parser.add_argument('--youth', action='store_true', help='Import youth (13-18)')
+    parser.add_argument('--indoor-pdf', help='Path to indoor all-time PDF (e.g. docs/bestinnem.pdf)')
     parser.add_argument('--dry-run', action='store_true', help='Preview without importing')
     parser.add_argument('--list-events', action='store_true', help='List available events')
     return parser.parse_args()
@@ -1342,8 +1763,140 @@ def process_event(gender: str, event_key: str, youth: bool, dry_run: bool,
     return stats
 
 
+def process_indoor_pdf(pdf_path: str, gender: str, event_filter: Optional[str],
+                       dry_run: bool, source_id: Optional[str]) -> Dict:
+    """Process an indoor all-time PDF file."""
+    results_by_event = parse_indoor_pdf(pdf_path, gender)
+
+    totals = {k: 0 for k in [
+        'total_parsed', 'imported', 'skipped_duplicate', 'skipped_no_athlete',
+        'skipped_no_meet', 'skipped_no_season', 'matched_existing_athlete',
+        'created_new_athlete', 'errors', 'events_processed',
+    ]}
+    all_new_athletes = []
+
+    for event_code, parsed_results in results_by_event.items():
+        # Apply event filter if specified
+        if event_filter and event_code != event_filter:
+            continue
+
+        event_id = _event_cache.get(event_code)
+        if not event_id:
+            logger.error(f"Event code '{event_code}' not found in database — skipping")
+            continue
+
+        logger.info(f"\n{'=' * 40}")
+        logger.info(f"Importing: {event_code} ({len(parsed_results)} results)")
+        logger.info(f"{'=' * 40}")
+
+        # Load existing results for dedup
+        if not dry_run:
+            load_existing_results_for_event(event_id)
+
+        # Create import batch
+        batch_id = None
+        if not dry_run:
+            batch_id = create_import_batch(f"historical_indoor_{gender}_{event_code}")
+
+        stats = import_results(parsed_results, event_id, source_id, batch_id, dry_run=dry_run)
+
+        if batch_id:
+            update_import_batch(
+                batch_id,
+                row_count=stats['imported'],
+                status='imported' if stats['errors'] == 0 else 'needs_review',
+                matched=stats['matched_existing_athlete'],
+                unmatched=stats['created_new_athlete'],
+            )
+
+        totals['events_processed'] += 1
+        for k in ['total_parsed', 'imported', 'skipped_duplicate', 'skipped_no_athlete',
+                   'skipped_no_meet', 'skipped_no_season', 'matched_existing_athlete',
+                   'created_new_athlete', 'errors']:
+            totals[k] += stats.get(k, 0)
+
+        if stats.get('new_athletes'):
+            all_new_athletes.extend(stats['new_athletes'])
+
+        logger.info(f"  Parsed: {stats.get('total_parsed', 0)}")
+        logger.info(f"  Imported: {stats.get('imported', 0)}")
+        logger.info(f"  Duplicates skipped: {stats.get('skipped_duplicate', 0)}")
+        logger.info(f"  Athletes matched: {stats.get('matched_existing_athlete', 0)}")
+        logger.info(f"  Athletes created: {stats.get('created_new_athlete', 0)}")
+
+    totals['new_athletes'] = all_new_athletes
+    return totals
+
+
 def main():
     args = parse_args()
+
+    # Indoor PDF mode
+    if args.indoor_pdf:
+        gender_label = "Men" if args.gender == 'M' else "Women"
+        logger.info("=" * 60)
+        logger.info(f"IMPORT INDOOR PDF - {gender_label}")
+        logger.info(f"PDF: {args.indoor_pdf}")
+        if args.dry_run:
+            logger.info("*** DRY RUN - no changes ***")
+        logger.info("=" * 60)
+
+        # Resolve PDF path
+        pdf_path = args.indoor_pdf
+        if not os.path.isabs(pdf_path):
+            # Try relative to script directory's parent (project root)
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(script_dir)
+            pdf_path = os.path.join(project_root, args.indoor_pdf)
+        if not os.path.exists(pdf_path):
+            logger.error(f"PDF not found: {pdf_path}")
+            return
+
+        # Load reference data
+        logger.info("\nLoading reference data...")
+        load_events()
+        load_seasons()
+        load_clubs()
+        load_athletes()
+
+        source_id = None
+        if not args.dry_run:
+            source_id = get_or_create_source()
+
+        event_filter = None
+        if args.event:
+            # Map event key to event code for filtering
+            event_filter = args.event  # Assume user passes event code directly
+
+        totals = process_indoor_pdf(pdf_path, args.gender, event_filter, args.dry_run, source_id)
+        all_new_athletes = totals.pop('new_athletes', [])
+
+        # Write new athlete report
+        if all_new_athletes:
+            report_name = f"new_athletes_indoor_{args.gender}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            write_new_athlete_report(all_new_athletes, report_name)
+
+        # Summary
+        logger.info("\n" + "=" * 60)
+        logger.info("IMPORT COMPLETE")
+        logger.info("=" * 60)
+        logger.info(f"Category: {gender_label} indoor")
+        logger.info(f"Events processed: {totals['events_processed']}")
+        logger.info(f"Total parsed: {totals['total_parsed']}")
+        logger.info(f"Imported: {totals['imported']}")
+        logger.info(f"Duplicates skipped: {totals['skipped_duplicate']}")
+        logger.info(f"  Athletes matched: {totals['matched_existing_athlete']}")
+        logger.info(f"  Athletes created: {totals['created_new_athlete']}")
+        logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
+        logger.info(f"  Skipped (no meet): {totals['skipped_no_meet']}")
+        logger.info(f"  Skipped (no season): {totals['skipped_no_season']}")
+        logger.info(f"  Errors: {totals['errors']}")
+        if all_new_athletes:
+            logger.info(f"  New athletes: {len(all_new_athletes)} (see report)")
+        logger.info("=" * 60)
+        return
+
+    # Original outdoor mode
     events = YOUTH_EVENTS if args.youth else SENIOR_EVENTS
 
     if args.list_events:

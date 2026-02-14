@@ -238,12 +238,13 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
   const club = athlete.club as { id: string; name: string } | null
   const fullName = athlete.full_name || `${athlete.first_name} ${athlete.last_name}`
 
-  // Medal counts for header badge
-  const medalCounts = championshipMedals.length > 0
+  // Medal counts for header badge — only outdoor NM
+  const outdoorMedals = championshipMedals.filter((m) => m.championship_type !== "NM_indoor")
+  const medalCounts = outdoorMedals.length > 0
     ? {
-        gold: championshipMedals.filter((m) => m.medal === "gold").length,
-        silver: championshipMedals.filter((m) => m.medal === "silver").length,
-        bronze: championshipMedals.filter((m) => m.medal === "bronze").length,
+        gold: outdoorMedals.filter((m) => m.medal === "gold").length,
+        silver: outdoorMedals.filter((m) => m.medal === "silver").length,
+        bronze: outdoorMedals.filter((m) => m.medal === "bronze").length,
       }
     : null
 
