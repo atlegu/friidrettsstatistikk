@@ -12,7 +12,7 @@ export function createClient() {
     {
       auth: {
         // Bypass navigator.locks which causes AbortError in React strict mode
-        lock: async (_name: string, _acquireTimeout: number, fn: () => Promise<unknown>) => fn(),
+        lock: async <R>(_name: string, _acquireTimeout: number, fn: () => Promise<R>) => fn(),
       },
     }
   )

@@ -55,7 +55,7 @@ export async function fetchAthleteResults(athleteId: string) {
       .range(from, from + pageSize - 1)
 
     if (!data || data.length === 0) break
-    allRows.push(...data)
+    allRows.push(...data as typeof allRows)
     if (data.length < pageSize) break
     from += pageSize
   }
