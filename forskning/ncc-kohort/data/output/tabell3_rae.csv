@@ -1,0 +1,20 @@
+Variabel,Kategori,n,Verdi
+Fødselskvartal,Q1,392,32.2%
+Fødselskvartal,Q2,346,28.4%
+Fødselskvartal,Q3,289,23.7%
+Fødselskvartal,Q4,190,15.6%
+Kji-kvadrat-test,χ²=74.7,,p=0.0000
+Kvartal (Gutt),Q1,207,35.6%
+Kvartal (Gutt),Q2,167,28.7%
+Kvartal (Gutt),Q3,138,23.7%
+Kvartal (Gutt),Q4,70,12.0%
+Kji-kvadrat (Gutt),χ²=68.7,,p=0.0000
+Kvartal (Jente),Q1,182,29.3%
+Kvartal (Jente),Q2,171,27.5%
+Kvartal (Jente),Q3,150,24.2%
+Kvartal (Jente),Q4,118,19.0%
+Kji-kvadrat (Jente),χ²=15.3,,p=0.0016
+Aktiv ≥20 (Q1),n (%),65,16.6%
+Aktiv ≥20 (Q2),n (%),67,19.4%
+Aktiv ≥20 (Q3),n (%),46,15.9%
+Aktiv ≥20 (Q4),n (%),28,14.7%

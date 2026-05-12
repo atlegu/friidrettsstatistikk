@@ -1,0 +1,7 @@
+Variabel,Hovedmodell,Mild definisjon,Stratifisert,Uten COVID
+fodt_aar_c,0.987,1.011,0.988,0.988
+fodt_kvartal_num,0.979,0.985,0.979,0.984
+hhi_z,0.801***,0.868**,0.828***,0.826***
+kjonn_f,1.101,1.113,1.110,1.097
+n_kategorier,0.979,1.022,1.002,0.993
+tyrving_z,0.980,1.040,0.965,0.964

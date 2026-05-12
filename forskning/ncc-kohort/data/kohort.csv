@@ -1,0 +1,1302 @@
+athlete_id,first_name,last_name,gender,birth_date,birth_year,forste_utgave,forste_city,region,antall_utgaver,alle_utgaver,deltok_begge_aar,klubb
+25cc23ac-e657-4d2f-b756-549c0854f3b3,Elias,A. Næss,M,1998-06-13,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Bodø Friidrettsklubb
+f699afc0-6e26-45a3-bc31-8a65d37b00ce,Vegard,Aafedt Bukve,M,1998-03-22,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Jotun IL
+43861eb3-e419-4bee-b8a0-1257db2c456f,Oliver,Adams,M,1998-01-11,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Koll
+9d11f949-c858-47e4-b1f1-b62aa4975577,Une,Adeline Haugen,F,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Børsa IL
+7950b942-187c-41f8-a9dd-05a0fe3e744c,Odd-Olav,Aga,,1998-02-19,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Kjelsås IL
+3c3c42b3-8400-4223-b689-c779884edb00,Magnus,Akre Thorup,M,1998-12-03,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Idrettslaget Skjalg
+6c756ce4-4b8f-401b-86a6-7b61a664daf6,Sondre,Alexander Høyland,M,1998-05-20,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Tyrving
+a5751e0d-dbd8-45a2-adbc-dc439d0a2e2d,Olav,Alexander Nomeland,M,1998-05-27,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nesøya IL
+8b6b21ea-929d-4a2d-b6e0-d5af47c6442c,Ola,Almås Jullumstrø,M,1998-12-13,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Ranheim Idrettslag
+46ae8a5c-ccf7-4f96-9fb6-f5e74e2babe3,Sarah,Amundsen,F,1998-07-13,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ås Idrettslag
+e6868e86-931a-485c-9adf-56a6a330bab4,Mikael,Andelic,M,1998-06-22,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sarpsborg Idrettslag
+b5b784d8-af8a-484e-a2b7-3f9087b315d3,Knut,Anders Aabø Opstad,M,1998-03-12,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Havørn IL
+dcd8f013-017e-408e-9598-a9533c1a6180,Thomas,Andersen Onsrud,M,1998-01-07,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Haugesund IL
+0def2c0a-12b2-48ec-8f97-e30ab28ec26f,Thomas,Andre Brurås,M,1998-09-09,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Norna-Salhus IL
+1df39ec9-2b4a-4842-977e-3fdd557c42a8,Simen,André Landstad Skarland,M,1998-11-20,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Overhalla IL
+36bae844-5f7a-4169-8f25-9cf22a9ef61c,Kim,Andre Tandberg,M,1998-01-31,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Krødsherad IL
+7a480e7f-5a1b-4bda-b087-d45a82de2d71,Ellen,Andrea Riseng Valø,F,1998-10-04,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ski IL Friidrett
+1858423a-73fb-4c5a-a92c-8ebeb7ddd167,Joel,Andreas Dale,M,1998-02-06,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL i BUL
+99f5e13c-5b30-463a-a3c4-ef1a99e60c32,Skjalg,Andreassen,M,1998-05-23,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Veldre Friidrett
+0a178ac1-6209-44f7-8195-61c8cdf86815,Marte,Anita Jensen,F,1998-11-06,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Askim Idrettsforening
+407e5430-c541-4fc9-890d-5586c0c05465,Francin,Anoj Vincent,,1998-06-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Romerike Friidrett
+38f703cd-4632-42f1-a8c7-554004f87bbf,Synne,Arntsen,F,1998-01-04,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Pioner
+a2ccd6d1-8708-4cb8-b2ca-ce4ed2a2bf98,Marianne,Aske,F,1998-06-12,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Idrettslaget Skjalg
+8034be13-1348-428d-800c-57e5bbfff318,Ane,Asp Gjøvik,F,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Tingvoll Idrettslag
+e7f77edf-fcde-4f1b-b953-b22cc8d00196,Sigrid,Åtland Ellefsen,F,1998-09-23,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Herkules Friidrett
+def65b96-40ff-4c8f-9422-03e56887a1ab,Chika,Augustina Inalu,F,1998-11-08,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Herkules Friidrett
+86d3f387-47db-4aa5-b195-4a4caa43d3d4,Marte,Aurora Berge,F,1998-12-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IF Sturla
+b6b4cac7-0dbc-40e2-b97d-64c8a415fe1d,Kolbjørn,Baadshaug,M,1998-04-25,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Steinkjer Friidrettsklubb
+92f3ef1d-0523-4088-97ea-281473b78952,Audun,Bakke Jensen,M,1998-02-22,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Koll
+055ec9bd-834e-4e12-8d25-fc3426fe1ea8,Sara,Bakke Øvrebø,F,1998-03-23,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Almenning IL
+e4fc9055-936a-44f9-90f7-3fb8e64cc2a0,Christopher,Balavoine,M,1998-06-30,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sørild FIK
+30c13aa8-81fa-4dc9-8ad6-839133211a7a,Marie,Benedicte Løken,F,1998-01-22,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IF Sturla
+3b447b32-36bb-4c8a-a52f-738d069b54d9,Andrea,Berg Skarland,F,1998-11-03,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Namsen Friidrettsforening
+8dc7bcff-dabc-4280-8e0a-fb4105997aec,Sander,Bergan,M,1998-04-22,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Selsbakk IF
+e211fc41-9ac7-47af-987a-48e976f20f26,Mari,Bergane,F,1998-10-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Ski IL Friidrett
+b82f61cc-196e-42a1-81da-1051ccc217f6,Jesper,Berge Hansen,M,1998-02-17,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Herkules Friidrett
+42f6a4de-886a-4f9a-8306-1d1c510dfc64,Eirik,Bergene Aabrekk,M,1998-03-03,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Mosvik IL
+1ac1ef89-21cd-45ed-bb9d-4dcd1092e767,Kristine,Berger Akervold,F,1998-09-17,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+fbf8b042-89a7-42af-a18f-a180b6e12f86,Ingvar,Bergseth Aure,M,1998-05-21,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Bud IL
+285d45ce-17cd-4073-acec-170ec3384539,Ebba,Beyer,F,1998-01-13,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ullensaker/Kisa IL
+727ace09-0aef-42e3-a0f7-e8ebfd3eb1dc,Greta,Birkeland,F,1998-01-27,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL i BUL
+103bfb51-938f-4b04-85be-7817ddcbc37c,Johannes,Bjertnæs,M,1998-03-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Brandbu IF
+eefa2e85-d3f5-45d4-bd99-1450e581dee6,Jorunn,Bjørkli Bakløkk,F,1998-01-01,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Ranheim Idrettslag
+fdbbb5b2-fdec-4e88-84f8-d34b66990d6f,Sander,Bjørkli Stigum,M,1998-03-24,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Steinkjer Friidrettsklubb
+a64758e7-2a7f-48ca-b064-aa4cd7566f77,Elias,Bjørnevik,M,1998-09-02,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Stjørdal Friidrettsklubb
+2753697a-6576-411a-90e1-e3fac13c99a4,Silje,Bloch Pedersen,F,1998-10-12,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Åmøy & Grønøy IL
+280ee5e0-5462-4a5a-a3a8-04849ce3b829,Andrea,Bolstad Raa,F,1998-03-22,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Fana IL
+b248cd63-4d9d-401c-9bf9-1b58bec0295d,Arnstein,Borge,M,1998-02-06,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Osterøy IL
+8168d5be-5f9a-46cc-b060-1232d89cdf07,August,Borge Harbo,M,1998-01-10,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Idrettslaget Skjalg
+dd0954fe-347a-4fa6-bad8-6976fc4bb284,Victoria,Børresen,F,1998-02-03,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Ullensaker/Kisa IL
+f0155649-1a65-44be-89da-68e9adafd6f1,Fabiana,Boujdad,F,1998-08-05,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Flekkefjord IF
+b70fc290-f327-4380-b220-2d67c1dafa04,Alexander,Brandvik,M,1998-07-20,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Yrjar IL
+2a6d2b1e-a900-4824-b602-f88fa6649fc9,Synne,Bråthen,F,1998-05-26,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+b5c40a14-2050-4d68-bc2a-7d37c59eb326,Else,Bratteland,F,1998-10-04,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sørild FIK
+555ac543-764a-4dd8-bb5d-f85c8c4f498b,Mari,Breilid,F,1998-10-05,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Kristiansands IF Friidrett
+e831c093-7a42-4c4f-b97d-692af0bbe3b9,Elida,Brekke,F,1998-02-25,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Koll
+a30029aa-846b-49f2-8f08-e39490a55693,Øyvind,Brekke,M,1998-04-11,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Målselv IL
+d230b7bd-c4f4-4a47-94f2-26f3529ee806,Seline,Bruun Berg,F,1998-06-24,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sandnes IL
+39713830-fbb1-4d10-9324-b7dcab17b826,Oda,Burud Kristiansen,F,1998-10-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Sturla
+27129197-c693-42bc-9865-f91eca4cc051,Tyra,Busterud,F,1998-08-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Løten Friidrett
+1976a95a-a251-4092-91dd-a2bf6d262f76,Louis,Carteron,M,1998-11-28,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL i BUL
+f772a1b3-5925-4dfc-8ffc-42c5586cb939,Rebecca,Charlotte Nilsen,F,1998-05-25,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Sortland Friidrettsklubb
+b9a61c29-2f42-4364-8161-f3848a9c7844,Gjert,Christian Svendsøy,M,1998-01-03,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL Sandvin
+a346fa69-d474-4154-abef-395d0aefbfc4,Håkon,Clasen,M,1998-05-06,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sandefjord Turn & IF
+93d5df9d-a24e-465d-a690-8addf86e0328,Marte,Dahle Voldset,F,1998-07-07,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Måndalen IL
+b18465ca-90fa-444b-b0dc-bd0ef88c790f,Håvar,Dahlen,M,1998-06-12,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Skaun IL
+24a37316-6923-47c5-9b4f-3a744b3d1329,Thea,Daltveit,F,1998-09-05,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Bryne Friidrettsklubb
+07fac5eb-172b-433a-8fbf-cfc9d19d8289,Bjørn,Daniel Nilsen,M,1998-04-13,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Pioner
+ebc9df70-2d52-4ceb-9a05-31f4df4989e7,Erlend,Didrik Aas,M,1998-02-15,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Kristiansands IF Friidrett
+65cb5835-0e31-4a59-8aaa-dac838323f1b,Oda,Djupvik,F,1998-10-14,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Hareid IL
+47ff1624-f387-4ed7-b08b-61fabe7b3457,Stilianos,Douvlos,M,1998-10-06,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,FIK Orion
+ebac3f4a-eedf-49be-9262-2e2c54673647,Mari,Drabløs,F,1998-06-22,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Tyrving
+fcfa4845-9741-4b80-b247-d05efcb202dc,Alexandra,Dramstad,F,1998-08-05,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Nesodden IF
+9cf358da-a48a-4ffb-a895-09e861ea3e7c,Ragnhild,Drevland,F,1998-10-11,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Hilstad IL
+8e829a27-f646-4f56-ad9a-8dca938d79ff,Karoline,E Eftedal,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sandefjord Turn & IF
+0e223497-05bd-4359-956d-40ed00fa21f9,Sander,E. Hasselberg,M,1998-12-07,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Ullensaker/Kisa IL
+4363484e-f0b9-4507-8024-7e291d830ef3,Caroline,Egebakken Grotli,F,,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nittedal IL
+e8281821-3c2a-43b5-947d-2ccd8b05d3bb,Telma,Eid,F,1998-03-20,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Søndre Land IL
+4986b213-4b19-482e-a769-12ad9c595100,Inge,Eide Johnsen,M,1998-01-08,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Ranheim Idrettslag
+f6a4f88c-a643-4ac1-bca7-844f233a5105,Alise,Einmo,F,,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Surnadal Idrettslag
+5a66159b-5da6-493a-a3a9-8d6fc5bea715,Josefine,Elders,F,1998-06-28,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Halden IL
+f7792e48-380d-4db0-80b4-beedf580ba81,Anna,Elise Andreassen,F,1998-10-30,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Målselv IL
+bd6524b6-678f-4154-8380-f3934df6db62,Bjørg,Elise Lillesund,F,1998-12-26,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Torvastad IL
+b1ad8508-ac33-4bc4-bf71-cdf306c9d52b,Hanna,Elise Rønhovde,F,1998-05-13,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Kalandseid Idrettslag
+3211791a-bc1b-4f5f-b80a-b013d9afe1de,Espen,Elstad,M,1998-02-13,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Spillum IL
+be8bbb28-a928-48a3-ad66-1ea558ea260e,Johanne,Emilie Simenstad,F,1998-08-12,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Tyrving
+e9c4c310-7efd-4e19-b79e-568addd920ef,Ylva,Emilie Sjøbergnes,F,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Namsen Friidrettsforening
+dba69c02-aa6c-4aa7-8a99-adf93b343e51,Marte,Emilsen,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Løten Friidrett
+95ddd439-6991-46da-a424-13cb63c6cd89,Magnus,Enes Heggøy,M,1998-02-07,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Ask Friidrett
+f7bb1f23-ef62-4172-9774-a43d8a80ee1c,Espen,Engdal Berntsen,M,1998-05-19,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Hurdal IL
+3f3c8a5a-cb63-4dd5-8463-3a4f08b6028b,Toril,Engdal Skjevling,F,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Straumsnes IL
+23b83b66-a7d0-40f6-944b-a611bfa336b4,Martine,Engebretsen,F,1998-05-20,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IK Tjalve
+11e37a9e-788f-4a2c-b4e1-42a25e6c4441,Ilja,Engeset,F,1998-07-26,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,EY BIL
+1e532c09-ad24-413b-aff3-0a7781e274c2,Siri,Engh,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL Tyrving
+a2a503c6-df5b-443d-8e1d-b13e98884bc6,Hannah,Eriksen,F,1998-07-25,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,NTNUI
+ee81e1e2-0916-45fb-80f9-3f8d4c38bce4,Jan,Espen Spydevold,M,1998-06-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Varteig IL
+e5614b4a-e852-4111-8fcc-c9d493ff5ea4,Daniel,Estil Brissach,M,1998-01-25,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Lierne IL
+7407f633-ba3a-494f-b204-5bc589530db6,Nora,Evensen,F,1998-04-30,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sarpsborg Idrettslag
+a975e787-7e50-4be2-b620-b337ebf8e870,Henrik,Fagerli,M,1998-08-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Lierne IL
+0737c5a6-68d3-4657-a5fc-f0aae8cde24a,Henriette,Fagerli Engenes,F,1998-03-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,IK Hind
+9c829396-e88b-4373-b133-7e9df0eb6de6,Cornelia,Fallsen,F,1998-10-30,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Moelven IL
+d88ee6b9-3718-464f-8909-41c4e9c170d2,Charlotte,Flaglien,F,1998-12-24,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Raufoss Idrettslag Friidrett
+f2fd4523-cff6-48cb-9c64-00e1dd27bf17,Erlend,Flatland,M,,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sørild FIK
+1b56f2a5-e026-473b-a330-836eb84046b4,Ingrid,Flobak,F,1998-06-15,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sarpsborg Idrettslag
+2474dcfe-3614-4472-9230-194ac4732a01,Sigurd,Fløistad,M,1998-04-20,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ås Idrettslag
+19c60751-da1a-4276-b925-1b1c69610dc0,Åsmund,Fornes Sand,M,1998-02-19,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Verdal Friidrettsklubb
+a2d2954a-c6ab-4213-a73a-fe1448563570,Frida,Forsberg Ellingsen,F,1998-09-25,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Fredrikstad IF
+a0c56b92-148c-4443-b802-325feab00d6d,Helle,Forseth,F,1998-07-17,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sportsklubben Vidar
+c3c6d173-54b3-4f00-92fb-bcde78e60500,Henriette,Foss,F,1998-11-25,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+90e3e95f-3f57-4246-a5e3-98ec14166a83,Connie,Fredbo,F,1998-09-21,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Lyngdal IL
+74499bbc-3024-4cd4-a64c-4c0737b73673,Anders,Gaarud,M,1998-12-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Trondheim Friidrett
+ce439c15-2b26-4bca-8f98-105087ff3e5d,Jonas,Gangås,M,,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,FIK Ren-Eng
+45b3e19b-6dac-4c5d-bafc-89a1de5ed600,Ingrid,Gausemel,F,1998-10-08,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Hornindal IL
+db5adf98-e4c9-4c3a-af93-6915ad7a6efa,Ingvild,Gjesbakk,F,1998-04-04,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Rana FIK
+f5c534d0-74f1-49ca-8174-f567a520b453,Iver,Gjestvang Olimb,M,1998-03-09,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Ringerike Friidrettsklubb
+78d5c933-8a49-4e3e-ae0a-a9a09582c8d7,Magnus,Glad Thorshaug,M,1998-03-22,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Bodø Friidrettsklubb
+b5da4633-9d04-4cdb-b0db-21b7914148e1,Håkon,Gløtta Kristiansen,M,1998-10-26,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,IL Pioner
+a721c234-cf88-4c71-9ab1-4264183971cf,Heine,Goos Elvevoll,M,1998-08-14,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Kvæfjord IL
+d58dbbee-3c8f-45ad-9cf4-9e03eb3ed09d,Magnus,Granum,M,1998-02-26,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Søndre Land IL
+b750e749-3260-4c54-8c05-884698f14f3b,Elise,Gravningen,F,1998-01-04,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Sandvin
+8fa97ff4-3a63-4910-b07a-da6847454046,Linnea,Greiff,F,1998-05-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Tønsberg Friidrettsklubb
+f02ada18-9f18-46e8-884b-a1ff41570492,Josefin,Greiff,F,1998-05-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Larvik Turn & IF
+05d84b31-8683-4381-81e4-99bdb7bb46e8,Anders,Grenaker Larsen,M,1998-06-19,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Bækkelagets SK
+11153c25-2861-489e-964c-4fb247c15691,Pernille,Grini,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Nesodden IF
+d3bc66e9-11ba-43ee-a845-b00f1cebd9be,Even,Grønhovd,M,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Modum FIK
+938ac99f-9c9b-477d-bbc6-9794e04f253f,Martin,Grønvold,M,1998-01-01,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,FIK Ren-Eng
+e5813add-8ec0-4826-a858-37e38c070b88,Live,Grøtteland,F,1998-09-26,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sandnes IL
+b848f717-389d-473a-8928-bd187d9b96d1,Andreas,Gundersen,M,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Sør-Trøndelag FIK
+892c6acf-8be0-419a-b614-8c278725b04d,Heidi,Gustavsen,F,1998-05-10,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+e614479c-97bb-43e7-8b49-9e19581f1551,Nora,Gustavsen Tømta,F,1998-04-27,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sandefjord Turn & IF
+2ed882cc-e699-452b-a5de-11924f74fd0c,Evina,Gylstrøm Aas,F,1998-02-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Løten Friidrett
+f378873f-c069-4567-8e63-85346b22b7df,Alva,H. Aursand,F,1998-01-28,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Bodø Friidrettsklubb
+aeaf66a5-edf3-499f-8d16-9ae9b9eaedb6,Andreas,Hammerø Eide,M,1998-06-26,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,ukjent
+863f1bbc-68dc-44e9-a583-51816eeac26d,Emma,Hansdatter Olsen,F,1998-10-12,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,IL i BUL Tromsø
+38c1877e-f374-44b0-8c40-d78a2617c0e7,Stian,Hansen,M,1998-12-11,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sørild FIK
+4ff0570e-aba7-4e08-a4f9-cee348ca9643,Jacob,Haraldstad,M,1998-06-08,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Moss IL
+10c7d18e-b9d9-4919-9f33-85bfe4c9a56d,Cathrine,Harris,F,1998-09-30,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Fana IL
+9c1287e7-0b4d-4f9d-8487-311786372abe,Rikke,Hauan,F,1998-01-20,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,FIK Orion
+c0cf66d9-e1de-45e9-a805-8df1897e5dbd,Herman,Haug,M,1998-10-20,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nesøya IL
+c77c55ad-0f93-4276-b842-25e6d8053db4,Hedda,Hauge Hornes,F,1998-06-22,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL Tyrving
+97905d4e-3905-4e54-8b59-c3f6b8f4ac81,Maren,Haugen Lillefosse,F,1998-02-12,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IL Gneist
+d4b31e7d-c36b-47fc-a60e-4c0f0139df13,Marthe,Haugli Røe,F,1998-08-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Tyrving
+600b417c-f63e-4388-b650-6651e2bee4e8,Iselin,Haukeland,F,1998-08-30,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Søfteland TIL
+bcf1ac9d-f8e6-46ee-ba14-927c38110bbb,Markus,Hegerstrand,M,,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sandefjord Turn & IF
+fdd9be80-d9ba-49b3-ad3e-f7c482e05e39,Sigve,Heitmann,M,1998-04-28,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Jægervatnet IL
+ec81822c-e686-4bef-bf9b-54ea32f91d64,Aimy,Helena Brunstad,F,1998-07-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Lørenskog Friidrettslag
+578056a1-30f2-4ff6-acb0-0f828523a5ad,Elias,Helgeland,M,1998-07-13,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL i BUL
+53349c1f-9a87-45e5-8b85-f37b7e20f2a6,Helge,Helø Klemetsdal,M,1998-07-02,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ås Idrettslag
+84f6986a-4e06-4c6c-90dd-959c9d26d0ab,Sondre,Herrevold,M,1998-12-04,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Os Turnforening
+8555009d-8650-40ca-ba0b-4171ae13c6c8,Robert,Hewitt,M,1998-09-14,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sandnes IL
+b408e682-8a58-4142-92e7-065ac3a940ce,Snorre,Hjelm Sørstrønen,M,1998-07-07,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Os Turnforening
+b0f8c6dc-d4d0-49f8-ae5d-9d2e0a3a873b,Markus,Høgne,M,1998-06-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ullensaker/Kisa IL
+35394ba3-494d-438f-821c-4b4b1fc171df,Erlend,Hognestad Nilsen,M,1998-05-10,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,IL Gular
+eebaf227-f754-4bd7-adb5-710bbbb12522,Henrik,Høidal,M,1998-04-09,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Florø Turn og IF
+0738bdb6-49e6-421a-8cb6-52b8f88939bf,Jørgen,Høiden,M,1998-07-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+6e5b49d0-7637-4dd8-8029-743bcec5f2a9,Linnea,Holsen Meier,F,1998-05-14,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Kristiansands IF Friidrett
+b8d8089a-0f5e-4d27-8a7b-41f424e7ac7a,Nora,Holstad Nordmelan,F,1998-01-05,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Namsen Friidrettsforening
+82b294ab-d0c0-42a9-9cb0-bcc54c39fcd4,Malin,Holte,F,1998-04-28,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Kristiansands IF Friidrett
+a5832655-58db-4851-b59a-c88d0f6b2586,Thomas,Holter,M,1998-02-14,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Rakkestad IF
+f4ed4ee9-ec53-4920-bd53-cba98b99e0e5,Amalie,Honerud Olsen,F,1998-03-02,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Sturla
+17578cf6-cd00-494b-aab5-ffe35c224e83,Vegard,Hope Bjørge,M,1998-06-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Hellas
+e8ff2c14-16ad-413a-ac34-30a296739171,Helle,Hovelsrud Norheim,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL i BUL
+0a5e3b3e-5482-4675-a1ed-128204c71e68,Nicolay,Hoven,M,1998-09-18,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Kristiansands IF Friidrett
+7602dd43-2700-4f20-ad13-594da33e6f3a,Andreas,Hoven,M,1998-02-20,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Hellas
+dda22fa7-106f-4653-837b-430c54889f49,Emilie,Høynes,F,1998-02-04,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Florø Turn og IF
+fec5686f-46a1-4b53-ac86-50cd90a13901,Karen,Høystad,F,1998-08-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Lillehammer IF
+7f3a74fd-038e-4d58-9f13-558b03e948df,Hedda,Hulbaklien Bakke,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Koll
+9abc8915-5115-4ee1-9a04-4013838a3964,Vilde,Humstad Aasmo,F,1998-10-10,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+fd342117-2495-4d71-a226-5bddbca7431d,Celine,I A Santamaria,F,1998-10-26,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL i BUL
+c5c722fb-7c17-4126-8d65-db773168385b,Nicklas,Imanuel Paus Bekkevold,M,1998-02-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+7d8c1201-8a1a-42b4-a63f-f0be1beaf53b,Carine,Inema,F,,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Bergens Turnforening
+4cc161aa-1835-4e3c-8a47-f5c41db93bb5,Martin,Ingstad,M,1998-01-06,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Hommelvik IL
+c7f92c44-4692-4129-8172-b129b9d786af,Henrik,Irgens Gravdal,M,1998-01-07,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IL Gneist
+374354ac-3319-40a6-8c90-b246d77a93c4,Elise,Iversen,F,1998-04-17,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Sortland Friidrettsklubb
+e8f1f124-9ec6-42b3-9d4e-2b27068aba02,Charlotte,J. Johansen,F,1998-05-02,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Kristiansands IF Friidrett
+0ca1e62a-d07f-4566-94ef-09253e15a427,Daniel,Jacobsen,M,1998-12-30,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IL Gular
+9b9477fe-d80d-43ae-b1c6-33a58291877f,Kristian,Jakobsen,M,1998-06-24,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,NTNUI
+2ff656bf-d4fd-4ffc-88f8-dac1c7490831,Thomas,Jefferson Byrkjeland,M,1998-02-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+88a7ddf9-deb5-4b91-87ea-63efd9cfda10,Sindre,Jensen,M,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Ogndal IL
+937fa4c3-2290-4ca1-a374-b38f2ae96ed2,Andreas,Jensen,M,1998-08-10,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Gneist
+02e102fc-bc02-4255-89fc-83e19b9eea6a,Nils,Johan Rogstad Sørheim,M,1998-01-31,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ås Idrettslag
+00ef6041-6fcd-4573-a694-040b4c61b237,Erik,Johannes Rosvold,M,1998-11-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+36e01d14-e236-4991-afc9-9b6db28ea419,William,Johansen,M,1998-01-13,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Strandebarm IL
+2a0c64cd-6ce5-4493-b97e-e6d0ddf8aaf2,Sandra,Johansen,F,1998-02-21,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Børsa IL
+49880bc3-e4df-42c7-9782-9cf7931316a9,Rune,Johansen,M,1998-02-27,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Modum FIK
+f85d4d94-d2fc-4b5e-b63d-cf6e3b1d980d,Maria,Johansen Greenidge,F,1998-04-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Minerva Idrettsskole
+ecdfe6e5-0c87-47c1-890b-16c06dfb6db4,Cathrine,Kaldager Holtmoen,F,1998-09-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Modum FIK
+6683da90-ad5a-4960-b245-5133e102ef24,Markus,Karel Færevik,M,1998-03-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Nesodden IF
+e4abadd1-2bb4-4e0c-a72a-141f267d2589,Eilen,Kårli,F,1998-03-29,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,FIK Orion
+5e797649-b850-41ac-bdfa-40a22832a8c4,Ingeborg,Karlsen,F,1998-08-24,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Pioner
+d168555d-2ac5-4815-b415-ff3a864a08b1,Thea,Karoline Hilstad Mangset,F,1998-04-26,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Moelven IL
+193505ac-a678-4ee3-a4cc-61514d35a495,Fabian,Kaufmann,M,1998-01-06,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Bøler IF
+6f281eb9-da52-4aea-b0a0-a8a6f2d49e94,Aurora,Kildahl,F,1998-10-12,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Asker Sk. Friidrett
+09c10a65-1098-4597-ba43-5b2e06050fee,Maj,Kirsten Svineng Maurstad,F,1998-01-17,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Nordlys
+9a2f2bf0-d696-4dc9-868d-2513bbffcf65,Stian,Kleiven,M,1998-05-07,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IK Hind
+cba5ce6d-90e5-41bd-ae91-c821210366ea,Audun,Kleven Rød,M,1998-07-24,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sørild FIK
+c2ff183c-de7c-48a9-93c2-ce077f118a65,Frida,Kolstad Erdal,F,1998-04-01,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Minerva Idrettsskole
+c5de86b9-d796-461d-9ff2-fa20bbb5a503,Ådne,Kongestøl Vik,M,1998-09-05,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Fitjar Idrettslag
+dc6a5066-4aa4-4d93-aa59-e43a13285641,Kasper,Konow,M,1998-09-08,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Rana FIK
+171d00fe-67b8-4a33-a3ca-98b2963f3503,Martin,Kornerud,M,1998-04-15,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Sturla
+053e707a-0f8f-4a11-a79f-011164b5a7e6,Eirik,Korshamn,M,1998-07-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL i BUL
+891feaba-cb77-4e7f-85da-b3a0592082cb,Sondre,Korstad,M,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Forra IL
+0a78359d-4e7c-4d2e-93b4-caea24b86409,Axel,Kozlowski,M,1998-10-03,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ullensaker/Kisa IL
+7b21c593-7733-49ba-b469-9956720ba0fc,Moritz,Krause,M,1998-04-22,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+2a467b7b-b8f6-40ac-b88e-c22cea891157,Magnus,Kringstad,M,1998-05-06,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL i BUL
+3ac103e2-ff46-4331-890e-8ad61374dce4,Hans,Kristian Drege Bø,M,1998-07-02,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Gausdal FIK
+b8454a78-ac28-4ba3-90d7-2bb72551b93a,Emma,Kristina Bergstad Jacobsen,F,1998-08-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Ranheim Idrettslag
+2e16fc5e-213d-4d1b-91c6-412cef48e6fe,Nikoline,Kristine Myrvang,F,1998-02-23,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL i BUL Tromsø
+70b35525-87fe-4927-ab04-e96453224484,Tom,Kristoffer Pedersen,M,1998-07-31,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Jægervatnet IL
+6643964b-816d-4251-b1c9-a5a5f8189b79,Marius,Kristoffer Tronslien,M,1998-01-02,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Sturla
+84b52541-e36b-4980-937d-2ba6258878ec,Sofie,Kronborg Hafredal,F,,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Urædd Friidrett
+71ebdab0-5004-4edd-a467-c5bfd7b8a91f,Sander,Kronstrand Kvalvåg,M,1998-08-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Lambertseter IF
+fadd1749-d877-40b1-a6de-1009811924f9,Kathinka,Kruse-Jensen,F,1998-08-15,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Ås Idrettslag
+5f2559df-143a-473d-b2ea-cfc58944a7ab,Helena,Kumar Westberg,F,1998-06-08,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Koll
+e103ff21-1643-42f9-a4fa-1a4cae53c7f5,Kjersti,Kvistad Dengerud,F,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Steinkjer Friidrettsklubb
+497fe64a-3334-40d9-85b8-f25374f8e566,Bob,Langereis,M,1998-08-15,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Flekkefjord IF
+da32453f-3be0-4f80-967e-e3c7ccd107fd,Håkon,Larsen Aunet,M,1998-05-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Stjørdal Friidrettsklubb
+9db8f7e4-6c58-4847-9aa3-39ce85f56717,Anders,Laupstad,M,1998-01-17,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Egersunds IK
+e62bee1f-4a47-4915-ae65-563e29e08d5d,Christopher,Lawther,M,1998-04-13,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Fana IL
+7b5fd4e3-bb18-456b-a6fd-a9703c4d909c,Sindre,Leidland Olufsen,M,1998-04-07,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Hinna IL
+83be0866-aa5d-4a51-b300-54eee7bce500,Gitte,Leihne,F,,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Gausdal FIK
+25577d7d-f994-4087-a68d-389786ae522e,Eirik,Leikvoll,M,1998-07-15,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IL Gneist
+707202dc-35cc-452c-8bee-3160889c87ce,Margrete,Lein Sandnes,F,1998-11-11,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Snåsa IL
+4655107e-e88d-45aa-b429-994763a6c95e,Kieran,Leon,M,1998-08-27,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Bjarg
+da69a80f-54a9-4d39-985a-7db33fc9f46c,Simon,Lidal,M,1998-04-19,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Gloppen Friidrettslag
+a8eca3fc-784d-4ad3-8b06-ef3fe7eed896,Bjørnar,Lie,M,1998-02-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,FIK Orion
+93d586d9-6703-446b-bbb0-8f98453e2e44,Renate,Lie,F,1998-02-23,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IL Gneist
+30537989-1459-4229-9728-2156162a9b7b,Rasmus,Lie,M,1998-07-09,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Idrettslaget Fram
+c432457f-4ead-409b-b188-de04e68d76c3,Tobias,Lien,M,1998-01-28,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Fredrikstad IF
+a20ffee3-294c-483d-b1c0-d72edfdc0ef8,Eirik,Lieth,M,1998-06-13,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Tønsberg Friidrettsklubb
+694ad095-c203-4560-927f-580bcf07614c,Bendik,Lillemoen Skaalerud,M,1998-09-03,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+e08ac970-b03f-4c4a-8b88-236619db5a57,Henrik,Lindam,M,1998-05-08,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Nittedal IL
+3fe1dcc8-b590-4408-9a4a-bc2dc59506aa,Sina,Lindberg,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Vaaler IF
+b0d5efb3-0bf1-4a44-a021-dac4d92af6b5,Tale,Lindefjeld,F,1998-01-05,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Tyrving
+9577b7f5-6680-4041-a2a4-b5eb4aafd280,Marie,Ling Hoel,F,1998-08-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,IL Pioner
+339e19db-397e-45de-bbfe-85e7b2106b79,Nora,Linn Aunet,F,1998-12-26,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Børsa IL
+fce47b02-9633-41f6-98ee-002b0fb2f369,Sondre,Ljosdal Galtung,M,1998-07-02,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Olden Idrettslag
+d13ac3de-d798-4162-a8fd-9cab95a3426a,Siri,Logna,F,1998-06-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Oppstad IL
+b9135c37-2916-429f-bbe1-9426993d85bb,Magnus,Løining,M,1998-03-10,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sandnes IL
+ce5e7303-ad2f-42ba-89ba-d4fb5e507efd,Wilhelm,Løpsmark Bogen,M,1998-09-06,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ringerike Friidrettsklubb
+7f41a531-68fb-48ca-af9e-673d3abddb1f,Håvard,Lorentzen,M,1998-05-04,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Dønna
+5de3f757-caa3-40a3-a757-0757c797e0e2,Sondre,Løset,M,1998-06-21,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Tingvoll Idrettslag
+2adffcf3-1935-4349-959e-7bea6cbf641b,Linn,Louise W. Kvaale,F,1998-04-07,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Koll
+14cd99fb-d86a-4e03-98c3-1ead10ba2a8a,Ingvild,Løver Thon,F,1998-05-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Modum FIK
+76f3c630-4f00-4a1f-97e9-4d58a08be671,Ingvill,Løvoll,F,1998-09-04,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Asker Sk. Friidrett
+3dd642e2-153c-4b96-bdaf-f67933c3a65a,Ragnhild,Løyning,F,1998-08-29,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Torvastad IL
+0e224447-33df-4551-aadd-71fc1ca0c13c,Amalie,Lund,F,1998-06-17,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,IK Hind
+7cc0ba19-71f4-4d2d-8d1f-46eab271ea11,Gaute,Lund,M,1998-08-09,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Verdal Friidrettsklubb
+ff7189f9-474b-4b9b-980f-d7f96f172696,Kristine,Lykseth,F,1998-07-12,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Sortland Friidrettsklubb
+f590b9ae-a7c6-4382-91eb-e6f122b8e03e,Ole,M. Ornæs,M,1998-10-12,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Strindheim IL
+59b0f0d9-1d1b-4548-8c7a-f3fa0080da86,John,Magne Hardersen,M,1998-02-18,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IK Hind
+d66c2189-f6b8-4ab9-9cc3-3a6a5d9c5487,Even,Magnus Dale,M,1998-08-07,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Herkules Friidrett
+8add79b4-1f9f-439f-a182-9be5820e67cf,Ine,Maijen Persen,F,1998-07-18,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Nordlys
+46e34dc1-8372-4ec1-9397-4c15a3e0feac,Håvard,Mannsverk,M,1998-05-08,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,IL i BUL Tromsø
+e544646a-8985-41f3-8c7c-35f383dca659,Birte,Margrete Torp Maaseide,F,1998-05-03,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Bergens Turnforening
+fe98d16d-a48d-47b4-a7d6-e61dd711fe54,Anna,Maria Solbakken Befring,F,1998-03-19,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Raufoss Idrettslag Friidrett
+20cdf655-51ca-4ecc-80f1-f14f341b3eff,Amanda,Marie Grefstad Frøynes,F,1998-09-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+4f90fb49-21b6-4f47-8af6-a1c0225648a1,Wendel,Marie Håvardstun,,1998-06-05,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sandefjord Turn & IF
+2d51154f-acea-463d-a0b9-1304c86951aa,Oda,Marie Hegstad,F,1998-01-07,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ås Idrettslag
+13faa948-851f-4f3b-abd3-2099f26ba7fe,Elise,Marie Mork,F,1998-07-06,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Oppstryn IL
+ed127222-aa43-432a-a106-2161af453481,Astri,Marie Rønnekleiv,F,1998-09-18,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Hyen IL
+a80a6dbf-ff65-4098-b9c2-e55aaaa7ea16,Ine,Marie Wikestad,F,1998-06-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Høybråten og Stovner IL
+869b4357-763a-4539-bd4a-9b1200d1cd4c,Christopher,Mark,M,,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Lånke IL Friidrett
+163d4729-7ba5-46d6-a4cd-0d8c69236ac2,Helene,Markhus Endresen,F,1998-12-20,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Haugesund IL
+b7c9054c-b3a8-4fc7-8ed6-04057a8016f3,Rebecca,Marsell,F,1998-02-25,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+f709d72a-953e-4161-9487-a99d9aca5ff9,Ola,Martin Gåsvær,M,1998-07-15,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Ranheim Idrettslag
+985aca1a-57d4-439c-b869-62cf6f5e3b7a,Eirik,Mathias Zimmermann,M,1998-10-14,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Stjørdal Friidrettsklubb
+7c772776-42c9-40e4-b21b-4fe7047553e1,Ronnel,Mathiassen,,1998-12-23,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sola Friidrettsklubb
+064bbce6-4795-48b6-98b2-fca1c95f03f5,Lina,Mathilde Sandvik,F,1998-04-08,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Kristiansands IF Friidrett
+39566772-1892-4452-b1de-f2b1f6658976,Marleen,Mathisen,F,1998-02-06,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IF Hellas
+25e1d711-d2ab-4217-9ac6-9a5e2068a1a2,Kine,Midtsundstad,F,1998-06-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,FIK Orion
+5cc4bcda-5945-4849-8737-59e4e7c8d078,Maiken,Min Midtskogen,F,1998-05-26,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Lillehammer IF
+cc6893b1-16db-459f-8842-9afb544013da,Oscar,Moe,M,1998-05-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IK Tjalve
+d22e2f74-6364-4730-a2ee-1c7af7f3f9d7,Maria,Mona,F,1998-12-25,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Snåsa IL
+910ecd1f-82d5-4f3e-b8c5-5cfc9f23e72c,Johanna,Mona,F,1998-05-27,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Snåsa IL
+a4d9e78d-c5d4-40bb-8c43-59627e3d1616,Øyvind,Monsbakken Johansen,M,1998-02-17,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Løten Friidrett
+89433d8c-939e-4c3b-bcd3-41a61b5768e1,Pauline,Mørch Jonassen,F,1998-09-28,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Herkules Friidrett
+2ae6250d-1812-4213-b060-a116f09179da,Tonje,Mørken,F,1998-04-08,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Tønsberg Friidrettsklubb
+3b35e7e8-96c4-4f64-8205-10124b69955f,Benedikte,Mortensen,F,1998-02-15,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Kristiansands IF Friidrett
+97cee3a1-db43-4f3f-b2d5-aa52622d4ce5,Emma,Murvold,F,1998-04-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,FIK Ren-Eng
+c0dc7caa-ac7a-4f49-8f1f-9e7c7a8fe8ef,Line,Myrestøl Johansson,F,1998-02-09,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sørild FIK
+b18083eb-c132-4b32-8151-2eb5fab7cfa5,Harald,Myrland Hagen,M,1998-02-13,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Byåsen IL
+d1cdb617-26a0-4b92-bc60-15aab41e5b60,Synne,N Meløe,F,1998-08-22,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Sortland Friidrettsklubb
+2485ebc4-fb6b-4eff-aef8-554767174f3f,Ramya,Nadesapuran,F,1998-06-10,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Stjørdal Friidrettsklubb
+ef965125-c8b5-4838-b5cc-3ec0c5f18526,Beate,Næss Bolme,F,1998-02-02,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Surnadal Idrettslag
+8b27ec9a-b84c-4a26-a1c3-5a821cd34cfc,Malin,Navestad,F,1998-02-11,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sarpsborg Idrettslag
+995590af-426c-4796-8ad7-0c2db260eb79,Hedda,Nerdrum,F,1998-02-26,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ringerike Friidrettsklubb
+2ce6af17-e35e-4e0f-abdf-107f44c6a0b1,Maren,Nikodemussen,F,1998-03-14,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Kokelv Sportsklubb
+d69b3b05-80f4-4f57-988b-b1cb8d7be23b,Daniel,Nikolai Pedersen,M,1998-02-23,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Idrettslaget Skjalg
+b69291fe-ab04-4fc5-82fd-1f35a6754e4b,Victor,Nilgard,M,1998-02-27,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Urædd Friidrett
+aac8bd84-3c27-483b-9169-3058dd536353,Anna,Nilsen,F,1998-07-13,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Kokelv Sportsklubb
+d1d089ac-710e-4936-8c89-d967901a9649,Anja,Norås,F,,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Lyngdal IL
+d0755dc1-d09e-4d7d-a78e-d3dab6055c27,Sine,Nordåker,F,1998-09-15,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Fagernes IL
+14c65b8c-ea63-41ac-ac25-353e66f62447,Sunniva,Nordheim,F,1998-10-21,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Norna-Salhus IL
+fdfb5a7a-3247-4c68-8c81-e54babf0c082,Mari,Nordlunde,F,1998-10-04,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Lillehammer IF
+5c185d2a-0399-454a-af47-70d8fa2897aa,Viktor,Nordstrand Sand,M,1998-10-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+d79e1c9e-4051-4f7e-8288-f995fca0a4fe,Torstein,Nordvik,M,1998-05-12,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Kristiansands IF Friidrett
+67184727-a3a2-41e9-9663-471fc9153922,Emily,Nyborg,F,1998-07-25,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Steinkjer Friidrettsklubb
+f3d041b7-d215-4af2-a0b0-ede5ebc451d5,Karoline,Nyland Larsen,F,1998-07-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Søndre Land IL
+74bfb49b-127c-49cd-aac3-cd9de4660d02,Marius,Øen Cleveland,M,1998-08-09,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL Sandvin
+6c3b07f3-aa94-4afe-8371-06773d55f046,Maria,Øien,F,1998-07-01,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Ranheim Idrettslag
+bf16b6ed-19bd-491e-9ecb-0ffd9ec46a8b,Vilde,Øien Karlsen,F,1998-11-08,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IK Hind
+f42218ed-a900-4b37-bbf1-ab1bdf0ee6de,Kristine,Oline Øvrum,F,1998-10-09,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Herkules Friidrett
+5190ad7a-23ef-478d-9b86-8df5c2facbf2,Dorthea,Olsen,F,1998-06-03,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Minerva Idrettsskole
+7a1f1bc6-a427-43c1-894c-c48560305d02,Sindre,Olsvik,M,1998-03-14,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IK Tjalve
+26acc049-5ede-43fe-b232-f10510bb325f,Nathalie,Ommundsen Johnsen,F,1998-07-02,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Haugesund IL
+5ff22e0b-e2ee-4fd3-8b4f-8fd925494f05,Sondre,Opaker Øines,M,1998-05-13,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ullensaker/Kisa IL
+8451219e-c08c-4082-8143-8421364b7922,Linn,Oppegaard,F,1998-12-23,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Moss IL
+94ee66d0-288c-43eb-8593-34917b00fded,Toralv,Opsal,M,1998-03-09,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Dimna IL
+0bab7c28-7cdc-490d-995b-9a9e5e21cd2f,Håkon,Orset,M,1998-03-19,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Torvikbukt IL
+c7c317db-86fb-4348-9c4e-91be1ede615a,Ådne,Øvrebø,M,1998-04-06,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sandnes IL
+bbb31ee2-4f9d-4aa2-89e3-7eb23391286c,Heike,Øvreeide,F,1998-01-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Løkta Idrettslag
+e62fdfd0-1710-430e-a3c6-65a7c87148ef,Thanya,Panchalingam,F,1998-10-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL i BUL
+98cc08ff-733a-47ac-9e25-6a532797a080,Sofie,Pernille Hole,F,,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Fjellhug/Vereide IL
+97c3bddc-e8d6-4f6d-a937-0aa05c4159bc,Kristoffer,Petersen-Øverleir,M,1998-10-17,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,ukjent
+3667ed95-52ed-423c-b97f-9b27d4af8fcd,Lars,Petter Limstrand,M,1998-03-17,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,SMIL Engavågen
+7a4f0bc8-6558-41f1-a891-12b2647e0eea,Marie,Pettersen Heimdal,F,1998-01-13,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL i BUL Tromsø
+d3742f89-5741-469d-8d8e-d45b35659368,Andrea,Pettersen Slørdahl,F,1998-01-17,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Steinkjer Friidrettsklubb
+979a3978-7423-4e79-8c3c-0300578affe2,Sigrid,Qvigstad Jarhelle,F,1998-12-11,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Narvik IL
+47c77212-4a9d-48da-9493-f19bc161d969,Noah,R Wicken,M,1998-10-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,IL i BUL
+40b4c4d2-5add-4e44-a74e-f2e5c5571267,Oscar,Raappana,M,1998-01-06,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Nordlys
+82a40b34-0166-4e76-91a9-caa72d2b6c11,Ingeborg,Raftevold,F,1998-08-31,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Gloppen Friidrettslag
+8826aa62-8d25-411c-aa45-fa83f5d4ba5f,Ingrid,Ragnarsøn,F,1998-12-06,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Lørenskog Friidrettslag
+4539b78c-213e-4004-aaa0-c574bec40424,Naruemon,Rattanarin,M,1998-07-27,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fagernes IL
+0ed05561-839c-4f7e-aa45-67a014cbd531,Daniel,Refvik Moland,M,1998-01-08,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sørild FIK
+463fa22c-b3ca-450f-87af-34402516aaf2,Jørgen,Reinnes,M,1998-09-02,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,IL i BUL Tromsø
+acc02ed4-1120-4c97-a671-53a71e1b178d,Vegard,Reitan,M,1998-06-14,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Malvik Idrettslag
+7b1ea82f-58c0-4150-a5ce-736f91f7f6b6,Madeleine,Rettore,F,1998-10-25,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sandnes IL
+445e3a97-0158-4a18-8166-ae125afd7918,Sondre,Rinde,M,1998-01-28,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Fana IL
+428b3bf4-4fb2-42b3-bbfe-480ce7e6d725,Sander,Ringstad Kanestrøm,M,1998-09-04,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Dimna IL
+e203bfac-64f9-4596-9ecf-308838dadd3f,Jan,Robert Nijmeijer,M,1998-02-14,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Urædd Friidrett
+cc40498e-a850-4adf-bc38-a87b4253c8eb,Eivind,Rød Slettene,M,1998-05-15,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sørild FIK
+1144cf50-8f23-4efd-923f-e4ff8b9c8781,Ylva,Rognstad,F,1998-04-18,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Hurdal IL
+05ff5a07-b0d2-4aa1-b1b5-b6ea1d829dad,Frida,Roksund Hovland,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Nesodden IF
+fbb6f527-fbe0-40e0-bd1c-405e574ce6c9,Kristine,Roland,F,1998-08-10,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Lørenskog Friidrettslag
+c6cfe6df-ea85-4a19-af95-a6198b47aa06,Jon,Rolf Skamo Hope,M,1998-02-17,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Hyen IL
+5530a6ba-1f9b-4cc1-8a01-b04ee7fb81e0,Karoline,Rondestvedt,F,1998-03-20,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Narvik IL
+73bfcf6d-57eb-4d59-9e0e-5ca7da59012e,Helene,Rønningen,F,1998-09-04,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IL Tyrving
+35faf94a-2b12-4af8-8eec-407ec9625fe8,Camilla,Roos,F,1998-09-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+3411be8b-2085-468d-accd-1ec0764e3932,Anna,Rosenlund Skretteberg,F,1998-03-19,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Modum FIK
+7c402ef2-c62c-4ac6-9b63-1aee074c53a2,Håvard,Rosseland Johansen,M,1998-06-08,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Lye IL
+20d80f91-0cd9-4432-935e-82796d014ae6,Karen,Rostad,F,1998-07-13,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Stadsbygd IL
+2a123bb4-b9ac-4bf0-886f-1b0d5ccdd1db,Kristin,Rosvold,F,1998-07-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,FIK Orion
+95f2f303-bc61-490f-a49c-fef7cca7eaa9,Simon,Ruud,M,1998-04-24,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Rana FIK
+5ff5bacf-b523-4466-930b-7641ce174748,Marie,S. Oppegaard,F,1998-02-23,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Sømna IL
+5ccc16c1-3054-4641-96d3-286568f6be85,Rasmus,S. Øxnevad,M,1998-08-16,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sandnes IL
+bc083a19-5fd3-4e99-9438-4a9079330a3c,Håvard,Sæther Pedersen,M,1998-08-31,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Haugesund IL
+46a69fa2-16a7-4ffa-bde6-598210b4cd27,Marthe,Sand,F,1998-07-01,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ullensaker/Kisa IL
+7049b6f2-4417-4326-be70-4e15758a6629,Eline,Sandnes Fosse,F,1998-02-02,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Strandebarm IL
+0ad98bda-2b7c-4028-a1a6-b9d140b0109a,Maria,Sandvik,F,1998-03-23,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Askim Idrettsforening
+4b871c6a-f137-4239-8e71-2d01c7a34457,Fredrik,Sandvik,M,1998-03-23,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ullensaker/Kisa IL
+41b28697-8901-4816-a4b2-a91abf570744,Eirik,Sangolt,M,1998-08-06,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Skogsvåg IL
+3467cccd-b1b9-485e-b8bd-308fa658faa2,Synne,Schølberg Christensen,F,1998-08-31,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Strindheim IL
+34b6ffe1-8621-404f-b773-6a204ad995f4,Linn,Seliussen,F,1998-08-15,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,BFG Bergen
+0bb2fb58-7640-4bc3-ba5d-840d6f01e707,Hanna,Seljegard Gåsemyr,F,1998-01-02,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ski IL Friidrett
+3415c0d9-7389-4b61-94ed-235c78c190bb,Mari,Sellevåg Aarø,F,1998-02-13,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Norna-Salhus IL
+0a490bbf-fab2-45cb-b644-fd707ead7f61,Kristin,Serck-Hanssen,F,,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Idrettslaget Skjalg
+0e7379f2-ee21-489c-9c76-18c3f41d4806,Arion,Shaqiri,M,1998-08-15,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Tingvoll Idrettslag
+f05b895d-12ab-41f3-98d2-1e1226f273fb,Ane,Siqveland Kalheim,F,,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Bryne Friidrettsklubb
+4eebdb8f-1d40-490a-be30-42d7d74461d0,Andrea,Skagen,F,,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Modum FIK
+3ac8f8bb-c9b9-468d-b2c2-2699ddae01cb,Håvard,Skailand,M,1998-07-09,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Bryne Friidrettsklubb
+fe38bbc2-faed-4ce5-b5f3-493331d3bec0,Sofie,Skancke Krauss,F,1998-03-14,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ullensaker/Kisa IL
+8143622a-de91-47b4-806d-4f31e10e62aa,Sindre,Skar,M,1998-01-06,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Veldre Friidrett
+9bbd8315-8336-445b-b176-91d1818ed390,Ingeborg,Skarstad,F,1998-11-29,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Trones IL
+31deb56b-1bd3-4396-b2dc-589ddb4a807a,Cecilie,Skeie,F,1998-01-14,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sandnes IL
+9a3877b1-7465-4dfa-8991-bcc3465da17d,Mathilde,Skjærdalen Myhrvold,F,1998-07-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Raufoss Idrettslag Friidrett
+d7efbe59-fba8-4c0f-aa2c-87d3034879e9,Sigrid,Skjelbostad,F,1998-01-29,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Veldre Friidrett
+c282d667-5828-4223-a274-2090b737619d,Therese,Skjølsvik,F,1998-05-02,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sørild FIK
+ef1cb8e3-8d14-4b29-bf31-1c38edc65638,Alexander,Skorpen,M,1998-05-23,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Halden IL
+596e5d22-17b8-4489-b1d1-ecb2dd00aa2c,Henrik,Skulevold,M,1998-06-08,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Sandnes IL
+8f9c92fd-cf70-484b-b24e-c25d5907fa5c,Trude,Slind,F,1998-07-09,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Stjørdal Friidrettsklubb
+d1873bf0-72e9-4630-abb6-fd56ec411a6f,Martine,Solbakken,F,,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Hegra IL
+ea357d6c-6866-4478-ad9c-66f3bcc52506,Erik,Solbakken Ring,M,1998-05-25,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Gausdal FIK
+e9b7938e-d838-48e3-bbfc-678532a3ebda,Aida,Solheim,F,1998-03-29,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Fana IL
+782f3bdb-37e3-4df8-94d3-818f3976bee4,Sofia,Solvang,F,1998-03-18,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Nidelv
+7fcb7cac-0445-4f0b-9862-495b7ce5bf0a,Ebba,Sophie Reimers,F,1998-04-07,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IK Tjalve
+318bbe42-131d-468a-84d3-276303bceb58,Synneva,Sørensen,F,1998-06-12,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sem IF
+08b0804b-5f5d-4a3d-85ea-b7272dc6f777,Ida,Sørheim Førland,F,1998-05-24,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Staal
+fdb1731b-3372-4c96-83c0-2e6d48e9ddb1,Ole-Kristoffer,Sørland,M,1998-08-22,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Breimsbygda IL
+430af5ca-46e6-460a-a5a2-d260812d7dbb,Magnus,Sørnes,M,1998-07-10,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,IL Dalebrand
+a98d5791-1259-4cc5-a0c3-4cf3c1ebfa9a,Vetle,Sørstrand Haugen,M,1998-01-29,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Florø Turn og IF
+3deaf3ea-0f37-4836-82b7-4b745ba19fb9,Astrid,Spinnangr-Helgeland,F,1998-04-10,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Kristiansands IF Friidrett
+3ba7ff4f-556f-4fb2-adf4-6e3b414a43ce,Hulda,Spurkland,F,1998-12-12,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ski IL Friidrett
+72b0ccdc-246a-4808-b00f-3e7bce07f972,Sannah,Stainsby,,1998-04-07,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,FIK Orion
+697d3a74-a275-429c-9153-bb6a3d9d6fb6,Veslemøy,Stavseth,F,1998-10-03,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Lillehammer IF
+36fbaa64-3766-4d4e-ba21-5e00db91d9b6,Sunniva,Steen Tellesbø,F,1998-08-31,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Oppegård Idrettslag
+87cf1611-ff08-4c52-8759-f6a443f1e2e0,Snøfrid,Steen Tellesbø,F,1998-08-31,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Oppegård Idrettslag
+debb7f76-5237-47db-b935-1df06a2e2b9e,Elin,Sterten Eggen,F,1998-11-16,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Byåsen IL
+03bf0ae5-a14f-4bd2-884e-1c76a09aa914,Jørgen,Stigsrud,M,1998-04-19,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Tustna IL
+51f2822b-e7fd-411d-b447-ea9916511e86,Sigrid,Stoknes Eikrem,F,1998-08-18,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Ålesund Friidrettsklubb
+38a8ba92-96fa-4d9b-8cfa-cfbb8d4aed7f,Magnar,Storhaug,M,1998-07-22,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Sandnes IL
+99cb8716-581b-44c0-83c0-17ff417b1304,Hanne,Storholt,F,1998-05-10,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Surnadal Idrettslag
+d47a2d16-2a56-4d0f-8bfb-7061802f6016,Magdeli,Støten,F,1998-08-17,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Sarpsborg Idrettslag
+ab54388c-0aed-4944-acf5-54ef09c96999,Tuva,Straume,F,1998-09-17,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IL Gneist
+3da19abe-8bb6-435c-8256-b1e645d3a64f,Ruben,Strøm,M,1998-04-01,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Jøa IL
+48871a5a-6dd8-4e08-b7d4-58486e1101a8,Stian,Strømholm,M,1998-05-03,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Strindheim IL
+b3b007f5-cacf-416d-a28d-4702d321e76b,Kristi,Strømmen Kjerpeset,F,1998-01-13,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Florø Turn og IF
+c03dc593-ded8-4c61-9d18-2097f87ee9b9,Anne,Strømsvåg,F,,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Straumsnes IL
+8f93470f-136f-41cd-90f0-02f71dbd85a2,Berit,Stunes Isene,F,1998-01-15,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,IF Sturla
+7488bfc6-a10e-4e7c-aac1-0d5724acedb4,Astrid,Styrvold,F,1998-11-05,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sem IF
+abeda5a9-8532-42b8-b4c1-1167ac9bd61e,Erik,Sundby Håland,M,1998-09-04,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Kristiansands IF Friidrett
+6189866e-ac65-4feb-b3af-ce685173d58f,Dorthe,Svanberg Haugen,F,1998-07-03,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Sandefjord Turn & IF
+9fe1d0a6-0216-43ce-85b0-263e9c21a088,Thomas,Svendsen,M,1998-08-11,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Fredrikstad IF
+f5b23b15-6720-43bc-b1bd-72113e975f80,Frode,Svortevik Birkeland,M,1998-04-09,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Førde IL Friidrett
+1a5bb581-f8e2-4210-956e-25445a6248a9,Kristoffer,Sylta,M,1998-03-12,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Laksevåg TIL
+b31cf132-a94f-498e-b03f-adf56fb56450,Ingrid,Syrstad Engen,F,1998-04-29,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Børsa IL
+1423ab69-c4a1-4f09-9a27-246352539b42,Mona,Talberg,F,1998-03-09,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Vågstranda IL
+159a6fa4-bc7b-47a2-85ee-4a4ff7de527d,Håkon,Tallhaug Gulbrandsen,M,1998-02-27,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Øystre Slidre IL
+c4ae6f04-8d19-4c04-b997-7a203b93d67c,Hanna,Taraldsrud Dormagen,F,1998-10-08,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Oslostudentenes IK Friidrett
+5d5f5935-02be-4473-867d-177f800f60ac,Karoline,Tharaldsen,F,1998-07-17,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Turn & Idrettsforeningen Viking
+c13fcf21-531b-4ab4-a535-9319e847aceb,Ronja,Thendrup,F,1998-04-27,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Lørenskog Friidrettslag
+16459a42-3f19-48a2-80e7-06b8b33e7f02,Mats,Thorsø Hansen,M,1998-03-12,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,ukjent
+b4c70a4e-0355-465b-9968-9b885aee42d8,Ida,Thorstensen Nilsen,F,1998-02-25,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Ringerike Friidrettsklubb
+1d1f9f29-3001-4899-91e3-7b75a64f7996,Julie,Thue Holthe,F,1998-01-05,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Tyrving
+cf8218ef-aef9-4ea9-8f04-2b077ef1f34a,Kristina,Thunem,F,1998-05-20,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Gloppen Friidrettslag
+f954ce09-6d4f-4d28-a252-1239a52a6c48,Ole,Tobias Løvdal,M,1998-09-05,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Tvedestrand Turn & IF
+17aeb1df-5676-4620-9036-19053f8813f5,Carine,Tollefsen,F,1998-03-30,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Herkules Friidrett
+e9d6eaa8-b7ff-4d89-b4f9-a1317b846a0f,Henrik,Tømta,M,1998-04-27,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sandefjord Turn & IF
+27560f14-c202-4aac-9b4d-169bc77c9f22,André,Torvestad,M,1998-02-13,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Torvastad IL
+4ffbee56-6c81-478c-ba21-febc6bf0bb00,Magnus,Torvund,M,1998-01-17,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Mandal & Halse IL
+ab983881-5134-4290-9271-285eec58767c,Rakel,Trang,F,1998-07-24,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Stjørdal Friidrettsklubb
+1b8e7915-0548-484c-9344-218e0ba57f49,Tiril,Tresselt,F,1998-02-22,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Bergens Turnforening
+5699aec1-79e8-4370-863f-7a0cdac10f62,Hans-Petter,Tverfjell Madsen,M,1998-03-16,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,NTNUI
+ec672d8f-9162-4815-8f48-2cf95e357582,Nora,Ulvang,F,1998-11-19,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IK Tjalve
+e5b7892a-52c7-41f5-a3cb-c62bc103a155,Christoffer,Undseth,M,1998-09-04,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Herkules Friidrett
+40cac89c-e029-46b0-b38b-6ac2d9e704ef,Emil,Utne,M,1998-01-14,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nittedal IL
+816e7c64-2ab0-4577-93d6-dec217332c34,Karen,Uvsløkk Normann,F,1998-09-17,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Børsa IL
+85d442a9-0c98-4353-8258-dbb2cdfc6a52,Emma,Valen,F,1998-01-05,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,1,ncc_2011,0,Herkules Friidrett
+dadfa0d1-b2da-449e-9e3e-54e5c9912167,Kristian,Vassli,M,1998-06-19,1998,ncc_2011,Øverlands Minde,Midt-Norge,1,ncc_2011,0,Tingvoll Idrettslag
+6ce3f7b7-ac59-40be-a5f5-058f83a814ce,Frederic,Vidal-Walker,M,1998-04-30,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,Skogsvåg IL
+ccb5b11d-652c-4eb9-b41c-6231b4f63b65,Johannes,Vincent Meo,M,1998-08-07,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Koll
+9d54c62c-6ccd-4d70-8b02-805e68d79611,Ingvild,Vingen Nerland,F,1998-12-02,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Steinkjer Friidrettsklubb
+0c94a3d7-dbec-49f6-9914-ffeb34a84a44,Aksel,Vinje,M,1998-02-17,1998,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Kvæfjord IL
+73ed5cca-dc54-4d16-b0df-c8d0bb98414a,Bendik,Vold Hovde,M,1998-05-12,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Måndalen IL
+ec79f1f6-b5b6-4442-a607-47e3a2b9846e,Fannie,von Krogh,F,1998-05-04,1998,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nesøya IL
+6940e793-84c7-4832-81ff-946c65dc78a4,Marie,Wågestad,F,1998-05-31,1998,ncc_2011,Osterøy Stadion,Vestlandet,1,ncc_2011,0,Tvedestrand Turn & IF
+106cb591-8317-4883-b162-ade2a070b145,Stella,Weinberg,F,1998-10-21,1998,ncc_2011,Osterøy Stadion,Vestlandet,2,"ncc_2011,ncc_2012",1,IK Våg
+823e6168-5824-4ad0-9e73-b2a048b7fef2,Victoria,Weinberger Røed Torjussen,F,1998-04-12,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Urædd Friidrett
+78865170-ae1e-4c87-ba4c-c9813e54e7ba,Mathias,Wester,M,1998-06-26,1998,ncc_2011,Øverlands Minde,Midt-Norge,2,"ncc_2011,ncc_2012",1,Ranheim Idrettslag
+ff4119dc-b380-483d-b30d-9d4e817ec5e2,Alexander,Wolff,M,1998-08-25,1998,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Hyllestad IL
+7c0feb78-36fd-40e9-9049-d7414ee50544,Veronika,Zlamalik,F,1998-01-01,1998,ncc_2011,Romerike Friidrettstadion,Østlandet,2,"ncc_2011,ncc_2012",1,Veldre Friidrett
+f167edb4-7f75-4b1e-8cb9-1f3af9cb3508,Ingrid,Aafedt Bukve,F,1999-10-09,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Jotun IL
+ab42688f-9cbb-4753-b76e-121eb841dd83,Eskil,Aasen,M,1999-08-25,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Straumsnes IL
+7303a1f0-d072-42e4-bd55-aee66cf892ad,Jonas,Aasland,M,1999-02-08,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sandefjord Turn & IF
+4db288d0-3ba0-4860-b5c8-3644c4269c45,Helle,Abelseth Pütz,F,1999-05-19,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ranheim Idrettslag
+e5aeecf3-ed24-4022-a398-265a82e40caa,Aron,Åkre Rysstad,M,1999-04-11,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Valle IL
+d475081c-38ac-4c19-81c4-4b4c37ade63c,Vebjørn,Aleksander Østlie,M,1999-11-23,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Moss IL
+e0552d3e-c7eb-4d69-9d22-b6812f0ca22a,Kristine,Alice Olsen,F,1999-07-05,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Fri
+2e135102-40e4-49f7-956f-25b91ae59531,Marthe,Alpen Rekkedal,F,1999-12-26,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lillehammer IF
+926a00d0-a897-4ab4-858e-55c05c8fe9c3,Johannes,Alstveit,M,1999-07-28,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Finnøy IL
+5aaa0273-603d-4ad7-b203-072cf8d27985,Siw,Amalie Aagre,F,1999-02-03,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sørild FIK
+6132349e-d1b0-4c4f-8ecc-0d961db3b0b3,Eirin,Amundsen,F,1999-03-27,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Steinkjer Friidrettsklubb
+505babe1-f4a1-4093-98dd-aaf58b5611fa,Torstein,Åndal,M,1999-02-26,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Åndalsnes IF
+dc9f8bc6-db56-4bd1-9658-f5e9c2d94df0,Kjetil,Åndal,M,1999-02-26,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Åndalsnes IF
+6d5999bf-b278-491f-af0c-7cc04e406e4f,Mailin,Andersen,,1999-01-26,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Nesodden IF
+8e9ab066-b6fc-4eb5-ad96-56c90f331dd2,Glenn,Andre Aarbakke,M,1999-09-17,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Osterøy IL
+cf7e3a4c-8b6d-4e88-859f-20315b123618,Sander,Andre Tveitane,M,1999-02-12,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Finnøy IL
+29c6e266-23c4-4090-a647-e589f69dd142,Kristin,Andrea Salvesen,F,1999-10-27,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Kristiansand Løpeklubb
+83ca29b0-220c-4089-b6a4-79ed9b5f37b5,Simon,Andreas Meland,M,1999-04-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Haugesund IL
+2b315190-8638-44ed-a375-d03676b23b2c,Axel,Andreassen,M,1999-04-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Oppegård Idrettslag
+06ad6ee6-3102-455b-bf84-9835c42e04a0,Sigurd,Angell Bergh,M,1999-12-29,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Haugesund IL
+8b29c4c3-56a0-4b97-9b06-8beffab006aa,Jacob,Angelo Watters,M,1999-09-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Koll
+b47b29d8-75df-4d4a-9eaf-f1642b15fe84,Synnøve,Antonsen,F,1999-08-01,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Strindheim IL
+1f347bf1-7118-4e17-b9cb-606034b7ee68,Bjørnar,Apeland,M,1999-09-12,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+cc0d5941-82f5-4655-ab11-08739d112429,Emil,Arnkværn,M,1999-06-24,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+8c277d2e-be1e-437a-9c17-f270a87a95e6,Vår,Åsheim,F,1999-04-28,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ullensaker/Kisa IL
+f0b8e926-944f-498d-9b4c-d22a3330eda0,Simon,Askeland Nilssen,M,1999-02-22,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Osterøy IL
+fd556798-fd4c-4895-aa75-54dc845909b2,Thale,Augensen,F,1999-05-21,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Tyrving
+4dcf84b6-2bcc-42b5-98ae-a5e5e6869493,Christoffer,Avdal,M,1999-08-13,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Fredrikstad IF
+ef5e754c-9990-40e3-b6e4-ace981a51105,Martin,B. Hasselvold,M,1999-01-30,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Fjellørnen IL
+d77b0778-9005-4192-a3a1-3ffa762b8e0b,Sofie,Bakkejord Mork,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Hareid IL
+106f6c88-18fa-4729-9081-46db05d47663,Jørgen,Baklid,M,1999-11-14,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,NTNUI
+74bb7b0e-24be-4e5c-8513-03390d82a569,Hadrien,Barc,M,1999-01-09,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL i BUL
+7a3179b8-1c48-484f-b15e-f840303518b9,Håvard,Becker,M,1999-04-18,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+5e794ce5-dd21-49a8-aff5-8d6ab10535e0,Kristjana,Berg,F,1999-05-28,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Fagernes IL
+b7195374-b79d-430c-a962-4fc72592b5e3,Kasper,Berg Jansen,M,1999-03-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sandefjord Turn & IF
+bef8bc26-24c6-430a-a2f9-36f15a365f2d,Kine,Berger,F,,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Moelven IL
+21e55705-9cf3-43a8-9298-b68e0842fdd6,Nikolay,Berger Bjørnebye,M,1999-09-30,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Vaaler IF
+f2290c5c-01f2-45e6-8eb8-607b88420bf5,Malin,Bergersen,F,1999-01-01,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Kristiansand Løpeklubb
+b4b05052-fb3c-43d7-bd4d-c748b1d87fc7,Emil,Berglund,M,1999-08-11,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Løten Friidrett
+a9ffa8ea-df21-4f42-bd77-810999d47b9c,Maren,Berland,F,1999-05-06,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sandnes IL
+eebc8898-eecc-4412-a782-36cf5bb6c146,Sigurd,Berre,M,1999-04-07,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Bøler IF
+2e6b6942-3759-434f-a989-8a8976794361,Sigurd,Beverfjord,M,1999-05-09,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Tingvoll Idrettslag
+1c4147d1-d3fb-44b9-9e08-29131179b381,Dawt,Bik Sang Zathang,,1999-04-22,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+3554a1fa-2a3b-4498-b8f1-0b58cfeb5e5e,Marie,Biørnstad,F,1999-05-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sarpsborg Idrettslag
+79440250-5b51-4855-b946-b92f07a8195d,Clawis,Bizimana,M,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Vadsø Turnforening
+e608a11a-77ba-4c7c-a732-fe1ca00b7133,Anita,Bjerland,F,1999-06-11,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IK Våg
+33e4f8f6-9fc3-4508-879f-515326e26bc3,Renate,Bjerland,F,1999-06-11,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IK Våg
+0d95d5d8-6680-4f67-b19f-ebd73326432a,Torkel,Bjørbæk,M,1999-09-26,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Bodø Friidrettsklubb
+da7340a9-09cf-416f-9dd3-8f673b9c325a,Gunhild,Bjørgo,F,1999-02-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Fagernes IL
+028f4b16-e7ab-4db0-b77d-a183e2343652,Andreas,Bjørkmann,M,1999-08-11,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Alta IF
+12631a86-f2ac-4c0a-8b9f-293aa6e0aa09,Tarjei,Bjørkum Vereide,M,1999-10-13,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Fjellhug/Vereide IL
+4a305226-d3db-4a21-a6ba-9ec6211d73ac,Ida,Bjørnhaug Aarnes,F,1999-03-21,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Oppstryn IL
+1d534481-31fe-4393-89a7-c0384497901d,Henrik,Bjørnstad Koppang,M,1999-10-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IK Tjalve
+a74a8c58-c182-4eae-99d1-b1359746da68,Aurora,Bjørnstad Øyen,F,1999-06-20,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Nidelv
+8b525e67-b575-4f49-98cc-cde68ca46803,Ann-Eline,Bloch Børke,F,1999-02-11,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Byåsen IL
+aa64a629-bf73-41b3-a74e-1efe5cb9dcb8,Kristoffer,Blücher,M,1999-01-30,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Gneist
+d990d4c6-5f9a-46e1-8551-b00f82654711,Embrik,Børresen,M,1999-04-23,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Strandebarm IL
+25e02b17-a242-4372-aaf9-d8c4e763afb7,Samuel,Børsheim,M,1999-02-06,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Strandebarm IL
+4121b861-1585-4f2b-bc8a-670986a29c1c,Stine,Bratteng,F,1999-09-01,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Nittedal IL
+4cda0be4-3375-46c9-b254-a5beaec9201a,Saga,Bratvold,F,1999-07-05,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+5a395168-6f61-439b-b24a-4629f97fc0cc,Mathilde,Brenden Skjellerud,F,1999-07-03,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Lillehammer IF
+6bcbd4cb-ac95-4621-b2c0-97d3d040f49a,Sigrid,Bru Reigstad,F,1999-11-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Osterøy IL
+f25d92d3-1236-4be2-b011-362f76b0ca1a,Fride,Bru Waage,F,1999-01-14,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+f9b5a6f4-0304-4885-8000-007b4f068fa7,Fredrik,Bruerberg,M,1999-06-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IF Sturla
+15ddb474-66c6-4a61-aad4-54e207877a62,Sander,Brunborg,M,1999-08-14,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Vaaler IF
+d4bcff61-1a7a-4b9a-ac5e-3185f427ca35,Kristian,Bull Melsom,M,1999-06-03,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Herkules Friidrett
+f94d90ba-4c13-43d0-9ae7-23f524ad91bc,Bendik,Bull-Hansen,M,1999-03-03,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL i BUL
+42bf60e5-1dbc-4bce-8479-dd729fc579d1,Lene,Charlotte Wee,F,1999-11-29,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Haugesund IL
+70330683-2ce1-4dba-bea5-aac1ab370691,Marc,Christian Legayada Berntsen,M,1999-12-29,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+3d744f61-4731-42c5-9ecb-1b67ea50a270,Lea-Celin,Conteh,F,1999-04-20,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IK Tjalve
+98aa0398-4c4a-436d-883d-369d19e3ea67,Magnhild,Dahlen Aspenes,F,1999-12-13,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Idrettslaget Fram
+951f83a7-7412-46d3-b802-833526916136,Karoline,Daland,F,1999-02-13,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+cc821217-9247-4ad8-b0a1-6a99be18b43a,Sander,Dale Sørvik,M,1999-03-12,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Frode IL
+b3deb15a-9fb0-40e0-92a5-adf17a12088a,Caroline,Dalhaug,F,1999-08-17,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Narvik IL
+fc10198e-f0c3-4981-8b86-701e787da86f,Malin,Danielsen,F,,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Søgne IL
+7b4a0aed-8ba3-4116-8642-262d64cef533,Vegard,Dragsund Nilsen,M,1999-06-01,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Norna-Salhus IL
+6b1d1181-2bb1-41f0-8826-0b87aea7c5ab,Arianne,Duarte Morais,F,1999-05-23,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL i BUL
+5a0406fe-13c9-4b2a-a1e9-2e9ff8ac84b6,Selina,Dybvik Kristoffersen,F,1999-06-24,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ålesund Friidrettsklubb
+cabd3744-f8d5-4a53-859e-7d59fc0429d2,Cathrine,Dyrendahl,F,1999-11-07,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Strindheim IL
+e42cc302-b2fc-4bec-9069-aaca94d12001,Malin,Edland,F,1999-03-31,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sportsklubben Vidar
+01d92bd4-25c6-4a62-89be-fab8d31fb1f9,Marie,Eide Roalkvam,F,1999-03-14,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Idrettslaget Skjalg
+fc3ab032-31ad-4658-8fbb-edc0f8c324a9,Ida,Eikeng,F,1999-06-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Urædd Friidrett
+b7d16ace-d191-40d3-8788-92a4b086c57f,Daniel,Einarsen,M,1999-06-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Ask Friidrett
+030b01dd-54ee-4844-9321-f90155991823,Helene,Eirin Stokke,F,1999-05-28,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+17d4a67b-54f9-4524-9192-7b1946faddf2,Sander,Eliassen,M,1999-02-02,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Oppstad IL
+1a556be3-9d17-4c29-82ec-56d321d04c40,Torstein,Eliassen,M,1999-05-12,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Moss IL
+735f3496-76fc-456f-b982-c55abb94f0de,Ingrid,Elisabeth R. Fossland,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Norodd
+4a689814-cf79-4589-b3eb-47adaad2d4e0,Guro,Elise Kvaal,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,"IL Fram, Skatval"
+27a501ce-c72f-46fd-9734-3aa5083e1093,Håvard,Ellila Homme,M,1999-02-02,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Søgne IL
+5c091c50-370b-4571-9d40-0483f07dd53f,Håkon,Ellingen,M,1999-02-21,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ogndal IL
+e4769c01-6727-4134-bcf7-8ec8157e8496,Halvor,Elverum,M,1999-09-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+b6c819e4-54e8-404c-ba95-7c1bd05d4b2a,Vilde,Emilie Ingvaldsen,F,1999-03-05,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Norna-Salhus IL
+ad2dced4-beae-4752-a1c0-99914380d7ae,Morten,Endresen,M,1999-02-06,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Haugesund IL
+93776c0b-9280-4418-997a-1f39a06a4de0,Emil,Engh,M,1999-12-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Koll
+6593b230-c5a7-43a9-b917-f5335fc2e10a,Alexander,Eric Burlin,M,1999-03-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ski IL Friidrett
+06b76aeb-0fd0-4432-9fa9-f45bb2ba6548,Jan,Erik Tennfjord,M,1999-04-01,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Hareid IL
+c0f44db3-b9b8-4557-8158-873a76a8e782,Petter,Erikson Bekken,M,1999-01-25,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Nidelv
+45ef903c-5f4b-4eab-99a1-687e279e5f62,Ulrik,Erlandsen,M,1999-10-24,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Fana IL
+4496f768-eb72-40f9-91d2-24c81c92e73e,Ivar,Espenes,M,1999-02-23,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Strindheim IL
+af20475f-263a-44dc-96f2-fad09f103696,Martine,Evenrud Solbakken,F,1999-02-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Raufoss Idrettslag Friidrett
+353932f1-2576-4124-82eb-32af26bdd919,Øystein,Evjen,M,1999-01-16,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ranheim Idrettslag
+041935d5-0676-4b8e-a24a-ba2fcecb5e44,Ingrid,Færøvik Mork,F,1999-05-12,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IK Tjalve
+e404952f-b67c-40b1-9c0f-84806ab5e698,Victoria,Fagerthun,F,1999-05-27,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL i BUL Tromsø
+cf5dfc66-3a08-4ea0-8de4-5377424be333,Håkon,Filbert Opheim,M,1999-09-14,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+dbb10c3b-fe1d-47b2-865b-858dc389aa9e,Elise,Filbert Opheim,F,1999-09-14,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+31661baa-8d60-40cf-9a78-8ea2802b6d13,Oliver,Finden,M,1999-09-12,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Sortland Friidrettsklubb
+3d7af796-0d56-4610-a910-c48a114cbec2,Magnus,Fjæstad,M,1999-07-08,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Løten Friidrett
+5686a69c-1dab-477a-b468-1bcd73bbdabb,Matias,Fjeldstad,M,1999-01-11,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Bækkelagets SK
+d50d22ad-7a3c-4efe-9964-420d11b7c782,Tonje,Fjellet Kristiansen,F,1999-09-13,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,FIK Orion
+d7357a2d-cad1-4e41-ab70-0a01d93fca9a,Benjamin,Fjellhøy Arntsen,M,1999-09-04,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+5d938b58-415b-40c3-9348-83b59d0769ce,Helene,Fjørtoft,F,1999-08-23,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ringerike Friidrettsklubb
+7ad56baf-7561-4a3f-ac06-b2f3156fcb92,Andreas,Flåten Børve,M,1999-05-29,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ullensaker/Kisa IL
+71b54b95-842b-4862-a2b9-416b6a2108a6,Lars,Flesche Hellenes,M,1999-08-29,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Larvik Turn & IF
+e9ed9c90-84c2-44ca-8301-7b1013c033c3,Michelle,Floor Heggeland,F,1999-11-20,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Gneist
+0baaee8c-533f-4604-9c9d-57a4d4744bac,Calvin,Foshaug,M,1999-06-26,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Målselv IL
+2f7db65c-ad70-4936-92e7-9837bd19f411,Herman,Fossum Riise,M,1999-02-21,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Bøler IF
+3e6c0b11-bedd-4211-8da3-ed6b156b3c2d,Ella,Fredheim,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL i BUL
+01507937-6dbe-45b9-86be-874aac3e63c8,Hanna,Fremo,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Lundamo IL
+e202b177-09d0-4332-8d3d-54c0355742e6,Ingrid,Fyrand,F,,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Krødsherad IL
+968f0194-e193-442c-9c1c-31770209f38e,Ole,Garsjø,M,1999-12-19,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Askim Idrettsforening
+7a45f4c5-2965-4faa-bc7f-0bcfe70ee6b1,Andre,Gartland Hoff,M,1999-06-11,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Salangen Friidrett
+1e3368fe-d005-45e8-8f31-267ff804385b,Inger,Genberg,F,1999-10-21,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Nesøya IL
+ca6c7f16-5843-4cc4-8c77-a7c3e0da6c14,Rafael,Gildestad,M,1999-12-06,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Olden Idrettslag
+bcec8caf-506d-45f7-b94a-60be2c088ff5,Rikke,Gjeitnes Dahle,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Molde og Omegn IF
+2b56c781-44da-40a1-889a-ccbaf11c0cda,Tengel,Glemming Thorsen,,1999-06-09,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Vegårshei IL
+8a467d79-8c38-466e-b884-9f74e17c73fb,Ane,Granne Kvale,F,1999-03-17,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Høybråten og Stovner IL
+e55290df-b3c7-42c6-b771-f5b456b8e3d3,Andrine,Granstad,F,1999-04-26,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Krødsherad IL
+b9487d83-b0a8-4665-9ba3-4c0faeb646d1,Simon,Grimstad,M,1999-02-08,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Dimna IL
+717a103c-7328-43d3-8229-f0743ef30a34,Rebecka,Grønli,F,1999-06-21,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+8ad9d49c-63c7-4ab5-a2ca-655b441ef12a,Sverre,Grønvold,M,1999-04-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,FIK Ren-Eng
+d87384d4-9dc5-45b4-8b44-355944a4d82a,Fredrik,Grusd,M,1999-02-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Tyrving
+d6f70261-15a2-43b9-8439-8ecc2031159e,Una,Gundersen,F,1999-06-17,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sørild FIK
+ed96829f-8648-4fe8-8b51-b5b96b487f3e,Sondre,Guttormsen,M,1999-06-01,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sportsklubben Vidar
+df599cf7-b0e5-405f-a689-ee2ef0e99c7f,Fanny,Gylvik,F,1999-03-18,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Halden IL
+185d8ff0-2214-41ed-af76-da605239d647,Trine,H. Andersen,F,1999-02-18,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Halden IL
+4f8e451a-4980-4983-82ac-81052e60315d,Knut,Haakon Stenerud,M,1999-04-04,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Åndalsnes IF
+7c5a5d35-c39e-48d8-a498-fcc5921e8006,Simen,Halle Haugen,M,1999-01-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Runar
+bb198d98-566a-4a88-bdb1-030f14262d6d,Ola,Hansen-Møllerud Hauen,M,1999-06-17,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,FIK Ren-Eng
+ed1d41f3-9a1a-4905-8716-712e65cfc513,Fredrik,Haraldsen Sverre,M,1999-02-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Sandvin
+6c87cfc6-4463-4d0d-a10b-d460851eecef,Synne,Haram Nordtveit,F,1999-09-06,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Fana IL
+25902e7e-52f9-4953-88ea-580a146e5401,Kristoffer,Harestad,M,1999-05-15,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Lye IL
+54de7908-fbfd-400c-865b-51b5ca97f34b,Agnethe,Hasli,F,1999-06-22,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Gjøvik Friidrettsklubb
+ba359000-bf07-415d-ad91-a5b86668a98d,Even,Haug,M,1999-04-25,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sørild FIK
+8c5657d2-6c77-471d-9f90-272431bcb43b,Henrik,Hauge,M,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Varteig IL
+09ef34dd-d615-4bfd-ada0-b4c6a87c3137,Peder,Haugedal,M,1999-06-23,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Mandal & Halse IL
+3713630a-422e-4389-9e0a-ba64126fc301,Elida,Haugen,F,1999-01-24,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Bodø Friidrettsklubb
+da0bb537-b47b-433a-abb5-fda4fb66f059,Mathias,Haugen Tverbekkmo,M,1999-03-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Raufoss Idrettslag Friidrett
+1c454edb-6aef-46bf-af02-e7fd67e77d8d,Live,Haugstad Hilton,F,1999-09-12,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Gneist
+7090a99b-2ab4-46a5-addc-b54a885567ff,Knut,Haukeland,M,1999-02-18,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Bergens Turnforening
+3f0008cd-c6eb-4578-8a8e-b9e7bc81c62a,Sander,Håve,M,,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Hegra IL
+c4b7ce9b-da92-4e34-83b0-45ae59e23fda,Alexandra,Haver,F,1999-12-16,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+3e4e037d-f163-408b-af80-45787077f2a7,Silje,Havik,F,1999-09-17,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Namsen Friidrettsforening
+8a0d9313-7e9d-4714-ad81-b3e98e36818b,Harald,Håvik,M,1999-02-11,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Bremnes Idrettslag
+130508eb-17f5-4134-bff7-7b67481953ff,Erlend,Henjesand,M,1999-07-08,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Syril IL
+04403659-ae91-4bb7-aaef-2218925d4556,Arne,Henning Morønning,M,1999-03-28,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Vaaler IF
+a42d9751-cabc-4800-9e7e-4bedcd87704a,Solveig,Hernandez Vråle,F,1999-07-26,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IK Tjalve
+5d4794d9-f6e8-441e-bd3a-31303e88ddb9,Andreas,Hetle,M,1999-11-09,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Breimsbygda IL
+a24e4a2d-fcfe-4a40-8524-938a41f04c94,Didrik,Hexeberg Warlo,M,1999-01-12,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL Tyrving
+d833f353-05fd-4069-a1eb-2b418c2622ec,Ingar,Hjelle,M,1999-10-04,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Oppstryn IL
+6d2ec5dc-2e5c-4025-8a93-96b4577cf82c,Andrine,Hjellen Haugland,F,1999-02-18,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ørsta IL
+12a443c5-9cbf-465e-b22a-991392561a2a,Elise,Hoel Ulseth,F,1999-12-23,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,IL Norodd
+436ae5d1-14d5-43c8-82d4-7a3d6d279839,Lina,Hoff Hansen,F,,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Førde IL Friidrett
+4f92a430-4ad9-437c-8800-b3edc7f1911d,Ingrid,Hoff-Nordstrand,F,1999-05-23,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Lillehammer IF
+744b3910-2a70-4722-a695-a3826b057454,Julie,Høivaag,F,1999-05-18,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,NTNUI
+371be51a-ca90-47cd-92a9-4976c4e6754e,Marius,Holm,M,1999-01-29,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sandnes IL
+3e625351-a151-44b4-8645-f1a23eacb73c,Herman,Holm Strand,M,1999-05-13,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Stjørdal Friidrettsklubb
+8de9a98a-1c54-4ab1-82e9-4162555e0213,Sigurd,Holmsen,M,1999-08-18,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Oppegård Idrettslag
+0d752912-ca97-4dcb-b181-7714db068c8e,Johanne,Holsbø,F,1999-03-26,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Alta IF
+89b0b936-ba59-444d-9b53-3403ffc04c41,Sanna,Holtmon Myrvold,F,1999-10-22,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Namsen Friidrettsforening
+8b35e7c6-1d0a-4380-a5c0-7217ba79526f,Siren,Holum,F,1999-12-04,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ski IL Friidrett
+8d082213-5275-4bc9-8f5c-d561850abe41,Ellen,Homstad,F,1999-02-06,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Overhalla IL
+a1289106-fa2a-4728-9054-a8471285e341,Selma,Horn,F,1999-10-05,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Koll
+2e24b77d-72fe-4168-bb40-a76f4ebf9687,Erik,Houm,M,1999-02-07,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Gausdal FIK
+9406889a-f16a-4457-ad2b-8684f6fa93f0,Herman,Hovland,M,1999-04-17,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Gneist
+3dba0d91-d9af-4e43-b0fd-14ce6102ef7c,Nora,Hundseid,F,1999-03-06,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+3218bb83-8a53-42c6-a02f-afb829fe7b01,Herman,Ingebrethsen,M,1999-09-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sandnes IL
+86f64dc3-9709-4d29-986f-e53a2de52086,Mille,Isabel Tidemansen,F,1999-03-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+b45d90ae-9ed1-4988-b5fd-7596d3093103,Elise,Isolde Stenevik,F,,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Florø Turn og IF
+58ffbf0c-d958-4322-a606-35cbbe390467,Karine,Jacobsen,F,1999-05-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Bækkelagets SK
+d1013a24-852b-4f9b-83c7-e212ce64c9eb,Jonathan,Jacobsen,M,1999-07-16,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Nittedal IL
+e2e425e0-32f3-4540-a7ab-a37a36527800,Ole,Jakob Storebø Viken,M,1999-02-15,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Lyngdal IL
+0f903596-c73e-4602-87c1-9d3a610434b1,Åsmund,Jakobsen,M,1999-02-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Nordre Land friidrett
+aa9835b1-0a4a-4c3d-89c9-07d657fc4ab8,Agnes,Janzon,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nesodden IF
+8141d2c2-bfdd-44ae-90d0-5b65565cfb0e,Ståle,Jarmund,M,1999-08-09,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Hattfjelldal IL
+ba4f1de4-7fb0-4b82-ade4-4d97ed3bf07e,Joshua,Jaunsen,M,1999-02-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Bøler IF
+1e533aed-f221-4ef6-96c9-2c4114a160e6,Benedicte,Johannesen,F,1999-08-29,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Fredrikstad IF
+fb60bc59-517f-4d34-80c3-cfcc667253eb,Ole,Johnsen,M,1999-08-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Tyrving
+0269710a-4e83-4291-bfc5-edb8b14b7a31,Stine,Johnsen,F,1999-04-25,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Urædd Friidrett
+181b064d-4ef4-4b5e-9bc1-160cf81353f7,Emil,Jordhøy,M,1999-06-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Lillehammer IF
+94c33c50-58ce-4f45-8ab3-4b5342950a4a,Karl,Josef Georgsen,M,1999-01-30,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL i BUL
+a1aea773-31ee-4d15-b625-4e37a6e3784b,Sondre,Juven,M,1999-04-17,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Nesbyen IL
+7c0073f0-ea84-4e56-8718-9ee8042e857b,Adrian,Juvland,M,1999-10-04,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Herkules Friidrett
+01715c3e-63bd-4eae-afd6-6ae35e57d30e,Siri,Kaarstein,F,1999-09-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nittedal IL
+380a48e6-3ddc-4947-a8f4-58b15f03fb89,Martha,Kabatanchi,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Vadsø Turnforening
+924454a1-b9f4-49d4-93e3-c2158fcc128d,Andreas,Kaldal,M,1999-01-23,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Namdalseid
+385f5972-827c-4e19-b4b1-18308dc97546,Kasper,Kampmann Johansen,M,1999-03-24,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,FIK Orion
+cc4e3c7f-9451-4b5d-b582-fe5484536e78,Jenny,Karen Gautesdatter Paus,F,1999-09-23,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Vadsø TIF
+eeec8bfb-57a4-40d5-bb32-6761bd5037d2,Magne,Karlsen,M,1999-08-24,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Søgne IL
+5289d0a5-d40d-45cf-a657-2e09d317180f,Espen,Karlsen,M,1999-08-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Urædd Friidrett
+517fed59-1846-4769-ab5b-ab974d9769e6,Inga,Kårstad Skaar,F,1999-08-27,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Førde IL Friidrett
+7d0d8a78-92d8-41eb-9b8d-473df22b856a,Daniel,Kasper Sandbakken,M,1999-01-08,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Lambertseter IF
+f0772c1b-649a-4b2d-a89e-e648425c29c8,Birgitte,Kjuus,F,1999-05-30,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Ullensaker/Kisa IL
+d6019553-b69a-4bfd-b763-3d34a8753e7b,Sandra,Kleppenes Sårheim,F,1999-01-04,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Breimsbygda IL
+8559971c-d80f-4770-8440-db21ab365877,Karoline,Knapper,F,1999-02-26,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Lambertseter IF
+9f4d684f-462a-48d8-9b2d-c8f74c2e4271,Rachel,Kolbjørnsrud,F,1999-03-02,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Snøgg Friidrett
+c22ed2f3-36cb-45dc-bdea-21a69a5a28e4,Malene,Kollberg,F,1999-05-16,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sportsklubben Vidar
+830b03ae-fc86-4b66-ba2d-e451616437ce,Iver,Koppen,M,1999-04-21,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Tyrving
+8c0f77fc-004b-42b9-a288-5cd72f7b81f9,Raymond,Kopperstad,M,1999-01-17,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Verdal Friidrettsklubb
+81c8cb16-f1a1-4a2b-ac4d-d7dd5bb60d25,Andrine,Korsane,F,1999-01-19,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+f2687d14-4f60-45d4-909e-ca8fae174474,Nina,Kovac,F,1999-12-17,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Norna-Salhus IL
+7bf84dcc-7404-4938-9111-0283ef9b1e4c,Inger,Kristine Melhus,F,1999-03-01,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sola Friidrettsklubb
+704bf5bc-a721-41c3-a797-184678230e26,Frida,Kullerud,F,1999-06-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Sarpsborg Idrettslag
+e1baa427-aa20-444f-a94e-4db44557e6cc,Mindaugas,Kumstys,M,1999-07-06,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Skogsvåg IL
+03291a68-e041-4a2c-b527-d4fcea51b2da,Kari,Kuvaas Herting,F,1999-01-14,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Bergens Turnforening
+e1526228-28ca-443a-b366-f37dcc7172d8,Helene,Kvam,F,,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Lillesand Idrettslag
+11765147-308b-49e9-b306-db9996c37852,Øystein,Kvilhaugsvik,M,1999-01-15,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Idrettslaget Skjalg
+8c0dec3a-7e51-4233-9611-fb5df31cef74,Bertine,Kvinen-Lindland,F,1999-12-05,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Holum IL
+9352a3b5-a58f-49a2-af2a-3add60997ae9,Andrine,Lærum,F,1999-09-27,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IF Hellas
+4fc7c3e7-2bf9-43d3-a56b-f767c4f3a43c,Helle,Låhne Smedsrud,F,1999-10-26,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sem IF
+b9c17da1-a604-4828-bb27-52e295057991,Anna,Laila Guttorm,F,1999-09-02,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Nordlys
+c337efe8-2553-4133-96bc-97364a37026f,Sigurd,Landsverk Evjen,M,1999-09-06,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ranheim Idrettslag
+651f49cc-58ae-49ca-a879-93e7d05581fb,Tonje,Larsen,F,1999-09-21,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Sem IF
+9ceb9975-63a3-4da9-9470-aa237a95ffe0,Sindre,Larsen,M,1999-01-01,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Åkra IL
+5bced467-20a9-4343-92c9-ec8296bf4fbd,Ida,Lauen,F,1999-09-10,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Giv-Akt
+61f12038-fad5-4671-b392-84e389cffff8,Thale,Leirfall Bremset,F,1999-04-12,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IK Tjalve
+32fadee7-6735-46a8-a44a-67a8a805bb5f,Thea,Leirfall Bremset,F,1999-04-12,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Norna-Salhus IL
+bb5c34d5-aa74-4168-bc0e-52ef45ca853f,Oda,Lillegård,F,1999-04-17,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Alta IF
+fbae8352-3703-4b37-8bf3-37c2d03129e0,Jenny,Lind Hitterdal,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nesodden IF
+980da4c1-cf45-4c1e-a023-e4aa397481fa,Marthe,Lislevand,F,1999-06-04,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Kristiansands IF Friidrett
+2a294e42-bce1-4f6e-93b1-5bd9b17663d0,Petter,Løkken,M,1999-09-08,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Gausdal FIK
+c77e8722-560d-4702-b7fc-fc1f8521377f,Anneke,Løkken,F,1999-01-12,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Sandvin
+a3e2dc5e-fa3b-4a35-882e-e8a4259202f0,Erik,Lønskog,M,1999-01-19,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Ranheim Idrettslag
+7441d9a0-cbd0-4ec5-b4e1-7ab7eabb4223,Andreas,Lønvik Øwre,M,1999-04-19,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ytterøy IL
+1d17b19b-9496-437b-8be1-d06145726b40,Einar,Lorentz Alfheim,M,1999-09-12,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Dønna
+8d2a60ab-081b-4076-a68c-182d448095f7,Joachim,Losnedal Tonning,M,1999-07-06,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Varegg IL
+56cfd46e-bac9-4cc9-bbb7-d5fb80675ba1,Johan,Lothe,M,1999-03-23,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Brodd IL
+f32291e9-7134-4cc8-b592-c756a995e916,Simon,Løvhaug,M,1999-03-25,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Salangen Friidrett
+c1ebb154-268f-4350-b3b1-085074b167c0,Camilla,Lunde Colleuille,F,1999-04-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL i BUL
+04a32afb-79e3-4b6e-8814-0d5d593c2a8d,Vilde,Lundin,F,1999-03-16,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL i BUL Tromsø
+12d7d9e0-81dc-419d-a816-ddf4173d8b77,Ida,Malene Westman,F,1999-04-13,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lambertseter IF
+9da25e95-5938-4ab8-8fa4-eab495394878,Ellen,Margrethe Mathiassen,F,1999-05-19,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Flekkefjord IF
+5672ba12-8ffe-4545-b847-3c11aab9e74e,Thea,Marie Evjen Indresand,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Narvik IL
+ad3c8edd-9b24-4d01-a546-2f7fb75f14df,Synne,Marie Gjerløw,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Fredrikstad IF
+4b5997e0-66aa-4ec4-b3d5-5f8d8b066750,Silje,Marie Haavik,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Namsen Friidrettsforening
+51547237-8192-4dee-aeae-744c441c8906,Lise,Marie Meland,F,1999-10-21,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sarpsborg Idrettslag
+d81972bb-7a37-4228-bd14-fa9ed63a024a,Mathilde,Marie Solberg,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Ullensaker/Kisa IL
+2bcaa7cc-9c33-4d1b-a3e7-830ad322778e,Celine,Marie Tangerås Bressand,F,1999-12-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Tyrving
+75c1e8d9-c9e3-4173-a8f9-ac44c05e5738,Tomas,Marløv,M,1999-08-23,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Hellas
+6c1eb7de-2214-40a0-938f-a9ae27c57d08,Stine,Marø Sundgot,F,1999-02-24,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Dimna IL
+663dc643-c93b-42a8-8f67-d889de952b3c,Joakim,Martinsen,M,1999-07-21,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Romerike Friidrett
+536d65cc-a8c5-4658-b9c0-31f9ba888fe9,Andrine,Mathea Englund Mårstøl,F,1999-05-27,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugen Idrettslag
+3d8dd93c-9c6f-46c2-9322-fb7136a2dc3e,Edith,Meek Allern,F,1999-01-13,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Sandnessjøen IL
+6476fda8-ac4a-4e82-b133-01e5e85b05ef,Ingvild,Meinseth,F,1999-03-31,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+4feb20d8-4c3b-4e9e-8dbd-e8122b93fcce,Jørgen,Mejland Hansen,M,1999-07-29,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Tyrving
+0876ad6d-a5da-49f2-a043-2770b5d8a4e0,Mathias,Melheim,M,1999-03-01,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Olden Idrettslag
+271f8ecd-7b71-4b8a-8fb1-0c2cad5ec8f9,Hedda,Midtstraum,F,1999-02-18,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Strindheim IL
+aad904c7-25d5-46ae-8f9f-ac4c6a407886,Hanna,Midtsundstad,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Vaaler IF
+09a46392-0d6b-4670-b5e4-7e4d6fb5166e,Erik,Mikkeljord,M,1999-02-01,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Hattfjelldal IL
+281c9b5e-fa89-424c-ab72-eeb35c261259,Donavan,Miloss,M,1999-05-04,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+2ee2da6b-2420-432e-98b2-d5280fea2aad,Andreas,Mjelstad,M,1999-09-21,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Jølster IL
+a9897bf2-0d0e-4570-adfb-82e14de2a425,Emilie,Moe,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,IL Nidelv
+057a2eb2-c190-47e0-b1d7-bab44cfc8057,Hege,Moe,F,1999-03-24,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Bodø Friidrettsklubb
+2eb2971b-b81d-4418-aba2-41a7dc1ddace,Marcus,Moen,M,1999-01-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Ullensaker/Kisa IL
+16a1e137-95a8-47c6-b709-5eb74e4ccf5c,Georg,Mogens Høyum,M,1999-08-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Fredrikstad IF
+128e35cc-7d63-4785-a5c2-4a5b8192bcbb,Lyder,Møller Ulvan,M,1999-04-01,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Strindheim IL
+410e8bc2-4c6a-41d8-a798-86a7f70a9eca,Malin,Mønsås,F,1999-03-23,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+cc4bd906-affd-4254-af42-c86e1af49075,Ole,Morten Jørgenvåg,M,1999-05-23,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Tønsberg Friidrettsklubb
+1f8cb6e1-35c2-49a5-8eb1-9d312ff5dc41,Magnus,Morud Vågen,M,1999-06-08,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Minerva Idrettsskole
+4f021cb1-1096-4939-9ad6-00ceea034fab,Rachel,Myhre Hunstad,F,1999-08-09,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Kvæfjord IL
+660a4ddb-2f89-453a-97e6-61d6a942b604,Ingvild,Myking,F,1999-11-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Gneist
+4da7a113-54b8-48c2-959c-54971a8af5a8,Egil,Myklebust,M,1999-10-15,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Hornindal IL
+1e0272fc-c05e-49be-95d0-4edb00b8d527,Sanne,Myrmel,F,1999-04-23,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Fana IL
+fb62c4aa-6210-49d2-8712-aec8d40a883e,Andreas,N Danielsen,M,1999-09-28,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Bodø Friidrettsklubb
+87add8cc-c8b9-4aef-bc8e-97f75a826fcf,Jonas,N. Wenger,M,1999-03-14,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ullensaker/Kisa IL
+ac7f7b3b-d6fa-4354-88d4-f007110d472d,Joakim,Næss,M,1999-05-13,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Malvik Idrettslag
+f957087b-e17d-40d8-a48a-7a4a4f8b4770,Emma,Natalie Hagen Dhir,F,1999-02-03,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Kristiansands IF Friidrett
+89664dfd-ab3c-4017-9343-46a7a89b3dd7,Steffen,Nathan Hatlelid,M,1999-05-05,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Hornindal IL
+a06a0905-eb1c-4757-a4fd-f648c411e4d8,Håvard,Navelsaker,M,1999-09-28,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Hornindal IL
+810f3a8f-ae4d-4053-a3ad-3775785fc563,Tonje,Nedberg,F,1999-12-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Idrettslaget Skjalg
+96dbf62d-b469-40b4-8a42-3842330c4edd,Torkjel,Nese,M,1999-03-28,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IK Hind
+d3f58bd4-9ae6-4f18-9ef0-437c815ae301,Sandra,Nielsen Hvidsten,F,1999-02-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IF Sturla
+8cc86bc8-46c1-4a06-8adb-f864f7892735,Lukas,Nilsen,M,1999-10-10,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Kokelv Sportsklubb
+8ba910a8-d3f6-449a-8335-2b9a2d33e077,Ingrid,Nilsen Bukten,F,1999-11-24,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ringerike Friidrettsklubb
+aaecc3f6-fc55-4add-8d4b-1a1ba5c4fb14,Celina,Nilsen Lundevik,F,1999-10-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Tyrving
+e884e8a3-e68d-4dea-826a-eb4feb14b3f7,Josef,Njerve,M,1999-06-14,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Giv-Akt
+5c88e86d-6e1c-4f0d-a3ed-9e5e81165b39,Ingrid,Nordbotten,F,1999-05-27,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Idrettslaget Skjalg
+1bd3c686-b281-4fdb-a9c0-16754938a248,Markus,Nordgård Fossland,M,1999-01-05,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Stjørdal Friidrettsklubb
+23f98c2f-cbc9-4055-a46a-f0dc22fbe654,Johanne,Nordheim Tveter,F,1999-01-15,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Asker Sk. Friidrett
+4b82a402-ae3a-4ffb-96fc-d5bbf04251a2,Ellen,Nordqvist Sjøblom,F,1999-09-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Moss IL
+a4d3e767-7557-4751-ac28-83e4b5498219,Christina,Nordvåg,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Narvik IL
+df66891d-d4d6-4ff9-98d3-830c52958ced,Frida,Nyhus,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Modum FIK
+7e821b0e-037e-4a7a-985a-3ee4d64a2ee8,Solveig,Nyhus,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Krødsherad IL
+47293fac-cf75-4371-b7dd-dfe4d6233002,Hilde,Nyhus,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Krødsherad IL
+a2bc8973-b792-47e3-b259-29b926ecba12,Ingrid,Nyhus,F,1999-10-05,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Krødsherad IL
+f7671054-a01b-4830-9983-8d074b9fca26,Halvor,Nymoen Winberg,M,1999-04-29,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Herkules Friidrett
+6c8a8f60-44a3-4db5-9a32-2a4ccb82891c,Jens-Olav,Ø Hausken,M,1999-04-28,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sola Friidrettsklubb
+a11b1e80-9baf-43c8-9d40-4be1652a0dc1,Emilie,Ødegård,F,1999-09-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Krødsherad IL
+0b3b86bb-a13b-4fcd-add7-76743ae47f3c,Eirik,Odinsen,M,1999-02-27,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Søgne IL
+23461fed-109d-4667-bc11-d7dee3f84f9b,Emil,Olai Helsingeng,M,1999-08-01,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Kvæfjord IL
+584a71d8-48ab-471a-86be-5c96b0b50275,Anders,Olav Hoff Husøy,M,1999-11-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Sandvin
+b01130bc-e41a-4792-9a93-17afc2490036,Ingeborg,Oline Fossland,F,1999-07-27,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Norodd
+911a8dbb-8974-4c2f-8f67-da7facf212ab,Mary,Olivia Ranjan,F,1999-01-04,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Minerva Idrettsskole
+aa9a1c7f-44e0-49f2-b5be-40789eb0be90,Ingrid,Olsen,F,1999-03-16,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Egersunds IK
+f8d6c85a-c07c-4fd5-93db-14d0414f433b,Helene,Olsen Austnes,F,1999-01-13,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Fri
+241a7160-765a-4f55-be6c-812833eed0a1,Andrea,Olsen Wengstad,F,1999-12-23,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Steinkjer Friidrettsklubb
+3b20ad4d-cf93-4d22-bc67-1c2e0b90f92b,Torbjørn,Oppigard,M,1999-01-17,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Eikesdal IL
+0c95d8e4-c8ad-4e0a-ae27-47107bee8c37,Åshild,Opsal,F,1999-07-10,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ålesund Friidrettsklubb
+3584a61c-e7a4-403e-8d9b-8904852ac9be,Aliyah,Osuman,M,1999-02-26,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IF Sturla
+b2f71111-88c4-466a-b2ce-4a84099ed766,Tobias,Osvik,M,1999-09-12,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Moss IL
+86a68f7c-ac38-45de-b57c-d0299c568076,Fredrik,Øvereng,M,1999-05-10,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Overhalla IL
+eede7cf0-0075-4c6e-8a44-e68883d5ff3b,Nora,Øvergaard Aarvik,F,1999-03-07,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Gneist
+3df2a41a-f5eb-47bf-8fbb-536529c2d7d1,Mattias,Paul,M,1999-01-07,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sandnes IL
+9dbb82d9-7b6d-4e8b-bd58-a96d70745284,Julian,Pechtel,M,1999-03-31,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Turn & IL Hovding
+28728578-3845-419c-af95-166a01bc416f,Sara,Pedersen,F,1999-08-30,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL i BUL Tromsø
+aed6244a-4979-4e9a-b630-a0b9d352f422,Mikala,Pedersen,F,1999-07-07,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Torvastad IL
+5662ba01-71f9-4c15-9eb6-2bbef156beac,Dag,Pettersen,M,1999-07-18,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Søndre Land IL
+2456ab8b-6fd7-48b3-accb-1f7dc50eef59,Sigurd,Petterson,M,1999-05-30,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Tønsberg Friidrettsklubb
+37ae7d2a-6c74-48bb-b998-c0971e1523c3,Astrid,Raaen,F,1999-12-25,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Krødsherad IL
+b8d6ccd6-a486-4e9c-813f-eb87e796cc0f,Øyvind,Ræstad Vikse,M,1999-01-28,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+f34f9944-db73-4bea-9417-49984e6a8e61,Amaru,Raighendler Jeasar Wijman,M,1999-09-28,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Halden IL
+f604bd60-e4da-4d17-93b6-2ae1258fd011,Eirik,Rauset,M,1999-06-24,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sandane Turn og Idrettslag
+cf9547b1-64cf-462b-b957-fba71c20c7d8,Leah,Rebekka Nybø Lowry,F,,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Idrettslaget Skjalg
+19e30268-58c6-4164-8dcd-8d4090403071,Maren,Reiholm,F,1999-01-22,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Herkules Friidrett
+f5b4c477-8aa1-4437-ac05-6d3a1d0e3e68,Elin,Rekstad Lein,F,1999-01-03,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Namsen Friidrettsforening
+33452b1f-66cc-4748-831e-64ed31d415d5,Marius,Renå,M,1999-09-22,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Hommelvik IL
+b19b62c9-4b56-42ff-9493-fe9b8254ae76,Haakon,Rieve Kristiansen,M,1999-11-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Hinna IL
+510e1c1c-ff7e-4b02-b39d-e67b83229849,Ingrid,Rødbotten Varden,F,1999-03-16,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Skogsvåg IL
+3e5e1e83-9c49-4797-9474-4c1ba2e156b8,Syver,Røinaas,M,1999-08-02,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Tyrving
+9d169e8e-8ce2-4ba0-93f2-7a0f50e8a1f3,Kaja,Rolfsen,F,1999-01-03,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Sandefjord Turn & IF
+63170c9b-3973-48e7-9571-5d647e629f39,Ragnhild,Rønning,F,1999-06-18,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Modum FIK
+91803bd8-a2b8-4433-aab6-920b759e9750,Cornelia,Rørvik,F,1999-11-02,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Idrettslaget Skjalg
+e8a77f74-79b9-4c9d-914d-376137d21253,Olina,Roset,F,1999-12-16,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sandane Turn og Idrettslag
+e48c2cac-445d-4f62-abc0-acb4e3ffd0bb,Jonas,Røthe,M,1999-06-17,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Namdal Løpeklubb
+6c5d3014-d114-498b-91dd-dc0edae25790,Elina,Røvang,F,1999-11-11,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+48b80232-9f55-42e4-9456-6dbb739bdd40,Frida,Rye-Kittelsen,F,1999-02-21,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Eidanger Idrettslag
+0576a6c8-c789-479b-a5e6-f3023fb87c8d,Fredrikke,S. Holberg,F,1999-10-26,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lillehammer IF
+a496379a-6da5-4ec0-9e2b-75d47fac620b,Kasper,S. Karlsen,M,1999-05-11,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL i BUL
+df5693d1-acaf-4bce-8251-4f5218919389,William,S. Rodahl,M,1999-05-20,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lambertseter IF
+2db11c1a-5bf1-4bc6-b5b3-e698e5739723,Silje,Saatvedt,F,1999-10-04,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IK Våg
+fc00fdc6-71ab-45f4-96c1-b185ac2144ab,Marianne,Sæther,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Namdalseid
+1705cc14-f02f-4cae-8d93-8ab41ec14772,Sofie,Sæthre,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Urædd Friidrett
+dce0fe12-e806-4b77-9dd0-2f584b9e0335,Anette,Sagmo,F,1999-09-13,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Halden IL
+6bc80851-987d-4933-a185-46dee4b62002,Tone,Sandtorv Brakedal,F,1999-05-04,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Norna-Salhus IL
+871a1a77-e329-4c68-be4b-9c178ab3221c,William,Schiøtz,M,1999-09-19,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Oppegård Idrettslag
+5a4c35b0-92b8-4fdf-a718-80827b1c7de5,Kristian,Schjønningsen,M,1999-05-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,IL Gneist
+60aa956a-8fa1-4ad1-9f47-9a1c718a7f97,Tor,Sebastian Aunaas,M,1999-09-03,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Malvik Idrettslag
+c4fe799f-b84c-4d87-9066-74828ab3cc2c,Kristoffer,Seegaard,M,1999-10-11,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Gjøvik Friidrettsklubb
+5bd5a0c1-98fe-4bbc-8c22-6ef3ada45dbd,Vivian,Selena Steinsund,F,1999-03-22,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Haugesund IL
+ea9da313-c68a-493c-9728-828cb90b4f92,Kristine,Seljord,F,1999-07-15,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Snøgg Friidrett
+b02e4862-8c26-4087-9633-9377184d9663,Guri,Sellevåg Aarø,F,1999-09-10,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Norna-Salhus IL
+e401792c-8a7c-421e-a204-60e119b65add,Abdurazak,Sharif,M,1999-01-25,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Moss IL
+796cb540-59f3-47ff-83c4-89b8bb249d75,Johan,Sigmund Eriksen,M,1999-07-27,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Jægervatnet IL
+ccdcfde4-c91e-4208-8fbd-6cfdff18b8d7,Herman,Sigstad Moen,M,1999-09-07,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Løten Friidrett
+5de8901f-511b-4634-98db-2b13afbaa676,Thea,Sildnes Baklid,F,1999-04-26,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IF Sturla
+5a71bbfd-c56d-4b0a-bb51-abb77370d2a3,Hanna,Simone Köping Hoftun,F,1999-07-27,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Asker Sk. Friidrett
+6715fb39-bcf6-4a10-8969-2d25fed17345,Fredrik,Sivertsen,M,1999-08-20,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Ski IL Friidrett
+d855e6b5-4f73-4a37-95f1-7d4adab633dc,Birgitte,Skaar Strand,F,1999-12-29,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Asker Sk. Friidrett
+e50f269a-e4ea-4afa-9c57-642a66b7ed6d,Lena,Skaatan Vik,F,1999-09-27,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+67fa3f05-d536-401f-ad3b-f62241b04590,Martin,Skage,M,1999-04-30,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+1bbbaf1f-effc-4012-b13a-80aa9df0f800,Kristian,Skage Nordlund,M,1999-05-08,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Steinkjer Friidrettsklubb
+203fa86f-a293-447e-a388-91081f89891b,Michael,Skalska,M,1999-02-14,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Sturla
+59366635-ef9e-49d5-8dde-42407a534c1d,Alexander,Skammelsrud,M,1999-02-23,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Halden IL
+22594f73-bf9d-4128-9bc3-6917bd5c0909,Kaja,Skarland,F,1999-03-25,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Overhalla IL
+5517fc37-3b15-4e64-9737-98d284029e8f,Nora,Skjæveland Utseth,F,1999-06-04,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Strindheim IL
+7b1cf64b-5dbd-4438-8be4-85d95d18ed40,Kristin,Skogstad,F,1999-05-07,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Røyken UIL
+3054a86e-cf71-4181-b1df-ce30fa3b8e1e,Therese,Skyttermoen,F,1999-09-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Lillehammer IF
+a0e23c12-84b5-4a2e-88d3-cbafaf9b1d2b,Jonas,Slettemark Juel,M,1999-10-21,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Fossum IF
+ada5d1c5-9e2c-4be8-9c5b-b9033c06daa8,Henrik,Snemyr Langesæter,M,1999-04-04,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+90cb1bc9-2545-456b-820d-706e3a96e1b8,Silje,Sneve,F,1999-06-27,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Fagernes IL
+f908fa72-b0a6-4180-af22-385796005861,Viktoria,Sneve Sådland,F,1999-05-28,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Lyngdal IL
+d85d031a-d737-4dc3-9d86-54a102f5538f,Andrea,Sofie Roald Grytten,F,1999-07-22,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Valder IL
+319d1d21-e0d4-43e6-b420-a241e9bb5355,Ane,Sofie Tønne Nesse,F,1999-04-23,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Strindheim IL
+378eaa51-afc9-4e04-897e-efd8d5428b60,Vilde,Solaas,F,1999-10-30,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Holum IL
+39cecc2d-39ce-490f-9d90-34e72cabe52e,Kaja,Solli,F,1999-05-23,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sandnes IL
+9dab8864-4163-4b0f-b7be-860737a33c6b,Thale,Solodden Lier,F,1999-10-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Koll
+0723dea9-62d6-47b9-a404-651ff34dfd3d,Vetle,Solodden Lier,M,1999-10-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Koll
+c0497aa5-dd03-4444-905c-490606ad6425,Hannah,Solstad Klepp,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Asker Sk. Friidrett
+799cda9d-e382-4df4-aa72-fc229713a83f,Målfrid,Søndenaa,F,1999-08-01,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Haugesund IL
+bb08d86b-ffc6-4337-833b-a798f5cfbe51,Ingrid,Sortland,F,1999-09-10,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL Gneist
+64126054-2b55-4ed3-bb20-a6891436d5b9,Albert,Sperstad,M,1999-04-29,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IL Tyrving
+efa1bbe1-50cb-4e80-9a57-30a81546fed8,Mia,Standerholen,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Veldre Friidrett
+4d2c26ae-cede-4655-936f-1c7004495921,Kaja,Standerholen,F,1999-01-28,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Ranheim Idrettslag
+006833bb-11bd-403a-82be-9010ca0ac4eb,Ingalill,Stang,,1999-05-15,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Florø Turn og IF
+2b941622-21e0-489d-9cfc-cb9dfbfb0ee3,Maria,Steeneveldt,F,1999-03-27,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ranheim Idrettslag
+d5c6fba1-b72b-496e-a54b-54c25aa850cf,Kristian,Steffensen,M,1999-09-19,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Bodø Friidrettsklubb
+8e4f9091-6db4-4b7e-a4f3-657651bec591,Casper,Steinsland,M,1999-10-01,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Skogsvåg IL
+38f7d811-b910-4d10-b41c-e36d63a93a9c,Telma,Stensrud,F,1999-11-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nesodden IF
+7c77adf7-7a89-4e31-a8be-ff910530b7b3,Ida,Sternhoff,F,1999-07-26,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Haugesund IL
+df349e91-9a32-4a5b-98d0-b9d11aaa226d,Kristian,Stokkenes,M,1999-10-03,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Eid IL
+5e604dcb-4cde-421b-8017-324e0f9786d7,Synne,Stokkevåg Berg,F,1999-11-23,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Dimna IL
+ab027df9-7544-4a03-a7d4-8fa46d8c2dbe,Ingrid,Storlien,F,1999-03-12,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,FIK Orion
+037a4b3b-49a7-43c3-9f64-57944fd3b868,Vetle,Storvik,M,1999-10-04,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Nittedal IL
+d3b894cc-dc28-4e4e-8745-6d2ca939f1cd,Stine,Strand,F,1999-05-13,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Romerike Friidrett
+fe4aaa34-174e-4eab-9a1c-8e46ab1b8f7a,Sondre,Strand Pettersen,M,1999-01-01,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Vaaler IF
+968c88b3-d38c-4c4d-8554-b3cfbc86d97c,Eddy,Strandvik Grandalen,M,1999-06-25,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lillehammer IF
+fc8b2bff-d99f-40ed-9d61-41f0341c98cd,Isak,Suhr,M,1999-01-05,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Halden IL
+084e87b4-d28c-4ef7-9b97-65a05a9bcc72,Asta,Susan Rustad,F,1999-02-22,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Strindheim IL
+9b814a35-6196-4b57-80dd-4bca579d1670,Eiril,Sylstad Mikalsen,F,,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Nittedal IL
+5bf1554c-1bac-42af-bb6a-a65e918bcc23,Bjørnar,Taraldset,M,1999-03-18,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Hornindal IL
+d56bfca8-1b73-4887-b3a2-0e783521fa0e,Laurits,Terkelsen,M,1999-06-04,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sørild FIK
+fc25f2e5-2290-4395-92b9-e8c65aff558d,Tuva,Thomassen Fagerbakke,F,1999-05-06,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL Gular
+53ea0862-26e0-4d81-815a-22cf255a6b98,Pauline,Tørnby,F,1999-03-21,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Aurskog/Høland Friidrettslag
+cd4d0715-8f86-4d36-987d-9776a0e90334,Amalie,Tovås,F,1999-01-04,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IK Hind
+b5b4c096-3753-4983-b346-122da79e5eb0,Christoffer,Tvinnereim,M,1999-01-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Søndre Land IL
+cf780456-8e07-4882-90fa-d7135146a4cc,Vidar,Ulset,M,1999-10-22,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Straumsnes IL
+125264a5-6671-4c90-92e1-d60fa8792f56,Maria,Ulseth Sylte,F,1999-05-12,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Strindheim IL
+438f2afc-bc57-433b-b089-c796c18e0f83,Johannes,Ulvan,M,1999-06-16,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Strindheim IL
+1831f8d5-d888-4ada-a735-53d2b91cf6f4,Elin,Uppstad,F,1999-10-02,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Valle IL
+eeb11e7b-67a7-48e6-a187-3c8ccead65ed,Jonathan,Vallestad Årskaug,M,1999-01-14,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Førde IL Friidrett
+6abca4b0-c054-4a6a-a161-f720f927f0ec,Frida,Vangsvik,F,1999-01-13,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Vadsø Turnforening
+c2d7ed46-3c15-451b-b528-b85f7c20f6b8,Nina,Vatne,F,1999-10-07,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,IF Sturla
+8fa61a95-3b54-4048-95ef-359b4e2ecf31,Hildegunn,Vekseth,F,1999-03-18,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Snåsa IL
+6928d862-0083-4568-aafc-468cfb181547,Herman,Velle Aurdal,M,1999-02-22,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,Ikornnes Idrettslag
+0fdb2ed0-0d32-4f10-8fec-97f972f9e4b1,Hanne,Velund,F,1999-03-30,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Sandnes IL
+a0a2c640-4f06-417e-b77c-029d5bae2808,Hannah,Veseth Kristoffersen,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,2,"ncc_2012,peab_2013",1,IL Molde-Olymp
+7de3cd9b-7e7b-44fa-992e-d53ebaaf8802,Trym,Vigdissønn Brodal,M,1999-02-09,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Oppegård Idrettslag
+e6c274aa-2adc-4401-874e-44e9e9474d80,Jenny,Vik Skrede,F,1999-01-14,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Stryn T og IL
+cbca08fc-8a0a-4c19-80ed-525c386d0164,Elisabeth,Viken,F,1999-09-06,1999,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Viksdalen IL
+12467fe7-27c3-4dfe-b140-e755e235f709,Helene,Vikingstad,F,1999-02-25,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sola Friidrettsklubb
+f1bc198a-dab2-4e04-a951-a10596c930c2,Nora,Vold Hovde,F,1999-11-29,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Måndalen IL
+ac003306-d998-45f3-9217-8c1847c28964,Magnus,Vonen,M,1999-12-31,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Varegg IL
+6189f4c4-9f82-4e84-bf4a-458f4feb6e8b,Stine,Wangberg,F,1999-03-23,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Varteig IL
+e1d9851b-f6b4-4c26-b792-fc6669841521,Johan,Warholm,M,1999-05-01,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Sømna IL
+21761991-dc1e-4f31-a521-c6fe9a6f5829,Robin,Wathne Nedrehagen,M,1999-02-27,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IL i BUL
+18cc3dcf-c1af-424e-b032-dff642813424,Kristin,Watnedal Olsen,F,1999-07-22,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Bergens Turnforening
+86d62deb-cc4e-436a-b100-1c82a296d3ce,Iselin,Ween Rustad,F,1999-06-16,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,IL i BUL
+aea561e1-d1e5-433e-b6de-cf30a6006d7c,Myron,Weinberg,M,1999-12-09,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,IK Våg
+0c4a1b66-2524-499b-a194-e7957b895dd5,Sondre,Westby Liestøl,M,1999-11-15,1999,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ullensaker/Kisa IL
+1cd3598d-47ed-4ab8-9ad8-fa967eec1973,Synne,Wikstrøm,F,1999-02-14,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,1,ncc_2012,0,Hamar IL
+cdfb283a-beb7-49b0-b6ce-70e833ccd563,Frida,Winther Kapstad,F,1999-07-30,1999,ncc_2012,Romerike Friidrettstadion,Østlandet,2,"ncc_2012,peab_2013",1,Asker Sk. Friidrett
+14ed7a75-aa8c-40de-9db6-db8130bfb536,Julie,Woie Flølo,F,1999-07-25,1999,ncc_2012,Osterøy Stadion,Vestlandet,2,"ncc_2012,peab_2013",1,Bergens Turnforening
+31a32160-1d2e-48fe-8f5a-e572aadf4b67,Marielle,Wold,F,1999-05-24,1999,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,IL Nidelv
+aa5dbd4d-80fb-4030-9bce-9bc15420475d,Benjamin,Wolfe,M,1999-05-31,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Bratsberg IL
+e4bd833a-6ed4-4b25-8065-98461484d97a,Helga,Ystad Rønning Derås,F,,1999,ncc_2012,Øverlands Minde,Midt-Norge,1,ncc_2012,0,Namdalseid
+f23d94d3-fe98-4667-949e-85a3b2ae70cd,Esther,Zijerveld,F,1999-09-25,1999,ncc_2012,Osterøy Stadion,Vestlandet,1,ncc_2012,0,Ås Idrettslag
+9f214c7f-a51d-436b-b265-96c34d5b42b7,Vera,Aakervik,F,2000-02-20,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Namsen Friidrettsforening
+12179c6b-9eef-4a3d-8615-767e3f52b7f4,Elisabeth,Aarre,F,2000-06-08,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Frøyland IL
+f7f7bbf6-5e9a-4d5d-9b5f-dee2ee38142f,Victoria,Aarre,F,2000-06-08,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Frøyland IL
+01d312aa-438c-42b7-abb6-d2c6d2a96e20,Filip,Aas,M,2000-08-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Ullensaker/Kisa IL
+ab737b7c-9576-4f5c-8020-a778e6a780e7,Torkil,Aasberg Andreassen,M,2000-04-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Tønsberg Friidrettsklubb
+b6a843b3-ee7a-45e6-be7a-e5c810c70d7e,Sebastian,Aasland Rognlien,M,2000-02-11,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Eidanger Idrettslag
+db0eafb3-24e8-480a-8518-6afc13b83123,Jonas,Afzal,M,2000-09-23,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Mandal & Halse IL
+2cf7d167-3b12-4011-8462-618754359993,Ellinor,Agersborg Moan,F,2000-12-20,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,IL Pioner
+242223de-f406-400c-afa5-33d89480759c,Rashida,Akpana Assa,F,2000-07-04,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IL i BUL
+072a11a1-bc4f-45be-b78c-070935006821,Kevin,Alejandro Sandoval Duron,M,2000-07-13,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Vadsø Turnforening
+7fd5a7ca-bb0b-4851-a66e-8a653dbf1779,Inga,Amalie Iversen,F,2000-01-20,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Norna-Salhus IL
+21367f15-f59e-44f6-8d8e-dd9e48b8f039,Tuva,Andersen,F,2000-08-21,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Bergens Turnforening
+031b8746-54ab-48a1-bf04-9824b24ffb7e,Jonatan,Andersen Vedvik,M,2000-05-02,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Tønsberg Friidrettsklubb
+c6135f78-a002-4fb9-9880-bbcf8e3b175f,Markus,Andre Bugge,M,2000-06-26,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,"Eidsvåg IL, Romsdal"
+233d35c2-e45b-43cf-80a1-716686d8a399,Karsten,Andre Karlsen,M,2000-04-04,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Fana IL
+71aaf50f-5778-414e-a0c8-3294635f925e,Robert,Andrè Moldestad,M,2000-01-04,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Gloppen Friidrettslag
+423ebc5f-2c2a-4c3f-84c7-286b075befcc,Kevin,Andreas Lysell,M,2000-06-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+c29ea041-f6b3-4fc0-bc6b-b8db57437643,Ida,Andreassen Rud,F,2000-04-23,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Askim Idrettsforening
+d7edfd53-13ed-42b4-89a7-52cb22fe06f1,Pia,Anine S. Stangeby,F,2000-05-11,2000,peab_2013,Osterøy,Vestlandet,1,peab_2013,0,Lyn Ski
+cdde3589-1723-42cd-962e-7646d4c3ebff,Leiv,Arne Sårheim,M,2000-11-11,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Breimsbygda IL
+33ce0dc1-39a4-403d-a4d2-18ab3cff22f8,Christian,Ask Andreassen,M,2000-03-30,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Sandefjord Turn & IF
+5eb41e0c-2163-487f-9fb7-e1e0a192f0c1,Jorunn,Aske,F,2000-01-23,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Idrettslaget Skjalg
+ba7f18d5-30a7-4ff4-8ae4-8b0339d0785e,Marit,Astrid Pelle,F,2000-09-10,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Moss IL
+a63d9a5f-d632-4705-bb8d-98b4f9fcc581,Martin,Aune,M,2000-07-26,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Ranheim Idrettslag
+86d3ca05-d2e4-45fc-8a8c-28212b4a1bdf,Kristin,Austgulen Fosnæs,F,2000-05-30,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL Tyrving
+e5821100-5c8c-44a2-ae53-d3eae8ce1aa5,Hans,Avlund,M,2000-01-07,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Gausdal FIK
+eea05af8-ae64-44cd-9da0-22fc1881b6a9,Felix,Baastad Berg,M,2000-05-03,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL Tyrving
+f4d0708f-ba07-4c56-8c65-198a4aa2f9e7,Cassandra,Bache,F,2000-06-25,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lørenskog Friidrettslag
+37477b54-6636-4e34-9b6d-1e38a8108914,Håkon,Bakke Stulen,M,2000-08-31,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Sandefjord Turn & IF
+7c78e336-1f13-4ea1-89b2-9debe950f2ff,Guro,Bakken Andresen,F,2000-07-03,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Brandbu IF
+9701c22a-089d-4768-b3ca-0ae0cb46e0be,Nicolay,Bakken Eggen,M,2000-03-27,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Stjørdal Friidrettsklubb
+cf819f22-2eb6-4b4f-b717-8e726a066c28,Kristine,Bekken Gulbrandsen,F,2000-09-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Brandbu IF
+88b0a651-a3c0-4b9a-96d7-a9ea02a435d0,Hannah,Berger Akervold,F,2000-08-02,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Fagernes IL
+83d572dc-93a5-49b7-8c79-180817bc83bd,Irun,Berget Hedegart,F,2000-04-26,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Kristiansands IF Friidrett
+5e7e2209-2089-4d67-8748-985f522d67c6,Julie,Berglund Nicolaisen,F,2000-06-04,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Asker Sk. Friidrett
+66f5a1dc-fc55-45f9-a31b-12a218a115cb,Einar,Bergslid,M,2000-10-09,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Namsen Friidrettsforening
+85ed0115-4b58-487c-9e46-8420793785b3,Annette,Berntsen,F,2000-02-16,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Gjøvik Friidrettsklubb
+90d775ea-247c-4f0c-9a38-b94d0c694605,Martin,Berntzen Engevik,M,2000-02-02,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Tjalve
+9b0aefac-8d6b-4c43-be99-844d7abe547a,Marit,Berntzen Høgstedt,F,2000-04-27,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Asker Sk. Friidrett
+7a1d71ef-83e3-41d2-9639-a75332d42a94,Tiril,Birgitte Lund,F,2000-08-27,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,IL Tyrving
+822a1d77-b38c-4eb4-85a7-62beaf55c494,Aleksandra,Bjerke,F,2000-08-27,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Namsen Friidrettsforening
+9e3164ae-dfa4-4090-8e83-6496558f1dce,Anders,Bjerke,M,2000-04-08,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Romerike Friidrett
+09e2a614-f363-4086-a65b-125b00b51827,Patrick,Bjørkhaug Johannessen,M,2000-03-21,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Lørenskog Friidrettslag
+c87b3554-d7ba-42e3-a610-f6976ec57ee2,Espen,Bjørndal,M,2000-08-21,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL Gneist
+43cc6364-cc4c-4fc7-90dd-ab29cc7d306d,Kajsa,Bjørneberg,F,2000-03-04,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Sortland Friidrettsklubb
+fe062266-51e8-4ddd-ae33-9315844c0b4d,Nicolai,Bjune,M,2000-01-08,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Tønsberg Friidrettsklubb
+a719d31f-782e-48f1-8da7-63a6c8bc7c57,Sondre,Blakstad Henriksen,M,2000-03-05,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Lillehammer IF
+bd725dee-bf37-47ed-a588-d208bf61b86d,Geir,Blom Breivik,M,2000-05-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL Sandvin
+ed4178d9-31c4-44b1-8c6c-2a7ac66bbdd4,Thomas,Blücher,M,2000-09-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Gneist
+bc913452-7a41-4410-a99f-33b07081fc1b,Steinar,Bø,M,,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Strindheim IL
+d2050fcc-d1cf-405b-adbe-4ac68e18a706,Filip,Bøe,M,2000-08-30,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL Gular
+45ddded6-5f1d-435c-8803-68e4ef845478,Marthe,Bøe Øvregård,F,2000-04-22,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Steinkjer Friidrettsklubb
+d561f0d5-46e2-4859-a112-2acb73156104,Mika,Bohinen,M,2000-05-27,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Vadsø Turnforening
+ac0b291f-f0d4-452e-9daa-c5a653f120c6,Erlend,Bolstad Raa,M,2000-03-31,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Fyllingen IL
+56962544-9c14-4178-8f87-f560f2c6755b,Erlend,Bråstein,M,2000-04-30,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+679d9009-6b2b-4b50-bc03-27b44e951077,Aslak,Bratteland,M,2000-02-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sørild FIK
+d4b33b80-11e2-4d10-af34-3f9a70806cd2,Oskar,Brattetaule,M,2000-03-23,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,FIL Aks-77
+37c24550-953b-4a5b-a4b8-81758b9035b0,Marie,Brekke,F,2000-10-11,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Målselv IL
+ddfa1b7b-620f-49dd-9ccb-5453f0713535,Ane,Brekke,F,2000-12-27,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Førde IL Friidrett
+a004bb52-7bec-4b59-acf1-a20a7a2b0bfa,Kjetil,Brenno Gagnås,M,2000-05-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Børsa IL
+32d39c17-d343-4f9a-8be0-9d3e47e0e917,Ingrid,Brinchmann,F,2000-02-21,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IF Sturla
+8e572dd0-6a56-4257-b624-a1c6917a8d35,Silje,Brochmann Pedersen,F,2000-04-01,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Nittedal IL
+6cc52fa0-4e97-4138-a3d1-f9519fd215ab,Karen,Brodahl,F,2000-06-08,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Grue IL
+b016b83d-bb42-4ccd-ada6-b144a98bb4e8,Kristen,Brosvik,M,2000-03-23,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Gloppen Friidrettslag
+3d269cd1-925a-4b2b-8a2e-9b533c4403ff,Marius,Buestad Lohmann,M,2000-06-15,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Kristiansand Løpeklubb
+2e91b793-5f0d-46e3-ab78-04382fbdaef6,Martin,Bülow-Kristiansen,M,2000-02-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Tønsberg Friidrettsklubb
+a7517e73-f5df-4a6d-b879-c5befe9a3ffc,Muamba,Caleb Kongolo,M,2000-04-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Søndre Land IL
+dc9bb1bb-bef5-4ec6-ac8c-500356602915,Linn,Carine Vindfallet,F,2000-05-10,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,FIK Orion
+b76f35c5-75b9-4e6a-adbe-c9fe19c95348,Sirianne,Carlsen Rymoen,F,2000-11-22,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Moss IL
+4256e8c7-5f86-47c1-8b18-4b9ffa3ccd86,Julien,Carteron,M,2000-06-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL i BUL
+4b715a8b-04cd-4f0d-91fc-3ce5a868e748,Charlotte,Celine Thorjussen,F,2000-06-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sørild FIK
+3cadb852-8183-4388-92a0-afc6b0ded564,Inga,Charlotte Bergh,F,2000-12-31,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Koll
+db4b0d3e-1dda-4efc-bae3-c7295addfebb,Gunn,Christensen,F,2000-04-08,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Almenning IL
+18b2ac84-eb0d-4349-8906-9a78c85552c0,Andreas,Christiansen,M,2000-11-22,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL i BUL
+dac407db-017e-4832-9af5-5e20c809e922,Vera,Christine Dietrich Haug,F,2000-10-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Fram Larvik
+4a26d821-71ae-4388-b526-18b9b1823f4e,Ole,Daniel Stangeland,M,2000-03-15,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Sola Friidrettsklubb
+f8408332-6482-46f9-87d2-1b51d5ebdd69,Emma,de Haas,F,2000-12-19,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IF Sturla
+2407100f-d3d9-48bb-829d-5dc898c1f8aa,Ruben,de Jong,M,2000-04-19,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,FIL Aks-77
+e768d5fd-0b29-43be-8032-56977b44b5f4,Maud,Dybvad,F,2000-11-17,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Stjørdal Friidrettsklubb
+f1264527-b76b-435a-b3c7-f530188e3c11,Maud,Dybvad Evjemo,F,2000-11-17,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Stjørdal Friidrettsklubb
+527aed69-eab3-4865-a848-9443e7887584,Jørgen,Dyrhol Christensen,M,2000-09-24,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,IL Gneist
+762f588a-5fda-4bd0-807f-6419f41cf40a,Ingjerd,E. Megaard,F,2000-07-12,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Moelven IL
+68726d2e-701d-44ae-b8c6-99f8a01822b4,Kaia,Eide,F,2000-05-04,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Bækkelagets SK
+1b80e902-76fb-4286-8424-7631368c2fd8,Lene,Eieland,F,2000-12-05,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Iveland IL
+6c9bfa4d-ab93-470a-b894-dff8c518fd50,Hedda,Eik Sætren,F,2000-08-09,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Sandnes IL
+3c484fdf-7923-4282-b18b-71ad018cbff7,Marius,Eikrem,M,2000-03-10,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Skogn IL
+9b3690a8-30f9-4436-994e-52f9825066c0,Nina,Elisabeth Westad Skjong,F,2000-03-01,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Ålesund Friidrettsklubb
+a46f216b-df0f-491e-aa39-079eace5ea26,Anna,Elise Ullavik Sylte,F,2000-07-23,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Sykkylven IL
+38ca50e6-bc40-4954-9fc5-2dd13dc9508f,Per,Ellef Ryen Aalerud,M,2000-01-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Tjalve
+5463c1e2-4d49-4622-9558-02d8a3a36681,Olve,Ellingsen Røsvoll,M,2000-07-10,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Ranheim Idrettslag
+add186b4-597c-4f1a-998c-6838b1da6410,Jo,Emil Spakmo,M,2000-02-25,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Urædd Friidrett
+125131bc-7342-4639-a4ac-a0889f7bc4c3,Maja,Emilia Medic,F,2000-07-05,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Lyngdal IL
+6ba12c61-c286-4fee-b19a-faa2f9f0be31,Eskil,Engdal,M,2000-02-24,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Torvikbukt IL
+a5b4721a-a71b-49a7-86e8-301c712adc7a,Benjamin,Engel Hatlelid,M,2000-08-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Hornindal IL
+ab1243b9-c73c-4944-9251-819835674514,Patrick,Eriksen Ekeli,M,2000-02-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Lambertseter IF
+2c7bf8ef-62dc-45d0-8d77-8ce353356650,Kaitesi,Ertzgaard,,2000-07-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Tjalve
+bc9c7efc-3fcf-4bd0-81ec-30562b8448cc,Liva,Espeland,F,2000-01-13,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Stegaberg IL
+ba031ffe-9329-4faf-849f-5231ac24625e,Anna,Evensen,F,2000-10-17,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL Gneist
+f0b04710-accb-458c-b261-e02ba5e5f572,Benjamin,Evjen Olsen,M,2000-04-16,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Bodø Friidrettsklubb
+afceb057-10b4-4953-86f1-98bcfbd29cd5,Marlen,Fagerås,F,2000-11-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Askim Idrettsforening
+6ca2909c-7f09-4fd9-b2e8-0c636894e482,Monica,Fagerli,F,2000-02-01,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Storfjord IL
+5d62ad76-15fc-4672-8f4e-764ea376de77,Marie,Fagerli Dragøy,F,2000-05-29,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Narvik IL
+c370f4ab-2e33-4ba2-b3c7-4db7dedde842,Astri,Farbu,F,2000-03-26,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Hattfjelldal IL
+c1d5f9d0-e05f-4421-b8c8-b50d95c8ab6e,Liselotte,Farstad,F,2000-04-27,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Valder IL
+352c2b51-98c9-4b80-a33e-7ca6956f4801,Marius,Fauskanger,M,2000-04-05,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Ask Friidrett
+e8c81cbc-aab2-4a79-8c0a-72e6051ccc0c,Mathilde,Felida Kristoffersen,F,2000-05-24,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Lye IL
+02cb4215-4f82-4420-a7cc-35d779245ef7,Marie,Fiedler Amlien,F,2000-06-27,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Tjalve
+3aa7a1de-fe02-4115-ae7c-c3518d65ceaa,Fabian,Filip Rimestad,M,2000-01-13,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Fana IL
+d24167e7-72f4-4393-8e50-a523e5082432,Truls,Filseth Augdal,M,2000-10-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Ringerike Friidrettsklubb
+a8c46492-6544-47e9-9098-b1204cfb1f87,Sara,Fjelleng Mikalsen,F,2000-08-24,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Løkta Idrettslag
+2fc6014a-1762-4ba5-a990-bed802ef7310,Håkon,Fjellestad,M,2000-03-25,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Fjellhug/Vereide IL
+79150d72-617e-489d-a9eb-f3c497a62a97,Phillip,Fjogstad Willassen,M,2000-07-22,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+57e44932-ce9e-42e2-ae2e-0dd0b395e14d,Isabelle,Fjogstad Willassen,F,2000-07-22,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+b0ad9b16-d69d-4f58-b168-a1c303149dc2,Mads,Flåt,M,2000-08-30,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Kristiansands IF Friidrett
+d83c368d-b32c-4c96-8450-ab4b12c509af,Silje,Fortun Slettemoen,F,2000-03-29,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Romerike Friidrett
+88543dbd-8c3c-4c1c-ab65-2dbe4d4d66ec,Nora,Fossland Gartland,F,2000-07-31,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Overhalla IL
+275221fb-37e4-482a-b5e1-d06562cc3c18,Kristoffer,Frøysland,M,2000-09-28,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Søgne IL
+63453da6-46f0-41c1-8ec6-48e712d221f3,Celine,Furdal Lyngholm,F,2000-05-15,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,ukjent
+4a725061-9c12-41f3-93a8-8f76d7a31324,Emma,Galguften,F,2000-09-10,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Overhalla IL
+08b12945-d7e9-403c-97dd-991ef4476266,Viljar,Gjerde,M,2000-03-29,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Norna-Salhus IL
+8c5a6d53-8299-492b-b680-cd8ff6550f8d,Silje,Gjertviksten,F,2000-06-23,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Mandal & Halse IL
+6ded7c9f-678c-4895-94e4-4a410fb5a2bb,Sverre,Gjesteby,M,,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ullensaker/Kisa IL
+bbcc0e1d-306f-42cf-8102-57aff962db8b,Kristine,Gorseth,F,2000-05-22,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Vollan Idrettsklubb
+f3422393-1030-4d1e-84c2-f2e06cb0e274,Simen,Granvold,M,2000-05-16,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Gjøvik Friidrettsklubb
+2d149a43-6ea4-41cf-9b11-266ab78adf0f,Eivor,Grindeland,F,2000-09-18,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Strindheim IL
+33817d8f-f214-4d5d-af24-71697013c319,Cornelius,Grini,M,2000-11-02,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Nesodden IF
+66ebea7b-00da-41b4-855d-374433303aff,Christine,Grønbech,F,2000-02-16,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL i BUL
+7c4b5957-3a84-483b-a3b6-146bfb84bc0a,Ane,Grøtan Wang,F,2000-11-06,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IL Tyrving
+88a35587-1f95-4203-89ac-4bfb04889762,Fredrik,Gudheim Haraldstad,M,2000-04-01,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Hind
+38e043be-70ee-4c91-a33d-10317fa86b74,Sebastian,Gulaker Busterud,M,2000-11-07,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Løten Friidrett
+e480cf14-cce5-4875-88cb-6697fcce89d0,Marte,Gundersen,F,,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Viksdalen IL
+3499dceb-e735-4d07-bc03-2b3de3954766,William,Gustafsson,M,2000-08-11,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Hind
+9e7e6f82-2f3c-4f6e-a442-285a80976cb9,Madelen,Gustavsen,F,2000-09-02,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Dimna IL
+c2741e79-077a-4ff9-8730-7df33b5595f8,Frida,H Jacobsen,F,2000-02-01,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Urædd Friidrett
+7b71a905-b1fe-4bb7-a517-d1b3265b08dc,Martine,H. Johannessen,F,2000-10-01,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Larvik Turn & IF
+3317fca2-865d-4852-8eb2-fc9d98968372,Emma,Haagensen Rygg,F,2000-02-02,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Namsen Friidrettsforening
+306bf123-37ef-438a-9931-25e9fef94f6c,Kaja,Haartvedt,F,2000-05-26,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Aremark IF
+85104403-820b-4f5f-8641-25c011bbfe6e,Emilie,Hæstad Skadal,F,2000-11-06,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Kristiansands IF Friidrett
+5ae38eaf-13ce-499c-9cdb-b1900a90e3d5,Iver,Hagestad,M,2000-04-11,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IL Tyrving
+be008cb0-eb6f-4a32-8db6-e9e431941042,Helena,Hagevik Bakke,F,2000-11-17,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Trysilgutten
+16bcafeb-5194-4de5-8655-10b549873075,Tormod,Halfdansen-Aspen,M,2000-01-01,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Nesodden IF
+74c60d3a-1d7c-4210-a4c7-59550cf034b6,Anna,Halleraker Vihovde,F,2000-05-31,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Idrettslaget Skjalg
+eb8616e2-0a72-437a-9d35-76fbdc73487b,Marcus,Hansen,M,,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Herøy IL
+9919ddfa-93ed-4147-9d58-fe26a91f2d46,Charlotte,Harris,F,2000-04-03,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL Gneist
+ed69f3f9-bd8c-4989-9844-90d8aa5dba1c,Jon,Hårstadhaugen,M,2000-12-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Gausdal FIK
+2c9c4cb3-cf75-4269-9d00-b9f8c6db8dfa,Iris,Harterink,F,2000-10-03,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Loddefjord IL
+9dc66be9-4671-475a-b8ea-889220b4dcb9,Caroline,Haugan,F,2000-06-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Bækkelagets SK
+bfd538cc-217c-4af2-b912-3fff9ed774bb,Julie,Haugen,F,2000-08-29,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Hornindal IL
+0df4f237-6caf-4778-acb1-f6fffecf0efa,Peter,Heggelund,M,2000-07-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Nesodden IF
+1972697a-7068-4a5e-bac4-b3b3be37effe,Gjermund,Heggem,M,2000-05-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ringerike Friidrettsklubb
+2cef5f07-0708-47d4-8255-7102519ed557,Bjørk,Helen Aasen,F,2000-06-12,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Straumsnes IL
+aa887484-d0a4-4012-8634-da49c874b139,Maria,Helene Kinn Olsen,F,2000-09-27,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Larvik Turn & IF
+373f35f7-83fa-4242-9781-c514362601fb,Ottar,Hellesvik,M,2000-05-17,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Kopervik Idrettslag
+0edf1107-aee3-4566-8951-6c9590a59f1e,Rebecca,Henrichsen,F,2000-04-23,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IL i BUL
+0dd79d2e-cf41-4c69-958d-da4c2c25d2cc,Maj,Herje,F,2000-02-12,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ski IL Friidrett
+c6a8e76c-c49d-48c6-be4a-138c687701ed,Emilie,Hermanstad,F,2000-08-16,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Steinkjer Friidrettsklubb
+6656267b-8999-4d4f-886f-695ab6a16260,Johannes,Herstad,M,2000-02-26,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sandnes IL
+0eb969a8-c35e-4dbc-9184-e1cb6519aadc,Tobias,Heskestad,M,2000-05-04,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Strindheim IL
+a12e3378-c844-46bd-a985-26da0aec41d5,Håkon,Hjelle Roset,M,2000-02-19,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Gloppen Friidrettslag
+bb296ecb-8aa7-4ccf-9bd3-87fa2fe85c11,Simon,Hjelmeset Kirkeeide,M,2000-12-06,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Markane IL
+77823482-447c-426c-921e-149d0d76bf21,Johan,Hjeltnes,M,2000-04-10,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Ulvik IL
+ede7dab1-5b83-4f32-b928-b6334e50f07d,Natalie,Hognestad,F,2000-05-29,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Drammens Skøiteklub
+5bbe4290-f5cb-4006-873f-bf7594c63810,Gjert,Høie Sjursen,M,2000-01-09,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL Gneist
+499bf7a0-ddd3-4c7e-bb6e-a23ab0081acd,Lukas,Holden,M,2000-03-04,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Sola Friidrettsklubb
+d352c3cf-433b-4706-a3b8-8413666b1f30,Ingvild,Holst,F,2000-07-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sandefjord Turn & IF
+6e81523e-ef4b-4b0a-8818-1867294a8336,Lise,Hornnes,F,2000-07-06,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Otra IL
+e2a9593f-6fc9-464f-a1e2-5b02aea7602e,Emilie,Hov Andreassen,F,2000-04-26,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ullensaker/Kisa IL
+ac210320-6983-4349-b460-c9c2111077dc,Ylva,Husby Steine,F,,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Fagernes IL
+91994537-43f8-4291-b350-56617a86afce,Sivert,Huse Fragått,M,2000-06-02,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sigdal FIK
+cab07f95-e43f-4897-bf3d-ddbc749186d1,Per,Inge Straume,M,2000-06-08,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Hyen IL
+936fdd07-2056-4ba2-82a2-de7342dda535,Jakob,Ingebrigtsen,M,2000-09-19,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sandnes IL
+c5b8677e-f59e-4122-b941-6800eb4e6e9c,Mats,Ivar Klingen,M,2000-12-09,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Namdal Løpeklubb
+5211146c-7a56-4b50-a810-35280e40706c,Agnes,Johanne Rogstad Sørheim,F,2000-02-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Ås Idrettslag
+475cb210-8da7-484b-87ef-7864a593b2fe,Mikael,Johannes Grefstad Frøynes,M,2000-03-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sem IF
+664725c1-0383-45fd-a772-4ad84684488c,Brede,Johannesen,M,2000-11-20,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Eidanger Idrettslag
+32f353d4-7327-4478-a68f-06ee2c67da03,Mikael,Johannessen,M,2000-01-17,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Søgne IL
+1381bdc6-b93c-4e71-8206-f7899c452231,Anne,Jorunn Røyland,F,2000-02-13,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Holum IL
+cbb4ff8b-547e-4ce2-ae53-767af15f4a11,Synnøve,Julseth Frantzen,F,2000-12-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ranheim Idrettslag
+a85e9ba6-bbb8-4054-a61a-d7fa0b0c2ea5,Alice,K. Hugøy,F,2000-12-31,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Florø Turn og IF
+092a8a1b-2b5f-44d6-a3e2-700984dff01a,Johanne,Kalheim,F,2000-06-30,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Frøyland IL
+ce8443e4-d7e6-49e8-8ae5-883bb1aa43a9,Iver,Kalstad,M,2000-01-22,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Gausdal FIK
+c9bf8a47-46c3-4a31-af0e-ecca5544389e,Julie,Kandal,F,,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sandane Turn og Idrettslag
+8ac80277-55d8-4564-af75-5feb5780c0f9,Joachim,Karlsen,M,2000-09-19,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Krødsherad IL
+15372961-3017-451c-9639-ab0184a608ac,Nora,Katla,F,2000-01-26,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL i BUL
+d415bef9-840f-4da6-9e16-4993fe7d1846,Victoria,Keltie Sætersdal,F,2000-06-27,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Fana IL
+b8c5cd0b-b3d5-4f79-ac78-2e76fd1f134c,Anna,Kile Petersen,F,2000-08-04,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Otra IL
+cc7d66dc-1e5c-4569-a9b8-5f316cef6ba9,Nora,Kjærnet Dullum,F,2000-09-21,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Sandvin
+f0918b71-ea81-4616-93ca-ce1df763d2ac,Jon,Kjetil Antonsen,M,2000-01-20,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,SMIL Engavågen
+48017f9c-88e9-4a96-9367-e2a0fa0f7e83,Krister,Klaussen,M,2000-02-08,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Røyken UIL
+83e539d9-d1eb-4c33-98ca-48b75126ec87,Sigrid,Kleive,F,2000-02-22,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Ålesund Friidrettsklubb
+231e7cb6-35f6-4a36-9e0e-5bf24c03d85f,Hans,Kleiven,M,,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Gausdal FIK
+c3bebd73-e775-4b1b-bf5f-70be7f4d791e,Signe,Kløften Hovland,F,2000-10-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+67c2ebf9-7671-4541-8dd7-e627e5d5367b,Senthamilpiriyal,Kohulan,M,2000-01-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Romerike Friidrett
+ba1e5a16-f15f-4973-915f-c89d22301cf2,Mathias,Kollberg,M,2000-06-30,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IF Hellas
+b4327e82-0d46-4c6f-94b8-7e82e950150e,Lavrants,Kongssund,,2000-05-03,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Moelven IL
+00e255fc-e892-40db-afe4-aa362fd57eb0,Jon,Konrad Kristiansen,M,2000-08-07,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Namsen Friidrettsforening
+b33abf50-d4a8-4380-a697-9e87734fd668,Andrea,Kristiane Dammen,F,2000-05-23,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL Tyrving
+e83e1ed2-fb9f-49b8-aca2-97aae56bf4ea,Oda,Kristine Gran,F,2000-05-31,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Horten Friidrettsklubb
+1b79e757-2f0c-4287-b6a3-b69c856305ad,Ann,Kristine Hølen,F,2000-06-22,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lillehammer IF
+80d2d9dd-779a-478c-86cd-cd44a777ec03,Marianne,Kure,F,2000-03-12,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Ås Idrettslag
+ba4d0e13-491f-469e-932e-3615888740ae,Karoline,Kurseth,F,2000-10-31,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Sykkylven IL
+9f85ff48-5993-4595-8949-213b0d91eb82,Julie,Kvinen,F,2000-03-22,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Sandnes IL
+f9adefde-e2f7-4ba0-9d9b-e5d3d73b9752,Julie,Landsem Vannebo,F,2000-05-18,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Overhalla IL
+958d7f08-d89b-4b47-a146-85e1fa546ba5,Margrethe,Lauritzen,F,2000-02-07,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Larvik Turn & IF
+2dc3bcbb-fae5-4f7a-8135-f2594788da68,Andrea,Leerbeck,F,2000-01-11,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Lillehammer IF
+896b9023-fb5f-4e91-b870-613ae2b73063,Aleksander,Lehn,M,2000-03-07,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Selsbakk IF
+2bc8054f-e492-4a9f-bb42-7667f22a868e,Lukas,Leiro,M,2000-01-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+f9876f30-7600-4a89-9ee5-4bcbb25f5c98,Malin,LeMaitre,F,2000-08-19,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Giv-Akt
+db612866-2def-4822-a373-f271346d9736,Adelie,Lian Hoel,,2000-10-18,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,IL Pioner
+0440a958-fb29-4ba2-a584-98e42a8db41a,Mille,Lie,F,2000-02-22,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+1c49933a-6fd9-43c5-b8d9-9f8f65870ba2,Sondre,Lie,M,2000-09-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Sturla
+eda16624-dffa-4804-8b9f-e98ad5d1a435,Hanna,Lie,F,2000-01-06,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Urædd Friidrett
+18746134-3627-4716-8289-50c0526ef73f,Anne,Lien Monrad,F,2000-07-17,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Vollan Idrettsklubb
+ac9be3e5-6807-4581-9af6-75052955040b,Maria,Lill Garvik,F,2000-01-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fagernes IL
+dafac4f0-858f-4c31-bbbf-404c938fbaf3,Markus,Limstrand,M,2000-11-23,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,SMIL Engavågen
+ea29ca18-9aa5-4b66-afa1-97c22dc993dc,Mari,Lindal,F,2000-07-23,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,IL Giv-Akt
+2fe4c0ee-b661-4c1a-b5d7-adf218bf7157,Amalie,Lindstad,F,2000-09-26,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Sandefjord Turn & IF
+5ba9951e-c0de-48d8-93cf-68a3fdeef838,Joakim,Lismoen Einarsrud,M,2000-03-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Grue IL
+f82c7ecc-826c-4317-9406-a820e13d5716,Anne,Liv Holstad,F,2000-05-10,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Hareid IL
+4e909754-bba0-4e75-a810-a9b7ccb0ee2e,Magnar,Lødemel,M,2000-04-28,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Hornindal IL
+a8b2119f-3553-427c-b43f-3b5a3974158f,Josefine,Loe,F,2000-06-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Tjalve
+91705b8e-380b-42e2-813c-f0dcd18b5263,Oda,Løken,F,2000-04-20,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,FIK Orion
+da45fbf4-1c48-4974-9cc6-06e54079277d,Tobias,Lømo,M,2000-05-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IK Tjalve
+c1498e53-48ba-4e6d-944a-cb6a70df6667,Emma,Lund,F,2000-02-08,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+5c5ab820-8874-483b-8f7a-489112a337b6,Joakim,Lunde,M,2000-11-21,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+0468d6ee-c848-4d0b-8468-993d03b09bfc,Synne,Lunde Jevanord,F,2000-12-27,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Moelven IL
+b752db5b-26e8-4bb0-9451-75f6ea943904,Elias,Lynum Ringkjøb,M,2000-10-18,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,IL i BUL Tromsø
+4d0bc3ba-6e73-4baa-9870-a1341694ecc9,Stine,Lysberg,F,2000-04-15,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Overhalla IL
+8e31543c-60ba-4d13-b50c-473c3385e152,Ola,Lysberg Brauten,M,2000-08-03,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Overhalla IL
+f7fc9a33-9258-40f6-8dde-90e4f301dc7d,Lucie,M. Lunde Bang,F,2000-09-19,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL Tyrving
+f6241821-6141-4f9a-9ad9-43f80a619292,Sigrid,Mæhle,F,2000-02-07,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Vollan Idrettsklubb
+ba2d20be-7153-46c0-8fb0-aebc6742d8d9,Johan,Magnus Bjørgan,M,2000-01-20,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sørild FIK
+e0c0dba0-697f-42bd-8bc1-62dd339d630d,Lea,Malm Sunde,F,2000-02-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Moelven IL
+2dfb0257-1f8d-475c-bd1f-d8d4b4714ea5,Ellen,Mangen,F,2000-11-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Romerike Friidrett
+83444b76-482d-4afc-8742-cb7e71b5cc70,Eirik,Mannsverk,M,2000-03-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL i BUL Tromsø
+7a9b4d46-5279-4fcb-8d74-b682e6e3d5c9,Josefine,Margrethe.A. Løken,F,2000-08-29,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Sandvin
+4f46d66f-c0b5-44f2-99ae-bbb0ed17a3ac,Rakel,Maria Åfløydal,F,2000-04-01,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Nesodden IF
+fae8fd8f-a0c1-48da-b288-88bd9480045b,Jon,Marius Ustad,M,2000-12-05,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Horten Friidrettsklubb
+2542aa33-e3c2-4f79-8481-4e8303deb84b,Sebastian,Marrot,M,2000-12-10,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Bækkelagets SK
+d9ec236f-21e6-47e3-84d0-a59dd259215d,Ole,Martin Eig,M,2000-03-24,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,FIK Orion
+2a2334cd-7213-444c-a46e-48779e326806,Fabio,Mattioli Bjerg,M,2000-02-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Lambertseter IF
+e46c6791-5d2e-4ec2-afbc-14deccdd63f8,Brita,Mehl Lode,F,2000-02-18,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL Gneist
+545f65f3-8e3b-44af-9bb7-f6cfdcd20820,Sverre,Melhus Dahl,M,2000-01-30,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Skjåk IL
+90bd253e-fe06-4b76-a30d-58426599485b,Sondre,Meyer Hunstad,M,2000-05-28,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Kvæfjord IL
+1e24c021-ca39-438c-bb47-f1d8390868b3,Marcus,Midtenget,M,2000-02-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Gausdal FIK
+208c7bd5-441f-4b63-9927-f0be840ada21,Wilhelm,Moe,M,,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IK Tjalve
+6e3ee08d-9336-4322-877b-3bacb984e092,Sondre,Moen,M,2000-07-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Eidanger Idrettslag
+40f99936-e553-44db-af13-b19071129129,Sigmund,Moen,M,2000-04-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Urædd Friidrett
+f4775d5e-68ea-4e6c-afdc-e458077b5dc1,Silius,Møll,M,,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Holum IL
+50538a4c-2a2c-483a-b12d-188fc2da7322,Kristoffer,Molland,M,2000-08-16,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Syril IL
+b594e830-77f0-4541-ba92-8c7c3c9391fc,Victoria,Mørch Jonassen,F,2000-08-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Herkules Friidrett
+308b7d6a-1ba6-45d9-a8f6-46a62ddde243,Hanna,Mostad Hauge,F,2000-03-01,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+18d84efe-b6ff-4938-845a-c726c49035be,Sofie,Møster,F,2000-04-01,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sørild FIK
+e62c8341-5e63-4ffb-9c1c-f709caab012c,Caleb,Muamba Kongolo,M,,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Søndre Land IL
+2a95b020-8e6d-4be3-8c8a-0eaa60bdf23c,Knut,Muldsvor,M,2000-04-24,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Hornindal IL
+d5bfa010-f64f-4537-96be-49cce28bf5e2,Hanne,Myhr,F,2000-03-05,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,FIK Orion
+e64af587-38bc-42e8-a6b4-2737efa6624c,Petter,Myhr,M,2000-03-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,FIK Orion
+a7a22065-202f-4bdb-a9c6-b62b3c38992b,Kamilla,Myhre,F,2000-03-19,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Ålesund Friidrettsklubb
+6093f44e-f42f-4800-8b64-12225bf83680,Hanna,Næss,F,2000-01-17,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Jægervatnet IL
+3b158460-d623-49a3-b367-35851577503d,Eirin,Næss Bolme,F,2000-04-27,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Surnadal Idrettslag
+a13e5ad4-5c40-48e5-98ca-a18b2add724c,Petter,Nerjordet,M,,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Gausdal FIK
+f0c4c7a0-f308-4343-85de-dc577768ddec,Even,Nesgård,M,2000-07-16,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fjellhug/Vereide IL
+4520f62a-c632-4b00-9487-ae19abf5fd0b,Joakim,Nielsen,M,2000-08-31,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Norna-Salhus IL
+9cc4bad9-a307-4704-a1bd-122c362463e9,Ingunn,Nilsen Hagen,F,2000-10-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL Gular
+09a7a722-3aef-468c-a7d4-cbc8da40d4f2,Sanne,Njaastad,F,2000-04-16,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,IK Tjalve
+40e71c1b-aaa3-4311-94c3-ea12c55170b5,Tobias,Nøkland,M,2000-05-12,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,IL i BUL Tromsø
+daf49d42-7cf9-4b13-a4aa-b12134e5cafa,Maria,Norheim Morken,F,2000-11-05,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Sportsklubben Vidar
+c17db98b-7dfb-4134-b790-d353b2676be8,Alexander,Nyberget,M,2000-04-29,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Askim Idrettsforening
+017a7e63-64e9-4b55-9c0d-9af092a92d40,Anja,Ødegård,F,2000-02-09,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Søndre Land IL
+5a0a65ea-0157-40ab-9cd5-9d20a3a7c107,Ane,Offerberg Skog,F,2000-01-06,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Fram Larvik
+ac29454e-b426-4c46-b295-fe43ee22acd8,Kristina,Øgstad,F,2000-09-07,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Verdal Friidrettsklubb
+ce870e72-9ec0-4307-8640-698267c05a88,Tron,Olav B Kleppa,M,2000-02-25,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Frøyland IL
+8d6b2fed-75c7-4313-b94f-d429c8287e28,Tobias,Ørnehaug,M,2000-02-19,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Ask Friidrett
+5510c270-3cc9-4790-a770-a67f5dac0dd9,Espen,Østerås,M,2000-01-11,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Røyken UIL
+457e51d5-6c37-4c01-86ba-346c7f1d984f,Simon,Østreng Veland,M,2000-11-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Haugesund IL
+a4239e0e-3442-468f-b8dc-5e090a2059f0,Tor,Ove Rød Rasmussen,M,2000-02-07,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,"Eidsvåg IL, Romsdal"
+e7b21315-ee3f-44e1-a194-7ea5414abff9,Kent,Ove Sæten,M,2000-07-22,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Hyen IL
+3cc071bd-5233-456a-a7fb-ceccf40d6092,Stine,Øymo,F,2000-02-11,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Narvik IL
+7162dfb3-bd78-4fb6-8125-67815c0fba60,Sander,Paul Mikkelsen,M,2000-08-28,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Snøgg Friidrett
+e83e2aa0-48e9-4171-9567-1fe6d613bdb2,Steffen,Peder Gaustad,M,2000-03-12,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL i BUL
+f477651e-fff5-450a-927e-522d89cb5dbe,Adrian,Pedersen,M,2000-06-16,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Bodø Friidrettsklubb
+966478ea-bfa4-481e-880f-fdd54b5de55d,Eskil,Pedersen,M,2000-09-30,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+51770d4b-35c9-4e52-a4d4-e7e6aef85983,Kristoffer,Persen,M,2000-03-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+ab126d18-9112-4fb4-a508-f57c4aa864c1,Magnus,Polsrød,M,2000-02-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Herkules Friidrett
+10ffdd13-a718-42f7-a6c3-b1364a3f230d,Marius,Polsrød,M,2000-02-14,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Herkules Friidrett
+2eee8ccc-bedf-450e-86a8-2601505a73f7,Vetle,Raa Ellingsen,M,2000-04-16,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Fana IL
+98c1f14b-ab27-4148-b733-4a0d42358b00,Maria,Rafoncel Storstadmo,F,2000-01-27,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Steinkjer Friidrettsklubb
+7f24bbf4-87b1-46c3-8c3e-3a575ffa08bd,Tuva,Rasmussen Tørresdal,F,2000-04-26,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Fram Larvik
+3c3d120a-4088-40fd-9006-64c4652f97df,Eskild,Reithe Flåten,M,2000-02-09,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Narvik IL
+047590ac-693a-4007-8ad0-d02053bd5baf,Kristina,Reppe,F,2000-04-03,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Ranheim Idrettslag
+ce9112b9-8362-4f04-8397-29e2388a4329,Ylva,Riise Falksete,F,2000-04-26,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Vollan Idrettsklubb
+507e2d0f-1d53-4d3b-b659-67923a71edb8,Nora,Rindal,F,2000-04-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Lillehammer IF
+3d3a09ae-efc9-4e59-a153-eedc5cd2014f,Marte,Ringsell Berg,F,2000-02-06,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Halden IL
+36c03a78-ca37-49f1-a58e-4c4bd5f4cb63,Johanne,Rise Kvalen,F,2000-02-28,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Dimna IL
+09f98ad8-0f1e-4a11-8add-ce81e11e226f,Sondre,Rishøi,M,2000-04-30,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Sportsklubben Vidar
+38765cd0-82ac-4a67-ae89-8b289d5e3888,Emilie,Roaldsen,F,2000-03-27,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Narvik IL
+f0823dcf-baf8-4fe1-927b-55090d097b19,Guro,Roan Baklid,F,2000-03-23,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IF Sturla
+ceb0c843-9435-490f-a1d0-b1b87f9d2f6c,Andrea,Robertsen,F,2000-09-25,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Jægervatnet IL
+25226679-3b50-40f0-bcc9-fbd453c79bb1,Aksel,Robin Eye Sales,M,2000-07-07,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL Tyrving
+72dd60b3-5a6f-400d-bef5-0e6607e12355,Ine,Roll-Sneve,F,2000-08-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Narvik IL
+f878e7ed-32a8-4766-9a81-d414927c0cb0,Erlend,Rønneberg,M,2000-04-15,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sem IF
+02fa8fc6-5f79-4ae2-a87c-ecc3d63d0a2b,Victor,Rosenlind,M,2000-06-20,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Ullensaker/Kisa IL
+29b2bdae-4e92-4d28-87ee-5681730261cb,Gaute,Rosvold,M,2000-05-05,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,FIK Orion
+45c24da6-0594-4453-966c-ce3040e77eff,Ingrid,Røtvei,F,2000-02-16,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Vollan Idrettsklubb
+a939338a-459e-4b52-b55c-bb98fcd5113a,Nora,Røtvei,F,2000-06-10,2000,peab_2013,Osterøy,Vestlandet,1,peab_2013,0,Vollan Idrettsklubb
+2057e89e-88b8-4730-a802-c09665d25adb,Jan,Rune Wilmann,M,2000-02-07,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Ask Friidrett
+c50db10f-77f6-4db1-96d1-9b4187cda877,Mathilde,Ruud,F,2000-05-06,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Mandal & Halse IL
+b32bed03-76f9-48ba-9698-771aad8e77d9,Iben,Ruud,F,2000-07-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Herkules Friidrett
+ac8d088a-9d72-4d77-9f91-55793e83f234,Julie,Ruud Lillemoen,F,2000-01-31,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Fredrikstad IF
+284dd4a3-7137-40db-bff8-2fbde6851c7f,Meera,Sagli,F,2000-04-11,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Aure IL
+0c3e1047-8dee-4268-847f-a37d224c21ad,Joakim,Sakariassen Flatmo,M,2000-06-13,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Elnesvågen IL
+157dd817-a5f0-4915-b97c-b895d95cadce,Sander,Saksenvik,M,2000-01-24,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IK Hind
+2e2411a9-0721-4a43-ab79-d73b03158623,Nima,Salihzada,F,2000-05-15,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Kristiansands IF Friidrett
+7468db4b-1b36-4895-b3fd-a1400885ddb8,Eline,Samnøy,F,2000-03-05,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Norna-Salhus IL
+5373308a-cfa8-43d9-b8a8-34551918b130,Emilie,Sandberg,F,2000-02-12,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+023a8bb0-2445-4544-9ed8-1d0b4b81a0b2,Aasmund,Sanderud Nordgaard,M,2000-03-23,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Oppstad IL
+6b02e7cf-7f55-4a60-b870-f44b5fb3b56a,Ole-Martin,Sandness,M,2000-03-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Ullensaker/Kisa IL
+13a835e9-c66e-459d-acf3-78061f8bc80f,Kaisa,Sandtrø,F,2000-02-28,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Bækkelagets SK
+a1b627c7-8b32-437f-b022-00ad2fea3b72,Mathias,Sandvik,M,2000-12-13,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Sandnes IL
+797b6c57-fb49-496e-b357-b904bc35122c,Nora,Sanness,F,2000-03-27,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Sportsklubben Vidar
+ae98d2a6-d404-47d1-b48b-df33eb192062,Iver,Saunes Moldskred,M,2000-03-23,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Dimna IL
+4153d491-35b1-4b26-8ebe-5b0ad56f8e00,Katinka,Schumann,F,2000-03-08,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IK Tjalve
+77546650-baa8-4419-9094-75e1111ffa38,Simen,Sebastian Hansen,M,2000-04-30,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Ås Idrettslag
+f3b3a688-6319-4d3d-b2d9-b349f62cd452,Simen,Seeberg-Rommetveit,M,2000-04-29,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IL i BUL
+038a5711-3d53-4188-b12c-c2924dde1132,Kristiane,Sekkingstad Terum,F,2000-08-23,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Aurland IL
+d409456b-886a-42f5-90d7-9a3912d0efe1,Fredrik,Selliken,M,2000-04-17,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+4be912dc-6d1c-4e3e-ae5b-9b15aeae2efc,Lotte,Selvåg Nordås,F,2000-04-17,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Romerike Friidrett
+4c47e994-4dfe-4ec1-80e1-5cf0153b77a2,Elin,Serine Vik Johannessen,F,2000-04-23,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Lyngdal IL
+a37f32c3-b092-433c-91fa-ee61f4c28469,Albion,Shaqiri,M,,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Tingvoll Idrettslag
+4e728d04-ebe1-49f1-8498-e135cf109c4c,Ine,Si Stalheim,F,2000-09-16,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Fana IL
+48ccf252-d59b-4b63-8738-93be7d33331b,Joshua,Singdahlsen,M,2000-03-25,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Syril IL
+82ce06ad-21dc-4732-802b-e9df33fca2f3,Olav,Sivertsen Mønstre,M,2000-01-05,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Voss IL
+0baa0c55-bf01-4763-bd71-c4b6b4664a81,Johanne,Skaaraas,F,2000-08-31,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,IL i BUL Tromsø
+e399405a-a453-41a9-8936-cb78e4082a8f,Sofie,Skaftun,F,2000-04-28,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sarpsborg Idrettslag
+946cf476-3e2a-4bda-8a88-615970507b14,Synne,Skagestad Haddeland,F,2000-05-26,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Holum IL
+4bab9232-de60-4a2f-ac81-98ca3ab5214f,Kaja,Skålevåg,F,2000-05-22,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL Jutul
+9ceb422b-e18b-4b18-aedd-0cb21d33eed8,Johanne,Skåraas,F,,2000,peab_2013,Osterøy,Vestlandet,1,peab_2013,0,Røyken UIL
+b131b61e-324b-4048-ae71-75016c1b2629,Stine,Skårland Jørgensen,F,2000-11-08,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+9ccb5f5c-a14f-4de3-87d4-c5265e7a8628,Hanni,Skifjeld Arvesen,,2000-06-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Urædd Friidrett
+f024a085-ac38-4cf4-9adb-bd4a672f0a05,Sander,Skjolde Kveen,M,2000-02-29,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Ski IL Friidrett
+440f4cf5-8e80-4a07-91a1-ba00b42cf10f,Amalie,Skolbekken,F,2000-09-26,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Selbu IL
+50834d73-e09a-4ab3-9032-d952ecaf0cfe,Mari,Smedstad,F,2000-12-07,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Løten Friidrett
+971b4359-4645-41c3-bfbe-cbbd794282a1,Thomas,Smehus,M,2000-04-09,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Gausdal FIK
+e057c8e1-7a74-47dc-b8d4-3e05550e9a91,Mimmi,Sofie Wilhelmsen,F,2000-04-24,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Kristiansands IF Friidrett
+bbeaac68-1754-46de-b2e1-9166cd03b688,Amund,Solberg,M,2000-05-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Løten Friidrett
+912adf83-aca6-4281-a967-6ed7b79f0095,Emily,Solem-Young,F,2000-03-24,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Fana IL
+ba9e864c-3f6f-493c-946e-abe62555a2db,Stine,Solheim,F,2000-12-16,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,Sortland Friidrettsklubb
+effe38de-af27-4da4-9e70-d79d4fbbd663,Marcus,Solheim,M,2000-08-29,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Bøler IF
+2beb60ec-9596-4fd5-84ef-645d36da60fb,Mikael,Solheim,M,2000-04-16,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Fana IL
+dc373050-bd09-45d5-847a-408f46fcc99a,Jakob,Solli Lind,M,2000-04-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL i BUL Tromsø
+760ae7fd-715e-4c4e-b523-a87d1648822d,Kari,Sollid Nordvang,F,,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,FIK Ren-Eng
+aea0516f-6659-476a-bf44-40f17fb84616,Caroline,Solum,F,2000-04-22,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,IL i BUL
+09eb7975-0d87-4e68-b831-3ae80ab6ce45,Mari,Solvang Bryhni,F,2000-01-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,FIK Orion
+9878e9aa-04ab-42c9-b715-efd232c315e1,Martin,Sommerseth,M,2000-05-08,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Storfjord IL
+701ebbef-4b11-4bd6-bfe7-d97773a7109c,Tuva,Sørbøe Syversen,F,2000-02-06,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Fredrikstad IF
+1b559150-cff7-4b26-bda9-b9988e4cd145,Hermann,Sørensen,M,2000-02-08,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Kristiansands IF Friidrett
+f6231040-3583-44e0-aaa3-d6c4ec9e87f8,Thea,Sørum,F,2000-03-27,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Nittedal IL
+0b9e4beb-9bdb-4243-9d7c-c4ada1567d2c,Ragnhild,Spange Brekke,F,2000-05-02,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Romerike Friidrett
+74d1becd-126a-4d71-8a47-c1d6d31b0ed1,Mathias,Stavdal,M,2000-01-20,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Moss IL
+b889a4ea-cdab-44bf-bb28-b0346a5d712c,Kari,Stavdal,F,2000-02-07,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Ålesund Friidrettsklubb
+0be6a8d1-04f5-480a-8776-cae261a4023d,Håkon,Stavik,M,2000-03-30,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,IL i BUL
+2d3d3c6a-f06f-4dc7-a9e3-15e27f2da574,Dorthe,Steen,F,2000-03-31,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Narvik IL
+41d9c055-f71c-4a50-b3f4-b4c79561580b,Silje,Stenersen,F,2000-02-13,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL Gneist
+25b97f06-b0a6-4ae1-b2dc-30a4dd91de33,Mathea,Stensæth Josefsen,F,2000-10-25,2000,peab_2013,Osterøy,Vestlandet,1,peab_2013,0,IL i BUL
+25c0afb7-13ab-49ed-a576-535ec7ee22ec,Maren,Stensvåg Seim,F,2000-03-04,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Haugesund IL
+df877074-2ee4-422b-8dac-df5beba4be29,Belinda,Stensvold,F,2000-03-21,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Sandefjord Turn & IF
+0e1b751f-d3e9-4fcb-aaa4-c79982571c59,Anne,Stine Tengelsen,F,2000-04-01,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Ogndal IL
+96cc8f55-d0f9-4c21-8d8f-fd7ddaca77b4,Fabian,Stordalen,M,2000-02-28,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Tønsberg Friidrettsklubb
+fd4fbcef-6d6a-4916-8230-30b30e4d35a9,Liv,Storhaug,F,2000-09-03,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+8709ff84-fc87-44ce-bc77-715d8375992b,Guro,Storkås,F,2000-07-03,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Urædd Friidrett
+64ac647a-6ee7-4507-b9a3-e4367e6f7fcd,Tom,Storsæter,M,2000-02-08,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sørild FIK
+e157a5d4-2641-4dfd-894f-db59666497f0,Magnus,Storsletten,M,2000-01-27,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Hyen IL
+3f6751a7-013f-47ce-bc87-0a161ee70e38,Iver,Strand Øvereng,M,2000-04-15,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Overhalla IL
+188c3c1f-9e60-47ea-8dd8-d511d999d086,Kristian,Strømhylden Himo,M,2000-11-26,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Overhalla IL
+8936ca60-4f40-4c0e-8225-45a344c172d2,Vilde,Strømsnes Øverland,F,2000-10-25,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL Sandvin
+fe8eb3ce-2470-4da7-981f-77f317f75a9c,Thomas,Suhr,M,2000-06-03,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Halden IL
+c796a660-1aad-4ae7-b2cf-6df4a43a6f50,Vinjar,Svendsen,M,2000-10-31,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,IL Nordlys
+f10a4e89-e263-47d0-81b2-f94b78b3b5fe,Tobias,Sweetlove,M,2000-07-29,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Grue IL
+b15da525-ea47-4cba-86da-b44d199560c9,Benjamin,Sweetlove,M,2000-07-29,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Grue IL
+2f71f1d6-56a2-4601-86dd-6358becd38ff,Nora,T Mork,F,2000-05-03,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sørild FIK
+7a52dae9-7780-42ac-bfe4-21d409f191d7,Margrethe,Taftø Samuelsen,F,2000-02-19,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sørild FIK
+661027f4-c404-4e9e-987d-7f88863c5c6f,Marius,Tande Bere,M,2000-06-02,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Strindheim IL
+bee2e3ed-39f6-47c9-9c3d-e11ddb74d238,Mariell,Taraldset,F,2000-10-03,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Hornindal IL
+4e603181-84fe-4fe8-8ba8-99198e1b8f71,Tora,Teigland,F,2000-07-19,2000,peab_2013,Osterøy,Vestlandet,1,peab_2013,0,IF Sturla
+2a1d62fa-4cfc-48bd-9c64-145031a1467b,Emily,Tellefsen,F,2000-05-18,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Sørild FIK
+c5a185df-d867-4705-9f84-df319cf056fc,Ylinn,Tennebø,,2000-01-10,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Almenning IL
+98add92d-4792-4685-bc58-2e211ec5f5b0,Lamek,Tesfai,M,2000-02-23,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,Sem IF
+12c081d6-60b0-4523-a64e-533b4b747838,Luca,Thompson,M,2000-11-24,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Turn & Idrettsforeningen Viking
+18f3ec3c-978e-4a4b-9b40-49dcbb7d98ab,Malin,Thoresen,F,2000-10-31,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Romerike Friidrett
+2df950ca-ebef-4604-a914-cd48ffa8832d,Per,Tinius Fremstad-Waldron,M,2000-09-25,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL i BUL
+f30bc415-227a-424f-9247-b0bfa2252182,Fredrik,Tjemsland,M,2000-09-24,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
+c85dbf9e-4ff8-40cf-a755-44ef61222c73,Kristian,Tokstad,M,2000-01-22,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Ullensaker/Kisa IL
+ca09ed8f-da20-4451-a22d-c078e2bb4f78,Mats,Tokstad,M,2000-01-22,2000,peab_2014,Jessheim,Østlandet,1,peab_2014,0,Ullensaker/Kisa IL
+a3351ecd-107b-44d9-b56e-d632ec3fc81c,Josefine,Tomine Eriksen Aks,F,2000-08-16,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Sem IF
+053fab62-20be-43ec-bdb4-4746a2455903,Trym,Tønnesen,M,2000-02-04,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Ullensaker/Kisa IL
+c606cf00-9ec5-435a-b21a-4a9f1e18a8c9,Helena,Tørmo Kastelein,F,2000-05-09,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,IL Tyrving
+09e1b551-2754-4f07-9af8-8d96a99ec3a8,Regine,Torsteinsen,F,2000-05-07,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,IK Hind
+ffad3ad4-e774-48de-83a4-3d534b418224,Martine,Torstrup,F,2000-11-03,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,IL Giv-Akt
+a36e165c-5c6c-43ae-b7a1-8e596e3a667e,Trygve,Totsås Weglo,M,2000-10-26,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Overhalla IL
+ce06efe9-dc11-479b-8f9a-45ac6224fd2f,Yngve,Trang,M,2000-09-01,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Stjørdal Friidrettsklubb
+a9950ac6-219e-4edd-8487-2bb770e14921,Elise,Tveide Kvastad,F,2000-11-11,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Tvedestrand Turn & IF
+b4d74971-026b-4ef3-ad03-9ca37670980b,Vetle,Tyldum,M,2000-09-24,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Hattfjelldal IL
+4ea53ecd-9c67-4991-8941-4caad920fad3,Glenn,Ueland,M,2000-08-19,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Egersunds IK
+611d75b5-f7a6-47f7-8f01-c6864cb3c011,Iselin,Ugletveit,F,2000-12-15,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Vollan Idrettsklubb
+60f3c19e-fd8e-4697-b2f1-f5ecdaf2c0e4,Aslak,Uula Niittyvuopio,M,,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,IL Nordlys
+4fa5b783-db96-4b6b-9707-18dc8bbf05ec,Julie,Vaage,F,2000-03-23,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,1,peab_2013,0,IL i BUL
+85c35a83-1780-4ad5-abf7-17e419bfdf18,Håvard,Vaeng Bernhardsen,M,2000-09-08,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,IL i BUL Tromsø
+f2804174-13de-4b8a-9f18-0996502d1a82,Vilde,Våge Henriksen,F,2000-09-16,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Haugesund IL
+1ba49d45-f00f-48c4-8e66-3cb7c8f68363,Marcus,Vammeli Wiik,M,2000-03-08,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Askim Idrettsforening
+73d316fc-fc8f-4c0b-992b-872e56ebaaed,Kristian,Vatne,M,2000-12-22,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,IL i BUL Tromsø
+94f07d60-1a7b-48e9-9494-44af4167a2ae,Sigrid,Vehus Skjerve,F,2000-03-19,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Verdal Friidrettsklubb
+3506d267-44bc-41c2-b413-295a61b295e3,Sivert,Vestad-Siri,M,2000-08-06,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,IL Pioner
+69471777-eb24-473e-991d-7d339b9b7e82,Ingri-Eline,Vik,F,2000-07-04,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Stryn T og IL
+4253fc8b-a87f-4533-97a2-c9f1778b83cf,Tuva,Vika Tholo,F,2000-05-22,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Bergens Turnforening
+b4fe24d6-0521-43d1-8741-18d2dbdf6b9f,Kristoffer,Vikne,M,2000-08-18,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Osterøy IL
+686c7df0-ac90-4f8a-8988-be571fe9f4a2,David,Vorren,M,2000-09-11,2000,peab_2013,Øverlands Minde,Midt-Norge,2,"peab_2013,peab_2014",1,Vadsø Atletklubb
+18fe2876-fe66-4d5c-b601-67f75f6156cc,Gabriel,Walden Michelsen,M,2000-05-26,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,Os Turnforening
+5716a663-c000-4540-b810-2a312bfffe29,Knut,Wang Ørjavik,M,2000-02-20,2000,peab_2014,Osterøy Stadion,Vestlandet,1,peab_2014,0,IL i BUL Tromsø
+694203d5-f507-469c-83d8-7809c754eea6,Cathrine,Warberg,F,2000-07-13,2000,peab_2013,Øverlands Minde,Midt-Norge,1,peab_2013,0,Trondheim Friidrett
+744c293d-521b-4c0b-ab42-71ee7525d3d4,Vetle,Watne Solaas,M,2000-12-27,2000,peab_2013,Osterøy Stadion,Vestlandet,1,peab_2013,0,Holum IL
+fc0576f3-e02e-4c23-80f4-30f42f80dfc5,Louis,Wehner,M,2000-12-26,2000,peab_2014,Øverlands Minde,Midt-Norge,1,peab_2014,0,IL Pioner
+b741fdff-504a-48ef-899f-27ce3dbdaff6,Henriette,Weidemann Christiansen,F,2000-04-13,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Nittedal IL
+8dfe05b5-2de7-481c-bc7a-31c036f39161,Erik,Westheim,M,2000-06-07,2000,peab_2013,Jessheim Friidrettsstadion,Østlandet,2,"peab_2013,peab_2014",1,Gjøvik Friidrettsklubb
+8a3257fb-d7d4-44fd-86e4-61281c556111,Gudbrand,Wirstad Dynna,M,2000-07-21,2000,peab_2014,Jessheim Friidrettsstadion,Østlandet,1,peab_2014,0,Brandbu IF
+e05b8cd9-def6-4825-9d01-452c03b8b140,Camilla,Ziesler,F,2000-05-09,2000,peab_2013,Osterøy Stadion,Vestlandet,2,"peab_2013,peab_2014",1,Sandnes IL
