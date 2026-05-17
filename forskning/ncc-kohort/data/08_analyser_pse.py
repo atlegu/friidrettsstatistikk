@@ -164,18 +164,20 @@ def kaplan_meier_plots(df):
     lr = logrank_test(m["duration_age"], f["duration_age"], m["event"], f["event"])
     logger.info(f"  Log-rank sex: chi2={lr.test_statistic:.2f}, p={lr.p_value:.4f}")
 
-    # Plot 2: KM by competition volume quintile (age 15-16)
-    df_km["vol_q"] = pd.qcut(df_km["vol_milepael"], q=5, labels=["Q1", "Q2", "Q3", "Q4", "Q5"],
-                              duplicates="drop")
+    # Plot 2: KM by competition volume tertile-bins at age 15-16
+    # (many athletes have 0 competitions -> use rank-based or manual bins)
+    vol_bins = [-0.5, 0.5, 5.5, 15.5, 30.5, np.inf]
+    vol_labels = ["0 (none)", "1-5 (very low)", "6-15 (moderate)", "16-30 (high)", "31+ (very high)"]
+    df_km["vol_q"] = pd.cut(df_km["vol_milepael"], bins=vol_bins, labels=vol_labels)
 
-    fig, ax = plt.subplots(figsize=(6, 4.5))
+    fig, ax = plt.subplots(figsize=(6.5, 4.5))
     colors = plt.cm.viridis(np.linspace(0.1, 0.9, 5))
-    for i, q in enumerate(["Q1", "Q2", "Q3", "Q4", "Q5"]):
+    for i, q in enumerate(vol_labels):
         sub = df_km[df_km["vol_q"] == q]
         if len(sub) < 5:
             continue
         kmf.fit(sub["duration_age"], sub["event"],
-                label=f"{q} (n={len(sub)}, vol={int(sub['vol_milepael'].median())} meets)")
+                label=f"{q} (n={len(sub)})")
         kmf.plot_survival_function(ax=ax, ci_show=False, color=colors[i])
     ax.set_title("Retention by competition volume at age 15–16 (quintiles)")
     ax.set_xlabel("Years since baseline (age 13/14)")

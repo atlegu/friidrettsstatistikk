@@ -1,0 +1,6 @@
+Model,n features,n,AUC (logistic),AUC SD (logistic),AUC (RF),AUC SD (RF)
+Baseline only (performance + sex),2,1217,0.592,0.039,0.584,0.02
+Specialization only,3,1217,0.599,0.056,0.57,0.045
+Volume only,5,1217,0.819,0.034,0.799,0.03
+Volume + Specialization (pre-baseline behavioral),8,1217,0.816,0.032,0.802,0.034
+Full (all candidates),22,1217,0.811,0.032,0.816,0.027
