@@ -1,6 +1,6 @@
 # Tables
 
-(Submitted as editable text; in the final Word manuscript, each table on its own page after the references. Supplementary Tables S1–S7 follow as supplementary material.)
+(Submitted as editable text; in the final Word manuscript, each table on its own page after the references. Supplementary Tables S1–S12 follow as supplementary material.)
 
 ---
 
@@ -54,11 +54,27 @@
 |  | Volume at age 15–16 (z) | 0.44 | [0.40, 0.48] | < .001 |  |  |
 |  | Championship types (count, 0–4) | 0.74 | [0.69, 0.80] | < .001 |  |  |
 
-*Note.* HRs are per one-SD increase for standardized covariates and per unit for the count of championship types. The volume-at-milestone covariate produces the largest single-step C-index gain (0.573 → 0.846). Schoenfeld residual tests detected proportional-hazards violations for vol_milepael, HHI early, and championship types; period-specific HRs are given in Table 4.
+*Note.* HRs are per one-SD increase for standardized covariates and per unit for the count of championship types. Schoenfeld residual tests detected proportional-hazards violations for vol_milepael, HHI early, and championship types; period-specific HRs are given in Table 5. The substantive effect is robust to the violation (Supplementary Table S6).
 
 ---
 
-## Table 4. Time-varying hazard ratios across follow-up periods (full Cox model, period-specific)
+## Table 4. Landmark analysis at age 16 — among athletes still active at age 16, does milestone-window volume predict subsequent senior retention?
+
+| Covariate | HR | 95% CI | p |
+|---|---|---|---|
+| Female | 1.32 | [1.15, 1.52] | < .001 |
+| Tyrving (z) | 1.01 | [0.94, 1.08] | .81 |
+| HHI early (z) | 0.95 | [0.88, 1.02] | .17 |
+| **Volume at age 15–16 (z)** | **0.60** | **[0.54, 0.66]** | **< .001** |
+| Championship types | 0.78 | [0.71, 0.87] | < .001 |
+| n | 960 |  |  |
+| C-index | 0.735 |  |  |
+
+*Note.* Athletes still demonstrably active at age 16 (defined as ≥1 registered result at age 16; n = 1,167 of 2,123); n = 960 after complete-case restriction on covariates. Follow-up time measured from age 16. The volume effect remains the dominant predictor among continuing athletes, ruling out a measurement-tautology interpretation. A complementary analysis using only pre-milestone (ages 13–14) volume produced HR = 0.50 (Supplementary Table S10), showing the signal is detectable before the milestone window itself.
+
+---
+
+## Table 5. Time-varying hazard ratios across follow-up periods (full Cox model, period-specific)
 
 | Covariate | Years 0–3 (age 13–17) | Years 3–6 (age 16–19) | Years 6+ (age 19+) |
 |---|---|---|---|
@@ -71,45 +87,21 @@
 | events in interval | 1,035 | 399 | 136 |
 | C-index | 0.894 | 0.661 | 0.582 |
 
-*Note.* The dominant predictor — competition volume at age 15–16 — is highly protective in the first three years after baseline (when most dropout occurs), moderately protective in years 3–6 (the transition to junior age), and indistinguishable from null in years 6+ (athletes who have survived the junior transition). This pattern is consistent with the substantive interpretation that the behavioral signal predicts proximal disengagement.
+*Note.* The dominant predictor — competition volume at age 15–16 — is most protective in the first three years after baseline (when most dropout occurs), moderately protective in years 3–6 (the junior transition), and indistinguishable from null in years 6+ (athletes who have survived the junior transition).
 
 ---
 
-## Table 5. Random forest variable importance (top 15) for senior retention
+## Table 6. Calibration of milestone-window volume as a behavioral early-warning indicator
 
-| Rank | Feature | Importance |
-|---|---|---|
-| 1 | Volume at age 16 | 0.133 |
-| 2 | Composite volume at milestone (ages 15–16) | 0.126 |
-| 3 | Volume at age 15 | 0.083 |
-| 4 | Tyrving performance slope (ages 13–16) | 0.075 |
-| 5 | Volume trend across milestone | 0.071 |
-| 6 | Peak Tyrving before age 15 | 0.048 |
-| 7 | HHI change (age 13–14 to 15–16) | 0.044 |
-| 8 | Mean meets per year early career | 0.042 |
-| 9 | Tyrving best at baseline | 0.040 |
-| 10 | HHI early | 0.040 |
-| 11 | Volume pre-milestone (ages 13–14) | 0.039 |
-| 12 | Year-round participation sum (ages 13–16) | 0.039 |
-| 13 | Volume at age 14 | 0.036 |
-| 14 | Number of championship types | 0.031 |
-| 15 | HHI at age 15 | 0.030 |
+| Threshold (athletes flagged if vol < ) | Flagged % | Sensitivity | Specificity | PPV | NPV |
+|---|---|---|---|---|---|
+| 1 meet (vol = 0) | 27.7 | 0.33 | 0.99 | **0.99** | 0.22 |
+| 5 meets | 42.2 | 0.49 | 0.94 | **0.98** | 0.27 |
+| 10 meets | 53.7 | 0.63 | 0.91 | **0.97** | 0.32 |
+| 15 meets | 60.2 | 0.69 | 0.87 | 0.96 | 0.36 |
+| 20 meets | 67.1 | 0.77 | 0.81 | 0.95 | 0.41 |
 
-*Note.* Importances sum to 1.0 across all 22 features. Volume-based features dominate the top six positions.
-
----
-
-## Table 6. Cross-validated AUC for nested predictor subsets predicting senior retention
-
-| Predictor set | n features | n | AUC (logistic) | AUC (random forest) |
-|---|---|---|---|---|
-| Baseline only (sex + Tyrving best) | 2 | 1,217 | 0.59 (±0.04) | 0.58 (±0.02) |
-| Specialization only (sex + HHI + n categories) | 3 | 1,217 | 0.60 (±0.06) | 0.57 (±0.05) |
-| Volume only (sex + meets ages 13–16) | 5 | 1,217 | **0.82** (±0.03) | 0.80 (±0.03) |
-| Volume + specialization (pre-baseline behavioral) | 8 | 1,217 | 0.82 (±0.03) | 0.80 (±0.03) |
-| Full model (all 22 predictors) | 22 | 1,217 | 0.81 (±0.03) | 0.82 (±0.03) |
-
-*Note.* AUC is mean ± SD across 5-fold stratified cross-validation. Behavioral volume indicators (Volume-only) achieve performance close to the full predictor set.
+*Note.* PPV (positive predictive value) is the proportion of flagged athletes who subsequently dropped out before senior age. Across all thresholds PPV ≥ 0.95, indicating that the rule "flag athletes whose milestone-window volume is below threshold" is consistently informative. The choice of threshold trades sensitivity for cohort coverage but does not change PPV materially.
 
 ---
 
@@ -128,7 +120,7 @@
 |  |  | **Volume at age 15–16 (z)** | **0.36** | **[0.31, 0.43]** | **< .001** |  |
 |  |  | Championship types | 0.77 | [0.68, 0.87] | < .001 |  |
 
-*Note.* The volume-at-milestone effect replicates in both cohorts at similar magnitude and direction; HHI early (specialization) is significant in Cohort B but not Cohort A; the sex effect is significant in Cohort A but not Cohort B.
+*Note.* The milestone-window volume effect replicates in both cohorts at similar magnitude and direction. The cohort difference in the sex coefficient is discussed in the text.
 
 ---
 
@@ -204,3 +196,66 @@
 |  |  | Championship types | 0.75 | [0.67, 0.83] | < .001 |
 
 *Note.* Effect directions and magnitudes are concordant across sexes; C-index = 0.843 in both subgroups.
+
+## Table S8. Cross-validated AUC for nested predictor subsets predicting senior retention
+
+| Predictor set | n features | n | AUC (logistic) | AUC (random forest) |
+|---|---|---|---|---|
+| Baseline only (sex + Tyrving best) | 2 | 1,217 | 0.59 (±0.04) | 0.58 (±0.02) |
+| Specialization only (sex + HHI + n categories) | 3 | 1,217 | 0.60 (±0.06) | 0.57 (±0.05) |
+| Volume only (sex + meets ages 13–16) | 5 | 1,217 | 0.82 (±0.03) | 0.80 (±0.03) |
+| Volume + specialization (pre-baseline behavioral) | 8 | 1,217 | 0.82 (±0.03) | 0.80 (±0.03) |
+| Full model (all 22 predictors) | 22 | 1,217 | 0.81 (±0.03) | 0.82 (±0.03) |
+
+## Table S9. Outcome-definition sensitivity (logistic regression, full model)
+
+| Outcome | Description | Retainer n (%) | OR (vol_milepael per SD) | AUC |
+|---|---|---|---|---|
+| A | ≥1 senior-age (20+) result | 411 (19.4%) | 2.79 | 0.83 |
+| B | ≥2 results in any senior-age year (primary) | 348 (16.4%) | 3.08 | 0.86 |
+| C | ≥2 results in each of two distinct senior-age years | 254 (12.0%) | 2.94 | 0.87 |
+
+## Table S10. Lagged volume — pre-milestone (ages 13–14) alone
+
+| Covariate | HR | 95% CI | p |
+|---|---|---|---|
+| Female | 1.15 | [1.04, 1.27] | .009 |
+| Tyrving (z) | 1.00 | [0.95, 1.05] | .833 |
+| HHI early (z) | 0.80 | [0.76, 0.85] | < .001 |
+| **Pre-milestone volume (z, ages 13–14)** | **0.50** | **[0.46, 0.53]** | **< .001** |
+
+*Note.* n = 1,704; C-index = 0.743. Behavioral signal is detectable using only pre-milestone data.
+
+## Table S11. Sensitivity excluding zero-volume athletes
+
+| Covariate | HR | 95% CI | p |
+|---|---|---|---|
+| Female | 1.20 | [1.07, 1.36] | .003 |
+| Tyrving (z) | 1.04 | [0.98, 1.10] | .211 |
+| HHI early (z) | 0.96 | [0.90, 1.02] | .200 |
+| **Volume at age 15–16 (z)** | **0.51** | **[0.46, 0.56]** | **< .001** |
+| Championship types | 0.80 | [0.73, 0.87] | < .001 |
+
+*Note.* Excludes 589 athletes with vol_milepael = 0; remaining n = 1,250; C-index = 0.786.
+
+## Table S12. Random forest variable importance (top 15) for senior retention
+
+| Rank | Feature | Importance |
+|---|---|---|
+| 1 | Volume at age 16 | 0.133 |
+| 2 | Composite volume at milestone (ages 15–16) | 0.126 |
+| 3 | Volume at age 15 | 0.083 |
+| 4 | Tyrving performance slope (ages 13–16) | 0.075 |
+| 5 | Volume trend across milestone | 0.071 |
+| 6 | Peak Tyrving before age 15 | 0.048 |
+| 7 | HHI change (age 13–14 to 15–16) | 0.044 |
+| 8 | Mean meets per year early career | 0.042 |
+| 9 | Tyrving best at baseline | 0.040 |
+| 10 | HHI early | 0.040 |
+| 11 | Volume pre-milestone (ages 13–14) | 0.039 |
+| 12 | Year-round participation sum (ages 13–16) | 0.039 |
+| 13 | Volume at age 14 | 0.036 |
+| 14 | Number of championship types | 0.031 |
+| 15 | HHI at age 15 | 0.030 |
+
+*Note.* Importances sum to 1.0 across all 22 features.
