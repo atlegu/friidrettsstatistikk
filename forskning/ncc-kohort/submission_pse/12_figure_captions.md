@@ -4,7 +4,7 @@
 
 ---
 
-**Figure 1.** Competition volume trajectory by senior-retention status. Median competitions per year (with interquartile range as shaded band) plotted by athlete age (13–18), separately for athletes who retained active senior status (≥1 season with ≥2 results at age ≥20; n = 348) and those who did not (n = 1,775). The dashed vertical line at age 15 marks the first qualification milestone (Norwegian Youth Championships). Future dropouts show declining participation already at age 15, while future retainers maintain or increase participation through age 17.
+**Figure 1.** Competition volume trajectory by senior-retention status. Median competitions per year (with interquartile range as shaded band) plotted by athlete age (13–18), separately for athletes who retained active senior status (≥2 results in any year at age ≥20; n = 348) and those who did not (n = 1,775). The dashed vertical line at age 15 marks the first qualification milestone (Norwegian Youth Championships). Future dropouts show declining participation already at age 15, while future retainers maintain or increase participation through age 17.
 
 **Figure 2.** Kaplan–Meier retention curves. **(A)** Overall retention from baseline (age 13/14) over up to 14 years of follow-up; shaded band is 95% pointwise CI. **(B)** Retention stratified by sex (solid line = male, dashed line = female). Log-rank test for sex difference: χ² = 0.95, p = 0.33.
 
@@ -12,4 +12,10 @@
 
 **Figure 4.** Kaplan–Meier retention curves stratified by the number of championship types entered before age 17 (range 0–4, comprising regional, youth-national, junior-national, and senior-national championships). Retention is strongly monotonic in number of championship types.
 
-**Figure 5.** Random forest variable importances (top 15) for predicting active senior status. Bars show the mean decrease in impurity across 500 trees; importances sum to 1 across all 22 features. The top six predictors are all volume- or trajectory-related; performance and specialization variables appear in middle positions; sex enters near the bottom of the ranking.
+---
+
+# Supplementary figure captions
+
+**Figure S1.** Calibration plot for the full Cox model. Predicted probability of senior retention is binned into deciles (x-axis); the y-axis shows the observed proportion retained in each decile. Points falling on the diagonal indicate perfect calibration. The model shows close agreement between predicted and observed retention across the distribution.
+
+**Figure S2.** Random forest variable importances (top 15) for predicting active senior status. Bars show the mean decrease in Gini impurity across 500 trees; importances sum to 1 across all 22 features. The top six predictors are all volume- or trajectory-related; performance and specialization variables appear in middle positions; sex enters near the bottom of the ranking. The random forest is reported as convergent non-parametric evidence for the Cox stepwise findings (Table 3, Supplementary Table S12).
