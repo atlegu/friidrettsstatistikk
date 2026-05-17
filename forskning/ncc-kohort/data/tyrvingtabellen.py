@@ -87,7 +87,13 @@ def parse_tyrving_xls(path=None):
             kvotient = sheet.cell_value(row, 8)
 
             if isinstance(ref_1000, (int, float)) and ref_1000 > 0 and isinstance(kvotient, (int, float)) and kvotient > 0:
-                table[gender][age][event_name] = (float(ref_1000), float(kvotient))
+                # FIX: behold første forekomst av hvert event-navn.
+                # Excel har duplikate "1000 m", "2000 m", "3000 m", "5000 m"
+                # der den andre forekomsten er kappgang (race walking) — mye
+                # langsommere referansetid. Uten denne fixen overskriver
+                # kappgang-verdiene de korrekte løps-referansene.
+                if event_name not in table[gender][age]:
+                    table[gender][age][event_name] = (float(ref_1000), float(kvotient))
 
     return table
 
