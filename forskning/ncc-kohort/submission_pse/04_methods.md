@@ -8,7 +8,7 @@ This was a retrospective longitudinal cohort study of Norwegian youth track-and-
 
 The cohort comprises every athlete who participated in any of the five consecutive autumn editions of a regional grassroots youth meet held simultaneously at three venues in eastern, mid, and western Norway between 2011 and 2016: NCC-lekene 2011, NCC-lekene 2012, PEAB-lekene 2013, PEAB-lekene 2014, Bendit-lekene 2015, and Ungdomslekene 2016 (the meet retained an identical format, venue rotation, age-group structure, and event programme while changing sponsor name). Each edition admitted athletes aged 13–14 in the year of the meet. Athletes were free to enter as 13-year-olds, as 14-year-olds, or both; participation was not contingent on selection or qualifying performance.
 
-To enable cross-cohort replication, we partitioned participants into two birth-year cohorts: **Cohort A** (birth years 1998–2000, baseline meets 2011–2014; n = 1,301) and **Cohort B** (birth years 2001–2002, baseline meets 2014–2016; n = 822). Cohort B's earliest participants thus had baseline 3 years after Cohort A's, with no design changes between the two cohorts other than sponsor name.
+To enable cross-cohort replication, we partitioned participants into two birth-year cohorts: **Cohort A** (birth years 1998–2000, baseline meets 2011–2014; n = 1,301) and **Cohort B** (birth years 2001–2002, baseline meets 2014–2016; n = 822). Cohort B's earliest participants thus had baseline three years after Cohort A's, with no design changes between the two cohorts other than sponsor name.
 
 Athletes were retained in the analysis regardless of subsequent transfers between clubs or events. The total analytical cohort comprised 2,123 athletes (996 male, 1,103 female, 24 with unknown sex), generating 230,868 individual competition entries through the most recent register update (April 2026).
 
@@ -20,15 +20,15 @@ Each athlete was followed from their baseline meet year through the most recent 
 
 ### 2.4.1 Outcome variables
 
-The primary outcome was **active senior status**: a binary indicator coded 1 if the athlete had at least two registered competition results in any single calendar year at age 20 or later, and 0 otherwise. Secondary outcomes were *active age 17*, *active age 18*, and *continued activity in 2024 or later*. An *active season* was operationalized as a calendar year with ≥2 registered results, to exclude athletes who returned to the register only sporadically.
+The primary outcome was **active senior status**: a binary indicator coded 1 if the athlete had at least two registered competition results in any single calendar year at age 20 or later, and 0 otherwise. The two-results threshold was chosen to exclude athletes who returned to the register only sporadically (e.g., for a single charity race) while remaining inclusive of those competing in distinct events within a single meet. Age 20 marks the formal transition to senior competition in Norwegian track and field. To assess sensitivity to operational choices, we re-estimated the central analyses using two alternative outcome definitions: (A) ≥1 senior-age result and (C) ≥2 results in each of two distinct senior-age calendar years (Supplementary Table S9).
 
-For survival analyses, we used **time to last active season** as duration and the absence of activity in 2024+ as the event indicator, with athletes still competing in 2024+ treated as right-censored.
+For survival analyses, we used time from baseline to the athlete's last *active season* (a calendar year with ≥2 registered results) as duration, with athletes still active in 2024 or later treated as right-censored.
 
 ### 2.4.2 Performance variables
 
 Each result was converted to a Tyrving age-norm score, the Norwegian Athletics Federation's official scoring system for youth track and field. Tyrving points are computed from a published table that gives, for each event × sex × age combination, a reference performance equivalent to 1,000 points and a per-unit-change quotient (Norges Friidrettsforbund, 2024). A performance of exactly 1,000 points corresponds to the federation's published "excellent" benchmark for that combination. Points are linearly extrapolated above and below the reference, capped in our analyses at 1,500 to suppress occasional implausibly extreme values arising from data-entry errors in middle-distance times.
 
-For each athlete we computed: **tyrving_best** (the maximum Tyrving score across all events at the baseline meet), **tyrving_mean** (the mean), **tyrving_peak_pre15** (the maximum across all results before age 15), and **tyrving_slope_13_16** (the OLS slope of age-specific maximum Tyrving regressed on age across ages 13–16, indexing performance trajectory). We also derived a within-event, within-sex, within-meet percentile rank at baseline to give a complementary relative-performance measure that is robust to age-norm idiosyncrasies in the Tyrving table.
+For each athlete we computed: **tyrving_best** (the maximum Tyrving score across all events at the baseline meet), **tyrving_mean** (the mean), **tyrving_peak_pre15** (the maximum across all results before age 15), and **tyrving_slope_13_16** (the OLS slope of age-specific maximum Tyrving regressed on age across ages 13–16, indexing performance trajectory).
 
 ### 2.4.3 Specialization variables
 
@@ -40,7 +40,9 @@ where $s_i$ is the share of that athlete's results falling in category $i$ and $
 
 ### 2.4.4 Behavioral engagement variables
 
-For each athlete and each integer age year from 13 to 18, we counted the number of distinct competition meets attended (**vol_age_X**), the total number of results (**res_age_X**), and a binary year-round indicator (**helaars_age_X** = 1 if the athlete competed in both an outdoor and an indoor meet in that age year, else 0). We derived composite indicators including **vol_pre_milepael** (sum of meets at ages 13–14), **vol_milepael** (sum of meets at ages 15–16, the qualification milestone window), and **vol_trend_milepael** (vol_milepael − vol_pre_milepael), as well as **n_msk_typer**, a count of championship *types* (Norwegian Youth Championships, Junior National Championships, National Championships, Regional Championships) in which the athlete competed before age 17.
+For each athlete and each integer age year from 13 to 18, we counted the number of distinct competition meets attended (**vol_age_X**), the total number of results (**res_age_X**), and a binary year-round indicator (**helaars_age_X** = 1 if the athlete competed in both an outdoor and an indoor meet in that age year, else 0). We derived composite indicators: **vol_pre_milepael** (sum of meets at ages 13–14, the pre-qualification window), **vol_milepael** (sum of meets at ages 15–16, the qualification-milestone window), and **vol_trend_milepael** (vol_milepael − vol_pre_milepael). We also computed **n_msk_typer**, a count of championship *types* (Norwegian Youth Championships, Junior National Championships, National Championships, Regional Championships) in which the athlete competed before age 17.
+
+We treat these variables as *observable behavioral markers* of engagement, not as direct measures of motivation or commitment. Their interpretation as evidence for an underlying engagement-balance mechanism depends on whether their temporal structure is consistent with the predictions of the theoretical accounts described in the Introduction.
 
 ### 2.4.5 Control variables
 
@@ -50,39 +52,43 @@ We recorded sex (M/F as registered in the federation's database), birth quarter 
 
 ### 2.5.1 Survival analysis
 
-We modelled time from baseline to last active season using Cox (1972) proportional hazards regression. The model assumes
+We modelled time from baseline to last active season using Cox (1972) proportional hazards regression, with hazard function $h(t \mid \mathbf{x}) = h_0(t) \exp(\boldsymbol{\beta}^{\top} \mathbf{x})$, where $h(t \mid \mathbf{x})$ is the dropout hazard at follow-up time $t$ for an athlete with covariate vector $\mathbf{x}$, $h_0(t)$ is the unspecified baseline hazard, and $\boldsymbol{\beta}$ is the vector of regression coefficients. Ties were handled with Efron's (1977) method, the lifelines default (Davidson-Pilon, 2024).
 
-$$h(t \mid \mathbf{x}) = h_0(t) \exp(\boldsymbol{\beta}^{\top} \mathbf{x})$$
+Models were fitted in a stepwise sequence to characterize the unique contribution of each variable class: M1 (sex only), M2 (+ performance), M3 (+ specialization), M4 (+ competition volume at milestone), and M5 (+ championship types). The entry order was theoretically driven: starting from the variable most commonly emphasized in prior literature (sex) and ending with the class motivated by our hypothesis (behavioral engagement at the milestone). We did not perform data-driven variable selection, because all candidate predictors were theoretically motivated. Concordance indices (C-index; Harrell et al., 1996) gauged the discriminative gain at each step. Continuous covariates were standardized (z-scored) so that hazard ratios reflect per-SD effects.
 
-where $h(t \mid \mathbf{x})$ is the hazard of dropout at follow-up time $t$ for an athlete with covariate vector $\mathbf{x}$, $h_0(t)$ is the unspecified baseline hazard, and $\boldsymbol{\beta}$ is the vector of regression coefficients. We used Efron's (1977) method for tied event times, which is the default in the lifelines package (Davidson-Pilon, 2024).
+Kaplan–Meier curves were stratified by sex, by total competition volume at age 15–16 (categorized into 0, 1–5, 6–15, 16–30, or 31+ meets), and by number of championship types entered before age 17.
 
-Cox proportional hazards models were fitted in a stepwise sequence to characterize the unique contribution of each variable class: M1 (sex only), M2 (+ performance), M3 (+ specialization), M4 (+ competition volume at milestone), and M5 (+ championship types). The variable-entry order was theoretically driven, beginning with the variable class most commonly emphasized in prior literature (sex) and ending with the class motivated by our hypothesis (behavioral engagement). We did not perform data-driven variable selection (e.g., LASSO), because all candidate predictors were theoretically motivated; the goal was estimation of each class's contribution, not model selection.
+### 2.5.2 Addressing potential measurement-tautology: landmark analysis
 
-Concordance indices (C-index; Harrell et al., 1996) gauged the discriminative gain at each step. Continuous covariates were standardized (z-scored) so that hazard ratios reflect per-SD effects.
+Because senior retention is itself defined by registered competitive activity, and the strongest candidate predictor (competition volume at age 15–16) is also a measure of registered competitive activity, the two measurements are operationally related. Specifically, an athlete who has already withdrawn from competition before age 15 has vol_milepael = 0 by construction *and* will not meet the senior-retention criterion. Without explicit treatment, the apparent predictive power of milestone volume could partly reflect this mechanical relationship.
 
-Kaplan–Meier curves were stratified by sex, by competition-volume strata at age 15–16 (0, 1–5, 6–15, 16–30, or 31+ meets), and by number of championship types entered before age 17.
+To address this concern, we conducted a **landmark analysis** (van Houwelingen, 2007): we restricted the analysis to athletes who were still demonstrably active at age 16 (defined as having ≥1 registered result at age 16) and re-estimated the full Cox model with follow-up time measured from age 16 rather than from baseline. This analysis tests whether milestone-window volume continues to predict subsequent retention *among athletes who have not yet dropped out*. We additionally re-estimated the full Cox model excluding athletes with vol_milepael = 0 (Supplementary Table S12), and fitted a *lagged-volume* model in which the only behavioral predictor was vol_pre_milepael (ages 13–14), testing whether the signal exists before the milestone window itself (Supplementary Table S10).
 
-### 2.5.2 Proportional-hazards assumption and time-varying effects
+### 2.5.3 Proportional-hazards assumption and time-varying effects
 
-We assessed the proportional-hazards assumption using Schoenfeld residuals (Grambsch & Therneau, 1994). Where the assumption was violated for individual covariates, we re-estimated the model stratified on the violating variable (Therneau & Grambsch, 2000) to confirm that effect estimates for the remaining covariates were robust to non-proportionality. To characterize the time-varying nature of the dominant predictor (competition volume at age 15–16), we additionally fitted period-specific Cox models in three follow-up windows (years 0–3, 3–6, and 6+ post-baseline), reporting HR with 95% confidence intervals separately for each window. This decomposition shows whether a covariate's protective effect is concentrated in particular phases of the post-baseline career.
+We assessed the proportional-hazards assumption using Schoenfeld residuals (Grambsch & Therneau, 1994). Where the assumption was violated, we re-estimated the model stratified on the violating variable (Therneau & Grambsch, 2000) to confirm that remaining effects were robust. To characterize the time-varying nature of the dominant predictor, we fitted period-specific Cox models in three follow-up windows (years 0–3, 3–6, and 6+ post-baseline), reporting HR with 95% confidence intervals separately for each window.
 
-### 2.5.3 Sample size and minimum detectable effect
+### 2.5.4 Sample size and minimum detectable effect
 
 The design uses the complete population meeting inclusion criteria, so a-priori power in the conventional sense does not apply. To document detection capacity we computed the minimum detectable hazard ratio given the observed event count using Hsieh and Lavori's (2000) formula $|\log HR_{\min}| = (z_{1-\alpha/2} + z_{1-\beta}) / (\sigma \sqrt{d})$, where $d$ is event count and $\sigma$ is the SD of the standardized covariate (= 1 for z-scored covariates). With $d = 1{,}570$ events, $HR_{\min} \approx 1.07$ at 80% power and $\alpha = .05$, well below all reported effects of interest.
 
-### 2.5.4 Missing data and clustering
+### 2.5.5 Missing data and clustering
 
-Missing values arose primarily for the Tyrving score (athletes whose only baseline results were in events without an official Tyrving reference, ~20% missing) and for HHI (athletes with fewer than 3 active seasons, ~10%). Our primary analyses used complete-case Cox regression (n = 1,704 for the full model). To assess sensitivity, we re-estimated the full Cox model substituting variable means for missing continuous covariates (mean-imputation sensitivity); estimates were near-identical to the complete-case results (Supplementary Table S5). Because athletes are nested within clubs and might share unobserved club-level characteristics, we additionally re-estimated the model with cluster-robust standard errors clustered on club name (Lin & Wei, 1989); coefficients were unchanged and 95% CIs only marginally wider (Supplementary Table S2).
+Missing values arose primarily for the Tyrving score (athletes whose only baseline results were in events without an official Tyrving reference, ~20% missing) and for HHI (athletes with fewer than 3 active seasons, ~10%). Our primary analyses used complete-case Cox regression (n = 1,704 for the full model). To assess sensitivity, we re-estimated the full Cox model substituting variable means for missing continuous covariates; estimates were near-identical to the complete-case results (Supplementary Table S5). Because athletes are nested within clubs and might share unobserved club-level characteristics, we additionally re-estimated the model with cluster-robust standard errors clustered on club name (Lin & Wei, 1989); coefficients were unchanged and 95% CIs only marginally wider (Supplementary Table S2).
 
-### 2.5.5 Random forest variable importance
+### 2.5.6 Sensitivity to unmeasured confounding and cross-cohort replication
 
-For non-parametric variable importance, we fit a random forest (Breiman, 2001) with 500 trees and maximum depth 8 to predict active senior status, with class weighting to handle outcome imbalance (16% senior retainers). Hyperparameter values were standard defaults; sensitivity to forest size and depth was negligible. Variable importance is reported as the mean decrease in Gini impurity. Cross-validated AUCs (5-fold stratified) compared nested subsets of predictors to gauge how much of the discriminative information is contained in (i) baseline performance, (ii) early specialization, (iii) competition volume across ages 13–16, and (iv) the full predictor set.
+For the dominant covariate (vol_milepael) and for the championship-types count, we computed the **E-value** (VanderWeele & Ding, 2017), which quantifies the minimum strength of association on the risk-ratio scale that an unmeasured confounder would need to have with both the exposure and the outcome to explain away the observed effect entirely. To assess **cross-cohort replication**, we re-estimated the full Cox model separately within Cohort A (1998–2000) and Cohort B (2001–2002). We additionally fitted subgroup Cox models within each sex stratum.
 
-### 2.5.6 Cross-cohort replication and sensitivity to unmeasured confounding
+### 2.5.7 Calibration and practical early-warning thresholds
 
-To assess **cross-cohort replication**, we re-estimated the full Cox model separately within Cohort A (1998–2000) and Cohort B (2001–2002). For the dominant covariate (vol_milepael) and for the championship-types count, we also computed the *E-value* (VanderWeele & Ding, 2017), which quantifies the minimum strength of association on the risk-ratio scale that an unmeasured confounder would need to have with both the exposure and the outcome to explain away the observed effect entirely. We additionally fitted subgroup Cox models within each sex stratum to assess effect-modification by sex.
+To inform the practical claim that competition volume can serve as an early-warning indicator, we computed calibration metrics — sensitivity, specificity, positive predictive value (PPV), and negative predictive value (NPV) — at five candidate thresholds for "flagging" an athlete as high-risk (vol_milepael < 1, 5, 10, 15, or 20 meets across ages 15–16). We additionally produced a decile-based calibration plot comparing observed to predicted retention probabilities (Supplementary Figure S1).
 
-### 2.5.7 Software
+### 2.5.8 Variable importance (supplementary)
+
+For non-parametric variable importance, we fit a random forest (Breiman, 2001) with 500 trees and maximum depth 8 to predict active senior status, with class weighting to handle outcome imbalance (16% senior retainers). Variable importance is reported as the mean decrease in Gini impurity. Cross-validated AUCs (5-fold stratified) compared nested subsets of predictors. We treat the random forest as convergent evidence for the Cox findings rather than as an independent main analysis.
+
+### 2.5.9 Software
 
 All analyses used Python 3.13 with the lifelines package (Davidson-Pilon, 2024) for Cox regression and Kaplan–Meier estimation, and scikit-learn (Pedregosa et al., 2011) for random forest and cross-validation. Figures were produced with matplotlib (Hunter, 2007). Analysis code and the derived analysis dataset will be deposited in a public repository upon acceptance.
 
