@@ -137,6 +137,19 @@ Figure 1 presents the central behavioral observation. Median competitions per ye
 **Figure 1.** Competition volume trajectory by senior-retention status. Median competitions per year (with interquartile range as shaded band) plotted by athlete age (13–18), separately for athletes who retained active senior status (≥1 season with ≥2 results at age ≥20; n = 348) and those who did not (n = 1,775). The dashed vertical line at age 15 marks the first qualification milestone (Norwegian Youth Championships). Future dropouts show declining participation already at age 15, while future retainers maintain or increase participation through age 17.
 
 
+
+## Table 2. Competition volume trajectory by senior-retention status (median competitions per year and IQR)
+
+| Group | N | Age 13 | Age 14 | Age 15 | Age 16 | Age 17 | Age 18 |
+|---|---|---|---|---|---|---|---|
+| Senior retainers (active age ≥20) | 348 | 13 [6–21] | 17 [10–25] | 19 [11–27] | 18 [10–26] | 17 [10–24] | 14 [7–20] |
+| Dropouts (last active age <20) | 1,775 | 8 [4–13] | 8 [3–14] | 3 [0–11] | 0 [0–7] | 0 [0–2] | 0 [0–0] |
+
+*Note.* Values are median number of meets per year [IQR]. Trajectories diverge sharply from age 15.
+
+---
+
+
 ### 3.3 Survival to active senior age
 
 Overall Kaplan-Meier retention is shown in Figure 2A. Half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (corresponding to the transition from youth to junior competition) marks the steepest acceleration in dropout. The sex-stratified retention curves (Figure 2B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).

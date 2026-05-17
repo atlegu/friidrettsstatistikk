@@ -114,6 +114,8 @@ Figure 1 presents the central behavioral observation. Median competitions per ye
 
 [**Figure 1 about here**]
 
+[**Table 2 about here**]
+
 ### 3.3 Survival to active senior age
 
 Overall Kaplan-Meier retention is shown in Figure 2A. Half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (corresponding to the transition from youth to junior competition) marks the steepest acceleration in dropout. The sex-stratified retention curves (Figure 2B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).
