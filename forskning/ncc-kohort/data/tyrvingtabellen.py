@@ -87,7 +87,8 @@ def parse_tyrving_xls(path=None):
             kvotient = sheet.cell_value(row, 8)
 
             if isinstance(ref_1000, (int, float)) and ref_1000 > 0 and isinstance(kvotient, (int, float)) and kvotient > 0:
-                table[gender][age][event_name] = (float(ref_1000), float(kvotient))
+                if event_name not in table[gender][age]:
+                    table[gender][age][event_name] = (float(ref_1000), float(kvotient))
 
     return table
 
