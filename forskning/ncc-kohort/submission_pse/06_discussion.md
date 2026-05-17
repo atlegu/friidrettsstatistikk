@@ -56,7 +56,7 @@ Fifth, despite a 14-year maximum follow-up, our right-censoring window means the
 
 ## 4.6 Future directions
 
-Three extensions deserve attention. First, *linking* the register-based behavioral signal to standard psychological instruments (SCQ-2; Behavioral Regulation in Sport Questionnaire) in a sample of currently active athletes would directly test the conjecture that low volume tracks low intrinsic motivation. Second, *cross-sport generalization*: track and field is unusually transparent because nearly all training-relevant activity is publicly recorded; team-sport registers are typically less complete and may produce different signal-to-noise ratios. Third, *intervention*: a quasi-experimental implementation of behavioral surveillance — for instance, prompting federation-level outreach to athletes whose age-15 volume falls into the bottom quintile — would convert a predictive finding into a causally interpretable one.
+Three extensions deserve attention: linking the register-based behavioral signal to standard psychological instruments (e.g., SCQ-2) in currently active athletes; testing cross-sport generalization where registers are less complete; and quasi-experimental implementation of behavioral surveillance with federation-level outreach to athletes whose age-15 volume falls into the bottom quintile.
 
 ## 4.7 Conclusion
 

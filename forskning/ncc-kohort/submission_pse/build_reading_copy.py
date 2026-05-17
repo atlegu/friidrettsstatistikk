@@ -63,6 +63,13 @@ out = re.sub(
     out,
 )
 
+# Replace double table placeholders ("Tables X and Y")
+out = re.sub(
+    r"\[\*\*Tables (\d+) and (\d+) about here\*\*\]",
+    lambda m: "\n" + extract_table(int(m.group(1))) + "\n\n" + extract_table(int(m.group(2))) + "\n",
+    out,
+)
+
 (HERE / "MANUSCRIPT_FULL.md").write_text(out)
 print(f"Wrote MANUSCRIPT_FULL.md ({len(out)} chars)")
 remaining = re.findall(r"\[\*\*.*?about here\*\*\]", out)

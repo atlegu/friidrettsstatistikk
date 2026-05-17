@@ -76,6 +76,4 @@ To assess the robustness of the volume-at-milestone effect to plausible threats 
 
 **Sex stratification.** Fitting the full Cox model separately in male and female athletes produced identical C-indices (0.843 in each) and concordant effect directions (Supplementary Table S7), confirming that the behavioral pattern is not sex-specific.
 
-[**Tables 4 and 7 about here**]
-
 In summary: across two independent birth-year cohorts spanning a 5-year window, the same behavioral pattern — competition volume at the qualification-milestone year as the dominant retention predictor — appeared with concordant magnitude and direction. Performance and specialization remained weak predictors. Future-dropout trajectories were visibly distinguishable from future-retainer trajectories from age 15 onward. Sensitivity analyses confirmed that the volume effect is robust to unmeasured confounding (E = 5.16), club-level clustering, missing-data treatment, and sex stratification, and that its protective magnitude is concentrated in the years immediately following the qualification milestone.

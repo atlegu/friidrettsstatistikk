@@ -68,11 +68,7 @@ We assessed the proportional-hazards assumption using Schoenfeld residuals (Gram
 
 ### 2.5.3 Sample size and minimum detectable effect
 
-Because the design uses the complete population of athletes meeting the inclusion criterion, an a-priori power calculation in the conventional sense is not applicable: there is no sample. Journal policy nonetheless requires effect-size detection be justified, so we computed the *minimum detectable hazard ratio* given the observed event count using Hsieh and Lavori's (2000) formula
-
-$$|\log HR_{\min}| = \frac{z_{1-\alpha/2} + z_{1-\beta}}{\sigma \sqrt{d}}$$
-
-where $d$ is the number of events, $\sigma$ is the standard deviation of the standardized covariate (= 1 by construction for z-scored covariates), and $\alpha = 0.05$, $\beta = 0.20$ yield $z$-quantiles of 1.96 and 0.84 respectively. With $d = 1{,}570$ events in our complete-case sample, $HR_{\min} \approx 1.07$ for a one-SD shift in any standardized covariate; equivalently, effects with HR < 0.93 or > 1.07 are detectable at 80% power. The smallest effect estimated in our key models (the protective effect of vol_milepael, HR ≈ 0.35) is more than 18 times larger than this detectable floor, so our null findings (e.g., for the sex coefficient in unadjusted analysis) can confidently be interpreted as substantively small rather than as underpowered.
+The design uses the complete population meeting inclusion criteria, so a-priori power in the conventional sense does not apply. To document detection capacity we computed the minimum detectable hazard ratio given the observed event count using Hsieh and Lavori's (2000) formula $|\log HR_{\min}| = (z_{1-\alpha/2} + z_{1-\beta}) / (\sigma \sqrt{d})$, where $d$ is event count and $\sigma$ is the SD of the standardized covariate (= 1 for z-scored covariates). With $d = 1{,}570$ events, $HR_{\min} \approx 1.07$ at 80% power and $\alpha = .05$, well below all reported effects of interest.
 
 ### 2.5.4 Missing data and clustering
 
