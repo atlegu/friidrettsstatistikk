@@ -8,13 +8,13 @@
 
 ## Abstract
 
-**Objectives.** Future dropouts from organized youth sport visibly pull back from competition years before formal exit. Although qualitative research has long described this gradual disengagement, its longitudinal behavioral signature has been hard to observe directly. We use Norway's public competition register to test whether such a signature predicts senior retention.
+**Objectives.** Future dropouts from organized youth sport pull back from competition years before formal exit. Although qualitative research has long described this gradual disengagement, its longitudinal behavioral signature has been hard to observe directly. We use Norway's public competition register to test whether baseline-window behavior predicts senior retention prospectively.
 
-**Method.** We followed all 2,123 athletes (ages 13–14 at baseline) participating in five consecutive editions of a regional youth track-and-field meet between 2011 and 2016 (birth cohorts 1998–2002). We recorded annual competition counts, event-category diversification, championship participation, and Tyrving age-norm performance points through 2026 — a maximum 14-year follow-up. Senior retention (≥2 registered competitions in any year at age 20 or later) was modeled with Cox proportional hazards and assessed for assumption violations, time-varying effects, unmeasured confounding (E-value), measurement-tautology (landmark analysis at age 16), and outcome-definition sensitivity.
+**Method.** We followed 2,123 athletes who participated as 13–14-year-olds in six consecutive editions of a regional youth track-and-field meet (2011–2016; birth cohorts 1998–2002), recording annual competition counts, event diversification, championship participation, and Tyrving age-norm performance through 2025 — a maximum 14-year follow-up. The primary outcome was binary active senior status (≥2 results in any year at age 20+), estimated by logistic regression using only ages-13–14 predictors. Sensitivity analyses included structural controls, a pull-back versus baseline-heterogeneity decomposition, and Cox time-to-cessation.
 
-**Results.** Among athletes still active at age 16, competition volume at age 15–16 remained the strongest single predictor of subsequent senior retention (HR = 0.60 per SD, 95% CI [0.54, 0.66], C-index = 0.74). The signal was already detectable using only pre-milestone (age 13–14) volume (HR = 0.50), indicating that behavioral disengagement precedes the qualification window itself. Findings replicated across two independent birth cohorts and were robust to outcome definition, missing data, club clustering, and an unmeasured-confounder E-value of 5.16.
+**Results.** Baseline-window volume (ages 13–14) was the dominant predictor of senior retention (OR = 2.40 per SD, 95% CI [2.07, 2.78]; cross-validated AUC = 0.751). Estimates were unchanged with structural controls. The signal decomposed into two independent components: athletes differed in volume at age 14 (OR = 2.79 per SD) and a within-athlete decline across ages 14–15 added information (OR = 2.44 per SD; pseudo-*R*² doubled). Effects replicated across cohorts and withstood an E-value of 5.16. Higher baseline specialization was protective — opposite to the diversification literature for peak performance.
 
-**Conclusions.** Registered competition behavior tracks the temporal unfolding of competitive disengagement years before formal exit, and may complement survey research as a registry-based marker for retention interventions.
+**Conclusions.** Register-based behavior at the end of the age-14 season identifies athletes at high risk of dropout (PPV ≈ 0.94 at moderate thresholds), providing a prospective tool to complement survey-based commitment instruments.
 
 ---
 
@@ -47,7 +47,9 @@ This was a retrospective longitudinal cohort study of Norwegian youth track-and-
 
 ## 2.2 Setting and inclusion
 
-The cohort comprises every athlete who participated in any of the five consecutive autumn editions of a regional grassroots youth meet held simultaneously at three venues in eastern, mid, and western Norway between 2011 and 2016: NCC-lekene 2011, NCC-lekene 2012, PEAB-lekene 2013, PEAB-lekene 2014, Bendit-lekene 2015, and Ungdomslekene 2016 (the meet retained an identical format, venue rotation, age-group structure, and event program while changing sponsor name). Each edition admitted athletes aged 13–14 in the year of the meet, who entered by registering interest through their regional club federation; in practice nearly all active club athletes who applied were included (in some districts all of them), with no qualifying performance threshold. This soft self-selection is a design feature: the baseline cohort consists of adolescents already engaged with organized track and field through a registered club, not children who happened to attend a school race or accompanied a friend to a single local meet. Disengagement trajectories therefore unfold from a baseline of demonstrable engagement.
+The cohort comprises every athlete who participated in any of six consecutive autumn editions of a regional grassroots youth meet held simultaneously at three venues in eastern, mid, and western Norway between 2011 and 2016: NCC-lekene 2011, NCC-lekene 2012, PEAB-lekene 2013, PEAB-lekene 2014, Bendit-lekene 2015, and Ungdomslekene 2016 (the meet retained an identical format, venue rotation, age-group structure, and event program while changing sponsor name). Each edition admitted athletes aged 13–14 in the year of the meet, who entered by registering interest through their regional club federation; in practice nearly all active club athletes who applied were included (in some districts all of them), with no qualifying performance threshold. This soft self-selection is a design feature: the baseline cohort consists of adolescents already engaged with organized track and field through a registered club, not children who happened to attend a school race or accompanied a friend to a single local meet. Disengagement trajectories therefore unfold from a baseline of demonstrable engagement.
+
+We restricted the eligible-birth-year window to athletes who were 13 or 14 *in the year of their first eligible edition* and who had a recorded date of birth in 1998–2002. Athletes born in 1997 would have been 14 in the 2011 edition only (with no 13-year-old participation in the cohort window) and similarly athletes born in 2003 would have been 13 in the 2016 edition only; we excluded these boundary birth cohorts to ensure that all retained athletes had at least one full possible two-edition exposure window. Athletes who participated in both a 13-year-old and a 14-year-old edition were deduplicated to a single record, with the *earlier* edition used as the baseline meet. A flow diagram of cohort construction is provided in Supplementary Figure S0.
 
 To enable cross-cohort replication, we partitioned participants into two birth-year cohorts: **Cohort A** (birth years 1998–2000, baseline meets 2011–2014; n = 1,301) and **Cohort B** (birth years 2001–2002, baseline meets 2014–2016; n = 822). Cohort B's earliest participants thus had baseline three years after Cohort A's, with no design changes between the two cohorts other than sponsor name.
 
@@ -61,9 +63,9 @@ Each athlete was followed from their baseline meet year through the most recent 
 
 ### 2.4.1 Outcome variables
 
-The primary outcome was **active senior status**: a binary indicator coded 1 if the athlete had at least two registered competition results in any single calendar year at age 20 or later, and 0 otherwise. The two-results threshold was chosen to exclude athletes who returned to the register only sporadically (e.g., for a single charity race) while remaining inclusive of those competing in distinct events within a single meet. Age 20 marks the formal transition to senior competition in Norwegian track and field. To assess sensitivity to operational choices, we re-estimated the central analyses using two alternative outcome definitions: (A) ≥1 senior-age result and (C) ≥2 results in each of two distinct senior-age calendar years (Supplementary Table S9).
+The primary outcome is **active senior status**, a *binary* indicator coded 1 if the athlete had at least two registered competition results in any single calendar year at age 20 or later, and 0 otherwise. The two-results threshold was chosen to exclude athletes who returned to the register only sporadically (e.g., for a single charity race) while remaining inclusive of those competing in distinct events within a single meet. Age 20 marks the formal transition to senior competition in Norwegian track and field. To assess sensitivity to operational choices, we re-estimated the central effect using two alternative outcome definitions: (A) ≥1 senior-age result and (C) ≥2 results in each of two distinct senior-age calendar years (Supplementary Table S9).
 
-For survival analyses, we used time from baseline to the athlete's last *active season* (a calendar year with ≥2 registered results) as duration, with athletes still active in 2024 or later treated as right-censored.
+A *secondary* time-to-event outcome was used for survival visualization and supplementary Cox modelling: **time to last active season**, where an active season is a calendar year with ≥2 registered results, with athletes still active in 2024 or later treated as right-censored. We distinguish these two outcomes throughout: the binary senior-status outcome is estimated with logistic regression as the primary inferential model (Section 2.5.1); the time-to-cessation outcome supports Kaplan–Meier visualization and Cox-based sensitivity analyses (Section 2.5.4).
 
 ### 2.4.2 Performance variables
 
@@ -91,47 +93,48 @@ We recorded sex (M/F as registered in the federation's database), birth quarter 
 
 ## 2.5 Statistical analysis
 
-### 2.5.1 Survival analysis
+### 2.5.1 Primary analysis: prospective logistic regression
 
-We modeled time from baseline to last active season using Cox (1972) proportional hazards regression, with hazard function $h(t \mid \mathbf{x}) = h_0(t) \exp(\boldsymbol{\beta}^{\top} \mathbf{x})$, where $h(t \mid \mathbf{x})$ is the dropout hazard at follow-up time $t$ for an athlete with covariate vector $\mathbf{x}$, $h_0(t)$ is the unspecified baseline hazard, and $\boldsymbol{\beta}$ is the vector of regression coefficients. Ties were handled with Efron's (1977) method, the lifelines default (Davidson-Pilon, 2024).
+The primary inferential model is a logistic regression for the binary outcome *active senior status*, using only **baseline-window predictors** measured during ages 13–14 (before the qualification-milestone window). The set of candidate predictors comprises sex, baseline Tyrving performance, Herfindahl–Hirschman event-category concentration over the first three active seasons (HHI early), and the count of distinct competition meets attended at ages 13 and 14 combined (*pre-milestone volume*). Models were fitted in a nested stepwise sequence (L1: sex only; L2: + Tyrving; L3: + HHI; L4: + pre-milestone volume) to characterize the unique discriminative contribution of each variable class. Continuous covariates were z-standardized so that odds ratios reflect per-SD effects. Discriminative accuracy was assessed by 5-fold stratified cross-validated AUC.
 
-Models were fitted in a stepwise sequence to characterize the unique contribution of each variable class: M1 (sex only), M2 (+ performance), M3 (+ specialization), M4 (+ competition volume at milestone), and M5 (+ championship types). The entry order was theoretically driven: starting from the variable most commonly emphasized in prior literature (sex) and ending with the class motivated by our hypothesis (behavioral engagement at the milestone). We did not perform data-driven variable selection, because all candidate predictors were theoretically motivated. Concordance indices (C-index; Harrell et al., 1996) gauged the discriminative gain at each step. Continuous covariates were standardized (z-scored) so that hazard ratios reflect per-SD effects. Throughout, hazard ratios are reported as *descriptive associations within the observed register structure* and should not be interpreted causally; register-based competition behavior reflects both individual choice and contextual factors (selection, injury, family circumstances, parallel sport involvement) that are not observed.
+The decision to restrict the primary predictors to the baseline window addresses two analytic concerns. First, milestone-window volume (ages 15–16) is partially overlapping with the early portion of the outcome process — an athlete who drops out before age 15 has milestone volume = 0 by construction *and* will not retain senior activity — which would inflate apparent discrimination through measurement overlap rather than prospective prediction. Second, the journal's a-priori-power expectation maps more naturally onto a single, clearly-defined estimand than onto a sequence of stepwise time-overlapping covariates. By using only ages-13–14 data, the primary estimate is unambiguously prospective.
+
+### 2.5.2 Structural controls
+
+We assessed sensitivity of the primary model to plausible structural confounders by re-fitting the full L4 model with three additional covariates: region (3-level: Vestlandet [reference], Østlandet, Midt-Norge); birth quarter (Q1- and Q4-indicator variables for relative-age effects); and standardized club size at baseline (number of athletes registered to the same club in the baseline year). Coefficient stability of the pre-milestone volume effect was compared with and without controls (Supplementary Table S13).
+
+### 2.5.3 Within-athlete pull-back vs baseline heterogeneity
+
+Future retainers and future dropouts already differ in competition volume at ages 13–14 (Figure 2, Table 2). To distinguish between (i) early behavioral heterogeneity and (ii) within-athlete pull-back across the age-14-to-15 transition, we fitted a logistic regression in athletes still active at age 14 (≥1 result at age 14, n = 1,914) including both the *level* of volume at age 14 and the *change* in volume from age 14 to age 15. If decline conditional on baseline level predicts retention, both coefficients should be significant; if separation is purely typological, only baseline level should matter (Supplementary Table S14).
+
+### 2.5.4 Time-to-cessation survival analysis (secondary)
+
+For survival visualization and as a secondary effect-size representation, we modeled *time from baseline to last active season* using Cox (1972) proportional hazards regression, with hazard function $h(t \mid \mathbf{x}) = h_0(t) \exp(\boldsymbol{\beta}^{\top} \mathbf{x})$ and tied event times handled by Efron's (1977) method (Davidson-Pilon, 2024). The primary Cox specification (Supplementary Table S16) uses the same baseline-only predictor set as the primary logistic regression. We additionally report:
+
+* **Landmark analysis** (van Houwelingen, 2007): restriction to athletes with at least one registered result at age 16 (n = 1,167), with follow-up measured from age 16 forward, examining whether ages-15–16 volume predicts subsequent retention among continuing athletes (Supplementary Table S8).
+* **Post-baseline Cox specification** with ages-15–16 volume and pre-age-17 championship breadth as covariates (Supplementary Table S17). Because these covariates overlap temporally with the early portion of the at-risk window, we report this specification only as a complement to the primary baseline-only model; its discriminative gain should not be interpreted as ordinary prospective prediction.
+
+We assessed proportional hazards using Schoenfeld residuals (Grambsch & Therneau, 1994) and re-estimated the model stratified on violating variables (Therneau & Grambsch, 2000). For substantive effects we also computed the **E-value** (VanderWeele & Ding, 2017), period-specific Cox estimates across three follow-up windows (years 0–3, 3–6, 6+), cluster-robust standard errors clustered on club name (Lin & Wei, 1989), and sex-stratified subgroup Cox models. Hazard ratios are reported as descriptive associations within the observed register structure and should not be interpreted causally; register-based competition behavior reflects both individual choice and contextual factors (selection, injury, family circumstances, parallel sport involvement) that are not observed.
 
 Kaplan–Meier curves were stratified by sex, by total competition volume at age 15–16 (categorized into 0, 1–5, 6–15, 16–30, or 31+ meets), and by number of championship types entered before age 17.
 
-### 2.5.2 Addressing potential measurement-tautology: landmark analysis
-
-Because senior retention is itself defined by registered competitive activity, and the strongest candidate predictor (competition volume at age 15–16) is also a measure of registered competitive activity, the two measurements are operationally related. Specifically, an athlete who has already withdrawn from competition before age 15 has vol_milestone = 0 by construction *and* will not meet the senior-retention criterion. Without explicit treatment, the apparent predictive power of milestone volume could partly reflect this mechanical relationship.
-
-To address this concern, we conducted a **landmark analysis** (van Houwelingen, 2007): we restricted the analysis to athletes who were still demonstrably active at age 16 (defined as having ≥1 registered result at age 16) and re-estimated the full Cox model with follow-up time measured from age 16 rather than from baseline. This analysis tests whether milestone-window volume continues to predict subsequent retention *among athletes who have not yet dropped out*. We additionally re-estimated the full Cox model excluding athletes with vol_milestone = 0 (Supplementary Table S12), and fitted a *lagged-volume* model in which the only behavioral predictor was vol_pre_milestone (ages 13–14), testing whether the signal exists before the milestone window itself (Supplementary Table S10).
-
-### 2.5.3 Proportional-hazards assumption and time-varying effects
-
-We assessed the proportional-hazards assumption using Schoenfeld residuals (Grambsch & Therneau, 1994). Where the assumption was violated, we re-estimated the model stratified on the violating variable (Therneau & Grambsch, 2000) to confirm that remaining effects were robust. To characterize the time-varying nature of the dominant predictor, we fitted period-specific Cox models in three follow-up windows (years 0–3, 3–6, and 6+ post-baseline), reporting HR with 95% confidence intervals separately for each window.
-
-### 2.5.4 Sample size and detection capacity
+### 2.5.5 Sample size and detection capacity
 
 Although a-priori power calculations are standard in experimental designs, they are less directly applicable to population-based register studies where the full cohort meeting inclusion criteria is observed and there is no sampling step at which the analyst chooses an *N*. We therefore replace the standard a-priori power calculation with a *detection-capacity* analysis: given the observed event count, what is the smallest effect size that the design could reliably detect, and how does this compare to effect sizes reported in prior longitudinal dropout research?
 
-We computed the minimum detectable hazard ratio using Hsieh and Lavori's (2000) formula $|\log HR_{\min}| = (z_{1-\alpha/2} + z_{1-\beta}) / (\sigma \sqrt{d})$, where $d$ is event count and $\sigma$ is the SD of the standardized covariate (= 1 for z-scored covariates). With $d = 1{,}570$ events, $\alpha = .05$, and 80% power, $HR_{\min} \approx 1.07$ per SD — i.e., effects with $HR < 0.93$ or $> 1.07$ are detectable.
+For the secondary Cox analysis we computed the minimum detectable hazard ratio using Hsieh and Lavori's (2000) formula $|\log HR_{\min}| = (z_{1-\alpha/2} + z_{1-\beta}) / (\sigma \sqrt{d})$, where $d$ is event count and $\sigma$ is the SD of the standardized covariate (= 1 for z-scored covariates). With $d = 1{,}570$ events, $\alpha = .05$, and 80% power, $HR_{\min} \approx 1.07$ per SD for a standardized covariate. (For an unstandardized binary covariate such as the sex indicator with class proportions ≈ 0.5, the corresponding minimum detectable HR is closer to 1.15.) Effect sizes in prior prospective youth-sport dropout research are typically *small-to-moderate*: motivational and engagement-based predictors in 12–24-month prospective designs (Sarrazin et al., 2002; Calvo et al., 2010) and in survey-based studies of dropout reasons (Espedalen & Seippel, 2022) generally correspond to standardized effect-size estimates in the small-to-moderate range (Cohen's *d* ≈ 0.2–0.5; comparable odds ratios ≈ 1.4–2.5). The detection capacity of the present design is therefore well below the effect magnitudes typically reported in this literature; null findings for standardized covariates reported here should be interpreted as substantively small rather than as underpowered.
 
-Effect sizes in prior prospective youth-sport dropout research are typically *small-to-moderate*: motivational and engagement-based predictors in 12–24-month prospective designs (Sarrazin et al., 2002; Calvo et al., 2010) and in survey-based studies of dropout reasons (Espedalen & Seippel, 2022) generally correspond to standardized effect-size estimates in the small-to-moderate range (Cohen's *d* ≈ 0.2–0.5; comparable odds ratios ≈ 1.4–2.5). The detection capacity of the present design (minimum detectable HR ≈ 1.07) is therefore well below the effect magnitudes typically reported in this literature; null findings reported here (e.g., the unadjusted sex coefficient in M1, or HHI in M3) should be interpreted as substantively small rather than as underpowered.
+### 2.5.6 Missing data and clustering
 
-### 2.5.5 Missing data and clustering
+Missing values arose primarily for the Tyrving score (athletes whose only baseline results were in events without an official Tyrving reference, ~20% missing) and for HHI (athletes with fewer than 3 active seasons, ~10%). Primary analyses used complete-case regression (n = 1,704 for the full model). To assess sensitivity, we re-estimated the full model substituting variable means for missing continuous covariates; estimates were near-identical to the complete-case results (Supplementary Table S5). Because athletes are nested within clubs and might share unobserved club-level characteristics, we additionally re-estimated the model with cluster-robust standard errors clustered on club name (Lin & Wei, 1989); coefficients were unchanged and 95% CIs only marginally wider (Supplementary Table S2).
 
-Missing values arose primarily for the Tyrving score (athletes whose only baseline results were in events without an official Tyrving reference, ~20% missing) and for HHI (athletes with fewer than 3 active seasons, ~10%). Our primary analyses used complete-case Cox regression (n = 1,704 for the full model). To assess sensitivity, we re-estimated the full Cox model substituting variable means for missing continuous covariates; estimates were near-identical to the complete-case results (Supplementary Table S5). Because athletes are nested within clubs and might share unobserved club-level characteristics, we additionally re-estimated the model with cluster-robust standard errors clustered on club name (Lin & Wei, 1989); coefficients were unchanged and 95% CIs only marginally wider (Supplementary Table S2).
+### 2.5.7 Calibration and prospective early-warning thresholds
 
-### 2.5.6 Sensitivity to unmeasured confounding and cross-cohort replication
+To inform the practical claim that competition behavior can serve as an early-warning indicator, we computed calibration metrics — sensitivity, specificity, positive predictive value (PPV), and negative predictive value (NPV) — at five candidate thresholds for "flagging" an athlete as high-risk based on *pre-milestone* (ages 13–14) competition volume, i.e., applied at the end of an athlete's age-14 season as a *prospective* trigger (Table 6). Because the threshold uses only data available at age 14, it is implementable in real time, before any age-15–16 outcome data exist.
 
-For the dominant covariate (vol_milestone) and for the championship-types count, we computed the **E-value** (VanderWeele & Ding, 2017), which quantifies the minimum strength of association on the risk-ratio scale that an unmeasured confounder would need to have with both the exposure and the outcome to explain away the observed effect entirely. To assess **cross-cohort replication**, we re-estimated the full Cox model separately within Cohort A (1998–2000) and Cohort B (2001–2002). We additionally fitted subgroup Cox models within each sex stratum.
+### 2.5.8 Cross-cohort replication and variable importance (supplementary)
 
-### 2.5.7 Calibration and practical early-warning thresholds
-
-To inform the practical claim that competition volume can serve as an early-warning indicator, we computed calibration metrics — sensitivity, specificity, positive predictive value (PPV), and negative predictive value (NPV) — at five candidate thresholds for "flagging" an athlete as high-risk (vol_milestone < 1, 5, 10, 15, or 20 meets across ages 15–16). We additionally produced a decile-based calibration plot comparing observed to predicted retention probabilities (Supplementary Figure S1).
-
-### 2.5.8 Variable importance (supplementary)
-
-For non-parametric variable importance, we fit a random forest (Breiman, 2001) with 500 trees and maximum depth 8 to predict active senior status, with class weighting to handle outcome imbalance (16% senior retainers). Variable importance is reported as the mean decrease in Gini impurity. Cross-validated AUCs (5-fold stratified) compared nested subsets of predictors. We treat the random forest as convergent evidence for the Cox findings rather than as an independent main analysis.
+The primary L4 logistic regression and the secondary Cox specifications were re-estimated separately within Cohort A (1998–2000) and Cohort B (2001–2002). For non-parametric variable importance, we fit a random forest (Breiman, 2001) with 500 trees and maximum depth 8 to predict active senior status, with class weighting to handle outcome imbalance; variable importance is reported as the mean decrease in Gini impurity. We treat the random forest as convergent evidence for the regression findings rather than as an independent main analysis.
 
 ### 2.5.9 Software
 
@@ -139,7 +142,7 @@ All analyses used Python 3.13 with the lifelines package (Davidson-Pilon, 2024) 
 
 ## 2.6 Sex and gender
 
-Following SAGER guidance (Heidari et al., 2016), we report all primary analyses stratified by sex. We use "sex" throughout because the federation registers a binary sex variable assigned at registration; we have no information on gender identity. Where sex appears as a covariate (`female` = 1 for female, 0 for male, NA for unknown), it indexes biological sex as recorded.
+Following SAGER guidance (Heidari et al., 2016), all primary analyses include sex as a covariate, and we additionally report sex-stratified subgroup analyses in supplementary material (Supplementary Table S7) so that potential sex-specific patterns are visible. We use "sex" throughout because the federation registers a binary sex variable assigned at registration; we have no information on gender identity. Where sex appears as a covariate (`female` = 1 for female, 0 for male, NA for unknown), it indexes biological sex as recorded.
 
 ## 2.7 Ethics
 
@@ -169,16 +172,16 @@ The full cohort comprised 2,123 athletes (52.0% female), of whom 1,301 belonged 
 | Active at age 20 (%) | 15.8 | 17.3 | 16.4 |
 | Still active in 2024 or later (%) | 5.8 | 10.8 | 7.7 |
 | Mean Tyrving best at baseline | 666 | 666 | 666 |
-| Median competitions at age 15–16 | 7 | 9 | 8 |
+| Median competitions at ages 13–14 | 8 | 9 | 8 |
 
 *Note.* "Active" indicates ≥2 registered competition results in any calendar year at the specified age. Tyrving points = Norwegian Athletics Federation's age-norm score where 1,000 = "excellent" for that event × sex × age combination.
 
 ---
 
 
-## 3.2 Competition-volume trajectories diverge before formal exit
+## 3.2 Competition-volume trajectories diverge by ages 13–14
 
-Figure 2 presents the central behavioral observation. (Figure 1 shows the conceptual model that motivates this test.) Median competitions per year are plotted by age (13–18) separately for athletes who eventually retained senior activity (n = 348) and those who did not (n = 1,775). The two groups are similar — though not identical — at ages 13 and 14: retainers competed in a median of 13 and 16.5 meets respectively, dropouts in 8 and 8. From age 15 onwards the trajectories diverge sharply. Retainers increased their participation to a peak of 19 meets at age 15 and sustained it through age 17 (18 and 17 meets at ages 16 and 17 respectively). Dropouts collapsed from 8 meets at age 14 to a median of 3 at age 15, 0 at age 16, and 0 thereafter. Critically, the divergence is visible *before* most dropouts had left competition entirely; the interquartile range for dropouts at age 15 (0–11 meets) shows that many were still nominally competing while pulling back, consistent with the gradual withdrawal pattern described in the qualitative literature.
+Figure 2 presents the central behavioral observation. (Figure 1 shows the conceptual model that motivates this test.) Median competitions per year are plotted by age (13–18) separately for athletes who eventually retained senior activity (n = 348) and those who did not (n = 1,775). The two groups already differ at baseline: at age 13, future retainers competed in a median of 13 meets versus 8 for future dropouts; at age 14 this widens to 17 versus 8. From age 15 onwards the trajectories diverge further. Retainers peak at 19 meets at age 15 and sustain near that level through age 17. Future dropouts decline from 8 meets at age 14 to a median of 3 at age 15, 0 at age 16, and 0 thereafter. Two complementary patterns are therefore visible in the same data: (i) substantial baseline differences between the eventual retainer and dropout groups by ages 13–14, and (ii) a progressive within-athlete pull-back among future dropouts that becomes most visible across the age-14-to-15 transition. We test these two patterns separately below.
 
 
 ![Figure 1](figures/fig1_conceptual_model.png)
@@ -198,16 +201,14 @@ Figure 2 presents the central behavioral observation. (Figure 1 shows the concep
 | Senior retainers (active age ≥20) | 348 | 13 [6–21] | 17 [10–25] | 19 [11–27] | 18 [10–26] | 17 [10–24] | 14 [7–20] |
 | Dropouts (last active age <20) | 1,775 | 8 [4–13] | 8 [3–14] | 3 [0–11] | 0 [0–7] | 0 [0–2] | 0 [0–0] |
 
-*Note.* Values are median number of meets per year [IQR]. Trajectories diverge sharply from age 15.
+*Note.* Values are median number of meets per year [IQR]. Future retainers and future dropouts already differ at ages 13–14; the gap widens further across the age-14-to-15 transition.
 
 ---
 
 
-## 3.3 Survival to active senior age
+## 3.3 Survival visualization
 
-Overall Kaplan–Meier retention (Supplementary Figure S3A) shows that half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (the transition from youth to junior competition) marks the steepest acceleration in dropout. Sex-stratified retention curves (Supplementary Figure S3B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).
-
-When the cohort is stratified by competition volume at age 15–16 (Figure 3), retention curves separate clearly and monotonically: athletes who competed in 31 or more meets across ages 15–16 retained 71% senior activity, while athletes who competed in none retained only 4%. Stratifying instead by number of championship types entered before age 17 (Supplementary Figure S4) reveals the same pattern: athletes who competed in all four championship types (UM, JrNM, NM, KM) retained 91% senior activity, while athletes who entered zero retained 5%.
+Overall Kaplan–Meier retention (Supplementary Figure S3A) shows that half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (the transition from youth to junior competition) marks the steepest acceleration in dropout. Sex-stratified retention curves (Supplementary Figure S3B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33). When the cohort is stratified by competition volume across ages 15–16 (Figure 3), retention curves separate clearly and monotonically: athletes who competed in 31 or more meets across ages 15–16 retained 71% senior activity, while athletes who competed in none retained only 4%. (Note: this stratification is descriptive only; the formal effect estimates use baseline-only predictors, below.) Stratifying by number of championship types entered before age 17 (Supplementary Figure S4) reveals the same pattern.
 
 
 ![Figure 3](figures/fig3_km_vol_quintile.png)
@@ -215,159 +216,100 @@ When the cohort is stratified by competition volume at age 15–16 (Figure 3), r
 **Figure 3.** Kaplan–Meier retention curves stratified by total competition volume across ages 15 and 16. Strata are: 0 meets, 1–5 meets, 6–15 meets, 16–30 meets, and 31+ meets. Athletes in the highest stratum retained 71% senior activity at follow-up year 14; athletes in the lowest stratum retained 4%.
 
 
-## 3.4 Stepwise Cox regression
+## 3.4 Primary analysis: prospective logistic regression for senior retention
 
-Cox proportional hazards models were fitted in five nested specifications (Table 3). Sex alone produced a near-chance C-index of 0.498 (HR for female = 1.04, p = 0.35). Adding standardized Tyrving baseline performance raised the C-index to 0.574 (HR per SD = 0.86, p < .001), showing a modest protective effect of higher performance. Adding early specialization (HHI) did not improve discrimination (M3 C = 0.573; HHI HR = 0.98, p = 0.46).
+To avoid look-ahead between predictors and outcome, the primary analysis is a logistic regression for the binary outcome *active senior status* (≥2 registered competitions in any calendar year at age ≥20) using only baseline-window predictors (ages 13–14, measured before the qualification-milestone window). Models were fitted in a nested stepwise sequence (Table 3) and evaluated with 5-fold cross-validated AUC.
 
-Adding standardized competition volume at age 15–16 in M4 produced a substantial jump in C-index from 0.573 to 0.846. In this model, vol_milestone was associated with a hazard ratio of 0.352 per SD (95% CI: 0.327–0.380, p < .001), corresponding to a substantially lower observed dropout hazard at higher milestone-window competition volume. The previously significant Tyrving coefficient became non-significant once volume was entered (HR = 1.04, p = 0.17): once an athlete's behavioral engagement at the milestone is known, knowing their baseline performance adds little additional discrimination. Because both predictor and outcome are derived from registered competition behavior, the large gain in classification accuracy should be interpreted as capturing the temporal unfolding of disengagement rather than as independent predictive power; the landmark analysis in Section 3.5 addresses this directly.
-
-Adding the count of championship types in M5 did not improve discrimination further (C = 0.842) but the championship variable itself was strongly associated with retention (HR = 0.74 per type, p < .001). In the fuller model the sex coefficient achieved nominal significance (HR for female = 1.12, p = 0.025): for given combinations of performance, specialization, volume, and championship breadth, female athletes had slightly higher dropout hazard than male athletes — an adjusted sex effect that was hidden in the unadjusted analysis.
-
-The minimum detectable hazard ratio under Hsieh and Lavori (2000) with 1,570 events and 80% power was HR = 1.07; all reported null findings (e.g., baseline-only sex coefficient) were therefore well-powered to detect substantively meaningful effects.
+Sex alone produced a near-chance discrimination (CV-AUC = 0.541). Adding baseline Tyrving performance increased AUC modestly to 0.607; adding early specialization (HHI) added nothing further (AUC = 0.600). Adding pre-milestone competition volume (sum of meets at ages 13–14) raised AUC substantially to **0.751**, with an odds ratio of 2.40 per SD (95% CI [2.07, 2.78], *p* < .001). Higher baseline competition volume was therefore associated with 2.4-times higher odds of senior retention per one-SD increase. Specialization (HHI) became significantly associated with retention once volume was entered (OR = 1.35 per SD; *p* < .001) — *higher* baseline HHI (more concentration in fewer event categories) predicted *higher* retention, a finding we return to in §3.10 and the Discussion.
 
 
-## Table 3. Stepwise Cox proportional hazards models for time to dropout
+## Table 3. Primary analysis: prospective logistic regression for active senior status (baseline-only predictors, ages 13–14)
 
-| Model | Covariate | HR | 95% CI | p | C-index | n |
+| Model | Covariate | OR | 95% CI | p | CV-AUC | n |
 |---|---|---|---|---|---|---|
-| M1: Sex only | Female | 1.04 | [0.95, 1.14] | .352 | 0.498 | 2,123 |
-| M2: + Performance | Female | 1.10 | [1.00, 1.22] | .052 | 0.574 | 1,704 |
-|  | Tyrving (z) | 0.86 | [0.82, 0.90] | < .001 |  |  |
-| M3: + Specialization | Female | 1.10 | [1.00, 1.22] | .059 | 0.573 | 1,704 |
-|  | Tyrving (z) | 0.86 | [0.82, 0.90] | < .001 |  |  |
-|  | HHI early (z) | 0.98 | [0.93, 1.03] | .455 |  |  |
-| M4: + Volume at milestone | Female | 1.09 | [0.98, 1.20] | .109 | **0.846** | 1,704 |
-|  | Tyrving (z) | 1.04 | [0.99, 1.09] | .169 |  |  |
-|  | HHI early (z) | 0.95 | [0.90, 1.00] | .061 |  |  |
-|  | **Volume at age 15–16 (z)** | **0.35** | **[0.33, 0.38]** | **< .001** |  |  |
-| M5: + Championship types | Female | 1.12 | [1.02, 1.24] | .025 | 0.842 | 1,704 |
-|  | Tyrving (z) | 1.05 | [1.00, 1.10] | .060 |  |  |
-|  | HHI early (z) | 0.95 | [0.90, 1.01] | .080 |  |  |
-|  | Volume at age 15–16 (z) | 0.44 | [0.40, 0.48] | < .001 |  |  |
-|  | Championship types (count, 0–4) | 0.74 | [0.69, 0.80] | < .001 |  |  |
+| L1: Sex only | Female | 0.72 | [0.56, 0.93] | .012 | 0.541 (±0.023) | 1,704 |
+| L2: + Performance | Female | 0.68 | [0.52, 0.88] | .003 | 0.607 (±0.014) | 1,704 |
+|  | Tyrving (z) | 1.41 | [1.22, 1.64] | < .001 |  |  |
+| L3: + Specialization | Female | 0.68 | [0.53, 0.88] | .004 | 0.600 (±0.019) | 1,704 |
+|  | Tyrving (z) | 1.41 | [1.22, 1.64] | < .001 |  |  |
+|  | HHI early (z) | 1.09 | [0.95, 1.24] | .238 |  |  |
+| L4: + Pre-milestone volume | Female | 0.61 | [0.46, 0.80] | < .001 | **0.751** (±0.026) | 1,704 |
+|  | Tyrving (z) | 1.12 | [0.96, 1.30] | .144 |  |  |
+|  | HHI early (z) | 1.36 | [1.17, 1.57] | < .001 |  |  |
+|  | **Pre-milestone volume (z)** | **2.40** | **[2.08, 2.76]** | **< .001** |  |  |
 
-*Note.* HRs are per one-SD increase for standardized covariates and per unit for the count of championship types. Schoenfeld residual tests detected proportional-hazards violations for vol_milestone, HHI early, and championship types; period-specific HRs are given in Table 5. The substantive effect is robust to the violation (Supplementary Table S6).
+*Note.* Logistic regression for binary active senior status (≥2 registered results in any year at age 20+). Predictors are observed during the baseline window (ages 13–14) only. Pre-milestone volume is the sum of distinct meets attended at ages 13 and 14. Continuous covariates are z-standardized so ORs reflect per-SD effects. Cross-validated AUC uses 5-fold stratified resampling. The pre-milestone volume coefficient is the dominant single-step gain (AUC 0.600 → 0.751). HHI becomes significant once volume is entered (mutual adjustment); the direction indicates that higher concentration in fewer event categories is associated with higher retention odds (see also Discussion 4.6).
 
 ---
 
 
-## 3.5 Landmark analysis: addressing potential measurement-tautology
+## 3.5 Structural controls do not change the picture
 
-Because senior retention is itself defined by registered competitive activity, the apparent predictive power of milestone-window volume could partly reflect a mechanical relationship: athletes who dropped out *before* age 15 have vol_milestone = 0 by construction. To address this, we restricted the analysis to athletes still demonstrably active at age 16 (n = 1,167 of the original 2,123) and re-fit the full Cox model with follow-up time measured from age 16.
+Reviewers of register-based research reasonably ask whether structural factors — region, relative age effects, club size — might confound apparent behavioral effects. Adding region (3-level), birth-quarter (Q1- and Q4-born indicators for relative-age effects), and standardized club-size to the full Table 3 model produced no material change in the volume coefficient (OR = 2.40 with controls vs. 2.40 without; +0.4%) and none of the structural covariates was significantly associated with retention (all p > .14; Supplementary Table S13). The substantive findings are therefore robust to plausible structural confounders.
 
-Among continuing athletes, milestone-window volume remained the dominant predictor of subsequent senior retention (HR = 0.60 per SD, 95% CI [0.54, 0.66], p < .001; C-index = 0.735). Championship-types breadth also retained its effect (HR = 0.78, p < .001). The behavioral signal is therefore unlikely to be fully explained by mechanical inclusion of athletes who had already dropped out before the milestone window. As a complementary check, re-estimating the full Cox model excluding athletes with vol_milestone = 0 produced HR = 0.51 for vol_milestone (95% CI [0.46, 0.56], p < .001; n = 1,250; Supplementary Table S12) — a slight attenuation but a substantively unchanged effect.
+## 3.6 Progressive pull-back versus baseline heterogeneity
 
-More importantly, a second check used the *pre-milestone* (ages 13–14) volume alone as the only behavioral predictor (Supplementary Table S10). Pre-milestone volume — measured during the baseline window itself, three years before the qualification milestone — was associated with senior retention almost as strongly as the milestone-window variable (HR = 0.50 per SD, 95% CI [0.46, 0.53], p < .001). The behavioral signal is therefore detectable *before* the age 15–16 window, indicating that progressive disengagement is observable at the very onset of organized competitive participation rather than being a reaction to qualification-window outcomes. This is consistent with the qualitative literature's characterization of dropout as a long deliberative process rather than a response to a specific selection event (Eliasson & Johansson, 2021; Espedalen & Seippel, 2022).
+The trajectories in Figure 2 are consistent with two interpretations: (i) future retainers and future dropouts represent distinct *behavioral typologies* visible already at ages 13–14, or (ii) future dropouts undergo a *within-athlete pull-back* between ages 14 and 15 that distinguishes them from athletes whose level is preserved. We tested these two interpretations directly by entering both the baseline level (volume at age 14) and the within-athlete change (volume at age 15 minus volume at age 14) into a logistic regression, restricted to athletes still active at age 14 (n = 1,914) to avoid pre-baseline dropout (Table 4 / Supplementary Table S14).
 
-
-## Table 4. Landmark analysis at age 16 — among athletes still active at age 16, does milestone-window volume predict subsequent senior retention?
-
-| Covariate | HR | 95% CI | p |
-|---|---|---|---|
-| Female | 1.32 | [1.15, 1.52] | < .001 |
-| Tyrving (z) | 1.01 | [0.94, 1.08] | .81 |
-| HHI early (z) | 0.95 | [0.88, 1.02] | .17 |
-| **Volume at age 15–16 (z)** | **0.60** | **[0.54, 0.66]** | **< .001** |
-| Championship types | 0.78 | [0.71, 0.87] | < .001 |
-| n | 960 |  |  |
-| C-index | 0.735 |  |  |
-
-*Note.* Athletes still demonstrably active at age 16 (defined as ≥1 registered result at age 16; n = 1,167 of 2,123); n = 960 after complete-case restriction on covariates. Follow-up time measured from age 16. The volume effect remains the dominant predictor among continuing athletes, ruling out a measurement-tautology interpretation. A complementary analysis using only pre-milestone (ages 13–14) volume produced HR = 0.50 (Supplementary Table S10), showing the signal is detectable before the milestone window itself.
-
----
+Both predictors contributed substantially and independently. The age-14 volume level was strongly associated with retention (OR = 2.79 per SD, 95% CI [2.37, 3.28], *p* < .001). The within-athlete change from age 14 to age 15 was *almost as strongly* associated (OR = 2.44 per SD, 95% CI [2.10, 2.83], *p* < .001) — that is, a one-SD greater decline between ages 14 and 15 was associated with 2.4-times *lower* retention odds. Adding the change variable to the level-only model more than doubled pseudo-*R*² (0.113 → 0.227). Both early behavioral heterogeneity and a within-athlete pull-back are present in our data; they are not substitutes.
 
 
-## 3.6 Time-varying effects
+## Table 4. Pull-back versus baseline heterogeneity: volume level and within-athlete change
 
-Schoenfeld residual tests indicated that the proportional-hazards assumption was satisfied for sex (χ²₁ = 2.50, p = .11) and for baseline Tyrving performance (χ²₁ = 0.12, p = .73), but violated for the specialization (χ²₁ = 11.12, p < .001), championship-types (χ²₁ = 10.89, p = .001), and milestone-window volume (χ²₁ = 220.77, p < .001) covariates (Supplementary Table S1). To verify that the violations did not change substantive conclusions, we re-fit the model stratified on the most-violating discrete covariate (HHI tercile); remaining effects retained their direction, magnitude, and significance (Supplementary Table S6).
+Athletes still active at age 14 (n = 1,914).
 
-To characterize the time-varying nature of the dominant predictor, we fit period-specific Cox models in three follow-up windows (Figure 4, Table 5). The protective association of milestone-window volume was strongest in the first three years post-baseline (HR = 0.14, 95% CI: 0.11–0.16), moderate in years 3–6 (HR = 0.69, 95% CI: 0.60–0.79), and absent in years 6+ (HR = 0.96, 95% CI: 0.77–1.19). This pattern suggests that competition volume functions as a *proximal behavioral marker of disengagement* — informative for retention prediction within the immediate post-baseline window — rather than as a stable trait-like predictor of long-term athletic disposition. Effect sizes for the other covariates were stable across windows.
+| Model | Covariate | OR | 95% CI | p |
+|---|---|---|---|---|
+| M1: Volume at age 14 only | Female | 0.61 | [0.46, 0.81] | < .001 |
+|  | Tyrving (z) | 1.12 | [0.96, 1.30] | .167 |
+|  | **Volume at age 14 (z)** | **2.23** | **[1.94, 2.57]** | **< .001** |
+| M2: + Volume change 14→15 | Female | 0.60 | [0.44, 0.81] | < .001 |
+|  | Tyrving (z) | 1.01 | [0.86, 1.19] | .882 |
+|  | **Volume at age 14 (z)** | **2.79** | **[2.37, 3.28]** | **< .001** |
+|  | **Volume change 14→15 (z)** | **2.44** | **[2.10, 2.83]** | **< .001** |
 
-
-![Figure 4](figures/fig4_time_varying_forest.png)
-
-**Figure 4.** Time-varying hazard ratios for the full Cox model across three follow-up periods (years 0–3, 3–6, 6+ post-baseline). Hazard ratios are per-SD for standardized covariates (vol_milestone, Tyrving, HHI early) and per-unit for championship types and female. The dominant predictor — competition volume at age 15–16 — is highly protective in years 0–3 (HR = 0.14), moderately protective in years 3–6 (HR = 0.69), and indistinguishable from null in years 6+ (HR = 0.96).
-
-
-
-## Table 5. Time-varying hazard ratios across follow-up periods (full Cox model, period-specific)
-
-| Covariate | Years 0–3 (age 13–17) | Years 3–6 (age 16–19) | Years 6+ (age 19+) |
-|---|---|---|---|
-| **Volume at age 15–16 (per SD)** | **0.14 [0.11, 0.16]** | **0.69 [0.60, 0.79]** | 0.96 [0.77, 1.19] |
-| Championship types (count) | 0.61 [0.55, 0.69] | 0.88 [0.79, 0.99] | 0.97 [0.78, 1.21] |
-| Tyrving (z) | 1.07 [0.99, 1.15] | 0.92 [0.84, 1.01] | 0.94 [0.78, 1.13] |
-| HHI early (z) | 0.97 [0.91, 1.05] | 0.93 [0.85, 1.02] | 1.02 [0.85, 1.21] |
-| Female | 1.16 [1.02, 1.31] | 1.06 [0.91, 1.23] | 1.09 [0.85, 1.39] |
-| n at risk in interval | 1,704 | 669 | 270 |
-| events in interval | 1,035 | 399 | 136 |
-| C-index | 0.894 | 0.661 | 0.582 |
-
-*Note.* The dominant predictor — competition volume at age 15–16 — is most protective in the first three years after baseline (when most dropout occurs), moderately protective in years 3–6 (the junior transition), and indistinguishable from null in years 6+ (athletes who have survived the junior transition).
+*Note.* Pseudo-*R*² rose from 0.113 (M1) to 0.227 (M2) — within-athlete change adds substantial information conditional on baseline level. A one-SD greater decline from age 14 to age 15 was associated with 2.4-times lower retention odds, conditional on level at age 14. Both baseline level and within-athlete pull-back contribute substantially and independently.
 
 ---
 
 
-## 3.7 Robustness to outcome definition
+## 3.7 Time-aligned behavior vs. performance
 
-To assess sensitivity to how senior retention is operationalized, we re-estimated the central effect using three outcome definitions: (A) ≥1 senior-age result, (B) ≥2 results in any senior-age year (the primary outcome), and (C) ≥2 results in each of two distinct senior-age years (Supplementary Table S9). The odds ratio for vol_milestone in a logistic-regression analogue of the full model was 2.79 (definition A), 3.08 (B), and 2.94 (C); AUC was 0.83, 0.86, and 0.87 respectively. The choice of outcome threshold has essentially no effect on the substantive finding.
+A reviewer concern with our earlier framing was that "behavior beats performance" compared post-baseline volume (ages 15–16) with baseline performance (ages 13–14), giving the behavioral predictor a temporal advantage. In a fully time-aligned comparison — both predictors measured during the baseline window of ages 13–14 — behavior still substantially out-predicts performance: AUC = 0.607 for sex + baseline Tyrving, AUC = 0.740 for sex + ages-13–14 volume, AUC = 0.737 for both combined (Supplementary Table S15). The performance variable adds essentially nothing once early competition volume is known. The substantive direction of our earlier finding survives the time-aligned comparison.
 
-## 3.8 Calibration and practical early-warning thresholds
+## 3.8 Landmark analysis: post-baseline behavior among continuing athletes
 
-Table 6 presents calibration metrics for using milestone-window competition volume as a behavioral early-warning indicator. With a threshold of vol_milestone < 10 meets (flagging 53.7% of the cohort), the positive predictive value (PPV) is 0.97 — among flagged athletes, 97% subsequently dropped out before senior age. The negative predictive value is 0.32, sensitivity 0.63, and specificity 0.91. Lower thresholds (vol < 1) trade sensitivity for specificity (PPV = 0.99, sensitivity = 0.33, 27.7% flagged); higher thresholds (vol < 20) trade specificity for sensitivity (PPV = 0.95, sensitivity = 0.77, 67.1% flagged). The high PPVs partly reflect the high dropout base rate in this population (84%); an unsophisticated rule "predict that everyone drops out" would already achieve PPV = 0.84. The behavioral threshold therefore improves precision by 11–15 percentage points over base-rate prediction, while also providing graduated sensitivity that base-rate prediction cannot. The decile-based calibration plot for the full Cox model (Supplementary Figure S1) shows close agreement between predicted and observed retention probabilities across the distribution.
+For readers interested in the question "given that an athlete reaches age 16 actively, what predicts subsequent retention?", we re-fit the full model in athletes with at least one registered result at age 16 (n = 1,167), with follow-up measured from age 16 forward (Supplementary Table S8). Competition volume across ages 15–16 remained the dominant predictor (HR = 0.60 per SD in Cox, 95% CI [0.54, 0.66], C-index = 0.74). A complementary analysis excluding athletes with vol_milestone = 0 produced HR = 0.51 (Supplementary Table S12). The Cox model fitted from baseline using post-baseline behavioral covariates is reported in Supplementary Table S17; we have not used it as the primary estimate because the predictor and the early portion of the at-risk window overlap in time.
+
+## 3.9 Prospective early-warning thresholds
+
+Because the primary analysis uses only baseline-window data, we can compute calibration metrics for a prospective early-warning rule applied at the end of the baseline window (i.e., for federation use after each athlete's age-14 season). Table 6 reports sensitivity, specificity, PPV, and NPV at five candidate thresholds on pre-milestone competition volume. At a moderate threshold (vol < 10 meets across ages 13–14, flagging 26.4% of the cohort), PPV is 0.94 — among flagged athletes, 94% subsequently failed to retain senior activity. Sensitivity is 0.30 at this threshold (i.e., the rule identifies 30% of all eventual non-retainers). Lower thresholds (vol < 5) suit highly targeted intervention (PPV 0.93, 9% flagged); higher thresholds (vol < 15) broaden the screen (PPV 0.93, 43% flagged). The high PPV partly reflects the high base rate of non-retention (84%); an unsophisticated "everyone drops out" rule already achieves PPV = 0.84. The behavioral threshold improves precision by 9–10 percentage points over base-rate prediction while providing graduated sensitivity that base-rate prediction cannot.
 
 
-## Table 6. Calibration of milestone-window volume as a behavioral early-warning indicator
+## Table 6. Prospective early-warning thresholds (pre-milestone volume, ages 13–14)
 
 | Threshold (athletes flagged if vol < ) | Flagged % | Sensitivity | Specificity | PPV | NPV |
 |---|---|---|---|---|---|
-| 1 meet (vol = 0) | 27.7 | 0.33 | 0.99 | **0.99** | 0.22 |
-| 5 meets | 42.2 | 0.49 | 0.94 | **0.98** | 0.27 |
-| 10 meets | 53.7 | 0.63 | 0.91 | **0.97** | 0.32 |
-| 15 meets | 60.2 | 0.69 | 0.87 | 0.96 | 0.36 |
-| 20 meets | 67.1 | 0.77 | 0.81 | 0.95 | 0.41 |
+| 3 meets | 2.3 | 0.03 | 1.00 | **0.96** | 0.17 |
+| 5 meets | 9.3 | 0.10 | 0.97 | **0.93** | 0.18 |
+| 8 meets | 19.8 | 0.22 | 0.94 | **0.94** | 0.20 |
+| 10 meets | 26.4 | 0.30 | 0.92 | **0.94** | 0.22 |
+| 15 meets | 43.1 | 0.48 | 0.84 | **0.93** | 0.25 |
 
-*Note.* PPV (positive predictive value) is the proportion of flagged athletes who subsequently dropped out before senior age. Across all thresholds PPV ≥ 0.95, indicating that the rule "flag athletes whose milestone-window volume is below threshold" is consistently informative. The choice of threshold trades sensitivity for cohort coverage but does not change PPV materially.
-
----
-
-
-## 3.9 Random forest variable importance (convergent evidence)
-
-As a non-parametric convergent check, a random forest fit to predict senior retention identified volume-based features as the most important predictors (Supplementary Figure S2; Supplementary Table S12): the top six positions are all volume- or trajectory-based, with sex appearing near the bottom (importance 0.010). The pattern is consistent with the Cox findings and confirms that the ranking is not an artefact of linearity assumptions. Cross-validated AUCs for nested predictor subsets (Supplementary Table S8) show that a model using only competition-volume features at ages 13–16 achieves AUC = 0.82, essentially identical to the full 22-predictor model (AUC = 0.82) — performance and specialization information add nothing once volume is observed.
-
-## 3.10 Cross-cohort replication
-
-The full Cox model was re-estimated separately in each birth-year cohort (Table 7). The volume-at-milestone effect replicated in both cohorts at similar magnitude (Cohort A HR = 0.49 per SD, p < .001; Cohort B HR = 0.36 per SD, p < .001). Championship-types also replicated (Cohort A HR = 0.71, p < .001; Cohort B HR = 0.77, p < .001). The C-indices were similar (Cohort A 0.835; Cohort B 0.852). The sex coefficient differed between cohorts: elevated and significant in Cohort A (HR = 1.19, p = 0.006) but not in Cohort B (HR = 1.02, p = 0.83). HHI-early reached significance in Cohort B (HR = 0.88, p = 0.004) but not Cohort A.
-
-
-## Table 7. Cross-cohort replication: full Cox model fit separately in each birth cohort
-
-| Cohort | n | Covariate | HR | 95% CI | p | C-index |
-|---|---|---|---|---|---|---|
-| 1998–2000 | 1,065 | Female | 1.19 | [1.05, 1.35] | .006 | 0.835 |
-|  |  | Tyrving (z) | 1.04 | [0.97, 1.10] | .275 |  |
-|  |  | HHI early (z) | 1.00 | [0.94, 1.07] | .966 |  |
-|  |  | **Volume at age 15–16 (z)** | **0.49** | **[0.44, 0.55]** | **< .001** |  |
-|  |  | Championship types | 0.71 | [0.65, 0.78] | < .001 |  |
-| 2001–2002 | 639 | Female | 1.02 | [0.86, 1.21] | .833 | 0.852 |
-|  |  | Tyrving (z) | 1.09 | [1.00, 1.19] | .047 |  |
-|  |  | HHI early (z) | 0.88 | [0.80, 0.96] | .004 |  |
-|  |  | **Volume at age 15–16 (z)** | **0.36** | **[0.31, 0.43]** | **< .001** |  |
-|  |  | Championship types | 0.77 | [0.68, 0.87] | < .001 |  |
-
-*Note.* The milestone-window volume effect replicates in both cohorts at similar magnitude and direction. The cohort difference in the sex coefficient is discussed in the text.
+*Note.* Calibration of pre-milestone (ages 13–14) competition volume as a prospective early-warning indicator, applicable at the end of an athlete's age-14 season — before the qualification window opens. PPV is the proportion of flagged athletes who subsequently failed to retain senior activity. PPV remains ≥ 0.93 across thresholds; the choice trades sensitivity for cohort coverage. The high PPV partly reflects the population's high base-rate of non-retention (84%); the behavioral threshold improves precision by 9–12 percentage points over base-rate prediction while providing graduated sensitivity that base-rate prediction does not.
 
 ---
 
-# Supplementary Tables
 
+## 3.10 Specialization is protective in our data
 
-## 3.11 Sensitivity to confounding and clustering
+The HHI coefficient in our primary model indicated that higher baseline event-category concentration (HHI) is associated with *higher* senior retention. The combined-cohort estimate was OR = 1.35 per SD of HHI (95% CI [1.16, 1.57], *p* < .001 in the primary baseline-only logistic regression; HR = 0.80 in the time-to-cessation Cox model, Supplementary Table S16). The effect was present in both cohorts (Cohort A OR = 1.24, Cohort B OR = 1.58). Within our data, athletes whose ages-13–14 results were more concentrated in fewer event categories — that is, those who specialized earlier — were *more* likely to retain senior activity, not less. This is contrary to the international diversification literature for *peak performance* (Côté & Hancock, 2016; Güllich et al., 2022), and we discuss possible reasons in §4.6.
 
-The *E-value* for the milestone-window volume effect (HR = 0.35) was 5.16, with a corresponding lower-CI E-value of 4.70 (VanderWeele & Ding, 2017). An unmeasured confounder would therefore need to be associated with both baseline competition volume and senior retention by a risk ratio of at least 5.16 — substantially stronger than any observed covariate — to explain away the protective effect (Supplementary Table S3). Re-estimating the full Cox model with cluster-robust standard errors at the club level (Lin & Wei, 1989) left point estimates unchanged (Supplementary Table S2). Substituting variable means for missing covariates produced near-identical estimates to the complete-case results (e.g., vol_milestone HR = 0.45 imputed vs. 0.44 complete-case; Supplementary Table S5). Fitting the full Cox model separately in male and female athletes produced identical C-indices (0.843) and concordant effect directions (Supplementary Table S7).
+## 3.11 Cross-cohort replication and sensitivity
 
-In summary: across two independent birth-year cohorts spanning a 5-year window, competition volume at the qualification-milestone year is the dominant predictor of subsequent senior retention. The effect is unlikely to be fully explained by mechanical zero-values, replicates among athletes who remained active at age 16, is detectable using only pre-milestone data, withstands an E-value sensitivity exceeding 5, and is robust to outcome definition, missing-data treatment, club clustering, and sex stratification.
+The primary baseline-only logistic regression was re-estimated separately in each birth-year cohort. The pre-milestone volume effect replicated: Cohort A OR = 2.22 (95% CI [1.86, 2.64]); Cohort B OR = 2.79 [2.17, 3.58]; both *p* < .001 (see Supplementary Table S17). All other effects replicated in direction; sex was significant in Cohort A but not Cohort B, as previously reported. The volume effect was robust to outcome-definition sensitivity (Supplementary Table S9): odds ratios were 2.79, 3.08, and 2.94 for outcomes ≥1, ≥2, and ≥2-in-two-years respectively. The cluster-robust SE estimator at the club level preserved coefficient estimates (Supplementary Table S2). The E-value for the milestone-window volume effect (HR = 0.35 in the post-baseline Cox specification, Supplementary Table S17) was 5.16, with a corresponding lower-CI E-value of 4.70 (VanderWeele & Ding, 2017): an unmeasured confounder would need a risk-ratio association exceeding 5 with both predictor and outcome to nullify the effect, well above any observed covariate.
+
+In summary: across two independent birth-year cohorts spanning a 5-year window, baseline-window competition volume (ages 13–14) was the dominant prospective predictor of senior retention (OR 2.40 per SD, AUC 0.751). The effect is robust to structural controls, to outcome definition, to clustering, to missing-data treatment, and to alternative model specifications. Both early behavioral heterogeneity and within-athlete pull-back across the age-14-to-15 transition contribute substantially and independently. Specialization (higher HHI in baseline events) is protective in our data, a finding that runs against the international diversification literature for elite peak performance.
 
 
 ---
@@ -377,67 +319,77 @@ In summary: across two independent birth-year cohorts spanning a 5-year window, 
 
 ## 4.1 Summary of findings
 
-In a population of 2,123 Norwegian youth track-and-field athletes followed for up to 14 years, three findings stand out. First, competitive dropout was preceded by large, observable changes in registered competition behavior — particularly during the age 15–16 milestone window. Future dropouts collapsed from a median of 8 meets at age 14 to 3 at age 15 and 0 at age 16, while future retainers maintained or expanded their participation. Second, behavioral indicators (competition volume, championship breadth) classified eventual senior retention substantially more accurately than baseline performance indicators (Cox C-index 0.846 vs. 0.574). Third, the pattern replicated across two independent birth-year cohorts (1998–2000 and 2001–2002) baseline-measured three years apart under different sponsor regimes of the same regional meet.
+In a population of 2,123 Norwegian youth track-and-field athletes followed for up to 14 years, four findings stand out. First, baseline-window (ages 13–14) competition volume was strongly and prospectively associated with eventual senior retention (OR = 2.40 per SD, 95% CI [2.07, 2.78]; cross-validated AUC = 0.751 with sex, baseline Tyrving, baseline HHI, and pre-milestone volume as predictors). Second, the volume effect was robust to structural controls (region, birth quarter, club size) with essentially no change in the coefficient (OR 2.40 → 2.40 with controls), and replicated across both birth-year cohorts. Third, both *early behavioral heterogeneity* and *within-athlete pull-back* contributed independently to the dropout signal: at the end of the age-14 season, athletes who had not yet dropped out still differed substantially in volume level (OR = 2.79 per SD), and a within-athlete decline across the age-14-to-15 transition further independently predicted dropout (OR = 2.44 per SD, with pseudo-*R*² doubling from 0.11 to 0.23 when the change variable is added; Section 3.6). Fourth, specialization in baseline events (higher HHI) was associated with *higher* senior retention in our data — opposite to the predicted direction in the international diversification literature for elite peak-performance outcomes.
 
-Critically, the findings are unlikely to be fully explained by the operational overlap between predictor and outcome. Among the 1,167 athletes still demonstrably active at age 16, milestone-window volume remained the dominant correlate of subsequent senior retention (HR = 0.60 per SD, C-index = 0.735). And the behavioral signal was already detectable using only *pre-milestone* competition volume measured at ages 13–14 (HR = 0.50 per SD) — three years before the qualification-window outcomes that the qualitative literature emphasizes as a turning point. In other words: progressive competitive disengagement is observable at the very onset of organized competition, not just in reaction to selection events. Effects were robust to outcome definition, club clustering, missing-data treatment, and an unmeasured-confounder E-value of 5.16. Period-specific Cox modelling showed that the volume effect is most pronounced in the first three years post-baseline (HR = 0.14, ages 13–17) and dissipates among athletes who survive past the junior transition (HR = 0.96, age 19+), consistent with a marker of *proximal* disengagement rather than lifelong disposition.
+The full Cox time-to-cessation analyses (Supplementary Tables S8, S16, S17) reinforce these findings. Among the 1,167 athletes still demonstrably active at age 16, milestone-window volume continued to be strongly associated with subsequent cessation (HR = 0.60 per SD; Supplementary Table S8). Period-specific estimates indicated that the association was most pronounced in the proximal follow-up window (HR = 0.14 in years 0–3) and dissipated in late follow-up (HR = 0.96 in years 6+), though this early-window estimate is partly conflated with the same operational overlap discussed below.
 
-## 4.2 Why behavior outperforms performance
+## 4.2 Behavior beats performance even in time-aligned comparison
 
-A central finding is that behavioral engagement, measured by registered competition counts, yields substantially better discrimination of senior retention than baseline performance does (Cox C-index 0.85 vs. 0.57; AUC-equivalent gain from approximately 0.59 to 0.82 in cross-validated logistic regression). This pattern has a direct mechanistic reading and a more cautious epistemic reading; we offer both.
+A central observation is that behavior, measured by registered competition count, out-predicts performance, measured by Tyrving age-norm score, even when both are taken from the same baseline window (ages 13–14). In a fully time-aligned cross-validated comparison (Section 3.7; Supplementary Table S15), sex + Tyrving achieves AUC = 0.607, sex + pre-milestone volume achieves AUC = 0.740, and both together achieve AUC = 0.737 — performance adds essentially nothing once early competition volume is observed. The mechanistic interpretation is that performance reflects what an athlete *can do*; competition volume reflects what they *choose to do*. The choice variable is what subsequently dropout cascades from.
 
-The *mechanistic* reading is that the behaviors and performance level are measuring different latent constructs. Performance reflects what an athlete *can do* on a given day; behavioral engagement reflects what an athlete *chooses to do* across a season. The Cox model's failure to retain a significant baseline-performance coefficient once volume is entered (Table 3, M4) — and the random forest's lower importance ranking for performance variables (Supplementary Table S12) — together suggest that competitive choice, rather than competitive capability, is the proximal correlate of continuation.
+We also acknowledge the epistemic asymmetry: both the predictor and the outcome involve registered competitive activity, so any "behavior outperforms performance" claim should be read as identifying the *temporal structure* by which competitive disengagement becomes observable rather than as showing that an underlying engagement-balance mechanism *causes* dropout. Our results are consistent with such a mechanism but do not establish it on their own.
 
-The *epistemic* reading is more cautious: the predictor (registered competitions) and the outcome (registered senior competitions) are both forms of registered competitive activity. Even after the landmark, zero-volume-exclusion, and lagged-volume sensitivities reported above, the two variables share a common scale. The behavioral signal should therefore be understood as identifying the *temporal structure* by which competitive disengagement becomes observable — months and years before its formal endpoint — rather than as showing that an underlying engagement-balance mechanism *causes* dropout. Our findings are consistent with such a mechanism but do not establish it on their own.
+## 4.3 Pull-back is real — and so is early heterogeneity
 
-## 4.3 Consistency with existing theoretical accounts
+The reviewer-critical question for any "pulling back before pulling out" framing is whether the headline pattern is (a) a genuine within-athlete pull-back from an initially shared baseline, or (b) early separation between athletes who were already on different behavioral trajectories at the start. The descriptive evidence (Figure 2, Table 2) is mixed: future retainers and future dropouts already differ at ages 13–14 (median 13 and 17 versus 8 and 8 meets), suggesting early separation; but the steepest divergence happens across the age-14-to-15 transition, suggesting within-athlete decline.
+
+The pull-back/typology decomposition (Section 3.6) resolves this. Both effects are present and substantial. Conditional on age-14 volume level (OR = 2.79 per SD), a one-SD greater decline from age 14 to age 15 was associated with 2.44-times lower retention odds. Adding the change variable more than doubled pseudo-*R*² (0.11 to 0.23). Neither interpretation alone is correct: a substantial portion of the dropout signal is the divergence between investors and samplers (Wall & Côté, 2007) detectable at age 13–14, and a substantial portion is a subsequent within-athlete pull-back among the not-yet-dropped-out, observable as falling volume in the year before formal exit.
+
+## 4.4 Consistency with existing theoretical accounts
 
 Our findings are consistent with three pre-existing theoretical traditions, each of which has predicted (on different data sources) the pattern we observe. We avoid the stronger claim that the findings *confirm* any of these accounts; the design measures behavior, not subjective motivation.
 
-The Sport Commitment Model (Scanlan et al., 1993, 2016) frames continued participation as a function of an enjoyment-investment-constraints balance. The extended distinction between *enthusiastic* and *constrained* commitment (Scanlan et al., 2016) maps onto the two trajectories visible in our register: future retainers expand competition volume across the milestone window (median +6 meets from age 13 to age 15), while future dropouts contract at exactly the point at which commitment is being tested by the qualification window. Self-determination theory and its sport applications (Ryan & Deci, 2000; Vallerand, 1997, 2007; Sarrazin et al., 2002; Calvo et al., 2010; Standage, 2012) predict that athletes whose participation is sustained by well-internalized motivation persist when demands rise; the registered behavior of our future retainers is consistent with this. The qualitative withdrawal-as-process tradition (Ebaugh, 1988; Eliasson & Johansson, 2021; Espedalen & Seippel, 2022) characterizes dropout as a gradual deliberation often unfolding while athletes are still nominally participating. Our register shows exactly such an unfolding: at age 15 a typical future dropout was still competing in 3 meets (median), with an interquartile range stretching to 11 meets. Wall and Côté's (2007) characterization of investors versus samplers, and Espedalen's (2025) related characterization of engaged enthusiasts versus constrained casuals, both predict the bifurcating behavioral trajectories we observe.
+The Sport Commitment Model (Scanlan et al., 1993, 2016) frames continued participation as a function of an enjoyment-investment-constraints balance. The behavioral trajectories we observe are consistent with two SCM-aligned dynamics: a stable enthusiastic-commitment trajectory among future retainers (rising or stable competition volume across ages 13–17) and an eroding commitment trajectory among future dropouts (declining volume across the age-14-to-15 transition). Self-determination theory and its sport applications (Ryan & Deci, 2000; Vallerand, 1997, 2007; Sarrazin et al., 2002; Calvo et al., 2010; Standage, 2012) predict that athletes whose participation is sustained by well-internalized motivation persist when demands rise; the registered behavior of our future retainers is consistent with this. The qualitative withdrawal-as-process tradition (Ebaugh, 1988; Eliasson & Johansson, 2021; Espedalen & Seippel, 2022) characterizes dropout as a gradual deliberation often unfolding while athletes are still nominally participating. Our register shows exactly such an unfolding: at age 15 a typical future dropout was still competing in 3 meets (median), with an interquartile range stretching to 11. Wall and Côté's (2007) characterization of investors versus samplers, and Espedalen's (2025) related distinction between engaged enthusiasts and constrained casuals, both predict the bifurcating behavioral trajectories we observe.
 
-In short, the behavioral pattern we identify is what each of these accounts would predict if their hypothesized mechanisms (engagement balance, motivational quality, role-exit deliberation) leave their footprint in observable competition behavior. The register cannot adjudicate among them; it shows that *some* mechanism producing this footprint is at work, and that the footprint is large.
+In short, the behavioral pattern we identify is what each of these accounts would predict if their hypothesized mechanisms leave their footprint in observable competition behavior. The register cannot adjudicate among them; it shows that *some* mechanism producing this footprint is at work, and that the footprint is large.
 
-## 4.4 The sex effect
+## 4.5 The sex effect
 
-In the unadjusted Kaplan-Meier analysis we found no overall sex difference in retention (log-rank p = 0.33), in contrast to Bakken's (2019) and other Norwegian survey-based findings of higher female dropout. Within the multivariable Cox model, the female coefficient was elevated and significant in Cohort A (HR = 1.19, p = 0.006) but not in Cohort B (HR = 1.02, p = 0.83). The subgroup analysis (Supplementary Table S7) shows that the *behavioral mechanism* is identical across sexes: milestone-window volume protects against dropout in male (HR = 0.42) and female (HR = 0.46) athletes alike, with C-indices of 0.843 in each subgroup. Whatever drives the residual sex differential in retention, it operates on top of, not through, the behavioral engagement pathway. The cohort difference may reflect an older-cohort sex effect that is dissipating, or sport-specific factors that differ from team-sport contexts where sex differences are more pronounced; our data cannot adjudicate between these readings.
+In the unadjusted Kaplan-Meier analysis we found no overall sex difference in retention (log-rank *p* = 0.33), in contrast to Bakken's (2019) and other Norwegian survey-based findings of higher female dropout. Within the multivariable model, the female coefficient was significant in Cohort A (HR = 1.19, *p* = .006) but not in Cohort B (HR = 1.02, *p* = .83). The subgroup analysis (Supplementary Table S7) shows that the *behavioral mechanism* is identical across sexes: milestone-window volume is similarly strongly associated with reduced dropout hazard in male (HR = 0.42) and female (HR = 0.46) athletes, with C-indices of 0.843 in each subgroup. Whatever drives the residual sex differential in retention operates on top of, not through, the behavioral engagement pathway. The cohort difference may reflect an older-cohort sex effect that is dissipating, or sport-specific factors that differ from team-sport contexts where sex differences are more pronounced; our data cannot adjudicate between these readings.
 
-## 4.5 What the register contributes
+## 4.6 Specialization is protective in our population (contrary expectation)
+
+The international diversification literature (Côté & Hancock, 2016; Güllich et al., 2022; Wall & Côté, 2007) has consistently found that *peak performance* is supported by early multidisciplinary practice and early diversification. Our data on *retention* point in the opposite direction: higher baseline event-category concentration (i.e., specialization in fewer events) is associated with higher senior retention. The combined-cohort estimate was OR = 1.35 per SD of HHI (95% CI [1.16, 1.57]) in the primary baseline-only logistic model. The effect was present in both cohorts (Cohort A OR = 1.22; Cohort B OR = 1.58) and survived in the time-to-cessation Cox model (HR = 0.80 per SD).
+
+Three possible reconciliations are worth flagging. First, the constructs differ: peak performance and retention are not the same outcome, and the qualitative claim that early specialization causes burnout is largely about performance trajectories at elite levels, not about everyday participation in regional track and field. Second, in this register, "specialization" at ages 13–14 may capture a different latent trait than later specialization in adolescent talent-development pathways — children who train and compete primarily in one event category may simply be the ones whose family and club organization supports sustained engagement. Third, our cohort comprises a soft-selected group of already-engaged adolescents; the protective effect of specialization could be specific to retention *given engagement* and would not generalize to the broader question of whether to specialize among children weighing whether to engage at all. We frame this finding as a contrast with the established literature rather than a refutation of it — both the literature and our analysis can be correct about their respective outcomes.
+
+## 4.7 What the register contributes
 
 Survey and interview research on youth-sport dropout suffers from two structural limitations. First, participants who have already withdrawn are systematically harder to recruit; the most disengaged athletes are also the least likely to fill out a survey about disengagement (Eime et al., 2013). Second, retrospective accounts compress what was, in process terms, a long gradual unwinding into a recallable narrative of decision points (Schacter, 2001). Continuous register data sidesteps both problems: the population is complete by construction, and the behavioral trajectory is timestamped, not reconstructed.
 
-What we add is therefore not a new theoretical account — SCM, SDT, and withdrawal-as-process all pre-date this study — but a *longitudinal behavioral test* of accounts that have been argued primarily on cross-sectional or short-prospective evidence. The behavioral signal we identify classifies eventual senior retention at AUC = 0.82, replicates across two birth-year cohorts measured three years apart, withstands an E-value sensitivity of 5.16, and behaves coherently across follow-up windows and outcome definitions.
+What we add is therefore not a new theoretical account — SCM, SDT, and withdrawal-as-process all pre-date this study — but a *longitudinal behavioral test* of accounts that have been argued primarily on cross-sectional or short-prospective evidence. The behavioral signal classifies eventual senior retention at AUC = 0.751 with only baseline-window data, replicates across two birth-year cohorts, withstands structural controls and unmeasured-confounder E-values exceeding 5, and decomposes into both early-heterogeneity and within-athlete pull-back components.
 
-## 4.6 Practical implications
+## 4.8 Practical implications
 
-The findings suggest a tractable early-warning approach for retention-focused interventions. The calibration analysis (Table 6) shows positive predictive values of 0.95 or higher across plausible thresholds for "flagging" low-volume athletes. The high PPV partly reflects the high dropout base rate in this population (84%) — a "predict everyone drops out" rule already achieves PPV = 0.84 — but the behavioral threshold improves precision by 11–15 percentage points over base-rate prediction while providing graduated sensitivity.
+The findings suggest a tractable early-warning approach for retention-focused interventions. Because the primary calibration is based on pre-milestone (ages 13–14) volume — data fully observed by the end of each athlete's age-14 season — the rule is implementable prospectively, before the qualification window opens (Table 6). PPVs across plausible thresholds range from 0.93 to 0.96, which is 9–12 percentage points above the base-rate prediction (PPV ≈ 0.84) and is accompanied by graduated sensitivity that base-rate prediction does not provide.
 
-**Worked example.** In a regional federation cohort of 400 youth athletes entering their 15-year-old season, applying the moderate threshold (vol_milestone < 10 meets across ages 15–16) would flag 215 athletes (53.7%); 209 of these (97%) would otherwise drop out before senior age, while the rule catches 63% of all eventual dropouts. Lower thresholds (vol < 1, 28% flagged, PPV = 0.99) suit resource-constrained interventions targeting the most extreme cases; higher thresholds (vol < 20, 67% flagged, PPV = 0.95) suit broader outreach. The choice is operational, not statistical.
+**Worked example.** Consider a regional federation cohort of 400 youth athletes after their 14-year-old season. Applying the moderate threshold (pre-milestone volume across ages 13–14 < 10 meets), the federation would flag 26.4% of athletes (≈ 106 of 400). Among these flagged athletes, 94% would otherwise drop out before senior age. Lower thresholds (vol < 5 meets, 9% flagged, PPV = 0.93) suit highly targeted resource-constrained intervention; higher thresholds (vol < 15 meets, 43% flagged, PPV = 0.93) suit broader outreach. The choice is operational, not statistical. Importantly, the same rule applied at the end of an athlete's age-15 season — when within-athlete volume change becomes observable — would have additional sensitivity, since pull-back across ages 14–15 carries independent predictive information (Section 3.6, Table 4).
 
-The time-varying analysis (Figure 4) sharpens this: the volume signal is most informative in the first three years after baseline (HR = 0.14), which corresponds to ages 15–17 — the very years that the qualitative literature identifies as the deliberative window of withdrawal-as-process. An intervention aimed at the *behavioral* signal in *that* window has the strongest mechanistic justification. We note that behavioral surveillance is a *complement* to, not a replacement for, motivation-focused instruments such as the SCQ-2 (Scanlan et al., 2016): behavioral data tells a coach which athletes to call; an SCQ-2 administration tells them what to discuss.
+We note that behavioral surveillance is a *complement* to, not a replacement for, commitment- and motivation-focused instruments such as the SCQ-2 (Scanlan et al., 2016): behavioral data identify which athletes a coach should contact; an SCQ-2 administration (a sport-commitment instrument) helps shape what to discuss.
 
-Cross-event diversification (lower HHI) was protective of senior retention in our data, more strongly in Cohort B than Cohort A (HR = 0.88 per SD vs. 1.00; Table 7). We do not draw a strong specialization conclusion from this — the cohort-specific evidence is mixed and HHI was not significant in our primary model — but the cohort-B finding is consistent with the international diversification literature (Côté & Hancock, 2016; Güllich et al., 2022; Wall & Côté, 2007).
+## 4.9 Limitations
 
-## 4.7 Limitations
-
-Five limitations bear on interpretation.
+Six limitations bear on interpretation.
 
 First, the outcome variable indexes *attrition from competition*, not *attrition from sport*. An athlete who quits competing in track and field but continues to train, switches to recreational running, or moves to another sport entirely is counted as a dropout in our data. We cannot distinguish a child who has fundamentally disengaged from organized physical activity from one who has merely changed the channel through which they engage.
 
-Second, the register records what is performed and recorded officially, not what is experienced. We do not know whether the athletes who reduced their competition volume at age 15 did so because they had lost interest, because parental support waned, because school demands increased, because a coach did not select them, or because they were injured. The qualitative literature is essential here; our behavioral signal is best read as a *summary* of those underlying processes, not a substitute for them. Because predictor and outcome are operationally similar (both registered competitive activity), our results identify the temporal structure of competitive disengagement; they do not show that volume *causes* dropout.
+Second, the register records what is performed and recorded officially, not what is experienced. We do not know whether the athletes who reduced their competition volume at age 15 did so because they had lost interest, because parental support waned, because school demands increased, because a coach did not select them, or because they were injured. The qualitative literature is essential here; our behavioral signal is best read as a *summary* of those underlying processes, not a substitute for them. Because predictor and outcome both involve registered competitive activity, our results identify the temporal structure of competitive disengagement; they do not show that volume *causes* dropout.
 
-Third, the population is selected. Athletes who participated in a regional grassroots meet at age 13–14 are already self- and parent-selected for organized-sport orientation; our findings describe disengagement trajectories *from a baseline of demonstrable engagement* and do not generalize to the broader population of adolescents who never entered the competitive funnel in the first place. We frame this as a feature of the design — it lets us trace disengagement among athletes who were genuinely in the system — but readers should not extrapolate the calibration metrics (Table 6) to "everyone who ever ran a school race." A second-stage retention analysis applied to the broader population (e.g., all registered club members regardless of regional-meet entry) would have different base rates and likely different threshold optima.
+Third, the population is soft-selected. Athletes who participated in a regional grassroots meet at age 13–14 are already self- and parent-selected for organized-sport orientation through a registered club; our findings describe disengagement trajectories *from a baseline of demonstrable engagement* and do not generalize to the broader population of adolescents who never entered the competitive funnel. Readers should not extrapolate the calibration metrics (Table 6) to children with no organized-sport history. A second-stage retention analysis applied to the broader population (e.g., all registered club members regardless of regional-meet entry) would have different base rates and likely different threshold optima.
 
-Fourth, the proportional-hazards assumption was violated for the dominant predictor (Schoenfeld χ² = 220.77, p < .001). We addressed this with period-specific Cox models (Table 5) and a stratified model (Supplementary Table S6), both of which preserved the substantive conclusion that the volume effect is large and protective in the proximal follow-up window. The PH violation reflects the time-varying nature of the protective effect (strong at younger ages, fading later), not a defect of estimation.
+Fourth, the predictor and outcome share a measurement scale (registered competitive activity). Although we have addressed this with a fully baseline-only primary model, with landmark and zero-volume-exclusion sensitivities, and with the pull-back-vs-typology decomposition, the structural overlap remains a conceptual limitation of register-only research designs.
 
-Fifth, despite a 14-year maximum follow-up, our right-censoring window means the most recent (2001–2002 birth) cohort had at most 4 years of post-senior observation. The replication finding is strengthened by the differing follow-up windows; nonetheless, longer follow-up would allow us to distinguish *late dropouts* (athletes who continue into their early twenties but disengage by age 30) from genuine career athletes.
+Fifth, for the secondary Cox specification with post-baseline covariates, the proportional-hazards assumption was violated for milestone-window volume (Schoenfeld χ² = 220.77). Period-specific estimates and a stratified model preserved direction and rough magnitude, but interpretation of the early-window HR should be qualified by the same operational-overlap concern; we report it descriptively rather than as evidence of a clean prospective effect.
 
-## 4.8 Future directions
+Sixth, despite a 14-year maximum follow-up, our right-censoring window means the most recent (2001–2002 birth) cohort had at most 4 years of post-senior observation. The replication finding is strengthened by the differing follow-up windows; nonetheless, longer follow-up would allow us to distinguish *late dropouts* from genuine career athletes.
 
-Three extensions deserve attention: linking the register-based behavioral signal to standard psychological instruments (e.g., SCQ-2) in currently active athletes to directly test whether low volume tracks low intrinsic motivation; testing cross-sport generalization where registers are less complete; and quasi-experimental implementation of behavioral surveillance with federation-level outreach to athletes whose age-15 volume falls into the bottom quintile.
+## 4.10 Future directions
 
-## 4.9 Conclusion
+Three extensions deserve attention: linking the register-based behavioral signal to standard psychological instruments (e.g., SCQ-2, which measures sport commitment rather than intrinsic motivation per se) in currently active athletes to test whether low volume tracks low commitment or low enjoyment; testing cross-sport generalization where registers are less complete; and quasi-experimental implementation of behavioral surveillance with federation-level outreach to athletes whose pre-milestone volume falls below a non-zero threshold that excludes mechanically dropped-out athletes (e.g., 1 ≤ vol < 10).
 
-Competitive dropout from Norwegian youth track and field was preceded by large, observable changes in registered competition behavior, particularly during the age 15–16 milestone window. These behavioral indicators predicted subsequent senior retention substantially more strongly than baseline performance, replicated across two independent birth-year cohorts, and were robust to plausible threats to validity including outcome definition, missing data, clustering, and unmeasured confounding. The findings are consistent with — though they do not directly confirm — long-standing qualitative and theoretical accounts that frame dropout as a gradual deliberative process rather than a single decision. They suggest a practical role for registry-based behavioral surveillance as an early-warning marker of progressive competitive disengagement.
+## 4.11 Conclusion
+
+Senior retention in Norwegian youth track and field is prospectively associated with baseline-window competition behavior: athletes who already compete more at ages 13–14 retain at substantially higher rates, and those who decline across the age-14-to-15 transition retain at substantially lower rates. The effect is robust to structural controls, replicates across two independent birth-year cohorts, and is not driven by mechanical zero-values among already-dropped-out athletes. Both early behavioral heterogeneity and within-athlete pull-back contribute independently. The findings are consistent with — though they do not directly confirm — long-standing qualitative and theoretical accounts that frame dropout as a gradual deliberative process rather than a single decision. They suggest a practical role for prospective register-based behavioral surveillance as an early-warning marker, implementable at the end of an athlete's 14-year-old season before the qualification-milestone window opens.
 
 
 ---
