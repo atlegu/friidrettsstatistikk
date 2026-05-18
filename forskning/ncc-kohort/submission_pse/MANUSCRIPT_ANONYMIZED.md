@@ -21,7 +21,7 @@
 ## 1. Introduction
 
 
-Youth sport participation is widely valued for its health, social, and developmental benefits, yet attrition from organized competition during adolescence is substantial across countries and sports (Crane & Temple, 2015; Eime et al., 2013). In Norwegian elite-oriented sports such as track and field, more than half of children who participate at age 13 have left organized competition by age 17 (Bakken, 2019; Norges Idrettsforbund, 2024). The temporal structure of this attrition — *when* and *how* withdrawal becomes observable in athlete behavior — has been hard to pin down with the data designs the field has employed.
+Youth sport participation is widely valued for its health, social, and developmental benefits, yet attrition from organized competition during adolescence is substantial across countries and sports (Crane & Temple, 2015; Eime et al., 2013). In Norwegian track and field — a broad-participation individual sport at younger ages that progressively narrows into a talent-selective pathway during the teens — more than half of children who participate at age 13 have left organized competition by age 17 (Bakken, 2019; Norges Idrettsforbund, 2024). The temporal structure of this attrition — *when* and *how* withdrawal becomes observable in athlete behavior — has been hard to pin down with the data designs the field has employed.
 
 ## 1.1 Dropout as a deliberative, gradual process
 
