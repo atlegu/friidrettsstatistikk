@@ -314,3 +314,27 @@ Athletes still active at age 14 (n = 1,914).
 | Full model (all 22 predictors) | 22 | 1,217 | 0.81 (±0.03) | 0.82 (±0.03) |
 
 *Note.* This table includes post-baseline behavioral predictors (ages 15–16) and therefore overlaps with the early portion of the at-risk window; AUCs are descriptive rather than ordinary prospective prediction quantities.
+
+## Table S18. Specialization-vs-performance confound check: does HHI proxy for performance in the primary event category?
+
+Three logistic-regression specifications for active senior status. Model A is the primary L4 model (using maximum Tyrving across all baseline events). Model B adds the best Tyrving score in the athlete's *primary* baseline event category (tyrving_main). Model C replaces tyrving_best with tyrving_main.
+
+| Model | Covariate | OR | 95% CI | p |
+|---|---|---|---|---|
+| **A**: Primary L4 (with tyrving_best) | Female | 0.61 | [0.46, 0.80] | < .001 |
+| n = 1,704 | Tyrving best (z) | 1.12 | [0.96, 1.30] | .144 |
+|  | **HHI early (z)** | **1.36** | **[1.17, 1.57]** | **< .001** |
+|  | Pre-milestone volume (z) | 2.40 | [2.08, 2.76] | < .001 |
+| **B**: + Tyrving in primary category | Female | 0.62 | [0.47, 0.83] | .001 |
+| n = 1,521 | Tyrving best (z) | 1.08 | [0.89, 1.31] | .428 |
+|  | **HHI early (z)** | **1.32** | **[1.13, 1.54]** | **< .001** |
+|  | Pre-milestone volume (z) | 2.31 | [1.97, 2.71] | < .001 |
+|  | Tyrving main category (z) | 1.08 | [0.89, 1.32] | .445 |
+| **C**: Tyrving main replaces tyrving_best | Female | 0.62 | [0.47, 0.83] | .001 |
+| n = 1,632 | Tyrving main category (z) | 1.13 | [0.96, 1.34] | .128 |
+|  | **HHI early (z)** | **1.33** | **[1.15, 1.54]** | **< .001** |
+|  | Pre-milestone volume (z) | 2.32 | [1.99, 2.70] | < .001 |
+
+*Note.* Correlations: HHI early vs. Tyrving best, r = –0.07; HHI early vs. Tyrving main category, r = –0.05; Tyrving best vs. Tyrving main, r = 0.63. HHI and performance are essentially uncorrelated. The HHI effect is virtually identical across the three specifications (OR 1.32–1.36), and primary-category Tyrving is itself not a significant predictor of retention in any model. The HHI association is therefore not capturing a hidden main-event performance effect.
+
+*Note.* This table includes post-baseline behavioral predictors (ages 15–16) and therefore overlaps with the early portion of the at-risk window; AUCs are descriptive rather than ordinary prospective prediction quantities.
