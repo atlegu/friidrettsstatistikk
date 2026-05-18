@@ -68,9 +68,13 @@ To address this concern, we conducted a **landmark analysis** (van Houwelingen, 
 
 We assessed the proportional-hazards assumption using Schoenfeld residuals (Grambsch & Therneau, 1994). Where the assumption was violated, we re-estimated the model stratified on the violating variable (Therneau & Grambsch, 2000) to confirm that remaining effects were robust. To characterize the time-varying nature of the dominant predictor, we fitted period-specific Cox models in three follow-up windows (years 0–3, 3–6, and 6+ post-baseline), reporting HR with 95% confidence intervals separately for each window.
 
-### 2.5.4 Sample size and minimum detectable effect
+### 2.5.4 Sample size and detection capacity
 
-The design uses the complete population meeting inclusion criteria, so a-priori power in the conventional sense does not apply. To document detection capacity we computed the minimum detectable hazard ratio given the observed event count using Hsieh and Lavori's (2000) formula $|\log HR_{\min}| = (z_{1-\alpha/2} + z_{1-\beta}) / (\sigma \sqrt{d})$, where $d$ is event count and $\sigma$ is the SD of the standardized covariate (= 1 for z-scored covariates). With $d = 1{,}570$ events, $HR_{\min} \approx 1.07$ at 80% power and $\alpha = .05$, well below all reported effects of interest.
+Although a-priori power calculations are standard in experimental designs, they are less directly applicable to population-based register studies where the full cohort meeting inclusion criteria is observed and there is no sampling step at which the analyst chooses an *N*. We therefore replace the standard a-priori power calculation with a *detection-capacity* analysis: given the observed event count, what is the smallest effect size that the design could reliably detect, and how does this compare to effect sizes reported in prior longitudinal dropout research?
+
+We computed the minimum detectable hazard ratio using Hsieh and Lavori's (2000) formula $|\log HR_{\min}| = (z_{1-\alpha/2} + z_{1-\beta}) / (\sigma \sqrt{d})$, where $d$ is event count and $\sigma$ is the SD of the standardized covariate (= 1 for z-scored covariates). With $d = 1{,}570$ events, $\alpha = .05$, and 80% power, $HR_{\min} \approx 1.07$ per SD — i.e., effects with $HR < 0.93$ or $> 1.07$ are detectable.
+
+Effect sizes in prior prospective youth-sport dropout research are typically *small-to-moderate*: motivational and engagement-based predictors in 12–24-month prospective designs (Sarrazin et al., 2002; Calvo et al., 2010) and in survey-based studies of dropout reasons (Espedalen & Seippel, 2022) generally correspond to standardized effect-size estimates in the small-to-moderate range (Cohen's *d* ≈ 0.2–0.5; comparable odds ratios ≈ 1.4–2.5). The detection capacity of the present design (minimum detectable HR ≈ 1.07) is therefore well below the effect magnitudes typically reported in this literature; null findings reported here (e.g., the unadjusted sex coefficient in M1, or HHI in M3) should be interpreted as substantively small rather than as underpowered.
 
 ### 2.5.5 Missing data and clustering
 
