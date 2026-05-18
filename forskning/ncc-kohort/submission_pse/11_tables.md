@@ -54,7 +54,7 @@
 |  | Volume at age 15–16 (z) | 0.44 | [0.40, 0.48] | < .001 |  |  |
 |  | Championship types (count, 0–4) | 0.74 | [0.69, 0.80] | < .001 |  |  |
 
-*Note.* HRs are per one-SD increase for standardized covariates and per unit for the count of championship types. Schoenfeld residual tests detected proportional-hazards violations for vol_milepael, HHI early, and championship types; period-specific HRs are given in Table 5. The substantive effect is robust to the violation (Supplementary Table S6).
+*Note.* HRs are per one-SD increase for standardized covariates and per unit for the count of championship types. Schoenfeld residual tests detected proportional-hazards violations for vol_milestone, HHI early, and championship types; period-specific HRs are given in Table 5. The substantive effect is robust to the violation (Supplementary Table S6).
 
 ---
 
@@ -209,7 +209,7 @@
 
 ## Table S9. Outcome-definition sensitivity (logistic regression, full model)
 
-| Outcome | Description | Retainer n (%) | OR (vol_milepael per SD) | AUC |
+| Outcome | Description | Retainer n (%) | OR (vol_milestone per SD) | AUC |
 |---|---|---|---|---|
 | A | ≥1 senior-age (20+) result | 411 (19.4%) | 2.79 | 0.83 |
 | B | ≥2 results in any senior-age year (primary) | 348 (16.4%) | 3.08 | 0.86 |
@@ -236,7 +236,7 @@
 | **Volume at age 15–16 (z)** | **0.51** | **[0.46, 0.56]** | **< .001** |
 | Championship types | 0.80 | [0.73, 0.87] | < .001 |
 
-*Note.* Excludes 589 athletes with vol_milepael = 0; remaining n = 1,250; C-index = 0.786.
+*Note.* Excludes 589 athletes with vol_milestone = 0; remaining n = 1,250; C-index = 0.786.
 
 ## Table S12. Random forest variable importance (top 15) for senior retention
 

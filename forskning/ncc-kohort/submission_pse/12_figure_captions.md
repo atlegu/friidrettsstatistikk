@@ -10,7 +10,7 @@
 
 **Figure 3.** Kaplan–Meier retention curves stratified by total competition volume across ages 15 and 16. Strata are: 0 meets, 1–5 meets, 6–15 meets, 16–30 meets, and 31+ meets. Athletes in the highest stratum retained 71% senior activity at follow-up year 14; athletes in the lowest stratum retained 4%.
 
-**Figure 4.** Time-varying hazard ratios for the full Cox model across three follow-up periods (years 0–3, 3–6, 6+ post-baseline). Hazard ratios are per-SD for standardized covariates (vol_milepael, Tyrving, HHI early) and per-unit for championship types and female. The dominant predictor — competition volume at age 15–16 — is highly protective in years 0–3 (HR = 0.14), moderately protective in years 3–6 (HR = 0.69), and indistinguishable from null in years 6+ (HR = 0.96).
+**Figure 4.** Time-varying hazard ratios for the full Cox model across three follow-up periods (years 0–3, 3–6, 6+ post-baseline). Hazard ratios are per-SD for standardized covariates (vol_milestone, Tyrving, HHI early) and per-unit for championship types and female. The dominant predictor — competition volume at age 15–16 — is highly protective in years 0–3 (HR = 0.14), moderately protective in years 3–6 (HR = 0.69), and indistinguishable from null in years 6+ (HR = 0.96).
 
 ---
 

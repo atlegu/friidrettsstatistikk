@@ -22,8 +22,6 @@ Crane, J., & Temple, V. (2015). A systematic review of dropout from organized sp
 
 Davidson-Pilon, C. (2024). *lifelines: Survival analysis in Python* (Version 0.30) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10456828
 
-Denzin, N. K. (2009). *The research act: A theoretical introduction to sociological methods*. Aldine Transaction.
-
 DiFiori, J. P., Benjamin, H. J., Brenner, J. S., Gregory, A., Jayanthi, N., Landry, G. L., & Luke, A. (2014). Overuse injuries and burnout in youth sports: A position statement from the American Medical Society for Sports Medicine. *Clinical Journal of Sport Medicine, 24*(1), 3–20. https://doi.org/10.1097/JSM.0000000000000060
 
 Ebaugh, H. R. F. (1988). *Becoming an ex: The process of role exit*. University of Chicago Press.

@@ -8,9 +8,9 @@
 
 - Two independent birth cohorts (N=2,123) yield concordant behavioral patterns.
 
-- Pre-baseline behavioral indicators alone classify retention at AUC = 0.82.
+- Early-adolescent volume alone classifies senior retention at AUC = 0.82.
 
-- Findings quantify the qualitative "two-groups" thesis (Espedalen, 2025).
+- Findings are consistent with qualitative accounts of dropout as a process.
 
 ---
 
@@ -19,7 +19,7 @@
 1. "Competition volume at age 15-16 predicts senior retention better than performance." = 84
 2. "Future dropouts visibly reduce participation 2-3 years before formal exit." = 74
 3. "Two independent birth cohorts (N=2,123) yield concordant behavioral patterns." = 77
-4. "Pre-baseline behavioral indicators alone classify retention at AUC = 0.82." = 74
-5. "Findings quantify the qualitative \"two-groups\" thesis (Espedalen, 2025)." = 72
+4. "Early-adolescent volume alone classifies senior retention at AUC = 0.82." = 72
+5. "Findings are consistent with qualitative accounts of dropout as a process." = 74
 
 All within limit.
