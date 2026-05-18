@@ -6,11 +6,11 @@
 
 ## Title
 
-**Behavioral pathways out of youth competitive sport: A 14-year longitudinal registry study of Norwegian track and field athletes**
+**Pulling back before pulling out: Behavioral disengagement precedes youth-sport dropout by years in a 14-year register study**
 
 ## Running title
 
-Behavioral pathways out of youth sport
+Behavioral disengagement precedes youth-sport dropout
 
 ## Author
 

@@ -13,7 +13,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 
-TITLE = "# Behavioral pathways out of youth competitive sport: A 14-year longitudinal registry study of Norwegian track and field athletes"
+TITLE = "# Pulling back before pulling out: Behavioral disengagement precedes youth-sport dropout by years in a 14-year register study"
 META = """
 **Running title:** Behavioral pathways out of youth sport
 

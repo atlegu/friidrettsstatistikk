@@ -11,11 +11,10 @@ from pathlib import Path
 HERE = Path(__file__).parent
 
 FIG_FILES = {
-    1: "fig1_volume_trajectory.png",
-    2: "fig2_km_overall_sex.png",
+    1: "fig1_conceptual_model.png",
+    2: "fig2_volume_trajectory.png",
     3: "fig3_km_vol_quintile.png",
-    4: "fig4_km_msk_typer.png",
-    5: "fig5_rf_importance.png",
+    4: "fig4_time_varying_forest.png",
 }
 
 manuscript = (HERE / "MANUSCRIPT_ANONYMIZED.md").read_text()

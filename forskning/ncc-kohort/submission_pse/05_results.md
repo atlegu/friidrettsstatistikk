@@ -8,21 +8,19 @@ The full cohort comprised 2,123 athletes (52.0% female), of whom 1,301 belonged 
 
 ## 3.2 Competition-volume trajectories diverge before formal exit
 
-Figure 1 presents the central behavioral observation. Median competitions per year are plotted by age (13–18) separately for athletes who eventually retained senior activity (n = 348) and those who did not (n = 1,775). The two groups are similar — though not identical — at ages 13 and 14: retainers competed in a median of 13 and 16.5 meets respectively, dropouts in 8 and 8. From age 15 onwards the trajectories diverge sharply. Retainers increased their participation to a peak of 19 meets at age 15 and sustained it through age 17 (18 and 17 meets at ages 16 and 17 respectively). Dropouts collapsed from 8 meets at age 14 to a median of 3 at age 15, 0 at age 16, and 0 thereafter. Critically, the divergence is visible *before* most dropouts had left competition entirely; the interquartile range for dropouts at age 15 (0–11 meets) shows that many were still nominally competing while pulling back, consistent with the gradual withdrawal pattern described in the qualitative literature.
+Figure 2 presents the central behavioral observation. (Figure 1 shows the conceptual model that motivates this test.) Median competitions per year are plotted by age (13–18) separately for athletes who eventually retained senior activity (n = 348) and those who did not (n = 1,775). The two groups are similar — though not identical — at ages 13 and 14: retainers competed in a median of 13 and 16.5 meets respectively, dropouts in 8 and 8. From age 15 onwards the trajectories diverge sharply. Retainers increased their participation to a peak of 19 meets at age 15 and sustained it through age 17 (18 and 17 meets at ages 16 and 17 respectively). Dropouts collapsed from 8 meets at age 14 to a median of 3 at age 15, 0 at age 16, and 0 thereafter. Critically, the divergence is visible *before* most dropouts had left competition entirely; the interquartile range for dropouts at age 15 (0–11 meets) shows that many were still nominally competing while pulling back, consistent with the gradual withdrawal pattern described in the qualitative literature.
 
-[**Figure 1 about here**]
+[**Figures 1 and 2 about here**]
 
 [**Table 2 about here**]
 
 ## 3.3 Survival to active senior age
 
-Overall Kaplan-Meier retention is shown in Figure 2A. Half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (corresponding to the transition from youth to junior competition) marks the steepest acceleration in dropout. The sex-stratified retention curves (Figure 2B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).
+Overall Kaplan–Meier retention (Supplementary Figure S3A) shows that half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (the transition from youth to junior competition) marks the steepest acceleration in dropout. Sex-stratified retention curves (Supplementary Figure S3B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).
 
-[**Figure 2 about here**]
+When the cohort is stratified by competition volume at age 15–16 (Figure 3), retention curves separate clearly and monotonically: athletes who competed in 31 or more meets across ages 15–16 retained 71% senior activity, while athletes who competed in none retained only 4%. Stratifying instead by number of championship types entered before age 17 (Supplementary Figure S4) reveals the same pattern: athletes who competed in all four championship types (UM, JrNM, NM, KM) retained 91% senior activity, while athletes who entered zero retained 5%.
 
-When the cohort is stratified by competition volume at age 15–16 (Figure 3), retention curves separate clearly and monotonically: athletes who competed in 31 or more meets across ages 15–16 retained 71% senior activity, while athletes who competed in none retained only 4%. Stratifying instead by number of championship types entered before age 17 (Figure 4) reveals the same pattern: athletes who competed in all four championship types (UM, JrNM, NM, KM) retained 91% senior activity, while athletes who entered zero championship types retained 5%.
-
-[**Figures 3 and 4 about here**]
+[**Figure 3 about here**]
 
 ## 3.4 Stepwise Cox regression
 
@@ -50,7 +48,9 @@ A second check used the *pre-milestone* (ages 13–14) volume alone as the only 
 
 Schoenfeld residual tests indicated that the proportional-hazards assumption was satisfied for sex (χ²₁ = 2.50, p = .11) and for baseline Tyrving performance (χ²₁ = 0.12, p = .73), but violated for the specialization (χ²₁ = 11.12, p < .001), championship-types (χ²₁ = 10.89, p = .001), and milestone-window volume (χ²₁ = 220.77, p < .001) covariates (Supplementary Table S1). To verify that the violations did not change substantive conclusions, we re-fit the model stratified on the most-violating discrete covariate (HHI tercile); remaining effects retained their direction, magnitude, and significance (Supplementary Table S6).
 
-To characterize the time-varying nature of the dominant predictor, we fit period-specific Cox models in three follow-up windows (Table 5). The protective effect of milestone-window volume was strongest in the first three years post-baseline (HR = 0.14, 95% CI: 0.11–0.16), moderate in years 3–6 (HR = 0.69, 95% CI: 0.60–0.79), and absent in years 6+ (HR = 0.96, 95% CI: 0.77–1.19). This pattern indicates that the behavioral signal predicts *proximal* (within 3 years) retention strongly and *late* retention (after the junior transition) weakly. Effect sizes for the other covariates were stable across windows.
+To characterize the time-varying nature of the dominant predictor, we fit period-specific Cox models in three follow-up windows (Figure 4, Table 5). The protective effect of milestone-window volume was strongest in the first three years post-baseline (HR = 0.14, 95% CI: 0.11–0.16), moderate in years 3–6 (HR = 0.69, 95% CI: 0.60–0.79), and absent in years 6+ (HR = 0.96, 95% CI: 0.77–1.19). This pattern indicates that the behavioral signal predicts *proximal* (within 3 years) retention strongly and *late* retention (after the junior transition) weakly. Effect sizes for the other covariates were stable across windows.
+
+[**Figure 4 about here**]
 
 [**Table 5 about here**]
 
@@ -66,7 +66,7 @@ Table 6 presents calibration metrics for using milestone-window competition volu
 
 ## 3.9 Random forest variable importance (convergent evidence)
 
-As a non-parametric convergent check, a random forest fit to predict senior retention identified volume-based features as the most important predictors (Supplementary Table S12): the top six positions are all volume- or trajectory-based, with sex appearing near the bottom (importance 0.010). The pattern is consistent with the Cox findings and confirms that the ranking is not an artefact of linearity assumptions. Cross-validated AUCs for nested predictor subsets (Supplementary Table S8) show that a model using only competition-volume features at ages 13–16 achieves AUC = 0.82, essentially identical to the full 22-predictor model (AUC = 0.82) — performance and specialization information add nothing once volume is observed.
+As a non-parametric convergent check, a random forest fit to predict senior retention identified volume-based features as the most important predictors (Supplementary Figure S2; Supplementary Table S12): the top six positions are all volume- or trajectory-based, with sex appearing near the bottom (importance 0.010). The pattern is consistent with the Cox findings and confirms that the ranking is not an artefact of linearity assumptions. Cross-validated AUCs for nested predictor subsets (Supplementary Table S8) show that a model using only competition-volume features at ages 13–16 achieves AUC = 0.82, essentially identical to the full 22-predictor model (AUC = 0.82) — performance and specialization information add nothing once volume is observed.
 
 ## 3.10 Cross-cohort replication
 

@@ -2,6 +2,8 @@
 
 (APA 7th edition format)
 
+Baker, J., Cattle, A., McAuley, A., Kelly, A., & Johnston, K. (2026). Will artificial intelligence solve the riddle of athlete development? A critical review of how AI is being used for athlete identification, selection, and development. *Psychology of Sport and Exercise, 82*, Article 102978. https://doi.org/10.1016/j.psychsport.2025.102978
+
 Bakken, A. (2019). *Idrettens posisjon i ungdomstida: Hvem deltar og hvem slutter i ungdomsidretten?* [The position of sport in adolescence: Who participates and who drops out of youth sport?] (NOVA Rapport 2/2019). Oslo Metropolitan University.
 
 Berk, R. A., & Freedman, D. A. (2003). Statistical assumptions as empirical commitments. In T. G. Blomberg & S. Cohen (Eds.), *Punishment and social control: Essays in honor of Sheldon L. Messinger* (2nd ed., pp. 235–254). Aldine de Gruyter.
@@ -54,6 +56,8 @@ Jayanthi, N. A., LaBella, C. R., Fischer, D., Pasulka, J., & Dugas, L. R. (2015)
 
 Kretchmar, R. S. (2000). Movement subcultures: Sites for meaning. *Journal of Physical Education, Recreation & Dance, 71*(5), 19–25. https://doi.org/10.1080/07303084.2000.10605140
 
+Kuokkanen, J., Phipps, D. J., Saarinen, M., Korhonen, J., Romar, J.-E., & Gustafsson, H. (2026). Trajectories of sport exhaustion, cynicism and inadequacy among adolescent student-athletes: A three-year longitudinal study of social influences in the Finnish dual career context. *Psychology of Sport and Exercise, 82*, Article 103015. https://doi.org/10.1016/j.psychsport.2025.103015
+
 Lin, D. Y., & Wei, L. J. (1989). The robust inference for the Cox proportional hazards model. *Journal of the American Statistical Association, 84*(408), 1074–1078. https://doi.org/10.1080/01621459.1989.10478874
 
 Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriidrett* [Tyrving table: Scoring table for youth athletics]. https://www.friidrett.no/tyrving
@@ -61,6 +65,8 @@ Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriid
 Norges Idrettsforbund. (2024). *Nøkkeltall 2023: Medlemskap, aktivitet og økonomi i norsk idrett* [Key statistics 2023: Membership, activity and economy in Norwegian sport]. https://www.idrettsforbundet.no
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
+
+Peringa, I. P., Niessen, A. S. M., Meijer, R. R., & den Hartigh, R. J. R. (2026). Why experience fails to foster expertise in athlete selection. *Psychology of Sport and Exercise, 82*, Article 103022. https://doi.org/10.1016/j.psychsport.2025.103022
 
 Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. *American Psychologist, 55*(1), 68–78. https://doi.org/10.1037/0003-066X.55.1.68
 
@@ -89,3 +95,7 @@ von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C., & Vanden
 Wall, M., & Côté, J. (2007). Developmental activities that lead to dropout and investment in sport. *Physical Education and Sport Pedagogy, 12*(1), 77–87. https://doi.org/10.1080/17408980601060358
 
 Wattie, N., Schorer, J., & Baker, J. (2015). The relative age effect in sport: A developmental systems model. *Sports Medicine, 45*(1), 83–94. https://doi.org/10.1007/s40279-014-0248-9
+
+Worley, J. T., & Smith, A. L. (2026). Positive peer relationships, social identity, and adaptive sport motivation in youth athletes. *Psychology of Sport and Exercise, 82*, Article 102996. https://doi.org/10.1016/j.psychsport.2025.102996
+
+Zhong, J., Wang, Q., Bao, H., Wang, Y., & Guo, S. (2026). Effects of basic psychological needs on Chinese youth athlete burnout under coach burnout: Using hierarchical linear modeling. *Psychology of Sport and Exercise, 85*, Article 103099. https://doi.org/10.1016/j.psychsport.2026.103099

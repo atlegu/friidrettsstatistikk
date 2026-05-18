@@ -1,4 +1,4 @@
-# Behavioral pathways out of youth competitive sport: A 14-year longitudinal registry study of Norwegian track and field athletes
+# Pulling back before pulling out: Behavioral disengagement precedes youth-sport dropout by years in a 14-year register study
 
 **Running title:** Behavioral pathways out of youth sport
 
@@ -8,13 +8,13 @@
 
 ## Abstract
 
-**Objectives.** Qualitative research has long characterized youth-sport dropout as a gradual deliberative process unfolding over one to two years, but the longitudinal behavioral signature has been hard to observe directly. We use Norway's public competition register to quantify behavioral antecedents of senior retention in track and field.
+**Objectives.** Future dropouts from organized youth sport visibly pull back from competition years before they formally exit. Although qualitative research has long described this gradual disengagement, its longitudinal behavioral signature has been hard to observe directly. We use Norway's competition register to test whether such a signature predicts senior retention.
 
-**Method.** We followed all 2,123 athletes (ages 13–14 at baseline) participating in five consecutive editions of a regional youth meet between 2011 and 2016 (birth cohorts 1998–2002). For each athlete we recorded annual competition counts, event-category diversification, championship participation, and Tyrving age-norm performance points through 2026 — a maximum follow-up of 14 years. Senior retention (≥2 registered competitions in any year at age 20 or later) was modelled with Cox proportional hazards and assessed for assumption violations, time-varying effects, unmeasured confounding (E-value), measurement-tautology (landmark analysis at age 16), and outcome-definition sensitivity.
+**Method.** We followed all 2,123 athletes (ages 13–14 at baseline) participating in five consecutive editions of a regional youth track-and-field meet between 2011 and 2016 (birth cohorts 1998–2002). We recorded annual competition counts, event-category diversification, championship participation, and Tyrving age-norm performance points through 2026 — a maximum 14-year follow-up. Senior retention (≥2 registered competitions in any year at age 20 or later) was modelled with Cox proportional hazards and assessed for assumption violations, time-varying effects, unmeasured confounding (E-value), measurement-tautology (landmark analysis at age 16), and outcome-definition sensitivity.
 
-**Results.** Among athletes still active at age 16, competition volume at age 15–16 remained the strongest single predictor of subsequent senior retention (HR = 0.60 per SD, 95% CI [0.54, 0.66], C-index = 0.74). The signal was also detectable using only pre-milestone (age 13–14) volume (HR = 0.50). Future dropouts exhibited declining competition counts 2–3 years before formal exit. Findings replicated across two independent birth cohorts and were robust to outcome definition, missing data, club clustering, and an unmeasured-confounder E-value of 5.16.
+**Results.** Among athletes still active at age 16, competition volume at age 15–16 remained the strongest single predictor of subsequent senior retention (HR = 0.60 per SD, 95% CI [0.54, 0.66], C-index = 0.74). The signal was already detectable using only pre-milestone (age 13–14) volume (HR = 0.50), indicating that behavioral disengagement precedes the qualification window itself. Findings replicated across two independent birth cohorts and were robust to outcome definition, missing data, club clustering, and an unmeasured-confounder E-value of 5.16.
 
-**Conclusions.** Competitive dropout is preceded by observable reductions in registered competition behavior during the milestone window. Registry-based behavioral surveillance can complement survey research as a marker of progressive disengagement.
+**Conclusions.** Registered competition behavior tracks the temporal unfolding of competitive disengagement years before formal exit, and may complement survey research as a registry-based marker for retention interventions.
 
 ---
 
@@ -33,7 +33,7 @@ A complementary observation, articulated most clearly in Wall and Côté's (2007
 
 What this body of literature has been unable to test, with the data designs it has employed, is the *long-run behavioral signature* of the deliberative process. Two structural constraints account for the gap. First, athletes who have already withdrawn from a sport are systematically harder to recruit into surveys (Eime et al., 2013), so the most informative cases tend to be missing. Second, the timescale on which the theoretical process is hypothesized to unfold (1–3 years) exceeds the follow-up window of most prospective designs; Sarrazin and colleagues' (2002) 21-month study of female handballers is unusually long for the literature and still does not bridge the adolescent-to-junior transition.
 
-A separate quantitative tradition has focused on *cross-sectional* correlates of dropout — relative age effects (Cobley et al., 2009; Wattie et al., 2015), early specialization (DiFiori et al., 2014; Jayanthi et al., 2015; Côté & Hancock, 2016; Güllich et al., 2022), and selection-window performance (Crane & Temple, 2015) — but has not, to our knowledge, examined the *trajectory* of registered competition behavior across the adolescent window as an observable proxy for the engagement balance that the qualitative literature describes.
+A separate quantitative tradition has focused on *cross-sectional* correlates of dropout — relative age effects (Cobley et al., 2009; Wattie et al., 2015), early specialization (DiFiori et al., 2014; Jayanthi et al., 2015; Côté & Hancock, 2016; Güllich et al., 2022), and selection-window performance (Crane & Temple, 2015) — and on short longitudinal designs measuring proximal psychological correlates such as exhaustion, burnout, and motivational climate (Kuokkanen et al., 2026; Worley & Smith, 2026; Zhong et al., 2026). What has not been examined, to our knowledge, is the *trajectory* of registered competition behavior across the adolescent window as an observable proxy for the engagement balance that the qualitative literature describes. The need is timely: Peringa et al. (2026) recently showed that expert intuition fails to identify future athletes reliably, and Baker et al. (2026) noted that emerging algorithmic approaches to athlete development have so far been applied to selection rather than to retention. Behavioral surveillance of competitive engagement is a low-cost candidate that sidesteps both problems.
 
 ## 1.3 The present study
 
@@ -163,21 +163,19 @@ The full cohort comprised 2,123 athletes (52.0% female), of whom 1,301 belonged 
 
 ## 3.2 Competition-volume trajectories diverge before formal exit
 
-Figure 1 presents the central behavioral observation. Median competitions per year are plotted by age (13–18) separately for athletes who eventually retained senior activity (n = 348) and those who did not (n = 1,775). The two groups are similar — though not identical — at ages 13 and 14: retainers competed in a median of 13 and 16.5 meets respectively, dropouts in 8 and 8. From age 15 onwards the trajectories diverge sharply. Retainers increased their participation to a peak of 19 meets at age 15 and sustained it through age 17 (18 and 17 meets at ages 16 and 17 respectively). Dropouts collapsed from 8 meets at age 14 to a median of 3 at age 15, 0 at age 16, and 0 thereafter. Critically, the divergence is visible *before* most dropouts had left competition entirely; the interquartile range for dropouts at age 15 (0–11 meets) shows that many were still nominally competing while pulling back, consistent with the gradual withdrawal pattern described in the qualitative literature.
+Figure 2 presents the central behavioral observation. (Figure 1 shows the conceptual model that motivates this test.) Median competitions per year are plotted by age (13–18) separately for athletes who eventually retained senior activity (n = 348) and those who did not (n = 1,775). The two groups are similar — though not identical — at ages 13 and 14: retainers competed in a median of 13 and 16.5 meets respectively, dropouts in 8 and 8. From age 15 onwards the trajectories diverge sharply. Retainers increased their participation to a peak of 19 meets at age 15 and sustained it through age 17 (18 and 17 meets at ages 16 and 17 respectively). Dropouts collapsed from 8 meets at age 14 to a median of 3 at age 15, 0 at age 16, and 0 thereafter. Critically, the divergence is visible *before* most dropouts had left competition entirely; the interquartile range for dropouts at age 15 (0–11 meets) shows that many were still nominally competing while pulling back, consistent with the gradual withdrawal pattern described in the qualitative literature.
 
-[**Figure 1 about here**]
+[**Figures 1 and 2 about here**]
 
 [**Table 2 about here**]
 
 ## 3.3 Survival to active senior age
 
-Overall Kaplan-Meier retention is shown in Figure 2A. Half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (corresponding to the transition from youth to junior competition) marks the steepest acceleration in dropout. The sex-stratified retention curves (Figure 2B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).
+Overall Kaplan–Meier retention (Supplementary Figure S3A) shows that half of the cohort had ceased active competition within 3 years of baseline; 75% had ceased within 5 years. The age-17 floor (the transition from youth to junior competition) marks the steepest acceleration in dropout. Sex-stratified retention curves (Supplementary Figure S3B) overlap throughout the follow-up window: a log-rank test detected no overall sex difference (χ² = 0.95, p = 0.33).
 
-[**Figure 2 about here**]
+When the cohort is stratified by competition volume at age 15–16 (Figure 3), retention curves separate clearly and monotonically: athletes who competed in 31 or more meets across ages 15–16 retained 71% senior activity, while athletes who competed in none retained only 4%. Stratifying instead by number of championship types entered before age 17 (Supplementary Figure S4) reveals the same pattern: athletes who competed in all four championship types (UM, JrNM, NM, KM) retained 91% senior activity, while athletes who entered zero retained 5%.
 
-When the cohort is stratified by competition volume at age 15–16 (Figure 3), retention curves separate clearly and monotonically: athletes who competed in 31 or more meets across ages 15–16 retained 71% senior activity, while athletes who competed in none retained only 4%. Stratifying instead by number of championship types entered before age 17 (Figure 4) reveals the same pattern: athletes who competed in all four championship types (UM, JrNM, NM, KM) retained 91% senior activity, while athletes who entered zero championship types retained 5%.
-
-[**Figures 3 and 4 about here**]
+[**Figure 3 about here**]
 
 ## 3.4 Stepwise Cox regression
 
@@ -205,7 +203,9 @@ A second check used the *pre-milestone* (ages 13–14) volume alone as the only 
 
 Schoenfeld residual tests indicated that the proportional-hazards assumption was satisfied for sex (χ²₁ = 2.50, p = .11) and for baseline Tyrving performance (χ²₁ = 0.12, p = .73), but violated for the specialization (χ²₁ = 11.12, p < .001), championship-types (χ²₁ = 10.89, p = .001), and milestone-window volume (χ²₁ = 220.77, p < .001) covariates (Supplementary Table S1). To verify that the violations did not change substantive conclusions, we re-fit the model stratified on the most-violating discrete covariate (HHI tercile); remaining effects retained their direction, magnitude, and significance (Supplementary Table S6).
 
-To characterize the time-varying nature of the dominant predictor, we fit period-specific Cox models in three follow-up windows (Table 5). The protective effect of milestone-window volume was strongest in the first three years post-baseline (HR = 0.14, 95% CI: 0.11–0.16), moderate in years 3–6 (HR = 0.69, 95% CI: 0.60–0.79), and absent in years 6+ (HR = 0.96, 95% CI: 0.77–1.19). This pattern indicates that the behavioral signal predicts *proximal* (within 3 years) retention strongly and *late* retention (after the junior transition) weakly. Effect sizes for the other covariates were stable across windows.
+To characterize the time-varying nature of the dominant predictor, we fit period-specific Cox models in three follow-up windows (Figure 4, Table 5). The protective effect of milestone-window volume was strongest in the first three years post-baseline (HR = 0.14, 95% CI: 0.11–0.16), moderate in years 3–6 (HR = 0.69, 95% CI: 0.60–0.79), and absent in years 6+ (HR = 0.96, 95% CI: 0.77–1.19). This pattern indicates that the behavioral signal predicts *proximal* (within 3 years) retention strongly and *late* retention (after the junior transition) weakly. Effect sizes for the other covariates were stable across windows.
+
+[**Figure 4 about here**]
 
 [**Table 5 about here**]
 
@@ -221,7 +221,7 @@ Table 6 presents calibration metrics for using milestone-window competition volu
 
 ## 3.9 Random forest variable importance (convergent evidence)
 
-As a non-parametric convergent check, a random forest fit to predict senior retention identified volume-based features as the most important predictors (Supplementary Table S12): the top six positions are all volume- or trajectory-based, with sex appearing near the bottom (importance 0.010). The pattern is consistent with the Cox findings and confirms that the ranking is not an artefact of linearity assumptions. Cross-validated AUCs for nested predictor subsets (Supplementary Table S8) show that a model using only competition-volume features at ages 13–16 achieves AUC = 0.82, essentially identical to the full 22-predictor model (AUC = 0.82) — performance and specialization information add nothing once volume is observed.
+As a non-parametric convergent check, a random forest fit to predict senior retention identified volume-based features as the most important predictors (Supplementary Figure S2; Supplementary Table S12): the top six positions are all volume- or trajectory-based, with sex appearing near the bottom (importance 0.010). The pattern is consistent with the Cox findings and confirms that the ranking is not an artefact of linearity assumptions. Cross-validated AUCs for nested predictor subsets (Supplementary Table S8) show that a model using only competition-volume features at ages 13–16 achieves AUC = 0.82, essentially identical to the full 22-predictor model (AUC = 0.82) — performance and specialization information add nothing once volume is observed.
 
 ## 3.10 Cross-cohort replication
 
@@ -275,9 +275,11 @@ What we add is therefore not a new theoretical account — SCM, SDT, and withdra
 
 ## 4.6 Practical implications
 
-The findings suggest a tractable early-warning approach for retention-focused interventions. The calibration analysis (Table 6) shows that any of several plausible thresholds for "flagging" athletes by low milestone-window volume produces positive predictive values of 0.95 or higher: among athletes with fewer than 10 meets across ages 15–16, 97% subsequently dropped out before senior age. A federation could implement behavioral surveillance by tracking annual meet counts in the youth-to-junior transition and prioritizing outreach (coach check-ins, programme redesign, or simply contact) toward athletes whose age-15 count falls below threshold. The lead time — 2 to 3 years between behavioral decline and formal exit — is long enough that intervention is plausible.
+The findings suggest a tractable early-warning approach for retention-focused interventions. The calibration analysis (Table 6) shows positive predictive values of 0.95 or higher across plausible thresholds for "flagging" low-volume athletes. The high PPV partly reflects the high dropout base rate in this population (84%) — a "predict everyone drops out" rule already achieves PPV = 0.84 — but the behavioral threshold improves precision by 11–15 percentage points over base-rate prediction while providing graduated sensitivity.
 
-The time-varying analysis (Table 5) sharpens this: the volume signal is most informative in the first three years after baseline, which corresponds to ages 15–17 — the very years that the qualitative literature identifies as the deliberative window of withdrawal-as-process. An intervention aimed at the *behavioral* signal in *that* window has the strongest mechanistic justification. We note that behavioral surveillance is a *complement* to, not a replacement for, motivation-focused instruments such as the SCQ-2 (Scanlan et al., 2016): behavioral data tells a coach which athletes to call; an SCQ-2 administration tells them what to discuss.
+**Worked example.** In a regional federation cohort of 400 youth athletes entering their 15-year-old season, applying the moderate threshold (vol_milepael < 10 meets across ages 15–16) would flag 215 athletes (53.7%); 209 of these (97%) would otherwise drop out before senior age, while the rule catches 63% of all eventual dropouts. Lower thresholds (vol < 1, 28% flagged, PPV = 0.99) suit resource-constrained interventions targeting the most extreme cases; higher thresholds (vol < 20, 67% flagged, PPV = 0.95) suit broader outreach. The choice is operational, not statistical.
+
+The time-varying analysis (Figure 4) sharpens this: the volume signal is most informative in the first three years after baseline (HR = 0.14), which corresponds to ages 15–17 — the very years that the qualitative literature identifies as the deliberative window of withdrawal-as-process. An intervention aimed at the *behavioral* signal in *that* window has the strongest mechanistic justification. We note that behavioral surveillance is a *complement* to, not a replacement for, motivation-focused instruments such as the SCQ-2 (Scanlan et al., 2016): behavioral data tells a coach which athletes to call; an SCQ-2 administration tells them what to discuss.
 
 Cross-event diversification (lower HHI) was protective of senior retention in our data, more strongly in Cohort B than Cohort A (HR = 0.88 per SD vs. 1.00; Table 7). We do not draw a strong specialization conclusion from this — the cohort-specific evidence is mixed and HHI was not significant in our primary model — but the cohort-B finding is consistent with the international diversification literature (Côté & Hancock, 2016; Güllich et al., 2022; Wall & Côté, 2007).
 
@@ -316,6 +318,8 @@ During the preparation of this work the author used Claude Code (Anthropic) to a
 
 
 (APA 7th edition format)
+
+Baker, J., Cattle, A., McAuley, A., Kelly, A., & Johnston, K. (2026). Will artificial intelligence solve the riddle of athlete development? A critical review of how AI is being used for athlete identification, selection, and development. *Psychology of Sport and Exercise, 82*, Article 102978. https://doi.org/10.1016/j.psychsport.2025.102978
 
 Bakken, A. (2019). *Idrettens posisjon i ungdomstida: Hvem deltar og hvem slutter i ungdomsidretten?* [The position of sport in adolescence: Who participates and who drops out of youth sport?] (NOVA Rapport 2/2019). Oslo Metropolitan University.
 
@@ -369,6 +373,8 @@ Jayanthi, N. A., LaBella, C. R., Fischer, D., Pasulka, J., & Dugas, L. R. (2015)
 
 Kretchmar, R. S. (2000). Movement subcultures: Sites for meaning. *Journal of Physical Education, Recreation & Dance, 71*(5), 19–25. https://doi.org/10.1080/07303084.2000.10605140
 
+Kuokkanen, J., Phipps, D. J., Saarinen, M., Korhonen, J., Romar, J.-E., & Gustafsson, H. (2026). Trajectories of sport exhaustion, cynicism and inadequacy among adolescent student-athletes: A three-year longitudinal study of social influences in the Finnish dual career context. *Psychology of Sport and Exercise, 82*, Article 103015. https://doi.org/10.1016/j.psychsport.2025.103015
+
 Lin, D. Y., & Wei, L. J. (1989). The robust inference for the Cox proportional hazards model. *Journal of the American Statistical Association, 84*(408), 1074–1078. https://doi.org/10.1080/01621459.1989.10478874
 
 Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriidrett* [Tyrving table: Scoring table for youth athletics]. https://www.friidrett.no/tyrving
@@ -376,6 +382,8 @@ Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriid
 Norges Idrettsforbund. (2024). *Nøkkeltall 2023: Medlemskap, aktivitet og økonomi i norsk idrett* [Key statistics 2023: Membership, activity and economy in Norwegian sport]. https://www.idrettsforbundet.no
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
+
+Peringa, I. P., Niessen, A. S. M., Meijer, R. R., & den Hartigh, R. J. R. (2026). Why experience fails to foster expertise in athlete selection. *Psychology of Sport and Exercise, 82*, Article 103022. https://doi.org/10.1016/j.psychsport.2025.103022
 
 Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. *American Psychologist, 55*(1), 68–78. https://doi.org/10.1037/0003-066X.55.1.68
 
@@ -404,4 +412,8 @@ von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C., & Vanden
 Wall, M., & Côté, J. (2007). Developmental activities that lead to dropout and investment in sport. *Physical Education and Sport Pedagogy, 12*(1), 77–87. https://doi.org/10.1080/17408980601060358
 
 Wattie, N., Schorer, J., & Baker, J. (2015). The relative age effect in sport: A developmental systems model. *Sports Medicine, 45*(1), 83–94. https://doi.org/10.1007/s40279-014-0248-9
+
+Worley, J. T., & Smith, A. L. (2026). Positive peer relationships, social identity, and adaptive sport motivation in youth athletes. *Psychology of Sport and Exercise, 82*, Article 102996. https://doi.org/10.1016/j.psychsport.2025.102996
+
+Zhong, J., Wang, Q., Bao, H., Wang, Y., & Guo, S. (2026). Effects of basic psychological needs on Chinese youth athlete burnout under coach burnout: Using hierarchical linear modeling. *Psychology of Sport and Exercise, 85*, Article 103099. https://doi.org/10.1016/j.psychsport.2026.103099
 
