@@ -14,7 +14,6 @@ FIG_FILES = {
     1: "fig1_conceptual_model.png",
     2: "fig2_volume_trajectory.png",
     3: "fig3_km_vol_quintile.png",
-    4: "fig4_time_varying_forest.png",
 }
 
 manuscript = (HERE / "MANUSCRIPT_ANONYMIZED.md").read_text()
