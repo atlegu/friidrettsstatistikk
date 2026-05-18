@@ -1,6 +1,6 @@
 # PSE Submission Package
 
-**Title:** Pulling back before pulling out: Behavioral disengagement precedes youth-sport dropout by years in a 14-year register study
+**Title:** Pulling back before dropout: Behavioral disengagement precedes youth-sport exit by years in a 14-year register study
 
 **Author:** Atle Guttormsen, NMBU
 **Target journal:** Psychology of Sport and Exercise (Elsevier, FEPSAC)

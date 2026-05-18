@@ -6,7 +6,7 @@
 
 ## Title
 
-**Pulling back before pulling out: Behavioral disengagement precedes youth-sport dropout by years in a 14-year register study**
+**Pulling back before dropout: Behavioral disengagement precedes youth-sport exit by years in a 14-year register study**
 
 ## Running title
 
