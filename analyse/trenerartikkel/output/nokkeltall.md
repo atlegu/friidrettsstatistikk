@@ -33,6 +33,28 @@
 - Frafall 2014-kohorten: 12 % av 13-åringene fortsatt aktive som 19-åringer
 - Frafall 2019-kohorten: 12 % av 13-åringene fortsatt aktive som 19-åringer
 
+## Kast og hekk (topp-10-snitt første -> siste år, samme redskap/høyde per klasse)
+- Kule 15 år Menn/gutter (4kg): 14.32 (2013) -> 12.04 (2025) (n: 69 -> 90)
+- Kule Senior Menn/gutter (7,26kg): 14.79 (2013) -> 15.44 (2025) (n: 63 -> 54)
+- Kule 15 år Kvinner/jenter (3kg): 11.22 (2013) -> 10.16 (2025) (n: 76 -> 79)
+- Kule Senior Kvinner/jenter (4kg): 12.78 (2013) -> 13.16 (2025) (n: 41 -> 41)
+- Spyd 15 år Menn/gutter (600g): 50.40 (2013) -> 43.71 (2025) (n: 65 -> 44)
+- Spyd Senior Menn/gutter (800g): 67.28 (2013) -> 67.67 (2025) (n: 68 -> 50)
+- Spyd 15 år Kvinner/jenter (500g): 24.79 (2013) -> 31.71 (2025) (n: 7 -> 39)
+- Spyd Senior Kvinner/jenter (600g): 48.05 (2013) -> 49.95 (2025) (n: 36 -> 36)
+- Diskos 15 år Menn/gutter (1kg): 45.82 (2013) -> 41.28 (2025) (n: 38 -> 37)
+- Diskos Senior Menn/gutter (2kg): 50.06 (2013) -> 52.44 (2025) (n: 55 -> 59)
+- Diskos 15 år Kvinner/jenter (750g): 32.33 (2013) -> 27.18 (2025) (n: 34 -> 21)
+- Diskos Senior Kvinner/jenter (1kg): 38.37 (2013) -> 45.88 (2025) (n: 26 -> 28)
+- Slegge 15 år Menn/gutter (4kg): 42.01 (2013) -> 36.52 (2025) (n: 21 -> 15)
+- Slegge Senior Menn/gutter (7,26kg): 55.94 (2013) -> 59.24 (2025) (n: 25 -> 20)
+- Slegge 15 år Kvinner/jenter (3kg): 30.02 (2013) -> 37.81 (2025) (n: 21 -> 26)
+- Slegge Senior Kvinner/jenter (4kg): 49.29 (2013) -> 55.52 (2025) (n: 19 -> 26)
+- Sprinthekk 15 år Menn/gutter (100m/84): 15.40 (2013) -> 15.47 (2025) (n: 2 -> 20)
+- Sprinthekk Senior Menn/gutter (110m/106,7): 15.85 (2013) -> 15.06 (2025) (n: 12 -> 15)
+- Sprinthekk 15 år Kvinner/jenter (80m/76,2): 12.29 (2013) -> 12.24 (2025) (n: 36 -> 28)
+- Sprinthekk Senior Kvinner/jenter (100m/84): 13.83 (2013) -> 13.49 (2025) (n: 20 -> 22)
+
 ## Barneidretten (kun deltakelse — ingen nivåanalyse under 13)
 - 10-åringer 2013: 1504 startet, 46 % igjen ved 11, 27 % ved 13
 - 10-åringer 2014: 1442 startet, 49 % igjen ved 11, 27 % ved 13

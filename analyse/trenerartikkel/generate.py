@@ -325,6 +325,146 @@ def analyse_frafall():
 
 
 # ------------------------------------------------------------
+# 2e. Kast og hekk: vekt-/høydespesifikke øvelser per aldersklasse
+# ------------------------------------------------------------
+# Redskapsvekter og hekkhøyder varierer MED aldersklasse men har vært
+# KONSTANTE per klasse gjennom hele perioden (verifisert empirisk: dominant
+# variant per klasse/kjønn er stabil 2013-2025). Dermed er sammenligning
+# innen klasse gyldig. Mappingen under er utledet fra resultatdataene selv
+# (dominant øvelsesvariant per kjønn x kalenderalder).
+
+KH_CLASSES = [('13 år', 13, 13), ('15 år', 15, 15), ('17 år', 17, 17),
+              ('18/19 år', 18, 19), ('Senior', 20, 34)]
+
+# familie -> kjønn -> klasselabel -> (event_code, kort redskapslabel)
+KH_MAP = {
+    'Kule': {
+        'F': {'13 år': ('kule_2kg', '2kg'), '15 år': ('kule_3kg', '3kg'),
+              '17 år': ('kule_3kg', '3kg'), '18/19 år': ('kule_4kg', '4kg'),
+              'Senior': ('kule_4kg', '4kg')},
+        'M': {'13 år': ('kule_3kg', '3kg'), '15 år': ('kule_4kg', '4kg'),
+              '17 år': ('kule_5kg', '5kg'), '18/19 år': ('kule_6kg', '6kg'),
+              'Senior': ('kule_7_26kg', '7,26kg')},
+    },
+    'Spyd': {
+        'F': {'13 år': ('spyd_400g', '400g'), '15 år': ('spyd_500g', '500g'),
+              '17 år': ('spyd_500g', '500g'), '18/19 år': ('spyd_600g', '600g'),
+              'Senior': ('spyd_600g', '600g')},
+        'M': {'13 år': ('spyd_400g', '400g'), '15 år': ('spyd_600g', '600g'),
+              '17 år': ('spyd_700g', '700g'), '18/19 år': ('spyd_800g', '800g'),
+              'Senior': ('spyd_800g', '800g')},
+    },
+    'Diskos': {
+        'F': {'13 år': ('diskos_600g', '600g'), '15 år': ('diskos_750g', '750g'),
+              '17 år': ('diskos_1kg', '1kg'), '18/19 år': ('diskos_1kg', '1kg'),
+              'Senior': ('diskos_1kg', '1kg')},
+        'M': {'13 år': ('diskos_750g', '750g'), '15 år': ('diskos_1kg', '1kg'),
+              '17 år': ('diskos_1_5kg', '1,5kg'), '18/19 år': ('diskos_1_75kg', '1,75kg'),
+              'Senior': ('diskos_2kg', '2kg')},
+    },
+    'Slegge': {
+        'F': {'13 år': ('slegge_20kg/110cm', '2kg'), '15 år': ('slegge_30kg_1195cm', '3kg'),
+              '17 år': ('slegge_30kg_1195cm', '3kg'), '18/19 år': ('slegge_40kg/1195cm', '4kg'),
+              'Senior': ('slegge_40kg/1195cm', '4kg')},
+        'M': {'13 år': ('slegge_30kg_1195cm', '3kg'), '15 år': ('slegge_40kg/1195cm', '4kg'),
+              '17 år': ('slegge_50kg/120cm', '5kg'), '18/19 år': ('slegge_60kg/1215cm', '6kg'),
+              'Senior': ('slegge_726kg/1215cm', '7,26kg')},
+    },
+    'Sprinthekk': {
+        'F': {'13 år': ('60mh_76_2cm', '60m/76,2'), '15 år': ('80mh_76_2cm', '80m/76,2'),
+              '17 år': ('100mh_76_2cm', '100m/76,2'), '18/19 år': ('100mh_84cm', '100m/84'),
+              'Senior': ('100mh_84cm', '100m/84')},
+        'M': {'13 år': ('60mh_76_2cm', '60m/76,2'), '15 år': ('100mh_84cm', '100m/84'),
+              '17 år': ('110mh_91_4cm', '110m/91,4'), '18/19 år': ('110mh_100cm', '110m/100'),
+              'Senior': ('110mh_106_7cm', '110m/106,7')},
+    },
+}
+
+THROW_RANGE = {'Kule': (3000, 23000), 'Spyd': (5000, 90000),
+               'Diskos': (5000, 75000), 'Slegge': (4000, 85000)}
+
+
+def hurdle_range(code):
+    dist = code.split('mh')[0]
+    return {'60': (700, 2000), '80': (900, 2600),
+            '100': (1100, 3200), '110': (1250, 3400)}[dist]
+
+
+def analyse_kast_hekk():
+    logger.info("2e/5 Kast og hekk per aldersklasse ...")
+    all_rows = []
+    data = {}  # (familie, gender, klasse) -> rows
+    for family, per_gender in KH_MAP.items():
+        higher = family != 'Sprinthekk'
+        for g, per_class in per_gender.items():
+            for label, code_impl in per_class.items():
+                code, impl = code_impl
+                lo, hi = dict((l, (a, b)) for l, a, b in KH_CLASSES)[label]
+                min_v, max_v = THROW_RANGE[family] if higher else hurdle_range(code)
+                rows = rpc('analyse_event_trend', {
+                    'p_event_code': code, 'p_min_v': min_v, 'p_max_v': max_v,
+                    'p_higher_better': higher, 'p_from_year': FROM_YEAR, 'p_to_year': TO_YEAR,
+                    'p_age_lo': lo, 'p_age_hi': hi, 'p_outdoor_only': True,
+                })
+                unit = 'm' if higher else 's'
+                for r in rows:
+                    r.update(family=family, age_class=label, event=code, implement=impl,
+                             top10_avg_fmt=fmt_value(r['top10_avg'], unit))
+                all_rows.extend(r for r in rows if r['gender'] == g)
+                data[(family, g, label)] = [r for r in rows if r['gender'] == g]
+    write_csv('kast_hekk_aldersklasser.csv', all_rows,
+              ['family', 'event', 'implement', 'age_class', 'yr', 'gender',
+               'n_athletes', 'top10_avg', 'top10_avg_fmt', 'rank25_value'])
+
+    # Kast: meter på y-aksen, linjer per klasse (redskap i etiketten)
+    throw_families = ['Kule', 'Spyd', 'Diskos', 'Slegge']
+    fig, axes = plt.subplots(len(throw_families), 2, figsize=(13, 4 * len(throw_families)))
+    for row_i, family in enumerate(throw_families):
+        for col, g in enumerate(('M', 'F')):
+            ax = axes[row_i][col]
+            for label, lo, hi in KH_CLASSES:
+                rows = data.get((family, g, label), [])
+                impl = KH_MAP[family][g][label][1]
+                pts = sorted(rows, key=lambda r: r['yr'])
+                ax.plot([r['yr'] for r in pts],
+                        [to_plot_value(r['top10_avg'], 'm') for r in pts],
+                        marker='o', ms=3, label=f'{label} ({impl})')
+            ax.set_title(f"{family} — {GENDER_LABEL[g]} (snitt topp-10)", fontsize=10)
+            ax.set_ylabel('meter', fontsize=8)
+            ax.grid(alpha=0.3)
+            if row_i == 0 and col == 0:
+                ax.legend(fontsize=7)
+    fig.suptitle('Kastøvelsene per aldersklasse (utendørs). Samme redskapsvekt per klasse '
+                 'hele perioden — linjene er direkte sammenlignbare over tid.', fontsize=12)
+    fig.tight_layout(rect=[0, 0, 1, 0.965])
+    savefig(fig, 'fig8_kast.png')
+
+    # Hekk: ulike distanser -> indekser mot første år (100 = startnivå, opp = bedre)
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
+    for col, g in enumerate(('M', 'F')):
+        ax = axes[col]
+        for label, lo, hi in KH_CLASSES:
+            rows = sorted(data.get(('Sprinthekk', g, label), []), key=lambda r: r['yr'])
+            impl = KH_MAP['Sprinthekk'][g][label][1]
+            base = next((float(r['top10_avg']) for r in rows if r['top10_avg']), None)
+            if not base:
+                continue
+            ax.plot([r['yr'] for r in rows],
+                    [100 * base / float(r['top10_avg']) for r in rows],
+                    marker='o', ms=3, label=f'{label} ({impl})')
+        ax.axhline(100, color='gray', lw=0.8)
+        ax.set_title(GENDER_LABEL[g])
+        ax.set_ylabel('Indeks (første år = 100, høyere = raskere)', fontsize=8)
+        ax.grid(alpha=0.3)
+        ax.legend(fontsize=7)
+    fig.suptitle('Sprinthekk per aldersklasse (utendørs, snitt topp-10, indeksert). '
+                 'Samme distanse og høyde per klasse hele perioden.', fontsize=12)
+    fig.tight_layout(rect=[0, 0, 1, 0.93])
+    savefig(fig, 'fig9_hekk.png')
+    return data
+
+
+# ------------------------------------------------------------
 # 3b. Barneidretten: frafall fra 10 år og debutalder
 # ------------------------------------------------------------
 
@@ -388,6 +528,7 @@ def main():
     per_event_senior = analyse_topp()
     analyse_dybde(per_event_senior)
     age_data = analyse_aldersklasser()
+    kh_data = analyse_kast_hekk()
     coh = analyse_frafall()
     coh_barn = analyse_frafall_barn()
     analyse_debut()
@@ -423,6 +564,21 @@ def main():
         if coh.get(cy, {}).get(13):
             surv = 100 * coh[cy].get(19, 0) / coh[cy][13]
             lines.append(f"- Frafall {cy}-kohorten: {surv:.0f} % av 13-åringene fortsatt aktive som 19-åringer")
+    lines.append('\n## Kast og hekk (topp-10-snitt første -> siste år, samme redskap/høyde per klasse)')
+    for family in KH_MAP:
+        unit = 'm' if family != 'Sprinthekk' else 's'
+        for g in ('M', 'F'):
+            for label in ('15 år', 'Senior'):
+                pts = {r['yr']: r for r in kh_data.get((family, g, label), [])}
+                yrs = sorted(pts)
+                if len(yrs) >= 2:
+                    y0, y1 = yrs[0], yrs[-1]
+                    impl = KH_MAP[family][g][label][1]
+                    lines.append(f"- {family} {label} {GENDER_LABEL[g]} ({impl}): "
+                                 f"{fmt_value(pts[y0]['top10_avg'], unit)} ({y0}) -> "
+                                 f"{fmt_value(pts[y1]['top10_avg'], unit)} ({y1}) "
+                                 f"(n: {pts[y0]['n_athletes']} -> {pts[y1]['n_athletes']})")
+
     lines.append('\n## Barneidretten (kun deltakelse — ingen nivåanalyse under 13)')
     for cy in sorted(coh_barn):
         c = coh_barn[cy]

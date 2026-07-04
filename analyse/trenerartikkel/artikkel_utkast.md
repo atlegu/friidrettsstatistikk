@@ -112,12 +112,22 @@ drar snittet. Nummer 25 på årslistene har flyttet seg nesten like mye: på
 Også nummer 50 og nummer 100 har gått riktig vei i løpsøvelsene. Dybden i
 senior-Norge er reelt bedre.
 
+Også kastøvelsene og hekk går frem på seniornivå. Fordi redskapsvekter og
+hekkhøyder har vært uendret per klasse gjennom hele perioden, kan vi
+sammenligne år for år også her: kule menn har gått fra 14,79 til 15,44 i
+topp-10-snitt, slegge fra 55,9 til 59,2, og diskos kvinner har tatt et byks
+fra 38,4 til 45,9 meter. Sprinthekken er blitt klart raskere for begge kjønn
+(menn 15,85 → 15,06 på 110 meter hekk; kvinner 13,83 → 13,49 på 100 meter
+hekk).
+
 Ett unntak stikker seg ut: **høyde**. Der har både topp-10-snittet og dybden
 gått tilbake for begge kjønn (menn 2,07 → 2,02; kvinner 1,74 → 1,73). Ett
 teknisk øvelsesmiljø i motgang midt i en generell fremgang er verdt en egen
 diskusjon i trener-Norge.
 
-*(Figur 3: Nivåutvikling i fem øvelser. Figur 6: Dybden fra topp-10 til nr. 100.)*
+*(Figur 3: Nivåutvikling i fem øvelser. Figur 6: Dybden fra topp-10 til
+nr. 100. Figur 8: Kastøvelsene per aldersklasse. Figur 9: Sprinthekk per
+aldersklasse.)*
 
 ## Aldersklassene: her lyser varsellampene
 
@@ -140,6 +150,15 @@ gått fra 2:00,5 til 2:03,8. I lengde fra 5,96 til 5,73 for gutter og 5,32 til
 snittallene ligger noe vel så viktig: antallet. I 2013 hadde 137 15-årige
 gutter en godkjent elektronisk 100-meterstid; i 2025 var det 85. Toppen i de
 yngste klassene hviler på et stadig tynnere grunnlag.
+
+**Og i kastøvelsene er 15-åringsfallet enda tydeligere.** Her sammenligner vi
+med identisk redskap gjennom hele perioden, og tallene er ikke til å
+misforstå: topp-10-snittet i kule for 15-årige gutter (4 kg) har falt fra
+14,32 til 12,04 meter — over to meter. Spyd gutter 15 (600 g) fra 50,4 til
+43,7 meter. Diskos jenter 15 (750 g) fra 32,3 til 27,2 meter. Mens
+seniorkasterne aldri har vært bedre, har de beste 15-åringene mistet
+fem–ti prosent — i enkeltøvelser opp mot femten. (Enkelte lyspunkter finnes:
+slegge for jenter 15 har gått frem.)
 
 Dette er et mønster trenere bør merke seg: nivåfallet kommer *nedenfra* og
 vandrer oppover med kullene. Juniortoppene i 2025 kommer fra de store kullene
@@ -186,9 +205,12 @@ for år.
   Nummer 25/50/100 på tilsvarende årsliste brukes som dybdemål.
 - **Aldersklasser:** Kalenderår (konkurranseår minus fødselsår), som i norsk
   friidrett for øvrig.
-- **Kast er utelatt** fordi redskapsvektene varierer med alder og gjør
-  sammenligning over tid upresis; analysen kan utvides med vektspesifikke
-  øvelser senere.
+- **Kast og hekk:** Analysert per aldersklasse med klassens standardredskap/
+  -høyde (f.eks. kule 4 kg for gutter 15, 7,26 kg for senior menn).
+  Redskapsvekter og hekkhøyder har vært uendret per klasse hele perioden
+  (verifisert i dataene), så sammenligningen over tid er gyldig innen hver
+  klasse. Årslister med færre enn ~10 utøvere (enkelte kast-/hekkeklasser
+  tidlig i perioden) tolkes med varsomhet.
 - **Frafall:** Kohort = alle med minst ett resultat i året de fylte 13 (evt.
   10). «Fortsatt aktiv» = minst ett resultat i året de fylte 14, 15 osv.
 - **Debutalder:** Året for utøverens aller første registrerte resultat
