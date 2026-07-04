@@ -1,12 +1,11 @@
-# Norsk friidrett 2013–2025: «All time high» — men mørke skyer i horisonten
+\artikkeltittel{Norsk friidrett 2013–2025}{«All time high» — men mørke skyer i
+horisonten}{Atle Guttormsen}{Juli 2026}
 
-*Tolv år med resultatdata forteller en historie i tre lag: en seniortopp som aldri
+\begin{ingress}
+Tolv år med resultatdata forteller en historie i tre lag: en seniortopp som aldri
 har vært bedre, et frafall som er forbausende stabilt — og et rekrutteringsgrunnlag
-som har krympet med en fjerdedel og der nivået i de yngste klassene faller.*
-
-**Atle Guttormsen**
-
----
+som har krympet med en fjerdedel og der nivået i de yngste klassene faller.
+\end{ingress}
 
 Norsk friidrett har de siste årene levd i en gullalder på toppen. Men hva skjer
 under overflaten? Vi har analysert samtlige registrerte konkurranseresultater i

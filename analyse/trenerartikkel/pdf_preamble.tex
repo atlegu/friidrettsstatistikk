@@ -1,16 +1,39 @@
 % Magasinstil for trenerartikkelen (pandoc + xelatex)
 \usepackage{titlesec}
 \usepackage{xcolor}
+\usepackage{microtype}
 \definecolor{hovedbla}{HTML}{1F4E79}
 \definecolor{morkgra}{HTML}{2B2B2B}
 \definecolor{lysgra}{HTML}{777777}
 
-% H1 (artikkeltittel) -> stor og mørk; H2 (seksjoner) -> blå sans
+% Tittelblokk: hovedtittel / undertittel / byline med linjaler
+\newcommand{\artikkeltittel}[4]{%
+  \thispagestyle{empty}%
+  {\raggedright\sffamily\bfseries\fontsize{30}{34}\selectfont\color{morkgra}#1\par}
+  \vspace{8pt}
+  {\raggedright\sffamily\fontsize{17}{22}\selectfont\color{hovedbla}#2\par}
+  \vspace{16pt}
+  {\noindent\color{hovedbla}\rule{\textwidth}{2.2pt}\par}
+  \vspace{7pt}
+  {\raggedright\sffamily\footnotesize\color{lysgra}%
+   \MakeUppercase{#3}\hfill\MakeUppercase{#4}\par}
+  \vspace{3pt}
+  {\noindent\color{lysgra!50}\rule{\textwidth}{0.5pt}\par}
+  \vspace{18pt}
+}
+
+% Ingress: større kursiv, mørk grå, luftig
+\newenvironment{ingress}
+  {\par\begingroup\itshape\fontsize{13.5}{19.5}\selectfont\color{morkgra}%
+   \setlength{\rightskip}{1.2cm plus 1fil}}
+  {\par\endgroup\vspace{12pt}}
+
+% H2 (seksjoner) -> blå sans med tynn understrek; H3 -> mørk sans
 \titleformat{\section}{\fontsize{25}{29}\selectfont\bfseries\sffamily\color{morkgra}}{}{0pt}{}
-\titleformat{\subsection}{\fontsize{15}{18}\selectfont\bfseries\sffamily\color{hovedbla}}{}{0pt}{}
+\titleformat{\subsection}[block]{\fontsize{15}{18}\selectfont\bfseries\sffamily\color{hovedbla}}{}{0pt}{}[{\vspace{1pt}\color{hovedbla!25}\titlerule[1pt]}]
 \titleformat{\subsubsection}{\fontsize{12}{15}\selectfont\bfseries\sffamily\color{morkgra}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{4pt}{10pt}
-\titlespacing*{\subsection}{0pt}{20pt}{6pt}
+\titlespacing*{\subsection}{0pt}{22pt}{8pt}
 \titlespacing*{\subsubsection}{0pt}{14pt}{4pt}
 
 % Figurer der de står i teksten, med diskrete kursiv-tekster under
@@ -19,13 +42,14 @@
 \usepackage{caption}
 \captionsetup{font={footnotesize,it},labelformat=empty,skip=2pt,justification=raggedright,singlelinecheck=false}
 
-% Topp- og bunntekst
+% Topp- og bunntekst: diskret linje med kortittel og sidetall
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[C]{\sffamily\small\color{lysgra}\thepage}
-\fancyhead[L]{\sffamily\footnotesize\color{lysgra}Norsk friidrett 2013--2025}
-\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\sffamily\footnotesize\color{lysgra}\MakeUppercase{Norsk friidrett 2013--2025}}
+\fancyhead[R]{\sffamily\footnotesize\color{lysgra}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{lysgra!35}\hrule width\headwidth height 0.4pt}}
 
 % Luft rundt figurer og avsnitt
 \setlength{\parskip}{5pt}
