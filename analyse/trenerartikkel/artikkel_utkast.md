@@ -1,4 +1,4 @@
-# Hva har skjedd med norsk friidrett de siste tolv årene?
+# Norsk friidrett 2013–2025: «All time high» — men mørke skyer i horisonten
 
 *Tolv år med resultatdata forteller en historie i tre lag: en seniortopp som aldri
 har vært bedre, et frafall som er forbausende stabilt — og et rekrutteringsgrunnlag
