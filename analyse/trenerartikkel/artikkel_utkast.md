@@ -199,9 +199,25 @@ før pandemien. Juniortoppene i 2029 skal komme fra dagens 15-åringer — som
 allerede er færre og svakere enn sine forgjengere. Og seniortoppen i 2033
 skal komme fra dagens rekrutter.
 
-![Endring i topp-10-nivå per øvelse: senior mot 15-åringene](output/figM3_topp_vs_15.png)
+**Er gullalderen midlertidig?** Testen er enkel: ta nettopp de øvelsene der
+seniorfremgangen har vært størst, og se om 15-åringene følger etter. Stort
+sett gjør de ikke det. Slegge menn har gått frem seks prosent i topp-10-snitt
+(målt som treårssnitt i begge ender av perioden) — 15-åringene har gått
+*tilbake* fem. Diskos kvinner frem — 15-års-jentene tilbake femten prosent.
+Kule viser samme mønster for begge kjønn. Og på kvinnesiden gjelder det også
+løpsøvelsene: seniorkvinnene på 200, 400 og 1500 meter har hatt noe av den
+sterkeste fremgangen i hele materialet, mens 15-års-jentene på de samme
+distansene står stille eller går tilbake. Hederlige unntak finnes: stav har
+fremgang også blant 15-åringene hos begge kjønn, jentene går frem i slegge —
+med økende deltakelse — og guttene holder omtrent følge i løpsøvelsene. Men
+hovedmønsteret er vanskelig å bortforklare: **i mange øvelser er dagens
+seniorfremgang en generasjon som passerer, ikke et system som leverer.** Når
+dagens toppgenerasjon takker av, står det få klare til å ta over.
 
-*(Underlagsfigur: fig4 topp-10-utvikling per aldersklasse.)*
+![Fremgang med eller uten arvtakere: endring i topp-10-snitt, hele feltet mot 15-åringene](output/figM8_arvtakere.png)
+
+*(Underlagsfigurer: fig4 topp-10-utvikling per aldersklasse, figM3 senior mot
+15-åringer i referanseøvelsene, arvtakere.csv for tallene bak figuren.)*
 
 ## Hva betyr dette for oss?
 

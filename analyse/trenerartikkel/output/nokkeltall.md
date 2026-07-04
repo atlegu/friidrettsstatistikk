@@ -55,6 +55,22 @@
 - Sprinthekk 15 år Kvinner/jenter (80m/76,2): 12.29 (2013) -> 12.24 (2025) (n: 36 -> 28)
 - Sprinthekk Senior Kvinner/jenter (100m/84): 13.83 (2013) -> 13.49 (2025) (n: 20 -> 22)
 
+## Arvtakere: %-endring topp-10 (3-årssnitt), hele feltet vs 15-åringene
+- Stav Menn/gutter: felt +11.0 % (4.69 -> 5.20), 15-åringer +6.7 % (2.90 -> 3.10, n≈15)
+- Stav Kvinner/jenter: felt +1.2 % (3.73 -> 3.77), 15-åringer +6.9 % (2.40 -> 2.57, n≈10)
+- Slegge Menn/gutter: felt +6.1 % (58.35 -> 61.91), 15-åringer -5.1 % (39.45 -> 37.43, n≈14)
+- Slegge Kvinner/jenter: felt -0.9 % (57.04 -> 56.55), 15-åringer +12.2 % (34.49 -> 38.70, n≈32)
+- Diskos Menn/gutter: felt +2.0 % (52.31 -> 53.37), 15-åringer -7.3 % (42.24 -> 39.16, n≈37)
+- Diskos Kvinner/jenter: felt +1.8 % (46.63 -> 47.45), 15-åringer -14.9 % (32.31 -> 27.50, n≈31)
+- Kule Menn/gutter: felt +2.3 % (15.45 -> 15.81), 15-åringer -9.8 % (13.55 -> 12.22, n≈78)
+- Kule Kvinner/jenter: felt +1.4 % (13.20 -> 13.39), 15-åringer -7.1 % (11.05 -> 10.26, n≈76)
+- 200 m Menn/gutter: felt +1.0 % (21.27 -> 21.07), 15-åringer +1.2 % (23.81 -> 23.51, n≈76)
+- 200 m Kvinner/jenter: felt +2.2 % (24.10 -> 23.56), 15-åringer -1.7 % (25.93 -> 26.38, n≈92)
+- 400 m Menn/gutter: felt +1.7 % (47.77 -> 46.95), 15-åringer +0.6 % (54.57 -> 54.26, n≈32)
+- 400 m Kvinner/jenter: felt +3.2 % (54.58 -> 52.86), 15-åringer -3.4 % (59.80 -> 61.84, n≈28)
+- 1500 m Menn/gutter: felt +2.8 % (3:42.43 -> 3:36.27), 15-åringer +1.0 % (4:18.86 -> 4:16.33, n≈40)
+- 1500 m Kvinner/jenter: felt +3.0 % (4:21.43 -> 4:13.48), 15-åringer +0.3 % (4:59.03 -> 4:58.27, n≈25)
+
 ## Barneidretten (kun deltakelse — ingen nivåanalyse under 13)
 - 10-åringer 2013: 1504 startet, 46 % igjen ved 11, 27 % ved 13
 - 10-åringer 2014: 1442 startet, 49 % igjen ved 11, 27 % ved 13

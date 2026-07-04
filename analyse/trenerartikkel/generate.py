@@ -465,6 +465,93 @@ def analyse_kast_hekk():
 
 
 # ------------------------------------------------------------
+# 2f. Arvtaker-analysen: følger 15-åringene seniorfremgangen?
+# ------------------------------------------------------------
+# For øvelsene med størst seniorfremgang: sammenlign %-endring i topp-10-snitt
+# (3-årssnitt 2013-15 vs 2023-25) for hele feltet mot 15-åringene (med
+# klassens redskap). Positiv verdi = fremgang, for tider invertert.
+
+ARV_PAIRS = [
+    # (øvelse, kjønn, senior_code, senior_range, u15_code, u15_range, higher_better, enhet)
+    ('Stav',   'M', 'stav', (1000, 6200), 'stav', (1000, 6200), True, 'm'),
+    ('Stav',   'F', 'stav', (1000, 6200), 'stav', (1000, 6200), True, 'm'),
+    ('Slegge', 'M', 'slegge_726kg/1215cm', (20000, 85000), 'slegge_40kg/1195cm', (15000, 85000), True, 'm'),
+    ('Slegge', 'F', 'slegge_40kg/1195cm', (15000, 85000), 'slegge_30kg_1195cm', (15000, 85000), True, 'm'),
+    ('Diskos', 'M', 'diskos_2kg', (20000, 70000), 'diskos_1kg', (10000, 70000), True, 'm'),
+    ('Diskos', 'F', 'diskos_1kg', (15000, 70000), 'diskos_750g', (10000, 70000), True, 'm'),
+    ('Kule',   'M', 'kule_7_26kg', (8000, 23000), 'kule_4kg', (5000, 23000), True, 'm'),
+    ('Kule',   'F', 'kule_4kg', (6000, 20000), 'kule_3kg', (5000, 20000), True, 'm'),
+    ('200 m',  'M', '200m', (1900, 5000), '200m', (1900, 5000), False, 's'),
+    ('200 m',  'F', '200m', (1900, 5000), '200m', (1900, 5000), False, 's'),
+    ('400 m',  'M', '400m', (4300, 12000), '400m', (4300, 12000), False, 's'),
+    ('400 m',  'F', '400m', (4300, 12000), '400m', (4300, 12000), False, 's'),
+    ('1500 m', 'M', '1500m', (20000, 60000), '1500m', (20000, 60000), False, 'min'),
+    ('1500 m', 'F', '1500m', (20000, 60000), '1500m', (20000, 60000), False, 'min'),
+]
+
+
+def _period_avgs(code, vrange, higher, gender, age_lo=0, age_hi=200):
+    rows = [r for r in rpc('analyse_event_trend', {
+        'p_event_code': code, 'p_min_v': vrange[0], 'p_max_v': vrange[1],
+        'p_higher_better': higher, 'p_from_year': FROM_YEAR, 'p_to_year': TO_YEAR,
+        'p_age_lo': age_lo, 'p_age_hi': age_hi, 'p_outdoor_only': True,
+    }) if r['gender'] == gender and r['top10_avg'] is not None]
+    start = [float(r['top10_avg']) for r in rows if 2013 <= r['yr'] <= 2015]
+    end = [float(r['top10_avg']) for r in rows if 2023 <= r['yr'] <= 2025]
+    n_end = [r['n_athletes'] for r in rows if 2023 <= r['yr'] <= 2025]
+    if not start or not end:
+        return None, None, 0
+    return sum(start) / len(start), sum(end) / len(end), round(sum(n_end) / len(n_end))
+
+
+def analyse_arvtakere():
+    logger.info("2f/5 Arvtaker-analysen (senior vs 15-åringer) ...")
+    out_rows = []
+    for ev, g, s_code, s_range, y_code, y_range, higher, unit in ARV_PAIRS:
+        s0, s1, _ = _period_avgs(s_code, s_range, higher, g)
+        y0, y1, n15 = _period_avgs(y_code, y_range, higher, g, 15, 15)
+        if None in (s0, s1, y0, y1):
+            logger.warning(f"  Hopper over {ev} {g}: manglende data")
+            continue
+        sign = 1 if higher else -1
+        out_rows.append({
+            'event': ev, 'gender': g,
+            'senior_start': fmt_value(s0, unit), 'senior_slutt': fmt_value(s1, unit),
+            'u15_start': fmt_value(y0, unit), 'u15_slutt': fmt_value(y1, unit),
+            'senior_pct': round(sign * (s1 - s0) / s0 * 100, 1),
+            'u15_pct': round(sign * (y1 - y0) / y0 * 100, 1),
+            'n15_snitt': n15,
+        })
+    write_csv('arvtakere.csv', out_rows,
+              ['event', 'gender', 'senior_start', 'senior_slutt', 'u15_start',
+               'u15_slutt', 'senior_pct', 'u15_pct', 'n15_snitt'])
+
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    for col, g in enumerate(('M', 'F')):
+        ax = axes[col]
+        rows = [r for r in out_rows if r['gender'] == g]
+        x = range(len(rows))
+        w = 0.38
+        ax.bar([i - w / 2 for i in x], [r['senior_pct'] for r in rows], w,
+               label='Hele feltet', color='#1F4E79')
+        ax.bar([i + w / 2 for i in x], [r['u15_pct'] for r in rows], w,
+               label='15-åringene', color='#C0504D')
+        ax.axhline(0, color='gray', lw=0.8)
+        ax.set_xticks(list(x))
+        ax.set_xticklabels([r['event'] for r in rows], fontsize=8)
+        ax.set_title(GENDER_LABEL[g])
+        ax.set_ylabel('Endring i topp-10-snitt, %', fontsize=8)
+        ax.grid(alpha=0.3, axis='y')
+        if col == 0:
+            ax.legend(fontsize=8)
+    fig.suptitle('Fremgang med eller uten arvtakere? Endring i topp-10-snitt '
+                 f'({FROM_YEAR}–15 vs 2023–25), hele feltet mot 15-åringene', fontsize=12)
+    fig.tight_layout(rect=[0, 0, 1, 0.92])
+    savefig(fig, 'figM8_arvtakere.png')
+    return out_rows
+
+
+# ------------------------------------------------------------
 # 3b. Barneidretten: frafall fra 10 år og debutalder
 # ------------------------------------------------------------
 
@@ -529,6 +616,7 @@ def main():
     analyse_dybde(per_event_senior)
     age_data = analyse_aldersklasser()
     kh_data = analyse_kast_hekk()
+    arv = analyse_arvtakere()
     coh = analyse_frafall()
     coh_barn = analyse_frafall_barn()
     analyse_debut()
@@ -578,6 +666,13 @@ def main():
                                  f"{fmt_value(pts[y0]['top10_avg'], unit)} ({y0}) -> "
                                  f"{fmt_value(pts[y1]['top10_avg'], unit)} ({y1}) "
                                  f"(n: {pts[y0]['n_athletes']} -> {pts[y1]['n_athletes']})")
+
+    lines.append('\n## Arvtakere: %-endring topp-10 (3-årssnitt), hele feltet vs 15-åringene')
+    for r in arv:
+        lines.append(f"- {r['event']} {GENDER_LABEL[r['gender']]}: "
+                     f"felt {r['senior_pct']:+.1f} % ({r['senior_start']} -> {r['senior_slutt']}), "
+                     f"15-åringer {r['u15_pct']:+.1f} % ({r['u15_start']} -> {r['u15_slutt']}, "
+                     f"n≈{r['n15_snitt']})")
 
     lines.append('\n## Barneidretten (kun deltakelse — ingen nivåanalyse under 13)')
     for cy in sorted(coh_barn):
