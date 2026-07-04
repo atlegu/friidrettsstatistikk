@@ -34,8 +34,9 @@ Seniorgruppen (20–34 år) er derimot stabil, faktisk svakt økende.
 Gutter og jenter rammes omtrent likt. Dette er ikke et kjønnsproblem — det er
 et rekrutteringsproblem.
 
-*(Figur 1: Aktive utøvere per år og aldersgruppe. Figur 2b: Aktive per
-alderstrinn og kjønn.)*
+![Aktive utøvere 10–19 år per år, med pandemiknekken markert](output/figM1_ungdomsbredde.png)
+
+*(Underlagsfigurer: fig1 aldersgrupper, fig2b per alderstrinn og kjønn.)*
 
 ## Frafallet: forbausende stabilt — og det snur historien på hodet
 
@@ -59,7 +60,7 @@ Når kullene som kommer inn døra er 30 prosent mindre, og frafallet deretter
 spiser nøyaktig samme andel som før, krymper hele pyramiden nedenfra — med
 seks–sju års forsinkelse opp til juniorklassene.
 
-*(Figur 5: Andel av 13-årskohorten som fortsatt konkurrerer, per alder.)*
+![Frafallskurver for ti årskull av 13-åringer — nesten identiske](output/figM2_frafall.png)
 
 ## Barneidretten: trakten er trangest i bunnen
 
@@ -83,8 +84,9 @@ via ungdomsskole- og videregåendealder — ofte fra andre idretter — er i fer
 med å gro igjen. Det er en vesentlig del av forklaringen på at
 13-årsklassene forblir små selv om 10-åringene er på vei tilbake.
 
-*(Figur 5b: Andel av 10-årskohorten som fortsatt konkurrerer. Figur 7:
-Debutanter per år etter alder ved første resultat.)*
+![Debutanter per år: barnedebuten tar seg opp, tenåringsdebuten faller](output/figM4_debut.png)
+
+*(Underlagsfigur: fig5b frafall fra 10 år.)*
 
 ## Toppen: bedre enn noen gang — og dybden følger med
 
@@ -125,9 +127,10 @@ gått tilbake for begge kjønn (menn 2,07 → 2,02; kvinner 1,74 → 1,73). Ett
 teknisk øvelsesmiljø i motgang midt i en generell fremgang er verdt en egen
 diskusjon i trener-Norge.
 
-*(Figur 3: Nivåutvikling i fem øvelser. Figur 6: Dybden fra topp-10 til
-nr. 100. Figur 8: Kastøvelsene per aldersklasse. Figur 9: Sprinthekk per
-aldersklasse.)*
+![800 meter: topp-10-snittet per år for menn og kvinner](output/figM6_800m.png)
+
+*(Underlagsfigurer: fig3 fem øvelser, fig6 dybde til nr. 100, fig8 kast,
+fig9 hekk.)*
 
 ## Aldersklassene: her lyser varsellampene
 
@@ -160,13 +163,17 @@ seniorkasterne aldri har vært bedre, har de beste 15-åringene mistet
 fem–ti prosent — i enkeltøvelser opp mot femten. (Enkelte lyspunkter finnes:
 slegge for jenter 15 har gått frem.)
 
+![Kule for 15-årige gutter: fra 14,32 til 12,04 meter med samme redskap](output/figM5_kule_g15.png)
+
 Dette er et mønster trenere bør merke seg: nivåfallet kommer *nedenfra* og
 vandrer oppover med kullene. Juniortoppene i 2025 kommer fra de store kullene
 før pandemien. Juniortoppene i 2029 skal komme fra dagens 15-åringer — som
 allerede er færre og svakere enn sine forgjengere. Og seniortoppen i 2033
 skal komme fra dagens rekrutter.
 
-*(Figur 4: Topp-10-utvikling per aldersklasse.)*
+![Endring i topp-10-nivå per øvelse: senior mot 15-åringene](output/figM3_topp_vs_15.png)
+
+*(Underlagsfigur: fig4 topp-10-utvikling per aldersklasse.)*
 
 ## Hva betyr dette for oss?
 
