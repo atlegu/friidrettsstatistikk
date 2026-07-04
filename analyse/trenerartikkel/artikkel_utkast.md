@@ -4,7 +4,7 @@
 har vært bedre, et frafall som er forbausende stabilt — og et rekrutteringsgrunnlag
 som har krympet med en fjerdedel og der nivået i de yngste klassene faller.*
 
-**[Forfatternavn]**
+**Atle Guttormsen**
 
 ---
 
@@ -93,7 +93,8 @@ med å gro igjen. Det er en vesentlig del av forklaringen på at
 På toppen er historien en helt annen. Vi fulgte fem referanseøvelser — 100
 meter, 800 meter, 3000 meter, lengde og høyde — og målte snittet av de ti beste
 årsbestenoteringene per år (utendørs, kun elektronisk tid), samt resultatet til
-nummer 25, 50 og 100 på årslistene.
+nummer 25, 50 og 100 på årslistene. I tillegg fulgte vi kastøvelsene og hekk,
+målt per aldersklasse med klassens faste redskap og hekkhøyde.
 
 Fremgangen er tydelig i nesten alle øvelsene:
 
@@ -107,6 +108,13 @@ Fremgangen er tydelig i nesten alle øvelsene:
 | 3000 m | Kvinner | 9:41 | 9:12 |
 | Lengde | Menn | 7,28 | 7,57 |
 | Lengde | Kvinner | 5,97 | 6,25 |
+| Høyde | Menn | 2,07 | 2,02 |
+| Høyde | Kvinner | 1,74 | 1,73 |
+| Kule | Menn | 14,79 | 15,44 |
+| Kule | Kvinner | 12,78 | 13,16 |
+
+*Kule gjelder seniorklassen (20–34 år) med 7,26 kg for menn og 4 kg for
+kvinner. Øvrige øvelser er beste notering uansett alder.*
 
 Og dette er ikke bare Ingebrigtsen-effekten eller noen få enkeltutøvere som
 drar snittet. Nummer 25 på årslistene har flyttet seg nesten like mye: på
