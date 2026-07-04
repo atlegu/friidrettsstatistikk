@@ -89,31 +89,42 @@ med å gro igjen. Det er en vesentlig del av forklaringen på at
 
 ## Toppen: bedre enn noen gang — og dybden følger med
 
-På toppen er historien en helt annen. Jeg fulgte fem referanseøvelser — 100
-meter, 800 meter, 3000 meter, lengde og høyde — og målte snittet av de ti beste
-årsbestenoteringene per år (utendørs, kun elektronisk tid), samt resultatet til
-nummer 25, 50 og 100 på årslistene. I tillegg fulgte jeg kastøvelsene og hekk,
-målt per aldersklasse med klassens faste redskap og hekkhøyde.
+På toppen er historien en helt annen. Jeg fulgte samtlige standardøvelser —
+sprint, mellom- og langdistanse, hekk, hinder, hopp og kast — og målte snittet
+av de ti beste årsbestenoteringene per år (utendørs, kun elektronisk tid). I
+referanseøvelsene fulgte jeg også resultatet til nummer 25, 50 og 100 på
+årslistene, og kastøvelsene og hekk i tillegg per aldersklasse med klassens
+faste redskap og hekkhøyde.
 
-Fremgangen er tydelig i nesten alle øvelsene:
+Fremgangen er tydelig i de fleste øvelsene:
 
-| Øvelse | | Topp-10-snitt 2013 | Topp-10-snitt 2025 |
-|---|---|---|---|
-| 100 m | Menn | 10,56 | 10,39 |
-| 100 m | Kvinner | 11,83 | 11,61 |
-| 800 m | Menn | 1:49,1 | 1:47,4 |
-| 800 m | Kvinner | 2:07,8 | 2:03,7 |
-| 3000 m | Menn | 8:10 | 7:52 |
-| 3000 m | Kvinner | 9:41 | 9:12 |
-| Lengde | Menn | 7,28 | 7,57 |
-| Lengde | Kvinner | 5,97 | 6,25 |
-| Høyde | Menn | 2,07 | 2,02 |
-| Høyde | Kvinner | 1,74 | 1,73 |
-| Kule | Menn | 14,79 | 15,44 |
-| Kule | Kvinner | 12,78 | 13,16 |
+| Øvelse | Menn 2013 | Menn 2025 | Kvinner 2013 | Kvinner 2025 |
+|---|---|---|---|---|
+| 100 m | 10,56 | 10,39 | 11,83 | 11,61 |
+| 200 m | 21,39 | 20,96 | 24,14 | 23,43 |
+| 400 m | 48,09 | 46,76 | 54,49 | 52,55 |
+| 800 m | 1:49,1 | 1:47,4 | 2:07,8 | 2:03,7 |
+| 1500 m | 3:42,1 | 3:34,9 | 4:22,2 | 4:13,0 |
+| 3000 m | 8:10 | 7:52 | 9:41 | 9:12 |
+| 5000 m | 14:01 | 13:16 | 16:44 | 15:54 |
+| 10 000 m | 30:09 | 29:11 | 36:47 | 33:31 |
+| 100/110 m hekk | 15,06 | 14,75 | 13,82 | 13,42 |
+| 400 m hekk | 53,39 | 53,60 | 60,63 | 57,57 |
+| 3000 m hinder | 9:21 | 9:08 | 11:15 | 10:14 |
+| Lengde | 7,28 | 7,57 | 5,97 | 6,25 |
+| Høyde | 2,07 | 2,02 | 1,74 | 1,73 |
+| Stav | 4,65 | 5,19 | 3,82 | 3,78 |
+| Tresteg | 14,92 | 14,94 | 12,32 | 12,40 |
+| Kule | 15,44 | 15,64 | 13,44 | 13,30 |
+| Diskos | 51,23 | 52,44 | 45,29 | 47,64 |
+| Slegge | 57,03 | 61,74 | 54,85 | 56,17 |
+| Spyd | 69,11 | 67,67 | 50,97 | 50,58 |
 
-*Kule gjelder seniorklassen (20–34 år) med 7,26 kg for menn og 4 kg for
-kvinner. Øvrige øvelser er beste notering uansett alder.*
+*Topp-10-snitt av årsbeste, utendørs, beste notering uansett alder. Kast, hekk
+og hinder er målt med seniorredskap og -høyder (f.eks. kule 7,26 kg for menn og
+4 kg for kvinner, hekkhøyde 106,7/84 cm). I de tynneste øvelsene — 3000 m
+hinder og 110 m hekk — er det færre enn 25 utøvere på enkelte årslister, og
+snittet er da mer følsomt for enkeltutøvere.*
 
 Og dette er ikke bare Ingebrigtsen-effekten eller noen få enkeltutøvere som
 drar snittet. Nummer 25 på årslistene har flyttet seg nesten like mye: på
@@ -129,18 +140,21 @@ tilskudd. Noe av forbedringen på 800 og 3000 meter må derfor tilskrives
 utstyr og ernæring snarere enn norsk utviklingsarbeid — men at dybden bak
 toppene har fulgt med, tyder på at også treningskulturen har flyttet seg.
 
-Også kastøvelsene og hekk går frem på seniornivå. Fordi redskapsvekter og
+Også de fleste kast- og hekkøvelsene går frem. Fordi redskapsvekter og
 hekkhøyder har vært uendret per klasse gjennom hele perioden, kan jeg
-sammenligne år for år også her: kule menn har gått fra 14,79 til 15,44 i
-topp-10-snitt, slegge fra 55,9 til 59,2, og diskos kvinner har tatt et byks
-fra 38,4 til 45,9 meter. Sprinthekken er blitt klart raskere for begge kjønn
-(menn 15,85 → 15,06 på 110 meter hekk; kvinner 13,83 → 13,49 på 100 meter
-hekk).
+sammenligne år for år også her: slegge menn har gått fra 57,0 til 61,7 meter,
+stav menn fra 4,65 til 5,19, og diskos kvinner fra 45,3 til 47,6. Ser jeg på
+seniorklassen (20–34 år) isolert, er kastfremgangen enda tydeligere — diskos
+kvinner har der tatt et byks fra 38,4 til 45,9 meter. Sprinthekken er blitt
+klart raskere for begge kjønn (menn 15,06 → 14,75 på 110 meter hekk; kvinner
+13,82 → 13,42 på 100 meter hekk), og 3000 meter hinder kvinner har gått frem
+med et helt minutt.
 
-Ett unntak stikker seg ut: **høyde**. Der har både topp-10-snittet og dybden
-gått tilbake for begge kjønn (menn 2,07 → 2,02; kvinner 1,74 → 1,73). Ett
-teknisk øvelsesmiljø i motgang midt i en generell fremgang er verdt en egen
-diskusjon i trener-Norge.
+Men tabellen viser også unntakene. **Høyde** har gått tilbake for begge kjønn,
+i både topp-10-snitt og dybde (menn 2,07 → 2,02; kvinner 1,74 → 1,73). **Spyd**
+har falt svakt for begge kjønn, og stav og tresteg står stille på kvinnesiden.
+Enkelte tekniske øvelsesmiljøer i motgang midt i en generell fremgang er verdt
+en egen diskusjon i trener-Norge.
 
 ![800 meter: topp-10-snittet per år for menn og kvinner](output/figM6_800m.png)
 
