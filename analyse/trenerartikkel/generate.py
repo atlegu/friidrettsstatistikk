@@ -324,6 +324,64 @@ def analyse_frafall():
     return coh
 
 
+# ------------------------------------------------------------
+# 3b. Barneidretten: frafall fra 10 år og debutalder
+# ------------------------------------------------------------
+
+def analyse_frafall_barn():
+    """Kohorter av 10-åringer: overgangen barneidrett -> ungdomsfriidrett.
+    NB: Kun deltakelse — ingen nivåanalyse for barn under 13
+    (barneidrettsbestemmelsene)."""
+    logger.info("3b/5 Frafall fra 10 år ...")
+    rows = rpc('analyse_survival', {'p_start_age': 10, 'p_cohort_from': 2013,
+                                    'p_cohort_to': 2022, 'p_max_age': 15})
+    write_csv('frafall_barnekohorter.csv', rows, ['cohort_year', 'gender', 'age', 'n_active'])
+
+    coh = defaultdict(lambda: defaultdict(int))
+    for r in rows:
+        coh[r['cohort_year']][r['age']] += r['n_active']
+
+    fig, ax = plt.subplots(figsize=(9, 5.5))
+    for cy in sorted(coh):
+        max_age_observable = 10 + (TO_YEAR - cy)
+        ages = list(range(10, min(15, max_age_observable) + 1))
+        start = coh[cy][10]
+        if start == 0 or len(ages) < 4:
+            continue
+        ax.plot(ages, [100 * coh[cy][a] / start for a in ages], marker='o', label=f'{cy} (n={start})')
+    ax.set_title('Andel av 10-årskohorten som fortsatt konkurrerer, per alder')
+    ax.set_xlabel('Alder')
+    ax.set_ylabel('% fortsatt aktive')
+    ax.grid(alpha=0.3)
+    ax.legend(fontsize=8, ncol=2)
+    savefig(fig, 'fig5b_frafall_fra_10.png')
+    return coh
+
+
+def analyse_debut():
+    """Debutalder: når kommer utøverne inn i konkurransefriidretten?"""
+    logger.info("3c/5 Debutalder ...")
+    rows = rpc('analyse_debut', {'from_year': 2015, 'to_year': TO_YEAR})
+    write_csv('debutalder.csv', rows, ['yr', 'gender', 'debut_age', 'n'])
+
+    years = list(range(2015, TO_YEAR + 1))
+    groups = [('10-11 år', (10, 11)), ('12-13 år', (12, 13)),
+              ('14-15 år', (14, 15)), ('16-19 år', (16, 17, 18, 19))]
+    idx = defaultdict(int)
+    for r in rows:
+        idx[(r['yr'], r['debut_age'])] += r['n']
+
+    fig, ax = plt.subplots(figsize=(9, 5.5))
+    for label, ages in groups:
+        ax.plot(years, [sum(idx[(y, a)] for a in ages) for y in years], marker='o', label=label)
+    ax.set_title('Debutanter per år etter alder ved første resultat')
+    ax.set_ylabel('Antall debutanter')
+    ax.grid(alpha=0.3)
+    ax.legend()
+    savefig(fig, 'fig7_debutalder.png')
+    return idx
+
+
 def main():
     by_band = analyse_bredde()
     analyse_bredde_alder()
@@ -331,6 +389,8 @@ def main():
     analyse_dybde(per_event_senior)
     age_data = analyse_aldersklasser()
     coh = analyse_frafall()
+    coh_barn = analyse_frafall_barn()
+    analyse_debut()
 
     # ------------------------------------------------------------
     # Nøkkeltall til artikkelen
@@ -363,6 +423,12 @@ def main():
         if coh.get(cy, {}).get(13):
             surv = 100 * coh[cy].get(19, 0) / coh[cy][13]
             lines.append(f"- Frafall {cy}-kohorten: {surv:.0f} % av 13-åringene fortsatt aktive som 19-åringer")
+    lines.append('\n## Barneidretten (kun deltakelse — ingen nivåanalyse under 13)')
+    for cy in sorted(coh_barn):
+        c = coh_barn[cy]
+        if c.get(10) and cy + 3 <= TO_YEAR:
+            lines.append(f"- 10-åringer {cy}: {c[10]} startet, {100 * c.get(11, 0) / c[10]:.0f} % igjen ved 11, "
+                         f"{100 * c.get(13, 0) / c[10]:.0f} % ved 13")
     (OUT / 'nokkeltall.md').write_text('\n'.join(lines) + '\n')
     logger.info(f"Skrev {OUT / 'nokkeltall.md'}")
 

@@ -61,6 +61,31 @@ seks–sju års forsinkelse opp til juniorklassene.
 
 *(Figur 5: Andel av 13-årskohorten som fortsatt konkurrerer, per alder.)*
 
+## Barneidretten: trakten er trangest i bunnen
+
+Datasettet inneholder også resultater for 10–12-åringene, og de fyller ut
+bildet på to viktige måter. (Vi analyserer bevisst bare *deltakelse* for barn
+under 13 — ikke prestasjoner, i tråd med barneidrettsbestemmelsene.)
+
+**Den største lekkasjen skjer før ungdomsklassene i det hele tatt begynner.**
+Av barna som konkurrerer som 10-åringer, er omtrent halvparten borte allerede
+året etter. Bare rundt én av fire når 13-årsklassen, og ved 15 år er 15–18
+prosent igjen. Også dette mønsteret er påfallende stabilt over alle ti
+kohortene vi kan følge — overgangen barneidrett–ungdomsfriidrett har vært
+like trang hele perioden.
+
+**Og rekrutteringen i bunnen har faktisk tatt seg opp igjen.** Antall
+konkurrerende 10-åringer falt fra ~1 450 (2019) til 905 (2020), men var
+tilbake på 1 230 i 2022. Det som *ikke* har tatt seg opp, er debutene senere
+i tenårene: antall utøvere som fikk sitt aller første resultat som
+14–19-åring er omtrent halvert siden før pandemien. Veien inn i friidretten
+via ungdomsskole- og videregåendealder — ofte fra andre idretter — er i ferd
+med å gro igjen. Det er en vesentlig del av forklaringen på at
+13-årsklassene forblir små selv om 10-åringene er på vei tilbake.
+
+*(Figur 5b: Andel av 10-årskohorten som fortsatt konkurrerer. Figur 7:
+Debutanter per år etter alder ved første resultat.)*
+
 ## Toppen: bedre enn noen gang — og dybden følger med
 
 På toppen er historien en helt annen. Vi fulgte fem referanseøvelser — 100
@@ -129,9 +154,11 @@ skal komme fra dagens rekrutter.
 Tre punkter til diskusjon:
 
 **1. Problemet sitter i døra inn, ikke i døra ut.** Frafallet er uendret;
-rekrutteringen har sviktet. Tiltak bør derfor rettes mot å få flere 8–12-åringer
-inn i konkurransefriidretten — og mot å forstå hvorfor knekken fra 2020 aldri
-rettet seg, når andre idretter har hentet seg inn.
+rekrutteringen har sviktet. Og døra har to fløyer: Barnerekrutteringen (10–11
+år) er på vei tilbake etter pandemien, men tenåringsdebuten er halvert. Skal
+13-årsklassene tilbake til gammel størrelse, må vi både holde trykket på
+barneidretten *og* gjenåpne veien inn for dem som kommer sent — fra andre
+idretter, fra skolemiljøer, fra løpeglade ungdommer uten friidrettsbakgrunn.
 
 **2. Kvalitet av mindre volum er ikke en stabil likevekt.** Norsk friidrett
 produserer i dag bedre topper av et smalere grunnlag enn for tolv år siden.
@@ -162,5 +189,9 @@ for år.
 - **Kast er utelatt** fordi redskapsvektene varierer med alder og gjør
   sammenligning over tid upresis; analysen kan utvides med vektspesifikke
   øvelser senere.
-- **Frafall:** Kohort = alle med minst ett resultat i året de fylte 13.
-  «Fortsatt aktiv» = minst ett resultat i året de fylte 14, 15 osv.
+- **Frafall:** Kohort = alle med minst ett resultat i året de fylte 13 (evt.
+  10). «Fortsatt aktiv» = minst ett resultat i året de fylte 14, 15 osv.
+- **Debutalder:** Året for utøverens aller første registrerte resultat
+  (analysert fra 2015 for å unngå skjevhet fra datastart).
+- **Barn under 13:** Kun deltakelsestall — ingen prestasjons- eller
+  rangeringsanalyse, i tråd med barneidrettsbestemmelsene.

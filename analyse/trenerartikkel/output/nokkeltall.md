@@ -32,3 +32,15 @@
 
 - Frafall 2014-kohorten: 12 % av 13-åringene fortsatt aktive som 19-åringer
 - Frafall 2019-kohorten: 12 % av 13-åringene fortsatt aktive som 19-åringer
+
+## Barneidretten (kun deltakelse — ingen nivåanalyse under 13)
+- 10-åringer 2013: 1504 startet, 46 % igjen ved 11, 27 % ved 13
+- 10-åringer 2014: 1442 startet, 49 % igjen ved 11, 27 % ved 13
+- 10-åringer 2015: 1345 startet, 54 % igjen ved 11, 31 % ved 13
+- 10-åringer 2016: 1316 startet, 51 % igjen ved 11, 29 % ved 13
+- 10-åringer 2017: 1244 startet, 51 % igjen ved 11, 25 % ved 13
+- 10-åringer 2018: 1382 startet, 50 % igjen ved 11, 21 % ved 13
+- 10-åringer 2019: 1451 startet, 42 % igjen ved 11, 23 % ved 13
+- 10-åringer 2020: 905 startet, 51 % igjen ved 11, 27 % ved 13
+- 10-åringer 2021: 1062 startet, 50 % igjen ved 11, 25 % ved 13
+- 10-åringer 2022: 1230 startet, 52 % igjen ved 11, 24 % ved 13
