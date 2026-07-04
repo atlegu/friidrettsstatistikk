@@ -6,6 +6,52 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-07-03/04 — Kjønnsopprydding (FULLFØRT)
+
+### Fase 1: Klassebevis fra kilden
+- **Script:** `fix_gender_from_source.py --seasons 2013-2026`
+- **Formål:** Sette kjønn autoritativt fra klasseoverskrifter på stevnesidene
+  (minfriidrettsstatistikk.info). Kun stevner med resultater fra NULL-utøvere
+  ble hentet (hjelpetabell `gender_fix_target_meets`, 10 265 stevner).
+- **Resultat:** 8 437/10 265 stevner matchet mot kilden (navn+dato), 671 000
+  bevisrader høstet. 775 utøvere → M, 305 → F. 2 konflikter, 109 motsigelser
+  rapportert. `meets.external_id` populert for 8 437 stevner (ny kolonne +
+  RPC `set_meet_external_ids`).
+- **Problemer:** (1) Første kjøring krasjet på partial upsert mot meets
+  (NOT NULL sjekkes før konfliktløsning) — løst med RPC. (2) Maskinsøvn drepte
+  kjøringen ved 4 700 stevner og etterlot trunkert gzip-bevisfil — 367 459 rader
+  berget, resume-logikk + `caffeinate` la til. (3) Hovedfunn: kildens stevnesider
+  viser IKKE 10-12-årsklassene (barneidrettsbestemmelsene), så ~29k utøvere
+  (nesten alle 10-12 år) kan aldri få kjønn fra klassebevis.
+- **Bevisfiler:** `new_meets_data/gender_evidence_*.jsonl.gz` (kan gjenbrukes
+  til aldersklasse-backfill uten ny scraping!)
+- **Loggfiler:** `logs/fix_gender_from_source_*.log`, `logs/fix_gender_report_*.json`
+
+### Fase 2: Fornavnsklassifisering
+- **Script:** `fix_gender_by_firstname.py --contradictions-report logs/fix_gender_report_20260704_004330_contradictions.json`
+- **Formål:** Klassifisere 10-12-åringene (uten klassebevis) på fornavn, trent
+  på 668 436 klassebevisrader + 58 503 utøvere med kjent kjønn.
+- **Validering:** Leave-one-out mot kjente utøvere: **99,76 %** treff (55 669/55 805).
+- **Terskler:** >= 5 obs og >= 98 % samme kjønn, eller >= 3 obs og 100 %.
+- **Resultat:** 14 075 → M, 12 789 → F. 67 motsigelser rettet (enstemmig
+  klassebevis >= 5 mot feil DB-kjønn — rest fra batch-korrupsjonen jan 2026).
+  2 273 forblir NULL (sjeldne/utenlandske navn) — liste i rapporten.
+- **Sluttstatus:** M=47 859, F=37 508, NULL=2 273 (fra 30 217).
+  Kvinnelister verifisert rene (100m/5000m).
+
+### Forebygging
+- `update_results.py` `match_athlete()` backfiller nå kjønn på eksisterende
+  utøvere med gender=NULL når importen har autoritativt klasse-kjønn.
+
+### Restanser
+- 2 273 NULL (sjeldne navn) — manuell liste i `logs/fix_gender_by_firstname_report_*.json`
+- 1 828 målstevner umatchet mot kilden (navneavvik) — kan diagnostiseres via
+  `meets.external_id IS NULL`
+- 42 motsigelser med svakt/blandet bevis — samme rapportfil
+- Hjelpetabell `gender_fix_target_meets` droppet etter kjøring
+
+---
+
 ## 2026-02-13
 
 ### Backfill fødselsår

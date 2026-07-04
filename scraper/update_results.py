@@ -690,6 +690,16 @@ def match_athlete(name, birth_year, gender):
     # Try without gender
     for cached_key, cached_id in _athlete_cache.items():
         if cached_key[0] == name.lower() and cached_key[1] == birth_year:
+            # Backfill: utøver ligger med gender=NULL men resultatet har
+            # autoritativt klasse-kjønn (jf. kjønnsopprydding juli 2026)
+            if gender and cached_key[2] is None:
+                try:
+                    supabase.table('athletes').update({'gender': gender}).eq('id', cached_id).execute()
+                    del _athlete_cache[cached_key]
+                    _athlete_cache[(cached_key[0], cached_key[1], gender)] = cached_id
+                    logger.info(f"Backfilled gender={gender}: {name} ({birth_year})")
+                except Exception as e:
+                    logger.debug(f"Gender backfill failed for '{name}': {e}")
             return cached_id
 
     return None
