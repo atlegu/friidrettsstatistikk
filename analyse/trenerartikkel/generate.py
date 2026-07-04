@@ -79,7 +79,7 @@ def rpc(fn, params):
 def write_csv(name, rows, fieldnames):
     path = OUT / name
     with open(path, 'w', newline='', encoding='utf-8') as fh:
-        w = csv.DictWriter(fh, fieldnames=fieldnames)
+        w = csv.DictWriter(fh, fieldnames=fieldnames, extrasaction='ignore')
         w.writeheader()
         w.writerows(rows)
     logger.info(f"Skrev {path} ({len(rows)} rader)")
@@ -148,12 +148,15 @@ def analyse_topp(age_lo=0, age_hi=200, suffix='senior', title_suffix='alle aldre
             r['event'] = code
             r['top10_avg_fmt'] = fmt_value(r['top10_avg'], unit)
             r['rank25_fmt'] = fmt_value(r['rank25_value'], unit)
+            r['rank50_fmt'] = fmt_value(r['rank50_value'], unit)
+            r['rank100_fmt'] = fmt_value(r['rank100_value'], unit)
             r['best_fmt'] = fmt_value(r['best_value'], unit)
         all_rows.extend(rows)
         per_event[code] = rows
     write_csv(f'toppniva_{suffix}.csv', all_rows,
               ['event', 'yr', 'gender', 'n_athletes', 'top10_avg', 'top10_avg_fmt',
-               'rank25_value', 'rank25_fmt', 'best_value', 'best_fmt'])
+               'rank25_value', 'rank25_fmt', 'rank50_value', 'rank50_fmt',
+               'rank100_value', 'rank100_fmt', 'best_value', 'best_fmt'])
 
     fig, axes = plt.subplots(2, 5, figsize=(22, 8))
     for col, (code, title, _, _, higher, unit) in enumerate(EVENTS):
@@ -175,6 +178,118 @@ def analyse_topp(age_lo=0, age_hi=200, suffix='senior', title_suffix='alle aldre
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     savefig(fig, f'fig3_toppniva_{suffix}.png')
     return per_event
+
+
+# ------------------------------------------------------------
+# 2b. Nivå per aldersklasse: topp-10 for 15, 16, 17, 18/19 år
+# ------------------------------------------------------------
+
+AGE_CLASSES = [('15 år', 15, 15), ('16 år', 16, 16), ('17 år', 17, 17), ('18/19 år', 18, 19)]
+AGE_EVENTS = [e for e in EVENTS if e[0] in ('100m', '800m', 'lengde', 'hoyde')]
+
+
+def analyse_aldersklasser():
+    logger.info("2b/4 Nivå per aldersklasse ...")
+    all_rows = []
+    data = {}  # (code, label) -> rows
+    for code, title, min_v, max_v, higher, unit in AGE_EVENTS:
+        for label, lo, hi in AGE_CLASSES:
+            rows = rpc('analyse_event_trend', {
+                'p_event_code': code, 'p_min_v': min_v, 'p_max_v': max_v,
+                'p_higher_better': higher, 'p_from_year': FROM_YEAR, 'p_to_year': TO_YEAR,
+                'p_age_lo': lo, 'p_age_hi': hi, 'p_outdoor_only': True,
+            })
+            for r in rows:
+                r['event'] = code
+                r['age_class'] = label
+                r['top10_avg_fmt'] = fmt_value(r['top10_avg'], unit)
+                r['rank25_fmt'] = fmt_value(r['rank25_value'], unit)
+            all_rows.extend(rows)
+            data[(code, label)] = rows
+    write_csv('toppniva_aldersklasser.csv', all_rows,
+              ['event', 'age_class', 'yr', 'gender', 'n_athletes',
+               'top10_avg', 'top10_avg_fmt', 'rank25_value', 'rank25_fmt'])
+
+    fig, axes = plt.subplots(len(AGE_EVENTS), 2, figsize=(13, 4 * len(AGE_EVENTS)))
+    for row_i, (code, title, _, _, higher, unit) in enumerate(AGE_EVENTS):
+        for col, g in enumerate(('M', 'F')):
+            ax = axes[row_i][col]
+            for label, lo, hi in AGE_CLASSES:
+                pts = sorted([r for r in data[(code, label)] if r['gender'] == g],
+                             key=lambda r: r['yr'])
+                ax.plot([r['yr'] for r in pts],
+                        [to_plot_value(r['top10_avg'], unit) for r in pts],
+                        marker='o', ms=3, label=label)
+            ax.set_title(f"{title} — {GENDER_LABEL[g]} (snitt topp-10)", fontsize=10)
+            ax.grid(alpha=0.3)
+            if not higher:
+                ax.invert_yaxis()
+            ax.set_ylabel('sek' if unit in ('s', 'min') else 'meter', fontsize=8)
+            if row_i == 0 and col == 0:
+                ax.legend(fontsize=8)
+    fig.suptitle('Nivåutvikling per aldersklasse (utendørs). Pil oppover = bedre.', fontsize=13)
+    fig.tight_layout(rect=[0, 0, 1, 0.97])
+    savefig(fig, 'fig4_aldersklasser.png')
+    return data
+
+
+# ------------------------------------------------------------
+# 2c. Rekruttering: aktive per alderstrinn og kjønn
+# ------------------------------------------------------------
+
+def analyse_bredde_alder():
+    logger.info("1b/4 Bredde per alderstrinn ...")
+    rows = rpc('analyse_active_by_age', {'from_year': FROM_YEAR, 'to_year': TO_YEAR})
+    write_csv('bredde_per_alder.csv', rows, ['yr', 'gender', 'age', 'n_athletes'])
+
+    years = list(range(FROM_YEAR, TO_YEAR + 1))
+    idx = {(r['gender'], r['age'], r['yr']): r['n_athletes'] for r in rows}
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5.5), sharey=True)
+    for col, g in enumerate(('M', 'F')):
+        ax = axes[col]
+        for age in (11, 13, 15, 17, 19):
+            ax.plot(years, [idx.get((g, age, y), 0) for y in years], marker='o', ms=3, label=f'{age} år')
+        ax.set_title(GENDER_LABEL[g])
+        ax.grid(alpha=0.3)
+        ax.set_ylabel('Antall utøvere')
+        ax.legend(fontsize=8)
+    fig.suptitle('Aktive utøvere per alderstrinn — rekrutteringskullene år for år', fontsize=13)
+    fig.tight_layout(rect=[0, 0, 1, 0.94])
+    savefig(fig, 'fig2b_bredde_per_alder.png')
+    return idx
+
+
+# ------------------------------------------------------------
+# 2d. Dybde: topp-10, nr. 25, 50 og 100 (alle aldre)
+# ------------------------------------------------------------
+
+def analyse_dybde(per_event_senior):
+    logger.info("2c/4 Dybde ...")
+    depth_events = [e for e in EVENTS if e[0] in ('100m', '800m', 'lengde')]
+    fig, axes = plt.subplots(2, len(depth_events), figsize=(15, 8))
+    for col, (code, title, _, _, higher, unit) in enumerate(depth_events):
+        for row_i, g in enumerate(('M', 'F')):
+            ax = axes[row_i][col]
+            pts = sorted([r for r in per_event_senior[code] if r['gender'] == g],
+                         key=lambda r: r['yr'])
+            ys = [r['yr'] for r in pts]
+            for key, lbl, style in (('top10_avg', 'Snitt topp-10', '-'),
+                                    ('rank25_value', 'Nr. 25', '--'),
+                                    ('rank50_value', 'Nr. 50', '-.'),
+                                    ('rank100_value', 'Nr. 100', ':')):
+                ax.plot(ys, [to_plot_value(r[key], unit) for r in pts],
+                        style, marker='o', ms=3, label=lbl)
+            ax.set_title(f"{title} — {GENDER_LABEL[g]}", fontsize=10)
+            ax.grid(alpha=0.3)
+            if not higher:
+                ax.invert_yaxis()
+            ax.set_ylabel('sek' if unit in ('s', 'min') else 'meter', fontsize=8)
+            if col == 0 and row_i == 0:
+                ax.legend(fontsize=8)
+    fig.suptitle('Dybden i norsk friidrett: fra topp-10 til nr. 100 (alle aldre, utendørs). '
+                 'Pil oppover = bedre.', fontsize=13)
+    fig.tight_layout(rect=[0, 0, 1, 0.94])
+    savefig(fig, 'fig6_dybde.png')
 
 
 # ------------------------------------------------------------
@@ -211,8 +326,10 @@ def analyse_frafall():
 
 def main():
     by_band = analyse_bredde()
+    analyse_bredde_alder()
     per_event_senior = analyse_topp()
-    analyse_topp(age_lo=15, age_hi=15, suffix='15aringer', title_suffix='15-åringer')
+    analyse_dybde(per_event_senior)
+    age_data = analyse_aldersklasser()
     coh = analyse_frafall()
 
     # ------------------------------------------------------------
@@ -231,6 +348,17 @@ def main():
                              f"{fmt_value(pts[2025]['top10_avg'], unit)} (2025); "
                              f"nr. 25: {fmt_value(pts[2013]['rank25_value'], unit)} -> "
                              f"{fmt_value(pts[2025]['rank25_value'], unit)}")
+    lines.append('\n## Aldersklasser (topp-10-snitt 2013 -> 2025, antall utøvere i parentes)')
+    for code, title, _, _, _, unit in AGE_EVENTS:
+        for label in ('15 år', '18/19 år'):
+            for g in ('M', 'F'):
+                pts = {r['yr']: r for r in age_data[(code, label)] if r['gender'] == g}
+                if 2013 in pts and 2025 in pts:
+                    lines.append(f"- {title} {label} {GENDER_LABEL[g]}: "
+                                 f"{fmt_value(pts[2013]['top10_avg'], unit)} -> "
+                                 f"{fmt_value(pts[2025]['top10_avg'], unit)} "
+                                 f"(n: {pts[2013]['n_athletes']} -> {pts[2025]['n_athletes']})")
+    lines.append('')
     for cy in (2014, 2019):
         if coh.get(cy, {}).get(13):
             surv = 100 * coh[cy].get(19, 0) / coh[cy][13]
