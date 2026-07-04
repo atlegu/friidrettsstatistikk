@@ -56,9 +56,9 @@ kohortene etter pandemien. Ti kohorter, nesten identiske kurver.
 Konklusjonen er ubehagelig presis: **Norsk friidrett har ikke fått et større
 frafallsproblem. Vi har fått et mindre inntak.** Det konkurrerte 1 220
 13-åringer i 2013-kohorten; i 2021- og 2022-kohortene var tallet rundt 820.
-Når kullene som kommer inn døra er 30 prosent mindre, og frafallet deretter
+Når kullene som kommer inn døren er 30 prosent mindre, og frafallet deretter
 spiser nøyaktig samme andel som før, krymper hele pyramiden nedenfra — med
-seks–sju års forsinkelse opp til juniorklassene.
+seks–syv års forsinkelse opp til juniorklassene.
 
 ![Frafallskurver for ti årskull av 13-åringer — nesten identiske](output/figM2_frafall.png)
 
@@ -113,6 +113,14 @@ drar snittet. Nummer 25 på årslistene har flyttet seg nesten like mye: på
 3000 meter menn fra 8:34 til 8:15, på 100 meter kvinner fra 12,23 til 12,05.
 Også nummer 50 og nummer 100 har gått riktig vei i løpsøvelsene. Dybden i
 senior-Norge er reelt bedre.
+
+En del av fremgangen på mellom- og langdistanse er likevel ikke særnorsk.
+Nivået har løftet seg i hele verden siden 2019–2020, først og fremst på
+grunn av den nye skoteknologien (karbonplate og responsivt mellomsålemateriale),
+og etter hvert også utbredt bruk av bikarbonat som prestasjonsfremmende
+tilskudd. Noe av forbedringen på 800 og 3000 meter må derfor tilskrives
+utstyr og ernæring snarere enn norsk utviklingsarbeid — men at dybden bak
+toppene har fulgt med, tyder på at også treningskulturen har flyttet seg.
 
 Også kastøvelsene og hekk går frem på seniornivå. Fordi redskapsvekter og
 hekkhøyder har vært uendret per klasse gjennom hele perioden, kan vi
@@ -179,8 +187,8 @@ skal komme fra dagens rekrutter.
 
 Tre punkter til diskusjon:
 
-**1. Problemet sitter i døra inn, ikke i døra ut.** Frafallet er uendret;
-rekrutteringen har sviktet. Og døra har to fløyer: Barnerekrutteringen (10–11
+**1. Problemet sitter i døren inn, ikke i døren ut.** Frafallet er uendret;
+rekrutteringen har sviktet. Og døren har to fløyer: Barnerekrutteringen (10–11
 år) er på vei tilbake etter pandemien, men tenåringsdebuten er halvert. Skal
 13-årsklassene tilbake til gammel størrelse, må vi både holde trykket på
 barneidretten *og* gjenåpne veien inn for dem som kommer sent — fra andre
