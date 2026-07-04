@@ -36,7 +36,7 @@ et rekrutteringsproblem.
 
 ![Aktive utøvere 10–19 år per år, med pandemiknekken markert](output/figM1_ungdomsbredde.png)
 
-*(Underlagsfigurer: fig1 aldersgrupper, fig2b per alderstrinn og kjønn.)*
+*(Underlagsfigurer: fig1 aldersgrupper og fig2b per alderstrinn og kjønn.)*
 
 ## Frafallet: forbausende stabilt — og det snur historien på hodet
 
@@ -137,8 +137,7 @@ diskusjon i trener-Norge.
 
 ![800 meter: topp-10-snittet per år for menn og kvinner](output/figM6_800m.png)
 
-*(Underlagsfigurer: fig3 fem øvelser, fig6 dybde til nr. 100, fig8 kast,
-fig9 hekk.)*
+*(Underlagsfigurer: fig3 fem øvelser, fig6 dybde til nr. 100, fig8 kast, fig9 hekk.)*
 
 ## Aldersklassene: her lyser varsellampene
 

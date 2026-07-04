@@ -177,7 +177,7 @@ def m3():
               ('Kule', 'Kule', True), ('Spyd', 'Spyd', True),
               ('Diskos', 'Diskos', True)]
 
-    fig, axes = plt.subplots(1, 2, figsize=(12.5, 5.6), sharex=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 5.8), sharex=True)
     for col, g in enumerate(('M', 'F')):
         ax = axes[col]
         labels, sen_vals, u15_vals = [], [], []
@@ -202,17 +202,18 @@ def m3():
         ax.barh([y - h / 2 for y in ypos], [v or 0 for v in u15_vals], height=h,
                 color=GRAY, label='15 år')
         ax.axvline(0, color=DARK, lw=1)
-        ax.set_yticks(list(ypos), labels)
+        ax.set_yticks(list(ypos), labels, fontsize=12)
+        ax.tick_params(axis='x', labelsize=11)
         ax.grid(axis='x'); ax.grid(axis='y', visible=False)
         ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda v, p: f'{v:+.0f} %'))
-        ax.set_title(('Menn/gutter' if g == 'M' else 'Kvinner/jenter'), fontsize=12, loc='center')
+        ax.set_title(('Menn/gutter' if g == 'M' else 'Kvinner/jenter'), fontsize=13, loc='center')
         if col == 0:
             ax.legend(loc='lower right', frameon=False)
     fig.suptitle('Toppen løfter seg — 15-åringene faller', fontsize=15,
-                 fontweight='bold', x=0.01, ha='left')
-    fig.text(0.01, 0.92, 'Endring i snittet av de 10 beste, fra 2013/14 til 2024/25. '
+                 fontweight='bold', x=0.01, y=0.99, ha='left')
+    fig.text(0.01, 0.915, 'Endring i snittet av de 10 beste, fra 2013/14 til 2024/25. '
              'Kast målt med klassens faste redskap.', fontsize=10.5, color='#555555')
-    fig.tight_layout(rect=[0, 0, 1, 0.88])
+    fig.tight_layout(rect=[0, 0, 1, 0.86])
     save(fig, 'figM3_topp_vs_15.png')
 
 

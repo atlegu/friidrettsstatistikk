@@ -1,0 +1,42 @@
+% Magasinstil for trenerartikkelen (pandoc + xelatex)
+\usepackage{titlesec}
+\usepackage{xcolor}
+\definecolor{hovedbla}{HTML}{1F4E79}
+\definecolor{morkgra}{HTML}{2B2B2B}
+\definecolor{lysgra}{HTML}{777777}
+
+% H1 (artikkeltittel) -> stor og mørk; H2 (seksjoner) -> blå sans
+\titleformat{\section}{\fontsize{25}{29}\selectfont\bfseries\sffamily\color{morkgra}}{}{0pt}{}
+\titleformat{\subsection}{\fontsize{15}{18}\selectfont\bfseries\sffamily\color{hovedbla}}{}{0pt}{}
+\titleformat{\subsubsection}{\fontsize{12}{15}\selectfont\bfseries\sffamily\color{morkgra}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{4pt}{10pt}
+\titlespacing*{\subsection}{0pt}{20pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{14pt}{4pt}
+
+% Figurer der de står i teksten, med diskrete kursiv-tekster under
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{caption}
+\captionsetup{font={footnotesize,it},labelformat=empty,skip=2pt,justification=raggedright,singlelinecheck=false}
+
+% Topp- og bunntekst
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\sffamily\small\color{lysgra}\thepage}
+\fancyhead[L]{\sffamily\footnotesize\color{lysgra}Norsk friidrett 2013--2025}
+\fancyhead[R]{\sffamily\footnotesize\color{lysgra}Utkast til Friidrettstreneren}
+\renewcommand{\headrulewidth}{0pt}
+
+% Luft rundt figurer og avsnitt
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
+% Tegn som mangler i Charter
+\usepackage{newunicodechar}
+\newunicodechar{→}{\,$\rightarrow$\,}
+
+% Tabell-styling
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\sffamily\small}
