@@ -8,7 +8,7 @@ som har krympet med en fjerdedel og der nivået i de yngste klassene faller.
 \end{ingress}
 
 Norsk friidrett har de siste årene levd i en gullalder på toppen. Men hva skjer
-under overflaten? Vi har analysert samtlige registrerte konkurranseresultater i
+under overflaten? Jeg har analysert samtlige registrerte konkurranseresultater i
 norsk friidrett fra 2013 til 2025 — over 1,1 millioner resultater fra rundt
 85 000 utøvere — for å svare på tre enkle spørsmål: Har bredden blitt bedre?
 Har toppen blitt bedre? Og hvordan står det til i de aldersbestemte klassene?
@@ -21,10 +21,10 @@ kanskje det som *ikke* har endret seg.
 Antall aktive utøvere — definert som alle med minst ett registrert resultat i
 løpet av sesongen — lå stabilt på 10–11 000 i året gjennom hele perioden
 2013–2019. Så kom pandemien. I 2020 falt tallet til under 9 000, og der har
-det i praksis blitt værende: i 2025 hadde vi fortsatt om lag 20 prosent færre
+det i praksis blitt værende: i 2025 var det fortsatt om lag 20 prosent færre
 aktive enn i 2019.
 
-Ser vi på ungdommen isolert, er bildet enda tydeligere. Aktive utøvere i
+Ser jeg på ungdommen isolert, er bildet enda tydeligere. Aktive utøvere i
 alderen 10–19 år gikk fra 8 745 i 2019 til 6 418 i 2025 — en nedgang på 27
 prosent. Og nedgangen er nesten utelukkende konsentrert i de yngste årsklassene:
 10–12-åringene falt fra rundt 4 400 per år før pandemien til 3 000–3 400 etter.
@@ -40,10 +40,10 @@ et rekrutteringsproblem.
 ## Frafallet: forbausende stabilt — og det snur historien på hodet
 
 Den vanlige forklaringen på sviktende bredde er frafall: ungdommen slutter.
-Her gir dataene oss en overraskelse.
+Her byr dataene på en overraskelse.
 
-Fordi vi kan følge hver enkelt utøver over tid, kan vi måle frafallet direkte.
-Vi tok alle utøvere som konkurrerte som 13-åringer et gitt år — én årskohort —
+Fordi jeg kan følge hver enkelt utøver over tid, kan jeg måle frafallet direkte.
+Jeg tok alle utøvere som konkurrerte som 13-åringer et gitt år — én årskohort —
 og sjekket hvor mange som fortsatt konkurrerte ved hver senere alder. Mønsteret
 er bemerkelsesverdig stabilt: Om lag 55 prosent av 13-åringene er fortsatt med
 som 14-åringer. Rundt en tredjedel er igjen ved 16. Ved 19 år konkurrerer 10–12
@@ -64,14 +64,14 @@ seks–syv års forsinkelse opp til juniorklassene.
 ## Barneidretten: trakten er trangest i bunnen
 
 Datasettet inneholder også resultater for 10–12-åringene, og de fyller ut
-bildet på to viktige måter. (Vi analyserer bevisst bare *deltakelse* for barn
+bildet på to viktige måter. (Jeg analyserer bevisst bare *deltakelse* for barn
 under 13 — ikke prestasjoner, i tråd med barneidrettsbestemmelsene.)
 
 **Den største lekkasjen skjer før ungdomsklassene i det hele tatt begynner.**
 Av barna som konkurrerer som 10-åringer, er omtrent halvparten borte allerede
 året etter. Bare rundt én av fire når 13-årsklassen, og ved 15 år er 15–18
 prosent igjen. Også dette mønsteret er påfallende stabilt over alle ti
-kohortene vi kan følge — overgangen barneidrett–ungdomsfriidrett har vært
+kohortene jeg kan følge — overgangen barneidrett–ungdomsfriidrett har vært
 like trang hele perioden.
 
 **Og rekrutteringen i bunnen har faktisk tatt seg opp igjen.** Antall
@@ -89,10 +89,10 @@ med å gro igjen. Det er en vesentlig del av forklaringen på at
 
 ## Toppen: bedre enn noen gang — og dybden følger med
 
-På toppen er historien en helt annen. Vi fulgte fem referanseøvelser — 100
+På toppen er historien en helt annen. Jeg fulgte fem referanseøvelser — 100
 meter, 800 meter, 3000 meter, lengde og høyde — og målte snittet av de ti beste
 årsbestenoteringene per år (utendørs, kun elektronisk tid), samt resultatet til
-nummer 25, 50 og 100 på årslistene. I tillegg fulgte vi kastøvelsene og hekk,
+nummer 25, 50 og 100 på årslistene. I tillegg fulgte jeg kastøvelsene og hekk,
 målt per aldersklasse med klassens faste redskap og hekkhøyde.
 
 Fremgangen er tydelig i nesten alle øvelsene:
@@ -130,7 +130,7 @@ utstyr og ernæring snarere enn norsk utviklingsarbeid — men at dybden bak
 toppene har fulgt med, tyder på at også treningskulturen har flyttet seg.
 
 Også kastøvelsene og hekk går frem på seniornivå. Fordi redskapsvekter og
-hekkhøyder har vært uendret per klasse gjennom hele perioden, kan vi
+hekkhøyder har vært uendret per klasse gjennom hele perioden, kan jeg
 sammenligne år for år også her: kule menn har gått fra 14,79 til 15,44 i
 topp-10-snitt, slegge fra 55,9 til 59,2, og diskos kvinner har tatt et byks
 fra 38,4 til 45,9 meter. Sprinthekken er blitt klart raskere for begge kjønn
@@ -168,7 +168,7 @@ snittallene ligger noe vel så viktig: antallet. I 2013 hadde 137 15-årige
 gutter en godkjent elektronisk 100-meterstid; i 2025 var det 85. Toppen i de
 yngste klassene hviler på et stadig tynnere grunnlag.
 
-**Og i kastøvelsene er 15-åringsfallet enda tydeligere.** Her sammenligner vi
+**Og i kastøvelsene er 15-åringsfallet enda tydeligere.** Her sammenligner jeg
 med identisk redskap gjennom hele perioden, og tallene er ikke til å
 misforstå: topp-10-snittet i kule for 15-årige gutter (4 kg) har falt fra
 14,32 til 12,04 meter — over to meter. Spyd gutter 15 (600 g) fra 50,4 til
