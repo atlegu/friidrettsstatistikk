@@ -765,6 +765,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         'skipped_no_event': 0,
         'skipped_no_athlete': 0,
         'skipped_no_meet': 0,
+        'skipped_duplicate': 0,
         'errors': 0,
         'new_meets': 0,
     }
@@ -884,9 +885,16 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
                         stats['imported'] += 1
                         inserted += 1
                     except Exception as e2:
-                        logger.debug(
-                            f"    Failed single: {result_data['performance']} - {e2}")
-                        stats['errors'] += 1
+                        # Unik-indeksen results_innhold_unik (athlete, event, meet,
+                        # performance, place, wind - NULLS NOT DISTINCT) avviser rader
+                        # som allerede finnes. Det er forventet ved re-kjoring og er
+                        # ikke en feil.
+                        if '23505' in str(e2) or 'results_innhold_unik' in str(e2):
+                            stats['skipped_duplicate'] += 1
+                        else:
+                            logger.debug(
+                                f"    Failed single: {result_data['performance']} - {e2}")
+                            stats['errors'] += 1
         if inserted:
             logger.info(f"  Imported {inserted} results for {meet_name} ({meet_date})")
 
@@ -974,6 +982,7 @@ def main():
         'skipped_no_event': 0,
         'skipped_no_athlete': 0,
         'skipped_no_meet': 0,
+        'skipped_duplicate': 0,
         'errors': 0,
         'new_meets': 0,
         'meets_processed': 0,
@@ -998,7 +1007,8 @@ def main():
         totals['meets_processed'] += 1
 
         for key in ['imported', 'matched_existing_athlete', 'created_new_athlete',
-                     'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet', 'errors']:
+                     'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet',
+                     'skipped_duplicate', 'errors']:
             totals[key] += meet_stats.get(key, 0)
 
     # Summary
@@ -1016,6 +1026,7 @@ def main():
     logger.info(f"  New athletes created: {totals['created_new_athlete']}")
     logger.info(f"  Skipped (no event mapping): {totals['skipped_no_event']}")
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
+    logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
     logger.info(f"  Errors: {totals['errors']}")
     logger.info("=" * 60)
 

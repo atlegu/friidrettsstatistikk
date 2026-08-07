@@ -47,9 +47,36 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 - **148 resultater hoppet over** pga. manglende øvelsesmapping: kappgang
   (1000/1500/2000 m), 7-kamp/10-kamp-varianter, 400 m Racerunning,
   Kast 5-kamp veteran.
-- **Anbefaling:** Vurder `NULLS NOT DISTINCT` på unik-constrainten, eller sett
-  `round`/`heat_number` eksplisitt i importen, så databasen selv blokkerer
-  duplikater.
+- **Løst samme dag — se neste bolk.**
+
+### Duplikatsperre i databasen (FULLFØRT 2026-08-07)
+- **Problem:** Den gamle constrainten
+  `UNIQUE (athlete_id, event_id, meet_id, round, heat_number)` var inert:
+  36 050 av 36 110 2026-rader har NULL i både `round` og `heat_number`, og
+  `NULL = NULL` gir NULL (ikke true) i Postgres. Sperren låste aldri.
+- **Hvorfor ikke bare `NULLS NOT DISTINCT` på den gamle?** Den ville da slått ut
+  ekte heat+finale-par. Kilden (`StevneResultater.php`) har bare fire kolonner
+  — plass, resultat, navn, klubb — og gir *ingen* rundeinfo, så `round` kan ikke
+  fylles ut herfra. Heat og finale skilles kun ved ulik plass/vind.
+- **Løsning:** Ny indeks på innholdet i stedet for runden:
+  ```sql
+  CREATE UNIQUE INDEX CONCURRENTLY results_innhold_unik
+  ON results (athlete_id, event_id, meet_id, performance, place, wind)
+  NULLS NOT DISTINCT;
+  ```
+  Blokkerer eksakte duplikater, men slipper gjennom heat+finale som avviker på
+  plass eller vind.
+- **Forarbeid:** Måtte rydde 1 891 eksisterende duplikatrader (1 736 grupper) i
+  hele basen, ellers ville indeksen ikke la seg bygge. Fordeling: 345 grupper var
+  NULL-runde mot utfylt runde (beholdt den utfylte — mest informasjon), 1 389 var
+  identiske uten runde (beholdt eldste). **Ingen gruppe hadde ulik `status`**, så
+  ingen risiko for å beholde et godkjent og slette et diskvalifisert resultat.
+  1 170 av gruppene lå i 2026 (innendørs/vår), altså samme bug fra tidligere kjøringer.
+- **Verifisert:** Forsøk på å sette inn kopi av en ekte rad avvises med
+  `23505 duplicate key value violates unique constraint "results_innhold_unik"`.
+- **Importskript:** `update_results.py` teller nå avviste duplikater som
+  `skipped_duplicate` i stedet for `errors`. Importen er dermed trygt
+  re-kjørbar — en ny kjøring over samme periode legger ikke inn noe på nytt.
 - **Loggfiler:** `logs/update_20260807.log`, `logs/dryrun_20260807.log`
 
 ---
