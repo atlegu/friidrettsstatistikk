@@ -6,6 +6,54 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-07 — Sesongoppdatering mai–august (FULLFØRT)
+
+### Import
+- **Script:** `update_results.py --outdoor --season 2026`
+- **Formål:** Basen sto på 17. mai; hele sommersesongen manglet.
+- **Omfang:** 411 stevner i kilden, 28 i basen → 396 manglende/ufullstendige.
+  392 stevner behandlet, 17 358 resultater skrapet.
+- **Resultat:** 16 411 nye resultater etter 17. mai, 350 nye stevner,
+  16 834 utøvere matchet, 376 nye utøvere opprettet. Siste dato nå 2026-08-01.
+  Sesong 2026 totalt: 36 110 resultater. Base totalt: 1 412 964.
+- **Forarbeid:** Slettet 31 resultater for 9 stevner som lå ufullstendige i basen
+  og skulle re-importeres i sin helhet (ren re-import framfor duplikater).
+  NB: «Hopp til Musikk» (11.05, 7 res.) hadde også <10 resultater, men sto IKKE
+  på kildens liste — den ble bevisst *ikke* slettet.
+
+### BUG FUNNET OG FIKSET: duplikater fra batch-retry
+- **Symptom:** Skriptet rapporterte 17 653 importert av 17 358 skrapet — flere enn
+  det fantes. 839 duplikatgrupper i basen etterpå.
+- **Årsak:** `import_meet_results()` hadde `try/except` rundt HELE chunk-løkken.
+  Feilet chunk 3 av 5, kjørte feilhåndteringen `result_batch` på nytt én og én —
+  altså ble chunk 1–2 satt inn en gang til.
+- **Hvorfor constrainten ikke fanget det:** `results` har
+  `UNIQUE (athlete_id, event_id, meet_id, round, heat_number)`, men importen setter
+  aldri `round`/`heat_number`. 19 241 av 19 301 2026-rader har begge NULL, og
+  NULL er aldri lik NULL i Postgres. **Constrainten er i praksis inert for denne
+  importveien.**
+- **Opprydding:** Slettet 813 duplikater (nøkkel: athlete+event+meet+performance
+  +place+wind, beholdt eldste `created_at`). 26 par som avvek på plass/vind ble
+  BEVART — det er ekte heat+finale med samme tid, verifisert ved at de har
+  identisk `created_at`, altså samme batch fra kilden.
+- **Fiks:** `try/except` flyttet inn i chunk-løkken, slik at kun det feilende
+  chunket retries. Kommentar lagt inn i koden.
+- **Gjenstående duplikater etter opprydding:** 0 (verifisert).
+
+### Kjente svakheter (ikke fikset)
+- **357 importfeil** på ferdigparsede verdier: `9.5(+0.0) M`, `9.14()`,
+  `18.16.1 M`. Håndtidsmarkør «M» og tomme/doble vindparenteser strippes ikke av
+  `parse_result_wind()`/`fix_performance_format()`. Disse resultatene mangler.
+- **148 resultater hoppet over** pga. manglende øvelsesmapping: kappgang
+  (1000/1500/2000 m), 7-kamp/10-kamp-varianter, 400 m Racerunning,
+  Kast 5-kamp veteran.
+- **Anbefaling:** Vurder `NULLS NOT DISTINCT` på unik-constrainten, eller sett
+  `round`/`heat_number` eksplisitt i importen, så databasen selv blokkerer
+  duplikater.
+- **Loggfiler:** `logs/update_20260807.log`, `logs/dryrun_20260807.log`
+
+---
+
 ## 2026-07-03/04 — Kjønnsopprydding (FULLFØRT)
 
 ### Fase 1: Klassebevis fra kilden

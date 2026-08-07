@@ -860,23 +860,35 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
 
         result_batch.append(result_data)
 
-    # Insert batch
+    # Insert batch.
+    # NB: try/except ligger INNE i chunk-lokken. Lå den rundt hele lokken, ville
+    # et feilende chunk utlose ny en-og-en-innsetting av HELE result_batch - også
+    # de chunkene som allerede var lagt inn. Det ga 813 duplikater 2026-08-07.
+    # Unik-constrainten fanger dem ikke opp: den dekker
+    # (athlete_id, event_id, meet_id, round, heat_number), og round/heat_number
+    # er alltid NULL her - og NULL er aldri lik NULL i Postgres.
     if result_batch:
-        try:
-            for i in range(0, len(result_batch), 50):
-                chunk = result_batch[i:i+50]
+        inserted = 0
+        for i in range(0, len(result_batch), 50):
+            chunk = result_batch[i:i + 50]
+            try:
                 supabase.table('results').insert(chunk).execute()
                 stats['imported'] += len(chunk)
-            logger.info(f"  Imported {len(result_batch)} results for {meet_name} ({meet_date})")
-        except Exception as e:
-            logger.warning(f"  Batch failed for {meet_name}, trying one-by-one: {e}")
-            for result_data in result_batch:
-                try:
-                    supabase.table('results').insert(result_data).execute()
-                    stats['imported'] += 1
-                except Exception as e2:
-                    logger.debug(f"    Failed single: {result_data['performance']} - {e2}")
-                    stats['errors'] += 1
+                inserted += len(chunk)
+            except Exception as e:
+                logger.warning(
+                    f"  Chunk {i // 50 + 1} failed for {meet_name}, trying one-by-one: {e}")
+                for result_data in chunk:
+                    try:
+                        supabase.table('results').insert(result_data).execute()
+                        stats['imported'] += 1
+                        inserted += 1
+                    except Exception as e2:
+                        logger.debug(
+                            f"    Failed single: {result_data['performance']} - {e2}")
+                        stats['errors'] += 1
+        if inserted:
+            logger.info(f"  Imported {inserted} results for {meet_name} ({meet_date})")
 
     if unmapped_events:
         for event, count in sorted(unmapped_events.items(), key=lambda x: -x[1]):
