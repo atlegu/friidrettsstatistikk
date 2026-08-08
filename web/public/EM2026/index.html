@@ -1,18 +1,13 @@
 <!doctype html>
-<html lang="nb">
-<head>
-<meta charset="utf-8">
+<html lang="nb"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>56 til Birmingham — EM i friidrett 2026</title>
 <meta name="description" content="Analyse av alle 56 norske utøvere til EM i friidrett i Birmingham 2026.">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<meta property="og:type" content="article">
-<meta property="og:title" content="56 til Birmingham">
+<meta property="og:type" content="article"><meta property="og:title" content="56 til Birmingham">
 <meta property="og:description" content="29 kvinner, 27 menn, 19 olympiere og 20 debutanter — hele den norske EM-troppen analysert.">
-<meta property="og:locale" content="nb_NO">
-<link rel="icon" href="/favicon.ico">
-</head>
-<body>
+<meta property="og:locale" content="nb_NO"><link rel="icon" href="/favicon.ico">
+</head><body>
 
 <style>
   :root {
@@ -385,15 +380,16 @@
     border-bottom: 1px solid var(--rule);
   }
 
-  .table-frame table { border-collapse: collapse; width: 100%; min-width: 1040px; font-size: .93rem; }
+  .table-frame table { border-collapse: collapse; width: 100%; min-width: 1136px; font-size: .93rem; }
 
   .table-frame th:nth-child(1), .table-frame td:nth-child(1) { width: 196px; }
   .table-frame th:nth-child(2), .table-frame td:nth-child(2) { width: 58px; }
   .table-frame th:nth-child(3), .table-frame td:nth-child(3) { width: 146px; }
   .table-frame th:nth-child(4), .table-frame td:nth-child(4) { width: 138px; }
-  .table-frame th:nth-child(5), .table-frame td:nth-child(5) { width: 152px; }
-  .table-frame th:nth-child(6), .table-frame td:nth-child(6) { width: 104px; }
-  .table-frame th:nth-child(7), .table-frame td:nth-child(7) { width: auto; min-width: 246px; }
+  .table-frame th:nth-child(5), .table-frame td:nth-child(5) { width: 96px; }
+  .table-frame th:nth-child(6), .table-frame td:nth-child(6) { width: 152px; }
+  .table-frame th:nth-child(7), .table-frame td:nth-child(7) { width: 104px; }
+  .table-frame th:nth-child(8), .table-frame td:nth-child(8) { width: auto; min-width: 246px; }
 
   .table-frame thead th {
     font-family: var(--font-display);
@@ -427,6 +423,14 @@
   .age { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
   .age.old { color: var(--red); font-weight: 700; }
   .age.young { color: var(--blue); font-weight: 700; }
+
+  .rank {
+    font-family: var(--font-data);
+    font-variant-numeric: tabular-nums;
+    font-size: .85rem;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
 
   .ev { font-family: var(--font-display); font-stretch: condensed; font-size: .92rem; color: var(--ink-2); }
 
@@ -796,6 +800,10 @@
       <p>Mesterskapskolonnen viser antall seniormesterskap, med fordelingen
         OL–VM–EM–VMi–EMi under. Alder er ved EM-start 10. august.</p>
 
+      <p><b>Ranking E / V</b> er plassering på årets europa- og verdensstatistikk. Utøvere med to
+        øvelser i EM har begge, beste først. Strek betyr ingen notering i år — for Jakob
+        Ingebrigtsen, Boutera og Skotheim skyldes det skade eller manglende start.</p>
+
       <p><b>Merk:</b> kildetabellen krediterer ikke stafettdeltakelse. Det norske 4×400-laget i
         <b>OL i Paris 2024</b> — Josefine Tomine Eriksen Aks, Astri Lakeri Ertzgaard, Elisabeth
         Slettum og Amalie Iuel — ble nummer 13, men bare Iuel sto oppført med OL. Tallene for de
@@ -806,7 +814,7 @@
       <table>
         <thead>
           <tr>
-            <th>Utøver</th><th>Alder</th><th>Øvelse i EM</th><th>Pers</th>
+            <th>Utøver</th><th>Alder</th><th>Øvelse i EM</th><th>Pers</th><th>Ranking<br>E / V</th>
             <th>Mesterskap</th><th>Seniordebut</th><th>Aldersbestemt (U18–U23)</th>
           </tr>
         </thead>
@@ -825,7 +833,7 @@
       <table>
         <thead>
           <tr>
-            <th>Utøver</th><th>Alder</th><th>Øvelse i EM</th><th>Pers</th>
+            <th>Utøver</th><th>Alder</th><th>Øvelse i EM</th><th>Pers</th><th>Ranking<br>E / V</th>
             <th>Mesterskap</th><th>Seniordebut</th><th>Aldersbestemt (U18–U23)</th>
           </tr>
         </thead>
@@ -1251,71 +1259,71 @@
   // ---- startlister ----
   // [navn, født, alder, øvelse, pers, persnote, antall, fordeling, debut, erstegang, junior]
   const KVINNER = [
-    ["Maren Bakke Amundsen", 2003, 23, "200 m", "23.45", "23.30 m/vind 2025", 0, "", "debutant", true, "EM U20 2021, VM U20 2022, EM U23 2025"],
-    ["Josefine Tomine Eriksen Aks", 2000, 25, "400 m + 2 stafetter", "51.43", "2026", 3, "OL+VM+EM, kun stafett", "2024", false, "EM U18 2016, EM U20 2017, EM U23 2021"],
-    ["Astri Ayo Lakeri Ertzgaard", 2002, 24, "400 m + stafett", "51.92", "2025 · 52.37 i år", 4, "1–1–1–0–1", "2024", false, "EM U20 2021 (400 m + 4×400), EM U23 2023"],
-    ["Henriette Jæger", 2003, 23, "400 m + 2 stafetter", "49.15", "norsk rekord 2026", 9, "1–2–1–3–2", "2022", false, "VM U20 2022, EM U23 2023 (sølv) og 2025 (gull 400 m, sølv 200 m)"],
-    ["Pernille Karlsen Antonsen", 2002, 23, "800 m", "1:58.82", "2026", 1, "0–0–0–1–0", "2026", false, "EM U20 2021"],
-    ["Amanda Marie Grefstad Frøynes", 1998, 27, "800 m", "2:00.35", "2026", 0, "", "debutant", true, "VM U18 2015, VM U20 2016 (7-kamp), EM U20 2017"],
-    ["Anne Gine Løvnes", 2003, 23, "1500 m", "4:06.30", "2026", 3, "0–1–0–1–1", "2025", false, "VM U20 2022, EM U23 2025"],
-    ["Marte Hovland", 2005, 21, "1500 m", "4:08.04", "2026", 0, "", "debutant", true, "EM U18 2022, VM U20 2024"],
-    ["Ingeborg Østgård", 2003, 22, "1500 m", "4:08.84", "2025", 4, "0–1–2–0–1", "2022", false, "EM U20 2021, VM U20 2022 · terreng jr. 2021 og 2022"],
-    ["Amalie Sæten", 1997, 28, "5000 m", "15:07.33", "2025 · 15:22.16 i år", 2, "0–0–2–0–0", "2022", false, "VM U20 2016, EM U23 2017"],
-    ["Madelene Wanvik Holum", 1994, 31, "5000 m", "15:35.70", "2026", 0, "", "debutant", true, "Ingen registrert"],
-    ["Hanne Mjøen Maridal", 1996, 29, "10 000 m", "32:23.20", "2026", 2, "1 VM + 1 EM", "2024", false, "Ingen på bane · terreng U23 2014"],
-    ["Anne Marie Nordengen Sirevåg", 2004, 22, "5000 + 10 000 m", "15:19.19", "31:52.53 · begge 2026", 0, "", "debutant", true, "EM U20 2023, EM U23 2025 · terreng jr. 2021–2023"],
-    ["Lovise Skarbøvik Andresen", 2004, 22, "100 m hekk", "12.89", "2024", 3, "0–0–1–1–1", "2024", false, "VM U20 2022, EM U20 2023"],
-    ["Elea Jørstad Bock", 2002, 23, "100 m hekk", "12.85", "2026", 0, "", "debutant", true, "EM U20 2021"],
-    ["Martine Kolbeinshavn Hjørnevik", 2001, 25, "100 m hekk", "12.74", "2026", 1, "0–0–0–1–0", "2025", false, "EM U18 2018, EM U20 2019"],
-    ["Amalie Hammild Iuel", 1994, 32, "400 m hekk + 2 stafetter", "54.05", "2026", 13, "3–6–4–0–0", "2015", false, "EM U23 2015"],
-    ["Andrea Rooth", 2002, 24, "400 m hekk", "55.65", "2026", 2, "0–0–1–0–1", "2022", false, "EM U20 2021, EM U23 2023 (gull 400 m hekk)"],
-    ["Elisabeth Slettum", 1986, 39, "400 m hekk", "55.77", "2022", 8, "1–1–5–0–1", "2005", false, "VM U20 2004, EM junior 2005, EM U23 2007"],
-    ["Andrea Nygård Vie", 2006, 20, "3000 m hinder", "9:33.19", "2026", 0, "", "debutant", true, "EM U18 2022, VM U20 2024, EM U20 2025 (gull 3000 m hinder)"],
-    ["Vilde Våge Henriksen", 2000, 25, "3000 m hinder", "9:40.58", "2026", 0, "", "debutant", true, "EM U20 2017, EM U23 2021"],
-    ["Lene Onsrud Retzius", 1996, 30, "Stav", "4.73", "norsk rekord 2025", 10, "2–3–3–0–2", "2018", false, "VM U18 2013, VM U20 2014, EM jr. 2015, EM U23 2017"],
-    ["Kitty Augusta Friele Faye", 2002, 23, "Stav", "4.70", "2026", 3, "0–1–1–0–1", "2024", false, "EM U23 2023 (bronse stav)"],
-    ["Beatrice Nedberge Llano", 1997, 28, "Slegge", "73.21", "norsk rekord 2026", 7, "1–4–2–0–0", "2019", false, "VM U18 2013, VM U20 2014 og 2016, EM jr. 2015 (sølv), EM U23 2017"],
-    ["Sigrid Borge", 1995, 30, "Spyd", "66.50", "2023", 5, "0–2–3–0–0", "2016", false, "EM jr. 2013, VM U20 2014, EM U23 2015, 2017 og 2019"],
-    ["Marie Therese Obst", 1996, 30, "Spyd", "63.50", "2024", 4, "1–2–1–0–0", "2023", false, "VM U18 2013, VM U20 2014, EM jr. 2015"],
-    ["Kaja Mørch Pettersen", 2001, 24, "Spyd", "58.47", "2026", 0, "", "debutant", true, "EM U18 2018, EM U20 2019"],
-    ["Kaitesi Ertzgaard", 2000, 26, "4×400 m", "52.30", "2026", 0, "", "debutant", true, "EM U20 2019, EM U23 2021"],
-    ["Laura Johanna van der Veen", 2003, 23, "4×400 m", "53.12", "2026", 0, "", "debutant", true, "EM U23 2025"]
+    ["Maren Bakke Amundsen", 2003, 23, "200 m", "23.45", "23.30 m/vind 2025", "131 / 457", 0, "", "debutant", true, "EM U20 2021, VM U20 2022, EM U23 2025"],
+    ["Josefine Tomine Eriksen Aks", 2000, 25, "400 m + 2 stafetter", "51.43", "2026", "–", 3, "OL+VM+EM, kun stafett", "2024", false, "EM U18 2016, EM U20 2017, EM U23 2021"],
+    ["Astri Ayo Lakeri Ertzgaard", 2002, 24, "400 m + stafett", "51.92", "2025 · 52.37 i år", "76 / 243", 4, "1–1–1–0–1", "2024", false, "EM U20 2021 (400 m + 4×400), EM U23 2023"],
+    ["Henriette Jæger", 2003, 23, "400 m + 2 stafetter", "49.15", "norsk rekord 2026", "1 / 5", 9, "1–2–1–3–2", "2022", false, "VM U20 2022, EM U23 2023 (sølv) og 2025 (gull 400 m, sølv 200 m)"],
+    ["Pernille Karlsen Antonsen", 2002, 23, "800 m", "1:58.82", "2026", "15 / 44", 1, "0–0–0–1–0", "2026", false, "EM U20 2021"],
+    ["Amanda Marie Grefstad Frøynes", 1998, 27, "800 m", "2:00.35", "2026", "40 / 97", 0, "", "debutant", true, "VM U18 2015, VM U20 2016 (7-kamp), EM U20 2017"],
+    ["Anne Gine Løvnes", 2003, 23, "1500 m", "4:06.30", "2026", "48 / 106", 3, "0–1–0–1–1", "2025", false, "VM U20 2022, EM U23 2025"],
+    ["Marte Hovland", 2005, 21, "1500 m", "4:08.04", "2026", "65 / 141", 0, "", "debutant", true, "EM U18 2022, VM U20 2024"],
+    ["Ingeborg Østgård", 2003, 22, "1500 m", "4:08.84", "2025", "74 / 171", 4, "0–1–2–0–1", "2022", false, "EM U20 2021, VM U20 2022 · terreng jr. 2021 og 2022"],
+    ["Amalie Sæten", 1997, 28, "5000 m", "15:07.33", "2025 · 15:22.16 i år", "40 / 152", 2, "0–0–2–0–0", "2022", false, "VM U20 2016, EM U23 2017"],
+    ["Madelene Wanvik Holum", 1994, 31, "5000 m", "15:35.70", "2026", "76 / 255", 0, "", "debutant", true, "Ingen registrert"],
+    ["Hanne Mjøen Maridal", 1996, 29, "10 000 m", "32:23.20", "2026", "23 / 90", 2, "1 VM + 1 EM", "2024", false, "Ingen på bane · terreng U23 2014"],
+    ["Anne Marie Nordengen Sirevåg", 2004, 22, "5000 + 10 000 m", "15:19.19", "31:52.53 · begge 2026", "7 / 33 · 37 / 146", 0, "", "debutant", true, "EM U20 2023, EM U23 2025 · terreng jr. 2021–2023"],
+    ["Lovise Skarbøvik Andresen", 2004, 22, "100 m hekk", "12.89", "2024", "35 / 100", 3, "0–0–1–1–1", "2024", false, "VM U20 2022, EM U20 2023"],
+    ["Elea Jørstad Bock", 2002, 23, "100 m hekk", "12.85", "2026", "26 / 67", 0, "", "debutant", true, "EM U20 2021"],
+    ["Martine Kolbeinshavn Hjørnevik", 2001, 25, "100 m hekk", "12.74", "2026", "13 / 41", 1, "0–0–0–1–0", "2025", false, "EM U18 2018, EM U20 2019"],
+    ["Amalie Hammild Iuel", 1994, 32, "400 m hekk + 2 stafetter", "54.05", "2026", "4 / 14", 13, "3–6–4–0–0", "2015", false, "EM U23 2015"],
+    ["Andrea Rooth", 2002, 24, "400 m hekk", "55.65", "2026", "31 / 71", 2, "0–0–1–0–1", "2022", false, "EM U20 2021, EM U23 2023 (gull 400 m hekk)"],
+    ["Elisabeth Slettum", 1986, 39, "400 m hekk", "55.77", "2022", "40 / 94", 8, "1–1–5–0–1", "2005", false, "VM U20 2004, EM junior 2005, EM U23 2007"],
+    ["Andrea Nygård Vie", 2006, 20, "3000 m hinder", "9:33.19", "2026", "17 / 53", 0, "", "debutant", true, "EM U18 2022, VM U20 2024, EM U20 2025 (gull 3000 m hinder)"],
+    ["Vilde Våge Henriksen", 2000, 25, "3000 m hinder", "9:40.58", "2026", "25 / 72", 0, "", "debutant", true, "EM U20 2017, EM U23 2021"],
+    ["Lene Onsrud Retzius", 1996, 30, "Stav", "4.73", "norsk rekord 2025", "9 / 25", 10, "2–3–3–0–2", "2018", false, "VM U18 2013, VM U20 2014, EM jr. 2015, EM U23 2017"],
+    ["Kitty Augusta Friele Faye", 2002, 23, "Stav", "4.70", "2026", "7 / 18", 3, "0–1–1–0–1", "2024", false, "EM U23 2023 (bronse stav)"],
+    ["Beatrice Nedberge Llano", 1997, 28, "Slegge", "73.21", "norsk rekord 2026", "–", 7, "1–4–2–0–0", "2019", false, "VM U18 2013, VM U20 2014 og 2016, EM jr. 2015 (sølv), EM U23 2017"],
+    ["Sigrid Borge", 1995, 30, "Spyd", "66.50", "2023", "1 / 3", 5, "0–2–3–0–0", "2016", false, "EM jr. 2013, VM U20 2014, EM U23 2015, 2017 og 2019"],
+    ["Marie Therese Obst", 1996, 30, "Spyd", "63.50", "2024", "24 / 48", 4, "1–2–1–0–0", "2023", false, "VM U18 2013, VM U20 2014, EM jr. 2015"],
+    ["Kaja Mørch Pettersen", 2001, 24, "Spyd", "58.47", "2026", "27 / 51", 0, "", "debutant", true, "EM U18 2018, EM U20 2019"],
+    ["Kaitesi Ertzgaard", 2000, 26, "4×400 m", "52.30", "2026", "–", 0, "", "debutant", true, "EM U20 2019, EM U23 2021"],
+    ["Laura Johanna van der Veen", 2003, 23, "4×400 m", "53.12", "2026", "–", 0, "", "debutant", true, "EM U23 2025"]
   ];
 
   const MENN = [
-    ["Per Tinius Fremstad-Waldron", 2000, 25, "100 m + 4×100 m", "10.32", "2025 · 20.64 på 200 m i år", 0, "", "debutant", true, "Ingen registrert"],
-    ["Kenny Emi Tijani-Ajayi", 2003, 23, "200 m + 4×100 m", "20.71", "2026", 0, "", "debutant", true, "VM U20 2022, EM U23 2023 og 2025"],
-    ["Andreas Ofstad Kulseng", 2001, 25, "200 m + 2 stafetter", "20.53", "2026", 0, "", "debutant", true, "EM U23 2023"],
-    ["Håvard Bentdal Ingvaldsen", 2002, 23, "400 m + mixstafett", "44.39", "norsk rekord 2023", 6, "1–1–2–1–1", "2022", false, "EM U20 2021 (bronse), EM U23 2023 (gull 400 m)"],
-    ["Tobias Grønstad", 2002, 24, "800 m", "1:43.61", "2026", 7, "1–2–2–0–2", "2021", false, "EM U23 2023"],
-    ["Andreas Fjeld Halvorsen", 2005, 20, "1500 + 5000 m", "3:34.33", "13:18.44 i 2026", 0, "", "debutant", true, "EM U20 2021 og 2023, EM U18 2022 (2 sølv), VM U20 2024, EM U23 2025 · terreng-bronse U20 2024"],
-    ["Narve Gilje Nordås", 1998, 27, "1500 m", "3:29.47", "2023", 9, "2–3–2–1–1", "2021", false, "EM U20 2017, EM U23 2019 · terreng U23 2019"],
-    ["Jakob Ingebrigtsen", 2000, 25, "5000 m", "12:48.45", "3:26.73 på 1500 m — ER", 16, "2–5–3–2–4", "2017", false, "VM U20 2016, EM U20 2017 · terreng jr. 2016–2019 (4 gull)"],
-    ["Filip Ingebrigtsen", 1993, 33, "5000 m", "13:11.75", "3:30.01 på 1500 m", 12, "2–2–3–0–5", "2014", false, "EM jr. 2011, VM U20 2012, EM U23 2013"],
-    ["Magnus Tuv Myhre", 2000, 26, "5000 + 10 000 m", "13:06.98", "28:02.18", 2, "0–0–1–0–1", "2022", false, "EM U23 2021 · terreng jr. 2019, U23 2021 og 2022"],
-    ["Karsten Warholm", 1996, 30, "400 m hekk + mixstafett", "45.94", "verdensrekord 2021", 16, "3–5–5–1–2", "2014", false, "VM U18 2013 (gull tikamp), VM U20 2014, EM jr. 2015, EM U23 2017 (gull)"],
-    ["Jacob Boutera", 1996, 30, "3000 m hinder", "8:15.69", "2025", 4, "0–1–2–0–1", "2021", false, "Rett til senior"],
-    ["Erik Lomås", 1993, 33, "Maraton", "2:13:57", "", 0, "", "debutant", true, "Ingen registrert"],
-    ["Sjur Prestsæter", 1990, 35, "Maraton", "2:14:22", "Valencia 2025", 0, "", "debutant", true, "Ingen registrert"],
-    ["Eivind Øygard", 1992, 34, "Maraton", "2:16:36", "Valencia 2025, debut", 1, "0–0–1–0–0", "2018", false, "Rett til senior"],
-    ["Erlend Bolstad Raa", 2000, 26, "Høyde", "2.21", "innendørs 2025", 0, "", "debutant", true, "EM U18 2016"],
-    ["Henrik Flåtnes", 2001, 24, "Lengde", "8.10", "2026", 3, "0–0–2–0–1", "2022", false, "EM U18 2018, EM U20 2019, EM U23 2021 og 2023 (gull lengde)"],
-    ["Sondre Guttormsen", 1999, 27, "Stav", "6.06", "norsk rekord, mars 2026", 14, "2–4–2–3–3", "2018", false, "EM U18 2016, EM U20 2017, VM U20 2018, EM U23 2019 og 2021"],
-    ["Ola Stunes Isene", 1995, 31, "Diskos", "67.78", "2019", 5, "1–1–3–0–0", "2018", false, "EM jr. 2013, VM U20 2014, EM U23 2015 og 2017"],
-    ["Eivind Prestegård Henriksen", 1990, 35, "Slegge", "81.58", "norsk rekord, OL 2021", 15, "3–5–7–0–0", "2010", false, "VM U18 2007, EM jr. 2007 og 2009, VM U20 2008, EM U23 2011"],
-    ["Thomas Mardal", 1997, 29, "Slegge", "78.66", "2026", 6, "1–3–2–0–0", "2022", false, "EM jr. 2015, VM U20 2016, EM U23 2017"],
-    ["Sander Aae Skotheim", 2002, 24, "Tikamp", "8909", "norsk rekord, Götzis 2025", 10, "1–3–2–2–2", "2022", false, "EM U18 2018, EM U20 2021 (sølv), EM U23 2023 (sølv)"],
-    ["Jørgen Homstad", 2002, 24, "4×100 m", "10.48", "2026 · 21.01 på 200 m", 0, "", "debutant", true, "Ingen registrert"],
-    ["Mathias Hove Johansen", 1998, 27, "4×100 m", "10.27", "20.68 på 200 m", 3, "0–0–2–0–1", "2021", false, "VM U18 2015, VM U20 2016, EM U20 2017, EM U23 2019"],
-    ["Salum Ageze Kashafali", 1993, 32, "4×100 m", "10.34", "2026", 0, "para: VM-rekord T12", "debutant", true, "EM U23 2015"],
-    ["Jacob Vaula", 2001, 25, "4×100 m", "10.39", "2023 · 10.29 m/vind", 1, "0–0–0–0–1", "2021", false, "EM U18 2018, EM U23 2023"],
-    ["Andreas Grimerud", 2003, 23, "Mixstafett", "45.90", "2024", 2, "0–0–1–0–1", "2023", false, "EM U20 2021, VM U20 2022, EM U23 2023 og 2025"]
+    ["Per Tinius Fremstad-Waldron", 2000, 25, "100 m + 4×100 m", "10.32", "2025 · 20.64 på 200 m i år", "125 / 681", 0, "", "debutant", true, "Ingen registrert"],
+    ["Kenny Emi Tijani-Ajayi", 2003, 23, "200 m + 4×100 m", "20.71", "2026", "63 / 380", 0, "", "debutant", true, "VM U20 2022, EM U23 2023 og 2025"],
+    ["Andreas Ofstad Kulseng", 2001, 25, "200 m + 2 stafetter", "20.53", "2026", "29 / 183", 0, "", "debutant", true, "EM U23 2023"],
+    ["Håvard Bentdal Ingvaldsen", 2002, 23, "400 m + mixstafett", "44.39", "norsk rekord 2023", "71 / 331", 6, "1–1–2–1–1", "2022", false, "EM U20 2021 (bronse), EM U23 2023 (gull 400 m)"],
+    ["Tobias Grønstad", 2002, 24, "800 m", "1:43.61", "2026", "7 / 16", 7, "1–2–2–0–2", "2021", false, "EM U23 2023"],
+    ["Andreas Fjeld Halvorsen", 2005, 20, "1500 + 5000 m", "3:34.33", "13:18.44 i 2026", "21 / 99 · 52 / 108", 0, "", "debutant", true, "EM U20 2021 og 2023, EM U18 2022 (2 sølv), VM U20 2024, EM U23 2025 · terreng-bronse U20 2024"],
+    ["Narve Gilje Nordås", 1998, 27, "1500 m", "3:29.47", "2023", "11 / 22", 9, "2–3–2–1–1", "2021", false, "EM U20 2017, EM U23 2019 · terreng U23 2019"],
+    ["Jakob Ingebrigtsen", 2000, 25, "5000 m", "12:48.45", "3:26.73 på 1500 m — ER", "–", 16, "2–5–3–2–4", "2017", false, "VM U20 2016, EM U20 2017 · terreng jr. 2016–2019 (4 gull)"],
+    ["Filip Ingebrigtsen", 1993, 33, "5000 m", "13:11.75", "3:30.01 på 1500 m", "26 / 133", 12, "2–2–3–0–5", "2014", false, "EM jr. 2011, VM U20 2012, EM U23 2013"],
+    ["Magnus Tuv Myhre", 2000, 26, "5000 + 10 000 m", "13:06.98", "28:02.18", "66 / 284", 2, "0–0–1–0–1", "2022", false, "EM U23 2021 · terreng jr. 2019, U23 2021 og 2022"],
+    ["Karsten Warholm", 1996, 30, "400 m hekk + mixstafett", "45.94", "verdensrekord 2021", "1 / 2", 16, "3–5–5–1–2", "2014", false, "VM U18 2013 (gull tikamp), VM U20 2014, EM jr. 2015, EM U23 2017 (gull)"],
+    ["Jacob Boutera", 1996, 30, "3000 m hinder", "8:15.69", "2025", "–", 4, "0–1–2–0–1", "2021", false, "Rett til senior"],
+    ["Erik Lomås", 1993, 33, "Maraton", "2:13:57", "", "–", 0, "", "debutant", true, "Ingen registrert"],
+    ["Sjur Prestsæter", 1990, 35, "Maraton", "2:14:22", "Valencia 2025", "–", 0, "", "debutant", true, "Ingen registrert"],
+    ["Eivind Øygard", 1992, 34, "Maraton", "2:16:36", "Valencia 2025, debut", "–", 1, "0–0–1–0–0", "2018", false, "Rett til senior"],
+    ["Erlend Bolstad Raa", 2000, 26, "Høyde", "2.21", "innendørs 2025", "71 / 208", 0, "", "debutant", true, "EM U18 2016"],
+    ["Henrik Flåtnes", 2001, 24, "Lengde", "8.10", "2026", "18 / 45", 3, "0–0–2–0–1", "2022", false, "EM U18 2018, EM U20 2019, EM U23 2021 og 2023 (gull lengde)"],
+    ["Sondre Guttormsen", 1999, 27, "Stav", "6.06", "norsk rekord, mars 2026", "2 / 2", 14, "2–4–2–3–3", "2018", false, "EM U18 2016, EM U20 2017, VM U20 2018, EM U23 2019 og 2021"],
+    ["Ola Stunes Isene", 1995, 31, "Diskos", "67.78", "2019", "14 / 27", 5, "1–1–3–0–0", "2018", false, "EM jr. 2013, VM U20 2014, EM U23 2015 og 2017"],
+    ["Eivind Prestegård Henriksen", 1990, 35, "Slegge", "81.58", "norsk rekord, OL 2021", "27 / 44", 15, "3–5–7–0–0", "2010", false, "VM U18 2007, EM jr. 2007 og 2009, VM U20 2008, EM U23 2011"],
+    ["Thomas Mardal", 1997, 29, "Slegge", "78.66", "2026", "10 / 15", 6, "1–3–2–0–0", "2022", false, "EM jr. 2015, VM U20 2016, EM U23 2017"],
+    ["Sander Aae Skotheim", 2002, 24, "Tikamp", "8909", "norsk rekord, Götzis 2025", "–", 10, "1–3–2–2–2", "2022", false, "EM U18 2018, EM U20 2021 (sølv), EM U23 2023 (sølv)"],
+    ["Jørgen Homstad", 2002, 24, "4×100 m", "10.48", "2026 · 21.01 på 200 m", "–", 0, "", "debutant", true, "Ingen registrert"],
+    ["Mathias Hove Johansen", 1998, 27, "4×100 m", "10.27", "20.68 på 200 m", "–", 3, "0–0–2–0–1", "2021", false, "VM U18 2015, VM U20 2016, EM U20 2017, EM U23 2019"],
+    ["Salum Ageze Kashafali", 1993, 32, "4×100 m", "10.34", "2026", "–", 0, "para: VM-rekord T12", "debutant", true, "EM U23 2015"],
+    ["Jacob Vaula", 2001, 25, "4×100 m", "10.39", "2023 · 10.29 m/vind", "–", 1, "0–0–0–0–1", "2021", false, "EM U18 2018, EM U23 2023"],
+    ["Andreas Grimerud", 2003, 23, "Mixstafett", "45.90", "2024", "–", 2, "0–0–1–0–1", "2023", false, "EM U20 2021, VM U20 2022, EM U23 2023 og 2025"]
   ];
 
   function renderRows(data, target) {
     const tb = document.getElementById(target);
     data.forEach(r => {
-      const [name, born, age, ev, mark, note, n, split, debut, isFirst, jr] = r;
+      const [name, born, age, ev, mark, note, rank, n, split, debut, isFirst, jr] = r;
       const ageCls = age >= 32 ? " old" : (age <= 22 ? " young" : "");
       const noneJr = /^(Ingen|Rett til)/.test(jr);
       const tr = document.createElement("tr");
@@ -1325,6 +1333,7 @@
         '<td class="age' + ageCls + '">' + age + '</td>' +
         '<td class="ev">' + esc(ev) + '</td>' +
         '<td class="mark">' + esc(mark) + (note ? '<small>' + esc(note) + '</small>' : '') + '</td>' +
+        '<td class="rank">' + esc(rank) + '</td>' +
         '<td><span class="cs"><span class="cs-n">' + n + '</span>' +
           '<span class="cs-bar"><i style="width:' + (n / 16 * 100) + '%"></i></span></span>' +
           (split ? '<span class="cs-split">' + esc(split) + '</span>' : '') + '</td>' +
