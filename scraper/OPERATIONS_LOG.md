@@ -6,6 +6,59 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-09 — Diagnose og backfill: utøvere uten klubb (FULLFØRT)
+
+### Diagnose
+
+18 432 utøvere hadde `current_club_id = NULL`. 18 386 av dem ble opprettet i
+januar 2026 — altså i den opprinnelige bulkimporten, der 24,4 % manglet klubb.
+De deler seg i to helt ulike populasjoner:
+
+**A) 6 499 — klubben fantes allerede i basen.** De har resultater der
+`results.club_id` er satt; koblingen var bare ikke løftet opp på utøveren.
+Dette er det kjente punktet «Mangler kobling mellom athletes og
+current_club_id» fra `ACTIVITY_LOG.md`.
+
+**B) 11 423 — ingen resultater i det hele tatt.** 11 414 av dem har
+`external_id`, altså står de i kildens utøverregister. 11 093 er født i 2000
+eller senere.
+
+**Hypotesen ble testet mot kilden, ikke antatt.** Fire tilfeldige utøvere ble
+slått opp på `UtoverStatistikk.php`, både utendørs og innendørs:
+
+| Utøver | Utendørs | Innendørs |
+|---|---|---|
+| Hermine Sofie Stende (40389) | tom | tom |
+| Hanne Tufta (14711) | tom | tom |
+| Peter M Nyen (25530) | tom | tom |
+| Lara Elise Gúl (20408) | tom | — |
+
+Positiv kontroll (id 6895) ga 15 rader, så metoden fanger resultater når de
+finnes. **Konklusjon: de er tomme i kilden også.** Dette er ekte personer i
+utøverregisteret uten registrerte resultater — ikke importrester.
+**De skal ikke slettes.**
+
+Merk for NFIF-arbeidet: differansen mellom registrerte og aktive utøvere er
+direkte §12-materiale (rekruttering), og grensetilfellet treffer §6-skillet
+mellom prestasjonsstatistikk og *registrert aktivitet*. Anbefalt håndtering er
+å skille på «utøvere med resultater» i lister og tellinger, ikke å skjule dem.
+
+### Backfill (gruppe A)
+
+- **Script:** `backfill_current_club.py --apply --yes` (dry-run kjørt først)
+- **Metode:** klubb hentes fra utøverens *nyeste* resultat med klubb, slik at
+  den som har byttet klubb får den siste. Ingen data hentet utenfra.
+- **Resultat:** 6 499 utøvere oppdatert, fordelt på 455 klubber.
+  Utøvere uten klubb 18 432 → 11 933.
+  Kontroll: 0 gjenstående backfillbare, 0 som peker på slettet klubb,
+  utøver- og resultattotal uendret.
+- **Står igjen:** 11 423 uten resultater (gruppe B, urørt) + 510 som har
+  resultater, men uten klubb på noen av dem. De siste må hentes fra kilden.
+- **Sikkerhetskopi:** `backups/backfill_current_club_20260809_200013.json`
+  (feltet var NULL for alle før kjøring; angring er å sette tilbake til NULL).
+
+---
+
 ## 2026-08-09 — Sammenslåing av dublette klubber (FULLFØRT)
 
 - **Script:** `merge_duplicate_clubs.py --apply --yes` (dry-run kjørt to ganger først)
