@@ -1,0 +1,420 @@
+New Statistics and Activity Platform for
+Norwegian Athletics
+1. Background
+Norwegian Athletics has since 2013 used a statistics platform developed and
+maintained by volunteer resources.
+
+The current solution contains valuable functionality for track and field statistics, road
+running statistics, athlete profiles, club statistics, competition results and result lists.
+However, the solution is no longer sustainable to maintain and develop with the
+volunteer resources currently available.
+
+Norwegian Athletics therefore wishes to establish a new national platform for statistics,
+results and activity data.
+
+The platform shall replace and modernise the existing statistics platform while also
+providing Norwegian Athletics with improved opportunities to collect, analyse and
+present data from both track and field and out-of-stadia running.
+
+2. Purpose
+The platform shall serve two main purposes:
+
+   1. To provide athletes, clubs, coaches, media and athletics enthusiasts with
+      access to official statistics, result lists, record overviews and athlete profiles.
+   2. To provide Norwegian Athletics with better insight into activity, participation,
+      development and trends across clubs, regions, events and disciplines.
+
+The long-term objective is that all activity from approved athletics events shall be
+registered, stored and presented in a structured and meaningful manner.
+
+3. Scope
+The platform shall include:
+
+   •   Track and field statistics
+   •   Out-of-stadia running
+   •   Athlete profiles
+   •   Club statistics
+   •   Regional statistics
+   •   Event and competition result pages
+   •   Result lists and statistics lists
+   •   Records and best performances
+   •   Activity and participation data
+   •   APIs for approved users and systems
+
+The platform shall serve as the official statistics and results platform of Norwegian
+Athletics.
+
+4. Data Ownership
+All data collected, imported, processed and displayed within the platform shall be
+owned by Norwegian Athletics.
+
+Norwegian Athletics shall have full access to export, analyse and reuse the data for both
+internal and external purposes.
+
+5. Core Principle – Results and Activity
+The platform shall distinguish between:
+
+   •   Performance statistics
+   •   Records and best performances
+   •   Registered activity and participation
+
+This is particularly important for out-of-stadia running, where not all events, distances
+and courses meet the same technical requirements.
+
+6. Quality Levels for Results
+All results shall be classified according to quality level.
+
+Level A – Record Eligible
+
+Results that fulfil all requirements for Norwegian records or official best performances.
+
+Examples of criteria:
+
+   •   Approved and calendar-listed event
+   •   Valid licence
+   •   Certified course measurement
+   •   Approved timing system
+   •   Official distance
+   •   Required documentation
+   •   Compliance with national and international regulations
+
+Level B – Statistics Approved
+Results that may be included in official statistics and statistics lists but do not
+necessarily meet all requirements for record eligibility.
+
+Level C – Registered Activity
+
+Results that document activity but should not necessarily be treated as official
+statistics or record performances.
+
+Examples:
+
+   •   Events without certified course measurement
+   •   Non-standard distances
+
+Users shall be able to filter statistics according to these levels.
+
+7. Track and Field Statistics
+The platform shall support comprehensive track and field statistics, including:
+
+   •   Indoor and outdoor results
+   •   All official athletics disciplines
+   •   All relevant age groups
+   •   Senior, junior, youth and Masters categories
+   •   National statistics
+   •   Regional statistics
+   •   Club statistics
+   •   Athlete profiles
+   •   Competition pages
+   •   Annual statistics
+   •   Historical statistics where data is available
+   •   Records and best performances
+
+At a minimum, the solution shall preserve the core functionality of the current statistics
+platform.
+
+Track configuration
+Separate records shall be kept for results in track events obtained on standard tracks
+complying with TR14.1 and on short (indoor) tracks complying with TR43.1
+
+Flagged performances
+Database records for performances shall be flagged according to the following criteria:
+   • Results obtained in indoor/covered facilities.
+   • Results obtained in World Rankings Competitions.
+   • Results obtained in track events in mixed competitions. In addition to the
+      provisions for mixed competitions in TR9.4.1, national technical regulations allow
+       mixed competitions in all track events in competitions that are not World Ranking
+       Competitions.
+   •   Results obtained by foreign athletes affiliated with Norwegian clubs.
+   •   Results obtained in Masters competitions governed by WMA rules. Since WMA
+       regulations in some aspects differ from WA regulations.
+   •   Not ratified performances, including codes (TBD) to note the reason for non-
+       ratification.
+   •   Hand-timed performances in track events.
+
+8. Out-of-Stadia Running
+Out-of-stadia running (road running, trail running, mountain running etc.) shall be a
+central part of the solution.
+
+The platform shall support both ranking for official record distances as well as recording
+participation in other non-official distances.
+
+This includes, but is not limited to:
+
+   •   3 km
+   •   5 km
+   •   10 km
+   •   Half marathon
+   •   Marathon
+   •   Ultra-distance races
+   •   Relays
+   •   Cross-country races
+   •   Mountain races
+   •   Other distances
+
+For each event and result, the system shall be capable of storing relevant metadata
+including:
+
+   •   Distance
+   •   Event type
+   •   Course type
+   •   Course measurement status
+   •   Timing method
+   •   Organiser
+   •   Location
+   •   Date
+   •   Number of participants
+   •   Number of finishers
+   •   Gender distribution where available
+   •   Age distribution where available
+   •   Club affiliation where available
+9. Athlete Profiles
+The system shall provide athlete profiles.
+
+An athlete profile may include:
+
+   •   Name
+   •   Date of birth or year of birth
+   •   Club history
+   •   Results history
+   •   Personal bests
+   •   Season's best performances
+   •   Development over time
+   •   Track and field results
+   •   Out-of-stadia running results
+   •   Links to competitions and events
+
+The system shall be able to manage name changes, club transfers and duplicate athlete
+records.
+
+10. Club and Regional Statistics
+The system shall provide statistics for clubs and regions.
+
+This may include:
+
+   •   Statistics lists
+   •   Results history
+   •   Number of active athletes
+   •   Number of registered results
+   •   Number of organised competitions
+   •   Development over time
+   •   Regional overviews and comparisons
+
+11. Event Result Pages
+Each competition or race shall have its own result page.
+
+The page shall display:
+
+   •   Event name
+   •   Date
+   •   Location
+   •   Organiser
+   •   Event type
+   •   Result lists
+   •   Links to athlete profiles
+   •   Relevant approval and status information
+
+12. Activity and Participation Data
+The platform shall provide aggregated statistics and analyses.
+
+Examples include:
+
+   •   Number of events
+   •   Number of starts
+   •   Number of finishers
+   •   Number of unique participants
+   •   Activity by club
+   •   Activity by region
+   •   Activity by age group
+   •   Activity by gender
+   •   Activity by discipline or distance
+   •   Development over time
+
+This is considered particularly important for Norwegian Athletics’ strategic work related
+to recruitment and membership development.
+
+13. Integrations and Data Import
+Import of results shall be automated as far as possible.
+
+The platform shall support integration with relevant systems, including:
+
+   •   iSonen
+   •   OpenTrack
+   •   FriRes/LiveRes
+   •   EQ Timing
+   •   Ultimate Sport Service
+   •   Other approved systems
+
+Priority order:
+
+   1. API integration
+   2. Structured data files (JSON/XML)
+   3. Excel/CSV
+   4. PDF and manual processing as a last resort
+
+The solution shall reduce the need for manual statistics processing as much as
+possible.
+14. Future iSonen Workflow
+Norwegian Athletics is currently working with Buypass/iSonen on automated data flows.
+
+The platform shall be prepared to receive data from future integrations where:
+
+   •   Entry lists are automatically transferred from iSonen to competition
+       management systems
+   •   Results are automatically transferred back to iSonen
+   •   Statistics data can be generated automatically from this workflow
+
+15. Historical Data
+Historical data from the current statistics platform shall be imported.
+
+The first priority is existing structured data. This includes full depth records from 2013
+onwards.
+
+Additional historical data may be imported in later phases. This includes partial records
+from 2001 to 2012. Older data may also be available at a later stage.
+
+The supplier shall describe how historical data can be imported, validated and further
+developed over time.
+
+16. Records and Best Performances
+The platform shall support:
+
+   •   Norwegian records
+   •   Age-group records
+   •   Masters records
+   •   Best performances
+   •   Record approval status
+   •   Documentation and historical information
+
+The system shall clearly distinguish between:
+
+   •   Record eligible results
+   •   Statistics approved results
+   •   Registered activity
+
+17. User Experience
+The solution shall function on:
+
+   •   Mobile devices
+   •   Tablets
+   •   Desktop computers
+
+Users shall be able to filter by:
+
+   •   Athlete
+   •   Club
+   •   Region
+   •   Age
+   •   Gender
+   •   Discipline
+   •   Distance
+   •   Season
+   •   Date
+   •   Event
+   •   Quality level
+
+It shall be easy to navigate between athletes, clubs, events and statistics.
+
+18. API and Export
+The system shall provide documented APIs for approved users.
+
+The APIs should support:
+
+   •   Athlete data
+   •   Results
+   •   Events
+   •   Club statistics
+   •   Regional statistics
+   •   Statistics lists
+   •   Activity data
+
+The API should be based on a json interface. Furthermore, data shall be exportable to
+Excel and/or CSV formats.
+
+19. Privacy and Security
+The solution shall comply with applicable privacy and data protection requirements.
+
+The supplier shall describe how personal data is stored, processed and secured.
+
+20. Implementation Phases
+Phase 1 – Core Platform
+   •   Import of existing track and field statistics
+   •   Import of existing road running statistics
+   •   Athlete profiles
+   •   National statistics
+   •   Competition pages
+   •   Club and regional statistics
+
+Phase 2 – Integrations and Automation
+
+   •   API integrations
+   •   Automated result import
+   •   Improved data validation
+   •   Administration tools
+
+Phase 3 – Activity and Analysis
+
+   •   Unique participants
+   •   Activity development
+   •   Club activity
+   •   Regional activity
+   •   Distance development
+   •   Dashboards for the federation and regional associations
+
+Phase 4 – Historical Expansion
+
+   •   Additional historical data
+   •   Expanded historical statistics
+   •   Data cleansing and quality assurance
+
+21. Proposal Submission
+The supplier shall describe:
+
+   •   Technical solution
+   •   Data model
+   •   Integration solution
+   •   User interface
+   •   Reference projects
+   •   Timeline
+   •   Price structure, specifying both startup/implementation costs and annual
+       operating costs for a 3–5-year period
+   •   Support and maintenance model
+
+22. Mandatory Requirements
+   •   Norwegian Athletics owns all data
+  •   Official statistics platform for Norwegian Athletics
+  •   Track and field statistics
+  •   Running statistics
+  •   Athlete profiles
+  •   National statistics
+  •   Club statistics
+  •   Regional statistics
+  •   Event result pages
+  •   Historical data
+  •   Result quality classifications
+  •   API support
+  •   Export functionality
+  •   Mobile-friendly solution
+
+23. Desired Additional Features
+  •   Fully automated result import
+  •   Analysis modules
+  •   Graphical development curves
+  •   Advanced activity analysis
+  •   Data cleansing tools
+  •   Public dashboards
+  •   Expanded historical statistics
+  •   Open APIs for partners
+
+24. Timeline
+  •   Bidding deadline: 31.08.2026
+  •   Operational solution covering at least all track and field results by 01.01.2027
+  •   If initial solution does not cover out-of-stadia events, a credible roadmap for a
+      complete solution must be supplied by 31.12.2026
+
+
+25. Points of contact
+  •   Technical issues: Thor Gjesdal (thor.gjesdal@friidrett.no)
+  •   Commercial/contractual issues: Magnus Trosdahl
+      (magnus.trosdahl@friidrett.no)
+
