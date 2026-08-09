@@ -36,9 +36,32 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
   i stedet for å flyttes. Ingen data gikk tapt.
 - **Sikkerhetskopi:** `backups/fix_mangekamp_korrupsjon_20260809_18*.json`
   (alle berørte utøvere, resultater og klubber før endring).
-- **GJENSTÅR — VIKTIG:** Selve importfeilen er *ikke* rettet. Ved neste import av
-  et mangekampstevne vil korrupsjonen gjenoppstå. Rot-årsaken må fikses i
-  parselogikken i `update_results.py`, jf. regel 6 i CLAUDE.md.
+### ROT-ÅRSAK FUNNET OG FIKSET
+
+- **Skyldig:** `import_youth_stats.py` linje 462 (kjørt mai 2026 — 659 av de 660
+  korrupte radene ble opprettet da). *Ikke* `update_results.py`; dagens kilde på
+  `StevneResultater.php` leverer navn og klubb i separate kolonner og er ren.
+- **Feilen:** `name_club_text.rsplit(',', 1)`. Cellen har formen `"Navn, Klubb"`,
+  men for mangekamp limes delresultatene på i samme celle med komma som
+  desimaltegn. `rsplit` tok da *siste* komma:
+
+      "Maiken Rose Bjerknesli, IL i BUL14,23-7,40-16,56-14,43-4,61"
+        -> navn  = "Maiken Rose Bjerknesli, IL i BUL14,23-7,40-16,56-14,43-4"
+        -> klubb = "61"
+
+- **Fikset:**
+  1. `split(',', 1)` — splitter på *første* komma. Strengt tryggere enn `rsplit`
+     også for klubbnavn som inneholder komma.
+  2. Ny `strip_combined_event_results()` kutter påhengte delresultater fra
+     klubbnavnet. Kutter på desimaltall (`14,23`) og statuskoder (`DNF-`), men
+     ikke på rene sifre — ekte klubber som «3T» overlever.
+  3. Ny `is_valid_club_name()` i **både** `import_youth_stats.py` og
+     `update_results.py` som siste forsvarslinje: et klubbnavn må inneholde
+     minst én bokstav og kan ikke bestå kun av sifre, skilletegn og statuskoder.
+     Ugyldige navn gir `None` og en advarsel i loggen i stedet for en ny klubb.
+- **Verifisert mot sikkerhetskopien:** klubbnavnet gjenvinnes korrekt fra alle
+  659 korrupte strenger, alle 133 kjente søppelklubber avvises av begge
+  skriptene, og ingen av de testede ekte klubbnavnene avvises.
 
 ---
 

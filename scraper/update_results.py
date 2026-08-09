@@ -590,12 +590,35 @@ def get_season_id(date_str, indoor):
     return _season_cache.get(key)
 
 
+def is_valid_club_name(name):
+    """Sperre mot at parsefeil skaper søppelklubber.
+
+    Et klubbnavn må inneholde minst én bokstav og kan ikke være et rent tall
+    eller en statuskode. Fanger "01", "61", "04-DNS", "0(558)" — mønsteret som
+    oppsto da mangekamp-delresultater ble tolket som klubbnavn i mai 2026.
+    Se OPERATIONS_LOG.md 2026-08-09.
+    """
+    n = (name or '').strip()
+    if len(n) < 2:
+        return False
+    if not re.search(r'[A-Za-zÆØÅæøå]', n):
+        return False
+    # Kun sifre, skilletegn og statuskoder — f.eks. "04-DNS", "6)-DNS-DNS".
+    if re.fullmatch(r'[\d\s\-–,.()]*(?:(?:DNS|DNF|DQ|NM)[\d\s\-–,.()]*)+', n, re.IGNORECASE):
+        return False
+    return True
+
+
 def get_or_create_club(name):
     """Get or create a club, return its ID."""
     if not name or name.strip() == '':
         return None
 
     name = name.strip()
+    if not is_valid_club_name(name):
+        logger.warning(f"Avviser ugyldig klubbnavn fra parsing: {name!r}")
+        return None
+
     if name in _club_cache:
         return _club_cache[name]
 
