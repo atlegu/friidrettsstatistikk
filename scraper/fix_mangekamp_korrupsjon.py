@@ -42,6 +42,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
+from postgrest.exceptions import APIError
 from supabase import create_client, Client
 
 load_dotenv()
@@ -217,18 +218,39 @@ def main():
             return
 
     # 5. Flytt resultater, slett falske poster
-    moved = deleted_ath = 0
-    for p in plan:
+    #
+    # Noen av mangekampresultatene finnes allerede korrekt importert på den
+    # ekte utøveren. Da er den korrupte posten et rent duplikat, og resultatet
+    # skal slettes i stedet for å flyttes. Unik-constrainten
+    # results_innhold_unik (athlete_id, event_id, meet_id, performance, place,
+    # wind) er fasit på hva som er duplikat, så vi lar databasen avgjøre.
+    moved = dupes = deleted_ath = failed = 0
+    for i, p in enumerate(plan, 1):
         upd = {'athlete_id': p['real_athlete_id'], 'club_id': p['club_id']}
-        r = sb.table('results').update(upd).eq('athlete_id', p['junk_athlete_id']).execute()
-        moved += len(r.data)
+        try:
+            r = sb.table('results').update(upd)\
+                  .eq('athlete_id', p['junk_athlete_id']).execute()
+            moved += len(r.data)
+        except APIError as e:
+            if e.code != '23505':
+                logger.error('  FEIL på %s: %s', p['junk_full_name'][:50], e.message)
+                failed += 1
+                continue
+            # Resultatet finnes allerede på den ekte utøveren — slett duplikatet.
+            d = sb.table('results').delete()\
+                  .eq('athlete_id', p['junk_athlete_id']).execute()
+            dupes += len(d.data)
+
         sb.table('athletes').delete().eq('id', p['junk_athlete_id']).execute()
         deleted_ath += 1
-        if deleted_ath % 100 == 0:
-            logger.info('  ... %d/%d behandlet', deleted_ath, len(plan))
+        if i % 100 == 0:
+            logger.info('  ... %d/%d behandlet', i, len(plan))
 
-    logger.info('Resultater flyttet: %d', moved)
-    logger.info('Falske utøvere slettet: %d', deleted_ath)
+    logger.info('Resultater flyttet til riktig utøver: %d', moved)
+    logger.info('Duplikatresultater slettet:           %d', dupes)
+    logger.info('Falske utøvere slettet:               %d', deleted_ath)
+    if failed:
+        logger.warning('Rader som feilet og står urørt:       %d', failed)
 
     # 6. Slett falske klubber som nå er tomme
     deleted_clubs = 0

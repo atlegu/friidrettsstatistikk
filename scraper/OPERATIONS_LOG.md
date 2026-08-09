@@ -6,6 +6,42 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-09 — Reparasjon av mangekamp-korrupsjon (FULLFØRT)
+
+- **Script:** `fix_mangekamp_korrupsjon.py --apply --yes` (dry-run kjørt først)
+- **Symptom:** Klubbregisteret inneholdt 133 «klubber» med navn som «01», «61»,
+  «55-DNF». Synlig som søppel i klubboversikten på nettsiden.
+- **Årsak:** Importparseren for mangekampstevner splittet ikke kolonnene. Hele
+  strengen `"Navn, Klubb<delresultater>"` havnet i `athletes.full_name`, og halen
+  av strengen ble opprettet som egen klubb. Eksempel:
+  `"Maiken Rose Bjerknesli, IL i BUL14,23-7,40-16,56-14,43-4"` med klubb `"61"`.
+  Hver slik rad skapte en falsk utøverpost med nøyaktig ett resultat.
+- **Omfang:** 660 falske utøverposter, 133 falske klubber, 660 berørte resultater.
+- **Metode:** Ekte navn og klubb ble trukket ut av den korrupte strengen,
+  ekte utøver slått opp på navn + fødselsår, resultatet flyttet dit.
+  Nasjonalitetskoder som `(DEN)`, `(GER)`, `(SWE)` ble strippet før oppslag.
+- **Resultat:**
+  - 318 resultater flyttet til riktig utøver og klubb
+  - 275 duplikatresultater slettet (fantes allerede korrekt importert)
+  - 656 falske utøverposter slettet — utøvere 88 016 → 87 360
+  - 131 av 133 falske klubber slettet — klubber 2 636 → 2 505
+  - Resultater 1 411 073 → 1 410 798. Ingen foreldreløse resultater.
+- **Står igjen, krever manuell vurdering (4 poster, 2 klubber):**
+  - «Siv Sundt (12)» — strengen mangler komma å dele på
+  - «Alfred Lund Stende» (2 rader) — 4 navnelike utøvere i basen
+  - «Linnea Elise Westre» — 3 navnelike utøvere i basen
+- **Første kjøring stoppet** etter 63 rader på unik-constrainten
+  `results_innhold_unik`. Det avdekket at 275 av postene var rene duplikater.
+  Skriptet ble endret til å la databasen avgjøre: ved 23505 slettes duplikatet
+  i stedet for å flyttes. Ingen data gikk tapt.
+- **Sikkerhetskopi:** `backups/fix_mangekamp_korrupsjon_20260809_18*.json`
+  (alle berørte utøvere, resultater og klubber før endring).
+- **GJENSTÅR — VIKTIG:** Selve importfeilen er *ikke* rettet. Ved neste import av
+  et mangekampstevne vil korrupsjonen gjenoppstå. Rot-årsaken må fikses i
+  parselogikken i `update_results.py`, jf. regel 6 i CLAUDE.md.
+
+---
+
 ## 2026-08-07 — Sesongoppdatering mai–august (FULLFØRT)
 
 ### Import
