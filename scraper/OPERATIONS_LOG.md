@@ -6,6 +6,49 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-09 — Sammenslåing av dublette klubber (FULLFØRT)
+
+- **Script:** `merge_duplicate_clubs.py --apply --yes` (dry-run kjørt to ganger først)
+- **Omfang:** Klubber som er identiske når tegnsetting, mellomrom og
+  bokstavstørrelse ignoreres. 34 grupper, 41 overtallige klubbrader.
+- **Resultat:**
+  - 348 resultater og 52 utøvere flyttet til den beholdte klubben
+  - 41 klubbrader slettet — klubber 2 505 → 2 464
+  - 1 klubbnavn korrigert: «Leksvik Il» → «Leksvik IL»
+  - Kontroll etterpå: 0 gjenstående dubletter, 0 døde klubbreferanser,
+    resultattotal uendret (1 410 798).
+    «IL i BUL Tromsø» 19 154 → 19 253, som er summen av de fem variantene.
+- **Valgregler:** Raden som beholdes er den med flest resultater (færrest rader
+  å flytte). Navnet som beholdes er *samme* variant, med kun bokstavstørrelse
+  rettet på entydige klubbforkortelser (IL, IF, IK, SK …).
+- **Lærdom — første heuristikk var for smart:** en scorefunksjon som belønnet
+  mellomrom foreslo «IL Stjørdals-Blink» → «IL Stjørdals- Blink» og
+  «IL Norna-Salhus» → «IL Norna Salhus». Regelen ble byttet ut med den
+  konservative varianten over. **Aldri finn opp en skrivemåte som ikke
+  allerede finnes i basen.**
+- **Ytelse:** første versjon hentet alle 1,4 mill. resultatrader for å telle
+  (4+ minutter). Endret til å telle kun for klubber i dublettgrupper — 8 sekunder.
+- **Sikkerhetskopi:** `backups/merge_duplicate_clubs_20260809_192616.json`
+
+### IKKE GJORT — krever domenevurdering
+
+Klubber der det ene navnet er et prefiks av det andre ble bevisst *ikke* rørt.
+Kartleggingen viser at klassen er en blanding:
+
+- **Samme klubb, «Friidrett»-suffiks** (8+ par): «Kongsvinger IL» /
+  «Kongsvinger IL Friidrett», «Førde IL» / «Førde IL Friidrett», «Rena IL» /
+  «Rena IL Friidrett», «Kragerø IF» / «Kragerø IF Friidrett», m.fl.
+  Bør trolig slås sammen, men er en avgjørelse om hvorvidt friidrettsgruppa
+  skal være egen enhet.
+- **Helt ulike klubber som ligner** (må IKKE slås sammen): «IL Sand» /
+  «IL Sandvin», «IL Nor» / «IL Norodd» / «IL Nordlys» / «IL Norrøna»,
+  «IL Fri» / «IL Fri-Kameratene», «IL Try» / «IL Trysilgutten»,
+  **«IL i BUL» (Oslo) / «IL i BUL Tromsø»**.
+- **Reelt tvetydig:** «Eidsvåg IL, Romsdal» og «Eidsvåg IL, Åsane» er to ulike
+  klubber — og «Eidsvåg IL» (153 res.) kan være enten.
+
+---
+
 ## 2026-08-09 — Reparasjon av mangekamp-korrupsjon (FULLFØRT)
 
 - **Script:** `fix_mangekamp_korrupsjon.py --apply --yes` (dry-run kjørt først)
