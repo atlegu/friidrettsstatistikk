@@ -60,6 +60,16 @@ session.headers.update({
 # EVENT NAME MAPPING (scraped name -> event code in DB)
 # ============================================================
 EVENT_NAME_TO_CODE = {
+    # Kast-femkamp. Kilden bruker full øvelsesbeskrivelse med klassesuffiks,
+    # mens basen har kortnavnet "Kast-femkamp Ungdom"/"... Veteran". Uten disse
+    # to linjene faller resultatene ut som "Unmapped event" (11 stk 2026-08-21).
+    'Kast 5 Kamp (Slegge-Kule-Diskos-Spyd-Vektkast) Veteran':
+        'kast_5_k_slegge-kule-diskos-spyd-vektkast_veteran',
+    'Kast 5 Kamp (Slegge-Kule-Diskos-Spyd-Vektkast) Ungdom':
+        'kast_5_k_slegge-kule-diskos-spyd-vektkast_ungdom',
+    'Kast 5 Kamp (Slegge-Kule-Diskos-Spyd-Vektkast)':
+        'kast_5_k_slegge-kule-diskos-spyd-vektkast',
+
     # Sprint
     '60 meter': '60m',
     '100 meter': '100m',
@@ -137,6 +147,7 @@ COMBINED_EVENT_PATTERNS = {
 # Caches (loaded once at startup)
 # ============================================================
 _event_cache = {}      # event_code -> event_id
+_event_manual_eligible = set()  # event_id-er der manuell tidtaking er mulig
 _club_cache = {}       # club_name -> club_id
 _athlete_cache = {}    # (name, birth_year, gender) -> athlete_id
 _meet_cache = {}       # (name, date) -> meet_id
@@ -364,18 +375,43 @@ def find_missing_meets(source_meets: List[Dict], db_meets: List[Dict]) -> List[D
     return missing + incomplete
 
 
-def parse_result_wind(result_str: str) -> Tuple[str, Optional[str]]:
-    """Parse result and wind from formats like '9,17(+0,9)'."""
+def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool]:
+    """Parse resultat, vind og manuell-markør.
+
+    Kilden bruker flere varianter:
+        '9,17(+0,9)'      -> ('9.17', '+0.9', False)
+        '14.9(-0.2) M'    -> ('14.9', '-0.2', True)     ' M' = manuell tidtaking
+        '40.0(ok) M'      -> ('40.0', None,   True)     '(ok)' = ingen vindverdi
+        '5.01.7 M'        -> ('5.01.7', None, True)
+
+    Tidligere krevde regexen at strengen SLUTTET med ')'. Alt med ' M' etter
+    parentesen falt derfor gjennom, og hele strengen ble lagt i `performance`.
+    Databasetriggeren `calculate_performance_value` kaller `parse_performance()`
+    som caster til numeric, og innsettingen feilet med 22P02. 44 resultater gikk
+    tapt i importen 2026-08-21. Se OPERATIONS_LOG.md.
+    """
     if not result_str:
-        return '', None
+        return '', None, False
 
     result_str = result_str.strip()
 
-    match = re.match(r'(.+?)\(([+-]?\d+[,.]?\d*)\)$', result_str)
-    if match:
-        return match.group(1).strip(), match.group(2).replace(',', '.')
+    # ' M' til slutt betyr manuell tidtaking. Må fjernes før vindparsingen.
+    is_manual = False
+    m = re.search(r'\s+M$', result_str)
+    if m:
+        is_manual = True
+        result_str = result_str[:m.start()].strip()
 
-    return result_str, None
+    # Vind i parentes. Innholdet er ikke alltid et tall — '(ok)' betyr at
+    # resultatet er godkjent uten registrert vindverdi.
+    match = re.match(r'(.+?)\(([^)]*)\)$', result_str)
+    if match:
+        value, inner = match.group(1).strip(), match.group(2).strip()
+        if re.fullmatch(r'[+-]?\d+[,.]?\d*', inner):
+            return value, inner.replace(',', '.'), is_manual
+        return value, None, is_manual
+
+    return result_str, None, is_manual
 
 
 def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
@@ -426,7 +462,7 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
                     if place_match:
                         place = int(place_match.group(1))
 
-                    result, wind = parse_result_wind(result_raw)
+                    result, wind, is_manual = parse_result_wind(result_raw)
 
                     name = name_text
                     birth_year = None
@@ -454,6 +490,7 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
                         'club': club,
                         'result': result.replace(',', '.'),
                         'wind': wind,
+                        'is_manual': is_manual,
                         'is_indoor': not meet['outdoor']
                     })
                 except Exception as e:
@@ -468,13 +505,24 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
 # ============================================================
 
 def load_events():
-    """Load all events from database into cache."""
-    global _event_cache
-    response = supabase.table('events').select('id, code, name').execute()
+    """Load all events from database into cache.
+
+    Bygger også settet over øvelser der manuell tidtaking i det hele tatt er
+    mulig. Per regelverket gjelder manuell tidtaking KUN løpsøvelser kortere
+    enn 800 m — tekniske øvelser har ingen slik distinksjon, og 800 m og
+    lengre har det aldri. Se CLAUDE.md punkt 7.
+    """
+    global _event_cache, _event_manual_eligible
+    response = supabase.table('events').select('id, code, name, result_type').execute()
     for e in response.data:
         _event_cache[e['code']] = e['id']
         _event_cache[e['name']] = e['id']
-    logger.info(f"Loaded {len(response.data)} events")
+        if e['result_type'] == 'time':
+            m = re.match(r'^(\d+)m', e['code'] or '')
+            if m and int(m.group(1)) < 800:
+                _event_manual_eligible.add(e['id'])
+    logger.info(f"Loaded {len(response.data)} events "
+                f"({len(_event_manual_eligible)} kan ha manuell tidtaking)")
 
 
 def load_seasons():
@@ -881,6 +929,12 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
 
         if wind is not None and wind > 2.0:
             result_data['is_wind_legal'] = False
+
+        # Kilden markerer manuell tidtaking med ' M'. Det er en autoritativ
+        # opplysning og bedre enn å utlede den fra presisjon. Flagget settes
+        # kun der manuell tidtaking faktisk er mulig (løp under 800 m).
+        if row.get('is_manual') and event_id in _event_manual_eligible:
+            result_data['is_manual_time'] = True
 
         result_batch.append(result_data)
 

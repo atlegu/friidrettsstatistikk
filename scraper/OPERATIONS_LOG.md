@@ -6,6 +6,64 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-21 — Sesongoppdatering august (FULLFØRT)
+
+- **Script:** `update_results.py --outdoor --season 2026` (dry-run først)
+- **Utgangspunkt:** basen sto på 2026-08-01, tre uker av utendørssesongen manglet.
+- **Første kjøring:** 29 stevner i kilden, 25 manglende. 1 246 resultater skrapet,
+  1 187 importert. **44 feilet og 11 falt ut på øvelsesmapping.**
+
+### BUG 1 FUNNET OG FIKSET: ' M'-markøren for manuell tidtaking
+
+- **Symptom:** `invalid input syntax for type numeric: "14.9(-0.2) M"` (22P02).
+  Andre varianter: `"40.0(ok) M"`, `"26.7(+0.6) M"`, `"5.01.7 M"`.
+- **Årsak:** `parse_result_wind()` krevde at strengen SLUTTET med `)`:
+  `re.match(r'(.+?)\(([+-]?\d+[,.]?\d*)\)$', ...)`. Kilden legger på ` M` etter
+  parentesen for manuelt tidtatte løp, så regexen bommet og hele strengen ble
+  liggende i `performance`. Databasetriggeren `calculate_performance_value`
+  kaller `parse_performance()` som caster til numeric — og innsettingen feilet.
+  Feilen var altså i scraperen, men viste seg først i databasen.
+- **Fikset:** `parse_result_wind()` returnerer nå `(resultat, vind, is_manual)`.
+  Den stripper ` M` først, og godtar ikke-numerisk innhold i parentesen
+  (`(ok)` = godkjent uten registrert vindverdi) i stedet for å feile.
+- **Bonus — vi kastet bort autoritativ informasjon:** `is_manual_time` ble ikke
+  satt i det hele tatt i `update_results.py`. Kilden *forteller* oss hvilke
+  resultater som er håndtidtatt; vi utledet det i stedet fra presisjon
+  (CLAUDE.md punkt 7). Flagget settes nå fra kilden, men kun for øvelser der
+  manuell tidtaking faktisk er mulig — løp under 800 m, 56 av 299 øvelser.
+  Tekniske øvelser og 800 m+ kan aldri få flagget.
+- **Testet:** åtte varianter, inkludert alle fire som feilet i produksjon.
+
+### BUG 2 FUNNET OG FIKSET: umappet kast-femkamp
+
+- **Symptom:** `Unmapped event: Kast 5 Kamp (Slegge-Kule-Diskos-Spyd-Vektkast)
+  Veteran / Ungdom` — 11 resultater falt ut.
+- **Årsak:** Øvelsene *finnes* i basen med kodene `..._veteran` og `..._ungdom`,
+  men heter «Kast-femkamp Veteran» der, mens kilden bruker full beskrivelse med
+  klassesuffiks. `COMBINED_EVENT_PATTERNS` traff ikke fordi navnet starter med
+  «Kast 5 Kamp», ikke «5 Kamp».
+- **Fikset:** tre linjer lagt til i `EVENT_NAME_TO_CODE`.
+
+### Etter reimport
+
+- 38 av de 55 tapte resultatene hentet inn, resten var duplikater av rader som
+  allerede lå inne. 0 feil, 0 umappede øvelser.
+- 6 resultater fikk `is_manual_time` fra kilden — første gang flagget settes ved
+  import. 0 resultater med bokstavhale i `performance`.
+
+### Status etter kjøring
+
+| | |
+|---|---|
+| Resultater | 1 412 023 |
+| Utøvere | 87 375 |
+| Stevner | 47 924 |
+| Klubber | 2 464 |
+| Sesong 2026 | 37 755 |
+| Siste stevne | 2026-08-15 |
+
+---
+
 ## 2026-08-09 — Diagnose og backfill: utøvere uten klubb (FULLFØRT)
 
 ### Diagnose
