@@ -6,6 +6,73 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-21 — Ugyldige fødselsår og feil århundre i stevnedato (DELVIS)
+
+- **Script:** `fix_ugyldig_alder.py --apply --yes` (fire dry-run-runder først)
+- **Utgangspunkt:** 333 resultater ga umulig alder (under 5 eller over 100 år)
+  når man regner konkurranseår minus fødselsår.
+
+### Metodefeil rettet underveis — les denne
+
+**1. Fast årstallsgrense flagget ekte utøvere.** Første forsøk brukte
+«fødselsår < 1890» som feilkriterium. Det flagget 8 ekte utøvere født
+1878–1889 — blant dem Ferdinand Bie og Edvard Larsen, som konkurrerte rundt
+1912. Kriteriet ble byttet ut med en prinsipiell test: er fødselsåret forenlig
+med utøverens EGNE resultater? Alder mellom 5 og 100 år godtas.
+
+**2. Paginering uten sortering mistet rader.** `fetch_all()` brukte
+`.range()` uten `order by`. PostgREST garanterer da ikke stabil rekkefølge, og
+over 1,4 millioner resultatrader ble rader hoppet over — konkret forsvant
+Kasper Ellingsens rad, den vi visste skulle være der. Rettet til nøkkelbasert
+paginering (`order('id')` + `gt('id', forrige)`). **Dette mønsteret finnes i
+flere av vedlikeholdsskriptene og bør rettes der også.**
+
+**3. Automatisk sammenslåing på navn var for aggressiv.** Første regel slo
+sammen enhver navnetvilling med gyldig fødselsår. Den foreslo blant annet
+«Sondre Loftås Kåstad (2013) → 1996» og «Reidar Jørgensen (1953) → 1904» —
+sannsynligvis to forskjellige personer med samme navn. Regelen ble strammet
+til å kreve at det ødelagte årstallet er en *forvansket utgave* av det ekte
+(ett siffer feil, ombyttede sifre, eller avkortet), eller at verdien er 0.
+
+### Utført
+
+| Tiltak | Antall |
+|---|---:|
+| Stevnedatoer med feil århundre rettet (1926 → 2026) | 4 stevner, 28 resultater |
+| Fødselsår utledet fra `birth_date` (Marianne Vikne 1867 → 1967) | 1 |
+| Dubletter slått sammen (752→1952, 1070→1970, 9171→1971, 9194→1994, 0→…) | 10 |
+| Fødselsår satt til NULL (ukjent er ærlig, 0 er en løgn) | 38 |
+| **Kasper Ellingsen** | slått sammen til én post, `birth_date` = 2003-01-20 |
+
+De fire stevnene var «Distriktskampen», «Kengurukarusellen 1», «Nyttårsstevnet»
+og «Sprintstevne», alle januar 2026 lagret som 1926. Bekreftet ved at samtlige
+utøvere på dem har resultater på nøyaktig samme dato i 2026. De 14 gjenværende
+1926-resultatene er ekte historiske stevner og ble ikke rørt.
+
+### Forebygging
+
+Databasesperre lagt inn:
+
+```sql
+alter table athletes add constraint athletes_birth_year_rimelig
+  check (birth_year is null or birth_year between 1860 and 2100);
+```
+
+### GJENSTÅR — 121 utøvere krever manuell vurdering
+
+Disse har et fødselsår som *ser plausibelt ut*, men som strider mot deres egne
+resultater. Da kan feilen like gjerne ligge i et resultat, eller i at to
+personer er slått sammen til én post. Det er en vurdering, ikke en regel, og de
+er derfor ikke rørt. Liste:
+`backups/fix_ugyldig_alder_20260821_171844_til_gjennomgang.csv`
+med navn, fødselsår, første og siste resultatår og alder ved begge.
+
+Eksempler: «A. Kvalheim» (født 1973, resultat fra 1967), «Adrian Nilsen»
+(født 2009, resultat fra 2013 — 4 år gammel), «Albert Jacobsen» (født 1893,
+resultat fra 2025).
+
+---
+
 ## 2026-08-21 — Sesongoppdatering august (FULLFØRT)
 
 - **Script:** `update_results.py --outdoor --season 2026` (dry-run først)
