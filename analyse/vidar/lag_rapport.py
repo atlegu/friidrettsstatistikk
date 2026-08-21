@@ -16,6 +16,8 @@ d = json.loads((HERE / 'vidar_data.json').read_text(encoding='utf-8'))
 KLUBB, YEARS, MIN_ALDER = d['klubb'], d['ar'], d['min_alder']
 UT, RAD = d['utovere'], d['rader']
 USIKKER = d.get('usikker_alder', [])
+VIDAR_AR = {k: set(v) for k, v in d.get('vidar_ar', {}).items()}
+SLUTTET = d.get('sluttet', {})
 
 # --- Aggregering -----------------------------------------------------------
 
@@ -30,19 +32,24 @@ for r in RAD:
 
 aids = sorted(UT, key=lambda a: UT[a]['navn'])
 
-aar_sum = {y: {'utovere': 0, 'starter': 0} for y in YEARS}
+aar_sum = {y: {'utovere': 0, 'starter': 0, 'annen': 0, 'annen_ut': 0} for y in YEARS}
 for aid in aids:
     for y in YEARS:
-        if starts[aid][y]:
+        if not starts[aid][y]:
+            continue
+        if y in VIDAR_AR.get(aid, set()):
             aar_sum[y]['utovere'] += 1
             aar_sum[y]['starter'] += starts[aid][y]
+        else:
+            aar_sum[y]['annen_ut'] += 1
+            aar_sum[y]['annen'] += starts[aid][y]
 
 # --- CSV -------------------------------------------------------------------
 
 csv_path = HERE / 'vidar_2024_2026.csv'
 with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
     w = csv.writer(f, delimiter=';')
-    w.writerow(['Utøver', 'Fødselsår', 'Kjønn', 'År', 'Øvelse', 'Starter',
+    w.writerow(['Utøver', 'Fødselsår', 'Kjønn', 'År', 'Klubb', 'Øvelse', 'Starter',
                 'Beste', 'Dato beste', 'Vind beste',
                 'Nestbeste', 'Dato nestbeste', 'Vind nestbeste'])
     for aid in aids:
@@ -52,7 +59,8 @@ with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
                 r = per_athlete[aid][ov].get(y)
                 if not r:
                     continue
-                w.writerow([u['navn'], u['fodt'], u['kjonn'] or '', y, ov, r['starter'],
+                w.writerow([u['navn'], u['fodt'], u['kjonn'] or '', y,
+                            r.get('annen_klubb') or KLUBB, ov, r['starter'],
                             r['beste'], r['beste_dato'], r['beste_vind'] if r['beste_vind'] is not None else '',
                             r['nest'] or '', r['nest_dato'] or '',
                             r['nest_vind'] if r['nest_vind'] is not None else ''])
@@ -67,17 +75,27 @@ def cell(r):
         return f'{escape(str(p))}{w}'
     nest = (f'<div class="nest">{mark(r["nest"], r["nest_vind"])}</div>'
             if r['nest'] else '<div class="nest tom">–</div>')
-    return (f'<td><span class="n">{r["starter"]}</span>'
-            f'<div class="best">{mark(r["beste"], r["beste_vind"])}</div>{nest}</td>')
+    # Sesonger fra før utøveren kom til Vidar markeres tydelig, med klubben
+    # de da representerte.
+    annen = r.get('annen_klubb')
+    kls = ' class="annen"' if annen else ''
+    klubb = f'<div class="klubb">{escape(annen)}</div>' if annen else ''
+    return (f'<td{kls}><span class="n">{r["starter"]}</span>'
+            f'<div class="best">{mark(r["beste"], r["beste_vind"])}</div>'
+            f'{nest}{klubb}</td>')
 
 blocks = []
 for aid in aids:
     u = UT[aid]
     kj = {'M': 'M', 'F': 'K'}.get(u['kjonn'], '–')
     tot = sum(starts[aid][y] for y in YEARS)
+    vaar = VIDAR_AR.get(aid, set())
     badges = ' '.join(
-        f'<span class="badge{"" if starts[aid][y] else " null"}">{y}: '
+        f'<span class="badge{"" if starts[aid][y] else " null"}'
+        f'{" annen" if starts[aid][y] and y not in vaar else ""}">{y}: '
         f'{starts[aid][y] or "–"}</span>' for y in YEARS)
+    ny = (f'<span class="nykommer">Kom til Vidar i {min(vaar)}</span>'
+          if vaar and min(vaar) > YEARS[0] else '')
     rows = []
     for ov in sorted(per_athlete[aid], key=lambda o: order[o]):
         cells = ''.join(cell(per_athlete[aid][ov].get(y)) for y in YEARS)
@@ -87,7 +105,7 @@ for aid in aids:
   <header>
     <h3>{escape(u['navn'])}</h3>
     <div class="meta"><span>{u['fodt']}</span><span>{kj}</span>
-      <span>{2026 - u['fodt']} år i 2026</span><span>{tot} starter totalt</span></div>
+      <span>{2026 - u['fodt']} år i 2026</span><span>{tot} starter totalt</span>{ny}</div>
     <div class="badges">{badges}</div>
   </header>
   <table><thead><tr><th>Øvelse</th>{''.join(f'<th>{y}</th>' for y in YEARS)}</tr></thead>
@@ -96,7 +114,25 @@ for aid in aids:
 
 sumrows = ''.join(
     f'<tr><th>{y}</th><td>{aar_sum[y]["utovere"]}</td>'
-    f'<td>{aar_sum[y]["starter"]}</td></tr>' for y in YEARS)
+    f'<td>{aar_sum[y]["starter"]}</td>'
+    f'<td class="annen-t">{aar_sum[y]["annen_ut"] or "–"}</td>'
+    f'<td class="annen-t">{aar_sum[y]["annen"] or "–"}</td></tr>' for y in YEARS)
+
+sluttet_html = ''
+if SLUTTET:
+    rader = ''.join(
+        f'<tr><th>{escape(v["navn"])}</th>'
+        f'<td>{", ".join(str(x) for x in v["vidar_ar"])}</td>'
+        f'<td>{escape(v["ny_klubb"])}</td></tr>'
+        for v in sorted(SLUTTET.values(), key=lambda x: x['navn']))
+    sluttet_html = f'''
+<div class="panel">
+  <strong>Tatt ut av listen: konkurrerer for annen klubb i 2026 ({len(SLUTTET)})</strong>
+  <table class="sumtab avgang">
+    <thead><tr><th>Utøver</th><th>År i Vidar</th><th>Klubb i 2026</th></tr></thead>
+    <tbody>{rader}</tbody>
+  </table>
+</div>'''
 
 usikker_html = ''
 if USIKKER:
@@ -119,10 +155,10 @@ html = f'''<!doctype html>
 <title>{KLUBB} 2024–2026</title>
 <style>
 :root {{ --bg:#fbfbfa; --fg:#1a1a19; --mut:#6b6b68; --line:#e4e4e1;
-        --card:#fff; --acc:#0f5c4a; --nest:#8a8a86; }}
+        --card:#fff; --acc:#0f5c4a; --nest:#8a8a86; --annen:#a8571c; }}
 @media (prefers-color-scheme: dark) {{
   :root {{ --bg:#151514; --fg:#eeeeec; --mut:#9a9a96; --line:#2c2c2a;
-          --card:#1d1d1b; --acc:#63c6ab; --nest:#86867f; }}
+          --card:#1d1d1b; --acc:#63c6ab; --nest:#86867f; --annen:#e0925a; }}
 }}
 * {{ box-sizing:border-box; }}
 body {{ margin:0; padding:2rem 1.25rem 4rem; background:var(--bg); color:var(--fg);
@@ -165,6 +201,21 @@ input {{ flex:1; min-width:220px; }}
 .tom {{ color:var(--nest); }}
 .v {{ font-size:.72rem; color:var(--mut); margin-left:.3rem; }}
 .tabellnote {{ color:var(--mut); font-size:.83rem; margin-top:.4rem; }}
+/* Sesonger fra før utøveren kom til Vidar */
+.ath td.annen {{ background:color-mix(in srgb,var(--annen) 13%,transparent);
+  box-shadow:inset 3px 0 0 var(--annen); }}
+.klubb {{ font-size:.72rem; color:var(--annen); margin-top:.2rem; font-weight:500; }}
+.badge.annen {{ background:color-mix(in srgb,var(--annen) 16%,transparent);
+  color:var(--annen); }}
+.nykommer {{ color:var(--annen); font-weight:500; }}
+.annen-t {{ color:var(--annen) !important; }}
+.avgang th {{ font-weight:500; padding-right:1.5rem; }}
+.legend {{ display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center;
+  color:var(--mut); font-size:.83rem; margin:.25rem 0 1.25rem; }}
+.swatch {{ display:inline-block; width:.85rem; height:.85rem; border-radius:3px;
+  vertical-align:-2px; margin-right:.35rem;
+  background:color-mix(in srgb,var(--annen) 30%,transparent);
+  box-shadow:inset 2px 0 0 var(--annen); }}
 .varsel {{ border-left:3px solid #c98a2b; }}
 .varsel ul {{ margin:.5rem 0 0; padding-left:1.2rem; }}
 .varsel code {{ font-size:.85em; padding:0 .25rem; border-radius:3px;
@@ -177,14 +228,24 @@ input {{ flex:1; min-width:220px; }}
 
 <div class="panel">
   <table class="sumtab">
-    <thead><tr><th>År</th><th>Utøvere</th><th>Starter</th></tr></thead>
+    <thead><tr><th>År</th><th>Utøvere</th><th>Starter</th>
+      <th class="annen-t">Utøvere før<br>Vidar</th>
+      <th class="annen-t">Starter før<br>Vidar</th></tr></thead>
     <tbody>{sumrows}</tbody>
   </table>
-  <p class="tabellnote">Alder regnes etter kalenderår, altså konkurranseår minus
-  fødselsår. Klubbtilhørighet er hentet fra klubben utøveren representerte i det
-  enkelte stevnet.</p>
+  <p class="tabellnote">De to siste kolonnene gjelder utøvere som kom til Vidar
+  senere enn {YEARS[0]}. Sesongene deres fra før overgangen er tatt med, med
+  klubben de da representerte. Alder regnes etter kalenderår, altså
+  konkurranseår minus fødselsår.</p>
 </div>
+{sluttet_html}
 {usikker_html}
+<p class="legend">
+  <span><span class="swatch"></span>Sesong for en annen klubb, før overgang til Vidar</span>
+  <span>Tall øverst i ruten = antall starter</span>
+  <span>Halvfet = beste, under = nestbeste</span>
+</p>
+
 <div class="tools">
   <input id="q" type="search" placeholder="Søk etter utøver …" autocomplete="off">
   <select id="sort">

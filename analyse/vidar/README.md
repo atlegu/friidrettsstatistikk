@@ -18,6 +18,15 @@ med antall starter og beste/nestbeste resultat per øvelse per år.
 | `vidar_2024_2026.csv` | Flat tabell, semikolon og BOM for norsk Excel |
 | `vidar_data.json` | Mellomlagret datagrunnlag |
 
+## Regler om klubbskifte
+
+1. **Nye i Vidar.** Er utøverens første Vidar-sesong senere enn 2024, tas
+   sesongene fra før overgangen med, med klubben de da representerte. Disse er
+   fargekodet i HTML-rapporten og har egen klubbkolonne i CSV-en.
+2. **Sluttet i Vidar.** Utøvere med Vidar-resultater i 2024 eller 2025 som i
+   2026 konkurrerer for en annen klubb og ikke for Vidar, er tatt ut av listen.
+   De er listet i egen tabell øverst i rapporten.
+
 ## Definisjoner
 
 - **Klubbtilhørighet** hentes fra `results.club_id` — klubben utøveren faktisk
