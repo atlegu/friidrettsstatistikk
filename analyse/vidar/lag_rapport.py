@@ -11,6 +11,8 @@ from collections import defaultdict
 from html import escape
 from pathlib import Path
 
+from datetime import date
+DATO = date.today().isoformat()
 HERE = Path(__file__).parent
 d = json.loads((HERE / 'vidar_data.json').read_text(encoding='utf-8'))
 KLUBB, YEARS, MIN_ALDER = d['klubb'], d['ar'], d['min_alder']
@@ -233,11 +235,34 @@ input {{ flex:1; min-width:220px; }}
 .varsel ul {{ margin:.5rem 0 0; padding-left:1.2rem; }}
 .varsel code {{ font-size:.85em; padding:0 .25rem; border-radius:3px;
   background:color-mix(in srgb,var(--fg) 8%,transparent); }}
+@media print {{
+  @page {{ size:A4 portrait; margin:14mm 12mm; }}
+  :root {{ --bg:#fff; --fg:#111; --mut:#555; --line:#ccc; --card:#fff;
+          --acc:#0f5c4a; --nest:#666; --annen:#8a4512; }}
+  body {{ padding:0; font-size:10pt; -webkit-print-color-adjust:exact;
+         print-color-adjust:exact; }}
+  .wrap {{ max-width:none; }}
+  .tools {{ display:none; }}          /* søk og sortering gir ikke mening på papir */
+  .ath, .panel {{ break-inside:avoid; page-break-inside:avoid; box-shadow:none; }}
+  .ath {{ margin-bottom:.45rem; padding:.45rem .7rem .55rem; }}
+  .ath h3 {{ font-size:.95rem; }}
+  .ath td, .ath tbody th {{ padding:.18rem .45rem; line-height:1.25; }}
+  .ath thead th {{ padding:.15rem .45rem; }}
+  .meta {{ margin:.1rem 0 .3rem; gap:.7rem; }}
+  .badges {{ margin-bottom:.35rem; }}
+  .nest {{ font-size:.82rem; }}
+  .n {{ margin-bottom:0; }}
+  h1 {{ font-size:1.3rem; }}
+  .ath td.annen {{ background:#f6e6d8; box-shadow:inset 3px 0 0 var(--annen); }}
+  .badge {{ background:#e6efec; }}
+  .badge.annen {{ background:#f6e6d8; }}
+  .swatch {{ background:#f0d8c2; box-shadow:inset 2px 0 0 var(--annen); }}
+}}
 @media (max-width:640px) {{ .ath tbody th {{ width:auto; }} body {{ padding:1rem .75rem 3rem; }} }}
 </style></head><body><div class="wrap">
 
 <h1>{KLUBB}</h1>
-<p class="sub">Utøvere {MIN_ALDER} år og eldre · sesongene {YEARS[0]}–{YEARS[-1]}</p>
+<p class="sub">Utøvere {MIN_ALDER} år og eldre · sesongene {YEARS[0]}–{YEARS[-1]} · uttrekk {DATO}</p>
 
 <div class="panel">
   <table class="sumtab">

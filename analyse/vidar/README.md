@@ -8,6 +8,7 @@ med antall starter og beste/nestbeste resultat per øvelse per år.
 ```bash
 ../../scraper/venv/bin/python hent_vidar.py     # henter data -> vidar_data.json
 ../../scraper/venv/bin/python lag_rapport.py    # bygger html + csv
+./lag_pdf.sh                                    # alt tre stegene + pdf
 ```
 
 ## Filer
@@ -16,6 +17,7 @@ med antall starter og beste/nestbeste resultat per øvelse per år.
 |---|---|
 | `vidar_2024_2026.html` | Søkbar oversikt, én seksjon per utøver |
 | `vidar_2024_2026.csv` | Flat tabell, semikolon og BOM for norsk Excel |
+| `vidar_2024_2026.pdf` | Utskriftsvennlig versjon, A4 |
 | `vidar_data.json` | Mellomlagret datagrunnlag |
 
 ## Regler om klubbskifte
