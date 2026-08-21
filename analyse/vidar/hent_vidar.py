@@ -45,7 +45,7 @@ OUT = Path(__file__).parent / 'vidar_data.json'
 BY_MIN, BY_MAX = 1860, max(YEARS)
 
 SELECT = ('id,performance,performance_value,wind,date,athlete_id,club_id,'
-          'athletes(full_name,birth_year,gender),'
+          'athletes(full_name,birth_year,birth_date,gender),'
           'events(name,result_type,sort_order)')
 
 sb = create_client(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SERVICE_KEY'])
@@ -90,6 +90,7 @@ for r in vidar_rows:
         continue
     vidar_ar[r['athlete_id']].add(int(r['date'][:4]))
     athletes[r['athlete_id']] = {'navn': a['full_name'], 'fodt': by,
+                                 'fodt_dato': a.get('birth_date'),
                                  'kjonn': a.get('gender')}
 
 # --- 2. Alle resultater for disse utøverne, uansett klubb ------------------

@@ -6,6 +6,29 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-21 — Enkeltrettelse: femkampsum importert som 60 meter
+
+- **Symptom:** Malene Kollberg hadde et resultat «60 meter: 3904» fra
+  NM-UM mangekamp innendørs 17.01.2026, med `performance_value = NULL`.
+- **Årsak:** Femkampens poengsum (3904) er importert både som femkampresultat
+  (korrekt, `5kamp`) og som en flat 60 meter. Femkamp innendørs for kvinner
+  består av 60 m hekk, høyde, kule, lengde og 800 m — det finnes ingen flat
+  60 meter i øvelsen, så raden kunne ikke være ekte.
+- **Utført:** raden slettet (`34990be3-2732-49b5-956a-c29265ac3393`).
+
+### Samme mønster finnes 37 andre steder
+
+877 resultater har et tresifret til femsifret heltall i `performance` og
+`performance_value = NULL` på en øvelse som ikke er poengbasert. Av disse har
+**38** en identisk mangekampsum registrert på samme utøver og samme stevne —
+altså samme duplisering som hos Kollberg (29 på løpsøvelser, 9 på tekniske).
+
+De øvrige ~839 er noe annet: mangekamper der øvelsens `result_type` er satt til
+`distance` i stedet for `points`. Da er ikke dataene feil, men
+øvelseskonfigurasjonen. Begge deler gjenstår.
+
+---
+
 ## 2026-08-21 — Ugyldige fødselsår og feil århundre i stevnedato (DELVIS)
 
 - **Script:** `fix_ugyldig_alder.py --apply --yes` (fire dry-run-runder først)

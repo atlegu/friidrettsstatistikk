@@ -30,7 +30,20 @@ for r in RAD:
     starts[r['aid']][r['ar']] += r['starter']
     order[r['ovelse']] = min(order.get(r['ovelse'], 10**9), r['so'] or 10**9)
 
-aids = sorted(UT, key=lambda a: UT[a]['navn'])
+def fodselsnokkel(u):
+    """Sorterbar YYYYMMDD. Fødselsdato brukes når den finnes, ellers bare året.
+
+    Uten dato faller utøveren først i sitt årskull — vi vet ikke bedre, og det
+    er mer ærlig enn å gjette på en dato.
+    """
+    d = u.get('fodt_dato')
+    return f"{d[:4]}{d[5:7]}{d[8:10]}" if d else f"{u['fodt']}0000"
+
+
+# Yngste først.
+aids = sorted(UT, key=lambda a: (fodselsnokkel(UT[a]),
+                                 ''.join(chr(0x10FFFF - ord(c)) for c in UT[a]['navn'])),
+              reverse=True)
 
 aar_sum = {y: {'utovere': 0, 'starter': 0, 'annen': 0, 'annen_ut': 0} for y in YEARS}
 for aid in aids:
@@ -49,7 +62,7 @@ for aid in aids:
 csv_path = HERE / 'vidar_2024_2026.csv'
 with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
     w = csv.writer(f, delimiter=';')
-    w.writerow(['Utøver', 'Fødselsår', 'Kjønn', 'År', 'Klubb', 'Øvelse', 'Starter',
+    w.writerow(['Utøver', 'Fødselsår', 'Fødselsdato', 'Kjønn', 'År', 'Klubb', 'Øvelse', 'Starter',
                 'Beste', 'Dato beste', 'Vind beste',
                 'Nestbeste', 'Dato nestbeste', 'Vind nestbeste'])
     for aid in aids:
@@ -59,7 +72,7 @@ with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
                 r = per_athlete[aid][ov].get(y)
                 if not r:
                     continue
-                w.writerow([u['navn'], u['fodt'], u['kjonn'] or '', y,
+                w.writerow([u['navn'], u['fodt'], u.get('fodt_dato') or '', u['kjonn'] or '', y,
                             r.get('annen_klubb') or KLUBB, ov, r['starter'],
                             r['beste'], r['beste_dato'], r['beste_vind'] if r['beste_vind'] is not None else '',
                             r['nest'] or '', r['nest_dato'] or '',
@@ -101,10 +114,10 @@ for aid in aids:
         cells = ''.join(cell(per_athlete[aid][ov].get(y)) for y in YEARS)
         rows.append(f'<tr><th>{escape(ov)}</th>{cells}</tr>')
     blocks.append(f'''
-<section class="ath" data-navn="{escape(u['navn'].lower())}" data-starter="{tot}">
+<section class="ath" data-navn="{escape(u['navn'].lower())}" data-starter="{tot}" data-alder="{fodselsnokkel(u)}">
   <header>
     <h3>{escape(u['navn'])}</h3>
-    <div class="meta"><span>{u['fodt']}</span><span>{kj}</span>
+    <div class="meta"><span>{u.get('fodt_dato') or u['fodt']}</span><span>{kj}</span>
       <span>{2026 - u['fodt']} år i 2026</span><span>{tot} starter totalt</span>{ny}</div>
     <div class="badges">{badges}</div>
   </header>
@@ -249,8 +262,10 @@ input {{ flex:1; min-width:220px; }}
 <div class="tools">
   <input id="q" type="search" placeholder="Søk etter utøver …" autocomplete="off">
   <select id="sort">
-    <option value="navn">Sorter alfabetisk</option>
-    <option value="starter">Sorter etter antall starter</option>
+    <option value="alder">Yngste først</option>
+    <option value="alder-eldst">Eldste først</option>
+    <option value="navn">Alfabetisk</option>
+    <option value="starter">Flest starter</option>
   </select>
   <span class="count" id="count"></span>
 </div>
@@ -267,9 +282,15 @@ const list=document.getElementById('list'), q=document.getElementById('q'),
 function render(){{
   const t=q.value.trim().toLowerCase();
   const vis=all.filter(e=>!t||e.dataset.navn.includes(t));
-  vis.sort(s.value==='starter'
-    ? (a,b)=>b.dataset.starter-a.dataset.starter
-    : (a,b)=>a.dataset.navn.localeCompare(b.dataset.navn,'no'));
+  const cmp={{
+    starter:(a,b)=>b.dataset.starter-a.dataset.starter,
+    navn:(a,b)=>a.dataset.navn.localeCompare(b.dataset.navn,'no'),
+    alder:(a,b)=>b.dataset.alder.localeCompare(a.dataset.alder)
+                 ||a.dataset.navn.localeCompare(b.dataset.navn,'no'),
+    'alder-eldst':(a,b)=>a.dataset.alder.localeCompare(b.dataset.alder)
+                 ||a.dataset.navn.localeCompare(b.dataset.navn,'no'),
+  }};
+  vis.sort(cmp[s.value]);
   list.replaceChildren(...vis);
   c.textContent=vis.length+' av {len(aids)} utøvere';
 }}
