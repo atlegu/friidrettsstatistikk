@@ -8,8 +8,9 @@ from .hent import Konfig, hent
 from .rapport import bygg
 from .pdf import lag_pdf
 from . import uten_stipend
+from .prioritert import Prioritert
 
-__all__ = ['Konfig', 'hent', 'bygg', 'lag_pdf', 'kjor', 'uten_stipend']
+__all__ = ['Konfig', 'hent', 'bygg', 'lag_pdf', 'kjor', 'uten_stipend', 'Prioritert']
 
 
 def kjor(konfig, stipend, hent_data=True, pdf=True):

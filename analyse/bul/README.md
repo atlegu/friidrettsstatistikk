@@ -1,7 +1,7 @@
 # IL i BUL 2024–2026
 
 Uttrekk av alle utøvere 15 år og eldre som har representert **IL i BUL (Oslo)**,
-med antall starter og de to beste resultatene per øvelse per år.
+med antall starter og de tre beste resultatene per øvelse per år.
 
 > **Ikke Tromsø.** Basen har både `IL i BUL` (Oslo, klubb-id `814e5ce8…`) og
 > `IL i BUL Tromsø` (`4c9a42b9…`). Denne rapporten bruker Oslo-klubben.

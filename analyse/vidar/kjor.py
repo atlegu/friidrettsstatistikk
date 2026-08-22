@@ -17,6 +17,9 @@ KONFIG = klubbrapport.Konfig(
     klubb_id='fcfc0ff6-787b-4471-acb6-5705fd7b48d8',
     klubb_navn='Sportsklubben Vidar',
     mappe=Path(__file__).resolve().parent,
+    # Vidar ble bestilt med beste og nestbeste. Standarden er nå tre,
+    # så denne er pinnet for ikke å endre rapporten i det stille.
+    antall_resultater=2,
 )
 
 if __name__ == '__main__':

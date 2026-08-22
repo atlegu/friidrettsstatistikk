@@ -43,7 +43,7 @@ class Konfig:
     mappe: Path
     ar: list = field(default_factory=lambda: [2024, 2025, 2026])
     min_alder: int = 15
-    antall_resultater: int = 2
+    antall_resultater: int = 3
 
     @property
     def datafil(self):

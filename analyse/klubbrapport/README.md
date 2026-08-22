@@ -18,7 +18,7 @@ KONFIG = klubbrapport.Konfig(
     klubb_id='<uuid fra clubs-tabellen>',
     klubb_navn='Navn på klubben',
     mappe=Path(__file__).resolve().parent,
-    antall_resultater=3,        # standard er 2
+    antall_resultater=3,        # standard
     ar=[2024, 2025, 2026],      # standard
     min_alder=15,               # standard
 )
@@ -41,6 +41,16 @@ if __name__ == '__main__':
 | `stil.py` | Stilark for skjerm og utskrift |
 | `pdf.py` | PDF via headless Chrome |
 | `navn.py` | Navnekobling mellom stipendliste og database |
+
+## Ferdige adaptere
+
+| Adapter | Bruk |
+|---|---|
+| `klubbrapport.uten_stipend` | Ingen stipendliste. Alle utøvere samlet, yngste først. |
+| `klubbrapport.Prioritert([navn, …])` | En navneliste øverst i oppgitt rekkefølge, resten etter alder. |
+
+Klubber med stipendordning skriver sin egen adapter — se `vidar/stipend.py`
+(beløp og kategorier) og `Tjalve/stipend.py` (grupper A–D).
 
 ## Stipendadapteren
 
