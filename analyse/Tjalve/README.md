@@ -6,9 +6,8 @@ antall starter og **de tre beste** resultatene per øvelse per år.
 ## Kjøring
 
 ```bash
-../../scraper/venv/bin/python hent_tjalve.py    # henter data -> tjalve_data.json
-../../scraper/venv/bin/python lag_rapport.py    # bygger html + csv
-./lag_pdf.sh                                    # alle tre stegene + pdf
+./kjor.py            # uttrekk, html, csv og pdf
+./kjor.py --rapport  # bygg rapporten på nytt fra lagret uttrekk
 ```
 
 ## Filer
@@ -18,8 +17,8 @@ antall starter og **de tre beste** resultatene per øvelse per år.
 | `tjalve_2024_2026.pdf` | Utskriftsvennlig versjon, A4 |
 | `tjalve_2024_2026.html` | Søkbar oversikt, én seksjon per utøver |
 | `tjalve_2024_2026.csv` | Flat tabell, semikolon og BOM for norsk Excel |
-| `stipend_2026.py` | Idrettsstipend 2026 fra `Stipend-2026.pdf` |
-| `tjalve_data.json` | Mellomlagret datagrunnlag |
+| `stipend.py` | Idrettsstipend 2026 fra `Stipend-2026.pdf` |
+| `data.json` | Mellomlagret datagrunnlag |
 
 ## Rekkefølge
 
@@ -63,9 +62,7 @@ første treff:
 - **Beste resultat**: laveste `performance_value` for tidsøvelser, høyeste for
   lengde, høyde og poeng.
 
-## Merknad
+## Felles kode
 
-Skriptene er avledet fra `../vidar/`. Forskjellene er tre resultater i stedet
-for to, og gruppebasert stipendsortering i stedet for beløp. Skal flere
-klubber inn, bør fellesdelen skilles ut i en egen modul framfor å kopieres
-en gang til.
+Selve maskineriet ligger i `../klubbrapport/`. Denne mappen har bare
+konfigurasjonen (`kjor.py`) og klubbens stipendliste (`stipend.py`).

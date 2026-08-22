@@ -1,15 +1,16 @@
-"""
-Idrettsstipend 2026 for IK Tjalve, hentet fra «Stipend-2026.pdf».
+"""Idrettsstipend 2026 for IK Tjalve, fra «Stipend-2026.pdf».
 
 Tildelingen er gruppebasert (A til D), ikke beløpsbasert. Dokumentet oppgir
-også gren, poengsum for 2025 og eventuelt mesterskap utøveren deltok i.
+også gren, poengsum for 2025 og eventuelt mesterskap.
 
 Markus Rooth står i en egen tabell nederst: medlemmer som fikk stipend første
 år, men har hatt tilbakegang på grunn av graviditet, skade eller sykdom,
-beholder normalt samme støtte. Han har derfor ingen poengsum for 2025.
+beholder normalt samme støtte. Han har derfor ingen poengsum.
 """
 
-import unicodedata
+from html import escape
+
+from klubbrapport import navn as _navn
 
 # (navn, gren, poeng 2025, mesterskap, gruppe)
 TILDELINGER = [
@@ -25,7 +26,6 @@ TILDELINGER = [
     ('Anne Gine Løvnes',           'Løp',       1122, 'VM (2025)', 'A'),
     ('Marie-Therese Obst',         'Kast',      1071, 'VM (2025)', 'A'),
     ('Markus Rooth',               'Mangekamp', None, 'OL (2024)', 'A'),
-
     ('Malin Ingeborg Nyfors',      'Løp',       1133, None,        'B'),
     ('Ida Andrea Breigan',         'Hopp',      1130, None,        'B'),
     ('Amanda Frøynes',             'Løp',       1125, None,        'B'),
@@ -33,13 +33,11 @@ TILDELINGER = [
     ('Andreas Ofstad Kulseng',     'Løp',       1123, None,        'B'),
     ('Ferdinand Kvan Edman',       'Løp',       1113, None,        'B'),
     ('Abraham Vogelsang',          'Mangekamp', 1109, None,        'B'),
-
     ('Kenny Emi Tijani-Ajayi',     'Løp',       1097, None,        'C'),
     ('Line Al Saiddi',             'Løp',       1085, None,        'C'),
     ('Maren Bakke Amundsen',       'Løp',       1081, None,        'C'),
     ('Laura Van Der Veen',         'Løp',       1069, None,        'C'),
     ('Sigrid Jervell Våg',         'Løp',       1056, None,        'C'),
-
     ('Mikkel Blikstad Thomassen',  'Løp',       1041, None,        'D'),
     ('Maiken Prøitz',              'Løp',       1029, None,        'D'),
     ('Nora Aune',                  'Løp',       1026, None,        'D'),
@@ -53,76 +51,58 @@ TILDELINGER = [
 ]
 
 GRUPPER = ['A', 'B', 'C', 'D']
+FLAT = {n: {'gren': g, 'poeng': p, 'mesterskap': m, 'gruppe': gr}
+        for n, g, p, m, gr in TILDELINGER}
 
-FLAT = {navn: {'gren': gren, 'poeng': poeng, 'mesterskap': mst, 'gruppe': gr}
-        for navn, gren, poeng, mst, gr in TILDELINGER}
+
+def finn(db_navn):
+    return _navn.finn(db_navn, FLAT)
 
 
-def _folde(s: str) -> str:
-    """Fjern aksenter, men behold æ, ø og å — de er egne bokstaver."""
+def merke(info):
+    return f' <span class="stipend">{info["gruppe"]}</span>'
+
+
+def detalj(info):
+    biter = [info['gren']]
+    if info['poeng']:
+        biter.append(f'{info["poeng"]} p')
+    if info['mesterskap']:
+        biter.append(info['mesterskap'])
+    return f'<span class="kat">{escape(" · ".join(biter))}</span>'
+
+
+def seksjoner(stip, alle, yngst_forst):
+    """Gruppe A, B, C og D, med høyest poengsum øverst i hver gruppe slik
+    klubbens eget tildelingsdokument er ordnet. Utøvere uten poengsum —
+    tildelt etter skade- eller graviditetsbestemmelsen — legges sist.
+    Deretter øvrige utøvere med yngste først."""
     ut = []
-    for tegn in unicodedata.normalize('NFD', s.lower()):
-        if tegn in 'æøå' or unicodedata.category(tegn) != 'Mn':
-            ut.append(tegn)
-    return ''.join(ut)
+    for g in GRUPPER:
+        gruppe = sorted([a for a in stip if stip[a]['gruppe'] == g],
+                        key=lambda a: -(stip[a]['poeng'] or 0))
+        ut.append((f'Stipendgruppe {g} ', f'{len(gruppe)} utøvere', gruppe))
+    ovrige = yngst_forst([a for a in alle if a not in stip])
+    ut.append(('Øvrige utøvere ', f'{len(ovrige)} · yngste først', ovrige))
+    return ut
 
 
-def _naer(a: str, b: str) -> bool:
-    """Likt, eller ett tegn fra hverandre."""
-    if a == b:
-        return True
-    if abs(len(a) - len(b)) > 1:
-        return False
-    kort, lang = sorted((a, b), key=len)
-    for i in range(len(lang)):
-        if lang[:i] + lang[i + 1:] == kort:
-            return True
-    return len(a) == len(b) and sum(x != y for x, y in zip(a, b)) == 1
+def ikke_funnet_linje(navn, info):
+    poeng = f', {info["poeng"]} p' if info['poeng'] else ''
+    return f'{escape(navn)} — gruppe {info["gruppe"]}, {escape(info["gren"])}{poeng}'
 
 
-def _deler(navn: str):
-    ord_ = [o for o in _folde(navn).replace('.', '').split() if o]
-    if not ord_:
-        return '', set()
-    resten = set()
-    for o in ord_[1:]:
-        resten.add(o)
-        resten.update(d for d in o.split('-') if d)
-    return ord_[0], resten
+def sammendrag(stip):
+    fordelt = ' · '.join(
+        f'{g}: {sum(1 for v in stip.values() if v["gruppe"] == g)}' for g in GRUPPER)
+    return f'Stipend: {len(stip)} av {len(FLAT)} tildelinger koblet ({fordelt}).'
 
 
-def finn_stipend(db_navn: str):
-    """Slå opp et navn fra databasen mot stipendlisten.
+def csv_kolonner():
+    return ['Stipendgruppe', 'Poeng 2025', 'Gren']
 
-    Krever likt fornavn (aksenttolerant, ett tegns avvik) og at ALLE
-    stipendlistens øvrige navneledd finnes hos utøveren. Etternavn i
-    stipendlisten kan være kortformer av sammensatte navn i basen.
 
-    Returnerer (navn, opplysninger) eller None.
-    """
-    fornavn, ledd = _deler(db_navn)
-    for navn, info in FLAT.items():
-        b_fornavn, b_ledd = _deler(navn)
-        if b_ledd and b_ledd <= ledd and _naer(fornavn, b_fornavn):
-            return navn, info
-    # Etternavn kan være skrevet med ulik endelse i de to kildene
-    # («Bremseth» mot «Bremset»), så prøv en runde til med tegnavvik.
-    for navn, info in FLAT.items():
-        b_fornavn, b_ledd = _deler(navn)
-        if not b_ledd or not _naer(fornavn, b_fornavn):
-            continue
-        if all(any(_naer(bl, l) for l in ledd) for bl in b_ledd):
-            return navn, info
-
-    # Til slutt: mellomnavnet kan mangle i BASEN i stedet for i stipendlisten
-    # («Malin Ingeborg Nyfors» mot «Malin Nyfors»). Da holder fornavn og
-    # etternavn — men bare hvis det gir nøyaktig ett treff, ellers er det
-    # ikke trygt å gjette.
-    kandidater = []
-    for navn, info in FLAT.items():
-        b_ord = _folde(navn).split()
-        if len(b_ord) < 2 or not _naer(fornavn, b_ord[0]):
-            continue
-        if any(_naer(b_ord[-1], l) for l in ledd):
-            kandidater.append((navn, info))
-    return kandidater[0] if len(kandidater) == 1 else None
+def csv_verdier(info):
+    if not info:
+        return ['', '', '']
+    return [info['gruppe'], info['poeng'] or '', info['gren']]

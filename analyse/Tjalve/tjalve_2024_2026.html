@@ -66,6 +66,8 @@ input { flex:1; min-width:220px; }
 .stipend { display:inline-block; background:var(--acc); color:var(--bg);
   font-weight:700; font-size:.78rem; border-radius:4px; padding:0 .38rem;
   vertical-align:2px; margin-left:.15rem; }
+.stipend-belop { color:var(--acc); font-weight:600; font-size:.92em;
+  white-space:nowrap; }
 .kat { border:1px solid var(--line); border-radius:4px; padding:0 .35rem;
   font-size:.75rem; }
 h2.gruppe { font-size:1rem; margin:1.75rem 0 .6rem; letter-spacing:-.01em;
@@ -125,19 +127,12 @@ h2.gruppe span { font-weight:400; font-size:.83rem; color:var(--mut); }
     <tbody><tr><th>2024</th><td>89</td><td>956</td><td class="annen-t">26</td><td class="annen-t">413</td></tr><tr><th>2025</th><td>97</td><td>988</td><td class="annen-t">16</td><td class="annen-t">285</td></tr><tr><th>2026</th><td>84</td><td>617</td><td class="annen-t">–</td><td class="annen-t">–</td></tr></tbody>
   </table>
   <p class="tabellnote">De to siste kolonnene gjelder utøvere som kom til
-  IK Tjalve senere enn 2024. Sesongene deres fra før overgangen er tatt med,
-  med klubben de da representerte. Alder regnes etter kalenderår.
-  Stipend: 34 av 34 tildelinger er koblet (A: 12 · B: 7 · C: 5 · D: 10).</p>
+  IK Tjalve senere enn 2024. Sesongene deres fra før overgangen er
+  tatt med, med klubben de da representerte. Alder regnes etter kalenderår.
+  Stipend: 34 av 34 tildelinger koblet (A: 12 · B: 7 · C: 5 · D: 10).</p>
 </div>
 
-
-<div class="panel">
-  <strong>Tatt ut av listen: konkurrerer for annen klubb i 2026 (9)</strong>
-  <table class="sumtab avgang">
-    <thead><tr><th>Utøver</th><th>År i IK Tjalve</th><th>Klubb i 2026</th></tr></thead>
-    <tbody><tr><th>Ane Morken Os</th><td>2025</td><td>IL Koll</td></tr><tr><th>Atle Wendel Scheie</th><td>2024, 2025</td><td>Sportsklubben Vidar</td></tr><tr><th>Ava Lundborg</th><td>2025</td><td>IL Koll</td></tr><tr><th>Elise Bjone Larre</th><td>2025</td><td>IL Koll</td></tr><tr><th>Helene Guldseth Ørstavik</th><td>2025</td><td>IL Koll</td></tr><tr><th>Jesper Høigjelle-Briseid</th><td>2025</td><td>IL Koll</td></tr><tr><th>Karl Oraug Rygh</th><td>2024, 2025</td><td>IL Koll</td></tr><tr><th>Oda Lier</th><td>2024, 2025</td><td>Sportsklubben Vidar</td></tr><tr><th>Sander Steen Myrvang</th><td>2024</td><td>IL i BUL</td></tr></tbody>
-  </table>
-</div>
+<div class="panel"><strong>Tatt ut av listen: konkurrerer for annen klubb i 2026 (9)</strong><table class="sumtab avgang"><thead><tr><th>Utøver</th><th>År i IK Tjalve</th><th>Klubb i 2026</th></tr></thead><tbody><tr><th>Ane Morken Os</th><td>2025</td><td>IL Koll</td></tr><tr><th>Atle Wendel Scheie</th><td>2024, 2025</td><td>Sportsklubben Vidar</td></tr><tr><th>Ava Lundborg</th><td>2025</td><td>IL Koll</td></tr><tr><th>Elise Bjone Larre</th><td>2025</td><td>IL Koll</td></tr><tr><th>Helene Guldseth Ørstavik</th><td>2025</td><td>IL Koll</td></tr><tr><th>Jesper Høigjelle-Briseid</th><td>2025</td><td>IL Koll</td></tr><tr><th>Karl Oraug Rygh</th><td>2024, 2025</td><td>IL Koll</td></tr><tr><th>Oda Lier</th><td>2024, 2025</td><td>Sportsklubben Vidar</td></tr><tr><th>Sander Steen Myrvang</th><td>2024</td><td>IL i BUL</td></tr></tbody></table></div>
 
 <p class="legend">
   <span><span class="swatch"></span>Sesong for en annen klubb, før overgang til IK Tjalve</span>
@@ -148,7 +143,7 @@ h2.gruppe span { font-weight:400; font-size:.83rem; color:var(--mut); }
 <div class="tools">
   <input id="q" type="search" placeholder="Søk etter utøver …" autocomplete="off">
   <select id="sort">
-    <option value="std">Stipendgruppe, så alder</option>
+    <option value="std">Standardrekkefølge</option>
     <option value="alder">Yngste først</option>
     <option value="alder-eldst">Eldste først</option>
     <option value="navn">Alfabetisk</option>
@@ -1838,7 +1833,6 @@ h2.gruppe span { font-weight:400; font-size:.83rem; color:var(--mut); }
   <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
   <tbody><tr><th>Høyde</th><td class="tom">–</td><td><span class="n">1</span><div class="best">1.91</div><div class="nest tom">–</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
 </section></div>
-
 </div>
 <script>
 const lister=[...document.querySelectorAll('.liste')].map(l=>({el:l,barn:[...l.children]})),

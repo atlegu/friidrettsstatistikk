@@ -6,6 +6,7 @@
   2026
  ],
  "min_alder": 15,
+ "antall_resultater": 3,
  "utovere": {
   "fe667879-8b55-4057-aad0-5e3d8a08c9f4": {
    "navn": "Marius Bull Hjeltnes",
@@ -22035,7 +22036,7 @@
    ]
   }
  ],
- "tjalve_ar": {
+ "klubb_ar": {
   "fe667879-8b55-4057-aad0-5e3d8a08c9f4": [
    2024,
    2025,
@@ -22591,14 +22592,14 @@
   "f738f106-f0a4-42f9-90dd-72baaa8200bc": {
    "navn": "Sander Steen Myrvang",
    "ny_klubb": "IL i BUL",
-   "tjalve_ar": [
+   "klubb_ar": [
     2024
    ]
   },
   "55423da9-cf58-42d6-a9c2-a3700aa949a0": {
    "navn": "Oda Lier",
    "ny_klubb": "Sportsklubben Vidar",
-   "tjalve_ar": [
+   "klubb_ar": [
     2024,
     2025
    ]
@@ -22606,21 +22607,21 @@
   "84297937-5e23-4c03-9fcf-6105c28c4b5d": {
    "navn": "Jesper Høigjelle-Briseid",
    "ny_klubb": "IL Koll",
-   "tjalve_ar": [
+   "klubb_ar": [
     2025
    ]
   },
   "9e1408be-fb8a-4960-a871-652d65795bdb": {
    "navn": "Ane Morken Os",
    "ny_klubb": "IL Koll",
-   "tjalve_ar": [
+   "klubb_ar": [
     2025
    ]
   },
   "c1aaab56-c6de-4df7-9bfc-89b91b533072": {
    "navn": "Atle Wendel Scheie",
    "ny_klubb": "Sportsklubben Vidar",
-   "tjalve_ar": [
+   "klubb_ar": [
     2024,
     2025
    ]
@@ -22628,14 +22629,14 @@
   "683f7861-c7f5-4995-9386-b561683e3294": {
    "navn": "Helene Guldseth Ørstavik",
    "ny_klubb": "IL Koll",
-   "tjalve_ar": [
+   "klubb_ar": [
     2025
    ]
   },
   "c496e576-c8eb-4174-bf40-dec7406fbc15": {
    "navn": "Karl Oraug Rygh",
    "ny_klubb": "IL Koll",
-   "tjalve_ar": [
+   "klubb_ar": [
     2024,
     2025
    ]
@@ -22643,14 +22644,14 @@
   "72e3acbc-f638-404c-a7c9-6a7662f4805f": {
    "navn": "Ava Lundborg",
    "ny_klubb": "IL Koll",
-   "tjalve_ar": [
+   "klubb_ar": [
     2025
    ]
   },
   "8d74ebf3-088f-46fb-be72-bc5ab5a85efe": {
    "navn": "Elise Bjone Larre",
    "ny_klubb": "IL Koll",
-   "tjalve_ar": [
+   "klubb_ar": [
     2025
    ]
   }

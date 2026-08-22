@@ -18,7 +18,7 @@ med antall starter og beste/nestbeste resultat per øvelse per år.
 | `vidar_2024_2026.html` | Søkbar oversikt, én seksjon per utøver |
 | `vidar_2024_2026.csv` | Flat tabell, semikolon og BOM for norsk Excel |
 | `vidar_2024_2026.pdf` | Utskriftsvennlig versjon, A4 |
-| `vidar_data.json` | Mellomlagret datagrunnlag |
+| `data.json` | Mellomlagret datagrunnlag |
 
 ## Regler om klubbskifte
 
@@ -31,7 +31,7 @@ med antall starter og beste/nestbeste resultat per øvelse per år.
 
 ## Stipend
 
-`stipend_2026.py` inneholder utøverbudsjettet fra «SKV budsjett 2026 - v1.pdf»
+`stipend.py` inneholder utøverbudsjettet fra «SKV budsjett 2026 - v1.pdf»
 (seksjonen «Utøverbudsjetter»): 40 utøvere, kr 2 812 000 totalt, fordelt på
 OL/VM, EM, Elite A, Elite B, Fjelløping og OCR.
 
