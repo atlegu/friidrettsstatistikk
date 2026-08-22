@@ -296,7 +296,11 @@ h2.gruppe span {{ font-weight:400; font-size:.83rem; color:var(--mut); }}
   @page {{ size:A4 portrait; margin:11mm 10mm; }}
   :root {{ --bg:#fff; --fg:#111; --mut:#555; --line:#ccc; --card:#fff;
           --acc:#0f5c4a; --nest:#666; --annen:#8a4512; }}
+  /* macOS-systemfonten (-apple-system / SF NS) kan Chrome bare bygge inn som
+     Type 3-font. Den rendres med striper og artefakter i mange PDF-lesere, og
+     lar seg ikke søke i. Helvetica Neue bygges inn som ordentlig TrueType. */
   body {{ padding:0; font-size:8.5pt; line-height:1.2;
+         font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
          -webkit-print-color-adjust:exact; print-color-adjust:exact; }}
   .wrap {{ max-width:none; }}
   .tools {{ display:none; }}          /* søk og sortering gir ikke mening på papir */
