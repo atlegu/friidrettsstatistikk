@@ -29,6 +29,23 @@ med antall starter og beste/nestbeste resultat per øvelse per år.
    2026 konkurrerer for en annen klubb og ikke for Vidar, er tatt ut av listen.
    De er listet i egen tabell øverst i rapporten.
 
+## Stipend
+
+`stipend_2026.py` inneholder utøverbudsjettet fra «SKV budsjett 2026 - v1.pdf»
+(seksjonen «Utøverbudsjetter»): 40 utøvere, kr 2 812 000 totalt, fordelt på
+OL/VM, EM, Elite A, Elite B, Fjelløping og OCR.
+
+Rapporten viser stipendmottakerne først, deretter øvrige — begge grupper med
+yngste først. Beløpet står i parentes etter navnet.
+
+**Navnekobling.** Budsjettet bruker kortformer uten mellomnavn, mens basen har
+fulle navn. Koblingen krever likt fornavn (aksenttolerant, ett tegns avvik
+tillatt) og at budsjettets etternavn finnes som et navneledd hos utøveren.
+Slik treffer «Jonathan Ødegaard» → «Jonathan Hertwig-Ødegaard» og
+«Madeleine Holum» → «Madelène Holum», uten å treffe feil person.
+
+35 av 40 er koblet. De fem øvrige er listet i rapporten.
+
 ## Definisjoner
 
 - **Klubbtilhørighet** hentes fra `results.club_id` — klubben utøveren faktisk

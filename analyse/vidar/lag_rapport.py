@@ -11,8 +11,15 @@ from collections import defaultdict
 from html import escape
 from pathlib import Path
 
+from stipend_2026 import FLAT as STIPEND_FLAT, KATEGORIER, finn_stipend
+
 from datetime import date
 DATO = date.today().isoformat()
+def kr(n):
+    """Norsk tallformat med hardt mellomrom som tusenskille."""
+    return f'{n:,}'.replace(',', '\u00a0')
+
+
 HERE = Path(__file__).parent
 d = json.loads((HERE / 'vidar_data.json').read_text(encoding='utf-8'))
 KLUBB, YEARS, MIN_ALDER = d['klubb'], d['ar'], d['min_alder']
@@ -42,10 +49,26 @@ def fodselsnokkel(u):
     return f"{d[:4]}{d[5:7]}{d[8:10]}" if d else f"{u['fodt']}0000"
 
 
-# Yngste først.
-aids = sorted(UT, key=lambda a: (fodselsnokkel(UT[a]),
-                                 ''.join(chr(0x10FFFF - ord(c)) for c in UT[a]['navn'])),
-              reverse=True)
+# Stipend fra klubbens budsjett, koblet på navn.
+STIP = {}
+for _aid, _u in UT.items():
+    _t = finn_stipend(_u['navn'])
+    if _t:
+        STIP[_aid] = {'navn': _t[0], 'belop': _t[1], 'kategori': _t[2]}
+
+# Stipendmottakere først, begge grupper med yngste først.
+def _sorter(gruppe):
+    return sorted(gruppe, key=lambda a: (fodselsnokkel(UT[a]),
+                  ''.join(chr(0x10FFFF - ord(c)) for c in UT[a]['navn'])), reverse=True)
+
+
+med_stipend = _sorter([a for a in UT if a in STIP])
+uten_stipend = _sorter([a for a in UT if a not in STIP])
+aids = med_stipend + uten_stipend
+
+STIP_SUM = sum(v['belop'] for v in STIP.values())
+IKKE_FUNNET = {n: b for n, b in STIPEND_FLAT.items()
+               if n not in {v['navn'] for v in STIP.values()}}
 
 aar_sum = {y: {'utovere': 0, 'starter': 0, 'annen': 0, 'annen_ut': 0} for y in YEARS}
 for aid in aids:
@@ -64,7 +87,7 @@ for aid in aids:
 csv_path = HERE / 'vidar_2024_2026.csv'
 with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
     w = csv.writer(f, delimiter=';')
-    w.writerow(['Utøver', 'Fødselsår', 'Fødselsdato', 'Kjønn', 'År', 'Klubb', 'Øvelse', 'Starter',
+    w.writerow(['Utøver', 'Fødselsår', 'Fødselsdato', 'Kjønn', 'Stipend', 'Stipendkategori', 'År', 'Klubb', 'Øvelse', 'Starter',
                 'Beste', 'Dato beste', 'Vind beste',
                 'Nestbeste', 'Dato nestbeste', 'Vind nestbeste'])
     for aid in aids:
@@ -74,7 +97,9 @@ with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
                 r = per_athlete[aid][ov].get(y)
                 if not r:
                     continue
-                w.writerow([u['navn'], u['fodt'], u.get('fodt_dato') or '', u['kjonn'] or '', y,
+                w.writerow([u['navn'], u['fodt'], u.get('fodt_dato') or '', u['kjonn'] or '',
+                            STIP.get(aid, {}).get('belop', ''),
+                            STIP.get(aid, {}).get('kategori', ''), y,
                             r.get('annen_klubb') or KLUBB, ov, r['starter'],
                             r['beste'], r['beste_dato'], r['beste_vind'] if r['beste_vind'] is not None else '',
                             r['nest'] or '', r['nest_dato'] or '',
@@ -109,6 +134,10 @@ for aid in aids:
         f'{starts[aid][y] or "–"}</span>' for y in YEARS)
     ny = (f'<span class="nykommer">Kom til Vidar i {min(vaar)}</span>'
           if vaar and min(vaar) > YEARS[0] else '')
+    st = STIP.get(aid)
+    stipendmerke = (f' <span class="stipend">(kr\u00a0{kr(st["belop"])})</span>'
+                    if st else '')
+    stipendkat = f'<span class="kat">{st["kategori"]}</span>' if st else ''
     # Klubb per år: samme for hele kolonnen, så den skrives i overskriften
     # i stedet for på hver eneste rad.
     aarsklubb = {}
@@ -125,9 +154,9 @@ for aid in aids:
     blocks.append(f'''
 <section class="ath" data-navn="{escape(u['navn'].lower())}" data-starter="{tot}" data-alder="{fodselsnokkel(u)}">
   <header>
-    <h3>{escape(u['navn'])}</h3>
+    <h3>{escape(u['navn'])}{stipendmerke}</h3>
     <div class="meta"><span>{u.get('fodt_dato') or u['fodt']}</span><span>{kj}</span>
-      <span>{2026 - u['fodt']} år i 2026</span><span>{tot} starter totalt</span>{ny}</div>
+      <span>{2026 - u['fodt']} år i 2026</span><span>{tot} starter totalt</span>{stipendkat}{ny}</div>
     <div class="badges">{badges}</div>
   </header>
   <table><thead><tr><th>Øvelse</th>{aarshoder}</tr></thead>
@@ -154,6 +183,20 @@ if SLUTTET:
     <thead><tr><th>Utøver</th><th>År i Vidar</th><th>Klubb i 2026</th></tr></thead>
     <tbody>{rader}</tbody>
   </table>
+</div>'''
+
+mangler_html = ''
+if IKKE_FUNNET:
+    poster = ''.join(
+        f'<li>{escape(n)} — kr\u00a0{kr(b)} [{k}]</li>'
+        for n, (b, k) in sorted(IKKE_FUNNET.items(), key=lambda x: -x[1][0]))
+    mangler_html = f'''
+<div class="panel varsel">
+  <strong>Stipendmottakere uten resultater for Vidar 2024–2026 ({len(IKKE_FUNNET)})</strong>
+  <ul>{poster}</ul>
+  <p class="tabellnote">De står i budsjettet, men har ingen registrerte
+  Vidar-resultater i perioden. Fjelløping og OCR ligger utenfor
+  banestatistikken basen dekker.</p>
 </div>'''
 
 usikker_html = ''
@@ -238,6 +281,13 @@ input {{ flex:1; min-width:220px; }}
   vertical-align:-2px; margin-right:.35rem;
   background:color-mix(in srgb,var(--annen) 30%,transparent);
   box-shadow:inset 2px 0 0 var(--annen); }}
+.stipend {{ color:var(--acc); font-weight:600; font-size:.92em;
+  white-space:nowrap; }}
+.kat {{ border:1px solid var(--line); border-radius:4px; padding:0 .35rem;
+  font-size:.75rem; }}
+h2.gruppe {{ font-size:1rem; margin:1.75rem 0 .6rem; letter-spacing:-.01em;
+  display:flex; gap:.6rem; align-items:baseline; flex-wrap:wrap; }}
+h2.gruppe span {{ font-weight:400; font-size:.83rem; color:var(--mut); }}
 .varsel {{ border-left:3px solid #c98a2b; }}
 .varsel ul {{ margin:.5rem 0 0; padding-left:1.2rem; }}
 .varsel code {{ font-size:.85em; padding:0 .25rem; border-radius:3px;
@@ -295,6 +345,7 @@ input {{ flex:1; min-width:220px; }}
   klubben de da representerte. Alder regnes etter kalenderår, altså
   konkurranseår minus fødselsår.</p>
 </div>
+{mangler_html}
 {sluttet_html}
 {usikker_html}
 <p class="legend">
@@ -314,18 +365,22 @@ input {{ flex:1; min-width:220px; }}
   <span class="count" id="count"></span>
 </div>
 
-<div id="list">{''.join(blocks)}</div>
+<h2 class="gruppe">Utøvere med stipend <span>{len(med_stipend)} av {len(STIPEND_FLAT)} i budsjettet · kr&nbsp;{kr(STIP_SUM)}</span></h2>
+<div id="list" class="liste">{''.join(blocks[:len(med_stipend)])}</div>
+
+<h2 class="gruppe">Øvrige utøvere <span>{len(uten_stipend)}</span></h2>
+<div id="list2" class="liste">{''.join(blocks[len(med_stipend):])}</div>
 
 <p class="tabellnote">I hver rute: antall starter øverst, beste resultat i halvfet,
 nestbeste under. Vind vises der den er registrert.</p>
 
 <script>
-const list=document.getElementById('list'), q=document.getElementById('q'),
-      s=document.getElementById('sort'), c=document.getElementById('count'),
-      all=[...list.children];
+const lister=[...document.querySelectorAll('.liste')].map(l=>({{el:l,barn:[...l.children]}})),
+      q=document.getElementById('q'), s=document.getElementById('sort'),
+      c=document.getElementById('count'),
+      totalt=lister.reduce((n,l)=>n+l.barn.length,0);
 function render(){{
   const t=q.value.trim().toLowerCase();
-  const vis=all.filter(e=>!t||e.dataset.navn.includes(t));
   const cmp={{
     starter:(a,b)=>b.dataset.starter-a.dataset.starter,
     navn:(a,b)=>a.dataset.navn.localeCompare(b.dataset.navn,'no'),
@@ -334,9 +389,15 @@ function render(){{
     'alder-eldst':(a,b)=>a.dataset.alder.localeCompare(b.dataset.alder)
                  ||a.dataset.navn.localeCompare(b.dataset.navn,'no'),
   }};
-  vis.sort(cmp[s.value]);
-  list.replaceChildren(...vis);
-  c.textContent=vis.length+' av {len(aids)} utøvere';
+  let n=0;
+  for (const l of lister) {{
+    const vis=l.barn.filter(e=>!t||e.dataset.navn.includes(t));
+    vis.sort(cmp[s.value]);
+    l.el.replaceChildren(...vis);
+    l.el.previousElementSibling.style.display = vis.length ? '' : 'none';
+    n+=vis.length;
+  }}
+  c.textContent=n+' av '+totalt+' utøvere';
 }}
 q.addEventListener('input',render); s.addEventListener('change',render); render();
 </script>
