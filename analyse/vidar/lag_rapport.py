@@ -92,12 +92,10 @@ def cell(r):
             if r['nest'] else '<div class="nest tom">–</div>')
     # Sesonger fra før utøveren kom til Vidar markeres tydelig, med klubben
     # de da representerte.
-    annen = r.get('annen_klubb')
-    kls = ' class="annen"' if annen else ''
-    klubb = f'<div class="klubb">{escape(annen)}</div>' if annen else ''
+    kls = ' class="annen"' if r.get('annen_klubb') else ''
     return (f'<td{kls}><span class="n">{r["starter"]}</span>'
             f'<div class="best">{mark(r["beste"], r["beste_vind"])}</div>'
-            f'{nest}{klubb}</td>')
+            f'{nest}</td>')
 
 blocks = []
 for aid in aids:
@@ -111,6 +109,15 @@ for aid in aids:
         f'{starts[aid][y] or "–"}</span>' for y in YEARS)
     ny = (f'<span class="nykommer">Kom til Vidar i {min(vaar)}</span>'
           if vaar and min(vaar) > YEARS[0] else '')
+    # Klubb per år: samme for hele kolonnen, så den skrives i overskriften
+    # i stedet for på hver eneste rad.
+    aarsklubb = {}
+    for r in RAD:
+        if r['aid'] == aid and r.get('annen_klubb'):
+            aarsklubb[r['ar']] = r['annen_klubb']
+    aarshoder = ''.join(
+        f'<th>{y}{f"<div class=klubb>{escape(aarsklubb[y])}</div>" if y in aarsklubb else ""}</th>'
+        for y in YEARS)
     rows = []
     for ov in sorted(per_athlete[aid], key=lambda o: order[o]):
         cells = ''.join(cell(per_athlete[aid][ov].get(y)) for y in YEARS)
@@ -123,7 +130,7 @@ for aid in aids:
       <span>{2026 - u['fodt']} år i 2026</span><span>{tot} starter totalt</span>{ny}</div>
     <div class="badges">{badges}</div>
   </header>
-  <table><thead><tr><th>Øvelse</th>{''.join(f'<th>{y}</th>' for y in YEARS)}</tr></thead>
+  <table><thead><tr><th>Øvelse</th>{aarshoder}</tr></thead>
   <tbody>{''.join(rows)}</tbody></table>
 </section>''')
 
@@ -236,27 +243,39 @@ input {{ flex:1; min-width:220px; }}
 .varsel code {{ font-size:.85em; padding:0 .25rem; border-radius:3px;
   background:color-mix(in srgb,var(--fg) 8%,transparent); }}
 @media print {{
-  @page {{ size:A4 portrait; margin:14mm 12mm; }}
+  @page {{ size:A4 portrait; margin:11mm 10mm; }}
   :root {{ --bg:#fff; --fg:#111; --mut:#555; --line:#ccc; --card:#fff;
           --acc:#0f5c4a; --nest:#666; --annen:#8a4512; }}
-  body {{ padding:0; font-size:10pt; -webkit-print-color-adjust:exact;
-         print-color-adjust:exact; }}
+  body {{ padding:0; font-size:8.5pt; line-height:1.2;
+         -webkit-print-color-adjust:exact; print-color-adjust:exact; }}
   .wrap {{ max-width:none; }}
   .tools {{ display:none; }}          /* søk og sortering gir ikke mening på papir */
   .ath, .panel {{ break-inside:avoid; page-break-inside:avoid; box-shadow:none; }}
-  .ath {{ margin-bottom:.45rem; padding:.45rem .7rem .55rem; }}
-  .ath h3 {{ font-size:.95rem; }}
-  .ath td, .ath tbody th {{ padding:.18rem .45rem; line-height:1.25; }}
-  .ath thead th {{ padding:.15rem .45rem; }}
-  .meta {{ margin:.1rem 0 .3rem; gap:.7rem; }}
-  .badges {{ margin-bottom:.35rem; }}
-  .nest {{ font-size:.82rem; }}
-  .n {{ margin-bottom:0; }}
-  h1 {{ font-size:1.3rem; }}
-  .ath td.annen {{ background:#f6e6d8; box-shadow:inset 3px 0 0 var(--annen); }}
+  .ath {{ margin-bottom:.3rem; padding:.35rem .55rem .4rem; border-radius:5px; }}
+  .ath h3 {{ font-size:.9rem; display:inline; margin-right:.6rem; }}
+  h1 {{ font-size:1.25rem; }}
+
+  /* Metalinje, årsmerker og overskrift på samme linje */
+  .ath header {{ display:block; margin-bottom:.15rem; }}
+  .meta, .badges {{ display:inline-flex; gap:.55rem; margin:0; vertical-align:middle; }}
+  .badge {{ padding:0 .35rem; font-size:.72rem; }}
+
+  /* Hver resultatrute på ÉN linje: starter · beste / nestbeste · klubb */
+  .ath td .n, .ath td .best, .ath td .nest {{
+    display:inline; margin:0; font-size:inherit; }}
+  .ath td .n {{ border:0; color:var(--mut); padding:0; }}
+  .ath td .n::after {{ content:' · '; }}
+  .ath td .nest::before {{ content:' / '; color:var(--nest); }}
+  .ath td, .ath tbody th {{ padding:.1rem .4rem; vertical-align:baseline; }}
+  .ath thead th {{ padding:.05rem .4rem; font-size:.68rem; }}
+  .ath tbody th {{ width:30%; }}
+  .v {{ font-size:.9em; }}
+
+  .ath td.annen {{ background:#f6e6d8; box-shadow:inset 2px 0 0 var(--annen); }}
   .badge {{ background:#e6efec; }}
   .badge.annen {{ background:#f6e6d8; }}
   .swatch {{ background:#f0d8c2; box-shadow:inset 2px 0 0 var(--annen); }}
+  .legend {{ margin:.2rem 0 .6rem; font-size:.75rem; }}
 }}
 @media (max-width:640px) {{ .ath tbody th {{ width:auto; }} body {{ padding:1rem .75rem 3rem; }} }}
 </style></head><body><div class="wrap">
