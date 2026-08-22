@@ -7,8 +7,9 @@ Se `Tjalve/kjor.py` eller `vidar/kjor.py` for hvor lite som skal til.
 from .hent import Konfig, hent
 from .rapport import bygg
 from .pdf import lag_pdf
+from . import uten_stipend
 
-__all__ = ['Konfig', 'hent', 'bygg', 'lag_pdf', 'kjor']
+__all__ = ['Konfig', 'hent', 'bygg', 'lag_pdf', 'kjor', 'uten_stipend']
 
 
 def kjor(konfig, stipend, hent_data=True, pdf=True):

@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="no"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fana IL 2024–2026</title>
+<style>
+:root { --bg:#fbfbfa; --fg:#1a1a19; --mut:#6b6b68; --line:#e4e4e1;
+        --card:#fff; --acc:#0f5c4a; --nest:#8a8a86; --annen:#a8571c; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#151514; --fg:#eeeeec; --mut:#9a9a96; --line:#2c2c2a;
+          --card:#1d1d1b; --acc:#63c6ab; --nest:#86867f; --annen:#e0925a; }
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:2rem 1.25rem 4rem; background:var(--bg); color:var(--fg);
+  font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+.wrap { max-width:1080px; margin:0 auto; }
+h1 { font-size:1.6rem; margin:0 0 .25rem; letter-spacing:-.02em; }
+.sub { color:var(--mut); margin:0 0 1.75rem; }
+.panel { background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:1rem 1.25rem; margin-bottom:1.5rem; }
+.sumtab { border-collapse:collapse; }
+.sumtab th,.sumtab td { padding:.35rem 1.5rem .35rem 0; text-align:left; }
+.sumtab thead th { color:var(--mut); font-weight:500; font-size:.82rem;
+  text-transform:uppercase; letter-spacing:.04em; }
+.tools { display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; margin-bottom:1.25rem; }
+input,select { font:inherit; padding:.5rem .7rem; border:1px solid var(--line);
+  border-radius:8px; background:var(--card); color:var(--fg); }
+input { flex:1; min-width:220px; }
+.count { color:var(--mut); font-size:.88rem; }
+.ath { background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:1rem 1.25rem 1.25rem; margin-bottom:1rem; }
+.ath h3 { margin:0; font-size:1.05rem; display:inline; }
+.meta { display:flex; gap:.9rem; flex-wrap:wrap; color:var(--mut);
+  font-size:.85rem; margin:.2rem 0 .5rem; }
+.badges { display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:.75rem; }
+.badge { font-size:.78rem; padding:.15rem .5rem; border-radius:999px;
+  background:color-mix(in srgb,var(--acc) 14%,transparent); color:var(--acc); }
+.badge.null { background:transparent; color:var(--mut); border:1px dashed var(--line); }
+.ath table { width:100%; border-collapse:collapse; }
+.ath thead th { font-size:.75rem; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--mut); font-weight:500; text-align:left; padding:.3rem .5rem;
+  border-bottom:1px solid var(--line); }
+.ath tbody th { text-align:left; font-weight:500; padding:.45rem .5rem;
+  border-bottom:1px solid var(--line); vertical-align:top; width:32%; }
+.ath td { padding:.45rem .5rem; border-bottom:1px solid var(--line);
+  vertical-align:top; font-variant-numeric:tabular-nums; }
+.n { display:inline-block; font-size:.7rem; color:var(--mut); border:1px solid var(--line);
+  border-radius:4px; padding:0 .3rem; margin-bottom:.15rem; }
+.best { font-weight:600; }
+.nest { color:var(--nest); font-size:.88rem; }
+.tom { color:var(--nest); }
+.v { font-size:.72rem; color:var(--mut); margin-left:.3rem; }
+.tabellnote { color:var(--mut); font-size:.83rem; margin-top:.4rem; }
+.ath td.annen { background:color-mix(in srgb,var(--annen) 13%,transparent);
+  box-shadow:inset 3px 0 0 var(--annen); }
+.klubb { font-size:.72rem; color:var(--annen); margin-top:.2rem; font-weight:500; }
+.badge.annen { background:color-mix(in srgb,var(--annen) 16%,transparent); color:var(--annen); }
+.nykommer { color:var(--annen); font-weight:500; }
+.annen-t { color:var(--annen) !important; }
+.avgang th { font-weight:500; padding-right:1.5rem; }
+.legend { display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center;
+  color:var(--mut); font-size:.83rem; margin:.25rem 0 1.25rem; }
+.swatch { display:inline-block; width:.85rem; height:.85rem; border-radius:3px;
+  vertical-align:-2px; margin-right:.35rem;
+  background:color-mix(in srgb,var(--annen) 30%,transparent);
+  box-shadow:inset 2px 0 0 var(--annen); }
+.stipend { display:inline-block; background:var(--acc); color:var(--bg);
+  font-weight:700; font-size:.78rem; border-radius:4px; padding:0 .38rem;
+  vertical-align:2px; margin-left:.15rem; }
+.stipend-belop { color:var(--acc); font-weight:600; font-size:.92em;
+  white-space:nowrap; }
+.kat { border:1px solid var(--line); border-radius:4px; padding:0 .35rem;
+  font-size:.75rem; }
+h2.gruppe { font-size:1rem; margin:1.75rem 0 .6rem; letter-spacing:-.01em;
+  display:flex; gap:.6rem; align-items:baseline; flex-wrap:wrap; }
+h2.gruppe span { font-weight:400; font-size:.83rem; color:var(--mut); }
+.varsel { border-left:3px solid #c98a2b; }
+.varsel ul { margin:.5rem 0 0; padding-left:1.2rem; }
+.varsel code { font-size:.85em; padding:0 .25rem; border-radius:3px;
+  background:color-mix(in srgb,var(--fg) 8%,transparent); }
+
+@media print {
+  @page { size:A4 portrait; margin:11mm 10mm; }
+  :root { --bg:#fff; --fg:#111; --mut:#555; --line:#ccc; --card:#fff;
+          --acc:#0f5c4a; --nest:#666; --annen:#8a4512; }
+  /* macOS-systemfonten kan Chrome bare bygge inn som Type 3-font, som rendres
+     med striper i mange PDF-lesere. Helvetica Neue blir ordentlig TrueType. */
+  body { padding:0; font-size:8.5pt; line-height:1.2;
+         font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+         -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .wrap { max-width:none; }
+  .tools { display:none; }
+  .ath, .panel { break-inside:avoid; page-break-inside:avoid; box-shadow:none; }
+  .ath { margin-bottom:.3rem; padding:.35rem .55rem .4rem; border-radius:5px; }
+  .ath h3 { font-size:.9rem; margin-right:.6rem; }
+  h1 { font-size:1.25rem; }
+  h2.gruppe { margin:.9rem 0 .35rem; break-after:avoid; page-break-after:avoid; }
+  .ath header { display:block; margin-bottom:.15rem; }
+  .meta, .badges { display:inline-flex; gap:.55rem; margin:0; vertical-align:middle; }
+  .badge { padding:0 .35rem; font-size:.72rem; background:#e6efec; }
+  .badge.annen { background:#f6e6d8; }
+  /* Hver rute på én linje: starter · beste / nr. 2 / nr. 3 */
+  .ath td .n, .ath td .best, .ath td .nest {
+    display:inline; margin:0; font-size:inherit; }
+  .ath td .n { border:0; color:var(--mut); padding:0; }
+  .ath td .n::after { content:' · '; }
+  .ath td .nest::before { content:' / '; color:var(--nest); }
+  .ath td, .ath tbody th { padding:.1rem .4rem; vertical-align:baseline; }
+  .ath thead th { padding:.05rem .4rem; font-size:.68rem; }
+  .ath tbody th { width:28%; }
+  .v { font-size:.9em; }
+  .ath td.annen { background:#f6e6d8; box-shadow:inset 2px 0 0 var(--annen); }
+  .swatch { background:#f0d8c2; box-shadow:inset 2px 0 0 var(--annen); }
+  .legend { margin:.2rem 0 .6rem; font-size:.75rem; }
+}
+@media (max-width:640px) { .ath tbody th { width:auto; } body { padding:1rem .75rem 3rem; } }
+</style></head><body><div class="wrap">
+
+<h1>Fana IL</h1>
+<p class="sub">Utøvere 15 år og eldre · sesongene 2024–2026
+ · uttrekk 2026-08-22</p>
+
+<div class="panel">
+  <table class="sumtab">
+    <thead><tr><th>År</th><th>Utøvere</th><th>Starter</th>
+      <th class="annen-t">Utøvere før<br>Fana IL</th>
+      <th class="annen-t">Starter før<br>Fana IL</th></tr></thead>
+    <tbody><tr><th>2024</th><td>38</td><td>540</td><td class="annen-t">3</td><td class="annen-t">27</td></tr><tr><th>2025</th><td>34</td><td>344</td><td class="annen-t">1</td><td class="annen-t">13</td></tr><tr><th>2026</th><td>26</td><td>253</td><td class="annen-t">–</td><td class="annen-t">–</td></tr></tbody>
+  </table>
+  <p class="tabellnote">De to siste kolonnene gjelder utøvere som kom til
+  Fana IL senere enn 2024. Sesongene deres fra før overgangen er
+  tatt med, med klubben de da representerte. Alder regnes etter kalenderår.
+  </p>
+</div>
+
+<div class="panel"><strong>Tatt ut av listen: konkurrerer for annen klubb i 2026 (6)</strong><table class="sumtab avgang"><thead><tr><th>Utøver</th><th>År i Fana IL</th><th>Klubb i 2026</th></tr></thead><tbody><tr><th>Erlend Bolstad Raa</th><td>2024</td><td>Fyllingen IL</td></tr><tr><th>Frøya Sofie Fjelland Mikkelsen</th><td>2024, 2025</td><td>IL Gneist</td></tr><tr><th>Lea Noor Golis</th><td>2024, 2025</td><td>Fyllingen IL</td></tr><tr><th>Mathilde Maria Windheim</th><td>2024, 2025</td><td>IL Gneist</td></tr><tr><th>Oliver Solsvik</th><td>2024</td><td>Fyllingen IL</td></tr><tr><th>Vegard Rinde</th><td>2024</td><td>IL Gular</td></tr></tbody></table></div>
+
+<p class="legend">
+  <span><span class="swatch"></span>Sesong for en annen klubb, før overgang til Fana IL</span>
+  <span>Tall øverst i ruten = antall starter</span>
+  <span>Halvfet = beste, under = nestbeste</span>
+</p>
+
+<div class="tools">
+  <input id="q" type="search" placeholder="Søk etter utøver …" autocomplete="off">
+  <select id="sort">
+    <option value="std">Standardrekkefølge</option>
+    <option value="alder">Yngste først</option>
+    <option value="alder-eldst">Eldste først</option>
+    <option value="navn">Alfabetisk</option>
+    <option value="starter">Flest starter</option>
+  </select>
+  <span class="count" id="count"></span>
+</div>
+
+<h2 class="gruppe">Utøvere <span>53 · yngste først</span></h2><div class="liste">
+<section class="ath" data-navn="maria hansen korsan" data-starter="10"
+         data-alder="20110713">
+  <header>
+    <h3>Maria Hansen Korsan</h3>
+    <div class="meta"><span>2011-07-13</span><span>K</span>
+      <span>15 år i 2026</span>
+      <span>10 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge null">2025: –</span> <span class="badge">2026: 10</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>400 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">2</span><div class="best">1:10.37</div><div class="nest">1:11.11</div></td></tr><tr><th>800 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">5</span><div class="best">2:38.81</div><div class="nest">2:39.25</div></td></tr><tr><th>1500 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">3</span><div class="best">5:29.55</div><div class="nest">5:31.63</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="synnøve isolde teigen" data-starter="17"
+         data-alder="20110623">
+  <header>
+    <h3>Synnøve Isolde Teigen</h3>
+    <div class="meta"><span>2011-06-23</span><span>K</span>
+      <span>15 år i 2026</span>
+      <span>17 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge null">2025: –</span> <span class="badge">2026: 17</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">4</span><div class="best">2.53</div><div class="nest">2.42</div></td></tr><tr><th>Lengde</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">7</span><div class="best">5.46<span class="v">+2.8</span></div><div class="nest">5.29<span class="v">+0.1</span></div></td></tr><tr><th>Tresteg</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">5</span><div class="best">11.04</div><div class="nest">10.98<span class="v">+1.3</span></div></td></tr><tr><th>80 meter hekk (76,2cm)</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">14.46<span class="v">+0.2</span></div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="nikolai gald" data-starter="9"
+         data-alder="20110513">
+  <header>
+    <h3>Nikolai Gald</h3>
+    <div class="meta"><span>2011-05-13</span><span>M</span>
+      <span>15 år i 2026</span>
+      <span>9 starter totalt</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge null">2025: –</span> <span class="badge">2026: 9</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Høyde</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">9</span><div class="best">1.82</div><div class="nest">1.78</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="thea emilie turøy" data-starter="15"
+         data-alder="20110215">
+  <header>
+    <h3>Thea Emilie Turøy</h3>
+    <div class="meta"><span>2011-02-15</span><span>K</span>
+      <span>15 år i 2026</span>
+      <span>15 starter totalt</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge null">2025: –</span> <span class="badge">2026: 15</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">3</span><div class="best">8.01</div><div class="nest">8.11</div></td></tr><tr><th>200 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">25.72</div><div class="nest tom">–</div></td></tr><tr><th>80 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">2</span><div class="best">10.46<span class="v">+1.7</span></div><div class="nest">10.53<span class="v">+0.1</span></div></td></tr><tr><th>Høyde</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">6</span><div class="best">1.70</div><div class="nest">1.66</div></td></tr><tr><th>Lengde</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">3</span><div class="best">5.63</div><div class="nest">5.50</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="anique christine mulder" data-starter="2"
+         data-alder="20110000">
+  <header>
+    <h3>Anique Christine Mulder</h3>
+    <div class="meta"><span>2011</span><span>K</span>
+      <span>15 år i 2026</span>
+      <span>2 starter totalt</span><span class="nykommer">Kom til Fana IL i 2026</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge null">2025: –</span> <span class="badge">2026: 2</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>400 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">1:05.33</div><div class="nest tom">–</div></td></tr><tr><th>800 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">2:37.74</div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="philip moen" data-starter="2"
+         data-alder="20100420">
+  <header>
+    <h3>Philip Moen</h3>
+    <div class="meta"><span>2010-04-20</span><span>M</span>
+      <span>16 år i 2026</span>
+      <span>2 starter totalt</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 2</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>80 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">10.05<span class="v">-1.3</span></div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>300 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">39.57</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="johannes kifle assefa aalen" data-starter="2"
+         data-alder="20100307">
+  <header>
+    <h3>Johannes Kifle Assefa Aalen</h3>
+    <div class="meta"><span>2010-03-07</span><span>M</span>
+      <span>16 år i 2026</span>
+      <span>2 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 2</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">8.98<span class="v">-0.9</span></div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>100 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">13.57<span class="v">-1.6</span></div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="ulrikke nygård strandheim" data-starter="9"
+         data-alder="20091207">
+  <header>
+    <h3>Ulrikke Nygård Strandheim</h3>
+    <div class="meta"><span>2009-12-07</span><span>K</span>
+      <span>17 år i 2026</span>
+      <span>9 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 6</span> <span class="badge">2026: 3</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">9.47</div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">9.39</div><div class="nest tom">–</div></td></tr><tr><th>100 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">14.61<span class="v">-2.2</span></div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>200 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">29.84<span class="v">+1.7</span></div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">30.65</div><div class="nest tom">–</div></td></tr><tr><th>Lengde</th><td class="tom">–</td><td><span class="n">3</span><div class="best">4.04<span class="v">+2.1</span></div><div class="nest">3.76</div></td><td><span class="n">1</span><div class="best">3.78</div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="johannes hoddevik vaage" data-starter="40"
+         data-alder="20091120">
+  <header>
+    <h3>Johannes Hoddevik Vaage</h3>
+    <div class="meta"><span>2009-11-20</span><span>M</span>
+      <span>17 år i 2026</span>
+      <span>40 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 22</span> <span class="badge">2025: 9</span> <span class="badge">2026: 9</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">4</span><div class="best">8.42<span class="v">+1.8</span></div><div class="nest">8.43</div></td><td><span class="n">2</span><div class="best">8.25</div><div class="nest">8.38</div></td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">5</span><div class="best">13.22<span class="v">+1.8</span></div><div class="nest">13.63<span class="v">+0.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">6</span><div class="best">26.62<span class="v">+3.3</span></div><div class="nest">26.96<span class="v">+1.9</span></div></td><td><span class="n">4</span><div class="best">26.53<span class="v">+2.9</span></div><div class="nest">26.91<span class="v">+2.5</span></div></td><td><span class="n">1</span><div class="best">25.25<span class="v">+1.9</span></div><div class="nest tom">–</div></td></tr><tr><th>400 meter</th><td><span class="n">4</span><div class="best">63.03</div><div class="nest">63.82</div></td><td class="tom">–</td><td><span class="n">2</span><div class="best">56.03</div><div class="nest">56.50</div></td></tr><tr><th>800 meter</th><td class="tom">–</td><td><span class="n">3</span><div class="best">2:24.63</div><div class="nest">2:26.54</div></td><td><span class="n">5</span><div class="best">2:12.01</div><div class="nest">2:14.56</div></td></tr><tr><th>Tresteg</th><td><span class="n">2</span><div class="best">9.07<span class="v">+3.4</span></div><div class="nest">8.83</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>600 meter</th><td><span class="n">1</span><div class="best">1:43.50</div><div class="nest tom">–</div></td><td class="tom">–</td><td><span class="n">1</span><div class="best">1:35.67</div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="vebjørn thowsen hauge" data-starter="65"
+         data-alder="20091019">
+  <header>
+    <h3>Vebjørn Thowsen Hauge</h3>
+    <div class="meta"><span>2009-10-19</span><span>M</span>
+      <span>17 år i 2026</span>
+      <span>65 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 31</span> <span class="badge">2025: 13</span> <span class="badge">2026: 21</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">5</span><div class="best">7.78</div><div class="nest">7.83</div></td><td><span class="n">2</span><div class="best">7.78</div><div class="nest">7.80<span class="v">-0.9</span></div></td><td><span class="n">4</span><div class="best">7.21<span class="v">+1.6</span></div><div class="nest">7.35</div></td></tr><tr><th>100 meter</th><td><span class="n">3</span><div class="best">12.08<span class="v">+1.5</span></div><div class="nest">12.16<span class="v">+0.7</span></div></td><td><span class="n">3</span><div class="best">12.22<span class="v">+0.6</span></div><div class="nest">12.34<span class="v">-0.1</span></div></td><td><span class="n">6</span><div class="best">11.23<span class="v">+1.4</span></div><div class="nest">11.28<span class="v">+1.0</span></div></td></tr><tr><th>200 meter</th><td><span class="n">7</span><div class="best">24.55<span class="v">+0.0</span></div><div class="nest">24.78<span class="v">+0.4</span></div></td><td><span class="n">3</span><div class="best">24.31<span class="v">+0.6</span></div><div class="nest">24.41<span class="v">+2.5</span></div></td><td><span class="n">4</span><div class="best">22.92<span class="v">+1.0</span></div><div class="nest">23.37<span class="v">+2.1</span></div></td></tr><tr><th>80 meter</th><td><span class="n">1</span><div class="best">10.43<span class="v">-1.7</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>300 meter</th><td><span class="n">1</span><div class="best">41.19</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">7</span><div class="best">5.55<span class="v">+1.7</span></div><div class="nest">5.50</div></td><td><span class="n">4</span><div class="best">5.48<span class="v">+0.9</span></div><div class="nest">5.19<span class="v">-0.6</span></div></td><td><span class="n">7</span><div class="best">6.03<span class="v">+3.5</span></div><div class="nest">5.91<span class="v">+1.2</span></div></td></tr><tr><th>Tresteg</th><td><span class="n">7</span><div class="best">12.58<span class="v">+3.4</span></div><div class="nest">12.41<span class="v">+0.5</span></div></td><td><span class="n">1</span><div class="best">11.00</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="lara isabel russenes" data-starter="3"
+         data-alder="20090827">
+  <header>
+    <h3>Lara Isabel Russenes</h3>
+    <div class="meta"><span>2009-08-27</span><span>K</span>
+      <span>17 år i 2026</span>
+      <span>3 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 3</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>100 meter</th><td><span class="n">2</span><div class="best">15.46<span class="v">+0.7</span></div><div class="nest">15.63<span class="v">-0.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">1</span><div class="best">32.83<span class="v">-1.7</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="gard vie ytrearne" data-starter="33"
+         data-alder="20090823">
+  <header>
+    <h3>Gard Vie Ytrearne</h3>
+    <div class="meta"><span>2009-08-23</span><span>M</span>
+      <span>17 år i 2026</span>
+      <span>33 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 18</span> <span class="badge">2025: 15</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">2</span><div class="best">8.46</div><div class="nest">8.55</div></td><td><span class="n">1</span><div class="best">8.46</div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">1</span><div class="best">13.18<span class="v">-0.3</span></div><div class="nest tom">–</div></td><td><span class="n">2</span><div class="best">12.76<span class="v">-0.9</span></div><div class="nest">12.83<span class="v">-0.9</span></div></td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">6</span><div class="best">26.29<span class="v">+1.0</span></div><div class="nest">26.38<span class="v">+1.6</span></div></td><td><span class="n">3</span><div class="best">26.17<span class="v">-2.8</span></div><div class="nest">26.47</div></td><td class="tom">–</td></tr><tr><th>80 meter</th><td><span class="n">1</span><div class="best">10.84<span class="v">-0.5</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>300 meter</th><td><span class="n">1</span><div class="best">43.23</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">5</span><div class="best">4.79</div><div class="nest">4.67</div></td><td><span class="n">8</span><div class="best">5.35<span class="v">+2.1</span></div><div class="nest">5.26<span class="v">+1.6</span></div></td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">1</span><div class="best">8.91</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>600 meter</th><td><span class="n">1</span><div class="best">1:40.47</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Kule 5,0kg</th><td class="tom">–</td><td><span class="n">1</span><div class="best">7.51</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="embla adele østreim øina" data-starter="101"
+         data-alder="20090813">
+  <header>
+    <h3>Embla Adele Østreim Øina</h3>
+    <div class="meta"><span>2009-08-13</span><span>K</span>
+      <span>17 år i 2026</span>
+      <span>101 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 32</span> <span class="badge">2025: 42</span> <span class="badge">2026: 27</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">3</span><div class="best">8.30</div><div class="nest">8.41<span class="v">+1.5</span></div></td><td><span class="n">4</span><div class="best">8.20</div><div class="nest">8.21</div></td><td><span class="n">3</span><div class="best">8.08</div><div class="nest">8.11</div></td></tr><tr><th>100 meter</th><td><span class="n">2</span><div class="best">13.22<span class="v">+0.7</span></div><div class="nest">13.48<span class="v">-0.7</span></div></td><td><span class="n">2</span><div class="best">12.86<span class="v">+0.9</span></div><div class="nest">12.95<span class="v">+1.6</span></div></td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">2</span><div class="best">27.32<span class="v">+1.6</span></div><div class="nest">28.89</div></td><td><span class="n">2</span><div class="best">26.68<span class="v">+3.1</span></div><div class="nest">27.29</div></td><td><span class="n">1</span><div class="best">26.69</div><div class="nest tom">–</div></td></tr><tr><th>800 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">2:49.87</div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">2:50.23</div><div class="nest tom">–</div></td></tr><tr><th>Høyde</th><td><span class="n">6</span><div class="best">1.55</div><div class="nest">1.53</div></td><td><span class="n">5</span><div class="best">1.61</div><div class="nest">1.58</div></td><td><span class="n">4</span><div class="best">1.65</div><div class="nest">1.64</div></td></tr><tr><th>Stav</th><td><span class="n">2</span><div class="best">2.84</div><div class="nest">2.41</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">7</span><div class="best">5.16<span class="v">-0.6</span></div><div class="nest">5.12<span class="v">+2.9</span></div></td><td><span class="n">5</span><div class="best">5.36</div><div class="nest">5.32<span class="v">+1.8</span></div></td><td><span class="n">1</span><div class="best">4.91</div><div class="nest tom">–</div></td></tr><tr><th>Tresteg</th><td><span class="n">7</span><div class="best">11.94<span class="v">+3.5</span></div><div class="nest">11.71<span class="v">+2.3</span></div></td><td><span class="n">11</span><div class="best">12.43<span class="v">+2.7</span></div><div class="nest">12.26<span class="v">+1.9</span></div></td><td><span class="n">10</span><div class="best">12.50</div><div class="nest">12.46<span class="v">+2.7</span></div></td></tr><tr><th>Femkamp</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">3228</div><div class="nest tom">–</div></td></tr><tr><th>Kule 3,0kg</th><td><span class="n">2</span><div class="best">9.26</div><div class="nest">7.72</div></td><td><span class="n">4</span><div class="best">9.77</div><div class="nest">9.71</div></td><td><span class="n">1</span><div class="best">10.14</div><div class="nest tom">–</div></td></tr><tr><th>Spyd 500gram</th><td class="tom">–</td><td><span class="n">1</span><div class="best">22.22</div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>60 meter hekk (76,2cm)</th><td><span class="n">1</span><div class="best">9.42</div><div class="nest tom">–</div></td><td><span class="n">3</span><div class="best">9.26</div><div class="nest">9.29</div></td><td><span class="n">3</span><div class="best">9.00</div><div class="nest">9.06</div></td></tr><tr><th>80 meter hekk (76,2cm)</th><td class="tom">–</td><td><span class="n">2</span><div class="best">12.21<span class="v">+1.9</span></div><div class="nest">12.62<span class="v">-2.2</span></div></td><td class="tom">–</td></tr><tr><th>100 meter hekk (76,2cm)</th><td class="tom">–</td><td><span class="n">1</span><div class="best">20.86<span class="v">-2.3</span></div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">15.17<span class="v">+1.4</span></div><div class="nest tom">–</div></td></tr><tr><th>5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">3228</div><div class="nest tom">–</div></td></tr><tr><th>Sjukamp U18</th><td class="tom">–</td><td><span class="n">1</span><div class="best">4068</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="sverre rafaelsen frantzen" data-starter="41"
+         data-alder="20090621">
+  <header>
+    <h3>Sverre Rafaelsen Frantzen</h3>
+    <div class="meta"><span>2009-06-21</span><span>M</span>
+      <span>17 år i 2026</span>
+      <span>41 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 20</span> <span class="badge">2025: 10</span> <span class="badge">2026: 11</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">4</span><div class="best">7.99</div><div class="nest">8.37</div></td><td><span class="n">4</span><div class="best">7.94</div><div class="nest">8.02</div></td><td><span class="n">3</span><div class="best">7.76</div><div class="nest">7.78</div></td></tr><tr><th>100 meter</th><td><span class="n">2</span><div class="best">13.05<span class="v">-0.3</span></div><div class="nest">13.12<span class="v">-1.1</span></div></td><td><span class="n">1</span><div class="best">12.48<span class="v">-0.9</span></div><div class="nest tom">–</div></td><td><span class="n">3</span><div class="best">11.74<span class="v">+1.1</span></div><div class="nest">11.95<span class="v">-0.6</span></div></td></tr><tr><th>200 meter</th><td><span class="n">6</span><div class="best">26.12</div><div class="nest">26.20<span class="v">-0.4</span></div></td><td><span class="n">5</span><div class="best">25.37<span class="v">+0.0</span></div><div class="nest">25.85</div></td><td><span class="n">5</span><div class="best">23.69<span class="v">+1.0</span></div><div class="nest">24.58<span class="v">+1.2</span></div></td></tr><tr><th>80 meter</th><td><span class="n">1</span><div class="best">10.90<span class="v">-0.5</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>300 meter</th><td><span class="n">1</span><div class="best">41.94</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">3</span><div class="best">4.31</div><div class="nest">4.01</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">1</span><div class="best">9.03</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>600 meter</th><td><span class="n">1</span><div class="best">1:43.87</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>60 meter hekk (84,0cm)</th><td><span class="n">1</span><div class="best">12.09</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="stina marie eriksen" data-starter="21"
+         data-alder="20090117">
+  <header>
+    <h3>Stina Marie Eriksen</h3>
+    <div class="meta"><span>2009-01-17</span><span>K</span>
+      <span>17 år i 2026</span>
+      <span>21 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 13</span> <span class="badge">2025: 3</span> <span class="badge">2026: 5</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">3</span><div class="best">8.89</div><div class="nest">8.92</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">2</span><div class="best">14.08<span class="v">+0.7</span></div><div class="nest">14.35<span class="v">-0.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">2</span><div class="best">30.44</div><div class="nest">30.62<span class="v">-1.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Spyd 500gram</th><td><span class="n">6</span><div class="best">27.90</div><div class="nest">27.42</div></td><td><span class="n">3</span><div class="best">27.72</div><div class="nest">25.68</div></td><td><span class="n">3</span><div class="best">37.08</div><div class="nest">34.20</div></td></tr><tr><th>Spyd 600gram</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">2</span><div class="best">30.91</div><div class="nest">29.60</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="anna qvale sundstrøm" data-starter="56"
+         data-alder="20081026">
+  <header>
+    <h3>Anna Qvale Sundstrøm</h3>
+    <div class="meta"><span>2008-10-26</span><span>K</span>
+      <span>18 år i 2026</span>
+      <span>56 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 39</span> <span class="badge">2025: 17</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">3</span><div class="best">9.20</div><div class="nest">9.35</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">1</span><div class="best">14.72<span class="v">+0.7</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">2</span><div class="best">30.35<span class="v">-2.2</span></div><div class="nest">31.1<span class="v">-5.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde</th><td><span class="n">9</span><div class="best">1.59</div><div class="nest">1.56</div></td><td><span class="n">5</span><div class="best">1.55</div><div class="nest">1.55</div></td><td class="tom">–</td></tr><tr><th>Stav</th><td><span class="n">10</span><div class="best">3.10</div><div class="nest">3.04</div></td><td><span class="n">10</span><div class="best">3.12</div><div class="nest">3.11</div></td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">6</span><div class="best">4.66<span class="v">+0.0</span></div><div class="nest">4.60<span class="v">+5.9</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">7</span><div class="best">10.49<span class="v">+1.5</span></div><div class="nest">10.46<span class="v">+0.0</span></div></td><td><span class="n">2</span><div class="best">10.15</div><div class="nest">10.14</div></td><td class="tom">–</td></tr><tr><th>Kule 3,0kg</th><td><span class="n">1</span><div class="best">8.25</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="finn connor saint" data-starter="24"
+         data-alder="20080109">
+  <header>
+    <h3>Finn Connor Saint</h3>
+    <div class="meta"><span>2008-01-09</span><span>M</span>
+      <span>18 år i 2026</span>
+      <span>24 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 20</span> <span class="badge">2025: 4</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">2</span><div class="best">7.91</div><div class="nest">8.01</div></td><td><span class="n">2</span><div class="best">7.63</div><div class="nest">7.74</div></td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">3</span><div class="best">11.97<span class="v">+2.7</span></div><div class="nest">12.24<span class="v">+1.4</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">2</span><div class="best">24.81<span class="v">+2.4</span></div><div class="nest">25.48<span class="v">-1.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>60 meter hekk (84,0cm)</th><td><span class="n">1</span><div class="best">8.82</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>60 meter hekk (91,4cm)</th><td><span class="n">3</span><div class="best">8.81</div><div class="nest">8.82</div></td><td><span class="n">2</span><div class="best">8.67</div><div class="nest">8.68</div></td><td class="tom">–</td></tr><tr><th>100 meter hekk (91,4cm)</th><td><span class="n">5</span><div class="best">14.28<span class="v">-0.4</span></div><div class="nest">14.32<span class="v">+0.5</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>300 meter hekk (84,0cm)</th><td><span class="n">4</span><div class="best">41.75</div><div class="nest">42.52</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="anders kvarme reinertsen" data-starter="3"
+         data-alder="20080000">
+  <header>
+    <h3>Anders Kvarme Reinertsen</h3>
+    <div class="meta"><span>2008</span><span>M</span>
+      <span>18 år i 2026</span>
+      <span>3 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 3</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>5 km</th><td><span class="n">3</span><div class="best">21.28</div><div class="nest">23.08</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="jennie bos" data-starter="15"
+         data-alder="20071117">
+  <header>
+    <h3>Jennie Bos</h3>
+    <div class="meta"><span>2007-11-17</span><span>K</span>
+      <span>19 år i 2026</span>
+      <span>15 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 12</span> <span class="badge">2025: 3</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td><span class="n">12</span><div class="best">3.43</div><div class="nest">3.41</div></td><td><span class="n">3</span><div class="best">3.21</div><div class="nest">3.05</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="martine vik" data-starter="36"
+         data-alder="20070930">
+  <header>
+    <h3>Martine Vik</h3>
+    <div class="meta"><span>2007-09-30</span><span>K</span>
+      <span>19 år i 2026</span>
+      <span>36 starter totalt</span><span class="nykommer">Kom til Fana IL i 2026</span></div>
+    <div class="badges"><span class="badge annen">2024: 12</span> <span class="badge annen">2025: 13</span> <span class="badge">2026: 11</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024<div class=klubb>Norna-Salhus IL</div></th><th>2025<div class=klubb>Norna-Salhus IL</div></th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td class="annen"><span class="n">2</span><div class="best">8.16</div><div class="nest">8.21</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td class="annen"><span class="n">1</span><div class="best">26.70</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td class="annen"><span class="n">8</span><div class="best">11.67<span class="v">+2.7</span></div><div class="nest">11.57<span class="v">+3.4</span></div></td><td class="annen"><span class="n">13</span><div class="best">12.08<span class="v">+2.4</span></div><div class="nest">12.03<span class="v">+0.9</span></div></td><td><span class="n">11</span><div class="best">12.04</div><div class="nest">12.02</div></td></tr><tr><th>60 meter hekk (76,2cm)</th><td class="annen"><span class="n">1</span><div class="best">9.17</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="leonora polden vangen" data-starter="27"
+         data-alder="20070728">
+  <header>
+    <h3>Leonora Polden Vangen</h3>
+    <div class="meta"><span>2007-07-28</span><span>K</span>
+      <span>19 år i 2026</span>
+      <span>27 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 25</span> <span class="badge">2025: 2</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">8</span><div class="best">8.87<span class="v">+2.6</span></div><div class="nest">8.90</div></td><td><span class="n">2</span><div class="best">9.07</div><div class="nest">9.17</div></td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">2</span><div class="best">14.45<span class="v">-0.2</span></div><div class="nest">14.84<span class="v">-0.4</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">4</span><div class="best">30.23</div><div class="nest">30.45<span class="v">-2.2</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>400 meter</th><td><span class="n">1</span><div class="best">1.12</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde</th><td><span class="n">1</span><div class="best">1.20</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">3</span><div class="best">4.19</div><div class="nest">4.07</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">4</span><div class="best">9.18</div><div class="nest">8.82</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Kule 3,0kg</th><td><span class="n">2</span><div class="best">6.68</div><div class="nest">6.63</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="benjamin moen" data-starter="99"
+         data-alder="20070719">
+  <header>
+    <h3>Benjamin Moen</h3>
+    <div class="meta"><span>2007-07-19</span><span>M</span>
+      <span>19 år i 2026</span>
+      <span>99 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 46</span> <span class="badge">2025: 40</span> <span class="badge">2026: 13</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">10</span><div class="best">7.34<span class="v">+0.8</span></div><div class="nest">7.4</div></td><td><span class="n">5</span><div class="best">7.30</div><div class="nest">7.36</div></td><td><span class="n">2</span><div class="best">7.32</div><div class="nest">7.35</div></td></tr><tr><th>100 meter</th><td><span class="n">5</span><div class="best">11.29<span class="v">+1.7</span></div><div class="nest">11.29<span class="v">+2.0</span></div></td><td><span class="n">4</span><div class="best">11.18<span class="v">+1.8</span></div><div class="nest">11.32<span class="v">+1.2</span></div></td><td><span class="n">1</span><div class="best">11.22<span class="v">+3.5</span></div><div class="nest tom">–</div></td></tr><tr><th>200 meter</th><td class="tom">–</td><td><span class="n">2</span><div class="best">23.36<span class="v">+0.6</span></div><div class="nest">23.58<span class="v">-0.1</span></div></td><td><span class="n">1</span><div class="best">22.76<span class="v">+2.1</span></div><div class="nest tom">–</div></td></tr><tr><th>80 meter</th><td><span class="n">1</span><div class="best">9.34<span class="v">+2.2</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">14</span><div class="best">7.00<span class="v">+0.0</span></div><div class="nest">6.98<span class="v">+0.3</span></div></td><td><span class="n">20</span><div class="best">6.91<span class="v">-0.7</span></div><div class="nest">6.89<span class="v">+0.8</span></div></td><td><span class="n">9</span><div class="best">6.78</div><div class="nest">6.64<span class="v">+0.7</span></div></td></tr><tr><th>Tresteg</th><td class="tom">–</td><td><span class="n">1</span><div class="best">13.03<span class="v">+0.1</span></div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>60 meter hekk (91,4cm)</th><td><span class="n">5</span><div class="best">8.40</div><div class="nest">8.50</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>60 meter hekk (100cm)</th><td class="tom">–</td><td><span class="n">2</span><div class="best">8.71</div><div class="nest">8.79</div></td><td class="tom">–</td></tr><tr><th>110 meter hekk (91,4cm)</th><td><span class="n">8</span><div class="best">14.80<span class="v">+2.0</span></div><div class="nest">14.83<span class="v">+2.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>110 meter hekk (100cm)</th><td><span class="n">2</span><div class="best">15.11<span class="v">+3.1</span></div><div class="nest">15.56<span class="v">+2.8</span></div></td><td><span class="n">6</span><div class="best">15.40<span class="v">+1.3</span></div><div class="nest">15.50<span class="v">+1.1</span></div></td><td class="tom">–</td></tr><tr><th>200 meter hekk (76,2cm)</th><td><span class="n">1</span><div class="best">27.71<span class="v">-1.4</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="sofie helén løvendahl strøm" data-starter="30"
+         data-alder="20070701">
+  <header>
+    <h3>Sofie Helén Løvendahl Strøm</h3>
+    <div class="meta"><span>2007-07-01</span><span>K</span>
+      <span>19 år i 2026</span>
+      <span>30 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 28</span> <span class="badge">2025: 2</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">7</span><div class="best">8.92<span class="v">+1.2</span></div><div class="nest">8.94</div></td><td><span class="n">2</span><div class="best">8.89</div><div class="nest">8.95</div></td><td class="tom">–</td></tr><tr><th>100 meter</th><td><span class="n">1</span><div class="best">14.74<span class="v">-0.4</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde</th><td><span class="n">1</span><div class="best">1.40</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">7</span><div class="best">4.61<span class="v">+2.3</span></div><div class="nest">4.41<span class="v">+4.7</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">11</span><div class="best">10.12<span class="v">+3.2</span></div><div class="nest">10.02</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Kule 3,0kg</th><td><span class="n">1</span><div class="best">7.28</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="johannes handeland" data-starter="15"
+         data-alder="20061028">
+  <header>
+    <h3>Johannes Handeland</h3>
+    <div class="meta"><span>2006-10-28</span><span>M</span>
+      <span>20 år i 2026</span>
+      <span>15 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 8</span> <span class="badge">2025: 7</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td><span class="n">8</span><div class="best">4.40</div><div class="nest">4.35</div></td><td><span class="n">7</span><div class="best">4.30</div><div class="nest">4.25</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="odin august østreim øina" data-starter="39"
+         data-alder="20060830">
+  <header>
+    <h3>Odin August Østreim Øina</h3>
+    <div class="meta"><span>2006-08-30</span><span>M</span>
+      <span>20 år i 2026</span>
+      <span>39 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 7</span> <span class="badge">2025: 16</span> <span class="badge">2026: 16</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">3</span><div class="best">7.54<span class="v">+2.4</span></div><div class="nest">7.58<span class="v">+1.2</span></div></td><td><span class="n">3</span><div class="best">7.48</div><div class="nest">7.49</div></td><td><span class="n">1</span><div class="best">7.37</div><div class="nest tom">–</div></td></tr><tr><th>100 meter</th><td><span class="n">2</span><div class="best">12.02<span class="v">+1.3</span></div><div class="nest">12.10<span class="v">-0.9</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>200 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">23.65</div><div class="nest tom">–</div></td></tr><tr><th>400 meter</th><td><span class="n">1</span><div class="best">56.78</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde</th><td class="tom">–</td><td><span class="n">1</span><div class="best">1.76</div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">1.82</div><div class="nest tom">–</div></td></tr><tr><th>Stav</th><td class="tom">–</td><td><span class="n">4</span><div class="best">4.55</div><div class="nest">4.50</div></td><td><span class="n">5</span><div class="best">4.70</div><div class="nest">4.60</div></td></tr><tr><th>Lengde</th><td class="tom">–</td><td><span class="n">4</span><div class="best">6.35</div><div class="nest">6.09</div></td><td><span class="n">2</span><div class="best">6.42</div><div class="nest">4.80</div></td></tr><tr><th>1000 meter</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">3:02.51</div><div class="nest tom">–</div></td></tr><tr><th>Kule 6,0kg</th><td class="tom">–</td><td><span class="n">1</span><div class="best">12.01</div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>Kule 7,26kg</th><td class="tom">–</td><td><span class="n">1</span><div class="best">9.62</div><div class="nest tom">–</div></td><td><span class="n">2</span><div class="best">10.71</div><div class="nest">10.70</div></td></tr><tr><th>60 meter hekk (100cm)</th><td class="tom">–</td><td><span class="n">2</span><div class="best">8.52</div><div class="nest">8.76</div></td><td class="tom">–</td></tr><tr><th>60 meter hekk (106,7cm)</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">2</span><div class="best">8.57</div><div class="nest">8.65</div></td></tr><tr><th>400 meter hekk (91,4cm)</th><td><span class="n">1</span><div class="best">59.99</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>7 Kamp</th><td class="tom">–</td><td class="tom">–</td><td><span class="n">1</span><div class="best">4846</div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="kjell augustin kubon" data-starter="27"
+         data-alder="20060816">
+  <header>
+    <h3>Kjell Augustin Kubon</h3>
+    <div class="meta"><span>2006-08-16</span><span>M</span>
+      <span>20 år i 2026</span>
+      <span>27 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 9</span> <span class="badge">2025: 12</span> <span class="badge">2026: 6</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td><span class="n">7</span><div class="best">4.06</div><div class="nest">3.95</div></td><td><span class="n">12</span><div class="best">4.55</div><div class="nest">4.54</div></td><td><span class="n">6</span><div class="best">4.50</div><div class="nest">4.50</div></td></tr><tr><th>Lengde</th><td><span class="n">2</span><div class="best">6.49<span class="v">+0.5</span></div><div class="nest">6.36<span class="v">+0.4</span></div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="gustav holmefjord" data-starter="45"
+         data-alder="20060625">
+  <header>
+    <h3>Gustav Holmefjord</h3>
+    <div class="meta"><span>2006-06-25</span><span>M</span>
+      <span>20 år i 2026</span>
+      <span>45 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 20</span> <span class="badge">2025: 17</span> <span class="badge">2026: 8</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>100 meter</th><td><span class="n">1</span><div class="best">12.39<span class="v">-1.3</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Stav</th><td><span class="n">19</span><div class="best">4.77</div><div class="nest">4.65</div></td><td><span class="n">17</span><div class="best">4.65</div><div class="nest">4.60</div></td><td><span class="n">8</span><div class="best">4.67</div><div class="nest">4.55</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="tobias heldal" data-starter="53"
+         data-alder="20060420">
+  <header>
+    <h3>Tobias Heldal</h3>
+    <div class="meta"><span>2006-04-20</span><span>M</span>
+      <span>20 år i 2026</span>
+      <span>53 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 19</span> <span class="badge">2025: 17</span> <span class="badge">2026: 17</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Høyde</th><td><span class="n">14</span><div class="best">2.04</div><div class="nest">2.02</div></td><td><span class="n">16</span><div class="best">2.08</div><div class="nest">2.06</div></td><td><span class="n">15</span><div class="best">2.11</div><div class="nest">2.10</div></td></tr><tr><th>Tresteg</th><td><span class="n">5</span><div class="best">14.28<span class="v">+2.5</span></div><div class="nest">14.19<span class="v">+1.3</span></div></td><td><span class="n">1</span><div class="best">14.53<span class="v">+0.6</span></div><div class="nest tom">–</div></td><td><span class="n">2</span><div class="best">14.65</div><div class="nest">13.76</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="mathilde handeland" data-starter="6"
+         data-alder="20050827">
+  <header>
+    <h3>Mathilde Handeland</h3>
+    <div class="meta"><span>2005-08-27</span><span>K</span>
+      <span>21 år i 2026</span>
+      <span>6 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 6</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">1</span><div class="best">8.29<span class="v">+1.6</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Stav</th><td><span class="n">4</span><div class="best">3.14</div><div class="nest">3.10</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">1</span><div class="best">4.95<span class="v">+0.5</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="frida sætrum" data-starter="6"
+         data-alder="20050719">
+  <header>
+    <h3>Frida Sætrum</h3>
+    <div class="meta"><span>2005-07-19</span><span>K</span>
+      <span>21 år i 2026</span>
+      <span>6 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 6</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Lengde</th><td><span class="n">4</span><div class="best">5.07<span class="v">+2.3</span></div><div class="nest">5.03</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">2</span><div class="best">10.91</div><div class="nest">10.60</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="oscar stuhr" data-starter="11"
+         data-alder="20050418">
+  <header>
+    <h3>Oscar Stuhr</h3>
+    <div class="meta"><span>2005-04-18</span><span>M</span>
+      <span>21 år i 2026</span>
+      <span>11 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 11</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">1</span><div class="best">7.91</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde</th><td><span class="n">2</span><div class="best">1.79</div><div class="nest">1.76</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Lengde</th><td><span class="n">1</span><div class="best">5.80</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">6</span><div class="best">14.33<span class="v">+2.4</span></div><div class="nest">13.88<span class="v">+1.4</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Kule 6,0kg</th><td><span class="n">1</span><div class="best">10.16</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="paula puchner" data-starter="2"
+         data-alder="20050209">
+  <header>
+    <h3>Paula Puchner</h3>
+    <div class="meta"><span>2005-02-09</span><span>K</span>
+      <span>21 år i 2026</span>
+      <span>2 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 2</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Lengde</th><td><span class="n">1</span><div class="best">4.34<span class="v">+1.3</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>100 meter hekk (84,0cm)</th><td><span class="n">1</span><div class="best">17.99<span class="v">-0.2</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="sebastian røed hovland" data-starter="3"
+         data-alder="20041127">
+  <header>
+    <h3>Sebastian Røed Hovland</h3>
+    <div class="meta"><span>2004-11-27</span><span>M</span>
+      <span>22 år i 2026</span>
+      <span>3 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 3</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">1</span><div class="best">7.84</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Stav</th><td><span class="n">2</span><div class="best">4.31</div><div class="nest">4.24</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="hedvig kallåk" data-starter="11"
+         data-alder="20041108">
+  <header>
+    <h3>Hedvig Kallåk</h3>
+    <div class="meta"><span>2004-11-08</span><span>K</span>
+      <span>22 år i 2026</span>
+      <span>11 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge annen">2024: 1</span> <span class="badge">2025: 10</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024<div class=klubb>IL Tyrving</div></th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Høyde</th><td class="annen"><span class="n">1</span><div class="best">1.72</div><div class="nest tom">–</div></td><td><span class="n">10</span><div class="best">1.75</div><div class="nest">1.75</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="niklas liland" data-starter="8"
+         data-alder="20041104">
+  <header>
+    <h3>Niklas Liland</h3>
+    <div class="meta"><span>2004-11-04</span><span>M</span>
+      <span>22 år i 2026</span>
+      <span>8 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 8</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Slegge 7,26kg/121,5cm</th><td><span class="n">8</span><div class="best">50.72</div><div class="nest">50.10</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="teodor heldal" data-starter="30"
+         data-alder="20041008">
+  <header>
+    <h3>Teodor Heldal</h3>
+    <div class="meta"><span>2004-10-08</span><span>M</span>
+      <span>22 år i 2026</span>
+      <span>30 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 16</span> <span class="badge">2025: 14</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Høyde</th><td><span class="n">12</span><div class="best">2.01</div><div class="nest">1.98</div></td><td><span class="n">14</span><div class="best">2.00</div><div class="nest">2.00</div></td><td class="tom">–</td></tr><tr><th>Tresteg</th><td><span class="n">2</span><div class="best">14.35<span class="v">+3.0</span></div><div class="nest">12.42<span class="v">+2.0</span></div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde uten tilløp</th><td><span class="n">2</span><div class="best">1.61</div><div class="nest">1.60</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="philip andreas kubon" data-starter="36"
+         data-alder="20040612">
+  <header>
+    <h3>Philip Andreas Kubon</h3>
+    <div class="meta"><span>2004-06-12</span><span>M</span>
+      <span>22 år i 2026</span>
+      <span>36 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 20</span> <span class="badge">2025: 12</span> <span class="badge">2026: 4</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td><span class="n">20</span><div class="best">5.30</div><div class="nest">5.23</div></td><td><span class="n">12</span><div class="best">5.25</div><div class="nest">5.20</div></td><td><span class="n">4</span><div class="best">4.93</div><div class="nest">4.84</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="angelica johanne karlsen" data-starter="1"
+         data-alder="20031120">
+  <header>
+    <h3>Angelica Johanne Karlsen</h3>
+    <div class="meta"><span>2003-11-20</span><span>K</span>
+      <span>23 år i 2026</span>
+      <span>1 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 1</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Halvmaraton</th><td><span class="n">1</span><div class="best">1:18:52</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="mathias myrmel herdlevær" data-starter="11"
+         data-alder="20031024">
+  <header>
+    <h3>Mathias Myrmel Herdlevær</h3>
+    <div class="meta"><span>2003-10-24</span><span>M</span>
+      <span>23 år i 2026</span>
+      <span>11 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 7</span> <span class="badge">2025: 4</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Høyde</th><td><span class="n">1</span><div class="best">1.81</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Stav</th><td><span class="n">5</span><div class="best">4.51</div><div class="nest">4.30</div></td><td><span class="n">4</span><div class="best">4.33</div><div class="nest">4.27</div></td><td class="tom">–</td></tr><tr><th>400 meter hekk (91,4cm)</th><td><span class="n">1</span><div class="best">68.18</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="helene martinsen" data-starter="1"
+         data-alder="20030118">
+  <header>
+    <h3>Helene Martinsen</h3>
+    <div class="meta"><span>2003-01-18</span><span>K</span>
+      <span>23 år i 2026</span>
+      <span>1 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 1</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>5 km</th><td><span class="n">1</span><div class="best">21.46</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="kitty augusta friele faye" data-starter="52"
+         data-alder="20020817">
+  <header>
+    <h3>Kitty Augusta Friele Faye</h3>
+    <div class="meta"><span>2002-08-17</span><span>K</span>
+      <span>24 år i 2026</span>
+      <span>52 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 19</span> <span class="badge">2025: 19</span> <span class="badge">2026: 14</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td><span class="n">19</span><div class="best">4.45</div><div class="nest">4.40</div></td><td><span class="n">19</span><div class="best">4.55</div><div class="nest">4.53</div></td><td><span class="n">14</span><div class="best">4.70</div><div class="nest">4.65</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="sondre vie ytrearne" data-starter="14"
+         data-alder="20010821">
+  <header>
+    <h3>Sondre Vie Ytrearne</h3>
+    <div class="meta"><span>2001-08-21</span><span>M</span>
+      <span>25 år i 2026</span>
+      <span>14 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 7</span> <span class="badge">2025: 7</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Tresteg</th><td><span class="n">7</span><div class="best">15.12<span class="v">-0.6</span></div><div class="nest">14.85<span class="v">+2.2</span></div></td><td><span class="n">7</span><div class="best">15.22<span class="v">+1.5</span></div><div class="nest">15.19</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="pål haugen lillefosse" data-starter="17"
+         data-alder="20010604">
+  <header>
+    <h3>Pål Haugen Lillefosse</h3>
+    <div class="meta"><span>2001-06-04</span><span>M</span>
+      <span>25 år i 2026</span>
+      <span>17 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 5</span> <span class="badge">2025: 2</span> <span class="badge">2026: 10</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td><span class="n">5</span><div class="best">5.82</div><div class="nest">5.70</div></td><td><span class="n">2</span><div class="best">5.20</div><div class="nest">5.16</div></td><td><span class="n">10</span><div class="best">5.50</div><div class="nest">5.47</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="andreas dixon" data-starter="34"
+         data-alder="20010403">
+  <header>
+    <h3>Andreas Dixon</h3>
+    <div class="meta"><span>2001-04-03</span><span>M</span>
+      <span>25 år i 2026</span>
+      <span>34 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 19</span> <span class="badge">2025: 9</span> <span class="badge">2026: 6</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>60 meter</th><td><span class="n">2</span><div class="best">7.40</div><div class="nest">7.43</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>100 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">11.89<span class="v">-1.6</span></div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>200 meter</th><td><span class="n">2</span><div class="best">23.07</div><div class="nest">23.34</div></td><td><span class="n">1</span><div class="best">23.48</div><div class="nest tom">–</div></td><td><span class="n">2</span><div class="best">22.94<span class="v">+1.9</span></div><div class="nest">23.54<span class="v">-1.5</span></div></td></tr><tr><th>400 meter</th><td><span class="n">2</span><div class="best">51.45</div><div class="nest">52.07</div></td><td><span class="n">3</span><div class="best">51.47</div><div class="nest">51.73</div></td><td class="tom">–</td></tr><tr><th>300 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">36.94</div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">36.14</div><div class="nest tom">–</div></td></tr><tr><th>Høyde</th><td><span class="n">1</span><div class="best">1.65</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>60 meter hekk (106,7cm)</th><td><span class="n">5</span><div class="best">8.84</div><div class="nest">8.84</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>110 meter hekk (106,7cm)</th><td><span class="n">1</span><div class="best">16.25<span class="v">+0.9</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>300 meter hekk (91,4cm)</th><td><span class="n">1</span><div class="best">38.06</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>400 meter hekk (91,4cm)</th><td><span class="n">5</span><div class="best">54.39</div><div class="nest">54.47</div></td><td><span class="n">3</span><div class="best">55.42</div><div class="nest">56.59</div></td><td><span class="n">3</span><div class="best">55.18</div><div class="nest">56.21</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="vetle raa ellingsen" data-starter="8"
+         data-alder="20000416">
+  <header>
+    <h3>Vetle Raa Ellingsen</h3>
+    <div class="meta"><span>2000-04-16</span><span>M</span>
+      <span>26 år i 2026</span>
+      <span>8 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 8</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Høyde</th><td><span class="n">7</span><div class="best">1.90</div><div class="nest">1.87</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>Høyde uten tilløp</th><td><span class="n">1</span><div class="best">1.40</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="kari strømhaug" data-starter="3"
+         data-alder="19970704">
+  <header>
+    <h3>Kari Strømhaug</h3>
+    <div class="meta"><span>1997-07-04</span><span>K</span>
+      <span>29 år i 2026</span>
+      <span>3 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 2</span> <span class="badge">2026: 1</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td class="tom">–</td><td><span class="n">2</span><div class="best">3.75</div><div class="nest">3.46</div></td><td><span class="n">1</span><div class="best">3.48</div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="lene onsrud retzius" data-starter="35"
+         data-alder="19960104">
+  <header>
+    <h3>Lene Onsrud Retzius</h3>
+    <div class="meta"><span>1996-01-04</span><span>K</span>
+      <span>30 år i 2026</span>
+      <span>35 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge annen">2024: 14</span> <span class="badge">2025: 13</span> <span class="badge">2026: 8</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024<div class=klubb>IL i BUL</div></th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td class="annen"><span class="n">14</span><div class="best">4.61</div><div class="nest">4.55</div></td><td><span class="n">13</span><div class="best">4.73</div><div class="nest">4.58</div></td><td><span class="n">8</span><div class="best">4.61</div><div class="nest">4.60</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="andreas f. t. gjesdal" data-starter="31"
+         data-alder="19951122">
+  <header>
+    <h3>Andreas F. T. Gjesdal</h3>
+    <div class="meta"><span>1995-11-22</span><span>M</span>
+      <span>31 år i 2026</span>
+      <span>31 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 15</span> <span class="badge">2025: 10</span> <span class="badge">2026: 6</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>100 meter</th><td><span class="n">1</span><div class="best">12.40<span class="v">-1.3</span></div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>800 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">2:20.59</div><div class="nest tom">–</div></td><td class="tom">–</td></tr><tr><th>Stav</th><td><span class="n">14</span><div class="best">5.10</div><div class="nest">5.04</div></td><td><span class="n">9</span><div class="best">5.13</div><div class="nest">5.10</div></td><td><span class="n">6</span><div class="best">5.05</div><div class="nest">5.02</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="eirik greibrokk dolve" data-starter="2"
+         data-alder="19950505">
+  <header>
+    <h3>Eirik Greibrokk Dolve</h3>
+    <div class="meta"><span>1995-05-05</span><span>M</span>
+      <span>31 år i 2026</span>
+      <span>2 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 1</span> <span class="badge">2026: 1</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td class="tom">–</td><td><span class="n">1</span><div class="best">4.80</div><div class="nest tom">–</div></td><td><span class="n">1</span><div class="best">5.00</div><div class="nest tom">–</div></td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="eli anne dvergsdal" data-starter="9"
+         data-alder="19911119">
+  <header>
+    <h3>Eli Anne Dvergsdal</h3>
+    <div class="meta"><span>1991-11-19</span><span>K</span>
+      <span>35 år i 2026</span>
+      <span>9 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 6</span> <span class="badge null">2025: –</span> <span class="badge">2026: 3</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>3000 meter</th><td><span class="n">1</span><div class="best">9:49.66</div><div class="nest tom">–</div></td><td class="tom">–</td><td><span class="n">1</span><div class="best">9:57.81</div><div class="nest tom">–</div></td></tr><tr><th>5000 meter</th><td><span class="n">2</span><div class="best">16:40.86</div><div class="nest">17:14.98</div></td><td class="tom">–</td><td><span class="n">1</span><div class="best">16:29.45</div><div class="nest tom">–</div></td></tr><tr><th>10000 meter</th><td><span class="n">1</span><div class="best">35:29.39</div><div class="nest tom">–</div></td><td class="tom">–</td><td><span class="n">1</span><div class="best">34:40.68</div><div class="nest tom">–</div></td></tr><tr><th>5 km</th><td><span class="n">1</span><div class="best">17.06</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr><tr><th>10 km</th><td><span class="n">1</span><div class="best">36.07</div><div class="nest tom">–</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="matias oppedal" data-starter="1"
+         data-alder="19900219">
+  <header>
+    <h3>Matias Oppedal</h3>
+    <div class="meta"><span>1990-02-19</span><span>M</span>
+      <span>36 år i 2026</span>
+      <span>1 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 1</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>3000 meter</th><td class="tom">–</td><td><span class="n">1</span><div class="best">9:54.16</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="frode nilsen" data-starter="5"
+         data-alder="19691117">
+  <header>
+    <h3>Frode Nilsen</h3>
+    <div class="meta"><span>1969-11-17</span><span>M</span>
+      <span>57 år i 2026</span>
+      <span>5 starter totalt</span></div>
+    <div class="badges"><span class="badge">2024: 5</span> <span class="badge null">2025: –</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>5 km</th><td><span class="n">5</span><div class="best">21.17</div><div class="nest">21.49</div></td><td class="tom">–</td><td class="tom">–</td></tr></tbody></table>
+</section>
+<section class="ath" data-navn="bjørn kubon" data-starter="1"
+         data-alder="19670406">
+  <header>
+    <h3>Bjørn Kubon</h3>
+    <div class="meta"><span>1967-04-06</span><span>M</span>
+      <span>59 år i 2026</span>
+      <span>1 starter totalt</span><span class="nykommer">Kom til Fana IL i 2025</span></div>
+    <div class="badges"><span class="badge null">2024: –</span> <span class="badge">2025: 1</span> <span class="badge null">2026: –</span></div>
+  </header>
+  <table><thead><tr><th>Øvelse</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+  <tbody><tr><th>Stav</th><td class="tom">–</td><td><span class="n">1</span><div class="best">2.60</div><div class="nest tom">–</div></td><td class="tom">–</td></tr></tbody></table>
+</section></div>
+</div>
+<script>
+const lister=[...document.querySelectorAll('.liste')].map(l=>({el:l,barn:[...l.children]})),
+      q=document.getElementById('q'), s=document.getElementById('sort'),
+      c=document.getElementById('count'),
+      totalt=lister.reduce((n,l)=>n+l.barn.length,0);
+const cmp={
+  starter:(a,b)=>b.dataset.starter-a.dataset.starter,
+  navn:(a,b)=>a.dataset.navn.localeCompare(b.dataset.navn,'no'),
+  alder:(a,b)=>b.dataset.alder.localeCompare(a.dataset.alder)
+               ||a.dataset.navn.localeCompare(b.dataset.navn,'no'),
+  'alder-eldst':(a,b)=>a.dataset.alder.localeCompare(b.dataset.alder)
+               ||a.dataset.navn.localeCompare(b.dataset.navn,'no'),
+};
+function render(){
+  const t=q.value.trim().toLowerCase();
+  let n=0;
+  for (const l of lister) {
+    const vis=l.barn.filter(e=>!t||e.dataset.navn.includes(t));
+    if (s.value!=='std') vis.sort(cmp[s.value]);
+    l.el.replaceChildren(...vis);
+    l.el.previousElementSibling.style.display = vis.length ? '' : 'none';
+    n+=vis.length;
+  }
+  c.textContent=n+' av '+totalt+' utøvere';
+}
+q.addEventListener('input',render); s.addEventListener('change',render); render();
+</script>
+</body></html>
