@@ -130,7 +130,16 @@ EVENT_NAME_TO_CODE = {
 }
 
 SKIP_EVENTS = {
+    # Paraøvelser som ikke har egen øvelse i basen. Tas med når paraidrett
+    # får en ordentlig datamodell, jf. kravspekkens §7.
     '60 meter Racerunning',
+    '100 meter Racerunning',
+    '200 meter Racerunning',
+    '400 meter Racerunning',
+    '800 meter Racerunning',
+    '1500 meter Racerunning',
+    '100 meter Rullestol',
+    '1500 meter Rullestol',
     '60 meter Rullestol',
     '200 meter Rullestol',
     '400 meter Rullestol',
@@ -140,11 +149,10 @@ SKIP_EVENTS = {
     'VektKast 15,88Kg',
 }
 
-COMBINED_EVENT_PATTERNS = {
-    r'4 Kamp': '4kamp',
-    r'5 Kamp': '5kamp',
-    r'7 Kamp': '7kamp',
-}
+# COMBINED_EVENT_PATTERNS er fjernet. Den slo til på «N Kamp» og returnerte
+# koder («4kamp», «7kamp») som aldri har eksistert i events-tabellen, og
+# blokkerte samtidig navneoppslaget som ville truffet. Mangekamp håndteres nå
+# i get_event_id() ved å sammenligne komponentene. Se OPERATIONS_LOG 2026-08-25.
 
 # ============================================================
 # Caches (loaded once at startup)
@@ -571,6 +579,7 @@ def load_events():
     for e in response.data:
         _event_cache[e['code']] = e['id']
         _event_cache[e['name']] = e['id']
+        _indekser_mangekamp(e['name'], e['id'])
         if e['result_type'] == 'time':
             m = re.match(r'^(\d+)m', e['code'] or '')
             if m and int(m.group(1)) < 800:
@@ -655,20 +664,89 @@ def fix_performance_format(result_str):
     return result_str
 
 
+def _mangekamp_deler(navn):
+    """Del et mangekampnavn i (antall, komponentsett, klassesuffiks).
+
+    «7 Kamp (100mhekk-Høyde-Kule-200m-Lengde-Spyd-800m) Ungdom»
+      -> (7, {'100mhekk','høyde','kule','200m','lengde','spyd','800m'}, 'ungdom')
+
+    Komponentene normaliseres slik at «110m hekk» og «110mhekk» blir like.
+    Returnerer None for øvelser som ikke er mangekamp.
+    """
+    m = re.match(r'^(\d+)\s*Kamp\b(?:\s*\(([^)]*)\))?\s*(.*)$', navn.strip())
+    if not m:
+        return None
+    antall = int(m.group(1))
+    deler = frozenset(
+        re.sub(r'\s+', '', d).lower()
+        for d in (m.group(2) or '').split('-') if d.strip())
+    return antall, deler, (m.group(3) or '').strip().lower()
+
+
+# Mangekamp slås opp på komponentene, ikke på navnestrengen. Kilden og basen
+# lister øvelsene i ulik rekkefølge og med ulik mellomromsbruk — «10 Kamp
+# (100m-Lengde-...-1500m)» mot «10 Kamp (110m hekk-Diskos-...-1500m)» er samme
+# øvelse. Uten dette falt resultatene ut som «Unmapped event».
+_mangekamp_indeks = {}       # (antall, komponenter, suffiks) -> event_id
+_mangekamp_uten_suffiks = {}  # (antall, komponenter) -> event_id
+
+
+def _indekser_mangekamp(navn, event_id):
+    delt = _mangekamp_deler(navn)
+    if not delt:
+        return
+    antall, deler, suffiks = delt
+    if deler:
+        _mangekamp_indeks[(antall, deler, suffiks)] = event_id
+        _mangekamp_uten_suffiks.setdefault((antall, deler), event_id)
+
+
 def get_event_id(event_name):
-    """Get event ID from scraped event name."""
+    """Slå opp øvelses-id fra kildens øvelsesnavn.
+
+    Rekkefølgen er fra mest til minst spesifikk. Tidligere ble
+    COMBINED_EVENT_PATTERNS sjekket FØRST, og den returnerte `None` når koden
+    («4kamp», «7kamp») ikke fantes i basen — uten å falle videre til
+    navneoppslaget som ville truffet. Alle mangekampresultater fra de
+    mønstrene gikk dermed tapt.
+    """
     if event_name in SKIP_EVENTS:
         return None
 
-    for pattern, code in COMBINED_EVENT_PATTERNS.items():
-        if event_name.startswith(pattern):
-            return _event_cache.get(code)
-
+    # 1. Eksplisitt overstyring
     code = EVENT_NAME_TO_CODE.get(event_name)
-    if code:
-        return _event_cache.get(code)
+    if code and code in _event_cache:
+        return _event_cache[code]
 
-    return _event_cache.get(event_name)
+    # 2. Eksakt navnetreff
+    if event_name in _event_cache:
+        return _event_cache[event_name]
+
+    # 3. Mangekamp: samme komponenter, uansett rekkefølge og mellomrom
+    delt = _mangekamp_deler(event_name)
+    if delt:
+        antall, deler, suffiks = delt
+
+        # Samme sammensetning OG samme klasse — det sikreste treffet
+        treff = _mangekamp_indeks.get((antall, deler, suffiks))
+        if treff:
+            return treff
+
+        # Generisk «N Kamp» før vi vurderer en annen klasse. Å legge en
+        # seniorsjukamp inn som «Veteran» er verre enn å miste
+        # sammensetningen: klassen er en påstand om utøveren.
+        for generisk in (f'{antall}_k', f'{antall} Kamp'):
+            if generisk in _event_cache:
+                return _event_cache[generisk]
+
+        # Siste utvei: samme sammensetning, men bare når kilden ikke selv
+        # oppgir en klasse. Da påstår vi ingenting som motsier kilden.
+        if not suffiks:
+            treff = _mangekamp_uten_suffiks.get((antall, deler))
+            if treff:
+                return treff
+
+    return None
 
 
 def get_gender(event_class):
@@ -802,6 +880,22 @@ def get_or_create_meet(name, date, location, indoor):
     return None
 
 
+def _bygg_navnaars_indeks():
+    """Sekundærindeks (navn, fødselsår) -> [(nøkkel, id), ...].
+
+    Uten den gikk `match_athlete` lineært gjennom hele utøvercachen hver gang
+    kjønnet ikke stemte — 87 000 sammenligninger per oppslag. På en full
+    historisk kjøring med over en million resultater er det uholdbart.
+    """
+    global _athlete_navnaar
+    _athlete_navnaar = defaultdict(list)
+    for k, v in _athlete_cache.items():
+        _athlete_navnaar[(k[0], k[1])].append((k, v))
+
+
+_athlete_navnaar = None
+
+
 def match_athlete(name, birth_year, gender):
     """Match an athlete by name, birth_year, and gender."""
     if not name:
@@ -812,16 +906,21 @@ def match_athlete(name, birth_year, gender):
     if athlete_id:
         return athlete_id
 
-    # Try without gender
-    for cached_key, cached_id in _athlete_cache.items():
-        if cached_key[0] == name.lower() and cached_key[1] == birth_year:
+    # Samme navn og fødselsår, men annet (eller manglende) kjønn
+    if _athlete_navnaar is None:
+        _bygg_navnaars_indeks()
+    for cached_key, cached_id in _athlete_navnaar.get((name.lower(), birth_year), []):
             # Backfill: utøver ligger med gender=NULL men resultatet har
             # autoritativt klasse-kjønn (jf. kjønnsopprydding juli 2026)
             if gender and cached_key[2] is None:
                 try:
                     supabase.table('athletes').update({'gender': gender}).eq('id', cached_id).execute()
                     del _athlete_cache[cached_key]
-                    _athlete_cache[(cached_key[0], cached_key[1], gender)] = cached_id
+                    ny_nokkel = (cached_key[0], cached_key[1], gender)
+                    _athlete_cache[ny_nokkel] = cached_id
+                    if _athlete_navnaar is not None:
+                        oppf = _athlete_navnaar[(cached_key[0], cached_key[1])]
+                        oppf[:] = [(ny_nokkel if k == cached_key else k, i) for k, i in oppf]
                     logger.info(f"Backfilled gender={gender}: {name} ({birth_year})")
                 except Exception as e:
                     logger.debug(f"Gender backfill failed for '{name}': {e}")
@@ -1023,9 +1122,15 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
                         if '23505' in str(e2) or 'results_innhold_unik' in str(e2):
                             stats['skipped_duplicate'] += 1
                         else:
-                            logger.debug(
-                                f"    Failed single: {result_data['performance']} - {e2}")
+                            # Tidligere logget på debug-nivå, som ikke vises ved
+                            # normal kjøring. 49 feilende rader gikk derfor
+                            # upåaktet hen i august 2026. De tre første per
+                            # stevne logges nå; resten telles.
                             stats['errors'] += 1
+                            if stats['errors'] <= 3:
+                                logger.warning(
+                                    f"    Rad feilet: {result_data.get('performance')!r} "
+                                    f"i {meet_name} — {e2}")
         if inserted:
             logger.info(f"  Imported {inserted} results for {meet_name} ({meet_date})")
 
