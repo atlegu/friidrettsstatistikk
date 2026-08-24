@@ -6,6 +6,70 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-22 — Delvis importerte stevner funnet og hentet inn
+
+- **Utløser:** Lina Svarlien manglet hele innendørssesongen 2026. Kilden viste
+  Høyde 1,75 og Kule 4,0 kg 10,93 fra Norgeslekene 25.01.2026; basen hadde
+  ingenting for henne i januar–mars.
+- **Årsak:** Feilen lå ikke i utøveren, men i stevnet. «Hvam, Norgeslekene»
+  hadde **188 resultater i basen mot 539 i kilden**. Hele øvelser manglet —
+  800 m, 400 m og stav var ikke importert i det hele tatt, og 60 m hadde 48
+  av 151.
+
+### Rotfeil: terskelen fanget bare tomme stevner
+
+`find_missing_meets()` regnet et stevne som ufullstendig kun hvis det hadde
+færre enn `MIN_RESULTS_THRESHOLD = 10` resultater. Norgeslekene lå langt over,
+og ble derfor aldri hentet på nytt selv om to tredjedeler manglet. Terskelen
+fanger tomme stevner, men er blind for delvis importerte.
+
+### Ny `--verify`-modus
+
+`finn_ufullstendige_mot_kilden()` henter hvert kildestevne og teller radene i
+stedet for å bruke en fast terskel. Et stevne hentes på nytt når mer enn 5 %
+av resultatene mangler (`VERIFY_MANGEL_ANDEL`). Terskelen er ikke null fordi
+basen noen ganger slår sammen to kildestevner til én stevnerad, og da har vi
+legitimt flere rader enn kildestevnet.
+
+Koster ett HTTP-kall per stevne, så den kjøres bare med `--verify`:
+
+```bash
+python update_results.py --indoor --season 2026 --from-date 2026-01-01 --verify
+```
+
+### Resultat for innendørssesongen 2026
+
+| | |
+|---|---|
+| Stevner kontrollert | 244 |
+| Ufullstendige | **56** |
+| Resultater skrapet | 11 268 |
+| Nye resultater importert | **1 511** |
+| Allerede i basen (hoppet over) | 9 676 |
+| Feil | 30 |
+| Umappede øvelser | 42 |
+
+Verstingene: Norgeslekene manglet 351, Opent KM for Møre og Romsdal 258,
+Innendørsstevne 2 Haugesund 69, Distriktskampen 58, Januarsprint 51,
+Masters innendørs II 40.
+
+Norgeslekene 188 → 726 resultater. Lina Svarlien har nå både Høyde 1,75 og
+Kule 4,0 kg 10,93, som stemmer med kilden.
+
+Base: 1 413 541 resultater (+1 518), 87 385 utøvere, 39 301 i sesong 2026.
+
+### GJENSTÅR
+
+- **Kjør `--verify` på utendørssesongen 2026 og på tidligere år.** Det er
+  ingen grunn til å tro at dette er begrenset til én sesong. Terskelen på ti
+  har vært der hele tiden.
+- 42 resultater falt ut på umappet øvelse: Kappgang 1000 m, Kappgang 2000 m og
+  «7 Kamp (60m-Lengde-Kule-Høyde-60mhekk-Stav-1000m)». De to første finnes i
+  `EVENT_NAME_TO_CODE`, så her er det trolig navnevariasjon i kilden.
+- 30 rader feilet ved innsetting og bør undersøkes.
+
+---
+
 ## 2026-08-21 — Enkeltrettelse: femkampsum importert som 60 meter
 
 - **Symptom:** Malene Kollberg hadde et resultat «60 meter: 3904» fra

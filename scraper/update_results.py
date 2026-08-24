@@ -40,6 +40,9 @@ logger = logging.getLogger(__name__)
 BASE_URL = "https://www.minfriidrettsstatistikk.info/php"
 REQUEST_DELAY = 0.3  # seconds between requests
 MIN_RESULTS_THRESHOLD = 10  # Meets with fewer results are considered incomplete
+# Andel av kildens resultater som må mangle før --verify henter stevnet på nytt.
+# Små avvik er normalt: basen kan slå sammen to kildestevner til én stevnerad.
+VERIFY_MANGEL_ANDEL = 0.05
 
 # Supabase connection
 SUPABASE_URL = os.getenv("SUPABASE_URL")
@@ -373,6 +376,57 @@ def find_missing_meets(source_meets: List[Dict], db_meets: List[Dict]) -> List[D
 
     logger.info(f"Found {len(missing)} missing meets and {len(incomplete)} incomplete meets")
     return missing + incomplete
+
+
+def finn_ufullstendige_mot_kilden(source_meets, db_meets):
+    """Sammenlign antall resultater mot kilden, stevne for stevne.
+
+    `find_missing_meets` regner et stevne som ufullstendig bare hvis det har
+    færre enn ti resultater i basen. Det fanger tomme stevner, men ikke de
+    delvis importerte: «Hvam, Norgeslekene» 2026 hadde 188 resultater i basen
+    mot 539 i kilden, og ble derfor aldri hentet på nytt. Hele øvelser manglet
+    — 800 m, 400 m og stav.
+
+    Denne funksjonen henter hvert kildestevne og teller radene. Det koster ett
+    kall per stevne, så den kjøres bare med --verify.
+    """
+    db_lookup = {}
+    for m in db_meets:
+        db_lookup[(normalize_meet_name(m['name']), m['date'])] = m.get('result_count', 0)
+        if ',' in m['name']:
+            kort = m['name'].split(',', 1)[1].strip()
+            db_lookup[(normalize_meet_name(kort), m['date'])] = m.get('result_count', 0)
+
+    ufullstendige = []
+    for i, m in enumerate(source_meets, 1):
+        key = (normalize_meet_name(m['name']), m['date'])
+        full_key = (normalize_meet_name(f"{m['location']}, {m['name']}"), m['date'])
+        i_basen = db_lookup.get(key)
+        if i_basen is None:
+            i_basen = db_lookup.get(full_key)
+        if i_basen is None:
+            ufullstendige.append(m)          # helt fraværende
+            continue
+
+        html = fetch_page(f"{BASE_URL}/StevneResultater.php", method='POST',
+                          data={'competition': m['external_id']})
+        if not html:
+            continue
+        soup = BeautifulSoup(html, 'html.parser')
+        i_kilden = sum(1 for t in soup.find_all('table')
+                       for tr in t.find_all('tr') if len(tr.find_all('td')) >= 4)
+
+        mangler = i_kilden - i_basen
+        if i_kilden and mangler > VERIFY_MANGEL_ANDEL * i_kilden:
+            logger.info(f"  Ufullstendig: {m['name']} ({m['date']}) — "
+                        f"{i_basen} i basen mot {i_kilden} i kilden, mangler {mangler}")
+            ufullstendige.append(m)
+        if i % 25 == 0:
+            logger.info(f"  ... {i}/{len(source_meets)} stevner kontrollert")
+
+    logger.info(f"Kontrollert {len(source_meets)} stevner mot kilden — "
+                f"{len(ufullstendige)} er ufullstendige")
+    return ufullstendige
 
 
 def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool]:
@@ -997,6 +1051,10 @@ def parse_args():
     parser.add_argument('--season', type=int, help='Season year (e.g. 2026)')
     parser.add_argument('--from-date', type=str, help='Start date (YYYY-MM-DD), overrides auto-detection')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be imported without importing')
+    parser.add_argument('--verify', action='store_true',
+                        help='Tell resultater mot kilden per stevne og hent inn '
+                             'de som er delvis importert. Tregere, men fanger '
+                             'stevner der bare deler av resultatene kom med.')
 
     return parser.parse_args()
 
@@ -1042,7 +1100,11 @@ def main():
     db_meets = get_existing_meets_from_db(min_date)
 
     # Step 3: Find missing/incomplete meets
-    missing_meets = find_missing_meets(source_meets, db_meets)
+    if args.verify:
+        logger.info("\nVERIFY — teller resultater mot kilden, stevne for stevne")
+        missing_meets = finn_ufullstendige_mot_kilden(source_meets, db_meets)
+    else:
+        missing_meets = find_missing_meets(source_meets, db_meets)
 
     if not missing_meets:
         logger.info("\nNo missing meets found — database is up to date!")
