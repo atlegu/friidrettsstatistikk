@@ -6,6 +6,64 @@ Format: Dato, script, parametre, resultat, eventuelle problemer.
 
 ---
 
+## 2026-08-24/25 — Utendørs 2026 verifisert, og NM-medaljer koblet til utøvere
+
+### Utendørssesongen 2026 mot kilden
+
+- **Script:** `update_results.py --outdoor --season 2026 --from-date 2026-04-01 --verify`
+- **598 stevner kontrollert — 224 var ufullstendige.** Det er 37 %, mot 23 %
+  innendørs. Terskelen på ti resultater har altså skjult et stort etterslep.
+- 6 971 resultater skrapet, **4 517 nye importert**, 2 270 lå allerede inne.
+  107 nye utøvere opprettet. 144 falt ut på umappet øvelse, 19 feilet.
+
+Base etter kjøring: 1 418 058 resultater (+4 517), 87 492 utøvere,
+43 818 i sesong 2026.
+
+### NM-medaljer koblet til utøvere
+
+- **Script:** `link_championship_medals.py --apply --yes` (dry-run først)
+- **Utgangspunkt:** 5 102 av 13 609 medaljer manglet `athlete_id` og vistes
+  derfor ikke på utøverprofilen.
+- **Metode:** navn normalisert (aksenter foldet, tegnsetting fjernet), og
+  treffet må være entydig. Utøveren må dessuten plausibelt kunne tatt
+  medaljen: kjønn må stemme der begge kilder har det, og utøveren må ha
+  resultater innenfor ±5 år av mesterskapet eller et fødselsår som gir alder
+  mellom 15 og 55. To personer med samme navn er vanlig nok i norsk friidrett
+  til at gjetting ikke forsvares — en feilkoblet medalje er verre enn en
+  ukoblet.
+- **Resultat:** 1 080 medaljer koblet, fordelt på 312 utøvere.
+  Koblet totalt 8 507 → **9 587**. Utøvere med medalje 1 772 → 1 997.
+
+**Står igjen, 4 022 ukoblede:**
+
+| Årsak | Antall |
+|---|---:|
+| Ingen utøver med det navnet i basen | 3 889 |
+| Ingen kandidat passer i tid | 90 |
+| Flere kandidater — ikke entydig | 43 |
+
+2 245 av de ukoblede er fra før 1970, der resultatdataene i praksis ikke
+finnes. Det er forventet. De 1 777 fra 1970 og senere er en reell restanse
+som krever navneopprydding eller manuelt arbeid.
+
+### Rettet: årstall 2923
+
+Tre medaljer i NM maraton kvinner hadde årstall `2923`. Kilden
+(`epi-new.nif.no/.../kmar.htm`) er nå borte (404), så det ble avgjort med
+interne data: medaljeserien har 2019, 2021, 2022 og hopper så til «2923» —
+**2023 manglet helt** — og både Kristin Waaktaar Opland og Siri Schøne Ness
+konkurrerte i 2023. Rettet til 2023. Basen har nå ingen medaljer med
+årstall utenfor 1890–2026.
+
+### GJENSTÅR
+
+- `--verify` er bare kjørt på 2026. **Tidligere sesonger er ikke kontrollert**,
+  og terskelfeilen har ligget der hele tiden.
+- 144 + 42 resultater falt ut på umappede øvelser i de to kjøringene.
+- 1 777 medaljer fra 1970 og senere er fortsatt ukoblet.
+
+---
+
 ## 2026-08-22 — Delvis importerte stevner funnet og hentet inn
 
 - **Utløser:** Lina Svarlien manglet hele innendørssesongen 2026. Kilden viste
