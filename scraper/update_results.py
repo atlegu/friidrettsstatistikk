@@ -53,6 +53,35 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+
+def _slaa_av_http2():
+    """Tving HTTP/1.1 mot Supabase.
+
+    Klienten holder én langlevd HTTP/2-forbindelse. Serveren avslutter den
+    etter 20 000 strømmer, og klienten reiser seg ikke igjen:
+
+        httpx.RemoteProtocolError: <ConnectionTerminated last_stream_id:19999>
+
+    Det avbrøt kontrollen av sesongen 2023 etter 115 minutter, og forklarer
+    trolig også at 2024 utendørs brukte 554 minutter mot 2025s 38 — ytelsen
+    faller kraftig når forbindelsen nærmer seg grensen. Under HTTP/1.1 finnes
+    ingen slik grense, og httpx gjenoppretter forbindelser selv.
+    """
+    import httpx
+    try:
+        gammel = supabase.postgrest.session
+        supabase.postgrest.session = httpx.Client(
+            base_url=gammel.base_url, headers=gammel.headers,
+            timeout=httpx.Timeout(120.0), http2=False,
+            limits=httpx.Limits(max_keepalive_connections=5, max_connections=10),
+        )
+        logger.info("Supabase-forbindelsen satt til HTTP/1.1")
+    except Exception as e:
+        logger.warning(f"Kunne ikke bytte til HTTP/1.1: {e}")
+
+
+_slaa_av_http2()
+
 # HTTP session
 session = requests.Session()
 session.headers.update({
