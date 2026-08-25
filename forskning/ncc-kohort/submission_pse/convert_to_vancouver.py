@@ -141,13 +141,23 @@ for old, new in PAREN:
 
 (HERE / "MANUSCRIPT_IJSSC.md").write_text(text)
 
+# Build the Word file via pandoc. Pandoc's docx writer DROPS raw-HTML <sup>
+# tags from markdown input (numbers would render as plain text), so convert
+# to pandoc's native superscript syntax (^5^) first.
+import subprocess
+pandoc_md = re.sub(r"<sup>([^<]+)</sup>", r"^\1^", text)
+tmp = HERE / ".MANUSCRIPT_IJSSC_pandoc.md"
+tmp.write_text(pandoc_md)
+subprocess.run(["pandoc", str(tmp), "-o", str(HERE / "MANUSCRIPT_IJSSC.docx")], check=True)
+tmp.unlink()
+
 # Verify: no APA-style citations should remain in the body
 body = text[: text.index("## References")]
 leftovers = [m.group(0) for m in re.finditer(r"\([^()]*\b(?:19|20)\d{2}[^()]*\)", body)
              if re.search(r"[A-Za-z]{3,}[^()]*\d{4}|\d{4}[^()]*[A-Za-z]{3,}", m.group(0))]
 sups = len(re.findall(r"<sup>", body))
 main = body[body.index("## 1. Introduction"): body.index("## Acknowledgements")]
-print(f"Wrote MANUSCRIPT_IJSSC.md ({sups} superscript citations; main text {len(main.split())} words)")
+print(f"Wrote MANUSCRIPT_IJSSC.md + .docx ({sups} superscript citations; main text {len(main.split())} words)")
 print("Parenthesized year-strings remaining (must NOT be citations):")
 for l in leftovers:
     print(f"  {l}")
