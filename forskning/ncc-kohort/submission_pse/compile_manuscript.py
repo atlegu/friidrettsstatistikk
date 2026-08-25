@@ -16,7 +16,7 @@ HERE = Path(__file__).parent
 
 TITLE = "# Pulling back before dropping out: Behavioral disengagement precedes exit from Norwegian youth track and field — a 14-year register study"
 META = """
-**Running title:** Behavioral disengagement precedes youth-sport dropout
+**Running title:** Behavioral disengagement precedes exit from youth track and field
 
 **Keywords:** youth sport, dropout, athlete retention, longitudinal, track and field, behavioral indicators, sport commitment
 """

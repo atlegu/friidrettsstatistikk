@@ -1,0 +1,2 @@
+Outcome,Prevalence,Cohort A,Cohort B,Volume OR [95% CI],CV-AUC,n
+">=2 results in any season at ages 20-22 (fixed window, observable for all)",0.158,0.153,0.167,"2.43 [2.10, 2.81]",0.762,1704

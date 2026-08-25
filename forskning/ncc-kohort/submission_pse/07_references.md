@@ -4,11 +4,11 @@
 
 Baker, J., Mosher, A., & Fraser-Thomas, J. (2021). Is it too early to condemn early sport specialisation? *British Journal of Sports Medicine, 55*(3), 179–180. https://doi.org/10.1136/bjsports-2020-102053
 
+Back, J., Johnson, U., Svedberg, P., McCall, A., & Ivarsson, A. (2022). Drop-out from team sport among adolescents: A systematic review and meta-analysis of prospective studies. *Psychology of Sport and Exercise, 61*, Article 102205. https://doi.org/10.1016/j.psychsport.2022.102205
+
 Bakken, A. (2019). *Idrettens posisjon i ungdomstida: Hvem deltar og hvem slutter i ungdomsidretten?* [The position of sport in adolescence: Who participates and who drops out of youth sport?] (NOVA Rapport 2/2019). Oslo Metropolitan University.
 
 Battaglia, A., Kerr, G., & Tamminen, K. (2024). The dropout from youth sport crisis: Not as simple as it appears. *Kinesiology Review, 13*(3), 345–356. https://doi.org/10.1123/kr.2023-0024
-
-Breiman, L. (2001). Random forests. *Machine Learning, 45*(1), 5–32. https://doi.org/10.1023/A:1010933404324
 
 Cobley, S., Baker, J., Wattie, N., & McKenna, J. (2009). Annual age-grouping and athlete development: A meta-analytical review of relative age effects in sport. *Sports Medicine, 39*(3), 235–256. https://doi.org/10.2165/00007256-200939030-00005
 
@@ -42,6 +42,8 @@ Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. *Computing in Scien
 
 Jayanthi, N. A., LaBella, C. R., Fischer, D., Pasulka, J., & Dugas, L. R. (2015). Sports-specialized intensive training and the risk of injury in young athletes: A clinical case-control study. *American Journal of Sports Medicine, 43*(4), 794–801. https://doi.org/10.1177/0363546514567298
 
+Kearney, P. E., & Hayes, P. R. (2018). Excelling at youth level in competitive track and field athletics is not a prerequisite for later success. *Journal of Sports Sciences, 36*(21), 2502–2509. https://doi.org/10.1080/02640414.2018.1465724
+
 Kretchmar, R. S. (2000). Movement subcultures: Sites for meaning. *Journal of Physical Education, Recreation & Dance, 71*(5), 19–25. https://doi.org/10.1080/07303084.2000.10605140
 
 Kuokkanen, J., Phipps, D. J., Saarinen, M., Korhonen, J., Romar, J.-E., & Gustafsson, H. (2026). Trajectories of sport exhaustion, cynicism and inadequacy among adolescent student-athletes: A three-year longitudinal study of social influences in the Finnish dual career context. *Psychology of Sport and Exercise, 82*, Article 103015. https://doi.org/10.1016/j.psychsport.2025.103015
@@ -50,9 +52,11 @@ Larson, H. K., Young, B. W., McHugh, T.-L. F., & Rodgers, W. M. (2019). Markers 
 
 Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriidrett* [Tyrving table: Scoring table for youth athletics]. https://www.friidrett.no/arrangement/arrangementshjelp/poengtabeller/tyrvingtabellen/
 
-Norges Idrettsforbund. (2024). *Nøkkeltall 2023: Medlemskap, aktivitet og økonomi i norsk idrett* [Key statistics 2023: Membership, activity and economy in Norwegian sport]. https://www.idrettsforbundet.no
+Norges Friidrettsforbund. (2026). *Konkurranseregler og bestemmelser* [Competition rules and regulations]. https://www.friidrett.no/lover-og-regler/
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
+
+Raedeke, T. D. (1997). Is athlete burnout more than just stress? A sport commitment perspective. *Journal of Sport & Exercise Psychology, 19*(4), 396–417. https://doi.org/10.1123/jsep.19.4.396
 
 Sarrazin, P., Vallerand, R. J., Guillet, E., Pelletier, L. G., & Cury, F. (2002). Motivation and dropout in female handballers: A 21-month prospective study. *European Journal of Social Psychology, 32*(3), 395–418. https://doi.org/10.1002/ejsp.98
 
