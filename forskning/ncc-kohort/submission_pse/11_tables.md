@@ -17,7 +17,7 @@
 | Ever active at age 20+ (%) | 15.8 | 17.3 | 16.4 |
 | Still active in 2024 or later (%) | 5.8 | 10.8 | 7.7 |
 | Mean Tyrving best at baseline | 666 | 666 | 666 |
-| Median competitions at ages 13–14 | 8 | 9 | 8 |
+| Median total meets, ages 13–14 (pre-milestone volume) | 16 | 19 | 17 |
 
 *Note.* "Active at age 17" indicates ≥2 registered competition results in the athlete's age-17 calendar year; "Ever active at age 20+" is the outcome prevalence (≥2 results in any calendar year at age 20 or later). Tyrving points = the Norwegian Athletics Federation's age-norm score, where 1,000 corresponds to the published reference performance for that event × sex × age combination.
 
@@ -44,7 +44,7 @@
 | L3: + Specialization | Female | 0.68 | [0.53, 0.88] | .004 | 0.600 (±0.019) | 1,704 |
 |  | Tyrving (z) | 1.41 | [1.22, 1.64] | < .001 |  |  |
 |  | HHI early (z) | 1.09 | [0.95, 1.24] | .238 |  |  |
-| L4: + Pre-milestone volume | Female | 0.61 | [0.46, 0.80] | < .001 | **0.751** (±0.026) | 1,704 |
+| L4: + Pre-milestone volume | Female | 0.60 | [0.46, 0.80] | < .001 | **0.751** (±0.026) | 1,704 |
 |  | Tyrving (z) | 1.12 | [0.96, 1.30] | .144 |  |  |
 |  | HHI early (z) | 1.36 | [1.17, 1.57] | < .001 |  |  |
 |  | **Pre-milestone volume (z)** | **2.40** | **[2.08, 2.76]** | **< .001** |  |  |
@@ -185,16 +185,16 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 
 | Sex | n | Covariate | HR | 95% CI | p |
 |---|---|---|---|---|---|
-| Male | 805 | Tyrving (z) | 1.07 | [0.99, 1.15] | .074 |
-|  |  | HHI early (z) | 0.93 | [0.85, 1.01] | .083 |
-|  |  | Volume at age 15–16 (z) | 0.42 | [0.37, 0.48] | < .001 |
-|  |  | Championship types | 0.74 | [0.66, 0.83] | < .001 |
-| Female | 899 | Tyrving (z) | 1.04 | [0.97, 1.11] | .306 |
-|  |  | HHI early (z) | 0.99 | [0.92, 1.06] | .770 |
-|  |  | Volume at age 15–16 (z) | 0.46 | [0.40, 0.52] | < .001 |
-|  |  | Championship types | 0.75 | [0.67, 0.83] | < .001 |
+| Male | 805 | Tyrving (z) | 1.13 | [1.05, 1.21] | < .001 |
+|  |  | HHI early (z) | 0.95 | [0.88, 1.03] | .192 |
+|  |  | Volume at age 15–16 (z) | 0.43 | [0.38, 0.50] | < .001 |
+|  |  | Championship types | 0.66 | [0.59, 0.74] | < .001 |
+| Female | 899 | Tyrving (z) | 0.96 | [0.89, 1.03] | .249 |
+|  |  | HHI early (z) | 0.96 | [0.89, 1.03] | .263 |
+|  |  | Volume at age 15–16 (z) | 0.45 | [0.39, 0.50] | < .001 |
+|  |  | Championship types | 0.81 | [0.73, 0.89] | < .001 |
 
-*Note.* C-index = 0.843 in both subgroups.
+*Note.* Post-baseline specification (descriptive; see Table 5 note). C-index = 0.843 in both subgroups. The dominant behavioral covariate is near-identical across sexes (volume HR 0.43 vs 0.45); the Tyrving coefficient differs by sex (males 1.13, females 0.96).
 
 ## Table S8. Landmark analysis at age 16 (post-baseline Cox, n = 1,167)
 
@@ -262,7 +262,7 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 
 | Covariate | OR | 95% CI | p |
 |---|---|---|---|
-| Female | 0.59 | [0.45, 0.79] | < .001 |
+| Female | 0.60 | [0.45, 0.79] | < .001 |
 | Tyrving (z) | 1.12 | [0.96, 1.31] | .138 |
 | HHI early (z) | 1.35 | [1.16, 1.56] | < .001 |
 | **Pre-milestone volume (z)** | **2.40** | **[2.08, 2.78]** | **< .001** |
@@ -274,19 +274,30 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 
 *Note.* n = 1,704; CV-AUC = 0.740. Pre-milestone volume effect is unchanged: OR 2.40 with controls vs. 2.40 without (≤ 1% change). All structural controls non-significant.
 
-## Table S14. Pull-back analysis details (logistic regression in athletes still active at age 14, n = 1,914)
+## Table S14. Pull-back analysis details (athletes with ≥1 result at age 14; complete-case n = 1,549)
 
-(Same content as Table 4 above with full coefficient detail; provided as supplementary for completeness.)
+| Model | Covariate | OR | 95% CI | p | Pseudo-*R*² |
+|---|---|---|---|---|---|
+| M1: Volume at age 14 only | Female | 0.61 | [0.46, 0.81] | < .001 | 0.113 |
+|  | Tyrving (z) | 1.12 | [0.96, 1.30] | .167 |  |
+|  | Volume at age 14 (z) | 2.23 | [1.94, 2.57] | < .001 |  |
+| M2: + Volume change 14→15 | Female | 0.60 | [0.44, 0.81] | < .001 | 0.227 |
+|  | Tyrving (z) | 1.01 | [0.86, 1.19] | .882 |  |
+|  | Volume at age 14 (z) | 2.79 | [2.37, 3.28] | < .001 |  |
+|  | Volume change 14→15 (z) | 2.44 | [2.10, 2.83] | < .001 |  |
+
+*Note.* Full coefficient detail for main-text Table 4, including per-model pseudo-*R*².
 
 ## Table S15. Time-aligned behavior versus performance (5-fold CV-AUC)
 
 | Predictor set (all ages 13–14 measurements) | n | CV-AUC |
 |---|---|---|
 | Sex + baseline Tyrving | 1,704 | 0.607 (±0.014) |
+| Sex + Tyrving + performance trajectory (Δ13–14) | 1,350 | 0.640 |
 | Sex + pre-milestone volume | 1,704 | 0.740 (±0.024) |
 | Sex + Tyrving + pre-milestone volume | 1,704 | 0.737 (±0.021) |
 
-*Note.* Even in a fully time-aligned comparison (both predictors observed during the baseline window of ages 13–14), behavior substantially out-predicts performance.
+*Note.* Even in a fully time-aligned comparison (both predictors observed during the baseline window of ages 13–14), behavior substantially out-predicts performance. The performance-trajectory row requires Tyrving scores in both the age-13 and age-14 seasons and is therefore estimated on the smaller subsample with both available (n = 1,350).
 
 ## Table S16. Cox time-to-cessation with structural controls (baseline-only predictors)
 
@@ -374,7 +385,7 @@ Three logistic-regression specifications for active senior status. Model A is th
 | Model | n | Volume OR [95% CI] | HHI OR [95% CI] |
 |---|---|---|---|
 | Complete case (primary) | 1,704 | 2.40 [2.08, 2.76] | 1.36 [1.17, 1.57] |
-| Multiple imputation (m = 20, Rubin-pooled) | 2,099 | 2.35 [2.08, 2.67] | 1.32 [1.17, 1.49] |
+| Multiple imputation (m = 20, Rubin-pooled) | 2,099 | 2.34 [2.07, 2.66] | 1.32 [1.16, 1.49] |
 
 ## Table S22. Club-level analyses
 

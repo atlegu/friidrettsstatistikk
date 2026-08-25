@@ -16,7 +16,7 @@
 
 **Figure S0.** Cohort construction flow diagram. Boundary birth years 1997 and 2003 were excluded because they had only one possible eligible edition in the cohort window. Athletes who attended both the 13-year-old and 14-year-old editions were deduplicated, with the earlier edition used as baseline. Complete-case analysis used 1,704 of 2,123 athletes; missingness was driven mainly by the Tyrving score (~20% missing) and the HHI index (~10% missing).
 
-**Figure S1.** Calibration plot for the full Cox model. Predicted probability of senior retention is binned into deciles (x-axis); the y-axis shows the observed proportion retained in each decile. Points falling on the diagonal indicate perfect calibration.
+**Figure S1.** Calibration plot for the post-baseline Cox specification (descriptive). Predicted probability of senior retention is binned into deciles (x-axis); the y-axis shows the observed proportion retained in each decile. Points falling on the diagonal indicate perfect calibration. Calibration of the primary logistic model is reported in Supplementary Table S23.
 
 **Figure S2.** Kaplan–Meier retention curves: **(A)** overall retention from baseline (age 13/14); **(B)** retention stratified by sex. Log-rank test for sex difference: χ² = 0.95, p = 0.33.
 

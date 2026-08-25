@@ -59,3 +59,14 @@ New analyses (Section 3.5; Supplementary Table S19; Methods 2.5.3; S-M6): (a) ex
 - Supplementary tables now S1–S25 (S12 = sample flow; S19–S25 new); supplementary figures renumbered S0–S4 (RF figure removed).
 - Rebuilt: MANUSCRIPT_ANONYMIZED.md/.docx, MANUSCRIPT_FULL.md, MANUSCRIPT_IJSSC.md/.docx.
 - Outstanding before submission: author's reference audit; preprint-DOI question; 300-dpi figure check; STROBE checklist to supplementary; docx formatting pass in Word.
+
+---
+
+## Round-2 addendum (corrections for the record)
+
+The round-2 verification re-review (PEER_REVIEW_ROUND2_IJSSC.md) found two claims in this letter overstated at the time of writing, both now true after the round-2 fix pass:
+
+1. **M2 "Tables 5/7 restored":** the `[about here]` placeholders had in fact not been added to 05_results.md, so the compiled builds still lacked both tables at round-2 audit. Placeholders added and embedding verified. The STROBE checklist, listed as outstanding, now exists (16_strobe_checklist.md).
+2. **M16 line-item list:** silently omitted the seeds/package-versions micro-item; a fixed-seeds statement is now in §2.5.6.
+
+Further round-2 fixes: anti-triage sentence (M3); Battaglia cited substantively in §4.4 (M4); tyrving_slope_13_16 declaration removed (M9); MI rerun with sex-unknown excluded before imputation (OR 2.34 [2.07, 2.66], n = 2,099); Table 1 volume row recomputed (16/19/17 total meets ages 13–14); Table S7 aligned to its deposited CSV (§4.5 HRs 0.43/0.45); S8 pointer moved to the landmark; S14 filled; S15 gains the Δ13–14 row; supplementary PNGs/CSVs renamed to final numbering; Q8 answered (all flagged athletes low-but-active by construction; activity-at-17 outcome: 14.4% vs 50.9%, PPV 0.86).

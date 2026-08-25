@@ -281,7 +281,9 @@ def m7_missing(df, covars):
     RESULTS["m7_excluded_retention"] = float(incomplete["aktiv_senior"].mean())
     RESULTS["m7_included_retention"] = float(complete["aktiv_senior"].mean())
 
-    # multiple imputation (m=20) for tyrving_best & hhi_early
+    # multiple imputation (m=20) for tyrving_best & hhi_early; sex-unknown athletes
+    # are excluded BEFORE imputation (sex is never imputed), matching S-M3.
+    d = d.dropna(subset=["female"]).reset_index(drop=True)
     ors = []
     feat = ["aktiv_senior", "female", "tyrving_best", "hhi_early", "vol_pre_milepael"]
     for m_i in range(20):
@@ -289,7 +291,7 @@ def m7_missing(df, covars):
         arr = imp.fit_transform(d[feat])
         di = pd.DataFrame(arr, columns=feat)
         di["aktiv_senior"] = d["aktiv_senior"].values  # outcome never imputed (no missing)
-        di = di.dropna(subset=["aktiv_senior", "female"])
+        di["female"] = d["female"].values              # sex never imputed
         for c in ["tyrving_best", "hhi_early", "vol_pre_milepael"]:
             di[c + "_z"] = (di[c] - di[c].mean()) / di[c].std()
         mi_m, _ = fit_logit(di, ["female", "tyrving_best_z", "hhi_early_z", "vol_pre_milepael_z"])
@@ -447,6 +449,21 @@ def m9_calibration(df, covars):
         })
         if thr == 10:
             RESULTS["m9_thr10"] = {k: float(v) for k, v in m0.items()}
+
+    # Q8 (round-2): composition of the flagged group + activity-at-17 outcome
+    flag10 = full["vol_pre_milepael"] < 10
+    zero_share = float((full.loc[flag10, "vol_pre_milepael"] == 0).mean())
+    reachable = full.loc[flag10, "vol_pre_milepael"].between(1, 9, inclusive="both")
+    RESULTS["q8_flag_composition"] = dict(
+        flagged_n=int(flag10.sum()), zero_share=zero_share,
+        reachable_share=float(reachable.mean()),
+        reachable_pct_of_cohort=float((flag10 & (full["vol_pre_milepael"] >= 1)).mean()))
+    a17 = df[["aktiv_17", "vol_pre_milepael"]].dropna()
+    m17 = metrics(a17["aktiv_17"].values, a17["vol_pre_milepael"].values, 10)
+    RESULTS["q8_age17_outcome_thr10"] = {k: float(v) for k, v in m17.items()}
+    logger.info(f"  Q8: flagged<10 zero-share={zero_share:.1%}, reachable(1-9)={reachable.mean():.1%}; "
+                f"age-17 outcome thr<10: PPV={m17['ppv']:.2f}, sens={m17['sens']:.2f}, "
+                f"active17 flagged={m17['ret_flag']:.1%} vs unflagged={m17['ret_unflag']:.1%}")
     old = TAB_DIR / "table6_NEW_prospective_calibration.csv"
     if old.exists():
         old.rename(TAB_DIR / "table6_NEW_prospective_calibration_OLD.csv")
