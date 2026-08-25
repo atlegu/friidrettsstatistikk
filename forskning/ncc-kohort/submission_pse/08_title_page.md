@@ -6,7 +6,7 @@
 
 ## Title
 
-**Pulling back before dropout: Behavioral disengagement precedes youth-sport exit by years in a 14-year register study**
+**Pulling back before dropping out: Behavioral disengagement precedes exit from Norwegian youth track and field — a 14-year register study**
 
 ## Running title
 
@@ -41,4 +41,4 @@ This research did not receive any specific grant from funding agencies in the pu
 
 ## Data availability
 
-The data used in this study are publicly accessible via the Norwegian Athletics Federation's competition register. Derived analysis datasets and analysis code will be made available in a public repository upon acceptance.
+The competition records used in this study are publicly accessible via the Norwegian Athletics Federation's online competition register. The derived analysis dataset itself cannot be publicly redistributed because it links these records to athlete dates of birth and therefore contains personal data under the EU General Data Protection Regulation (GDPR). The full analysis code will be deposited in a public repository upon acceptance.

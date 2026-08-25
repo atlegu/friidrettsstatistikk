@@ -1,15 +1,9 @@
 # Abstract
 
-(PSE limit: 250 words max, no references, stand-alone)
+(IJSSC/SAGE: unstructured abstract — purpose, major findings, conclusions. No references. ≥5 keywords set in compile_manuscript.py.)
 
 ---
 
-## Final version (≤250 words)
+## Final version (~215 words, unstructured)
 
-**Objectives.** Future dropouts from organized youth sport pull back from competition years before formal exit. Although qualitative research has long described this gradual disengagement, its longitudinal behavioral signature has been hard to observe directly. We use Norway's public competition register to test whether baseline-window behavior predicts senior retention prospectively.
-
-**Method.** We followed 2,123 athletes who participated as 13–14-year-olds in six consecutive editions of a regional youth track-and-field meet (2011–2016; births 1998–2002), recording annual competition counts, event diversification, championship participation, and Tyrving age-norm performance through 2025 (maximum 14-year follow-up). The primary outcome was binary active senior status (≥2 results in any year at age 20+), estimated by logistic regression using only ages-13–14 predictors. Sensitivity analyses included structural controls, a pull-back versus baseline-heterogeneity decomposition, and Cox time-to-cessation.
-
-**Results.** Baseline-window volume (ages 13–14) provided the largest incremental contribution to discrimination of senior retention (OR = 2.40 per SD, 95% CI [2.07, 2.78]; cross-validated AUC = 0.751). Estimates were unchanged with structural controls. The signal decomposed into two independent components: athletes differed in volume at age 14 (OR = 2.79 per SD) and a within-athlete decline across ages 14–15 added information (OR = 2.44 per SD; pseudo-*R*² doubled). Effects replicated across cohorts and withstood an E-value of 5.16. Higher baseline specialization was associated with higher retention — contrasting with the diversification literature for peak performance.
-
-**Conclusions.** Register-based behavior at the end of the age-14 season identifies athletes exhibiting patterns associated with elevated dropout risk (PPV ≈ 0.94), complementing survey-based commitment instruments.
+Future dropouts from youth sport are thought to pull back from competition before formal exit, but the longitudinal behavioral signature of this withdrawal process has been hard to observe directly. We used Norway's national competition register to follow 2,123 athletes who competed as 13–14-year-olds in a regional youth track-and-field meet (birth years 1998–2002) for up to 14 years, recording annual competition volume, event diversification, championship participation, and age-norm (Tyrving) performance through 2025. The primary analysis was a prospective logistic regression for active senior status (≥2 registered results in a calendar year at age 20+) using only ages-13–14 predictors. Competition volume at ages 13–14 provided the largest incremental contribution to discrimination (OR = 2.40 per SD, 95% CI [2.07, 2.78]; cross-validated AUC = 0.751), was unchanged by structural controls (region, birth quarter, club size), and replicated across two independent birth cohorts. Volume level at age 14 (OR = 2.79) and within-athlete decline from age 14 to 15 (OR = 2.44) contributed independently, and behavior outperformed performance even when both were measured in the same window. Higher within-sport event concentration predicted higher retention — a different construct from multisport diversification. A register-implementable threshold at the end of the age-14 season flags high-risk athletes with PPV ≈ 0.94, giving clubs and federations an early-warning window of several years for retention-supporting intervention.

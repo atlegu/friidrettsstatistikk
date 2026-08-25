@@ -1,11 +1,11 @@
 # Highlights
 
-- Competition volume at age 15-16 predicts senior retention better than performance.
+- Baseline-window volume at ages 13-14 predicts senior retention 14 years later.
 
-- Future dropouts visibly reduce participation 2-3 years before formal exit.
+- OR = 2.40 per SD, cross-validated AUC = 0.751 from baseline-only predictors.
 
-- Two independent birth cohorts (N=2,123) yield concordant behavioral patterns.
+- Two patterns: early heterogeneity AND within-athlete pull-back act independently.
 
-- Early-adolescent volume alone classifies senior retention at AUC = 0.82.
+- Behavior outperforms performance; replicates across two birth-year cohorts.
 
-- Findings are consistent with qualitative accounts of dropout as a process.
+- Behavioral screening at age 14 flags at-risk athletes (PPV = 0.94).

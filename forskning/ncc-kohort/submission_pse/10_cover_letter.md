@@ -1,33 +1,44 @@
-# Cover Letter
+Atle Guttormsen, PhD
+School of Economics and Business
+Norwegian University of Life Sciences (NMBU)
+Universitetstunet 3, 1433 Ås, Norway
+atle.guttormsen@nmbu.no
+ORCID: 0000-0003-0188-8462
 
-[Date]
+\bigskip
 
-Editors-in-Chief
-*Psychology of Sport and Exercise*
+August 25, 2026
 
-Dear Editors,
+\bigskip
 
-I am pleased to submit the enclosed manuscript, **"Pulling back before dropout: Behavioral disengagement precedes youth-sport exit by years in a 14-year register study,"** for consideration as an original research article in *Psychology of Sport and Exercise*.
+Editor-in-Chief
+*International Journal of Sports Science & Coaching*
 
-The paper addresses a question central to sport psychology and youth sport policy: *why do adolescents leave organized competitive sport, and can the process be observed before it concludes?* The qualitative and survey-based literature has long argued that dropout is a gradual deliberative process rather than a single decision (e.g., Eliasson & Johansson, 2021; Espedalen & Seippel, 2022). Yet the *longitudinal behavioral signature* of this process — what gradual disengagement actually looks like in the year-by-year activity of athletes who will eventually leave — has been hard to observe directly. Surveys lose dropped-out athletes through selection bias; interviews recover the process only retrospectively.
+\bigskip
 
-This manuscript uses the Norwegian Athletics Federation's complete public competition register to bridge that gap. We followed all 2,123 athletes who participated in six consecutive editions of a regional youth track-and-field meet (2011–2016) for up to 14 years, recording each athlete's annual competition volume, event diversification, championship participation, and Tyrving age-norm performance points. The 14-year follow-up and complete-population design eliminate the recall and selection biases that limit prior dropout research.
+Dear Editor,
 
-**Principal findings.** Baseline-window competition volume (ages 13–14) provided the largest incremental contribution to prospective discrimination of senior retention in a baseline-only logistic regression (OR = 2.40 per SD, 95% CI [2.07, 2.78]; cross-validated AUC = 0.751). Effects were unchanged with structural controls (region, birth quarter, club size all non-significant). The behavioral signal decomposes into two substantial and independent components: baseline behavioral heterogeneity (volume at age 14, OR = 2.79) and a within-athlete pull-back across the age-14-to-15 transition (change OR = 2.44; pseudo-*R*² doubles from 0.11 to 0.23). Findings replicated across two independent birth-year cohorts (1998–2000 and 2001–2002).
+I am pleased to submit the manuscript **"Pulling back before dropping out: Behavioral disengagement precedes exit from Norwegian youth track and field — a 14-year register study"** for consideration as an Original Research article in the *International Journal of Sports Science & Coaching*.
 
-**Fit with PSE.** The manuscript is a strong fit for *Psychology of Sport and Exercise* on three grounds. First, the central theoretical scaffolding spans the Sport Commitment Model (Scanlan et al., 1993, 2016) — Scanlan's SCQ-2 was published in PSE itself — supplemented by Self-determination theory (Ryan & Deci, 2000; Vallerand, 1997, 2007; Sarrazin et al., 2002) and the withdrawal-as-process tradition (Eliasson & Johansson, 2021; Espedalen & Seippel, 2022). Second, the design supplies the kind of *longitudinal behavioral* evidence that has been missing from a literature dominated by cross-sectional surveys and short-prospective designs. Third, the practical implications — that federations and clubs can use register-based behavioral surveillance (positive predictive value ≥ 0.95 across plausible thresholds) to identify athletes at risk of dropout with 2–3 years of lead time — are directly actionable for the applied audiences PSE serves.
+**Why this journal.** The paper sits squarely in the journal's remit of coaching-relevant sport science on youth development, participation, and athlete pathways. It answers a question coaches and federations face every season — *which young athletes are on their way out of the sport, and how early can that be seen?* — and it answers it with an instrument every federation already owns: the competition register. The practical deliverable is a concrete, prospectively validated early-warning rule that can be run automatically at the end of an athlete's 14-year-old season, before the first selective championship gate, together with coaching-level guidance on how to respond.
 
-**Methodological rigor.** I have made every effort to anticipate the methodological concerns that arise with observational survival analysis at this scale. The proportional-hazards assumption was tested (Schoenfeld residuals, Table S1) and addressed where violated via period-specific Cox modelling (Table 5). A landmark analysis at age 16 (Table 4) directly tests for measurement-tautology between predictor and outcome — the dominant effect (HR 0.60) survives. The sensitivity of effects to unmeasured confounding is quantified via E-value (E = 5.16 for the primary effect; Table S3). Estimates are robust to outcome definition (Table S9), clustering by club (Table S2), mean-imputation of missing data (Table S5), and exclusion of zero-volume athletes (Table S11). Sample-size sensitivity (Table S4), cross-cohort replication (Table 7), and sex-stratified subgroup analyses (Table S7) confirm the substantive conclusion. The manuscript is written so that the behavioral signal is described as a *marker* of progressive disengagement, not as a direct measurement of motivation or commitment — this is an empirical contribution to a theoretical conversation, not a theoretical claim in itself.
+**What the study shows.** Using the Norwegian Athletics Federation's complete competition register, I followed all 2,123 athletes who competed as 13–14-year-olds in six consecutive editions of a regional youth meet (2011–2016) for up to 14 years. Competition volume at ages 13–14 was the dominant prospective predictor of still competing at senior age (OR = 2.40 per SD; cross-validated AUC = 0.751), outperforming age-norm performance even when both were measured in the same window, and replicating across two independent birth cohorts. The signal decomposes into two independent components — early behavioral heterogeneity and a within-athlete pull-back across the age-14-to-15 transition — matching qualitative accounts of withdrawal as a gradual, deliberative process. A simple threshold (fewer than 10 meets across ages 13–14) flags about a quarter of the cohort with a positive predictive value of 0.94. A further finding of direct coaching relevance: event-category concentration *within* track and field predicted *higher* retention — a construct we carefully distinguish from multisport diversification.
 
-**A note on a-priori power.** The journal's guidance asks for a-priori power estimates "drawing on effects sizes from previous meta-analyses and/or specific papers with designs close to the one authors use." Because the present design uses the complete population meeting inclusion criteria — with no sampling step at which the analyst chooses an *N* — a classical a-priori power calculation is not directly applicable. Methods Section 2.5.4 reframes this requirement as a *detection-capacity* analysis: we compute the minimum detectable hazard ratio given the observed event count (Hsieh & Lavori, 2000), benchmark it against effect-size magnitudes typically reported in prior prospective youth-sport dropout research (Sarrazin et al., 2002; Calvo et al., 2010; Espedalen & Seippel, 2022), and show that the design comfortably exceeds those magnitudes (minimum detectable HR ≈ 1.07 vs. typical OR equivalents of 1.4–2.5 in the prior literature). I hope this reframing satisfies the journal's underlying intent — that the design be capable of detecting theoretically meaningful effects — even though the exact form of a classical a-priori calculation does not transfer to a complete-population design.
+**Compliance.** The manuscript is Original Research within the 6,000-word limit, with an unstructured abstract, seven keywords, seven tables, and three figures (300 dpi); extended methods, eighteen supplementary tables, and six supplementary figures are provided as supplemental material. References follow Sage Vancouver style. The required Statements and Declarations section is included. Reporting follows STROBE (observational studies) and SAGER (sex and gender) guidance. The underlying competition records are publicly accessible; the derived dataset contains personal data (dates of birth) under the EU GDPR and cannot be redistributed, but the full analysis code will be deposited in a public repository upon acceptance.
 
-**Compliance and length.** The main manuscript runs approximately 7,000 words plus a 1,400-word reference list, with seven main tables and three figures. Including references the total is approximately 8,500 words — modestly above the journal's 8,000-word target. I respectfully request consideration of this length on the grounds that the additional words are concentrated in (i) methodological rigor anticipating reviewer concerns (landmark analysis, pull-back vs typology decomposition, E-value, calibration, structural controls, detection-capacity benchmarking) and (ii) theoretical triangulation that establishes the contribution. Seventeen supplementary tables (S1–S17) and six supplementary figures (S0–S5, including a cohort-construction flow diagram) are housed in supplementary material and do not contribute to main-text length.
+**Writing assistance declaration.** During the preparation of this work I used Claude Code (Anthropic), an AI-assisted tool, to assist with implementing statistical analyses in Python, generating figures, and editing the manuscript text for clarity and consistency. I reviewed and edited all content and take full responsibility for the content of the manuscript. This is also declared in the Acknowledgements.
 
-Analysis follows STROBE reporting guidance for observational studies (von Elm et al., 2007) and SAGER guidance for sex/gender reporting (Heidari et al., 2016). All data sources are public; no individual is identifiable in the analysis or the manuscript. The submission is prepared for double-anonymized peer review, with the title page submitted separately. Disclosure of generative-AI use in manuscript preparation appears in a dedicated section before the references list, per the journal's policy. I confirm that the manuscript is not under consideration elsewhere and that I have no competing interests.
+I confirm that the manuscript is my original work, is not published elsewhere, and is not under consideration by any other journal. I have no conflicts of interest to declare.
 
-I look forward to receiving the editors' and reviewers' feedback. Thank you for considering this work.
+Thank you for considering this work.
+
+\bigskip
 
 Sincerely,
+
+\bigskip
+
+\bigskip
 
 **Atle Guttormsen, PhD**
 School of Economics and Business

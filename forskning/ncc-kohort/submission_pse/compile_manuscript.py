@@ -9,11 +9,12 @@ Tables go in 11_tables.md and figure captions in 12_figure_captions.md
 to indicate intended position.
 """
 
+import re
 from pathlib import Path
 
 HERE = Path(__file__).parent
 
-TITLE = "# Pulling back before dropout: Behavioral disengagement precedes youth-sport exit by years in a 14-year register study"
+TITLE = "# Pulling back before dropping out: Behavioral disengagement precedes exit from Norwegian youth track and field — a 14-year register study"
 META = """
 **Running title:** Behavioral disengagement precedes youth-sport dropout
 
@@ -30,12 +31,11 @@ def section(filename, drop_heading_line=True):
 
 
 abstract = section("02_abstract.md")
-# Abstract file has explanatory header text — extract only the final version
-abstract_marker = "## Final version (≤250 words)"
-if abstract_marker in abstract:
-    abstract = abstract.split(abstract_marker)[1].strip()
-    # Drop "---" if present
-    abstract = abstract.lstrip("-\n ").strip()
+# Abstract file has explanatory header text — extract only the final version.
+# Match any "## Final version" heading regardless of suffix.
+m = re.search(r"^## Final version[^\n]*\n", abstract, re.MULTILINE)
+if m:
+    abstract = abstract[m.end():].strip().lstrip("-\n ").strip()
 
 intro = section("03_introduction.md")
 methods = section("04_methods.md")
@@ -43,18 +43,9 @@ results = section("05_results.md")
 discussion = section("06_discussion.md")
 references = section("07_references.md")
 # References file has subtitle "(APA 7th edition format)" — keep it
-declarations = section("09_declarations.md")
-
-# Generative AI disclosure should be its own section before References
-ai_marker = "## Declaration of generative AI"
-if ai_marker in declarations:
-    ai_section = declarations[declarations.index(ai_marker):]
-    # Cut where next ## starts
-    end = ai_section.find("\n## ", 5)
-    if end > 0:
-        ai_section = ai_section[:end].strip()
-else:
-    ai_section = ""
+# IJSSC/SAGE structure: Acknowledgements + Statements and Declarations
+# (with mandatory subheadings) come after the Discussion, before References.
+declarations = section("09_declarations.md").strip()
 
 manuscript = f"""{TITLE}
 {META}
@@ -90,9 +81,7 @@ manuscript = f"""{TITLE}
 
 ---
 
-## {ai_section.split(chr(10))[0].lstrip('#').strip() if ai_section else 'Declaration of generative AI and AI-assisted technologies'}
-
-{chr(10).join(ai_section.split(chr(10))[1:]).strip() if ai_section else 'During the preparation of this work the author used Claude Code (Anthropic) to assist with implementing statistical analyses in Python, generating figures using matplotlib, and editing the manuscript text for clarity and consistency. After using this tool, the author reviewed and edited the content as needed and takes full responsibility for the content of the published article.'}
+{declarations}
 
 ---
 
