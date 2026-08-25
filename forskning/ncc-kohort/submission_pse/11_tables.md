@@ -67,7 +67,7 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 |  | **Volume at age 14 (z)** | **2.79** | **[2.37, 3.28]** | **< .001** |
 |  | **Volume change 14→15 (z)** | **2.44** | **[2.10, 2.83]** | **< .001** |
 
-*Note.* Pseudo-*R*² rose from 0.113 (M1) to 0.227 (M2) — within-athlete change adds substantial information conditional on baseline level. A one-SD greater decline from age 14 to age 15 was associated with 2.4-times lower retention odds, conditional on level at age 14. Both baseline level and within-athlete pull-back contribute substantially and independently.
+*Note.* Pseudo-*R*² rose from 0.113 (M1) to 0.227 (M2): within-athlete change adds substantial information conditional on baseline level. A one-SD greater decline from age 14 to age 15 was associated with 2.4-times lower retention odds, conditional on level at age 14. Both baseline level and within-athlete pull-back contribute substantially and independently.
 
 ---
 
@@ -84,7 +84,7 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 | events in interval | 1,035 | 399 | 136 |
 | C-index | 0.894 | 0.661 | 0.582 |
 
-*Note.* Period-specific Cox estimates from the post-baseline specification with covariates measured at ages 15–16 and ≤17. The early-window HR for ages-15–16 volume partly reflects operational overlap between predictor and outcome (low milestone volume is mechanical for athletes who drop out before age 15); this estimate should be read as descriptive of the time-varying association rather than as an independent prospective effect. Substantively, the protective association attenuates across follow-up — consistent with proximal disengagement-marker interpretation.
+*Note.* Period-specific Cox estimates from the post-baseline specification with covariates measured at ages 15–16 and ≤17. The early-window HR for ages-15–16 volume partly reflects operational overlap between predictor and outcome (low milestone volume is mechanical for athletes who drop out before age 15); this estimate should be read as descriptive of the time-varying association rather than as an independent prospective effect. Substantively, the protective association attenuates across follow-up, consistent with a proximal disengagement-marker interpretation.
 
 ---
 
@@ -97,7 +97,7 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 | 10 meets | 26.4 | 0.30 [0.28, 0.32] | 0.91 [0.88, 0.94] | **0.94** [0.92, 0.96] | 0.20 [0.18, 0.22] | 5.7% [3.9, 7.7] | 20.2% [18.3, 22.2] |
 | 15 meets | 43.1 | 0.48 [0.46, 0.50] | 0.82 [0.77, 0.85] | **0.93** [0.91, 0.95] | 0.24 [0.21, 0.26] | 7.0% [5.4, 8.7] | 23.5% [21.1, 25.9] |
 
-*Note.* Classification performance of pre-milestone (ages 13–14) competition volume as a prospective early-warning indicator, applicable at the end of an athlete's age-14 season — before the qualification window opens. All metrics are computed on one denominator (full cohort, n = 2,123); brackets are 2,000-replicate bootstrap 95% CIs. PPV is the proportion of flagged athletes who subsequently failed to retain senior activity. The final two columns give the absolute retention contrast — at the < 10 threshold, 5.7% among flagged vs. 20.2% among unflagged athletes (a 3.5-fold difference). The high PPV partly reflects the population's 84% non-retention base rate (the threshold improves precision by ~10 percentage points over base-rate prediction), and the NPV of ≈ 0.20 means unflagged athletes are not "safe": roughly four in five of them also fail to retain. Calibration of the underlying model is reported in Supplementary Table S23.
+*Note.* Classification performance of pre-milestone (ages 13–14) competition volume as a prospective early-warning indicator, applicable at the end of an athlete's age-14 season, before the qualification window opens. All metrics are computed on one denominator (full cohort, n = 2,123); brackets are 2,000-replicate bootstrap 95% CIs. PPV is the proportion of flagged athletes who subsequently failed to retain senior activity. The final two columns give the absolute retention contrast: at the < 10 threshold, 5.7% among flagged vs. 20.2% among unflagged athletes (a 3.5-fold difference). The high PPV partly reflects the population's 84% non-retention base rate (the threshold improves precision by ~10 percentage points over base-rate prediction), and the NPV of ≈ 0.20 means unflagged athletes are not "safe": roughly four in five of them also fail to retain. Calibration of the underlying model is reported in Supplementary Table S23.
 
 ---
 
@@ -220,7 +220,7 @@ Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete
 
 *Note.* All three rows re-estimate the primary L4 model (sex, Tyrving, HHI, pre-milestone volume; n = 1,704) with the alternative outcome definitions. The volume effect is stable across definitions.
 
-## Table S10. Lagged volume — pre-milestone (ages 13–14) alone (Cox)
+## Table S10. Lagged volume: pre-milestone (ages 13–14) alone (Cox)
 
 | Covariate | HR | 95% CI | p |
 |---|---|---|---|
