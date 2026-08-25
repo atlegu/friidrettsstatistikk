@@ -54,6 +54,30 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
+def vent_pa_nett(vert: str, forsok: int = 30, pause: int = 60) -> bool:
+    """Vent til DNS svarer for `vert`, i stedet for å dø på et nettverksfall.
+
+    En full historisk kjøring tar over et døgn. Da er det påregnelig at nettet
+    forsvinner en periode. Uten dette døde hver sesong etter noen sekunder med
+
+        httpx.ConnectError: nodename nor servname provided, or not known
+
+    og elleve sesonger ble hoppet over på under ett minutt til sammen.
+    """
+    import socket
+    for n in range(1, forsok + 1):
+        try:
+            socket.gethostbyname(vert)
+            if n > 1:
+                logger.info(f"Nettet er tilbake etter {n - 1} forsøk")
+            return True
+        except socket.gaierror:
+            logger.warning(f"Ingen DNS for {vert} — venter {pause}s (forsøk {n}/{forsok})")
+            time.sleep(pause)
+    logger.error(f"Ga opp å nå {vert} etter {forsok} forsøk")
+    return False
+
+
 def _slaa_av_http2():
     """Tving HTTP/1.1 mot Supabase.
 
@@ -254,8 +278,21 @@ def determine_min_date(from_date: Optional[str], season_year: int, indoor: bool)
 # Scraping functions (from scrape_new_meets.py)
 # ============================================================
 
-def fetch_page(url: str, method: str = 'GET', data: dict = None) -> Optional[str]:
-    """Fetch a page with rate limiting."""
+def fetch_page(url: str, method: str = 'GET', data: dict = None,
+               forsok: int = 4) -> Optional[str]:
+    """Hent en side, med retry ved nettverksfeil."""
+    for n in range(1, forsok + 1):
+        svar = _fetch_page_en_gang(url, method, data)
+        if svar is not None:
+            return svar
+        if n < forsok:
+            ventetid = 5 * n
+            logger.warning(f"  Henting feilet, prøver igjen om {ventetid}s ({n}/{forsok})")
+            time.sleep(ventetid)
+    return None
+
+
+def _fetch_page_en_gang(url: str, method: str = 'GET', data: dict = None) -> Optional[str]:
     time.sleep(REQUEST_DELAY)
     try:
         if method == 'POST':
@@ -1229,6 +1266,10 @@ def main():
 
     # Step 1: Fetch source meets
     source_meets = fetch_meets_from_source(season_year, outdoor_flag, min_date)
+
+    if not vent_pa_nett(SUPABASE_URL.split('//')[-1].split('/')[0]):
+        logger.error("Ingen nettforbindelse — avslutter")
+        return
 
     # Step 2: Get existing meets from DB
     db_meets = get_existing_meets_from_db(min_date)

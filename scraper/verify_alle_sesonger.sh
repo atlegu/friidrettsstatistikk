@@ -42,9 +42,17 @@ for (( AR=TIL; AR>=FRA; AR-- )); do
     echo "" | tee -a "$SAMLELOGG"
     echo "=== $AR $MODUS (fra $FRADATO) ===" | tee -a "$SAMLELOGG"
 
-    python update_results.py $FLAGG --season "$AR" --from-date "$FRADATO" \
-        --verify > "$LOGG" 2>&1
-    KODE=$?
+    # Prøv inntil tre ganger. En sesong som faller på et nettverksfall skal
+    # ikke bare hoppes over — 25.08.2026 mistet vi elleve sesonger på under
+    # ett minutt fordi DNS var nede.
+    for FORSOK in 1 2 3; do
+      python update_results.py $FLAGG --season "$AR" --from-date "$FRADATO" \
+          --verify > "$LOGG" 2>&1
+      KODE=$?
+      [ $KODE -eq 0 ] && break
+      echo "  forsøk $FORSOK feilet (kode $KODE), venter 5 min" | tee -a "$SAMLELOGG"
+      sleep 300
+    done
 
     MIN=$(( ($(date +%s) - START) / 60 ))
     if [ $KODE -ne 0 ]; then
