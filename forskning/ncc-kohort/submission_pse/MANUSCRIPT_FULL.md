@@ -427,7 +427,7 @@ Larson, H. K., Young, B. W., McHugh, T.-L. F., & Rodgers, W. M. (2019). Markers 
 
 Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriidrett* [Tyrving table: Scoring table for youth athletics]. https://www.friidrett.no/arrangement/arrangementshjelp/poengtabeller/tyrvingtabellen/
 
-Norges Friidrettsforbund. (2026). *Konkurranseregler og bestemmelser* [Competition rules and regulations]. https://www.friidrett.no/lover-og-regler/
+Norges Friidrettsforbund. (2026). *Lover og regler* [Laws and regulations]. https://www.friidrett.no/om-nfif/lover/
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
 

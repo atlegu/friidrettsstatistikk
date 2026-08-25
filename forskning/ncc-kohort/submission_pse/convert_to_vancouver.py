@@ -107,7 +107,7 @@ REFERENCES = """## References
 23. Back J, Johnson U, Svedberg P, et al. Drop-out from team sport among adolescents: a systematic review and meta-analysis of prospective studies. *Psychol Sport Exerc* 2022; 61: 102205. DOI: 10.1016/j.psychsport.2022.102205.
 24. Kearney PE and Hayes PR. Excelling at youth level in competitive track and field athletics is not a prerequisite for later success. *J Sports Sci* 2018; 36: 2502–2509. DOI: 10.1080/02640414.2018.1465724.
 25. von Elm E, Altman DG, Egger M, et al. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. *Ann Intern Med* 2007; 147: 573–577. DOI: 10.7326/0003-4819-147-8-200710160-00010.
-26. Norges Friidrettsforbund. Konkurranseregler og bestemmelser [Competition rules and regulations], https://www.friidrett.no/lover-og-regler/ (2026, accessed 25 August 2026).
+26. Norges Friidrettsforbund. Lover og regler [Laws and regulations], https://www.friidrett.no/om-nfif/lover/ (2026, accessed 25 August 2026).
 27. Norges Friidrettsforbund. Tyrvingtabellen: poengtabell for ungdomsfriidrett [Tyrving table: scoring table for youth athletics], https://www.friidrett.no/arrangement/arrangementshjelp/poengtabeller/tyrvingtabellen/ (2024, accessed 25 August 2026).
 28. Cox DR. Regression models and life-tables. *J R Stat Soc Series B Stat Methodol* 1972; 34: 187–202. DOI: 10.1111/j.2517-6161.1972.tb00899.x.
 29. van Houwelingen HC. Dynamic prediction by landmarking in event history analysis. *Scand J Stat* 2007; 34: 70–85. DOI: 10.1111/j.1467-9469.2006.00529.x.

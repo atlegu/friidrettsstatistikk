@@ -46,4 +46,4 @@
 - Espedalen's heavy/light typology originates in Paper 2 (Espedalen & Seippel 2025, *Sport in Society* 28(5), 698–721, per the dissertation's list of papers) — citing that article instead of/alongside the kappe would be an even more precise anchor if you prefer.
 - Dissertation title page says 2025 (ISBN 978-82-502-0641-0); the filename's "26" is misleading. Reference entry is correct as 2025.
 - Battaglia's specific withdrawal-vs-dropout definitional distinction is supported at abstract level via "lack of conceptual clarity regarding the term 'dropout'"; the fine-grained definition presumably sits in the full text (not in our PDF set) — the PSE referee who recommended it treated it as the source, so risk is low.
-- NFIF Konkurranseregler URL (friidrett.no/lover-og-regler) not verifiable from the PDF set — check the link before submission.
+- NFIF rules URL confirmed by the author: https://www.friidrett.no/om-nfif/lover/ (entry updated accordingly).
