@@ -1,0 +1,42 @@
+[
+ {
+  "id": "f20b1cde-fbb0-490c-92ab-89a0a4876cad",
+  "name": "Elie Eliassen Imai",
+  "birth_year": 2011,
+  "db_gender": "M",
+  "evidence_M": 0,
+  "evidence_F": 3
+ },
+ {
+  "id": "0e387077-1f9c-43be-8c99-6749617dee92",
+  "name": "Rukundo Elisa Ochieng Akello",
+  "birth_year": 2011,
+  "db_gender": "M",
+  "evidence_M": 0,
+  "evidence_F": 3
+ },
+ {
+  "id": "ef473b86-66b2-4235-a141-b6d46e45e064",
+  "name": "Lilly-Marlien Krijger",
+  "birth_year": 2012,
+  "db_gender": "M",
+  "evidence_M": 0,
+  "evidence_F": 7
+ },
+ {
+  "id": "e0dfc04d-92a2-4dd3-85da-2ffc23a1d3a2",
+  "name": "Mar Lourence Amores Tufteland",
+  "birth_year": 2011,
+  "db_gender": "F",
+  "evidence_M": 4,
+  "evidence_F": 0
+ },
+ {
+  "id": "f29f8540-afb3-4a02-b245-5da3e2c7ff9e",
+  "name": "Yordanos Abderaham Ismael",
+  "birth_year": 2011,
+  "db_gender": "M",
+  "evidence_M": 0,
+  "evidence_F": 5
+ }
+]

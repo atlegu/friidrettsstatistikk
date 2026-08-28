@@ -1,0 +1,714 @@
+{
+  "generated_at": "20260809_191721",
+  "plan": [
+    {
+      "key": "ilibultromsø",
+      "target_id": "4c9a42b9-3222-45b3-88b3-2111290337f7",
+      "target_name_old": "IL i BUL Tromsø",
+      "target_name_new": "IL i BUL Tromsø",
+      "losers": [
+        {
+          "id": "4b99731e-3bf7-4801-b383-3914bc46af57",
+          "name": "IL i BUL, Tromsø",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 94,
+          "n_ath": 7
+        },
+        {
+          "id": "0b4dcea5-da66-41aa-a659-e4b9fd57d644",
+          "name": "IL i BUL-Tromsø",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 0
+        },
+        {
+          "id": "2319486f-5e0a-4804-8145-32d912cdfa3b",
+          "name": "Il i BUL, Tromsø",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 1
+        },
+        {
+          "id": "b32de5e3-eda2-4c5b-aa5c-8d563a7b2790",
+          "name": "IL i BUL,Tromsø",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 99,
+      "move_ath": 8
+    },
+    {
+      "key": "ullensakerkisail",
+      "target_id": "cf41f182-0a92-4cb0-a476-6a5ff5ee7085",
+      "target_name_old": "Ullensaker/Kisa IL",
+      "target_name_new": "Ullensaker/Kisa IL",
+      "losers": [
+        {
+          "id": "86dc3c4e-1dd1-4825-9bfc-857e60cb9f80",
+          "name": "Ullensaker-Kisa IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 88,
+          "n_ath": 18
+        }
+      ],
+      "move_res": 88,
+      "move_ath": 18
+    },
+    {
+      "key": "ifframlarvik",
+      "target_id": "1447a94a-2a4c-452e-b747-b04a7a8f320d",
+      "target_name_old": "IF Fram Larvik",
+      "target_name_new": "IF Fram Larvik",
+      "losers": [
+        {
+          "id": "3d46dc52-6346-457d-b3b4-4467399de0a8",
+          "name": "IF Fram, Larvik",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 48,
+          "n_ath": 6
+        }
+      ],
+      "move_res": 48,
+      "move_ath": 6
+    },
+    {
+      "key": "kfumkameratene",
+      "target_id": "d9eaa976-2c87-4cea-8c2f-4763e01f32af",
+      "target_name_old": "KFUM-Kameratene",
+      "target_name_new": "KFUM-Kameratene",
+      "losers": [
+        {
+          "id": "004118f5-4fa6-4731-84ee-2fb17b949198",
+          "name": "KFUM-Kameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        },
+        {
+          "id": "5a9ac3a5-c47a-4520-a750-a18e15153736",
+          "name": "KFUM-kameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 29,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 29,
+      "move_ath": 1
+    },
+    {
+      "key": "uilglimt",
+      "target_id": "7a99103d-16a6-422a-ba3d-0d353d033c62",
+      "target_name_old": "U & IL Glimt",
+      "target_name_new": "U & IL Glimt",
+      "losers": [
+        {
+          "id": "7f83e50a-84ec-4f67-92d7-e3355a01b412",
+          "name": "UIL Glimt",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 19,
+          "n_ath": 4
+        }
+      ],
+      "move_res": 19,
+      "move_ath": 4
+    },
+    {
+      "key": "svelgentif",
+      "target_id": "433c29f1-e7c2-472a-970c-e10f713c8806",
+      "target_name_old": "Svelgen T & IF",
+      "target_name_new": "Svelgen T & IF",
+      "losers": [
+        {
+          "id": "94402c99-7a5d-49a3-bb58-f871dde42a15",
+          "name": "Svelgen TIF",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 11,
+          "n_ath": 2
+        }
+      ],
+      "move_res": 11,
+      "move_ath": 2
+    },
+    {
+      "key": "olderdalenil",
+      "target_id": "a2e703fd-940d-403d-8178-491b07e89180",
+      "target_name_old": "Olderdalen IL",
+      "target_name_new": "Olderdalen IL",
+      "losers": [
+        {
+          "id": "c1f5864e-e910-41b0-baf8-29e96b24d795",
+          "name": "Olderdalen IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 8,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 8,
+      "move_ath": 1
+    },
+    {
+      "key": "ilnornasalhus",
+      "target_id": "fb3f550a-ff2a-4801-b532-86edc625bf95",
+      "target_name_old": "IL Norna-Salhus",
+      "target_name_new": "IL Norna-Salhus",
+      "losers": [
+        {
+          "id": "bdccf618-d2ba-4498-9d2b-1286a4e8641e",
+          "name": "Il Norna-Salhus",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 7,
+          "n_ath": 2
+        },
+        {
+          "id": "061bcad5-e445-479e-9bfb-bfa682b443d3",
+          "name": "IL Norna Salhus",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 8,
+      "move_ath": 2
+    },
+    {
+      "key": "ilfrikameratene",
+      "target_id": "73a2884e-89f5-4e90-b402-5a6b244ae126",
+      "target_name_old": "IL Fri-Kameratene",
+      "target_name_new": "IL Fri-Kameratene",
+      "losers": [
+        {
+          "id": "182ec5ca-73f0-4bd1-98ed-575ea4199e09",
+          "name": "IL Frikameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 0
+        },
+        {
+          "id": "336158cf-34b2-4711-9f6c-c6233a6fd044",
+          "name": "IL Fri-kameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 4,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 6,
+      "move_ath": 0
+    },
+    {
+      "key": "statoilbil",
+      "target_id": "99d21d07-20b8-4e54-99c0-0ccf0eed7264",
+      "target_name_old": "Statoil B.I.L",
+      "target_name_new": "Statoil B.I.L",
+      "losers": [
+        {
+          "id": "b37425b4-98a1-45a7-9af3-3afd1f8d0317",
+          "name": "Statoil BIL",
+          "city": null,
+          "county": null,
+          "club_type": "company",
+          "n_res": 5,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 5,
+      "move_ath": 0
+    },
+    {
+      "key": "ilsnertkameratene",
+      "target_id": "2d3e17c1-8d43-4a31-96a2-0831c301f189",
+      "target_name_old": "IL Snertkameratene",
+      "target_name_new": "IL Snertkameratene",
+      "losers": [
+        {
+          "id": "e77b5d8a-08bf-49a8-b260-fd5d93e79eef",
+          "name": "IL Snert-kameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 3,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 3,
+      "move_ath": 0
+    },
+    {
+      "key": "leksvikil",
+      "target_id": "c0351746-74ef-4ed1-9ad0-46ee7a262d37",
+      "target_name_old": "Leksvik Il",
+      "target_name_new": "Leksvik IL",
+      "losers": [
+        {
+          "id": "6b77afb1-997c-46fc-b195-b6fe240673c0",
+          "name": "Leksvik IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 3,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 3,
+      "move_ath": 1
+    },
+    {
+      "key": "frikameratene",
+      "target_id": "3659be4a-5ffb-4f8d-9f35-10b09ea8119f",
+      "target_name_old": "Fri Kameratene",
+      "target_name_new": "Fri Kameratene",
+      "losers": [
+        {
+          "id": "43c8226b-c99f-4b6d-aef0-d1868eb9361d",
+          "name": "Fri-kameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 3,
+          "n_ath": 2
+        }
+      ],
+      "move_res": 3,
+      "move_ath": 2
+    },
+    {
+      "key": "ilros",
+      "target_id": "fa85ebc0-fc20-49a1-8a93-36b543d02fb7",
+      "target_name_old": "IL Ros",
+      "target_name_new": "IL Ros",
+      "losers": [
+        {
+          "id": "f4fe330e-ef38-4350-9f2c-9eb34300d0bc",
+          "name": "IL ROS",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 3,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 3,
+      "move_ath": 1
+    },
+    {
+      "key": "oslotf",
+      "target_id": "8109f269-a034-4a27-abe0-23d2c52ff2ba",
+      "target_name_old": "Oslo TF",
+      "target_name_new": "Oslo TF",
+      "losers": [
+        {
+          "id": "93355030-bbec-40ed-890f-607ff4a5f6ff",
+          "name": "OsloTF",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 2,
+      "move_ath": 0
+    },
+    {
+      "key": "oslospeidernesil",
+      "target_id": "00b96abb-4953-446c-a056-4965c0fd61be",
+      "target_name_old": "Oslospeidernes IL",
+      "target_name_new": "Oslospeidernes IL",
+      "losers": [
+        {
+          "id": "81e7a663-744e-40de-9fb7-86b721ee84dc",
+          "name": "Oslo-Speidernes IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 2,
+      "move_ath": 0
+    },
+    {
+      "key": "ilgivakt",
+      "target_id": "afe3b0bb-4ee3-4bf7-a1d5-3bdcf793ee53",
+      "target_name_old": "IL Giv-Akt",
+      "target_name_new": "IL Giv-Akt",
+      "losers": [
+        {
+          "id": "01172578-36f9-4dd5-abdd-5adfe5aa8e86",
+          "name": "IL Giv Akt",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 2,
+      "move_ath": 1
+    },
+    {
+      "key": "svorkmonoi",
+      "target_id": "0b42726d-2fdd-46c3-9c0b-3e3b5be6f7be",
+      "target_name_old": "Svorkmo N.O.I.",
+      "target_name_new": "Svorkmo N.O.I.",
+      "losers": [
+        {
+          "id": "a12f9ba5-6f7a-4283-923c-409fb935107c",
+          "name": "Svorkmo N.O.I.",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        },
+        {
+          "id": "0295cdc3-2fea-4f2b-9d38-06e780baab87",
+          "name": "Svorkmo NOI",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 2,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 2,
+      "move_ath": 1
+    },
+    {
+      "key": "ilstjørdalsblink",
+      "target_id": "f376c5a0-1430-4ebe-a6f4-79d56c155d13",
+      "target_name_old": "IL Stjørdals-Blink",
+      "target_name_new": "IL Stjørdals-Blink",
+      "losers": [
+        {
+          "id": "e759a7d7-5c42-4c31-8c89-d6abe18042a8",
+          "name": "IL Stjørdals- Blink",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 0
+    },
+    {
+      "key": "ifkampvestheim",
+      "target_id": "27b65f0a-4fea-4c7f-9e9c-079656ada0cf",
+      "target_name_old": "IF Kamp-Vestheim",
+      "target_name_new": "IF Kamp-Vestheim",
+      "losers": [
+        {
+          "id": "89879a53-09f4-46d1-ab82-4481a33437ad",
+          "name": "IF Kamp/Vestheim",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 0
+    },
+    {
+      "key": "ilkorlevollodda",
+      "target_id": "dd94b728-91c2-4c3b-9f50-29bdab28485b",
+      "target_name_old": "IL Korlevoll-Odda",
+      "target_name_new": "IL Korlevoll-Odda",
+      "losers": [
+        {
+          "id": "25064214-a9d0-4ab9-8ceb-89fe51258aeb",
+          "name": "Il Korlevoll-Odda",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 1
+    },
+    {
+      "key": "nordøyil",
+      "target_id": "ab1d5a54-d1e0-44bc-8d65-031b49f9cb85",
+      "target_name_old": "Nordøy IL",
+      "target_name_new": "Nordøy IL",
+      "losers": [
+        {
+          "id": "666360ba-8b93-4280-8e43-4183a6cb6099",
+          "name": "Nordøy IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 1
+    },
+    {
+      "key": "oslostudentenesik",
+      "target_id": "a07810aa-95d9-4db4-a044-87497f1d83be",
+      "target_name_old": "Oslo-Studentenes IK",
+      "target_name_new": "Oslo-Studentenes IK",
+      "losers": [
+        {
+          "id": "ced5d42f-ff61-40d2-9180-61d0ac250cbb",
+          "name": "Oslostudentenes IK",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 0
+    },
+    {
+      "key": "oslostudentenesil",
+      "target_id": "27ef3a43-edc4-4b4c-88e3-68f3098da9ef",
+      "target_name_old": "Oslo-Studentenes IL",
+      "target_name_new": "Oslo-Studentenes IL",
+      "losers": [
+        {
+          "id": "d041e70b-2f77-4228-a513-512050c7db70",
+          "name": "Oslostudentenes IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 0
+    },
+    {
+      "key": "ilframskatval",
+      "target_id": "08eff183-d380-4a2b-bc30-2a819e9b71b0",
+      "target_name_old": "IL Fram, Skatval",
+      "target_name_new": "IL Fram, Skatval",
+      "losers": [
+        {
+          "id": "fbdb39df-b717-445c-9512-4b9d8d7eccb1",
+          "name": "IL Fram Skatval",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 1,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 1,
+      "move_ath": 1
+    },
+    {
+      "key": "ilmalmsulitjelma",
+      "target_id": "a8ee1f44-7f04-4e70-bcca-d8d00bf17c5b",
+      "target_name_old": "IL Malm, Sulitjelma",
+      "target_name_new": "IL Malm, Sulitjelma",
+      "losers": [
+        {
+          "id": "27e73875-d6b6-4416-b36c-bb51bc8acd35",
+          "name": "IL Malm Sulitjelma",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 1
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 1
+    },
+    {
+      "key": "nærsnesløpeklubb",
+      "target_id": "0325fb12-5cc4-41f1-b883-e0b40081a8cc",
+      "target_name_old": "Nærsnes Løpeklubb",
+      "target_name_new": "Nærsnes Løpeklubb",
+      "losers": [
+        {
+          "id": "9abdd948-b155-4755-8ab6-a9ec193ed53f",
+          "name": "Nærsnes Løpeklubb",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "romerikerunnersteam",
+      "target_id": "5fcf4e2e-d778-4e4c-b72b-e1a5afe0171c",
+      "target_name_old": "Romerike Runners Team",
+      "target_name_new": "Romerike Runners Team",
+      "losers": [
+        {
+          "id": "e4a28488-4d51-40cb-8b66-25f45d5a7855",
+          "name": "Romerike Runners Team",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "lillomarkaskiklubb",
+      "target_id": "8b5211d8-e359-4a3b-aa6f-5e4cc2d91d23",
+      "target_name_old": "Lillomarka Skiklubb",
+      "target_name_new": "Lillomarka Skiklubb",
+      "losers": [
+        {
+          "id": "a152fc66-8e6b-473a-a2cf-ec7ae532877d",
+          "name": "Lillomarka Skiklubb",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "stovnerkameratene",
+      "target_id": "68a0c1a5-b740-4953-b5c5-7fbd8e8eb03d",
+      "target_name_old": "Stovnerkameratene",
+      "target_name_new": "Stovnerkameratene",
+      "losers": [
+        {
+          "id": "af82f9c3-2f3c-4345-b259-35a934a419b5",
+          "name": "Stovnerkameratene",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "midgardhinderløpsklubb",
+      "target_id": "93d6fc10-923b-4659-95a7-cfd1fbc7dba3",
+      "target_name_old": "Midgard Hinderløpsklubb",
+      "target_name_new": "Midgard Hinderløpsklubb",
+      "losers": [
+        {
+          "id": "a681b0d0-29f5-4a35-87c4-be1cecab1656",
+          "name": "Midgard Hinderløpsklubb",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "grødemrunners",
+      "target_id": "ff005dca-b48a-45b9-82a1-2abb8e496e17",
+      "target_name_old": "Grødem Runners",
+      "target_name_new": "Grødem Runners",
+      "losers": [
+        {
+          "id": "3e4abd93-3d40-4759-a2cb-c08c305de3bd",
+          "name": "Grødem Runners",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "larvikski",
+      "target_id": "706b9a7b-7b0c-49bf-a940-4574571be4fc",
+      "target_name_old": "Larvik Ski",
+      "target_name_new": "Larvik Ski",
+      "losers": [
+        {
+          "id": "1ecaecba-b980-4a2d-a163-0883b6ab840d",
+          "name": "Larvik Ski",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    },
+    {
+      "key": "ålgardil",
+      "target_id": "529e5657-afa9-445a-b885-ec0358f5af79",
+      "target_name_old": "Ålgard IL",
+      "target_name_new": "Ålgard IL",
+      "losers": [
+        {
+          "id": "ad390ca2-5e2b-4a0c-a5df-12e838f849dc",
+          "name": "Ålgard IL",
+          "city": null,
+          "county": null,
+          "club_type": "athletics",
+          "n_res": 0,
+          "n_ath": 0
+        }
+      ],
+      "move_res": 0,
+      "move_ath": 0
+    }
+  ]
+}

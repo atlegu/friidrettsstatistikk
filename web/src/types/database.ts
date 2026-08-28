@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.1"
+    PostgrestVersion: "14.17"
   }
   public: {
     Tables: {
@@ -134,6 +134,13 @@ export type Database = {
             columns: ["current_club_id"]
             isOneToOne: false
             referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "athletes_current_club_id_fkey"
+            columns: ["current_club_id"]
+            isOneToOne: false
+            referencedRelation: "klubber_med_statistikk"
             referencedColumns: ["id"]
           },
           {
@@ -264,6 +271,13 @@ export type Database = {
             columns: ["club_id"]
             isOneToOne: false
             referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "club_memberships_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "klubber_med_statistikk"
             referencedColumns: ["id"]
           },
           {
@@ -584,6 +598,7 @@ export type Database = {
           country: string | null
           created_at: string | null
           end_date: string | null
+          external_id: string | null
           id: string
           indoor: boolean
           isonen_id: string | null
@@ -603,6 +618,7 @@ export type Database = {
           country?: string | null
           created_at?: string | null
           end_date?: string | null
+          external_id?: string | null
           id?: string
           indoor?: boolean
           isonen_id?: string | null
@@ -622,6 +638,7 @@ export type Database = {
           country?: string | null
           created_at?: string | null
           end_date?: string | null
+          external_id?: string | null
           id?: string
           indoor?: boolean
           isonen_id?: string | null
@@ -642,6 +659,13 @@ export type Database = {
             columns: ["organizer_club_id"]
             isOneToOne: false
             referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meets_organizer_club_id_fkey"
+            columns: ["organizer_club_id"]
+            isOneToOne: false
+            referencedRelation: "klubber_med_statistikk"
             referencedColumns: ["id"]
           },
           {
@@ -857,6 +881,13 @@ export type Database = {
             foreignKeyName: "results_club_id_fkey"
             columns: ["club_id"]
             isOneToOne: false
+            referencedRelation: "klubber_med_statistikk"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
             referencedRelation: "results_full"
             referencedColumns: ["club_id"]
           },
@@ -1034,6 +1065,24 @@ export type Database = {
       }
     }
     Views: {
+      klubber_med_statistikk: {
+        Row: {
+          active: boolean | null
+          antall_resultater: number | null
+          antall_utovere: number | null
+          city: string | null
+          club_type: Database["public"]["Enums"]["club_type"] | null
+          county: string | null
+          created_at: string | null
+          forste_resultat: string | null
+          id: string | null
+          name: string | null
+          short_name: string | null
+          siste_resultat: string | null
+          website: string | null
+        }
+        Relationships: []
+      }
       personal_bests: {
         Row: {
           athlete_id: string | null
@@ -1286,6 +1335,70 @@ export type Database = {
       }
     }
     Functions: {
+      analyse_active_athletes: {
+        Args: { from_year: number; to_year: number }
+        Returns: {
+          age_band: string
+          gender: string
+          n_athletes: number
+          yr: number
+        }[]
+      }
+      analyse_active_by_age: {
+        Args: { from_year: number; to_year: number }
+        Returns: {
+          age: number
+          gender: string
+          n_athletes: number
+          yr: number
+        }[]
+      }
+      analyse_debut: {
+        Args: { from_year: number; to_year: number }
+        Returns: {
+          debut_age: number
+          gender: string
+          n: number
+          yr: number
+        }[]
+      }
+      analyse_event_trend: {
+        Args: {
+          p_age_hi?: number
+          p_age_lo?: number
+          p_event_code: string
+          p_from_year: number
+          p_higher_better: boolean
+          p_max_v: number
+          p_min_v: number
+          p_outdoor_only?: boolean
+          p_to_year: number
+        }
+        Returns: {
+          best_value: number
+          gender: string
+          n_athletes: number
+          rank100_value: number
+          rank25_value: number
+          rank50_value: number
+          top10_avg: number
+          yr: number
+        }[]
+      }
+      analyse_survival: {
+        Args: {
+          p_cohort_from: number
+          p_cohort_to: number
+          p_max_age?: number
+          p_start_age: number
+        }
+        Returns: {
+          age: number
+          cohort_year: number
+          gender: string
+          n_active: number
+        }[]
+      }
       athletics_age: {
         Args: { birth_date: string; result_date: string }
         Returns: number
@@ -1321,11 +1434,11 @@ export type Database = {
           p_event_id: string
           p_exclude_manual?: boolean
           p_exclude_wind_illegal?: boolean
-          p_only_manual?: boolean
           p_gender: string
           p_indoor?: boolean
           p_limit?: number
           p_offset?: number
+          p_only_manual?: boolean
         }
         Returns: {
           athlete_id: string
@@ -1359,6 +1472,7 @@ export type Database = {
         }
         Returns: number
       }
+      set_meet_external_ids: { Args: { pairs: Json }; Returns: number }
     }
     Enums: {
       club_type: "athletics" | "company" | "school" | "foreign" | "other"
