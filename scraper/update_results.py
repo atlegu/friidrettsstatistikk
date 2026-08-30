@@ -503,7 +503,26 @@ def finn_ufullstendige_mot_kilden(source_meets, db_meets):
     return ufullstendige
 
 
-def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool]:
+def _skill_ut_markor(verdi: str) -> Tuple[str, Optional[str]]:
+    """Del «4.43 L» i («4.43», «L») og «20.37.52mx» i («20.37.52», «mx»).
+
+    Kilden henger markører på selve resultatverdien. Databasetriggeren caster
+    `performance` til numeric og feilet på alle sammen, så rundt 900 resultater
+    ble kastet ved hver kjøring — «mx» alene sto for 581.
+
+    Betydningen er ikke dokumentert på kildesiden. Vi tar derfor vare på
+    markøren ordrett i `results.source_marker` framfor å tolke den. «mx» er
+    etter alt å dømme blandet heat, jf. kravspekkens §7, men det er ikke
+    bekreftet, og en gjetning i et datafelt er verre enn en ærlig råverdi.
+    """
+    m = re.match(r'^\s*(\d+(?:[.,:]\d+)*)\s*(.*)$', verdi)
+    if not m:
+        return verdi, None
+    tall, rest = m.group(1), m.group(2).strip()
+    return (tall, rest) if rest else (tall, None)
+
+
+def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool, Optional[str]]:
     """Parse resultat, vind og manuell-markør.
 
     Kilden bruker flere varianter:
@@ -519,7 +538,7 @@ def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool]:
     tapt i importen 2026-08-21. Se OPERATIONS_LOG.md.
     """
     if not result_str:
-        return '', None, False
+        return '', None, False, None
 
     result_str = result_str.strip()
 
@@ -536,10 +555,13 @@ def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool]:
     if match:
         value, inner = match.group(1).strip(), match.group(2).strip()
         if re.fullmatch(r'[+-]?\d+[,.]?\d*', inner):
-            return value, inner.replace(',', '.'), is_manual
-        return value, None, is_manual
+            verdi, markor = _skill_ut_markor(value)
+            return verdi, inner.replace(',', '.'), is_manual, markor
+        verdi, markor = _skill_ut_markor(value)
+        return verdi, None, is_manual, markor
 
-    return result_str, None, is_manual
+    verdi, markor = _skill_ut_markor(result_str)
+    return verdi, None, is_manual, markor
 
 
 def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
@@ -590,7 +612,7 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
                     if place_match:
                         place = int(place_match.group(1))
 
-                    result, wind, is_manual = parse_result_wind(result_raw)
+                    result, wind, is_manual, markor = parse_result_wind(result_raw)
 
                     name = name_text
                     birth_year = None
@@ -619,6 +641,7 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
                         'result': result.replace(',', '.'),
                         'wind': wind,
                         'is_manual': is_manual,
+                        'markor': markor,
                         'is_indoor': not meet['outdoor']
                     })
                 except Exception as e:
@@ -1154,6 +1177,10 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         # kun der manuell tidtaking faktisk er mulig (løp under 800 m).
         if row.get('is_manual') and event_id in _event_manual_eligible:
             result_data['is_manual_time'] = True
+
+        # Markøren tas vare på ordrett. Uten dette feilet raden i sin helhet.
+        if row.get('markor'):
+            result_data['source_marker'] = row['markor']
 
         result_batch.append(result_data)
 
