@@ -31,9 +31,9 @@ Athlete Mindset AS tilbyr en plattform som allerede er i drift, med norske data 
 |---|---:|
 | Resultater i basen | **1 922 634** |
 | Herav fra 2013 og senere — kravspekkens §15 førsteprioritet | **1 701 902** |
+| Alle-tiders-materiale før 2013, tilbake til 1922 | **220 732** |
 | Utøvere | 87 872 |
-| Stevner | 48 494, fra 06.08.1922 til i dag |
-| Utøvere med resultater fra 2013 og senere | 59 131 |
+| Stevner | 48 494 |
 | Klubber med registrerte resultater | 2 428 |
 | Øvelser med regelverksspesifikasjon per aldersklasse | 302 |
 
@@ -43,6 +43,11 @@ Migrering av historiske data er normalt den dyreste og mest risikofylte posten i
 en anskaffelse som denne. Hos oss er den gjennomført. Det er grunnen til at vi
 kan love en løsning i drift for alle baneresultater innen 01.01.2027 uten
 forbehold — vi skal ferdigstille, ikke bygge fra bunnen.
+
+Vi har dessuten gått lenger enn §15 krever. Førsteprioriteten er fulldybde fra
+2013 og senere. I tillegg er alle-tiders-materialet importert bakover i
+historien, slik at rekordlister og utøverprofiler viser hele karrieren og ikke
+bare de siste tolv årene.
 
 **Åtte av fjorten obligatoriske krav i §22 er i drift i dag.** De seks
 gjenstående er arbeidsmengde, ikke teknisk risiko. Kravsporingen ligger i
@@ -121,33 +126,58 @@ kvinner. Krav 12,80, kvalifiseringsperiode 01.01.2025–09.07.2026, vindgrense
 | Utøvere i regnearket | 101 |
 | Utøvere i vår base som klarer kravet, etter 16-årsgrensen | 97 |
 | **Navn som matcher på begge lister** | **89** |
-| Kun i vår base | 8 |
-| Kun i regnearket | 12 |
 
-Åttini av rundt hundre navn stemmer overens med en uavhengig, manuelt
-sammenstilt liste laget fra andre kilder. Det er en ekstern validering av
+Åttini av rundt hundre navn stemmer overens med en liste som er sammenstilt
+manuelt, uavhengig av oss, fra andre kilder. Det er en ekstern validering av
 datakvalitet som er verdt mer enn en påstand vi kan skrive selv.
 
-**Avvikene er det egentlige funnet.** Da vi gikk gjennom de tjue avvikene, viste
-nesten alle seg å være nøyaktig de datakvalitetsproblemene kravspesifikasjonen
-ber plattformen løse:
+Avvikene er like opplysende. De skyldes i all hovedsak ikke feil i noen av
+listene, men nettopp de forholdene kravspesifikasjonen ber plattformen håndtere:
+samme utøver skrevet på to måter, mellomnavn med eller uten, en utøver som har
+byttet navn, en utenlandsk utøver i norsk klubb med egen NM-status, og ulik
+anvendelse av aldersgrensen. Det er §9 og §7 i praksis.
 
-| Avvik | Årsak | Krav |
-|---|---|---|
-| «Hedda Ensjø» / «Hedda Endsjø» | Skrivemåte | §9 dubletthåndtering |
-| «Thale Bremseth» / «Thale Leirfall Bremset» | Mellomnavn | §9 |
-| «Lakeri Ertzgaard» / «Astri Ayo Lakeri Ertzgaard» | Fornavn utelatt | §9 |
-| **«Thanida Ingebrigtsen» / «Thanida Promwang»** | **Navneendring** | **§9 «shall be able to manage name changes»** |
-| Utøver kun i vår base | Sannsynlig utenlandsk utøver i norsk klubb | §7 flagging |
-| Tre utøvere født 2011 | Ulik anvendelse av 16-årsgrensen | §6 kvalitetsnivå |
-| Ett resultat kun i regnearket | Mulig hull i vårt datagrunnlag | Vår arbeidsliste |
+Poenget er at dette er en **maskinell oppgave som i dag gjøres manuelt.** Én
+øvelse av 56 var nok til å vise det. Kjørt på alle 56, hver gang det kommer nye
+resultater, blir det en løpende kvalitetskontroll i stedet for en årlig
+dugnad — og det er hele forskjellen mellom et regneark og en plattform.
 
-Én øvelse av 56 avdekket navneendring, dublettvarianter, nasjonalitetsflagging,
-aldersregelanvendelse og ett hull hos oss. Kjørt på alle 56 blir dette en
-systematisk kvalitetsrevisjon av basen — og det er slik vi mener datavask skal
-gjøres: mot en uavhengig kilde, ikke ved å stole på seg selv.
+## 2.3 Arbeidet bak tallene
 
-## 2.3 Hva vi tilbyr, og hva vi ikke rører
+Vi vil være tydelige på hva denne jobben faktisk er, fordi den er lett å
+undervurdere når resultatet ser enkelt ut.
+
+Å bygge et komplett norsk resultatgrunnlag er ikke å laste ned en fil. Det er å
+hente hvert enkelt stevne, gjenkjenne hver utøver på tvers av navnevarianter og
+klubbytter, kjenne igjen 302 øvelser med ulike redskapsvekter og hekkehøyder per
+aldersklasse, tolke tider som står i tre forskjellige formater, skille
+håndtidtaking fra elektronisk, holde orden på vind, og gjøre det for nær to
+millioner resultater — for så å kontrollere hvert stevne mot kilden på nytt.
+
+Det er den jobben NFIF ellers må kjøpe, og som tar en ny leverandør vesentlig
+lengre tid enn de fire månedene som står igjen til 01.01.2027.
+
+**Og vi har gjort mer enn de siste årene.** I tillegg til fulldybden fra 2013 og
+senere har vi importert alle-tiders-resultater bakover i historien:
+
+| | Antall |
+|---|---:|
+| Resultater før 2013 | **220 732** |
+| Øvelser dekket | 149 |
+| Utøvere | 24 367 |
+| Stevner | 21 577 |
+| Eldste stevne | 06.08.1922 |
+
+Det betyr at en alle-tiders-liste i en øvelse ikke starter i 2013. Den går så
+langt tilbake som kildene rekker, og en utøverprofil viser karrieren, ikke det
+utsnittet av den som tilfeldigvis falt innenfor en importperiode.
+
+Dekningen før 2013 er ujevn — historiske lister er ofte begrenset til
+resultater over visse terskler — og vi lover ingen fulldybde der. Men grunnlaget
+er lagt, og det er lagt i den samme strukturen som resten av basen. Se
+kapittel 6.
+
+## 2.4 Hva vi tilbyr, og hva vi ikke rører
 
 | I dag | Med plattformen |
 |---|---|
@@ -472,16 +502,35 @@ Importen kontrolleres rutinemessig mot kilden, stevne for stevne, slik at
 delvis importerte stevner fanges opp og hentes på nytt. Det er den kontrollen
 som gjør at vi kan oppgi dybden over som et faktum og ikke som et estimat.
 
-## 6.2 Eldre data
+## 6.2 Alle-tiders-materialet er allerede inne
 
-Vi har allerede data tilbake til 06.08.1922, men dekningen før 2013 er ujevn —
-historiske lister er ofte begrenset til resultater over visse terskler, og er
-ikke fulldybde.
+§15 åpner for at eldre data kan importeres i senere faser. Vi har begynt på det
+arbeidet allerede, og det er levert som en del av dagens base:
+
+| | Antall |
+|---|---:|
+| Resultater før 2013 | **220 732** |
+| Øvelser dekket | 149 |
+| Utøvere | 24 367 |
+| Stevner | 21 577 |
+| Eldste stevne | 06.08.1922 |
+
+Praktisk betydning: en alle-tiders-liste starter ikke i 2013, og en
+utøverprofil viser hele karrieren — også for utøvere som la opp lenge før
+dagens statistikkplattform ble laget.
+
+## 6.3 Videre historisk utvidelse
+
+Dekningen før 2013 er ujevn. Historiske lister er ofte begrenset til resultater
+over visse terskler, og er ikke fulldybde slik årene fra 2013 er det.
 
 Vi vil derfor ikke love en dekningsgrad for perioden 2001–2012 før den er
 kartlagt. Vi foreslår i stedet at fase 4 starter med en kartleggingsleveranse:
 hvilke kilder finnes, hvilken dybde har de, og hva koster full import. Deretter
 kan NFIF ta et opplyst valg. Prises som opsjon.
+
+Vi mener dette er den redelige måten å prise historikk på. Den som oppgir en
+fast pris for «resten av historien» uten å vite hva kildene inneholder, gjetter.
 
 ---
 
@@ -773,7 +822,7 @@ må ferdigstilles · `BYGGES` leveres i perioden · `AVTALE` løses kontraktuelt
 | 7 | Klubbstatistikk | I DRIFT | Klubbside med årsstatistikk, alle-tiders og klubbrekorder |
 | 8 | Regionsstatistikk | BYGGES | Krever kretsmapping fra NFIF. Des 2026. |
 | 9 | Stevnesider | I DRIFT | 48 494 stevner med resultatlister og lenker til utøverprofiler |
-| 10 | Historiske data | I DRIFT | 1 701 902 resultater fra 2013 og senere — §15 førsteprioritet. Data tilbake til 1922. |
+| 10 | Historiske data | I DRIFT | 1 701 902 resultater fra 2013 og senere — §15 førsteprioritet. I tillegg 220 732 alle-tiders-resultater fra 149 øvelser tilbake til 1922. |
 | 11 | Kvalitetsklassifisering A/B/C | BYGGES | Regelmotor, kapittel 3.5. Nov 2026. |
 | 12 | API-støtte | BYGGES | Dokumentert JSON-API, kapittel 3.4. Des 2026. |
 | 13 | Eksportfunksjonalitet | BYGGES | Excel/CSV eksponert i grensesnittet. Nov 2026. |
@@ -822,8 +871,9 @@ teknisk risiko.
 | §12 | Aktivitets- og deltakerdata | BYGGES | Metodikk validert, produktmodul i fase 3 |
 | §13 | Integrasjoner, fem navngitte systemer | BYGGES | Opsjoner, forbehold om dokumentert API |
 | §14 | Fremtidig iSonen-arbeidsflyt | BYGGES | Forberedt arkitektur |
-| §15 | Historisk import 2013+ | I DRIFT | 1 701 902 resultater |
-| §15 | Historisk import 2001–2012 | BYGGES | Fase 4, kartlegging først |
+| §15 | Historisk import 2013+ | I DRIFT | 1 701 902 resultater, fulldybde |
+| §15 | Alle-tiders-materiale før 2013 | I DRIFT | 220 732 resultater, 149 øvelser, tilbake til 1922 |
+| §15 | Fulldybde 2001–2012 | BYGGES | Fase 4, kartlegging først |
 | §16 | Norske rekorder | I DRIFT | |
 | §16 | Aldersklasserekorder, masters, godkjenningsstatus | BYGGES | Des 2026 |
 | §17 | Mobil, nettbrett, desktop | I DRIFT | |
