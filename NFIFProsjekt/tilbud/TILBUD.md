@@ -329,46 +329,58 @@ forbundets egne tall.
 Dette er en regelmotor, ikke et datafelt. Hvert resultat får nivå, begrunnelse
 og sporing av hvem som har satt eller overstyrt det.
 
-Kriteriene i §6 faller i tre grupper, og skillet mellom dem avgjør hvordan
-løsningen må bygges:
+### Nivået følger av stevnet, ikke av en manuell vurdering
 
-| Kriterium i nivå A | Kilde |
+Det avgjørende poenget er at godkjenning allerede er avgjort før resultatet
+oppstår. **Et stevne som står på terminlisten, eller på World Athletics' liste,
+er per definisjon godkjent** — med mindre det blir underkjent i etterkant.
+
+Det betyr at nivå A ikke er noe noen skal tildele resultat for resultat. Det
+utledes:
+
+| Kriterium i nivå A | Utledes fra |
 |---|---|
-| Offisiell distanse | Utledes av øvelsen |
-| Godkjent tidtaking | Utledes — håndtidtaking er allerede skilt fra elektronisk |
-| Godkjent og terminlistet stevne | Krever terminlisten fra NFIF |
-| Gyldig lisens | Krever lisensregisteret |
-| Målt løype | Krever register over sertifiserte løyper (gateløp) |
-| Nødvendig dokumentasjon | Kan ikke utledes — noen må bekrefte |
-| Samsvar med regelverket | Kan ikke utledes — krever en vurdering |
+| Godkjent og terminlistet stevne | Terminlisten / WA-listen |
+| Nødvendig dokumentasjon og regelverkssamsvar | Følger av at stevnet er sanksjonert |
+| Gyldig lisens | Lisensregisteret |
+| Godkjent tidtaking | Resultatets presisjon — håndtidtaking er allerede skilt ut |
+| Offisiell distanse | Øvelsen |
+| Målt løype | Løyperegisteret (gjelder gateløp) |
 
-De to siste er kjernen i et arbeidsflytspørsmål: **hvem setter nivået når det
-ikke kan regnes ut?**
+Vi forutsetter tilgang til terminlisten og lisensregisteret. Med de to på plass
+har regelmotoren det den trenger, og klassifiseringen skjer maskinelt i det
+resultatet importeres — uten at noen må sitte og godkjenne 130 000 resultater i
+året.
 
-Volumet gjør at svaret ikke kan være «et menneske vurderer hvert resultat». Med
-rundt 130 000 resultater i året må hovedregelen være maskinell.
+### Unntakene er arbeidet
 
-### Vårt forslag
+**Underkjenning i etterkant.** Blir et stevne eller et enkeltresultat underkjent,
+registreres det som en hendelse med årsakskode, og klassifiseringen oppdateres.
+Dette er samme mekanisme som §7 etterspør for ikke-ratifiserte prestasjoner, og
+den bør derfor bygges én gang og brukes begge steder. Historikken bevares: at et
+resultat en gang var rekordberettiget og senere ble underkjent, er i seg selv
+opplysning som ikke skal forsvinne.
 
-- **Alle resultater klassifiseres automatisk som nivå B** — statistikkgodkjent —
-  når de importeres fra et kjent stevne. Det er riktig standardverdi: de fleste
-  resultater hører hjemme i statistikken uten å være rekordkandidater.
-- **Nivå C settes automatisk** der et kriterium er kjent brutt: ikke-terminlistet
-  arrangement, uoppmålt løype, ikke-standard distanse.
-- **Nivå A krever aktiv bekreftelse.** Antallet reelle rekordkandidater i året er
-  lite nok til at dette er håndterbart, og det er uansett resultater NFIF
-  behandler i dag.
-- **Arrangøren leverer fakta**, ikke vurderinger: hvilket tidtakingssystem som
-  ble brukt, om dokumentasjonen finnes. Det er opplysninger de sitter på, og
-  som ikke krever regelverkstolkning.
-- **NFIF sentralt eier nivå A.** Rekordgodkjenning ligger allerede der, og én
-  praksis er bedre enn nitten. Vi foreslår at kretsen ikke gis myndighet over
-  nivå, nettopp for å unngå ulik praksis mellom kretser.
-- **Alt kan overstyres**, av den som har rettighet til det, med begrunnelse og
-  sporing. En feil klassifisering skal kunne rettes uten at noen må ringe oss.
+**Systemet stiller spørsmål ved åpenbare feil.** I stedet for at et menneske
+kontrollerer alt, kontrollerer systemet alt og løfter frem det som ikke henger
+sammen:
 
-`‹AVKLARES med NFIF›` Forslaget over er vårt utgangspunkt, ikke en forutsetning.
-Rollefordelingen er et forbundsanliggende, og vi bygger den NFIF lander på.
+- resultat som er bedre enn norsk rekord eller aldersklasserekord
+- forbedring av personlig rekord langt utover det som er rimelig
+- vindmåling som mangler i en vindavhengig øvelse, eller som er urimelig
+- presisjon som ikke stemmer med oppgitt tidtakingsmetode
+- aldersklasse som ikke stemmer med fødselsår
+- redskapsvekt eller hekkehøyde som ikke hører til klassen
+- samme utøver med to resultater i samme øvelse samme dag, på ulike stevner
+- verdi utenfor det fysisk rimelige for øvelsen — typisk en tastefeil
+
+Hver kontroll gir en oppgave i en arbeidsliste med begrunnelse, ikke en stille
+avvisning. Det er også det §23 ber om under «data cleansing tools»: verktøyet
+skal finne feilene, ikke vente på at noen melder dem.
+
+Alt kan overstyres av den som har rettighet til det, med begrunnelse og sporing
+av hvem som gjorde hva. En feilklassifisering skal kunne rettes uten at noen
+må ringe oss.
 
 Brukere kan filtrere statistikken på nivå, jf. §6.
 
@@ -936,11 +948,13 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
    er definert. Vi lover forberedt arkitektur og deltakelse i
    spesifikasjonsarbeidet, ikke ferdig integrasjon.
 3. **Kretsstatistikk** (§10) forutsetter at NFIF leverer klubb-til-krets-mapping.
-4. **Kvalitetsnivå A/B/C** (§6) forutsetter at NFIF avklarer hvem som eier
-   vurderingen der kriteriene ikke lar seg utlede automatisk, og at
-   lisensopplysninger og terminlistestatus gjøres tilgjengelig.
+4. **Kvalitetsnivå A/B/C** (§6) forutsetter løpende tilgang til terminlisten og
+   lisensregisteret, og at underkjenning av stevner eller enkeltresultater
+   meldes til plattformen. Med det på plass klassifiseres resultatene
+   maskinelt, jf. kapittel 3.5.
 5. **Årsakskoder for ikke-ratifiserte resultater** (§7) er «TBD» i
-   kravspekken og må fastsettes av NFIF.
+   kravspekken og må fastsettes av NFIF. Samme kodeverk brukes ved
+   underkjenning etter §6.
 6. **Gateløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
    kartlegging. Omfanget avhenger av NFIFs definisjon av «approved athletics
    events».

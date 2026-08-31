@@ -21,14 +21,14 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 
 | # | Spørsmål | Kapittel | Konsekvens hvis ubesvart |
 |---|---|---|---|
-| 8 | Er rollefordelingen for kvalitetsnivå i 3.5 riktig? Vi foreslår: automatisk nivå B som standard, C ved kjent brudd, A kun etter aktiv bekreftelse fra NFIF sentralt, arrangøren leverer fakta og ikke vurderinger, kretsen gis ikke myndighet over nivå. | 3.5 | Forslaget er nå konkret i tilbudet. Avvik fra det bør vi vite om tidlig — det endrer rolle- og rettighetsmodellen. |
+| 8 | Hvordan meldes underkjenning av stevner og enkeltresultater til plattformen? | 3.5 | Terminliste og lisensregister forutsettes tilgjengelig, og da klassifiseres alt maskinelt. Underkjenning i etterkant er det eneste som må inn utenfra — vi trenger å vite kanalen. |
 | 9 | Hva er kodeverket for ikke-ratifiserte resultater? Kravspekken sier «TBD». | 3.5 | Flagget kan bygges, men ikke fylles |
 | 10 | Hvilke løpsarrangementer regnes som «approved athletics events» i §2? | 5 | Omfanget av hele gateløpsdelen avhenger av dette |
 | 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
 | 12 | Skal fødselsdato for mindreårige eksponeres offentlig, eller kun fødselsår? | 7.1 | Forbundsvedtak, ikke teknisk valg |
 | 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
 | 14 | Skal NFIF eie skykontoene selv? | 11 | Vi har ingen innvending, men det må avtales |
-| 15 | Kan lisensopplysninger og terminlistestatus gjøres tilgjengelig for plattformen? | 3.5, 13 | Forutsetning for automatisk utledning av kvalitetsnivå A |
+| 15 | Bekreft løpende tilgang til terminlisten og lisensregisteret | 3.5, 13 | Forutsatt i tilbudet. Uten dem faller den maskinelle klassifiseringen tilbake til manuelt arbeid. |
 
 ---
 
