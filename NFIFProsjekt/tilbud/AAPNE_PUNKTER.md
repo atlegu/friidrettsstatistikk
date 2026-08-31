@@ -10,20 +10,26 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | # | Punkt | Kapittel | Hvorfor det haster |
 |---|---|---|---|
 | 1 | **Timesats og estimert ramme per post** | 12 | Kapittel 12 tilbyr forhandling og gir en fullstendig prismodell, men ingen tall. Vurder om minst timesats og en ramme for etablering bør stå — §21 ber uttrykkelig om etablerings- og driftskostnader for 3–5 år, og et tilbud helt uten tall kan vurderes som ufullstendig. |
-| 3 | **Selskapsopplysninger** — org.nr., etableringsdato, aksjekapital, styre, revisor | 9.1 | Standard tilbudsformalia |
-| 4 | **Publikasjonslisten** — bekreft årstall og volum/side for JSAMS-artikkelen, og at IJSPP-artikkelen fortsatt er «forthcoming» | 4.3 | Fire arbeider er nå ført opp med fulle referanser. Kontroller dem mot originalene før utsending — en feil i en referanseliste er den billigste måten å miste troverdighet på. |
-| 7 | **Språk** — norsk eller engelsk | hele | Kravspekken er på engelsk, noe som kan bety at internasjonale tilbydere forventes. Tilbudet er skrevet på norsk. Nærhet og norsk domenekunnskap er et av våre hovedargumenter, og da er norsk riktig. Vurder engelsk sammendrag. |
+| 2 | **Selskapsopplysninger** — org.nr., etableringsdato, aksjekapital, styre, revisor | 9.1 | Standard tilbudsformalia |
+| 3 | **Publikasjonslisten** — bekreft årstall og volum/side for JSAMS-artikkelen, og at IJSPP-artikkelen fortsatt er «forthcoming» | 4.3 | Fire arbeider er nå ført opp med fulle referanser. Kontroller dem mot originalene før utsending — en feil i en referanseliste er den billigste måten å miste troverdighet på. |
+| 4 | **Språk** — norsk eller engelsk | hele | Kravspekken er på engelsk, noe som kan bety at internasjonale tilbydere forventes. Tilbudet er skrevet på norsk. Nærhet og norsk domenekunnskap er et av våre hovedargumenter, og da er norsk riktig. Vurder engelsk sammendrag. |
 
 ## Må avklares med NFIF
 
-| # | Spørsmål | Kapittel | Konsekvens hvis ubesvart |
-|---|---|---|---|
-| 8 | Hvordan meldes underkjenning av stevner og enkeltresultater til plattformen? | 3.5 | Terminliste og lisensregister forutsettes tilgjengelig, og da klassifiseres alt maskinelt. Underkjenning i etterkant er det eneste som må inn utenfra — vi trenger å vite kanalen. |
-| 9 | Hva er kodeverket for ikke-ratifiserte resultater? Kravspekken sier «TBD». | 3.5 | Flagget kan bygges, men ikke fylles |
-| 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
-| 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
-| 15 | Bekreft løpende tilgang til terminlisten og lisensregisteret | 3.5, 13 | Forutsatt i tilbudet. Uten dem faller den maskinelle klassifiseringen tilbake til manuelt arbeid. |
-| 17 | Kontaktpunkt mot arrangører og tidtakere for egen innsamling | 3.6, 8.1 | Innsamlingen må stå på egne ben før dagens base faller bort. Trengs allerede i september. |
+Ligger som eget, ferdig dokument: **`VEDLEGG_F_SPORSMAL.md`** — klart til å
+sendes Thor Gjesdal, enten som vedlegg til tilbudet eller på forhånd.
+
+Sju punkter, gruppert:
+
+| Gruppe | Punkt |
+|---|---|
+| Datakilder vi forutsetter | 1 Terminlisten · 2 Lisensregisteret · 3 Klubb-til-krets-mapping |
+| Arbeidsflyt | 4 Hvordan underkjenning meldes · 5 Kodeverk for ikke-ratifiserte resultater · 6 Kontaktpunkt mot arrangører og tidtakere |
+| Formelt | 7 Er anskaffelsen privatrettslig? |
+
+De tre første er forutsetninger tilbudet allerede bygger på, og som bare skal
+bekreftes. Punkt 5 er noe kravspekken selv lar stå åpent («TBD»). Punkt 6
+haster mest — innsamlingen skal legges om i oktober.
 
 ---
 
@@ -47,6 +53,6 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 3. **Publikasjonslisten (punkt 4).** Rask jobb, høy risiko hvis den gjøres feil.
 4. Selskapsopplysninger og responstider — formalia, tar kort tid.
 5. Vedlegg C og D.
-6. Spørsmål 8–15 sendes Thor Gjesdal samlet. Flere av dem er verdt å stille
-   uansett: et tilbud som stiller presise spørsmål, leses som et tilbud fra noen
-   som har lest kravspekken.
+6. Send `VEDLEGG_F_SPORSMAL.md` til Thor Gjesdal. Verdt å gjøre uansett: et
+   tilbud som stiller presise spørsmål, leses som et tilbud fra noen som har
+   lest kravspekken.

@@ -1164,7 +1164,7 @@ verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
 | **D** | «Norsk friidrett 2013–2025» — bredde- og rekrutteringsanalyse, lederrettet sammendrag |
 | **E** | Veikart gateløp (utdypning av kapittel 5) |
 | **G** | Klubbrapport for IK Tjalve og SK Vidar — eksempler på klubbleveranse, jf. kapittel 3.3 |
-| **F** | Spørsmål til NFIF — punktene merket `‹AVKLARES›` samlet |
+| **F** | Spørsmål til NFIF — forutsetninger vi ber om å få bekreftet |
 
 ---
 
