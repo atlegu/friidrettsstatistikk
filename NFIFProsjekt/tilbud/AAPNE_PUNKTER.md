@@ -49,10 +49,13 @@ haster mest — innsamlingen skal legges om i oktober.
 
 ## Anbefalt rekkefølge
 
-2. **Budsjettramme fra Magnus Trosdahl (punkt 1).** Avgjør om noen tall skal inn før utsending.
-3. **Publikasjonslisten (punkt 4).** Rask jobb, høy risiko hvis den gjøres feil.
-4. Selskapsopplysninger og responstider — formalia, tar kort tid.
+1. **Send `VEDLEGG_F_SPORSMAL.md` til Thor Gjesdal.** Ferdig, og kan gå i dag.
+   Verdt å gjøre uansett: et tilbud som stiller presise spørsmål, leses som et
+   tilbud fra noen som har lest kravspekken.
+2. **Budsjettramme fra Magnus Trosdahl (punkt 1).** Avgjør om noen tall skal
+   inn i kapittel 12 før utsending.
+3. **Publikasjonslisten (punkt 3).** Rask jobb, høy risiko hvis den gjøres feil.
+4. **Selskapsopplysninger (punkt 2).** Formalia, tar minutter. Siste
+   `‹AVKLARES›` i selve tilbudet.
 5. Vedlegg C og D.
-6. Send `VEDLEGG_F_SPORSMAL.md` til Thor Gjesdal. Verdt å gjøre uansett: et
-   tilbud som stiller presise spørsmål, leses som et tilbud fra noen som har
-   lest kravspekken.
+6. **Språkvalget (punkt 4).** Kan tas til slutt, men må tas.
