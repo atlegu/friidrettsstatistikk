@@ -546,8 +546,8 @@ mesterskap, og som ingen rekker å lage manuelt. Vedlagt som vedlegg C.
 ## 4.2 Bredde- og rekrutteringsanalyse
 
 «Norsk friidrett 2013–2025» er en analyse av samtlige registrerte resultater i
-perioden. Sentralt funn: aktive utøvere i alderen 10–19 år falt fra 8 745 i
-2019 til 6 418 i 2025, en nedgang på 27 prosent, nesten utelukkende
+perioden. Sentralt funn: aktive utøvere i alderen 10–19 år falt fra 8 715 i
+2019 til 6 392 i 2025, en nedgang på 27 prosent, nesten utelukkende
 konsentrert i de yngste årsklassene, mens seniorgruppen er stabil.
 
 §12 sier at aktivitetsdata er «particularly important for Norwegian Athletics'
