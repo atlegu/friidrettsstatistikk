@@ -403,24 +403,16 @@ Brukere kan filtrere statistikken på nivå, jf. §6.
 
 *§13, §14.*
 
-### Utgangspunktet: vi må bli kilden, ikke lese den
+### Innsamling som driftsfunksjon
 
-Dette er kjernen i oppdraget, og vi vil være helt tydelige på hva det innebærer.
+Vi henter i dag resultatene fra den basen anskaffelsen skal erstatte. Ved
+overtakelse blir plattformen selv førstemottaker av hver resultatliste, direkte
+fra arrangør og tidtakersystem. Omleggingen skjer før overgangen, ikke ved den —
+se milepælen i kapittel 8.1.
 
-I dag henter vi resultatene fra den eksisterende statistikkbasen. **Det er den
-basen denne anskaffelsen skal erstatte.** Ved overtakelse forsvinner altså
-dagens datakilde, og plattformen kan ikke lenger være en mottaker lenger nede i
-kjeden. Den må selv være førstemottaker av hver eneste resultatliste.
-
-Det er en større omlegging enn det kan se ut som, og den er hele grunnen til at
-§13 er formulert som den er. Oppdraget er ikke å presentere en database. Det er
-å **holde en komplett database komplett**, uke etter uke, gjennom en sesong der
-det arrangeres stevner hver helg.
-
-Konsekvensen for arkitekturen er at innsamling er en driftsfunksjon på linje med
-selve nettstedet, ikke en engangsjobb. Det er derfor løpende datainnhenting og
-kvalitetskontroll ligger inne i driftsavtalen i kapittel 10, og ikke som en
-opsjon.
+Innsamling er derfor en driftsfunksjon på linje med selve nettstedet. Løpende
+datainnhenting og kvalitetskontroll ligger inne i driftsavtalen i kapittel 10,
+ikke som opsjon.
 
 ### Importrammeverket
 
