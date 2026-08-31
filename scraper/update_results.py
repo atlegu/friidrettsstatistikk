@@ -740,15 +740,27 @@ def load_athletes():
 
 def fix_performance_format(result_str):
     """Convert European period-separated time format to colon-separated.
-    E.g., '3.34.02' -> '3:34.02', '16.08.70' -> '16:08.70'
+
+    '3.34.02'    -> '3:34.02'     minutter:sekunder.hundredeler
+    '1.25.29.2'  -> '1:25:29.2'   timer:minutter:sekunder.tideler
+
+    Firedelte tider er løp over én time — kappgang, maraton, timesløp. De ble
+    tidligere sendt uendret til basen, der trigger-funksjonen caster til
+    numeric og feilet. Rundt 25 slike rader ble kastet ved hver kjøring.
     """
     if not result_str:
         return result_str
 
-    match = re.match(r'^(\d{1,2})\.(\d{2})\.(\d{1,2})$', result_str)
-    if match:
-        minutes, seconds, hundredths = match.groups()
-        return f"{minutes}:{seconds}.{hundredths}"
+    # Timer først: 1.25.29.2 -> 1:25:29.2
+    m = re.match(r'^(\d{1,2})\.(\d{2})\.(\d{2})\.(\d{1,2})$', result_str)
+    if m:
+        timer, minutter, sekunder, brok = m.groups()
+        return f"{timer}:{minutter}:{sekunder}.{brok}"
+
+    m = re.match(r'^(\d{1,2})\.(\d{2})\.(\d{1,2})$', result_str)
+    if m:
+        minutter, sekunder, hundredeler = m.groups()
+        return f"{minutter}:{sekunder}.{hundredeler}"
 
     return result_str
 
