@@ -10,10 +10,10 @@
 
 ---
 
-> **STATUS: UTKAST — PRIS IKKE UTFYLT.**
-> Kapittel 12 står med struktur, men uten tall. Punkter merket `‹AVKLARES›`
-> må fylles ut eller strykes før dokumentet sendes. Se sjekklisten i
-> `../02_ARBEIDSPLAN.md`.
+> **STATUS: UTKAST.**
+> Kapittel 12 gir prismodellen, men ikke beløpene — de settes i forhandling.
+> Punkter merket `‹AVKLARES›` må fylles ut eller strykes før dokumentet sendes.
+> Se `AAPNE_PUNKTER.md`.
 
 ---
 
@@ -1001,47 +1001,82 @@ gjøres. Vi foreslår heller en fast pott NFIF disponerer.
 
 # 12. Pris
 
-> **`‹IKKE UTFYLT›`** Prisen settes etter avklaring av budsjettramme med Magnus
-> Trosdahl. Strukturen under følger §21, som ber om etablerings- og
-> implementeringskostnader samt årlige driftskostnader for en periode på tre til
-> fem år.
+Vi ønsker å avtale prisen i forhandling, og vil begrunne hvorfor.
 
-## 12.1 Etablering og implementering
+Flere av postene i denne anskaffelsen kan ikke prises redelig fra utsiden i
+dag. Integrasjonene i §13 avhenger av grensesnitt vi ikke har sett. Gateløpene
+avhenger av tidtakernes datakilder. Omfanget av historisk utvidelse avhenger av
+kilder som må kartlegges før noen vet hva de inneholder. En leverandør som
+likevel setter et tall på disse, priser inn sin egen usikkerhet — og NFIF
+betaler for den enten den inntreffer eller ikke.
 
-| Post | Innhold | Pris |
-|---|---|---:|
-| Etablering | Ferdigstilling av leveransene i kapittel 8.1, frem til operativ løsning 01.01.2027 | `‹ ›` |
-| Overtakelse av datagrunnlag | Overføring av eierskap til eksisterende base, inkludert historikk | `‹ ›` |
-| Dokumentasjon | Drifts-, system- og API-dokumentasjon, DPIA, databehandleravtale | `‹ ›` |
-| **Sum etablering** | | **`‹ ›`** |
+Vi foretrekker den motsatte veien: **fastpris der vi kjenner omfanget, åpne
+timer der vi ikke gjør det, og en samtale om nivået.**
 
-## 12.2 Årlig drift
+Under står modellen. Den er forpliktende slik den er beskrevet; det er nivåene
+vi ber om å sette sammen med NFIF.
 
-| Post | Innhold | Pris/år |
-|---|---|---:|
-| Drift og forvaltning | Hosting, overvåkning, sikkerhetskopi, oppdateringer | `‹ ›` |
-| Support | Etter kapittel 10 | `‹ ›` |
-| Løpende datainnhenting og kvalitetskontroll | Import av nye stevner, kontroll mot kilden | `‹ ›` |
-| Videreutvikling | Fast timepott NFIF disponerer | `‹ ›` |
-| Analysetjeneste | To mesterskapspakker og én årsrapport | inngår |
-| **Sum årlig** | | **`‹ ›`** |
+## 12.1 Prinsipper
 
-Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
+1. **Fastpris på det vi kjenner.** Etablering frem til operativ løsning
+   01.01.2027 og årlig drift prises fast. Det er de to postene NFIF trenger
+   forutsigbarhet på, og de to vi kan love.
+2. **Timepott på det ingen kjenner.** Integrasjoner, gateløp og historisk
+   utvidelse prises med timesats og et estimert spenn, ikke som fastpris.
+   Estimatet er ikke en fullmakt: arbeid utover avtalt ramme skal godkjennes av
+   NFIF på forhånd.
+3. **Ingen skjulte poster.** Løpende datainnhenting og kvalitetskontroll ligger
+   i driftsprisen, ikke som tillegg. Det samme gjør support og
+   sikkerhetsoppdateringer.
+4. **Prisen skal kunne gå ned.** Blir en integrasjon enklere enn antatt,
+   faktureres færre timer. Vi tar ikke betalt for et estimat.
+5. **Fast i tre år**, deretter regulering etter konsumprisindeks. Ingen
+   volumbasert prising — prisen skal ikke stige fordi norsk friidrett
+   arrangerer flere stevner.
 
-## 12.3 Opsjoner
+## 12.2 Etablering og implementering — fastpris
 
-| Opsjon | Grunnlag | Pris |
-|---|---|---:|
-| Integrasjon per system (§13) | Timepott, med forbehold om dokumentert API | `‹ ›` |
-| Gateløp, jf. veikartet i kapittel 5 | Prises etter kartlegging av datakildene | `‹ ›` |
-| Aktivitetsmodul og dashbord (fase 3) | | `‹ ›` |
-| Historisk utvidelse 2001–2012 (fase 4) | Kartlegging først, deretter import | `‹ ›` |
-| Utvidet analyseavtale | Alle mesterskap, pressestøtte, kretsrapporter | `‹ ›` |
-| Analyse og utredning på bestilling | Timepris | `‹ ›` |
+| Post | Innhold |
+|---|---|
+| Etablering | Ferdigstilling av leveransene i kapittel 8.1, frem til operativ løsning 01.01.2027 |
+| Overtakelse av datagrunnlag | Overføring av eierskap til eksisterende base, inkludert historikk |
+| Omlegging av innsamlingen | Egen innhenting av resultatlister i drift fra okt 2026, jf. kapittel 8.1 |
+| Dokumentasjon | Drifts-, system- og API-dokumentasjon, DPIA, databehandleravtale |
 
-## 12.4 Totalbilde 3–5 år
+## 12.3 Årlig drift — fastpris
 
-`‹Fylles ut når postene over er satt.›`
+| Post | Innhold |
+|---|---|
+| Drift og forvaltning | Hosting innenfor EU/EØS, overvåkning, sikkerhetskopi, oppdateringer |
+| Løpende datainnhenting og kvalitetskontroll | Import av nye stevner og kontroll mot kilden, hele året |
+| Support | Etter kapittel 10 |
+| Videreutvikling | Fast timepott NFIF disponerer fritt, jf. kapittel 3.3 |
+| Analysetjeneste | To mesterskapspakker og én årsrapport per år — inngår |
+
+## 12.4 Opsjoner — timepott med estimert spenn
+
+| Opsjon | Grunnlag |
+|---|---|
+| Integrasjon per system (§13) | Timer, med forbehold om dokumentert API fra motparten |
+| Gateløp (§8), jf. kapittel 5 | Timer, etter kartlegging av tidtakernes grensesnitt |
+| Aktivitetsmodul og dashbord (§12, fase 3) | Fastpris når omfanget er spesifisert med NFIF |
+| Historisk utvidelse 2001–2012 (§15) | Kartlegging som egen leveranse, deretter import etter NFIFs valg |
+| Utvidet analyseavtale | Alle mesterskap, pressestøtte under mesterskap, kretsrapporter |
+| Analyse og utredning på bestilling | Timesats |
+
+## 12.5 Grunnlag for forhandling
+
+Vi stiller med et gjennomarbeidet estimat for hver post, og går gjerne gjennom
+det linje for linje. Til orientering om størrelsesorden: leveransene i kapittel
+8.1 er estimert til halvannet til to årsverk frem til 01.01.2027.
+
+Vi vil også være åpne om en ting: NFIF er den kunden som gjør denne plattformen
+til et produkt. Det er en verdi for oss ut over kontraktssummen, og den
+verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
+å ta høyest mulig betalt for denne kontrakten.
+
+`‹AVKLARES›` Fyll inn timesats og estimert ramme per post før utsending, eller
+avtal møte med Magnus Trosdahl om budsjettramme først.
 
 ---
 

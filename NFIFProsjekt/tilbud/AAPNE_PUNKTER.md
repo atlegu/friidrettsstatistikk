@@ -9,7 +9,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 
 | # | Punkt | Kapittel | Hvorfor det haster |
 |---|---|---|---|
-| 1 | **Pris** — hele kapittel 12 | 12 | Bør avklares mot NFIFs budsjettramme (Magnus Trosdahl) før tallene låses. Underlag: `../05_PRISMODELL.md`, `../03_GAP_OG_ESTIMAT.md`. |
+| 1 | **Timesats og estimert ramme per post** | 12 | Kapittel 12 tilbyr forhandling og gir en fullstendig prismodell, men ingen tall. Vurder om minst timesats og en ramme for etablering bør stå — §21 ber uttrykkelig om etablerings- og driftskostnader for 3–5 år, og et tilbud helt uten tall kan vurderes som ufullstendig. |
 | 2 | **Kapasitet per person** — timer per uke frem til 01.01.2027 | 9.3 | Teamet er navngitt (9.2), men estimatet er 1 080–1 490 timer, altså halvannet til to årsverk. NFIF vil spørre hvor mye tid hver av de tre faktisk har ved siden av doktorgradsarbeid og annen virksomhet. Bedre å svare før spørsmålet stilles. |
 | 3 | **Selskapsopplysninger** — org.nr., etableringsdato, aksjekapital, styre, revisor | 9.1 | Standard tilbudsformalia |
 | 4 | **Publikasjonslisten** — bekreft årstall og volum/side for JSAMS-artikkelen, og at IJSPP-artikkelen fortsatt er «forthcoming» | 4.3 | Fire arbeider er nå ført opp med fulle referanser. Kontroller dem mot originalene før utsending — en feil i en referanseliste er den billigste måten å miste troverdighet på. |
@@ -49,7 +49,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 ## Anbefalt rekkefølge
 
 1. **Kapasitet per person (punkt 2).** Teamet er på plass; det som gjenstår er hvor mye tid hver av de tre har.
-2. **Budsjettramme fra Magnus Trosdahl (punkt 1).** Prisen bør ikke settes blindt.
+2. **Budsjettramme fra Magnus Trosdahl (punkt 1).** Avgjør om noen tall skal inn før utsending.
 3. **Publikasjonslisten (punkt 4).** Rask jobb, høy risiko hvis den gjøres feil.
 4. Selskapsopplysninger og responstider — formalia, tar kort tid.
 5. Vedlegg C og D.
