@@ -1,4 +1,4 @@
-# Vedlegg F — Spørsmål til NFIF
+# Vedlegg F: Spørsmål til NFIF
 
 **Fra:** Athlete Mindset AS
 **Til:** Norges Friidrettsforbund
@@ -66,7 +66,7 @@ arrangører og tidtakerselskaper i den prosessen, helst allerede i september.
 **7. Er anskaffelsen privatrettslig?**
 Vi legger til grunn at anskaffelsen ikke er omfattet av regelverket for
 offentlige anskaffelser. Det avgjør blant annet om vi kan be om et møte og vise
-løsningen før beslutningen tas — noe vi gjerne gjør.
+løsningen før beslutningen tas, noe vi gjerne gjør.
 
 ---
 

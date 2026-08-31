@@ -2,11 +2,9 @@
 
 ## Tilbud fra Athlete Mindset AS
 
-**Til:** Norges Friidrettsforbund  
-**Kontaktpersoner hos NFIF:** Thor Gjesdal (teknisk), Magnus Trosdahl (kommersielt)  
-**Tilbudsfrist:** 31.08.2026  
-**Dato:** 31.08.2026  
-**Versjon:** 1.0
+**Til:** Norges Friidrettsforbund **Kontaktpersoner hos NFIF:** Thor Gjesdal
+(teknisk), Magnus Trosdahl (kommersielt) **Tilbudsfrist:** 31.08.2026
+**Dato:** 31.08.2026 **Versjon:** 1.0
 
 ---
 
@@ -14,21 +12,22 @@
 
 Norsk friidrett har siden 2013 hatt en verdifull statistikktjeneste bygget på
 frivillig innsats. Kravspesifikasjonen slår fast at modellen ikke lenger er
-bærekraftig. Det NFIF nå kjøper, er ikke først og fremst programvare — det er
+bærekraftig. Det NFIF nå kjøper, er ikke først og fremst programvare, men
 sikkerheten for at statistikkfunksjonen finnes også om fem år, uavhengig av
 enkeltpersoners kapasitet.
 
-Slik vi ser det, består oppgaven av tre deler: **registrere** alle resultater
-riktig, hver uke — det er jobben; **presentere** dem godt — det er håndverk; og
-**analysere** dem — det er ikke bestilt, men det er det som gir forbundet noe
+Slik vi ser det, består oppgaven av tre deler. **Registrere** alle resultater
+riktig, hver uke, er selve jobben. **Presentere** dem godt er håndverk.
+**Analysere** dem er ikke bestilt, men det er den delen som gir forbundet noe
 tilbake ut over en driftsregning. Se kapittel 1.1.
 
-Athlete Mindset AS tilbyr en plattform som allerede er i drift, med norske data i.
+Athlete Mindset AS tilbyr en plattform som allerede er i drift, med norske
+data i.
 
 | | |
 |---|---:|
 | Resultater i basen | **1 922 634** |
-| Herav fra 2013 og senere — kravspekkens §15 førsteprioritet | **1 701 902** |
+| Herav fra 2013 og senere (kravspekkens §15 førsteprioritet) | **1 701 902** |
 | Alle-tiders-materiale før 2013, tilbake til 1922 | **220 732** |
 | Utøvere | 87 872 |
 | Stevner | 48 494 |
@@ -37,10 +36,10 @@ Athlete Mindset AS tilbyr en plattform som allerede er i drift, med norske data 
 
 *Tall hentet fra produksjonsbasen 31.08.2026.*
 
-Migrering av historiske data er normalt den dyreste og mest risikofylte posten i
-en anskaffelse som denne. Hos oss er den gjennomført. Det er grunnen til at vi
-kan love en løsning i drift for alle baneresultater innen 01.01.2027 uten
-forbehold — vi skal ferdigstille, ikke bygge fra bunnen.
+Migrering av historiske data er normalt den dyreste og mest risikofylte posten
+i en anskaffelse som denne. Hos oss er den gjennomført. Det er grunnen til at
+vi kan love en løsning i drift for alle baneresultater innen 01.01.2027 uten
+forbehold. Vi skal ferdigstille, ikke bygge fra bunnen.
 
 Vi har dessuten gått lenger enn §15 krever. Førsteprioriteten er fulldybde fra
 2013 og senere. I tillegg er alle-tiders-materialet importert bakover i
@@ -51,25 +50,27 @@ bare de siste tolv årene.
 gjenstående er arbeidsmengde, ikke teknisk risiko. Kravsporingen ligger i
 vedlegg A og B.
 
-Vi legger samtidig til at basen ikke er ferdig kvalitetssikret. Arbeidet har så
-langt vært prioritert mot innsamling og fullstendighet, og det gjenstår kjente
-feil og mangler som rettes fortløpende. Vi gjør rede for dem i kapittel 3.7.
+Vi legger samtidig til at basen ikke er ferdig kvalitetssikret. Arbeidet har
+så langt vært prioritert mot innsamling og fullstendighet, og det gjenstår
+kjente feil og mangler som rettes fortløpende. Vi gjør rede for dem i kapittel
+3.7.
 
 I tillegg tilbyr vi noe en ren plattformleverandør ikke kan tilby: **et
 fagmiljø som kan lese databasen.** Norske friidrettsdata er allerede grunnlag
 for fagfellevurderte studier i *Journal of Science and Medicine in Sport* og
 *PLOS ONE*, den eldste fra 2015. Vi har dessuten levert mesterskapsanalyser og
-en bredde- og rekrutteringsanalyse av norsk friidrett 2013–2025. NFIF får ikke
-bare en database — NFIF får analysemiljøet som hører til.
+en bredde- og rekrutteringsanalyse av norsk friidrett 2013–2025. NFIF får
+dermed ikke bare en database, men også analysemiljøet som kan lese den.
 
-Bak leveransen står tre navngitte personer med utfyllende kompetanse: doktorgrad
-i anvendt økonometri kombinert med World Athletics-dommerkompetanse og
-styreerfaring fra alle nivåer i norsk friidrett, kvantitativ analyse og
+Bak leveransen står tre navngitte personer med utfyllende kompetanse:
+doktorgrad i anvendt økonometri kombinert med World Athletics-dommerkompetanse
+og styreerfaring fra alle nivåer i norsk friidrett, kvantitativ analyse og
 systemutvikling fra Princeton og Duke, og sport management fra University of
 Texas. To av de tre er olympiere. Se kapittel 9.2.
 
-Det er svaret på §1: dette er ikke én ildsjel. Og utøverperspektivet er ikke
-noe vi har hentet inn — det er noe vi har.
+Det er svaret på §1: dette hviler ikke på én ildsjel. To av de tre konkurrerer
+dessuten selv internasjonalt, så utøverperspektivet er vårt eget og ikke noe
+vi må hente inn.
 
 ---
 
@@ -77,10 +78,11 @@ noe vi har hentet inn — det er noe vi har.
 
 ## 1.1 Oppgaven har tre deler
 
-Kravspesifikasjonen har 24 kapitler. Under dem ligger tre oppgaver av helt ulik
-karakter, og en leverandør som ikke skiller dem, priser og planlegger feil.
+Kravspesifikasjonen har 24 kapitler. Under dem ligger tre oppgaver av helt
+ulik karakter, og en leverandør som ikke skiller dem, priser og planlegger
+feil.
 
-### 1. Registrere — dette er jobben
+### 1. Registrere: dette er jobben
 
 Alle relevante resultatlister og alle resultater må inn, riktig, hver uke,
 sesong etter sesong. Utøvere skal gjenkjennes på tvers av navnevarianter og
@@ -88,36 +90,36 @@ klubbskifter, øvelser gjenkjennes med riktig redskap og hekkehøyde per
 aldersklasse, tider tolkes uansett format, vind og tidtakingsmetode holdes i
 orden. Norske resultater i utlandet må også fanges opp.
 
-Dette er den delen som er tung, som aldri blir ferdig, og som avgjør om alt det
-andre er verdt noe. Det er også den delen NFIF i dag mangler en bærekraftig
-løsning på, jf. §1. **Er ikke denne på plass, spiller resten ingen rolle.**
+Dette er den delen som er tung, som aldri blir ferdig, og som avgjør om alt
+det andre er verdt noe. Det er også den delen NFIF i dag mangler en
+bærekraftig løsning på, jf. §1. **Er ikke denne på plass, spiller resten ingen
+rolle.**
 
-### 2. Presentere — dette er håndverk
+### 2. Presentere: dette er håndverk
 
 Når dataene først ligger strukturert i en database, kan de presenteres akkurat
 slik man vil. Årsstatistikk, alle-tiders-lister, utøverprofiler, klubbsider,
 rekordoversikter, kvalifiseringslister, dashbord.
 
-Vi skal være ærlige om dette: i 2026 er det å bygge et grensesnitt ikke den
-vanskeligste delen av en slik leveranse. Det som *er* vanskelig, er å vite hva
-som skal vises. Hvilke lister en trener faktisk bruker, hvordan en
-aldersklasseliste skal avgrenses, hva en utøver leter etter på sin egen profil,
-hvorfor en klubbrekordliste må håndtere klubbskifter på en bestemt måte. Det er
-domenekunnskap, ikke teknologi.
+I 2026 er det ikke å bygge grensesnittet som er vanskeligst i en slik
+leveranse. Det vanskelige er å vite hva som skal vises. Hvilke lister en
+trener faktisk bruker, hvordan en aldersklasseliste skal avgrenses, hva en
+utøver leter etter på sin egen profil, hvorfor en klubbrekordliste må håndtere
+klubbskifter på en bestemt måte. Dette er domenekunnskap mer enn teknologi.
 
-Her er vi åpne for skreddersøm og løpende forbedring — også for klubber som
-ønsker egne statistikksider. Fordi grunnlaget er solid, er slike leveranser
-små, ikke store.
+Her er vi åpne for skreddersøm og løpende forbedring, også for klubber som
+ønsker egne statistikksider. Fordi grunnlaget er solid, blir slike leveranser
+små.
 
-### 3. Analysere — dette er ikke bestilt
+### 3. Analysere: dette er ikke bestilt
 
 Kravspesifikasjonen ber ikke om analyse ut over aktivitetsdataene i §12. Vi
 tilbyr det likevel: mesterskapsanalyser, rekrutterings- og frafallsanalyse,
 krets- og klubbrapporter, forskning.
 
-Dette er et tillegg, og vi presenterer det som det. Men det er også det som
-gjør de to første delene interessante å gjøre — og det som gjør at NFIF får noe
-tilbake ut over en driftsregning. Se kapittel 4.
+Dette er et tillegg. Det er samtidig den delen som gjør de to første
+interessante å arbeide med, og som gir NFIF noe tilbake ut over en
+driftsregning. Se kapittel 4.
 
 ---
 
@@ -126,7 +128,7 @@ plass på del 1, fordi den er jobben. Del 2 beskriver vi som en kapasitet vi
 stiller til rådighet, ikke som en fast liste med sider. Del 3 står som et eget
 hovedkapittel, fordi det er der vi skiller oss fra enhver annen tilbyder.
 
-## 1.2 Og tre spørsmål avgjør hvem som får oppgaven
+## 1.2 Tre spørsmål avgjør hvem som får oppgaven
 
 Bak kravspesifikasjonen ligger tre spørsmål som avgjør om en leverandør er
 riktig:
@@ -166,29 +168,29 @@ frivillige ressurser, vedlikeholdes manuelt, og er utdatert i det øyeblikket
 neste stevne er ferdig.
 
 **Vi har bygget den automatiske versjonen.** Kvalifiseringsreglene fra
-*Reglement for norske mesterskap 2026* er implementert — kravsatser per øvelse
-og kjønn, aldersklasseoverstyringer for U20 og U23, regler for innendørsresultater, og øvelser som kvalifiserer til andre øvelser, som 5 km gateløp til
-5000 m. Sidene `/mesterskap` er i drift.
+*Reglement for norske mesterskap 2026* er implementert: kravsatser per øvelse
+og kjønn, aldersklasseoverstyringer for U20 og U23, regler for
+innendørsresultater, og øvelser som kvalifiserer til andre øvelser, som 5 km
+gateløp til 5000 m. Sidene `/mesterskap` er i drift.
 
-**Vi testet den mot regnearket.** 100 meter kvinner, krav 12,80. Regnearket har
-101 utøvere, vår base finner 97, og **89 navn er de samme.** Avvikene skyldes i
-hovedsak ikke feil i noen av listene, men nettopp det kravspesifikasjonen ber
-plattformen håndtere: navnevarianter, en utøver som har byttet navn, en
-utenlandsk utøver i norsk klubb, ulik anvendelse av aldersgrensen. §9 og §7 i
-praksis. Det er en ekstern validering av datakvalitet vi ikke kunne gitt oss
-selv.
+**Vi testet den mot regnearket.** 100 meter kvinner, krav 12,80. Regnearket
+har 101 utøvere, vår base finner 97, og **89 navn er de samme.** Avvikene
+skyldes i hovedsak ikke feil i noen av listene, men nettopp det
+kravspesifikasjonen ber plattformen håndtere: navnevarianter, en utøver som
+har byttet navn, en utenlandsk utøver i norsk klubb, og ulik anvendelse av
+aldersgrensen. Dette er §9 og §7 i praksis, og samtidig en ekstern validering
+av datakvaliteten som vi ikke kunne gitt oss selv.
 
 Med plattformen oppdateres status i det resultatet importeres, i stedet for
 noen ganger i året. Utøveren ser på egen profil hva hun er kvalifisert i,
 klubbsiden viser klubbens kvalifiserte, hvert resultat lenker til stevnet det
-ble oppnådd i, og kravsatser og deltakertall 2002–2026 blir en varig tidsserie i
-stedet for en fil. Eksport til Excel i det formatet miljøet kjenner blir en
+ble oppnådd i, og kravsatser og deltakertall 2002–2026 blir en varig tidsserie
+i stedet for en fil. Eksport til Excel i det formatet miljøet kjenner blir en
 nedlasting i stedet for en jobb.
 
-Ett tillegg fortjener en setning: **konsekvensen av å endre et krav kan
-beregnes på forhånd.** Regnearket dokumenterer selv at NFIFs styre justerte
-kvalifiseringskravene i 2023. Slike vedtak fattes i dag uten mulighet til å
-regne på virkningen.
+**Konsekvensen av å endre et krav kan dessuten beregnes på forhånd.**
+Regnearket dokumenterer selv at NFIFs styre justerte kvalifiseringskravene i
+2023. Slike vedtak fattes i dag uten mulighet til å regne på virkningen.
 
 **Én presisering:** vi skal ikke erstatte det arbeidet SRU gjør, men fjerne det
 manuelle i det. Regelverket og de faglige vurderingene skal fortsatt eies av
@@ -199,7 +201,8 @@ i løsningen. Plattformen gjør innsamlingen, sammenstillingen og distribusjonen
 
 # 3. Teknisk løsning
 
-*Besvarer §21: teknisk løsning, datamodell, integrasjonsløsning, brukergrensesnitt.*
+*Besvarer §21: teknisk løsning, datamodell, integrasjonsløsning,
+brukergrensesnitt.*
 
 ## 3.1 Arkitektur
 
@@ -215,7 +218,7 @@ i løsningen. Plattformen gjør innsamlingen, sammenstillingen og distribusjonen
 egenutviklet database, ingen proprietære formater, ingen komponenter bare vi
 forstår. Konsekvensen er at løsningen kan overtas av enhver kompetent
 leverandør, uten omskriving. Det er en reell forskjell fra en proprietær
-plattform, og det er en del av vår risikohåndtering — se kapittel 9 og 11.
+plattform, og en del av vår risikohåndtering. Se kapittel 9 og 11.
 
 ## 3.2 Datamodell
 
@@ -226,7 +229,7 @@ Kjernen er i drift i dag:
 | `athletes` | Navn, fødselsdato/-år, kjønn, nasjonalitet, klubbtilhørighet, klubbhistorikk |
 | `results` | Prestasjon, vind, plassering, dato, tidtakingsmetode, kildemarkør, kobling til utøver, øvelse, stevne og klubb |
 | `meets` | Stevne med dato, sted, arrangør, inne/ute, sesong |
-| `events` | 302 øvelser med spesifikasjon per aldersklasse — redskapsvekt, hekkehøyde, spydtype |
+| `events` | 302 øvelser med spesifikasjon per aldersklasse: redskapsvekt, hekkehøyde, spydtype |
 | `clubs` | Klubb med type og sted |
 | `club_memberships` | Klubbtilhørighet over tid, jf. §9 klubboverganger |
 | `seasons` | Innendørs- og utendørssesong, med norsk sesongdefinisjon |
@@ -239,25 +242,24 @@ Kjernen er i drift i dag:
   Dette er en norsk særregel som gir feil aldersklasse hvis den behandles som
   eksakt alder.
 - **Håndtidtaking**, med presisjonsbasert deteksjon, og kun for løpsøvelser
-  under 800 m — der distinksjonen faktisk gjelder. 18 769 resultater er i dag
+  under 800 m, der distinksjonen faktisk gjelder. 18 769 resultater er i dag
   merket som håndtidtatt.
 - **Vindregler**, med 677 100 resultater med registrert vindmåling.
 - **Spydtype fra 1999**, hekkehøyde og redskapsvekt per aldersklasse.
 
-Gjenstår å bygge inn i modellen: kretsdimensjon (§10), baneklassifisering etter
-TR14.1/TR43.1 (§7), kvalitetsnivå A/B/C (§6), og datamodellen for gateløp
-(§8). Disse er beskrevet i henholdsvis kapittel 3.5, 5 og 8.
+Gjenstår å bygge inn i modellen: kretsdimensjon (§10), baneklassifisering
+etter TR14.1/TR43.1 (§7), kvalitetsnivå A/B/C (§6), og datamodellen for
+gateløp (§8). Disse er beskrevet i henholdsvis kapittel 3.5, 5 og 8.
 
 ### Kildetrofasthet som prinsipp
 
-Ett designvalg fortjener omtale, fordi det sier noe om hvordan vi arbeider.
-Kilden vi importerer fra henger av og til markører på selve resultatverdien —
+Kilden vi importerer fra henger av og til markører på selve resultatverdien:
 `20.37.52mx`, `4.43 L`, `7.83A`. Kildesiden har ingen tegnforklaring. `mx` er
 etter alt å dømme blandet heat, altså nøyaktig det §7 ber om å flagge.
 
 Vi tolker dem likevel ikke. Markøren lagres ordrett i et eget felt, med den
 opplysningen at betydningen ikke er bekreftet. Når NFIF bekrefter kodeverket,
-tolkes de i ett strøk — men vi setter ikke en gjetning inn i et datafelt der den
+tolkes de i ett strøk. Vi setter ikke en gjetning inn i et datafelt der den
 senere leses som et faktum. Det samme prinsippet gjelder de ikke-ratifiserte
 resultatene i §7, der kravspekken selv sier at kodeverket er «TBD».
 
@@ -270,31 +272,31 @@ resultatlister og lenker til utøverprofiler; nasjonal årsstatistikk,
 alle-tiders-lister og rekordoversikter; og et sammenligningsverktøy mellom
 utøvere.
 
-Grensesnittet er responsivt og fungerer på mobil, nettbrett og desktop, jf. §17.
+Grensesnittet er responsivt og fungerer på mobil, nettbrett og desktop, jf.
+§17.
 
 **Filtrering.** §17 lister elleve dimensjoner. Åtte er i drift i dag: utøver,
 klubb, alder, kjønn, øvelse, sesong, dato og stevne. Tre gjenstår: region,
-distanse og kvalitetsnivå — alle tre avhenger av datamodellutvidelser som er
-planlagt i fase 1 og 2.
+distanse og kvalitetsnivå. Alle tre avhenger av datamodellutvidelser planlagt
+i fase 1 og 2.
 
 **Universell utforming.** §17 nevner bare skjermstørrelser. Vi tar likevel
-WCAG 2.1 AA inn som eksplisitt leveranse. Publikumsrettede norske nettsteder er
-underlagt kravene til universell utforming av IKT — dette er et lovkrav, ikke en
-ekstravaganse, og en plattform som er offisiell kanal for et særforbund bør
-oppfylle det.
+WCAG 2.1 AA inn som eksplisitt leveranse. Publikumsrettede norske nettsteder
+er underlagt kravene til universell utforming av IKT. Det er et lovkrav, og en
+plattform som skal være offisiell kanal for et særforbund bør oppfylle det.
 
 **Presentasjon er en kapasitet, ikke en fast liste.** Sidene over er de vi har i
 dag, ikke grensen for hva løsningen kan vise. Når dataene ligger strukturert,
 er en ny liste, et nytt uttrekk eller en ny sammenstilling dager, ikke måneder.
 
 Vi vil derfor ikke låse presentasjonen til en kravliste i en kontrakt. Vi
-foreslår i stedet en fast utviklingspott NFIF disponerer, slik at forbundet kan
-bestille det som viser seg å være nyttig i bruk.
+foreslår i stedet en fast utviklingspott NFIF disponerer, slik at forbundet
+kan bestille det som viser seg å være nyttig i bruk.
 
-### Klubbrapporter — et eksempel på hva dette betyr i praksis
+### Klubbrapporter: et eksempel på hva dette betyr i praksis
 
-Vi har allerede levert skreddersydde rapporter til fire klubber, bygget direkte
-på basen:
+Vi har allerede levert skreddersydde rapporter til fire klubber, bygget
+direkte på basen:
 
 | Klubb | Utøvere | Resultatrader | Klubbens eget ønske |
 |---|---:|---:|---|
@@ -303,32 +305,31 @@ på basen:
 | BUL | 178 | 1 364 | Alle utøvere samlet, yngste først |
 | Fana IL | 55 | 310 | Seksten navngitte utøvere først, i klubbens egen rekkefølge |
 
-Hver rapport viser antall starter og de beste resultatene per øvelse for
-2024, 2025 og 2026, per utøver, og leveres som nettside, PDF og CSV.
+Hver rapport viser antall starter og de beste resultatene per øvelse for 2024,
+2025 og 2026, per utøver, og leveres som nettside, PDF og CSV.
 
-Det interessante er ikke rapportene i seg selv, men **hva de kostet**. De deler
-felles maskineri; en ny klubb er rundt tjue linjer konfigurasjon. Klubbene fikk
-ulik sortering, ulike utvalg og ulik merking fordi de ba om ulike ting — ikke
-fordi det ble bygget fire ganger.
+Det viktige her er **hva rapportene kostet å lage**. De deler felles
+maskineri, og en ny klubb er rundt tjue linjer konfigurasjon. Klubbene fikk
+ulik sortering, ulike utvalg og ulik merking fordi de ba om ulike ting, ikke
+fordi arbeidet ble gjort fire ganger.
 
-Slik ser del 2 av oppgaven ut når del 1 er gjort skikkelig: en klubb som ønsker
-noe eget, får det på dager. Det samme gjelder krets- og regionsoversikter,
-uttrekk til terminliste- og uttaksarbeid, og visninger bestilt av trenere,
-statistikkmiljøet eller media.
+Når del 1 er gjort skikkelig, får en klubb som ønsker noe eget det på dager.
+Det samme gjelder krets- og regionsoversikter, uttrekk til terminliste- og
+uttaksarbeid, og visninger bestilt av trenere, statistikkmiljøet eller media.
 
 ## 3.4 API og eksport
 
 *§18, §22.*
 
-Vi leverer et dokumentert JSON-API med OpenAPI-spesifikasjon, nøkkelhåndtering,
-rate limiting og tilgangsstyring per konsument. API-et dekker utøverdata,
-resultater, stevner, klubbstatistikk, regionsstatistikk, statistikklister og
-aktivitetsdata.
+Vi leverer et dokumentert JSON-API med OpenAPI-spesifikasjon,
+nøkkelhåndtering, rate limiting og tilgangsstyring per konsument. API-et
+dekker utøverdata, resultater, stevner, klubbstatistikk, regionsstatistikk,
+statistikklister og aktivitetsdata.
 
 Eksport til Excel og CSV eksponeres i grensesnittet på alle lister, ikke bare
 via API.
 
-**Vår modell, sagt rett ut:** Alle data eies av NFIF. All statistikk er fritt
+**Vår modell:** Alle data eies av NFIF. All statistikk er fritt
 tilgjengelig for utøvere, klubber, trenere, media og publikum. NFIF kan når som
 helst eksportere, gjenbruke og videreformidle datagrunnlaget uten begrensninger
 fra vår side. Vi tar aldri betalt av forbundets medlemmer for tilgang til
@@ -345,9 +346,9 @@ og sporing av hvem som har satt eller overstyrt det.
 
 ### Nivået følger av stevnet, ikke av en manuell vurdering
 
-Det avgjørende poenget er at godkjenning allerede er avgjort før resultatet
-oppstår. **Et stevne som står på terminlisten, eller på World Athletics' liste,
-er per definisjon godkjent** — med mindre det blir underkjent i etterkant.
+Godkjenningen er avgjort før resultatet oppstår. **Et stevne som står på
+terminlisten, eller på World Athletics' liste, er per definisjon godkjent**,
+med mindre det blir underkjent i etterkant.
 
 Det betyr at nivå A ikke er noe noen skal tildele resultat for resultat. Det
 utledes:
@@ -357,23 +358,23 @@ utledes:
 | Godkjent og terminlistet stevne | Terminlisten / WA-listen |
 | Nødvendig dokumentasjon og regelverkssamsvar | Følger av at stevnet er sanksjonert |
 | Gyldig lisens | Lisensregisteret |
-| Godkjent tidtaking | Resultatets presisjon — håndtidtaking er allerede skilt ut |
+| Godkjent tidtaking | Resultatets presisjon; håndtidtaking er allerede skilt ut |
 | Offisiell distanse | Øvelsen |
 | Målt løype | Løyperegisteret (gjelder gateløp) |
 
-Vi forutsetter tilgang til terminlisten og lisensregisteret. Med de to på plass
-har regelmotoren det den trenger, og klassifiseringen skjer maskinelt i det
-resultatet importeres — uten at noen må sitte og godkjenne 130 000 resultater i
-året.
+Vi forutsetter tilgang til terminlisten og lisensregisteret. Med de to på
+plass har regelmotoren det den trenger, og klassifiseringen skjer maskinelt i
+det resultatet importeres, uten at noen må sitte og godkjenne 130 000
+resultater i året.
 
 ### Unntakene er arbeidet
 
-**Underkjenning i etterkant.** Blir et stevne eller et enkeltresultat underkjent,
-registreres det som en hendelse med årsakskode, og klassifiseringen oppdateres.
-Dette er samme mekanisme som §7 etterspør for ikke-ratifiserte prestasjoner, og
-den bør derfor bygges én gang og brukes begge steder. Historikken bevares: at et
-resultat en gang var rekordberettiget og senere ble underkjent, er i seg selv
-opplysning som ikke skal forsvinne.
+**Underkjenning i etterkant.** Blir et stevne eller et enkeltresultat
+underkjent, registreres det som en hendelse med årsakskode, og
+klassifiseringen oppdateres. Dette er samme mekanisme som §7 etterspør for
+ikke-ratifiserte prestasjoner, og den bør derfor bygges én gang og brukes
+begge steder. Historikken bevares: at et resultat en gang var rekordberettiget
+og senere ble underkjent, er i seg selv opplysning som ikke skal forsvinne.
 
 **Systemet stiller spørsmål ved åpenbare feil.** I stedet for at et menneske
 kontrollerer alt, kontrollerer systemet alt og løfter frem det som ikke henger
@@ -386,15 +387,15 @@ sammen:
 - aldersklasse som ikke stemmer med fødselsår
 - redskapsvekt eller hekkehøyde som ikke hører til klassen
 - samme utøver med to resultater i samme øvelse samme dag, på ulike stevner
-- verdi utenfor det fysisk rimelige for øvelsen — typisk en tastefeil
+- verdi utenfor det fysisk rimelige for øvelsen, typisk en tastefeil
 
 Hver kontroll gir en oppgave i en arbeidsliste med begrunnelse, ikke en stille
 avvisning. Det er også det §23 ber om under «data cleansing tools»: verktøyet
 skal finne feilene, ikke vente på at noen melder dem.
 
-Alt kan overstyres av den som har rettighet til det, med begrunnelse og sporing
-av hvem som gjorde hva. En feilklassifisering skal kunne rettes uten at noen
-må ringe oss.
+Alt kan overstyres av den som har rettighet til det, med begrunnelse og
+sporing av hvem som gjorde hva. En feilklassifisering skal kunne rettes uten
+at noen må ringe oss.
 
 Brukere kan filtrere statistikken på nivå, jf. §6.
 
@@ -404,7 +405,7 @@ Brukere kan filtrere statistikken på nivå, jf. §6.
 |---|---|
 | Innendørs / overbygd anlegg | I drift |
 | Håndtidtaking i løpsøvelser | I drift |
-| Utenlandske utøvere i norsk klubb | Delvis — nasjonalitet er registrert, må eksponeres i lister |
+| Utenlandske utøvere i norsk klubb | Delvis. Nasjonalitet er registrert, men må eksponeres i lister. |
 | Bane etter TR14.1 / TR43.1 | Bygges. Krever baneregister med klassifisering per anlegg. |
 | World Rankings-stevne | Bygges |
 | Blandede heat | Bygges. Norsk særregel: tillatt i alle løpsøvelser utenom World Ranking-stevner. |
@@ -418,9 +419,9 @@ Brukere kan filtrere statistikken på nivå, jf. §6.
 ### Innsamling som driftsfunksjon
 
 Vi henter i dag resultatene fra den basen anskaffelsen skal erstatte. Ved
-overtakelse blir plattformen selv førstemottaker av hver resultatliste, direkte
-fra arrangør og tidtakersystem. Omleggingen skjer før overgangen, ikke ved den —
-se milepælen i kapittel 8.1.
+overtakelse blir plattformen selv førstemottaker av hver resultatliste,
+direkte fra arrangør og tidtakersystem. Omleggingen skjer før overgangen, ikke
+ved den. Se milepælen i kapittel 8.1.
 
 Innsamling er derfor en driftsfunksjon på linje med selve nettstedet. Løpende
 datainnhenting og kvalitetskontroll ligger inne i driftsavtalen i kapittel 10,
@@ -428,10 +429,10 @@ ikke som opsjon.
 
 ### Importrammeverket
 
-Vi bygger et generisk importrammeverk som tar imot JSON, XML, CSV og Excel, med
-skjemavalidering, dublettkontroll, godkjenningskø og full sporing av hvilken
-kilde hvert resultat kom fra. Alle integrasjoner bygger på dette. Et delvis
-rammeverk er i drift i dag.
+Vi bygger et generisk importrammeverk som tar imot JSON, XML, CSV og Excel,
+med skjemavalidering, dublettkontroll, godkjenningskø og full sporing av
+hvilken kilde hvert resultat kom fra. Alle integrasjoner bygger på dette. Et
+delvis rammeverk er i drift i dag.
 
 Kildene integreres i den prioritetsrekkefølgen §13 angir: API først,
 strukturerte filer deretter, Excel/CSV som tredje valg, og manuell behandling
@@ -448,8 +449,9 @@ bare tallene, men også vissheten om hvor de kommer fra.
 
 En komplett norsk database må også inneholde det norske utøvere gjør utenfor
 Norge. I dag fanges dette i praksis opp gjennom enkeltpersoner som følger med,
-og ved at utøvere selv melder fra. Det er den samme sårbarheten §1 beskriver, og
-vi mener den bør løses på samme måte som resten: systematisk, med et sikkerhetsnett.
+og ved at utøvere selv melder fra. Det er den samme sårbarheten §1 beskriver,
+og vi mener den bør løses på samme måte som resten: systematisk, med et
+sikkerhetsnett.
 
 **Kjente kilder høstes automatisk.** Norske collegeutøvere i USA er en betydelig
 gruppe, og resultatene deres er systematisk tilgjengelige gjennom TFRRS.
@@ -462,35 +464,32 @@ collegesystemet som kan avleses maskinelt. For denne delen bør innsamlingen
 derfor være utøverdrevet, ikke stevnedrevet.
 
 **Innmelding blir en registrert kanal.** At utøvere og klubber melder inn
-resultater skal fortsatt være mulig — det er ofte den raskeste veien. Forskjellen
+resultater skal fortsatt være mulig, og er ofte den raskeste veien. Forskjellen
 er at innmeldingen går inn i systemet med dokumentasjon, sporing og
 avviksbehandling, i stedet for som en e-post til en person.
 
-Vi vil ikke overselge dette: for et utenlandsk stevne ingen kjenner til og som
-ikke er indeksert noe sted, finnes det ingen garantert dekning. Vår ambisjon er
-å gjøre restkategorien liten og synlig, ikke å påstå at den forsvinner.
+For et utenlandsk stevne som ingen kjenner til og som ikke er indeksert noe
+sted, finnes det ingen garantert dekning. Ambisjonen er å gjøre restkategorien
+liten og synlig, ikke å påstå at den forsvinner.
 
-**Et forbehold vi mener er nødvendig å ta:** Vi fastpriser ikke integrasjoner mot
-systemer vi ikke har sett grensesnittdokumentasjonen til. iSonen, OpenTrack,
-FriRes/LiveRes, EQ Timing og Ultimate Sport Service prises som separate
-opsjoner med timepott, med forbehold om at motparten stiller med et dokumentert
-API. En leverandør som fastpriser fem ukjente integrasjoner, har ikke gjort
-jobben — og regningen kommer uansett, bare senere og som en tvist.
+**Ett forbehold:** Vi fastpriser ikke integrasjoner mot systemer vi ikke har
+sett grensesnittdokumentasjonen til. iSonen, OpenTrack, FriRes/LiveRes, EQ
+Timing og Ultimate Sport Service prises som separate opsjoner med timepott,
+med forbehold om at motparten stiller med et dokumentert API. En leverandør
+som fastpriser fem ukjente integrasjoner, har ikke gjort jobben. Regningen
+kommer uansett, bare senere og som en tvist.
 
 **Om §14, fremtidig iSonen-arbeidsflyt:** Kravspekken beskriver en arbeidsflyt
 som ennå ikke finnes. Vi lover forberedt arkitektur og deltakelse i
 spesifikasjonsarbeidet, ikke en ferdig integrasjon mot noe som ikke er
 definert.
 
-## 3.7 Datakvalitet — hvor vi står i dag
+## 3.7 Datakvalitet: hvor vi står i dag
 
-Vi vil være helt åpne om dette, fordi NFIF kommer til å oppdage det uansett og
-bør høre det fra oss først.
-
-**friidrettsresultater.no er ikke ferdig kvalitetssikret.** Det finnes fortsatt
-feil og mangler i basen. Arbeidet så langt har vært prioritert mot innsamling
-og fullstendighet — å få dataene inn, riktig strukturert og kontrollert mot
-kilden. Systematisk opprydding er påbegynt, men ikke fullført.
+**friidrettsresultater.no er ikke ferdig kvalitetssikret.** Det finnes
+fortsatt feil og mangler i basen. Arbeidet så langt har vært prioritert mot
+innsamling og fullstendighet, altså å få dataene inn, riktig strukturert og
+kontrollert mot kilden. Systematisk opprydding er påbegynt, men ikke fullført.
 
 Rekkefølgen er et bevisst valg. Man kan ikke vaske data man ikke har, og en
 base som er pen men ufullstendig er vanskeligere å reparere enn en som er
@@ -518,37 +517,36 @@ finne feilene og legge dem i en arbeidsliste, i stedet for at noen melder dem.
 Sammenligning mot uavhengige kilder, slik vi gjorde mot SRUs regneark, blir en
 fast del av det arbeidet.
 
-Vi lover ikke en feilfri base 01.01.2027. Vi lover at feilene er kjente,
-tellbare og synkende, og at det finnes et verktøy for å rette dem.
+Vi kan ikke love en feilfri base 01.01.2027, men vi kan love at feilene er
+kjente, tellbare og synkende, og at det finnes verktøy for å rette dem.
 
 ---
 
 # 4. Mer enn en plattform: NFIFs analyse- og kunnskapsfunksjon
 
 En plattform er infrastruktur. Den blir sammenlignet på funksjonspunkter og
-pris. Et analysemiljø er noe annet — det er en kapasitet, og den kan ikke skrus
-på som en modul.
+pris. Et analysemiljø er en kapasitet, og den kan ikke skrus på som en modul.
 
 > **NFIF får ikke bare en database. NFIF får et fagmiljø som kan lese den.**
 
-Dette er ikke en idé vi presenterer. Det er en praksis vi dokumenterer.
+Dette er en praksis vi kan dokumentere, ikke en idé vi lanserer.
 
 ## 4.1 Mesterskapsanalyse
 
-«56 til Birmingham» — en ferdig analyse av hele den norske EM-troppen 2026,
+«56 til Birmingham» er en ferdig analyse av hele den norske EM-troppen 2026,
 bygget direkte på databasen: lagsammensetning, kvinner og menn hver for seg,
 uttaksveien inn, terrengløps-EM, persutvikling i forkant, nivåvurdering mot
 europeisk og internasjonal ranking, og øvelsesprofil for troppen.
 
-Dette er produktet en kommunikasjonsavdeling og en presselosje trenger uken før
-et mesterskap, og som ingen rekker å lage manuelt. Vedlagt som vedlegg C.
+Dette er produktet en kommunikasjonsavdeling og en presselosje trenger uken
+før et mesterskap, og som ingen rekker å lage manuelt. Vedlagt som vedlegg C.
 
 ## 4.2 Bredde- og rekrutteringsanalyse
 
-«Norsk friidrett 2013–2025» — analyse av samtlige registrerte resultater i
-perioden. Sentralt funn: aktive utøvere i alderen 10–19 år falt fra 8 745 i 2019
-til 6 418 i 2025, en nedgang på 27 prosent, nesten utelukkende konsentrert i de
-yngste årsklassene, mens seniorgruppen er stabil.
+«Norsk friidrett 2013–2025» er en analyse av samtlige registrerte resultater i
+perioden. Sentralt funn: aktive utøvere i alderen 10–19 år falt fra 8 745 i
+2019 til 6 418 i 2025, en nedgang på 27 prosent, nesten utelukkende
+konsentrert i de yngste årsklassene, mens seniorgruppen er stabil.
 
 §12 sier at aktivitetsdata er «particularly important for Norwegian Athletics'
 strategic work related to recruitment and membership development». Vi har
@@ -556,8 +554,7 @@ allerede gjort den analysen.
 
 ## 4.3 Forskning på NFIFs eget datagrunnlag
 
-Dette er ikke en kapasitet vi beskriver. Det er en kapasitet som er
-fagfellevurdert og publisert, på forbundets egne data.
+Denne kapasiteten er fagfellevurdert og publisert, på forbundets egne data.
 
 ### Arbeider basert på data fra NFIF
 
@@ -582,29 +579,27 @@ Field Performance.**
 A. Guttormsen og S. Guttormsen. *International Journal of Sports Physiology and
 Performance*, antatt for publisering.
 
-### Hva dette faktisk beviser
-
-Tre ting, og alle tre er relevante for anskaffelsen.
+### Hva dette betyr for anskaffelsen
 
 **Datagrunnlaget holder forskningskvalitet.** Norske friidrettsdata er allerede
 brukt som grunnlag for fagfellevurderte studier i internasjonale tidsskrifter.
 Det er en uavhengig kvalitetsvurdering ingen leverandør kan gi seg selv, og det
 er dokumentert av andre enn oss.
 
-**Vi har arbeidet med NFIFs data i over ti år.** Den eldste av studiene over er
-fra 2015. Selskapet Athlete Mindset AS er nytt — arbeidet med dette
-datagrunnlaget er det ikke. Se kapittel 9.3.
+**Vi har arbeidet med NFIFs data i over ti år.** Den eldste av studiene over
+er fra 2015. Selskapet Athlete Mindset AS er nytt, men arbeidet med
+datagrunnlaget er eldre. Se kapittel 9.3.
 
 **Temaene er nøyaktig de §12 etterspør.** Kravspesifikasjonen ber om innsikt i
 «activity, participation, development and trends». Studiene over handler om
 prestasjonsutvikling gjennom ungdomsårene, om utvikling etter alder, kjønn og
-øvelse, og om relativ alderseffekt — altså hvordan fødselstidspunkt innenfor
+øvelse, og om relativ alderseffekt, altså hvordan fødselstidspunkt innenfor
 året slår ut i norsk friidrett fra tiårsalderen til seniornivå. Det er
-rekrutterings- og frafallsproblematikk, behandlet med den metodiske strengheten
-et fagfellevurdert tidsskrift krever.
+rekrutterings- og frafallsproblematikk, behandlet med den metodiske
+strengheten et fagfellevurdert tidsskrift krever.
 
-Når NFIF ber om aktivitetsanalyse i §12, ber forbundet altså om noe vi allerede
-har publisert på deres data.
+Når NFIF ber om aktivitetsanalyse i §12, ber forbundet altså om noe vi
+allerede har publisert på deres data.
 
 ## 4.4 Tjenestekatalog
 
@@ -613,7 +608,7 @@ har publisert på deres data.
 | Mesterskapspakke | Troppanalyse, rankingposisjon, formkurver, historisk sammenligning, uttaksstatistikk. Som nettside og som pressemateriell. | Før NM, EM, VM, OL, EM terrengløp |
 | Presse- og kringkastingsstøtte | Faktapakker, rekordvarsler, «dette kan skje i dag»-notater | Under mesterskap |
 | Årsrapport for norsk friidrett | Aktivitet, rekruttering, frafall, bredde og topp, per krets og aldersklasse | Årlig |
-| Krets- og klubbrapporter | Samme analyse brutt ned lokalt. Levert til SK Vidar, IK Tjalve, BUL og Fana IL — se kapittel 3.3. | Årlig eller på bestilling |
+| Krets- og klubbrapporter | Samme analyse brutt ned lokalt. Levert til SK Vidar, IK Tjalve, BUL og Fana IL, se kapittel 3.3. | Årlig eller på bestilling |
 | Strategisk analyse på bestilling | Underlag til NFIFs egne prosesser: rekrutteringstiltak, terminliste, klasseinndeling, regelverksvirkninger | Ved behov |
 | Forskningssamarbeid | Databasen som forskningsinfrastruktur, med NFIF kreditert | Løpende |
 
@@ -624,7 +619,7 @@ kapittel 12.
 
 Vi vil samtidig være NFIFs leverandør og et uavhengig forskningsmiljø som
 publiserer funn om norsk friidrett. Noen av de funnene er ubehagelige for
-oppdragsgiveren — rekrutteringsgrunnlaget har krympet med en fjerdedel, og
+oppdragsgiveren: rekrutteringsgrunnlaget har krympet med en fjerdedel, og
 relativt yngre barn faller fra før de rekker å konkurrere.
 
 > Athlete Mindset AS forbeholder seg full akademisk uavhengighet i
@@ -638,27 +633,27 @@ forhåndsvarsel ikke gir vetorett. Dette er standard i forskningssamarbeid.
 
 ---
 
-# 5. Gateløp — veikart
+# 5. Gateløp: veikart
 
 *§8, §12, §24.*
 
-Dette er vårt største enkeltgap, og vi sier det rett ut. Løsningen dekker i dag
-banestatistikk. Gateløp må bygges.
+Løsningen dekker i dag banestatistikk. Gateløp er vårt største enkeltgap og må
+bygges.
 
 §24 krever et troverdig veikart innen 31.12.2026 dersom løsningen ikke dekker
-gateløp fra start. Dette kapittelet er det veikartet, og vi leverer det med
-tilbudet fremfor å komme tilbake til det.
+gateløp fra start. Veikartet følger her, slik at NFIF har det ved vurderingen
+av tilbudet.
 
 ## 5.1 Omfang
 
-Vi legger til grunn at «approved athletics events» i §2 betyr **løp som står på
-den offisielle norske terminlisten.** Det er terminlisten som avgrenser
+Vi legger til grunn at «approved athletics events» i §2 betyr **løp som står
+på den offisielle norske terminlisten.** Det er terminlisten som avgrenser
 leveransen, ikke all mosjonsløping i Norge.
 
-Det er en viktig avklaring, fordi den gjør oppgaven endelig og målbar. Den
-betyr også at terminlisten blir én felles avgrensning for hele plattformen: den
-samme kilden avgjør kvalitetsnivå for baneresultater etter §6, jf. kapittel
-3.5, og hvilke løp som hører hjemme i basen etter §8.
+Avklaringen gjør oppgaven endelig og målbar. Den betyr også at terminlisten
+blir én felles avgrensning for hele plattformen: den samme kilden avgjør
+kvalitetsnivå for baneresultater etter §6, jf. kapittel 3.5, og hvilke løp som
+hører hjemme i basen etter §8.
 
 ## 5.2 Hvorfor gateløp likevel er en annen oppgave
 
@@ -668,24 +663,24 @@ sertifisert løype og en uoppmålt runde i terrenget er begge reell aktivitet,
 men bare det ene kan rangeres mot en rekord.
 
 Skillet mellom **prestasjonsstatistikk**, **rekorder** og **registrert
-aktivitet** er derfor ikke en presentasjonsdetalj — det er selve datamodellen.
-Det er også grunnen til at kvalitetsnivåene i §6 må bygges før gateløpene,
-ikke etter.
+aktivitet** er derfor ikke en presentasjonsdetalj, men selve datamodellen. Det
+er også grunnen til at kvalitetsnivåene i §6 må bygges før gateløpene, ikke
+etter.
 
 ## 5.3 Leveranseplan
 
 | Trinn | Innhold | Periode |
 |---|---|---|
 | 1 | Datamodell for løp, løype, oppmåling, tidtaking, arrangør og deltakerstatistikk. All metadata i §8: distanse, arrangementstype, løypetype, oppmålingsstatus, tidtakingsmetode, arrangør, sted, dato, antall påmeldte, antall fullførte, kjønns- og aldersfordeling, klubbtilhørighet. | Q1 2027 |
-| 2 | Import fra norske tidtakere — EQ Timing og Ultimate Sport Service prioritert, som de største datakildene | Q1–Q2 2027 |
+| 2 | Import fra norske tidtakere, med EQ Timing og Ultimate Sport Service først som de største datakildene | Q1–Q2 2027 |
 | 3 | Rankinglister for offisielle rekorddistanser: 3 km, 5 km, 10 km, halvmaraton, maraton | Q2 2027 |
 | 4 | Registrering av deltakelse på ikke-offisielle distanser, ultraløp, stafetter, terreng-, motbakke- og fjelløp | Q2 2027 |
 | 5 | Løpssider, filtrering og presentasjon, integrert med utøverprofilene slik at bane og gate vises samlet | Q3 2027 |
 
-Vi anbefaler at NFIF ikke kjøper dette som fastpris nå. Omfanget er avklart —
-terminlisten avgrenser det — men de norske tidtakerselskapenes grensesnitt er
-ikke kartlagt, og det er der usikkerheten ligger. En pris satt i august 2026 vil
-enten være for høy, eller sprekke.
+Vi anbefaler at NFIF ikke kjøper dette som fastpris nå. Omfanget er avklart,
+siden terminlisten avgrenser det, men de norske tidtakerselskapenes
+grensesnitt er ikke kartlagt. Det er der usikkerheten ligger. En pris satt i
+august 2026 vil enten være for høy, eller sprekke.
 
 ---
 
@@ -696,8 +691,8 @@ enten være for høy, eller sprekke.
 ## 6.1 Førsteprioriteten er levert
 
 §15 setter full dybde fra 2013 og senere som førsteprioritet. **1 701 902
-resultater fra 2013 og senere er importert, normalisert og søkbare i dag**, fra
-26 910 stevner og 59 131 utøvere.
+resultater fra 2013 og senere er importert, normalisert og søkbare i dag**,
+fra 26 910 stevner og 59 131 utøvere.
 
 Importen kontrolleres rutinemessig mot kilden, stevne for stevne, slik at
 delvis importerte stevner fanges opp og hentes på nytt. Det er den kontrollen
@@ -705,8 +700,8 @@ som gjør at vi kan oppgi dybden over som et faktum og ikke som et estimat.
 
 ## 6.2 Alle-tiders-materialet er allerede inne
 
-§15 åpner for at eldre data kan importeres i senere faser. Vi har begynt på det
-arbeidet allerede, og det er levert som en del av dagens base:
+§15 åpner for at eldre data kan importeres i senere faser. Vi har begynt på
+det arbeidet allerede, og det er levert som en del av dagens base:
 
 | | Antall |
 |---|---:|
@@ -717,21 +712,23 @@ arbeidet allerede, og det er levert som en del av dagens base:
 | Eldste stevne | 06.08.1922 |
 
 Praktisk betydning: en alle-tiders-liste starter ikke i 2013, og en
-utøverprofil viser hele karrieren — også for utøvere som la opp lenge før
+utøverprofil viser hele karrieren, også for utøvere som la opp lenge før
 dagens statistikkplattform ble laget.
 
 ## 6.3 Videre historisk utvidelse
 
-Dekningen før 2013 er ujevn. Historiske lister er ofte begrenset til resultater
-over visse terskler, og er ikke fulldybde slik årene fra 2013 er det.
+Dekningen før 2013 er ujevn. Historiske lister er ofte begrenset til
+resultater over visse terskler, og er ikke fulldybde slik årene fra 2013 er
+det.
 
 Vi vil derfor ikke love en dekningsgrad for perioden 2001–2012 før den er
 kartlagt. Vi foreslår i stedet at fase 4 starter med en kartleggingsleveranse:
-hvilke kilder finnes, hvilken dybde har de, og hva koster full import. Deretter
-kan NFIF ta et opplyst valg. Prises som opsjon.
+hvilke kilder finnes, hvilken dybde har de, og hva koster full import.
+Deretter kan NFIF ta et opplyst valg. Prises som opsjon.
 
-Vi mener dette er den redelige måten å prise historikk på. Den som oppgir en
-fast pris for «resten av historien» uten å vite hva kildene inneholder, gjetter.
+Vi mener dette er den redelige måten å prise historikk på. En fast pris for
+«resten av historien», satt uten kjennskap til hva kildene inneholder, ville
+vært gjetning.
 
 ---
 
@@ -747,21 +744,21 @@ arkitekturen som er lett å overse.
 
 **Resultatlistene som kommer inn, inneholder navn helt ned i syvårsalderen.**
 Etter gjeldende regelverk kan resultater for aldersgruppen 7–12 år lagres, men
-de skal ikke være synlige for noen. Det er ikke et spørsmål om å skjule en
-kolonne i et grensesnitt — det er et krav om at lagring og eksponering er to
-adskilte ting i selve datamodellen.
+de skal ikke være synlige for noen. Dette handler ikke om å skjule en kolonne
+i grensesnittet, men om at lagring og eksponering må være to adskilte ting i
+selve datamodellen.
 
 Slik er løsningen bygget i dag: aldersgruppen 7–12 ligger i basen uten å være
-tilgjengelig noe sted, og offentlige lister starter ved 13 år. Skillet håndheves
-i datalaget, ikke i presentasjonen, slik at et nytt uttrekk, en ny liste eller
-et API-svar ikke kan komme til å eksponere dem ved et uhell.
+tilgjengelig noe sted, og offentlige lister starter ved 13 år. Skillet
+håndheves i datalaget, ikke i presentasjonen, slik at et nytt uttrekk, en ny
+liste eller et API-svar ikke kan komme til å eksponere dem ved et uhell.
 
-**Dette er også grunnen til at §12 lar seg besvare for de yngste.** Aktivitets-
-og rekrutteringsstatistikk handler om antall, ikke om navn. Plattformen kan
-svare på hvor mange niåringer som konkurrerte i 2026, fordelt på krets, kjønn og
-øvelse, uten å vise en eneste utøver. Nettopp de yngste årsklassene er der
-rekrutteringsbildet avgjøres, og de er derfor viktigst å kunne telle — og minst
-aktuelle å kunne se.
+**Dette er også grunnen til at §12 lar seg besvare for de yngste.**
+Aktivitets- og rekrutteringsstatistikk handler om antall, ikke om navn.
+Plattformen kan svare på hvor mange niåringer som konkurrerte i 2026, fordelt
+på krets, kjønn og øvelse, uten å vise en eneste utøver. Nettopp de yngste
+årsklassene er der rekrutteringsbildet avgjøres, og de er derfor viktigst å
+kunne telle, og minst aktuelle å kunne se.
 
 Data for aldersgruppen 7–12 år kan brukes i aggregert aktivitetsstatistikk så
 lenge ingen enkeltutøver kan identifiseres. Analysen «Norsk friidrett
@@ -778,20 +775,20 @@ aktivitetsmodulen i §12 vil behandle de yngste årsklassene.
 - Dokumentert rutine for innsyn, retting og sletting, med definert
   saksbehandlingstid
 - Aldersgrensen for synlighet som en konfigurerbar regel, ikke som noe som
-  sitter spredt i koden — endrer NFIF regelverket, endres den ett sted
+  sitter spredt i koden. Endrer NFIF regelverket, endres grensen ett sted.
 
 ## 7.2 Sikkerhet
 
 Autentisering og radnivå-tilgangskontroll er i drift. Rollestyring for
 forbund, krets, klubb og arrangør bygges i fase 2. Kryptering i transitt og
-hvile, loggføring av administrative endringer, og regelmessig sikkerhetskopi med
-dokumentert gjenopprettingsrutine.
+hvile, loggføring av administrative endringer, og regelmessig sikkerhetskopi
+med dokumentert gjenopprettingsrutine.
 
 ## 7.3 Beredskap ved topplast
 
 Trafikken topper under NM, Bislett Games og de store mosjonsløpene. Løsningen
-dimensjoneres for dette, og vi foreslår at det avtales særskilt beredskap under
-mesterskapshelger — der responstid er noe annet enn i en vanlig uke.
+dimensjoneres for dette, og vi foreslår at det avtales særskilt beredskap
+under mesterskapshelger, der responstid betyr noe annet enn i en vanlig uke.
 
 ---
 
@@ -817,14 +814,15 @@ mesterskapshelger — der responstid er noe annet enn i en vanlig uke.
 | Datavask og kvalitetsverktøy | §23 | Løpende |
 | WCAG 2.1 AA-samsvar, dokumentert | §17 | Des 2026 |
 | Personvern: DPIA, databehandleravtale, driftsdokumentasjon | §19, §21 | Des 2026 |
-| Veikart gateløp — levert med dette tilbudet | §24 | Levert |
+| Veikart gateløp, levert med dette tilbudet | §24 | Levert |
 
-**Den viktigste milepælen er innsamlingen, ikke funksjonaliteten.** Plattformen
-henter i dag resultatene fra den basen som skal erstattes, jf. kapittel 3.6. Egen
-innsamling må derfor være i drift *før* overgangen, ikke ved den. Vi har satt
-frist oktober 2026 og kjører de to kildene parallelt gjennom resten av året, slik
-at vi kan sammenligne dem og se at ingenting faller ut. En plattform som mister
-innsamlingen i januar, er ubrukelig uansett hvor godt alt annet fungerer.
+**Den viktigste milepælen er innsamlingen, ikke funksjonaliteten.**
+Plattformen henter i dag resultatene fra den basen som skal erstattes, jf.
+kapittel 3.6. Egen innsamling må derfor være i drift *før* overgangen, ikke
+ved den. Vi har satt frist oktober 2026 og kjører de to kildene parallelt
+gjennom resten av året, slik at vi kan sammenligne dem og se at ingenting
+faller ut. En plattform som mister innsamlingen i januar, er ubrukelig uansett
+hvor godt alt annet fungerer.
 
 **Kritiske avhengigheter fra NFIF:**
 
@@ -842,7 +840,7 @@ innsamlingen i januar, er ubrukelig uansett hvor godt alt annet fungerer.
 | 2 | Integrasjoner (opsjoner), automatisert import, utvidede administrasjonsverktøy, rollestyring | Q1–Q3 2027 |
 | 3 | Aktivitetsmodul: unike deltakere, starter, fullførte, utvikling over tid, fordelt på klubb, krets, aldersgruppe, kjønn og øvelse. Dashbord for forbund og kretser. | Q2–Q4 2027 |
 | 3 | Gateløp, jf. veikartet i kapittel 5 | Q1–Q3 2027 |
-| 4 | Historisk utvidelse — kartlegging først, deretter import etter NFIFs valg | 2028, opsjon |
+| 4 | Historisk utvidelse: kartlegging først, deretter import etter NFIFs valg | 2028, opsjon |
 
 Aktivitetsmodulen i fase 3 er produktifisering av metodikk som allerede er
 utviklet og validert i «Norsk friidrett 2013–2025». Det er ikke forskning fra
@@ -851,9 +849,9 @@ bunnen, og det er en reell kostnadsfordel.
 ## 8.3 Overgang og parallelldrift
 
 Vi foreslår at dagens løsning holdes i drift parallelt frem til NFIF selv
-bekrefter at den nye dekker behovet — ikke til en dato satt på forhånd. Det
-koster lite og fjerner den eneste virkelig alvorlige risikoen ved
-overgangen: at noe forsvinner uten at noen oppdager det før det trengs.
+bekrefter at den nye dekker behovet, ikke til en dato satt på forhånd. Det
+koster lite og fjerner den eneste virkelig alvorlige risikoen ved overgangen:
+at noe forsvinner uten at noen oppdager det før det trengs.
 
 ---
 
@@ -862,12 +860,12 @@ overgangen: at noe forsvinner uten at noen oppdager det før det trengs.
 ## 9.1 Om Athlete Mindset AS
 
 Athlete Mindset AS er et norsk aksjeselskap som arbeider med idrettsteknologi
-og idrettsdata, agentvirksomhet og trenervirksomhet. I tillegg leverer selskapet
-laserbaserte måleprodukter for Athlete Mindset Inc.
+og idrettsdata, agentvirksomhet og trenervirksomhet. I tillegg leverer
+selskapet laserbaserte måleprodukter for Athlete Mindset Inc.
 
 De fire områdene henger sammen, og det er en fordel i denne sammenhengen.
 Agent- og trenervirksomheten holder selskapet tett på utøvere og trenere i det
-daglige — de samme brukerne plattformen skal tjene. Måleproduktene og
+daglige, altså de samme brukerne plattformen skal tjene. Måleproduktene og
 statistikkarbeidet handler begge om å gjøre prestasjon målbar. Det er ikke et
 konsulentselskap som har tatt et oppdrag innen idrettsdata; det er et selskap
 som arbeider med idrett, og der data er én av flere innganger til det samme.
@@ -878,11 +876,12 @@ kjerneprodukt, ikke som et enkeltoppdrag ved siden av.
 
 ## 9.2 Teamet
 
-Kombinasjonen av kompetanse i dette teamet er uvanlig, og den er grunnen til at
-plattformen finnes. Empirisk analyse av store datasett og inngående kjennskap
-til friidrettens regelverk sitter sjelden i samme miljø. Her gjør den det.
+Kombinasjonen av kompetanse i dette teamet er uvanlig, og den er grunnen til
+at plattformen finnes. Empirisk analyse av store datasett og inngående
+kjennskap til friidrettens regelverk sitter sjelden i samme miljø. Her gjør
+den det.
 
-### Atle Guttormsen — fagansvarlig data og analyse
+### Atle Guttormsen, fagansvarlig data og analyse
 
 PhD med utdanning innen anvendt økonometri. Forsker innen økonomi, med
 hovedvekt på empiriske analyser av store datasett. Det er den fagbakgrunnen
@@ -891,16 +890,16 @@ forskningskvalitet og ikke bare presentasjonskvalitet.
 
 På friidrettssiden: World Athletics bronsedommer, godkjent athlete
 representative, og i praksis samtlige av forbundets dommer- og
-funksjonærsertifiseringer. Har vært leder og styremedlem på alle nivåer i norsk
-friidrett — klubb, krets og forbund.
+funksjonærsertifiseringer. Har vært leder og styremedlem på alle nivåer i
+norsk friidrett: klubb, krets og forbund.
 
 Denne dobbeltheten er hele poenget. Kravspesifikasjonens §6 og §7 handler om
 regelverk: hva som er rekordberettiget, når et blandet heat er tillatt, hvilke
-baner som tilfredsstiller TR14.1 mot TR43.1, hvordan mastersregelverket avviker
-fra WA. Det er ikke spørsmål en utvikler kan slå opp. Det er spørsmål som
-krever en som har sittet i jury.
+baner som tilfredsstiller TR14.1 mot TR43.1, hvordan mastersregelverket
+avviker fra WA. Det er ikke spørsmål en utvikler kan slå opp. Det er spørsmål
+som krever en som har sittet i jury.
 
-### Simen Guttormsen — kvantitativ analyse og systemutvikling
+### Simen Guttormsen, kvantitativ analyse og systemutvikling
 
 PhD-stipendiat i kvantitativ finans. Bachelor i Operations Research and
 Financial Engineering fra Princeton University, mastergrad i Economics and
@@ -913,7 +912,7 @@ for de tyngste delene av leveransen: regelmotoren for kvalitetsnivå i §6,
 aktivitets- og deltakeranalysen i §12, og simuleringsverktøyet for
 kvalifiseringskrav beskrevet i kapittel 2.
 
-### Sondre Guttormsen — idrettsfaglig ledelse og produkt
+### Sondre Guttormsen, idrettsfaglig ledelse og produkt
 
 Bachelor i psykologi fra Princeton University, Master of Education i Sport
 Management fra University of Texas at Austin. Gründer og eier av Athlete
@@ -922,20 +921,20 @@ Mindset Inc.
 Aktiv utøver på høyt internasjonalt nivå, og olympier.
 
 Bakgrunnen i sport management og utøverpsykologi er det leddet som knytter
-datagrunnlaget til brukerne: utøvere, trenere og klubber. En statistikkplattform
-som ikke forstår hvordan en utøver og en trener faktisk leser tall, blir en
-plattform for statistikere.
+datagrunnlaget til brukerne: utøvere, trenere og klubber. En
+statistikkplattform som ikke forstår hvordan en utøver og en trener faktisk
+leser tall, blir en plattform for statistikere.
 
 ### Utøverperspektivet er ikke tilført utenfra
 
 To av tre i teamet er olympiere. De er ikke konsulenter som har satt seg inn i
-hvordan en utøver bruker statistikk — de er selv i den gruppen plattformen skal
-tjene, med egne resultater i basen.
+hvordan en utøver bruker statistikk, men er selv i den gruppen plattformen
+skal tjene, med egne resultater i basen.
 
 Det har praktisk betydning for §17 og §9. Hva en utøver faktisk leter etter på
 sin egen profil, hvordan et kvalifiseringskrav oppleves i sesongen, hva som er
 irriterende når klubbskiftet ditt ikke vises riktig, og hva som er greit å ha
-offentlig og hva som ikke er det — det er spørsmål vi svarer på fra erfaring,
+offentlig og hva som ikke er det. Det er spørsmål vi svarer på fra erfaring,
 ikke fra brukerintervjuer.
 
 Vi mener dette er en reell forskjell mot en leverandør som betjener et dusin
@@ -946,37 +945,38 @@ er miljøet vi kommer fra.
 
 | Krav i anskaffelsen | Hvem dekker det |
 |---|---|
-| Regelverk, rekordberettigelse, flagging (§6, §7, §16) | Atle — WA-dommer, forbundserfaring på alle nivåer |
-| Empirisk analyse av store datasett (§12) | Atle — forskerbakgrunn, anvendt økonometri |
-| Systemutvikling, regelmotor, modellering | Simen — OR&FE, informatikk |
+| Regelverk, rekordberettigelse, flagging (§6, §7, §16) | Atle. WA-dommer, forbundserfaring på alle nivåer |
+| Empirisk analyse av store datasett (§12) | Atle. Forskerbakgrunn, anvendt økonometri |
+| Systemutvikling, regelmotor, modellering | Simen. OR&FE, informatikk |
 | Aktivitetsanalyse og dashbord (§12, §23) | Simen og Atle |
-| Brukerforståelse, utøver- og trenerperspektiv (§17) | Sondre — sport management, psykologi |
-| Utøverperspektivet innenfra | Simen og Sondre — begge olympiere, begge med egne resultater i basen |
-| Produkt- og selskapsledelse | Sondre — gründer og eier, Athlete Mindset Inc. |
+| Brukerforståelse, utøver- og trenerperspektiv (§17) | Sondre. Sport management, psykologi |
+| Utøverperspektivet innenfra | Simen og Sondre. Begge olympiere, begge med egne resultater i basen |
+| Produkt- og selskapsledelse | Sondre. Gründer og eier, Athlete Mindset Inc. |
 
 ## 9.3 Innvendingen vi tar opp selv
 
-Athlete Mindset AS er et nystartet selskap. En innkjøper som skal binde seg for
-tre til fem år må vurdere hva som skjer hvis leverandøren forsvinner. Vi mener
-den innvendingen er berettiget, og at den fortjener et svar før den stilles.
+Athlete Mindset AS er et nystartet selskap. En innkjøper som skal binde seg
+for tre til fem år må vurdere hva som skjer hvis leverandøren forsvinner. Vi
+mener den innvendingen er berettiget, og at den fortjener et svar før den
+stilles.
 
 | Innvending | Vårt svar |
 |---|---|
 | Nystartet selskap uten historikk | Selskapet er nytt. Arbeidet er det ikke. Fagfellevurdert forskning på norske friidrettsdata går tilbake til 2015 (kapittel 4.3), og plattformen har to års utvikling og 1,9 millioner produksjonsdata bak seg. |
-| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. |
+| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2, ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
 | Er dette et sideprosjekt | Nei. Selskapet arbeider med idrett på fire felter, jf. kapittel 9.1, og statistikkplattformen er definert som strategisk kjerneprodukt. Agent- og trenervirksomheten gjør dessuten at vi bruker plattformen selv, hver uke. |
 | Ingen referansekunder | Vi har ingen forbundsreferanser. Vi har en løsning i drift med norske data, akademisk bruk av databasen og publisert analysearbeid. |
 
 Vi ber ikke NFIF kjøpe et konsulentoppdrag. Vi ber NFIF bli ankerkunde i et
-produkt som skal leve videre — det er forskjellen som forklarer både hvorfor vi
-kan prise dette lavere enn et konsulenthus, og hvorfor vi blir værende.
+produkt som skal leve videre. Det forklarer både hvorfor vi kan prise dette
+lavere enn et konsulenthus, og hvorfor vi blir værende.
 
 ## 9.4 Om det frivillige miljøet
 
 Statistikkarbeidet som er gjort siden 2013 er grunnlaget for at denne
-anskaffelsen i det hele tatt er mulig — dataene finnes fordi noen har holdt dem
+anskaffelsen i det hele tatt er mulig. Dataene finnes fordi noen har holdt dem
 i hevd i tretten år uten betaling.
 
 Vi foreslår at det etableres et fagråd med plass til dette miljøet og til SRU,
@@ -1016,9 +1016,9 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Datainnhenting | Løpende import og kvalitetskontroll av nye stevner, inkludert i driftsavtalen |
 | Rapportering | Årlig statusmøte med driftsrapport, datakvalitetsrapport og prioritering av videreutvikling |
 
-Videreutviklingspotten er bevisst. En driftsavtale uten utviklingskapasitet blir
-en avtale der hver endring må forhandles, og resultatet er at endringene ikke
-gjøres. Vi foreslår heller en fast pott NFIF disponerer.
+Videreutviklingspotten er bevisst. En driftsavtale uten utviklingskapasitet
+blir en avtale der hver endring må forhandles, og resultatet er at endringene
+ikke gjøres. Vi foreslår heller en fast pott NFIF disponerer.
 
 ---
 
@@ -1046,9 +1046,9 @@ Vi ønsker å avtale prisen i forhandling, og vil begrunne hvorfor.
 
 Flere av postene i denne anskaffelsen kan ikke prises redelig fra utsiden i
 dag. Integrasjonene i §13 avhenger av grensesnitt vi ikke har sett. Gateløpene
-avhenger av tidtakernes datakilder. Omfanget av historisk utvidelse avhenger av
-kilder som må kartlegges før noen vet hva de inneholder. En leverandør som
-likevel setter et tall på disse, priser inn sin egen usikkerhet — og NFIF
+avhenger av tidtakernes datakilder. Omfanget av historisk utvidelse avhenger
+av kilder som må kartlegges før noen vet hva de inneholder. En leverandør som
+likevel setter et tall på disse, priser inn sin egen usikkerhet, og NFIF
 betaler for den enten den inntreffer eller ikke.
 
 Vi foretrekker den motsatte veien: **fastpris der vi kjenner omfanget, åpne
@@ -1072,10 +1072,10 @@ vi ber om å sette sammen med NFIF.
 4. **Prisen skal kunne gå ned.** Blir en integrasjon enklere enn antatt,
    faktureres færre timer. Vi tar ikke betalt for et estimat.
 5. **Fast i tre år**, deretter regulering etter konsumprisindeks. Ingen
-   volumbasert prising — prisen skal ikke stige fordi norsk friidrett
+   volumbasert prising. Prisen skal ikke stige fordi norsk friidrett
    arrangerer flere stevner.
 
-## 12.2 Etablering og implementering — fastpris
+## 12.2 Etablering og implementering: fastpris
 
 | Post | Innhold |
 |---|---|
@@ -1084,7 +1084,7 @@ vi ber om å sette sammen med NFIF.
 | Omlegging av innsamlingen | Egen innhenting av resultatlister i drift fra okt 2026, jf. kapittel 8.1 |
 | Dokumentasjon | Drifts-, system- og API-dokumentasjon, DPIA, databehandleravtale |
 
-## 12.3 Årlig drift — fastpris
+## 12.3 Årlig drift: fastpris
 
 | Post | Innhold |
 |---|---|
@@ -1092,9 +1092,9 @@ vi ber om å sette sammen med NFIF.
 | Løpende datainnhenting og kvalitetskontroll | Import av nye stevner og kontroll mot kilden, hele året |
 | Support | Etter kapittel 10 |
 | Videreutvikling | Fast timepott NFIF disponerer fritt, jf. kapittel 3.3 |
-| Analysetjeneste | To mesterskapspakker og én årsrapport per år — inngår |
+| Analysetjeneste | To mesterskapspakker og én årsrapport per år, inngår |
 
-## 12.4 Opsjoner — timepott med estimert spenn
+## 12.4 Opsjoner: timepott med estimert spenn
 
 | Opsjon | Grunnlag |
 |---|---|
@@ -1110,10 +1110,10 @@ vi ber om å sette sammen med NFIF.
 Vi stiller med et gjennomarbeidet estimat for hver post, og går gjerne gjennom
 det linje for linje.
 
-Vi vil også være åpne om en ting: NFIF er den kunden som gjør denne plattformen
-til et produkt. Det er en verdi for oss ut over kontraktssummen, og den
-verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
-å ta høyest mulig betalt for denne kontrakten.
+Vi vil også være åpne om en ting: NFIF er den kunden som gjør denne
+plattformen til et produkt. Det er en verdi for oss ut over kontraktssummen,
+og den verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer
+ikke om å ta høyest mulig betalt for denne kontrakten.
 
 ---
 
@@ -1124,7 +1124,8 @@ verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
 2. **§14, fremtidig iSonen-arbeidsflyt**, beskriver en arbeidsflyt som ennå ikke
    er definert. Vi lover forberedt arkitektur og deltakelse i
    spesifikasjonsarbeidet, ikke ferdig integrasjon.
-3. **Kretsstatistikk** (§10) forutsetter at NFIF leverer klubb-til-krets-mapping.
+3. **Kretsstatistikk** (§10) forutsetter at NFIF leverer
+   klubb-til-krets-mapping.
 4. **Kvalitetsnivå A/B/C** (§6) forutsetter løpende tilgang til terminlisten og
    lisensregisteret, og at underkjenning av stevner eller enkeltresultater
    meldes til plattformen. Med det på plass klassifiseres resultatene
@@ -1157,15 +1158,15 @@ verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
 |---|---|
 | **A** | Kravsporing §22 obligatoriske krav og §23 ønskede tilleggsfunksjoner |
 | **B** | Full kravsporing per kapittel |
-| **C** | «56 til Birmingham» — mesterskapsanalyse EM 2026 |
-| **D** | «Norsk friidrett 2013–2025» — bredde- og rekrutteringsanalyse, lederrettet sammendrag |
+| **C** | «56 til Birmingham», mesterskapsanalyse EM 2026 |
+| **D** | «Norsk friidrett 2013–2025», bredde- og rekrutteringsanalyse, lederrettet sammendrag |
 | **E** | Veikart gateløp (utdypning av kapittel 5) |
-| **F** | Spørsmål til NFIF — forutsetninger vi ber om å få bekreftet |
-| **G** | Klubbrapport for IK Tjalve og SK Vidar — eksempler på klubbleveranse, jf. kapittel 3.3 |
+| **F** | Spørsmål til NFIF: forutsetninger vi ber om å få bekreftet |
+| **G** | Klubbrapport for IK Tjalve og SK Vidar: eksempler på klubbleveranse, jf. kapittel 3.3 |
 
 ---
 
-# Vedlegg A — Kravsporing §22 og §23
+# Vedlegg A: Kravsporing §22 og §23
 
 **Statuskoder:** `I DRIFT` finnes i produksjon i dag · `DELVIS` deler finnes,
 må ferdigstilles · `BYGGES` leveres i perioden · `AVTALE` løses kontraktuelt.
@@ -1175,7 +1176,7 @@ må ferdigstilles · `BYGGES` leveres i perioden · `AVTALE` løses kontraktuelt
 | # | Krav | Status | Leveranse |
 |---|---|---|---|
 | 1 | NFIF eier alle data | AVTALE | Kapittel 11 |
-| 2 | Offisiell statistikkplattform for NFIF | AVTALE | — |
+| 2 | Offisiell statistikkplattform for NFIF | AVTALE | |
 | 3 | Banestatistikk | I DRIFT | 1 922 634 resultater, 302 øvelser, inne og ute, alle aldersklasser |
 | 4 | Løpsstatistikk, gateløp | BYGGES | Veikart i kapittel 5, jf. §24 |
 | 5 | Utøverprofiler | I DRIFT | PB, SB, resultathistorikk, utviklingskurver, klubbhistorikk |
@@ -1183,7 +1184,7 @@ må ferdigstilles · `BYGGES` leveres i perioden · `AVTALE` løses kontraktuelt
 | 7 | Klubbstatistikk | I DRIFT | Klubbside med årsstatistikk, alle-tiders og klubbrekorder |
 | 8 | Regionsstatistikk | BYGGES | Krever kretsmapping fra NFIF. Des 2026. |
 | 9 | Stevnesider | I DRIFT | 48 494 stevner med resultatlister og lenker til utøverprofiler |
-| 10 | Historiske data | I DRIFT | 1 701 902 resultater fra 2013 og senere — §15 førsteprioritet. I tillegg 220 732 alle-tiders-resultater fra 149 øvelser tilbake til 1922. |
+| 10 | Historiske data | I DRIFT | 1 701 902 resultater fra 2013 og senere, som er §15 førsteprioritet. I tillegg 220 732 alle-tiders-resultater fra 149 øvelser tilbake til 1922. |
 | 11 | Kvalitetsklassifisering A/B/C | BYGGES | Regelmotor, kapittel 3.5. Nov 2026. |
 | 12 | API-støtte | BYGGES | Dokumentert JSON-API, kapittel 3.4. Des 2026. |
 | 13 | Eksportfunksjonalitet | BYGGES | Excel/CSV eksponert i grensesnittet. Nov 2026. |
@@ -1207,7 +1208,7 @@ teknisk risiko.
 
 ---
 
-# Vedlegg B — Full kravsporing per kapittel
+# Vedlegg B: Full kravsporing per kapittel
 
 | § | Krav | Status | Merknad |
 |---|---|---|---|
@@ -1220,7 +1221,7 @@ teknisk risiko.
 | §7 | Flagg: blandede heat | BYGGES | Norsk særregel: tillatt i alle løpsøvelser utenom World Ranking-stevner |
 | §7 | Flagg: utenlandske utøvere i norsk klubb | DELVIS | Nasjonalitet registrert, må eksponeres i lister |
 | §7 | Flagg: WMA-masters | BYGGES | |
-| §7 | Flagg: ikke-ratifisert med årsakskode | BYGGES | Kodeverk «TBD» — avklares med NFIF |
+| §7 | Flagg: ikke-ratifisert med årsakskode | BYGGES | Kodeverk «TBD», avklares med NFIF |
 | §7 | Flagg: håndtidtaking | I DRIFT | Presisjonsbasert deteksjon, kun løp under 800 m. 18 769 resultater merket. |
 | §8 | Gateløp med full metadata | BYGGES | Veikart kapittel 5 |
 | §9 | Utøverprofiler | I DRIFT | |
@@ -1243,6 +1244,6 @@ teknisk risiko.
 | §18 | Dokumentert JSON-API | BYGGES | |
 | §18 | Eksport Excel/CSV | BYGGES | |
 | §19 | Personvern og sikkerhet | DELVIS | Tilgangskontroll og skjerming av aldersgruppen 7–12 i drift. DPIA og databehandleravtale bygges. |
-| §20 | Faseinndeling | — | Kapittel 8 |
-| §21 | Tilbudets innhold | — | Dette dokumentet |
-| §24 | Frister | — | Kapittel 8 |
+| §20 | Faseinndeling | | Kapittel 8 |
+| §21 | Tilbudets innhold | | Dette dokumentet |
+| §24 | Frister | | Kapittel 8 |
