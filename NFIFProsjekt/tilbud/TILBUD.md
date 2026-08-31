@@ -705,26 +705,45 @@ fast pris for «resten av historien» uten å vite hva kildene inneholder, gjett
 
 ## 7.1 Personvern for mindreårige
 
-Databasen inneholder navn, fødselsdato, klubb og full resultathistorikk for barn
-helt ned i tiårsalderen, publisert åpent. Dette er GDPR-relevant på et annet
-nivå enn seniorstatistikk, og NIFs egne personvernbestemmelser kommer i tillegg.
+Kravspesifikasjonen nevner ikke personvern for barn. Vi mener det er det
+viktigste personvernspørsmålet i anskaffelsen, og at det stiller et krav til
+arkitekturen som er lett å overse.
 
-Kravspesifikasjonen nevner det ikke. Vi mener det er det viktigste
-personvernspørsmålet i hele anskaffelsen, og foreslår konkret:
+**Resultatlistene som kommer inn, inneholder navn helt ned i syvårsalderen.**
+Etter gjeldende regelverk kan resultater for aldersgruppen 7–12 år lagres, men
+de skal ikke være synlige for noen. Det er ikke et spørsmål om å skjule en
+kolonne i et grensesnitt — det er et krav om at lagring og eksponering er to
+adskilte ting i selve datamodellen.
+
+Slik er løsningen bygget i dag: aldersgruppen 7–12 ligger i basen uten å være
+tilgjengelig noe sted, og offentlige lister starter ved 13 år. Skillet håndheves
+i datalaget, ikke i presentasjonen, slik at et nytt uttrekk, en ny liste eller
+et API-svar ikke kan komme til å eksponere dem ved et uhell.
+
+**Dette er også grunnen til at §12 lar seg besvare for de yngste.** Aktivitets-
+og rekrutteringsstatistikk handler om antall, ikke om navn. Plattformen kan
+svare på hvor mange niåringer som konkurrerte i 2026, fordelt på krets, kjønn og
+øvelse, uten å vise en eneste utøver. Nettopp de yngste årsklassene er der
+rekrutteringsbildet avgjøres, og de er derfor viktigst å kunne telle — og minst
+aktuelle å kunne se.
+
+Analysen «Norsk friidrett 2013–2025» i kapittel 4.2 er laget på denne måten.
+
+Øvrige tiltak vi legger inn:
 
 - Behandlingsgrunnlag og databehandleravtale på plass fra dag én, med NFIF som
   behandlingsansvarlig og Athlete Mindset AS som databehandler
 - All lagring og behandling innenfor EU/EØS
 - Vurdering av personvernkonsekvenser (DPIA) som del av leveransen, ikke som
   noe som kommer etterpå
-- Differensiert eksponering for de yngste årsklassene — for eksempel fødselsår i
-  stedet for full fødselsdato offentlig, med full dato kun tilgjengelig internt
 - Dokumentert rutine for innsyn, retting og sletting, med definert
   saksbehandlingstid
+- Aldersgrensen for synlighet som en konfigurerbar regel, ikke som noe som
+  sitter spredt i koden — endrer NFIF regelverket, endres den ett sted
 
-`‹AVKLARES med NFIF›` Punktet om differensiert eksponering er et forbundsvedtak,
-ikke et teknisk valg. Vi bygger det NFIF bestemmer, men mener spørsmålet må
-stilles.
+`‹AVKLARES med NFIF›` Vi legger til grunn at data for 7–12 år kan brukes i
+aggregert aktivitetsstatistikk så lenge ingen enkeltutøver kan identifiseres.
+Bekreft gjerne at det er riktig forstått.
 
 ## 7.2 Sikkerhet
 
@@ -1051,8 +1070,9 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
    tidtakernes grensesnitt.
 8. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
    dekningsgrad.
-9. **Differensiert eksponering av mindreåriges data** (kapittel 7.1) er et
-   forbundsvedtak. Vi bygger det NFIF bestemmer.
+9. **Synlighetsgrensen for mindreårige** (kapittel 7.1) følger gjeldende
+   regelverk: 7–12 år lagres, men vises ikke. Grensen bygges konfigurerbar, slik
+   at et endret regelverk ikke krever endring i koden.
 
 ---
 
@@ -1147,7 +1167,7 @@ teknisk risiko.
 | §17 | WCAG 2.1 AA | BYGGES | Ikke nevnt i kravspekken, men lovkrav |
 | §18 | Dokumentert JSON-API | BYGGES | |
 | §18 | Eksport Excel/CSV | BYGGES | |
-| §19 | Personvern og sikkerhet | DELVIS | Tilgangskontroll i drift. DPIA, databehandleravtale og særskilt vern av mindreårige bygges. |
+| §19 | Personvern og sikkerhet | DELVIS | Tilgangskontroll og skjerming av aldersgruppen 7–12 i drift. DPIA og databehandleravtale bygges. |
 | §20 | Faseinndeling | — | Kapittel 8 |
 | §21 | Tilbudets innhold | — | Dette dokumentet |
 | §24 | Frister | — | Kapittel 8 |

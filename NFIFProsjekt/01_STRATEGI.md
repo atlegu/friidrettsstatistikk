@@ -229,8 +229,9 @@ universell utforming av IKT (WCAG 2.1 AA). Kravspekkens §17 nevner bare mobil, 
 og desktop. Vi tar inn WCAG-samsvar som eksplisitt leveranse — og noterer at det er et
 lovkrav, ikke en ekstravaganse.
 
-**Personvern for mindreårige.** Basen inneholder navn, fødselsdato, klubb og
-resultathistorikk for barn helt ned i tiårsalderen, publisert åpent. Det er
+**Personvern for mindreårige.** Resultatlistene som kommer inn har navn ned til
+syvårsalderen. Etter gjeldende regelverk kan 7–12 år lagres, men ikke vises for
+noen; offentlige lister starter ved 13 år. Det er
 GDPR-relevant på et helt annet nivå enn seniorstatistikk, og NIFs egne
 personvernbestemmelser kommer i tillegg. Vi foreslår konkret:
 

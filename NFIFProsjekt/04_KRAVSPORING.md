@@ -87,6 +87,6 @@ gjenstående er teknisk risikofylte; de er arbeidsmengde.
 | Tema | Begrunnelse |
 |---|---|
 | Universell utforming, WCAG 2.1 AA | Lovkrav for norske publikumsrettede nettsteder. §17 nevner bare skjermstørrelser. |
-| Særskilt vern av mindreåriges data | Databasen inneholder navn, fødselsdato, klubb og resultathistorikk for barn fra tiårsalderen, publisert åpent. GDPR og NIFs personvernbestemmelser gjelder begge. |
+| Særskilt vern av mindreåriges data | Resultatlistene som kommer inn har navn ned til syvårsalderen. Etter gjeldende regelverk kan 7–12 år lagres, men ikke vises. Offentlige lister starter ved 13 år. GDPR og NIFs personvernbestemmelser gjelder begge. |
 | Beredskap ved topplast | Trafikken topper under NM, Bislett Games og store mosjonsløp. Dimensjonering og SLA må hensynta dette. |
 | Exit og ikke-innelåsing | Standardteknologi og full overlevering. Reell forskjell mot en proprietær internasjonal plattform. |

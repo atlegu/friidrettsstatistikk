@@ -24,7 +24,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | 8 | Hvordan meldes underkjenning av stevner og enkeltresultater til plattformen? | 3.5 | Terminliste og lisensregister forutsettes tilgjengelig, og da klassifiseres alt maskinelt. Underkjenning i etterkant er det eneste som må inn utenfra — vi trenger å vite kanalen. |
 | 9 | Hva er kodeverket for ikke-ratifiserte resultater? Kravspekken sier «TBD». | 3.5 | Flagget kan bygges, men ikke fylles |
 | 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
-| 12 | Skal fødselsdato for mindreårige eksponeres offentlig, eller kun fødselsår? | 7.1 | Forbundsvedtak, ikke teknisk valg |
+| 12 | Bekreft at data for 7–12 år kan brukes i aggregert aktivitetsstatistikk når ingen enkeltutøver kan identifiseres | 7.1 | Forutsatt i tilbudet, og det analysen i 4.2 bygger på. Regelen om at 7–12 ikke skal vises er klar; aggregert bruk er ikke like eksplisitt. |
 | 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
 | 14 | Skal NFIF eie skykontoene selv? | 11 | Vi har ingen innvending, men det må avtales |
 | 15 | Bekreft løpende tilgang til terminlisten og lisensregisteret | 3.5, 13 | Forutsatt i tilbudet. Uten dem faller den maskinelle klassifiseringen tilbake til manuelt arbeid. |
