@@ -130,7 +130,20 @@ plass på del 1, fordi den er jobben. Del 2 beskriver vi som en kapasitet vi
 stiller til rådighet, ikke som en fast liste med sider. Del 3 står som et eget
 hovedkapittel, fordi det er der vi skiller oss fra enhver annen tilbyder.
 
-## 1.2 Tre spørsmål avgjør hvem som får oppgaven
+## 1.2 Fire anbefalinger ut over kravspesifikasjonen
+
+Invitasjonen ber leverandørene om å komme med egne forslag og anbefalinger til
+hvordan løsningen best kan utvikles. Vi har fire, og de er innarbeidet i
+tilbudet framfor å stå som et vedheng:
+
+| Anbefaling | Hvorfor | Hvor |
+|---|---|---|
+| **Universell utforming etter WCAG 2.1 AA** | Lovkrav for publikumsrettede norske nettsteder. §17 nevner bare skjermstørrelser. | 3.3 |
+| **Skillet mellom lagring og eksponering av barns data bygges i datamodellen** | Resultatlistene har navn ned til syvårsalderen. Skjuling i grensesnittet er ikke nok. | 7.1 |
+| **Regelsimulering før vedtak** | Konsekvensen av å endre et kvalifiseringskrav eller en klasseinndeling kan beregnes på forhånd i stedet for å observeres to år etter. | 2 |
+| **Analyse som del av grunnavtalen** | Aktivitetsdata i §12 blir først nyttige når noen leser dem. Vi legger to mesterskapspakker og en årsrapport inn i driftsprisen. | 4 |
+
+## 1.3 Tre spørsmål avgjør hvem som får oppgaven
 
 Bak kravspesifikasjonen ligger tre spørsmål som avgjør om en leverandør er
 riktig:
@@ -481,10 +494,15 @@ med forbehold om at motparten stiller med et dokumentert API. En leverandør
 som fastpriser fem ukjente integrasjoner, har ikke gjort jobben. Regningen
 kommer uansett, bare senere og som en tvist.
 
-**Om §14, fremtidig iSonen-arbeidsflyt:** Kravspekken beskriver en arbeidsflyt
-som ennå ikke finnes. Vi lover forberedt arkitektur og deltakelse i
-spesifikasjonsarbeidet, ikke en ferdig integrasjon mot noe som ikke er
-definert.
+**Om §14, iSonen-arbeidsflyten:** Vi merker oss at NFIF allerede arbeider med
+Buypass om integrasjoner mellom iSonen og konkurransesystemene OpenTrack og
+FriRes, og mot EQ Timing for løp utenfor bane. Det er en fordel for oss:
+plattformen skal ta imot enden av den dataflyten, ikke definere den.
+
+Vi ber derfor om å bli koblet på det arbeidet tidlig, og å få
+grensesnittspesifikasjonene etter hvert som de foreligger. Vi lover forberedt
+arkitektur og deltakelse i spesifikasjonsarbeidet. Ferdig integrasjon kan
+først fastprises når grensesnittene er dokumentert.
 
 ## 3.7 Datakvalitet: hvor vi står i dag
 
@@ -800,8 +818,13 @@ under mesterskapshelger, der responstid betyr noe annet enn i en vanlig uke.
 
 ## 8.1 Frem til 01.01.2027
 
-§24 krever en operativ løsning som dekker minst alle baneresultater innen
-01.01.2027. Under er det som gjenstår for å oppfylle det.
+Målsettingen er en operativ løsning for både bane og løp utenfor bane fra
+01.01.2027. Dekker første leveranse ikke løp utenfor bane, skal leverandøren
+beskrive en realistisk plan for neste fase.
+
+Vi er ærlige på at vi treffer den første halvdelen og ikke den andre: bane er i
+drift, løp utenfor bane må bygges. Planen for det står i kapittel 5. Under er
+det som gjenstår på banesiden.
 
 | Leveranse | Krav | Frist |
 |---|---|---|
@@ -1123,9 +1146,10 @@ ikke om å ta høyest mulig betalt for denne kontrakten.
 
 1. **Integrasjoner** (§13) fastprises ikke før grensesnittdokumentasjon
    foreligger fra motparten. Prises som opsjoner med timepott.
-2. **§14, fremtidig iSonen-arbeidsflyt**, beskriver en arbeidsflyt som ennå ikke
-   er definert. Vi lover forberedt arkitektur og deltakelse i
-   spesifikasjonsarbeidet, ikke ferdig integrasjon.
+2. **§14, iSonen-arbeidsflyten.** Arbeidet med Buypass, OpenTrack, FriRes og
+   EQ Timing pågår hos NFIF. Vi lover forberedt arkitektur og deltakelse i
+   spesifikasjonsarbeidet, og fastpriser integrasjonen når grensesnittene er
+   dokumentert.
 3. **Kretsstatistikk** (§10) forutsetter at NFIF leverer
    klubb-til-krets-mapping.
 4. **Kvalitetsnivå A/B/C** (§6) forutsetter løpende tilgang til terminlisten og
@@ -1233,7 +1257,7 @@ teknisk risiko.
 | §11 | Godkjennings- og statusinformasjon | BYGGES | Avhenger av §6 |
 | §12 | Aktivitets- og deltakerdata | BYGGES | Metodikk validert, produktmodul i fase 3 |
 | §13 | Integrasjoner, fem navngitte systemer | BYGGES | Opsjoner, forbehold om dokumentert API |
-| §14 | Fremtidig iSonen-arbeidsflyt | BYGGES | Forberedt arkitektur |
+| §14 | iSonen-arbeidsflyt | BYGGES | Forberedt arkitektur. Kobles på NFIFs pågående arbeid med Buypass. |
 | §15 | Historisk import 2013+ | I DRIFT | 1 701 902 resultater, fulldybde |
 | §15 | Alle-tiders-materiale før 2013 | I DRIFT | 220 732 resultater, 149 øvelser, tilbake til 1922 |
 | §15 | Fulldybde 2001–2012 | BYGGES | Fase 4, kartlegging først |
