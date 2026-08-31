@@ -63,7 +63,10 @@ Bak leveransen står tre navngitte personer med utfyllende kompetanse: doktorgra
 i anvendt økonometri kombinert med World Athletics-dommerkompetanse og
 styreerfaring fra alle nivåer i norsk friidrett, kvantitativ analyse og
 systemutvikling fra Princeton og Duke, og sport management fra University of
-Texas. Se kapittel 9.2. Det er svaret på §1: dette er ikke én ildsjel.
+Texas. To av de tre er olympiere. Se kapittel 9.2.
+
+Det er svaret på §1: dette er ikke én ildsjel. Og utøverperspektivet er ikke
+noe vi har hentet inn — det er noe vi har.
 
 ---
 
@@ -672,6 +675,8 @@ PhD-stipendiat i kvantitativ finans. Bachelor i Operations Research and
 Financial Engineering fra Princeton University, mastergrad i Economics and
 Computer Science fra Duke University. Gründer av Novaspeed.
 
+Aktiv utøver på høyt internasjonalt nivå, og olympier.
+
 Kombinasjonen av operasjonsanalyse, økonomi og informatikk er direkte relevant
 for de tyngste delene av leveransen: regelmotoren for kvalitetsnivå i §6,
 aktivitets- og deltakeranalysen i §12, og simuleringsverktøyet for
@@ -683,10 +688,28 @@ Bachelor i psykologi fra Princeton University, Master of Education i Sport
 Management fra University of Texas at Austin. Gründer og eier av Athlete
 Mindset Inc.
 
+Aktiv utøver på høyt internasjonalt nivå, og olympier.
+
 Bakgrunnen i sport management og utøverpsykologi er det leddet som knytter
 datagrunnlaget til brukerne: utøvere, trenere og klubber. En statistikkplattform
 som ikke forstår hvordan en utøver og en trener faktisk leser tall, blir en
 plattform for statistikere.
+
+### Utøverperspektivet er ikke tilført utenfra
+
+To av tre i teamet er olympiere. De er ikke konsulenter som har satt seg inn i
+hvordan en utøver bruker statistikk — de er selv i den gruppen plattformen skal
+tjene, med egne resultater i basen.
+
+Det har praktisk betydning for §17 og §9. Hva en utøver faktisk leter etter på
+sin egen profil, hvordan et kvalifiseringskrav oppleves i sesongen, hva som er
+irriterende når klubbskiftet ditt ikke vises riktig, og hva som er greit å ha
+offentlig og hva som ikke er det — det er spørsmål vi svarer på fra erfaring,
+ikke fra brukerintervjuer.
+
+Vi mener dette er en reell forskjell mot en leverandør som betjener et dusin
+forbund fra ett felles produkt. Norsk friidrett er ikke et marked for oss. Det
+er miljøet vi kommer fra.
 
 ### Hva teamet betyr for NFIF
 
@@ -697,12 +720,8 @@ plattform for statistikere.
 | Systemutvikling, regelmotor, modellering | Simen — OR&FE, informatikk |
 | Aktivitetsanalyse og dashbord (§12, §23) | Simen og Atle |
 | Brukerforståelse, utøver- og trenerperspektiv (§17) | Sondre — sport management, psykologi |
+| Utøverperspektivet innenfra | Simen og Sondre — begge olympiere, begge med egne resultater i basen |
 | Produkt- og selskapsledelse | Sondre — gründer og eier, Athlete Mindset Inc. |
-
-`‹AVKLARES›` Teamets egne idrettskarrierer er ikke omtalt over. Det er et
-bevisst valg som bør tas aktivt: for NFIF kan det være et sterkt argument at
-plattformen bygges av folk som selv har konkurrert på høyt nivå. Vurder om det
-skal med.
 
 ## 9.3 Innvendingen vi tar opp selv
 

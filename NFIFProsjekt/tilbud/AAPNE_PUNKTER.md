@@ -12,7 +12,6 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | 1 | **Pris** — hele kapittel 12 | 12 | Bør avklares mot NFIFs budsjettramme (Magnus Trosdahl) før tallene låses. Underlag: `../05_PRISMODELL.md`, `../03_GAP_OG_ESTIMAT.md`. |
 | 2 | **Kapasitet per person** — timer per uke frem til 01.01.2027 | 9.3 | Teamet er navngitt (9.2), men estimatet er 1 080–1 490 timer, altså halvannet til to årsverk. NFIF vil spørre hvor mye tid hver av de tre faktisk har ved siden av doktorgradsarbeid og annen virksomhet. Bedre å svare før spørsmålet stilles. |
 | 3 | **Selskapsopplysninger** — org.nr., etableringsdato, aksjekapital, styre, revisor | 9.1 | Standard tilbudsformalia |
-| 3b | **Idrettskarrierer i teamomtalen** — skal de med? | 9.2 | Ikke omtalt i utkastet. Kan være et sterkt argument at plattformen bygges av folk som selv har konkurrert på høyt nivå. Bør besluttes aktivt, ikke bli glemt. |
 | 4 | **Publiseringsstatus forskning** per 31.08.2026 | 4.3 | Oppgi kun det som faktisk er tilfelle — publisert, revidert, innsendt. En pyntet publikasjonsliste er den ene feilen som kan velte troverdigheten. |
 | 5 | **Referanseuttalelse** fra klubb, krets eller trener som bruker friidrett.live | 9.2 | Vi har ingen forbundsreferanser. En bruker som går god for oss veier tungt. |
 | 6 | **Responstider i supportavtalen** | 10 | Forslag ligger inne: samme virkedag for kritiske feil, to virkedager ellers |
