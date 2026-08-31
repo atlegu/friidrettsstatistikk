@@ -10,21 +10,34 @@ Historikken over hva som er gjort ligger i `scraper/OPERATIONS_LOG.md`.
 
 ## Pågår nå
 
-**Kontroll av gjenstående sesonger mot kilden.**
-Skript: `scraper/kjor_rest2.sh` (kjører i egen prosess, uavhengig av terminal).
+**Komplettering — de to siste hullene etter sesongkontrollen.**
+Skript: `scraper/kjor_komplettering.sh` (egen prosess, uavhengig av terminal).
 
-Rekkefølge: 2018 utendørs → 2016 → 2015 → 2014 → 2013, begge sesonger.
-Logger: `scraper/logs/verify_<modus>_<år>.log`, samlelogg `verify_rest_*.log`.
+1. **Markørradene.** 1 028 resultater fordelt på 322 stevner ble kastet ved
+   hver kjøring fordi kilden henger markører på selve resultatverdien
+   («20.37.52mx», «4.43 L», «7.83A», «24.56+») og databasetriggeren caster
+   `performance` til numeric. Parseren skiller nå tall fra markør og lagrer
+   markøren ordrett i `results.source_marker`. Stevnene er hentet ut av
+   loggene til `scraper/markorlister/`, og bare de hentes på nytt — vi teller
+   ikke hele sesonger mot kilden om igjen.
+2. **2018 utendørs.** Sesongen ble aldri kontrollert. Alle tre forsøkene døde
+   på første kall til Supabase mens DNS var nede, fordi `vent_pa_nett()` sto
+   *etter* `load_events()`. Rekkefølgen er rettet, og sesongen kjøres fullt ut.
 
 Sjekk status:
 
 ```bash
 pgrep -f update_results.py && echo kjører
-tail -20 scraper/logs/verify_outdoor_2018.log | grep -v HTTP
+tail -30 scraper/logs/komplettering_*.log
 ```
 
 Kan trygt avbrytes og startes igjen — importen hopper over resultater som
 allerede finnes.
+
+**Markørene er bevisst ikke tolket.** Kildesiden har ingen tegnforklaring.
+`mx` er etter alt å dømme blandet heat, jf. kravspekkens §7, men det er ikke
+bekreftet, og en gjetning i et datafelt er verre enn en ærlig råverdi. Manuell
+tidtaking (` M`) tolkes derimot, fordi det mønsteret er verifisert.
 
 ---
 
@@ -47,8 +60,7 @@ basen har vokst fra 1 418 058 til over 1 820 000 resultater.
 
 | Sak | Omfang | Merknad |
 |---|---|---|
-| Sesongene 2013–2016 og 2018 ute | pågår | se over |
-| `mx`-suffiks feiler ved innsetting | ~700 rader | «20.37.52mx» = mixed heat, kravspekk §7. Samme mønster som ` M` for manuell tidtaking: kilden gir informasjon vi kaster. Fiks i `parse_result_wind()`. |
+| Markørrader + 2018 utendørs | pågår | se over |
 | Sesonger før 2013 | ikke vurdert | Dekningen er ujevn; må vurderes separat |
 | 121 utøvere med fødselsår som strider mot egne resultater | krever skjønn | `scraper/backups/fix_ugyldig_alder_20260821_171844_til_gjennomgang.csv` |
 | 1 777 NM-medaljer fra 1970+ uten `athlete_id` | krever navnearbeid | 2 245 fra før 1970 er forventet ukoblet |
