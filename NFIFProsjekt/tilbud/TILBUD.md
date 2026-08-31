@@ -292,17 +292,32 @@ er en ny liste, et nytt uttrekk eller en ny sammenstilling dager, ikke måneder.
 
 Vi vil derfor ikke låse presentasjonen til en kravliste i en kontrakt. Vi
 foreslår i stedet en fast utviklingspott NFIF disponerer, slik at forbundet kan
-bestille det som viser seg å være nyttig i bruk. Konkrete eksempler på hva vi
-gjerne leverer:
+bestille det som viser seg å være nyttig i bruk.
 
-- Egne statistikksider for klubber som ønsker det, med klubbens egne lister,
-  rekorder og utøveroversikter
-- Krets- og regionsoversikter tilpasset kretsenes eget utviklingsarbeid
-- Uttrekk til terminlistearbeid, uttak og klasseinndeling
-- Visninger bygget på ønsker fra trenere, statistikkmiljøet og media
+### Klubbrapporter — et eksempel på hva dette betyr i praksis
 
-Dette er del 2 av oppgaven slik den er beskrevet i kapittel 1.1, og det er en
-del vi mener bør være åpen framfor spesifisert i detalj på forhånd.
+Vi har allerede levert skreddersydde rapporter til fire klubber, bygget direkte
+på basen:
+
+| Klubb | Utøvere | Resultatrader | Klubbens eget ønske |
+|---|---:|---:|---|
+| SK Vidar | 211 | 1 331 | Sortert på alder, yngste først, med markering av utøvere som har skiftet klubb |
+| IK Tjalve | 140 | 1 020 | Sortert på stipendgruppe A–D, øvrige etter alder |
+| BUL | 166 | 1 241 | Alle utøvere samlet, yngste først |
+| Fana IL | 53 | 304 | Seksten navngitte utøvere først, i klubbens egen rekkefølge |
+
+Hver rapport viser antall starter og de beste resultatene per øvelse for
+2024, 2025 og 2026, per utøver, og leveres som nettside, PDF og CSV.
+
+Det interessante er ikke rapportene i seg selv, men **hva de kostet**. De deler
+felles maskineri; en ny klubb er rundt tjue linjer konfigurasjon. Klubbene fikk
+ulik sortering, ulike utvalg og ulik merking fordi de ba om ulike ting — ikke
+fordi det ble bygget fire ganger.
+
+Slik ser del 2 av oppgaven ut når del 1 er gjort skikkelig: en klubb som ønsker
+noe eget, får det på dager. Det samme gjelder krets- og regionsoversikter,
+uttrekk til terminliste- og uttaksarbeid, og visninger bestilt av trenere,
+statistikkmiljøet eller media.
 
 ## 3.4 API og eksport
 
