@@ -920,7 +920,7 @@ den innvendingen er berettiget, og at den fortjener et svar før den stilles.
 | Innvending | Vårt svar |
 |---|---|
 | Nystartet selskap uten historikk | Selskapet er nytt. Arbeidet er det ikke. Fagfellevurdert forskning på norske friidrettsdata går tilbake til 2015 (kapittel 4.3), og plattformen har to års utvikling og 1,9 millioner produksjonsdata bak seg. |
-| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Estimatet i kapittel 8 tilsvarer halvannet til to årsverk frem til 01.01.2027, og bemanningen er dimensjonert for det. `‹AVKLARES — bekreft hver enkelts kapasitet i timer per uke i perioden›` |
+| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. `‹AVKLARES — bekreft hver enkelts kapasitet i timer per uke i perioden›` |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
 | Er dette et sideprosjekt | Selskapet har flere ben å stå på, og er dermed ikke økonomisk avhengig av én kontrakt. Statistikkplattformen er samtidig definert som strategisk kjerneprodukt, ikke som et enkeltoppdrag. |
