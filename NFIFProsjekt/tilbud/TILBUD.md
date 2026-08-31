@@ -127,30 +127,20 @@ regelendringen fra 2023. Sidene `/mesterskap` er i drift.
 
 ## 2.2 Kontrollen vi kjørte
 
-For å teste datagrunnlaget kjørte vi vår base mot regnearket for 100 meter
-kvinner. Krav 12,80, kvalifiseringsperiode 01.01.2025–09.07.2026, vindgrense
-2,0 m/s, uten håndtidtaking.
+Vi testet basen mot regnearket for 100 meter kvinner — krav 12,80,
+kvalifiseringsperiode 01.01.2025–09.07.2026, vindgrense 2,0 m/s, uten
+håndtidtaking. Regnearket har 101 utøvere. Vår base finner 97. **89 navn er de
+samme.**
 
-| | Antall |
-|---|---:|
-| Utøvere i regnearket | 101 |
-| Utøvere i vår base som klarer kravet, etter 16-årsgrensen | 97 |
-| **Navn som matcher på begge lister** | **89** |
+Det er en ekstern validering mot en liste sammenstilt manuelt og uavhengig av
+oss. Avvikene skyldes i hovedsak ikke feil i noen av listene, men nettopp det
+kravspesifikasjonen ber plattformen håndtere: navn skrevet på to måter,
+mellomnavn med eller uten, en utøver som har byttet navn, en utenlandsk utøver i
+norsk klubb, ulik anvendelse av aldersgrensen. §9 og §7 i praksis.
 
-Åttini av rundt hundre navn stemmer overens med en liste som er sammenstilt
-manuelt, uavhengig av oss, fra andre kilder. Det er en ekstern validering av
-datakvalitet som er verdt mer enn en påstand vi kan skrive selv.
-
-Avvikene er like opplysende. De skyldes i all hovedsak ikke feil i noen av
-listene, men nettopp de forholdene kravspesifikasjonen ber plattformen håndtere:
-samme utøver skrevet på to måter, mellomnavn med eller uten, en utøver som har
-byttet navn, en utenlandsk utøver i norsk klubb med egen NM-status, og ulik
-anvendelse av aldersgrensen. Det er §9 og §7 i praksis.
-
-Poenget er at dette er en **maskinell oppgave som i dag gjøres manuelt.** Én
-øvelse av 56 var nok til å vise det. Kjørt på alle 56, hver gang det kommer nye
-resultater, blir det en løpende kvalitetskontroll i stedet for en årlig
-dugnad — og det er hele forskjellen mellom et regneark og en plattform.
+Poenget er at dette er en **maskinell oppgave som i dag gjøres manuelt.** Kjørt
+på alle 56 øvelser, hver gang det kommer nye resultater, blir det løpende
+kvalitetskontroll i stedet for årlig dugnad.
 
 ## 2.3 Arbeidet bak tallene
 
