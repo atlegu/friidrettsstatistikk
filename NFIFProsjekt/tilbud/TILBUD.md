@@ -301,10 +301,10 @@ på basen:
 
 | Klubb | Utøvere | Resultatrader | Klubbens eget ønske |
 |---|---:|---:|---|
-| SK Vidar | 211 | 1 331 | Sortert på alder, yngste først, med markering av utøvere som har skiftet klubb |
-| IK Tjalve | 140 | 1 020 | Sortert på stipendgruppe A–D, øvrige etter alder |
-| BUL | 166 | 1 241 | Alle utøvere samlet, yngste først |
-| Fana IL | 53 | 304 | Seksten navngitte utøvere først, i klubbens egen rekkefølge |
+| SK Vidar | 222 | 1 412 | Sortert på alder, yngste først, med markering av utøvere som har skiftet klubb |
+| IK Tjalve | 141 | 1 066 | Sortert på stipendgruppe A–D, øvrige etter alder |
+| BUL | 178 | 1 364 | Alle utøvere samlet, yngste først |
+| Fana IL | 55 | 310 | Seksten navngitte utøvere først, i klubbens egen rekkefølge |
 
 Hver rapport viser antall starter og de beste resultatene per øvelse for
 2024, 2025 og 2026, per utøver, og leveres som nettside, PDF og CSV.

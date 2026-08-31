@@ -8,6 +8,18 @@
  "min_alder": 15,
  "antall_resultater": 3,
  "utovere": {
+  "e443dfd2-a282-455e-99ab-38907ebdeee7": {
+   "navn": "Thea Emilie Turøy",
+   "fodt": 2011,
+   "fodt_dato": "2011-02-15",
+   "kjonn": "F"
+  },
+  "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0": {
+   "navn": "Eirik Greibrokk Dolve",
+   "fodt": 1995,
+   "fodt_dato": "1995-05-05",
+   "kjonn": "M"
+  },
   "5b21ef7a-4d66-489c-bacf-2090778d4145": {
    "navn": "Embla Adele Østreim Øina",
    "fodt": 2009,
@@ -56,6 +68,18 @@
    "fodt_dato": "2009-10-19",
    "kjonn": "M"
   },
+  "fb09b5db-85c2-4834-afe6-176209090454": {
+   "navn": "Nikolai Gald",
+   "fodt": 2011,
+   "fodt_dato": "2011-05-13",
+   "kjonn": "M"
+  },
+  "71d790dd-50ca-4621-8146-011eb301703c": {
+   "navn": "Sofie Helén Løvendahl Strøm",
+   "fodt": 2007,
+   "fodt_dato": "2007-07-01",
+   "kjonn": "F"
+  },
   "07ab2345-e527-427b-b1ce-2e7ef919120e": {
    "navn": "Stina Marie Eriksen",
    "fodt": 2009,
@@ -74,10 +98,16 @@
    "fodt_dato": "2001-08-21",
    "kjonn": "M"
   },
-  "e443dfd2-a282-455e-99ab-38907ebdeee7": {
-   "navn": "Thea Emilie Turøy",
-   "fodt": 2011,
-   "fodt_dato": "2011-02-15",
+  "80932776-76bd-4317-8543-c1cd23bd8630": {
+   "navn": "Johannes Hoddevik Vaage",
+   "fodt": 2009,
+   "fodt_dato": "2009-11-20",
+   "kjonn": "M"
+  },
+  "5c3d30da-0aed-4131-8681-38c6f401c20b": {
+   "navn": "Hedvig Kallåk",
+   "fodt": 2004,
+   "fodt_dato": "2004-11-08",
    "kjonn": "F"
   },
   "cb55c08e-395b-4df0-93d4-1ff167d7213e": {
@@ -104,11 +134,11 @@
    "fodt_dato": "2011-07-13",
    "kjonn": "F"
   },
-  "71d790dd-50ca-4621-8146-011eb301703c": {
-   "navn": "Sofie Helén Løvendahl Strøm",
-   "fodt": 2007,
-   "fodt_dato": "2007-07-01",
-   "kjonn": "F"
+  "e1d59239-97eb-4804-9e6f-a49236be1c3a": {
+   "navn": "Philip Andreas Kubon",
+   "fodt": 2004,
+   "fodt_dato": "2004-06-12",
+   "kjonn": "M"
   },
   "5cc492b3-3376-46ee-aea9-a2a1e94af3b2": {
    "navn": "Andreas Dixon",
@@ -140,18 +170,6 @@
    "fodt_dato": "2009-06-21",
    "kjonn": "M"
   },
-  "80932776-76bd-4317-8543-c1cd23bd8630": {
-   "navn": "Johannes Hoddevik Vaage",
-   "fodt": 2009,
-   "fodt_dato": "2009-11-20",
-   "kjonn": "M"
-  },
-  "5c3d30da-0aed-4131-8681-38c6f401c20b": {
-   "navn": "Hedvig Kallåk",
-   "fodt": 2004,
-   "fodt_dato": "2004-11-08",
-   "kjonn": "F"
-  },
   "2eee8ccc-bedf-450e-86a8-2601505a73f7": {
    "navn": "Vetle Raa Ellingsen",
    "fodt": 2000,
@@ -162,12 +180,6 @@
    "navn": "Andreas F. T. Gjesdal",
    "fodt": 1995,
    "fodt_dato": "1995-11-22",
-   "kjonn": "M"
-  },
-  "fb09b5db-85c2-4834-afe6-176209090454": {
-   "navn": "Nikolai Gald",
-   "fodt": 2011,
-   "fodt_dato": "2011-05-13",
    "kjonn": "M"
   },
   "8da4230a-105b-4cc2-b9fe-2476acee71e9": {
@@ -182,17 +194,23 @@
    "fodt_dato": "2011-06-23",
    "kjonn": "F"
   },
+  "05a10460-3071-40ad-8c87-7043ddb2a761": {
+   "navn": "Kjell Augustin Kubon",
+   "fodt": 2006,
+   "fodt_dato": "2006-08-16",
+   "kjonn": "M"
+  },
   "ff550c2c-ba7c-49ad-8f74-b8371071ca01": {
    "navn": "Martine Vik",
    "fodt": 2007,
    "fodt_dato": "2007-09-30",
    "kjonn": "F"
   },
-  "e1d59239-97eb-4804-9e6f-a49236be1c3a": {
-   "navn": "Philip Andreas Kubon",
-   "fodt": 2004,
-   "fodt_dato": "2004-06-12",
-   "kjonn": "M"
+  "88f4319b-1ec2-4594-bd5a-a8372887be92": {
+   "navn": "Ulrikke Nygård Strandheim",
+   "fodt": 2009,
+   "fodt_dato": "2009-12-07",
+   "kjonn": "F"
   },
   "71ab1324-c2a7-4d46-b7f3-1528435a33f1": {
    "navn": "Pål Haugen Lillefosse",
@@ -224,23 +242,17 @@
    "fodt_dato": "2005-04-18",
    "kjonn": "M"
   },
+  "9a7f88c6-ef57-49e5-8788-4adab024d1fd": {
+   "navn": "Johannes Kifle Assefa Aalen",
+   "fodt": 2010,
+   "fodt_dato": "2010-03-07",
+   "kjonn": "M"
+  },
   "9faf6265-d714-4685-b671-4945cc835750": {
    "navn": "Niklas Liland",
    "fodt": 2004,
    "fodt_dato": "2004-11-04",
    "kjonn": "M"
-  },
-  "05a10460-3071-40ad-8c87-7043ddb2a761": {
-   "navn": "Kjell Augustin Kubon",
-   "fodt": 2006,
-   "fodt_dato": "2006-08-16",
-   "kjonn": "M"
-  },
-  "b93320c9-fb08-49c4-9068-5240bf5efcc0": {
-   "navn": "Angelica Johanne Karlsen",
-   "fodt": 2003,
-   "fodt_dato": "2003-11-20",
-   "kjonn": "F"
   },
   "7a16b167-867f-4a52-a775-3a866f981dd8": {
    "navn": "Philip Moen",
@@ -248,22 +260,28 @@
    "fodt_dato": "2010-04-20",
    "kjonn": "M"
   },
-  "88f4319b-1ec2-4594-bd5a-a8372887be92": {
-   "navn": "Ulrikke Nygård Strandheim",
-   "fodt": 2009,
-   "fodt_dato": "2009-12-07",
+  "a93719c0-59d5-4d11-9c62-8fbb11303a41": {
+   "navn": "Sebastian Røed Hovland",
+   "fodt": 2004,
+   "fodt_dato": "2004-11-27",
+   "kjonn": "M"
+  },
+  "dde1f2a8-1884-42fa-8b07-2dc4455b0934": {
+   "navn": "Eli Anne Dvergsdal",
+   "fodt": 1991,
+   "fodt_dato": "1991-11-19",
+   "kjonn": "F"
+  },
+  "b93320c9-fb08-49c4-9068-5240bf5efcc0": {
+   "navn": "Angelica Johanne Karlsen",
+   "fodt": 2003,
+   "fodt_dato": "2003-11-20",
    "kjonn": "F"
   },
   "55e08340-0d1e-4339-9611-aa51080f12fe": {
    "navn": "Helene Martinsen",
    "fodt": 2003,
    "fodt_dato": "2003-01-18",
-   "kjonn": "F"
-  },
-  "dde1f2a8-1884-42fa-8b07-2dc4455b0934": {
-   "navn": "Eli Anne Dvergsdal",
-   "fodt": 1991,
-   "fodt_dato": "1991-11-19",
    "kjonn": "F"
   },
   "b476c073-94c4-4f65-b7b0-15a5c1e2ee18": {
@@ -277,12 +295,6 @@
    "fodt": 2011,
    "fodt_dato": null,
    "kjonn": "F"
-  },
-  "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0": {
-   "navn": "Eirik Greibrokk Dolve",
-   "fodt": 1995,
-   "fodt_dato": "1995-05-05",
-   "kjonn": "M"
   },
   "c7608a0b-4ebb-4717-8df0-a7fa48f9601b": {
    "navn": "Frida Sætrum",
@@ -302,22 +314,10 @@
    "fodt_dato": "2009-08-27",
    "kjonn": "F"
   },
-  "9a7f88c6-ef57-49e5-8788-4adab024d1fd": {
-   "navn": "Johannes Kifle Assefa Aalen",
-   "fodt": 2010,
-   "fodt_dato": "2010-03-07",
-   "kjonn": "M"
-  },
   "69cb5b56-3edb-4074-83e3-ac442a5a4c83": {
    "navn": "Matias Oppedal",
    "fodt": 1990,
    "fodt_dato": "1990-02-19",
-   "kjonn": "M"
-  },
-  "a93719c0-59d5-4d11-9c62-8fbb11303a41": {
-   "navn": "Sebastian Røed Hovland",
-   "fodt": 2004,
-   "fodt_dato": "2004-11-27",
    "kjonn": "M"
   },
   "17cac1ae-0082-4a94-a6c2-3b7db24bf614": {
@@ -325,16 +325,49 @@
    "fodt": 1969,
    "fodt_dato": "1969-11-17",
    "kjonn": "M"
+  },
+  "2220824c-2c7a-417a-aec8-e5dfa0213c9c": {
+   "navn": "Pär Wiger",
+   "fodt": 1972,
+   "fodt_dato": null,
+   "kjonn": "M"
+  },
+  "1d86601b-688e-4de0-962c-041b045327f1": {
+   "navn": "Hagna Klekner",
+   "fodt": 1999,
+   "fodt_dato": null,
+   "kjonn": "F"
   }
  },
  "rader": [
+  {
+   "aid": "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0",
+   "ar": 2025,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.80",
+     "dato": "2025-02-21",
+     "vind": null
+    },
+    {
+     "perf": "4.80",
+     "dato": "2025-02-23",
+     "vind": null
+    }
+   ]
+  },
   {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2024,
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 6,
+   "starter": 12,
    "annen_klubb": null,
    "resultater": [
     {
@@ -343,13 +376,13 @@
      "vind": null
     },
     {
-     "perf": "1.53",
-     "dato": "2024-12-01",
+     "perf": "1.55",
+     "dato": "2024-05-31",
      "vind": null
     },
     {
-     "perf": "1.51",
-     "dato": "2024-03-10",
+     "perf": "1.53",
+     "dato": "2024-12-01",
      "vind": null
     }
    ]
@@ -360,7 +393,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 12,
+   "starter": 21,
    "annen_klubb": null,
    "resultater": [
     {
@@ -369,13 +402,13 @@
      "vind": null
     },
     {
-     "perf": "1.98",
-     "dato": "2024-02-18",
+     "perf": "2.01",
+     "dato": "2024-06-22",
      "vind": null
     },
     {
-     "perf": "1.97",
-     "dato": "2024-06-29",
+     "perf": "1.98",
+     "dato": "2024-02-18",
      "vind": null
     }
    ]
@@ -386,9 +419,14 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 19,
+   "starter": 28,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "4.55",
+     "dato": "2025-02-14",
+     "vind": null
+    },
     {
      "perf": "4.55",
      "dato": "2025-02-15",
@@ -397,11 +435,6 @@
     {
      "perf": "4.53",
      "dato": "2025-06-03",
-     "vind": null
-    },
-    {
-     "perf": "4.50",
-     "dato": "2025-02-28",
      "vind": null
     }
    ]
@@ -412,7 +445,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 5,
+   "starter": 9,
    "annen_klubb": null,
    "resultater": [
     {
@@ -421,13 +454,13 @@
      "vind": null
     },
     {
-     "perf": "4.30",
-     "dato": "2024-01-27",
+     "perf": "4.51",
+     "dato": "2024-05-10",
      "vind": null
     },
     {
-     "perf": "4.25",
-     "dato": "2024-02-18",
+     "perf": "4.30",
+     "dato": "2024-01-27",
      "vind": null
     }
    ]
@@ -438,7 +471,7 @@
    "ovelse": "Kule 3,0kg",
    "rt": "distance",
    "so": 202,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -447,14 +480,40 @@
      "vind": null
     },
     {
-     "perf": "9.71",
-     "dato": "2025-05-31",
+     "perf": "9.77",
+     "dato": "2025-05-09",
      "vind": null
     },
     {
-     "perf": "9.43",
-     "dato": "2025-05-24",
+     "perf": "9.71",
+     "dato": "2025-05-31",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
+   "ar": 2025,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 26,
+   "annen_klubb": "Norna-Salhus IL",
+   "resultater": [
+    {
+     "perf": "12.08",
+     "dato": "2025-07-27",
+     "vind": 2.4
+    },
+    {
+     "perf": "12.08",
+     "dato": "2025-07-26",
+     "vind": 2.4
+    },
+    {
+     "perf": "12.03",
+     "dato": "2025-09-05",
+     "vind": 0.9
     }
    ]
   },
@@ -464,9 +523,14 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "9.07",
+     "dato": "2025-01-18",
+     "vind": null
+    },
     {
      "perf": "9.07",
      "dato": "2025-01-19",
@@ -475,6 +539,58 @@
     {
      "perf": "9.17",
      "dato": "2025-02-01",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "090c392f-bd80-4685-bade-50d02314ccd8",
+   "ar": 2025,
+   "ovelse": "Høyde",
+   "rt": "height",
+   "so": 50,
+   "starter": 26,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "2.00",
+     "dato": "2025-06-26",
+     "vind": null
+    },
+    {
+     "perf": "2.00",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "2.00",
+     "dato": "2025-06-28",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.20",
+     "dato": "2025-01-18",
+     "vind": null
+    },
+    {
+     "perf": "8.20",
+     "dato": "2025-01-19",
+     "vind": null
+    },
+    {
+     "perf": "8.21",
+     "dato": "2025-02-15",
      "vind": null
     }
    ]
@@ -506,12 +622,17 @@
    "ovelse": "200 meter hekk (76,2cm)",
    "rt": "time",
    "so": 352,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "27.71",
      "dato": "2024-09-14",
+     "vind": -1.4
+    },
+    {
+     "perf": "27.71",
+     "dato": "2024-09-13",
      "vind": -1.4
     }
    ]
@@ -522,12 +643,17 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "7.78",
      "dato": "2025-02-15",
+     "vind": null
+    },
+    {
+     "perf": "7.78",
+     "dato": "2025-02-14",
      "vind": null
     },
     {
@@ -538,12 +664,38 @@
    ]
   },
   {
+   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "ar": 2024,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 20,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "10.12",
+     "dato": "2024-05-12",
+     "vind": 3.2
+    },
+    {
+     "perf": "10.12",
+     "dato": "2024-05-10",
+     "vind": 3.2
+    },
+    {
+     "perf": "10.02",
+     "dato": "2024-02-09",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "0c92f5c8-a962-4ba0-886a-949fbb4d6cc9",
    "ar": 2024,
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 19,
+   "starter": 28,
    "annen_klubb": null,
    "resultater": [
     {
@@ -552,13 +704,13 @@
      "vind": null
     },
     {
-     "perf": "4.40",
-     "dato": "2024-01-21",
+     "perf": "4.45",
+     "dato": "2024-05-22",
      "vind": null
     },
     {
      "perf": "4.40",
-     "dato": "2024-06-08",
+     "dato": "2024-01-21",
      "vind": null
     }
    ]
@@ -569,7 +721,7 @@
    "ovelse": "Spyd 500gram",
    "rt": "distance",
    "so": 232,
-   "starter": 6,
+   "starter": 11,
    "annen_klubb": null,
    "resultater": [
     {
@@ -578,13 +730,13 @@
      "vind": null
     },
     {
-     "perf": "27.42",
-     "dato": "2024-07-03",
+     "perf": "27.90",
+     "dato": "2024-08-24",
      "vind": null
     },
     {
-     "perf": "26.54",
-     "dato": "2024-06-23",
+     "perf": "27.42",
+     "dato": "2024-07-03",
      "vind": null
     }
    ]
@@ -595,7 +747,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 9,
+   "starter": 16,
    "annen_klubb": null,
    "resultater": [
     {
@@ -604,13 +756,13 @@
      "vind": null
     },
     {
-     "perf": "1.56",
-     "dato": "2024-09-15",
+     "perf": "1.59",
+     "dato": "2024-08-30",
      "vind": null
     },
     {
      "perf": "1.56",
-     "dato": "2024-06-18",
+     "dato": "2024-09-15",
      "vind": null
     }
    ]
@@ -621,7 +773,7 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 7,
+   "starter": 14,
    "annen_klubb": null,
    "resultater": [
     {
@@ -630,14 +782,40 @@
      "vind": 1.5
     },
     {
-     "perf": "15.19",
-     "dato": "2025-02-16",
-     "vind": null
+     "perf": "15.22",
+     "dato": "2025-06-21",
+     "vind": 1.5
     },
     {
-     "perf": "15.17",
-     "dato": "2025-08-03",
-     "vind": 0.9
+     "perf": "15.19",
+     "dato": "2025-02-14",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "ar": 2025,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
+   "starter": 41,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "6.91",
+     "dato": "2025-07-26",
+     "vind": -0.7
+    },
+    {
+     "perf": "6.91",
+     "dato": "2025-07-26",
+     "vind": -0.7
+    },
+    {
+     "perf": "6.89",
+     "dato": "2025-06-13",
+     "vind": 0.8
     }
    ]
   },
@@ -663,14 +841,97 @@
    ]
   },
   {
+   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 4,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.25",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "8.25",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "8.38",
+     "dato": "2025-01-19",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
+   "ar": 2024,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 16,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "3.10",
+     "dato": "2024-12-15",
+     "vind": null
+    },
+    {
+     "perf": "3.04",
+     "dato": "2024-11-30",
+     "vind": null
+    },
+    {
+     "perf": "3.04",
+     "dato": "2024-11-30",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5d1931ee-db67-41a0-846b-32fe69424061",
+   "ar": 2024,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "14.28",
+     "dato": "2024-08-03",
+     "vind": 2.5
+    },
+    {
+     "perf": "14.19",
+     "dato": "2024-08-03",
+     "vind": 1.3
+    },
+    {
+     "perf": "13.86",
+     "dato": "2024-08-30",
+     "vind": 0.7
+    }
+   ]
+  },
+  {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2025,
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "12.86",
+     "dato": "2025-06-13",
+     "vind": 0.9
+    },
     {
      "perf": "12.86",
      "dato": "2025-06-15",
@@ -685,43 +946,100 @@
   },
   {
    "aid": "5c3d30da-0aed-4131-8681-38c6f401c20b",
+   "ar": 2025,
+   "ovelse": "Høyde",
+   "rt": "height",
+   "so": 50,
+   "starter": 20,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "1.75",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "1.75",
+     "dato": "2025-02-09",
+     "vind": null
+    },
+    {
+     "perf": "1.75",
+     "dato": "2025-02-09",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.30",
+     "dato": "2024-11-30",
+     "vind": null
+    },
+    {
+     "perf": "8.30",
+     "dato": "2024-11-30",
+     "vind": null
+    },
+    {
+     "perf": "8.41",
+     "dato": "2024-05-14",
+     "vind": 1.5
+    }
+   ]
+  },
+  {
+   "aid": "07ab2345-e527-427b-b1ce-2e7ef919120e",
+   "ar": 2025,
+   "ovelse": "Spyd 500gram",
+   "rt": "distance",
+   "so": 232,
+   "starter": 5,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "27.72",
+     "dato": "2025-07-26",
+     "vind": null
+    },
+    {
+     "perf": "25.68",
+     "dato": "2025-09-05",
+     "vind": null
+    },
+    {
+     "perf": "25.68",
+     "dato": "2025-09-05",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5c3d30da-0aed-4131-8681-38c6f401c20b",
    "ar": 2024,
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": "IL Tyrving",
    "resultater": [
     {
      "perf": "1.72",
      "dato": "2024-01-13",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
-   "ar": 2025,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 20,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "6.91",
-     "dato": "2025-07-26",
-     "vind": -0.7
     },
     {
-     "perf": "6.89",
-     "dato": "2025-06-14",
-     "vind": 0.8
-    },
-    {
-     "perf": "6.81",
-     "dato": "2025-06-01",
-     "vind": 3.4
+     "perf": "1.72",
+     "dato": "2024-01-12",
+     "vind": null
     }
    ]
   },
@@ -731,7 +1049,7 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 6,
+   "starter": 12,
    "annen_klubb": null,
    "resultater": [
     {
@@ -740,14 +1058,14 @@
      "vind": 1.0
     },
     {
+     "perf": "26.29",
+     "dato": "2024-06-22",
+     "vind": 1.0
+    },
+    {
      "perf": "26.38",
      "dato": "2024-05-31",
      "vind": 1.6
-    },
-    {
-     "perf": "26.65",
-     "dato": "2024-12-01",
-     "vind": null
     }
    ]
   },
@@ -757,12 +1075,17 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "10.15",
      "dato": "2025-02-16",
+     "vind": null
+    },
+    {
+     "perf": "10.15",
+     "dato": "2025-02-14",
      "vind": null
     },
     {
@@ -778,9 +1101,14 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 19,
+   "starter": 35,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "4.77",
+     "dato": "2024-06-27",
+     "vind": null
+    },
     {
      "perf": "4.77",
      "dato": "2024-06-28",
@@ -789,11 +1117,6 @@
     {
      "perf": "4.65",
      "dato": "2024-06-15",
-     "vind": null
-    },
-    {
-     "perf": "4.65",
-     "dato": "2024-02-18",
      "vind": null
     }
    ]
@@ -804,7 +1127,7 @@
    "ovelse": "60 meter hekk (91,4cm)",
    "rt": "time",
    "so": 315,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
     {
@@ -813,13 +1136,13 @@
      "vind": null
     },
     {
-     "perf": "8.82",
-     "dato": "2024-02-11",
+     "perf": "8.81",
+     "dato": "2024-03-08",
      "vind": null
     },
     {
-     "perf": "8.88",
-     "dato": "2024-03-08",
+     "perf": "8.82",
+     "dato": "2024-02-11",
      "vind": null
     }
    ]
@@ -830,12 +1153,17 @@
    "ovelse": "300 meter",
    "rt": "time",
    "so": 35,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "41.19",
      "dato": "2024-07-07",
+     "vind": null
+    },
+    {
+     "perf": "41.19",
+     "dato": "2024-07-05",
      "vind": null
     }
    ]
@@ -872,7 +1200,7 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 6,
+   "starter": 7,
    "annen_klubb": null,
    "resultater": [
     {
@@ -898,9 +1226,14 @@
    "ovelse": "60 meter hekk (76,2cm)",
    "rt": "time",
    "so": 313,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "9.26",
+     "dato": "2025-01-31",
+     "vind": null
+    },
     {
      "perf": "9.26",
      "dato": "2025-01-31",
@@ -910,10 +1243,31 @@
      "perf": "9.29",
      "dato": "2025-01-31",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "e1d59239-97eb-4804-9e6f-a49236be1c3a",
+   "ar": 2026,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.93",
+     "dato": "2026-06-05",
+     "vind": null
     },
     {
-     "perf": "9.34",
-     "dato": "2025-01-18",
+     "perf": "4.90",
+     "dato": "2026-04-01",
+     "vind": null
+    },
+    {
+     "perf": "4.90",
+     "dato": "2026-04-16",
      "vind": null
     }
    ]
@@ -924,9 +1278,14 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "1.40",
+     "dato": "2024-06-18",
+     "vind": null
+    },
     {
      "perf": "1.40",
      "dato": "2024-06-18",
@@ -940,7 +1299,7 @@
    "ovelse": "400 meter hekk (91,4cm)",
    "rt": "time",
    "so": 373,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
     {
@@ -949,13 +1308,13 @@
      "vind": null
     },
     {
-     "perf": "56.59",
-     "dato": "2025-08-02",
+     "perf": "55.42",
+     "dato": "2025-07-06",
      "vind": null
     },
     {
-     "perf": "58.30",
-     "dato": "2025-06-13",
+     "perf": "56.59",
+     "dato": "2025-08-02",
      "vind": null
     }
    ]
@@ -982,14 +1341,45 @@
    ]
   },
   {
+   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
+   "ar": 2024,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 14,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "12.58",
+     "dato": "2024-08-30",
+     "vind": 3.4
+    },
+    {
+     "perf": "12.58",
+     "dato": "2024-08-30",
+     "vind": 3.4
+    },
+    {
+     "perf": "12.41",
+     "dato": "2024-08-30",
+     "vind": 0.5
+    }
+   ]
+  },
+  {
    "aid": "50779c87-5161-4dd2-94c6-8fa2bd2caf08",
    "ar": 2024,
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 8,
+   "starter": 15,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "4.40",
+     "dato": "2024-05-14",
+     "vind": null
+    },
     {
      "perf": "4.40",
      "dato": "2024-05-14",
@@ -999,11 +1389,79 @@
      "perf": "4.35",
      "dato": "2024-08-17",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "e1d59239-97eb-4804-9e6f-a49236be1c3a",
+   "ar": 2024,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 36,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "5.30",
+     "dato": "2024-03-08",
+     "vind": null
     },
     {
-     "perf": "4.31",
-     "dato": "2024-08-31",
+     "perf": "5.30",
+     "dato": "2024-03-09",
      "vind": null
+    },
+    {
+     "perf": "5.23",
+     "dato": "2024-05-31",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "ar": 2025,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "11.18",
+     "dato": "2025-06-20",
+     "vind": 1.8
+    },
+    {
+     "perf": "11.18",
+     "dato": "2025-06-22",
+     "vind": 1.8
+    },
+    {
+     "perf": "11.32",
+     "dato": "2025-06-13",
+     "vind": 1.2
+    }
+   ]
+  },
+  {
+   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
+   "ar": 2024,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "14.72",
+     "dato": "2024-06-22",
+     "vind": 0.7
+    },
+    {
+     "perf": "14.72",
+     "dato": "2024-06-22",
+     "vind": 0.7
     }
    ]
   },
@@ -1013,9 +1471,14 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 8,
+   "starter": 15,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "8.87",
+     "dato": "2024-05-31",
+     "vind": 2.6
+    },
     {
      "perf": "8.87",
      "dato": "2024-06-01",
@@ -1023,13 +1486,8 @@
     },
     {
      "perf": "8.90",
-     "dato": "2024-03-09",
+     "dato": "2024-03-08",
      "vind": null
-    },
-    {
-     "perf": "9.00",
-     "dato": "2024-05-10",
-     "vind": 1.2
     }
    ]
   },
@@ -1039,7 +1497,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 14,
+   "starter": 15,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1053,9 +1511,35 @@
      "vind": null
     },
     {
-     "perf": "4.55",
-     "dato": "2026-06-20",
+     "perf": "4.60",
+     "dato": "2026-05-08",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
+   "ar": 2024,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 13,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "10.49",
+     "dato": "2024-06-18",
+     "vind": 1.5
+    },
+    {
+     "perf": "10.49",
+     "dato": "2024-06-18",
+     "vind": 1.5
+    },
+    {
+     "perf": "10.46",
+     "dato": "2024-06-22",
+     "vind": 0.0
     }
    ]
   },
@@ -1065,7 +1549,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 14,
+   "starter": 16,
    "annen_klubb": "IL i BUL",
    "resultater": [
     {
@@ -1079,8 +1563,8 @@
      "vind": null
     },
     {
-     "perf": "4.54",
-     "dato": "2024-01-28",
+     "perf": "4.55",
+     "dato": "2024-02-11",
      "vind": null
     }
    ]
@@ -1138,7 +1622,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 14,
+   "starter": 24,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1159,12 +1643,38 @@
    ]
   },
   {
+   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
+   "ar": 2024,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 4,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "9.07",
+     "dato": "2024-05-10",
+     "vind": 3.4
+    },
+    {
+     "perf": "9.07",
+     "dato": "2024-05-12",
+     "vind": 3.4
+    },
+    {
+     "perf": "8.83",
+     "dato": "2024-02-22",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "517c02da-ad61-46b6-a608-5dc00ff659f5",
    "ar": 2024,
    "ovelse": "100 meter hekk (91,4cm)",
    "rt": "time",
    "so": 332,
-   "starter": 5,
+   "starter": 9,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1173,14 +1683,14 @@
      "vind": -0.4
     },
     {
+     "perf": "14.28",
+     "dato": "2024-08-30",
+     "vind": -0.4
+    },
+    {
      "perf": "14.32",
      "dato": "2024-08-31",
      "vind": 0.5
-    },
-    {
-     "perf": "14.37",
-     "dato": "2024-08-18",
-     "vind": 1.3
     }
    ]
   },
@@ -1190,7 +1700,7 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 11,
+   "starter": 22,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1199,14 +1709,14 @@
      "vind": 2.7
     },
     {
-     "perf": "12.26",
-     "dato": "2025-06-14",
-     "vind": 1.9
+     "perf": "12.43",
+     "dato": "2025-06-13",
+     "vind": 2.7
     },
     {
      "perf": "12.26",
-     "dato": "2025-08-03",
-     "vind": -0.2
+     "dato": "2025-06-13",
+     "vind": 1.9
     }
    ]
   },
@@ -1216,9 +1726,14 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "12.48",
+     "dato": "2025-06-21",
+     "vind": -0.9
+    },
     {
      "perf": "12.48",
      "dato": "2025-06-21",
@@ -1232,9 +1747,14 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "26.53",
+     "dato": "2025-05-24",
+     "vind": 2.9
+    },
     {
      "perf": "26.53",
      "dato": "2025-05-25",
@@ -1244,37 +1764,6 @@
      "perf": "26.91",
      "dato": "2025-05-11",
      "vind": 2.5
-    },
-    {
-     "perf": "27.01",
-     "dato": "2025-02-01",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5c3d30da-0aed-4131-8681-38c6f401c20b",
-   "ar": 2025,
-   "ovelse": "Høyde",
-   "rt": "height",
-   "so": 50,
-   "starter": 10,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "1.75",
-     "dato": "2025-02-09",
-     "vind": null
-    },
-    {
-     "perf": "1.75",
-     "dato": "2025-02-01",
-     "vind": null
-    },
-    {
-     "perf": "1.70",
-     "dato": "2025-06-21",
-     "vind": null
     }
    ]
   },
@@ -1284,7 +1773,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 7,
+   "starter": 12,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1293,34 +1782,39 @@
      "vind": null
     },
     {
-     "perf": "1.87",
-     "dato": "2024-09-07",
+     "perf": "1.90",
+     "dato": "2024-05-31",
      "vind": null
     },
     {
-     "perf": "1.86",
-     "dato": "2024-06-29",
+     "perf": "1.87",
+     "dato": "2024-09-07",
      "vind": null
     }
    ]
   },
   {
-   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
-   "ar": 2025,
-   "ovelse": "60 meter",
+   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
+   "ar": 2024,
+   "ovelse": "200 meter",
    "rt": "time",
-   "so": 1,
-   "starter": 2,
+   "so": 3,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "8.89",
-     "dato": "2025-02-01",
+     "perf": "23.07",
+     "dato": "2024-01-20",
      "vind": null
     },
     {
-     "perf": "8.95",
-     "dato": "2025-01-19",
+     "perf": "23.07",
+     "dato": "2024-01-20",
+     "vind": null
+    },
+    {
+     "perf": "23.34",
+     "dato": "2024-02-09",
      "vind": null
     }
    ]
@@ -1331,9 +1825,14 @@
    "ovelse": "Kule 3,0kg",
    "rt": "distance",
    "so": 202,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "6.68",
+     "dato": "2024-02-22",
+     "vind": null
+    },
     {
      "perf": "6.68",
      "dato": "2024-02-22",
@@ -1347,12 +1846,38 @@
    ]
   },
   {
+   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 4,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.89",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "8.89",
+     "dato": "2025-02-01",
+     "vind": null
+    },
+    {
+     "perf": "8.95",
+     "dato": "2025-01-19",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "02f28b56-9e85-44d4-9124-1322a295f3c3",
    "ar": 2024,
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 14,
+   "starter": 22,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1366,8 +1891,8 @@
      "vind": null
     },
     {
-     "perf": "5.03",
-     "dato": "2024-05-22",
+     "perf": "5.04",
+     "dato": "2024-01-20",
      "vind": null
     }
    ]
@@ -1378,12 +1903,17 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 2,
+   "starter": 3,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "30.35",
      "dato": "2024-06-23",
+     "vind": -2.2
+    },
+    {
+     "perf": "30.35",
+     "dato": "2024-06-22",
      "vind": -2.2
     },
     {
@@ -1394,12 +1924,38 @@
    ]
   },
   {
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 21,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.34",
+     "dato": "2024-05-10",
+     "vind": 0.8
+    },
+    {
+     "perf": "7.34",
+     "dato": "2024-05-10",
+     "vind": 0.8
+    },
+    {
+     "perf": "7.4",
+     "dato": "2024-02-03",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2024,
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 7,
+   "starter": 13,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1413,9 +1969,9 @@
      "vind": 2.3
     },
     {
-     "perf": "11.69",
-     "dato": "2024-08-30",
-     "vind": 1.7
+     "perf": "11.71",
+     "dato": "2024-05-10",
+     "vind": 2.3
     }
    ]
   },
@@ -1425,7 +1981,7 @@
    "ovelse": "60 meter hekk (106,7cm)",
    "rt": "time",
    "so": 317,
-   "starter": 5,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1435,12 +1991,12 @@
     },
     {
      "perf": "8.84",
-     "dato": "2024-02-18",
+     "dato": "2024-02-17",
      "vind": null
     },
     {
-     "perf": "8.85",
-     "dato": "2024-02-11",
+     "perf": "8.84",
+     "dato": "2024-02-18",
      "vind": null
     }
    ]
@@ -1451,7 +2007,7 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 7,
+   "starter": 14,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1460,14 +2016,40 @@
      "vind": 1.7
     },
     {
-     "perf": "5.50",
-     "dato": "2024-01-21",
-     "vind": null
+     "perf": "5.55",
+     "dato": "2024-05-31",
+     "vind": 1.7
     },
     {
-     "perf": "5.47",
-     "dato": "2024-02-10",
+     "perf": "5.50",
+     "dato": "2024-01-20",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
+   "ar": 2024,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
+   "starter": 13,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "5.16",
+     "dato": "2024-06-02",
+     "vind": -0.6
+    },
+    {
+     "perf": "5.16",
+     "dato": "2024-05-31",
+     "vind": -0.6
+    },
+    {
+     "perf": "5.12",
+     "dato": "2024-08-18",
+     "vind": 2.9
     }
    ]
   },
@@ -1477,9 +2059,14 @@
    "ovelse": "Spyd 600gram",
    "rt": "distance",
    "so": 233,
-   "starter": 2,
+   "starter": 3,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "32.73",
+     "dato": "2026-08-18",
+     "vind": null
+    },
     {
      "perf": "30.91",
      "dato": "2026-08-08",
@@ -1498,7 +2085,7 @@
    "ovelse": "400 meter",
    "rt": "time",
    "so": 4,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1507,13 +2094,13 @@
      "vind": null
     },
     {
-     "perf": "63.82",
-     "dato": "2024-06-02",
+     "perf": "1:03.03",
+     "dato": "2024-08-24",
      "vind": null
     },
     {
-     "perf": "64.53",
-     "dato": "2024-01-21",
+     "perf": "63.82",
+     "dato": "2024-06-02",
      "vind": null
     }
    ]
@@ -1524,9 +2111,14 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "2.84",
+     "dato": "2024-11-30",
+     "vind": null
+    },
     {
      "perf": "2.84",
      "dato": "2024-11-30",
@@ -1540,28 +2132,54 @@
    ]
   },
   {
-   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
+   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
    "ar": 2024,
-   "ovelse": "Tresteg",
+   "ovelse": "Lengde",
    "rt": "distance",
-   "so": 53,
+   "so": 52,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.19",
+     "dato": "2024-01-11",
+     "vind": null
+    },
+    {
+     "perf": "4.19",
+     "dato": "2024-01-11",
+     "vind": null
+    },
+    {
+     "perf": "4.07",
+     "dato": "2024-02-09",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
    "starter": 7,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "12.58",
-     "dato": "2024-08-30",
-     "vind": 3.4
+     "perf": "7.48",
+     "dato": "2025-01-31",
+     "vind": null
     },
     {
-     "perf": "12.41",
-     "dato": "2024-08-30",
-     "vind": 0.5
+     "perf": "7.48",
+     "dato": "2025-01-31",
+     "vind": null
     },
     {
-     "perf": "12.36",
-     "dato": "2024-06-22",
-     "vind": 1.2
+     "perf": "7.48",
+     "dato": "2025-02-01",
+     "vind": null
     }
    ]
   },
@@ -1571,7 +2189,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 16,
+   "starter": 30,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1580,8 +2198,8 @@
      "vind": null
     },
     {
-     "perf": "2.06",
-     "dato": "2025-08-01",
+     "perf": "2.08",
+     "dato": "2025-06-21",
      "vind": null
     },
     {
@@ -1639,12 +2257,17 @@
    "ovelse": "Kule 3,0kg",
    "rt": "distance",
    "so": 202,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "9.26",
      "dato": "2024-12-01",
+     "vind": null
+    },
+    {
+     "perf": "9.26",
+     "dato": "2024-11-30",
      "vind": null
     },
     {
@@ -1655,27 +2278,53 @@
    ]
   },
   {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
    "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 14,
+   "annen_klubb": "Norna-Salhus IL",
+   "resultater": [
+    {
+     "perf": "11.67",
+     "dato": "2024-08-30",
+     "vind": 2.7
+    },
+    {
+     "perf": "11.67",
+     "dato": "2024-08-30",
+     "vind": 2.7
+    },
+    {
+     "perf": "11.57",
+     "dato": "2024-08-04",
+     "vind": 3.4
+    }
+   ]
+  },
+  {
+   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
+   "ar": 2024,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
    "starter": 10,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "7.34",
-     "dato": "2024-05-10",
-     "vind": 0.8
-    },
-    {
-     "perf": "7.4",
-     "dato": "2024-02-03",
+     "perf": "4.79",
+     "dato": "2024-01-20",
      "vind": null
     },
     {
-     "perf": "7.40",
-     "dato": "2024-03-09",
+     "perf": "4.79",
+     "dato": "2024-01-21",
+     "vind": null
+    },
+    {
+     "perf": "4.67",
+     "dato": "2024-11-30",
      "vind": null
     }
    ]
@@ -1686,9 +2335,14 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 5,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "1.61",
+     "dato": "2025-08-15",
+     "vind": null
+    },
     {
      "perf": "1.61",
      "dato": "2025-08-15",
@@ -1698,11 +2352,32 @@
      "perf": "1.58",
      "dato": "2025-05-09",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "ar": 2024,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
+   "starter": 13,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.61",
+     "dato": "2024-05-10",
+     "vind": 2.3
     },
     {
-     "perf": "1.57",
-     "dato": "2025-05-24",
-     "vind": null
+     "perf": "4.61",
+     "dato": "2024-05-11",
+     "vind": 2.3
+    },
+    {
+     "perf": "4.41",
+     "dato": "2024-06-11",
+     "vind": 4.7
     }
    ]
   },
@@ -1712,7 +2387,7 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 5,
+   "starter": 9,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1722,13 +2397,13 @@
     },
     {
      "perf": "13.63",
-     "dato": "2024-06-02",
+     "dato": "2024-05-31",
      "vind": 0.7
     },
     {
-     "perf": "13.71",
-     "dato": "2024-06-22",
-     "vind": -0.3
+     "perf": "13.63",
+     "dato": "2024-06-02",
+     "vind": 0.7
     }
    ]
   },
@@ -1738,7 +2413,7 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 7,
+   "starter": 14,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1747,40 +2422,14 @@
      "vind": 0.0
     },
     {
+     "perf": "24.55",
+     "dato": "2024-08-30",
+     "vind": 0.0
+    },
+    {
      "perf": "24.78",
-     "dato": "2024-08-31",
+     "dato": "2024-08-30",
      "vind": 0.4
-    },
-    {
-     "perf": "24.98",
-     "dato": "2024-06-23",
-     "vind": 1.0
-    }
-   ]
-  },
-  {
-   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
-   "ar": 2024,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 7,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "5.16",
-     "dato": "2024-06-02",
-     "vind": -0.6
-    },
-    {
-     "perf": "5.12",
-     "dato": "2024-08-18",
-     "vind": 2.9
-    },
-    {
-     "perf": "5.11",
-     "dato": "2024-02-10",
-     "vind": null
     }
    ]
   },
@@ -1816,9 +2465,14 @@
    "ovelse": "80 meter hekk (76,2cm)",
    "rt": "time",
    "so": 322,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "12.21",
+     "dato": "2025-05-24",
+     "vind": 1.9
+    },
     {
      "perf": "12.21",
      "dato": "2025-05-24",
@@ -1828,6 +2482,32 @@
      "perf": "12.62",
      "dato": "2025-05-10",
      "vind": -2.2
+    }
+   ]
+  },
+  {
+   "aid": "503b40f7-44c8-4553-b1c8-b5c4e11d5975",
+   "ar": 2025,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 7,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.33",
+     "dato": "2025-06-03",
+     "vind": null
+    },
+    {
+     "perf": "4.33",
+     "dato": "2025-06-03",
+     "vind": null
+    },
+    {
+     "perf": "4.27",
+     "dato": "2025-08-15",
+     "vind": null
     }
    ]
   },
@@ -1848,12 +2528,38 @@
    ]
   },
   {
+   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 13,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.92",
+     "dato": "2024-05-10",
+     "vind": 1.2
+    },
+    {
+     "perf": "8.92",
+     "dato": "2024-05-10",
+     "vind": 1.2
+    },
+    {
+     "perf": "8.94",
+     "dato": "2024-03-09",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "9467fd00-2342-4e8a-b7de-fed16b028a6e",
    "ar": 2024,
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 7,
+   "starter": 14,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1862,14 +2568,14 @@
      "vind": -0.6
     },
     {
-     "perf": "14.85",
-     "dato": "2024-06-28",
-     "vind": 2.2
+     "perf": "15.12",
+     "dato": "2024-05-31",
+     "vind": -0.6
     },
     {
-     "perf": "14.77",
-     "dato": "2024-06-28",
-     "vind": 1.2
+     "perf": "14.85",
+     "dato": "2024-06-27",
+     "vind": 2.2
     }
    ]
   },
@@ -1879,9 +2585,14 @@
    "ovelse": "400 meter",
    "rt": "time",
    "so": 4,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "51.45",
+     "dato": "2024-02-17",
+     "vind": null
+    },
     {
      "perf": "51.45",
      "dato": "2024-02-17",
@@ -1900,9 +2611,14 @@
    "ovelse": "Høyde uten tilløp",
    "rt": "height",
    "so": 165,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "1.61",
+     "dato": "2024-02-17",
+     "vind": null
+    },
     {
      "perf": "1.61",
      "dato": "2024-02-17",
@@ -1918,31 +2634,10 @@
   {
    "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
    "ar": 2024,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "23.07",
-     "dato": "2024-01-20",
-     "vind": null
-    },
-    {
-     "perf": "23.34",
-     "dato": "2024-02-09",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
-   "ar": 2024,
    "ovelse": "400 meter hekk (91,4cm)",
    "rt": "time",
    "so": 373,
-   "starter": 5,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
     {
@@ -1951,13 +2646,13 @@
      "vind": null
     },
     {
-     "perf": "54.47",
-     "dato": "2024-06-08",
+     "perf": "54.39",
+     "dato": "2024-06-27",
      "vind": null
     },
     {
-     "perf": "54.82",
-     "dato": "2024-05-12",
+     "perf": "54.47",
+     "dato": "2024-06-08",
      "vind": null
     }
    ]
@@ -1968,9 +2663,14 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 17,
+   "starter": 31,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "4.65",
+     "dato": "2025-02-14",
+     "vind": null
+    },
     {
      "perf": "4.65",
      "dato": "2025-02-15",
@@ -1979,11 +2679,6 @@
     {
      "perf": "4.60",
      "dato": "2025-02-09",
-     "vind": null
-    },
-    {
-     "perf": "4.60",
-     "dato": "2025-03-16",
      "vind": null
     }
    ]
@@ -1994,7 +2689,7 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 4,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2015,80 +2710,23 @@
    ]
   },
   {
-   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
    "ar": 2024,
-   "ovelse": "Tresteg",
-   "rt": "distance",
-   "so": 53,
-   "starter": 8,
-   "annen_klubb": "Norna-Salhus IL",
-   "resultater": [
-    {
-     "perf": "11.67",
-     "dato": "2024-08-30",
-     "vind": 2.7
-    },
-    {
-     "perf": "11.57",
-     "dato": "2024-08-04",
-     "vind": 3.4
-    },
-    {
-     "perf": "11.54",
-     "dato": "2024-05-31",
-     "vind": 0.3
-    }
-   ]
-  },
-  {
-   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
-   "ar": 2024,
-   "ovelse": "Tresteg",
-   "rt": "distance",
-   "so": 53,
-   "starter": 11,
+   "ovelse": "600 meter",
+   "rt": "time",
+   "so": 55,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "10.12",
-     "dato": "2024-05-12",
-     "vind": 3.2
-    },
-    {
-     "perf": "10.02",
-     "dato": "2024-02-11",
+     "perf": "1:43.87",
+     "dato": "2024-11-30",
      "vind": null
     },
     {
-     "perf": "9.87",
-     "dato": "2024-08-17",
-     "vind": 3.8
-    }
-   ]
-  },
-  {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
-   "ar": 2025,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 4,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "11.18",
-     "dato": "2025-06-22",
-     "vind": 1.8
-    },
-    {
-     "perf": "11.32",
-     "dato": "2025-06-15",
-     "vind": 1.2
-    },
-    {
-     "perf": "11.42",
-     "dato": "2025-06-01",
-     "vind": -0.4
+     "perf": "1:43.87",
+     "dato": "2024-12-01",
+     "vind": null
     }
    ]
   },
@@ -2119,17 +2757,100 @@
    ]
   },
   {
+   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
+   "ar": 2025,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 19,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "3.12",
+     "dato": "2025-02-20",
+     "vind": null
+    },
+    {
+     "perf": "3.12",
+     "dato": "2025-02-20",
+     "vind": null
+    },
+    {
+     "perf": "3.11",
+     "dato": "2025-01-31",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "05a10460-3071-40ad-8c87-7043ddb2a761",
+   "ar": 2025,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 22,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.55",
+     "dato": "2025-08-16",
+     "vind": null
+    },
+    {
+     "perf": "4.55",
+     "dato": "2025-08-15",
+     "vind": null
+    },
+    {
+     "perf": "4.54",
+     "dato": "2025-08-02",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "ar": 2024,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 9,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "11.29",
+     "dato": "2024-05-25",
+     "vind": 2.0
+    },
+    {
+     "perf": "11.29",
+     "dato": "2024-08-17",
+     "vind": 1.7
+    },
+    {
+     "perf": "11.29",
+     "dato": "2024-05-25",
+     "vind": 2.0
+    }
+   ]
+  },
+  {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2024,
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "27.32",
      "dato": "2024-05-12",
+     "vind": 1.6
+    },
+    {
+     "perf": "27.32",
+     "dato": "2024-05-10",
      "vind": 1.6
     },
     {
@@ -2145,9 +2866,14 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 14,
+   "starter": 26,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "7.00",
+     "dato": "2024-05-31",
+     "vind": 0.0
+    },
     {
      "perf": "7.00",
      "dato": "2024-06-02",
@@ -2157,11 +2883,32 @@
      "perf": "6.98",
      "dato": "2024-06-27",
      "vind": 0.3
+    }
+   ]
+  },
+  {
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.94",
+     "dato": "2025-02-15",
+     "vind": null
     },
     {
-     "perf": "6.94",
-     "dato": "2024-08-02",
-     "vind": -0.3
+     "perf": "7.94",
+     "dato": "2025-02-14",
+     "vind": null
+    },
+    {
+     "perf": "8.02",
+     "dato": "2025-01-18",
+     "vind": null
     }
    ]
   },
@@ -2171,7 +2918,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 9,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2185,8 +2932,8 @@
      "vind": null
     },
     {
-     "perf": "1.75",
-     "dato": "2026-08-15",
+     "perf": "1.76",
+     "dato": "2026-05-08",
      "vind": null
     }
    ]
@@ -2197,7 +2944,7 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2206,66 +2953,14 @@
      "vind": 0.9
     },
     {
+     "perf": "5.48",
+     "dato": "2025-05-24",
+     "vind": 0.9
+    },
+    {
      "perf": "5.19",
      "dato": "2025-09-07",
      "vind": -0.6
-    },
-    {
-     "perf": "3.20",
-     "dato": "2025-06-01",
-     "vind": 5.8
-    }
-   ]
-  },
-  {
-   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
-   "ar": 2024,
-   "ovelse": "Tresteg",
-   "rt": "distance",
-   "so": 53,
-   "starter": 7,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "10.49",
-     "dato": "2024-06-18",
-     "vind": 1.5
-    },
-    {
-     "perf": "10.46",
-     "dato": "2024-06-22",
-     "vind": 0.0
-    },
-    {
-     "perf": "10.22",
-     "dato": "2024-03-08",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
-   "ar": 2024,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.19",
-     "dato": "2024-01-11",
-     "vind": null
-    },
-    {
-     "perf": "4.07",
-     "dato": "2024-02-10",
-     "vind": null
-    },
-    {
-     "perf": "4.06",
-     "dato": "2024-03-09",
-     "vind": null
     }
    ]
   },
@@ -2275,7 +2970,7 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 6,
+   "starter": 11,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2284,14 +2979,14 @@
      "vind": 3.3
     },
     {
+     "perf": "26.62",
+     "dato": "2024-08-30",
+     "vind": 3.3
+    },
+    {
      "perf": "26.96",
      "dato": "2024-08-18",
      "vind": 1.9
-    },
-    {
-     "perf": "27.04",
-     "dato": "2024-12-01",
-     "vind": null
     }
    ]
   },
@@ -2301,7 +2996,7 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2310,9 +3005,108 @@
      "vind": -0.9
     },
     {
-     "perf": "12.83",
-     "dato": "2025-07-27",
+     "perf": "12.76",
+     "dato": "2025-06-21",
      "vind": -0.9
+    },
+    {
+     "perf": "12.83",
+     "dato": "2025-07-16",
+     "vind": -0.9
+    }
+   ]
+  },
+  {
+   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
+   "ar": 2025,
+   "ovelse": "300 meter",
+   "rt": "time",
+   "so": 35,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "36.94",
+     "dato": "2025-07-23",
+     "vind": null
+    },
+    {
+     "perf": "36.94",
+     "dato": "2025-07-23",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
+   "ar": 2025,
+   "ovelse": "Høyde",
+   "rt": "height",
+   "so": 50,
+   "starter": 10,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "1.55",
+     "dato": "2025-02-20",
+     "vind": null
+    },
+    {
+     "perf": "1.55",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "1.55",
+     "dato": "2025-02-16",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "517c02da-ad61-46b6-a608-5dc00ff659f5",
+   "ar": 2024,
+   "ovelse": "300 meter hekk (84,0cm)",
+   "rt": "time",
+   "so": 363,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "41.75",
+     "dato": "2024-08-30",
+     "vind": null
+    },
+    {
+     "perf": "41.75",
+     "dato": "2024-08-30",
+     "vind": null
+    },
+    {
+     "perf": "42.52",
+     "dato": "2024-05-25",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "ar": 2024,
+   "ovelse": "60 meter hekk (84,0cm)",
+   "rt": "time",
+   "so": 314,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "12.09",
+     "dato": "2024-01-20",
+     "vind": null
+    },
+    {
+     "perf": "12.09",
+     "dato": "2024-01-20",
+     "vind": null
     }
    ]
   },
@@ -2369,27 +3163,48 @@
    ]
   },
   {
-   "aid": "e1d59239-97eb-4804-9e6f-a49236be1c3a",
-   "ar": 2024,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 20,
+   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
+   "ar": 2026,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "5.30",
-     "dato": "2024-03-09",
-     "vind": null
+     "perf": "25.25",
+     "dato": "2026-05-23",
+     "vind": 1.9
     },
     {
-     "perf": "5.23",
-     "dato": "2024-05-31",
-     "vind": null
+     "perf": "25.94",
+     "dato": "2026-05-08",
+     "vind": 1.4
+    }
+   ]
+  },
+  {
+   "aid": "88f4319b-1ec2-4594-bd5a-a8372887be92",
+   "ar": 2025,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
+   "starter": 5,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.04",
+     "dato": "2025-05-09",
+     "vind": 2.1
     },
     {
-     "perf": "5.12",
-     "dato": "2024-06-28",
+     "perf": "4.04",
+     "dato": "2025-05-10",
+     "vind": 2.1
+    },
+    {
+     "perf": "3.76",
+     "dato": "2025-11-01",
      "vind": null
     }
    ]
@@ -2400,9 +3215,14 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "12.22",
+     "dato": "2025-05-30",
+     "vind": 0.6
+    },
     {
      "perf": "12.22",
      "dato": "2025-06-01",
@@ -2412,37 +3232,6 @@
      "perf": "12.34",
      "dato": "2025-09-05",
      "vind": -0.1
-    },
-    {
-     "perf": "12.38",
-     "dato": "2025-05-10",
-     "vind": -1.8
-    }
-   ]
-  },
-  {
-   "aid": "503b40f7-44c8-4553-b1c8-b5c4e11d5975",
-   "ar": 2025,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 4,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.33",
-     "dato": "2025-06-03",
-     "vind": null
-    },
-    {
-     "perf": "4.27",
-     "dato": "2025-08-16",
-     "vind": null
-    },
-    {
-     "perf": "4.20",
-     "dato": "2025-06-27",
-     "vind": null
     }
    ]
   },
@@ -2452,13 +3241,75 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 1,
+   "starter": 3,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "5.16",
+     "dato": "2026-05-08",
+     "vind": 3.4
+    },
+    {
+     "perf": "5.15",
+     "dato": "2026-05-08",
+     "vind": 1.8
+    },
     {
      "perf": "4.91",
      "dato": "2026-01-17",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 10,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.30",
+     "dato": "2025-02-15",
+     "vind": null
+    },
+    {
+     "perf": "7.30",
+     "dato": "2025-02-14",
+     "vind": null
+    },
+    {
+     "perf": "7.36",
+     "dato": "2025-02-21",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "05a10460-3071-40ad-8c87-7043ddb2a761",
+   "ar": 2024,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
+   "starter": 4,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "6.49",
+     "dato": "2024-06-14",
+     "vind": 0.5
+    },
+    {
+     "perf": "6.49",
+     "dato": "2024-06-15",
+     "vind": 0.5
+    },
+    {
+     "perf": "6.36",
+     "dato": "2024-08-30",
+     "vind": 0.4
     }
    ]
   },
@@ -2500,27 +3351,48 @@
    ]
   },
   {
-   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
-   "ar": 2024,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 10,
+   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
+   "ar": 2025,
+   "ovelse": "100 meter hekk (76,2cm)",
+   "rt": "time",
+   "so": 330,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "3.10",
-     "dato": "2024-12-15",
+     "perf": "20.86",
+     "dato": "2025-05-30",
+     "vind": -2.3
+    },
+    {
+     "perf": "20.86",
+     "dato": "2025-05-30",
+     "vind": -2.3
+    }
+   ]
+  },
+  {
+   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
+   "ar": 2026,
+   "ovelse": "800 meter",
+   "rt": "time",
+   "so": 10,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "2:12.01",
+     "dato": "2026-06-20",
      "vind": null
     },
     {
-     "perf": "3.04",
-     "dato": "2024-11-30",
+     "perf": "2:14.25",
+     "dato": "2026-05-08",
      "vind": null
     },
     {
-     "perf": "3.00",
-     "dato": "2024-09-13",
+     "perf": "2:14.56",
+     "dato": "2026-06-05",
      "vind": null
     }
    ]
@@ -2531,7 +3403,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 12,
+   "starter": 16,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2552,12 +3424,33 @@
    ]
   },
   {
+   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "ar": 2024,
+   "ovelse": "Kule 3,0kg",
+   "rt": "distance",
+   "so": 202,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.28",
+     "dato": "2024-02-22",
+     "vind": null
+    },
+    {
+     "perf": "7.28",
+     "dato": "2024-02-22",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "3da2e915-c708-444c-b24a-b3dbb7dfd813",
    "ar": 2025,
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 3,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2571,8 +3464,8 @@
      "vind": null
     },
     {
-     "perf": "3.02",
-     "dato": "2025-01-06",
+     "perf": "3.05",
+     "dato": "2025-01-18",
      "vind": null
     }
    ]
@@ -2583,12 +3476,17 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "4.95",
      "dato": "2024-05-11",
+     "vind": 0.5
+    },
+    {
+     "perf": "4.95",
+     "dato": "2024-05-10",
      "vind": 0.5
     }
    ]
@@ -2599,7 +3497,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 13,
+   "starter": 18,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2625,7 +3523,7 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 6,
+   "starter": 12,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2634,14 +3532,14 @@
      "vind": null
     },
     {
+     "perf": "26.12",
+     "dato": "2024-11-30",
+     "vind": null
+    },
+    {
      "perf": "26.20",
      "dato": "2024-08-31",
      "vind": -0.4
-    },
-    {
-     "perf": "26.67",
-     "dato": "2024-09-15",
-     "vind": -0.2
     }
    ]
   },
@@ -2651,7 +3549,7 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 5,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2660,14 +3558,14 @@
      "vind": null
     },
     {
-     "perf": "5.32",
-     "dato": "2025-05-10",
-     "vind": 1.8
+     "perf": "5.36",
+     "dato": "2025-01-31",
+     "vind": null
     },
     {
-     "perf": "5.24",
-     "dato": "2025-01-09",
-     "vind": null
+     "perf": "5.32",
+     "dato": "2025-05-09",
+     "vind": 1.8
     }
    ]
   },
@@ -2677,9 +3575,14 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "7.91",
+     "dato": "2024-01-27",
+     "vind": null
+    },
     {
      "perf": "7.91",
      "dato": "2024-01-27",
@@ -2693,7 +3596,7 @@
    "ovelse": "60 meter hekk (91,4cm)",
    "rt": "time",
    "so": 315,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2702,8 +3605,60 @@
      "vind": null
     },
     {
+     "perf": "8.67",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
      "perf": "8.68",
      "dato": "2025-01-18",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "9a7f88c6-ef57-49e5-8788-4adab024d1fd",
+   "ar": 2025,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "13.57",
+     "dato": "2025-05-09",
+     "vind": -1.6
+    },
+    {
+     "perf": "13.57",
+     "dato": "2025-05-10",
+     "vind": -1.6
+    }
+   ]
+  },
+  {
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.99",
+     "dato": "2024-11-30",
+     "vind": null
+    },
+    {
+     "perf": "7.99",
+     "dato": "2024-11-30",
+     "vind": null
+    },
+    {
+     "perf": "8.37",
+     "dato": "2024-03-08",
      "vind": null
     }
    ]
@@ -2730,7 +3685,7 @@
    "ovelse": "Slegge 7,26kg/121,5cm",
    "rt": "distance",
    "so": 0,
-   "starter": 8,
+   "starter": 11,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2756,12 +3711,17 @@
    "ovelse": "80 meter",
    "rt": "time",
    "so": 15,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "10.84",
      "dato": "2024-07-06",
+     "vind": -0.5
+    },
+    {
+     "perf": "10.84",
+     "dato": "2024-07-05",
      "vind": -0.5
     }
    ]
@@ -2772,12 +3732,17 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "12.02",
      "dato": "2024-06-02",
+     "vind": 1.3
+    },
+    {
+     "perf": "12.02",
+     "dato": "2024-05-31",
      "vind": 1.3
     },
     {
@@ -2793,7 +3758,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 8,
+   "starter": 9,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2814,28 +3779,28 @@
    ]
   },
   {
-   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
-   "ar": 2025,
-   "ovelse": "Tresteg",
-   "rt": "distance",
-   "so": 53,
-   "starter": 13,
-   "annen_klubb": "Norna-Salhus IL",
+   "aid": "07ab2345-e527-427b-b1ce-2e7ef919120e",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 6,
+   "annen_klubb": null,
    "resultater": [
     {
-     "perf": "12.08",
-     "dato": "2025-07-27",
-     "vind": 2.4
+     "perf": "8.89",
+     "dato": "2024-02-10",
+     "vind": null
     },
     {
-     "perf": "12.03",
-     "dato": "2025-09-06",
-     "vind": 0.9
+     "perf": "8.89",
+     "dato": "2024-02-09",
+     "vind": null
     },
     {
-     "perf": "11.99",
-     "dato": "2025-08-03",
-     "vind": -0.3
+     "perf": "8.92",
+     "dato": "2024-03-08",
+     "vind": null
     }
    ]
   },
@@ -2845,9 +3810,14 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 3,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "11.97",
+     "dato": "2024-05-25",
+     "vind": 2.7
+    },
     {
      "perf": "11.97",
      "dato": "2024-05-25",
@@ -2857,11 +3827,6 @@
      "perf": "12.24",
      "dato": "2024-08-17",
      "vind": 1.4
-    },
-    {
-     "perf": "12.30",
-     "dato": "2024-06-02",
-     "vind": 0.7
     }
    ]
   },
@@ -2871,7 +3836,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 9,
+   "starter": 15,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2880,13 +3845,60 @@
      "vind": null
     },
     {
-     "perf": "5.10",
-     "dato": "2025-02-09",
+     "perf": "5.13",
+     "dato": "2025-01-05",
      "vind": null
     },
     {
-     "perf": "5.05",
-     "dato": "2025-01-18",
+     "perf": "5.10",
+     "dato": "2025-02-09",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "7a16b167-867f-4a52-a775-3a866f981dd8",
+   "ar": 2025,
+   "ovelse": "80 meter",
+   "rt": "time",
+   "so": 15,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "10.05",
+     "dato": "2025-06-26",
+     "vind": -1.3
+    },
+    {
+     "perf": "10.05",
+     "dato": "2025-06-28",
+     "vind": -1.3
+    }
+   ]
+  },
+  {
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "ar": 2025,
+   "ovelse": "Lengde",
+   "rt": "distance",
+   "so": 52,
+   "starter": 8,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "6.35",
+     "dato": "2025-02-02",
+     "vind": null
+    },
+    {
+     "perf": "6.35",
+     "dato": "2025-01-31",
+     "vind": null
+    },
+    {
+     "perf": "6.09",
+     "dato": "2025-01-09",
      "vind": null
     }
    ]
@@ -2923,7 +3935,7 @@
    "ovelse": "110 meter hekk (91,4cm)",
    "rt": "time",
    "so": 341,
-   "starter": 8,
+   "starter": 15,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2937,9 +3949,9 @@
      "vind": 2.7
     },
     {
-     "perf": "14.90",
-     "dato": "2024-08-30",
-     "vind": 0.0
+     "perf": "14.83",
+     "dato": "2024-07-05",
+     "vind": 2.7
     }
    ]
   },
@@ -2949,7 +3961,7 @@
    "ovelse": "110 meter hekk (100cm)",
    "rt": "time",
    "so": 342,
-   "starter": 6,
+   "starter": 12,
    "annen_klubb": null,
    "resultater": [
     {
@@ -2958,19 +3970,19 @@
      "vind": 1.3
     },
     {
+     "perf": "15.40",
+     "dato": "2025-06-26",
+     "vind": 1.3
+    },
+    {
      "perf": "15.50",
      "dato": "2025-05-30",
      "vind": 1.1
-    },
-    {
-     "perf": "15.64",
-     "dato": "2025-05-25",
-     "vind": 1.9
     }
    ]
   },
   {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
    "ar": 2024,
    "ovelse": "60 meter",
    "rt": "time",
@@ -2979,44 +3991,112 @@
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "7.99",
-     "dato": "2024-11-30",
+     "perf": "8.46",
+     "dato": "2024-03-08",
      "vind": null
     },
     {
-     "perf": "8.37",
+     "perf": "8.46",
      "dato": "2024-03-09",
      "vind": null
     },
     {
-     "perf": "8.56",
-     "dato": "2024-02-10",
+     "perf": "8.55",
+     "dato": "2024-01-20",
      "vind": null
     }
    ]
   },
   {
-   "aid": "05a10460-3071-40ad-8c87-7043ddb2a761",
-   "ar": 2025,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 12,
+   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "4.55",
-     "dato": "2025-08-16",
+     "perf": "7.78",
+     "dato": "2024-02-09",
      "vind": null
     },
     {
-     "perf": "4.54",
-     "dato": "2025-08-02",
+     "perf": "7.78",
+     "dato": "2024-02-10",
      "vind": null
     },
     {
-     "perf": "4.46",
-     "dato": "2025-05-31",
+     "perf": "7.83",
+     "dato": "2024-11-30",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "ar": 2025,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 10,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "25.37",
+     "dato": "2025-09-06",
+     "vind": 0.0
+    },
+    {
+     "perf": "25.37",
+     "dato": "2025-09-05",
+     "vind": 0.0
+    },
+    {
+     "perf": "25.85",
+     "dato": "2025-06-21",
+     "vind": -2.8
+    }
+   ]
+  },
+  {
+   "aid": "a93719c0-59d5-4d11-9c62-8fbb11303a41",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.84",
+     "dato": "2024-01-20",
+     "vind": null
+    },
+    {
+     "perf": "7.84",
+     "dato": "2024-01-21",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "ar": 2024,
+   "ovelse": "400 meter hekk (91,4cm)",
+   "rt": "time",
+   "so": 373,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "59.99",
+     "dato": "2024-08-30",
+     "vind": null
+    },
+    {
+     "perf": "59.99",
+     "dato": "2024-08-31",
      "vind": null
     }
    ]
@@ -3027,13 +4107,39 @@
    "ovelse": "60 meter hekk (84,0cm)",
    "rt": "time",
    "so": 314,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "8.82",
      "dato": "2024-02-11",
      "vind": null
+    },
+    {
+     "perf": "8.82",
+     "dato": "2024-02-09",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
+   "ar": 2024,
+   "ovelse": "110 meter hekk (106,7cm)",
+   "rt": "time",
+   "so": 343,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "16.25",
+     "dato": "2024-06-14",
+     "vind": 0.9
+    },
+    {
+     "perf": "16.25",
+     "dato": "2024-06-15",
+     "vind": 0.9
     }
    ]
   },
@@ -3043,7 +4149,7 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 7,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3090,14 +4196,45 @@
    ]
   },
   {
+   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
+   "ar": 2024,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 7,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "30.23",
+     "dato": "2024-02-09",
+     "vind": null
+    },
+    {
+     "perf": "30.23",
+     "dato": "2024-02-09",
+     "vind": null
+    },
+    {
+     "perf": "30.45",
+     "dato": "2024-06-23",
+     "vind": -2.2
+    }
+   ]
+  },
+  {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2025,
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "26.68",
+     "dato": "2025-05-24",
+     "vind": 3.1
+    },
     {
      "perf": "26.68",
      "dato": "2025-05-24",
@@ -3116,9 +4253,14 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 6,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "4.66",
+     "dato": "2024-06-22",
+     "vind": 0.0
+    },
     {
      "perf": "4.66",
      "dato": "2024-06-23",
@@ -3128,11 +4270,6 @@
      "perf": "4.60",
      "dato": "2024-06-11",
      "vind": 5.9
-    },
-    {
-     "perf": "4.52",
-     "dato": "2024-02-10",
-     "vind": null
     }
    ]
   },
@@ -3142,7 +4279,7 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3151,13 +4288,13 @@
      "vind": null
     },
     {
-     "perf": "8.82",
-     "dato": "2024-02-11",
+     "perf": "9.18",
+     "dato": "2024-03-08",
      "vind": null
     },
     {
-     "perf": "8.70",
-     "dato": "2024-02-22",
+     "perf": "8.82",
+     "dato": "2024-02-09",
      "vind": null
     }
    ]
@@ -3168,9 +4305,14 @@
    "ovelse": "60 meter hekk (76,2cm)",
    "rt": "time",
    "so": 313,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "9.42",
+     "dato": "2024-11-30",
+     "vind": null
+    },
     {
      "perf": "9.42",
      "dato": "2024-11-30",
@@ -3179,44 +4321,49 @@
    ]
   },
   {
-   "aid": "e1d59239-97eb-4804-9e6f-a49236be1c3a",
-   "ar": 2026,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 4,
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
+   "ar": 2025,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "4.93",
-     "dato": "2026-06-05",
-     "vind": null
+     "perf": "13.03",
+     "dato": "2025-09-05",
+     "vind": 0.1
     },
     {
-     "perf": "4.84",
-     "dato": "2026-06-25",
-     "vind": null
-    },
-    {
-     "perf": "4.68",
-     "dato": "2026-05-16",
-     "vind": null
+     "perf": "13.03",
+     "dato": "2025-09-06",
+     "vind": 0.1
     }
    ]
   },
   {
-   "aid": "b93320c9-fb08-49c4-9068-5240bf5efcc0",
+   "aid": "517c02da-ad61-46b6-a608-5dc00ff659f5",
    "ar": 2024,
-   "ovelse": "Halvmaraton",
+   "ovelse": "200 meter",
    "rt": "time",
-   "so": 0,
-   "starter": 1,
+   "so": 3,
+   "starter": 3,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "1:18:52",
-     "dato": "2024-01-21",
-     "vind": null
+     "perf": "24.81",
+     "dato": "2024-08-18",
+     "vind": 2.4
+    },
+    {
+     "perf": "25.48",
+     "dato": "2024-05-25",
+     "vind": -1.7
+    },
+    {
+     "perf": "25.48",
+     "dato": "2024-05-26",
+     "vind": -1.7
     }
    ]
   },
@@ -3226,38 +4373,17 @@
    "ovelse": "300 meter",
    "rt": "time",
    "so": 35,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "39.57",
      "dato": "2025-06-29",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "090c392f-bd80-4685-bade-50d02314ccd8",
-   "ar": 2025,
-   "ovelse": "Høyde",
-   "rt": "height",
-   "so": 50,
-   "starter": 14,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "2.00",
-     "dato": "2025-06-28",
-     "vind": null
     },
     {
-     "perf": "2.00",
-     "dato": "2025-02-02",
-     "vind": null
-    },
-    {
-     "perf": "1.98",
-     "dato": "2025-06-13",
+     "perf": "39.57",
+     "dato": "2025-06-26",
      "vind": null
     }
    ]
@@ -3268,12 +4394,17 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "13.22",
      "dato": "2024-06-02",
+     "vind": 0.7
+    },
+    {
+     "perf": "13.22",
+     "dato": "2024-05-31",
      "vind": 0.7
     },
     {
@@ -3285,42 +4416,47 @@
   },
   {
    "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "ar": 2026,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "23.69",
+     "dato": "2026-05-23",
+     "vind": 1.0
+    },
+    {
+     "perf": "24.28",
+     "dato": "2026-05-08",
+     "vind": 1.4
+    },
+    {
+     "perf": "24.58",
+     "dato": "2026-06-25",
+     "vind": 1.2
+    }
+   ]
+  },
+  {
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
    "ar": 2024,
    "ovelse": "300 meter",
    "rt": "time",
    "so": 35,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "41.94",
      "dato": "2024-07-07",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
-   "ar": 2024,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 4,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "30.23",
-     "dato": "2024-02-09",
-     "vind": null
     },
     {
-     "perf": "30.45",
-     "dato": "2024-06-23",
-     "vind": -2.2
-    },
-    {
-     "perf": "30.45",
-     "dato": "2024-01-20",
+     "perf": "41.94",
+     "dato": "2024-07-05",
      "vind": null
     }
    ]
@@ -3352,27 +4488,48 @@
    ]
   },
   {
-   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
    "ar": 2024,
-   "ovelse": "60 meter",
+   "ovelse": "400 meter",
    "rt": "time",
-   "so": 1,
-   "starter": 7,
+   "so": 4,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "8.92",
-     "dato": "2024-05-10",
-     "vind": 1.2
-    },
-    {
-     "perf": "8.94",
-     "dato": "2024-03-09",
+     "perf": "1.12",
+     "dato": "2024-01-21",
      "vind": null
     },
     {
-     "perf": "9.03",
-     "dato": "2024-11-30",
+     "perf": "1:12.16",
+     "dato": "2024-01-20",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "05a10460-3071-40ad-8c87-7043ddb2a761",
+   "ar": 2024,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 14,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.06",
+     "dato": "2024-02-22",
+     "vind": null
+    },
+    {
+     "perf": "4.06",
+     "dato": "2024-02-22",
+     "vind": null
+    },
+    {
+     "perf": "3.95",
+     "dato": "2024-06-18",
      "vind": null
     }
    ]
@@ -3383,7 +4540,7 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3392,13 +4549,13 @@
      "vind": null
     },
     {
-     "perf": "4.01",
-     "dato": "2024-01-11",
+     "perf": "4.31",
+     "dato": "2024-02-09",
      "vind": null
     },
     {
-     "perf": "3.38",
-     "dato": "2024-03-10",
+     "perf": "4.01",
+     "dato": "2024-01-11",
      "vind": null
     }
    ]
@@ -3409,7 +4566,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 5,
+   "starter": 7,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3419,38 +4576,38 @@
     },
     {
      "perf": "5.70",
-     "dato": "2024-01-15",
+     "dato": "2024-01-14",
      "vind": null
     },
     {
-     "perf": "5.50",
-     "dato": "2024-01-20",
+     "perf": "5.70",
+     "dato": "2024-01-15",
      "vind": null
     }
    ]
   },
   {
-   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
-   "ar": 2026,
-   "ovelse": "800 meter",
-   "rt": "time",
-   "so": 10,
-   "starter": 5,
+   "aid": "3da2e915-c708-444c-b24a-b3dbb7dfd813",
+   "ar": 2024,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 23,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "2:12.01",
-     "dato": "2026-06-20",
+     "perf": "3.43",
+     "dato": "2024-01-15",
      "vind": null
     },
     {
-     "perf": "2:14.56",
-     "dato": "2026-06-05",
+     "perf": "3.43",
+     "dato": "2024-01-14",
      "vind": null
     },
     {
-     "perf": "2:15.75",
-     "dato": "2026-03-06",
+     "perf": "3.41",
+     "dato": "2024-06-28",
      "vind": null
     }
    ]
@@ -3472,64 +4629,12 @@
    ]
   },
   {
-   "aid": "07ab2345-e527-427b-b1ce-2e7ef919120e",
-   "ar": 2025,
-   "ovelse": "Spyd 500gram",
-   "rt": "distance",
-   "so": 232,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "27.72",
-     "dato": "2025-07-26",
-     "vind": null
-    },
-    {
-     "perf": "25.68",
-     "dato": "2025-09-05",
-     "vind": null
-    },
-    {
-     "perf": "25.54",
-     "dato": "2025-09-14",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
-   "ar": 2025,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 4,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.20",
-     "dato": "2025-01-19",
-     "vind": null
-    },
-    {
-     "perf": "8.21",
-     "dato": "2025-02-15",
-     "vind": null
-    },
-    {
-     "perf": "8.22",
-     "dato": "2025-01-19",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "5d1931ee-db67-41a0-846b-32fe69424061",
    "ar": 2026,
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 15,
+   "starter": 16,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3545,48 +4650,6 @@
     {
      "perf": "2.10",
      "dato": "2026-06-25",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
-   "ar": 2025,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "7.30",
-     "dato": "2025-02-15",
-     "vind": null
-    },
-    {
-     "perf": "7.36",
-     "dato": "2025-02-21",
-     "vind": null
-    },
-    {
-     "perf": "7.36",
-     "dato": "2025-02-09",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
-   "ar": 2025,
-   "ovelse": "300 meter",
-   "rt": "time",
-   "so": 35,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "36.94",
-     "dato": "2025-07-23",
      "vind": null
     }
    ]
@@ -3618,30 +4681,19 @@
    ]
   },
   {
-   "aid": "55e08340-0d1e-4339-9611-aa51080f12fe",
-   "ar": 2024,
-   "ovelse": "5 km",
-   "rt": "time",
-   "so": 0,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "21.46",
-     "dato": "2024-04-17",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "07ab2345-e527-427b-b1ce-2e7ef919120e",
    "ar": 2024,
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "30.44",
+     "dato": "2024-02-09",
+     "vind": null
+    },
     {
      "perf": "30.44",
      "dato": "2024-02-09",
@@ -3686,7 +4738,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 7,
+   "starter": 14,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3695,13 +4747,13 @@
      "vind": null
     },
     {
-     "perf": "4.25",
-     "dato": "2025-02-15",
+     "perf": "4.30",
+     "dato": "2025-01-31",
      "vind": null
     },
     {
-     "perf": "4.22",
-     "dato": "2025-01-06",
+     "perf": "4.25",
+     "dato": "2025-02-15",
      "vind": null
     }
    ]
@@ -3712,12 +4764,17 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "8.46",
      "dato": "2025-02-15",
+     "vind": null
+    },
+    {
+     "perf": "8.46",
+     "dato": "2025-02-14",
      "vind": null
     }
    ]
@@ -3728,7 +4785,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 4,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3749,105 +4806,27 @@
    ]
   },
   {
-   "aid": "05a10460-3071-40ad-8c87-7043ddb2a761",
+   "aid": "a93719c0-59d5-4d11-9c62-8fbb11303a41",
    "ar": 2024,
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 7,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "4.06",
-     "dato": "2024-02-22",
+     "perf": "4.31",
+     "dato": "2024-05-10",
      "vind": null
     },
     {
-     "perf": "3.95",
-     "dato": "2024-06-18",
+     "perf": "4.31",
+     "dato": "2024-05-11",
      "vind": null
     },
     {
-     "perf": "3.85",
-     "dato": "2024-02-18",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "3da2e915-c708-444c-b24a-b3dbb7dfd813",
-   "ar": 2024,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 12,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "3.43",
-     "dato": "2024-01-15",
-     "vind": null
-    },
-    {
-     "perf": "3.41",
-     "dato": "2024-06-28",
-     "vind": null
-    },
-    {
-     "perf": "3.37",
-     "dato": "2024-08-24",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
-   "ar": 2025,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 10,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "3.12",
-     "dato": "2025-02-20",
-     "vind": null
-    },
-    {
-     "perf": "3.11",
-     "dato": "2025-02-02",
-     "vind": null
-    },
-    {
-     "perf": "3.05",
-     "dato": "2025-01-18",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
-   "ar": 2024,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.79",
-     "dato": "2024-01-21",
-     "vind": null
-    },
-    {
-     "perf": "4.67",
-     "dato": "2024-11-30",
-     "vind": null
-    },
-    {
-     "perf": "4.64",
-     "dato": "2024-02-10",
+     "perf": "4.24",
+     "dato": "2024-01-20",
      "vind": null
     }
    ]
@@ -3874,9 +4853,14 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 8,
+   "starter": 16,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "5.35",
+     "dato": "2025-05-30",
+     "vind": 2.1
+    },
     {
      "perf": "5.35",
      "dato": "2025-06-01",
@@ -3886,37 +4870,32 @@
      "perf": "5.26",
      "dato": "2025-06-22",
      "vind": 1.6
-    },
-    {
-     "perf": "5.21",
-     "dato": "2025-05-10",
-     "vind": 3.7
     }
    ]
   },
   {
-   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
-   "ar": 2024,
-   "ovelse": "60 meter",
+   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
+   "ar": 2026,
+   "ovelse": "100 meter",
    "rt": "time",
-   "so": 1,
-   "starter": 5,
+   "so": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "7.78",
-     "dato": "2024-02-10",
-     "vind": null
+     "perf": "11.74",
+     "dato": "2026-05-23",
+     "vind": 1.1
     },
     {
-     "perf": "7.83",
-     "dato": "2024-11-30",
-     "vind": null
+     "perf": "11.93",
+     "dato": "2026-05-08",
+     "vind": 0.7
     },
     {
-     "perf": "7.86",
-     "dato": "2024-03-09",
-     "vind": null
+     "perf": "11.95",
+     "dato": "2026-05-23",
+     "vind": -0.6
     }
    ]
   },
@@ -3937,6 +4916,22 @@
     {
      "perf": "56.50",
      "dato": "2026-06-05",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
+   "ar": 2025,
+   "ovelse": "7 Kamp",
+   "rt": "points",
+   "so": 0,
+   "starter": 1,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4068",
+     "dato": "2025-05-24",
      "vind": null
     }
    ]
@@ -3963,7 +4958,7 @@
    "ovelse": "Spyd 500gram",
    "rt": "distance",
    "so": 232,
-   "starter": 3,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
     {
@@ -3972,30 +4967,14 @@
      "vind": null
     },
     {
-     "perf": "34.20",
-     "dato": "2026-06-05",
+     "perf": "35.33",
+     "dato": "2026-05-08",
      "vind": null
     },
     {
-     "perf": "27.07",
-     "dato": "2026-06-20",
+     "perf": "34.20",
+     "dato": "2026-06-05",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
-   "ar": 2024,
-   "ovelse": "110 meter hekk (106,7cm)",
-   "rt": "time",
-   "so": 343,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "16.25",
-     "dato": "2024-06-15",
-     "vind": 0.9
     }
    ]
   },
@@ -4005,7 +4984,7 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 4,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4015,39 +4994,86 @@
     },
     {
      "perf": "7.35",
-     "dato": "2026-03-06",
-     "vind": null
+     "dato": "2026-05-08",
+     "vind": 1.3
     },
     {
-     "perf": "7.45",
+     "perf": "7.35",
      "dato": "2026-03-06",
      "vind": null
     }
    ]
   },
   {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
-   "ar": 2025,
+   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
+   "ar": 2024,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "14.74",
+     "dato": "2024-06-22",
+     "vind": -0.4
+    },
+    {
+     "perf": "14.74",
+     "dato": "2024-06-22",
+     "vind": -0.4
+    }
+   ]
+  },
+  {
+   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
+   "ar": 2024,
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "9.20",
+     "dato": "2024-01-20",
+     "vind": null
+    },
+    {
+     "perf": "9.20",
+     "dato": "2024-01-21",
+     "vind": null
+    },
+    {
+     "perf": "9.35",
+     "dato": "2024-02-09",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
+   "ar": 2024,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
    "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "7.94",
-     "dato": "2025-02-15",
-     "vind": null
+     "perf": "14.45",
+     "dato": "2024-05-31",
+     "vind": -0.2
     },
     {
-     "perf": "8.02",
-     "dato": "2025-01-19",
-     "vind": null
+     "perf": "14.45",
+     "dato": "2024-06-02",
+     "vind": -0.2
     },
     {
-     "perf": "8.02",
-     "dato": "2025-01-31",
-     "vind": null
+     "perf": "14.84",
+     "dato": "2024-06-22",
+     "vind": -0.4
     }
    ]
   },
@@ -4057,7 +5083,7 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 6,
+   "starter": 9,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4094,80 +5120,28 @@
    ]
   },
   {
-   "aid": "517c02da-ad61-46b6-a608-5dc00ff659f5",
-   "ar": 2024,
-   "ovelse": "300 meter hekk (84,0cm)",
-   "rt": "time",
-   "so": 363,
-   "starter": 4,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "41.75",
-     "dato": "2024-08-30",
-     "vind": null
-    },
-    {
-     "perf": "42.52",
-     "dato": "2024-05-25",
-     "vind": null
-    },
-    {
-     "perf": "42.58",
-     "dato": "2024-08-25",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "88f4319b-1ec2-4594-bd5a-a8372887be92",
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
    "ar": 2025,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 3,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 5,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "4.04",
-     "dato": "2025-05-10",
-     "vind": 2.1
-    },
-    {
-     "perf": "3.76",
-     "dato": "2025-11-01",
+     "perf": "4.55",
+     "dato": "2025-11-29",
      "vind": null
     },
     {
-     "perf": "3.75",
-     "dato": "2025-05-10",
-     "vind": 1.8
-    }
-   ]
-  },
-  {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
-   "ar": 2026,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "11.74",
-     "dato": "2026-05-23",
-     "vind": 1.1
+     "perf": "4.50",
+     "dato": "2025-11-02",
+     "vind": null
     },
     {
-     "perf": "11.95",
-     "dato": "2026-05-23",
-     "vind": -0.6
-    },
-    {
-     "perf": "12.10",
-     "dato": "2026-06-25",
-     "vind": 0.5
+     "perf": "4.30",
+     "dato": "2025-12-14",
+     "vind": null
     }
    ]
   },
@@ -4177,12 +5151,64 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "1.65",
      "dato": "2024-08-25",
+     "vind": null
+    },
+    {
+     "perf": "1.65",
+     "dato": "2024-08-24",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "ar": 2024,
+   "ovelse": "400 meter",
+   "rt": "time",
+   "so": 4,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "56.78",
+     "dato": "2024-06-18",
+     "vind": null
+    },
+    {
+     "perf": "56.78",
+     "dato": "2024-06-18",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
+   "ar": 2025,
+   "ovelse": "400 meter",
+   "rt": "time",
+   "so": 4,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "51.47",
+     "dato": "2025-02-22",
+     "vind": null
+    },
+    {
+     "perf": "51.47",
+     "dato": "2025-02-21",
+     "vind": null
+    },
+    {
+     "perf": "51.73",
+     "dato": "2025-01-18",
      "vind": null
     }
    ]
@@ -4193,12 +5219,17 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "14.53",
      "dato": "2025-09-06",
+     "vind": 0.6
+    },
+    {
+     "perf": "14.53",
+     "dato": "2025-09-05",
      "vind": 0.6
     }
    ]
@@ -4251,38 +5282,12 @@
    ]
   },
   {
-   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
-   "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "9.20",
-     "dato": "2024-01-21",
-     "vind": null
-    },
-    {
-     "perf": "9.35",
-     "dato": "2024-02-10",
-     "vind": null
-    },
-    {
-     "perf": "9.41",
-     "dato": "2024-06-18",
-     "vind": -2.3
-    }
-   ]
-  },
-  {
    "aid": "e443dfd2-a282-455e-99ab-38907ebdeee7",
    "ar": 2026,
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 3,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4298,32 +5303,6 @@
     {
      "perf": "8.18",
      "dato": "2026-03-06",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
-   "ar": 2025,
-   "ovelse": "400 meter",
-   "rt": "time",
-   "so": 4,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "51.47",
-     "dato": "2025-02-22",
-     "vind": null
-    },
-    {
-     "perf": "51.73",
-     "dato": "2025-01-19",
-     "vind": null
-    },
-    {
-     "perf": "51.94",
-     "dato": "2025-06-22",
      "vind": null
     }
    ]
@@ -4345,38 +5324,48 @@
    ]
   },
   {
+   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 4,
+   "annen_klubb": "Norna-Salhus IL",
+   "resultater": [
+    {
+     "perf": "8.16",
+     "dato": "2024-01-20",
+     "vind": null
+    },
+    {
+     "perf": "8.16",
+     "dato": "2024-01-21",
+     "vind": null
+    },
+    {
+     "perf": "8.21",
+     "dato": "2024-01-20",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
    "ar": 2025,
    "ovelse": "Kule 5,0kg",
    "rt": "distance",
    "so": 204,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "7.51",
      "dato": "2025-01-18",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
-   "ar": 2025,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.25",
-     "dato": "2025-01-31",
-     "vind": null
     },
     {
-     "perf": "8.38",
-     "dato": "2025-01-19",
+     "perf": "7.51",
+     "dato": "2025-01-18",
      "vind": null
     }
    ]
@@ -4413,7 +5402,7 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4422,39 +5411,13 @@
      "vind": null
     },
     {
+     "perf": "3.14",
+     "dato": "2024-01-20",
+     "vind": null
+    },
+    {
      "perf": "3.10",
      "dato": "2024-02-22",
-     "vind": null
-    },
-    {
-     "perf": "3.05",
-     "dato": "2024-02-03",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
-   "ar": 2025,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "7.48",
-     "dato": "2025-02-01",
-     "vind": null
-    },
-    {
-     "perf": "7.49",
-     "dato": "2025-01-19",
-     "vind": null
-    },
-    {
-     "perf": "7.60",
-     "dato": "2025-02-15",
      "vind": null
     }
    ]
@@ -4481,40 +5444,19 @@
    ]
   },
   {
-   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
-   "ar": 2024,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 7,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.61",
-     "dato": "2024-05-11",
-     "vind": 2.3
-    },
-    {
-     "perf": "4.41",
-     "dato": "2024-06-11",
-     "vind": 4.7
-    },
-    {
-     "perf": "4.26",
-     "dato": "2024-01-21",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "517c02da-ad61-46b6-a608-5dc00ff659f5",
    "ar": 2025,
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "7.63",
+     "dato": "2025-01-18",
+     "vind": null
+    },
     {
      "perf": "7.63",
      "dato": "2025-01-19",
@@ -4533,9 +5475,14 @@
    "ovelse": "300 meter hekk (91,4cm)",
    "rt": "time",
    "so": 364,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "38.06",
+     "dato": "2024-05-22",
+     "vind": null
+    },
     {
      "perf": "38.06",
      "dato": "2024-05-22",
@@ -4549,12 +5496,17 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "14.08",
      "dato": "2024-06-02",
+     "vind": 0.7
+    },
+    {
+     "perf": "14.08",
+     "dato": "2024-05-31",
      "vind": 0.7
     },
     {
@@ -4565,38 +5517,12 @@
    ]
   },
   {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
-   "ar": 2025,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "25.37",
-     "dato": "2025-09-06",
-     "vind": 0.0
-    },
-    {
-     "perf": "25.85",
-     "dato": "2025-02-14",
-     "vind": null
-    },
-    {
-     "perf": "25.85",
-     "dato": "2025-06-22",
-     "vind": -2.8
-    }
-   ]
-  },
-  {
    "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
    "ar": 2025,
    "ovelse": "800 meter",
    "rt": "time",
    "so": 10,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4605,14 +5531,72 @@
      "vind": null
     },
     {
-     "perf": "2:26.54",
-     "dato": "2025-02-01",
+     "perf": "2:24.63",
+     "dato": "2025-05-09",
      "vind": null
     },
     {
-     "perf": "2:37.06",
-     "dato": "2025-06-21",
+     "perf": "2:26.54",
+     "dato": "2025-01-31",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0",
+   "ar": 2026,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 1,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "5.00",
+     "dato": "2026-02-27",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "ar": 2026,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 1,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "11.64",
+     "dato": "2026-05-08",
+     "vind": 0.3
+    }
+   ]
+  },
+  {
+   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
+   "ar": 2025,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "24.31",
+     "dato": "2025-05-30",
+     "vind": 0.6
+    },
+    {
+     "perf": "24.31",
+     "dato": "2025-05-30",
+     "vind": 0.6
+    },
+    {
+     "perf": "24.41",
+     "dato": "2025-05-11",
+     "vind": 2.5
     }
    ]
   },
@@ -4633,38 +5617,12 @@
    ]
   },
   {
-   "aid": "5d1931ee-db67-41a0-846b-32fe69424061",
-   "ar": 2024,
-   "ovelse": "Tresteg",
-   "rt": "distance",
-   "so": 53,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "14.28",
-     "dato": "2024-08-03",
-     "vind": 2.5
-    },
-    {
-     "perf": "14.19",
-     "dato": "2024-08-03",
-     "vind": 1.3
-    },
-    {
-     "perf": "13.86",
-     "dato": "2024-08-31",
-     "vind": 0.7
-    }
-   ]
-  },
-  {
    "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
    "ar": 2024,
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4673,9 +5631,30 @@
      "vind": -0.3
     },
     {
+     "perf": "13.05",
+     "dato": "2024-06-22",
+     "vind": -0.3
+    },
+    {
      "perf": "13.12",
-     "dato": "2024-09-14",
+     "dato": "2024-09-13",
      "vind": -1.1
+    }
+   ]
+  },
+  {
+   "aid": "e443dfd2-a282-455e-99ab-38907ebdeee7",
+   "ar": 2026,
+   "ovelse": "Tresteg",
+   "rt": "distance",
+   "so": 53,
+   "starter": 1,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "11.71",
+     "dato": "2026-05-08",
+     "vind": 1.0
     }
    ]
   },
@@ -4685,9 +5664,14 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "1.20",
+     "dato": "2024-01-11",
+     "vind": null
+    },
     {
      "perf": "1.20",
      "dato": "2024-01-11",
@@ -4701,7 +5685,7 @@
    "ovelse": "60 meter hekk (91,4cm)",
    "rt": "time",
    "so": 315,
-   "starter": 5,
+   "starter": 10,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4710,13 +5694,60 @@
      "vind": null
     },
     {
-     "perf": "8.50",
-     "dato": "2024-02-02",
+     "perf": "8.40",
+     "dato": "2024-02-09",
      "vind": null
     },
     {
-     "perf": "8.51",
+     "perf": "8.50",
+     "dato": "2024-02-02",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
+   "ar": 2024,
+   "ovelse": "60 meter hekk (76,2cm)",
+   "rt": "time",
+   "so": 313,
+   "starter": 2,
+   "annen_klubb": "Norna-Salhus IL",
+   "resultater": [
+    {
+     "perf": "9.17",
      "dato": "2024-01-20",
+     "vind": null
+    },
+    {
+     "perf": "9.17",
+     "dato": "2024-01-20",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
+   "ar": 2025,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 6,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "26.17",
+     "dato": "2025-06-22",
+     "vind": -2.8
+    },
+    {
+     "perf": "26.17",
+     "dato": "2025-06-21",
+     "vind": -2.8
+    },
+    {
+     "perf": "26.47",
+     "dato": "2025-02-14",
      "vind": null
     }
    ]
@@ -4748,9 +5779,14 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "12.08",
+     "dato": "2024-08-30",
+     "vind": 1.5
+    },
     {
      "perf": "12.08",
      "dato": "2024-08-30",
@@ -4760,11 +5796,6 @@
      "perf": "12.16",
      "dato": "2024-06-02",
      "vind": 0.7
-    },
-    {
-     "perf": "12.25",
-     "dato": "2024-06-22",
-     "vind": -0.3
     }
    ]
   },
@@ -4774,12 +5805,17 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "7.91",
      "dato": "2024-02-10",
+     "vind": null
+    },
+    {
+     "perf": "7.91",
+     "dato": "2024-02-09",
      "vind": null
     },
     {
@@ -4795,7 +5831,7 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4804,61 +5840,14 @@
      "vind": 0.6
     },
     {
+     "perf": "23.36",
+     "dato": "2025-05-30",
+     "vind": 0.6
+    },
+    {
      "perf": "23.58",
-     "dato": "2025-09-06",
+     "dato": "2025-09-05",
      "vind": -0.1
-    }
-   ]
-  },
-  {
-   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
-   "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.30",
-     "dato": "2024-11-30",
-     "vind": null
-    },
-    {
-     "perf": "8.41",
-     "dato": "2024-05-14",
-     "vind": 1.5
-    },
-    {
-     "perf": "8.63",
-     "dato": "2024-06-18",
-     "vind": -2.2
-    }
-   ]
-  },
-  {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
-   "ar": 2026,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "23.69",
-     "dato": "2026-05-23",
-     "vind": 1.0
-    },
-    {
-     "perf": "24.58",
-     "dato": "2026-06-25",
-     "vind": 1.2
-    },
-    {
-     "perf": "25.21",
-     "dato": "2026-02-06",
-     "vind": null
     }
    ]
   },
@@ -4868,9 +5857,14 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "11.00",
+     "dato": "2025-01-18",
+     "vind": null
+    },
     {
      "perf": "11.00",
      "dato": "2025-01-18",
@@ -4884,12 +5878,17 @@
    "ovelse": "800 meter",
    "rt": "time",
    "so": 10,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "2:49.87",
      "dato": "2025-05-25",
+     "vind": null
+    },
+    {
+     "perf": "2:49.87",
+     "dato": "2025-05-24",
      "vind": null
     }
    ]
@@ -4911,30 +5910,19 @@
    ]
   },
   {
-   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
-   "ar": 2024,
-   "ovelse": "Kule 3,0kg",
-   "rt": "distance",
-   "so": 202,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "7.28",
-     "dato": "2024-02-22",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
    "ar": 2025,
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "11.89",
+     "dato": "2025-06-21",
+     "vind": -1.6
+    },
     {
      "perf": "11.89",
      "dato": "2025-06-21",
@@ -4948,9 +5936,14 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "1.79",
+     "dato": "2024-01-27",
+     "vind": null
+    },
     {
      "perf": "1.79",
      "dato": "2024-01-27",
@@ -4969,7 +5962,7 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 6,
+   "starter": 7,
    "annen_klubb": null,
    "resultater": [
     {
@@ -4995,12 +5988,17 @@
    "ovelse": "80 meter",
    "rt": "time",
    "so": 15,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "10.90",
      "dato": "2024-07-06",
+     "vind": -0.5
+    },
+    {
+     "perf": "10.90",
+     "dato": "2024-07-05",
      "vind": -0.5
     }
    ]
@@ -5027,12 +6025,17 @@
    "ovelse": "Høyde",
    "rt": "height",
    "so": 50,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "1.76",
      "dato": "2025-08-17",
+     "vind": null
+    },
+    {
+     "perf": "1.76",
+     "dato": "2025-08-15",
      "vind": null
     }
    ]
@@ -5043,9 +6046,14 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": "Norna-Salhus IL",
    "resultater": [
+    {
+     "perf": "26.70",
+     "dato": "2024-01-20",
+     "vind": null
+    },
     {
      "perf": "26.70",
      "dato": "2024-01-20",
@@ -5054,86 +6062,49 @@
    ]
   },
   {
-   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
-   "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.46",
-     "dato": "2024-03-09",
-     "vind": null
-    },
-    {
-     "perf": "8.55",
-     "dato": "2024-01-21",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
+   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
    "ar": 2025,
-   "ovelse": "200 meter",
+   "ovelse": "60 meter hekk (100cm)",
    "rt": "time",
-   "so": 3,
-   "starter": 3,
+   "so": 316,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "26.17",
-     "dato": "2025-06-22",
-     "vind": -2.8
-    },
-    {
-     "perf": "26.47",
+     "perf": "8.71",
      "dato": "2025-02-14",
      "vind": null
     },
     {
-     "perf": "26.75",
-     "dato": "2025-01-18",
+     "perf": "8.71",
+     "dato": "2025-02-16",
+     "vind": null
+    },
+    {
+     "perf": "8.79",
+     "dato": "2025-01-31",
      "vind": null
     }
    ]
   },
   {
-   "aid": "517c02da-ad61-46b6-a608-5dc00ff659f5",
+   "aid": "1ecba50e-f3a9-4252-9fba-5880379265d7",
    "ar": 2024,
-   "ovelse": "200 meter",
+   "ovelse": "100 meter",
    "rt": "time",
-   "so": 3,
+   "so": 2,
    "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "24.81",
-     "dato": "2024-08-18",
-     "vind": 2.4
+     "perf": "12.39",
+     "dato": "2024-08-30",
+     "vind": -1.3
     },
     {
-     "perf": "25.48",
-     "dato": "2024-05-26",
-     "vind": -1.7
-    }
-   ]
-  },
-  {
-   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
-   "ar": 2026,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "25.25",
-     "dato": "2026-05-23",
-     "vind": 1.9
+     "perf": "12.39",
+     "dato": "2024-08-30",
+     "vind": -1.3
     }
    ]
   },
@@ -5156,15 +6127,62 @@
   {
    "aid": "88f4319b-1ec2-4594-bd5a-a8372887be92",
    "ar": 2025,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "29.84",
+     "dato": "2025-05-09",
+     "vind": 1.7
+    },
+    {
+     "perf": "29.84",
+     "dato": "2025-05-11",
+     "vind": 1.7
+    }
+   ]
+  },
+  {
+   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
+   "ar": 2024,
+   "ovelse": "300 meter",
+   "rt": "time",
+   "so": 35,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "43.23",
+     "dato": "2024-07-05",
+     "vind": null
+    },
+    {
+     "perf": "43.23",
+     "dato": "2024-07-07",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "88f4319b-1ec2-4594-bd5a-a8372887be92",
+   "ar": 2025,
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "14.61",
      "dato": "2025-05-10",
+     "vind": -2.2
+    },
+    {
+     "perf": "14.61",
+     "dato": "2025-05-09",
      "vind": -2.2
     }
    ]
@@ -5175,9 +6193,14 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 3,
+   "starter": 6,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "7.54",
+     "dato": "2024-05-14",
+     "vind": 2.4
+    },
     {
      "perf": "7.54",
      "dato": "2024-05-14",
@@ -5187,11 +6210,6 @@
      "perf": "7.58",
      "dato": "2024-06-01",
      "vind": 1.2
-    },
-    {
-     "perf": "7.83",
-     "dato": "2024-06-18",
-     "vind": -1.6
     }
    ]
   },
@@ -5222,9 +6240,14 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "8.91",
+     "dato": "2024-01-20",
+     "vind": null
+    },
     {
      "perf": "8.91",
      "dato": "2024-01-20",
@@ -5280,27 +6303,6 @@
    ]
   },
   {
-   "aid": "80932776-76bd-4317-8543-c1cd23bd8630",
-   "ar": 2024,
-   "ovelse": "Tresteg",
-   "rt": "distance",
-   "so": 53,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "9.07",
-     "dato": "2024-05-12",
-     "vind": 3.4
-    },
-    {
-     "perf": "8.83",
-     "dato": "2024-02-22",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
    "ar": 2026,
    "ovelse": "Kule 7,26kg",
@@ -5322,44 +6324,49 @@
    ]
   },
   {
+   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
+   "ar": 2026,
+   "ovelse": "400 meter hekk (91,4cm)",
+   "rt": "time",
+   "so": 373,
+   "starter": 4,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "55.18",
+     "dato": "2026-06-25",
+     "vind": null
+    },
+    {
+     "perf": "56.21",
+     "dato": "2026-06-12",
+     "vind": null
+    },
+    {
+     "perf": "56.46",
+     "dato": "2026-07-23",
+     "vind": null
+    }
+   ]
+  },
+  {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2025,
    "ovelse": "Spyd 500gram",
    "rt": "distance",
    "so": 232,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "22.22",
      "dato": "2025-05-25",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "07ab2345-e527-427b-b1ce-2e7ef919120e",
-   "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.89",
-     "dato": "2024-02-10",
-     "vind": null
     },
     {
-     "perf": "8.92",
-     "dato": "2024-03-09",
+     "perf": "22.22",
+     "dato": "2025-05-24",
      "vind": null
-    },
-    {
-     "perf": "9.11",
-     "dato": "2024-06-18",
-     "vind": -2.2
     }
    ]
   },
@@ -5369,12 +6376,17 @@
    "ovelse": "600 meter",
    "rt": "time",
    "so": 55,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "1:43.50",
      "dato": "2024-12-01",
+     "vind": null
+    },
+    {
+     "perf": "1:43.50",
+     "dato": "2024-11-30",
      "vind": null
     }
    ]
@@ -5406,6 +6418,48 @@
    ]
   },
   {
+   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "ar": 2026,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "7.2",
+     "dato": "2026-05-19",
+     "vind": 0.0
+    },
+    {
+     "perf": "7.37",
+     "dato": "2026-01-17",
+     "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "367bd2f8-acb2-427d-b38a-da2e3638f8be",
+   "ar": 2024,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.29",
+     "dato": "2024-05-31",
+     "vind": 1.6
+    },
+    {
+     "perf": "8.29",
+     "dato": "2024-06-01",
+     "vind": 1.6
+    }
+   ]
+  },
+  {
    "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
    "ar": 2026,
    "ovelse": "5 Kamp (60mhekk-Høyde-Kule-Lengde-800m) Ungdom",
@@ -5427,13 +6481,39 @@
    "ovelse": "100 meter",
    "rt": "time",
    "so": 2,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "12.40",
      "dato": "2024-09-14",
      "vind": -1.3
+    },
+    {
+     "perf": "12.40",
+     "dato": "2024-09-13",
+     "vind": -1.3
+    }
+   ]
+  },
+  {
+   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
+   "ar": 2025,
+   "ovelse": "200 meter",
+   "rt": "time",
+   "so": 3,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "23.48",
+     "dato": "2025-01-18",
+     "vind": null
+    },
+    {
+     "perf": "23.48",
+     "dato": "2025-01-18",
+     "vind": null
     }
    ]
   },
@@ -5459,44 +6539,23 @@
    ]
   },
   {
-   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
-   "ar": 2025,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 4,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.55",
-     "dato": "2025-11-29",
-     "vind": null
-    },
-    {
-     "perf": "4.50",
-     "dato": "2025-11-02",
-     "vind": null
-    },
-    {
-     "perf": "4.30",
-     "dato": "2025-12-14",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "1ecba50e-f3a9-4252-9fba-5880379265d7",
+   "aid": "503b40f7-44c8-4553-b1c8-b5c4e11d5975",
    "ar": 2024,
-   "ovelse": "100 meter",
+   "ovelse": "400 meter hekk (91,4cm)",
    "rt": "time",
-   "so": 2,
-   "starter": 1,
+   "so": 373,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "12.39",
-     "dato": "2024-08-30",
-     "vind": -1.3
+     "perf": "1:08.18",
+     "dato": "2024-08-24",
+     "vind": null
+    },
+    {
+     "perf": "68.18",
+     "dato": "2024-08-25",
+     "vind": null
     }
    ]
   },
@@ -5506,7 +6565,7 @@
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -5515,30 +6574,35 @@
      "vind": 1.8
     },
     {
+     "perf": "8.42",
+     "dato": "2024-05-31",
+     "vind": 1.8
+    },
+    {
      "perf": "8.43",
      "dato": "2024-11-30",
      "vind": null
-    },
-    {
-     "perf": "8.58",
-     "dato": "2024-05-10",
-     "vind": 1.3
     }
    ]
   },
   {
-   "aid": "88f4319b-1ec2-4594-bd5a-a8372887be92",
-   "ar": 2025,
-   "ovelse": "200 meter",
+   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
+   "ar": 2024,
+   "ovelse": "100 meter",
    "rt": "time",
-   "so": 3,
-   "starter": 1,
+   "so": 2,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "29.84",
-     "dato": "2025-05-11",
-     "vind": 1.7
+     "perf": "13.18",
+     "dato": "2024-06-22",
+     "vind": -0.3
+    },
+    {
+     "perf": "13.18",
+     "dato": "2024-06-22",
+     "vind": -0.3
     }
    ]
   },
@@ -5559,38 +6623,22 @@
    ]
   },
   {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
-   "ar": 2025,
-   "ovelse": "60 meter hekk (100cm)",
-   "rt": "time",
-   "so": 316,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.71",
-     "dato": "2025-02-16",
-     "vind": null
-    },
-    {
-     "perf": "8.79",
-     "dato": "2025-01-31",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
    "ar": 2024,
    "ovelse": "60 meter",
    "rt": "time",
    "so": 1,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "7.40",
      "dato": "2024-02-10",
+     "vind": null
+    },
+    {
+     "perf": "7.40",
+     "dato": "2024-02-09",
      "vind": null
     },
     {
@@ -5603,105 +6651,21 @@
   {
    "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
    "ar": 2024,
-   "ovelse": "60 meter hekk (84,0cm)",
-   "rt": "time",
-   "so": 314,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "12.09",
-     "dato": "2024-01-20",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
-   "ar": 2024,
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "9.03",
      "dato": "2024-02-22",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
-   "ar": 2026,
-   "ovelse": "400 meter hekk (91,4cm)",
-   "rt": "time",
-   "so": 373,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
+    },
     {
-     "perf": "55.18",
-     "dato": "2026-06-25",
+     "perf": "9.03",
+     "dato": "2024-02-22",
      "vind": null
-    },
-    {
-     "perf": "56.21",
-     "dato": "2026-06-12",
-     "vind": null
-    },
-    {
-     "perf": "56.46",
-     "dato": "2026-07-23",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
-   "ar": 2024,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "11.29",
-     "dato": "2024-08-17",
-     "vind": 1.7
-    },
-    {
-     "perf": "11.29",
-     "dato": "2024-05-25",
-     "vind": 2.0
-    },
-    {
-     "perf": "11.33",
-     "dato": "2024-06-16",
-     "vind": 2.9
-    }
-   ]
-  },
-  {
-   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
-   "ar": 2024,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "14.45",
-     "dato": "2024-06-02",
-     "vind": -0.2
-    },
-    {
-     "perf": "14.84",
-     "dato": "2024-06-22",
-     "vind": -0.4
     }
    ]
   },
@@ -5722,102 +6686,23 @@
    ]
   },
   {
-   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
-   "ar": 2025,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 3,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "24.31",
-     "dato": "2025-05-30",
-     "vind": 0.6
-    },
-    {
-     "perf": "24.41",
-     "dato": "2025-05-11",
-     "vind": 2.5
-    },
-    {
-     "perf": "25.02",
-     "dato": "2025-02-14",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "367bd2f8-acb2-427d-b38a-da2e3638f8be",
+   "aid": "125d7c64-661f-4a3e-a102-82a8cc64131d",
    "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.29",
-     "dato": "2024-06-01",
-     "vind": 1.6
-    }
-   ]
-  },
-  {
-   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
-   "ar": 2025,
-   "ovelse": "Høyde",
-   "rt": "height",
-   "so": 50,
-   "starter": 5,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "1.55",
-     "dato": "2025-02-16",
-     "vind": null
-    },
-    {
-     "perf": "1.55",
-     "dato": "2025-02-20",
-     "vind": null
-    },
-    {
-     "perf": "1.55",
-     "dato": "2025-02-02",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
-   "ar": 2025,
-   "ovelse": "Tresteg",
+   "ovelse": "Kule 6,0kg",
    "rt": "distance",
-   "so": 53,
-   "starter": 1,
+   "so": 205,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "13.03",
-     "dato": "2025-09-06",
-     "vind": 0.1
-    }
-   ]
-  },
-  {
-   "aid": "71d790dd-50ca-4621-8146-011eb301703c",
-   "ar": 2024,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
+     "perf": "10.16",
+     "dato": "2024-01-27",
+     "vind": null
+    },
     {
-     "perf": "14.74",
-     "dato": "2024-06-22",
-     "vind": -0.4
+     "perf": "10.16",
+     "dato": "2024-01-27",
+     "vind": null
     }
    ]
   },
@@ -5827,28 +6712,17 @@
    "ovelse": "Kule 3,0kg",
    "rt": "distance",
    "so": 202,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "8.25",
      "dato": "2024-01-11",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
-   "ar": 2024,
-   "ovelse": "300 meter",
-   "rt": "time",
-   "so": 35,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
+    },
     {
-     "perf": "43.23",
-     "dato": "2024-07-07",
+     "perf": "8.25",
+     "dato": "2024-01-11",
      "vind": null
     }
    ]
@@ -5870,115 +6744,19 @@
    ]
   },
   {
-   "aid": "05a10460-3071-40ad-8c87-7043ddb2a761",
-   "ar": 2024,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "6.49",
-     "dato": "2024-06-15",
-     "vind": 0.5
-    },
-    {
-     "perf": "6.36",
-     "dato": "2024-08-30",
-     "vind": 0.4
-    }
-   ]
-  },
-  {
-   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
-   "ar": 2026,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "7.37",
-     "dato": "2026-01-17",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "591ef265-b84e-45a5-841f-4dc27a28aa0f",
-   "ar": 2024,
-   "ovelse": "400 meter",
-   "rt": "time",
-   "so": 4,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "1.12",
-     "dato": "2024-01-21",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "3d35ad3b-8478-42aa-be54-0f40a6c664f8",
-   "ar": 2024,
-   "ovelse": "600 meter",
-   "rt": "time",
-   "so": 55,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "1:43.87",
-     "dato": "2024-12-01",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "125d7c64-661f-4a3e-a102-82a8cc64131d",
-   "ar": 2024,
-   "ovelse": "Kule 6,0kg",
-   "rt": "distance",
-   "so": 205,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "10.16",
-     "dato": "2024-01-27",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
-   "ar": 2024,
-   "ovelse": "400 meter",
-   "rt": "time",
-   "so": 4,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "56.78",
-     "dato": "2024-06-18",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
    "ar": 2024,
    "ovelse": "600 meter",
    "rt": "time",
    "so": 55,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "1:40.47",
+     "dato": "2024-11-30",
+     "vind": null
+    },
     {
      "perf": "1:40.47",
      "dato": "2024-12-01",
@@ -5987,28 +6765,44 @@
    ]
   },
   {
-   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
-   "ar": 2025,
-   "ovelse": "Lengde",
-   "rt": "distance",
-   "so": 52,
-   "starter": 4,
+   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
+   "ar": 2024,
+   "ovelse": "80 meter",
+   "rt": "time",
+   "so": 15,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "6.35",
-     "dato": "2025-02-02",
-     "vind": null
+     "perf": "10.43",
+     "dato": "2024-07-05",
+     "vind": -1.7
     },
     {
-     "perf": "6.09",
-     "dato": "2025-01-09",
-     "vind": null
+     "perf": "10.43",
+     "dato": "2024-07-06",
+     "vind": -1.7
+    }
+   ]
+  },
+  {
+   "aid": "9a7f88c6-ef57-49e5-8788-4adab024d1fd",
+   "ar": 2025,
+   "ovelse": "60 meter",
+   "rt": "time",
+   "so": 1,
+   "starter": 2,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "8.98",
+     "dato": "2025-05-09",
+     "vind": -0.9
     },
     {
-     "perf": "6.07",
-     "dato": "2025-01-19",
-     "vind": null
+     "perf": "8.98",
+     "dato": "2025-05-09",
+     "vind": -0.9
     }
    ]
   },
@@ -6082,38 +6876,6 @@
    ]
   },
   {
-   "aid": "5b21ef7a-4d66-489c-bacf-2090778d4145",
-   "ar": 2025,
-   "ovelse": "100 meter hekk (76,2cm)",
-   "rt": "time",
-   "so": 330,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "20.86",
-     "dato": "2025-05-30",
-     "vind": -2.3
-    }
-   ]
-  },
-  {
-   "aid": "503b40f7-44c8-4553-b1c8-b5c4e11d5975",
-   "ar": 2024,
-   "ovelse": "400 meter hekk (91,4cm)",
-   "rt": "time",
-   "so": 373,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "68.18",
-     "dato": "2024-08-25",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
    "ar": 2026,
    "ovelse": "200 meter",
@@ -6125,27 +6887,6 @@
     {
      "perf": "23.65",
      "dato": "2026-01-24",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
-   "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 2,
-   "annen_klubb": "Norna-Salhus IL",
-   "resultater": [
-    {
-     "perf": "8.16",
-     "dato": "2024-01-21",
-     "vind": null
-    },
-    {
-     "perf": "8.21",
-     "dato": "2024-01-21",
      "vind": null
     }
    ]
@@ -6167,49 +6908,22 @@
    ]
   },
   {
-   "aid": "cb55c08e-395b-4df0-93d4-1ff167d7213e",
-   "ar": 2024,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "13.18",
-     "dato": "2024-06-22",
-     "vind": -0.3
-    }
-   ]
-  },
-  {
    "aid": "125d7c64-661f-4a3e-a102-82a8cc64131d",
    "ar": 2024,
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "5.80",
      "dato": "2024-01-27",
      "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "ff550c2c-ba7c-49ad-8f74-b8371071ca01",
-   "ar": 2024,
-   "ovelse": "60 meter hekk (76,2cm)",
-   "rt": "time",
-   "so": 313,
-   "starter": 1,
-   "annen_klubb": "Norna-Salhus IL",
-   "resultater": [
+    },
     {
-     "perf": "9.17",
-     "dato": "2024-01-20",
+     "perf": "5.80",
+     "dato": "2024-01-27",
      "vind": null
     }
    ]
@@ -6246,13 +6960,18 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "26.69",
      "dato": "2026-01-24",
      "vind": null
+    },
+    {
+     "perf": "27.44",
+     "dato": "2026-05-08",
+     "vind": -1.2
     }
    ]
   },
@@ -6305,50 +7024,23 @@
    ]
   },
   {
-   "aid": "5cc492b3-3376-46ee-aea9-a2a1e94af3b2",
-   "ar": 2025,
-   "ovelse": "200 meter",
-   "rt": "time",
-   "so": 3,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "23.48",
-     "dato": "2025-01-18",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "71a83647-c691-4ddb-af0c-85732fc99076",
    "ar": 2024,
    "ovelse": "80 meter",
    "rt": "time",
    "so": 15,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "9.34",
      "dato": "2024-05-12",
      "vind": 2.2
-    }
-   ]
-  },
-  {
-   "aid": "ae9fef3d-3047-44cb-9515-2fdccc7f285c",
-   "ar": 2024,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
+    },
     {
-     "perf": "14.72",
-     "dato": "2024-06-22",
-     "vind": 0.7
+     "perf": "9.34",
+     "dato": "2024-05-10",
+     "vind": 2.2
     }
    ]
   },
@@ -6395,50 +7087,55 @@
    ]
   },
   {
-   "aid": "d739112e-22f6-441a-8654-0ddfade37d76",
+   "aid": "dde1f2a8-1884-42fa-8b07-2dc4455b0934",
    "ar": 2024,
-   "ovelse": "400 meter hekk (91,4cm)",
+   "ovelse": "10000 meter",
    "rt": "time",
-   "so": 373,
-   "starter": 1,
+   "so": 21,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "59.99",
-     "dato": "2024-08-31",
+     "perf": "35:29.39",
+     "dato": "2024-06-27",
+     "vind": null
+    },
+    {
+     "perf": "35:29.39",
+     "dato": "2024-06-29",
      "vind": null
     }
    ]
   },
   {
-   "aid": "7a16b167-867f-4a52-a775-3a866f981dd8",
-   "ar": 2025,
-   "ovelse": "80 meter",
+   "aid": "b93320c9-fb08-49c4-9068-5240bf5efcc0",
+   "ar": 2024,
+   "ovelse": "Halvmaraton",
    "rt": "time",
-   "so": 15,
+   "so": 0,
    "starter": 1,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "10.05",
-     "dato": "2025-06-28",
-     "vind": -1.3
+     "perf": "1:18:52",
+     "dato": "2024-01-21",
+     "vind": null
     }
    ]
   },
   {
-   "aid": "813852f0-3d9a-4805-a7db-9c34a4c2ddb9",
+   "aid": "55e08340-0d1e-4339-9611-aa51080f12fe",
    "ar": 2024,
-   "ovelse": "80 meter",
+   "ovelse": "5 km",
    "rt": "time",
-   "so": 15,
+   "so": 0,
    "starter": 1,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "10.43",
-     "dato": "2024-07-06",
-     "vind": -1.7
+     "perf": "21.46",
+     "dato": "2024-04-17",
+     "vind": null
     }
    ]
   },
@@ -6464,9 +7161,14 @@
    "ovelse": "Stav",
    "rt": "height",
    "so": 51,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "2.60",
+     "dato": "2025-01-27",
+     "vind": null
+    },
     {
      "perf": "2.60",
      "dato": "2025-01-27",
@@ -6480,28 +7182,17 @@
    "ovelse": "800 meter",
    "rt": "time",
    "so": 10,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
+    {
+     "perf": "2:37.26",
+     "dato": "2026-05-08",
+     "vind": null
+    },
     {
      "perf": "2:37.74",
      "dato": "2026-06-05",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0",
-   "ar": 2026,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "5.00",
-     "dato": "2026-02-27",
      "vind": null
     }
    ]
@@ -6512,12 +7203,17 @@
    "ovelse": "Tresteg",
    "rt": "distance",
    "so": 53,
-   "starter": 2,
+   "starter": 4,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "10.91",
      "dato": "2024-02-11",
+     "vind": null
+    },
+    {
+     "perf": "10.91",
+     "dato": "2024-02-09",
      "vind": null
     },
     {
@@ -6533,12 +7229,17 @@
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "4.34",
      "dato": "2024-06-02",
+     "vind": 1.3
+    },
+    {
+     "perf": "4.34",
+     "dato": "2024-05-31",
      "vind": 1.3
     }
    ]
@@ -6549,29 +7250,18 @@
    "ovelse": "200 meter",
    "rt": "time",
    "so": 3,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "32.83",
      "dato": "2024-06-23",
      "vind": -1.7
-    }
-   ]
-  },
-  {
-   "aid": "9a7f88c6-ef57-49e5-8788-4adab024d1fd",
-   "ar": 2025,
-   "ovelse": "100 meter",
-   "rt": "time",
-   "so": 2,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
+    },
     {
-     "perf": "13.57",
-     "dato": "2025-05-10",
-     "vind": -1.6
+     "perf": "32.83",
+     "dato": "2024-06-22",
+     "vind": -1.7
     }
    ]
   },
@@ -6592,60 +7282,12 @@
    ]
   },
   {
-   "aid": "a93719c0-59d5-4d11-9c62-8fbb11303a41",
-   "ar": 2024,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "7.84",
-     "dato": "2024-01-21",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "dde1f2a8-1884-42fa-8b07-2dc4455b0934",
-   "ar": 2024,
-   "ovelse": "10000 meter",
-   "rt": "time",
-   "so": 21,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "35:29.39",
-     "dato": "2024-06-29",
-     "vind": null
-    }
-   ]
-  },
-  {
-   "aid": "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0",
-   "ar": 2025,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.80",
-     "dato": "2025-02-23",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "c7608a0b-4ebb-4717-8df0-a7fa48f9601b",
    "ar": 2024,
    "ovelse": "Lengde",
    "rt": "distance",
    "so": 52,
-   "starter": 4,
+   "starter": 8,
    "annen_klubb": null,
    "resultater": [
     {
@@ -6654,14 +7296,14 @@
      "vind": 2.3
     },
     {
+     "perf": "5.07",
+     "dato": "2024-05-31",
+     "vind": 2.3
+    },
+    {
      "perf": "5.03",
      "dato": "2024-01-21",
      "vind": null
-    },
-    {
-     "perf": "5.02",
-     "dato": "2024-06-02",
-     "vind": 1.9
     }
    ]
   },
@@ -6698,27 +7340,6 @@
    ]
   },
   {
-   "aid": "a93719c0-59d5-4d11-9c62-8fbb11303a41",
-   "ar": 2024,
-   "ovelse": "Stav",
-   "rt": "height",
-   "so": 51,
-   "starter": 2,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "4.31",
-     "dato": "2024-05-11",
-     "vind": null
-    },
-    {
-     "perf": "4.24",
-     "dato": "2024-01-20",
-     "vind": null
-    }
-   ]
-  },
-  {
    "aid": "17cac1ae-0082-4a94-a6c2-3b7db24bf614",
    "ar": 2024,
    "ovelse": "5 km",
@@ -6741,6 +7362,32 @@
      "perf": "22.16",
      "dato": "2024-02-26",
      "vind": null
+    }
+   ]
+  },
+  {
+   "aid": "3f2841b5-05de-4655-872b-398ec9d363d8",
+   "ar": 2024,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 4,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "15.46",
+     "dato": "2024-05-31",
+     "vind": 0.7
+    },
+    {
+     "perf": "15.46",
+     "dato": "2024-06-02",
+     "vind": 0.7
+    },
+    {
+     "perf": "15.63",
+     "dato": "2024-06-22",
+     "vind": -0.7
     }
    ]
   },
@@ -6777,39 +7424,28 @@
    ]
   },
   {
-   "aid": "9a7f88c6-ef57-49e5-8788-4adab024d1fd",
-   "ar": 2025,
-   "ovelse": "60 meter",
-   "rt": "time",
-   "so": 1,
-   "starter": 1,
-   "annen_klubb": null,
-   "resultater": [
-    {
-     "perf": "8.98",
-     "dato": "2025-05-09",
-     "vind": -0.9
-    }
-   ]
-  },
-  {
-   "aid": "3f2841b5-05de-4655-872b-398ec9d363d8",
+   "aid": "dde1f2a8-1884-42fa-8b07-2dc4455b0934",
    "ar": 2024,
-   "ovelse": "100 meter",
+   "ovelse": "5000 meter",
    "rt": "time",
-   "so": 2,
-   "starter": 2,
+   "so": 20,
+   "starter": 3,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "15.46",
-     "dato": "2024-06-02",
-     "vind": 0.7
+     "perf": "16:40.86",
+     "dato": "2024-06-19",
+     "vind": null
     },
     {
-     "perf": "15.63",
-     "dato": "2024-06-22",
-     "vind": -0.7
+     "perf": "17:14.98",
+     "dato": "2024-06-27",
+     "vind": null
+    },
+    {
+     "perf": "17:14.98",
+     "dato": "2024-06-27",
+     "vind": null
     }
    ]
   },
@@ -6830,22 +7466,17 @@
    ]
   },
   {
-   "aid": "dde1f2a8-1884-42fa-8b07-2dc4455b0934",
+   "aid": "2220824c-2c7a-417a-aec8-e5dfa0213c9c",
    "ar": 2024,
-   "ovelse": "5000 meter",
-   "rt": "time",
-   "so": 20,
-   "starter": 2,
+   "ovelse": "Spyd 700gram",
+   "rt": "distance",
+   "so": 234,
+   "starter": 1,
    "annen_klubb": null,
    "resultater": [
     {
-     "perf": "16:40.86",
-     "dato": "2024-06-19",
-     "vind": null
-    },
-    {
-     "perf": "17:14.98",
-     "dato": "2024-06-27",
+     "perf": "30.41",
+     "dato": "2024-06-22",
      "vind": null
     }
    ]
@@ -6856,13 +7487,34 @@
    "ovelse": "100 meter hekk (84,0cm)",
    "rt": "time",
    "so": 331,
-   "starter": 1,
+   "starter": 2,
    "annen_klubb": null,
    "resultater": [
     {
      "perf": "17.99",
      "dato": "2024-05-31",
      "vind": -0.2
+    },
+    {
+     "perf": "17.99",
+     "dato": "2024-05-31",
+     "vind": -0.2
+    }
+   ]
+  },
+  {
+   "aid": "ac79a9b4-91a6-429d-86ab-3371516142c9",
+   "ar": 2026,
+   "ovelse": "100 meter",
+   "rt": "time",
+   "so": 2,
+   "starter": 1,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "15.03",
+     "dato": "2026-05-08",
+     "vind": -1.7
     }
    ]
   },
@@ -6881,9 +7533,34 @@
      "vind": null
     }
    ]
+  },
+  {
+   "aid": "1d86601b-688e-4de0-962c-041b045327f1",
+   "ar": 2026,
+   "ovelse": "Stav",
+   "rt": "height",
+   "so": 51,
+   "starter": 1,
+   "annen_klubb": null,
+   "resultater": [
+    {
+     "perf": "4.20",
+     "dato": "2026-05-08",
+     "vind": null
+    }
+   ]
   }
  ],
  "klubb_ar": {
+  "e443dfd2-a282-455e-99ab-38907ebdeee7": [
+   2024,
+   2025,
+   2026
+  ],
+  "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0": [
+   2025,
+   2026
+  ],
   "5b21ef7a-4d66-489c-bacf-2090778d4145": [
    2024,
    2025,
@@ -6921,6 +7598,15 @@
    2025,
    2026
   ],
+  "fb09b5db-85c2-4834-afe6-176209090454": [
+   2024,
+   2025,
+   2026
+  ],
+  "71d790dd-50ca-4621-8146-011eb301703c": [
+   2024,
+   2025
+  ],
   "07ab2345-e527-427b-b1ce-2e7ef919120e": [
    2024,
    2025,
@@ -6934,10 +7620,13 @@
    2024,
    2025
   ],
-  "e443dfd2-a282-455e-99ab-38907ebdeee7": [
+  "80932776-76bd-4317-8543-c1cd23bd8630": [
    2024,
    2025,
    2026
+  ],
+  "5c3d30da-0aed-4131-8681-38c6f401c20b": [
+   2025
   ],
   "cb55c08e-395b-4df0-93d4-1ff167d7213e": [
    2024,
@@ -6956,9 +7645,10 @@
    2025,
    2026
   ],
-  "71d790dd-50ca-4621-8146-011eb301703c": [
+  "e1d59239-97eb-4804-9e6f-a49236be1c3a": [
    2024,
-   2025
+   2025,
+   2026
   ],
   "5cc492b3-3376-46ee-aea9-a2a1e94af3b2": [
    2024,
@@ -6983,23 +7673,10 @@
    2025,
    2026
   ],
-  "80932776-76bd-4317-8543-c1cd23bd8630": [
-   2024,
-   2025,
-   2026
-  ],
-  "5c3d30da-0aed-4131-8681-38c6f401c20b": [
-   2025
-  ],
   "2eee8ccc-bedf-450e-86a8-2601505a73f7": [
    2024
   ],
   "02f28b56-9e85-44d4-9124-1322a295f3c3": [
-   2024,
-   2025,
-   2026
-  ],
-  "fb09b5db-85c2-4834-afe6-176209090454": [
    2024,
    2025,
    2026
@@ -7011,11 +7688,15 @@
    2025,
    2026
   ],
+  "05a10460-3071-40ad-8c87-7043ddb2a761": [
+   2024,
+   2025,
+   2026
+  ],
   "ff550c2c-ba7c-49ad-8f74-b8371071ca01": [
    2026
   ],
-  "e1d59239-97eb-4804-9e6f-a49236be1c3a": [
-   2024,
+  "88f4319b-1ec2-4594-bd5a-a8372887be92": [
    2025,
    2026
   ],
@@ -7038,40 +7719,33 @@
   "125d7c64-661f-4a3e-a102-82a8cc64131d": [
    2024
   ],
+  "9a7f88c6-ef57-49e5-8788-4adab024d1fd": [
+   2025
+  ],
   "9faf6265-d714-4685-b671-4945cc835750": [
-   2024
-  ],
-  "05a10460-3071-40ad-8c87-7043ddb2a761": [
-   2024,
-   2025,
-   2026
-  ],
-  "b93320c9-fb08-49c4-9068-5240bf5efcc0": [
    2024
   ],
   "7a16b167-867f-4a52-a775-3a866f981dd8": [
    2024,
    2025
   ],
-  "88f4319b-1ec2-4594-bd5a-a8372887be92": [
-   2025,
-   2026
-  ],
-  "55e08340-0d1e-4339-9611-aa51080f12fe": [
+  "a93719c0-59d5-4d11-9c62-8fbb11303a41": [
    2024
   ],
   "dde1f2a8-1884-42fa-8b07-2dc4455b0934": [
    2024,
    2026
   ],
+  "b93320c9-fb08-49c4-9068-5240bf5efcc0": [
+   2024
+  ],
+  "55e08340-0d1e-4339-9611-aa51080f12fe": [
+   2024
+  ],
   "b476c073-94c4-4f65-b7b0-15a5c1e2ee18": [
    2025
   ],
   "ac79a9b4-91a6-429d-86ab-3371516142c9": [
-   2026
-  ],
-  "3a6fcfa5-b4e8-4855-a8e6-7c52c803b7b0": [
-   2025,
    2026
   ],
   "c7608a0b-4ebb-4717-8df0-a7fa48f9601b": [
@@ -7083,17 +7757,17 @@
   "3f2841b5-05de-4655-872b-398ec9d363d8": [
    2024
   ],
-  "9a7f88c6-ef57-49e5-8788-4adab024d1fd": [
-   2025
-  ],
   "69cb5b56-3edb-4074-83e3-ac442a5a4c83": [
    2025
   ],
-  "a93719c0-59d5-4d11-9c62-8fbb11303a41": [
-   2024
-  ],
   "17cac1ae-0082-4a94-a6c2-3b7db24bf614": [
    2024
+  ],
+  "2220824c-2c7a-417a-aec8-e5dfa0213c9c": [
+   2024
+  ],
+  "1d86601b-688e-4de0-962c-041b045327f1": [
+   2026
   ]
  },
  "sluttet": {
@@ -7106,6 +7780,13 @@
   },
   "4bdabc60-8ce6-45ba-9013-22e840a04675": {
    "navn": "Oliver Solsvik",
+   "ny_klubb": "Fyllingen IL",
+   "klubb_ar": [
+    2024
+   ]
+  },
+  "ac0b291f-f0d4-452e-9daa-c5a653f120c6": {
+   "navn": "Erlend Bolstad Raa",
    "ny_klubb": "Fyllingen IL",
    "klubb_ar": [
     2024
@@ -7125,13 +7806,6 @@
    "klubb_ar": [
     2024,
     2025
-   ]
-  },
-  "ac0b291f-f0d4-452e-9daa-c5a653f120c6": {
-   "navn": "Erlend Bolstad Raa",
-   "ny_klubb": "Fyllingen IL",
-   "klubb_ar": [
-    2024
    ]
   },
   "fec5ce09-4590-4c8a-bfe7-24d0b35517ca": {
