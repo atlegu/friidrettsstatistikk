@@ -29,7 +29,6 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
 | 14 | Skal NFIF eie skykontoene selv? | 11 | Vi har ingen innvending, men det må avtales |
 | 15 | Bekreft løpende tilgang til terminlisten og lisensregisteret | 3.5, 13 | Forutsatt i tilbudet. Uten dem faller den maskinelle klassifiseringen tilbake til manuelt arbeid. |
-| 16 | Har NFIF en etablert praksis for å fange opp norske resultater i utlandet, og hvilke kilder brukes? | 3.6 | **Det eneste uavklarte punktet i leveransen.** Forbundets egen erfaring er mest verdt akkurat her. |
 | 17 | Kontaktpunkt mot arrangører og tidtakere for egen innsamling | 3.6, 8.1 | Innsamlingen må stå på egne ben før dagens base faller bort. Trengs allerede i september. |
 
 ---

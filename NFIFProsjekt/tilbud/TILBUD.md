@@ -435,33 +435,28 @@ bare tallene, men også vissheten om hvor de kommer fra.
 ### Norske resultater i utlandet
 
 En komplett norsk database må også inneholde det norske utøvere gjør utenfor
-Norge. Vi deler dette i to.
+Norge. I dag fanges dette i praksis opp gjennom enkeltpersoner som følger med,
+og ved at utøvere selv melder fra. Det er den samme sårbarheten §1 beskriver, og
+vi mener den bør løses på samme måte som resten: systematisk, med et sikkerhetsnett.
 
-**Der kilden er kjent.** Norske collegeutøvere i USA er en betydelig gruppe, og
-resultatene deres er systematisk tilgjengelige gjennom TFRRS. Det samme gjelder
-mesterskap og internasjonale stevner som er kjent på forhånd gjennom
-terminlister og World Athletics.
+**Kjente kilder høstes automatisk.** Norske collegeutøvere i USA er en betydelig
+gruppe, og resultatene deres er systematisk tilgjengelige gjennom TFRRS.
+Mesterskap og terminlistede internasjonale stevner er kjent på forhånd.
 
-**Der stevnet er ukjent for oss.** Dette er det ene punktet i hele leveransen vi
-ikke har en ferdig løsning på, og vi sier det heller enn å la det stå udekket:
-hvordan fanger man opp at en norsk utøver har konkurrert på et utenlandsk stevne
-man ikke visste om?
+**Overvåkingen snus fra stevne til utøver.** Å følge alle stevner i verden er
+ugjørlig. Å følge alle norske utøvere er derimot avgrenset: gruppen er kjent
+gjennom lisensregisteret, og de aktuelle har profiler hos World Athletics og i
+collegesystemet som kan avleses maskinelt. For denne delen bør innsamlingen
+derfor være utøverdrevet, ikke stevnedrevet.
 
-Vår vurdering er at problemet må snus. Å overvåke alle stevner i verden er
-ugjørlig; å overvåke alle norske utøvere er derimot en avgrenset oppgave.
-Gruppen er kjent gjennom lisensregisteret, og de aktuelle utøverne har
-profiler hos World Athletics og i collegesystemet som kan følges. Innsamlingen
-bør derfor være utøverdrevet, ikke stevnedrevet, for denne delen.
+**Innmelding blir en registrert kanal.** At utøvere og klubber melder inn
+resultater skal fortsatt være mulig — det er ofte den raskeste veien. Forskjellen
+er at innmeldingen går inn i systemet med dokumentasjon, sporing og
+avviksbehandling, i stedet for som en e-post til en person.
 
-Det gjenstår å avklare hvilke kilder som faktisk kan brukes til dette, og med
-hvilken dekningsgrad. Vi foreslår at det gjøres som en egen avklaring sammen med
-NFIF tidlig i fase 2, og at det suppleres med en enkel mulighet for utøver og
-klubb til å melde inn et resultat med dokumentasjon — som fanger den siste
-resten uansett hvor god den automatiske innsamlingen blir.
-
-`‹AVKLARES med NFIF›` Har forbundet i dag en etablert praksis for å fange opp
-norske resultater i utlandet, og hvilke kilder brukes? Dette er det punktet der
-NFIFs egen erfaring er mest verdt for oss.
+Vi vil ikke overselge dette: for et utenlandsk stevne ingen kjenner til og som
+ikke er indeksert noe sted, finnes det ingen garantert dekning. Vår ambisjon er
+å gjøre restkategorien liten og synlig, ikke å påstå at den forsvinner.
 
 **Et forbehold vi mener er nødvendig å ta:** Vi fastpriser ikke integrasjoner mot
 systemer vi ikke har sett grensesnittdokumentasjonen til. iSonen, OpenTrack,
@@ -916,7 +911,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Kapasitet | Tre personer med komplementær kompetanse fra kontraktsstart, jf. kapittel 9.2 |
 | Datakvalitet i importert historikk | Kontroll mot kilden kjøres rutinemessig, stevne for stevne, jf. kapittel 6.1 |
 | Egen innsamling ikke klar før dagens base faller bort | Frist satt til okt 2026, tre måneder før overgangen, med parallell drift av begge kilder ut året, jf. kapittel 8.1 |
-| Norske resultater i utlandet fanges ikke opp | Utøverdrevet innsamling framfor stevnedrevet, supplert med innmelding fra utøver og klubb. Eneste uavklarte punkt — se kapittel 3.6. |
+| Norske resultater i utlandet fanges ikke opp | Utøverdrevet innsamling framfor stevnedrevet, TFRRS for collegeutøvere, og registrert innmeldingskanal for utøver og klubb som sikkerhetsnett, jf. kapittel 3.6 |
 
 ---
 
@@ -1023,11 +1018,11 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
 5. **Årsakskoder for ikke-ratifiserte resultater** (§7) er «TBD» i
    kravspekken og må fastsettes av NFIF. Samme kodeverk brukes ved
    underkjenning etter §6.
-6. **Norske resultater i utlandet** (§13): resultater fra kjente kilder —
-   TFRRS for collegeutøvere, mesterskap og terminlistede internasjonale
-   stevner — dekkes. For stevner vi ikke kjenner til på forhånd har vi ikke
-   en ferdig løsning, og lover ikke fullstendighet der før kildene er
-   avklart sammen med NFIF. Se kapittel 3.6.
+6. **Norske resultater i utlandet** (§13): kjente kilder høstes automatisk, og
+   utøverdrevet overvåking dekker det meste av resten. For et utenlandsk
+   stevne som ikke er indeksert noe sted, kan ingen garantere dekning. Vi
+   lover å gjøre restkategorien liten og synlig, ikke at den forsvinner.
+   Se kapittel 3.6.
 7. **Gateløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
    kartlegging. Omfanget avhenger av NFIFs definisjon av «approved athletics
    events».
