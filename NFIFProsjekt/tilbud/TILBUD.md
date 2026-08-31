@@ -10,13 +10,6 @@
 
 ---
 
-> **STATUS: UTKAST.**
-> Kapittel 12 gir prismodellen, men ikke beløpene — de settes i forhandling.
-> Punkter merket `‹AVKLARES›` må fylles ut eller strykes før dokumentet sendes.
-> Se `AAPNE_PUNKTER.md`.
-
----
-
 # Sammendrag
 
 Norsk friidrett har siden 2013 hatt en verdifull statistikktjeneste bygget på
