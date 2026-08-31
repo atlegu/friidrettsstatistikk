@@ -1253,6 +1253,11 @@ def parse_args():
                         help='Tell resultater mot kilden per stevne og hent inn '
                              'de som er delvis importert. Tregere, men fanger '
                              'stevner der bare deler av resultatene kom med.')
+    parser.add_argument('--kun-stevner', metavar='FIL',
+                        help='Hent bare stevnene som er navngitt i FIL, ett navn '
+                             'per linje. Brukes når vi vet nøyaktig hvilke stevner '
+                             'som mangler rader og ikke vil telle hele sesongen '
+                             'mot kilden på nytt.')
 
     return parser.parse_args()
 
@@ -1284,6 +1289,14 @@ def main():
     min_date = determine_min_date(args.from_date, season_year, indoor)
     logger.info(f"Looking for meets from {min_date.strftime('%Y-%m-%d')} onwards")
 
+    # Vent på nett FØR referansedataene lastes. Sto opprinnelig etter
+    # load_events(), og da hjalp den ikke: 29.08.2026 døde 2018 utendørs på
+    # første kall til Supabase mens DNS var nede, og alle tre forsøkene i
+    # verify_alle_sesonger.sh falt på samme sted.
+    if not vent_pa_nett(SUPABASE_URL.split('//')[-1].split('/')[0]):
+        logger.error("Ingen nettforbindelse — avslutter")
+        return
+
     # Load reference data for import
     logger.info("\nLoading reference data...")
     load_events()
@@ -1294,15 +1307,22 @@ def main():
     # Step 1: Fetch source meets
     source_meets = fetch_meets_from_source(season_year, outdoor_flag, min_date)
 
-    if not vent_pa_nett(SUPABASE_URL.split('//')[-1].split('/')[0]):
-        logger.error("Ingen nettforbindelse — avslutter")
-        return
-
     # Step 2: Get existing meets from DB
     db_meets = get_existing_meets_from_db(min_date)
 
     # Step 3: Find missing/incomplete meets
-    if args.verify:
+    if args.kun_stevner:
+        onskede = {normalize_meet_name(l.strip())
+                   for l in open(args.kun_stevner, encoding='utf-8') if l.strip()}
+        missing_meets = [m for m in source_meets
+                         if normalize_meet_name(m['name']) in onskede]
+        logger.info(f"\nKUN-STEVNER — {len(onskede)} navn i lista, "
+                    f"{len(missing_meets)} treff i denne sesongen")
+        ikke_funnet = onskede - {normalize_meet_name(m['name']) for m in source_meets}
+        if ikke_funnet:
+            logger.info(f"  {len(ikke_funnet)} navn finnes ikke i denne sesongen "
+                        f"(hører trolig til et annet år)")
+    elif args.verify:
         logger.info("\nVERIFY — teller resultater mot kilden, stevne for stevne")
         missing_meets = finn_ufullstendige_mot_kilden(source_meets, db_meets)
     else:
