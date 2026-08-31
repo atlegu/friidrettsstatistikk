@@ -46,10 +46,6 @@ og to verdier er registrert i feil øvelsestype.
 | `update_results.py --verify` | Tell mot kilden per stevne, hent det som mangler |
 | `update_results.py --kun-stevner FIL` | Hent bare navngitte stevner. Billig når man vet hva som mangler. |
 
-Ny `--verify`-modus teller mot kilden per stevne. Resultatet så langt: så godt
-som **samtlige stevner i alle kontrollerte sesonger var ufullstendige**, og
-basen har vokst fra 1 418 058 til over 1 820 000 resultater.
-
 ---
 
 ## Gjenstår
@@ -58,7 +54,6 @@ basen har vokst fra 1 418 058 til over 1 820 000 resultater.
 
 | Sak | Omfang | Merknad |
 |---|---|---|
-| Markørrader + 2018 utendørs | pågår | se over |
 | Sesonger før 2013 | ikke vurdert | Dekningen er ujevn; må vurderes separat |
 | 121 utøvere med fødselsår som strider mot egne resultater | krever skjønn | `scraper/backups/fix_ugyldig_alder_20260821_171844_til_gjennomgang.csv` |
 | 1 777 NM-medaljer fra 1970+ uten `athlete_id` | krever navnearbeid | 2 245 fra før 1970 er forventet ukoblet |
@@ -66,7 +61,8 @@ basen har vokst fra 1 418 058 til over 1 820 000 resultater.
 | 2 søppelklubber | manuell | holder de fire postene over |
 | 12 klubber med etternavn/stedsnavn | krever skjønn | Franklin, Siggerud, Stange, Rjukan, Fåberg m.fl. |
 | Prefiks-dubletter blant klubber | domenevalg | «Kongsvinger IL» vs «Kongsvinger IL Friidrett» — skal friidrettsgruppa være egen enhet? |
-| 2 091 resultater uten `performance_value` | delvis kjent | mest mangekamp-poeng; 38 er duplikater av poengsummer |
+| 2 448 resultater uten `performance_value` | delvis kjent | mest mangekamp-poeng |
+| 3 rader med ugyldig verdi i kilden | manuell | «3.320.78» er skrivefeil; to står i feil øvelsestype |
 
 ### Presentasjon
 
@@ -81,15 +77,18 @@ basen har vokst fra 1 418 058 til over 1 820 000 resultater.
 
 ## NFIF-tilbudet
 
-Frist **31.08.2026**. Underlag i `NFIFProsjekt/`, start med `01_STRATEGI.md`.
+Frist **31.08.2026**. Tilbudet ligger i `NFIFProsjekt/tilbud/`:
 
-**Tallene i tilbudsdokumentene er utdaterte.** De sier 1 190 655 resultater fra
-2013 og senere. Etter opprydningen er tallet vesentlig høyere og stiger fortsatt.
-Oppdater når kjøringen er ferdig — historien er sterkere enn før: vi kan
-dokumentere at vi fant og tettet et etterslep på over 400 000 resultater.
+| Fil | Innhold |
+|---|---|
+| `TILBUD.md` | Kilden. Bygg med `./lag_pdf.py` og `./lag_docx.py`. |
+| `VEDLEGG_E_SPORSMAL.md` | Spørsmål til NFIF, klart til å sendes |
+| `AAPNE_PUNKTER.md` | Intern sjekkliste. Skal ikke til NFIF. |
 
-Se også `NFIFProsjekt/02_ARBEIDSPLAN.md` for de fire beslutningene som fortsatt
-er åpne (bemanning, språk, prisnivå, kontakt med NFIF).
+Vedleggene ligger samlet i `NFIFProsjekt/vedlegg/` (C, D, E, F).
+
+Gjenstår før utsending: selskapsopplysninger i kapittel 9.1, beslutning om
+pristall i kapittel 12, kontroll av publikasjonslisten i 4.3, og språkvalget.
 
 ---
 
@@ -99,8 +98,7 @@ er åpne (bemanning, språk, prisnivå, kontakt med NFIF).
 `bul/`, `fana/`. Ny klubb er ca. tjue linjer konfigurasjon — se
 `analyse/klubbrapport/README.md`.
 
-Rapportene bør bygges på nytt når importen er ferdig, siden tallene har endret
-seg betydelig:
+Alle fire er bygget på nytt mot oppdatert base 31.08.2026. Bygg på nytt med:
 
 ```bash
 cd analyse/vidar && ./kjor.py
