@@ -174,7 +174,7 @@ allerede tapt poenget.
 | «Hva om dere går konkurs?» | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. |
 | «Innelåsing» | Standard, ikke-eksotisk teknologi (PostgreSQL, Next.js, åpne formater). Løsningen kan overtas av enhver kompetent leverandør. Dette er en reell forskjell fra en proprietær internasjonal plattform. |
 | «Er dette bare et sideprosjekt?» | Selskapet har flere ben å stå på (laserprodukter for Athlete Mindset Inc., konsulentvirksomhet). Det betyr at vi ikke er økonomisk avhengige av én kontrakt — samtidig som statistikkplattformen er definert som strategisk kjerneprodukt, ikke et oppdrag. |
-| «Ingen referansekunder» | Vi har brukere, akademisk bruk av databasen og et publisert analysearbeid. Vurder å be om en referanseuttalelse fra en klubb, krets eller trener som bruker friidrett.live i dag. |
+| «Ingen referansekunder» | Vi har brukere, akademisk bruk av databasen og et publisert analysearbeid. Vurder å be om en referanseuttalelse fra en klubb, krets eller trener som bruker friidrettsresultater.no i dag. |
 
 **Konkret anbefaling:** Ikke selg inn Athlete Mindset AS som et konsulentselskap som
 tar et oppdrag. Selg det inn som et **produktselskap innen idrettsdata**, der NFIF blir

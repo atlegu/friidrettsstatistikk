@@ -2,7 +2,7 @@
 """Genererer tabeller og figurer til trenerforening-artikkelen om nivå- og
 breddeutvikling i norsk friidrett 2013-2025.
 
-Datagrunnlag: friidrett.live-databasen (Supabase). All aggregering skjer
+Datagrunnlag: friidrettsresultater.no-databasen (Supabase). All aggregering skjer
 server-side via SQL-funksjonene analyse_active_athletes, analyse_event_trend
 og analyse_survival (migrasjon add_trend_analysis_functions, juli 2026).
 

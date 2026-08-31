@@ -1,4 +1,4 @@
-# CLAUDE.md — Prosjekthukommelse for friidrett.live
+# CLAUDE.md — Prosjekthukommelse for friidrettsresultater.no
 
 ## Hva er dette?
 Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 frontend, Python-scraper mot minfriidrettsstatistikk.info og friidrett.no.

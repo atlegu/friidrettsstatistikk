@@ -49,7 +49,7 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 session = requests.Session()
-session.headers.update({'User-Agent': 'Mozilla/5.0 (friidrett.live datakvalitet)'})
+session.headers.update({'User-Agent': 'Mozilla/5.0 (friidrettsresultater.no datakvalitet)'})
 
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
 LOG_DIR = SCRIPT_DIR / 'logs'

@@ -323,7 +323,7 @@ Input: "Jakob Ingebrigtsen", "Sandnes IL", "2000-09-19"
 ### 4.1 Sidestruktur
 
 ```
-friidrett.live/
+friidrettsresultater.no/
 ├── /                           # Forside
 ├── /statistikk/
 │   ├── /{år}/                  # Årsstatistikk 2025
@@ -446,7 +446,7 @@ query {
    - Skal klubber kunne registrere egne resultater?
 
 3. **Domene og hosting**
-   - Hvilket domene? (friidrett.live, statistikk.friidrett.no, annet?)
+   - Hvilket domene? (friidrettsresultater.no, statistikk.friidrett.no, annet?)
    - Hvem eier/betaler?
 
 4. **Forholdet til NFF (Norges Friidrettsforbund)**

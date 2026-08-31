@@ -13,7 +13,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | 2 | **Kapasitet per person** — timer per uke frem til 01.01.2027 | 9.3 | Teamet er navngitt (9.2), men estimatet er 1 080–1 490 timer, altså halvannet til to årsverk. NFIF vil spørre hvor mye tid hver av de tre faktisk har ved siden av doktorgradsarbeid og annen virksomhet. Bedre å svare før spørsmålet stilles. |
 | 3 | **Selskapsopplysninger** — org.nr., etableringsdato, aksjekapital, styre, revisor | 9.1 | Standard tilbudsformalia |
 | 4 | **Publikasjonslisten** — bekreft årstall og volum/side for JSAMS-artikkelen, og at IJSPP-artikkelen fortsatt er «forthcoming» | 4.3 | Fire arbeider er nå ført opp med fulle referanser. Kontroller dem mot originalene før utsending — en feil i en referanseliste er den billigste måten å miste troverdighet på. |
-| 5 | **Referanseuttalelse** fra klubb, krets eller trener som bruker friidrett.live | 9.2 | Vi har ingen forbundsreferanser. En bruker som går god for oss veier tungt. |
+| 5 | **Referanseuttalelse** fra klubb, krets eller trener som bruker friidrettsresultater.no | 9.2 | Vi har ingen forbundsreferanser. En bruker som går god for oss veier tungt. |
 | 6 | **Responstider i supportavtalen** | 10 | Forslag ligger inne: samme virkedag for kritiske feil, to virkedager ellers |
 | 7 | **Språk** — norsk eller engelsk | hele | Kravspekken er på engelsk, noe som kan bety at internasjonale tilbydere forventes. Tilbudet er skrevet på norsk. Nærhet og norsk domenekunnskap er et av våre hovedargumenter, og da er norsk riktig. Vurder engelsk sammendrag. |
 

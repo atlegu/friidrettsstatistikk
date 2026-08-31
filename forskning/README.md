@@ -1,6 +1,6 @@
-# Forskningsprosjekter — friidrett.live
+# Forskningsprosjekter — friidrettsresultater.no
 
-Denne mappen inneholder forskningsprosjekter som bruker data fra friidrett.live-databasen.
+Denne mappen inneholder forskningsprosjekter som bruker data fra friidrettsresultater.no-databasen.
 
 ## Tilgjengelige data
 

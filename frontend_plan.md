@@ -415,7 +415,7 @@ Hjem > Statistikk > 2025 > 100m menn
 │  FRIIDRETT.LIVE                                                     │
 │                                                                      │
 │  Statistikk    Stevner       Om oss        Kontakt                  │
-│  • Årslister   • Kalender    • Om systemet • post@friidrett.live   │
+│  • Årslister   • Kalender    • Om systemet • post@friidrettsresultater.no   │
 │  • All-time    • Resultater  • API         • Facebook              │
 │  • Rekorder                  • Personvern  • Instagram             │
 │                                                                      │

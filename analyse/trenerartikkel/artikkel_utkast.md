@@ -247,7 +247,7 @@ for år.
 ### Faktaboks: Slik er tallene laget
 
 - **Datagrunnlag:** Alle registrerte resultater i norsk friidrett 2013–2025
-  (friidrett.live, basert på minfriidrettsstatistikk.info), ca. 1,1 mill.
+  (friidrettsresultater.no, basert på minfriidrettsstatistikk.info), ca. 1,1 mill.
   resultater.
 - **Aktiv utøver:** Minst ett registrert resultat i kalenderåret. Endringer i
   registreringspraksis kan påvirke nivået, men neppe trendbruddet i 2020.

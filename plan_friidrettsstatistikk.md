@@ -500,7 +500,7 @@ type Athlete {
 #### B) Fan følger NM live
 
 ```
-1. Åpner app / friidrett.live/nm-2025
+1. Åpner app / friidrettsresultater.no/nm-2025
 2. Ser oversikt over pågående øvelser
 3. Velger "Stav menn finale"
 4. Ser:

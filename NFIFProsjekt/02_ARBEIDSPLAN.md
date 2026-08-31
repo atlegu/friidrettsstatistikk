@@ -39,7 +39,7 @@ Rekkefølgen er etter hvor synlig problemet er, ikke hvor stort det er.
 | # | Oppgave |
 |---|---|
 | 11 | Start `04_KRAVSPORING.md`: fyll ut status for hvert eneste punkt i §22 og §23. Denne matrisen styrer resten av skrivearbeidet — den avdekker hva vi ikke kan svare på. |
-| 12 | Sett opp NFIF-demoinstans på egen URL, adskilt fra friidrett.live. |
+| 12 | Sett opp NFIF-demoinstans på egen URL, adskilt fra friidrettsresultater.no. |
 | 12b | **Kjør NM-sammenligningen på alle 56 øvelsesblokker** i `NM 2026 sortert.xlsx` mot vår base. Gir både en prioritert datavaskliste og et tall til tilbudet: hvor stor andel av SRUs manuelle liste vi reproduserer automatisk. Pilot på 100 m kvinner er kjørt — 89 av 101 navn matcher. Se `09_NM_KVALIFISERING.md`. Estimat 10–16 t. |
 
 **Milepæl fredag 14.08:** demoen er presentabel, og vi vet hva vi ikke har.
@@ -69,7 +69,7 @@ Alt skal ha noe å peke på, om aldri så enkelt.
 | 19 | Datamodell | §21 |
 | 20 | Integrasjonsløsning, med forbehold og opsjonsstruktur | §13, §14, §21 |
 | 21 | Brukergrensesnitt, mobil og universell utforming | §17, §21 |
-| 22 | Referanseprosjekter: friidrett.live, rekrutteringsanalysen, RAE-forskningen | §21 |
+| 22 | Referanseprosjekter: friidrettsresultater.no, rekrutteringsanalysen, RAE-forskningen | §21 |
 | 22b | **Hovedkapittel: «Mer enn en plattform — NFIFs analyse- og kunnskapsfunksjon».** Plasseres rett etter teknisk løsning, ikke som vedlegg. Se `08_ANALYSE_OG_MEDIETJENESTE.md`. | §12, §23 |
 | 22c | Klargjør «56 til Birmingham» (`web/public/EM2026/`) som vedlegg eller demolenke. Oppdater publikasjonsstatus for de vitenskapelige artiklene til august 2026 — aldri mer enn det som faktisk stemmer. | §21 |
 

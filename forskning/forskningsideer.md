@@ -1,4 +1,4 @@
-# Forskningsideer — friidrett.live-data
+# Forskningsideer — friidrettsresultater.no-data
 
 Oversikt over mulige forskningsprosjekter basert på tilgjengelige data.
 

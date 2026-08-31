@@ -337,8 +337,8 @@ def generate_review_csv(include_all=False):
                 "results2": results2,
                 "gender2": a2["gender"],
                 "external_id2": a2.get("external_id", ""),
-                "url1": f"https://friidrett.live/utover/{a1['id']}",
-                "url2": f"https://friidrett.live/utover/{a2['id']}",
+                "url1": f"https://friidrettsresultater.no/utover/{a1['id']}",
+                "url2": f"https://friidrettsresultater.no/utover/{a2['id']}",
             })
 
     if not rows:
