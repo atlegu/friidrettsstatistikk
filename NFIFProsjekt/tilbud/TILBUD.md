@@ -966,11 +966,11 @@ den innvendingen er berettiget, og at den fortjener et svar før den stilles.
 | Innvending | Vårt svar |
 |---|---|
 | Nystartet selskap uten historikk | Selskapet er nytt. Arbeidet er det ikke. Fagfellevurdert forskning på norske friidrettsdata går tilbake til 2015 (kapittel 4.3), og plattformen har to års utvikling og 1,9 millioner produksjonsdata bak seg. |
-| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. `‹AVKLARES — bekreft hver enkelts kapasitet i timer per uke i perioden›` |
+| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
 | Er dette et sideprosjekt | Nei. Selskapet arbeider med idrett på fire felter, jf. kapittel 9.1, og statistikkplattformen er definert som strategisk kjerneprodukt. Agent- og trenervirksomheten gjør dessuten at vi bruker plattformen selv, hver uke. |
-| Ingen referansekunder | Vi har ingen forbundsreferanser. Vi har en løsning i drift med norske data, akademisk bruk av databasen og publisert analysearbeid. `‹AVKLARES — referanseuttalelse fra klubb, krets eller trener som bruker friidrettsresultater.no i dag›` |
+| Ingen referansekunder | Vi har ingen forbundsreferanser. Vi har en løsning i drift med norske data, akademisk bruk av databasen og publisert analysearbeid. |
 
 Vi ber ikke NFIF kjøpe et konsulentoppdrag. Vi ber NFIF bli ankerkunde i et
 produkt som skal leve videre — det er forskjellen som forklarer både hvorfor vi
@@ -1011,8 +1011,8 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Element | Innhold |
 |---|---|
 | Support | E-post og telefon, norsk språk, norsk arbeidstid |
-| Responstid, kritiske feil | `‹AVKLARES›` — foreslått: samme virkedag |
-| Responstid, øvrige henvendelser | `‹AVKLARES›` — foreslått: to virkedager |
+| Responstid, kritiske feil | Samme virkedag |
+| Responstid, øvrige henvendelser | To virkedager |
 | Beredskap under mesterskap | Utvidet tilgjengelighet under NM, Bislett Games og terminfestede mesterskap |
 | Vedlikehold | Sikkerhetsoppdateringer, driftsovervåkning, sikkerhetskopi med testet gjenoppretting |
 | Videreutvikling | Fast årlig timepott til endringer NFIF prioriterer, jf. kapittel 12 |
