@@ -401,14 +401,73 @@ Brukere kan filtrere statistikken på nivå, jf. §6.
 
 *§13, §14.*
 
-Vi bygger først et generisk importrammeverk som tar imot JSON, XML, CSV og
-Excel, med skjemavalidering, dublettkontroll, godkjenningskø og full sporing av
-hvilken kilde hvert resultat kom fra. Alle integrasjoner bygger på dette. Et
-delvis rammeverk er i drift i dag.
+### Utgangspunktet: vi må bli kilden, ikke lese den
 
-Deretter integreres kildene i den prioritetsrekkefølgen §13 angir: API først,
+Dette er kjernen i oppdraget, og vi vil være helt tydelige på hva det innebærer.
+
+I dag henter vi resultatene fra den eksisterende statistikkbasen. **Det er den
+basen denne anskaffelsen skal erstatte.** Ved overtakelse forsvinner altså
+dagens datakilde, og plattformen kan ikke lenger være en mottaker lenger nede i
+kjeden. Den må selv være førstemottaker av hver eneste resultatliste.
+
+Det er en større omlegging enn det kan se ut som, og den er hele grunnen til at
+§13 er formulert som den er. Oppdraget er ikke å presentere en database. Det er
+å **holde en komplett database komplett**, uke etter uke, gjennom en sesong der
+det arrangeres stevner hver helg.
+
+Konsekvensen for arkitekturen er at innsamling er en driftsfunksjon på linje med
+selve nettstedet, ikke en engangsjobb. Det er derfor løpende datainnhenting og
+kvalitetskontroll ligger inne i driftsavtalen i kapittel 10, og ikke som en
+opsjon.
+
+### Importrammeverket
+
+Vi bygger et generisk importrammeverk som tar imot JSON, XML, CSV og Excel, med
+skjemavalidering, dublettkontroll, godkjenningskø og full sporing av hvilken
+kilde hvert resultat kom fra. Alle integrasjoner bygger på dette. Et delvis
+rammeverk er i drift i dag.
+
+Kildene integreres i den prioritetsrekkefølgen §13 angir: API først,
 strukturerte filer deretter, Excel/CSV som tredje valg, og manuell behandling
 kun som siste utvei.
+
+**Hvert tall skal kunne pekes på.** Et resultat som vises i en årsstatistikk, en
+alle-tiders-liste, en klubbrekord, en kvalifiseringsoversikt eller et
+API-svar, skal kunne følges tilbake til stevnet det ble oppnådd i, og videre til
+kilden det kom fra og tidspunktet det ble hentet. Det er en forutsetning for at
+noen skal kunne rette en feil, og det er forutsetningen for §4: NFIF eier ikke
+bare tallene, men også vissheten om hvor de kommer fra.
+
+### Norske resultater i utlandet
+
+En komplett norsk database må også inneholde det norske utøvere gjør utenfor
+Norge. Vi deler dette i to.
+
+**Der kilden er kjent.** Norske collegeutøvere i USA er en betydelig gruppe, og
+resultatene deres er systematisk tilgjengelige gjennom TFRRS. Det samme gjelder
+mesterskap og internasjonale stevner som er kjent på forhånd gjennom
+terminlister og World Athletics.
+
+**Der stevnet er ukjent for oss.** Dette er det ene punktet i hele leveransen vi
+ikke har en ferdig løsning på, og vi sier det heller enn å la det stå udekket:
+hvordan fanger man opp at en norsk utøver har konkurrert på et utenlandsk stevne
+man ikke visste om?
+
+Vår vurdering er at problemet må snus. Å overvåke alle stevner i verden er
+ugjørlig; å overvåke alle norske utøvere er derimot en avgrenset oppgave.
+Gruppen er kjent gjennom lisensregisteret, og de aktuelle utøverne har
+profiler hos World Athletics og i collegesystemet som kan følges. Innsamlingen
+bør derfor være utøverdrevet, ikke stevnedrevet, for denne delen.
+
+Det gjenstår å avklare hvilke kilder som faktisk kan brukes til dette, og med
+hvilken dekningsgrad. Vi foreslår at det gjøres som en egen avklaring sammen med
+NFIF tidlig i fase 2, og at det suppleres med en enkel mulighet for utøver og
+klubb til å melde inn et resultat med dokumentasjon — som fanger den siste
+resten uansett hvor god den automatiske innsamlingen blir.
+
+`‹AVKLARES med NFIF›` Har forbundet i dag en etablert praksis for å fange opp
+norske resultater i utlandet, og hvilke kilder brukes? Dette er det punktet der
+NFIFs egen erfaring er mest verdt for oss.
 
 **Et forbehold vi mener er nødvendig å ta:** Vi fastpriser ikke integrasjoner mot
 systemer vi ikke har sett grensesnittdokumentasjonen til. iSonen, OpenTrack,
@@ -688,14 +747,27 @@ mesterskapshelger — der responstid er noe annet enn i en vanlig uke.
 | Regions- og kretsstatistikk | §10, §22 | Des 2026 |
 | Masters, aldersklasserekorder, rekordgodkjenning | §16, §22 | Des 2026 |
 | Generisk importrammeverk | §13 | Nov 2026 |
+| **Egen innsamling av resultatlister, uavhengig av dagens base** | §13 | **Okt 2026** |
 | Datavask og kvalitetsverktøy | §23 | Løpende |
 | WCAG 2.1 AA-samsvar, dokumentert | §17 | Des 2026 |
 | Personvern: DPIA, databehandleravtale, driftsdokumentasjon | §19, §21 | Des 2026 |
 | Veikart gateløp — levert med dette tilbudet | §24 | Levert |
 
-**Kritisk avhengighet:** Kretsstatistikk krever en klubb-til-krets-mapping fra
-NFIF. Vi kan ikke utlede kretstilhørighet fra klubbnavn med tilstrekkelig
-sikkerhet. Vi ber om denne så tidlig som mulig etter kontraktsinngåelse.
+**Den viktigste milepælen er innsamlingen, ikke funksjonaliteten.** Plattformen
+henter i dag resultatene fra den basen som skal erstattes, jf. kapittel 3.6. Egen
+innsamling må derfor være i drift *før* overgangen, ikke ved den. Vi har satt
+frist oktober 2026 og kjører de to kildene parallelt gjennom resten av året, slik
+at vi kan sammenligne dem og se at ingenting faller ut. En plattform som mister
+innsamlingen i januar, er ubrukelig uansett hvor godt alt annet fungerer.
+
+**Kritiske avhengigheter fra NFIF:**
+
+| Vi trenger | Til hva | Når |
+|---|---|---|
+| Klubb-til-krets-mapping | Kretsstatistikk (§10, §22). Kretstilhørighet kan ikke utledes trygt fra klubbnavn. | Snarest etter kontrakt |
+| Terminliste og lisensregister, løpende | Maskinell klassifisering av kvalitetsnivå (§6) | Snarest etter kontrakt |
+| Kontaktpunkt mot arrangører og tidtakere | Egen innsamling av resultatlister | Sept 2026 |
+| Melding om underkjente stevner og resultater | Nivåoppdatering og §7-koder | Fra oppstart |
 
 ## 8.2 2027 og senere
 
@@ -849,6 +921,8 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
 | Kapasitet | Tre personer med komplementær kompetanse fra kontraktsstart, jf. kapittel 9.2 |
 | Datakvalitet i importert historikk | Kontroll mot kilden kjøres rutinemessig, stevne for stevne, jf. kapittel 6.1 |
+| Egen innsamling ikke klar før dagens base faller bort | Frist satt til okt 2026, tre måneder før overgangen, med parallell drift av begge kilder ut året, jf. kapittel 8.1 |
+| Norske resultater i utlandet fanges ikke opp | Utøverdrevet innsamling framfor stevnedrevet, supplert med innmelding fra utøver og klubb. Eneste uavklarte punkt — se kapittel 3.6. |
 
 ---
 
@@ -955,12 +1029,17 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
 5. **Årsakskoder for ikke-ratifiserte resultater** (§7) er «TBD» i
    kravspekken og må fastsettes av NFIF. Samme kodeverk brukes ved
    underkjenning etter §6.
-6. **Gateløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
+6. **Norske resultater i utlandet** (§13): resultater fra kjente kilder —
+   TFRRS for collegeutøvere, mesterskap og terminlistede internasjonale
+   stevner — dekkes. For stevner vi ikke kjenner til på forhånd har vi ikke
+   en ferdig løsning, og lover ikke fullstendighet der før kildene er
+   avklart sammen med NFIF. Se kapittel 3.6.
+7. **Gateløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
    kartlegging. Omfanget avhenger av NFIFs definisjon av «approved athletics
    events».
-7. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
+8. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
    dekningsgrad.
-8. **Differensiert eksponering av mindreåriges data** (kapittel 7.1) er et
+9. **Differensiert eksponering av mindreåriges data** (kapittel 7.1) er et
    forbundsvedtak. Vi bygger det NFIF bestemmer.
 
 ---
