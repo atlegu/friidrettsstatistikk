@@ -1067,8 +1067,7 @@ vi ber om å sette sammen med NFIF.
 ## 12.5 Grunnlag for forhandling
 
 Vi stiller med et gjennomarbeidet estimat for hver post, og går gjerne gjennom
-det linje for linje. Til orientering om størrelsesorden: leveransene i kapittel
-8.1 er estimert til halvannet til to årsverk frem til 01.01.2027.
+det linje for linje.
 
 Vi vil også være åpne om en ting: NFIF er den kunden som gjør denne plattformen
 til et produkt. Det er en verdi for oss ut over kontraktssummen, og den
