@@ -1,4 +1,7 @@
 Athlete Mindset AS
+Org.nr. 937 878 818
+Idrettsveien 50, 1400 Ski
+
 31. august 2026
 
 **Norges Friidrettsforbund**
@@ -9,9 +12,9 @@ v/ Thor Gjesdal og Magnus Trosdahl
 Vi viser til invitasjonen av 3. juli 2026 og oversender med dette vårt tilbud.
 
 Athlete Mindset AS arbeider med idrettsteknologi og idrettsdata,
-agentvirksomhet og trenervirksomhet. Vi har bygget og drifter i dag
-friidrettsresultater.no, en statistikkplattform med norske resultatdata som er
-i drift.
+agentvirksomhet og trenervirksomhet, og inngår i Fire S Invest AS. Vi har
+bygget og drifter friidrettsresultater.no, en statistikkplattform med norske
+resultatdata som er i drift.
 
 **Det vi mener skiller tilbudet fra de øvrige, er at plattformen finnes
 allerede.** 1 922 634 resultater er importert, normalisert og søkbare, hvorav

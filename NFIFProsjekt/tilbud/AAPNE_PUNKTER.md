@@ -10,7 +10,6 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | # | Punkt | Kapittel | Hvorfor det haster |
 |---|---|---|---|
 | 1 | **Timesats og estimert ramme per post** | 12 | Kapittel 12 tilbyr forhandling og gir en fullstendig prismodell, men ingen tall. Vurder om minst timesats og en ramme for etablering bør stå — §21 ber uttrykkelig om etablerings- og driftskostnader for 3–5 år, og et tilbud helt uten tall kan vurderes som ufullstendig. |
-| 2 | **Selskapsopplysninger** — org.nr., etableringsdato, aksjekapital, styre, revisor | 9.1 | Standard tilbudsformalia |
 | 3 | **Publikasjonslisten** — bekreft årstall og volum/side for JSAMS-artikkelen, og at IJSPP-artikkelen fortsatt er «forthcoming» | 4.3 | Fire arbeider er nå ført opp med fulle referanser. Kontroller dem mot originalene før utsending — en feil i en referanseliste er den billigste måten å miste troverdighet på. |
 | 4 | **Språk** — norsk eller engelsk | hele | Kravspekken er på engelsk, noe som kan bety at internasjonale tilbydere forventes. Tilbudet er skrevet på norsk. Nærhet og norsk domenekunnskap er et av våre hovedargumenter, og da er norsk riktig. Vurder engelsk sammendrag. |
 
@@ -54,6 +53,4 @@ haster mest — innsamlingen skal legges om i oktober.
 2. **Budsjettramme fra Magnus Trosdahl (punkt 1).** Avgjør om noen tall skal
    inn i kapittel 12 før utsending.
 3. **Publikasjonslisten (punkt 3).** Rask jobb, høy risiko hvis den gjøres feil.
-4. **Selskapsopplysninger (punkt 2).** Formalia, tar minutter. Siste
-   `‹AVKLARES›` i selve tilbudet.
 5. **Språkvalget (punkt 4).** Kan tas til slutt, men må tas.

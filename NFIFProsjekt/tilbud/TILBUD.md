@@ -884,6 +884,13 @@ at noe forsvinner uten at noen oppdager det før det trengs.
 
 ## 9.1 Om Athlete Mindset AS
 
+| | |
+|---|---|
+| Foretaksnavn | Athlete Mindset AS |
+| Organisasjonsnummer | 937 878 818 |
+| Forretningsadresse | Idrettsveien 50, 1400 Ski |
+| Konsern | Del av Fire S Invest AS |
+
 Athlete Mindset AS er et norsk aksjeselskap som arbeider med idrettsteknologi
 og idrettsdata, agentvirksomhet og trenervirksomhet. I tillegg utvikler
 selskapet laserbaserte måleprodukter sammen med Athlete Mindset Inc.
@@ -898,6 +905,9 @@ som arbeider med idrett, og der data er én av flere innganger til det samme.
 Bredden har også en praktisk side: selskapet står ikke og faller med én
 kontrakt. Statistikkplattformen er likevel definert som strategisk
 kjerneprodukt, ikke som et enkeltoppdrag ved siden av.
+
+Athlete Mindset AS inngår i Fire S Invest AS. Selskapet er dermed ikke en
+enkeltstående oppstart, men har et eierselskap bak seg.
 
 ## 9.2 Teamet
 
@@ -987,7 +997,7 @@ stilles.
 
 | Innvending | Vårt svar |
 |---|---|
-| Nystartet selskap uten historikk | Selskapet er nytt. Arbeidet er det ikke. Fagfellevurdert forskning på norske friidrettsdata går tilbake til 2015 (kapittel 4.3), og plattformen har to års utvikling og 1,9 millioner produksjonsdata bak seg. |
+| Nystartet selskap uten historikk | Selskapet er nytt og inngår i Fire S Invest AS. Arbeidet er ikke nytt. Fagfellevurdert forskning på norske friidrettsdata går tilbake til 2015 (kapittel 4.3), og plattformen har to års utvikling og 1,9 millioner produksjonsdata bak seg. |
 | Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2, ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
