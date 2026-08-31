@@ -59,6 +59,12 @@ en bredde- og rekrutteringsanalyse av norsk friidrett 2013–2025, og
 fagfellevurdert forskning på det samme datagrunnlaget. NFIF får ikke bare en
 database — NFIF får analysemiljøet som hører til.
 
+Bak leveransen står tre navngitte personer med utfyllende kompetanse: doktorgrad
+i anvendt økonometri kombinert med World Athletics-dommerkompetanse og
+styreerfaring fra alle nivåer i norsk friidrett, kvantitativ analyse og
+systemutvikling fra Princeton og Duke, og sport management fra University of
+Texas. Se kapittel 9.2. Det er svaret på §1: dette er ikke én ildsjel.
+
 ---
 
 # 1. Hva vi har forstått at NFIF skal løse
@@ -636,7 +642,69 @@ Mindset Inc. og konsulenttjenester.
 `‹AVKLARES›` Organisasjonsnummer, etableringsdato, aksjekapital, styre,
 revisor.
 
-## 9.2 Innvendingen vi tar opp selv
+## 9.2 Teamet
+
+Kombinasjonen av kompetanse i dette teamet er uvanlig, og den er grunnen til at
+plattformen finnes. Empirisk analyse av store datasett og inngående kjennskap
+til friidrettens regelverk sitter sjelden i samme miljø. Her gjør den det.
+
+### Atle Guttormsen — fagansvarlig data og analyse
+
+PhD med utdanning innen anvendt økonometri. Forsker innen økonomi, med
+hovedvekt på empiriske analyser av store datasett. Det er den fagbakgrunnen
+databasen er bygget på, og den som gjør at datagrunnlaget holder
+forskningskvalitet og ikke bare presentasjonskvalitet.
+
+På friidrettssiden: World Athletics bronsedommer, godkjent athlete
+representative, og i praksis samtlige av forbundets dommer- og
+funksjonærsertifiseringer. Har vært leder og styremedlem på alle nivåer i norsk
+friidrett — klubb, krets og forbund.
+
+Denne dobbeltheten er hele poenget. Kravspesifikasjonens §6 og §7 handler om
+regelverk: hva som er rekordberettiget, når et blandet heat er tillatt, hvilke
+baner som tilfredsstiller TR14.1 mot TR43.1, hvordan mastersregelverket avviker
+fra WA. Det er ikke spørsmål en utvikler kan slå opp. Det er spørsmål som
+krever en som har sittet i jury.
+
+### Simen Guttormsen — kvantitativ analyse og systemutvikling
+
+PhD-stipendiat i kvantitativ finans. Bachelor i Operations Research and
+Financial Engineering fra Princeton University, mastergrad i Economics and
+Computer Science fra Duke University. Gründer av Novaspeed.
+
+Kombinasjonen av operasjonsanalyse, økonomi og informatikk er direkte relevant
+for de tyngste delene av leveransen: regelmotoren for kvalitetsnivå i §6,
+aktivitets- og deltakeranalysen i §12, og simuleringsverktøyet for
+kvalifiseringskrav beskrevet i kapittel 2.
+
+### Sondre Guttormsen — idrettsfaglig ledelse og produkt
+
+Bachelor i psykologi fra Princeton University, Master of Education i Sport
+Management fra University of Texas at Austin. Gründer og eier av Athlete
+Mindset Inc.
+
+Bakgrunnen i sport management og utøverpsykologi er det leddet som knytter
+datagrunnlaget til brukerne: utøvere, trenere og klubber. En statistikkplattform
+som ikke forstår hvordan en utøver og en trener faktisk leser tall, blir en
+plattform for statistikere.
+
+### Hva teamet betyr for NFIF
+
+| Krav i anskaffelsen | Hvem dekker det |
+|---|---|
+| Regelverk, rekordberettigelse, flagging (§6, §7, §16) | Atle — WA-dommer, forbundserfaring på alle nivåer |
+| Empirisk analyse av store datasett (§12) | Atle — forskerbakgrunn, anvendt økonometri |
+| Systemutvikling, regelmotor, modellering | Simen — OR&FE, informatikk |
+| Aktivitetsanalyse og dashbord (§12, §23) | Simen og Atle |
+| Brukerforståelse, utøver- og trenerperspektiv (§17) | Sondre — sport management, psykologi |
+| Produkt- og selskapsledelse | Sondre — gründer og eier, Athlete Mindset Inc. |
+
+`‹AVKLARES›` Teamets egne idrettskarrierer er ikke omtalt over. Det er et
+bevisst valg som bør tas aktivt: for NFIF kan det være et sterkt argument at
+plattformen bygges av folk som selv har konkurrert på høyt nivå. Vurder om det
+skal med.
+
+## 9.3 Innvendingen vi tar opp selv
 
 Athlete Mindset AS er et nystartet selskap. En innkjøper som skal binde seg for
 tre til fem år må vurdere hva som skjer hvis leverandøren forsvinner. Vi mener
@@ -645,7 +713,7 @@ den innvendingen er berettiget, og at den fortjener et svar før den stilles.
 | Innvending | Vårt svar |
 |---|---|
 | Nystartet selskap uten historikk | Selskapet er nytt. Plattformen er det ikke. To års utvikling og 1,9 millioner produksjonsdata er referansen. |
-| Personavhengighet | `‹AVKLARES — navngitt utvikler nr. 2 fra kontraktsstart›` Estimatet i kapittel 8 tilsvarer halvannet til to årsverk frem til 01.01.2027. Leveransen forutsetter to utviklere, og det sier vi fremfor å love den med én. |
+| Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Estimatet i kapittel 8 tilsvarer halvannet til to årsverk frem til 01.01.2027, og bemanningen er dimensjonert for det. `‹AVKLARES — bekreft hver enkelts kapasitet i timer per uke i perioden›` |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
 | Er dette et sideprosjekt | Selskapet har flere ben å stå på, og er dermed ikke økonomisk avhengig av én kontrakt. Statistikkplattformen er samtidig definert som strategisk kjerneprodukt, ikke som et enkeltoppdrag. |
@@ -655,7 +723,7 @@ Vi ber ikke NFIF kjøpe et konsulentoppdrag. Vi ber NFIF bli ankerkunde i et
 produkt som skal leve videre — det er forskjellen som forklarer både hvorfor vi
 kan prise dette lavere enn et konsulenthus, og hvorfor vi blir værende.
 
-## 9.3 Om det frivillige miljøet
+## 9.4 Om det frivillige miljøet
 
 Statistikkarbeidet som er gjort siden 2013 er grunnlaget for at denne
 anskaffelsen i det hele tatt er mulig — dataene finnes fordi noen har holdt dem
@@ -667,7 +735,7 @@ prioritering av videreutvikling. Ikke som en høflighetsgest, men fordi
 domenekunnskapen deres er vanskelig å erstatte, og fordi en plattform uten
 tillit i statistikkmiljøet blir en plattform ingen bruker.
 
-## 9.4 Risiko
+## 9.5 Risiko
 
 | Risiko | Tiltak |
 |---|---|
@@ -675,7 +743,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Gateløp viser seg mer omfattende | Veikart levert nå, bygging i 2027, ingen fastpris før datakildene er kartlagt |
 | Kretsmapping kommer sent fra NFIF | Flagget som kritisk avhengighet i kapittel 8.1 |
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
-| Kapasitet | To utviklere fra kontraktsstart |
+| Kapasitet | Tre personer med komplementær kompetanse fra kontraktsstart, jf. kapittel 9.2 |
 | Datakvalitet i importert historikk | Kontroll mot kilden kjøres rutinemessig, stevne for stevne, jf. kapittel 6.1 |
 
 ---
