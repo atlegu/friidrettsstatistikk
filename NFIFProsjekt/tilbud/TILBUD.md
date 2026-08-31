@@ -58,6 +58,10 @@ bare de siste tolv årene.
 gjenstående er arbeidsmengde, ikke teknisk risiko. Kravsporingen ligger i
 vedlegg A og B.
 
+Vi legger samtidig til at basen ikke er ferdig kvalitetssikret. Arbeidet har så
+langt vært prioritert mot innsamling og fullstendighet, og det gjenstår kjente
+feil og mangler som rettes fortløpende. Vi gjør rede for dem i kapittel 3.7.
+
 I tillegg tilbyr vi noe en ren plattformleverandør ikke kan tilby: **et
 fagmiljø som kan lese databasen.** Norske friidrettsdata er allerede grunnlag
 for fagfellevurderte studier i *Journal of Science and Medicine in Sport* og
@@ -484,6 +488,45 @@ jobben — og regningen kommer uansett, bare senere og som en tvist.
 som ennå ikke finnes. Vi lover forberedt arkitektur og deltakelse i
 spesifikasjonsarbeidet, ikke en ferdig integrasjon mot noe som ikke er
 definert.
+
+## 3.7 Datakvalitet — hvor vi står i dag
+
+Vi vil være helt åpne om dette, fordi NFIF kommer til å oppdage det uansett og
+bør høre det fra oss først.
+
+**friidrettsresultater.no er ikke ferdig kvalitetssikret.** Det finnes fortsatt
+feil og mangler i basen. Arbeidet så langt har vært prioritert mot innsamling
+og fullstendighet — å få dataene inn, riktig strukturert og kontrollert mot
+kilden. Systematisk opprydding er påbegynt, men ikke fullført.
+
+Rekkefølgen er et bevisst valg. Man kan ikke vaske data man ikke har, og en
+base som er pen men ufullstendig er vanskeligere å reparere enn en som er
+komplett og uryddig. Det er også derfor vi bruker kapittel 3.6 på innsamling
+framfor på skjermbilder.
+
+Kjente restanser per 31.08.2026:
+
+| Sak | Omfang |
+|---|---:|
+| Utøvere uten registrert kjønn | 2 268 av 87 897 (2,6 %) |
+| Resultater uten klubbtilknytning | 2 202 |
+| Resultater uten beregnet prestasjonsverdi | 2 448 |
+| Utøvere uten fødselsår | 68 |
+| Navn med tegnfeil eller klubbnavn i navnestrengen | 37 |
+| Dubletter av utøvere og klubber | løpende arbeid, ikke tellet |
+
+I tillegg kommer det kapittel 2 viser: navnevarianter, navneendringer og
+uregistrerte klubbskifter, som ikke er tellbare før de er funnet.
+
+**Slik lukkes dette.** Datavask og kvalitetsverktøy står i leveranseplanen som
+løpende arbeid, jf. kapittel 8.1, og §23 ber uttrykkelig om verktøy for dette.
+De automatiske kontrollene i kapittel 3.5 er selve mekanismen: systemet skal
+finne feilene og legge dem i en arbeidsliste, i stedet for at noen melder dem.
+Sammenligning mot uavhengige kilder, slik vi gjorde mot SRUs regneark, blir en
+fast del av det arbeidet.
+
+Vi lover ikke en feilfri base 01.01.2027. Vi lover at feilene er kjente,
+tellbare og synkende, og at det finnes et verktøy for å rette dem.
 
 ---
 
@@ -951,6 +994,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Kretsmapping kommer sent fra NFIF | Flagget som kritisk avhengighet i kapittel 8.1 |
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
 | Kapasitet | Tre personer med komplementær kompetanse fra kontraktsstart, jf. kapittel 9.2 |
+| Kjente datafeil i basen ved overtakelse | Restansene er tellet og listet i kapittel 3.7. Automatiske kontroller, datavaskverktøy og sammenligning mot uavhengige kilder inngår i leveransen. |
 | Datakvalitet i importert historikk | Kontroll mot kilden kjøres rutinemessig, stevne for stevne, jf. kapittel 6.1 |
 | Egen innsamling ikke klar før dagens base faller bort | Frist satt til okt 2026, tre måneder før overgangen, med parallell drift av begge kilder ut året, jf. kapittel 8.1 |
 | Norske resultater i utlandet fanges ikke opp | Utøverdrevet innsamling framfor stevnedrevet, TFRRS for collegeutøvere, og registrert innmeldingskanal for utøver og klubb som sikkerhetsnett, jf. kapittel 3.6 |
@@ -1104,7 +1148,10 @@ avtal møte med Magnus Trosdahl om budsjettramme først.
    tidtakernes grensesnitt.
 8. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
    dekningsgrad.
-9. **Synlighetsgrensen for mindreårige** (kapittel 7.1) følger gjeldende
+9. **Datakvalitet.** Basen er ikke ferdig kvalitetssikret. Kjente restanser er
+   listet i kapittel 3.7 og rettes fortløpende. Vi garanterer ikke en feilfri
+   base ved overtakelse.
+10. **Synlighetsgrensen for mindreårige** (kapittel 7.1) følger gjeldende
    regelverk: 7–12 år lagres, men vises ikke. Grensen bygges konfigurerbar, slik
    at et endret regelverk ikke krever endring i koden.
 
@@ -1159,7 +1206,7 @@ teknisk risiko.
 | Analysemoduler | DELVIS | Finnes som analysekode og publisert analyse. Produktifiseres i fase 3. |
 | Grafiske utviklingskurver | I DRIFT | Progresjonsdiagram og sammenligningsverktøy |
 | Avansert aktivitetsanalyse | DELVIS | Metodikk utviklet og validert. Fase 3. |
-| Datavaskverktøy | DELVIS | Utøversammenslåing og administrasjonsverktøy i drift. Utvides i fase 2. |
+| Datavaskverktøy | DELVIS | Utøversammenslåing og administrasjonsverktøy i drift. Utvides i fase 2. Kjente restanser: kapittel 3.7. |
 | Offentlige dashbord | BYGGES | Fase 3 |
 | Utvidet historisk statistikk | BYGGES | Fase 4, opsjon |
 | Åpne API-er for partnere | BYGGES | Sammen med §18 |
