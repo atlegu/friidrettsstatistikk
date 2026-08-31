@@ -25,7 +25,7 @@ det i praksis blitt værende: i 2025 var det fortsatt om lag 20 prosent færre
 aktive enn i 2019.
 
 Ser jeg på ungdommen isolert, er bildet enda tydeligere. Aktive utøvere i
-alderen 10–19 år gikk fra 8 745 i 2019 til 6 418 i 2025 — en nedgang på 27
+alderen 10–19 år gikk fra 8 715 i 2019 til 6 392 i 2025 — en nedgang på 27
 prosent. Og nedgangen er nesten utelukkende konsentrert i de yngste årsklassene:
 10–12-åringene falt fra rundt 4 400 per år før pandemien til 3 000–3 400 etter.
 Seniorgruppen (20–34 år) er derimot stabil, faktisk svakt økende.
@@ -100,24 +100,24 @@ Fremgangen er tydelig i de fleste øvelsene:
 
 | Øvelse | Menn 2013 | Menn 2025 | Kvinner 2013 | Kvinner 2025 |
 |---|---|---|---|---|
-| 100 m | 10,56 | 10,39 | 11,83 | 11,61 |
-| 200 m | 21,39 | 20,96 | 24,14 | 23,43 |
+| 100 m | 10,48 | 10,39 | 11,83 | 11,61 |
+| 200 m | 21,23 | 20,95 | 24,13 | 23,43 |
 | 400 m | 48,09 | 46,76 | 54,49 | 52,55 |
-| 800 m | 1:49,1 | 1:47,4 | 2:07,8 | 2:03,7 |
-| 1500 m | 3:42,1 | 3:34,9 | 4:22,2 | 4:13,0 |
-| 3000 m | 8:10 | 7:52 | 9:41 | 9:12 |
-| 5000 m | 14:01 | 13:16 | 16:44 | 15:54 |
+| 800 m | 1:48,9 | 1:47,4 | 2:07,8 | 2:03,7 |
+| 1500 m | 3:40,8 | 3:34,9 | 4:21,5 | 4:13,0 |
+| 3000 m | 8:06 | 7:51 | 9:41 | 9:12 |
+| 5000 m | 14:01 | 13:15 | 16:44 | 15:54 |
 | 10 000 m | 30:09 | 29:11 | 36:47 | 33:31 |
-| 100/110 m hekk | 15,06 | 14,75 | 13,82 | 13,42 |
-| 400 m hekk | 53,39 | 53,60 | 60,63 | 57,57 |
+| 100/110 m hekk | 15,06 | 14,75 | 13,82 | 13,35 |
+| 400 m hekk | 53,39 | 53,50 | 60,63 | 57,57 |
 | 3000 m hinder | 9:21 | 9:08 | 11:15 | 10:14 |
-| Lengde | 7,28 | 7,57 | 5,97 | 6,25 |
+| Lengde | 7,29 | 7,57 | 5,97 | 6,25 |
 | Høyde | 2,07 | 2,02 | 1,74 | 1,73 |
-| Stav | 4,65 | 5,19 | 3,82 | 3,78 |
+| Stav | 4,65 | 5,20 | 3,88 | 3,78 |
 | Tresteg | 14,92 | 14,94 | 12,32 | 12,40 |
 | Kule | 15,44 | 15,64 | 13,44 | 13,30 |
-| Diskos | 51,23 | 52,44 | 45,29 | 47,64 |
-| Slegge | 57,03 | 61,74 | 54,85 | 56,17 |
+| Diskos | 51,23 | 52,44 | 45,29 | 48,90 |
+| Slegge | 57,03 | 61,74 | 56,25 | 56,97 |
 | Spyd | 69,11 | 67,67 | 50,97 | 50,58 |
 
 *Topp-10-snitt av årsbeste, utendørs, beste notering uansett alder. Kast, hekk
@@ -143,11 +143,11 @@ toppene har fulgt med, tyder på at også treningskulturen har flyttet seg.
 Også de fleste kast- og hekkøvelsene går frem. Fordi redskapsvekter og
 hekkhøyder har vært uendret per klasse gjennom hele perioden, kan jeg
 sammenligne år for år også her: slegge menn har gått fra 57,0 til 61,7 meter,
-stav menn fra 4,65 til 5,19, og diskos kvinner fra 45,3 til 47,6. Ser jeg på
+stav menn fra 4,65 til 5,20, og diskos kvinner fra 45,3 til 48,9. Ser jeg på
 seniorklassen (20–34 år) isolert, er kastfremgangen enda tydeligere — diskos
-kvinner har der tatt et byks fra 38,4 til 45,9 meter. Sprinthekken er blitt
+kvinner har der tatt et byks fra 39,9 til 47,4 meter. Sprinthekken er blitt
 klart raskere for begge kjønn (menn 15,06 → 14,75 på 110 meter hekk; kvinner
-13,82 → 13,42 på 100 meter hekk), og 3000 meter hinder kvinner har gått frem
+13,82 → 13,35 på 100 meter hekk), og 3000 meter hinder kvinner har gått frem
 med et helt minutt.
 
 Men tabellen viser også unntakene. **Høyde** har gått tilbake for begge kjønn,
