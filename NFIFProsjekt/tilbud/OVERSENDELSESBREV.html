@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><title>OVERSENDELSESBREV</title>
+<style>
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+  @bottom-center { content: counter(page); }
+}
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.48;
+  color: #16191d;
+  margin: 0;
+  max-width: none;
+  hyphens: none;
+}
+
+/* Kapitteloverskrifter — ny side, unntatt den aller første */
+h1 {
+  font-size: 14.5pt;
+  margin: 0 0 10pt;
+  padding-bottom: 5pt;
+  border-bottom: 1.6pt solid #1b3a6b;
+  color: #1b3a6b;
+  letter-spacing: -0.2pt;
+  break-before: page;
+  break-after: avoid;
+}
+h1:first-of-type { break-before: auto; }
+
+h2 { font-size: 11.4pt; margin: 16pt 0 6pt; color: #1b3a6b; break-after: avoid; }
+h3 { font-size: 10.2pt; margin: 12pt 0 4pt; color: #2c3644; break-after: avoid; }
+
+p { margin: 0 0 7.5pt; orphans: 2; widows: 2; }
+strong { color: #0d1117; }
+em { color: #3a4452; }
+
+/* Lange tabeller får brekke over sider — ellers skyves en 30-raders
+   kravsporingstabell i sin helhet til neste side og etterlater et tomt ark.
+   Enkeltrader brekkes ikke, og overskriftsraden gjentas. */
+table {
+  border-collapse: collapse; width: 100%;
+  margin: 9pt 0 12pt; font-size: 9pt;
+}
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th {
+  background: #eef2f7; text-align: left; font-weight: 600;
+  padding: 5pt 7pt; border-bottom: 1pt solid #b9c4d2; color: #1b3a6b;
+}
+td { padding: 4.5pt 7pt; border-bottom: 0.5pt solid #dde3ea; vertical-align: top; }
+tr:last-child td { border-bottom: 0.8pt solid #b9c4d2; }
+
+ul, ol { margin: 0 0 8pt; padding-left: 16pt; }
+li { margin-bottom: 3pt; }
+
+blockquote {
+  margin: 10pt 0; padding: 8pt 12pt;
+  border-left: 2.5pt solid #1b3a6b; background: #f5f8fc;
+  font-size: 10.2pt; break-inside: avoid;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+code {
+  font-family: "SF Mono", Menlo, monospace; font-size: 8.6pt;
+  background: #eef1f5; padding: 0.7pt 3pt; border-radius: 2pt; color: #294066;
+}
+
+hr { border: none; border-top: 0.5pt solid #e3e8ee; margin: 13pt 0; }
+a { color: #1b3a6b; text-decoration: none; }
+
+/* Tittelblokk */
+.tittelside h1 { font-size: 21pt; border: none; padding: 0; margin-bottom: 3pt; }
+.tittelside h2 { font-size: 12.5pt; color: #5a6472; margin: 0 0 20pt; font-weight: 500; }
+.tittelside p { font-size: 10pt; color: #2c3644; }
+</style></head><body>
+<div class="tittelside"><p>Athlete Mindset AS 31. august 2026</p>
+<p><strong>Norges Friidrettsforbund</strong> v/ Thor Gjesdal og Magnus
+Trosdahl</p>
+<h1
+id="tilbud-ny-statistikk--og-aktivitetsplattform-for-norsk-friidrett">Tilbud:
+ny statistikk- og aktivitetsplattform for norsk friidrett</h1>
+<p>Vi viser til invitasjonen av 3. juli 2026 og oversender med dette
+vårt tilbud.</p>
+<p>Athlete Mindset AS arbeider med idrettsteknologi og idrettsdata,
+agentvirksomhet og trenervirksomhet. Vi har bygget og drifter i dag
+friidrettsresultater.no, en statistikkplattform med norske resultatdata
+som er i drift.</p>
+<p><strong>Det vi mener skiller tilbudet fra de øvrige, er at
+plattformen finnes allerede.</strong> 1 922 634 resultater er importert,
+normalisert og søkbare, hvorav 1 701 902 fra 2013 og senere. Migreringen
+av historiske data, som normalt er den dyreste og mest risikofylte
+posten i en slik anskaffelse, er gjennomført. Åtte av fjorten
+obligatoriske krav i §22 er i drift i dag.</p>
+<p>Det er også grunnen til at vi kan svare på tidsplanen uten forbehold.
+Fra kontraktsinngåelse i september er det knapt fire måneder til
+01.01.2027. Vi skal ferdigstille, ikke bygge fra bunnen.</p>
+<p>Vi har erfaring fra alle tre områdene invitasjonen etterspør:
+databaser, statistikkløsninger og idrettssystemer. I tillegg har norske
+friidrettsdata vært grunnlag for fagfellevurderte studier i <em>Journal
+of Science and Medicine in Sport</em> og <em>PLOS ONE</em>, den eldste
+fra 2015. Arbeidet med dette datagrunnlaget er altså eldre enn
+selskapet.</p>
+<p>Invitasjonen ber leverandørene komme med egne forslag og
+anbefalinger. Det har vi gjort fire steder, samlet i kapittel 1.2:
+universell utforming etter WCAG 2.1 AA, et skille mellom lagring og
+eksponering av barns data bygget inn i datamodellen, mulighet for å
+simulere virkningen av regelendringer før de vedtas, og analyse som del
+av grunnavtalen framfor som tilleggstjeneste.</p>
+<p>To ting vil vi si tydelig allerede her. <strong>Løp utenfor bane må
+bygges</strong>, og veikartet for det ligger i kapittel 5. Og
+<strong>datagrunnlaget er ikke ferdig kvalitetssikret</strong> —
+arbeidet har vært prioritert mot innsamling og fullstendighet først.
+Kjente restanser er tellet opp i kapittel 3.7.</p>
+<p>Prisen ønsker vi å avtale i forhandling. Kapittel 12 gir en
+forpliktende modell for hva som prises fast og hva som prises etter
+medgått tid, men uten beløp. Flere av postene, særlig integrasjonene,
+kan ikke prises redelig før grensesnittene er dokumentert.</p>
+<p>Vedlagt følger også et kort notat med spørsmål vi trenger avklart
+(vedlegg E). De fleste er forutsetninger vi allerede har lagt til grunn,
+og som vi ber om å få bekreftet.</p>
+<p>Vi stiller gjerne på Ullevaal eller digitalt, og viser løsningen slik
+den står i dag.</p>
+<p>Med vennlig hilsen</p>
+<p><strong>‹navn›</strong> ‹rolle›, Athlete Mindset AS ‹e-post› ·
+‹telefon›</p>
+</div><hr />
+<p><strong>Vedlegg</strong></p>
+<table>
+<tbody>
+<tr>
+<td>Tilbud</td>
+<td>Ny statistikk- og aktivitetsplattform for norsk friidrett</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Kravsporing §22 og §23 (i tilbudet)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Full kravsporing per kapittel (i tilbudet)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>«56 til Birmingham», mesterskapsanalyse EM 2026</td>
+</tr>
+<tr>
+<td>D</td>
+<td>«Norsk friidrett 2013–2025», bredde- og rekrutteringsanalyse</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Spørsmål til NFIF</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Klubbrapport for IK Tjalve og SK Vidar</td>
+</tr>
+</tbody>
+</table>
+
+</body></html>

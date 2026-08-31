@@ -19,7 +19,7 @@ enkle å svare på og fordi svarene påvirker hvordan løsningen bygges.
 **1. Terminlisten, løpende.**
 Vi forutsetter at plattformen får løpende tilgang til den offisielle
 terminlisten. Den bærer to funksjoner i løsningen: den avgjør om et stevne er
-godkjent, og dermed kvalitetsnivå etter §6, og den avgrenser hvilke gateløp som
+godkjent, og dermed kvalitetsnivå etter §6, og den avgrenser hvilke løp utenfor bane som
 hører hjemme i basen etter §8. Uten den faller den maskinelle klassifiseringen
 tilbake til manuelt arbeid.
 *Tilbudets kapittel 3.5 og 5.1.*

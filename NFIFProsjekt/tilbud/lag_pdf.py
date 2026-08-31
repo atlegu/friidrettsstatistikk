@@ -140,7 +140,8 @@ def bygg(md: Path):
 
 def main():
     filer = [Path(a) for a in sys.argv[1:]] or [
-        HER / 'TILBUD.md', HER / 'VEDLEGG_E_SPORSMAL.md']
+        HER / 'OVERSENDELSESBREV.md', HER / 'TILBUD.md',
+        HER / 'VEDLEGG_E_SPORSMAL.md']
     for f in filer:
         bygg(f if f.is_absolute() else HER / f)
 

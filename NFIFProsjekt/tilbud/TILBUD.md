@@ -263,8 +263,8 @@ Kjernen er i drift i dag:
 - **Spydtype fra 1999**, hekkehøyde og redskapsvekt per aldersklasse.
 
 Gjenstår å bygge inn i modellen: kretsdimensjon (§10), baneklassifisering
-etter TR14.1/TR43.1 (§7), kvalitetsnivå A/B/C (§6), og datamodellen for
-gateløp (§8). Disse er beskrevet i henholdsvis kapittel 3.5, 5 og 8.
+etter TR14.1/TR43.1 (§7), kvalitetsnivå A/B/C (§6), og datamodellen for løp
+utenfor bane (§8). Disse er beskrevet i henholdsvis kapittel 3.5, 5 og 8.
 
 ### Kildetrofasthet som prinsipp
 
@@ -375,7 +375,7 @@ utledes:
 | Gyldig lisens | Lisensregisteret |
 | Godkjent tidtaking | Resultatets presisjon; håndtidtaking er allerede skilt ut |
 | Offisiell distanse | Øvelsen |
-| Målt løype | Løyperegisteret (gjelder gateløp) |
+| Målt løype | Løyperegisteret (gjelder løp utenfor bane) |
 
 Vi forutsetter tilgang til terminlisten og lisensregisteret. Med de to på
 plass har regelmotoren det den trenger, og klassifiseringen skjer maskinelt i
@@ -653,16 +653,16 @@ forhåndsvarsel ikke gir vetorett. Dette er standard i forskningssamarbeid.
 
 ---
 
-# 5. Gateløp: veikart
+# 5. Løp utenfor bane: veikart
 
 *§8, §12, §24.*
 
-Løsningen dekker i dag banestatistikk. Gateløp er vårt største enkeltgap og må
-bygges.
+Løsningen dekker i dag banestatistikk. Løp utenfor bane er vårt største
+enkeltgap og må bygges.
 
 §24 krever et troverdig veikart innen 31.12.2026 dersom løsningen ikke dekker
-gateløp fra start. Veikartet følger her, slik at NFIF har det ved vurderingen
-av tilbudet.
+løp utenfor bane fra start. Veikartet følger her, slik at NFIF har det ved
+vurderingen av tilbudet.
 
 ## 5.1 Omfang
 
@@ -675,7 +675,7 @@ blir én felles avgrensning for hele plattformen: den samme kilden avgjør
 kvalitetsnivå for baneresultater etter §6, jf. kapittel 3.5, og hvilke løp som
 hører hjemme i basen etter §8.
 
-## 5.2 Hvorfor gateløp likevel er en annen oppgave
+## 5.2 Hvorfor løp utenfor bane likevel er en annen oppgave
 
 §5 peker selv på kjernen: innenfor terminlisten oppfyller ikke alle
 arrangementer, distanser og løyper de samme tekniske kravene. Et 10 km på
@@ -684,8 +684,8 @@ men bare det ene kan rangeres mot en rekord.
 
 Skillet mellom **prestasjonsstatistikk**, **rekorder** og **registrert
 aktivitet** er derfor ikke en presentasjonsdetalj, men selve datamodellen. Det
-er også grunnen til at kvalitetsnivåene i §6 må bygges før gateløpene, ikke
-etter.
+er også grunnen til at kvalitetsnivåene i §6 må bygges før løpene utenfor bane,
+ikke etter.
 
 ## 5.3 Leveranseplan
 
@@ -839,7 +839,7 @@ det som gjenstår på banesiden.
 | Datavask og kvalitetsverktøy | §23 | Løpende |
 | WCAG 2.1 AA-samsvar, dokumentert | §17 | Des 2026 |
 | Personvern: DPIA, databehandleravtale, driftsdokumentasjon | §19, §21 | Des 2026 |
-| Veikart gateløp, levert med dette tilbudet | §24 | Levert |
+| Veikart for løp utenfor bane, levert med dette tilbudet | §24 | Levert |
 
 **Den viktigste milepælen er innsamlingen, ikke funksjonaliteten.**
 Plattformen henter i dag resultatene fra den basen som skal erstattes, jf.
@@ -864,7 +864,7 @@ hvor godt alt annet fungerer.
 |---|---|---|
 | 2 | Integrasjoner (opsjoner), automatisert import, utvidede administrasjonsverktøy, rollestyring | Q1–Q3 2027 |
 | 3 | Aktivitetsmodul: unike deltakere, starter, fullførte, utvikling over tid, fordelt på klubb, krets, aldersgruppe, kjønn og øvelse. Dashbord for forbund og kretser. | Q2–Q4 2027 |
-| 3 | Gateløp, jf. veikartet i kapittel 5 | Q1–Q3 2027 |
+| 3 | Løp utenfor bane, jf. veikartet i kapittel 5 | Q1–Q3 2027 |
 | 4 | Historisk utvidelse: kartlegging først, deretter import etter NFIFs valg | 2028, opsjon |
 
 Aktivitetsmodulen i fase 3 er produktifisering av metodikk som allerede er
@@ -1015,7 +1015,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Risiko | Tiltak |
 |---|---|
 | Integrasjonene krever mer enn antatt | Prises som opsjoner med timepott, med forbehold om dokumentert API fra motparten |
-| Gateløp viser seg mer omfattende | Omfanget er avgrenset til terminlistede løp. Veikart levert nå, bygging i 2027, ingen fastpris før tidtakernes grensesnitt er kartlagt. |
+| Løp utenfor bane viser seg mer omfattende | Omfanget er avgrenset til terminlistede løp. Veikart levert nå, bygging i 2027, ingen fastpris før tidtakernes grensesnitt er kartlagt. |
 | Kretsmapping kommer sent fra NFIF | Flagget som kritisk avhengighet i kapittel 8.1 |
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
 | Kapasitet | Tre personer med komplementær kompetanse fra kontraktsstart, jf. kapittel 9.2 |
@@ -1070,11 +1070,11 @@ ikke gjøres. Vi foreslår heller en fast pott NFIF disponerer.
 Vi ønsker å avtale prisen i forhandling, og vil begrunne hvorfor.
 
 Flere av postene i denne anskaffelsen kan ikke prises redelig fra utsiden i
-dag. Integrasjonene i §13 avhenger av grensesnitt vi ikke har sett. Gateløpene
-avhenger av tidtakernes datakilder. Omfanget av historisk utvidelse avhenger
-av kilder som må kartlegges før noen vet hva de inneholder. En leverandør som
-likevel setter et tall på disse, priser inn sin egen usikkerhet, og NFIF
-betaler for den enten den inntreffer eller ikke.
+dag. Integrasjonene i §13 avhenger av grensesnitt vi ikke har sett. Løpene
+utenfor bane avhenger av tidtakernes datakilder. Omfanget av historisk
+utvidelse avhenger av kilder som må kartlegges før noen vet hva de inneholder.
+En leverandør som likevel setter et tall på disse, priser inn sin egen
+usikkerhet, og NFIF betaler for den enten den inntreffer eller ikke.
 
 Vi foretrekker den motsatte veien: **fastpris der vi kjenner omfanget, åpne
 timer der vi ikke gjør det, og en samtale om nivået.**
@@ -1087,7 +1087,7 @@ vi ber om å sette sammen med NFIF.
 1. **Fastpris på det vi kjenner.** Etablering frem til operativ løsning
    01.01.2027 og årlig drift prises fast. Det er de to postene NFIF trenger
    forutsigbarhet på, og de to vi kan love.
-2. **Timepott på det ingen kjenner.** Integrasjoner, gateløp og historisk
+2. **Timepott på det ingen kjenner.** Integrasjoner, løp utenfor bane og historisk
    utvidelse prises med timesats og et estimert spenn, ikke som fastpris.
    Estimatet er ikke en fullmakt: arbeid utover avtalt ramme skal godkjennes av
    NFIF på forhånd.
@@ -1124,7 +1124,7 @@ vi ber om å sette sammen med NFIF.
 | Opsjon | Grunnlag |
 |---|---|
 | Integrasjon per system (§13) | Timer, med forbehold om dokumentert API fra motparten |
-| Gateløp (§8), jf. kapittel 5 | Timer, etter kartlegging av tidtakernes grensesnitt |
+| Løp utenfor bane (§8), jf. kapittel 5 | Timer, etter kartlegging av tidtakernes grensesnitt |
 | Aktivitetsmodul og dashbord (§12, fase 3) | Fastpris når omfanget er spesifisert med NFIF |
 | Historisk utvidelse 2001–2012 (§15) | Kartlegging som egen leveranse, deretter import etter NFIFs valg |
 | Utvidet analyseavtale | Alle mesterskap, pressestøtte under mesterskap, kretsrapporter |
@@ -1164,7 +1164,7 @@ ikke om å ta høyest mulig betalt for denne kontrakten.
    stevne som ikke er indeksert noe sted, kan ingen garantere dekning. Vi
    lover å gjøre restkategorien liten og synlig, ikke at den forsvinner.
    Se kapittel 3.6.
-7. **Gateløp** (§8) leveres etter veikartet i kapittel 5. Omfanget er avgrenset
+7. **Løp utenfor bane** (§8) leveres etter veikartet i kapittel 5. Omfanget er avgrenset
    til løp på den offisielle terminlisten. Prisen settes etter kartlegging av
    tidtakernes grensesnitt.
 8. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
@@ -1203,7 +1203,7 @@ må ferdigstilles · `BYGGES` leveres i perioden · `AVTALE` løses kontraktuelt
 | 1 | NFIF eier alle data | AVTALE | Kapittel 11 |
 | 2 | Offisiell statistikkplattform for NFIF | AVTALE | |
 | 3 | Banestatistikk | I DRIFT | 1 922 634 resultater, 302 øvelser, inne og ute, alle aldersklasser |
-| 4 | Løpsstatistikk, gateløp | BYGGES | Veikart i kapittel 5, jf. §24 |
+| 4 | Løpsstatistikk utenfor bane | BYGGES | Veikart i kapittel 5, jf. §24 |
 | 5 | Utøverprofiler | I DRIFT | PB, SB, resultathistorikk, utviklingskurver, klubbhistorikk |
 | 6 | Nasjonal statistikk | I DRIFT | Årsstatistikk, alle-tiders, rekorder |
 | 7 | Klubbstatistikk | I DRIFT | Klubbside med årsstatistikk, alle-tiders og klubbrekorder |
@@ -1248,7 +1248,7 @@ teknisk risiko.
 | §7 | Flagg: WMA-masters | BYGGES | |
 | §7 | Flagg: ikke-ratifisert med årsakskode | BYGGES | Kodeverk «TBD», avklares med NFIF |
 | §7 | Flagg: håndtidtaking | I DRIFT | Presisjonsbasert deteksjon, kun løp under 800 m. 18 769 resultater merket. |
-| §8 | Gateløp med full metadata | BYGGES | Veikart kapittel 5 |
+| §8 | Løp utenfor bane med full metadata | BYGGES | Veikart kapittel 5 |
 | §9 | Utøverprofiler | I DRIFT | |
 | §9 | Navneendring, klubbovergang, dubletter | DELVIS | Klubbhistorikk og utøversammenslåing i drift. Navneendringshistorikk bygges. |
 | §10 | Klubbstatistikk | I DRIFT | |
