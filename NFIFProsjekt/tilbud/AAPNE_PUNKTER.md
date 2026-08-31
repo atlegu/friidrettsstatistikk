@@ -43,6 +43,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | D | «Norsk friidrett 2013–2025», lederrettet sammendrag | Analysen finnes. Sammendraget må skrives. Avklar publiseringsplaner først. |
 | E | Veikart gateløp — utdypning | Kapittel 5 er kortversjonen. Utdypning bør skrives. |
 | F | Spørsmål til NFIF | Denne filen, punkt 8–15 |
+| G | Klubbrapport Tjalve + Vidar som eksempel | **Ferdig** — `analyse/Tjalve/tjalve_2024_2026.pdf`, `analyse/vidar/vidar_2024_2026.pdf` |
 
 ---
 

@@ -577,7 +577,7 @@ har publisert på deres data.
 | Mesterskapspakke | Troppanalyse, rankingposisjon, formkurver, historisk sammenligning, uttaksstatistikk. Som nettside og som pressemateriell. | Før NM, EM, VM, OL, EM terrengløp |
 | Presse- og kringkastingsstøtte | Faktapakker, rekordvarsler, «dette kan skje i dag»-notater | Under mesterskap |
 | Årsrapport for norsk friidrett | Aktivitet, rekruttering, frafall, bredde og topp, per krets og aldersklasse | Årlig |
-| Krets- og klubbrapporter | Samme analyse brutt ned lokalt, som verktøy for utviklingsarbeid | Årlig eller på bestilling |
+| Krets- og klubbrapporter | Samme analyse brutt ned lokalt. Levert til SK Vidar, IK Tjalve, BUL og Fana IL — se kapittel 3.3. | Årlig eller på bestilling |
 | Strategisk analyse på bestilling | Underlag til NFIFs egne prosesser: rekrutteringstiltak, terminliste, klasseinndeling, regelverksvirkninger | Ved behov |
 | Forskningssamarbeid | Databasen som forskningsinfrastruktur, med NFIF kreditert | Løpende |
 
@@ -1057,6 +1057,7 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
 | **C** | «56 til Birmingham» — mesterskapsanalyse EM 2026 |
 | **D** | «Norsk friidrett 2013–2025» — bredde- og rekrutteringsanalyse, lederrettet sammendrag |
 | **E** | Veikart gateløp (utdypning av kapittel 5) |
+| **G** | Klubbrapport for IK Tjalve og SK Vidar — eksempler på klubbleveranse, jf. kapittel 3.3 |
 | **F** | Spørsmål til NFIF — punktene merket `‹AVKLARES›` samlet |
 
 ---
