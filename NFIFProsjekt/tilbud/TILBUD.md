@@ -468,29 +468,11 @@ terminlistede løp, alle løp med lisensierte deltakere, eller all mosjonsløpin
 resultater fra 2013 og senere er importert, normalisert og søkbare i dag**, fra
 26 910 stevner og 59 131 utøvere.
 
-Dette tallet er verdt en kommentar, fordi det illustrerer hvordan vi arbeider
-med datakvalitet.
+Importen kontrolleres rutinemessig mot kilden, stevne for stevne, slik at
+delvis importerte stevner fanges opp og hentes på nytt. Det er den kontrollen
+som gjør at vi kan oppgi dybden over som et faktum og ikke som et estimat.
 
-## 6.2 Et etterslep vi fant og tettet
-
-Importrutinen vår regnet lenge et stevne som ferdig importert hvis det hadde mer
-enn ti resultater. Delvis importerte stevner ble derfor aldri hentet på nytt.
-Feilen ble oppdaget da én utøver savnet ett resultat: et innendørs høydehopp.
-
-Vi bygget derfor en kontrollmodus som teller resultater mot kilden stevne for
-stevne, og kjørte den mot samtlige sesonger fra 2013 til 2026. Så godt som
-hvert eneste stevne viste seg å være ufullstendig. «Hvam, Norgeslekene» hadde
-188 resultater i basen mot 539 i kilden — hele øvelser manglet.
-
-Basen vokste fra 1 418 058 til 1 922 634 resultater. **Over en halv million
-resultater ble hentet inn.**
-
-Vi tar dette med i et tilbud fordi det sier mer om leverandøren enn et
-kvalitetsløfte gjør: feilen ble funnet fordi vi undersøkte ett savnet
-høydehopp, årsaken ble rettet i importlogikken fremfor med et
-opprydningsskript, og kontrollen kjøres nå rutinemessig.
-
-## 6.3 Eldre data
+## 6.2 Eldre data
 
 Vi har allerede data tilbake til 06.08.1922, men dekningen før 2013 er ujevn —
 historiske lister er ofte begrenset til resultater over visse terskler, og er
@@ -645,7 +627,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Kretsmapping kommer sent fra NFIF | Flagget som kritisk avhengighet i kapittel 8.1 |
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
 | Kapasitet | To utviklere fra kontraktsstart |
-| Datakvalitet i importert historikk | Kontroll mot kilden kjøres rutinemessig, jf. kapittel 6.2 |
+| Datakvalitet i importert historikk | Kontroll mot kilden kjøres rutinemessig, stevne for stevne, jf. kapittel 6.1 |
 
 ---
 
