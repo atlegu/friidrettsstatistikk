@@ -1,6 +1,6 @@
 # Status og gjenstående arbeid
 
-**Sist oppdatert:** 2026-08-29
+**Sist oppdatert:** 2026-08-31
 
 Denne filen holder oversikt over hva som pågår og hva som gjenstår, slik at
 arbeidet kan tas opp igjen uten å måtte rekonstruere sammenhengen.
@@ -8,45 +8,43 @@ Historikken over hva som er gjort ligger i `scraper/OPERATIONS_LOG.md`.
 
 ---
 
-## Pågår nå
+## Importen er komplett
 
-**Komplettering — de to siste hullene etter sesongkontrollen.**
-Skript: `scraper/kjor_komplettering.sh` (egen prosess, uavhengig av terminal).
+**Alle sesonger 2013–2026 er kontrollert mot kilden.** Ingen løpende kjøring.
 
-1. **Markørradene.** 1 028 resultater fordelt på 322 stevner ble kastet ved
-   hver kjøring fordi kilden henger markører på selve resultatverdien
-   («20.37.52mx», «4.43 L», «7.83A», «24.56+») og databasetriggeren caster
-   `performance` til numeric. Parseren skiller nå tall fra markør og lagrer
-   markøren ordrett i `results.source_marker`. Stevnene er hentet ut av
-   loggene til `scraper/markorlister/`, og bare de hentes på nytt — vi teller
-   ikke hele sesonger mot kilden om igjen.
-2. **2018 utendørs.** Sesongen ble aldri kontrollert. Alle tre forsøkene døde
-   på første kall til Supabase mens DNS var nede, fordi `vent_pa_nett()` sto
-   *etter* `load_events()`. Rekkefølgen er rettet, og sesongen kjøres fullt ut.
+| Runde | Resultat |
+|---|---|
+| Sesongkontroll, alle år | Basen vokste fra 1 418 058 til over 1,9 mill. resultater |
+| Markørrader (`mx`, `L`, `A`, `+`) | 1 678 hentet inn, 26 sesong-/moduskombinasjoner |
+| 2018 utendørs | 1 222 stevner kontrollert, 179 hentet inn |
+| Firedelte tider (`H.MM.SS.hh`) | ~25 rader, 18 stevner — `scraper/kjor_timeformat.sh` |
 
-Sjekk status:
+Tre feilkilder ble funnet og rettet **i importlogikken**, ikke i etterkant:
 
-```bash
-pgrep -f update_results.py && echo kjører
-tail -30 scraper/logs/komplettering_*.log
-```
-
-Kan trygt avbrytes og startes igjen — importen hopper over resultater som
-allerede finnes.
+1. **`MIN_RESULTS_THRESHOLD = 10`** i `find_missing_meets()` gjorde at delvis
+   importerte stevner aldri ble hentet på nytt. «Hvam, Norgeslekene» hadde 188
+   resultater i basen mot 539 i kilden. Ny `--verify` teller mot kilden per
+   stevne.
+2. **Kildemarkører på resultatverdien** («20.37.52mx», «4.43 L») fikk
+   databasetriggeren til å avvise raden. `_skill_ut_markor()` skiller nå tall
+   fra markør, og markøren lagres ordrett i `results.source_marker`.
+3. **Tider over én time** («1.25.29.2») ble sendt uendret til basen.
+   `fix_performance_format()` konverterer nå til `H:MM:SS.hh`.
 
 **Markørene er bevisst ikke tolket.** Kildesiden har ingen tegnforklaring.
 `mx` er etter alt å dømme blandet heat, jf. kravspekkens §7, men det er ikke
 bekreftet, og en gjetning i et datafelt er verre enn en ærlig råverdi. Manuell
 tidtaking (` M`) tolkes derimot, fordi det mønsteret er verifisert.
 
----
+Tre rader lar seg ikke redde automatisk: «3.320.78» er en skrivefeil i kilden,
+og to verdier er registrert i feil øvelsestype.
 
-## Bakgrunn: hvorfor alle sesonger kontrolleres
+### Nye verktøy
 
-`find_missing_meets()` regnet et stevne som ufullstendig kun hvis det hadde
-under 10 resultater (`MIN_RESULTS_THRESHOLD`). Delvis importerte stevner ble
-derfor aldri hentet på nytt. «Hvam, Norgeslekene» hadde 188 resultater i basen
-mot 539 i kilden — hele øvelser manglet.
+| Skript | Bruk |
+|---|---|
+| `update_results.py --verify` | Tell mot kilden per stevne, hent det som mangler |
+| `update_results.py --kun-stevner FIL` | Hent bare navngitte stevner. Billig når man vet hva som mangler. |
 
 Ny `--verify`-modus teller mot kilden per stevne. Resultatet så langt: så godt
 som **samtlige stevner i alle kontrollerte sesonger var ufullstendige**, og

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><title>VEDLEGG_F_SPORSMAL</title>
+<style>
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+  @bottom-center { content: counter(page); }
+}
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.48;
+  color: #16191d;
+  margin: 0;
+  max-width: none;
+  hyphens: none;
+}
+
+/* Kapitteloverskrifter — ny side, unntatt den aller første */
+h1 {
+  font-size: 14.5pt;
+  margin: 0 0 10pt;
+  padding-bottom: 5pt;
+  border-bottom: 1.6pt solid #1b3a6b;
+  color: #1b3a6b;
+  letter-spacing: -0.2pt;
+  break-before: page;
+  break-after: avoid;
+}
+h1:first-of-type { break-before: auto; }
+
+h2 { font-size: 11.4pt; margin: 16pt 0 6pt; color: #1b3a6b; break-after: avoid; }
+h3 { font-size: 10.2pt; margin: 12pt 0 4pt; color: #2c3644; break-after: avoid; }
+
+p { margin: 0 0 7.5pt; orphans: 2; widows: 2; }
+strong { color: #0d1117; }
+em { color: #3a4452; }
+
+/* Lange tabeller får brekke over sider — ellers skyves en 30-raders
+   kravsporingstabell i sin helhet til neste side og etterlater et tomt ark.
+   Enkeltrader brekkes ikke, og overskriftsraden gjentas. */
+table {
+  border-collapse: collapse; width: 100%;
+  margin: 9pt 0 12pt; font-size: 9pt;
+}
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th {
+  background: #eef2f7; text-align: left; font-weight: 600;
+  padding: 5pt 7pt; border-bottom: 1pt solid #b9c4d2; color: #1b3a6b;
+}
+td { padding: 4.5pt 7pt; border-bottom: 0.5pt solid #dde3ea; vertical-align: top; }
+tr:last-child td { border-bottom: 0.8pt solid #b9c4d2; }
+
+ul, ol { margin: 0 0 8pt; padding-left: 16pt; }
+li { margin-bottom: 3pt; }
+
+blockquote {
+  margin: 10pt 0; padding: 8pt 12pt;
+  border-left: 2.5pt solid #1b3a6b; background: #f5f8fc;
+  font-size: 10.2pt; break-inside: avoid;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+code {
+  font-family: "SF Mono", Menlo, monospace; font-size: 8.6pt;
+  background: #eef1f5; padding: 0.7pt 3pt; border-radius: 2pt; color: #294066;
+}
+
+hr { border: none; border-top: 0.5pt solid #e3e8ee; margin: 13pt 0; }
+a { color: #1b3a6b; text-decoration: none; }
+
+/* Tittelblokk */
+.tittelside h1 { font-size: 21pt; border: none; padding: 0; margin-bottom: 3pt; }
+.tittelside h2 { font-size: 12.5pt; color: #5a6472; margin: 0 0 20pt; font-weight: 500; }
+.tittelside p { font-size: 10pt; color: #2c3644; }
+</style></head><body>
+<div class="tittelside"><h1 id="vedlegg-f-spørsmål-til-nfif">Vedlegg F — Spørsmål til NFIF</h1>
+<p><strong>Fra:</strong> Athlete Mindset AS <strong>Til:</strong> Norges
+Friidrettsforbund <strong>Dato:</strong> 31.08.2026</p>
+<p>Under følger de punktene vi trenger avklart for å ferdigstille
+leveransen. De fleste er forutsetninger vi allerede har lagt til grunn i
+tilbudet, og som vi ber om å få bekreftet. To av dem gjelder forhold
+kravspesifikasjonen selv lar stå åpne.</p>
+<p>Vi stiller dem samlet fremfor å ta forbehold i teksten, fordi de
+fleste er enkle å svare på og fordi svarene påvirker hvordan løsningen
+bygges.</p>
+</div><hr />
+<h2 id="datakilder-vi-forutsetter-tilgang-til">Datakilder vi forutsetter
+tilgang til</h2>
+<p><strong>1. Terminlisten, løpende.</strong> Vi forutsetter at
+plattformen får løpende tilgang til den offisielle terminlisten. Den
+bærer to funksjoner i løsningen: den avgjør om et stevne er godkjent, og
+dermed kvalitetsnivå etter §6, og den avgrenser hvilke gateløp som hører
+hjemme i basen etter §8. Uten den faller den maskinelle klassifiseringen
+tilbake til manuelt arbeid. <em>Tilbudets kapittel 3.5 og 5.1.</em></p>
+<p><strong>2. Lisensregisteret.</strong> Tilsvarende: nødvendig for å
+avgjøre lisenskriteriet i kvalitetsnivå A, og for å avgrense hvilke
+utøvere som skal følges for resultater i utlandet. <em>Kapittel 3.5 og
+3.6.</em></p>
+<p><strong>3. Klubb-til-krets-mapping.</strong> Kretstilhørighet kan
+ikke utledes trygt fra klubbnavn. Regionsstatistikk er et obligatorisk
+krav (§10 og §22), og dette er den kritiske avhengigheten i tidsplanen.
+Finnes en slik oversikt, og når kan vi få den? <em>Kapittel
+8.1.</em></p>
+<hr />
+<h2 id="arbeidsflyt">Arbeidsflyt</h2>
+<p><strong>4. Hvordan meldes underkjenning?</strong> Et stevne på
+terminlisten er godkjent inntil det eventuelt underkjennes i etterkant.
+Underkjenning er dermed det eneste som må inn utenfra for at
+kvalitetsnivåene skal holde seg riktige. Hvilken kanal skal brukes, og
+hvem har myndighet til å melde? <em>Kapittel 3.5.</em></p>
+<p><strong>5. Kodeverk for ikke-ratifiserte resultater.</strong> §7
+krever at ikke-ratifiserte prestasjoner flagges «including codes (TBD)
+to note the reason for non-ratification». Kodeverket er ikke fastsatt i
+kravspesifikasjonen. Vi bygger flagget uansett, men det må fylles med
+NFIFs egne koder. Foreligger et forslag, eller skal vi utarbeide et til
+gjennomsyn? <em>Kapittel 3.5.</em></p>
+<p><strong>6. Kontaktpunkt mot arrangører og tidtakere.</strong>
+Plattformen skal selv hente inn resultatlistene fra 01.01.2027, og
+omleggingen skjer i oktober 2026. Vi trenger et kontaktpunkt hos NFIF
+for å nå arrangører og tidtakerselskaper i den prosessen, helst allerede
+i september. <em>Kapittel 3.6 og 8.1.</em></p>
+<hr />
+<h2 id="formelt">Formelt</h2>
+<p><strong>7. Er anskaffelsen privatrettslig?</strong> Vi legger til
+grunn at anskaffelsen ikke er omfattet av regelverket for offentlige
+anskaffelser. Det avgjør blant annet om vi kan be om et møte og vise
+løsningen før beslutningen tas — noe vi gjerne gjør.</p>
+<hr />
+<h2 id="vi-kommer-gjerne-og-går-gjennom-dette">Vi kommer gjerne og går
+gjennom dette</h2>
+<p>Flere av punktene lar seg avklare på en halvtime. Vi stiller gjerne
+på Ullevaal, eller digitalt, og tar samtidig med en demonstrasjon av
+løsningen slik den står i dag.</p>
+<p><strong>Kontakt:</strong> <code>‹navn, e-post, telefon›</code></p>
+
+</body></html>

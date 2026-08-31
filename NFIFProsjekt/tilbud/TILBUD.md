@@ -2,10 +2,10 @@
 
 ## Tilbud fra Athlete Mindset AS
 
-**Til:** Norges Friidrettsforbund
-**Kontaktpersoner hos NFIF:** Thor Gjesdal (teknisk), Magnus Trosdahl (kommersielt)
-**Tilbudsfrist:** 31.08.2026
-**Dato:** 31.08.2026
+**Til:** Norges Friidrettsforbund  
+**Kontaktpersoner hos NFIF:** Thor Gjesdal (teknisk), Magnus Trosdahl (kommersielt)  
+**Tilbudsfrist:** 31.08.2026  
+**Dato:** 31.08.2026  
 **Versjon:** 1.0
 
 ---
@@ -409,7 +409,7 @@ Brukere kan filtrere statistikken på nivå, jf. §6.
 | World Rankings-stevne | Bygges |
 | Blandede heat | Bygges. Norsk særregel: tillatt i alle løpsøvelser utenom World Ranking-stevner. |
 | WMA-masters | Bygges |
-| Ikke-ratifisert, med årsakskode | Bygges. `‹AVKLARES›` Kodeverket er «TBD» i kravspekken. |
+| Ikke-ratifisert, med årsakskode | Bygges. Kodeverket er «TBD» i kravspekken og fastsettes av NFIF. |
 
 ## 3.6 Integrasjoner og dataimport
 
@@ -876,9 +876,6 @@ Bredden har også en praktisk side: selskapet står ikke og faller med én
 kontrakt. Statistikkplattformen er likevel definert som strategisk
 kjerneprodukt, ikke som et enkeltoppdrag ved siden av.
 
-`‹AVKLARES›` Organisasjonsnummer, etableringsdato, aksjekapital, styre,
-revisor.
-
 ## 9.2 Teamet
 
 Kombinasjonen av kompetanse i dette teamet er uvanlig, og den er grunnen til at
@@ -1163,8 +1160,8 @@ verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
 | **C** | «56 til Birmingham» — mesterskapsanalyse EM 2026 |
 | **D** | «Norsk friidrett 2013–2025» — bredde- og rekrutteringsanalyse, lederrettet sammendrag |
 | **E** | Veikart gateløp (utdypning av kapittel 5) |
-| **G** | Klubbrapport for IK Tjalve og SK Vidar — eksempler på klubbleveranse, jf. kapittel 3.3 |
 | **F** | Spørsmål til NFIF — forutsetninger vi ber om å få bekreftet |
+| **G** | Klubbrapport for IK Tjalve og SK Vidar — eksempler på klubbleveranse, jf. kapittel 3.3 |
 
 ---
 
