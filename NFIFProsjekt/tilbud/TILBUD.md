@@ -54,10 +54,11 @@ gjenstående er arbeidsmengde, ikke teknisk risiko. Kravsporingen ligger i
 vedlegg A og B.
 
 I tillegg tilbyr vi noe en ren plattformleverandør ikke kan tilby: **et
-fagmiljø som kan lese databasen.** Vi har allerede levert mesterskapsanalyser,
-en bredde- og rekrutteringsanalyse av norsk friidrett 2013–2025, og
-fagfellevurdert forskning på det samme datagrunnlaget. NFIF får ikke bare en
-database — NFIF får analysemiljøet som hører til.
+fagmiljø som kan lese databasen.** Norske friidrettsdata er allerede grunnlag
+for fagfellevurderte studier i *Journal of Science and Medicine in Sport* og
+*PLOS ONE*, den eldste fra 2015. Vi har dessuten levert mesterskapsanalyser og
+en bredde- og rekrutteringsanalyse av norsk friidrett 2013–2025. NFIF får ikke
+bare en database — NFIF får analysemiljøet som hører til.
 
 Bak leveransen står tre navngitte personer med utfyllende kompetanse: doktorgrad
 i anvendt økonometri kombinert med World Athletics-dommerkompetanse og
@@ -409,18 +410,57 @@ yngste årsklassene, mens seniorgruppen er stabil.
 strategic work related to recruitment and membership development». Vi har
 allerede gjort den analysen.
 
-## 4.3 Forskning på datagrunnlaget
+## 4.3 Forskning på NFIFs eget datagrunnlag
 
-`‹AVKLARES — oppgi korrekt publiseringsstatus per 31.08.2026, aldri mer enn det
-som faktisk er tilfelle›`
+Dette er ikke en kapasitet vi beskriver. Det er en kapasitet som er
+fagfellevurdert og publisert, på forbundets egne data.
 
-Fagfellevurdert arbeid basert på samme datagrunnlag, om relativ alderseffekt i
-norsk friidrett fra 10 til 25 år, og om prestasjonsutvikling hos unge utøvere.
-I tillegg idrettsfaglige og idrettsøkonomiske arbeider om reaksjonstid og
-tyvstartregelen, skoteknologi og talentallokering.
+### Arbeider basert på data fra NFIF
 
-Poenget dette beviser: databasen holder ikke bare presentasjonskvalitet, den
-holder forskningskvalitet — verifisert av uavhengige fagfeller.
+**Longitudinal performance development in youth track and field: A
+population-level study.**
+A. Guttormsen. *Journal of Science and Medicine in Sport.*
+
+**Performance in youth track and field is associated with birth quartile. A
+register-based study among athletes in Norway from 10 years to senior level.**
+H. Gundersen, A. Harris, H. Grendstad, M. Kristoffersen, A. Guttormsen m.fl.
+*PLOS ONE* 17 (9), e0273472.
+
+**Performance development in adolescent track and field athletes according to
+age, sex and sport discipline.**
+E. Tønnessen, I. S. Svendsen, I. C. Olsen, A. Guttormsen, T. Haugen.
+*PLOS ONE* 10 (6), e0129014.
+
+### Arbeid på tilsvarende datagrunnlag
+
+**How Fast Is Thin Air? Empirical Altitude Adjustments for Indoor Track and
+Field Performance.**
+A. Guttormsen og S. Guttormsen. *International Journal of Sports Physiology and
+Performance*, antatt for publisering.
+
+### Hva dette faktisk beviser
+
+Tre ting, og alle tre er relevante for anskaffelsen.
+
+**Datagrunnlaget holder forskningskvalitet.** Norske friidrettsdata er allerede
+brukt som grunnlag for fagfellevurderte studier i internasjonale tidsskrifter.
+Det er en uavhengig kvalitetsvurdering ingen leverandør kan gi seg selv, og det
+er dokumentert av andre enn oss.
+
+**Vi har arbeidet med NFIFs data i over ti år.** Den eldste av studiene over er
+fra 2015. Selskapet Athlete Mindset AS er nytt — arbeidet med dette
+datagrunnlaget er det ikke. Se kapittel 9.3.
+
+**Temaene er nøyaktig de §12 etterspør.** Kravspesifikasjonen ber om innsikt i
+«activity, participation, development and trends». Studiene over handler om
+prestasjonsutvikling gjennom ungdomsårene, om utvikling etter alder, kjønn og
+øvelse, og om relativ alderseffekt — altså hvordan fødselstidspunkt innenfor
+året slår ut i norsk friidrett fra tiårsalderen til seniornivå. Det er
+rekrutterings- og frafallsproblematikk, behandlet med den metodiske strengheten
+et fagfellevurdert tidsskrift krever.
+
+Når NFIF ber om aktivitetsanalyse i §12, ber forbundet altså om noe vi allerede
+har publisert på deres data.
 
 ## 4.4 Tjenestekatalog
 
@@ -731,7 +771,7 @@ den innvendingen er berettiget, og at den fortjener et svar før den stilles.
 
 | Innvending | Vårt svar |
 |---|---|
-| Nystartet selskap uten historikk | Selskapet er nytt. Plattformen er det ikke. To års utvikling og 1,9 millioner produksjonsdata er referansen. |
+| Nystartet selskap uten historikk | Selskapet er nytt. Arbeidet er det ikke. Fagfellevurdert forskning på norske friidrettsdata går tilbake til 2015 (kapittel 4.3), og plattformen har to års utvikling og 1,9 millioner produksjonsdata bak seg. |
 | Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Estimatet i kapittel 8 tilsvarer halvannet til to årsverk frem til 01.01.2027, og bemanningen er dimensjonert for det. `‹AVKLARES — bekreft hver enkelts kapasitet i timer per uke i perioden›` |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
