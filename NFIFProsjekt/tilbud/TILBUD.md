@@ -25,6 +25,11 @@ bærekraftig. Det NFIF nå kjøper, er ikke først og fremst programvare — det
 sikkerheten for at statistikkfunksjonen finnes også om fem år, uavhengig av
 enkeltpersoners kapasitet.
 
+Slik vi ser det, består oppgaven av tre deler: **registrere** alle resultater
+riktig, hver uke — det er jobben; **presentere** dem godt — det er håndverk; og
+**analysere** dem — det er ikke bestilt, men det er det som gir forbundet noe
+tilbake ut over en driftsregning. Se kapittel 1.1.
+
 Athlete Mindset AS tilbyr en plattform som allerede er i drift, med norske data i.
 
 | | |
@@ -73,8 +78,61 @@ noe vi har hentet inn — det er noe vi har.
 
 # 1. Hva vi har forstått at NFIF skal løse
 
-Kravspesifikasjonen har 24 kapitler. Bak dem ligger tre spørsmål som avgjør om
-en leverandør er riktig:
+## 1.1 Oppgaven har tre deler
+
+Kravspesifikasjonen har 24 kapitler. Under dem ligger tre oppgaver av helt ulik
+karakter, og en leverandør som ikke skiller dem, priser og planlegger feil.
+
+### 1. Registrere — dette er jobben
+
+Alle relevante resultatlister og alle resultater må inn, riktig, hver uke,
+sesong etter sesong. Utøvere skal gjenkjennes på tvers av navnevarianter og
+klubbskifter, øvelser gjenkjennes med riktig redskap og hekkehøyde per
+aldersklasse, tider tolkes uansett format, vind og tidtakingsmetode holdes i
+orden. Norske resultater i utlandet må også fanges opp.
+
+Dette er den delen som er tung, som aldri blir ferdig, og som avgjør om alt det
+andre er verdt noe. Det er også den delen NFIF i dag mangler en bærekraftig
+løsning på, jf. §1. **Er ikke denne på plass, spiller resten ingen rolle.**
+
+### 2. Presentere — dette er håndverk
+
+Når dataene først ligger strukturert i en database, kan de presenteres akkurat
+slik man vil. Årsstatistikk, alle-tiders-lister, utøverprofiler, klubbsider,
+rekordoversikter, kvalifiseringslister, dashbord.
+
+Vi skal være ærlige om dette: i 2026 er det å bygge et grensesnitt ikke den
+vanskeligste delen av en slik leveranse. Det som *er* vanskelig, er å vite hva
+som skal vises. Hvilke lister en trener faktisk bruker, hvordan en
+aldersklasseliste skal avgrenses, hva en utøver leter etter på sin egen profil,
+hvorfor en klubbrekordliste må håndtere klubbskifter på en bestemt måte. Det er
+domenekunnskap, ikke teknologi.
+
+Her er vi åpne for skreddersøm og løpende forbedring — også for klubber som
+ønsker egne statistikksider. Fordi grunnlaget er solid, er slike leveranser
+små, ikke store.
+
+### 3. Analysere — dette er ikke bestilt
+
+Kravspesifikasjonen ber ikke om analyse ut over aktivitetsdataene i §12. Vi
+tilbyr det likevel: mesterskapsanalyser, rekrutterings- og frafallsanalyse,
+krets- og klubbrapporter, forskning.
+
+Dette er et tillegg, og vi presenterer det som det. Men det er også det som
+gjør de to første delene interessante å gjøre — og det som gjør at NFIF får noe
+tilbake ut over en driftsregning. Se kapittel 4.
+
+---
+
+Konsekvensen av denne inndelingen løper gjennom hele tilbudet: vi bruker mest
+plass på del 1, fordi den er jobben. Del 2 beskriver vi som en kapasitet vi
+stiller til rådighet, ikke som en fast liste med sider. Del 3 står som et eget
+hovedkapittel, fordi det er der vi skiller oss fra enhver annen tilbyder.
+
+## 1.2 Og tre spørsmål avgjør hvem som får oppgaven
+
+Bak kravspesifikasjonen ligger tre spørsmål som avgjør om en leverandør er
+riktig:
 
 **Kan løsningen være i drift for alle baneresultater innen 01.01.2027?**
 Fra kontraktsinngåelse i september er det knapt fire måneder. En leverandør som
@@ -291,6 +349,24 @@ WCAG 2.1 AA inn som eksplisitt leveranse. Publikumsrettede norske nettsteder er
 underlagt kravene til universell utforming av IKT — dette er et lovkrav, ikke en
 ekstravaganse, og en plattform som er offisiell kanal for et særforbund bør
 oppfylle det.
+
+**Presentasjon er en kapasitet, ikke en fast liste.** Sidene over er de vi har i
+dag, ikke grensen for hva løsningen kan vise. Når dataene ligger strukturert,
+er en ny liste, et nytt uttrekk eller en ny sammenstilling dager, ikke måneder.
+
+Vi vil derfor ikke låse presentasjonen til en kravliste i en kontrakt. Vi
+foreslår i stedet en fast utviklingspott NFIF disponerer, slik at forbundet kan
+bestille det som viser seg å være nyttig i bruk. Konkrete eksempler på hva vi
+gjerne leverer:
+
+- Egne statistikksider for klubber som ønsker det, med klubbens egne lister,
+  rekorder og utøveroversikter
+- Krets- og regionsoversikter tilpasset kretsenes eget utviklingsarbeid
+- Uttrekk til terminlistearbeid, uttak og klasseinndeling
+- Visninger bygget på ønsker fra trenere, statistikkmiljøet og media
+
+Dette er del 2 av oppgaven slik den er beskrevet i kapittel 1.1, og det er en
+del vi mener bør være åpen framfor spesifisert i detalj på forhånd.
 
 ## 3.4 API og eksport
 
