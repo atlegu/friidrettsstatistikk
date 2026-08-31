@@ -26,7 +26,6 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
 | 12 | Bekreft at data for 7–12 år kan brukes i aggregert aktivitetsstatistikk når ingen enkeltutøver kan identifiseres | 7.1 | Forutsatt i tilbudet, og det analysen i 4.2 bygger på. Regelen om at 7–12 ikke skal vises er klar; aggregert bruk er ikke like eksplisitt. |
 | 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
-| 14 | Skal NFIF eie skykontoene selv? | 11 | Vi har ingen innvending, men det må avtales |
 | 15 | Bekreft løpende tilgang til terminlisten og lisensregisteret | 3.5, 13 | Forutsatt i tilbudet. Uten dem faller den maskinelle klassifiseringen tilbake til manuelt arbeid. |
 | 17 | Kontaktpunkt mot arrangører og tidtakere for egen innsamling | 3.6, 8.1 | Innsamlingen må stå på egne ben før dagens base faller bort. Trengs allerede i september. |
 

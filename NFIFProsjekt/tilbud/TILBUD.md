@@ -1037,9 +1037,6 @@ gjøres. Vi foreslår heller en fast pott NFIF disponerer.
 - **Exit-klausul.** Ved opphør av avtalen, uansett årsak og uansett hvem som
   sier opp, overleveres kildekode, komplette data og driftsdokumentasjon
   vederlagsfritt, i et format som lar en annen leverandør overta driften.
-- `‹AVKLARES›` Vi er åpne for at NFIF selv eier skykontoene, slik at
-  infrastrukturen står i forbundets navn fra dag én. Det er den sterkeste
-  formen for eierskap, og vi har ingen innvending.
 
 ---
 
