@@ -224,7 +224,7 @@ Kjernen er i drift i dag:
 - **Spydtype fra 1999**, hekkehøyde og redskapsvekt per aldersklasse.
 
 Gjenstår å bygge inn i modellen: kretsdimensjon (§10), baneklassifisering etter
-TR14.1/TR43.1 (§7), kvalitetsnivå A/B/C (§6), og datamodellen for utenbaneløp
+TR14.1/TR43.1 (§7), kvalitetsnivå A/B/C (§6), og datamodellen for gateløp
 (§8). Disse er beskrevet i henholdsvis kapittel 3.5, 5 og 8.
 
 ### Kildetrofasthet som prinsipp
@@ -415,27 +415,27 @@ forhåndsvarsel ikke gir vetorett. Dette er standard i forskningssamarbeid.
 
 ---
 
-# 5. Utenbaneløp — veikart
+# 5. Gateløp — veikart
 
 *§8, §12, §24.*
 
 Dette er vårt største enkeltgap, og vi sier det rett ut. Løsningen dekker i dag
-banestatistikk. Utenbaneløp må bygges.
+banestatistikk. Gateløp må bygges.
 
 §24 krever et troverdig veikart innen 31.12.2026 dersom løsningen ikke dekker
-utenbaneløp fra start. Dette kapittelet er det veikartet, og vi leverer det med
+gateløp fra start. Dette kapittelet er det veikartet, og vi leverer det med
 tilbudet fremfor å komme tilbake til det.
 
-## 5.1 Hvorfor utenbaneløp er en annen oppgave
+## 5.1 Hvorfor gateløp er en annen oppgave
 
-§5 peker selv på kjernen: for utenbaneløp oppfyller ikke alle arrangementer,
-distanser og løyper de samme tekniske kravene. Et 10 km gateløp på sertifisert
-løype og et terrengløp på en uoppmålt runde er begge reell aktivitet, men bare
-det ene kan rangeres mot en rekord.
+§5 peker selv på kjernen: her oppfyller ikke alle arrangementer, distanser og
+løyper de samme tekniske kravene. Et 10 km på sertifisert løype og en uoppmålt
+runde i terrenget er begge reell aktivitet, men bare det ene kan rangeres mot
+en rekord.
 
 Skillet mellom **prestasjonsstatistikk**, **rekorder** og **registrert
 aktivitet** er derfor ikke en presentasjonsdetalj — det er selve datamodellen.
-Det er også grunnen til at kvalitetsnivåene i §6 må bygges før utenbaneløpene,
+Det er også grunnen til at kvalitetsnivåene i §6 må bygges før gateløpene,
 ikke etter.
 
 ## 5.2 Leveranseplan
@@ -446,14 +446,14 @@ ikke etter.
 | 2 | Import fra norske tidtakere — EQ Timing og Ultimate Sport Service prioritert, som de største datakildene | Q1–Q2 2027 |
 | 3 | Rankinglister for offisielle rekorddistanser: 3 km, 5 km, 10 km, halvmaraton, maraton | Q2 2027 |
 | 4 | Registrering av deltakelse på ikke-offisielle distanser, ultraløp, stafetter, terreng-, motbakke- og fjelløp | Q2 2027 |
-| 5 | Løpssider, filtrering og presentasjon, integrert med utøverprofilene slik at bane og utenbane vises samlet | Q3 2027 |
+| 5 | Løpssider, filtrering og presentasjon, integrert med utøverprofilene slik at bane og gate vises samlet | Q3 2027 |
 
 Vi anbefaler at NFIF ikke kjøper dette som fastpris nå. Datakildene er mange og
 ujevne, og de norske tidtakerselskapenes grensesnitt er ikke kartlagt. En pris
 satt i august 2026 vil enten være for høy, eller sprekke.
 
 `‹AVKLARES med NFIF›` Hvilke løpsarrangementer regnes som «approved athletics
-events» i §2? Omfanget av utenbanedelen avhenger helt av om dette betyr
+events» i §2? Omfanget av gateløpsdelen avhenger helt av om dette betyr
 terminlistede løp, alle løp med lisensierte deltakere, eller all mosjonsløping.
 
 ---
@@ -566,7 +566,7 @@ mesterskapshelger — der responstid er noe annet enn i en vanlig uke.
 | Datavask og kvalitetsverktøy | §23 | Løpende |
 | WCAG 2.1 AA-samsvar, dokumentert | §17 | Des 2026 |
 | Personvern: DPIA, databehandleravtale, driftsdokumentasjon | §19, §21 | Des 2026 |
-| Veikart utenbaneløp — levert med dette tilbudet | §24 | Levert |
+| Veikart gateløp — levert med dette tilbudet | §24 | Levert |
 
 **Kritisk avhengighet:** Kretsstatistikk krever en klubb-til-krets-mapping fra
 NFIF. Vi kan ikke utlede kretstilhørighet fra klubbnavn med tilstrekkelig
@@ -578,7 +578,7 @@ sikkerhet. Vi ber om denne så tidlig som mulig etter kontraktsinngåelse.
 |---|---|---|
 | 2 | Integrasjoner (opsjoner), automatisert import, utvidede administrasjonsverktøy, rollestyring | Q1–Q3 2027 |
 | 3 | Aktivitetsmodul: unike deltakere, starter, fullførte, utvikling over tid, fordelt på klubb, krets, aldersgruppe, kjønn og øvelse. Dashbord for forbund og kretser. | Q2–Q4 2027 |
-| 3 | Utenbaneløp, jf. veikartet i kapittel 5 | Q1–Q3 2027 |
+| 3 | Gateløp, jf. veikartet i kapittel 5 | Q1–Q3 2027 |
 | 4 | Historisk utvidelse — kartlegging først, deretter import etter NFIFs valg | 2028, opsjon |
 
 Aktivitetsmodulen i fase 3 er produktifisering av metodikk som allerede er
@@ -641,7 +641,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Risiko | Tiltak |
 |---|---|
 | Integrasjonene krever mer enn antatt | Prises som opsjoner med timepott, med forbehold om dokumentert API fra motparten |
-| Utenbaneløp viser seg mer omfattende | Veikart levert nå, bygging i 2027, ingen fastpris før datakildene er kartlagt |
+| Gateløp viser seg mer omfattende | Veikart levert nå, bygging i 2027, ingen fastpris før datakildene er kartlagt |
 | Kretsmapping kommer sent fra NFIF | Flagget som kritisk avhengighet i kapittel 8.1 |
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
 | Kapasitet | To utviklere fra kontraktsstart |
@@ -725,7 +725,7 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
 | Opsjon | Grunnlag | Pris |
 |---|---|---:|
 | Integrasjon per system (§13) | Timepott, med forbehold om dokumentert API | `‹ ›` |
-| Utenbaneløp, jf. veikartet i kapittel 5 | Prises etter kartlegging av datakildene | `‹ ›` |
+| Gateløp, jf. veikartet i kapittel 5 | Prises etter kartlegging av datakildene | `‹ ›` |
 | Aktivitetsmodul og dashbord (fase 3) | | `‹ ›` |
 | Historisk utvidelse 2001–2012 (fase 4) | Kartlegging først, deretter import | `‹ ›` |
 | Utvidet analyseavtale | Alle mesterskap, pressestøtte, kretsrapporter | `‹ ›` |
@@ -750,7 +750,7 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
    lisensopplysninger og terminlistestatus gjøres tilgjengelig.
 5. **Årsakskoder for ikke-ratifiserte resultater** (§7) er «TBD» i
    kravspekken og må fastsettes av NFIF.
-6. **Utenbaneløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
+6. **Gateløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
    kartlegging. Omfanget avhenger av NFIFs definisjon av «approved athletics
    events».
 7. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
@@ -768,7 +768,7 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
 | **B** | Full kravsporing per kapittel |
 | **C** | «56 til Birmingham» — mesterskapsanalyse EM 2026 |
 | **D** | «Norsk friidrett 2013–2025» — bredde- og rekrutteringsanalyse, lederrettet sammendrag |
-| **E** | Veikart utenbaneløp (utdypning av kapittel 5) |
+| **E** | Veikart gateløp (utdypning av kapittel 5) |
 | **F** | Spørsmål til NFIF — punktene merket `‹AVKLARES›` samlet |
 
 ---
@@ -785,7 +785,7 @@ må ferdigstilles · `BYGGES` leveres i perioden · `AVTALE` løses kontraktuelt
 | 1 | NFIF eier alle data | AVTALE | Kapittel 11 |
 | 2 | Offisiell statistikkplattform for NFIF | AVTALE | — |
 | 3 | Banestatistikk | I DRIFT | 1 922 634 resultater, 302 øvelser, inne og ute, alle aldersklasser |
-| 4 | Løpsstatistikk, utenbane | BYGGES | Veikart i kapittel 5, jf. §24 |
+| 4 | Løpsstatistikk, gateløp | BYGGES | Veikart i kapittel 5, jf. §24 |
 | 5 | Utøverprofiler | I DRIFT | PB, SB, resultathistorikk, utviklingskurver, klubbhistorikk |
 | 6 | Nasjonal statistikk | I DRIFT | Årsstatistikk, alle-tiders, rekorder |
 | 7 | Klubbstatistikk | I DRIFT | Klubbside med årsstatistikk, alle-tiders og klubbrekorder |
@@ -830,7 +830,7 @@ teknisk risiko.
 | §7 | Flagg: WMA-masters | BYGGES | |
 | §7 | Flagg: ikke-ratifisert med årsakskode | BYGGES | Kodeverk «TBD» — avklares med NFIF |
 | §7 | Flagg: håndtidtaking | I DRIFT | Presisjonsbasert deteksjon, kun løp under 800 m. 18 769 resultater merket. |
-| §8 | Utenbaneløp med full metadata | BYGGES | Veikart kapittel 5 |
+| §8 | Gateløp med full metadata | BYGGES | Veikart kapittel 5 |
 | §9 | Utøverprofiler | I DRIFT | |
 | §9 | Navneendring, klubbovergang, dubletter | DELVIS | Klubbhistorikk og utøversammenslåing i drift. Navneendringshistorikk bygges. |
 | §10 | Klubbstatistikk | I DRIFT | |

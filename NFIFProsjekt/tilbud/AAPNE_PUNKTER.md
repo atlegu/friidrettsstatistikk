@@ -23,7 +23,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 |---|---|---|---|
 | 8 | Hvem eier vurderingen av kvalitetsnivå A/B/C der kriteriene ikke kan utledes automatisk — forbundet, kretsen eller arrangøren? | 3.5 | Arbeidsflyt og rollemodell kan ikke ferdigstilles |
 | 9 | Hva er kodeverket for ikke-ratifiserte resultater? Kravspekken sier «TBD». | 3.5 | Flagget kan bygges, men ikke fylles |
-| 10 | Hvilke løpsarrangementer regnes som «approved athletics events» i §2? | 5 | Omfanget av hele utenbanedelen avhenger av dette |
+| 10 | Hvilke løpsarrangementer regnes som «approved athletics events» i §2? | 5 | Omfanget av hele gateløpsdelen avhenger av dette |
 | 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
 | 12 | Skal fødselsdato for mindreårige eksponeres offentlig, eller kun fødselsår? | 7.1 | Forbundsvedtak, ikke teknisk valg |
 | 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
@@ -40,7 +40,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 | B | Full kravsporing per kapittel | **Ferdig** — ligger i `TILBUD.md` |
 | C | «56 til Birmingham» | Finnes, må pakkes som vedlegg |
 | D | «Norsk friidrett 2013–2025», lederrettet sammendrag | Analysen finnes. Sammendraget må skrives. Avklar publiseringsplaner først. |
-| E | Veikart utenbaneløp — utdypning | Kapittel 5 er kortversjonen. Utdypning bør skrives. |
+| E | Veikart gateløp — utdypning | Kapittel 5 er kortversjonen. Utdypning bør skrives. |
 | F | Spørsmål til NFIF | Denne filen, punkt 8–15 |
 
 ---
