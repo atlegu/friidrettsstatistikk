@@ -16,11 +16,11 @@ agentvirksomhet og trenervirksomhet, og inngår i Fire S Invest AS. Vi har
 bygget og drifter friidrettsresultater.no, en statistikkplattform med norske
 resultatdata som er i drift.
 
-**Det vi mener skiller tilbudet fra de øvrige, er at plattformen finnes
-allerede.** 1 922 634 resultater er importert, normalisert og søkbare, hvorav
-1 701 902 fra 2013 og senere. Migreringen av historiske data, som normalt er
-den dyreste og mest risikofylte posten i en slik anskaffelse, er gjennomført.
-Åtte av fjorten obligatoriske krav i §22 er i drift i dag.
+**Kjernen i tilbudet er at plattformen allerede finnes.** 1 922 634 resultater
+er importert, normalisert og søkbare, hvorav 1 701 902 fra 2013 og senere.
+Migreringen av historiske data, som normalt er den dyreste og mest risikofylte
+posten i en slik anskaffelse, er gjennomført. Åtte av fjorten obligatoriske
+krav i §22 er i drift i dag.
 
 Det er også grunnen til at vi kan svare på tidsplanen uten forbehold. Fra
 kontraktsinngåelse i september er det knapt fire måneder til 01.01.2027. Vi

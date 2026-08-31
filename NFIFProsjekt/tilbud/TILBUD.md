@@ -58,12 +58,12 @@ så langt vært prioritert mot innsamling og fullstendighet, og det gjenstår
 kjente feil og mangler som rettes fortløpende. Vi gjør rede for dem i kapittel
 3.7.
 
-I tillegg tilbyr vi noe en ren plattformleverandør ikke kan tilby: **et
-fagmiljø som kan lese databasen.** Norske friidrettsdata er allerede grunnlag
-for fagfellevurderte studier i *Journal of Science and Medicine in Sport* og
-*PLOS ONE*, den eldste fra 2015. Vi har dessuten levert mesterskapsanalyser og
-en bredde- og rekrutteringsanalyse av norsk friidrett 2013–2025. NFIF får
-dermed ikke bare en database, men også analysemiljøet som kan lese den.
+I tillegg til plattformen tilbyr vi **et fagmiljø som kan lese databasen.**
+Norske friidrettsdata er allerede grunnlag for fagfellevurderte studier i
+*Journal of Science and Medicine in Sport* og *PLOS ONE*, den eldste fra 2015.
+Vi har dessuten levert mesterskapsanalyser og en bredde- og
+rekrutteringsanalyse av norsk friidrett 2013–2025. NFIF får dermed ikke bare
+en database, men også analysemiljøet som kan lese den.
 
 Bak leveransen står tre navngitte personer med utfyllende kompetanse:
 doktorgrad i anvendt økonometri kombinert med World Athletics-dommerkompetanse
@@ -128,7 +128,7 @@ driftsregning. Se kapittel 4.
 Konsekvensen av denne inndelingen løper gjennom hele tilbudet: vi bruker mest
 plass på del 1, fordi den er jobben. Del 2 beskriver vi som en kapasitet vi
 stiller til rådighet, ikke som en fast liste med sider. Del 3 står som et eget
-hovedkapittel, fordi det er der vi skiller oss fra enhver annen tilbyder.
+hovedkapittel, fordi det er den delen vi selv mener er mest verdt for NFIF.
 
 ## 1.2 Fire anbefalinger ut over kravspesifikasjonen
 
@@ -603,8 +603,8 @@ Performance*, antatt for publisering.
 
 **Datagrunnlaget holder forskningskvalitet.** Norske friidrettsdata er allerede
 brukt som grunnlag for fagfellevurderte studier i internasjonale tidsskrifter.
-Det er en uavhengig kvalitetsvurdering ingen leverandør kan gi seg selv, og det
-er dokumentert av andre enn oss.
+Det er en uavhengig kvalitetsvurdering, gjort av fagfeller og ikke av oss
+selv.
 
 **Vi har arbeidet med NFIFs data i over ti år.** Den eldste av studiene over
 er fra 2015. Selskapet Athlete Mindset AS er nytt, men arbeidet med
