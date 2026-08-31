@@ -2,9 +2,11 @@
 
 ## Tilbud fra Athlete Mindset AS
 
-**Til:** Norges Friidrettsforbund **Kontaktpersoner hos NFIF:** Thor Gjesdal
-(teknisk), Magnus Trosdahl (kommersielt) **Tilbudsfrist:** 31.08.2026
-**Dato:** 31.08.2026 **Versjon:** 1.0
+**Til:** Norges Friidrettsforbund
+
+**Kontaktpersoner hos NFIF:** Thor Gjesdal (teknisk), Magnus Trosdahl (kommersielt)
+
+**Tilbudsfrist:** 31.08.2026 · **Dato:** 31.08.2026 · **Versjon:** 1.0
 
 ---
 
