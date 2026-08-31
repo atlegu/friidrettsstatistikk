@@ -1115,9 +1115,6 @@ til et produkt. Det er en verdi for oss ut over kontraktssummen, og den
 verdien er reflektert i prisen vi kommer til å foreslå. Vi konkurrerer ikke om
 å ta høyest mulig betalt for denne kontrakten.
 
-`‹AVKLARES›` Fyll inn timesats og estimert ramme per post før utsending, eller
-avtal møte med Magnus Trosdahl om budsjettramme først.
-
 ---
 
 # 13. Forbehold og forutsetninger
