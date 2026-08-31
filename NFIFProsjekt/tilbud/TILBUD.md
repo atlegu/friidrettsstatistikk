@@ -613,19 +613,30 @@ banestatistikk. Gateløp må bygges.
 gateløp fra start. Dette kapittelet er det veikartet, og vi leverer det med
 tilbudet fremfor å komme tilbake til det.
 
-## 5.1 Hvorfor gateløp er en annen oppgave
+## 5.1 Omfang
 
-§5 peker selv på kjernen: her oppfyller ikke alle arrangementer, distanser og
-løyper de samme tekniske kravene. Et 10 km på sertifisert løype og en uoppmålt
-runde i terrenget er begge reell aktivitet, men bare det ene kan rangeres mot
-en rekord.
+Vi legger til grunn at «approved athletics events» i §2 betyr **løp som står på
+den offisielle norske terminlisten.** Det er terminlisten som avgrenser
+leveransen, ikke all mosjonsløping i Norge.
+
+Det er en viktig avklaring, fordi den gjør oppgaven endelig og målbar. Den
+betyr også at terminlisten blir én felles avgrensning for hele plattformen: den
+samme kilden avgjør kvalitetsnivå for baneresultater etter §6, jf. kapittel
+3.5, og hvilke løp som hører hjemme i basen etter §8.
+
+## 5.2 Hvorfor gateløp likevel er en annen oppgave
+
+§5 peker selv på kjernen: innenfor terminlisten oppfyller ikke alle
+arrangementer, distanser og løyper de samme tekniske kravene. Et 10 km på
+sertifisert løype og en uoppmålt runde i terrenget er begge reell aktivitet,
+men bare det ene kan rangeres mot en rekord.
 
 Skillet mellom **prestasjonsstatistikk**, **rekorder** og **registrert
 aktivitet** er derfor ikke en presentasjonsdetalj — det er selve datamodellen.
 Det er også grunnen til at kvalitetsnivåene i §6 må bygges før gateløpene,
 ikke etter.
 
-## 5.2 Leveranseplan
+## 5.3 Leveranseplan
 
 | Trinn | Innhold | Periode |
 |---|---|---|
@@ -635,13 +646,10 @@ ikke etter.
 | 4 | Registrering av deltakelse på ikke-offisielle distanser, ultraløp, stafetter, terreng-, motbakke- og fjelløp | Q2 2027 |
 | 5 | Løpssider, filtrering og presentasjon, integrert med utøverprofilene slik at bane og gate vises samlet | Q3 2027 |
 
-Vi anbefaler at NFIF ikke kjøper dette som fastpris nå. Datakildene er mange og
-ujevne, og de norske tidtakerselskapenes grensesnitt er ikke kartlagt. En pris
-satt i august 2026 vil enten være for høy, eller sprekke.
-
-`‹AVKLARES med NFIF›` Hvilke løpsarrangementer regnes som «approved athletics
-events» i §2? Omfanget av gateløpsdelen avhenger helt av om dette betyr
-terminlistede løp, alle løp med lisensierte deltakere, eller all mosjonsløping.
+Vi anbefaler at NFIF ikke kjøper dette som fastpris nå. Omfanget er avklart —
+terminlisten avgrenser det — men de norske tidtakerselskapenes grensesnitt er
+ikke kartlagt, og det er der usikkerheten ligger. En pris satt i august 2026 vil
+enten være for høy, eller sprekke.
 
 ---
 
@@ -920,7 +928,7 @@ tillit i statistikkmiljøet blir en plattform ingen bruker.
 | Risiko | Tiltak |
 |---|---|
 | Integrasjonene krever mer enn antatt | Prises som opsjoner med timepott, med forbehold om dokumentert API fra motparten |
-| Gateløp viser seg mer omfattende | Veikart levert nå, bygging i 2027, ingen fastpris før datakildene er kartlagt |
+| Gateløp viser seg mer omfattende | Omfanget er avgrenset til terminlistede løp. Veikart levert nå, bygging i 2027, ingen fastpris før tidtakernes grensesnitt er kartlagt. |
 | Kretsmapping kommer sent fra NFIF | Flagget som kritisk avhengighet i kapittel 8.1 |
 | Kvalitetsnivå A/B/C krever manuell registrering i større omfang enn antatt | Regelmotoren bygges for både automatisk utledning og manuell overstyring fra start |
 | Kapasitet | Tre personer med komplementær kompetanse fra kontraktsstart, jf. kapittel 9.2 |
@@ -1038,9 +1046,9 @@ Prisen holdes fast i tre år, deretter regulering etter konsumprisindeks.
    stevne som ikke er indeksert noe sted, kan ingen garantere dekning. Vi
    lover å gjøre restkategorien liten og synlig, ikke at den forsvinner.
    Se kapittel 3.6.
-7. **Gateløp** (§8) leveres etter veikartet i kapittel 5, med pris etter
-   kartlegging. Omfanget avhenger av NFIFs definisjon av «approved athletics
-   events».
+7. **Gateløp** (§8) leveres etter veikartet i kapittel 5. Omfanget er avgrenset
+   til løp på den offisielle terminlisten. Prisen settes etter kartlegging av
+   tidtakernes grensesnitt.
 8. **Historikk før 2013** (§15) prises etter kartlegging av kildenes
    dekningsgrad.
 9. **Differensiert eksponering av mindreåriges data** (kapittel 7.1) er et

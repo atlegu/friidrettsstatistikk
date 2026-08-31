@@ -23,7 +23,6 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 |---|---|---|---|
 | 8 | Hvordan meldes underkjenning av stevner og enkeltresultater til plattformen? | 3.5 | Terminliste og lisensregister forutsettes tilgjengelig, og da klassifiseres alt maskinelt. Underkjenning i etterkant er det eneste som må inn utenfra — vi trenger å vite kanalen. |
 | 9 | Hva er kodeverket for ikke-ratifiserte resultater? Kravspekken sier «TBD». | 3.5 | Flagget kan bygges, men ikke fylles |
-| 10 | Hvilke løpsarrangementer regnes som «approved athletics events» i §2? | 5 | Omfanget av hele gateløpsdelen avhenger av dette |
 | 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
 | 12 | Skal fødselsdato for mindreårige eksponeres offentlig, eller kun fødselsår? | 7.1 | Forbundsvedtak, ikke teknisk valg |
 | 13 | Er anskaffelsen privatrettslig, eller følger den regelverket for offentlige anskaffelser? | — | Avgjør om vi kan oppsøke NFIF før fristen |
