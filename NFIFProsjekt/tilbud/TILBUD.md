@@ -158,109 +158,45 @@ og B.
 
 # 2. Et konkret eksempel: NM-kvalifiseringslisten
 
-Vi begynner med noe NFIF kjenner igjen fra egen hverdag.
+Foran hvert NM sammenstiller SRU et regneark over alle som har klart
+kvalifiseringskravet, og sender det til statistikkinteresserte. Utgaven for
+2026 har 2 594 rader, 56 øvelsesblokker og 1 984 utøveroppføringer, med
+kravsatser og deltakertall tilbake til 2002. Kvaliteten er høy, og arbeidet
+fortjener respekt.
 
-Foran hvert NM sendes det ut et regneark med oversikt over alle utøvere som har
-klart kvalifiseringskravet. Utgaven for 2026, utarbeidet av Jo Nesse i SRU,
-inneholder 2 594 rader, 56 øvelsesblokker og 1 984 utøveroppføringer, med
-kvalifiseringskrav og deltakertall år for år tilbake til 2002.
+Det er også en presis illustrasjon av §1: en verdifull funksjon som hviler på
+frivillige ressurser, vedlikeholdes manuelt, og er utdatert i det øyeblikket
+neste stevne er ferdig.
 
-Dette er ikke et hobbyprosjekt. Det er en kritisk forbundsfunksjon — dokumentet
-utøvere, trenere, klubber og arrangører bruker for å vite hvem som kan stille
-til start i et norsk mesterskap. Kvaliteten er høy, og arbeidet fortjener
-respekt.
+**Vi har bygget den automatiske versjonen.** Kvalifiseringsreglene fra
+*Reglement for norske mesterskap 2026* er implementert — kravsatser per øvelse
+og kjønn, aldersklasseoverstyringer for U20 og U23, regler for innendørsresultater, og øvelser som kvalifiserer til andre øvelser, som 5 km gateløp til
+5000 m. Sidene `/mesterskap` er i drift.
 
-Det er samtidig en presis illustrasjon av §1: en verdifull funksjon som hviler
-på frivillige ressurser, vedlikeholdes manuelt, distribueres som e-postvedlegg,
-og der rettelser samles inn via én persons private adresse. Listen er utdatert
-i det øyeblikket neste stevne er ferdig.
+**Vi testet den mot regnearket.** 100 meter kvinner, krav 12,80. Regnearket har
+101 utøvere, vår base finner 97, og **89 navn er de samme.** Avvikene skyldes i
+hovedsak ikke feil i noen av listene, men nettopp det kravspesifikasjonen ber
+plattformen håndtere: navnevarianter, en utøver som har byttet navn, en
+utenlandsk utøver i norsk klubb, ulik anvendelse av aldersgrensen. §9 og §7 i
+praksis. Det er en ekstern validering av datakvalitet vi ikke kunne gitt oss
+selv.
 
-## 2.1 Vi har bygget den automatiske versjonen
+Med plattformen oppdateres status i det resultatet importeres, i stedet for
+noen ganger i året. Utøveren ser på egen profil hva hun er kvalifisert i,
+klubbsiden viser klubbens kvalifiserte, hvert resultat lenker til stevnet det
+ble oppnådd i, og kravsatser og deltakertall 2002–2026 blir en varig tidsserie i
+stedet for en fil. Eksport til Excel i det formatet miljøet kjenner blir en
+nedlasting i stedet for en jobb.
 
-Kvalifiseringsreglene fra *Reglement for norske mesterskap 2026* er implementert
-i løsningen: kravsatser per øvelse og kjønn, aldersklasseoverstyringer for U20
-og U23, regler for om innendørsresultater teller, og øvelser som kvalifiserer
-til andre øvelser — for eksempel 5 km gateløp som kvalifisering til 5000 m, jf.
-regelendringen fra 2023. Sidene `/mesterskap` er i drift.
+Ett tillegg fortjener en setning: **konsekvensen av å endre et krav kan
+beregnes på forhånd.** Regnearket dokumenterer selv at NFIFs styre justerte
+kvalifiseringskravene i 2023. Slike vedtak fattes i dag uten mulighet til å
+regne på virkningen.
 
-## 2.2 Kontrollen vi kjørte
-
-Vi testet basen mot regnearket for 100 meter kvinner — krav 12,80,
-kvalifiseringsperiode 01.01.2025–09.07.2026, vindgrense 2,0 m/s, uten
-håndtidtaking. Regnearket har 101 utøvere. Vår base finner 97. **89 navn er de
-samme.**
-
-Det er en ekstern validering mot en liste sammenstilt manuelt og uavhengig av
-oss. Avvikene skyldes i hovedsak ikke feil i noen av listene, men nettopp det
-kravspesifikasjonen ber plattformen håndtere: navn skrevet på to måter,
-mellomnavn med eller uten, en utøver som har byttet navn, en utenlandsk utøver i
-norsk klubb, ulik anvendelse av aldersgrensen. §9 og §7 i praksis.
-
-Poenget er at dette er en **maskinell oppgave som i dag gjøres manuelt.** Kjørt
-på alle 56 øvelser, hver gang det kommer nye resultater, blir det løpende
-kvalitetskontroll i stedet for årlig dugnad.
-
-## 2.3 Arbeidet bak tallene
-
-Vi vil være tydelige på hva denne jobben faktisk er, fordi den er lett å
-undervurdere når resultatet ser enkelt ut.
-
-Å bygge et komplett norsk resultatgrunnlag er ikke å laste ned en fil. Det er å
-hente hvert enkelt stevne, gjenkjenne hver utøver på tvers av navnevarianter og
-klubbytter, kjenne igjen 302 øvelser med ulike redskapsvekter og hekkehøyder per
-aldersklasse, tolke tider som står i tre forskjellige formater, skille
-håndtidtaking fra elektronisk, holde orden på vind, og gjøre det for nær to
-millioner resultater — for så å kontrollere hvert stevne mot kilden på nytt.
-
-Det er den jobben NFIF ellers må kjøpe, og som tar en ny leverandør vesentlig
-lengre tid enn de fire månedene som står igjen til 01.01.2027.
-
-**Og vi har gjort mer enn de siste årene.** I tillegg til fulldybden fra 2013 og
-senere har vi importert alle-tiders-resultater bakover i historien:
-
-| | Antall |
-|---|---:|
-| Resultater før 2013 | **220 732** |
-| Øvelser dekket | 149 |
-| Utøvere | 24 367 |
-| Stevner | 21 577 |
-| Eldste stevne | 06.08.1922 |
-
-Det betyr at en alle-tiders-liste i en øvelse ikke starter i 2013. Den går så
-langt tilbake som kildene rekker, og en utøverprofil viser karrieren, ikke det
-utsnittet av den som tilfeldigvis falt innenfor en importperiode.
-
-Dekningen før 2013 er ujevn — historiske lister er ofte begrenset til
-resultater over visse terskler — og vi lover ingen fulldybde der. Men grunnlaget
-er lagt, og det er lagt i den samme strukturen som resten av basen. Se
-kapittel 6.
-
-## 2.4 Hva vi tilbyr, og hva vi ikke rører
-
-| I dag | Med plattformen |
-|---|---|
-| Regneark sendt ut noen ganger i året | Status oppdatert i det resultatet importeres |
-| Utøveren venter på neste utsendelse | Utøveren ser på egen profil hva hun er kvalifisert i, og hva som mangler |
-| Klubben leter i regnearket | Klubbsiden viser klubbens kvalifiserte |
-| Påmeldte telles for hånd | Kobles mot påmelding fra iSonen (§13, §14) |
-| Ingen kildesporing | Hvert resultat lenker til stevnet det ble oppnådd i |
-| Historikken finnes i én fil | Kravsatser og deltakertall 2002–2026 blir en varig, søkbar tidsserie |
-| Ingen konsekvensanalyse | Simulering: «hvor mange kvalifiserer hvis kravet endres fra 12,80 til 12,75?» |
-| Rettinger på privat e-post | Registrert avviksbehandling med sporing |
-| Kun regneark | Eksport til Excel i samme format — som nedlasting, ikke som arbeid |
-
-Simuleringspunktet fortjener en egen setning. Regnearket dokumenterer selv at
-NFIFs styre justerte kvalifiseringskravene i 2023, og at endret øvelsesutvalg
-for yngre utøvere får som konsekvens at færre nå oppnår NM-kravene. Slike vedtak
-fattes i dag uten mulighet til å regne på virkningen på forhånd. Med databasen
-kan konsekvensen beregnes før vedtaket fattes, ikke observeres to år etter.
-
-**Én presisering:** vårt mål er ikke å erstatte det arbeidet SRU gjør, men å
-fjerne det manuelle i det. Regelverket og de faglige vurderingene skal fortsatt
-eies av SRU. Vi foreslår at SRU får en definert rolle som fagansvarlig for
-regelverk og kvalitetsvurderinger i løsningen. Plattformen skal gjøre
-innsamlingen, sammenstillingen og distribusjonen — kontinuerlig, sporbart, og
-med eksport i det formatet miljøet allerede kjenner.
+**Én presisering:** vi skal ikke erstatte det arbeidet SRU gjør, men fjerne det
+manuelle i det. Regelverket og de faglige vurderingene skal fortsatt eies av
+SRU, og vi foreslår at SRU får en definert rolle som fagansvarlig for regelverk
+i løsningen. Plattformen gjør innsamlingen, sammenstillingen og distribusjonen.
 
 ---
 
