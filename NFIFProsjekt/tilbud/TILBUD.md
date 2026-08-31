@@ -326,18 +326,51 @@ forbundets egne tall.
 
 ### Kvalitetsnivå A/B/C
 
-Dette er en regelmotor, ikke et datafelt. Kriteriene i nivå A — godkjent og
-terminlistet stevne, gyldig lisens, målt løype, godkjent tidtaking, offisiell
-distanse, nødvendig dokumentasjon — utledes automatisk der grunnlaget finnes,
-og registreres manuelt der det ikke gjør det. Hvert resultat får nivå,
-begrunnelse og sporing av hvem som har satt eller overstyrt det.
+Dette er en regelmotor, ikke et datafelt. Hvert resultat får nivå, begrunnelse
+og sporing av hvem som har satt eller overstyrt det.
+
+Kriteriene i §6 faller i tre grupper, og skillet mellom dem avgjør hvordan
+løsningen må bygges:
+
+| Kriterium i nivå A | Kilde |
+|---|---|
+| Offisiell distanse | Utledes av øvelsen |
+| Godkjent tidtaking | Utledes — håndtidtaking er allerede skilt fra elektronisk |
+| Godkjent og terminlistet stevne | Krever terminlisten fra NFIF |
+| Gyldig lisens | Krever lisensregisteret |
+| Målt løype | Krever register over sertifiserte løyper (gateløp) |
+| Nødvendig dokumentasjon | Kan ikke utledes — noen må bekrefte |
+| Samsvar med regelverket | Kan ikke utledes — krever en vurdering |
+
+De to siste er kjernen i et arbeidsflytspørsmål: **hvem setter nivået når det
+ikke kan regnes ut?**
+
+Volumet gjør at svaret ikke kan være «et menneske vurderer hvert resultat». Med
+rundt 130 000 resultater i året må hovedregelen være maskinell.
+
+### Vårt forslag
+
+- **Alle resultater klassifiseres automatisk som nivå B** — statistikkgodkjent —
+  når de importeres fra et kjent stevne. Det er riktig standardverdi: de fleste
+  resultater hører hjemme i statistikken uten å være rekordkandidater.
+- **Nivå C settes automatisk** der et kriterium er kjent brutt: ikke-terminlistet
+  arrangement, uoppmålt løype, ikke-standard distanse.
+- **Nivå A krever aktiv bekreftelse.** Antallet reelle rekordkandidater i året er
+  lite nok til at dette er håndterbart, og det er uansett resultater NFIF
+  behandler i dag.
+- **Arrangøren leverer fakta**, ikke vurderinger: hvilket tidtakingssystem som
+  ble brukt, om dokumentasjonen finnes. Det er opplysninger de sitter på, og
+  som ikke krever regelverkstolkning.
+- **NFIF sentralt eier nivå A.** Rekordgodkjenning ligger allerede der, og én
+  praksis er bedre enn nitten. Vi foreslår at kretsen ikke gis myndighet over
+  nivå, nettopp for å unngå ulik praksis mellom kretser.
+- **Alt kan overstyres**, av den som har rettighet til det, med begrunnelse og
+  sporing. En feil klassifisering skal kunne rettes uten at noen må ringe oss.
+
+`‹AVKLARES med NFIF›` Forslaget over er vårt utgangspunkt, ikke en forutsetning.
+Rollefordelingen er et forbundsanliggende, og vi bygger den NFIF lander på.
 
 Brukere kan filtrere statistikken på nivå, jf. §6.
-
-`‹AVKLARES med NFIF›` Hvem eier vurderingen når kriteriene ikke lar seg utlede
-automatisk — forbundet sentralt, kretsen, eller stevnearrangøren? Dette er en
-arbeidsflyt- og rollespørsmål mer enn et teknisk, og vi vil ikke låse det uten
-NFIFs syn.
 
 ### Flagging
 

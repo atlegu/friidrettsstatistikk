@@ -21,7 +21,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 
 | # | Spørsmål | Kapittel | Konsekvens hvis ubesvart |
 |---|---|---|---|
-| 8 | Hvem eier vurderingen av kvalitetsnivå A/B/C der kriteriene ikke kan utledes automatisk — forbundet, kretsen eller arrangøren? | 3.5 | Arbeidsflyt og rollemodell kan ikke ferdigstilles |
+| 8 | Er rollefordelingen for kvalitetsnivå i 3.5 riktig? Vi foreslår: automatisk nivå B som standard, C ved kjent brudd, A kun etter aktiv bekreftelse fra NFIF sentralt, arrangøren leverer fakta og ikke vurderinger, kretsen gis ikke myndighet over nivå. | 3.5 | Forslaget er nå konkret i tilbudet. Avvik fra det bør vi vite om tidlig — det endrer rolle- og rettighetsmodellen. |
 | 9 | Hva er kodeverket for ikke-ratifiserte resultater? Kravspekken sier «TBD». | 3.5 | Flagget kan bygges, men ikke fylles |
 | 10 | Hvilke løpsarrangementer regnes som «approved athletics events» i §2? | 5 | Omfanget av hele gateløpsdelen avhenger av dette |
 | 11 | Finnes klubb-til-krets-mapping, og når kan vi få den? | 8.1 | Kritisk avhengighet for §10 og §22 krav 8 |
