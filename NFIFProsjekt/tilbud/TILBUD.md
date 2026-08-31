@@ -4,7 +4,8 @@
 
 **Til:** Norges Friidrettsforbund
 
-**Kontaktpersoner hos NFIF:** Thor Gjesdal (teknisk), Magnus Trosdahl (kommersielt)
+**Kontaktpersoner hos NFIF:** Thor Gjesdal (teknisk), Magnus Trosdahl
+(kommersielt)
 
 **Tilbudsfrist:** 31.08.2026 · **Dato:** 31.08.2026 · **Versjon:** 1.0
 
@@ -81,8 +82,7 @@ vi må hente inn.
 ## 1.1 Oppgaven har tre deler
 
 Kravspesifikasjonen har 24 kapitler. Under dem ligger tre oppgaver av helt
-ulik karakter, og en leverandør som ikke skiller dem, priser og planlegger
-feil.
+ulik karakter.
 
 ### 1. Registrere: dette er jobben
 
@@ -111,7 +111,7 @@ klubbskifter på en bestemt måte. Dette er domenekunnskap mer enn teknologi.
 
 Her er vi åpne for skreddersøm og løpende forbedring, også for klubber som
 ønsker egne statistikksider. Fordi grunnlaget er solid, blir slike leveranser
-små.
+enkle å levere.
 
 ### 3. Analysere: dette er ikke bestilt
 
@@ -540,8 +540,8 @@ bygget direkte på databasen: lagsammensetning, kvinner og menn hver for seg,
 uttaksveien inn, terrengløps-EM, persutvikling i forkant, nivåvurdering mot
 europeisk og internasjonal ranking, og øvelsesprofil for troppen.
 
-Dette er produktet en kommunikasjonsavdeling og en presselosje trenger uken
-før et mesterskap, og som ingen rekker å lage manuelt. Vedlagt som vedlegg C.
+Dette er produktet en kommunikasjonsavdeling og pressen trenger uken før et
+mesterskap, og som ingen rekker å lage manuelt. Vedlagt som vedlegg C.
 
 ## 4.2 Bredde- og rekrutteringsanalyse
 
@@ -862,8 +862,8 @@ at noe forsvinner uten at noen oppdager det før det trengs.
 ## 9.1 Om Athlete Mindset AS
 
 Athlete Mindset AS er et norsk aksjeselskap som arbeider med idrettsteknologi
-og idrettsdata, agentvirksomhet og trenervirksomhet. I tillegg leverer
-selskapet laserbaserte måleprodukter for Athlete Mindset Inc.
+og idrettsdata, agentvirksomhet og trenervirksomhet. I tillegg utvikler
+selskapet laserbaserte måleprodukter sammen med Athlete Mindset Inc.
 
 De fire områdene henger sammen, og det er en fordel i denne sammenhengen.
 Agent- og trenervirksomheten holder selskapet tett på utøvere og trenere i det
@@ -1161,10 +1161,9 @@ ikke om å ta høyest mulig betalt for denne kontrakten.
 | **A** | Kravsporing §22 obligatoriske krav og §23 ønskede tilleggsfunksjoner |
 | **B** | Full kravsporing per kapittel |
 | **C** | «56 til Birmingham», mesterskapsanalyse EM 2026 |
-| **D** | «Norsk friidrett 2013–2025», bredde- og rekrutteringsanalyse, lederrettet sammendrag |
-| **E** | Veikart gateløp (utdypning av kapittel 5) |
-| **F** | Spørsmål til NFIF: forutsetninger vi ber om å få bekreftet |
-| **G** | Klubbrapport for IK Tjalve og SK Vidar: eksempler på klubbleveranse, jf. kapittel 3.3 |
+| **D** | «Norsk friidrett 2013–2025», bredde- og rekrutteringsanalyse |
+| **E** | Spørsmål til NFIF: forutsetninger vi ber om å få bekreftet |
+| **F** | Klubbrapport for IK Tjalve og SK Vidar: eksempler på klubbleveranse, jf. kapittel 3.3 |
 
 ---
 

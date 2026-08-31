@@ -16,7 +16,7 @@ Alt som må fylles ut eller besluttes før `TILBUD.md` sendes. Markert
 
 ## Må avklares med NFIF
 
-Ligger som eget, ferdig dokument: **`VEDLEGG_F_SPORSMAL.md`** — klart til å
+Ligger som eget, ferdig dokument: **`VEDLEGG_E_SPORSMAL.md`** — klart til å
 sendes Thor Gjesdal, enten som vedlegg til tilbudet eller på forhånd.
 
 Sju punkter, gruppert:
@@ -39,17 +39,16 @@ haster mest — innsamlingen skal legges om i oktober.
 |---|---|---|
 | A | Kravsporing §22/§23 | **Ferdig** — ligger i `TILBUD.md` |
 | B | Full kravsporing per kapittel | **Ferdig** — ligger i `TILBUD.md` |
-| C | «56 til Birmingham» | Finnes, må pakkes som vedlegg |
-| D | «Norsk friidrett 2013–2025», lederrettet sammendrag | Analysen finnes. Sammendraget må skrives. Avklar publiseringsplaner først. |
-| E | Veikart gateløp — utdypning | Kapittel 5 er kortversjonen. Utdypning bør skrives. |
-| F | Spørsmål til NFIF | Denne filen, punkt 8–15 |
-| G | Klubbrapport Tjalve + Vidar som eksempel | **Ferdig** — `analyse/Tjalve/tjalve_2024_2026.pdf`, `analyse/vidar/vidar_2024_2026.pdf` |
+| C | «56 til Birmingham» | **Ferdig** — `NFIFProsjekt/vedlegg/VEDLEGG_C_56_til_Birmingham.pdf`, 18 sider |
+| D | «Norsk friidrett 2013–2025» | **Ferdig** — `analyse/trenerartikkel/Trenerartikkel.pdf`. Avklar publiseringsplaner før den deles. |
+| E | Spørsmål til NFIF | **Ferdig** — `VEDLEGG_E_SPORSMAL.md` |
+| F | Klubbrapport Tjalve + Vidar som eksempel | **Ferdig** — `analyse/Tjalve/tjalve_2024_2026.pdf`, `analyse/vidar/vidar_2024_2026.pdf` |
 
 ---
 
 ## Anbefalt rekkefølge
 
-1. **Send `VEDLEGG_F_SPORSMAL.md` til Thor Gjesdal.** Ferdig, og kan gå i dag.
+1. **Send `VEDLEGG_E_SPORSMAL.md` til Thor Gjesdal.** Ferdig, og kan gå i dag.
    Verdt å gjøre uansett: et tilbud som stiller presise spørsmål, leses som et
    tilbud fra noen som har lest kravspekken.
 2. **Budsjettramme fra Magnus Trosdahl (punkt 1).** Avgjør om noen tall skal
@@ -57,5 +56,4 @@ haster mest — innsamlingen skal legges om i oktober.
 3. **Publikasjonslisten (punkt 3).** Rask jobb, høy risiko hvis den gjøres feil.
 4. **Selskapsopplysninger (punkt 2).** Formalia, tar minutter. Siste
    `‹AVKLARES›` i selve tilbudet.
-5. Vedlegg C og D.
-6. **Språkvalget (punkt 4).** Kan tas til slutt, men må tas.
+5. **Språkvalget (punkt 4).** Kan tas til slutt, men må tas.

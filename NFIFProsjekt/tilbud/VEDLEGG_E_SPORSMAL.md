@@ -1,4 +1,4 @@
-# Vedlegg F: Spørsmål til NFIF
+# Vedlegg E: Spørsmål til NFIF
 
 **Fra:** Athlete Mindset AS
 **Til:** Norges Friidrettsforbund
