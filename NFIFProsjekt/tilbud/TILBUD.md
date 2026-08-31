@@ -763,7 +763,10 @@ svare på hvor mange niåringer som konkurrerte i 2026, fordelt på krets, kjøn
 rekrutteringsbildet avgjøres, og de er derfor viktigst å kunne telle — og minst
 aktuelle å kunne se.
 
-Analysen «Norsk friidrett 2013–2025» i kapittel 4.2 er laget på denne måten.
+Data for aldersgruppen 7–12 år kan brukes i aggregert aktivitetsstatistikk så
+lenge ingen enkeltutøver kan identifiseres. Analysen «Norsk friidrett
+2013–2025» i kapittel 4.2 er laget på nettopp denne måten, og det er slik
+aktivitetsmodulen i §12 vil behandle de yngste årsklassene.
 
 Øvrige tiltak vi legger inn:
 
@@ -776,10 +779,6 @@ Analysen «Norsk friidrett 2013–2025» i kapittel 4.2 er laget på denne måte
   saksbehandlingstid
 - Aldersgrensen for synlighet som en konfigurerbar regel, ikke som noe som
   sitter spredt i koden — endrer NFIF regelverket, endres den ett sted
-
-`‹AVKLARES med NFIF›` Vi legger til grunn at data for 7–12 år kan brukes i
-aggregert aktivitetsstatistikk så lenge ingen enkeltutøver kan identifiseres.
-Bekreft gjerne at det er riktig forstått.
 
 ## 7.2 Sikkerhet
 
@@ -862,9 +861,20 @@ overgangen: at noe forsvinner uten at noen oppdager det før det trengs.
 
 ## 9.1 Om Athlete Mindset AS
 
-Athlete Mindset AS er et norsk aksjeselskap innen idrettsteknologi og
-idrettsdata. Selskapet leverer i tillegg laserbaserte måleprodukter for Athlete
-Mindset Inc. og konsulenttjenester.
+Athlete Mindset AS er et norsk aksjeselskap som arbeider med idrettsteknologi
+og idrettsdata, agentvirksomhet og trenervirksomhet. I tillegg leverer selskapet
+laserbaserte måleprodukter for Athlete Mindset Inc.
+
+De fire områdene henger sammen, og det er en fordel i denne sammenhengen.
+Agent- og trenervirksomheten holder selskapet tett på utøvere og trenere i det
+daglige — de samme brukerne plattformen skal tjene. Måleproduktene og
+statistikkarbeidet handler begge om å gjøre prestasjon målbar. Det er ikke et
+konsulentselskap som har tatt et oppdrag innen idrettsdata; det er et selskap
+som arbeider med idrett, og der data er én av flere innganger til det samme.
+
+Bredden har også en praktisk side: selskapet står ikke og faller med én
+kontrakt. Statistikkplattformen er likevel definert som strategisk
+kjerneprodukt, ikke som et enkeltoppdrag ved siden av.
 
 `‹AVKLARES›` Organisasjonsnummer, etableringsdato, aksjekapital, styre,
 revisor.
@@ -959,7 +969,7 @@ den innvendingen er berettiget, og at den fortjener et svar før den stilles.
 | Personavhengighet | Tre navngitte personer med komplementær kompetanse, jf. kapittel 9.2 — ikke én ildsjel. Bemanningen er dimensjonert for arbeidsmengden i kapittel 8. `‹AVKLARES — bekreft hver enkelts kapasitet i timer per uke i perioden›` |
 | Hva skjer ved opphør | Kildekode- og databaseescrow hos tredjepart. Exit-klausul: NFIF får kildekode, data og driftsdokumentasjon vederlagsfritt ved opphør, uansett årsak. Se kapittel 11. |
 | Innelåsing | PostgreSQL, Next.js, åpne formater. Løsningen kan overtas av enhver kompetent leverandør. |
-| Er dette et sideprosjekt | Selskapet har flere ben å stå på, og er dermed ikke økonomisk avhengig av én kontrakt. Statistikkplattformen er samtidig definert som strategisk kjerneprodukt, ikke som et enkeltoppdrag. |
+| Er dette et sideprosjekt | Nei. Selskapet arbeider med idrett på fire felter, jf. kapittel 9.1, og statistikkplattformen er definert som strategisk kjerneprodukt. Agent- og trenervirksomheten gjør dessuten at vi bruker plattformen selv, hver uke. |
 | Ingen referansekunder | Vi har ingen forbundsreferanser. Vi har en løsning i drift med norske data, akademisk bruk av databasen og publisert analysearbeid. `‹AVKLARES — referanseuttalelse fra klubb, krets eller trener som bruker friidrettsresultater.no i dag›` |
 
 Vi ber ikke NFIF kjøpe et konsulentoppdrag. Vi ber NFIF bli ankerkunde i et
