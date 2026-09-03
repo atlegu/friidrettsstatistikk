@@ -1,5 +1,10 @@
 # Pulling back before dropping out: Behavioral disengagement precedes exit from Norwegian youth track and field — a 14-year register study
 
+**Atle Guttormsen**
+School of Economics and Business, Norwegian University of Life Sciences (NMBU), Ås, Norway
+
+**Corresponding author:** Atle Guttormsen, School of Economics and Business, Norwegian University of Life Sciences (NMBU), Universitetstunet 3, 1433 Ås, Norway. Email: atle.guttormsen@nmbu.no. ORCID: 0000-0003-0188-8462.
+
 **Running title:** Behavioral disengagement precedes exit from youth track and field
 
 **Keywords:** youth sport, dropout, athlete retention, longitudinal, track and field, behavioral indicators, sport commitment
@@ -325,3 +330,12 @@ The competition records used in this study are publicly accessible via the Norwe
 35. Raedeke TD. Is athlete burnout more than just stress? A sport commitment perspective. *J Sport Exerc Psychol* 1997; 19: 396–417. DOI: 10.1123/jsep.19.4.396.
 36. Larson HK, Young BW, McHugh TLF, et al. Markers of early specialization and their relationships with burnout and dropout in swimming. *J Sport Exerc Psychol* 2019; 41: 46–54. DOI: 10.1123/jsep.2018-0305.
 37. Baker J, Mosher A and Fraser-Thomas J. Is it too early to condemn early sport specialisation? *Br J Sports Med* 2021; 55: 179–180. DOI: 10.1136/bjsports-2020-102053.
+
+
+## Figure captions
+
+**Figure 1.** A behavioral-marker model of youth-sport disengagement. The diagram shows the relationship being tested: theoretical mechanisms hypothesized by the Sport Commitment Model and the role-exit / withdrawal-as-process tradition (left) are not directly observed, but are predicted to leave a footprint in measurable competition behavior (centre), which precedes the outcome of active senior retention (right).
+
+**Figure 2.** Competition volume trajectory by senior-retention status. Median competitions per year (with interquartile range as shaded band) plotted by athlete age (13–18), separately for athletes who retained active senior status (≥2 results in any year at age ≥20; n = 348) and those who did not (n = 1,775). The dashed vertical line at age 15 marks the first qualification milestone (Norwegian Youth Championships). Future retainers and future dropouts already differ at ages 13–14; the gap widens further across the age-14-to-15 transition.
+
+**Figure 3.** Kaplan–Meier retention curves stratified by total competition volume across ages 15 and 16 (descriptive). Strata are: 0 meets, 1–5 meets, 6–15 meets, 16–30 meets, and 31+ meets. Athletes in the highest stratum retained 71% senior activity at follow-up year 14; athletes in the lowest stratum retained 4%. (Note: this descriptive stratification uses post-baseline measurement; primary effect estimates in Table 3 use only baseline-window predictors.)

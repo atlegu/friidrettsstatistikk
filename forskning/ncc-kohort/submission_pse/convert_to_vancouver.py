@@ -123,11 +123,29 @@ REFERENCES = """## References
 37. Baker J, Mosher A and Fraser-Thomas J. Is it too early to condemn early sport specialisation? *Br J Sports Med* 2021; 55: 179–180. DOI: 10.1136/bjsports-2020-102053.
 """
 
+AUTHOR_BLOCK = """
+**Atle Guttormsen**
+School of Economics and Business, Norwegian University of Life Sciences (NMBU), Ås, Norway
+
+**Corresponding author:** Atle Guttormsen, School of Economics and Business, Norwegian University of Life Sciences (NMBU), Universitetstunet 3, 1433 Ås, Norway. Email: atle.guttormsen@nmbu.no. ORCID: 0000-0003-0188-8462.
+"""
+
 text = (HERE / "MANUSCRIPT_ANONYMIZED.md").read_text()
+
+# IJSSC does NOT use anonymized review: insert the author block after the title.
+title_line, rest = text.split("\n", 1)
+text = title_line + "\n" + AUTHOR_BLOCK + rest
 
 # Swap the reference section (everything from "## References")
 head, _ = text.split("## References", 1)
 text = head + REFERENCES
+
+# Append the main-figure captions (Sage: captions listed in the main document).
+captions = (HERE / "12_figure_captions.md").read_text()
+main_caps = captions.split("# Supplementary figure captions")[0]
+main_caps = "\n".join(l for l in main_caps.split("\n")
+                      if l.startswith("**Figure") or l.strip() == "").strip()
+text += "\n\n## Figure captions\n\n" + main_caps + "\n"
 
 # Narrative citations; hop a trailing "." or "," per Sage style
 for old, new in NARRATIVE:

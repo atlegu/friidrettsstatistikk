@@ -1,6 +1,6 @@
 # Title page
 
-(Submitted as a separate file from the anonymized manuscript per PSE's double-anonymized peer review policy.)
+(IJSSC does not use anonymized review; author details appear in the manuscript file itself. This file mirrors those details for the Sage Track submission form, which must match the title page exactly.)
 
 ---
 
@@ -10,7 +10,7 @@
 
 ## Running title
 
-Behavioral disengagement precedes youth-sport dropout
+Behavioral disengagement precedes exit from youth track and field
 
 ## Author
 
@@ -20,6 +20,7 @@ Norwegian University of Life Sciences (NMBU)
 Universitetstunet 3
 1433 Ås, Norway
 Email: atle.guttormsen@nmbu.no
+ORCID: 0000-0003-0188-8462
 
 Corresponding author: same as above.
 
