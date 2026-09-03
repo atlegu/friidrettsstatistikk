@@ -332,6 +332,123 @@ The competition records used in this study are publicly accessible via the Norwe
 37. Baker J, Mosher A and Fraser-Thomas J. Is it too early to condemn early sport specialisation? *Br J Sports Med* 2021; 55: 179–180. DOI: 10.1136/bjsports-2020-102053.
 
 
+## Tables
+
+## Table 1. Cohort characteristics by birth-year cohort
+
+| Characteristic | Cohort A (1998–2000) | Cohort B (2001–2002) | All cohorts |
+|---|---|---|---|
+| N | 1,301 | 822 | 2,123 |
+| Male (n) | 603 | 393 | 996 |
+| Female (n) | 684 | 419 | 1,103 |
+| Sex unknown (n) | 14 | 10 | 24 |
+| Median career length (years) | 2.0 | 3.0 | 2.0 |
+| Active at age 17 (%) | 41.0 | 41.6 | 41.3 |
+| Ever active at age 20+ (%) | 15.8 | 17.3 | 16.4 |
+| Still active in 2024 or later (%) | 5.8 | 10.8 | 7.7 |
+| Mean Tyrving best at baseline | 666 | 666 | 666 |
+| Median total meets, ages 13–14 (pre-milestone volume) | 16 | 19 | 17 |
+
+*Note.* "Active at age 17" indicates ≥2 registered competition results in the athlete's age-17 calendar year; "Ever active at age 20+" is the outcome prevalence (≥2 results in any calendar year at age 20 or later). Tyrving points = the Norwegian Athletics Federation's age-norm score, where 1,000 corresponds to the published reference performance for that event × sex × age combination.
+
+---
+
+## Table 2. Competition volume trajectory by senior-retention status (median competitions per year and IQR)
+
+| Group | N | Age 13 | Age 14 | Age 15 | Age 16 | Age 17 | Age 18 |
+|---|---|---|---|---|---|---|---|
+| Senior retainers (active age ≥20) | 348 | 13 [6–21] | 17 [10–25] | 19 [11–27] | 18 [10–26] | 17 [10–24] | 14 [7–20] |
+| Dropouts (last active age <20) | 1,775 | 8 [4–13] | 8 [3–14] | 3 [0–11] | 0 [0–7] | 0 [0–2] | 0 [0–0] |
+
+*Note.* Values are median number of meets per year [IQR]. Future retainers and future dropouts already differ at ages 13–14; the gap widens further across the age-14-to-15 transition.
+
+---
+
+## Table 3. Primary analysis: prospective logistic regression for active senior status (baseline-only predictors, ages 13–14)
+
+| Model | Covariate | OR | 95% CI | p | CV-AUC | n |
+|---|---|---|---|---|---|---|
+| L1: Sex only | Female | 0.72 | [0.56, 0.93] | .012 | 0.541 (±0.023) | 1,704 |
+| L2: + Performance | Female | 0.68 | [0.52, 0.88] | .003 | 0.607 (±0.014) | 1,704 |
+|  | Tyrving (z) | 1.41 | [1.22, 1.64] | < .001 |  |  |
+| L3: + Specialization | Female | 0.68 | [0.53, 0.88] | .004 | 0.600 (±0.019) | 1,704 |
+|  | Tyrving (z) | 1.41 | [1.22, 1.64] | < .001 |  |  |
+|  | HHI early (z) | 1.09 | [0.95, 1.24] | .238 |  |  |
+| L4: + Pre-milestone volume | Female | 0.60 | [0.46, 0.80] | < .001 | **0.751** (±0.026) | 1,704 |
+|  | Tyrving (z) | 1.12 | [0.96, 1.30] | .144 |  |  |
+|  | HHI early (z) | 1.36 | [1.17, 1.57] | < .001 |  |  |
+|  | **Pre-milestone volume (z)** | **2.40** | **[2.08, 2.76]** | **< .001** |  |  |
+
+*Note.* Logistic regression for binary active senior status (≥2 registered results in any year at age 20+). Predictors are observed during the baseline window (ages 13–14) only. Pre-milestone volume is the sum of distinct meets attended at ages 13 and 14. Continuous covariates are z-standardized so ORs reflect per-SD effects. Cross-validated AUC uses 5-fold stratified resampling. The pre-milestone volume coefficient is the dominant single-step gain (AUC 0.600 → 0.751). HHI becomes significant once volume is entered (mutual adjustment); the direction indicates that higher concentration in fewer event categories is associated with higher retention odds (see also Discussion 4.6).
+
+---
+
+## Table 4. Pull-back versus baseline heterogeneity: volume level and within-athlete change
+
+Athletes still active (≥1 result) at age 14: 1,914; fitted models are complete-case on Tyrving, n = 1,549 (Tyrving missingness is concentrated among early-inactive athletes; see Supplementary Table S12).
+
+| Model | Covariate | OR | 95% CI | p |
+|---|---|---|---|---|
+| M1: Volume at age 14 only | Female | 0.61 | [0.46, 0.81] | < .001 |
+|  | Tyrving (z) | 1.12 | [0.96, 1.30] | .167 |
+|  | **Volume at age 14 (z)** | **2.23** | **[1.94, 2.57]** | **< .001** |
+| M2: + Volume change 14→15 | Female | 0.60 | [0.44, 0.81] | < .001 |
+|  | Tyrving (z) | 1.01 | [0.86, 1.19] | .882 |
+|  | **Volume at age 14 (z)** | **2.79** | **[2.37, 3.28]** | **< .001** |
+|  | **Volume change 14→15 (z)** | **2.44** | **[2.10, 2.83]** | **< .001** |
+
+*Note.* Pseudo-*R*² rose from 0.113 (M1) to 0.227 (M2): within-athlete change adds substantial information conditional on baseline level. A one-SD greater decline from age 14 to age 15 was associated with 2.4-times lower retention odds, conditional on level at age 14. Both baseline level and within-athlete pull-back contribute substantially and independently.
+
+---
+
+## Table 5. Time-varying hazard ratios (post-baseline Cox specification, period-specific)
+
+| Covariate | Years 0–3 since baseline (approx. ages 13–17) | Years 3–6 (approx. ages 16–20) | Years 6+ (approx. ages 19+) |
+|---|---|---|---|
+| Volume at age 15–16 (per SD) | 0.14 [0.11, 0.16] | 0.69 [0.60, 0.79] | 0.96 [0.77, 1.19] |
+| Championship types (count) | 0.61 [0.55, 0.69] | 0.88 [0.79, 0.99] | 0.97 [0.78, 1.21] |
+| Tyrving (z) | 1.07 [0.99, 1.15] | 0.92 [0.84, 1.01] | 0.94 [0.78, 1.13] |
+| HHI early (z) | 0.97 [0.91, 1.05] | 0.93 [0.85, 1.02] | 1.02 [0.85, 1.21] |
+| Female | 1.16 [1.02, 1.31] | 1.06 [0.91, 1.23] | 1.09 [0.85, 1.39] |
+| n at risk in interval | 1,704 | 669 | 270 |
+| events in interval | 1,035 | 399 | 136 |
+| C-index | 0.894 | 0.661 | 0.582 |
+
+*Note.* Period-specific Cox estimates from the post-baseline specification with covariates measured at ages 15–16 and ≤17. The early-window HR for ages-15–16 volume partly reflects operational overlap between predictor and outcome (low milestone volume is mechanical for athletes who drop out before age 15); this estimate should be read as descriptive of the time-varying association rather than as an independent prospective effect. Substantively, the protective association attenuates across follow-up, consistent with a proximal disengagement-marker interpretation.
+
+---
+
+## Table 6. Prospective early-warning thresholds (pre-milestone volume, ages 13–14)
+
+| Threshold (flag if vol <) | Flagged % | Sensitivity | Specificity | PPV | NPV | Senior retention, flagged | Senior retention, unflagged |
+|---|---|---|---|---|---|---|---|
+| 5 meets | 9.3 | 0.10 [0.09, 0.12] | 0.96 [0.94, 0.98] | **0.93** [0.89, 0.96] | 0.17 [0.16, 0.19] | 7.1% [3.6, 11.3] | 17.3% [15.7, 19.1] |
+| 8 meets | 19.8 | 0.22 [0.20, 0.24] | 0.93 [0.90, 0.96] | **0.94** [0.92, 0.96] | 0.19 [0.17, 0.21] | 5.7% [3.6, 7.9] | 19.0% [17.2, 21.0] |
+| 10 meets | 26.4 | 0.30 [0.28, 0.32] | 0.91 [0.88, 0.94] | **0.94** [0.92, 0.96] | 0.20 [0.18, 0.22] | 5.7% [3.9, 7.7] | 20.2% [18.3, 22.2] |
+| 15 meets | 43.1 | 0.48 [0.46, 0.50] | 0.82 [0.77, 0.85] | **0.93** [0.91, 0.95] | 0.24 [0.21, 0.26] | 7.0% [5.4, 8.7] | 23.5% [21.1, 25.9] |
+
+*Note.* Classification performance of pre-milestone (ages 13–14) competition volume as a prospective early-warning indicator, applicable at the end of an athlete's age-14 season, before the qualification window opens. All metrics are computed on one denominator (full cohort, n = 2,123); brackets are 2,000-replicate bootstrap 95% CIs. PPV is the proportion of flagged athletes who subsequently failed to retain senior activity. The final two columns give the absolute retention contrast: at the < 10 threshold, 5.7% among flagged vs. 20.2% among unflagged athletes (a 3.5-fold difference). The high PPV partly reflects the population's 84% non-retention base rate (the threshold improves precision by ~10 percentage points over base-rate prediction), and the NPV of ≈ 0.20 means unflagged athletes are not "safe": roughly four in five of them also fail to retain. Calibration of the underlying model is reported in Supplementary Table S23.
+
+---
+
+## Table 7. Cross-cohort replication of the primary L4 logistic model
+
+| Cohort | n | Covariate | OR | 95% CI | p |
+|---|---|---|---|---|---|
+| 1998–2000 | 1,065 | Female | 0.50 | [0.34, 0.74] | < .001 |
+|  |  | Tyrving (z) | 1.14 | [0.94, 1.39] | .179 |
+|  |  | HHI early (z) | 1.24 | [1.03, 1.51] | .027 |
+|  |  | **Pre-milestone volume (z)** | **2.22** | **[1.86, 2.64]** | **< .001** |
+| 2001–2002 | 639 | Female | 0.82 | [0.55, 1.22] | .333 |
+|  |  | Tyrving (z) | 1.05 | [0.84, 1.32] | .658 |
+|  |  | HHI early (z) | 1.58 | [1.25, 1.99] | < .001 |
+|  |  | **Pre-milestone volume (z)** | **2.79** | **[2.17, 3.58]** | **< .001** |
+
+*Note.* The primary baseline-only logistic model re-estimated separately within each birth-year cohort. Pre-milestone volume effect replicates in both cohorts at similar magnitude. The cohort difference in the female coefficient parallels the broader sex-effect pattern discussed in §4.5; HHI is significant in both cohorts in the same direction (higher concentration = higher retention).
+
+---
+
+
 ## Figure captions
 
 **Figure 1.** A behavioral-marker model of youth-sport disengagement. The diagram shows the relationship being tested: theoretical mechanisms hypothesized by the Sport Commitment Model and the role-exit / withdrawal-as-process tradition (left) are not directly observed, but are predicted to leave a footprint in measurable competition behavior (centre), which precedes the outcome of active senior retention (right).

@@ -140,6 +140,13 @@ text = title_line + "\n" + AUTHOR_BLOCK + rest
 head, _ = text.split("## References", 1)
 text = head + REFERENCES
 
+# Append main Tables 1-7 after the references (SAGE accepts tables as editable
+# text at the end of the manuscript; avoids ScholarOne's one-file-per-table flow).
+tables = (HERE / "11_tables.md").read_text()
+main_tables = tables.split("# Supplementary Tables")[0]
+main_tables = main_tables.split("---", 1)[1].strip()  # drop the file's intro note
+text += "\n\n## Tables\n\n" + main_tables + "\n"
+
 # Append the main-figure captions (Sage: captions listed in the main document).
 captions = (HERE / "12_figure_captions.md").read_text()
 main_caps = captions.split("# Supplementary figure captions")[0]
