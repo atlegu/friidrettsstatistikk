@@ -1,7 +1,7 @@
 # Utviklingen i resultatene ved 13–14-årslekene 2012–2025 — forprosjekt
 
 **Formål:** Norsk artikkel til trenerforeningens tidsskrift: er det en trend i resultatene i 13- og 14-årsklassene ved lekene (NCC/PEAB/Bendit/Ungdoms-/Lerøy-lekene), og hvordan kan utvikling måles forsvarlig med data KUN fra dette stevnet?
-**Status:** 2026-08-25, rekognosering av databasen + metodeplan. Ingen analyser kjørt ennå.
+**Status:** 2026-09-05. Uttrekk (`01_uttrekk.py`) og deskriptive figurer (`02_deskriptiv.py`, fig 1–7) er kjørt; se §8 for datakvalitetsfunn og §9 for foreløpig lesning. Extralekene er utelatt (annet stevne).
 
 ---
 
@@ -86,7 +86,23 @@ Kjerneøvelser med full dekning og størst felt: 60m, 200m, 600m, 1500m, lengde 
 
 Anslag: uttrekk + deskriptiv 1 dag; analyser 2–3 dager; artikkelutkast 1–2 dager.
 
-## 7. Litteratur å vurdere (verifiser før bruk — ingen referanse inn uten sjekk)
+## 7. Datakvalitet funnet i uttrekket (2026-09-05)
+
+- **Tidsformat i kilden:** 920 av 2 031 kappgang-rader og 18 rader på 600 m er lagret som «M.SS» («5.41» = 5:41, «1.45» = 1:45) med `performance_value` = 541/145 — feil i basen (rammer også nettstedets kappganglister). Løst på analysesiden i `felles.parse_verdi()`: tid under 60 s på 600 m/1500 m/kappgang tolkes som minutter.sekunder. Roten bør fikses i `fix_performance_format()` i `update_results.py` (egen oppgave, ikke gjort her).
+- **`1000mg` og `kappgang_1000_m` er samme øvelse** registrert dobbelt (aggregat + arena). Kodene slås sammen *før* dedup; kappgang-feltet halveres da til det reelle (ca. 75 per år).
+- **Manuell tid:** 85 sprint-/hekketider i tideler var ikke flagget som manuelle; flagges etter presisjonsregelen og utelates.
+- Endelig datasett: 30 163 resultater, 5 706 utøvere, 14 utgaver. Deltakelse per år: 594–664 (2012–2019), 452 (2020), 523–573 (2021–2025).
+
+## 8. Foreløpig lesning av de deskriptive figurene (før modellering)
+
+Enkle lineære trender 2012–2025 over de sju fellesøvelsene med store felt (60 m, 200 m, 600 m, 1500 m, lengde, høyde, tresteg):
+- **Bredden (median):** svakt fallende, −1 til −2 % per tiår i snitt per klasse; tydeligst i hopp (lengde J13/J14 −3–4 %, tresteg G14 −6 %, høyde G13 −5 %, alle p < 0,05). Løp er flate (unntak: J14 60 m og 200 m ca. −2 %, p < 0,05).
+- **Toppen (90. persentil):** flat til svakt stigende (G14 60 m +1,5 %, G14 lengde +3,9 %, G14 1500 m +2 %); unntak tresteg G14 −4,7 %. → Foreløpig hypotese: *topp og bredde går hver sin vei* — samme mønster som i trenerartikkelen.
+- **Utviklingstakt 13→14 (gjentakere):** stabil. Gutter forbedrer seg ca. 5,5–6 % (median) i alle perioder; jenter 2–2,75 %, svakt fallende fra 2013–16 til 2020–25. Ingen øvelse har signifikant trend.
+- **Deltakerprofil:** øvelser per utøver har økt fra ca. 3,3 (2012) til ca. 4,0 (2025) i alle klasser; jenter alltid i flertall; covid-fallet i 2020 er hentet inn til rundt 2015–2019-nivå minus ca. 10 %.
+- **Sammensetning:** eksakt alder i klassen er stabil (avvik fra klassealder 0,23–0,27 år mot 0,18 forventet ved jevn fødselsfordeling); andel født 1. kvartal ligger på 28–35 % (relativ alderseffekt, konstant). Sammensetning forklarer altså ikke nivåtrenden — men modell C må bekrefte.
+
+## 9. Litteratur å vurdere (verifiser før bruk — ingen referanse inn uten sjekk)
 
 - Kearney & Hayes (2018) — rankingbaserte prestasjonsbaner i friidrett ungdom→senior (verifisert i IJSSC-arbeidet).
 - Cobley et al. (2009) — relativ alder, metaanalyse (verifisert).
