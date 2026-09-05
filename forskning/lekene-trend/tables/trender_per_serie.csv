@@ -1,4 +1,4 @@
-ovelse,kode,gruppe,n,aar,median_pct_tiaar,median_ki_lo,median_ki_hi,median_p,median_endring_2022_25_vs_2012_19_pct,topp_pct_tiaar,topp_ki_lo,topp_ki_hi,topp_p,topp_endring_2022_25_vs_2012_19_pct,ovelsesgruppe,kjonn,klasse
+ovelse,kode,gruppe,n,aar,median_pct_tiaar,median_ki_lo,median_ki_hi,median_p,median_endring_etter_covid_pct,topp_pct_tiaar,topp_ki_lo,topp_ki_hi,topp_p,topp_endring_etter_covid_pct,ovelsesgruppe,kjonn,klasse
 60 m,60m,G13,704,14,0.758,-0.826,2.342,0.349,0.226,1.604,0.121,3.088,0.034,0.246,Sprint,G,13
 60 m,60m,G14,698,14,0.343,-1.13,1.816,0.649,-0.359,1.605,0.342,2.868,0.013,0.819,Sprint,G,14
 60 m,60m,J13,938,14,0.219,-0.774,1.211,0.666,-0.164,0.7,-0.592,1.993,0.289,0.291,Sprint,J,13

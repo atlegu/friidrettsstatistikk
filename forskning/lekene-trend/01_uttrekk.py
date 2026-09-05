@@ -1,9 +1,12 @@
 """
-01_uttrekk.py - Henter alle resultater for 13-14-årslekene 2012-2025 fra Supabase
-og lagrer et deduplisert analysedatasett (ett resultat per utøver x øvelse x år).
+01_uttrekk.py - Henter alle resultater for 13-14-årslekene fra 2012 og fram til i dag
+fra Supabase og lagrer et deduplisert analysedatasett (ett resultat per utøver x
+øvelse x år). Serien: NCC (2012), PEAB (2013-14), Bendit (2015), Ungdomslekene (2016),
+Lerøy (2017-2025), Extra-lekene (2026-). Extralekene på Ålgård i juni (KM Rogaland)
+er et annet stevne og holdes utenfor via måned.
 
 Kjør:  scraper/venv/bin/python forskning/lekene-trend/01_uttrekk.py
-Ut:    forskning/lekene-trend/data/lekene_2012_2025.csv
+Ut:    forskning/lekene-trend/data/lekene.csv
 """
 
 import logging
@@ -17,7 +20,7 @@ from supabase import create_client
 
 HERE = Path(__file__).parent
 import sys; sys.path.insert(0, str(HERE))
-from felles import manuell_presisjon, parse_verdi
+from felles import DATAFIL, START_AAR, manuell_presisjon, parse_verdi
 ROOT = HERE.parent.parent
 DATA = HERE / "data"
 DATA.mkdir(exist_ok=True)
@@ -32,28 +35,32 @@ sb = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_KEY"
 
 
 def serie_meets() -> pd.DataFrame:
-    """Alle stevnerader i serien (NCC/PEAB/Bendit/Ungdomslekene/Lerøy), 2012-2025."""
-    rows = []
+    """Alle stevnerader i serien (NCC/PEAB/Bendit/Ungdomslekene/Lerøy/Extra), 2012 til i dag."""
     q = (sb.table("meets").select("id,name,city,start_date")
-         .gte("start_date", "2012-01-01").lte("start_date", "2025-12-31")
+         .gte("start_date", f"{START_AAR}-01-01").lte("start_date", datetime.now().strftime("%Y-%m-%d"))
          .or_("name.ilike.%ncc%lek%,name.ilike.%peab%lek%,name.ilike.%bendit%lek%,"
-              "name.ilike.%lerøy%,name.ilike.%leroy%,name.ilike.%ungdomslekene%"))
-    rows = q.execute().data
-    m = pd.DataFrame(rows)
+              "name.ilike.%lerøy%,name.ilike.%leroy%,name.ilike.%ungdomslekene%,name.ilike.%extra%lek%"))
+    m = pd.DataFrame(q.execute().data)
     m["start_date"] = pd.to_datetime(m["start_date"])
     m["yr"] = m["start_date"].dt.year
     name = m["name"].str.lower()
     keep = (
         ~name.str.contains("naperville|nattstevne|stavstevne|kvalifisering|oppkjøring|samling", regex=True)
         & (
-            name.str.contains(r"(ncc|peab|bendit)[- ]?lek", regex=True)
+            name.str.contains(r"(?:ncc|peab|bendit)[- ]?lek", regex=True)
             | name.str.contains("lerøy|leroy", regex=True)
             | (name.str.contains("ungdomslekene")
                & m["start_date"].between("2016-08-26", "2016-08-29"))
+            # Extra-lekene fra 2026 (august/september); Extralekene på Ålgård i juni er KM Rogaland
+            | (name.str.contains(r"extra[- ]?lek", regex=True)
+               & (m["yr"] >= 2026) & m["start_date"].dt.month.isin([8, 9]))
         )
     )
     m = m[keep].copy()
-    logger.info(f"Serie: {len(m)} stevnerader, år {sorted(m['yr'].unique())}")
+    logger.info(f"Serie: {len(m)} stevnerader, år {sorted(m['yr'].unique().tolist())}")
+    for yr, g in m.groupby("yr"):
+        logger.info(f"  {yr}: " + "; ".join(f"{n} ({c}, {d:%d.%m})" for n, c, d in
+                                            zip(g["name"], g["city"], g["start_date"])))
     return m
 
 
@@ -135,7 +142,7 @@ def main():
                                 "e_result_type": "resultattype", "e_category": "kategori",
                                 "a_birth_date": "fodselsdato", "a_birth_year": "fodselsaar"})
     d = d.sort_values(["yr", "ovelse", "klasse_kjonn", "performance_value"])
-    out = DATA / "lekene_2012_2025.csv"
+    out = DATA / DATAFIL
     d.to_csv(out, index=False)
     logger.info(f"Lagret {len(d)} dedupliserte resultater, {d['athlete_id'].nunique()} utøvere -> {out}")
     logger.info("\n" + d.groupby("yr")["athlete_id"].nunique().to_string())

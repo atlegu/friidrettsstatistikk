@@ -77,7 +77,7 @@ Kjerneøvelser med full dekning og størst felt: 60m, 200m, 600m, 1500m, lengde 
 
 ## 6. Neste steg (arbeidsplan)
 
-1. Uttrekk med `serie.sql` (denne mappen) → deduplisert datasett `lekene_2012_2025.csv` med eksakt alder, kjønn, klasse, øvelse, resultat, vind, arena.
+1. Uttrekk med `01_uttrekk.py` (logikken speiles i `serie.sql`) → deduplisert datasett `data/lekene.csv` med eksakt alder, kjønn, klasse, øvelse, resultat, vind, arena.
 2. Deskriptiv tabell: n per øvelse × klasse × kjønn × år; første kvantilfigur (A).
 3. Gjentaker-datasett og 13→14-forbedring (D).
 4. Tyrving-scoring (gjenbruk `data/tyrvingtabellen.py` fra ncc-kohort) → samleindeks (E).
@@ -102,6 +102,15 @@ Enkle lineære trender 2012–2025 over de sju fellesøvelsene med store felt (6
 - **Deltakerprofil:** øvelser per utøver har økt fra ca. 3,3 (2012) til ca. 4,0 (2025) i alle klasser; jenter alltid i flertall; covid-fallet i 2020 er hentet inn til rundt 2015–2019-nivå minus ca. 10 %.
 - **Stav (fig 8, egne regler pga. felt på 8–23):** median og beste fjerdedel er flate i alle fire klasser (−2 til +4 % per tiår, alle p > 0,4). Beste hopp per år svinger med enkeltutøvere: guttenes toppresultater var høyest 2014–2018, jentenes topp ligger stabilt rundt 2,8–3,1 m i J14. Gjentakerforbedringen 13→14 er stor (gutter ca. 18 %, jenter ca. 10 % i median) og *stigende* for jenter, fra 6,5 % i 2013-vinduet til 12,9 % i 2025-vinduet (p < 0,01; 3-årsvinduer). Kappgang er tatt ut av figurene etter avtale (2026-09-05).
 - **Sammensetning:** eksakt alder i klassen er stabil (avvik fra klassealder 0,23–0,27 år mot 0,18 forventet ved jevn fødselsfordeling); andel født 1. kvartal ligger på 28–35 % (relativ alderseffekt, konstant). Sammensetning forklarer altså ikke nivåtrenden — men modell C må bekrefte.
+
+## 10. Mandag 2026-09-07: oppdatering med 2026-utgaven (Extra-lekene 5.–6. september 2026)
+
+1. **Sjekk at 2026-utgaven er importert:** `SELECT name, city, start_date FROM meets WHERE start_date >= '2026-08-01' AND name ILIKE '%lek%'`. Hvis ikke: `cd scraper && source venv/bin/activate && python update_results.py --dry-run`, deretter uten `--dry-run`. Se etter «Unmapped event»-advarsler i loggen (nye øvelsesnavn må mappes i `EVENT_NAME_TO_CODE`).
+2. **Kjør pipelinen:** `bash forskning/lekene-trend/kjor_alt.sh`. Uttrekket finner 2026-stevnet via navn (extra/lek), år ≥ 2026 og måned 8–9, og loggen lister stevnene per år: kontroller at alle tre arenaene er med, og at Ålgård-KM i juni ikke er det. Årsspennet i figurer og tabeller utledes fra dataene.
+3. **Kontroller tallene:** deltakelse 2026 i `tables/deltakelse.csv` (forvent 500–600 utøvere), n per øvelse i `tables/kvantiler_per_aar.csv`, og at `tables/vinduer.json` viser sent = 2024–2026. Sjekk at tidsformatene i 2026 tolkes riktig (`felles.parse_verdi`; se §7).
+4. **Se på fig 1–9** (etikettkollisjoner ved nytt siste år). Kjør den nasjonale kontrollen på nytt (`nasjonal_kontroll.sql` mot Supabase → `tables/nasjonal_13_14_per_aar.csv`).
+5. **Oppdater `03_vurdering.md`** med 2026-tallene fra `tables/trender_per_gruppe.csv`, `trender_per_serie.csv`, `nivaa_tidlig_sent.csv` og `gjentakere_forbedring.csv`; vedlegget kommer fra `04_vedleggstabell.py`.
+6. **Skriv artikkelutkastet** (norsk, konservativt bokmål; 6–8 figurer, 2 tabeller) etter budskapene i `03_vurdering.md` §5.
 
 ## 9. Litteratur å vurdere (verifiser før bruk — ingen referanse inn uten sjekk)
 

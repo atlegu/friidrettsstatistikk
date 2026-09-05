@@ -1,7 +1,7 @@
 """
-02_deskriptiv.py - Deskriptive figurer for 13-14-årslekene 2012-2025.
+02_deskriptiv.py - Deskriptive figurer for 13-14-årslekene fra 2012 og fram til siste utgave.
 
-Inn: data/lekene_2012_2025.csv (fra 01_uttrekk.py; `verdi` = sekunder/meter, tolket i felles.py)
+Inn: data/lekene.csv (fra 01_uttrekk.py; `verdi` = sekunder/meter, tolket i felles.py)
 Ut:  figures/fig1_deltakelse.png ... fig8_stav.png, tables/*.csv
 
 Kappgang er utelatt (lite interessant for artikkelen). Stav har små felt (8-23 per
@@ -22,6 +22,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from felles import DATAFIL, START_AAR
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
@@ -35,7 +37,7 @@ COL = {"G": "#2a78d6", "J": "#eb6834"}
 STYLE = {13: dict(ls="--", marker="o"), 14: dict(ls="-", marker="s")}
 GROUPS = ["G13", "G14", "J13", "J14"]
 LABEL = {"G13": "Gutter 13", "G14": "Gutter 14", "J13": "Jenter 13", "J14": "Jenter 14"}
-YEARS = list(range(2012, 2026))
+YEARS = list(range(START_AAR, 2026))   # utvides til siste år i dataene av load()
 MIN_N = 10        # minste felt for median
 MIN_N_TOPP = 20   # minste felt for 90. persentil (ellers = én-to utøvere)
 MIN_N_STAV = 8    # stavfeltene er 8-23; egne regler i fig 3, 5 og 8
@@ -70,8 +72,13 @@ SPEC = {"kule_3kg": "3 kg", "kule_4kg": "4 kg", "kule_2kg": "2 kg", "spyd_400g":
         "80mh_84cm": "84 cm", "200mh_68cm": "68 cm", "200mh_76_2cm": "76,2 cm"}
 
 
+def periode():
+    return f"{YEARS[0]}–{YEARS[-1]}"
+
+
 def load():
-    d = pd.read_csv(HERE / "data" / "lekene_2012_2025.csv", low_memory=False, parse_dates=["dato"])
+    d = pd.read_csv(HERE / "data" / DATAFIL, low_memory=False, parse_dates=["dato"])
+    YEARS[:] = list(range(START_AAR, int(d["yr"].max()) + 1))
     n0 = len(d)
     d = d[~d["manuell"].fillna(False).astype(bool)].copy()
     d = d[d["verdi"].notna() & (d["verdi"] > 0)]
@@ -88,8 +95,8 @@ def covid_band(ax):
 
 
 def style_year_axis(ax):
-    ax.set_xticks([2012, 2015, 2018, 2021, 2024])
-    ax.set_xlim(2011.5, 2025.5)
+    ax.set_xticks([y for y in YEARS if (y - YEARS[0]) % 3 == 0])
+    ax.set_xlim(YEARS[0] - 0.5, YEARS[-1] + 0.5)
 
 
 def header(fig, title, subtitle=None):
@@ -169,10 +176,10 @@ def fig_deltakelse(d):
         ax.plot(part.index, part[g], color=COL[g[0]], label=LABEL[g], **STYLE[int(g[1:])])
     pos = spread({g: part[g].iloc[-1] for g in GROUPS}, gap=9)
     for g in GROUPS:
-        ax.text(2025.35, pos[g], LABEL[g], color=INK2, va="center", fontsize=8)
-    covid_band(ax); style_year_axis(ax); ax.set_xlim(2011.5, 2027)
+        ax.text(YEARS[-1] + 0.35, pos[g], LABEL[g], color=INK2, va="center", fontsize=8)
+    covid_band(ax); style_year_axis(ax); ax.set_xlim(YEARS[0] - 0.5, YEARS[-1] + 1.6)
     ax.set_ylabel("Antall utøvere"); ax.set_ylim(0, None)
-    ax.set_title("Deltakelse ved lekene 2012–2025, etter klasse og kjønn", loc="left", color=INK, fontweight="bold")
+    ax.set_title(f"Deltakelse ved lekene {periode()}, etter klasse og kjønn", loc="left", color=INK, fontweight="bold")
     ax.legend(loc="lower left", ncol=2)
     fig.tight_layout(); fig.savefig(FIG / "fig1_deltakelse.png", dpi=300); plt.close(fig)
     logger.info("lagret fig1_deltakelse.png")
@@ -241,7 +248,7 @@ def fig_gjentakere(d):
             ax.plot(YEARS[1:], s.median_forb, color=COL[sex], marker="o",
                     label="Gutter" if sex == "G" else "Jenter")
         ax.axhline(0, color=AXIS, lw=1)
-        covid_band(ax); style_year_axis(ax); ax.set_xlim(2012.5, 2025.5)
+        covid_band(ax); style_year_axis(ax); ax.set_xlim(YEARS[1] - 0.5, YEARS[-1] + 0.5)
         ax.set_title(name if code != "stav" else f"{name} (glidende 3-årsvindu)",
                      loc="left", color=INK, fontweight="bold")
         ax.set_ylabel("% forbedring 13→14")
@@ -278,7 +285,7 @@ def fig_sammensetning(d):
         covid_band(ax); style_year_axis(ax)
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=5, bbox_to_anchor=(0.5, -0.01))
-    top = header(fig, "Sammensetningen av feltet, 2012–2025")
+    top = header(fig, f"Sammensetningen av feltet, {periode()}")
     fig.tight_layout(rect=(0, 0.06, 1, top))
     fig.savefig(FIG / "fig6_sammensetning.png", dpi=300); plt.close(fig)
     logger.info("lagret fig6_sammensetning.png")

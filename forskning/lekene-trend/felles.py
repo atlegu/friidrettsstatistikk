@@ -10,6 +10,9 @@ import re
 
 import numpy as np
 
+START_AAR = 2012          # første utgave i datasettet; siste år utledes fra dataene
+DATAFIL = "lekene.csv"    # data/<DATAFIL>, skrevet av 01_uttrekk.py
+
 # Løp kortere enn 800 m kan være manuelt tidtatt; tideler = manuell (prosjektregel).
 SPRINT = {"60m", "200m", "60mh_68cm", "60mh_76_2cm", "80mh_84cm", "200mh_68cm", "200mh_76_2cm"}
 # Øvelser der en tid under 60 s er umulig: "M.SS" betyr minutter.sekunder.

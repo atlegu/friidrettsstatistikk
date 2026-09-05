@@ -13,6 +13,7 @@ Ut:  tables/trender_per_serie.csv, tables/trender_per_gruppe.csv, tables/trender
 """
 
 import importlib
+import json
 import logging
 import warnings
 from pathlib import Path
@@ -78,8 +79,8 @@ def trend_serie(d, name, code, rtype, g):
         row[f"{lab}_p"] = p
         # nivåsammenligning før/etter covid
         v0 = sub[sub.yr.between(2012, 2019)].verdi.quantile(q)
-        v1 = sub[sub.yr.between(2022, 2025)].verdi.quantile(q)
-        row[f"{lab}_endring_2022_25_vs_2012_19_pct"] = sign * 100 * (v1 / v0 - 1)
+        v1 = sub[sub.yr >= 2022].verdi.quantile(q)
+        row[f"{lab}_endring_etter_covid_pct"] = sign * 100 * (v1 / v0 - 1)   # 2022- mot 2012-2019
     return row
 
 
@@ -137,7 +138,7 @@ def fig_trendoversikt(t):
     hs += [Line2D([], [], color=INK2, marker="o", ls="none", ms=5.5, mfc="white", mew=1.4)]
     fig.legend(hs, [LABEL[g] for g in GROUPS] + ["åpen markør = ikke signifikant (p ≥ 0,05)"],
                loc="lower center", ncol=5, bbox_to_anchor=(0.5, -0.01))
-    top = desk.header(fig, "Trend 2012–2025 per øvelse og klasse: prosent bedre per tiår",
+    top = desk.header(fig, f"Trend {desk.periode()} per øvelse og klasse: prosent bedre per tiår",
                       "Kvantilregresjon av log(resultat) på år. Positivt = bedre (raskere, lenger, høyere). "
                       "Kast og hekk: redskap/høyde konstant innen hver klasse.")
     fig.tight_layout(rect=(0, 0.05, 0.98, top))
@@ -145,8 +146,27 @@ def fig_trendoversikt(t):
     logger.info("lagret fig9_trendoversikt.png")
 
 
+def nivaa_tabell():
+    """Nivå i originalenheter: snitt av årsmedian/p90 i de tre første og tre siste årene."""
+    k = pd.read_csv(TAB / "kvantiler_per_aar.csv")
+    aar = sorted(k.yr.unique())
+    tidlig, sent = (int(aar[0]), int(aar[2])), (int(aar[-3]), int(aar[-1]))
+
+    def snitt(col, lo, hi):
+        return k[k.yr.between(lo, hi) & k[col].notna()].groupby(["ovelse", "gruppe"])[col].mean()
+
+    tab = pd.DataFrame({"median_tidlig": snitt("median", *tidlig), "median_sent": snitt("median", *sent),
+                        "p90_tidlig": snitt("p90", *tidlig), "p90_sent": snitt("p90", *sent)}).round(3)
+    tab["median_diff"] = (tab.median_sent - tab.median_tidlig).round(3)
+    tab["p90_diff"] = (tab.p90_sent - tab.p90_tidlig).round(3)
+    tab.to_csv(TAB / "nivaa_tidlig_sent.csv")
+    (TAB / "vinduer.json").write_text(json.dumps({"tidlig": tidlig, "sent": sent}), encoding="utf-8")
+    logger.info(f"nivåtabell: {tidlig[0]}–{tidlig[1]} mot {sent[0]}–{sent[1]}")
+
+
 def main():
     d = desk.load()
+    nivaa_tabell()
     rows = [r for r in (trend_serie(d, *s) for s in serier()) if r]
     t = pd.DataFrame(rows)
     t["ovelsesgruppe"] = t.ovelse.map(gruppe_av)
