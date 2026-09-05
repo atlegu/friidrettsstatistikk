@@ -2,7 +2,11 @@
 02_deskriptiv.py - Deskriptive figurer for 13-14-årslekene 2012-2025.
 
 Inn: data/lekene_2012_2025.csv (fra 01_uttrekk.py; `verdi` = sekunder/meter, tolket i felles.py)
-Ut:  figures/fig1_deltakelse.png ... fig7_ovelser_per_utover.png, tables/*.csv
+Ut:  figures/fig1_deltakelse.png ... fig8_stav.png, tables/*.csv
+
+Kappgang er utelatt (lite interessant for artikkelen). Stav har små felt (8-23 per
+klasse og år) og får senket n-krav, glidende 3-årsvinduer for gjentakere og en egen
+dybdefigur (fig 8).
 
 Farge = kjønn (blå gutter, oransje jenter; palett validert), linjestil = klasse
 (13 år stiplet, 14 år heltrukket). Tidsøvelser plottes med invertert y-akse slik
@@ -34,6 +38,7 @@ LABEL = {"G13": "Gutter 13", "G14": "Gutter 14", "J13": "Jenter 13", "J14": "Jen
 YEARS = list(range(2012, 2026))
 MIN_N = 10        # minste felt for median
 MIN_N_TOPP = 20   # minste felt for 90. persentil (ellers = én-to utøvere)
+MIN_N_STAV = 8    # stavfeltene er 8-23; egne regler i fig 3, 5 og 8
 
 plt.rcParams.update({
     "font.family": "sans-serif", "font.size": 9, "axes.titlesize": 10, "axes.labelsize": 9,
@@ -46,8 +51,7 @@ plt.rcParams.update({
 
 SHARED = [("60m", "60 m", "time"), ("200m", "200 m", "time"), ("600m", "600 m", "time"),
           ("1500m", "1500 m", "time"), ("lengde", "Lengde", "distance"), ("hoyde", "Høyde", "height"),
-          ("tresteg", "Tresteg", "distance"), ("stav", "Stav", "height"),
-          ("kappgang_1000_m", "Kappgang 1000 m", "time")]
+          ("tresteg", "Tresteg", "distance"), ("stav", "Stav", "height")]
 
 # Klassespesifikke familier: (panel-tittel, {gruppe: øvelseskode eller None})
 FAMILIES = [
@@ -173,13 +177,18 @@ def fig_deltakelse(d):
 
 
 def fig_shared(d, q, fname, title, min_n):
-    fig, axes = plt.subplots(3, 3, figsize=(11, 9))
+    fig, axes = plt.subplots(2, 4, figsize=(14, 6.8))
     for ax, (code, name, rtype) in zip(axes.flat, SHARED):
-        plot_group_lines(ax, d, code, q, rtype, unit(rtype), min_n)
-        ax.set_title(name, loc="left", color=INK, fontweight="bold")
+        mn = min(min_n, MIN_N) if code == "stav" else min_n   # stav: små felt, ellers tomt panel
+        plot_group_lines(ax, d, code, q, rtype, unit(rtype), mn)
+        ax.set_title(name if code != "stav" or mn == min_n else f"{name} (n ≥ {mn})",
+                     loc="left", color=INK, fontweight="bold")
     bottom_legend(fig, axes.flat[0])
-    top = header(fig, title, f"Grått felt = covid-årene 2020–2021. Punkt vises kun der n ≥ {min_n}.")
-    fig.tight_layout(rect=(0, 0.03, 1, top))
+    note = f"Punkt vises kun der n ≥ {min_n}"
+    if min_n > MIN_N:
+        note += f"; for stav n ≥ {MIN_N}, der 90. persentil tilsvarer de én til to beste"
+    top = header(fig, title, f"Grått felt = covid-årene 2020–2021. {note}.")
+    fig.tight_layout(rect=(0, 0.04, 1, top))
     fig.savefig(FIG / fname, dpi=300); plt.close(fig)
     logger.info(f"lagret {fname}")
 
@@ -214,11 +223,16 @@ def fig_gjentakere(d):
             m["forb"] = 100 * (m.v13 - m.v14) / m.v13      # % raskere
         else:
             m["forb"] = 100 * (m.v14 - m.v13) / m.v13      # % lenger/høyere
-        for (yr, sex), grp in m.groupby(["yr14", "sex"]):
-            if len(grp) >= MIN_N:
-                rows.append(dict(ovelse=name, yr=yr, sex=sex, n=len(grp), median_forb=grp.forb.median()))
+        vindu = 1 if code == "stav" else 0                 # stav: glidende 3-årsvindu (små felt)
+        for sex in ["G", "J"]:
+            ms = m[m.sex == sex]
+            for yr in YEARS[1:]:
+                grp = ms[ms.yr14.between(yr - vindu, yr + vindu)]
+                if len(grp) >= MIN_N:
+                    rows.append(dict(ovelse=name, yr=yr, sex=sex, n=len(grp), median_forb=grp.forb.median(),
+                                     vindu=f"{2 * vindu + 1} år"))
     t = pd.DataFrame(rows); t.to_csv(TAB / "gjentakere_forbedring.csv", index=False)
-    fig, axes = plt.subplots(3, 3, figsize=(11, 9))
+    fig, axes = plt.subplots(2, 4, figsize=(14, 6.8))
     for ax, (code, name, rtype) in zip(axes.flat, SHARED):
         for sex in ["G", "J"]:
             s = t[(t.ovelse == name) & (t.sex == sex)].set_index("yr").reindex(YEARS[1:])
@@ -226,11 +240,14 @@ def fig_gjentakere(d):
                     label="Gutter" if sex == "G" else "Jenter")
         ax.axhline(0, color=AXIS, lw=1)
         covid_band(ax); style_year_axis(ax); ax.set_xlim(2012.5, 2025.5)
-        ax.set_title(name, loc="left", color=INK, fontweight="bold"); ax.set_ylabel("% forbedring 13→14")
+        ax.set_title(name if code != "stav" else f"{name} (glidende 3-årsvindu)",
+                     loc="left", color=INK, fontweight="bold")
+        ax.set_ylabel("% forbedring 13→14")
     bottom_legend(fig, axes.flat[0], ncol=2)
     top = header(fig, "Utviklingstakt: samme utøvers forbedring fra 13 til 14 år (median, %)",
-                 "Utøvere som deltok i samme øvelse to år på rad; x-aksen er året som 14-åring. Punkt kun der n ≥ 10.")
-    fig.tight_layout(rect=(0, 0.03, 1, top))
+                 "Utøvere som deltok i samme øvelse to år på rad; x-aksen er året som 14-åring. "
+                 "Punkt kun der n ≥ 10; stav bruker overgangene i tre påfølgende år.")
+    fig.tight_layout(rect=(0, 0.04, 1, top))
     fig.savefig(FIG / "fig5_gjentakere.png", dpi=300); plt.close(fig)
     logger.info("lagret fig5_gjentakere.png")
 
@@ -280,6 +297,48 @@ def fig_ovelser_per_utover(d):
     logger.info("lagret fig7_ovelser_per_utover.png")
 
 
+def fig_stav(d):
+    """Stav i dybden: feltene er 8-23, så medianen suppleres med beste fjerdedel og beste hopp,
+    og antall utøvere per år står i panelet."""
+    from matplotlib.lines import Line2D
+    s = d[d.ovelse == "stav"]
+    rows = []
+    fig, axes = plt.subplots(2, 2, figsize=(11, 7.2), sharey=True)
+    for ax, g in zip(axes.flat, GROUPS):
+        sub = s[s.klasse_kjonn == g]
+        st = (sub.groupby("yr")["verdi"]
+                 .agg(n="size", median="median", p75=lambda v: v.quantile(0.75), beste="max")
+                 .reindex(YEARS))
+        st["n"] = st["n"].fillna(0).astype(int)
+        rows += [dict(gruppe=g, yr=y, **r) for y, r in st.round(3).iterrows()]
+        ok = st["n"] >= MIN_N_STAV
+        c = COL[g[0]]
+        ax.plot(YEARS, st["median"].where(ok), color=c, ls="-", marker="o")
+        ax.plot(YEARS, st["p75"].where(ok), color=c, ls="--", marker="s")
+        ax.plot(YEARS, st["beste"], color=c, ls="none", marker="D", mfc=SURFACE, mew=1.5, ms=6)
+        for y, k in zip(YEARS, st["n"]):
+            ax.text(y, 0.015, str(k), transform=ax.get_xaxis_transform(),
+                    ha="center", va="bottom", fontsize=7, color=MUTED)
+        ax.set_title(LABEL[g], loc="left", color=INK, fontweight="bold")
+        covid_band(ax); style_year_axis(ax)
+    lo = s.groupby(["yr", "klasse_kjonn"])["verdi"].median().min()
+    axes.flat[0].set_ylim(lo - 0.45, s["verdi"].max() + 0.15)
+    for ax in axes[:, 0]:
+        ax.set_ylabel("meter")
+    hs = [Line2D([], [], color=INK2, ls="-", marker="o"),
+          Line2D([], [], color=INK2, ls="--", marker="s"),
+          Line2D([], [], color=INK2, ls="none", marker="D", mfc=SURFACE, mew=1.5, ms=6)]
+    fig.legend(hs, ["Median", "Beste fjerdedel (75. persentil)", "Beste hopp"],
+               loc="lower center", ncol=3, bbox_to_anchor=(0.5, -0.01))
+    top = header(fig, "Stav i dybden: små felt krever flere mål enn medianen",
+                 f"Linjer vises der n ≥ {MIN_N_STAV}; tallene nederst i hvert panel er antall utøvere per år. "
+                 "Beste hopp er ett enkelt resultat og svinger deretter.")
+    fig.tight_layout(rect=(0, 0.04, 1, top))
+    fig.savefig(FIG / "fig8_stav.png", dpi=300); plt.close(fig)
+    pd.DataFrame(rows).to_csv(TAB / "stav_per_aar.csv", index=False)
+    logger.info("lagret fig8_stav.png")
+
+
 # ---------- tabeller ----------
 
 def alle_serier():
@@ -297,11 +356,13 @@ def tabell_kvantiler(d):
         sub = d[(d.ovelse == code) & (d.klasse_kjonn == g)]
         n = sub.groupby("yr").size().reindex(YEARS, fill_value=0)
         med = series(d, code, g, 0.5, rtype, MIN_N)
-        p90 = series(d, code, g, 0.9, rtype, MIN_N_TOPP)
-        for yr, k, a, b in zip(YEARS, n, med, p90):
+        p75 = series(d, code, g, 0.75, rtype, MIN_N)
+        p90 = series(d, code, g, 0.9, rtype, MIN_N if code == "stav" else MIN_N_TOPP)
+        for yr, k, a, b, c in zip(YEARS, n, med, p75, p90):
             rows.append(dict(ovelse=name, kode=code, gruppe=g, yr=yr, n=int(k),
                              median=None if np.isnan(a) else round(a, 3),
-                             p90=None if np.isnan(b) else round(b, 3)))
+                             p75=None if np.isnan(b) else round(b, 3),
+                             p90=None if np.isnan(c) else round(c, 3)))
     pd.DataFrame(rows).to_csv(TAB / "kvantiler_per_aar.csv", index=False)
 
 
@@ -317,6 +378,7 @@ def main():
     fig_gjentakere(d)
     fig_sammensetning(d)
     fig_ovelser_per_utover(d)
+    fig_stav(d)
     tabell_kvantiler(d)
     logger.info("ferdig")
 
