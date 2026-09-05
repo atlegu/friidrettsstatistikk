@@ -1,7 +1,7 @@
 # Utviklingen i resultatene ved 13–14-årslekene 2012–2025 — forprosjekt
 
 **Formål:** Norsk artikkel til trenerforeningens tidsskrift: er det en trend i resultatene i 13- og 14-årsklassene ved lekene (NCC/PEAB/Bendit/Ungdoms-/Lerøy-lekene), og hvordan kan utvikling måles forsvarlig med data KUN fra dette stevnet?
-**Status:** 2026-09-05. Uttrekk (`01_uttrekk.py`) og deskriptive figurer (`02_deskriptiv.py`, fig 1–7) er kjørt; se §8 for datakvalitetsfunn og §9 for foreløpig lesning. Extralekene er utelatt (annet stevne).
+**Status:** 2026-09-05. Uttrekk (`01_uttrekk.py`), deskriptive figurer (`02_deskriptiv.py`, fig 1–8) og trendestimater per øvelse × klasse (`03_trender.py`, fig 9, kvantilregresjon) er kjørt, med nasjonal kontroll av kast/hopp mot hele databasen (`tables/nasjonal_kontroll.csv`). **Den samlede tekstlige vurderingen står i `03_vurdering.md`**; vedleggstabell fra `04_vedleggstabell.py`. Se §7 for datakvalitetsfunn og §8 for foreløpig lesning. Extralekene er utelatt (annet stevne), kappgang er tatt ut, og *antall øvelser per utøver* (fig 7) brukes ikke som indikator fordi det styres av kretsenes deltakerregler (varierer med kretsstørrelse og er endret i perioden).
 
 ---
 

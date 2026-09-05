@@ -75,6 +75,8 @@ def load():
     n0 = len(d)
     d = d[~d["manuell"].fillna(False).astype(bool)].copy()
     d = d[d["verdi"].notna() & (d["verdi"] > 0)]
+    # Slegge 3 kg for G13/J14 lå under en annen kode i 2012 (wirelengde 110 cm); samme redskap
+    d["ovelse"] = d["ovelse"].replace({"slegge_30kg/110cm": "slegge_30kg_1195cm"})
     logger.info(f"{len(d)} resultater ({n0 - len(d)} manuelle tider fjernet), {d.athlete_id.nunique()} utøvere")
     return d
 
