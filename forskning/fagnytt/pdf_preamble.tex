@@ -64,3 +64,17 @@
 \usepackage{booktabs}
 \usepackage{etoolbox}
 \AtBeginEnvironment{longtable}{\sffamily\small}
+
+% Faktaboks: ramme med farget bakgrunn og tittellinje
+\usepackage[most]{tcolorbox}
+\newtcolorbox{faktaboks}{
+  enhanced,
+  colback=hovedbla!6, colframe=hovedbla, boxrule=0pt,
+  leftrule=3pt, arc=0pt, outer arc=0pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  before skip=14pt, after skip=14pt,
+  fonttitle=\sffamily\bfseries\small, coltitle=white, colbacktitle=hovedbla,
+  title=\MakeUppercase{Fakta: Slik er tallene laget},
+  toptitle=4pt, bottomtitle=4pt,
+  before upper={\sffamily\small\setlength{\parskip}{3pt}},
+}

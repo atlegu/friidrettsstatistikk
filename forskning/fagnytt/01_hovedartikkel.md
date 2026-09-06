@@ -359,10 +359,7 @@ kastfallet, utviklingen i ungdomslekene 2012–2026 og forutsigelse av frafall.
 Klubber og kretser som ønsker egne uttrekk fra friidrettsresultater.no, er
 velkomne til å ta kontakt.
 
----
-
-### Faktaboks: Slik er tallene laget
-
+::: {.faktaboks}
 - **Datagrunnlag:** Norges Friidrettsforbunds resultatdatabase, komplett
   elektronisk fra 2011 (minfriidrettsstatistikk.info). Om lag 1,4 mill.
   resultater fra 87 000 utøvere per august 2026. Analysene er gjort på et
@@ -372,8 +369,8 @@ velkomne til å ta kontakt.
   de 100 beste gjennom tidene ved hver alder, som hos Tønnessen mfl. (2015).
   60 meter inkluderer innendørs; lengde bare med lovlig vind. Alder =
   konkurranseår minus fødselsår.
-- **Frafall (del 2):** Kohort = alle med minst ett resultat i året de fylte
-  13. «Fortsatt aktiv» = minst ett resultat i året de fylte 14, 15 osv.
+- **Frafall (del 2):** Kohort = alle med minst ett resultat i året de fylte 13 år.
+  «Fortsatt aktiv» = minst ett resultat i året de fylte 14, 15 osv.
   Ungdomslekene-kohortene: 13–14-åringer ved NCC-, PEAB-, Bendit- og
   Lerøy-lekene 2011–2016, fulgt til 2025. «Aktiv senior» = minst to resultater
   i et kalenderår ved 20 år eller eldre.
@@ -384,6 +381,7 @@ velkomne til å ta kontakt.
   klassens standardredskap, uendret hele perioden. Ungdomslekene: ett beste
   resultat per utøver, øvelse og år; trend ved kvantilregresjon på kalenderår.
 - **Barn under 13:** Kun deltakelsestall, ingen nivåanalyse.
+:::
 
 ### Referanser
 

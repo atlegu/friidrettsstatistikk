@@ -12,5 +12,6 @@ pandoc 01_hovedartikkel.md \
   -V geometry:margin=2.4cm \
   -V linestretch=1.3 \
   -V lang=nb \
-  -H pdf_preamble.tex
+  -H pdf_preamble.tex \
+  --lua-filter=faktaboks.lua
 echo "Skrev $(pwd)/Hovedartikkel_Fagnytt.pdf"
