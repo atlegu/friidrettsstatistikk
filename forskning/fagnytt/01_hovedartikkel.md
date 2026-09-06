@@ -7,14 +7,13 @@ Friidrett er den mest målte idretten som finnes. Likevel bruker vi tallene
 nesten bare til én ting: å rangere. Med en database over samtlige godkjente
 resultater siden 2011 kan vi nå svare på tre spørsmål trenere alltid har stilt.
 Hva er normal utvikling? Hvem slutter, og når? Og hvilken vei går norsk
-friidrett? Svarene er til dels andre enn vi har trodd.
+friidrett? Svarene er kanskje forskjellige fra hva vi tror.
 \end{ingress}
 
 I Fagnytt 1/2023 skrev Hilde Gundersen og Espen Tønnessen en nyttig artikkel
 om prestasjonsfremgang hos gutter og jenter fra 11 til 18 år. Grunnlaget var
 de hundre beste norske utøverne gjennom tidene på hvert alderstrinn
-(Tønnessen mfl., 2015). Kurvene derfra henger på mange klubbkontorer, og
-med rette: de er det beste vi har hatt. Denne artikkelen tar opp tråden, men
+(Tønnessen mfl., 2015), hvor undertegnede var en av medforfatterne. Kurvene derfra er de beste vi har hatt. Denne artikkelen tar opp tråden, men
 med et annet verktøy. Norges Friidrettsforbund har gjennom mange år bygget
 opp en database over alle godkjente konkurranseresultater i norsk friidrett,
 om lag 1,4 millioner resultater fra 87 000 utøvere. Det er et
@@ -24,10 +23,10 @@ serie vitenskapelige arbeider, og prøve ut andre måter å presentere dem på.
 Fordelen med en komplett database er ikke først og fremst at den er stor.
 Fordelen er at vi kan følge *den samme utøveren* fra første 60-meter som
 10-åring til siste sesong, uansett om den kom som 14-åring eller 30-åring.
-Det forandrer hva vi kan si.
+Det endrer en del på hva vi kan si.
 
 Jeg skal gjennom tre temaer: utvikling, frafall og trender. Til slutt
-oppsummerer jeg hva jeg mener funnene bør bety for oss som trener.
+oppsummerer jeg hva jeg mener funnene bør bety for oss som friidrettstrenere.
 
 ## Hva databasen er, og hva den ikke er
 
@@ -43,7 +42,7 @@ manuell og elektronisk tid kan skilles.
 Det databasen *ikke* inneholder, er vel så viktig å ha klart for seg.
 Den har ingen treningsdata, ingen mål på biologisk modning, og den ser bare
 friidrett: en utøver som «slutter» i våre tall, kan ha gått til håndball eller
-langrenn. Barn under 13 år finnes i databasen, men jeg analyserer aldri
+langrenn. Barn under 13 år finnes i databasen, men jeg analyserer ikke
 prestasjonsnivå under 13, bare deltakelse, i tråd med
 barneidrettsbestemmelsene. Og som alltid med slike data beskriver tallene
 sammenhenger, ikke årsaker. Det er trenerens erfaring som må fylle inn
@@ -58,9 +57,9 @@ per aldersklasse tilbake til 2011.
 
 ### Topp-100-kurven måler forskjellige mennesker
 
-Alle utviklingskurver vi har brukt til nå, er laget på samme måte: man tar de
+Utviklingskurver vi har brukt til nå, er laget på samme måte: man tar de
 beste utøverne på hvert alderstrinn og tegner en linje gjennom snittet. Det
-er et *tverrsnitt*. De hundre beste 13-åringene og de hundre beste 20-åringene
+er et *tverrsnitt*. Men de hundre beste 13-åringene og de hundre beste 20-åringene
 er i all hovedsak forskjellige mennesker. Når en tidlig moden 14-åring
 forsvinner fra listen og en sen 17-åring kommer inn, endrer snittet seg uten
 at noen enkeltutøver har utviklet seg.
@@ -74,7 +73,7 @@ I en artikkel som nå er antatt i *Journal of Science and Medicine in Sport*
 ![Figur 1. Fremgang i prosent fra 10 år i høyde og lengde. Grå kurve: snittet av de 100 beste ved hver alder. Farget kurve: utøvere med minst tre sesonger, fulgt over tid.](figurer/fig1_utvikling.png)
 
 Forskjellen er ikke en detalj. I høyde for gutter topper tverrsnittskurven på
-61 prosent fremgang ved 18 år og faller deretter. Panelkurven fortsetter til
+61 prosent fremgang ved 18 år og faller deretter. Mine panelkurver fortsetter til
 81 prosent ved 25. I lengde for kvinner er avstanden mellom de to kurvene 48
 prosentpoeng ved 25 år. Årsaken er utskifting: fra midten av tenårene er de
 som kommer inn på topp-100-listen, i snitt svakere enn de som går ut, og
@@ -82,7 +81,7 @@ tverrsnittskurven flater ut eller faller, selv om hver enkelt utøver som
 holder på, fortsetter å bli bedre.
 
 For trenere har dette to konsekvenser. Den første er at det ikke finnes noe
-utviklingsplatå ved 17–18 år. Den finnes i kurvene våre, men ikke i utøverne.
+utviklingsplatå ved 17–18 år. Den finnes i de gamle kurvene våre, men ikke i utøverne.
 Den andre er at topp-100-listene i de yngste klassene er sterkt skjeve mot
 tidlig utviklede og tidlig fødte. Blant de hundre beste guttene på 60 meter i
 alderen 10–13 år er 48 prosent født i januar, februar eller mars. I
@@ -126,7 +125,7 @@ i lengde går fra 59 prosent ved 18 til 81 prosent ved 22. Den som gir opp en
 
 Panelet gjør det også mulig å tidfeste når kjønnsforskjellen oppstår, målt
 på de samme utøverne (figur 2). Ved 10–12 år er guttenes forsprang 0,6–3,7
-prosent, i praksis ingenting i 60 meter. Fra 13 år åpner skillet seg raskt og
+prosent, i praksis ingenting på 60 meter. Fra 13 år åpner skillet seg raskt og
 stabiliseres ved 17–18 på omtrent 10 prosent i 60 meter, 13 i høyde og 16–19
 i lengde. Unntaket er 800 meter, der forskjellen er 5–7 prosent allerede før
 puberteten, i tråd med at det finnes kjønnsforskjeller i oksygentransport
@@ -294,7 +293,7 @@ mistet fem til femten prosent.
 ### Kastfallet begynner før 13 år, og det er ikke trenernes feil
 
 Hvor tidlig starter dette? Ungdomslekene for 13–14-åringer har vært arrangert
-hvert år siden 2012 med samme øvelsesprogram og samme redskap per klasse, og
+hvert år i hele datasettets levetid, med samme øvelsesprogram og samme redskap per klasse, og
 gir en sjelden mulighet til å følge én aldersgruppe over 14 utgaver. Jeg har
 analysert alle 30 000 resultater fra lekene og estimert trenden i hver øvelse
 og klasse, både for medianen (bredden) og for beste desil (toppen).
@@ -324,7 +323,7 @@ Fem punkter, i den rekkefølgen jeg mener de er viktigst.
 **1. Tell starter, ikke bare tider.** Fallende konkurransevolum er den
 tidligste varsellampen vi har for frafall, ett til to år før utøveren er
 borte. En 14-åring som går halvparten så mange stevner som i fjor, trenger en
-samtale nå, ikke neste vår.
+samtale nå, ikke neste vår. Utøvere som er på trening, men nesten ikke deltar på stevner, vil i de aller fleste tilfeller bli helt borte fra konkurransene ganske snart.
 
 **2. Send dem som kvalifiserer seg.** Utøvere som klarer UM-kravet uten å dra,
 slutter oftere enn dem som så vidt bommer. Mesterskapsdeltakelse er et
@@ -345,7 +344,7 @@ januarbarn og tidlig modne. De er ikke et mål på hvem som blir best.
 
 **5. Kastene trenger et løft fra 10-årsalderen.** Fallet i kast er det
 største enkeltfunnet i materialet, det er nasjonalt, det begynner før 13, og
-det skjer samtidig som seniorkasterne er bedre enn noen gang. Utviklingstakten
+det skjer samtidig som de aller beste seniorkasterne er bedre enn noen gang. Utviklingstakten
 i ungdomsklassene er intakt, så løsningen ligger ikke i mer press på
 15-åringene. Den ligger i kastaktivitet, kastkompetanse og rekruttering av
 store, sterke barn i klubbene, før de fyller 13.
@@ -367,7 +366,7 @@ velkomne til å ta kontakt.
 - **Datagrunnlag:** Norges Friidrettsforbunds resultatdatabase, komplett
   elektronisk fra 2011 (minfriidrettsstatistikk.info). Om lag 1,4 mill.
   resultater fra 87 000 utøvere per august 2026. Analysene er gjort på et
-  uttrekk av disse tallene; tilrettelagt for trenere på friidrettsresultater.no.
+  uttrekk av disse tallene; tilrettelagt på friidrettsresultater.no.
 - **Utviklingskurver (del 1):** Sesongbeste per utøver og øvelse, 2011–2025,
   utøvere 10–25 år. Panel: utøvere med minst tre sesonger i øvelsen. Tverrsnitt:
   de 100 beste gjennom tidene ved hver alder, som hos Tønnessen mfl. (2015).
