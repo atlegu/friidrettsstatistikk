@@ -1,6 +1,5 @@
 % Magasinstil for trenerartikkelen (pandoc + xelatex)
 \usepackage{titlesec}
-\usepackage{needspace}
 \usepackage{xcolor}
 \usepackage{microtype}
 \definecolor{hovedbla}{HTML}{1F4E79}
@@ -64,6 +63,17 @@
 \usepackage{booktabs}
 \usepackage{etoolbox}
 \AtBeginEnvironment{longtable}{\sffamily\small}
+
+\makeatletter
+% Ingen overskrift alene nederst på en side: krev plass til overskrift + fire linjer
+\usepackage{needspace}
+\let\orig@section\section
+\let\orig@subsection\subsection
+\let\orig@subsubsection\subsubsection
+\renewcommand{\section}{\Needspace*{12\baselineskip}\orig@section}
+\renewcommand{\subsection}{\Needspace*{6\baselineskip}\orig@subsection}
+\renewcommand{\subsubsection}{\Needspace*{5\baselineskip}\orig@subsubsection}
+\makeatother
 
 % Faktaboks: ramme med farget bakgrunn og tittellinje
 \usepackage[most]{tcolorbox}

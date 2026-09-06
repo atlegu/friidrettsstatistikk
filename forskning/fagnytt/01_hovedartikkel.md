@@ -246,8 +246,6 @@ seg, var i 85 prosent av tilfellene aktive ved 20. De som deltok i færre enn
 to juniorsesonger, var det i 5 prosent, uansett hvor gode de hadde vært som
 16-åringer.
 
-\needspace{8\baselineskip}
-
 ## Del 3: Hvilken vei går det?
 
 ### Toppen er bedre enn noen gang
