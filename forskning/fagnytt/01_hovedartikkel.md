@@ -15,13 +15,16 @@ om prestasjonsfremgang hos gutter og jenter fra 11 til 18 år. Grunnlaget var
 de hundre beste norske utøverne gjennom tidene på hvert alderstrinn
 (Tønnessen mfl., 2015). Kurvene derfra henger på mange klubbkontorer, og
 med rette: de er det beste vi har hatt. Denne artikkelen tar opp tråden, men
-med et annet verktøy. De siste årene har jeg bygget opp en database med alle
-registrerte konkurranseresultater i norsk friidrett, om lag 1,4 millioner
-resultater fra 87 000 utøvere, og analysert dem i en serie vitenskapelige
-arbeider. Fordelen med et komplett register er ikke først og fremst at det er
-stort. Fordelen er at vi kan følge *den samme utøveren* fra første 60-meter
-som 10-åring til siste sesong, uansett om den kom som 14-åring eller
-30-åring. Det forandrer hva vi kan si.
+med et annet verktøy. Norges Friidrettsforbund har gjennom mange år bygget
+opp et register over alle godkjente konkurranseresultater i norsk friidrett,
+om lag 1,4 millioner resultater fra 87 000 utøvere. Det er et
+statistikkarbeid få andre idretter kan vise maken til. Mitt bidrag har vært
+å gjøre disse tallene tilgjengelige for egen forskning, analysere dem i en
+serie vitenskapelige arbeider, og prøve ut andre måter å presentere dem på.
+Fordelen med et komplett register er ikke først og fremst at det er stort.
+Fordelen er at vi kan følge *den samme utøveren* fra første 60-meter som
+10-åring til siste sesong, uansett om den kom som 14-åring eller 30-åring.
+Det forandrer hva vi kan si.
 
 Jeg skal gjennom tre temaer: utvikling, frafall og trender. Til slutt
 oppsummerer jeg hva jeg mener funnene bør bety for oss som trener.
@@ -46,9 +49,10 @@ barneidrettsbestemmelsene. Og som alltid med registerdata beskriver tallene
 sammenhenger, ikke årsaker. Det er trenerens erfaring som må fylle inn
 mekanismene.
 
-Alt som presenteres her, er tilgjengelig for trenere på
-friidrettsresultater.no, der man kan følge enkeltutøvere over år, sammenligne
-utøvere og se årslister per aldersklasse tilbake til 2011.
+Forbundets tall er offentlige på minfriidrettsstatistikk.info. På
+friidrettsresultater.no har jeg lagt de samme tallene til rette slik at
+trenere kan følge enkeltutøvere over år, sammenligne utøvere og se årslister
+per aldersklasse tilbake til 2011.
 
 ## Del 1: Hva er normal utvikling?
 
@@ -360,8 +364,9 @@ velkomne til å ta kontakt.
 ### Faktaboks: Slik er tallene laget
 
 - **Datagrunnlag:** Norges Friidrettsforbunds resultatdatabase, komplett
-  elektronisk fra 2011, speilet på friidrettsresultater.no. Om lag 1,4 mill.
-  resultater fra 87 000 utøvere per august 2026.
+  elektronisk fra 2011 (minfriidrettsstatistikk.info). Om lag 1,4 mill.
+  resultater fra 87 000 utøvere per august 2026. Analysene er gjort på et
+  uttrekk av disse tallene; tilrettelagt for trenere på friidrettsresultater.no.
 - **Utviklingskurver (del 1):** Sesongbeste per utøver og øvelse, 2011–2025,
   utøvere 10–25 år. Panel: utøvere med minst tre sesonger i øvelsen. Tverrsnitt:
   de 100 beste gjennom tidene ved hver alder, som hos Tønnessen mfl. (2015).
