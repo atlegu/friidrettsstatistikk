@@ -21,7 +21,7 @@ om lag 1,4 millioner resultater fra 87 000 utøvere. Det er et
 statistikkarbeid få andre idretter kan vise maken til. Mitt bidrag har vært
 å gjøre disse tallene tilgjengelige for egen forskning, analysere dem i en
 serie vitenskapelige arbeider, og prøve ut andre måter å presentere dem på.
-Fordelen med en komplett database er ikke først og fremst at det er stort.
+Fordelen med en komplett database er ikke først og fremst at den er stor.
 Fordelen er at vi kan følge *den samme utøveren* fra første 60-meter som
 10-åring til siste sesong, uansett om den kom som 14-åring eller 30-åring.
 Det forandrer hva vi kan si.
@@ -41,7 +41,7 @@ ungdomsklassene, redskapsvekter og hekkhøyder ligger i øvelseskodene, og
 manuell og elektronisk tid kan skilles.
 
 Det databasen *ikke* inneholder, er vel så viktig å ha klart for seg.
-Den har ingen treningsdata, ingen mål på biologisk modning, og det ser bare
+Den har ingen treningsdata, ingen mål på biologisk modning, og den ser bare
 friidrett: en utøver som «slutter» i våre tall, kan ha gått til håndball eller
 langrenn. Barn under 13 år finnes i databasen, men jeg analyserer aldri
 prestasjonsnivå under 13, bare deltakelse, i tråd med
