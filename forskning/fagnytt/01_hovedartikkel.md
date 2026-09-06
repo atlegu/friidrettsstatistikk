@@ -1,10 +1,10 @@
-\artikkeltittel{Tallene finnes. Bruk dem.}{Hva et komplett resultatregister kan
+\artikkeltittel{Tallene finnes. Bruk dem.}{Hva en komplett resultatdatabase kan
 fortelle norske friidrettstrenere om utvikling, frafall og hvor idretten er på
 vei}{Atle Guttormsen}{September 2026}
 
 \begin{ingress}
 Friidrett er den mest målte idretten som finnes. Likevel bruker vi tallene
-nesten bare til én ting: å rangere. Med et register over samtlige godkjente
+nesten bare til én ting: å rangere. Med en database over samtlige godkjente
 resultater siden 2011 kan vi nå svare på tre spørsmål trenere alltid har stilt.
 Hva er normal utvikling? Hvem slutter, og når? Og hvilken vei går norsk
 friidrett? Svarene er til dels andre enn vi har trodd.
@@ -16,12 +16,12 @@ de hundre beste norske utøverne gjennom tidene på hvert alderstrinn
 (Tønnessen mfl., 2015). Kurvene derfra henger på mange klubbkontorer, og
 med rette: de er det beste vi har hatt. Denne artikkelen tar opp tråden, men
 med et annet verktøy. Norges Friidrettsforbund har gjennom mange år bygget
-opp et register over alle godkjente konkurranseresultater i norsk friidrett,
+opp en database over alle godkjente konkurranseresultater i norsk friidrett,
 om lag 1,4 millioner resultater fra 87 000 utøvere. Det er et
 statistikkarbeid få andre idretter kan vise maken til. Mitt bidrag har vært
 å gjøre disse tallene tilgjengelige for egen forskning, analysere dem i en
 serie vitenskapelige arbeider, og prøve ut andre måter å presentere dem på.
-Fordelen med et komplett register er ikke først og fremst at det er stort.
+Fordelen med en komplett database er ikke først og fremst at det er stort.
 Fordelen er at vi kan følge *den samme utøveren* fra første 60-meter som
 10-åring til siste sesong, uansett om den kom som 14-åring eller 30-åring.
 Det forandrer hva vi kan si.
@@ -29,23 +29,23 @@ Det forandrer hva vi kan si.
 Jeg skal gjennom tre temaer: utvikling, frafall og trender. Til slutt
 oppsummerer jeg hva jeg mener funnene bør bety for oss som trener.
 
-## Hva registeret er, og hva det ikke er
+## Hva databasen er, og hva den ikke er
 
 Datagrunnlaget er Norges Friidrettsforbunds resultatdatabase, som siden 2011
 har fullstendig elektronisk registrering av alle godkjente stevner i Norge og
 alle resultater av norske utøvere i utlandet. Det finnes ingen
-kvalifiseringskrav for å havne i registeret: den som stiller til start i et
+kvalifiseringskrav for å havne i databasen: den som stiller til start i et
 terminfestet stevne, er med. Aldersklasser følger kalenderår, som ellers i
 norsk friidrett. Fødselsdato er registrert for 94–100 prosent av utøverne i
 ungdomsklassene, redskapsvekter og hekkhøyder ligger i øvelseskodene, og
 manuell og elektronisk tid kan skilles.
 
-Det registeret *ikke* inneholder, er vel så viktig å ha klart for seg.
-Det har ingen treningsdata, ingen mål på biologisk modning, og det ser bare
+Det databasen *ikke* inneholder, er vel så viktig å ha klart for seg.
+Den har ingen treningsdata, ingen mål på biologisk modning, og det ser bare
 friidrett: en utøver som «slutter» i våre tall, kan ha gått til håndball eller
-langrenn. Barn under 13 år finnes i registeret, men jeg analyserer aldri
+langrenn. Barn under 13 år finnes i databasen, men jeg analyserer aldri
 prestasjonsnivå under 13, bare deltakelse, i tråd med
-barneidrettsbestemmelsene. Og som alltid med registerdata beskriver tallene
+barneidrettsbestemmelsene. Og som alltid med slike data beskriver tallene
 sammenhenger, ikke årsaker. Det er trenerens erfaring som må fylle inn
 mekanismene.
 
@@ -170,7 +170,7 @@ tallene 24,6 og 22,9. Forholdet mellom første og fjerde kvartal er altså 1,44
 allerede ved 10 år. Og der blir det. Ved 13 er det 1,36, ved 16 1,42, ved 20
 1,47, ved 25 1,56 (figur 4). Ingen forsterkning gjennom puberteten, ingen
 oppbygging gjennom uttak. Skjevheten er ferdig etablert før barna kommer inn
-i registeret, det vil si i 6–9-årsalderen, og den ligger i hvem som begynner
+i databasen, det vil si i 6–9-årsalderen, og den ligger i hvem som begynner
 og hvem som gir seg etter første sesong.
 
 ![Figur 4. Andel av alle konkurrerende utøvere ved hver alder som er født i første og fjerde kvartal.](figurer/fig3_rae.png)
@@ -235,7 +235,7 @@ når atferd var tatt hensyn til.
 Jeg tolker dette som et spørsmål om tilhørighet. Den som så vidt bommer på
 kravet, men fortsetter å konkurrere, er fortsatt «innenfor». Den som klarer
 kravet og lar være å dra, har allerede begynt å gå. Årsaken kan være
-motivasjon, skader, treningsmiljø eller andre idretter, og registeret kan
+motivasjon, skader, treningsmiljø eller andre idretter, og databasen kan
 ikke skille dem. Men handlingsregelen for treneren er den samme uansett:
 utøvere som kvalifiserer seg, bør dras med. Deltakelse i mesterskap er ikke
 en belønning for de beste, det er et av de mest virksomme tiltakene vi har
@@ -350,7 +350,7 @@ i ungdomsklassene er intakt, så løsningen ligger ikke i mer press på
 15-åringene. Den ligger i kastaktivitet, kastkompetanse og rekruttering av
 store, sterke barn i klubbene, før de fyller 13.
 
-Alt dette er beskrivende funn fra ett register, og de bør leses slik. Men de
+Alt dette er beskrivende funn fra én database, og de bør leses slik. Men de
 er også det nærmeste vi kommer et samlet bilde av norsk friidrett sett
 nedenfra, og de peker samme vei: det vi gjør med dem vi har, virker. Det er
 i hvem vi får inn, og hvem vi klarer å holde på, at tallene ber oss se etter.
