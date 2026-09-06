@@ -216,10 +216,11 @@ også når vi tok hensyn til hvor mange stevner utøveren startet med.
 ### Å klare kravet hjelper lite hvis du ikke drar
 
 Den første kvalifiseringsgrensen norske ungdommer møter, er UM-kravet ved
-15–16 år. Jeg delte utøverne i kohorten fra 2011–2014 (1 301 utøvere) etter
-status ved den grensen: kvalifisert og deltok, kvalifisert men deltok ikke,
-og fire grupper etter hvor langt under kravet de lå (Guttormsen, 2026d).
-Figur 6 viser andelen som fortsatt konkurrerte fem år senere.
+15–16 år. I en egen, foreløpig upublisert analyse av den eldste delen av
+samme kohort (1 301 utøvere født 1998–2000) delte jeg utøverne etter status
+ved den grensen: kvalifisert og deltok, kvalifisert men deltok ikke, og fire
+grupper etter hvor langt under kravet de lå. Figur 6 viser andelen som
+fortsatt konkurrerte fem år senere.
 
 ![Figur 6. Status ved UM-kvalifisering som 15–16-åring og andel som fortsatt konkurrerte fem år senere.](figurer/fig5_um.png)
 
@@ -407,11 +408,6 @@ Medicine – Open*.
 Guttormsen, A. G. (2026c). Pulling back before dropout: Behavioral
 disengagement precedes youth-sport exit by years in a 14-year register study.
 Manuskript under vurdering.
-
-Guttormsen, A. G. (2026d). Belonging at the boundary: A 14-year longitudinal
-study of behavioral pathways to dropout from youth competitive sport.
-Manuskript under vurdering, *Scandinavian Journal of Medicine & Science in
-Sports*.
 
 Guttormsen, A. G. og Guttormsen, S. (2026). Super shoes and track
 performance: Evidence from collegiate leaderboards. Manuskript under
