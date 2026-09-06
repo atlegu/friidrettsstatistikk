@@ -1,90 +1,152 @@
-% Magasinstil for trenerartikkelen (pandoc + xelatex)
-\usepackage{titlesec}
-\usepackage{xcolor}
+% Magasinmal for Fagnytt-artikler (pandoc + xelatex, to spalter)
+% Forbilder: Svensk Idrottsforskning (rolig to-spalters serif, lett sans i titler,
+% ingress i større serif) og Techniques/USTFCCCA (kicker, sitater, faktabokser).
+
+% ---------- fonter ----------
+\usepackage{fontspec}
+\setmainfont{Charter}[Scale=0.98]
+\setsansfont{Avenir Next}[BoldFont={Avenir Next Demi Bold},ItalicFont={Avenir Next Italic},
+  BoldItalicFont={Avenir Next Demi Bold Italic}]
+\newfontfamily\headfont{Avenir Next Heavy}
+\newfontfamily\kickfont{Avenir Next Condensed Demi Bold}[LetterSpace=6]
+\newfontfamily\medfont{Avenir Next Medium}
 \usepackage{microtype}
+
+% ---------- farger ----------
+\usepackage{xcolor}
 \definecolor{hovedbla}{HTML}{1F4E79}
+\definecolor{aksent}{HTML}{D9480F}
 \definecolor{morkgra}{HTML}{2B2B2B}
 \definecolor{lysgra}{HTML}{777777}
+\definecolor{bakgrunn}{HTML}{EEF2F7}
 
-% Tittelblokk: hovedtittel / undertittel / byline med linjaler
-\newcommand{\artikkeltittel}[4]{%
-  \thispagestyle{empty}%
-  {\raggedright\sffamily\bfseries\fontsize{30}{34}\selectfont\color{morkgra}#1\par}
-  \vspace{8pt}
-  {\raggedright\sffamily\fontsize{17}{22}\selectfont\color{hovedbla}#2\par}
-  \vspace{16pt}
-  {\noindent\color{hovedbla}\rule{\textwidth}{2.2pt}\par}
-  \vspace{7pt}
-  {\raggedright\sffamily\footnotesize\color{lysgra}%
-   \MakeUppercase{#3}\hfill\MakeUppercase{#4}\par}
-  \vspace{3pt}
-  {\noindent\color{lysgra!50}\rule{\textwidth}{0.5pt}\par}
-  \vspace{18pt}
-}
+% ---------- sats ----------
+\usepackage{ragged2e}
+\setlength{\columnsep}{7mm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{3.2mm}
+\linespread{1.18}
+\widowpenalty=10000 \clubpenalty=10000
+\raggedbottom
+\makeatletter\setlength{\@fptop}{0pt}\setlength{\@dblfptop}{0pt}\setlength{\@dblfpsep}{16pt}\setlength{\@dblfpbot}{0pt plus 1fil}\makeatother
+\usepackage{multicol}
+\usepackage{needspace}
+% (stfloats tatt ut: ga luftlommer og feilplasserte bredformatbokser)
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dblfloatpagefraction}{0.75}
+\setlength{\dbltextfloatsep}{14pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
 
-% Ingress: større kursiv, mørk grå, luftig
-\newenvironment{ingress}
-  {\par\begingroup\itshape\fontsize{13.5}{19.5}\selectfont\color{morkgra}%
-   \setlength{\rightskip}{1.2cm plus 1fil}}
-  {\par\endgroup\vspace{12pt}}
-
-% H2 (seksjoner) -> blå sans med tynn understrek; H3 -> mørk sans
-\titleformat{\section}{\fontsize{25}{29}\selectfont\bfseries\sffamily\color{morkgra}}{}{0pt}{}
-\titleformat{\subsection}[block]{\fontsize{15}{18}\selectfont\bfseries\sffamily\color{hovedbla}}{}{0pt}{}[{\vspace{1pt}\color{hovedbla!25}\titlerule[1pt]}]
-\titleformat{\subsubsection}{\fontsize{12}{15}\selectfont\bfseries\sffamily\color{morkgra}}{}{0pt}{}
-\titlespacing*{\section}{0pt}{4pt}{10pt}
-\titlespacing*{\subsection}{0pt}{22pt}{8pt}
-\titlespacing*{\subsubsection}{0pt}{14pt}{4pt}
-
-% Figurer der de står i teksten, med diskrete kursiv-tekster under
-\usepackage{float}
-\floatplacement{figure}{H}
-\usepackage{caption}
-\captionsetup{font={footnotesize,it},labelformat=empty,skip=2pt,justification=raggedright,singlelinecheck=false}
-
-% Topp- og bunntekst: diskret linje med kortittel og sidetall
+% ---------- topptekst ----------
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\sffamily\footnotesize\color{lysgra}\MakeUppercase{Tallene finnes. Bruk dem.}}
+\fancyhead[L]{\kickfont\footnotesize\color{lysgra}FAGNYTT\hspace{0.6em}\textcolor{aksent}{/}\hspace{0.6em}STATISTIKK OG TRENERARBEID}
 \fancyhead[R]{\sffamily\footnotesize\color{lysgra}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrule}{{\color{lysgra!30}\hrule width\headwidth height 0.4pt}}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{{\color{lysgra!35}\hrule width\headwidth height 0.4pt}}
+\setlength{\headheight}{14pt}
 
-% Luft rundt figurer og avsnitt
-\setlength{\parskip}{5pt}
-\setlength{\parindent}{0pt}
-
-% Tegn som mangler i Charter
-\usepackage{newunicodechar}
-\newunicodechar{→}{\,$\rightarrow$\,}
-
-% Tabell-styling
-\usepackage{booktabs}
-\usepackage{etoolbox}
-\AtBeginEnvironment{longtable}{\sffamily\small}
-
+% ---------- åpner: kicker, tittel, undertittel, byline, ingress ----------
+% \artikkelopener{Tittel}{Undertittel}{Forfatter}{Dato}{Kicker}{Ingress}
 \makeatletter
-% Ingen overskrift alene nederst på en side: krev plass til overskrift + fire linjer
-\usepackage{needspace}
+\newcommand{\artikkelopener}[6]{%
+  \twocolumn[%
+    \begin{@twocolumnfalse}
+      \thispagestyle{empty}%
+      \vspace*{2mm}
+      {\kickfont\small\color{aksent}\MakeUppercase{#5}\par}
+      \vspace{7pt}
+      {\RaggedRight\headfont\fontsize{38}{40}\selectfont\color{morkgra}#1\par}
+      \vspace{9pt}
+      {\RaggedRight\medfont\fontsize{15.5}{20}\selectfont\color{hovedbla}#2\par}
+      \vspace{14pt}
+      {\noindent\color{aksent}\rule{22mm}{2.4pt}\par}
+      \vspace{12pt}
+      \begin{minipage}{0.86\textwidth}
+        {\RaggedRight\itshape\fontsize{13}{18.5}\selectfont\color{morkgra}#6\par}
+      \end{minipage}\par
+      \vspace{14pt}
+      {\kickfont\footnotesize\color{lysgra}AV\hspace{0.5em}\textcolor{morkgra}{\mbox{\MakeUppercase{#3}}}\hspace{1.2em}\textcolor{aksent}{/}\hspace{1.2em}\MakeUppercase{#4}\par}
+      \vspace{4pt}
+      {\noindent\color{lysgra!35}\rule{\textwidth}{0.5pt}\par}
+      \vspace{16pt}
+    \end{@twocolumnfalse}
+  ]%
+}
+\makeatother
+
+% ---------- initial ----------
+\usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\headfont\color{hovedbla}}
+\setlength{\DefaultFindent}{2pt}
+\setlength{\DefaultNindent}{0pt}
+\renewcommand{\DefaultLoversize}{0.05}
+
+% ---------- overskrifter ----------
+\usepackage{titlesec}
+\titleformat{\section}{\RaggedRight\sffamily\bfseries\fontsize{14}{16}\selectfont\color{morkgra}}
+  {}{0pt}{{\color{aksent}\rule{9mm}{2pt}}\\[3pt]}
+\titleformat{\subsection}{\RaggedRight\sffamily\bfseries\fontsize{10.5}{13}\selectfont\color{hovedbla}}{}{0pt}{}
+\titleformat{\subsubsection}{\RaggedRight\sffamily\bfseries\fontsize{9.5}{12}\selectfont\color{morkgra}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{18pt plus 4pt minus 2pt}{6pt}
+\titlespacing*{\subsection}{0pt}{11pt plus 3pt minus 1pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{9pt plus 2pt}{2pt}
+\makeatletter
 \let\orig@section\section
 \let\orig@subsection\subsection
 \let\orig@subsubsection\subsubsection
-\renewcommand{\section}{\Needspace*{12\baselineskip}\orig@section}
-\renewcommand{\subsection}{\Needspace*{6\baselineskip}\orig@subsection}
-\renewcommand{\subsubsection}{\Needspace*{5\baselineskip}\orig@subsubsection}
+\renewcommand{\section}{\Needspace*{10\baselineskip}\orig@section}
+\renewcommand{\subsection}{\Needspace*{5\baselineskip}\orig@subsection}
+\renewcommand{\subsubsection}{\Needspace*{4\baselineskip}\orig@subsubsection}
 \makeatother
 
-% Faktaboks: ramme med farget bakgrunn og tittellinje
+% ---------- figurer og tabeller ----------
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{font={sf,footnotesize},labelformat=empty,skip=5pt,justification=RaggedRight,singlelinecheck=false}
+\newcommand{\figlabel}[1]{{\kickfont\color{hovedbla}#1}\hspace{0.7em}}
+\usepackage{booktabs}
+\setlength{\tabcolsep}{6.5pt}
+
+% ---------- sitat (uthevet sitat i spalten) ----------
+\newenvironment{sitat}
+  {\par\vspace{9pt}\noindent{\color{aksent}\rule{\linewidth}{1.2pt}}\par\vspace{6pt}%
+   \begingroup\RaggedRight\sffamily\bfseries\fontsize{12}{15}\selectfont\color{hovedbla}}
+  {\par\endgroup\vspace{5pt}\noindent{\color{aksent}\rule{\linewidth}{1.2pt}}\par\vspace{9pt}}
+
+% ---------- bokser ----------
 \usepackage[most]{tcolorbox}
-\newtcolorbox{faktaboks}{
-  enhanced,
-  colback=hovedbla!6, colframe=hovedbla, boxrule=0pt,
-  leftrule=3pt, arc=0pt, outer arc=0pt,
-  left=10pt, right=10pt, top=8pt, bottom=8pt,
-  before skip=14pt, after skip=14pt,
-  fonttitle=\sffamily\bfseries\small, coltitle=white, colbacktitle=hovedbla,
-  title=\MakeUppercase{Fakta: Slik er tallene laget},
-  toptitle=4pt, bottomtitle=4pt,
-  before upper={\sffamily\small\setlength{\parskip}{3pt}},
+\tcbset{
+  fagboks/.style={
+    enhanced, colback=bakgrunn, colframe=bakgrunn, boxrule=0pt, arc=0pt, outer arc=0pt,
+    left=8pt, right=8pt, top=6pt, bottom=7pt,
+    before skip=10pt, after skip=10pt,
+    fonttitle=\kickfont\small, coltitle=white, colbacktitle=hovedbla,
+    toptitle=4pt, bottomtitle=4pt, lefttitle=8pt,
+    before upper={\sffamily\footnotesize\setlength{\parskip}{3pt}\RaggedRight},
+  }
 }
+\newtcolorbox{faktaboks}{fagboks, title=\MakeUppercase{Fakta: Slik er tallene laget}}
+\newtcolorbox{raadboks}{fagboks, colback=white, colframe=aksent, boxrule=0.8pt,
+  colbacktitle=aksent, title=\MakeUppercase{Fem råd til treneren},
+  before upper={\sffamily\small\setlength{\parskip}{5pt}\RaggedRight}}
+\newtcolorbox{forfatterboks}{fagboks, colback=white, colframe=lysgra!40, boxrule=0.6pt,
+  colbacktitle=lysgra, title=\MakeUppercase{Om forfatteren}}
+
+% ---------- sluttmerke ----------
+\newcommand{\sluttmerke}{\hfill{\color{aksent}\rule{1.6ex}{1.6ex}}}
+
+% ---------- referanser ----------
+\newenvironment{referanser}
+  {\par\begingroup\footnotesize\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}\RaggedRight\hangindent=1.2em\hangafter=1}
+  {\par\endgroup}
+
+% ---------- diverse ----------
+\usepackage{newunicodechar}
+\newunicodechar{→}{\,$\rightarrow$\,}
+\usepackage{flushend}

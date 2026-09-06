@@ -235,3 +235,101 @@ shutil.copy(TREN / 'figM8_arvtakere.png', OUT / 'fig8_arvtakere.png')
 print('Skrev figurer til', OUT)
 print((OUT / 'tabell_fremgang.md').read_text())
 print((OUT / 'aarlig_fremgang.txt').read_text())
+
+
+# =====================================================================
+# Spaltebrede versjoner (magasinmal i to spalter, ca. 83 mm bred spalte)
+# =====================================================================
+import textwrap
+
+S_W, S_H = 5.4, 4.5
+
+
+def tittel_s(fig, hoved, under):
+    fig.text(0.01, 0.985, hoved, fontsize=13, fontweight='bold', va='top', ha='left', color=DARK)
+    fig.text(0.01, 0.925, '\n'.join(textwrap.wrap(under, 62)), fontsize=8.6, va='top', ha='left', color='#666666')
+
+
+plt.rcParams.update({'font.size': 9.5})
+
+# fig3s: RAE, færre aldre for lesbarhet
+r = pd.read_csv(RAE); r = r[r.age.isin([10, 12, 14, 16, 18, 20, 22, 25])]
+fig, ax = plt.subplots(figsize=(S_W, S_H))
+x = np.arange(len(r)); w = 0.38
+ax.bar(x - w / 2, r.Q1_pct, w, color=BLUE, label='Født januar–mars')
+ax.bar(x + w / 2, r.Q4_pct, w, color=ORANGE, label='Født oktober–desember')
+ax.axhline(24.6, color=BLUE, lw=1, ls='--'); ax.axhline(22.9, color=ORANGE, lw=1, ls='--')
+ax.text(len(r) - 0.5, 24.9, 'Befolkningen 24,6 %', color=BLUE, fontsize=7.5, ha='right', va='bottom',
+        bbox=dict(boxstyle='round,pad=0.12', fc='white', ec='none', alpha=0.9))
+ax.text(len(r) - 0.5, 22.6, 'Befolkningen 22,9 %', color=ORANGE, fontsize=7.5, ha='right', va='top',
+        bbox=dict(boxstyle='round,pad=0.12', fc='white', ec='none', alpha=0.9))
+ax.set_xticks(x); ax.set_xticklabels(r.age.astype(int)); ax.set_xlabel('Alder')
+ax.set_ylim(0, 34); ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.0f} %"))
+ax.legend(loc='upper left', frameon=False, fontsize=8, ncol=2, handlelength=1.2)
+tittel_s(fig, 'Skjevheten er der allerede hos 10-åringene',
+         'Andel av alle konkurrerende utøvere ved hver alder som er født i første og fjerde kvartal, 2011–2026.')
+fig.tight_layout(rect=(0, 0, 1, 0.87)); fig.savefig(OUT / 'fig3s_rae.png', dpi=220); plt.close(fig)
+
+# fig4s: konkurransevolum
+fig, ax = plt.subplots(figsize=(S_W, S_H))
+ax.plot(ages, blir, 'o-', color=GREEN, lw=2.6, ms=6, label='Aktive som seniorer (n = 348)')
+ax.plot(ages, slutter, 'o-', color=RED, lw=2.6, ms=6, label='Sluttet før 20 år (n = 1 775)')
+ax.axvspan(14.5, 16.5, color='#f3f3f3', zorder=0)
+ax.text(15.5, 21.2, 'UM-kvalifisering', ha='center', color='#777777', fontsize=8)
+for a, v in zip(ages, blir): ax.annotate(str(v), (a, v), xytext=(0, 7), textcoords='offset points', ha='center', color=GREEN, fontsize=8.5, fontweight='bold')
+for a, v in zip(ages, slutter): ax.annotate(str(v), (a, v), xytext=(0, -13), textcoords='offset points', ha='center', color=RED, fontsize=8.5, fontweight='bold')
+ax.set_xticks(ages); ax.set_xlabel('Alder'); ax.set_ylim(-2.5, 23.5); ax.set_ylabel('Stevner per år (median)')
+ax.legend(loc='lower left', frameon=False, fontsize=8)
+tittel_s(fig, 'De som slutter, trekker seg tilbake først',
+         'Stevner per år for 13–14-åringer fra ungdomslekene 2011–2016, etter om de var aktive som seniorer.')
+fig.tight_layout(rect=(0, 0, 1, 0.87)); fig.savefig(OUT / 'fig4s_volum.png', dpi=220); plt.close(fig)
+
+# fig5s: UM-status
+grupper_s = ['Kvalifisert,\ndeltok', 'Kvalifisert,\ndeltok ikke', 'Bommet\n< 2 %', 'Bommet\n2–5 %', 'Bommet\n5–15 %', 'Bommet\n> 15 %']
+fig, ax = plt.subplots(figsize=(S_W, S_H))
+b = ax.bar(grupper_s, andel, color=farg, width=0.64)
+for rect, v in zip(b, andel):
+    ax.annotate(f"{no_num(v, 1)} %", (rect.get_x() + rect.get_width() / 2, v), xytext=(0, 4),
+                textcoords='offset points', ha='center', fontweight='bold', color=DARK, fontsize=8.5)
+ax.set_ylim(0, 50); ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.0f} %"))
+ax.tick_params(axis='x', labelsize=8)
+ax.set_ylabel('Fortsatt aktive fem år etter 16-årssesongen', fontsize=8.5)
+tittel_s(fig, 'Å klare kravet hjelper lite hvis du ikke drar',
+         'Status ved UM-kvalifisering som 15–16-åring og andel som fortsatt konkurrerte fem år senere (n = 882).')
+fig.tight_layout(rect=(0, 0, 1, 0.87)); fig.savefig(OUT / 'fig5s_um.png', dpi=220); plt.close(fig)
+
+# fig6s: frafall ti kohorter
+fr = pd.read_csv(TREN / 'frafall_kohorter.csv')
+fr = fr.groupby(['cohort_year', 'age'], as_index=False).n_active.sum()
+fig, ax = plt.subplots(figsize=(S_W, S_H))
+for c, g in fr.groupby('cohort_year'):
+    g = g.sort_values('age'); base = g[g.age == 13].n_active.values[0]
+    pct = g.n_active / base * 100
+    farge, lw, z = ('#c9ced4', 1.4, 1)
+    if c == 2013: farge, lw, z = (BLUE, 2.6, 3)
+    if c == 2019: farge, lw, z = (ORANGE, 2.6, 3)
+    if c == 2022: farge, lw, z = (GREEN, 2.6, 3)
+    ax.plot(g.age, pct, '-', color=farge, lw=lw, zorder=z, marker='o' if lw > 2 else None, ms=4)
+    if lw > 2:
+        ax.annotate(f"{c}-kullet", (g.age.values[-1], pct.values[-1]), xytext=(5, 0), textcoords='offset points',
+                    color=farge, fontweight='bold', va='center', fontsize=8.5)
+ax.set_ylim(0, 105); ax.set_xlim(12.8, 20.6); ax.set_xticks(range(13, 20))
+ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.0f} %")); ax.set_xlabel('Alder')
+tittel_s(fig, 'Frafallet er som før',
+         'Andel av 13-åringene som fortsatt konkurrerer ved hver alder. Ti årskull, nesten samme kurve.')
+fig.tight_layout(rect=(0, 0, 1, 0.87)); fig.savefig(OUT / 'fig6s_frafall.png', dpi=220); plt.close(fig)
+
+# fig7s: kule G15
+ku = pd.read_csv(TREN / 'kast_hekk_aldersklasser.csv')
+ku = ku[(ku.family == 'Kule') & (ku.age_class == '15 år') & (ku.gender == 'M')].sort_values('yr')
+fig, ax = plt.subplots(figsize=(S_W, S_H))
+ax.plot(ku.yr, ku.top10_avg_fmt, 'o-', color=RED, lw=2.6, ms=6, mfc='white', mew=2)
+ax.annotate(f"{no_num(ku.top10_avg_fmt.iloc[0], 2)} m", (ku.yr.iloc[0], ku.top10_avg_fmt.iloc[0]), xytext=(-2, 9),
+            textcoords='offset points', color=RED, fontweight='bold', fontsize=9)
+ax.annotate(f"{no_num(ku.top10_avg_fmt.iloc[-1], 2)} m", (ku.yr.iloc[-1], ku.top10_avg_fmt.iloc[-1]), xytext=(-30, 9),
+            textcoords='offset points', color=RED, fontweight='bold', fontsize=9)
+ax.set_ylim(10, 16); ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.0f} m"))
+ax.set_xticks(range(2013, 2026, 2))
+tittel_s(fig, 'Samme kule, to meter kortere', 'Snittet av de ti beste 15-årige guttene i kule (4 kg), utendørs, 2013–2025.')
+fig.tight_layout(rect=(0, 0, 1, 0.87)); fig.savefig(OUT / 'fig7s_kule.png', dpi=220); plt.close(fig)
+print('spaltefigurer OK')

@@ -1,17 +1,22 @@
 #!/bin/zsh
-# Bygger 01_hovedartikkel.md -> Hovedartikkel_Fagnytt.pdf (pandoc + xelatex).
+# Bygger 01_hovedartikkel.md -> Hovedartikkel_Fagnytt.pdf (pandoc + xelatex, magasinmal i to spalter).
 set -e
 cd "$(dirname "$0")"
 pandoc 01_hovedartikkel.md \
   -o Hovedartikkel_Fagnytt.pdf \
   --pdf-engine=xelatex \
   --resource-path=. \
-  -V mainfont="Charter" \
-  -V sansfont="Helvetica Neue" \
-  -V fontsize=11pt \
-  -V geometry:margin=2.4cm \
-  -V linestretch=1.3 \
+  -V documentclass=article \
+  -V classoption=twocolumn \
+  -V fontsize=10pt \
+  -V papersize=a4 \
+  -V geometry:top=22mm \
+  -V geometry:bottom=22mm \
+  -V geometry:left=18mm \
+  -V geometry:right=18mm \
   -V lang=nb \
+  -V indent=true \
   -H pdf_preamble.tex \
-  --lua-filter=faktaboks.lua
+  --shift-heading-level-by=-1 \
+  --lua-filter=magasin.lua
 echo "Skrev $(pwd)/Hovedartikkel_Fagnytt.pdf"

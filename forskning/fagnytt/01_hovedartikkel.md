@@ -1,16 +1,13 @@
-\artikkeltittel{Tallene finnes. Bruk dem.}{Hva en komplett resultatdatabase kan
+\artikkelopener{Tallene finnes. Bruk dem.}{Hva en komplett resultatdatabase kan
 fortelle norske friidrettstrenere om utvikling, frafall og hvor idretten er på
-vei}{Atle Guttormsen}{September 2026}
+vei}{Atle Guttormsen}{Fagnytt 2026}{Statistikk og trenerarbeid}{Friidrett er den
+mest målte idretten som finnes. Likevel bruker vi tallene nesten bare til én
+ting: å rangere. Med en database over samtlige godkjente resultater siden 2011
+kan vi nå svare på tre spørsmål trenere alltid har stilt. Hva er normal
+utvikling? Hvem slutter, og når? Og hvilken vei går norsk friidrett? Svarene er
+kanskje forskjellige fra hva vi tror.}
 
-\begin{ingress}
-Friidrett er den mest målte idretten som finnes. Likevel bruker vi tallene
-nesten bare til én ting: å rangere. Med en database over samtlige godkjente
-resultater siden 2011 kan vi nå svare på tre spørsmål trenere alltid har stilt.
-Hva er normal utvikling? Hvem slutter, og når? Og hvilken vei går norsk
-friidrett? Svarene er kanskje forskjellige fra hva vi tror.
-\end{ingress}
-
-I Fagnytt 1/2023 skrev Hilde Gundersen og Espen Tønnessen en nyttig artikkel
+\lettrine[lines=3]{I}{} Fagnytt 1/2023 skrev Hilde Gundersen og Espen Tønnessen en nyttig artikkel
 om prestasjonsfremgang hos gutter og jenter fra 11 til 18 år. Grunnlaget var
 de hundre beste norske utøverne gjennom tidene på hvert alderstrinn
 (Tønnessen mfl., 2015), hvor undertegnede var en av medforfatterne. Kurvene derfra er de beste vi har hatt. Denne artikkelen tar opp tråden, men
@@ -53,6 +50,8 @@ friidrettsresultater.no har jeg lagt de samme tallene til rette slik at
 trenere kan følge enkeltutøvere over år, sammenligne utøvere og se årslister
 per aldersklasse tilbake til 2011.
 
+![Figur 1. Fremgang i prosent fra 10 år i høyde og lengde. Grå kurve: snittet av de 100 beste ved hver alder. Farget kurve: utøvere med minst tre sesonger, fulgt over tid.](figurer/fig1_utvikling.png)
+
 ## Del 1: Hva er normal utvikling?
 
 ### Topp-100-kurven måler forskjellige mennesker
@@ -70,8 +69,6 @@ I en artikkel som nå er antatt i *Journal of Science and Medicine in Sport*
 øvelse, fulgt fra alder til alder. Øvelsene er de samme som hos Tønnessen mfl.
 (2015): 60 meter, 800 meter, høyde og lengde. Figur 1 viser høyde og lengde.
 
-![Figur 1. Fremgang i prosent fra 10 år i høyde og lengde. Grå kurve: snittet av de 100 beste ved hver alder. Farget kurve: utøvere med minst tre sesonger, fulgt over tid.](figurer/fig1_utvikling.png)
-
 Forskjellen er ikke en detalj. I høyde for gutter topper tverrsnittskurven på
 61 prosent fremgang ved 18 år og faller deretter. Mine panelkurver fortsetter til
 81 prosent ved 25. I lengde for kvinner er avstanden mellom de to kurvene 48
@@ -88,6 +85,10 @@ alderen 10–13 år er 48 prosent født i januar, februar eller mars. I
 befolkningen er tallet 25. Den som bruker slike lister som mål på «normal»
 utvikling for en 13-åring, måler mot en gruppe som er langt fra normal.
 
+::: {.sitat}
+«Det finnes ikke noe utviklingsplatå ved 17–18 år. Det finnes i kurvene våre, men ikke i utøverne.»
+:::
+
 ### Forventet fremgang, år for år
 
 Tabell 1 gir panelkurvene i tall. Den viser samlet fremgang fra 10 år (13 år
@@ -97,24 +98,25 @@ enkelte vil avvike, slik Gundersen og Tønnessen understreket. Men tabellen
 gir et bedre referansepunkt enn tverrsnittslistene for et spørsmål trenere
 stiller hver høst: er dette normalt?
 
-| Øvelse | Kjønn | 12 år | 14 år | 16 år | 18 år | 20 år | 22 år | 25 år |
-|:---------|:-----------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
-| 60 m | Gutter | 8 % | 17 % | 25 % | 27 % | 29 % | 30 % | 30 % |
-| 60 m | Jenter | 9 % | 15 % | 19 % | 21 % | 22 % | 24 % | 24 % |
-| 800 m | Gutter | – | 7 % | 16 % | 19 % | 21 % | 23 % | 21 % |
-| 800 m | Jenter | – | 5 % | 9 % | 12 % | 15 % | 15 % | 18 % |
-| Høyde | Gutter | 16 % | 37 % | 54 % | 63 % | 69 % | 73 % | 81 % |
-| Høyde | Jenter | 19 % | 33 % | 42 % | 48 % | 55 % | 63 % | 65 % |
-| Lengde | Gutter | 18 % | 41 % | 66 % | 81 % | 88 % | 91 % | 89 % |
-| Lengde | Jenter | 22 % | 36 % | 49 % | 59 % | 71 % | 81 % | 81 % |
-
-*Tabell 1. Samlet fremgang i prosent fra 10 år (800 m: fra 13 år) for utøvere
-med minst tre sesonger i øvelsen, 2011–2025. «Gutter» og «jenter» omfatter
-også menn og kvinner i 20-årene. Fremgangen per år er størst
-mellom 10 og 14 (4–10 prosent per år avhengig av øvelse), halveres mellom 14
-og 16 for jentene og mellom 16 og 18 for guttene, og ligger på 1–3 prosent per
-år fra 18 til 21. Etter 21 er den under én prosent per år, men fortsatt
-positiv i de fleste øvelsene.*
+\begin{table*}[t]
+\centering
+{\sffamily\small
+\begin{tabular}{@{}llrrrrrrr@{}}
+\toprule
+\textbf{Øvelse} & \textbf{Kjønn} & \textbf{12 år} & \textbf{14 år} & \textbf{16 år} & \textbf{18 år} & \textbf{20 år} & \textbf{22 år} & \textbf{25 år} \\
+\midrule
+60 m & Gutter & 8 \% & 17 \% & 25 \% & 27 \% & 29 \% & 30 \% & 30 \% \\
+60 m & Jenter & 9 \% & 15 \% & 19 \% & 21 \% & 22 \% & 24 \% & 24 \% \\
+800 m & Gutter & – & 7 \% & 16 \% & 19 \% & 21 \% & 23 \% & 21 \% \\
+800 m & Jenter & – & 5 \% & 9 \% & 12 \% & 15 \% & 15 \% & 18 \% \\
+Høyde & Gutter & 16 \% & 37 \% & 54 \% & 63 \% & 69 \% & 73 \% & 81 \% \\
+Høyde & Jenter & 19 \% & 33 \% & 42 \% & 48 \% & 55 \% & 63 \% & 65 \% \\
+Lengde & Gutter & 18 \% & 41 \% & 66 \% & 81 \% & 88 \% & 91 \% & 89 \% \\
+Lengde & Jenter & 22 \% & 36 \% & 49 \% & 59 \% & 71 \% & 81 \% & 81 \% \\
+\bottomrule
+\end{tabular}}
+\caption{\figlabel{TABELL 1}Samlet fremgang i prosent fra 10 år (800 m: fra 13 år) for utøvere med minst tre sesonger i øvelsen, 2011–2025. «Gutter» og «jenter» omfatter også menn og kvinner i 20-årene. Fremgangen per år er størst mellom 10 og 14 (4–10 prosent per år avhengig av øvelse), halveres mellom 14 og 16 for jentene og mellom 16 og 18 for guttene, og ligger på 1–3 prosent per år fra 18 til 21. Etter 21 er den under én prosent per år, men fortsatt positiv i de fleste øvelsene.}
+\end{table*}
 
 Legg merke til at jentenes fremgang bremser tidligere enn guttenes, i tråd
 med at de kommer tidligere i puberteten, men at den *ikke* stopper. Kvinnene
@@ -147,13 +149,17 @@ Kurvene er nesten identiske (figur 3): 55 prosent er med ved 14, en tredjedel
 ved 16, og 10–12 prosent ved 19. Slik var det i 2013-kullet, og slik er det i
 kullene etter pandemien.
 
-![Figur 3. Andel av 13-åringene som fortsatt konkurrerer ved hver alder, ti årskull.](figurer/fig6_frafall.png)
+![Figur 3. Andel av 13-åringene som fortsatt konkurrerer ved hver alder, ti årskull.](figurer/fig6s_frafall.png){.smal}
 
 Det som har endret seg, er inntaket. I 2013 konkurrerte 1 220 13-åringer; i
 2021- og 2022-kullene var tallet rundt 820. Frafallet spiser samme andel som
 før av et kull som er 30 prosent mindre. Det betyr at når vi diskuterer
 «frafallsproblemet», bør vi være presise. Problemet sitter i døren inn, ikke i
 døren ut. Jeg kommer tilbake til dette i del 3.
+
+::: {.sitat}
+«Problemet sitter i døren inn, ikke i døren ut.»
+:::
 
 ### Skjevheten er der før de begynner
 
@@ -172,7 +178,7 @@ oppbygging gjennom uttak. Skjevheten er ferdig etablert før barna kommer inn
 i databasen, det vil si i 6–9-årsalderen, og den ligger i hvem som begynner
 og hvem som gir seg etter første sesong.
 
-![Figur 4. Andel av alle konkurrerende utøvere ved hver alder som er født i første og fjerde kvartal.](figurer/fig3_rae.png)
+![Figur 4. Andel av alle konkurrerende utøvere ved hver alder som er født i første og fjerde kvartal.](figurer/fig3s_rae.png){.smal}
 
 To ting følger av dette. For det første kan ikke trenere i ungdomsklassene
 «fikse» den relative alderseffekten ved å endre uttakspraksis; den er
@@ -204,13 +210,17 @@ er medianen for de som skulle slutte, null. Flertallet av dem vi mister, er
 med andre ord borte fra stevnene ett til to år før de formelt er borte fra
 idretten. De trekker seg tilbake før de slutter.
 
-![Figur 5. Antall stevner per år for 13–14-åringer fra ungdomslekene 2011–2016, etter om de var aktive som seniorer.](figurer/fig4_volum.png)
+![Figur 5. Antall stevner per år for 13–14-åringer fra ungdomslekene 2011–2016, etter om de var aktive som seniorer.](figurer/fig4s_volum.png){.smal}
 
 Dette er den mest praktisk anvendelige observasjonen i hele materialet. En
 trener trenger ingen database for å telle starter. Ser du at en 14-åring
 som gikk 15 stevner i fjor, går 6 i år, ser du frafallet mens det ennå kan
 påvirkes. Nedgangen i seg selv var en selvstendig varsellampe i analysen,
 også når vi tok hensyn til hvor mange stevner utøveren startet med.
+
+::: {.sitat}
+«Deltakelse i mesterskap er ikke en belønning for de beste. Det er et av de mest virksomme tiltakene vi har for å beholde folk.»
+:::
 
 ### Å klare kravet hjelper lite hvis du ikke drar
 
@@ -221,7 +231,7 @@ ved den grensen: kvalifisert og deltok, kvalifisert men deltok ikke, og fire
 grupper etter hvor langt under kravet de lå. Figur 6 viser andelen som
 fortsatt konkurrerte fem år senere.
 
-![Figur 6. Status ved UM-kvalifisering som 15–16-åring og andel som fortsatt konkurrerte fem år senere.](figurer/fig5_um.png)
+![Figur 6. Status ved UM-kvalifisering som 15–16-åring og andel som fortsatt konkurrerte fem år senere.](figurer/fig5s_um.png){.smal}
 
 Det ventede mønsteret er der: jo lenger under kravet, desto større frafall.
 Men se på de to søylene i midten. Utøvere som *klarte* kravet, men ikke dro
@@ -286,7 +296,11 @@ perioden. Kule for 15-årige gutter (4 kg) har gått fra 14,32 til 12,04 meter
 27,2. Mens seniorkasterne aldri har vært bedre, har de beste 15-åringene
 mistet fem til femten prosent.
 
-![Figur 7. Snittet av de ti beste 15-årige guttene i kule (4 kg), utendørs, 2013–2025.](figurer/fig7_kule.png)
+![Figur 7. Snittet av de ti beste 15-årige guttene i kule (4 kg), utendørs, 2013–2025.](figurer/fig7s_kule.png){.smal}
+
+::: {.sitat}
+«Det trenerne i denne aldersgruppen gjør, virker som det alltid har gjort. Det som har endret seg, er nivået utøverne kommer inn med.»
+:::
 
 ### Kastfallet begynner før 13 år, og det er ikke trenernes feil
 
@@ -316,8 +330,19 @@ i ungdomstreningen.
 
 ## Hva betyr dette for oss som trener?
 
-Fem punkter, i den rekkefølgen jeg mener de er viktigst.
+Fem punkter, i den rekkefølgen jeg mener de er viktigst. De står samlet i boksen «Fem råd til treneren».
 
+Alt dette er beskrivende funn fra én database, og de bør leses slik. Men de
+er også det nærmeste vi kommer et samlet bilde av norsk friidrett sett
+nedenfra, og de peker samme vei: det vi gjør med dem vi har, virker. Det er
+i hvem vi får inn, og hvem vi klarer å holde på, at tallene ber oss se etter.
+
+I kommende numre vil jeg gå nærmere inn på enkeltfunnene, blant annet
+kastfallet, utviklingen i ungdomslekene 2012–2026 og forutsigelse av frafall.
+Klubber og kretser som ønsker egne uttrekk fra friidrettsresultater.no, er
+velkomne til å ta kontakt.\sluttmerke
+
+::: {.raad}
 **1. Tell starter, ikke bare tider.** Fallende konkurransevolum er den
 tidligste varsellampen vi har for frafall, ett til to år før utøveren er
 borte. En 14-åring som går halvparten så mange stevner som i fjor, trenger en
@@ -346,16 +371,7 @@ det skjer samtidig som de aller beste seniorkasterne er bedre enn noen gang. Utv
 i ungdomsklassene er intakt, så løsningen ligger ikke i mer press på
 15-åringene. Den ligger i kastaktivitet, kastkompetanse og rekruttering av
 store, sterke barn i klubbene, før de fyller 13.
-
-Alt dette er beskrivende funn fra én database, og de bør leses slik. Men de
-er også det nærmeste vi kommer et samlet bilde av norsk friidrett sett
-nedenfra, og de peker samme vei: det vi gjør med dem vi har, virker. Det er
-i hvem vi får inn, og hvem vi klarer å holde på, at tallene ber oss se etter.
-
-I kommende numre vil jeg gå nærmere inn på enkeltfunnene, blant annet
-kastfallet, utviklingen i ungdomslekene 2012–2026 og forutsigelse av frafall.
-Klubber og kretser som ønsker egne uttrekk fra friidrettsresultater.no, er
-velkomne til å ta kontakt.
+:::
 
 ::: {.faktaboks}
 - **Datagrunnlag:** Norges Friidrettsforbunds resultatdatabase, komplett
@@ -381,8 +397,14 @@ velkomne til å ta kontakt.
 - **Barn under 13:** Kun deltakelsestall, ingen nivåanalyse.
 :::
 
+
+::: {.forfatter}
+**Atle Guttormsen** er professor ved Handelshøyskolen ved NMBU og står bak friidrettsresultater.no. Han har publisert en rekke vitenskapelige arbeider om utvikling, frafall og seleksjon i friidrett, basert på Norges Friidrettsforbunds resultatdatabase.
+:::
+
 ### Referanser
 
+::: {.referanser}
 Cobley, S., Baker, J., Wattie, N. og McKenna, J. (2009). Annual age-grouping
 and athlete development: A meta-analytical review of relative age effects in
 sport. *Sports Medicine*, 39(3), 235–256.
@@ -416,3 +438,4 @@ populations: A systematic review and synthesis of findings. *Sports Medicine*,
 Tønnessen, E., Svendsen, I. S., Olsen, I. C., Guttormsen, A. og Haugen, T.
 (2015). Performance development in adolescent track and field athletes
 according to age, sex and sport discipline. *PLoS ONE*, 10(6), e0129014.
+:::
