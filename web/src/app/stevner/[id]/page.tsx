@@ -4,6 +4,16 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatPerformance } from "@/lib/format-performance"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { SideTopp, MetaSkille, ToppMerke } from "@/components/ui/side-topp"
+
+/** Stevnenivaaene ligger som engelske enum-verdier i basen. */
+const NIVAA: Record<string, string> = {
+  local: "Lokalt",
+  regional: "Krets",
+  national: "Nasjonalt",
+  championship: "Mesterskap",
+  international: "Internasjonalt",
+}
 
 async function getMeet(id: string) {
   const supabase = await createClient()
@@ -73,38 +83,61 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
         { label: meet.name }
       ]} />
 
-      {/* Header */}
-      <div className="mt-4 mb-6">
-        <h1 className="mb-2">{meet.name}</h1>
-        <div className="flex flex-wrap gap-4 text-muted-foreground">
-          <span>
-            {new Date(meet.start_date).toLocaleDateString("no-NO", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </span>
-          <span>{meet.venue ? `${meet.venue}, ${meet.city}` : meet.city}</span>
-          {meet.indoor && (
-            <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800">
-              Innendørs
+      <SideTopp
+        tittel={meet.name}
+        meta={
+          <>
+            <span className="font-bold text-white">
+              {new Date(meet.start_date).toLocaleDateString("no-NO", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </span>
-          )}
-          {meet.level && (
-            <span className="capitalize">{meet.level}</span>
-          )}
-        </div>
-        {meet.website && (
-          <a
-            href={meet.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-block text-sm text-primary hover:underline"
-          >
-            Stevnets nettside
-          </a>
-        )}
-      </div>
+            {(meet.venue || meet.city) && (
+              <>
+                <MetaSkille />
+                <span>{meet.venue ? `${meet.venue}, ${meet.city}` : meet.city}</span>
+              </>
+            )}
+            {meet.organizer_name && (
+              <>
+                <MetaSkille />
+                <span>{meet.organizer_name}</span>
+              </>
+            )}
+            {meet.website && (
+              <>
+                <MetaSkille />
+                <a
+                  href={meet.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-2 hover:underline"
+                >
+                  Stevnets nettside
+                </a>
+              </>
+            )}
+          </>
+        }
+        merker={
+          <>
+            <ToppMerke>{meet.indoor ? "Innendørs" : "Utendørs"}</ToppMerke>
+            {meet.level && <ToppMerke>{NIVAA[meet.level] ?? meet.level}</ToppMerke>}
+          </>
+        }
+        noekkeltall={[
+          { merkelapp: "Resultater", verdi: results.length },
+          { merkelapp: "Øvelser", verdi: eventNames.length },
+          {
+            merkelapp: "Utøvere",
+            verdi: new Set(results.map((r) => r.athlete_id)).size,
+          },
+        ]}
+      />
+
+      <div className="mt-6" />
 
       {/* Results by event */}
       {eventNames.length > 0 ? (

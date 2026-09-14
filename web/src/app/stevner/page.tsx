@@ -1,30 +1,35 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { ListeTopp } from "@/components/ui/liste-topp"
 
 export const metadata = {
   title: "Stevner",
   description: "Stevnekalender og resultater fra norske friidrettsstevner",
 }
 
+/** Antall stevner lista viser. Basen har nær 48 000. */
+const ANTALL = 100
+
 async function getMeets(search?: string) {
   const supabase = await createClient()
 
   let query = supabase
     .from("meets")
-    .select("*")
+    .select("id,name,city,venue,start_date,indoor", { count: "exact" })
     .order("start_date", { ascending: false })
-    .limit(100)
 
   if (search) {
     query = query.or(`name.ilike.%${search}%,city.ilike.%${search}%,venue.ilike.%${search}%`)
   }
 
-  const { data } = await query
+  const { data, error, count } = await query.limit(ANTALL)
+  if (error) {
+    console.error("Stevnelista kunne ikke hentes:", error.message)
+  }
 
-  return data ?? []
+  return { meets: data ?? [], totalt: count }
 }
 
 export default async function StevnerPage({
@@ -33,23 +38,19 @@ export default async function StevnerPage({
   searchParams: Promise<{ search?: string }>
 }) {
   const { search } = await searchParams
-  const meets = await getMeets(search)
+  const { meets, totalt } = await getMeets(search)
 
   return (
     <div className="container py-6">
       <Breadcrumbs items={[{ label: "Stevner" }]} />
-      <h1 className="mt-4 mb-4">Stevner</h1>
+      <ListeTopp
+        tittel="Stevner"
+        beskrivelse="Stevnekalender og resultatlister"
+        sokeVerdi={search}
+        plassholder="Søk etter stevne, sted eller bane …"
+      />
 
-      {/* Search */}
-      <form className="mb-8">
-        <Input
-          type="search"
-          name="search"
-          placeholder="Søk etter stevne..."
-          defaultValue={search}
-          className="max-w-md"
-        />
-      </form>
+      <div className="mt-6" />
 
       {/* Meets list */}
       <Card>
@@ -81,7 +82,7 @@ export default async function StevnerPage({
                         {meet.name}
                       </Link>
                       {meet.indoor && (
-                        <span className="ml-2 rounded bg-blue-100 px-1.5 py-0.5 text-xs font-medium text-blue-800">
+                        <span className="ml-2 rounded bg-[var(--nfif-navy)]/10 px-1.5 py-0.5 text-xs font-medium text-[var(--nfif-navy)] dark:bg-white/10 dark:text-[var(--nfif-navy-blekk)]">
                           Inne
                         </span>
                       )}
@@ -105,7 +106,20 @@ export default async function StevnerPage({
       </Card>
 
       <p className="mt-4 text-sm text-muted-foreground">
-        Viser {meets.length} stevner {search && `for søk "${search}"`}
+        {totalt !== null && totalt > meets.length ? (
+          <>
+            Viser de {meets.length.toLocaleString("nb-NO")} siste av{" "}
+            {totalt.toLocaleString("nb-NO")} stevner
+            {search && ` for søket «${search}»`}. Søk etter navn, sted eller bane
+            for å finne eldre stevner.
+          </>
+        ) : (
+          <>
+            Viser {meets.length.toLocaleString("nb-NO")}{" "}
+            {meets.length === 1 ? "stevne" : "stevner"}
+            {search && ` for søket «${search}»`}.
+          </>
+        )}
       </p>
     </div>
   )

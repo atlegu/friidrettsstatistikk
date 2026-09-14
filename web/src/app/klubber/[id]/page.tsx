@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatPerformance } from "@/lib/format-performance"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { SideTopp, MetaSkille, ToppKnapp } from "@/components/ui/side-topp"
 import { BarChart3 } from "lucide-react"
 
 async function getClub(id: string) {
@@ -29,6 +30,17 @@ async function getClubAthletes(clubId: string) {
     .limit(50)
 
   return data ?? []
+}
+
+/** Resultat- og utøvertall per klubb, fra den materialiserte visningen. */
+async function getClubBruk(clubId: string) {
+  const supabase = await createClient()
+  const { data } = await supabase
+    .from("klubb_bruk")
+    .select("resultater,utovere,fra_ar,til_ar")
+    .eq("id", clubId)
+    .single()
+  return data
 }
 
 async function getClubResults(clubId: string) {
@@ -66,10 +78,18 @@ export default async function ClubPage({ params }: { params: Promise<{ id: strin
     notFound()
   }
 
-  const [athletes, results] = await Promise.all([
+  const [athletes, results, bruk] = await Promise.all([
     getClubAthletes(id),
     getClubResults(id),
+    getClubBruk(id),
   ])
+
+  const aktiv =
+    bruk?.fra_ar && bruk?.til_ar
+      ? bruk.fra_ar === bruk.til_ar
+        ? String(bruk.fra_ar)
+        : `${bruk.fra_ar}–${bruk.til_ar}`
+      : null
 
   return (
     <div className="container py-6">
@@ -78,40 +98,67 @@ export default async function ClubPage({ params }: { params: Promise<{ id: strin
         { label: club.name }
       ]} />
 
-      {/* Header */}
-      <div className="mt-4 mb-6">
-        <h1 className="mb-2">{club.name}</h1>
-        <div className="flex flex-wrap gap-4 text-muted-foreground">
-          {club.short_name && club.short_name !== club.name && (
-            <span>{club.short_name}</span>
-          )}
-          {club.city && <span>{club.city}</span>}
-          {club.county && <span>{club.county}</span>}
-        </div>
-        {club.website && (
-          <a
-            href={club.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-block text-sm text-primary hover:underline"
-          >
-            {club.website}
-          </a>
-        )}
-        <Link
-          href={`/klubber/${id}/statistikk`}
-          className="mt-4 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          <BarChart3 className="h-4 w-4" />
-          Se klubbstatistikk
-        </Link>
-      </div>
+      <SideTopp
+        tittel={club.name}
+        meta={
+          <>
+            {club.short_name && club.short_name !== club.name && (
+              <span>{club.short_name}</span>
+            )}
+            {club.city && (
+              <>
+                {club.short_name && club.short_name !== club.name && <MetaSkille />}
+                <span className="font-bold text-white">{club.city}</span>
+              </>
+            )}
+            {club.county && (
+              <>
+                <MetaSkille />
+                <span>{club.county}</span>
+              </>
+            )}
+            {club.website && (
+              <>
+                <MetaSkille />
+                <a
+                  href={club.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-2 hover:underline"
+                >
+                  Nettsted
+                </a>
+              </>
+            )}
+          </>
+        }
+        noekkeltall={[
+          { merkelapp: "Resultater", verdi: bruk?.resultater ?? null },
+          { merkelapp: "Utøvere", verdi: bruk?.utovere ?? null },
+          { merkelapp: "Aktiv", verdi: aktiv },
+        ]}
+        handlinger={
+          <ToppKnapp href={`/klubber/${id}/statistikk`} fremhevet>
+            <BarChart3 className="h-4 w-4" />
+            Klubbstatistikk
+          </ToppKnapp>
+        }
+      />
+
+      <div className="mt-6" />
 
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Athletes */}
         <Card>
           <CardHeader>
-            <CardTitle>Utøvere ({athletes.length})</CardTitle>
+            <CardTitle className="flex items-baseline justify-between gap-3">
+              <span>Utøvere</span>
+              {bruk?.utovere && bruk.utovere > athletes.length && (
+                <span className="text-[12px] font-normal text-[var(--text-muted)]">
+                  viser {athletes.length} av {bruk.utovere.toLocaleString("no-NO")}
+                </span>
+              )}
+            </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             {athletes.length > 0 ? (

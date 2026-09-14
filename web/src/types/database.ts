@@ -140,6 +140,13 @@ export type Database = {
             foreignKeyName: "athletes_current_club_id_fkey"
             columns: ["current_club_id"]
             isOneToOne: false
+            referencedRelation: "klubb_bruk"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "athletes_current_club_id_fkey"
+            columns: ["current_club_id"]
+            isOneToOne: false
             referencedRelation: "klubber_med_statistikk"
             referencedColumns: ["id"]
           },
@@ -271,6 +278,13 @@ export type Database = {
             columns: ["club_id"]
             isOneToOne: false
             referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "club_memberships_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "klubb_bruk"
             referencedColumns: ["id"]
           },
           {
@@ -665,6 +679,13 @@ export type Database = {
             foreignKeyName: "meets_organizer_club_id_fkey"
             columns: ["organizer_club_id"]
             isOneToOne: false
+            referencedRelation: "klubb_bruk"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meets_organizer_club_id_fkey"
+            columns: ["organizer_club_id"]
+            isOneToOne: false
             referencedRelation: "klubber_med_statistikk"
             referencedColumns: ["id"]
           },
@@ -884,6 +905,13 @@ export type Database = {
             foreignKeyName: "results_club_id_fkey"
             columns: ["club_id"]
             isOneToOne: false
+            referencedRelation: "klubb_bruk"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
             referencedRelation: "klubber_med_statistikk"
             referencedColumns: ["id"]
           },
@@ -1068,6 +1096,20 @@ export type Database = {
       }
     }
     Views: {
+      klubb_bruk: {
+        Row: {
+          city: string | null
+          club_type: Database["public"]["Enums"]["club_type"] | null
+          fra_ar: number | null
+          id: string | null
+          name: string | null
+          resultater: number | null
+          short_name: string | null
+          til_ar: number | null
+          utovere: number | null
+        }
+        Relationships: []
+      }
       klubber_med_statistikk: {
         Row: {
           active: boolean | null
@@ -1419,6 +1461,25 @@ export type Database = {
       }
       check_is_admin: { Args: { check_user_id: string }; Returns: boolean }
       execute_readonly_query: { Args: { query_text: string }; Returns: Json }
+      felles_utovere_klubber: {
+        Args: { a: string; b: string }
+        Returns: {
+          antall: number
+        }[]
+      }
+      finn_feil_gjeldende_klubb: {
+        Args: { fra: string; til: string }
+        Returns: {
+          antall_i_sesongen: number
+          athlete_id: string
+          klubb_na: string
+          klubb_na_navn: string
+          klubb_riktig: string
+          klubb_riktig_navn: string
+          navn: string
+          siste_sesong: number
+        }[]
+      }
       format_performance: {
         Args: {
           perf_value: number
@@ -1477,6 +1538,14 @@ export type Database = {
           id: string
         }[]
       }
+      gjeldende_klubb_for_utover: {
+        Args: { p_athlete_id: string }
+        Returns: {
+          antall: number
+          klubb: string
+          sesong: number
+        }[]
+      }
       is_admin: { Args: never; Returns: boolean }
       is_premium: { Args: { check_user_id: string }; Returns: boolean }
       parse_performance: {
@@ -1486,6 +1555,7 @@ export type Database = {
         }
         Returns: number
       }
+      refresh_plattform_statistikk: { Args: never; Returns: undefined }
       set_meet_external_ids: { Args: { pairs: Json }; Returns: number }
     }
     Enums: {
