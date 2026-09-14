@@ -101,7 +101,11 @@ async function getClubAllTimeResults(
 
   // Exclude manual times for sprint and hurdles events
   if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
-    query = query.eq("is_manual_time", false)
+    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
+    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
+    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
+    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
+    query = query.not("is_manual_time", "is", true)
   }
 
   // Exclude wind-assisted results for affected events

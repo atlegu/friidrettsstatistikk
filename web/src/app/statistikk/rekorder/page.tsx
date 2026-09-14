@@ -184,7 +184,11 @@ async function getBestResult(eventId: string, eventCode: string, gender: string,
   const isSprintEvent = SPRINT_EVENT_CODES.includes(eventCode)
   const isHurdleEvent = HURDLE_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
   if (isSprintEvent || isHurdleEvent) {
-    query = query.eq("is_manual_time", false)
+    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
+    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
+    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
+    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
+    query = query.not("is_manual_time", "is", true)
   }
 
   // Check if wind-assisted results should be excluded (only for outdoor)
