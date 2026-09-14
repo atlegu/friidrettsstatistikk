@@ -192,7 +192,7 @@ export default async function Home() {
               Norsk friidrettsstatistikk
             </h1>
             <p className="mx-auto mt-2 max-w-lg text-[15px] text-[var(--nfif-navy-blekk)]">
-              Resultater, rekorder og utøverprofiler — fra rekrutt til veteran.
+              Resultater, rekorder og utøverprofiler.
             </p>
             <div className="mt-6">
               <ForsideSok />
