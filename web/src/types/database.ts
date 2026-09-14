@@ -606,6 +606,21 @@ export type Database = {
         }
         Relationships: []
       }
+      klubb_ordformer: {
+        Row: {
+          form: string
+          kanonisk: string
+        }
+        Insert: {
+          form: string
+          kanonisk: string
+        }
+        Update: {
+          form?: string
+          kanonisk?: string
+        }
+        Relationships: []
+      }
       meets: {
         Row: {
           city: string
@@ -1105,6 +1120,7 @@ export type Database = {
           name: string | null
           resultater: number | null
           short_name: string | null
+          sokenokkel: string | null
           til_ar: number | null
           utovere: number | null
         }
@@ -1548,6 +1564,7 @@ export type Database = {
       }
       is_admin: { Args: never; Returns: boolean }
       is_premium: { Args: { check_user_id: string }; Returns: boolean }
+      klubb_sokenokkel: { Args: { p_navn: string }; Returns: string }
       parse_performance: {
         Args: {
           perf: string
@@ -1557,6 +1574,19 @@ export type Database = {
       }
       refresh_plattform_statistikk: { Args: never; Returns: undefined }
       set_meet_external_ids: { Args: { pairs: Json }; Returns: number }
+      sok_klubber: {
+        Args: { p_antall?: number; p_sok?: string; p_type?: string }
+        Returns: {
+          city: string
+          club_type: Database["public"]["Enums"]["club_type"]
+          id: string
+          name: string
+          resultater: number
+          short_name: string
+          totalt: number
+          utovere: number
+        }[]
+      }
     }
     Enums: {
       club_type: "athletics" | "company" | "school" | "foreign" | "other"

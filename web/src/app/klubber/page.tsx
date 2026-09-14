@@ -30,6 +30,7 @@ type Klubb = {
   club_type: keyof typeof TYPER | null
   resultater: number
   utovere: number
+  totalt: number
 }
 
 // Hvor mange kort lista viser. Det finnes 2 430 klubber med resultater, og
@@ -38,46 +39,38 @@ type Klubb = {
 // Nå vises de største først, og resten finner man med søket.
 const ANTALL = 120
 
-// Tallene hentes fra den materialiserte visningen klubb_bruk, ikke fra viewet
-// klubber_med_statistikk. Det viewet teller opp fra results ved hver
-// sidevisning og bruker 107 sekunder over 1,95 millioner rader; i PostgREST
-// rakk det aldri fram, og lista sto tom. klubb_bruk oppdateres av importen.
+// Både lista og søket går gjennom sok_klubber. Den leser fra den
+// materialiserte visningen klubb_bruk, ikke fra viewet
+// klubber_med_statistikk: det viewet teller opp fra results ved hver
+// sidevisning og bruker 107 sekunder over 1,95 millioner rader.
+//
+// Søket sammenlikner ikke navnene slik de står. Både det du skriver og
+// klubbnavnet føres først tilbake til en felles form, der «idrettslag» og
+// «IL» er samme ord. Derfor finner «Ås IL» klubben som heter «Ås
+// Idrettslag», og «SK Vidar» finner «Sportsklubben Vidar». Ordstillingen
+// spiller ingen rolle, for «Idrettslaget Skjalg» heter «Skjalg IL» til
+// daglig. Ordlista ligger i tabellen klubb_ordformer.
 async function hentKlubber(
   search?: string,
   type?: string
 ): Promise<{ klubber: Klubb[]; totalt: number | null }> {
   const supabase = await createClient()
 
-  let query = supabase
-    .from("klubb_bruk")
-    .select("id,name,short_name,city,club_type,resultater,utovere", {
-      count: "exact",
-    })
-    // Klubber uten et eneste resultat er importrester eller nedlagte lag.
-    // De hører ikke hjemme i en oversikt over hvem som konkurrerer.
-    .gt("resultater", 0)
+  const { data, error } = await supabase.rpc("sok_klubber", {
+    p_sok: search || undefined,
+    p_type: type && type in TYPER ? type : undefined,
+    p_antall: ANTALL,
+  })
 
-  if (type && type in TYPER) {
-    query = query.eq("club_type", type as keyof typeof TYPER)
-  }
-  if (search) {
-    query = query.or(
-      `name.ilike.%${search}%,short_name.ilike.%${search}%,city.ilike.%${search}%`
-    )
-  }
-
-  // Et søk gir få treff, og da er alfabetisk rekkefølge lettest å lese.
-  // Uten søk er lista en oversikt, og da er de mest aktive klubbene det
-  // folk leter etter.
-  query = search
-    ? query.order("name", { ascending: true })
-    : query.order("resultater", { ascending: false })
-
-  const { data, error, count } = await query.limit(ANTALL)
   if (error) {
     console.error("Klubblista kunne ikke hentes:", error.message)
+    return { klubber: [], totalt: null }
   }
-  return { klubber: (data as Klubb[]) ?? [], totalt: count }
+
+  const klubber = (data as Klubb[]) ?? []
+  // Alle radene bærer det samme totalet. Uten treff finnes ingen rad å
+  // lese det fra, og da er totalen null.
+  return { klubber, totalt: klubber[0]?.totalt ?? 0 }
 }
 
 export default async function KlubberPage({
@@ -104,7 +97,7 @@ export default async function KlubberPage({
         beskrivelse="Klubber med registrerte resultater"
         sokeVerdi={search}
         skjulteFelt={{ type }}
-        plassholder="Søk etter klubb, kortnavn eller sted …"
+        plassholder="Søk etter klubb, for eksempel «Ås IL» eller «SK Vidar» …"
         ekstra={
           <nav className="flex flex-wrap gap-2" aria-label="Filtrer på klubbtype">
             {filtre.map((f) => {
@@ -165,28 +158,41 @@ export default async function KlubberPage({
         })}
       </div>
 
-      {klubber.length === 0 && (
-        <p className="text-center text-muted-foreground">
-          {search ? `Ingen klubber funnet for «${search}»` : "Ingen klubber funnet"}
+      {klubber.length === 0 ? (
+        <div className="py-8 text-center">
+          <p className="text-muted-foreground">
+            {search ? `Ingen klubber funnet for «${search}»` : "Ingen klubber funnet"}
+          </p>
+          {search && (
+            <p className="mt-2 text-sm text-muted-foreground">
+              Søket forstår forkortelser, så «Ås IL» finner Ås Idrettslag. Prøv
+              færre ord, eller bare stedsnavnet.
+            </p>
+          )}
+        </div>
+      ) : (
+        <p className="mt-6 text-sm text-muted-foreground">
+          {totalt !== null && totalt > klubber.length ? (
+            <>
+              Viser {klubber.length.toLocaleString("nb-NO")} av{" "}
+              {totalt.toLocaleString("nb-NO")} klubber
+              {search
+                ? ` for søket «${search}»`
+                : ", de med flest resultater først"}
+              .{" "}
+              {search
+                ? "De mest treffende står først."
+                : "Søk etter navnet for å finne de øvrige. Forkortelser virker: «Ås IL» finner Ås Idrettslag."}
+            </>
+          ) : (
+            <>
+              Viser {klubber.length.toLocaleString("nb-NO")}{" "}
+              {klubber.length === 1 ? "klubb" : "klubber"} med registrerte
+              resultater{search && ` for søket «${search}»`}.
+            </>
+          )}
         </p>
       )}
-
-      <p className="mt-6 text-sm text-muted-foreground">
-        {totalt !== null && totalt > klubber.length ? (
-          <>
-            Viser {klubber.length.toLocaleString("nb-NO")} av{" "}
-            {totalt.toLocaleString("nb-NO")} klubber
-            {search ? ` for søket «${search}»` : ", de med flest resultater først"}
-            . Søk etter navn, kortnavn eller sted for å finne de øvrige.
-          </>
-        ) : (
-          <>
-            Viser {klubber.length.toLocaleString("nb-NO")}{" "}
-            {klubber.length === 1 ? "klubb" : "klubber"} med registrerte resultater
-            {search && ` for søket «${search}»`}.
-          </>
-        )}
-      </p>
     </div>
   )
 }
