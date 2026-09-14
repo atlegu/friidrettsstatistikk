@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatPerformance } from "@/lib/format-performance"
 import { getBirthYear } from "@/lib/date-utils"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { hentAlle } from "@/lib/hent-alle"
 
 const AGE_GROUPS = [
   { value: "Senior", label: "Senior" },
@@ -72,57 +73,68 @@ async function getClubAllTimeResults(
 
   const ascending = resultType === "time"
 
-  let query = supabase
-    .from("results_full")
-    .select("*")
-    .eq("club_id", clubId)
-    .eq("event_id", eventId)
-    .eq("gender", gender)
-    .eq("status", "OK")
-    .not("performance_value", "is", null)
-    .gt("performance_value", 0)
+  // Spoerringen bygges paa nytt for hver side; en Supabase-bygger kan bare
+  // ventes paa én gang.
+  const bygg = (fra: number, til: number) => {
+    let query = supabase
+      .from("results_full")
+      .select("*")
+      .eq("club_id", clubId)
+      .eq("event_id", eventId)
+      .eq("gender", gender)
+      .eq("status", "OK")
+      .not("performance_value", "is", null)
+      .gt("performance_value", 0)
 
-  // Handle composite age groups (Senior, U23, U20) and individual ages
-  if (ageGroup !== "all") {
-    const mappedGroups = AGE_GROUP_MAPPINGS[ageGroup]
-    if (mappedGroups) {
-      query = query.in("age_group", mappedGroups)
-    } else {
-      query = query.eq("age_group", ageGroup)
+    // Handle composite age groups (Senior, U23, U20) and individual ages
+    if (ageGroup !== "all") {
+      const mappedGroups = AGE_GROUP_MAPPINGS[ageGroup]
+      if (mappedGroups) {
+        query = query.in("age_group", mappedGroups)
+      } else {
+        query = query.eq("age_group", ageGroup)
+      }
     }
+
+    // Filter by indoor/outdoor venue
+    if (venue === "indoor") {
+      query = query.eq("meet_indoor", true)
+    } else if (venue === "outdoor") {
+      query = query.eq("meet_indoor", false)
+    }
+
+    // Exclude manual times for sprint and hurdles events
+    if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
+      // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
+      // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
+      // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
+      // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
+      query = query.not("is_manual_time", "is", true)
+    }
+
+    // Exclude wind-assisted results for affected events
+    if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
+      query = query.eq("is_wind_legal", true)
+    }
+
+    return query
+      .order("performance_value", { ascending })
+      .order("id", { ascending: true })
+      .range(fra, til)
   }
 
-  // Filter by indoor/outdoor venue
-  if (venue === "indoor") {
-    query = query.eq("meet_indoor", true)
-  } else if (venue === "outdoor") {
-    query = query.eq("meet_indoor", false)
-  }
-
-  // Exclude manual times for sprint and hurdles events
-  if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
-    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
-    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
-    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
-    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
-    query = query.not("is_manual_time", "is", true)
-  }
-
-  // Exclude wind-assisted results for affected events
-  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
-    query = query.eq("is_wind_legal", true)
-  }
-
-  const { data } = await query.order("performance_value", { ascending }).limit(50000)
-
-  if (!data) return []
+  // Alle resultatene, ikke de foerste tusen. Her sto det «.limit(50000)», men
+  // PostgREST leverer aldri mer enn 1 000 uansett hva man ber om - og sier
+  // ikke fra. Lista plukker deretter ut ett resultat per utoever, saa med
+  // tusen resultater ble det bare de utoeverne som hadde et resultat blant
+  // klubbens tusen beste: Tyrving 60 m kvinner viste 43 utoevere av 674.
+  const data = await hentAlle(bygg, `Klubb all-time ${eventName} ${gender}`)
 
   // Filter to best result per athlete
-  const bestByAthlete = new Map<string, typeof data[0]>()
+  const bestByAthlete = new Map<string, (typeof data)[0]>()
   for (const result of data) {
     if (!result.athlete_id) continue
-    const existing = bestByAthlete.get(result.athlete_id)
-    if (!existing) {
+    if (!bestByAthlete.has(result.athlete_id)) {
       bestByAthlete.set(result.athlete_id, result)
     }
   }
