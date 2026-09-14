@@ -25,10 +25,21 @@ oftere to reelle klubber med lignende navn.
    |---|---|
    | `ja` | Slå sammen. Den mindre posten forsvinner, resultatene flyttes til den større. |
    | `ja-motsatt` | Slå sammen, men behold den **mindre** posten. Brukes når den lille har riktig navn. |
+   | `navn` | Ikke slå sammen, bare rett navnet på den større posten. |
    | `nei` | La begge stå. |
    | *(tom)* | Ikke bestemt. Hoppes over. |
 
-4. Lagre som CSV, og kjør:
+4. **Vil du ha et helt annet navn** enn begge de to som står der, legg til en
+   kolonne `nytt_navn`. Klubben som overlever får det navnet.
+
+   | handling | nytt_navn |
+   |---|---|
+   | `ja` | IL Skjalg, Stavanger |
+   | `navn` | Kristiansands IF Friidrett |
+
+   Står `nytt_navn` tomt, beholder den overlevende klubben navnet sitt.
+
+5. Lagre som CSV, og kjør:
 
 ```bash
 cd scraper && source venv/bin/activate

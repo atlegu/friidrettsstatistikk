@@ -1,0 +1,29 @@
+[
+  {
+    "vinner_id": "26b2476b-1204-4494-ab1e-65a49f2ec3aa",
+    "vinner_navn": "Idrettslaget Skjalg",
+    "taper_id": "7347e910-cbe8-456a-8219-cb45a7eaac48",
+    "taper_navn": "IL Skjalg",
+    "res_taper": 572,
+    "felles_utovere": 107,
+    "nytt_navn": "IL Skjalg, Stavanger"
+  },
+  {
+    "vinner_id": "fb3f550a-ff2a-4801-b532-86edc625bf95",
+    "vinner_navn": "IL Norna-Salhus",
+    "taper_id": "8cc4621d-812b-40ad-914e-3b7aa20679af",
+    "taper_navn": "Norna-Salhus IL",
+    "res_taper": 34867,
+    "felles_utovere": 66,
+    "nytt_navn": null
+  },
+  {
+    "vinner_id": "cd45015b-dc96-4fa6-addb-d8a3fdbe1e4b",
+    "vinner_navn": "Kristiansands IF Friidrett",
+    "taper_id": null,
+    "taper_navn": null,
+    "res_taper": 0,
+    "felles_utovere": 61,
+    "nytt_navn": "Kristiansands IF Friidrett"
+  }
+]
