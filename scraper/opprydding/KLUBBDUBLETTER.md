@@ -15,6 +15,34 @@ oftere to reelle klubber med lignende navn.
 
 ---
 
+## Slik bekrefter du
+
+1. Åpne CSV-en i Excel eller Numbers.
+2. Legg til en kolonne helt til høyre med overskriften **`handling`**.
+3. Skriv i radene du tar stilling til:
+
+   | Verdi | Betyr |
+   |---|---|
+   | `ja` | Slå sammen. Den mindre posten forsvinner, resultatene flyttes til den større. |
+   | `ja-motsatt` | Slå sammen, men behold den **mindre** posten. Brukes når den lille har riktig navn. |
+   | `nei` | La begge stå. |
+   | *(tom)* | Ikke bestemt. Hoppes over. |
+
+4. Lagre som CSV, og kjør:
+
+```bash
+cd scraper && source venv/bin/activate
+python slaa_sammen_gjennomgatte.py opprydding/klubbdubletter_20260914_161324.csv
+```
+
+Det er en tørrkjøring: den viser hva som ville skjedd, uten å endre noe.
+Er listen riktig, kjør samme kommando med `--apply`.
+
+Du trenger ikke fylle ut alt på én gang. Rader uten `handling` røres ikke, og
+du kan kjøre så mange ganger du vil.
+
+---
+
 ## A · Trolig samme klubb
 
 Samme klubb under to skrivemåter, der forskjellen bare er organisasjonsleddet:
