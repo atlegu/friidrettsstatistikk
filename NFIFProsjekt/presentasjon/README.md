@@ -5,7 +5,7 @@
 
 | Fil | Innhold |
 |---|---|
-| `PRESENTASJON.pdf` | 13 lysbilder i 16:9. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
+| `PRESENTASJON.pdf` | 14 lysbilder i 16:9. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
 | `MANUS.md` | Tidsplan minutt for minutt, hvem som er i rommet, hva som skal sies |
 | `DEMO.md` | Klikkmanus for de sju demominuttene |
 | `SPORSMAL.md` | Forberedte svar, også på de vanskelige |
@@ -40,5 +40,5 @@ om ham i `MANUS.md` og de forberedte svarene i `SPORSMAL.md`.
 ./lag_lysbilder.py
 ```
 
-Tallene i lysbilde 3 og 6 er hentet fra basen 14.09.2026. Sjekk dem på nytt
+Tallene i lysbilde 3 og 7 er hentet fra basen 14.09.2026. Sjekk dem på nytt
 rett før møtet hvis importen har kjørt i mellomtiden.
