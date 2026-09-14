@@ -52,7 +52,9 @@ function Noekkeltall({ merkelapp, verdi }: { merkelapp: string; verdi: string | 
       <div className="text-[10.5px] font-bold uppercase tracking-[0.07em] text-[var(--nfif-navy-blekk-svak)]">
         {merkelapp}
       </div>
-      <div className="text-xl font-bold tabular-nums text-white sm:text-2xl">{verdi}</div>
+      <div className="text-xl font-bold tabular-nums text-white sm:text-2xl">
+        {typeof verdi === "number" ? verdi.toLocaleString("nb-NO") : verdi}
+      </div>
     </div>
   )
 }

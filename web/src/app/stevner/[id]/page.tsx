@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { SideTopp, MetaSkille, ToppMerke } from "@/components/ui/side-topp"
 import { Resultattabell } from "@/components/stevne/Resultattabell"
+import { hentAlle } from "@/lib/hent-alle"
 import type { Database } from "@/types/database"
 
 /** Stevnenivaaene ligger som engelske enum-verdier i basen. */
@@ -39,9 +40,6 @@ async function getMeet(id: string) {
  * Her hentes sidene etter hverandre til stevnet er tomt. Et stevne på
  * 3 299 blir fire spørringer.
  */
-const SIDE = 1000
-const TAK = 10
-
 type Stevneresultat = Pick<
   Database["public"]["Views"]["results_full"]["Row"],
   | "id"
@@ -59,30 +57,20 @@ type Stevneresultat = Pick<
 async function getMeetResults(meetId: string): Promise<Stevneresultat[]> {
   const supabase = await createClient()
 
-  const alle: Stevneresultat[] = []
-  for (let side = 0; side < TAK; side++) {
-    const { data, error } = await supabase
-      .from("results_full")
-      // Bare feltene tabellen under bruker. Med «*» ble hver rad mange
-      // ganger stoerre, og sidene her er lange.
-      .select("id,place,athlete_id,athlete_name,club_name,performance,result_type,wind,is_pb,event_name")
-      .eq("meet_id", meetId)
-      .order("event_name", { ascending: true })
-      .order("performance_value", { ascending: true })
-      .order("id", { ascending: true })
-      .range(side * SIDE, side * SIDE + SIDE - 1)
-
-    if (error) {
-      console.error("Kunne ikke hente stevneresultater:", error.message)
-      break
-    }
-    if (!data?.length) break
-
-    alle.push(...data)
-    if (data.length < SIDE) break
-  }
-
-  return alle
+  return hentAlle(
+    (fra, til) =>
+      supabase
+        .from("results_full")
+        // Bare feltene tabellen under bruker. Med «*» ble hver rad mange
+        // ganger stoerre, og sidene her er lange.
+        .select("id,place,athlete_id,athlete_name,club_name,performance,result_type,wind,is_pb,event_name")
+        .eq("meet_id", meetId)
+        .order("event_name", { ascending: true })
+        .order("performance_value", { ascending: true })
+        .order("id", { ascending: true })
+        .range(fra, til),
+    "Stevneresultater"
+  )
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {

@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
+import { hentAlle } from "@/lib/hent-alle"
 
 export const dynamic = 'force-dynamic'
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
@@ -49,12 +50,21 @@ async function getAthlete(id: string) {
 async function getAthleteStats(athleteId: string): Promise<AthleteStats> {
   const supabase = await createClient()
 
-  const { data: statsData } = await supabase
-    .from("results_full")
-    .select("id, meet_id, event_id, season_year, is_national_record")
-    .eq("athlete_id", athleteId)
+  // Nøkkeltallene telles opp fra radene, så de blir bare riktige når alle
+  // radene er med. Uten sidehenting sto de 37 utøverne med over tusen
+  // resultater oppført med nøyaktig 1000.
+  const statsData = await hentAlle(
+    (fra, til) =>
+      supabase
+        .from("results_full")
+        .select("id, meet_id, event_id, season_year, is_national_record")
+        .eq("athlete_id", athleteId)
+        .order("id", { ascending: true })
+        .range(fra, til),
+    "Utøvernøkkeltall"
+  )
 
-  if (!statsData || statsData.length === 0) {
+  if (statsData.length === 0) {
     return {
       totalResults: 0,
       totalMeets: 0,
@@ -112,17 +122,26 @@ async function getPersonalBestsDetailed(athleteId: string) {
   return data ?? []
 }
 
+// De 37 utøverne med mer enn tusen resultater fikk bare de tusen første, og
+// «Resultater» i toppen viste 1000 i stedet for det virkelige tallet. Mest
+// for Gjert Høie Sjursen, som har 2 070.
 async function getAthleteResults(athleteId: string) {
   const supabase = await createClient()
 
-  const { data } = await supabase
-    .from("results_full")
-    .select("*")
-    .eq("athlete_id", athleteId)
-    .eq("status", "OK")
-    .order("date", { ascending: false })
-
-  return data ?? []
+  return hentAlle(
+    (fra, til) =>
+      supabase
+        .from("results_full")
+        .select(
+          "id,date,performance,performance_value,wind,place,round,is_pb,is_sb,is_national_record,event_id,event_name,event_code,result_type,meet_id,meet_name,meet_indoor,season_year"
+        )
+        .eq("athlete_id", athleteId)
+        .eq("status", "OK")
+        .order("date", { ascending: false })
+        .order("id", { ascending: true })
+        .range(fra, til),
+    "Utøverresultater"
+  )
 }
 
 async function getAthleteSeasons(athleteId: string): Promise<number[]> {
