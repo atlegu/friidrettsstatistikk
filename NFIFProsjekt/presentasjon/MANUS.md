@@ -29,7 +29,7 @@ mer, og det er ikke det de skal sitte igjen med.
 |---|---|---|
 | 1 | Hvordan kommer siden til å se ut? | Demo, 6, 7 |
 | 2 | Kan vi stole på at alle resultater kommer inn framover? | 8, 9 |
-| 3 | Hva kan statistikken brukes til? | 7, 10 |
+| 3 | Hva kan statistikken brukes til? | 7, 10, 11 |
 
 ---
 
@@ -46,11 +46,10 @@ mer, og det er ikke det de skal sitte igjen med.
 | 11:00 | Presentasjon er en kapasitet | 7 |
 | 12:00 | Trygghet for at alt kommer inn | 8 |
 | 13:30 | Å finne og rette | 9 |
-| 14:45 | Hva statistikken kan brukes til | 10 |
-| 16:00 | Veien til nyttår | 11 |
-| 16:45 | Integrasjoner og videre | 12 |
-| 17:20 | Det vi trenger | 13 |
-| 17:45 | Oppsummering | 14 |
+| 14:45 | **Aktivitet og deltakelse · §12** | 10 |
+| 16:00 | Hva statistikken ellers kan brukes til | 11 |
+| 16:45 | Veien til nyttår · integrasjoner · behov | 12–14 |
+| 17:45 | Oppsummering | 15 |
 
 ---
 
@@ -177,10 +176,33 @@ SRU-eksempelet er konkret og gjenkjennelig for alle i rommet.
 > Vi lover ikke en feilfri base. Vi lover at feilene er kjente, tellbare og
 > synkende, og at det finnes verktøy for å rette dem.
 
-### Hva statistikken kan brukes til · 75 sekunder
+### Aktivitet og deltakelse · 75 sekunder
 
-Spørsmål 3. Mesterskap og media, klubb og krets, forbundets egne beslutninger,
-forskning.
+**Ikke hopp over dette.** §12 er det eneste stedet i kravspekken der de skriver
+«particularly important», og §2 setter forbundets egen innsikt som ett av to
+likestilte formål. Det er lett å behandle som et tillegg til resultatlistene.
+Det er det ikke.
+
+> Dette er §12, og tallene er hentet fra basen i dag. Stevner, starter, unike
+> deltakere, fordelt på alder. Ikke noe vi lover til 2027.
+
+Så poenget som viser domeneforståelse, og som er verdt å ta rolig:
+
+> §12 ber også om aktivitet per klubb. Teller man klubber med registrerte
+> resultater, faller tallet fra 573 i 2024 til 460 i 2025. Tjue prosent.
+>
+> Men det er ikke klubber som legger ned. 193 enheter forsvant, og 183 av dem
+> hadde under tjue resultater. Det er skoler og små lag innom ett stevne.
+>
+> Et dashbord som rapporterer det som klubbdød, gir dere feilinformasjon. Det
+> er forskjellen på å telle og å forstå.
+
+Dette er det beste konkrete beviset i hele presentasjonen for påstanden på
+lysbilde 4.
+
+### Hva statistikken ellers kan brukes til · 60 sekunder
+
+Mesterskap og media, klubb og krets, forbundets egne beslutninger, forskning.
 
 Stopp på simuleringen:
 

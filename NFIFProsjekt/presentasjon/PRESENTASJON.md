@@ -35,6 +35,10 @@ resultater i drift, normalisert og søkbare
 
 **Migreringen er gjennomført.** Vi skal ferdigstille, ikke bygge fra bunnen.
 
+§2 setter to formål: tilgang for utøvere, klubber, trenere, media og publikum,
+**og** innsikt for forbundet i aktivitet, deltakelse og utvikling.
+Vi svarer på begge.
+
 ---
 
 # Hva som egentlig skiller
@@ -142,7 +146,32 @@ synkende, og at det finnes verktøy for å rette dem.
 
 ---
 
-# Hva statistikken kan brukes til
+# Aktivitet og deltakelse · §12
+
+Kravspekken kaller dette «particularly important» for rekruttering og
+medlemsutvikling. Tallene under er hentet fra basen i dag, ikke lovet til 2027.
+
+| År | Stevner | Starter | Unike deltakere | 13–19 år |
+|---|---:|---:|---:|---:|
+| 2019 | 2 380 | 152 677 | 11 134 | 4 400 |
+| 2021 | 2 005 | 95 079 | 8 338 | 3 234 |
+| 2023 | 2 067 | 128 627 | 8 914 | 3 367 |
+| 2025 | 1 979 | 117 458 | 8 636 | 3 151 |
+
+### Men tallene må behandles med skjønn
+
+§12 ber om aktivitet per klubb. Teller man klubber med registrerte resultater,
+faller tallet fra 573 i 2024 til 460 i 2025. Tjue prosent.
+
+**Det er ikke klubber som legger ned.** 193 enheter forsvant, og 183 av dem
+hadde under tjue resultater — skoler og små lag innom ett stevne.
+
+Et dashbord som rapporterer det som klubbdød, gir forbundet feilinformasjon.
+Det er forskjellen på å telle og å forstå.
+
+---
+
+# Hva statistikken ellers kan brukes til
 
 ### Mesterskap og media
 
