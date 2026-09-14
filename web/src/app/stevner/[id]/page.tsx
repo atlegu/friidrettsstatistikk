@@ -1,10 +1,10 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { formatPerformance } from "@/lib/format-performance"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { SideTopp, MetaSkille, ToppMerke } from "@/components/ui/side-topp"
+import { Resultattabell } from "@/components/stevne/Resultattabell"
+import type { Database } from "@/types/database"
 
 /** Stevnenivaaene ligger som engelske enum-verdier i basen. */
 const NIVAA: Record<string, string> = {
@@ -27,17 +27,62 @@ async function getMeet(id: string) {
   return data
 }
 
-async function getMeetResults(meetId: string) {
+/**
+ * Hent alle resultatene fra et stevne.
+ *
+ * PostgREST leverer aldri mer enn 1 000 rader per spørring. Siden hentet
+ * alt i én, og for de 171 stevnene som er større enn det, forsvant resten
+ * uten at noe sa fra: Tyrvinglekene 2016 har 3 299 resultater, og siden
+ * viste 1 000 av dem og oppga «Resultater 1 000» som om det var tallet.
+ * Nøkkeltallene ble regnet ut fra den avkortede lista.
+ *
+ * Her hentes sidene etter hverandre til stevnet er tomt. Et stevne på
+ * 3 299 blir fire spørringer.
+ */
+const SIDE = 1000
+const TAK = 10
+
+type Stevneresultat = Pick<
+  Database["public"]["Views"]["results_full"]["Row"],
+  | "id"
+  | "place"
+  | "athlete_id"
+  | "athlete_name"
+  | "club_name"
+  | "performance"
+  | "result_type"
+  | "wind"
+  | "is_pb"
+  | "event_name"
+>
+
+async function getMeetResults(meetId: string): Promise<Stevneresultat[]> {
   const supabase = await createClient()
 
-  const { data } = await supabase
-    .from("results_full")
-    .select("*")
-    .eq("meet_id", meetId)
-    .order("event_name", { ascending: true })
-    .order("performance_value", { ascending: true })
+  const alle: Stevneresultat[] = []
+  for (let side = 0; side < TAK; side++) {
+    const { data, error } = await supabase
+      .from("results_full")
+      // Bare feltene tabellen under bruker. Med «*» ble hver rad mange
+      // ganger stoerre, og sidene her er lange.
+      .select("id,place,athlete_id,athlete_name,club_name,performance,result_type,wind,is_pb,event_name")
+      .eq("meet_id", meetId)
+      .order("event_name", { ascending: true })
+      .order("performance_value", { ascending: true })
+      .order("id", { ascending: true })
+      .range(side * SIDE, side * SIDE + SIDE - 1)
 
-  return data ?? []
+    if (error) {
+      console.error("Kunne ikke hente stevneresultater:", error.message)
+      break
+    }
+    if (!data?.length) break
+
+    alle.push(...data)
+    if (data.length < SIDE) break
+  }
+
+  return alle
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -148,51 +193,7 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
                 <CardTitle>{eventName}</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b bg-muted/50">
-                        <th className="px-4 py-2 text-left text-sm font-medium w-12">#</th>
-                        <th className="px-4 py-2 text-left text-sm font-medium">Utøver</th>
-                        <th className="hidden px-4 py-2 text-left text-sm font-medium md:table-cell">Klubb</th>
-                        <th className="px-4 py-2 text-left text-sm font-medium">Resultat</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {resultsByEvent[eventName].map((result, index) => (
-                        <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
-                          <td className="px-4 py-2 text-sm text-muted-foreground">
-                            {result.place ?? index + 1}
-                          </td>
-                          <td className="px-4 py-2">
-                            <Link
-                              href={`/utover/${result.athlete_id}`}
-                              className="font-medium text-primary hover:underline"
-                            >
-                              {result.athlete_name}
-                            </Link>
-                          </td>
-                          <td className="hidden px-4 py-2 text-sm md:table-cell">
-                            {result.club_name ?? "-"}
-                          </td>
-                          <td className="px-4 py-2">
-                            <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
-                            {result.wind !== null && (
-                              <span className="ml-1 text-xs text-muted-foreground">
-                                ({result.wind > 0 ? "+" : ""}{result.wind})
-                              </span>
-                            )}
-                            {result.is_pb && (
-                              <span className="ml-2 rounded bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-800">
-                                PB
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                <Resultattabell rader={resultsByEvent[eventName]} />
               </CardContent>
             </Card>
           ))}
