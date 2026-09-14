@@ -116,7 +116,7 @@ export function Header() {
 
         {/* Logo */}
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">friidrettresultater</span>
+          <span className="text-xl font-bold text-primary">friidrettsresultater</span>
           <span className="text-xl font-light">.no</span>
         </Link>
 

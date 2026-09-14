@@ -11,6 +11,11 @@ import {
   getEventDisplayName,
 } from "@/lib/event-config"
 
+// Forsiden hentet tallene ved bygging og ble aldri oppdatert. Resultattelleren
+// sto på 0 i produksjon fordi én telling feilet under en bygging, og siden ble
+// frosset slik. Med ISR hentes tallene på nytt jevnlig.
+export const revalidate = 900
+
 async function getStats() {
   const supabase = await createClient()
 
@@ -21,12 +26,19 @@ async function getStats() {
     supabase.from("meets").select("id", { count: "exact", head: true }),
   ])
 
+  // En telling som feiler gir null. Tidligere ble den gjort om til 0, som ser
+  // ut som et gyldig tall — verre enn å utelate det. Null beholdes og vises
+  // som en strek.
   return {
-    athletes: athletesResult.count ?? 0,
-    clubs: clubsResult.count ?? 0,
-    results: resultsResult.count ?? 0,
-    meets: meetsResult.count ?? 0,
+    athletes: athletesResult.count,
+    clubs: clubsResult.count,
+    results: resultsResult.count,
+    meets: meetsResult.count,
   }
+}
+
+function formatAntall(n: number | null) {
+  return n === null ? "–" : n.toLocaleString("no-NO")
 }
 
 async function getSeasonLeaders() {
@@ -102,7 +114,7 @@ export default async function Home() {
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.athletes.toLocaleString("no-NO")}</div>
+            <div className="text-2xl font-bold">{formatAntall(stats.athletes)}</div>
             <Link href="/utover" className="text-xs text-muted-foreground hover:text-primary">
               Se alle utøvere
             </Link>
@@ -115,7 +127,7 @@ export default async function Home() {
             <Building2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.clubs.toLocaleString("no-NO")}</div>
+            <div className="text-2xl font-bold">{formatAntall(stats.clubs)}</div>
             <Link href="/klubber" className="text-xs text-muted-foreground hover:text-primary">
               Se alle klubber
             </Link>
@@ -128,8 +140,8 @@ export default async function Home() {
             <Trophy className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.results.toLocaleString("no-NO")}</div>
-            <Link href="/statistikk/2025" className="text-xs text-muted-foreground hover:text-primary">
+            <div className="text-2xl font-bold">{formatAntall(stats.results)}</div>
+            <Link href={`/statistikk/${seasonLeaders.year}`} className="text-xs text-muted-foreground hover:text-primary">
               Se årslister
             </Link>
           </CardContent>
@@ -141,7 +153,7 @@ export default async function Home() {
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.meets.toLocaleString("no-NO")}</div>
+            <div className="text-2xl font-bold">{formatAntall(stats.meets)}</div>
             <Link href="/stevner" className="text-xs text-muted-foreground hover:text-primary">
               Se stevnekalender
             </Link>
@@ -153,11 +165,11 @@ export default async function Home() {
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Utforsk statistikken</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Link href="/statistikk/2025">
+          <Link href={`/statistikk/${seasonLeaders.year}`}>
             <Card className="cursor-pointer transition-colors hover:bg-muted/50">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  Årslister 2025
+                  Årslister {seasonLeaders.year}
                   <ArrowRight className="h-4 w-4" />
                 </CardTitle>
               </CardHeader>
