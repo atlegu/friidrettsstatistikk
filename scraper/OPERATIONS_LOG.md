@@ -677,3 +677,28 @@ berørte utøvere og utleder klubben til slutt via
 
 **Merk.** De hyppigste treffene er dubletter av samme klubb («Idrettslaget
 Skjalg» → «IL Skjalg», 48 stk). Det er klubbsammenslåing, en annen oppgave.
+
+## 2026-09-14 — Gjennomgangsliste for klubbdubletter
+
+`finn_klubbdubletter.py` lager underlag for opprydding i klubbregisteret. Den
+foreslår ingenting og endrer ingenting.
+
+Navn normaliseres ved å fjerne organisasjonsledd, og klubber med samme kjerne
+listes som kandidater. Avgjørende signal er **felles utøvere** — antall utøvere
+med resultater for begge postene — ikke navnelikheten.
+
+| Gruppe | Par | Avgjørelse |
+|---|---:|---|
+| A Trolig samme klubb | 36 | Slå sammen |
+| B Friidrettsgruppa som egen enhet | 52 | Domenevalg, avklares med NFIF |
+| C Svakt grunnlag | 123 | La ligge |
+
+Gruppe B er den interessante: «Kristiansands IF Friidrett» mot «Kristiansands
+IF» med 61 felles utøvere. Det er ikke en skrivefeil, men spørsmålet om
+friidrettsgruppa i et fleridrettslag skal være egen enhet. Påvirker
+klubbstatistikk, klubbrekorder og §10.
+
+Resultat: `scraper/opprydding/KLUBBDUBLETTER.md` og tilhørende CSV.
+
+Underveis ble `klubb_bruk` gjort om til materialisert visning; som vanlig
+visning aggregerte den over hele `results` ved hvert kall og tidsavbrøt.
