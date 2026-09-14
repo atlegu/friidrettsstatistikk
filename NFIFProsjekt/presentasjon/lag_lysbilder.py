@@ -66,6 +66,14 @@ ul, ol {{ margin: 0 0 3mm; padding-left: 7mm; }}
 li {{ margin-bottom: 1.6mm; }}
 
 hr {{ display: none; }}
+
+/* Skisser: bildet skal fylle bredden og være lesbart gjennom Teams */
+.lysbilde figure {{ margin: 0 0 4mm; }}
+.lysbilde figcaption {{ display: none; }}
+.lysbilde img {{
+  display: block; width: 100%; border: 1pt solid #d8dee7; border-radius: 2mm;
+}}
+.lysbilde figure + p {{ font-size: 12pt; color: #3a4452; margin: 0; }}
 code {{ font-family: Menlo, monospace; font-size: 12pt; background: #eef1f5;
         padding: 0.4mm 1.4mm; border-radius: 1mm; color: #294066; }}
 

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8">
+<title>Designskisse · aktivitetsdashbord</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="felles.css">
+<style>
+.sidetopp {
+  background: var(--marine); color: #fff;
+  padding: 22px 0 24px; margin-bottom: 0;
+}
+.sidetopp .side { padding-top: 0; padding-bottom: 0; }
+.sidetopp h1 { font-size: 27px; font-weight: 900; }
+.sidetopp p { color: #b7c5dd; margin: 6px 0 0; font-size: 14.5px; }
+
+/* Filtre i én rad over grafene */
+.filtre {
+  display: flex; gap: 9px; flex-wrap: wrap; align-items: center;
+  padding: 14px 0 20px;
+}
+.filter {
+  background: #fff; border: 1px solid var(--linje); border-radius: 8px;
+  padding: 7px 13px; font-size: 13.5px; display: flex; gap: 7px; align-items: center;
+}
+.filter b { font-weight: 700; }
+.filter .pil { color: var(--blekk-svak); font-size: 10px; }
+.filter.valgt { background: var(--marine); border-color: var(--marine); color: #fff; }
+
+.fliser { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 18px; }
+.flis { background: #fff; border: 1px solid var(--linje); border-radius: 12px; padding: 16px 18px; }
+.flis .navn { font-size: 12px; text-transform: uppercase; letter-spacing: .7px;
+  color: var(--blekk-svak); font-weight: 700; }
+.flis .verdi { font-size: 30px; font-weight: 900; letter-spacing: -1px;
+  font-variant-numeric: tabular-nums; margin: 5px 0 2px; }
+.flis .endring { font-size: 12.5px; font-weight: 700; }
+.ned { color: var(--rod); } .opp { color: var(--serie-3); } .flat { color: var(--blekk-svak); }
+
+.to { display: grid; grid-template-columns: 1.5fr 1fr; gap: 18px; align-items: start; }
+.tegnforklaring { display: flex; gap: 18px; font-size: 13px; margin: 0 0 6px; }
+.tegnforklaring span { display: flex; align-items: center; gap: 6px; color: var(--skifer); }
+.prikk { width: 10px; height: 10px; border-radius: 50%; }
+</style></head><body>
+
+<div class="topp">
+  <div class="logo"><div class="merke"></div><span>Norsk<br>Friidrett</span></div>
+  <nav>
+    <a href="#">Statistikk</a><a href="#">Stevner</a><a href="#">Mesterskap</a>
+    <a href="#">Utøvere</a><a href="#">Klubber</a><a href="#" class="aktiv">Aktivitet</a>
+  </nav>
+  <div class="hoyre"><button class="knapp-lys">Eksport</button><button class="knapp-lys">Logg inn</button></div>
+</div>
+
+<div class="sidetopp"><div class="side">
+  <h1>Aktivitet og deltakelse</h1>
+  <p>Deltakelse i norsk friidrett, fordelt på krets, alder, kjønn og øvelse. Kravspekkens §12.</p>
+</div></div>
+
+<div class="side">
+
+  <div class="filtre">
+    <div class="filter valgt"><b>2019–2025</b> <span class="pil">▾</span></div>
+    <div class="filter">Krets: <b>Hele landet</b> <span class="pil">▾</span></div>
+    <div class="filter">Kjønn: <b>Alle</b> <span class="pil">▾</span></div>
+    <div class="filter">Alder: <b>Alle</b> <span class="pil">▾</span></div>
+    <div class="filter">Øvelsesgruppe: <b>Alle</b> <span class="pil">▾</span></div>
+    <div class="filter" style="margin-left:auto">Vis som tabell</div>
+  </div>
+
+  <div class="fliser">
+    <div class="flis"><div class="navn">Stevner 2025</div><div class="verdi">1 979</div>
+      <div class="endring ned">−17 % mot 2019</div></div>
+    <div class="flis"><div class="navn">Starter 2025</div><div class="verdi">117 458</div>
+      <div class="endring ned">−23 % mot 2019</div></div>
+    <div class="flis"><div class="navn">Unike deltakere</div><div class="verdi">8 636</div>
+      <div class="endring ned">−22 % mot 2019</div></div>
+    <div class="flis"><div class="navn">Starter per deltaker</div><div class="verdi">13,6</div>
+      <div class="endring flat">uendret siden 2019</div></div>
+  </div>
+
+  <div class="to">
+    <div class="kort">
+      <h2>Unike deltakere per år</h2>
+      <div class="tegnforklaring">
+        <span><i class="prikk" style="background:var(--serie-1)"></i> Alle aldre</span>
+        <span><i class="prikk" style="background:var(--serie-2)"></i> 13–19 år</span>
+      </div>
+      <svg viewBox="0 0 700 250" width="100%" height="250" role="img"
+           aria-label="Unike deltakere per år 2019 til 2025, alle aldre og aldersgruppen 13 til 19 år">
+        <g stroke="#eceff3" stroke-width="1">
+          <line x1="78" y1="30"  x2="668" y2="30"/>
+          <line x1="78" y1="76"  x2="668" y2="76"/>
+          <line x1="78" y1="122" x2="668" y2="122"/>
+          <line x1="78" y1="168" x2="668" y2="168"/>
+          <line x1="78" y1="214" x2="668" y2="214"/>
+        </g>
+        <g font-size="11.5" fill="#8a939f" text-anchor="end" font-family="Lato, sans-serif">
+          <text x="68" y="34">12 000</text><text x="68" y="80">9 000</text>
+          <text x="68" y="126">6 000</text><text x="68" y="172">3 000</text><text x="68" y="218">0</text>
+        </g>
+
+        <path d="M78,43.3 L176.3,77.4 L274.7,86.2 L373,75.8 L471.3,77.3 L569.7,73.9 L668,81.6"
+              fill="none" stroke="var(--serie-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="var(--serie-1)">
+          <circle cx="78" cy="43.3" r="4.5"/><circle cx="176.3" cy="77.4" r="4.5"/>
+          <circle cx="274.7" cy="86.2" r="4.5"/><circle cx="373" cy="75.8" r="4.5"/>
+          <circle cx="471.3" cy="77.3" r="4.5"/><circle cx="569.7" cy="73.9" r="4.5"/>
+          <circle cx="668" cy="81.6" r="4.5"/>
+        </g>
+
+        <path d="M78,146.5 L176.3,159.5 L274.7,164.4 L373,161.7 L471.3,162.4 L569.7,168.1 L668,165.7"
+              fill="none" stroke="var(--serie-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="var(--serie-2)">
+          <circle cx="78" cy="146.5" r="4.5"/><circle cx="176.3" cy="159.5" r="4.5"/>
+          <circle cx="274.7" cy="164.4" r="4.5"/><circle cx="373" cy="161.7" r="4.5"/>
+          <circle cx="471.3" cy="162.4" r="4.5"/><circle cx="569.7" cy="168.1" r="4.5"/>
+          <circle cx="668" cy="165.7" r="4.5"/>
+        </g>
+
+        <g font-family="Lato, sans-serif" font-weight="900" font-size="12.5">
+          <text x="78" y="33"  fill="var(--serie-1)" text-anchor="start">11 134</text>
+          <text x="668" y="73" fill="var(--serie-1)" text-anchor="end">8 636</text>
+          <text x="78" y="137" fill="var(--serie-2)" text-anchor="start">4 400</text>
+          <text x="668" y="158" fill="var(--serie-2)" text-anchor="end">3 151</text>
+        </g>
+        <g font-size="11.5" fill="#8a939f" text-anchor="middle" font-family="Lato, sans-serif">
+          <text x="78" y="238">2019</text><text x="176.3" y="238">2020</text>
+          <text x="274.7" y="238">2021</text><text x="373" y="238">2022</text>
+          <text x="471.3" y="238">2023</text><text x="569.7" y="238">2024</text>
+          <text x="668" y="238">2025</text>
+        </g>
+      </svg>
+      <p class="fotnote">Nedgangen er konsentrert i de yngste årsklassene. Senior- og
+        mastersgruppene er stabile gjennom hele perioden.</p>
+    </div>
+
+    <div class="rutenett">
+      <div class="kort">
+        <h2>Aktive klubber</h2>
+        <table>
+          <thead><tr><th>År</th><th class="h">Alle</th><th class="h">Med 20+ resultater</th></tr></thead>
+          <tbody>
+            <tr><td class="tall">2023</td><td class="tall h">536</td><td class="tall h"><b>303</b></td></tr>
+            <tr><td class="tall">2024</td><td class="tall h">573</td><td class="tall h"><b>279</b></td></tr>
+            <tr><td class="tall">2025</td><td class="tall h" style="color:var(--rod)">460</td><td class="tall h"><b>272</b></td></tr>
+          </tbody>
+        </table>
+        <p class="fotnote"><b>Råtallet overdriver.</b> Fallet fra 573 til 460 er i hovedsak
+          skoler og små lag innom ett stevne: av de 193 som forsvant, hadde 183 under tjue
+          resultater. Klubber med reell aktivitet falt fra 279 til 272, ikke tjue prosent.</p>
+      </div>
+
+      <div class="kort">
+        <h2>Kjønnsfordeling 2025</h2>
+        <svg viewBox="0 0 300 46" width="100%" height="46" role="img"
+             aria-label="Kjønnsfordeling 2025: 5226 menn og 3400 kvinner">
+          <rect x="0" y="4" width="181" height="22" rx="4" fill="var(--serie-1)"/>
+          <rect x="185" y="4" width="115" height="22" rx="4" fill="var(--serie-3)"/>
+          <g font-family="Lato, sans-serif" font-size="11.5" font-weight="700" fill="#fff">
+            <text x="10" y="20">Menn 5 226</text><text x="195" y="20">Kvinner 3 400</text>
+          </g>
+          <g font-family="Lato, sans-serif" font-size="11" fill="#8a939f">
+            <text x="0" y="41">61 %</text><text x="300" y="41" text-anchor="end">39 %</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="kort">
+        <h2>Mest aktive kretser</h2>
+        <table><tbody>
+          <tr><td colspan="2" style="color:var(--blekk-svak);font-size:13px;padding:14px 10px">
+            Krever klubb-til-krets-tilordning fra NFIF. Kretsdimensjonen er den ene
+            opplysningen vi ikke kan utlede trygt fra dataene selv.</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="kort" style="margin-top:18px">
+    <h2>Deltakelse per aldersklasse · 2019 mot 2025</h2>
+    <svg viewBox="0 0 1100 170" width="100%" height="170" role="img"
+         aria-label="Unike deltakere per aldersgruppe, 2019 mot 2025">
+      <g stroke="#eceff3" stroke-width="1">
+        <line x1="120" y1="20" x2="1080" y2="20"/><line x1="120" y1="60" x2="1080" y2="60"/>
+        <line x1="120" y1="100" x2="1080" y2="100"/><line x1="120" y1="140" x2="1080" y2="140"/>
+      </g>
+      <!-- 0 -> y=140, 4500 -> y=20  =>  h = v/4500*120 -->
+      <g>
+        <rect x="180" y="22.7"  width="58" height="117.3" rx="4" fill="var(--serie-1)"/>
+        <rect x="242" y="56.0"  width="58" height="84.0"  rx="4" fill="var(--serie-2)"/>
+        <rect x="540" y="110.0" width="58" height="30.0"  rx="4" fill="var(--serie-1)"/>
+        <rect x="602" y="111.5" width="58" height="28.5"  rx="4" fill="var(--serie-2)"/>
+        <rect x="860" y="105.6" width="58" height="34.4"  rx="4" fill="var(--serie-1)"/>
+        <rect x="922" y="108.7" width="58" height="31.3"  rx="4" fill="var(--serie-2)"/>
+      </g>
+      <g font-family="Lato, sans-serif" font-weight="900" font-size="13" fill="#1b2434" text-anchor="middle">
+        <text x="209" y="16">4 400</text><text x="271" y="49">3 151</text>
+        <text x="569" y="103">1 124</text><text x="631" y="105">1 068</text>
+        <text x="889" y="99">1 290</text><text x="951" y="102">1 175</text>
+      </g>
+      <g font-family="Lato, sans-serif" font-size="13" fill="var(--skifer)" text-anchor="middle">
+        <text x="240" y="160">Ungdom 13–19</text>
+        <text x="600" y="160">Senior 20–34</text>
+        <text x="920" y="160">Masters 35+</text>
+      </g>
+      <g font-size="11.5" fill="#8a939f" text-anchor="end" font-family="Lato, sans-serif">
+        <text x="110" y="24">4 500</text><text x="110" y="64">3 000</text>
+        <text x="110" y="104">1 500</text><text x="110" y="144">0</text>
+      </g>
+      <g font-family="Lato, sans-serif" font-size="12.5" fill="var(--skifer)">
+        <rect x="940" y="10" width="11" height="11" rx="2.5" fill="var(--serie-1)"/><text x="957" y="20">2019</text>
+        <rect x="1000" y="10" width="11" height="11" rx="2.5" fill="var(--serie-2)"/><text x="1017" y="20">2025</text>
+      </g>
+    </svg>
+    <p class="fotnote">Ungdomsgruppa faller 28 prosent. Senior og masters er praktisk talt
+      uendret. Det er et rekrutteringsbilde, ikke en generell nedgang.</p>
+  </div>
+
+</div>
+
+<div class="skisse-merke">Designskisse · Athlete Mindset AS</div>
+</body></html>

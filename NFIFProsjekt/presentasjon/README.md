@@ -5,11 +5,12 @@
 
 | Fil | Innhold |
 |---|---|
-| `PRESENTASJON.pdf` | 14 lysbilder i 16:9. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
+| `PRESENTASJON.pdf` | 17 lysbilder i 16:9. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
 | `MANUS.md` | Tidsplan minutt for minutt, hvem som er i rommet, hva som skal sies |
 | `DEMO.md` | Klikkmanus for de sju demominuttene |
 | `SPORSMAL.md` | Forberedte svar, også på de vanskelige |
 | `reserve/` | Skjermbilder av demosidene, i tilfelle nettet svikter |
+| `skisser/` | Designskisser i Norsk Friidretts profil. HTML som kan vises live, og PNG som ligger i lysbilde 6 og 7. Bygg om med `lag_skisser.sh`. |
 
 ## Må gjøres før møtet
 

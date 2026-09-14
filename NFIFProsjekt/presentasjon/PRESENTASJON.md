@@ -70,6 +70,24 @@ friidrettsresultater.no
 
 ---
 
+# Designretning · utøverprofil
+
+![Designskisse av utøverprofil](skisser/1_utoverprofil.png)
+
+Foto av utøveren, utviklingskurve, status mot NM-krav og klubbhistorikk.
+Norsk Friidretts farger og typografi.
+
+---
+
+# Designretning · aktivitetsdashbord
+
+![Designskisse av aktivitetsdashbord](skisser/2_aktivitet.png)
+
+Filtre på år, krets, kjønn, alder og øvelsesgruppe. Tallene er ekte, hentet
+fra basen. Dette er §12 som skjermbilde.
+
+---
+
 # Slik presenterer vi tallene
 
 Samme base, seks ulike behov.
@@ -163,11 +181,12 @@ medlemsutvikling. Tallene under er hentet fra basen i dag, ikke lovet til 2027.
 §12 ber om aktivitet per klubb. Teller man klubber med registrerte resultater,
 faller tallet fra 573 i 2024 til 460 i 2025. Tjue prosent.
 
-**Det er ikke klubber som legger ned.** 193 enheter forsvant, og 183 av dem
-hadde under tjue resultater — skoler og små lag innom ett stevne.
+**Råtallet overdriver kraftig.** Av de 193 enhetene som forsvant, hadde 183
+under tjue resultater — skoler og små lag innom ett stevne. Teller man bare
+klubber med reell aktivitet, er fallet fra 279 til 272.
 
-Et dashbord som rapporterer det som klubbdød, gir forbundet feilinformasjon.
-Det er forskjellen på å telle og å forstå.
+Et dashbord som rapporterer tjue prosent som klubbdød, gir forbundet
+feilinformasjon. Det er forskjellen på å telle og å forstå.
 
 ---
 
