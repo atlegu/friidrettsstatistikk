@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { SokeFelt } from "@/components/ui/soke-felt"
 
 /**
  * Kompakt mørk topp for listesider, med søkefeltet i seg.
@@ -48,15 +49,15 @@ export function ListeTopp({
             <label htmlFor="listesok" className="sr-only">
               {plassholder}
             </label>
-            <input
+            <SokeFelt
               id="listesok"
-              type="search"
-              name={sokeNavn}
-              defaultValue={sokeVerdi}
-              placeholder={plassholder}
-              className="h-11 w-full rounded-lg border border-white/20 bg-white/10 px-4
-                         text-[14px] text-white placeholder:text-[var(--nfif-navy-blekk-svak)]
-                         outline-none transition-colors focus:border-white/40 focus:bg-white/15"
+              navn={sokeNavn}
+              standardVerdi={sokeVerdi}
+              plassholder={plassholder}
+              krysselasse="right-2.5 text-white"
+              klasse="h-11 w-full rounded-lg border border-white/20 bg-white/10 pl-4 pr-10
+                      text-[14px] text-white placeholder:text-[var(--nfif-navy-blekk-svak)]
+                      outline-none transition-colors focus:border-white/40 focus:bg-white/15"
             />
           </form>
         </div>

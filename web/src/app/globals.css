@@ -220,6 +220,24 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* ---- SEARCH FIELDS ----
+     Browsers draw their own clear control inside input[type=search]. It is
+     styled by the browser, not by us: in Safari it is a filled circle with a
+     cross that reads as an emoji, and on the dark navy fields it is close to
+     invisible. It is switched off here, and the SokeFelt component draws a
+     plain cross instead. */
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="search"]::-ms-clear {
+    display: none;
+  }
+
   /* ---- LINKS: Color only, underline on hover ---- */
   a {
     color: var(--accent-primary);

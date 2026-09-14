@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Search } from "lucide-react"
+import { SokeFelt } from "@/components/ui/soke-felt"
 
 /**
  * Søkefeltet på forsiden.
@@ -31,16 +32,16 @@ export function ForsideSok() {
           aria-hidden
           className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--nfif-navy-blekk-svak)]"
         />
-        <input
+        <SokeFelt
           id="forsidesok"
-          type="search"
-          value={sok}
-          onChange={(e) => setSok(e.target.value)}
-          placeholder="Søk etter utøver …"
-          className="h-14 w-full rounded-xl border border-white/20 bg-white/10 pl-12 pr-28
-                     text-[15px] text-white placeholder:text-[var(--nfif-navy-blekk-svak)]
-                     outline-none backdrop-blur-sm transition-colors
-                     focus:border-white/40 focus:bg-white/15"
+          navn="sok"
+          plassholder="Søk etter utøver …"
+          onEndret={setSok}
+          krysselasse="right-24 text-white"
+          klasse="h-14 w-full rounded-xl border border-white/20 bg-white/10 pl-12 pr-32
+                  text-[15px] text-white placeholder:text-[var(--nfif-navy-blekk-svak)]
+                  outline-none backdrop-blur-sm transition-colors
+                  focus:border-white/40 focus:bg-white/15"
         />
         <button
           type="submit"

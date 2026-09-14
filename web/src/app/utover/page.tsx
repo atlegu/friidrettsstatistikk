@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { SokeFelt } from "@/components/ui/soke-felt"
 
 export const metadata = {
   title: "Utøvere",
@@ -71,13 +71,20 @@ export default async function UtoverPage({
 
       {/* Search */}
       <form className="mb-8 flex gap-2 max-w-md" autoComplete="off">
-        <Input
-          type="search"
-          name="search"
-          placeholder="Søk etter utøver..."
-          defaultValue={search}
-          autoComplete="off"
-        />
+        <div className="flex-1">
+          <label htmlFor="utoversok" className="sr-only">
+            Søk etter utøver
+          </label>
+          <SokeFelt
+            id="utoversok"
+            standardVerdi={search}
+            plassholder="Søk etter utøver …"
+            klasse="h-9 w-full rounded-md border border-[var(--border-default)]
+                    bg-[var(--bg-card)] pl-3 pr-9 text-sm text-[var(--text-primary)]
+                    outline-none transition-colors placeholder:text-[var(--text-muted)]
+                    focus:border-[var(--accent-primary)]"
+          />
+        </div>
         <Button type="submit">Søk</Button>
       </form>
 
