@@ -309,6 +309,45 @@ def sjekk_nm(base: str, res: Resultat):
         res.lik(navn, 'rader i tabellen', antall_rader(html), fasit)
 
 
+def sjekk_klubb_alltime(base: str, res: Resultat):
+    """Klubbenes all-time-lister. Sto med «.limit(50000)», fikk 1 000, og
+    plukket deretter ett resultat per utøver: Tyrving 60 m kvinner viste 43
+    utøvere av 668.
+
+    Verste tilfelle er den største klubben, 60 m (løpes innendørs, mange
+    starter), alle aldre, alle baner. Sida deler lista opp i sider à 100, og
+    totalen leses av den siste sideknappen («601-668»).
+    """
+    klubb = (sb.table('klubb_bruk').select('id,name').gt('resultater', 0)
+               .order('resultater', desc=True).limit(1).execute().data[0])
+    ovelse = sb.table('events').select('id').eq('name', '60 meter') \
+               .limit(1).execute().data[0]['id']
+
+    for kjonn in ('F', 'M'):
+        filt = (f"club_id=eq.{klubb['id']}&event_id=eq.{ovelse}&gender=eq.{kjonn}"
+                f"&status=eq.OK&performance_value=gt.0"
+                f"&is_manual_time=not.is.true&is_wind_legal=is.true")
+        rader = alle_rader('results_full', 'id,athlete_id', filt)
+        fasit = len({r['athlete_id'] for r in rader})
+
+        url = (f"{base}/klubber/{klubb['id']}/statistikk/all-time"
+               f"?event={ovelse}&gender={kjonn}&age=all&venue=all")
+        res.sjekket += 1
+        navn = f"all-time «{klubb['name']}» 60 m {kjonn}"
+
+        # Siste sideknapp er «601-668»; står det bare én side, ingen knapper.
+        # Dev-serveren kan svare med et tomt skall midt i en omkompilering,
+        # så en side helt uten rader hentes én gang til før den telles.
+        for _ in (1, 2):
+            html = hent(url)
+            knapper = re.findall(r'>(\d+)-(\d+)<', html)
+            vist = max((int(b) for _, b in knapper), default=antall_rader(html))
+            if vist > 0 or fasit == 0:
+                break
+            time.sleep(5)
+        res.lik(navn, 'utøvere', vist, fasit)
+
+
 # ------------------------------------------------------------------- main
 
 SJEKKER = {
@@ -318,6 +357,7 @@ SJEKKER = {
     'lister': lambda base, n, res: sjekk_lister(base, res),
     'forsiden': lambda base, n, res: sjekk_forsiden(base, res),
     'nm': lambda base, n, res: sjekk_nm(base, res),
+    'alltime': lambda base, n, res: sjekk_klubb_alltime(base, res),
 }
 
 
