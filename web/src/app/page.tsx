@@ -11,29 +11,26 @@ import {
   getEventDisplayName,
 } from "@/lib/event-config"
 
-// Forsiden hentet tallene ved bygging og ble aldri oppdatert. Resultattelleren
-// sto på 0 i produksjon fordi én telling feilet under en bygging, og siden ble
-// frosset slik. Med ISR hentes tallene på nytt jevnlig.
 export const revalidate = 900
 
+// Tellerne leses fra en materialisert visning, ikke med count: "exact".
+// En exact count over results (1,95 mill. rader) tar 0,3 s alene, men 2,8 s
+// når siden fyrer av knapt 40 spørringer samtidig — og feilet i produksjon,
+// der resultattelleren sto tom. Visningen oppdateres av importen.
 async function getStats() {
   const supabase = await createClient()
 
-  const [athletesResult, clubsResult, resultsResult, meetsResult] = await Promise.all([
-    supabase.from("athletes").select("id", { count: "exact", head: true }),
-    supabase.from("clubs").select("id", { count: "exact", head: true }),
-    supabase.from("results").select("id", { count: "exact", head: true }),
-    supabase.from("meets").select("id", { count: "exact", head: true }),
-  ])
+  const { data } = await supabase
+    .from("plattform_statistikk")
+    .select("antall_utovere,antall_klubber,antall_resultater,antall_stevner")
+    .single()
 
-  // En telling som feiler gir null. Tidligere ble den gjort om til 0, som ser
-  // ut som et gyldig tall — verre enn å utelate det. Null beholdes og vises
-  // som en strek.
+  // Uten tall vises en strek. Et 0 ville sett ut som et gyldig svar.
   return {
-    athletes: athletesResult.count,
-    clubs: clubsResult.count,
-    results: resultsResult.count,
-    meets: meetsResult.count,
+    athletes: data?.antall_utovere ?? null,
+    clubs: data?.antall_klubber ?? null,
+    results: data?.antall_resultater ?? null,
+    meets: data?.antall_stevner ?? null,
   }
 }
 

@@ -1274,6 +1274,22 @@ def parse_args():
     return parser.parse_args()
 
 
+def oppdater_forsidetellere():
+    """Oppdater den materialiserte visningen forsiden leser tellerne fra.
+
+    Forsiden talte tidligere selv, med count=exact. Over 1,95 millioner rader
+    tar det 0,3 s alene, men 2,8 s når siden fyrer av knapt 40 spørringer
+    samtidig, og i produksjon feilet den. Tallene endrer seg bare her, så de
+    oppdateres her.
+    """
+    try:
+        supabase.rpc('refresh_plattform_statistikk').execute()
+        logger.info("  Forsidetellere oppdatert")
+    except Exception as e:
+        # Skal aldri velte en import. Forsiden viser en strek til neste kjøring.
+        logger.warning(f"  Kunne ikke oppdatere forsidetellere: {e}")
+
+
 def main():
     args = parse_args()
 
@@ -1401,6 +1417,7 @@ def main():
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
     logger.info(f"  Errors: {totals['errors']}")
+    oppdater_forsidetellere()
     logger.info("=" * 60)
 
 
