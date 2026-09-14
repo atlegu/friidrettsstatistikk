@@ -1059,20 +1059,54 @@ def create_athlete(name, birth_year, gender, club_name):
     return None
 
 
-_athlete_club_updated = set()  # Track already-updated athletes this run
+# Utøvere som er berørt av denne kjøringen. Gjeldende klubb utledes for dem
+# til slutt, i stedet for å settes underveis.
+_beroerte_utovere = set()
 
 
-def _update_athlete_club(athlete_id, club_id):
-    """Update athlete's current_club_id if changed. Only updates once per run."""
-    if athlete_id in _athlete_club_updated:
+def _merk_utover(athlete_id):
+    """Merk at utøveren er berørt, så gjeldende klubb kan utledes til slutt.
+
+    Tidligere satte importen current_club_id til klubben i det stevnet som
+    ble behandlet akkurat nå, uten å se på dato, og låste den for resten av
+    kjøringen. Når sesongene 2013-2018 ble kontrollert mot kilden, stemplet
+    det utøvere med klubber de forlot for år siden: Sondre Guttormsen sto på
+    Ski IL Friidrett, som han forlot i 2018.
+
+    Klubben kan ikke avgjøres av ett stevne. Den avgjøres av hvor utøveren
+    faktisk konkurrerer i sin siste sesong, og det vet vi først når kjøringen
+    er ferdig.
+    """
+    if athlete_id:
+        _beroerte_utovere.add(athlete_id)
+
+
+def utled_gjeldende_klubb():
+    """Sett gjeldende klubb for utøverne denne kjøringen har rørt.
+
+    Regelen er den samme som i rett_gjeldende_klubb.py: klubben utøveren har
+    flest resultater for i sin siste aktive sesong, med skoler og «ukjent»
+    utelatt som mål.
+    """
+    if not _beroerte_utovere:
         return
-    _athlete_club_updated.add(athlete_id)
+    endret = 0
     try:
-        supabase.table('athletes').update(
-            {'current_club_id': club_id}
-        ).eq('id', athlete_id).neq('current_club_id', club_id).execute()
-    except Exception:
-        pass  # Non-critical, don't fail the import
+        for aid in _beroerte_utovere:
+            rader = supabase.rpc('gjeldende_klubb_for_utover',
+                                 {'p_athlete_id': aid}).execute().data
+            if not rader:
+                continue
+            riktig = rader[0]['klubb']
+            if riktig:
+                res = supabase.table('athletes').update(
+                    {'current_club_id': riktig}
+                ).eq('id', aid).neq('current_club_id', riktig).execute()
+                endret += len(res.data or [])
+        logger.info(f"  Gjeldende klubb oppdatert for {endret} utøvere")
+    except Exception as e:
+        # Skal aldri velte en import.
+        logger.warning(f"  Kunne ikke utlede gjeldende klubb: {e}")
 
 
 # ============================================================
@@ -1145,9 +1179,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
 
         if athlete_id:
             stats['matched_existing_athlete'] += 1
-            # Update current_club_id to this meet's club (latest data)
-            if club_id:
-                _update_athlete_club(athlete_id, club_id)
+            _merk_utover(athlete_id)
         else:
             athlete_id = create_athlete(athlete_name, birth_year, gender, row.get('club'))
             if athlete_id:
@@ -1417,6 +1449,7 @@ def main():
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
     logger.info(f"  Errors: {totals['errors']}")
+    utled_gjeldende_klubb()
     oppdater_forsidetellere()
     logger.info("=" * 60)
 

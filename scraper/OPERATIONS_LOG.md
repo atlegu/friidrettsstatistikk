@@ -646,3 +646,34 @@ Kartleggingen viser at klassen er en blanding:
 - **Problemer:** Eventuelle feil eller uventede ting
 - **Loggfil:** `logs/script_name_YYYYMMDD.log` (hvis relevant)
 ```
+
+## 2026-09-14 — Gjeldende klubb rettet for 2 225 utøvere
+
+**Symptom.** Sondre Guttormsen sto på Ski IL Friidrett, som han forlot i 2018,
+mens broren Simen — som byttet til SK Vidar samtidig — sto riktig.
+
+**Årsak.** `_update_athlete_club()` i `update_results.py` satte
+`current_club_id` til klubben i det stevnet som ble behandlet akkurat da, uten
+datosjekk, og `_athlete_club_updated` låste den for resten av kjøringen. Da
+sesongene 2013–2018 ble kontrollert mot kilden, stemplet det utøvere med
+klubber de forlot for år siden. 3 602 utøvere var berørt.
+
+**Regel som ble forkastet.** «Klubben i nyeste resultat vinner» ble prøvd
+først. Den flyttet utøvere fra klubben til en skole hvis siste start var et
+skolestevne (`Austevoll IK Friidrett` → `Austevoll Ungdomsskule`), og til
+«ukjent» der siste resultat manglet klubbnavn.
+
+**Regel som ble brukt.** Klubben utøveren har flest resultater for i sin siste
+aktive sesong, med skoler og «ukjent» utelatt som mål. Et klubbskifte viser seg
+ved gjentatt deltakelse for den nye klubben, ikke ved én start.
+
+**Utført.** 2 225 rettet — de med minst to resultater for den nye klubben.
+1 377 holdt tilbake fordi de hviler på ett enkelt resultat; de ligger i
+`backups/rett_gjeldende_klubb_20260914_155653.json` under `holdt_tilbake`.
+
+**Roten er rettet.** Importen setter ikke lenger klubben underveis. Den merker
+berørte utøvere og utleder klubben til slutt via
+`gjeldende_klubb_for_utover()`, som bruker samme regel.
+
+**Merk.** De hyppigste treffene er dubletter av samme klubb («Idrettslaget
+Skjalg» → «IL Skjalg», 48 stk). Det er klubbsammenslåing, en annen oppgave.
