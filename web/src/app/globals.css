@@ -29,6 +29,19 @@
   --border-strong: #CBD5E1;
   --focus-ring: #93C5FD;
 
+  /* ---- NORSK FRIIDRETT (dark profile surfaces) ----
+     Colours read from friidrett.no 2026-09-14. Same value in light and dark
+     mode: the surface is dark either way, so these must not be inverted.
+     NB: keep comments in this block ASCII-only. A multi-line comment with
+     Norwegian letters made the parser drop every declaration that followed
+     it, while the generated utility classes still referenced them. */
+  --nfif-navy: #192E5D;
+  --nfif-navy-dyp: #12224A;
+  --nfif-navy-lys: #2B4A86;
+  --nfif-navy-blekk: #C3CFE4;
+  --nfif-navy-blekk-svak: #9DB0CF;
+  --nfif-rod: #DC2626;
+
   /* ---- PRIMARY ACCENT (links, active states) ---- */
   --accent-primary: #1D4ED8;
   --accent-primary-hover: #1E40AF;
