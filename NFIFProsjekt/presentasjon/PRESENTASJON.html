@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><title>Presentasjon</title>
+<style>
+@page { size: 338mm 190mm; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0; color: #16191d; font-size: 15pt; line-height: 1.4;
+}
+
+.lysbilde {
+  width: 338mm; height: 190mm; box-sizing: border-box;
+  padding: 16mm 18mm; break-after: page; position: relative;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  overflow: hidden;
+}
+.lysbilde:last-child { break-after: auto; }
+
+/* Tittelside: første lysbilde */
+.lysbilde.tittel { justify-content: center; background: #1b3a6b; color: #fff; }
+.lysbilde.tittel h1 { font-size: 34pt; color: #fff; border: none; margin: 0 0 6mm; padding: 0; }
+.lysbilde.tittel h2 { font-size: 17pt; color: #b9c9e2; font-weight: 400; margin: 0; border: none; }
+
+h1 {
+  font-size: 25pt; color: #1b3a6b; margin: 0 0 7mm;
+  padding-bottom: 3mm; border-bottom: 2pt solid #1b3a6b;
+  letter-spacing: -0.3pt;
+}
+h2 { font-size: 19pt; color: #1b3a6b; margin: 0 0 4mm; border: none; }
+h3 { font-size: 15pt; color: #2c3644; margin: 5mm 0 2mm; }
+
+p { margin: 0 0 3.5mm; }
+strong { color: #0d1117; }
+
+table { border-collapse: collapse; width: 100%; margin: 3mm 0 4mm; font-size: 13pt; }
+th {
+  background: #eef2f7; text-align: left; font-weight: 600;
+  padding: 2mm 3mm; border-bottom: 1pt solid #b9c4d2; color: #1b3a6b;
+}
+td { padding: 1.8mm 3mm; border-bottom: 0.5pt solid #dde3ea; vertical-align: top; }
+
+ul, ol { margin: 0 0 3mm; padding-left: 7mm; }
+li { margin-bottom: 1.6mm; }
+
+hr { display: none; }
+code { font-family: Menlo, monospace; font-size: 12pt; background: #eef1f5;
+        padding: 0.4mm 1.4mm; border-radius: 1mm; color: #294066; }
+
+/* Det store tallet på lysbilde 3 */
+.lysbilde h2 + p { font-size: 15pt; }
+.tall h2 { font-size: 54pt; color: #1b3a6b; letter-spacing: -1.5pt; margin: 2mm 0 1mm; }
+
+/* Sidetall */
+.nr { position: absolute; bottom: 8mm; right: 18mm; font-size: 10pt; color: #8a95a3; }
+.lysbilde.tittel .nr { display: none; }
+</style></head><body>
+<section class="lysbilde tittel"><h1 id="ny-statistikk--og-aktivitetsplattform">Ny statistikk- og
+aktivitetsplattform</h1>
+<h2 id="athlete-mindset-as-17.-september-2026">Athlete Mindset AS · 17.
+september 2026</h2></section>
+<section class="lysbilde"><h1 id="hvem-vi-er">Hvem vi er</h1>
+<p><strong>Athlete Mindset AS</strong> · org.nr. 937 878 818 · del av
+Fire S Invest AS</p>
+<p>Idrettsteknologi og idrettsdata · agentvirksomhet ·
+trenervirksomhet</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td><strong>Atle Guttormsen</strong></td>
+<td>PhD anvendt økonometri · WA-dommer · styreerfaring klubb, krets og
+forbund</td>
+</tr>
+<tr>
+<td><strong>Simen Guttormsen</strong></td>
+<td>PhD-stipendiat kvantitativ finans · Princeton, Duke · olympier</td>
+</tr>
+<tr>
+<td><strong>Sondre Guttormsen</strong></td>
+<td>Sport management, UT Austin · gründer Athlete Mindset Inc. ·
+olympier</td>
+</tr>
+</tbody>
+</table>
+<p>Vi driver <strong>friidrettsresultater.no</strong> i dag.</p><div class="nr">2 / 13</div></section>
+<section class="lysbilde tall"><h1 id="utgangspunktet">Utgangspunktet</h1>
+<h2 id="section">1 953 356</h2>
+<p>resultater i drift, normalisert og søkbare</p>
+<table>
+<tbody>
+<tr>
+<td>Fra 2013 og senere</td>
+<td style="text-align: right;">1 704 877</td>
+</tr>
+<tr>
+<td>Alle-tiders-materiale før 2013</td>
+<td style="text-align: right;">248 479</td>
+</tr>
+<tr>
+<td>Utøvere</td>
+<td style="text-align: right;">87 939</td>
+</tr>
+<tr>
+<td>Stevner, tilbake til 1922</td>
+<td style="text-align: right;">48 548</td>
+</tr>
+<tr>
+<td>Siste stevne inne</td>
+<td style="text-align: right;">2. september 2026</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Migreringen er ikke et estimat. Den er
+gjennomført.</strong></p><div class="nr">3 / 13</div></section>
+<section class="lysbilde"><h1 id="demo">Demo</h1>
+<p>friidrettsresultater.no</p>
+<ol type="1">
+<li>Forsiden</li>
+<li>En utøverprofil</li>
+<li>Årsliste med filtre</li>
+<li>NM-kvalifisering</li>
+<li>Administrasjon og datakvalitet</li>
+</ol><div class="nr">4 / 13</div></section>
+<section class="lysbilde"><h1 id="migrering-hva-som-er-gjort">Migrering: hva som er gjort</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td><strong>2013–2026</strong></td>
+<td>Fulldybde. Hvert stevne kontrollert mot kilden, stevne for
+stevne.</td>
+</tr>
+<tr>
+<td><strong>2011–2012</strong></td>
+<td>Kildens oppstartsperiode. Kontrolleres nå.</td>
+</tr>
+<tr>
+<td><strong>Før 2011</strong></td>
+<td>Finnes ikke som sesongdata hos kilden. Alle-tiders-lister er
+importert.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hva-kontrollen-avdekket">Hva kontrollen avdekket</h3>
+<p>Importen regnet et stevne som ferdig når det hadde mer enn ti
+resultater. Delvis importerte stevner ble derfor aldri hentet på
+nytt.</p>
+<p><strong>Over en halv million resultater manglet.</strong> Feilen er
+rettet i importlogikken, og kontrollen mot kilden kjøres nå
+rutinemessig.</p><div class="nr">5 / 13</div></section>
+<section class="lysbilde"><h1 id="opprydding-hva-vi-vet-mangler">Opprydding: hva vi vet
+mangler</h1>
+<table>
+<thead>
+<tr>
+<th>Sak</th>
+<th style="text-align: right;">Omfang</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Utøvere uten registrert kjønn</td>
+<td style="text-align: right;">2 268 av 87 939</td>
+</tr>
+<tr>
+<td>Resultater uten klubbtilknytning</td>
+<td style="text-align: right;">2 202</td>
+</tr>
+<tr>
+<td>Resultater uten beregnet prestasjonsverdi</td>
+<td style="text-align: right;">2 448</td>
+</tr>
+<tr>
+<td>Utøvere uten fødselsår</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr>
+<td>Navn med tegnfeil eller klubbnavn i navnestrengen</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr>
+<td>Dubletter av utøvere og klubber</td>
+<td style="text-align: right;">løpende</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Basen er ikke ferdig kvalitetssikret.</strong> Arbeidet har
+vært prioritert mot innsamling og fullstendighet først. Man kan ikke
+vaske data man ikke har.</p><div class="nr">6 / 13</div></section>
+<section class="lysbilde"><h1 id="opprydding-hvordan-vi-lukker-det">Opprydding: hvordan vi lukker
+det</h1>
+<h3 id="systemet-finner-feilene-ikke-menneskene">1. Systemet finner
+feilene, ikke menneskene</h3>
+<p>Resultat bedre enn norsk rekord · urimelig persforbedring · manglende
+vind i vindavhengig øvelse · presisjon som ikke stemmer med
+tidtakingsmetode · aldersklasse mot fødselsår · redskapsvekt mot klasse
+· samme utøver to steder samme dag</p>
+<p>Hver kontroll gir en oppgave med begrunnelse, ikke en stille
+avvisning.</p>
+<h3 id="sammenligning-mot-uavhengig-kilde">2. Sammenligning mot
+uavhengig kilde</h3>
+<p>Vi kjørte basen mot SRUs NM-regneark for 100 m kvinner. Regnearket
+hadde 101 navn, vi fant 97, <strong>89 var de samme.</strong></p>
+<p>Avvikene var navnevarianter, en navneendring, en utenlandsk utøver i
+norsk klubb. Det er arbeidslisten.</p><div class="nr">7 / 13</div></section>
+<section class="lysbilde"><h1 id="tidsplan-for-opprydding">Tidsplan for opprydding</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Når</th>
+<th>Hva</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Okt–des 2026</strong></td>
+<td>Kjønn, klubbtilknytning, fødselsår. Automatiske kontroller i
+drift.</td>
+</tr>
+<tr>
+<td><strong>Okt–des 2026</strong></td>
+<td>Dublettverktøy for utøvere og klubber, med sporing av hver
+sammenslåing.</td>
+</tr>
+<tr>
+<td><strong>Fra 2027</strong></td>
+<td>Kvartalsvis kontroll mot kilden og mot uavhengige lister.
+Datakvalitetsrapport til NFIF årlig.</td>
+</tr>
+</tbody>
+</table>
+<p>Vi lover ikke en feilfri base 01.01.2027. Vi lover at feilene er
+<strong>kjente, tellbare og synkende</strong>, og at det finnes verktøy
+for å rette dem.</p><div class="nr">8 / 13</div></section>
+<section class="lysbilde"><h1 id="veien-til-1.-januar-2027">Veien til 1. januar 2027</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Frist</th>
+<th>Leveranse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Okt</strong></td>
+<td><strong>Egen innsamling av resultatlister, uavhengig av dagens
+base</strong></td>
+</tr>
+<tr>
+<td>Nov</td>
+<td>Kvalitetsnivå A/B/C med regelmotor og filtrering</td>
+</tr>
+<tr>
+<td>Nov</td>
+<td>Generisk importrammeverk · eksport til Excel og CSV</td>
+</tr>
+<tr>
+<td>Des</td>
+<td>Flagging: bane TR14.1/TR43.1, World Rankings, blandede heat,
+utenlandske utøvere, WMA, ikke-ratifisert</td>
+</tr>
+<tr>
+<td>Des</td>
+<td>Dokumentert JSON-API · regions- og kretsstatistikk</td>
+</tr>
+<tr>
+<td>Des</td>
+<td>Masters og aldersklasserekorder · WCAG 2.1 AA · DPIA og
+databehandleravtale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Den viktigste milepælen er innsamlingen, ikke
+funksjonaliteten.</strong> Vi henter i dag fra den basen som skal
+erstattes. Egen innhenting må være i drift før overgangen, ikke ved den.
+Vi kjører begge kilder parallelt ut året.</p><div class="nr">9 / 13</div></section>
+<section class="lysbilde"><h1 id="integrasjoner">Integrasjoner</h1>
+<p>Prioritet etter §13: API først, strukturerte filer, så Excel og CSV.
+Manuell behandling kun som siste utvei.</p>
+<h3 id="vi-tar-imot-enden-av-dataflyten">Vi tar imot enden av
+dataflyten</h3>
+<p>NFIF arbeider allerede med Buypass om iSonen mot OpenTrack og FriRes,
+og mot EQ Timing for løp utenfor bane. Plattformen skal koble seg på det
+arbeidet, ikke definere det på nytt.</p>
+<h3 id="det-vi-ønsker-oss">Det vi ønsker oss</h3>
+<p>En avtalt måte å levere resultatlister fra stevnesystemene rett inn,
+med stevne, øvelse, klasse, utøver, klubb, resultat, vind og
+tidtakingsmetode.</p>
+<p>Vi stiller gjerne på et teknisk møte og blir enige om formatet.</p><div class="nr">10 / 13</div></section>
+<section class="lysbilde"><h1 id="etter-nyttår">Etter nyttår</h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Innhold</th>
+<th>Periode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Integrasjoner · automatisert import · rollestyring for forbund,
+krets, klubb og arrangør</td>
+<td>Q1–Q3 2027</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Løp utenfor bane</strong>: datamodell, import fra tidtakere,
+rankinglister, løpssider</td>
+<td>Q1–Q3 2027</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Aktivitetsmodul</strong>: unike deltakere, starter,
+fullførte, utvikling over tid, per klubb, krets, alder og kjønn</td>
+<td>Q2–Q4 2027</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Historisk utvidelse etter kartlegging</td>
+<td>2028</td>
+</tr>
+</tbody>
+</table>
+<p>Løp utenfor bane avgrenses til <strong>løp på den offisielle
+terminlisten</strong>.</p><div class="nr">11 / 13</div></section>
+<section class="lysbilde"><h1 id="det-vi-trenger-fra-nfif">Det vi trenger fra NFIF</h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>Til hva</th>
+<th>Når</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminlisten, løpende</td>
+<td>Avgjør godkjenning, og dermed kvalitetsnivå etter §6</td>
+<td>Snarest</td>
+</tr>
+<tr>
+<td>Lisensregisteret</td>
+<td>Lisenskriteriet i nivå A</td>
+<td>Snarest</td>
+</tr>
+<tr>
+<td>Klubb-til-krets-mapping</td>
+<td>Kretsstatistikk. Kan ikke utledes trygt fra klubbnavn.</td>
+<td>Snarest</td>
+</tr>
+<tr>
+<td>Kontaktpunkt mot arrangører og tidtakere</td>
+<td>Egen innsamling av resultatlister</td>
+<td>September</td>
+</tr>
+<tr>
+<td>Melding om underkjente stevner</td>
+<td>Oppdatering av kvalitetsnivå og §7-koder</td>
+<td>Fra oppstart</td>
+</tr>
+</tbody>
+</table><div class="nr">12 / 13</div></section>
+<section class="lysbilde"><h1 id="oppsummert">Oppsummert</h1>
+<h3 id="plattformen-finnes-med-norske-data-i">Plattformen finnes, med
+norske data i</h3>
+<p>Migreringen er gjennomført. Åtte av fjorten obligatoriske krav er i
+drift.</p>
+<h3 id="vi-er-åpne-om-det-som-ikke-er-ferdig">Vi er åpne om det som ikke
+er ferdig</h3>
+<p>Basen er ikke ferdig kvalitetssikret, og løp utenfor bane må bygges.
+Begge deler står i tilbudet, med plan og frister.</p>
+<h3 id="vi-er-miljøet-dette-gjelder">Vi er miljøet dette gjelder</h3>
+<p>Doktorgrad i anvendt økonometri og WA-dommerkompetanse i samme
+person. To olympiere med egne resultater i basen.</p>
+<p><strong>Takk. Spørsmål?</strong></p><div class="nr">13 / 13</div></section>
+</body></html>
