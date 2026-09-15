@@ -77,3 +77,46 @@ as $$
 $$;
 
 grant execute on function test_vindflagg_avvik() to service_role;
+
+-- 15.09.2026: dubletter som bare skiller seg paa vind, per oevelse (hele
+-- tabellen paa én gang roek paa gatewayens 120 s). Skal vaere tom.
+create or replace function test_innholdsdubletter(p_event_id uuid)
+returns table (
+  athlete_id uuid, event_id uuid, meet_id uuid, performance text, place integer,
+  antall bigint, ids uuid[], winds numeric[], created_ats timestamptz[], verifieds boolean[]
+)
+language sql
+stable
+security definer
+set statement_timeout = '110s'
+set search_path = public
+as $$
+  select athlete_id, event_id, meet_id, performance, place,
+         count(*), array_agg(id order by created_at), array_agg(wind order by created_at),
+         array_agg(created_at order by created_at), array_agg(verified order by created_at)
+  from results
+  where event_id = p_event_id
+  group by athlete_id, event_id, meet_id, performance, place
+  having count(*) > 1;
+$$;
+grant execute on function test_innholdsdubletter(uuid) to service_role;
+
+-- 15.09.2026: samme resultat under to utoever-id-er med samme navn (avdrift
+-- i utoevermatchingen). Per oevelse. Skal vaere tom.
+create or replace function test_utoveravdrift(p_event_id uuid)
+returns table (meet_id uuid, performance text, place integer, navn text, athlete_ids uuid[], result_ids uuid[])
+language sql
+stable
+security definer
+set statement_timeout = '110s'
+set search_path = public
+as $$
+  select r.meet_id, r.performance, r.place,
+         lower(regexp_replace(a.full_name, '\s+', ' ', 'g')) as navn,
+         array_agg(distinct r.athlete_id), array_agg(r.id)
+  from results r join athletes a on a.id = r.athlete_id
+  where r.event_id = p_event_id
+  group by r.meet_id, r.performance, r.place, 4
+  having count(distinct r.athlete_id) > 1;
+$$;
+grant execute on function test_utoveravdrift(uuid) to service_role;

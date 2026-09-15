@@ -1113,48 +1113,169 @@ def utled_gjeldende_klubb():
 # Import a single meet's results directly to DB
 # ============================================================
 
+def _norm_navn(navn: str) -> str:
+    return ' '.join((navn or '').lower().split())
+
+
 def _hent_eksisterende_rader(meet_id: str) -> Dict[tuple, List[Dict]]:
     """Radene som allerede ligger inne for stevnet, indeksert paa
-    (athlete_id, event_id, performance, place) - den unike noekkelen uten vind."""
+    (athlete_id, event_id, performance, place) - den unike noekkelen uten vind.
+
+    Utoeverens navn hentes med, saa avstemmingen kan kjenne igjen en rad selv
+    om match_athlete() peker paa en annen utoever-id enn sist. Det skjer naar
+    den lagrede utoeveren mangler foedselsaar eller kjoenn: noekkelen
+    (navn, aar, kjoenn) treffer ikke, og importen opprettet en NY utoever og
+    la resultatet inn en gang til. 126 slike tvillinger paa én kjoering
+    15.09.2026. Navneindeksen ligger under noekkelen '_navn'."""
     idx: Dict[tuple, List[Dict]] = defaultdict(list)
+    navn_idx: Dict[tuple, List[Dict]] = defaultdict(list)
     fra = 0
     while True:
         r = (supabase.table('results')
-               .select('id, athlete_id, event_id, performance, place, wind')
+               .select('id, athlete_id, event_id, performance, place, wind, verified, '
+                       'source_id, import_batch_id, athletes(full_name, first_name, last_name)')
                .eq('meet_id', meet_id).order('id').range(fra, fra + 999).execute())
         for rad in r.data or []:
+            a = rad.pop('athletes', None) or {}
+            rad['navn'] = _norm_navn(a.get('full_name') or f"{a.get('first_name','')} {a.get('last_name','')}")
             idx[(rad['athlete_id'], rad['event_id'], rad['performance'], rad['place'])].append(rad)
+            navn_idx[(rad['navn'], rad['event_id'], rad['performance'], rad['place'])].append(rad)
         if len(r.data or []) < 1000:
+            idx['_navn'] = navn_idx        # type: ignore[index]
             return idx
         fra += 1000
 
 
-def _oppdater_vind_hvis_rettet(result_data: Dict, eksisterende: Dict[tuple, List[Dict]],
-                               stats: Dict) -> bool:
-    """Kilden rettes i etterkant. Trym Blindheim, Gneistspelen 2026, 100 m:
-    importert 6. september uten vind, og kilden viser +0,1 i dag. Samme
-    parser, samme rad, samme kjoering som naboradene som fikk vind - saa
-    kilden maa ha vaert uten parentes den dagen, og fikk den senere.
+def _avstem_stevne(meet_name: str, kilde: List[Dict], eksisterende: Dict[tuple, List[Dict]],
+                   stats: Dict) -> List[Dict]:
+    """Avstem kildens rader mot radene som allerede ligger inne for stevnet.
 
-    En ny import ville ikke rettet raden: den unike indeksen
-    results_innhold_unik omfatter wind, saa (11.95, NULL) og (11.95, +0.1)
-    er to ulike rader, og vi hadde faatt en dublett. Her oppdateres i stedet
-    den eksisterende raden naar alt annet er likt og bare vinden mangler.
-    Databasetriggeren setter is_wind_legal.
+    Kilden rettes i etterkant. Trym Blindheim, Gneistspelen 2026, 100 m:
+    importert 6. september uten vind, kilden viser +0,1 i dag. En ny import
+    rettet ikke raden - den unike indeksen results_innhold_unik omfatter
+    wind, saa (11.95, NULL) og (11.95, +0.1) er to rader, og vi fikk en
+    dublett. Det samme skjer om en vindverdi endres fra +2,3 til +1,9.
 
-    Returnerer True naar raden er haandtert og ikke skal legges inn."""
-    if result_data.get('wind') is None:
-        return False
-    key = (result_data['athlete_id'], result_data['event_id'],
-           result_data['performance'], result_data.get('place'))
-    for rad in eksisterende.get(key, []):
-        if rad['wind'] is None:
-            supabase.table('results').update({'wind': result_data['wind']}) \
-                    .eq('id', rad['id']).execute()
-            rad['wind'] = result_data['wind']
+    Derfor avstemmes stevnet foer noe legges inn:
+
+      1. Kilderad med samme utoever, oevelse, resultat og plass som en
+         eksisterende rad: samme rad. Er vinden ulik, oppdateres den.
+      2. Kilderad uten slik match, der utoeveren har noeyaktig én
+         eksisterende rad i oevelsen som heller ingen annen kilderad
+         matcher: det er samme rad med rettet resultat, plass eller vind.
+         Raden oppdateres. Databasetriggerne regner performance_value og
+         is_wind_legal paa nytt.
+      3. Kilderader som fortsatt ikke har match: nye. Returneres for
+         innsetting.
+      4. Eksisterende rader som ingen kilderad matcher: kilden har fjernet
+         eller endret dem ugjenkjennelig. De SLETTES IKKE - de faar
+         verified = false og logges, saa de kan vurderes i admin. Hopper
+         over dersom kilden ga paafallende faa rader (ufullstendig side),
+         og rader fra andre kilder (source_id / import_batch_id satt).
+
+    Returnerer radene som skal legges inn.
+    """
+    k4 = eksisterende                                   # (athlete, event, perf, place) -> [rad]
+    k2: Dict[tuple, List[Dict]] = defaultdict(list)     # (athlete, event) -> [rad]
+    alle_db: List[Dict] = []
+    for key, rader in k4.items():
+        if key == '_navn':
+            continue
+        for r in rader:
+            k2[(r['athlete_id'], r['event_id'])].append(r)
+            alle_db.append(r)
+    matchet_db: set = set()
+
+    def _oppdater(rad: Dict, felt: Dict) -> bool:
+        try:
+            supabase.table('results').update(felt).eq('id', rad['id']).execute()
+        except Exception as e:
+            # Typisk 23505: oppdateringen ville gjort raden identisk med en
+            # dublett som allerede ligger der. Ryddes av
+            # rydd_innholdsdubletter.py; skal ikke velte importen.
+            stats['errors'] += 1
+            if stats['errors'] <= 3:
+                logger.warning(f"    Oppdatering feilet for {rad.get('performance')!r}: {str(e)[:160]}")
+            return False
+        rad.update(felt)
+        return True
+
+    # 1. Eksakt match. Vind kan avvike.
+    rest = []
+    for kr in kilde:
+        key = (kr['athlete_id'], kr['event_id'], kr['performance'], kr.get('place'))
+        treff = [r for r in k4.get(key, []) if r['id'] not in matchet_db]
+        if not treff:
+            rest.append(kr)
+            continue
+        # Ligger det flere (dubletter), ta den som allerede har kildens vind.
+        like = [r for r in treff if not _ulik_vind(r['wind'], kr.get('wind'))]
+        r = like[0] if like else treff[0]
+        matchet_db.add(r['id'])
+        if not like and _oppdater(r, {'wind': kr.get('wind')}):
             stats['updated_wind'] += 1
-            return True
-    return False
+            logger.info(f"    Vind rettet: {kr['performance']} "
+                        f"{_vindtekst(r['wind'])} -> {_vindtekst(kr.get('wind'))}")
+
+    # 2. Rettet rad: utoeveren har én umatchet rad i oevelsen, og bare én kilderad uten match der.
+    rest2 = []
+    kilde_per_k2: Dict[tuple, List[Dict]] = defaultdict(list)
+    for kr in rest:
+        kilde_per_k2[(kr['athlete_id'], kr['event_id'])].append(kr)
+    for kr in rest:
+        key2 = (kr['athlete_id'], kr['event_id'])
+        umatchet = [r for r in k2.get(key2, []) if r['id'] not in matchet_db]
+        if len(umatchet) == 1 and len(kilde_per_k2[key2]) == 1:
+            r = umatchet[0]
+            matchet_db.add(r['id'])
+            felt = {'performance': kr['performance'], 'place': kr.get('place'), 'wind': kr.get('wind')}
+            endret = {f: v for f, v in felt.items() if r.get(f) != v and not (f == 'wind' and not _ulik_vind(r.get('wind'), v))}
+            foer = {f: r.get(f) for f in endret}
+            if endret and _oppdater(r, endret):
+                stats['updated_row'] += 1
+                logger.info(f"    Rad rettet: {foer!r} -> {endret!r}")
+        else:
+            rest2.append(kr)
+
+    # 4. Eksisterende rader kilden ikke har. Bare i oevelser kilden faktisk
+    #    inneholder: oevelser parseren hopper over (SKIP_EVENTS, umappede)
+    #    finnes selvsagt ikke i kilderadene, men radene i basen er ekte.
+    #    Tyrvinglekene 2026 fikk 102 falske flagg foer denne regelen.
+    oevelser_i_kilden = {kr['event_id'] for kr in kilde}
+    umatchet_db = [r for r in alle_db if r['id'] not in matchet_db
+                   and r['event_id'] in oevelser_i_kilden
+                   and not r.get('source_id') and not r.get('import_batch_id')]
+    if umatchet_db:
+        # Basen slaar sammen kildestevner med samme navn og dato («Seriestevne»,
+        # «Klubbmesterskap», «KM») til ett stevne. Da dekker hvert kildestevne
+        # bare en del, og radene fra de andre delene finnes selvsagt ikke i
+        # akkurat denne kilden. Foerste versjon flagget 1 468 slike rader.
+        # Flagg derfor bare naar kilden dekker praktisk talt hele stevnet.
+        if len(kilde) < 0.9 * len(alle_db):
+            logger.info(f"  Kilden ga {len(kilde)} rader mot {len(alle_db)} i basen for "
+                        f"{meet_name} - {len(umatchet_db)} umatchet, flagger ingenting "
+                        f"(stevnet er trolig satt sammen av flere kildestevner)")
+        else:
+            for r in umatchet_db:
+                if r.get('verified') is not False:
+                    _oppdater(r, {'verified': False})
+                stats['unmatched_db'] += 1
+            logger.warning(f"  {len(umatchet_db)} rader i basen finnes ikke i kilden for "
+                           f"{meet_name} - satt verified=false, ikke slettet")
+
+    return rest2
+
+
+def _ulik_vind(a, b) -> bool:
+    if a is None and b is None:
+        return False
+    if a is None or b is None:
+        return True
+    return abs(float(a) - float(b)) > 0.001
+
+
+def _vindtekst(v) -> str:
+    return 'uten vind' if v is None else f"{float(v):+.1f}"
 
 
 def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict:
@@ -1170,6 +1291,9 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
         'updated_wind': 0,
+        'updated_row': 0,
+        'unmatched_db': 0,
+        'athlete_id_avvik': 0,
         'errors': 0,
         'new_meets': 0,
     }
@@ -1203,7 +1327,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
 
     # Rader som allerede finnes for stevnet, slik at en rettet kilde kan
     # oppdatere dem i stedet for aa legge dem inn paa nytt. Se
-    # _oppdater_vind_hvis_rettet(). Hentes side for side: PostgREST gir
+    # _avstem_stevne(). Hentes side for side: PostgREST gir
     # aldri mer enn 1 000 rader, og Tyrvinglekene har 3 299.
     eksisterende = _hent_eksisterende_rader(meet_id)
 
@@ -1228,6 +1352,23 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
 
         club_id = get_or_create_club(row.get('club'))
 
+        result_str = fix_performance_format(row['result'])
+        place = row.get('place')
+
+        # Finnes dette resultatet allerede i stevnet under en utoever med samme
+        # navn? Da ER det den utoeveren - uansett hva match_athlete() sier.
+        # Se _hent_eksisterende_rader() for hvorfor de kan sprike.
+        kjent = eksisterende.get('_navn', {}).get(
+            (_norm_navn(athlete_name), event_id, result_str, place), [])
+        if kjent and (not athlete_id or all(k['athlete_id'] != athlete_id for k in kjent)):
+            if athlete_id:
+                stats['athlete_id_avvik'] += 1
+                if stats['athlete_id_avvik'] <= 3:
+                    logger.info(f"    Utoever-id avviker for {athlete_name!r} {result_str}: "
+                                f"match_athlete ga {athlete_id}, raden ligger under "
+                                f"{kjent[0]['athlete_id']} - bruker den")
+            athlete_id = kjent[0]['athlete_id']
+
         if athlete_id:
             stats['matched_existing_athlete'] += 1
             _merk_utover(athlete_id)
@@ -1238,10 +1379,6 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
             else:
                 stats['skipped_no_athlete'] += 1
                 continue
-
-        result_str = fix_performance_format(row['result'])
-
-        place = row.get('place')
 
         wind = None
         if row.get('wind'):
@@ -1280,22 +1417,21 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         if row.get('markor'):
             result_data['source_marker'] = row['markor']
 
-        if _oppdater_vind_hvis_rettet(result_data, eksisterende, stats):
-            continue
-
         result_batch.append(result_data)
+
+    # Avstem kildens rader mot det som allerede ligger inne for stevnet:
+    # oppdater det som er endret, legg inn det som er nytt, flagg det kilden
+    # ikke lenger har. Se _avstem_stevne().
+    nye = _avstem_stevne(meet_name, result_batch, eksisterende, stats)
 
     # Insert batch.
     # NB: try/except ligger INNE i chunk-lokken. Lå den rundt hele lokken, ville
     # et feilende chunk utlose ny en-og-en-innsetting av HELE result_batch - også
     # de chunkene som allerede var lagt inn. Det ga 813 duplikater 2026-08-07.
-    # Unik-constrainten fanger dem ikke opp: den dekker
-    # (athlete_id, event_id, meet_id, round, heat_number), og round/heat_number
-    # er alltid NULL her - og NULL er aldri lik NULL i Postgres.
-    if result_batch:
+    if nye:
         inserted = 0
-        for i in range(0, len(result_batch), 50):
-            chunk = result_batch[i:i + 50]
+        for i in range(0, len(nye), 50):
+            chunk = nye[i:i + 50]
             try:
                 supabase.table('results').insert(chunk).execute()
                 stats['imported'] += len(chunk)
@@ -1309,17 +1445,12 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
                         stats['imported'] += 1
                         inserted += 1
                     except Exception as e2:
-                        # Unik-indeksen results_innhold_unik (athlete, event, meet,
-                        # performance, place, wind - NULLS NOT DISTINCT) avviser rader
-                        # som allerede finnes. Det er forventet ved re-kjoring og er
-                        # ikke en feil.
+                        # Unik-indeksen results_innhold_unik avviser rader som
+                        # allerede finnes. Etter avstemmingen skal det ikke skje,
+                        # men det er ufarlig om det gjoer det.
                         if '23505' in str(e2) or 'results_innhold_unik' in str(e2):
                             stats['skipped_duplicate'] += 1
                         else:
-                            # Tidligere logget på debug-nivå, som ikke vises ved
-                            # normal kjøring. 49 feilende rader gikk derfor
-                            # upåaktet hen i august 2026. De tre første per
-                            # stevne logges nå; resten telles.
                             stats['errors'] += 1
                             if stats['errors'] <= 3:
                                 logger.warning(
@@ -1350,6 +1481,10 @@ def parse_args():
     parser.add_argument('--season', type=int, help='Season year (e.g. 2026)')
     parser.add_argument('--from-date', type=str, help='Start date (YYYY-MM-DD), overrides auto-detection')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be imported without importing')
+    parser.add_argument('--avstem-uker', type=int, default=6, metavar='N',
+                        help='Hent stevner fra de siste N ukene paa nytt ved hver kjoering, '
+                             'uansett radtall, og avstem dem mot kilden. Arrangoerene retter '
+                             'resultatlister en stund etter stevnet. 0 slaar av. Standard 6.')
     parser.add_argument('--verify', action='store_true',
                         help='Tell resultater mot kilden per stevne og hent inn '
                              'de som er delvis importert. Tregere, men fanger '
@@ -1372,8 +1507,17 @@ def oppdater_forsidetellere():
     oppdateres her.
     """
     try:
-        supabase.rpc('refresh_plattform_statistikk').execute()
-        logger.info("  Forsidetellere oppdatert")
+        # Kallet tar et par minutter (klubb_bruk teller over 1,95 millioner
+        # rader). Klientens vanlige grense er 120 s, og da ga den opp mens
+        # serveren fullfoerte - og loggen sa at det feilet. Eget kall med
+        # lang grense.
+        import httpx
+        r = httpx.post(f"{SUPABASE_URL}/rest/v1/rpc/refresh_plattform_statistikk",
+                       headers={'apikey': SUPABASE_KEY, 'Authorization': f'Bearer {SUPABASE_KEY}',
+                                'Content-Type': 'application/json'},
+                       json={}, timeout=900)
+        r.raise_for_status()
+        logger.info("  Forsidetellere og klubbtall oppdatert")
     except Exception as e:
         # Skal aldri velte en import. Forsiden viser en strek til neste kjøring.
         logger.warning(f"  Kunne ikke oppdatere forsidetellere: {e}")
@@ -1404,6 +1548,11 @@ def main():
 
     # Determine min date
     min_date = determine_min_date(args.from_date, season_year, indoor)
+    if args.avstem_uker > 0 and not args.from_date:
+        # Kildelista maa gaa langt nok tilbake til aa dekke avstemmingsvinduet.
+        # Uten dette var lista avgrenset til «siste stevne minus en uke», og
+        # vinduet paa 30 uker fant 7 stevner.
+        min_date = min(min_date, datetime.now() - timedelta(weeks=args.avstem_uker))
     if args.kun_stevner and not args.from_date:
         # Navngitte stevner skal finnes uansett alder. Med den vanlige
         # startdatoen (siste stevne minus en uke) traff «Gneistspelen 2026»,
@@ -1449,6 +1598,16 @@ def main():
         missing_meets = finn_ufullstendige_mot_kilden(source_meets, db_meets)
     else:
         missing_meets = find_missing_meets(source_meets, db_meets)
+        # Rettelser i kilden endrer sjelden radtallet, saa de fanges ikke av
+        # find_missing_meets. Stevner fra de siste ukene hentes derfor paa nytt
+        # og avstemmes, uansett. Se _avstem_stevne().
+        if args.avstem_uker > 0:
+            grense = (datetime.now() - timedelta(weeks=args.avstem_uker)).strftime('%Y-%m-%d')
+            allerede = {m['external_id'] for m in missing_meets}
+            ferske = [m for m in source_meets if m['date'] >= grense and m['external_id'] not in allerede]
+            logger.info(f"AVSTEM — {len(ferske)} stevner fra de siste {args.avstem_uker} ukene "
+                        f"hentes paa nytt og avstemmes mot kilden")
+            missing_meets = missing_meets + ferske
 
     if not missing_meets:
         logger.info("\nNo missing meets found — database is up to date!")
@@ -1467,6 +1626,9 @@ def main():
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
         'updated_wind': 0,
+        'updated_row': 0,
+        'unmatched_db': 0,
+        'athlete_id_avvik': 0,
         'errors': 0,
         'new_meets': 0,
         'meets_processed': 0,
@@ -1492,7 +1654,7 @@ def main():
 
         for key in ['imported', 'matched_existing_athlete', 'created_new_athlete',
                      'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet',
-                     'skipped_duplicate', 'updated_wind', 'errors']:
+                     'skipped_duplicate', 'updated_wind', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
             totals[key] += meet_stats.get(key, 0)
 
     # Summary
@@ -1512,6 +1674,9 @@ def main():
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
     logger.info(f"  Vind oppdatert paa eksisterende rader: {totals['updated_wind']}")
+    logger.info(f"  Rader rettet (resultat/plass/vind): {totals['updated_row']}")
+    logger.info(f"  Rader i basen som kilden ikke har (verified=false): {totals['unmatched_db']}")
+    logger.info(f"  Utoever-id avvek fra match_athlete (dublett i utoeverregisteret): {totals['athlete_id_avvik']}")
     logger.info(f"  Errors: {totals['errors']}")
     utled_gjeldende_klubb()
     oppdater_forsidetellere()

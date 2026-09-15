@@ -771,3 +771,52 @@ gamle, ikke rettet den.
 
 **Kjørt.** `--kun-stevner` på Gneistspelen 2026: 1 rad oppdatert, 263
 hoppet over som allerede i basen, 0 dubletter, 264 rader som før.
+
+## 2026-09-15 — Importen avstemmer mot kilden, og oppryddingen det utløste
+
+**Krav fra Atle:** alt skal inn riktig fra start, og feil skal rettes.
+
+**Avstemming** (`_avstem_stevne` i `update_results.py`). Ved hver kjøring
+hentes stevner fra de siste 6 ukene på nytt (`--avstem-uker`, kildelista
+utvides tilsvarende), og hvert stevne avstemmes: rader som er endret i
+kilden oppdateres (resultat, plass, vind), nye legges inn, og rader kilden
+ikke lenger har får `verified=false` — **ingenting slettes**. Flagging bare
+når kilden dekker ≥ 90 % av stevnet og øvelsen finnes i kilden: basen slår
+sammen kildestevner med samme navn/dato til ett, og parseren hopper over
+enkelte øvelser. `--kun-stevner` søker nå hele sesongen.
+
+**Utøvermatching.** `match_athlete()` nøkler på (navn, fødselsår, kjønn);
+der den lagrede utøveren manglet år/kjønn, opprettet importen en ny utøver
+og la resultatet inn en gang til. Avstemmingen kjenner nå igjen raden på
+navn innenfor stevnet og gjenbruker den utøver-id-en. Kontroll:
+`test_utoveravdrift(event_id)`.
+
+**Kjørt.** Hele 2026 utendørs (720 stevner, 31 156 kilderader): 4 rader
+rettet, 17 nye, 14 utøver-id-avvik fanget, 0 feil. De 123 eldre stevnene
+med dubletter (2012–2025) via `--kun-stevner` per sesong.
+
+**Feil jeg lagde, og rettet samme dag:** en kjøring før navnegjenkjenningen
+la inn 56 resultater under 16 nye dublettutøvere — alle slettet. Første
+flaggeregel (50 %) flagget 1 468 rader feil — tilbakestilt.
+
+**Opprydding av det som lå der fra før:**
+- 187 resultatpar like på alt unntatt vind (`rydd_innholdsdubletter.py`):
+  49 slettet (raden uten vind, der kilden har vind). 138 par med hver sin
+  målte vind lar vi stå — kan være forsøk og finale med samme tid.
+- 414 utøverpar med samme navn og felles resultater
+  (`slaa_sammen_utoverdubletter.py`): 331 slått sammen (eldste beholdes,
+  236 resultater flyttet, 547 dublettresultater slettet). 58 par med ulikt
+  fødselsår må vurderes for hånd: `opprydding/utoveravdrift_par.json`.
+- Kilden har *mistet* resultater for enkelte stevner siden vi hentet dem
+  (Tyrvinglekene 2026: 39 stavresultater for 15+ er borte fra kildesiden).
+  Vi beholder våre, flagget `verified=false`. Synlig bare i admin.
+
+**Tunge jobber ut av forespørselen.** Supabase-gatewayen kutter alle kall
+etter 120 s uansett `statement_timeout`. `refresh_plattform_statistikk()`
+gjør nå bare forsidetallene og merker `vedlikehold.klubb_bruk`; pg_cron
+`refresh_klubb_bruk` (hvert kvarter, med `set statement_timeout` i selve
+jobb-kommandoen) oppdaterer `klubb_bruk`. Verifisert: fire vellykkede
+kjøringer à ~2 min. Analyser over hele `results` deles per øvelse.
+
+**Kontroller** i `test_fullstendighet.py`: vindflagg, innholdsdubletter,
+utøveravdrift — alle skal være 0.

@@ -32,10 +32,12 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 
 | Script | Formål | Når |
 |--------|--------|-----|
-| `update_results.py` | Scrape + importer nye stevner | Regelmessig oppdatering |
+| `update_results.py` | Scrape + importer nye stevner, og avstem de siste 6 ukene mot kilden (rettelser kommer inn, ingenting slettes) | Regelmessig oppdatering |
 | `import_historical.py` | Import historiske all-time data fra friidrett.no | Ved behov, sjelden |
 | `backfill_birth_years.py` | Hent fødselsår fra kilden for utøvere som mangler | Ved behov |
 | `merge_duplicate_meets.py` | Slå sammen duplikate stevner | Vedlikehold |
+| `test_fullstendighet.py` | Sjekk at sidene viser alt basen har, og at basen er konsistent (vindflagg, dubletter) | Etter hver import, og mot prod med `--url` |
+| `rydd_innholdsdubletter.py` | Fjern rader som er like på alt unntatt vind | Når `test_fullstendighet.py` melder dubletter |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

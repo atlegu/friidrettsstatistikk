@@ -363,10 +363,49 @@ def sjekk_vindflagg(base: str, res: Resultat):
                 'kjoer rett_vindflagg(event_id) for hver oevelse')
 
 
+def sjekk_dubletter(base: str, res: Resultat):
+    """Ingen rader skal vaere like paa alt unntatt vind.
+
+    Den unike indeksen omfatter wind, saa da kilden rettet en vindverdi og
+    stevnet ble hentet paa nytt, slapp den nye raden inn ved siden av den
+    gamle. 187 slike par fantes 15.09.2026. Importen avstemmer naa mot
+    kilden foer den legger inn; denne sjekken fanger opp om det glipper.
+    Sjekkes per oevelse - hele tabellen paa én gang roek paa gatewayen.
+    """
+    res.sjekket += 1
+    n = 0
+    for e in sb.table('events').select('id').execute().data:
+        # Bare grupper der én rad mangler vind: det er mekanismen vi kjenner.
+        # To rader med hver sin maalte vind kan vaere forsoek og finale med
+        # samme tid, og kan ikke avgjoeres maskinelt.
+        n += sum(1 for g in sb.rpc('test_innholdsdubletter', {'p_event_id': e['id']}).execute().data
+                 if any(w is None for w in g['winds']) and any(w is not None for w in g['winds']))
+    res.lik('results', 'dublettpar (likt unntatt vind, en uten maaling)', n, 0,
+            'kjoer rydd_innholdsdubletter.py')
+
+
+def sjekk_utoveravdrift(base: str, res: Resultat):
+    """Samme resultat skal ikke ligge under to utoever-id-er med samme navn.
+
+    Da matchingen ikke traff (lagret utoever uten foedselsaar/kjoenn) opprettet
+    importen en ny utoever og la resultatet inn en gang til - 56 rader og 16
+    utoevere paa én kjoering 15.09.2026. Avstemmingen kjenner naa igjen raden
+    paa navn innenfor stevnet. Denne sjekken fanger opp om det glipper.
+    """
+    res.sjekket += 1
+    n = 0
+    for e in sb.table('events').select('id').execute().data:
+        n += len(sb.rpc('test_utoveravdrift', {'p_event_id': e['id']}).execute().data)
+    res.lik('results', 'samme resultat under to utoever-id-er med samme navn', n, 0,
+            'utoeverdubletter; se opprydding')
+
+
 # ------------------------------------------------------------------- main
 
 SJEKKER = {
     'vindflagg': lambda base, n, res: sjekk_vindflagg(base, res),
+    'dubletter': lambda base, n, res: sjekk_dubletter(base, res),
+    'avdrift': lambda base, n, res: sjekk_utoveravdrift(base, res),
     'stevner': lambda base, n, res: sjekk_stevner(base, n, res),
     'utovere': lambda base, n, res: sjekk_utovere(base, n, res),
     'klubber': lambda base, n, res: sjekk_klubber(base, n, res),
