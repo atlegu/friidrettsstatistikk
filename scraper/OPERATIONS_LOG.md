@@ -739,3 +739,35 @@ med ukjent vind i egen liste nederst, og utøverprofilen skiller dem ut
 nederst i resultatlista. Medvindsløp over 2,0 er borte fra de lovlige
 listene. `personal_bests_detailed` regnet allerede fra `wind` direkte og er
 upåvirket.
+
+## 2026-09-15 — Kilden rettes i etterkant, og importen oppdaterer nå vinden
+
+**Sak.** Trym Blindheim, 100 m, Gneistspelen 2026 (22.08.): sto med ukjent
+vind i basen, mens kilden viser `11,95(+0,1)`. Raden ble importert 6. sept.
+i samme INSERT som naboradene, som fikk vind, av samme parser — og dagens
+parser gir riktig vind på nøyaktig den strengen. Inndata må altså ha vært
+annerledes den dagen: kilden ble rettet etter at vi hentet den. Vi kan ikke
+se kildens versjon fra 6. sept., så dette er slutning, ikke bevis, men det
+er den eneste forklaringen som stemmer med alle observasjonene.
+
+**Omfang.** Sammenlikning av alle 2026-stevner utendørs mot kilden i dag:
+99 vindpåvirkede rader uten vind i basen på stevner som ellers har vind.
+1 av dem (Tryms) har vind i kilden nå. De 98 andre mangler vind i kilden
+også — arrangøren målte ikke. Ikke et parserproblem.
+
+**Hvorfor en ny import ikke hjalp.** Den unike indeksen
+`results_innhold_unik` omfatter `wind`, så `(11.95, NULL)` og `(11.95, +0.1)`
+er to ulike rader. En gjenkjøring ville lagt inn en dublett ved siden av den
+gamle, ikke rettet den.
+
+**Tiltak i `update_results.py`.**
+- `_oppdater_vind_hvis_rettet()`: finnes det en rad for stevnet med samme
+  utøver, øvelse, resultat og plass, men uten vind, og kilden nå har vind,
+  oppdateres raden i stedet for at det legges inn en ny. Telles som
+  `updated_wind`. Triggeren setter `is_wind_legal`.
+- `--kun-stevner` så bare stevner fra siste uke (startdato = siste stevne
+  minus 7 dager), så «Gneistspelen 2026», 24 dager gammelt, ga «up to date».
+  Navngitte stevner søkes nå i hele sesongen.
+
+**Kjørt.** `--kun-stevner` på Gneistspelen 2026: 1 rad oppdatert, 263
+hoppet over som allerede i basen, 0 dubletter, 264 rader som før.

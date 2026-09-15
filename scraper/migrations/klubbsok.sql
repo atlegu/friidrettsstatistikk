@@ -187,3 +187,19 @@ begin
   refresh materialized view concurrently klubb_bruk;
 end;
 $$;
+
+-- 15.09.2026: funksjonen fikk egen statement_timeout. Med klubb_bruk i
+-- samme kall tok den rundt to minutter, og gjennom PostgREST gjaldt rollens
+-- grense - importen fikk 57014 hver gang.
+create or replace function refresh_plattform_statistikk()
+returns void
+language plpgsql
+security definer
+set search_path = public
+set statement_timeout = '900s'
+as $$
+begin
+  refresh materialized view concurrently plattform_statistikk;
+  refresh materialized view concurrently klubb_bruk;
+end;
+$$;

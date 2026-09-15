@@ -1113,6 +1113,50 @@ def utled_gjeldende_klubb():
 # Import a single meet's results directly to DB
 # ============================================================
 
+def _hent_eksisterende_rader(meet_id: str) -> Dict[tuple, List[Dict]]:
+    """Radene som allerede ligger inne for stevnet, indeksert paa
+    (athlete_id, event_id, performance, place) - den unike noekkelen uten vind."""
+    idx: Dict[tuple, List[Dict]] = defaultdict(list)
+    fra = 0
+    while True:
+        r = (supabase.table('results')
+               .select('id, athlete_id, event_id, performance, place, wind')
+               .eq('meet_id', meet_id).order('id').range(fra, fra + 999).execute())
+        for rad in r.data or []:
+            idx[(rad['athlete_id'], rad['event_id'], rad['performance'], rad['place'])].append(rad)
+        if len(r.data or []) < 1000:
+            return idx
+        fra += 1000
+
+
+def _oppdater_vind_hvis_rettet(result_data: Dict, eksisterende: Dict[tuple, List[Dict]],
+                               stats: Dict) -> bool:
+    """Kilden rettes i etterkant. Trym Blindheim, Gneistspelen 2026, 100 m:
+    importert 6. september uten vind, og kilden viser +0,1 i dag. Samme
+    parser, samme rad, samme kjoering som naboradene som fikk vind - saa
+    kilden maa ha vaert uten parentes den dagen, og fikk den senere.
+
+    En ny import ville ikke rettet raden: den unike indeksen
+    results_innhold_unik omfatter wind, saa (11.95, NULL) og (11.95, +0.1)
+    er to ulike rader, og vi hadde faatt en dublett. Her oppdateres i stedet
+    den eksisterende raden naar alt annet er likt og bare vinden mangler.
+    Databasetriggeren setter is_wind_legal.
+
+    Returnerer True naar raden er haandtert og ikke skal legges inn."""
+    if result_data.get('wind') is None:
+        return False
+    key = (result_data['athlete_id'], result_data['event_id'],
+           result_data['performance'], result_data.get('place'))
+    for rad in eksisterende.get(key, []):
+        if rad['wind'] is None:
+            supabase.table('results').update({'wind': result_data['wind']}) \
+                    .eq('id', rad['id']).execute()
+            rad['wind'] = result_data['wind']
+            stats['updated_wind'] += 1
+            return True
+    return False
+
+
 def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict:
     """Import scraped results for one meet directly to the database.
     Returns stats dict for this meet.
@@ -1125,6 +1169,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         'skipped_no_athlete': 0,
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
+        'updated_wind': 0,
         'errors': 0,
         'new_meets': 0,
     }
@@ -1155,6 +1200,12 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
     # We track this via _meet_cache side effects in get_or_create_meet
 
     season_id = get_season_id(meet_date, is_indoor)
+
+    # Rader som allerede finnes for stevnet, slik at en rettet kilde kan
+    # oppdatere dem i stedet for aa legge dem inn paa nytt. Se
+    # _oppdater_vind_hvis_rettet(). Hentes side for side: PostgREST gir
+    # aldri mer enn 1 000 rader, og Tyrvinglekene har 3 299.
+    eksisterende = _hent_eksisterende_rader(meet_id)
 
     result_batch = []
 
@@ -1228,6 +1279,9 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         # Markøren tas vare på ordrett. Uten dette feilet raden i sin helhet.
         if row.get('markor'):
             result_data['source_marker'] = row['markor']
+
+        if _oppdater_vind_hvis_rettet(result_data, eksisterende, stats):
+            continue
 
         result_batch.append(result_data)
 
@@ -1350,6 +1404,11 @@ def main():
 
     # Determine min date
     min_date = determine_min_date(args.from_date, season_year, indoor)
+    if args.kun_stevner and not args.from_date:
+        # Navngitte stevner skal finnes uansett alder. Med den vanlige
+        # startdatoen (siste stevne minus en uke) traff «Gneistspelen 2026»,
+        # 24 dager gammelt, ingenting - og skriptet sa «up to date».
+        min_date = datetime(season_year - (1 if indoor else 0), 1, 1)
     logger.info(f"Looking for meets from {min_date.strftime('%Y-%m-%d')} onwards")
 
     # Vent på nett FØR referansedataene lastes. Sto opprinnelig etter
@@ -1407,6 +1466,7 @@ def main():
         'skipped_no_athlete': 0,
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
+        'updated_wind': 0,
         'errors': 0,
         'new_meets': 0,
         'meets_processed': 0,
@@ -1432,7 +1492,7 @@ def main():
 
         for key in ['imported', 'matched_existing_athlete', 'created_new_athlete',
                      'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet',
-                     'skipped_duplicate', 'errors']:
+                     'skipped_duplicate', 'updated_wind', 'errors']:
             totals[key] += meet_stats.get(key, 0)
 
     # Summary
@@ -1451,6 +1511,7 @@ def main():
     logger.info(f"  Skipped (no event mapping): {totals['skipped_no_event']}")
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
+    logger.info(f"  Vind oppdatert paa eksisterende rader: {totals['updated_wind']}")
     logger.info(f"  Errors: {totals['errors']}")
     utled_gjeldende_klubb()
     oppdater_forsidetellere()
