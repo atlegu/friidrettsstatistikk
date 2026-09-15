@@ -702,3 +702,40 @@ Resultat: `scraper/opprydding/KLUBBDUBLETTER.md` og tilhørende CSV.
 
 Underveis ble `klubb_bruk` gjort om til materialisert visning; som vanlig
 visning aggregerte den over hele `results` ved hvert kall og tidsavbrøt.
+
+## 2026-09-15 — is_wind_legal utledes nå av en regel, ikke av en standardverdi
+
+**Funn.** Kolonnen `results.is_wind_legal` hadde standardverdi `true`, og
+importene satte den bare til `false` ved vind over 2,0. Alt annet sto som
+«lovlig» — også 34 166 utendørsresultater uten vindmåling. Tørrkjøring før
+reparasjon, over alle 1,95 millioner rader:
+
+| Sto som | Skulle vært | Rader | Betydning |
+|---|---|---:|---|
+| true | NULL | 1 272 302 | ikke-vindpåvirket øvelse, eller umålt vind |
+| NULL | true | 44 169 | målt, lovlig vind — falt ut av årslistene |
+| false | NULL | 5 547 | hekk med vind over 2,0 (regelen manglet hekk) |
+| true | false | 2 842 | medvind over 2,0 vist som lovlig |
+
+**Regel** (WA 17.9), nå ett sted: `er_vindpaavirket(code)` i basen og
+`erVindpaavirket()` i `web/src/lib/vind.ts`. Sprint t.o.m. 200 m, hekk
+t.o.m. 200 m, lengde og tresteg med tilløp. Ikke høyde/stav (tidligere fikk
+de vindkrav via kategorien «jumps»: 5 204 høyde- og 1 550 stavresultater var
+utelatt), ikke hopp uten tilløp, ikke mangekamp.
+
+**Tiltak.**
+- Trigger `trg_sett_vindflagg` på `results` setter flagget fra `wind` og
+  øvelse ved insert og ved endring av wind/event_id. Alle importveier.
+- Standardverdien fjernet. `update_results.py` og `import_historical.py`
+  setter ikke lenger flagget selv.
+- Reparasjon med `rett_vindflagg(event_id)` per øvelse, 20 minutter.
+  Telleren viste 1 128 711 rader; 60 m (277 920 rader) fullførte på
+  serveren etter at klienten ga opp, så den ble ikke telt. Kontrollen
+  `test_vindflagg_avvik()` gir 0/0/0/0 etterpå.
+- `test_fullstendighet.py` sjekker konsistensen ved hver kjøring.
+
+**Synlig effekt.** Årslistene (nasjonalt og per klubb) viser nå resultater
+med ukjent vind i egen liste nederst, og utøverprofilen skiller dem ut
+nederst i resultatlista. Medvindsløp over 2,0 er borte fra de lovlige
+listene. `personal_bests_detailed` regnet allerede fra `wind` direkte og er
+upåvirket.

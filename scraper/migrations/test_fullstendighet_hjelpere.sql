@@ -53,3 +53,27 @@ $$;
 grant execute on function test_storste_stevner(integer) to service_role;
 grant execute on function test_storste_utovere(integer) to service_role;
 grant execute on function test_klubb_fasit(uuid) to service_role;
+
+-- Er is_wind_legal i takt med regelen i vindflagg.sql? Alle fire skal vaere 0.
+create or replace function test_vindflagg_avvik()
+returns table (
+  maalt_men_flagg_null bigint,
+  umaalt_men_flagg_satt bigint,
+  over_2_men_true bigint,
+  ikke_vindpaavirket_men_flagg bigint
+)
+language sql
+stable
+set statement_timeout = '120s'
+set search_path = public
+as $$
+  select
+    count(*) filter (where v and r.wind is not null and r.is_wind_legal is null),
+    count(*) filter (where v and r.wind is null and r.is_wind_legal is not null),
+    count(*) filter (where v and r.wind > 2.0 and r.is_wind_legal = true),
+    count(*) filter (where not v and r.is_wind_legal is not null)
+  from results r
+  join lateral (select er_vindpaavirket((select code from events e where e.id = r.event_id)) as v) x on true;
+$$;
+
+grant execute on function test_vindflagg_avvik() to service_role;

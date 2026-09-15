@@ -348,9 +348,25 @@ def sjekk_klubb_alltime(base: str, res: Resultat):
         res.lik(navn, 'utøvere', vist, fasit)
 
 
+def sjekk_vindflagg(base: str, res: Resultat):
+    """is_wind_legal skal foelge regelen i vindflagg.sql, rad for rad.
+
+    Flagget hadde standardverdi true og ble bare satt til false ved vind
+    over 2,0. Dermed sto 2 842 medvindsloep som lovlige, og 44 169 loep med
+    maalt, lovlig vind sto som NULL. En trigger setter det naa; denne
+    sjekken fanger opp om en ny importvei omgaar den.
+    """
+    res.sjekket += 1
+    avvik = sb.rpc('test_vindflagg_avvik').execute().data[0]
+    for felt, n in avvik.items():
+        res.lik('is_wind_legal', felt, n, 0,
+                'kjoer rett_vindflagg(event_id) for hver oevelse')
+
+
 # ------------------------------------------------------------------- main
 
 SJEKKER = {
+    'vindflagg': lambda base, n, res: sjekk_vindflagg(base, res),
     'stevner': lambda base, n, res: sjekk_stevner(base, n, res),
     'utovere': lambda base, n, res: sjekk_utovere(base, n, res),
     'klubber': lambda base, n, res: sjekk_klubber(base, n, res),

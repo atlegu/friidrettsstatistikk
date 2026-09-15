@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { ChevronUp, ChevronDown } from "lucide-react"
 import { SingleFilterChip } from "@/components/ui/filter-chips"
 import { formatPerformance } from "@/lib/format-performance"
+import { harUkjentVind } from "@/lib/vind"
 
 type SortField = "date" | "event" | "performance"
 type SortDirection = "asc" | "desc"
@@ -161,6 +162,12 @@ export function ResultsSection({ results, seasons, events, pbResultIds }: Result
     })
   }, [results, yearParam, eventParam, indoorParam, pbOnlyParam, finalsOnlyParam, searchQuery, sortField, sortDirection, isSingleEventSelected, selectedEventResultType])
 
+  // Resultater uten vindmåling i vindpåvirkede øvelser føres for seg,
+  // nederst. De er reelle resultater, men kan ikke sammenliknes rett fram
+  // med de som har lovlig vind. Se lib/vind.ts.
+  const medVind = useMemo(() => filteredResults.filter((r) => !harUkjentVind(r)), [filteredResults])
+  const ukjentVind = useMemo(() => filteredResults.filter((r) => harUkjentVind(r)), [filteredResults])
+
   // Toggle sort
   const toggleSort = (field: SortField) => {
     if (sortField === field) {
@@ -184,6 +191,104 @@ export function ResultsSection({ results, seasons, events, pbResultIds }: Result
   // Get recent years for filter chips (last 5 years + "All")
   const recentYears = seasons.slice(0, 5)
   const olderYears = seasons.slice(5)
+
+  const tabell = (liste: Result[]) => (
+    <div className="overflow-x-auto">
+      <table>
+            <thead>
+              <tr>
+                <th>
+                  <button
+                    onClick={() => toggleSort("date")}
+                    className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
+                  >
+                    Dato
+                    {sortField === "date" && (
+                      sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
+                    )}
+                  </button>
+                </th>
+                <th>
+                  <button
+                    onClick={() => toggleSort("event")}
+                    className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
+                  >
+                    Øvelse
+                    {sortField === "event" && (
+                      sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
+                    )}
+                  </button>
+                </th>
+                <th>
+                  {isSingleEventSelected ? (
+                    <button
+                      onClick={() => toggleSort("performance")}
+                      className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
+                    >
+                      Resultat
+                      {sortField === "performance" && (
+                        sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
+                      )}
+                    </button>
+                  ) : (
+                    "Resultat"
+                  )}
+                </th>
+                <th className="col-numeric hidden sm:table-cell">Vind</th>
+                <th className="col-numeric hidden md:table-cell">Plass</th>
+                <th className="hidden lg:table-cell">Runde</th>
+                <th>Stevne</th>
+              </tr>
+            </thead>
+            <tbody>
+              {liste.map((result) => (
+                <tr key={result.id}>
+                  <td className="text-[var(--text-muted)] whitespace-nowrap">
+                    {formatDate(result.date)}
+                  </td>
+                  <td className="whitespace-nowrap">{result.event_name}</td>
+                  <td className="whitespace-nowrap">
+                    {(() => {
+                      const isPB = pbResultIds ? pbResultIds.has(result.id) : result.is_pb
+                      return (
+                        <>
+                          <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
+                          {isPB && (
+                            <span className="badge-pb ml-1.5">PB</span>
+                          )}
+                          {result.is_sb && !isPB && (
+                            <span className="badge-sb ml-1.5">SB</span>
+                          )}
+                          {result.is_national_record && (
+                            <span className="badge-nr ml-1.5">NR</span>
+                          )}
+                        </>
+                      )
+                    })()}
+                  </td>
+                  <td className="col-numeric hidden text-[var(--text-muted)] sm:table-cell">
+                    {formatWind(result.wind) || "–"}
+                  </td>
+                  <td className="col-numeric hidden text-[var(--text-muted)] md:table-cell">
+                    {result.place || "–"}
+                  </td>
+                  <td className="hidden text-[var(--text-muted)] lg:table-cell">
+                    {formatRound(result.round) || "–"}
+                  </td>
+                  <td>
+                    <Link href={`/stevner/${result.meet_id}`}>
+                      {result.meet_name}
+                    </Link>
+                    {result.meet_indoor && (
+                      <span className="ml-1 text-[11px] text-[var(--text-muted)]">(i)</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+      </table>
+    </div>
+  )
 
   return (
     <div className="card-flat p-0">
@@ -296,111 +401,32 @@ export function ResultsSection({ results, seasons, events, pbResultIds }: Result
       {/* Results count */}
       <div className="border-b bg-[var(--bg-muted)] px-3 py-1.5">
         <span className="text-[12px] text-[var(--text-muted)]">
-          {filteredResults.length} resultat{filteredResults.length !== 1 && "er"}
+          {medVind.length} resultat{medVind.length !== 1 && "er"}
+          {ukjentVind.length > 0 && ` · ${ukjentVind.length} med ukjent vind nederst`}
         </span>
       </div>
 
       {/* Results table */}
-      {filteredResults.length === 0 ? (
+      {medVind.length === 0 && ukjentVind.length === 0 ? (
         <p className="p-4 text-[13px] text-[var(--text-muted)]">
           Ingen resultater funnet med gjeldende filtre.
         </p>
       ) : (
-        <div className="overflow-x-auto">
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <button
-                    onClick={() => toggleSort("date")}
-                    className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
-                  >
-                    Dato
-                    {sortField === "date" && (
-                      sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
-                    )}
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => toggleSort("event")}
-                    className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
-                  >
-                    Øvelse
-                    {sortField === "event" && (
-                      sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
-                    )}
-                  </button>
-                </th>
-                <th>
-                  {isSingleEventSelected ? (
-                    <button
-                      onClick={() => toggleSort("performance")}
-                      className="flex items-center gap-1 hover:text-[var(--text-default)] transition-colors"
-                    >
-                      Resultat
-                      {sortField === "performance" && (
-                        sortDirection === "desc" ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />
-                      )}
-                    </button>
-                  ) : (
-                    "Resultat"
-                  )}
-                </th>
-                <th className="col-numeric hidden sm:table-cell">Vind</th>
-                <th className="col-numeric hidden md:table-cell">Plass</th>
-                <th className="hidden lg:table-cell">Runde</th>
-                <th>Stevne</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredResults.map((result) => (
-                <tr key={result.id}>
-                  <td className="text-[var(--text-muted)] whitespace-nowrap">
-                    {formatDate(result.date)}
-                  </td>
-                  <td className="whitespace-nowrap">{result.event_name}</td>
-                  <td className="whitespace-nowrap">
-                    {(() => {
-                      const isPB = pbResultIds ? pbResultIds.has(result.id) : result.is_pb
-                      return (
-                        <>
-                          <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
-                          {isPB && (
-                            <span className="badge-pb ml-1.5">PB</span>
-                          )}
-                          {result.is_sb && !isPB && (
-                            <span className="badge-sb ml-1.5">SB</span>
-                          )}
-                          {result.is_national_record && (
-                            <span className="badge-nr ml-1.5">NR</span>
-                          )}
-                        </>
-                      )
-                    })()}
-                  </td>
-                  <td className="col-numeric hidden text-[var(--text-muted)] sm:table-cell">
-                    {formatWind(result.wind) || "–"}
-                  </td>
-                  <td className="col-numeric hidden text-[var(--text-muted)] md:table-cell">
-                    {result.place || "–"}
-                  </td>
-                  <td className="hidden text-[var(--text-muted)] lg:table-cell">
-                    {formatRound(result.round) || "–"}
-                  </td>
-                  <td>
-                    <Link href={`/stevner/${result.meet_id}`}>
-                      {result.meet_name}
-                    </Link>
-                    {result.meet_indoor && (
-                      <span className="ml-1 text-[11px] text-[var(--text-muted)]">(i)</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <>
+          {medVind.length > 0 && tabell(medVind)}
+          {ukjentVind.length > 0 && (
+            <div className="border-t">
+              <div className="bg-[var(--bg-muted)] px-3 py-2">
+                <div className="text-[13px] font-semibold">Ukjent vind</div>
+                <div className="text-[12px] text-[var(--text-muted)]">
+                  Resultater fra stevner uten vindmåling. De kan ikke godkjennes
+                  som lovlige, men er reelle resultater.
+                </div>
+              </div>
+              {tabell(ukjentVind)}
+            </div>
+          )}
+        </>
       )}
     </div>
   )

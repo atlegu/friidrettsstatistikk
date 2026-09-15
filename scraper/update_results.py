@@ -1213,8 +1213,11 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
             'verified': True,
         }
 
-        if wind is not None and wind > 2.0:
-            result_data['is_wind_legal'] = False
+        # is_wind_legal settes ikke her. Kolonnen hadde standardverdi true, og
+        # denne koden satte bare false ved vind over 2,0 - saa alt annet, ogsaa
+        # rader uten vindmaaling, sto som «lovlig». En trigger i basen
+        # (sett_vindflagg) utleder flagget fra wind og oevelse for alle
+        # importveier. Se migrations/vindflagg.sql.
 
         # Kilden markerer manuell tidtaking med ' M'. Det er en autoritativ
         # opplysning og bedre enn å utlede den fra presisjon. Flagget settes
