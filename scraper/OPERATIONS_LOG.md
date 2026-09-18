@@ -820,3 +820,34 @@ kjøringer à ~2 min. Analyser over hele `results` deles per øvelse.
 
 **Kontroller** i `test_fullstendighet.py`: vindflagg, innholdsdubletter,
 utøveravdrift — alle skal være 0.
+
+## 2026-09-18 — Samme stevne to ganger i basen (funnet, rot rettet, opprydding klar)
+
+**Funn.** På utøversidene lå samme resultat to ganger, fra to «stevner» samme
+dag: «Stjørdal, UM 2025» og «UM 2025». Importkjøringene 20.–26. januar 2026
+la stevnene inn både med og uten sted foran navnet, og slo dessuten stevner
+med samme navn samme dag («Treningsstevne» i to byer) sammen til én post.
+Omfang: 4 925 stevnepar med felles resultater, ca. 196 000 dobbeltrader
+(2012–2026, mest 2019–2025), pluss 964 par som er to deler av samme stevne
+uten felles rader («Fana, Fanalekene 2026» 36 rader / «Fanalekene 2026»
+315 rader). Etter 1. februar 2026 er det ikke oppstått nye par.
+
+**Rot** (`get_or_create_meet` i `update_results.py`): stevnet ble funnet på
+navn + dato alene, og kildens stevne-id ble ikke lagret. Nå: kildens
+stevne-id først, så navn + dato med samme sted, så «Sted, navn», så navn
+uten sted i basen. Posten som finnes igjen får kilde-id og sted fylt inn.
+Testet mot basen: finner riktig post i alle tre tilfellene.
+
+**Opprydding** (`rydd_stevnedubletter.py`, funksjon `rydd_stevnepar` i
+basen, grunnlag i tabellen `opprydding_stevnepar`). Regel: behold posten
+med kilde-id, ellers den med sted i navnet, ellers den største. Tvillinger
+slettes (vind kopieres først dit den mangler). Resten flyttes bare når
+navnene er samme stevne og posten ikke inngår i flere par. Par med ulik
+dato, med kilde-id på begge, eller med ulike navn uten kilde-id røres ikke.
+
+**Tørrkjøring 18.09.2026:** se tallene i loggfilen
+`logs/rydd_stevnedubletter_*.log`. Ikke utført — venter på Atles
+klarsignal.
+
+**Kontroll:** `test_fullstendighet.py --bare stevnedubletter`
+(`test_stevnedubletter(dato)`, siste 400 dager).

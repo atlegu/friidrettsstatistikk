@@ -38,6 +38,8 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 | `merge_duplicate_meets.py` | Slå sammen duplikate stevner | Vedlikehold |
 | `test_fullstendighet.py` | Sjekk at sidene viser alt basen har, og at basen er konsistent (vindflagg, dubletter) | Etter hver import, og mot prod med `--url` |
 | `rydd_innholdsdubletter.py` | Fjern rader som er like på alt unntatt vind | Når `test_fullstendighet.py` melder dubletter |
+| `slaa_sammen_utoverdubletter.py` | Slå sammen utøverposter som er samme person (aldri ved ulikt fødselsår) | Når `test_fullstendighet.py` melder avdrift |
+| `rydd_stevnedubletter.py` | Slå sammen stevneposter som er samme stevne (tvillingresultater slettes, resten flyttes bare når det er entydig) | Når `test_fullstendighet.py` melder stevnedubletter |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

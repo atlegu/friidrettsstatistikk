@@ -214,7 +214,7 @@ _event_cache = {}      # event_code -> event_id
 _event_manual_eligible = set()  # event_id-er der manuell tidtaking er mulig
 _club_cache = {}       # club_name -> club_id
 _athlete_cache = {}    # (name, birth_year, gender) -> athlete_id
-_meet_cache = {}       # (name, date) -> meet_id
+_meet_cache = {}       # (kilde-id eller navn, dato, sted) -> meet_id
 _season_cache = {}     # (year, indoor) -> season_id
 
 
@@ -918,28 +918,59 @@ def get_or_create_club(name):
     return None
 
 
-def get_or_create_meet(name, date, location, indoor):
-    """Get or create a meet, return its ID."""
-    cache_key = (name, date)
+def get_or_create_meet(name, date, location, indoor, external_id=None):
+    """Finn stevnet i basen, eller opprett det. Returnerer stevne-id.
+
+    Rekkefoelge: kildens stevne-id, saa navn + dato med samme sted, saa
+    «Sted, navn» + dato, saa navn + dato der basen ikke har sted. En post
+    som finnes igjen faar kilde-id og sted fylt inn der de mangler.
+
+    Tidligere ble stevnet funnet paa navn + dato alene. To «Treningsstevne»
+    samme dag i to byer ble da ett stevne, og en post lagt inn som «Bærum,
+    Tyrvinglekene» av en annen kjoering ble ikke funnet igjen, saa det
+    samme stevnet fikk to poster med hver sine resultater. Ryddet med
+    rydd_stevnedubletter.py; se OPERATIONS_LOG 2026-09-18.
+    """
+    city = location.split('/')[0].strip() if location else ''
+    cache_key = (external_id or name, date, city)
     if cache_key in _meet_cache:
         return _meet_cache[cache_key]
 
-    response = supabase.table('meets').select('id').eq(
-        'name', name
-    ).eq('start_date', date).execute()
+    def _funnet(rad):
+        felt = {}
+        if external_id and not rad.get('external_id'):
+            felt['external_id'] = external_id
+        if city and not rad.get('city'):
+            felt['city'] = city
+        if felt:
+            try:
+                supabase.table('meets').update(felt).eq('id', rad['id']).execute()
+            except Exception as e:
+                logger.warning(f"  Kunne ikke oppdatere stevnet {rad['id']}: {e}")
+        _meet_cache[cache_key] = rad['id']
+        return rad['id']
 
-    if response.data:
-        _meet_cache[cache_key] = response.data[0]['id']
-        return _meet_cache[cache_key]
+    if external_id:
+        r = supabase.table('meets').select('id,city,external_id').eq('external_id', external_id).execute()
+        if r.data:
+            return _funnet(r.data[0])
 
-    if location:
-        city_name = f"{location}, {name}"
-        response = supabase.table('meets').select('id').eq(
-            'name', city_name
-        ).eq('start_date', date).execute()
-        if response.data:
-            _meet_cache[cache_key] = response.data[0]['id']
-            return _meet_cache[cache_key]
+    kandidater = []
+    for navn in ([name, f"{location}, {name}"] if location else [name]):
+        kandidater += supabase.table('meets').select('id,name,city,external_id') \
+            .eq('name', navn).eq('start_date', date).execute().data
+    # En post som hoerer til et annet kildestevne er ikke dette stevnet
+    kandidater = [k for k in kandidater if not k.get('external_id') or k['external_id'] == external_id]
+
+    for k in kandidater:                                   # samme sted
+        if city and (k.get('city') or '').strip().lower() == city.lower():
+            return _funnet(k)
+    for k in kandidater:                                   # «Sted, navn»
+        if location and k['name'] == f"{location}, {name}":
+            return _funnet(k)
+    for k in kandidater:                                   # navn, uten sted i basen
+        if k['name'] == name and not (k.get('city') or '').strip():
+            return _funnet(k)
 
     year = int(date[:4])
     if indoor and int(date[5:7]) >= 10:
@@ -967,6 +998,7 @@ def get_or_create_meet(name, date, location, indoor):
         'country': country,
         'indoor': indoor,
         'season_id': season_id,
+        'external_id': external_id,
     }
 
     try:
@@ -1315,7 +1347,8 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         return stats
 
     # Get or create meet
-    meet_id = get_or_create_meet(meet_name, meet_date, location, is_indoor)
+    meet_id = get_or_create_meet(meet_name, meet_date, location, is_indoor,
+                                 first.get('meet_external_id'))
     if not meet_id:
         stats['skipped_no_meet'] = len(meet_results)
         return stats

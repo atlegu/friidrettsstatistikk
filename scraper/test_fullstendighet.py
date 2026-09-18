@@ -32,6 +32,7 @@ Avslutter med kode 1 hvis noe avviker, så den kan brukes i CI.
 """
 
 import argparse
+from datetime import datetime, timedelta
 import os
 import re
 import sys
@@ -400,9 +401,26 @@ def sjekk_utoveravdrift(base: str, res: Resultat):
             'utoeverdubletter; se opprydding')
 
 
+def sjekk_stevnedubletter(base: str, res: Resultat):
+    """Samme resultat skal ikke ligge i to stevneposter.
+
+    Importkjoeringene i januar 2026 la samme stevne inn baade som «Bærum,
+    Tyrvinglekene» og «Tyrvinglekene», og slo stevner med samme navn samme
+    dag sammen til ett. 4 925 stevnepar med felles resultater 18.09.2026.
+    get_or_create_meet() finner naa stevnet paa kildens stevne-id og sted.
+    Ryddes med rydd_stevnedubletter.py. Sjekkes for siste 400 dager.
+    """
+    res.sjekket += 1
+    fra = (datetime.now() - timedelta(days=400)).strftime('%Y-%m-%d')
+    d = sb.rpc('test_stevnedubletter', {'p_fra': fra}).execute().data[0]
+    res.lik('results', f'stevnepar med felles resultater siden {fra}', d['par'], 0,
+            'kjoer rydd_stevnedubletter.py')
+
+
 # ------------------------------------------------------------------- main
 
 SJEKKER = {
+    'stevnedubletter': lambda base, n, res: sjekk_stevnedubletter(base, res),
     'vindflagg': lambda base, n, res: sjekk_vindflagg(base, res),
     'dubletter': lambda base, n, res: sjekk_dubletter(base, res),
     'avdrift': lambda base, n, res: sjekk_utoveravdrift(base, res),
