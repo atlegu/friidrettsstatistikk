@@ -104,7 +104,7 @@ function RekordCelle({ r }: { r: Rekord | undefined }) {
   if (!r) return <td className="py-2 pr-3 text-[var(--text-muted)]">–</td>
   return (
     <td className="py-2 pr-3">
-      <span className="font-black tabular-nums">{formatPerformance(r.performance, r.result_type)}</span>
+      <span className="whitespace-nowrap font-black tabular-nums">{formatPerformance(r.performance, r.result_type)}</span>
       {r.wind !== null && <span className="ml-1 text-[11.5px] text-[var(--text-muted)]">({r.wind > 0 ? "+" : ""}{r.wind})</span>}
       <div className="text-[12.5px] text-[var(--text-secondary)]">
         <Link href={`/utover/${r.athlete_id}`} className="text-[var(--text-primary)]">{r.athlete_name}</Link>
@@ -175,7 +175,7 @@ export default async function ClubStatistikkPage({ params }: { params: Promise<{
               <p className="text-[13px] text-[var(--text-muted)]">Ingen godkjente resultater.</p>
             ) : (
               <div className="overflow-x-auto">
-                <table className="w-full whitespace-nowrap text-[14px]">
+                <table className="w-full text-[14px]">
                   <thead>
                     <tr className="border-b border-[var(--border-default)] text-left text-[11.5px] uppercase tracking-wide text-[var(--text-muted)]">
                       <th className="py-1.5 pr-3 font-bold">Øvelse</th>
@@ -209,6 +209,13 @@ export default async function ClubStatistikkPage({ params }: { params: Promise<{
               <p className="text-[13px] text-[var(--text-muted)]">Ingen resultater i {iAar} ennå.</p>
             ) : (
               <table className="w-full text-[14px]">
+                <thead>
+                  <tr className="border-b border-[var(--border-default)] text-[11.5px] uppercase tracking-wide text-[var(--text-muted)]">
+                    <th className="py-1 text-left font-bold">Utøver</th>
+                    <th className="py-1 text-right font-bold">Res.</th>
+                    <th className="py-1 pl-3 text-right font-bold">Stevner</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {statistikk.topp.map((u) => (
                     <tr key={u.id} className="border-b border-[var(--border-default)] last:border-0">
@@ -216,9 +223,8 @@ export default async function ClubStatistikkPage({ params }: { params: Promise<{
                         <Link href={`/utover/${u.id}`} className="text-[var(--text-primary)]">{u.full_name}</Link>
                         {u.birth_year && <span className="ml-1 text-[12px] text-[var(--text-muted)]">{u.birth_year}</span>}
                       </td>
-                      <td className="py-1.5 text-right tabular-nums text-[var(--text-secondary)]">
-                        <b className="text-[var(--text-primary)]">{u.resultater}</b> res · {u.stevner} stevner
-                      </td>
+                      <td className="py-1.5 text-right font-bold tabular-nums">{u.resultater}</td>
+                      <td className="py-1.5 pl-3 text-right tabular-nums text-[var(--text-secondary)]">{u.stevner}</td>
                     </tr>
                   ))}
                 </tbody>
