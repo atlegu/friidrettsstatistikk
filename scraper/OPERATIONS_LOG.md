@@ -880,3 +880,13 @@ Lisa Wilker (bronse lengde inne, ingen entydig utøverpost).
 
 **Personlig rekord** peker nå på første gangen resultatet ble satt
 (`personal_bests_detailed`: dato som tilleggskriterium).
+
+**Etterspill 18.09.2026.** Sammenslåingen la rader som før lå i to
+stevneposter under hver sin utøver-id i samme post, så
+`test_fullstendighet.py` meldte 130 rader med utøveravdrift.
+`slaa_sammen_utoverdubletter.py --kartlegg` (ny) bygger parlista på nytt:
+40 par, alle med samme navn, fødselsår og kjønn. Slått sammen: 40 utøvere,
+77 resultater flyttet, 130 dublettresultater slettet. Kontrollene
+vindflagg, dubletter og avdrift er grønne igjen; `stevnedubletter` viser
+7 par (74 rader) som er de manuelle («Asker, Kastmangekamp» / «Heggedal,
+Kastmangekamp» og lignende, ulike navn uten kilde-id).

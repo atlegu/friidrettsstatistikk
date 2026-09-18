@@ -23,9 +23,13 @@ REGEL
 
 KJOERING
 --------
+    python slaa_sammen_utoverdubletter.py --kartlegg # bygg parlista paa nytt
     python slaa_sammen_utoverdubletter.py            # toerrkjoering
     python slaa_sammen_utoverdubletter.py --apply
-Leser opprydding/utoveravdrift_par.json (fra kartleggingen).
+Leser opprydding/utoveravdrift_par.json. --kartlegg bygger den fra
+test_utoveravdrift(event_id) for alle oevelser (den gamle fila faar
+tidsstempel). Trengs etter stevneoppryddingen 18.09.2026: rader som laa i
+to stevneposter under hver sin utoever-id havnet i samme post.
 """
 
 import argparse
@@ -68,12 +72,49 @@ def hent_resultater(i):
         fra += 1000
 
 
+def kartlegg(fil: Path):
+    """Par av utoever-id-er med felles resultater, klassifisert."""
+    felles = {}
+    for e in sb.table('events').select('id').execute().data:
+        for g in sb.rpc('test_utoveravdrift', {'p_event_id': e['id']}).execute().data:
+            ids = sorted(g['athlete_ids'])
+            for i in range(len(ids)):
+                for j in range(i + 1, len(ids)):
+                    felles[(ids[i], ids[j])] = felles.get((ids[i], ids[j]), 0) + 1
+    par = []
+    for (a, b), n in sorted(felles.items(), key=lambda x: -x[1]):
+        A, B = hent_utover(a), hent_utover(b)
+        if not A or not B:
+            continue
+        aa, ab = A.get('birth_year'), B.get('birth_year')
+        ka, kb = A.get('gender'), B.get('gender')
+        if ka and kb and ka != kb:
+            t = 'ulikt kjoenn'
+        elif aa and ab and aa != ab:
+            t = 'ulikt foedselsaar'
+        elif not aa or not ab:
+            t = 'en mangler foedselsaar'
+        else:
+            t = 'samme aar og kjoenn (trygg)'
+        par.append({'a': a, 'b': b, 'felles_resultater': n, 'type': t, 'navn': A['full_name'], 'aar': [aa, ab]})
+    if fil.exists():
+        fil.rename(fil.with_name(f'utoveravdrift_par_{TS}.json'))
+    json.dump(par, open(fil, 'w'), ensure_ascii=False, indent=1)
+    log.info(f"Kartlagt {len(par)} par -> {fil}")
+    for t in sorted({p['type'] for p in par}):
+        log.info(f"   {t}: {sum(1 for p in par if p['type'] == t)}")
+    return par
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--apply', action='store_true')
+    ap.add_argument('--kartlegg', action='store_true', help='bygg parlista paa nytt foer kjoering')
     ap.add_argument('--fil', default=Path(__file__).parent / 'opprydding' / 'utoveravdrift_par.json')
     args = ap.parse_args()
 
+    if args.kartlegg:
+        kartlegg(Path(args.fil))
     par = json.load(open(args.fil, encoding='utf-8'))
     trygge = [p for p in par if p['type'] in ('samme aar og kjoenn (trygg)', 'en mangler foedselsaar')]
     for_haand = [p for p in par if p not in trygge]
