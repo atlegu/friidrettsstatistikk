@@ -198,7 +198,7 @@ export function SesongTabell({ aar, rader, pbIds }: {
                       <b>{formatPerformance(r.performance, r.result_type)}</b>
                       {r.wind !== null && <span className="ml-1 text-[var(--text-muted)]">({r.wind > 0 ? "+" : ""}{r.wind})</span>}
                     </td>
-                    <td className="py-2 pr-3"><Link href={`/stevner/${r.meet_id}`} className="text-[var(--text-primary)]">{r.meet_name}</Link></td>
+                    <td className="max-w-[240px] truncate py-2 pr-3"><Link href={`/stevner/${r.meet_id}`} className="text-[var(--text-primary)]" title={r.meet_name}>{r.meet_name}</Link></td>
                     <td className="py-2 text-right">
                       {medvind ? <Merkelapp farge="graa">Medvind</Merkelapp>
                         : ukjent ? <Merkelapp farge="graa">Ukjent vind</Merkelapp>
