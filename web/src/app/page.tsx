@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { ArrowRight } from "lucide-react"
 import { ForsideSok } from "@/components/ForsideSok"
 import { formatPerformance } from "@/lib/format-performance"
+import { erVindpaavirket } from "@/lib/vind"
 import {
   INDOOR_CHAMPIONSHIP_EVENTS,
   OUTDOOR_CHAMPIONSHIP_EVENTS,
@@ -11,6 +12,9 @@ import {
 } from "@/lib/event-config"
 
 export const revalidate = 900
+
+/** Loep der haandtidtaking ikke forekommer (800 m og lengre). */
+const LANGE_LOEP = new Set(["800m", "1500m", "3000m", "5000m", "10000m", "3000mhinder_91_4cm", "3000mhinder_76_2cm"])
 
 // Tellerne leses fra en materialisert visning, ikke med count: "exact".
 // En exact count over results (1,95 mill. rader) tar 0,3 s alene, men 2,8 s
@@ -62,7 +66,7 @@ async function getSeasonLeaders() {
         // sida), skal oevelsen fortsatt staa i lista - med en strek, ikke
         // forsvinne. 18.09.2026 manglet stav og lengde paa forsiden en stund
         // av akkurat den grunnen.
-        const { data, error } = await supabase
+        let q = supabase
           .from("results_full")
           .select(selectCols)
           .eq("event_code", code)
@@ -71,6 +75,13 @@ async function getSeasonLeaders() {
           .eq("gender", gender)
           .eq("status", "OK")
           .gt("performance_value", 0)
+        // Bare godkjente resultater: lovlig vind i vindpaavirkede oevelser
+        // (utendoers), og ikke haandtid i sprint og hekk. Samme regel som
+        // aarslistene. Foer kunne et medvindsloep eller en haandtid staa som
+        // aarsbeste paa forsiden.
+        if (!isIndoor && erVindpaavirket(code)) q = q.eq("is_wind_legal", true)
+        if (isTime && !LANGE_LOEP.has(code)) q = q.not("is_manual_time", "is", true)
+        const { data, error } = await q
           .order("performance_value", { ascending: isTime })
           .limit(1)
         if (error) {
