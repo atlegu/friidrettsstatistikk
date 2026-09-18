@@ -564,6 +564,22 @@ def parse_result_wind(result_str: str) -> Tuple[str, Optional[str], bool, Option
     return verdi, None, is_manual, markor
 
 
+def parse_runde(place_text: str) -> Tuple[Optional[str], Optional[int]]:
+    """Runde og heatnummer av kildens plasseringstekst.
+
+    Kilden skriver «1-h2» (forsøksheat 2), «1-hsf1» (semifinale 1), «1-fi»
+    (finale), «1-kv1» (kvalifiseringsgruppe 1) og bare «1» der øvelsen har
+    én runde. Uten dette kunne ikke medaljer regnes ut: heatvinnere så ut
+    som vinnere. Se OPERATIONS_LOG 2026-09-18.
+    """
+    m = re.match(r'^\d*-?(hsf|h|fi|kv)(\d*)$', place_text.strip().lower())
+    if not m:
+        return None, None
+    kode, nr = m.group(1), m.group(2)
+    heat = int(nr) if nr else None
+    return {'hsf': 'semi', 'h': 'heat', 'fi': 'final', 'kv': 'qualification'}[kode], heat
+
+
 def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
     """Fetch and parse results for a single meet. Returns list of result dicts."""
     url = f"{BASE_URL}/StevneResultater.php"
@@ -611,6 +627,7 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
                     place_match = re.match(r'^(\d+)', place_text)
                     if place_match:
                         place = int(place_match.group(1))
+                    runde, heat = parse_runde(place_text)
 
                     result, wind, is_manual, markor = parse_result_wind(result_raw)
 
@@ -635,6 +652,8 @@ def fetch_and_parse_meet_results(meet: Dict) -> List[Dict]:
                         'event': current_event,
                         'event_class': current_class,
                         'place': place,
+                        'round': runde,
+                        'heat_number': heat,
                         'athlete_name': name,
                         'birth_year': birth_year,
                         'club': club,
@@ -1164,7 +1183,7 @@ def _hent_eksisterende_rader(meet_id: str) -> Dict[tuple, List[Dict]]:
     fra = 0
     while True:
         r = (supabase.table('results')
-               .select('id, athlete_id, event_id, performance, place, wind, verified, '
+               .select('id, athlete_id, event_id, performance, place, wind, round, verified, '
                        'source_id, import_batch_id, athletes(full_name, first_name, last_name)')
                .eq('meet_id', meet_id).order('id').range(fra, fra + 999).execute())
         for rad in r.data or []:
@@ -1248,6 +1267,10 @@ def _avstem_stevne(meet_name: str, kilde: List[Dict], eksisterende: Dict[tuple, 
             stats['updated_wind'] += 1
             logger.info(f"    Vind rettet: {kr['performance']} "
                         f"{_vindtekst(r['wind'])} -> {_vindtekst(kr.get('wind'))}")
+        # Runde (forsoek/semi/finale) fylles inn der basen mangler den
+        if kr.get('round') and not r.get('round'):
+            if _oppdater(r, {'round': kr['round'], 'heat_number': kr.get('heat_number')}):
+                stats['updated_round'] += 1
 
     # 2. Rettet rad: utoeveren har én umatchet rad i oevelsen, og bare én kilderad uten match der.
     rest2 = []
@@ -1262,6 +1285,8 @@ def _avstem_stevne(meet_name: str, kilde: List[Dict], eksisterende: Dict[tuple, 
             matchet_db.add(r['id'])
             felt = {'performance': kr['performance'], 'place': kr.get('place'), 'wind': kr.get('wind')}
             endret = {f: v for f, v in felt.items() if r.get(f) != v and not (f == 'wind' and not _ulik_vind(r.get('wind'), v))}
+            if kr.get('round') and not r.get('round'):
+                endret['round'] = kr['round']; endret['heat_number'] = kr.get('heat_number')
             foer = {f: r.get(f) for f in endret}
             if endret and _oppdater(r, endret):
                 stats['updated_row'] += 1
@@ -1323,6 +1348,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
         'updated_wind': 0,
+        'updated_round': 0,
         'updated_row': 0,
         'unmatched_db': 0,
         'athlete_id_avvik': 0,
@@ -1429,6 +1455,8 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
             'date': meet_date,
             'wind': wind,
             'place': place,
+            'round': row.get('round'),
+            'heat_number': row.get('heat_number'),
             'club_id': club_id,
             'status': 'OK',
             'verified': True,
@@ -1659,6 +1687,7 @@ def main():
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
         'updated_wind': 0,
+        'updated_round': 0,
         'updated_row': 0,
         'unmatched_db': 0,
         'athlete_id_avvik': 0,
@@ -1687,7 +1716,7 @@ def main():
 
         for key in ['imported', 'matched_existing_athlete', 'created_new_athlete',
                      'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet',
-                     'skipped_duplicate', 'updated_wind', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
+                     'skipped_duplicate', 'updated_wind', 'updated_round', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
             totals[key] += meet_stats.get(key, 0)
 
     # Summary
@@ -1707,6 +1736,7 @@ def main():
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
     logger.info(f"  Vind oppdatert paa eksisterende rader: {totals['updated_wind']}")
+    logger.info(f"  Runde fylt inn paa eksisterende rader: {totals['updated_round']}")
     logger.info(f"  Rader rettet (resultat/plass/vind): {totals['updated_row']}")
     logger.info(f"  Rader i basen som kilden ikke har (verified=false): {totals['unmatched_db']}")
     logger.info(f"  Utoever-id avvek fra match_athlete (dublett i utoeverregisteret): {totals['athlete_id_avvik']}")

@@ -210,6 +210,7 @@ async function getSeasonBests(athleteId: string) {
     performance: sb.performance || "",
     performance_value: sb.performance_value || 0,
     meet_id: sb.meet_id || "",
+    indoor: /innend/i.test(sb.season_name ?? ""),
   }))
 }
 
@@ -350,8 +351,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
         const iAar = new Date().getFullYear()
         const sesongAar = mappedResults.some((r) => r.season_year === iAar) ? iAar : (seasons[0] ?? iAar)
         // Aarsbeste utendoers til utviklingskurven; innendoers har egne lister.
-        const uteBests = seasonBests.filter((sb) => !/innend/i.test(
-          (sb as unknown as { season_name?: string }).season_name ?? ""))
+        const uteBests = seasonBests.filter((sb) => !sb.indoor)
         const senior = nmStatus("nm-senior-2026", kjonn, athlete.birth_year, mappedResults)
         const junior = athlete.birth_year && athlete.birth_year >= 2004
           ? nmStatus("nm-junior-2026", kjonn, athlete.birth_year, mappedResults) : null

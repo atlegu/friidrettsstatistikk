@@ -845,9 +845,38 @@ slettes (vind kopieres først dit den mangler). Resten flyttes bare når
 navnene er samme stevne og posten ikke inngår i flere par. Par med ulik
 dato, med kilde-id på begge, eller med ulike navn uten kilde-id røres ikke.
 
-**Tørrkjøring 18.09.2026:** se tallene i loggfilen
-`logs/rydd_stevnedubletter_*.log`. Ikke utført — venter på Atles
-klarsignal.
+**Kjørt 18.09.2026 (klarsignal fra Atle), 5 889 par:** 4 848 par
+utført, 189 400 dobbeltrader slettet, 153 176 rader flyttet til riktig
+stevnepost, 3 751 tomme stevneposter slettet, vind kopiert inn på 173
+rader. 812 rader kunne ikke flyttes (unik indeks på utøver/øvelse/
+stevne/runde/heat i mottakerposten) og 55 850 rader står igjen i poster
+som inngår i flere par eller har ulikt navn — de er ikke dobbeltlagret,
+bare under en mindre presis stevnepost. 1 041 par urørt (ulik dato, kilde-id
+på begge, eller ulike navn uten kilde-id). Alt ligger i
+`opprydding_stevnepar` (vedtak, utfort, resultat per par).
 
 **Kontroll:** `test_fullstendighet.py --bare stevnedubletter`
 (`test_stevnedubletter(dato)`, siste 400 dager).
+
+## 2026-09-18 — Runde i importen, og NM-medaljer 2026
+
+**Funn.** Utøverprofilen manglet medaljer fra NM 2026. `championship_medals`
+ble fylt én gang (februar 2026) fra friidrett.no sine medaljesider, som nå
+er borte (404). Å regne medaljer av våre egne rader gikk ikke: importen
+lagret ikke runde, så heatvinnere så ut som vinnere.
+
+**Rot.** Kilden har runden i plasseringskolonnen («1-h2», «1-hsf1»,
+«1-fi», «1-kv1»). `parse_runde()` i `update_results.py` leser den, nye
+rader får `round`/`heat_number`, og avstemmingen fyller inn runde på
+eksisterende rader (`updated_round`). Kjørt for Hovedmesterskapet 2026
+(659 rader) og Inne-NM 2026 (443 rader).
+
+**Medaljer** (`nm_medaljer_fra_kilden.py`, regel fra Atle): bare
+finaler; A-heat (heatet med best vinnertid) der det bare er heat; sprint
+uten finale innendørs rangeres på tid; «Menn Senior»/«Kvinner Senior»
+bare. Lagt inn 112 medaljer NM utendørs 2026 og 69 NM innendørs 2026.
+**Manuelt:** 200 m innendørs 2026 (kilden merker ikke finaleheatene) og
+Lisa Wilker (bronse lengde inne, ingen entydig utøverpost).
+
+**Personlig rekord** peker nå på første gangen resultatet ble satt
+(`personal_bests_detailed`: dato som tilleggskriterium).
