@@ -57,7 +57,12 @@ async function getSeasonLeaders() {
     const results = await Promise.all(
       eventCodes.map(async (code) => {
         const isTime = TIME_EVENT_CODES.has(code)
-        const { data } = await supabase
+        // Feiler én av de 36 spoerringene (siden er ISR-cachet i 15 minutter,
+        // saa et forbigaaende avbrudd under tung last i basen fryser inn i
+        // sida), skal oevelsen fortsatt staa i lista - med en strek, ikke
+        // forsvinne. 18.09.2026 manglet stav og lengde paa forsiden en stund
+        // av akkurat den grunnen.
+        const { data, error } = await supabase
           .from("results_full")
           .select(selectCols)
           .eq("event_code", code)
@@ -68,6 +73,10 @@ async function getSeasonLeaders() {
           .gt("performance_value", 0)
           .order("performance_value", { ascending: isTime })
           .limit(1)
+        if (error) {
+          console.error(`Aarsbeste ${gender} ${code}:`, error.message)
+          return { event_code: code, feilet: true as const }
+        }
         return data?.[0] ?? null
       })
     )
@@ -119,7 +128,15 @@ function Aarsbeste({ tittel, ledere, venueParam }: {
       ) : (
         <table className="w-full">
           <tbody>
-            {ledere.map((r) => (
+            {ledere.map((r) => "feilet" in r ? (
+              <tr key={r.event_code} className="border-b border-[var(--border-default)] last:border-0">
+                <td className="px-4 py-2 text-[13px] text-[var(--text-secondary)]">
+                  {getEventDisplayName(r.event_code)}
+                </td>
+                <td className="px-4 py-2 text-right text-[13px] text-[var(--text-muted)]">–</td>
+                <td className="px-4 py-2 text-[12px] text-[var(--text-muted)]">kunne ikke hentes</td>
+              </tr>
+            ) : (
               <tr
                 key={r.event_code}
                 className="border-b border-[var(--border-default)] last:border-0 hover:bg-[var(--bg-muted)]"
