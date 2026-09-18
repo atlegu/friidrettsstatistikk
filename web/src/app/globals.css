@@ -41,6 +41,12 @@
   --nfif-navy-blekk: #C3CFE4;
   --nfif-navy-blekk-svak: #9DB0CF;
   --nfif-rod: #DC2626;
+  /* Kategoriske seriefarger for grafer, i fast rekkefoelge. Validert mot
+     fargeblindhet i lys modus (validate_palette.js, alle seks kontroller). */
+  --serie-1: #2F5DA8;
+  --serie-2: #DC2626;
+  --serie-3: #12907C;
+  --serie-4: #B8761A;
 
   /* ---- PRIMARY ACCENT (links, active states) ---- */
   --accent-primary: #1D4ED8;

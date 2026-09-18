@@ -117,6 +117,8 @@ as $$
   from results r join athletes a on a.id = r.athlete_id
   where r.event_id = p_event_id
   group by r.meet_id, r.performance, r.place, 4
-  having count(distinct r.athlete_id) > 1;
+  having count(distinct r.athlete_id) > 1
+     -- ulikt foedselsaar paa begge: kan ikke avgjoeres maskinelt, ligger til manuell vurdering
+     and count(distinct a.birth_year) filter (where a.birth_year is not null) <= 1;
 $$;
 grant execute on function test_utoveravdrift(uuid) to service_role;

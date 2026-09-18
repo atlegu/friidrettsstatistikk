@@ -1109,8 +1109,118 @@ export type Database = {
         }
         Relationships: []
       }
+      vedlikehold: {
+        Row: {
+          nokkel: string
+          sist_oppdatert: string | null
+          utdatert_siden: string | null
+        }
+        Insert: {
+          nokkel: string
+          sist_oppdatert?: string | null
+          utdatert_siden?: string | null
+        }
+        Update: {
+          nokkel?: string
+          sist_oppdatert?: string | null
+          utdatert_siden?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
+      aktivitet_grunnlag: {
+        Row: {
+          aar: number | null
+          alder: string | null
+          athlete_id: string | null
+          kategori: string | null
+          kjonn: string | null
+          meet_id: string | null
+          starter: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "athletes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_athlete_id_fkey"
+            columns: ["athlete_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["athlete_id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "meets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "personal_bests_detailed"
+            referencedColumns: ["meet_id"]
+          },
+          {
+            foreignKeyName: "results_meet_id_fkey"
+            columns: ["meet_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["meet_id"]
+          },
+        ]
+      }
+      aktivitet_klubb: {
+        Row: {
+          aar: number | null
+          club_id: string | null
+          resultater: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "klubb_bruk"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "klubber_med_statistikk"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "results_full"
+            referencedColumns: ["club_id"]
+          },
+        ]
+      }
       klubb_bruk: {
         Row: {
           city: string | null
@@ -1407,6 +1517,39 @@ export type Database = {
       }
     }
     Functions: {
+      aktivitet_alder: {
+        Args: { p_aar: number; p_kategori?: string; p_kjonn?: string }
+        Returns: {
+          alder: string
+          unike: number
+        }[]
+      }
+      aktivitet_klubber: {
+        Args: { p_fra: number; p_til: number }
+        Returns: {
+          aar: number
+          aktive: number
+          alle: number
+        }[]
+      }
+      aktivitet_per_aar: {
+        Args: {
+          p_alder?: string
+          p_fra: number
+          p_kategori?: string
+          p_kjonn?: string
+          p_til: number
+        }
+        Returns: {
+          aar: number
+          kvinner: number
+          menn: number
+          starter: number
+          stevner: number
+          unike: number
+          unike_ungdom: number
+        }[]
+      }
       analyse_active_athletes: {
         Args: { from_year: number; to_year: number }
         Returns: {
@@ -1476,6 +1619,7 @@ export type Database = {
         Returns: number
       }
       check_is_admin: { Args: { check_user_id: string }; Returns: boolean }
+      er_vindpaavirket: { Args: { p_code: string }; Returns: boolean }
       execute_readonly_query: { Args: { query_text: string }; Returns: Json }
       felles_utovere_klubber: {
         Args: { a: string; b: string }
@@ -1572,7 +1716,9 @@ export type Database = {
         }
         Returns: number
       }
+      refresh_klubb_bruk_hvis_utdatert: { Args: never; Returns: string }
       refresh_plattform_statistikk: { Args: never; Returns: undefined }
+      rett_vindflagg: { Args: { p_event_id: string }; Returns: number }
       set_meet_external_ids: { Args: { pairs: Json }; Returns: number }
       sok_klubber: {
         Args: { p_antall?: number; p_sok?: string; p_type?: string }
@@ -1586,6 +1732,68 @@ export type Database = {
           totalt: number
           utovere: number
         }[]
+      }
+      test_innholdsdubletter: {
+        Args: { p_event_id: string }
+        Returns: {
+          antall: number
+          athlete_id: string
+          created_ats: string[]
+          event_id: string
+          ids: string[]
+          meet_id: string
+          performance: string
+          place: number
+          verifieds: boolean[]
+          winds: number[]
+        }[]
+      }
+      test_klubb_fasit: {
+        Args: { p_klubb: string }
+        Returns: {
+          resultater: number
+          utovere: number
+        }[]
+      }
+      test_storste_stevner: {
+        Args: { p_antall?: number }
+        Returns: {
+          id: string
+          name: string
+          resultater: number
+        }[]
+      }
+      test_storste_utovere: {
+        Args: { p_antall?: number }
+        Returns: {
+          full_name: string
+          id: string
+          resultater: number
+        }[]
+      }
+      test_utoveravdrift: {
+        Args: { p_event_id: string }
+        Returns: {
+          athlete_ids: string[]
+          meet_id: string
+          navn: string
+          performance: string
+          place: number
+          result_ids: string[]
+        }[]
+      }
+      test_vindflagg_avvik: {
+        Args: never
+        Returns: {
+          ikke_vindpaavirket_men_flagg: number
+          maalt_men_flagg_null: number
+          over_2_men_true: number
+          umaalt_men_flagg_satt: number
+        }[]
+      }
+      vindflagg: {
+        Args: { p_event_id: string; p_wind: number }
+        Returns: boolean
       }
     }
     Enums: {

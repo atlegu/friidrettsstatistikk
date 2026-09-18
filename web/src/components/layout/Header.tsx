@@ -45,6 +45,10 @@ const navigation = [
     ],
   },
   { name: "Klubber", href: "/klubber" },
+  {
+    name: "Aktivitet",
+    href: "/aktivitet",
+  },
   { name: "Spør AI", href: "/spor" },
 ]
 
