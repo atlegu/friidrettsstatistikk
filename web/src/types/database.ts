@@ -1796,6 +1796,31 @@ export type Database = {
           wind: number
         }[]
       }
+      norgesrekorder: {
+        Args: {
+          p_aldersgrupper?: string[]
+          p_event_ids: string[]
+          p_inne?: boolean
+          p_kjonn: string
+          p_min_dato?: Json
+        }
+        Returns: {
+          athlete_id: string
+          athlete_name: string
+          birth_date: string
+          club_name: string
+          date: string
+          event_id: string
+          meet_city: string
+          meet_id: string
+          meet_name: string
+          performance: string
+          performance_value: number
+          result_id: string
+          result_type: string
+          wind: number
+        }[]
+      }
       parse_performance: {
         Args: {
           perf: string
@@ -1828,6 +1853,10 @@ export type Database = {
           totalt: number
           utovere: number
         }[]
+      }
+      tell_kvalifiserte: {
+        Args: { p_kjonn: string; p_standarder: Json }
+        Returns: Json
       }
       test_innholdsdubletter: {
         Args: { p_event_id: string }

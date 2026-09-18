@@ -890,3 +890,31 @@ stevneposter under hver sin utøver-id i samme post, så
 vindflagg, dubletter og avdrift er grønne igjen; `stevnedubletter` viser
 7 par (74 rader) som er de manuelle («Asker, Kastmangekamp» / «Heggedal,
 Kastmangekamp» og lignende, ulike navn uten kilde-id).
+
+## 2026-09-18 — Sider som feilet stille, og tider lest som sekunder
+
+**Spørsmål fra Atle:** klubbrekorden på 800 m for Ski IL manglet – kan det
+være mange slike? Gjennomgang av alle sidene som kjørte én spørring per
+element og lot feil passere stille:
+
+| Side | Før | Nå |
+|---|---|---|
+| Klubbrekorder | ~300 spørringer, 12 s, feilet øvelse forsvant | `klubbrekorder()` i ett kall, under 1 s |
+| Norgesrekorder (`/statistikk/rekorder`) | 60–100 spørringer, feilet øvelse forsvant | `norgesrekorder()` i ett kall, 0,3 s |
+| NM-kvalifisering, tellingene i sidestolpen | 20–40 sidevise uttrekk bare for å telle | `tell_kvalifiserte()` i ett kall; ny indeks `idx_results_event_date_perf` |
+| Forsiden, årsbeste | 36 spørringer | uendret, men en feilet øvelse vises med strek (rettet tidligere i dag) |
+
+Serverklienten logger nå alle svar fra basen som ikke er OK
+(`lib/supabase/server.ts`), med sti og melding, uansett om siden sjekker
+feilen. 51 steder i koden leser bare `data`; de er ikke lenger usynlige.
+
+**Tider lest som sekunder.** Under gjennomgangen viste norgesrekorden på
+800 m «2,25». Kilden skriver tider uten hundredeler som «2.25» (2:25), og
+`fix_performance_format` leste todelte tider som sekunder. 3 776 rader i
+løp over ett minutt (kappgang 1000 m alene 1 865). Rot rettet: funksjonen
+kjenner nå øvelsen (`er_langt_loep`). Ryddet med `rett_minuttider(false)`:
+3 639 rader rettet, 137 slettet som dubletter av rader som alt lå riktig.
+Kontroll: `test_fullstendighet.py --bare tider` (`test_urimelige_tider`).
+
+**NM-listen** regnet «utendørs» som `meet_indoor = false` og utelot stevner
+uten bane-flagg; nå `IS NOT TRUE`, som tellingen.

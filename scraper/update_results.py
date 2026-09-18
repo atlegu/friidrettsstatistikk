@@ -215,6 +215,7 @@ _event_manual_eligible = set()  # event_id-er der manuell tidtaking er mulig
 _club_cache = {}       # club_name -> club_id
 _athlete_cache = {}    # (name, birth_year, gender) -> athlete_id
 _meet_cache = {}       # (kilde-id eller navn, dato, sted) -> meet_id
+_event_id_til_kode = {}  # event_id -> kode, til tidsformatet
 _season_cache = {}     # (year, indoor) -> season_id
 
 
@@ -687,6 +688,7 @@ def load_events():
     for e in response.data:
         _event_cache[e['code']] = e['id']
         _event_cache[e['name']] = e['id']
+        _event_id_til_kode[e['id']] = e['code']
         _indekser_mangekamp(e['name'], e['id'])
         if e['result_type'] == 'time':
             m = re.match(r'^(\d+)m', e['code'] or '')
@@ -757,15 +759,30 @@ def load_athletes():
     logger.info(f"Loaded {total} athletes into cache")
 
 
-def fix_performance_format(result_str):
+# Øvelser der tiden alltid er over ett minutt: her betyr «2.25» to minutter
+# og 25 sekunder, ikke 2,25 sekunder. Kilden skriver tider uten
+# hundredeler slik (mest kappgang og barneløp).
+LANGE_LOEP_RE = re.compile(r'^(800|1000|1500|2000|3000|5000|10000)m|^(kappgang|gange)|(hinder|mile|miles|mg$|_gange|maraton|halvmaraton|timesloep)')
+
+
+def er_langt_loep(event_code):
+    return bool(event_code) and bool(LANGE_LOEP_RE.search(event_code))
+
+
+def fix_performance_format(result_str, event_code=None):
     """Convert European period-separated time format to colon-separated.
 
     '3.34.02'    -> '3:34.02'     minutter:sekunder.hundredeler
     '1.25.29.2'  -> '1:25:29.2'   timer:minutter:sekunder.tideler
+    '2.25'       -> '2:25'        minutter:sekunder, bare i løp over ett minutt
 
     Firedelte tider er løp over én time — kappgang, maraton, timesløp. De ble
     tidligere sendt uendret til basen, der trigger-funksjonen caster til
     numeric og feilet. Rundt 25 slike rader ble kastet ved hver kjøring.
+
+    Todelte tider («2.25») ble lest som sekunder også på 800 m og lengre.
+    3 600 rader lå med 2,25 s på 800 m og 10,02 s på 1000 m kappgang, og
+    «norgesrekorden» på 800 m ble 2,25. Ryddet 18.09.2026 (rett_minuttider).
     """
     if not result_str:
         return result_str
@@ -780,6 +797,10 @@ def fix_performance_format(result_str):
     if m:
         minutter, sekunder, hundredeler = m.groups()
         return f"{minutter}:{sekunder}.{hundredeler}"
+
+    m = re.match(r'^(\d{1,2})\.(\d{2})$', result_str)
+    if m and er_langt_loep(event_code) and int(m.group(2)) < 60:
+        return f"{m.group(1)}:{m.group(2)}"
 
     return result_str
 
@@ -1411,7 +1432,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
 
         club_id = get_or_create_club(row.get('club'))
 
-        result_str = fix_performance_format(row['result'])
+        result_str = fix_performance_format(row['result'], _event_id_til_kode.get(event_id))
         place = row.get('place')
 
         # Finnes dette resultatet allerede i stevnet under en utoever med samme

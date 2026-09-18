@@ -417,9 +417,24 @@ def sjekk_stevnedubletter(base: str, res: Resultat):
             'kjoer rydd_stevnedubletter.py')
 
 
+def sjekk_tider(base: str, res: Resultat):
+    """Ingen tider under ett minutt i loep der det ikke er mulig.
+
+    Kilden skriver tider uten hundredeler som «2.25» (2:25), og importen
+    leste det som 2,25 sekunder: 3 600 rader paa 800 m og lengre, mest
+    kappgang, og «norgesrekorden» paa 800 m ble 2,25. fix_performance_format
+    kjenner naa oevelsen. Ryddet 18.09.2026 med rett_minuttider().
+    """
+    res.sjekket += 1
+    n = sb.rpc('test_urimelige_tider').execute().data
+    res.lik('results', 'tider under ett minutt i loep over 800 m', n, 0,
+            'kjoer rett_minuttider(false) i basen')
+
+
 # ------------------------------------------------------------------- main
 
 SJEKKER = {
+    'tider': lambda base, n, res: sjekk_tider(base, res),
     'stevnedubletter': lambda base, n, res: sjekk_stevnedubletter(base, res),
     'vindflagg': lambda base, n, res: sjekk_vindflagg(base, res),
     'dubletter': lambda base, n, res: sjekk_dubletter(base, res),

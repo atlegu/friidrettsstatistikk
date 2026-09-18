@@ -69,9 +69,11 @@ async function getQualifiedAthletesForQuery(
       query = query.gte('performance_value', threshold)
     }
 
-    // Technical events: outdoor only (unless indoorCounts is true)
+    // Utendørs bare (med mindre innendørs teller). IS NOT TRUE, ikke = false:
+    // et stevne uten bane-flagg er utendørs, og tellingen i sidestolpen
+    // (tell_kvalifiserte) regner slik. Med «= false» var listen én kortere.
     if (!standard.indoorCounts) {
-      query = query.eq('meet_indoor', false)
+      query = query.not('meet_indoor', 'is', true)
     }
 
     // Filter manual times for sprint/hurdle events
@@ -173,15 +175,45 @@ async function getQualifiedAthletes(
   return getQualifiedAthletesForQuery(standard, gender, championship, ageClassId, clubId)
 }
 
-async function getQualifiedCount(
-  standard: QualificationStandard,
+/** Antall kvalifiserte per krav, alle kravene i ett kall (tell_kvalifiserte
+ *  i basen). Før ble alle kvalifiserte rader hentet for hvert krav, side for
+ *  side, bare for å telle dem: 20–40 tunge spørringer per sidevisning. */
+async function getQualifiedCounts(
+  standards: QualificationStandard[],
   gender: 'M' | 'F',
   championship: Championship,
   ageClassId?: string,
   clubId?: string
-): Promise<number> {
-  const results = await getQualifiedAthletes(standard, gender, championship, ageClassId, clubId)
-  return results.length
+): Promise<Map<string, number>> {
+  const klasser = championship.type === 'junior' && !ageClassId && championship.ageClasses
+    ? championship.ageClasses.map(ac => ac.id)
+    : [ageClassId]
+  const p_standarder = standards.map(s => ({
+    id: s.id,
+    fra: championship.qualificationStart,
+    til: championship.qualificationEnd,
+    lavere: s.resultType === 'time',
+    inne_teller: !!s.indoorCounts,
+    klubb: clubId ?? null,
+    varianter: klasser.flatMap(k => {
+      const terskel = getStandardValue(s, gender, k)
+      const koder = getEventCodes(s, gender, k)
+      if (terskel === undefined || !koder.length) return []
+      const ac = k ? championship.ageClasses?.find(a => a.id === k) : undefined
+      return [{
+        koder, terskel,
+        manuell: shouldFilterManualTimes(koder),
+        vind: koder.some(isWindAffected),
+        min_fodselsaar: ac?.minBirthYear ?? null,
+      }]
+    }),
+  })).filter(s => s.varianter.length > 0)
+
+  const supabase = await createClient()
+  const { data, error } = await supabase.rpc('tell_kvalifiserte', { p_standarder, p_kjonn: gender })
+  if (error) console.error('tell_kvalifiserte:', error.message)
+  const tall = (data ?? {}) as Record<string, number>
+  return new Map(standards.map(s => [s.id, tall[s.id] ?? 0]))
 }
 
 // --- Page ---
@@ -226,14 +258,8 @@ export default async function ChampionshipDetailPage({
     ? await getQualifiedAthletes(selectedStandard, genderKey, championship, validAgeClassId, clubId)
     : []
 
-  // Get counts for all events in sidebar
-  const counts = await Promise.all(
-    filteredStandards.map(async (s) => {
-      const count = await getQualifiedCount(s, genderKey, championship, validAgeClassId, clubId)
-      return { id: s.id, count }
-    })
-  )
-  const countMap = new Map(counts.map(c => [c.id, c.count]))
+  // Antall kvalifiserte per øvelse til sidestolpen, ett kall
+  const countMap = await getQualifiedCounts(filteredStandards, genderKey, championship, validAgeClassId, clubId)
 
   // Group events by category for sidebar
   const groupedStandards = EVENT_CATEGORY_ORDER

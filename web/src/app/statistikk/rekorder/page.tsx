@@ -110,13 +110,7 @@ const SENIOR_AGE_GROUPS = ["15", "16", "17", "18-19", "20-22", "Senior"]
 // Junior age groups (15-19)
 const JUNIOR_AGE_GROUPS = ["15", "16", "17", "18-19"]
 
-// Events where manual times should be excluded
-const SPRINT_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m"]
-const HURDLE_EVENT_PREFIXES = ["60mh", "80mh", "100mh", "110mh", "200mh"]
 
-// Events where wind affects validity
-const WIND_AFFECTED_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m", "lengde", "tresteg"]
-const WIND_AFFECTED_EVENT_PREFIXES = ["60mh", "80mh", "100mh", "110mh", "200mh"]
 
 // Events with minimum date requirements (new implement specifications)
 // Women's javelin: new specification introduced 1999-04-01
@@ -146,65 +140,24 @@ async function getEventsByIds(eventCodes: string[]) {
   return data ?? []
 }
 
-async function getBestResult(eventId: string, eventCode: string, gender: string, ageCategory: string, resultType: string, venue: string, minDate?: string) {
+/** Beste resultat per øvelse i ett kall (funksjonen norgesrekorder i basen).
+ *  Før gikk det én spørring per øvelse, 60–100 stykker, og en øvelse som
+ *  feilet forsvant stille fra listen. Reglene ligger i funksjonen: håndtid
+ *  ute i sprint og hekk, lovlig vind der vind teller, aldersgruppe og bane. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function getBestResults(events: { id: string; code: string }[], gender: string, ageCategory: string, venue: string, minDates: Record<string, string>): Promise<Map<string, any>> {
+  if (events.length === 0) return new Map()
   const supabase = await createClient()
-
-  // For time events, lower is better (ascending)
-  // For distance, height, points - higher is better (descending)
-  const ascending = resultType === "time"
-
-  let query = supabase
-    .from("results_full")
-    .select("*")
-    .eq("event_id", eventId)
-    .eq("gender", gender)
-    .eq("status", "OK")
-    .not("performance_value", "is", null)
-    .gt("performance_value", 0)
-
-  // Filter by venue (indoor/outdoor)
-  if (venue === "indoor") {
-    query = query.eq("meet_indoor", true)
-  } else {
-    query = query.eq("meet_indoor", false)
-  }
-
-  if (ageCategory === "Senior") {
-    query = query.in("age_group", SENIOR_AGE_GROUPS)
-  } else if (ageCategory === "Junior") {
-    query = query.in("age_group", JUNIOR_AGE_GROUPS)
-  }
-
-  // Filter by minimum date (e.g. new javelin specification)
-  if (minDate) {
-    query = query.gte("date", minDate)
-  }
-
-  // Check if manual times should be excluded (sprints and hurdles)
-  const isSprintEvent = SPRINT_EVENT_CODES.includes(eventCode)
-  const isHurdleEvent = HURDLE_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
-  if (isSprintEvent || isHurdleEvent) {
-    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
-    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
-    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
-    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
-    query = query.not("is_manual_time", "is", true)
-  }
-
-  // Check if wind-assisted results should be excluded (only for outdoor)
-  if (venue === "outdoor") {
-    const isWindAffected = WIND_AFFECTED_EVENT_CODES.includes(eventCode) ||
-      WIND_AFFECTED_EVENT_PREFIXES.some(prefix => eventCode.startsWith(prefix))
-    if (isWindAffected) {
-      query = query.eq("is_wind_legal", true)
-    }
-  }
-
-  const { data } = await query
-    .order("performance_value", { ascending })
-    .limit(1)
-
-  return data?.[0] ?? null
+  const aldersgrupper = ageCategory === "Senior" ? SENIOR_AGE_GROUPS : ageCategory === "Junior" ? JUNIOR_AGE_GROUPS : undefined
+  const { data, error } = await supabase.rpc("norgesrekorder", {
+    p_event_ids: events.map((e) => e.id),
+    p_kjonn: gender,
+    p_aldersgrupper: aldersgrupper,
+    p_inne: venue === "indoor",
+    p_min_dato: Object.keys(minDates).length ? minDates : undefined,
+  })
+  if (error) console.error("norgesrekorder:", error.message)
+  return new Map((data ?? []).map((r) => [r.event_id, r]))
 }
 
 interface RecordRowProps {
@@ -308,22 +261,14 @@ export default async function RekordsPage({
     getEventsByIds(bestEventCodes),
   ])
 
-  // Get best results for each event
+  // Beste resultat per øvelse, ett kall per liste
   const minDatesForGender = EVENT_MIN_DATE[gender] ?? {}
-  const recordPromises = recordEvents.map(async (event) => {
-    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue, minDatesForGender[event.code])
-    return { event, record: best }
-  })
-
-  const bestPromises = bestEvents.map(async (event) => {
-    const best = await getBestResult(event.id, event.code, gender, age, event.result_type ?? "time", venue, minDatesForGender[event.code])
-    return { event, record: best }
-  })
-
-  const [records, bests] = await Promise.all([
-    Promise.all(recordPromises),
-    Promise.all(bestPromises),
+  const [recordMap, bestMap] = await Promise.all([
+    getBestResults(recordEvents, gender, age, venue, minDatesForGender),
+    getBestResults(bestEvents, gender, age, venue, minDatesForGender),
   ])
+  const records = recordEvents.map((event) => ({ event, record: recordMap.get(event.id) ?? null }))
+  const bests = bestEvents.map((event) => ({ event, record: bestMap.get(event.id) ?? null }))
 
   // Create lookup for records by event code
   const recordsByCode = new Map(records.map(r => [r.event.code, r]))
