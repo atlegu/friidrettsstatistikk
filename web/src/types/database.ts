@@ -727,6 +727,69 @@ export type Database = {
           },
         ]
       }
+      opprydding_stevnepar: {
+        Row: {
+          behold: string | null
+          dubletter: number | null
+          fjern: string | null
+          m1: string | null
+          m1_dato: string | null
+          m1_ext: string | null
+          m1_navn: string | null
+          m1_res: number | null
+          m2: string | null
+          m2_dato: string | null
+          m2_ext: string | null
+          m2_navn: string | null
+          m2_res: number | null
+          overlapp_pst: number | null
+          relasjon: string | null
+          resultat: Json | null
+          utfort: string | null
+          vedtak: string | null
+        }
+        Insert: {
+          behold?: string | null
+          dubletter?: number | null
+          fjern?: string | null
+          m1?: string | null
+          m1_dato?: string | null
+          m1_ext?: string | null
+          m1_navn?: string | null
+          m1_res?: number | null
+          m2?: string | null
+          m2_dato?: string | null
+          m2_ext?: string | null
+          m2_navn?: string | null
+          m2_res?: number | null
+          overlapp_pst?: number | null
+          relasjon?: string | null
+          resultat?: Json | null
+          utfort?: string | null
+          vedtak?: string | null
+        }
+        Update: {
+          behold?: string | null
+          dubletter?: number | null
+          fjern?: string | null
+          m1?: string | null
+          m1_dato?: string | null
+          m1_ext?: string | null
+          m1_navn?: string | null
+          m1_res?: number | null
+          m2?: string | null
+          m2_dato?: string | null
+          m2_ext?: string | null
+          m2_navn?: string | null
+          m2_res?: number | null
+          overlapp_pst?: number | null
+          relasjon?: string | null
+          resultat?: Json | null
+          utfort?: string | null
+          vedtak?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           ai_requests_reset_at: string | null
@@ -1709,6 +1772,29 @@ export type Database = {
       is_admin: { Args: never; Returns: boolean }
       is_premium: { Args: { check_user_id: string }; Returns: boolean }
       klubb_sokenokkel: { Args: { p_navn: string }; Returns: string }
+      klubbrekorder: {
+        Args: {
+          p_aldersgrupper?: string[]
+          p_inne?: boolean
+          p_kjonn: string
+          p_klubb: string
+        }
+        Returns: {
+          athlete_id: string
+          athlete_name: string
+          birth_date: string
+          date: string
+          event_id: string
+          meet_city: string
+          meet_id: string
+          meet_name: string
+          performance: string
+          performance_value: number
+          result_id: string
+          result_type: string
+          wind: number
+        }[]
+      }
       parse_performance: {
         Args: {
           perf: string
@@ -1719,6 +1805,15 @@ export type Database = {
       refresh_klubb_bruk_hvis_utdatert: { Args: never; Returns: string }
       refresh_plattform_statistikk: { Args: never; Returns: undefined }
       rett_vindflagg: { Args: { p_event_id: string }; Returns: number }
+      rydd_stevnepar: {
+        Args: {
+          p_behold: string
+          p_dry: boolean
+          p_fjern: string
+          p_flytt: boolean
+        }
+        Returns: Json
+      }
       set_meet_external_ids: { Args: { pairs: Json }; Returns: number }
       sok_klubber: {
         Args: { p_antall?: number; p_sok?: string; p_type?: string }
@@ -1753,6 +1848,13 @@ export type Database = {
         Returns: {
           resultater: number
           utovere: number
+        }[]
+      }
+      test_stevnedubletter: {
+        Args: { p_fra: string }
+        Returns: {
+          par: number
+          rader: number
         }[]
       }
       test_storste_stevner: {

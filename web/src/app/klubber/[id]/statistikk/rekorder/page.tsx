@@ -26,13 +26,6 @@ const AGE_GROUP_MAPPINGS: Record<string, string[]> = {
   "U20": ["15", "16", "17", "18-19"],
 }
 
-// Events where manual times should be excluded (sprint and hurdles)
-const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
-
-// Events where wind affects validity (outdoor sprints ≤200m, long jump, triple jump)
-const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
-const WIND_AFFECTED_CATEGORIES = ["jumps"] // lengde, tresteg
-
 async function getClub(id: string) {
   const supabase = await createClient()
 
@@ -56,66 +49,35 @@ async function getEvents() {
   return data ?? []
 }
 
-async function getClubBestResult(
-  clubId: string,
-  eventId: string,
-  eventName: string,
-  gender: string,
-  ageGroup: string,
-  resultType: string,
-  eventCategory: string,
-  venue: string
-) {
+/** Beste resultat per øvelse i én spørring (funksjonen klubbrekorder i
+ *  basen). Før gikk det én spørring per øvelse, rundt 300, og siden brukte
+ *  12 sekunder. Reglene ligger i funksjonen: håndtid ute i sprint og hekk,
+ *  bare lovlig vind der vind teller. */
+interface Rekord {
+  event_id: string
+  performance: string
+  performance_value: number
+  wind: number | null
+  athlete_id: string
+  athlete_name: string
+  birth_date: string | null
+  meet_id: string
+  meet_city: string | null
+  meet_name: string | null
+  date: string
+  result_type: string
+}
+
+async function getClubRecords(clubId: string, gender: string, age: string, venue: string): Promise<Map<string, Rekord>> {
   const supabase = await createClient()
-
-  const ascending = resultType === "time"
-
-  let query = supabase
-    .from("results_full")
-    .select("*")
-    .eq("club_id", clubId)
-    .eq("event_id", eventId)
-    .eq("gender", gender)
-    .eq("status", "OK")
-    .not("performance_value", "is", null)
-    .gt("performance_value", 0)
-
-  // Handle composite age groups (Senior, U23, U20) and individual ages
-  if (ageGroup !== "all") {
-    const mappedGroups = AGE_GROUP_MAPPINGS[ageGroup]
-    if (mappedGroups) {
-      query = query.in("age_group", mappedGroups)
-    } else {
-      query = query.eq("age_group", ageGroup)
-    }
-  }
-
-  // Exclude manual times for sprint and hurdles events
-  if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
-    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
-    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
-    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
-    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
-    query = query.not("is_manual_time", "is", true)
-  }
-
-  // Exclude wind-assisted results for affected events
-  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
-    query = query.eq("is_wind_legal", true)
-  }
-
-  // Filter by indoor/outdoor venue
-  if (venue === "indoor") {
-    query = query.eq("meet_indoor", true)
-  } else if (venue === "outdoor") {
-    query = query.eq("meet_indoor", false)
-  }
-
-  const { data } = await query
-    .order("performance_value", { ascending })
-    .limit(1)
-
-  return data?.[0] ?? null
+  // Utelatte filtre sendes ikke med; funksjonen har null som standard.
+  const aldersgrupper = age === "all" ? undefined : (AGE_GROUP_MAPPINGS[age] ?? [age])
+  const inne = venue === "indoor" ? true : venue === "outdoor" ? false : undefined
+  const { data, error } = await supabase.rpc("klubbrekorder", {
+    p_klubb: clubId, p_kjonn: gender, p_aldersgrupper: aldersgrupper, p_inne: inne,
+  })
+  if (error) console.error("klubbrekorder:", error.message)
+  return new Map(((data ?? []) as Rekord[]).map((r) => [r.event_id, r]))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -165,17 +127,10 @@ export default async function ClubRecordsPage({
     return `/klubber/${id}/statistikk/rekorder?${params.toString()}`
   }
 
-  // Get best result for each event
-  const recordsPromises = events.map(async (event) => {
-    const best = await getClubBestResult(id, event.id, event.name, gender, age, event.result_type ?? "time", event.category ?? "", venue)
-    return {
-      event,
-      record: best,
-    }
-  })
-
-  const records = await Promise.all(recordsPromises)
-  const validRecords = records.filter((r) => r.record !== null)
+  const rekorder = await getClubRecords(id, gender, age, venue)
+  const validRecords = events
+    .map((event) => ({ event, record: rekorder.get(event.id) ?? null }))
+    .filter((r) => r.record !== null)
 
   return (
     <div className="container py-6">
