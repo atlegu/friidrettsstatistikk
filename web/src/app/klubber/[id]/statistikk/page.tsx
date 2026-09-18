@@ -17,47 +17,21 @@ async function getClub(id: string) {
   return data
 }
 
+/** Tallene fra klubb_bruk, samme kilde som klubbsiden. En levende
+ *  opptelling over results_full tok for lang tid og ga 0, og utøvertallet
+ *  leste en kolonne som ikke finnes (athletes.club_id). */
 async function getClubStats(clubId: string) {
   const supabase = await createClient()
-
-  // Get total results count
-  const { count: totalResults } = await supabase
-    .from("results_full")
-    .select("*", { count: "exact", head: true })
-    .eq("club_id", clubId)
-
-  // Get unique athletes count
-  const { count: uniqueAthletes } = await supabase
-    .from("athletes")
-    .select("id", { count: "exact", head: true })
-    .eq("club_id", clubId)
-
-  // Get first and last year with results
-  const [{ data: firstYearData }, { data: lastYearData }] = await Promise.all([
-    supabase
-      .from("results_full")
-      .select("season_year")
-      .eq("club_id", clubId)
-      .not("season_year", "is", null)
-      .order("season_year", { ascending: true })
-      .limit(1),
-    supabase
-      .from("results_full")
-      .select("season_year")
-      .eq("club_id", clubId)
-      .not("season_year", "is", null)
-      .order("season_year", { ascending: false })
-      .limit(1),
-  ])
-
-  const firstYear = firstYearData?.[0]?.season_year ?? null
-  const lastYear = lastYearData?.[0]?.season_year ?? null
-
+  const { data } = await supabase
+    .from("klubb_bruk")
+    .select("resultater,utovere,fra_ar,til_ar")
+    .eq("id", clubId)
+    .maybeSingle()
   return {
-    totalResults: totalResults ?? 0,
-    uniqueAthletes: uniqueAthletes ?? 0,
-    firstYear,
-    lastYear,
+    totalResults: data?.resultater ?? 0,
+    uniqueAthletes: data?.utovere ?? 0,
+    firstYear: data?.fra_ar ?? null,
+    lastYear: data?.til_ar ?? null,
   }
 }
 

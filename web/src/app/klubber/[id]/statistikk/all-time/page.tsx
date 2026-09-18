@@ -176,7 +176,9 @@ export default async function ClubAllTimePage({
   const events = await getEvents()
   const selectedEvent = selectedEventId
     ? events.find((e) => e.id === selectedEventId)
-    : events[0]
+    // Standardøvelse: 100 m ute, 60 m inne. Første i sorteringen er 60 m,
+    // som knapt løpes utendørs, så listen så tom ut.
+    : (events.find((e) => e.code === (venue === "indoor" ? "60m" : "100m")) ?? events[0])
 
   const results = selectedEvent
     ? await getClubAllTimeResults(id, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue)
