@@ -166,8 +166,8 @@ function Merkelapp({ farge, children }: { farge: "rod" | "bla" | "gronn" | "graa
   return <span className={`inline-block rounded px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${k}`}>{children}</span>
 }
 
-export function SesongTabell({ aar, rader, pbIds, nmKravIds }: {
-  aar: number; rader: Res[]; pbIds: Set<string>; nmKravIds: Set<string>
+export function SesongTabell({ aar, rader, pbIds }: {
+  aar: number; rader: Res[]; pbIds: Set<string>
 }) {
   const sesong = rader.filter((r) => r.season_year === aar).sort((a, b) => b.date.localeCompare(a.date))
   const fmtDato = (d: string) => new Date(d).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit" })
@@ -203,7 +203,6 @@ export function SesongTabell({ aar, rader, pbIds, nmKravIds }: {
                       {medvind ? <Merkelapp farge="graa">Medvind</Merkelapp>
                         : ukjent ? <Merkelapp farge="graa">Ukjent vind</Merkelapp>
                           : pb ? <Merkelapp farge="rod">Pers</Merkelapp>
-                            : nmKravIds.has(r.id) ? <Merkelapp farge="bla">NM-krav</Merkelapp>
                               : r.is_sb ? <Merkelapp farge="gronn">Sesongbeste</Merkelapp>
                                 : null}
                     </td>

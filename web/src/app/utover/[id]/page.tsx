@@ -91,12 +91,18 @@ async function getAthleteStats(athleteId: string): Promise<AthleteStats> {
   }
 }
 
-/** Hovedøvelse: den øvelsen utøveren har flest resultater i. Regnes av
- *  resultatene som allerede er hentet komplett, uten egen spørring. */
-function finnHovedovelse(rader: { event_name: string | null }[]): string | null {
-  const antall = new Map<string, number>()
-  for (const r of rader) if (r.event_name) antall.set(r.event_name, (antall.get(r.event_name) ?? 0) + 1)
-  return [...antall.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
+/** Hovedøvelse: øvelsen med flest resultater, der nyere sesonger teller
+ *  mest (hver sesong tilbake halverer vekten). En tidligere mangekjemper som
+ *  nå løper hekk får hekk, ikke lengde. */
+function finnHovedovelse(rader: { event_name: string | null; season_year: number | null }[]): string | null {
+  const siste = Math.max(...rader.map((r) => r.season_year ?? 0), 0)
+  const vekt = new Map<string, number>()
+  for (const r of rader) {
+    if (!r.event_name) continue
+    const alder = Math.max(0, siste - (r.season_year ?? siste))
+    vekt.set(r.event_name, (vekt.get(r.event_name) ?? 0) + Math.pow(0.5, alder))
+  }
+  return [...vekt.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
 }
 
 async function getPersonalBestsDetailed(athleteId: string) {
@@ -349,7 +355,6 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
         const senior = nmStatus("nm-senior-2026", kjonn, athlete.birth_year, mappedResults)
         const junior = athlete.birth_year && athlete.birth_year >= 2004
           ? nmStatus("nm-junior-2026", kjonn, athlete.birth_year, mappedResults) : null
-        const nmKravIds = new Set<string>([...(senior?.klareIds ?? []), ...(junior?.klareIds ?? [])])
         const perioder = klubbPerioder(mappedResults)
         // Øvelser med resultater i de tre siste sesongene utøveren har vært aktiv
         const sisteSesong = Math.max(...mappedResults.map((r) => r.season_year ?? 0), 0)
@@ -360,19 +365,17 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
           <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
             <div className="grid min-w-0 grid-cols-1 gap-4">
               {hovedEvent && (
-                <Kort tittel={`Utvikling · ${hovedEvent.name}`}>
+                <Kort tittel="Utvikling">
                   <ProgressionChart
                     seasonBests={uteBests.length > 0 ? uteBests : seasonBests}
-                    events={[hovedEvent]}
-                    selectedEventId={hovedEvent.id}
-                    hideSelector
+                    events={[hovedEvent, ...events.filter((e) => e.id !== hovedEvent.id)]}
                     kompakt
                     fotnote="Årsbeste utendørs. Hold over et punkt for år og resultat, klikk for stevnet."
                   />
                 </Kort>
               )}
 
-              <SesongTabell aar={sesongAar} rader={mappedResults} pbIds={pbResultIds} nmKravIds={nmKravIds} />
+              <SesongTabell aar={sesongAar} rader={mappedResults} pbIds={pbResultIds} />
 
               <section>
                 <h2 className="mb-3">Alle resultater</h2>
