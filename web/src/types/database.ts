@@ -1772,6 +1772,7 @@ export type Database = {
       is_admin: { Args: never; Returns: boolean }
       is_premium: { Args: { check_user_id: string }; Returns: boolean }
       klubb_sokenokkel: { Args: { p_navn: string }; Returns: string }
+      klubb_statistikk: { Args: { p_klubb: string }; Returns: Json }
       klubbrekorder: {
         Args: {
           p_aldersgrupper?: string[]
