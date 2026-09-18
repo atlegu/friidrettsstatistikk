@@ -246,7 +246,8 @@ export function ResultsSection({ results, seasons, events, pbResultIds }: Result
                   <td className="text-[var(--text-muted)] whitespace-nowrap">
                     {formatDate(result.date)}
                   </td>
-                  <td className="whitespace-nowrap">{result.event_name}</td>
+                  {/* Ikke nowrap: «10 Kamp (110m hekk-Diskos-…-1500m)» dyttet stevnekolonnen ut av bildet. */}
+                  <td className="max-w-[240px]">{result.event_name}</td>
                   <td className="whitespace-nowrap">
                     {(() => {
                       const isPB = pbResultIds ? pbResultIds.has(result.id) : result.is_pb

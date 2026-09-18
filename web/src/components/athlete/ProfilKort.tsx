@@ -193,7 +193,7 @@ export function SesongTabell({ aar, rader, pbIds }: {
                 return (
                   <tr key={r.id} className="border-b border-[var(--border-default)] last:border-0">
                     <td className="py-2 pr-3 tabular-nums text-[var(--text-secondary)]">{fmtDato(r.date)}</td>
-                    <td className="py-2 pr-3">{r.event_name}{r.meet_indoor && <span className="ml-1 text-[11px] text-[var(--text-muted)]">(i)</span>}</td>
+                    <td className="max-w-[240px] whitespace-normal py-2 pr-3">{r.event_name}{r.meet_indoor && <span className="ml-1 text-[11px] text-[var(--text-muted)]">(i)</span>}</td>
                     <td className="py-2 pr-3 tabular-nums">
                       <b>{formatPerformance(r.performance, r.result_type)}</b>
                       {r.wind !== null && <span className="ml-1 text-[var(--text-muted)]">({r.wind > 0 ? "+" : ""}{r.wind})</span>}
