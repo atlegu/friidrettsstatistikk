@@ -10,7 +10,7 @@
 | `DEMO.md` | Klikkmanus for de sju demominuttene |
 | `SPORSMAL.md` | Forberedte svar, også på de vanskelige |
 | `reserve/` | Skjermbilder av demosidene, i tilfelle nettet svikter |
-| `skisser/` | Designskisser i Norsk Friidretts profil. HTML som kan vises live, og PNG som ligger i lysbilde 6 og 7. Bygg om med `lag_skisser.sh`. |
+| `skisser/` | Designskisser i Norsk Friidretts profil. HTML som kan vises live, og PNG som ligger i lysbilde 8 og 9. Bygg om med `lag_skisser.sh`. |
 
 ## Må gjøres før møtet
 
@@ -40,5 +40,5 @@ om ham i `MANUS.md` og de forberedte svarene i `SPORSMAL.md`.
 ./lag_lysbilder.py
 ```
 
-Tallene i lysbilde 3 og 7 er hentet fra basen 14.09.2026. Sjekk dem på nytt
+Tallene i lysbilde 3, 11 og 12 er hentet fra basen 18.09.2026. Sjekk dem på nytt
 rett før møtet hvis importen har kjørt i mellomtiden.

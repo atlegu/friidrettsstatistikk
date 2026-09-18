@@ -21,17 +21,17 @@ Vi driver **friidrettsresultater.no** i dag.
 
 # Utgangspunktet
 
-## 1 957 652
+## 1 957 995
 
 resultater i drift, normalisert og søkbare
 
 | | |
 |---|---:|
-| Fra 2013 og senere | 1 709 000 |
+| Fra 2013 og senere | 1 709 516 |
 | Alle-tiders-materiale før 2013, tilbake til 1922 | 248 479 |
-| Utøvere | 87 760 |
-| Stevner | 48 601 |
-| Siste stevne inne | denne uken |
+| Utøvere | 87 767 |
+| Stevner | 48 613 |
+| Siste stevne inne | 16. september 2026 |
 
 **Migreringen er gjennomført.** Vi skal ferdigstille, ikke bygge fra bunnen.
 

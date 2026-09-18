@@ -118,7 +118,7 @@ utvides i fase 2. Ikke stå og feilsøke foran fire mennesker.
 ## 6 · Designretning · 60 sekunder, hvis tiden holder
 
 `skisser/1_utoverprofil.html` og `skisser/2_aktivitet.html` — åpne som lokale
-filer, eller vis lysbilde 6 og 7 i stedet.
+filer, eller vis lysbilde 8 og 9 i stedet.
 
 > Dette er ikke i drift i dag. Det er retningen vi vil ta designet: Norsk
 > Friidretts farger og typografi, foto av utøveren, og et aktivitetsdashbord
