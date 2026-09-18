@@ -1,11 +1,11 @@
 # Presentasjon for NFIF
 
-**Torsdag 17.09.2026, 17:30–17:55 på Teams.**
+**Teams, 17:30–17:55.**
 15–20 min presentasjon, 5–10 min spørsmål.
 
 | Fil | Innhold |
 |---|---|
-| `PRESENTASJON.pdf` | 17 lysbilder i 16:9. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
+| `PRESENTASJON.pdf` | 18 lysbilder i 16:9, bygget rundt fire punkter: alt inn og kvalitetssikret · visningen · rapporter og analyser · stabilt, raskt og fortløpende. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
 | `MANUS.md` | Tidsplan minutt for minutt, hvem som er i rommet, hva som skal sies |
 | `DEMO.md` | Klikkmanus for de sju demominuttene |
 | `SPORSMAL.md` | Forberedte svar, også på de vanskelige |
@@ -16,11 +16,10 @@
 
 | | Hva | Hvorfor |
 |---|---|---|
-| 1 | **Rull ut forsidefiksen til Vercel** | Produksjon viser i dag «Resultater 0» og «Årslister 2025». Rettet i `web/`, men ikke utrullet. Uten dette må demoen kjøres lokalt. |
-| 2 | Finn ut hvilken rolle **Hilde Trageton** har | Fjerde deltaker. Vi vet ikke hva hun ser etter. |
-| 3 | Avklar **kapasitet i timer per uke** for hver av de tre i okt–des | Det skarpeste spørsmålet som kan komme. Ha tallet klart. |
-| 4 | Logg inn i admin før møtet starter | Ikke skriv passord på delt skjerm. |
-| 5 | Øv på demoen én gang med klokke | Sju minutter er kortere enn det høres ut. |
+| 1 | Finn ut hvilken rolle **Hilde Trageton** har | Fjerde deltaker. Vi vet ikke hva hun ser etter. |
+| 2 | Avklar **kapasitet i timer per uke** for hver av de tre i okt–des | Det skarpeste spørsmålet som kan komme. Ha tallet klart. |
+| 3 | Logg inn i admin før møtet starter | Ikke skriv passord på delt skjerm. |
+| 4 | Øv på demoen én gang med klokke | Sju minutter er kortere enn det høres ut. |
 
 ## Deltakere
 
