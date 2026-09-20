@@ -15,7 +15,7 @@ import os
 import re
 import time
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
@@ -1600,6 +1600,9 @@ def oppdater_forsidetellere():
                        json={}, timeout=900)
         r.raise_for_status()
         logger.info("  Forsidetellere og klubbtall oppdatert")
+        # Tidsstempel til forsiden («Oppdatert i natt kl. 04.12»)
+        supabase.table('vedlikehold').upsert(
+            {'nokkel': 'import', 'sist_oppdatert': datetime.now(timezone.utc).isoformat()}).execute()
     except Exception as e:
         # Skal aldri velte en import. Forsiden viser en strek til neste kjøring.
         logger.warning(f"  Kunne ikke oppdatere forsidetellere: {e}")

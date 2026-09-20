@@ -1,0 +1,61 @@
+# Nattlig oppdatering av resultatbasen.
+#
+# Henter nye stevner fra kilden, avstemmer de siste seks ukene mot kilden
+# (rettelser kommer inn, ingenting slettes), oppdaterer forsidetallene og
+# kjører kontrollene i test_fullstendighet.py mot basen. Feiler en kontroll,
+# feiler jobben, og det vises i Actions-fanen.
+#
+# Kjøres 04:15 norsk tid (02:15 UTC sommer, 03:15 vinter). Kan også startes
+# for hånd under «Run workflow».
+name: Oppdater resultater
+
+on:
+  schedule:
+    - cron: "15 2 * * *"
+  workflow_dispatch:
+    inputs:
+      avstem_uker:
+        description: "Uker tilbake som hentes på nytt og avstemmes"
+        default: "6"
+
+concurrency:
+  group: oppdater-resultater
+  cancel-in-progress: false
+
+jobs:
+  oppdater:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: scraper
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scraper/requirements.txt
+
+      - name: Installer avhengigheter
+        run: pip install -r requirements.txt httpx
+
+      - name: Hent og avstem resultater
+        run: python update_results.py --avstem-uker "${{ github.event.inputs.avstem_uker || '6' }}"
+
+      - name: Kontroller basen
+        run: python test_fullstendighet.py --bare vindflagg dubletter avdrift tider stevnedubletter
+
+      - name: Ta vare på loggen
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logg-${{ github.run_id }}
+          path: scraper/logs/
+          if-no-files-found: ignore
+          retention-days: 30
