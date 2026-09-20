@@ -28,13 +28,30 @@ async function getStats() {
     .select("antall_utovere,antall_klubber,antall_resultater,antall_stevner")
     .single()
 
+  // Naar importen sist kjoerte (skrives av update_results.py)
+  const { data: v } = await supabase.from("vedlikehold").select("sist_oppdatert").eq("nokkel", "import").maybeSingle()
+
   // Uten tall vises en strek. Et 0 ville sett ut som et gyldig svar.
   return {
     athletes: data?.antall_utovere ?? null,
     clubs: data?.antall_klubber ?? null,
     results: data?.antall_resultater ?? null,
     meets: data?.antall_stevner ?? null,
+    oppdatert: v?.sist_oppdatert ?? null,
   }
+}
+
+/** «Oppdatert i dag kl. 04.12», «i går», eller dato. */
+function oppdatertTekst(iso: string | null) {
+  if (!iso) return null
+  const d = new Date(iso)
+  const tz = "Europe/Oslo"
+  const dag = d.toLocaleDateString("nb-NO", { timeZone: tz, day: "numeric", month: "long" })
+  const kl = d.toLocaleTimeString("nb-NO", { timeZone: tz, hour: "2-digit", minute: "2-digit" }).replace(":", ".")
+  const iDag = new Date().toLocaleDateString("nb-NO", { timeZone: tz, day: "numeric", month: "long" })
+  const iGaar = new Date(Date.now() - 86400000).toLocaleDateString("nb-NO", { timeZone: tz, day: "numeric", month: "long" })
+  const naar = dag === iDag ? "i dag" : dag === iGaar ? "i går" : dag
+  return `Oppdatert ${naar} kl. ${kl}`
 }
 
 function formatAntall(n: number | null) {
@@ -239,6 +256,11 @@ export default async function Home() {
               </div>
             ))}
           </dl>
+          {stats.oppdatert && (
+            <p className="mt-5 text-center text-[12.5px] text-[var(--nfif-navy-blekk-svak)]">
+              {oppdatertTekst(stats.oppdatert)} · resultatene hentes og avstemmes mot kilden hver natt
+            </p>
+          )}
         </div>
       </section>
 
