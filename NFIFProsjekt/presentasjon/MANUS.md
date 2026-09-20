@@ -14,10 +14,10 @@ gjør dem.
 
 | | Det de skal sitte igjen med | Lysbilde |
 |---|---|---:|
-| 1 | Alt kommer inn, fortløpende, og alt kvalitetssikres | 5, 6 |
-| 2 | Visningen er laget av folk som kjenner idretten | 7–10 |
-| 3 | Rapporter og analyser, på tre måter | 11–13 |
-| 4 | Stabilt, raskt, levert fortløpende, med kapasitet | 14 |
+| 1 | Alt kommer inn, hver natt, og alt kvalitetssikres | 5, 6 |
+| 2 | Visningen er laget av folk som kjenner idretten, også for klubb og krets | 7–11 |
+| 3 | Rapporter og analyser, på tre måter | 12–14 |
+| 4 | Stabilt, raskt, levert fortløpende, med kapasitet | 15 |
 
 Lysbilde 4 sier de fire punktene høyt. Alt etter er dokumentasjon.
 
@@ -38,14 +38,14 @@ aldri.
 | 3:00 | 1 · Alt kommer inn: tre innsamlingsløp | 5 |
 | 4:30 | 1 · Alt kvalitetssikres | 6 |
 | 6:00 | **2 · Demo** | 7 |
-| 12:00 | 2 · Designretning, to skisser | 8, 9 |
-| 13:00 | 2 · Samme base, seks behov | 10 |
-| 13:45 | 3 · Rapporter og analyser, tre måter | 11 |
-| 14:45 | 3 · §12, telle og forstå | 12 |
-| 15:45 | 3 · Hva analysene ellers kan brukes til | 13 |
-| 16:15 | **4 · Stabilt, raskt, kapasitet** | 14 |
-| 17:00 | Veien til nyttår · integrasjoner · behov | 15–17 |
-| 17:45 | Oppsummering | 18 |
+| 12:00 | 2 · Tre sider i drift: profil, klubb, aktivitet | 8–10 |
+| 13:00 | 2 · Samme base, sju behov | 11 |
+| 13:45 | 3 · Rapporter og analyser, tre måter | 12 |
+| 14:45 | 3 · §12, telle og forstå | 13 |
+| 15:45 | 3 · Hva analysene ellers kan brukes til | 14 |
+| 16:15 | **4 · Stabilt, raskt, levert siden tilbudet** | 15 |
+| 17:00 | Veien til nyttår · integrasjoner · behov | 16–18 |
+| 17:45 | Oppsummering | 19 |
 
 ---
 
@@ -119,6 +119,8 @@ Tre rader i tabellen, én setning hver, og så poenget om agenter.
 
 > Norske stevner er det enkle: alt sendes til samme sted. Formatene varierer
 > noe, og det håndterer vi. Fra oktober er plattformen selv førstemottaker.
+> I dag hentes de hver natt klokken kvart over fire, avstemmes mot kilden, og
+> tolv kontroller kjøres etterpå. Forsiden viser når det sist skjedde.
 >
 > Utenlandske stevner krever egne agenter per kildetype: TFRRS for
 > collegeutøverne, World Athletics og European Athletics, de nordiske basene,
@@ -157,12 +159,19 @@ Se `DEMO.md`. Si hva du skal vise før du klikker. Innled med én setning:
 > Dette er punktet der vi mener vi er bedre enn andre. Ikke teknologien, men at
 > vi vet hva folk leter etter.
 
-### 2 · Skisser og seks behov · 1 minutt 45
+### 2 · Tre sider i drift, og sju behov · 1 minutt 45
 
-To skisser, raskt. Så tabellen:
+Tre skjermbilder, raskt. Poenget er at skissene i tilbudet ble til sider på tre
+uker:
+
+> Dette var skisser i tilbudet. Nå er det sidene. Utøverprofilen, klubbsiden
+> som er skreddersømmen for klubb og krets, og aktivitetsdashbordet som er §12.
+
+Så tabellen:
 
 > Det er den samme basen. Forskjellen er hva man løfter fram, og det er
-> domenekunnskap mer enn teknologi.
+> domenekunnskap mer enn teknologi. Kretsene får klubbsiden for sine klubber
+> den dagen vi har klubb-til-krets-koblingen fra dere.
 
 ### 3 · Rapporter og analyser · 1 minutt
 
@@ -181,10 +190,11 @@ De tre måtene, og så klubbrapportene som bevis.
 important».
 
 > Tallene er hentet fra basen i dag. Men: teller man klubber med resultater,
-> faller tallet tjue prosent fra 2024 til 2025. Det er ikke klubber som legger
-> ned. 183 av de 193 som forsvant, hadde under tjue resultater. Skoler innom
-> ett stevne. Et dashbord som rapporterer det som klubbdød, gir dere
-> feilinformasjon. Det er forskjellen på å telle og å forstå.
+> faller tallet over tjue prosent fra 2024 til 2025. Det er ikke klubber som
+> legger ned. Det som forsvant var skoler og små lag innom ett stevne. Klubber
+> med minst tjue resultater i året er 271 mot 262. Et dashbord som rapporterer
+> tjue prosent som klubbdød, gir dere feilinformasjon. Det er forskjellen på å
+> telle og å forstå.
 
 ### 3 · Ellers · 30 sekunder
 
@@ -193,12 +203,13 @@ Stopp på simuleringen:
 > Konsekvensen av å endre et kvalifiseringskrav kan beregnes før vedtaket
 > fattes, i stedet for å observeres to år etter.
 
-### 4 · Stabilt, raskt, kapasitet · 45 sekunder
+### 4 · Stabilt, raskt, levert siden tilbudet · 45 sekunder
 
-> Norges største stevneside leveres på 1,2 sekunder. Målt, ikke anslått. En
-> automatisk test sammenligner tallene på sidene med basen etter hver import,
-> og mot produksjon. Utviklingen skjer i små, ferdige steg som rulles ut samme
-> dag. Og leveransen ligger hos tre navngitte personer, ikke i en kø.
+> Norges største stevneside leveres på 1,2 sekunder. Målt, ikke anslått. Tolv
+> automatiske kontroller etter hver import. Og siden vi sendte tilbudet
+> 31. august har vi levert ny utøverprofil, aktivitetsdashbord, klubbstatistikk,
+> NM-medaljer og nattlig innsamling. Små, ferdige steg, rullet ut samme dag.
+> Slik jobber vi, og leveransen ligger hos tre navngitte personer.
 
 Om kapasitet i timer kommer opp: ha tallet klart. Se `README.md`.
 

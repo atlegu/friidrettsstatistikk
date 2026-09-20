@@ -5,12 +5,13 @@
 
 | Fil | Innhold |
 |---|---|
-| `PRESENTASJON.pdf` | 18 lysbilder i 16:9, bygget rundt fire punkter: alt inn og kvalitetssikret · visningen · rapporter og analyser · stabilt, raskt og fortløpende. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
+| `PRESENTASJON.pdf` | 19 lysbilder i 16:9, bygget rundt fire punkter: alt inn og kvalitetssikret · visningen · rapporter og analyser · stabilt, raskt og fortløpende. Bygges med `./lag_lysbilder.py` fra `PRESENTASJON.md`. |
 | `MANUS.md` | Tidsplan minutt for minutt, hvem som er i rommet, hva som skal sies |
 | `DEMO.md` | Klikkmanus for de sju demominuttene |
 | `SPORSMAL.md` | Forberedte svar, også på de vanskelige |
 | `reserve/` | Skjermbilder av demosidene, i tilfelle nettet svikter |
-| `skisser/` | Designskisser i Norsk Friidretts profil. HTML som kan vises live, og PNG som ligger i lysbilde 8 og 9. Bygg om med `lag_skisser.sh`. |
+| `skjermbilder/` | Skjermbilder av sidene i drift, lysbilde 8–10. Tas på nytt med Chrome headless (se `skisser/lag_skisser.sh` for kommandoen), 1500 px bredt. |
+| `skisser/` | Designskissene fra tilbudet. Ikke lenger i lysbildene; sidene finnes. |
 
 ## Må gjøres før møtet
 
@@ -40,5 +41,6 @@ om ham i `MANUS.md` og de forberedte svarene i `SPORSMAL.md`.
 ./lag_lysbilder.py
 ```
 
-Tallene i lysbilde 3, 11 og 12 er hentet fra basen 18.09.2026. Sjekk dem på nytt
-rett før møtet hvis importen har kjørt i mellomtiden.
+Tallene i lysbilde 3 og 13 er hentet fra basen 20.09.2026. Importen kjører hver
+natt (GitHub Actions, `oppdater.yml`), så forsiden vil vise litt høyere tall enn
+lysbilde 3 i møtet. Det er greit: si at det kom inn i natt.

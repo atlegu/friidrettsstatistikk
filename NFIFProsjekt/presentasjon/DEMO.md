@@ -2,8 +2,8 @@
 
 Fem skjermbilder. Si hva du skal vise før du klikker.
 
-**Forbered før møtet:** logg inn i admin, ha to faner åpne, steng varsler.
-Del fane, ikke hele skjermen.
+**Forbered før møtet:** ha fanene åpne på forhånd, steng varsler. Del fane,
+ikke hele skjermen. Om nettet svikter: lysbilde 8–10 viser de samme sidene.
 
 ---
 
@@ -11,10 +11,13 @@ Del fane, ikke hele skjermen.
 
 `https://friidrettsresultater.no`
 
-Pek på tallene øverst: 87 939 utøvere, 1 953 356 resultater, 48 548 stevner.
+Pek på tallene øverst: 1 768 332 resultater, 87 727 utøvere, 44 862 stevner,
+2 482 klubber. Pek på linjen under: **«Oppdatert i dag kl. 04.15 · resultatene
+hentes og avstemmes mot kilden hver natt»**.
 
-> Dette er i drift nå. Under ligger årsbeste for inneværende sesong, som
-> oppdateres i det resultatene kommer inn.
+> Dette er i drift nå, og det oppdaterer seg selv hver natt. Under ligger
+> årsbeste for inneværende sesong, bare godkjente resultater: lovlig vind,
+> ikke håndtid.
 
 Ikke bli stående. Videre.
 
@@ -27,116 +30,84 @@ Ikke bli stående. Videre.
 Hvorfor denne: født 2008, åtte sesonger, 217 stevner, 380 resultater i
 13 øvelser. Karrieren fra elleve år til i dag.
 
-> Dette er hva fulldybde betyr. Ikke bare toppresultatene, men hvert
-> resultat fra han var elleve. Lengde 4,78 som trettenåring, 100 meter på
-> 10,42 som syttenåring.
->
-> Personlige rekorder skilt på ute og inne, med vind der det er målt, og
-> lenke fra hvert resultat til stevnet det ble oppnådd i.
+Gå ovenfra og ned:
+
+> Utviklingen i hovedøvelsen, årsbeste år for år, med første og beste merket.
+> Sesongen i år med status på hvert resultat: pers, sesongbeste, medvind.
+> Til høyre: personlige rekorder ute og inne, status mot NM-kravene, og
+> klubbhistorikken. Alt lenker til stevnet det skjedde i.
 
 Klikk **Alle resultater** for å vise dybden. Klikk ett stevnenavn for å vise
 sporbarheten, og gå tilbake.
 
-**Poenget:** dette er 87 939 profiler, ikke en håndfull.
+**Poenget:** dette er 87 727 profiler, ikke en håndfull.
 
 ---
 
-## 3 · Årsliste med filtre · 90 sekunder
+## 3 · Klubbstatistikk · 75 sekunder
 
-`/statistikk/2026`
+`/klubber` → søk **Tyrving** → **Statistikk**
 
-Vis filtrene: kjønn, ute/inne, aldersgruppe fra 13 år til senior, og
-øvelsesvalg.
+> Dette er skreddersømmen for klubb. Aktive utøvere år for år, klubbrekorder
+> for menn og kvinner side om side, de mest aktive i sesongen, og årslister og
+> all-time-lister bak ett klikk. Samme side for alle 2 482 klubber.
+>
+> Kretsene får den samme siden når vi har klubb-til-krets-koblingen fra dere.
 
-> Elleve filterdimensjoner er ønsket i §17. Åtte er i drift i dag. Region,
-> distanse og kvalitetsnivå kommer med datamodellutvidelsene i høst.
-
-Velg en øvelse og en aldersklasse, la dem se listen bygge seg opp.
-
-> Aldersklassene følger norsk kalenderårsprinsipp. En utøver født i 1999 er
-> G14 i hele 2013, uten justering for når bursdagen faller. Det er en norsk
-> særregel, og den er bygget inn i datamodellen, ikke lagt på i etterkant.
-
-Den setningen er til Thor Gjesdal.
+Klikk **Alle klubbrekorder** og bytt til **Kvinner** og **Junior 15–19**,
+så de ser at det er den samme basen med andre filtre.
 
 ---
 
-## 4 · NM-kvalifisering · 2 minutter
+## 4 · Aktivitet og deltakelse · 75 sekunder
+
+`/aktivitet`
+
+> Dette er §12, «particularly important» i kravspekken. Stevner, starter og
+> unike deltakere år for år, aldersfordeling, aktive klubber. Filtre på år,
+> kjønn, alder og øvelsesgruppe, og eksport til Excel.
+
+Velg **13–19 år** og la kurven tegne seg på nytt.
+
+> Og her er skjønnet: antall klubber med resultater faller over tjue prosent
+> fra 2024 til 2025. Det er skoler innom ett stevne. Klubber med reell
+> aktivitet er stabilt. Det er forskjellen på å telle og å forstå.
+
+---
+
+## 5 · NM-kvalifisering · 2 minutter
 
 `/mesterskap/nm-senior-2026`
 
-Dette er demoens tyngste punkt. Bruk tiden.
+Demoens tyngste punkt. Bruk tiden.
 
 Vis øvelsesoversikten med krav og antall kvalifiserte per øvelse.
 
 > Foran hvert NM sammenstiller SRU et regneark over alle som har klart kravet.
-> Det er et grundig arbeid, og det er en kritisk funksjon. Det er også et
+> Det er et grundig arbeid, og en kritisk funksjon. Det er også et
 > øyeblikksbilde som er utdatert i det neste stevne er ferdig.
 
 Klikk inn på 100 meter menn. Vis listen: resultat, vind, utøver, fødselsår,
 klubb, stevne, dato.
 
-> Her er kravet 11,30, og 64 har klart det. Listen oppdateres i det resultatet
-> importeres. Hvert resultat lenker tilbake til stevnet.
->
-> Reglene er implementert etter Reglement for norske mesterskap 2026:
-> kravsatser per øvelse og kjønn, aldersklasseoverstyringer for U20 og U23,
-> regler for om innendørsresultater teller, og øvelser som kvalifiserer til
-> andre øvelser — som 5 km gateløp til 5000 meter.
+> Her er kravet 11,30, og 146 har klart det. Listen oppdateres i det resultatet
+> importeres. Bare lovlig vind, ikke håndtid, én utøver per rad. Hvert resultat
+> lenker tilbake til stevnet.
 
-Vis klubbfilteret.
+Klikk **Kvinner**, velg en annen øvelse, og la dem se at det er ett klikk.
 
-> En klubbleder kan se sine egne kvalifiserte uten å lete i et regneark.
-
-**Avslutt med presiseringen. Den er viktig:**
-
-> Vårt mål er ikke å erstatte arbeidet SRU gjør, men å fjerne det manuelle i
-> det. Regelverket og de faglige vurderingene bør fortsatt eies av SRU.
+> Slik ser det ut for utøveren: på profilen står «Klar» eller hvor mye som
+> mangler, per øvelse.
 
 ---
 
-## 5 · Administrasjon og datakvalitet · 90 sekunder
+## Reserve om tiden tillater
 
-`/admin` — **vær innlogget på forhånd**
+`/statistikk/2026` · årsliste med filtre: kjønn, ute/inne, aldersgruppe fra
+13 år til senior, øvelse.
 
-Vis utøver-, klubb- og stevneadministrasjon, og importoversikten.
+> Aldersklassene følger norsk kalenderårsprinsipp. En utøver født i 1999 er
+> G14 i hele 2013, uten justering for når bursdagen faller. Det er bygget inn
+> i datamodellen, ikke lagt på i etterkant.
 
-> Importrammeverket sporer hver batch med validering, status og manuell
-> gjennomgang. Hvert resultat kan følges tilbake til kilden det kom fra og
-> tidspunktet det ble hentet.
-
-Vis utøversammenslåing hvis den er lett tilgjengelig.
-
-> Dublettbehandling er det tyngste i opprydningen. Verktøyet finnes, og hver
-> sammenslåing spores.
-
-Hvis admin er tregt eller noe ser rart ut: hopp over, og si at verktøyene
-utvides i fase 2. Ikke stå og feilsøke foran fire mennesker.
-
----
-
-## 6 · Designretning · 60 sekunder, hvis tiden holder
-
-`skisser/1_utoverprofil.html` og `skisser/2_aktivitet.html` — åpne som lokale
-filer, eller vis lysbilde 8 og 9 i stedet.
-
-> Dette er ikke i drift i dag. Det er retningen vi vil ta designet: Norsk
-> Friidretts farger og typografi, foto av utøveren, og et aktivitetsdashbord
-> der tallene allerede er ekte.
-
-Hopp over dette hvis demoen har tatt lengre tid enn planlagt. Lysbildene viser
-det samme.
-
----
-
-## Reserve
-
-Hvis nettet svikter eller siden henger: skjermbildene i `reserve/` dekker
-punkt 1 til 4. Si det rett ut — «jeg tar skjermbildene i stedet» — og gå
-videre uten å beklage.
-
-## Ikke vis
-
-- Sider med kjente feil eller tomme lister
-- Noe du ikke har åpnet selv samme dag
-- Admin uten å være innlogget på forhånd
+Den setningen er til Thor Gjesdal.

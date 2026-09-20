@@ -21,15 +21,15 @@ Vi driver **friidrettsresultater.no** i dag.
 
 # Utgangspunktet
 
-## 1 768 599
+## 1 768 332
 
 resultater i drift, normalisert og søkbare
 
 | | |
 |---|---:|
-| Fra 2013 og senere | 1 520 628 |
-| Alle-tiders-materiale før 2013, tilbake til 1922 | 247 971 |
-| Utøvere | 87 767 |
+| Fra 2013 og senere | 1 520 363 |
+| Alle-tiders-materiale før 2013, tilbake til 1922 | 247 969 |
+| Utøvere | 87 727 |
 | Stevner | 44 862 |
 | Siste stevne inne | 16. september 2026 |
 
@@ -45,8 +45,8 @@ Vi svarer på begge.
 
 | | | |
 |---|---|---|
-| **1** | **Alt kommer inn, og alt kvalitetssikres** | Norske stevner, utenlandske stevner og løp utenfor bane. Hentet fortløpende av automatiske agenter, kontrollert før det vises. |
-| **2** | **Visningen** | Her mener vi at vi er bedre enn andre. Vi kjenner idretten og vet hva som er ønskelig. |
+| **1** | **Alt kommer inn, og alt kvalitetssikres** | Norske stevner, utenlandske stevner og løp utenfor bane. Hentet hver natt av automatiske agenter, kontrollert før det vises. |
+| **2** | **Visningen** | Her mener vi at vi er bedre enn andre. Vi kjenner idretten og vet hva som er ønskelig, for utøver, klubb, krets og forbund. |
 | **3** | **Rapporter og analyser** | Standardrapporter, skreddersøm, og et system der klubb, krets og utøver lager sine egne. |
 | **4** | **Stabilt, raskt og levert fortløpende** | Målt ytelse, automatiske kontroller, og kapasitet til å levere gjennom hele avtaleperioden. |
 
@@ -60,12 +60,13 @@ Resten av presentasjonen går gjennom dem i den rekkefølgen.
 
 | Kilde | Slik hentes det | Status |
 |---|---|---|
-| **Norske stevner** | Alle resultatlister sendes til samme sted. Formatene varierer noe; det håndterer vi. Fra oktober er plattformen selv førstemottaker. | I drift. Avstemmes mot kilden hver kjøring. |
+| **Norske stevner** | Alle resultatlister sendes til samme sted. Formatene varierer noe; det håndterer vi. Fra oktober er plattformen selv førstemottaker. | **I drift. Hentes hver natt.** |
 | **Utenlandske stevner** | Egne agenter per kildetype: TFRRS, World Athletics, European Athletics, de nordiske basene, stevnenes egne sider. **Utøverdrevet**: vi følger de norske utøverne, ikke hvert stevne i verden. | Bygges i høst. Innmeldingskanal som sikkerhetsnett. |
 | **Løp utenfor bane** | Knyttet til den **offisielle terminlisten**: det er de resultatene som skal inn. Egen inngangsside, så det ikke drukner banestatistikken. | Fase 3, samme maskineri. |
 
-**Agentene kjører kontinuerlig**, ikke som en jobb noen husker å starte.
-Innsamling er en driftsfunksjon på linje med nettstedet, og ligger i driftsavtalen.
+**Hver natt kl. 04.15:** nye stevner hentes, de siste seks ukene avstemmes mot
+kilden, og tolv kontroller kjøres. Forsiden viser når det sist skjedde.
+Innsamling er en driftsfunksjon, og ligger i driftsavtalen.
 
 ---
 
@@ -81,10 +82,10 @@ legges i arbeidslisten.
 
 ### Systemet kontrollerer alt, menneskene ser på unntakene
 
-Resultat bedre enn norsk rekord · urimelig persforbedring · vind i vindavhengig
-øvelse · presisjon mot tidtakingsmetode · aldersklasse mot fødselsår · redskap
-mot klasse · samme utøver to steder samme dag · samme person to ganger i
-registeret
+Tolv automatiske kontroller etter hver import: vindflagg mot øvelse ·
+dubletter · samme person to ganger i registeret · samme stevne to ganger ·
+tider som ikke er fysisk mulige · og at hver side viser nøyaktig det basen
+har. Alle skal være null. Er de ikke det, står det i loggen før noen spør.
 
 ### Målt, ikke lovet
 
@@ -99,45 +100,60 @@ Hvert tall kan følges tilbake til stevnet, kilden og tidspunktet det ble hentet
 # 2 · Visningen
 
 Dette er punktet der vi mener vi er bedre enn andre. Ikke fordi teknologien er
-annerledes, men fordi vi vet hva utøvere, trenere, klubber, statistikkmiljøet,
-media og forbundet faktisk leter etter.
+annerledes, men fordi vi vet hva utøvere, trenere, klubber, kretser,
+statistikkmiljøet, media og forbundet faktisk leter etter.
 
 ### Demo · friidrettsresultater.no
 
 1. Forsiden
 2. En utøverprofil
-3. Årsliste med filtre
-4. NM-kvalifisering
-5. Administrasjon
+3. Klubbstatistikk
+4. Aktivitet og deltakelse, §12
+5. NM-kvalifisering
+
+Skissene i tilbudet var skisser. **De tre neste lysbildene er sidene slik de er i drift i dag.**
 
 ---
 
-# 2 · Designretning · utøverprofil
+# 2 · Utøverprofilen · §9
 
-![Designskisse av utøverprofil](skisser/1_utoverprofil.png)
+![Utøverprofil i drift](skjermbilder/1_utoverprofil.png)
 
-Foto av utøveren, utviklingskurve, status mot NM-krav og klubbhistorikk.
-Norsk Friidretts farger og typografi. Det du så i demoen er første steg mot
-dette.
-
----
-
-# 2 · Designretning · aktivitetsdashbord
-
-![Designskisse av aktivitetsdashbord](skisser/2_aktivitet.png)
-
-Filtre på år, krets, kjønn, alder og øvelsesgruppe. Tallene er ekte, hentet
-fra basen. Dette er §12 som skjermbilde.
+Utvikling i hovedøvelsen, sesongen med status per resultat, personlige
+rekorder ute og inne, status mot NM-krav, klubbhistorikk og NM-medaljer.
+Alt på én side, og 87 727 slike.
 
 ---
 
-# 2 · Samme base, seks ulike behov
+# 2 · Skreddersøm for klubb og krets · §10
+
+![Klubbstatistikk i drift](skjermbilder/3_klubbstatistikk.png)
+
+Aktive utøvere år for år, klubbrekorder for menn og kvinner side om side, de
+mest aktive i sesongen, årslister og all-time-lister. Én side per klubb, 2 482
+klubber. **Kretsene får den samme siden** når klubb-til-krets-koblingen er på
+plass. Forbundets rapporter til klubb og krets lages på samme grunnlag.
+
+---
+
+# 2 · Aktivitet og deltakelse · §12
+
+![Aktivitetsdashbord i drift](skjermbilder/2_aktivitet.png)
+
+Filtre på år, kjønn, alder og øvelsesgruppe. Stevner, starter, unike deltakere,
+aldersfordeling og aktive klubber, med eksport til Excel. Dette er §12 i drift,
+ikke lovet til 2027.
+
+---
+
+# 2 · Samme base, sju ulike behov
 
 | Hvem | Vil ha |
 |---|---|
 | **Utøveren** | Egen profil, egne rekorder, egen utvikling over tid |
 | **Treneren** | Årslister per aldersklasse, sammenligning, dybde i egen øvelse |
-| **Klubben** | Egne utøvere, klubbrekorder, hvem som er kvalifisert |
+| **Klubben** | Egne utøvere, klubbrekorder, aktivitet år for år, hvem som er kvalifisert |
+| **Kretsen** | Det samme som klubben, for sine klubber, og utviklingen mot resten av landet |
 | **Statistikkmiljøet** | Alle-tiders-lister, full dybde, eksport til eget arbeid |
 | **Media** | Hva som kan skje i helgen, rekordvarsler, ferdig faktagrunnlag |
 | **Forbundet** | Aktivitet, rekruttering, frafall, per krets og aldersklasse |
@@ -153,9 +169,9 @@ Region, distanse og kvalitetsnivå kommer i høst.
 
 | | | |
 |---|---|---|
-| **Eget initiativ** | Vi ser noe i tallene og lager det: troppanalyse før NM, rekordvarsler, årsrapport. | To mesterskapspakker og én årsrapport i grunnavtalen. |
-| **Etter avtale** | Klubb, krets eller forbund ber om noe bestemt. | Fire klubber har allerede fått sitt. |
-| **Selvbetjening** | Utøver, klubb og krets velger en standardrapport og får den på egne tall. | Samme maskineri som skreddersømmen. |
+| **Eget initiativ** | Vi ser noe i tallene og lager det: troppanalyse før NM, rekordvarsler, årsrapport. | To mesterskapspakker og én årsrapport i grunnavtalen. Vedlegg C og D i tilbudet er to slike. |
+| **Etter avtale** | Klubb, krets eller forbund ber om noe bestemt. | Fire klubber har allerede fått sitt. Vedlegg F. |
+| **Selvbetjening** | Utøver, klubb og krets velger en standardrapport og får den på egne tall. | Klubbstatistikken og aktivitetsdashbordet er de to første. |
 
 ### Skreddersøm er dager, ikke måneder · en ny klubb er rundt tjue linjer konfigurasjon
 
@@ -175,17 +191,17 @@ basen i dag, ikke lovet til 2027.
 
 | År | Stevner | Starter | Unike deltakere | 13–19 år |
 |---|---:|---:|---:|---:|
-| 2019 | 2 380 | 152 677 | 11 134 | 4 400 |
-| 2021 | 2 005 | 95 079 | 8 338 | 3 234 |
-| 2023 | 2 067 | 128 627 | 8 914 | 3 367 |
-| 2025 | 1 979 | 117 458 | 8 636 | 3 151 |
+| 2019 | 1 960 | 121 847 | 11 111 | 4 406 |
+| 2021 | 1 633 | 75 034 | 8 292 | 3 234 |
+| 2023 | 1 707 | 103 688 | 8 902 | 3 431 |
+| 2025 | 1 704 | 95 475 | 8 534 | 3 144 |
 
 ### Men tallene må behandles med skjønn
 
-Teller man klubber med registrerte resultater, faller tallet fra 573 i 2024 til
-460 i 2025. Tjue prosent. **Råtallet overdriver kraftig.** Av de 193 enhetene
-som forsvant, hadde 183 under tjue resultater: skoler og små lag innom ett
-stevne. Teller man klubber med reell aktivitet, er fallet fra 279 til 272.
+Teller man klubber med registrerte resultater, faller tallet fra 591 i 2024 til
+460 i 2025. Over tjue prosent. **Råtallet overdriver kraftig.** Det som forsvant
+var skoler og små lag innom ett stevne. Teller man klubber med reell aktivitet,
+minst tjue resultater i året, er det 271 mot 262.
 
 Et dashbord som rapporterer tjue prosent som klubbdød, gir forbundet
 feilinformasjon. Det er forskjellen på å telle og å forstå.
@@ -216,11 +232,17 @@ Norske friidrettsdata er allerede grunnlag for fagfellevurderte studier i
 
 | | |
 |---|---|
-| **Raskt** | Norges største stevneside, Tyrvinglekene med 3 299 resultater, leveres på 1,2 sekunder. NM-kvalifiseringslisten på 1,1. Målt, ikke anslått. |
+| **Raskt** | Norges største stevneside, Tyrvinglekene med 3 299 resultater, på 1,2 sekunder. Klubbrekorder på 0,3. NM-kvalifiseringslisten på 1,3. Målt, ikke anslått. |
 | **Stabilt** | Nettstedet kjører på Vercel, basen på Supabase. Ingen egen server som kan gå ned på en søndag. Tunge jobber går i basen, utenfor forespørselen. |
-| **Kontrollert** | En automatisk test sammenligner tallene på sidene med basen, og basen med seg selv: vindflagg, dubletter, utøverregister. Kjøres etter hver import, og mot produksjon. |
-| **Levert fortløpende** | Utviklingen skjer i små, ferdige steg som rulles ut samme dag. Det dere ser i dag er bygget slik. Ingen store leveranser som venter på hverandre. |
+| **Kontrollert** | Tolv automatiske kontroller etter hver import, og mot produksjon: sidene mot basen, basen mot seg selv. |
 | **Kapasitet** | Tre navngitte personer, ikke en leverandørkø. Innsamling, kontroll og drift er rutiner, ikke prosjekter. |
+
+### Levert siden tilbudet ble sendt 31. august
+
+Ny utøverprofil · aktivitetsdashbord med eksport · klubbstatistikk ·
+NM-medaljer 2026 · forsøk, semifinale og finale fra kilden · nattlig
+innsamling med kontroller · rekordsider på under ett sekund.
+Små, ferdige steg, rullet ut samme dag. Slik jobber vi.
 
 ---
 
@@ -266,7 +288,7 @@ tidtakingsmetode, i den formen som er minst arbeid for stevnesystemene.
 |---|---|---|
 | Terminlisten, løpende | Avgjør godkjenning, og dermed kvalitetsnivå etter §6. Grunnlaget for løp utenfor bane. | Snarest |
 | Lisensregisteret | Lisenskriteriet i nivå A | Snarest |
-| Klubb-til-krets-mapping | Kretsstatistikk. Kan ikke utledes trygt fra klubbnavn. | Snarest |
+| Klubb-til-krets-mapping | Kretsstatistikk og kretssider. Kan ikke utledes trygt fra klubbnavn. | Snarest |
 | Kontaktpunkt mot arrangører og tidtakere | Egen innsamling av resultatlister | September |
 | Melding om underkjente stevner | Oppdatering av kvalitetsnivå og §7-koder | Fra oppstart |
 
@@ -276,8 +298,8 @@ tidtakingsmetode, i den formen som er minst arbeid for stevnesystemene.
 
 | | |
 |---|---|
-| **1** | Alt kommer inn, hentet fortløpende av agenter, og alt kvalitetssikres før det vises. |
-| **2** | Visningen bygges av folk som kjenner idretten, og som vet hva som er ønskelig. |
+| **1** | Alt kommer inn, hentet hver natt av agenter, og alt kvalitetssikres før det vises. |
+| **2** | Visningen bygges av folk som kjenner idretten: for utøver, klubb, krets og forbund. |
 | **3** | Rapporter og analyser: på eget initiativ, etter avtale, og selvbetjent for klubb, krets og utøver. |
 | **4** | Stabilt, raskt, kontrollert, og levert fortløpende av tre navngitte personer. |
 

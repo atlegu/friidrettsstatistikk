@@ -918,3 +918,21 @@ Kontroll: `test_fullstendighet.py --bare tider` (`test_urimelige_tider`).
 
 **NM-listen** regnet «utendørs» som `meet_indoor = false` og utelot stevner
 uten bane-flagg; nå `IS NOT TRUE`, som tellingen.
+
+## 2026-09-20 — Nattlig oppdatering via GitHub Actions
+
+`.github/workflows/oppdater.yml` kjører hver natt kl. 04.15 norsk tid (og
+ved behov for hånd): `update_results.py` (nye stevner, avstemming siste seks
+uker, forsidetall) og deretter `test_fullstendighet.py` med kontrollene mot
+basen. Feiler en kontroll, feiler jobben. Loggen lagres som artefakt i 30
+dager. Hemmelighetene SUPABASE_URL og SUPABASE_SERVICE_KEY ligger i
+repoets secrets. Importen skriver tidsstempel i `vedlikehold` (nøkkel
+`import`), og forsiden viser «Oppdatert i dag kl. …».
+
+**Første kjøring 20.09.2026:** 181 resultater inn, 19 rader fikk runde,
+0 feil, 3 minutter. Kontrollen `stevnedubletter` stoppet på de sju parene
+som sto til manuell vurdering; de er nå avgjort (samme stevne, ulikt navn:
+KM Masters/Kaststevne, HBT-stevnet, Kastmangekamp Asker/Heggedal, European
+Masters på tre baner, Sandnes innendørs, Pfungstadt) og slått sammen med
+`rydd_stevnepar`. 74 dobbeltrader slettet, 11 rader ble stående i «Asker,
+Kastmangekamp» (unik indeks).
