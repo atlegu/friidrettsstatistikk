@@ -10,6 +10,26 @@ usikkerhet. Vet du ikke, si det og lov å komme tilbake.
 
 ## De vanskelige
 
+### «Hvordan vet vi at statistikken faktisk er oppdatert?»
+
+> Den henter seg selv. Hver natt klokken kvart over fire kjører innsamlingen:
+> nye stevner inn, de siste seks ukene hentes på nytt og avstemmes mot
+> kilden, forsidetallene oppdateres, og tolv kontroller kjøres mot basen.
+> Forsiden viser klokkeslettet. Feiler en kontroll, feiler kjøringen, og vi
+> ser det om morgenen. Loggen fra hver kjøring tas vare på i tretti dager.
+>
+> Og det er ingen som må huske å starte den. Det er poenget.
+
+Vis gjerne forsiden: «Oppdatert i dag kl. 04.15».
+
+### «Hva gjør dere når et stevne mangler i statistikken?»
+
+> Det skjer, og det skal være lett å melde. I dag: én melding til oss, så
+> hentes stevnet i neste kjøring, eller med én kommando samme dag. Fra
+> oktober har plattformen en innmeldingskanal for arrangører og utøvere,
+> og alt som meldes inn havner i arbeidslisten med sporing.
+
+
 ### «Hvor mye tid har dere egentlig til dette?»
 
 Det skarpeste spørsmålet i rommet, og det kommer trolig fra Magnus. Alle tre
