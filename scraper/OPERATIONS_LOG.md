@@ -957,3 +957,36 @@ De to parene er slått sammen (53 dobbeltrader slettet). Verifisert med
 `--kun-stevner` på begge: alle fire kildestevner går til én post hver, 0 nye.
 Planlagt kjøring flyttet til 03.37 (GitHub startet 02.15-jobben først 09.58;
 hele klokkeslett har lang kø).
+
+## 2026-09-21 — Rekordsiden: tider lest feil, fire klasser
+
+Atle fant på norgesrekordsiden: 400 m hekk kvinner «1.08» (Guro Kvamme),
+300 m, 600 m og 300 m hekk med samme feil, maraton kvinner 2:40.00 (Marthe
+Katrine Myhre) og 5000 m kvinner 10:45.45 (Grøvdal). Fire årsaker, alle i
+`fix_performance_format`:
+
+1. **Minutter i korte løp.** «1.08» på 400 m hekk er 1:08. Regelen fra
+   18.09 gjaldt bare 800 m og lengre. Nå: en todelt tid i en øvelse der ingen
+   løper under 20 sekunder, og som ligger under gulvet for distansen
+   (`_minste_sekunder`, distanse/10), er minutter og sekunder. «21.05» på
+   200 m er sekunder, «1.05» på 300 m er 1:05. Dekker også 1600_m, 500_m,
+   rullestol-øvelsene og tresifrede minutter i kappgang («113.20» = 1:53:20).
+   `rett_minuttider()` utvidet: 219 rader rettet, 27 slettet som dubletter.
+2. **Timer på maraton og kappgang.** «2.40.00» ble 2:40.00 (2 min 40 s).
+   Tredelt tid under gulvet for distansen er timer:minutter:sekunder.
+   `rett_timetider()`: 221 rader rettet (maraton, halvmaraton, 10/20/30/50 km
+   kappgang).
+3. **Skrivefeil i kilden.** Grøvdal 5000 m Novi Sad 2009 sto som 10:45.45;
+   hun vant på 15:45.45 (EM junior). Rettet for hånd.
+4. **Fysisk umulige rester** (27 rader: 100 m «1.00»–«9.99», 60 m «1.39»,
+   200 m «19.7», 600 m «2.1») satt til status NM, så de ikke vises i lister.
+   Ligger i basen for gjennomsyn.
+
+`test_urimelige_tider()` bruker nå gulvet per distanse og er 0.
+
+**Veiøvelser tatt ut av norgesrekordsiden** (maraton, halvmaraton, 3/5/10 km,
+100 km) til det historiske veimaterialet er inne (fase 3). Basen har ikke
+Ingrid Kristiansens 2:21:06 fra 1985, og en «rekord» fra 2014 ville vært feil.
+
+**Dabaya Badhaso** lå som to utøvere, den ene med feil kjønn. Slått sammen,
+kjønn rettet til mann.
