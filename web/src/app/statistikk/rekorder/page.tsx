@@ -31,7 +31,8 @@ const NORGESREKORDER_OUTDOOR: Record<string, EventCategory[]> = {
     { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
     { name: "Kast", events: ["kule_7_26kg", "diskos_2kg", "slegge_726kg/1215cm", "spyd_800g"] },
     { name: "Mangekamp", events: ["5kamp", "10kamp"] },
-    { name: "Vei", events: ["3kmvei", "5kmvei", "10kmvei", "halvmaraton", "maraton", "100kmvei"] },
+    // Vei tas inn igjen med det historiske veimaterialet (fase 3). Basen har
+    // ikke rekordene fra før 2013, og en «rekord» fra 2014 ville vært feil.
   ],
   F: [
     { name: "Løp - sprint", events: ["100m", "200m", "400m"] },
@@ -44,7 +45,8 @@ const NORGESREKORDER_OUTDOOR: Record<string, EventCategory[]> = {
     { name: "Hopp", events: ["hoyde", "stav", "lengde", "tresteg"] },
     { name: "Kast", events: ["kule_4kg", "diskos_1kg", "slegge_40kg/1195cm", "spyd_600g"] },
     { name: "Mangekamp", events: ["5kamp", "7kamp"] },
-    { name: "Vei", events: ["3kmvei", "5kmvei", "10kmvei", "halvmaraton", "maraton", "100kmvei"] },
+    // Vei tas inn igjen med det historiske veimaterialet (fase 3). Basen har
+    // ikke rekordene fra før 2013, og en «rekord» fra 2014 ville vært feil.
   ],
 }
 

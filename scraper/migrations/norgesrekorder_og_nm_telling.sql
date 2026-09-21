@@ -154,3 +154,133 @@ returns bigint language sql stable security definer set statement_timeout = '110
     and r.performance_value > 0 and r.performance_value < 6000;
 $$;
 grant execute on function test_urimelige_tider() to service_role;
+
+-- 21.09.2026: samme feil i 200–600 m («1.08» på 400 m hekk) og tredelte
+-- tider på maraton/kappgang («2.40.00» er 2:40:00). rett_minuttider utvidet,
+-- rett_timetider ny, test_urimelige_tider dekker begge.
+create or replace function minste_hundredeler(p_code text)
+returns integer language sql immutable as $$
+  select case
+    when p_code ilike '%halvmaraton%' then 330000
+    when p_code ilike '%maraton%' then 700000
+    when p_code ~ '^kappgang_\d+_km' then (regexp_match(p_code, '^kappgang_(\d+)_km'))[1]::int * 15000
+    when p_code ~ '^(kappgang_)?\d+_?m' then (regexp_match(p_code, '^(?:kappgang_)?(\d+)_?m'))[1]::int * 10
+    else 0 end;
+$$;
+
+create or replace function rett_minuttider(p_dry boolean default true)
+returns jsonb
+language plpgsql security definer set statement_timeout = '110s' set search_path = public
+as $$
+declare
+  rad record; v_rettet int := 0; v_slettet int := 0; v_feil int := 0; v_funnet int := 0;
+begin
+  for rad in
+    select res.id, res.performance
+    from results res join events e on e.id = res.event_id
+    where e.result_type = 'time'
+      and split_part(res.performance, '.', 2)::int < 60
+      and (
+        (er_langt_loep(e.code) and res.performance ~ '^\d{1,2}\.\d{2}$')
+        or (e.code ~ '^(200|300|400|600)m' and res.performance ~ '^\d\.\d{2}$' and res.performance_value < 1500)
+      )
+  loop
+    v_funnet := v_funnet + 1;
+    if p_dry then continue; end if;
+    begin
+      update results set performance = replace(rad.performance, '.', ':') where id = rad.id;
+      v_rettet := v_rettet + 1;
+    exception when unique_violation then
+      delete from results where id = rad.id;
+      v_slettet := v_slettet + 1;
+    when others then
+      v_feil := v_feil + 1;
+    end;
+  end loop;
+  return jsonb_build_object('funnet', v_funnet, 'rettet', v_rettet, 'slettet_dublett', v_slettet, 'feil', v_feil);
+end;
+$$;
+
+create or replace function rett_timetider(p_dry boolean default true)
+returns jsonb
+language plpgsql security definer set statement_timeout = '110s' set search_path = public
+as $$
+declare
+  rad record; v_rettet int := 0; v_slettet int := 0; v_feil int := 0; v_funnet int := 0;
+begin
+  for rad in
+    select res.id, res.performance
+    from results res join events e on e.id = res.event_id
+    where e.result_type = 'time' and res.performance ~ '^\d{1,2}:\d{2}\.\d{2}$'
+      and res.performance_value > 0 and res.performance_value < minste_hundredeler(e.code)
+  loop
+    v_funnet := v_funnet + 1;
+    if p_dry then continue; end if;
+    begin
+      update results set performance = replace(rad.performance, '.', ':') where id = rad.id;
+      v_rettet := v_rettet + 1;
+    exception when unique_violation then
+      delete from results where id = rad.id;
+      v_slettet := v_slettet + 1;
+    when others then
+      v_feil := v_feil + 1;
+    end;
+  end loop;
+  return jsonb_build_object('funnet', v_funnet, 'rettet', v_rettet, 'slettet_dublett', v_slettet, 'feil', v_feil);
+end;
+$$;
+revoke all on function rett_timetider(boolean) from public, anon, authenticated;
+
+create or replace function test_urimelige_tider()
+returns bigint language sql stable security definer set statement_timeout = '110s' set search_path = public as $$
+  select count(*) from results r join events e on e.id = r.event_id
+  where e.result_type = 'time' and r.status = 'OK' and r.performance_value > 0
+    and ((er_langt_loep(e.code) and r.performance_value < 6000)
+         or (e.code ~ '^(200|300|400|600)m' and r.performance_value < 1500)
+         or r.performance_value < minste_hundredeler(e.code));
+$$;
+
+-- 21.09.2026, siste versjon: generell regel med gulv per distanse
+-- (minste_hundredeler), også 1600_m, 500_m, rullestol og tresifrede minutter.
+create or replace function rett_minuttider(p_dry boolean default true)
+returns jsonb
+language plpgsql security definer set statement_timeout = '110s' set search_path = public
+as $$
+declare
+  rad record; v_rettet int := 0; v_slettet int := 0; v_feil int := 0; v_funnet int := 0;
+  mi int; se text; ny text;
+begin
+  for rad in
+    select res.id, res.performance
+    from results res join events e on e.id = res.event_id
+    where e.result_type = 'time'
+      and res.performance ~ '^\d{1,3}\.\d{2}$'
+      and split_part(res.performance, '.', 2)::int < 60
+      and greatest(minste_hundredeler(e.code), case when er_langt_loep(e.code) then 6000 else 0 end) >= 2000
+      and res.performance_value < greatest(minste_hundredeler(e.code), case when er_langt_loep(e.code) then 6000 else 0 end)
+  loop
+    v_funnet := v_funnet + 1;
+    if p_dry then continue; end if;
+    mi := split_part(rad.performance, '.', 1)::int; se := split_part(rad.performance, '.', 2);
+    ny := case when mi >= 60 then format('%s:%s:%s', mi / 60, lpad((mi % 60)::text, 2, '0'), se)
+               else format('%s:%s', mi, se) end;
+    begin
+      update results set performance = ny where id = rad.id;
+      v_rettet := v_rettet + 1;
+    exception when unique_violation then
+      delete from results where id = rad.id;
+      v_slettet := v_slettet + 1;
+    when others then
+      v_feil := v_feil + 1;
+    end;
+  end loop;
+  return jsonb_build_object('funnet', v_funnet, 'rettet', v_rettet, 'slettet_dublett', v_slettet, 'feil', v_feil);
+end;
+$$;
+
+create or replace function test_urimelige_tider()
+returns bigint language sql stable security definer set statement_timeout = '110s' set search_path = public as $$
+  select count(*) from results r join events e on e.id = r.event_id
+  where e.result_type = 'time' and r.status = 'OK' and r.performance_value > 0
+    and r.performance_value < greatest(minste_hundredeler(e.code), case when er_langt_loep(e.code) then 6000 else 0 end);
+$$;

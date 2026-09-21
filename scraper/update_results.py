@@ -765,6 +765,23 @@ def load_athletes():
 LANGE_LOEP_RE = re.compile(r'^(800|1000|1500|2000|3000|5000|10000)m|^(kappgang|gange)|(hinder|mile|miles|mg$|_gange|maraton|halvmaraton|timesloep)')
 
 
+def _minste_sekunder(event_code):
+    """Fysisk nedre grense for en tid i oevelsen, i sekunder. Brukes bare til
+    aa avgjoere hvordan en tvetydig tid skal leses."""
+    k = event_code or ''
+    if 'halvmaraton' in k:
+        return 3300
+    if 'maraton' in k:
+        return 7000
+    m = re.match(r'^kappgang_(\d+)_km', k)
+    if m:
+        return int(m.group(1)) * 150
+    m = re.match(r'^(?:kappgang_)?(\d+)_?m', k)
+    if m:
+        return int(m.group(1)) // 10
+    return 0
+
+
 def er_langt_loep(event_code):
     return bool(event_code) and bool(LANGE_LOEP_RE.search(event_code))
 
@@ -796,13 +813,37 @@ def fix_performance_format(result_str, event_code=None):
     m = re.match(r'^(\d{1,2})\.(\d{2})\.(\d{1,2})$', result_str)
     if m:
         minutter, sekunder, hundredeler = m.groups()
+        # «2.40.00» paa maraton er 2:40:00, ikke 2 min 40 s. Under gulvet for
+        # distansen er tredelt tid timer:minutter:sekunder.
+        if len(hundredeler) == 2 and int(minutter) * 60 + int(sekunder) < _minste_sekunder(event_code):
+            return f"{minutter}:{sekunder}:{hundredeler}"
         return f"{minutter}:{sekunder}.{hundredeler}"
 
-    m = re.match(r'^(\d{1,2})\.(\d{2})$', result_str)
-    if m and er_langt_loep(event_code) and int(m.group(2)) < 60:
-        return f"{m.group(1)}:{m.group(2)}"
+    m = re.match(r'^(\d{1,3})\.(\d{2})$', result_str)
+    if m and int(m.group(2)) < 60 and _er_minutter(event_code, result_str):
+        minutter = int(m.group(1))
+        if minutter >= 60:
+            return f"{minutter // 60}:{minutter % 60:02d}:{m.group(2)}"
+        return f"{minutter}:{m.group(2)}"
 
     return result_str
+
+
+def _er_minutter(event_code, result_str):
+    """«1.08» paa 400 m hekk er 1:08, «2.25» paa 800 m er 2:25 og «113.20»
+    paa 20 km kappgang er 1:53:20. En todelt tid i en oevelse der ingen
+    loeper under 20 sekunder, og som ligger under det fysisk mulige, er
+    minutter og sekunder. Guro Kvamme sto med «1.08» som norsk rekord paa
+    400 m hekk kvinner (Line Kloster har 53,91)."""
+    gulv = _minste_sekunder(event_code)
+    if er_langt_loep(event_code):
+        gulv = max(gulv, 60)
+    if gulv < 20:                      # 60 m og 100 m: «9.99» er sekunder
+        return False
+    try:
+        return float(result_str) < gulv
+    except ValueError:
+        return False
 
 
 def _mangekamp_deler(navn):
