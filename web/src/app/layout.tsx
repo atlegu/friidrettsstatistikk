@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="no" data-density="compact">
+    <html lang="no">
       <body className={`${inter.variable} font-sans`}>
         <Providers>
           <AuthErrorHandler />

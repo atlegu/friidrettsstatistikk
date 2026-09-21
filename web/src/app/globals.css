@@ -539,48 +539,18 @@
 }
 
 /* ============================================
-   DENSITY MODES
+   TETTHET
+   Én tetthet, kompakt. Velgeren Romslig/Kompakt/Ultra er fjernet
+   (Atle, 21.09.2026); tabeller og kort har samme mål overalt.
    ============================================ */
 
-/* Comfortable density */
-[data-density="comfortable"] table th,
-[data-density="comfortable"] table td {
-  padding: 8px 12px;
-}
-
-[data-density="comfortable"] .card-flat {
-  padding: 16px;
-}
-
-/* Compact density (default) */
-[data-density="compact"] table th,
-[data-density="compact"] table td {
+table th,
+table td {
   padding: 6px 12px;
 }
 
-[data-density="compact"] .card-flat {
+.card-flat {
   padding: 12px;
-}
-
-/* Ultra-compact density (desktop only) */
-@media (min-width: 768px) {
-  [data-density="ultra"] table th,
-  [data-density="ultra"] table td {
-    padding: 4px 10px;
-    font-size: 12px;
-  }
-
-  [data-density="ultra"] .card-flat {
-    padding: 8px;
-  }
-
-  [data-density="ultra"] h2 {
-    font-size: 1.143rem; /* 16px */
-  }
-
-  [data-density="ultra"] h3 {
-    font-size: 1rem; /* 14px */
-  }
 }
 
 /* ============================================
