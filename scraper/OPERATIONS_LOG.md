@@ -936,3 +936,24 @@ KM Masters/Kaststevne, HBT-stevnet, Kastmangekamp Asker/Heggedal, European
 Masters på tre baner, Sandnes innendørs, Pfungstadt) og slått sammen med
 `rydd_stevnepar`. 74 dobbeltrader slettet, 11 rader ble stående i «Asker,
 Kastmangekamp» (unik indeks).
+
+## 2026-09-21 — Kilden med samme stevne under to id-er
+
+Nattkjøringen (57 resultater inn, 1 forbigående nettfeil mot kilden) stoppet
+på to nye stevnepar: «Aider Mjøssprinten» 22.08.2026 lå i kilden både som
+Moelv (10009370) og Lillehammer (10009371) med 50 felles resultater, og
+Abendsportfest i Pfungstadt under to id-er. Oppslag på kilde-id alene ga to
+poster. Rot rettet i to lag:
+
+- `finn_tvilling()` i `update_results.py`: samme navn og dato under en annen
+  kilde-id, og minst halvparten av kildens rader ligger der alt → samme
+  stevne, posten gjenbrukes. Navn + dato alene holder ikke («Treningsstevne»
+  i to byer deler ingen rader).
+- Tabellen `stevne_alias`: kilde-id → stevne, fylles av `rydd_stevnepar` når
+  en post slettes, og slås opp av `get_or_create_meet`. Uten den ville den
+  slettede posten blitt opprettet på nytt neste natt.
+
+De to parene er slått sammen (53 dobbeltrader slettet). Verifisert med
+`--kun-stevner` på begge: alle fire kildestevner går til én post hver, 0 nye.
+Planlagt kjøring flyttet til 03.37 (GitHub startet 02.15-jobben først 09.58;
+hele klokkeslett har lang kø).

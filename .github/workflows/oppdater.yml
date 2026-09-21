@@ -5,13 +5,15 @@
 # kjører kontrollene i test_fullstendighet.py mot basen. Feiler en kontroll,
 # feiler jobben, og det vises i Actions-fanen.
 #
-# Kjøres 04:15 norsk tid (02:15 UTC sommer, 03:15 vinter). Kan også startes
+# Kjøres 03:37 norsk tid (01:37 UTC sommer). GitHub starter planlagte jobber
+# med forsinkelse når køen er lang, gjerne timer på hele klokkeslett, så et
+# skjevt minutt. Kan også startes
 # for hånd under «Run workflow».
 name: Oppdater resultater
 
 on:
   schedule:
-    - cron: "15 2 * * *"
+    - cron: "37 1 * * *"
   workflow_dispatch:
     inputs:
       avstem_uker:

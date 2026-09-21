@@ -994,6 +994,11 @@ def get_or_create_meet(name, date, location, indoor, external_id=None):
         r = supabase.table('meets').select('id,city,external_id').eq('external_id', external_id).execute()
         if r.data:
             return _funnet(r.data[0])
+        # Kilde-id for et stevne som er slaatt sammen med et annet (stevne_alias)
+        a = supabase.table('stevne_alias').select('meet_id').eq('external_id', str(external_id)).execute()
+        if a.data:
+            _meet_cache[cache_key] = a.data[0]['meet_id']
+            return a.data[0]['meet_id']
 
     kandidater = []
     for navn in ([name, f"{location}, {name}"] if location else [name]):
@@ -1218,6 +1223,49 @@ def _hent_eksisterende_rader(meet_id: str) -> Dict[tuple, List[Dict]]:
         fra += 1000
 
 
+def finn_tvilling(name, date, external_id, rows):
+    """Samme stevne under en annen kilde-id?
+
+    Kilden registrerer av og til samme stevne to ganger, med hver sin id og
+    gjerne ulikt sted (Aider Mjøssprinten 22.08.2026: Moelv og Lillehammer,
+    50 felles resultater). Med oppslag på kilde-id alene ble det to poster og
+    dobbeltlagrede resultater. Regel: finnes et stevne med samme navn og dato
+    og en annen kilde-id, og minst halvparten av kildens rader alt ligger der,
+    er det samme stevne. Returnerer (meet_id, eksisterende rader) eller
+    (None, None). Navn + dato alene holder ikke: «Treningsstevne» samme dag i
+    to byer er to stevner, og de deler ingen rader.
+    """
+    if not external_id or not rows:
+        return None, None
+    if supabase.table('meets').select('id').eq('external_id', str(external_id)).limit(1).execute().data:
+        return None, None
+    if supabase.table('stevne_alias').select('meet_id').eq('external_id', str(external_id)).limit(1).execute().data:
+        return None, None       # get_or_create_meet finner den via aliaset
+    kand = supabase.table('meets').select('id,name,external_id') \
+        .eq('start_date', date).ilike('name', name).execute().data
+    kand = [k for k in kand if k.get('external_id') and str(k['external_id']) != str(external_id)]
+    if not kand:
+        return None, None
+    noekler = set()
+    for row in rows:
+        eid = get_event_id(row['event'])
+        if not eid:
+            continue
+        noekler.add((_norm_navn(row['athlete_name']), eid,
+                     fix_performance_format(row['result'], _event_id_til_kode.get(eid)), row.get('place')))
+    if not noekler:
+        return None, None
+    for k in kand:
+        eks = _hent_eksisterende_rader(k['id'])
+        navn_idx = eks.get('_navn', {})
+        treff = sum(1 for n in noekler if n in navn_idx)
+        if treff * 2 >= len(noekler):
+            logger.info(f"  Kildens stevne {external_id} «{name}» er samme som {k['id'][:8]} "
+                        f"(kilde-id {k['external_id']}): {treff} av {len(noekler)} rader ligger der. Gjenbrukes.")
+            return k['id'], eks
+    return None, None
+
+
 def _avstem_stevne(meet_name: str, kilde: List[Dict], eksisterende: Dict[tuple, List[Dict]],
                    stats: Dict) -> List[Dict]:
     """Avstem kildens rader mot radene som allerede ligger inne for stevnet.
@@ -1393,9 +1441,13 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         stats['imported'] = len(meet_results)
         return stats
 
-    # Get or create meet
-    meet_id = get_or_create_meet(meet_name, meet_date, location, is_indoor,
-                                 first.get('meet_external_id'))
+    # Kilden kan ha samme stevne to ganger med hver sin id (Mjøssprinten
+    # 2026: Moelv og Lillehammer, samme dag, samme løpere). Er stevnet
+    # kjent under en annen kilde-id og radene alt ligger der, gjenbrukes posten.
+    meet_id, eksisterende = finn_tvilling(meet_name, meet_date, first.get('meet_external_id'), meet_results)
+    if not meet_id:
+        meet_id = get_or_create_meet(meet_name, meet_date, location, is_indoor,
+                                     first.get('meet_external_id'))
     if not meet_id:
         stats['skipped_no_meet'] = len(meet_results)
         return stats
@@ -1409,7 +1461,8 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
     # oppdatere dem i stedet for aa legge dem inn paa nytt. Se
     # _avstem_stevne(). Hentes side for side: PostgREST gir
     # aldri mer enn 1 000 rader, og Tyrvinglekene har 3 299.
-    eksisterende = _hent_eksisterende_rader(meet_id)
+    if eksisterende is None:
+        eksisterende = _hent_eksisterende_rader(meet_id)
 
     result_batch = []
 
