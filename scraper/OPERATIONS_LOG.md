@@ -990,3 +990,19 @@ Ingrid Kristiansens 2:21:06 fra 1985, og en «rekord» fra 2014 ville vært feil
 
 **Dabaya Badhaso** lå som to utøvere, den ene med feil kjønn. Slått sammen,
 kjønn rettet til mann.
+
+## 2026-09-22 — Sikkerhetslinteren i Supabase
+
+Atle fikk varsel om `klubber_med_statistikk` med SECURITY DEFINER. Hele
+linterrapporten gjennomgått (`migrations/sikkerhet_linter.sql`):
+visningene `klubber_med_statistikk` og `personal_bests_detailed` bruker nå
+leserens rettigheter; radsikkerhet slått på for `vedlikehold`,
+`klubb_ordformer` (lesbare for alle), `stevne_alias` og
+`opprydding_stevnepar` (bare importen); lesefunksjonene nettstedet kaller
+er SECURITY INVOKER; test- og vedlikeholdsfunksjoner kan bare service_role
+kalle; `execute_readonly_query` (vilkårlig SELECT som eier, ubrukt av
+nettstedet) er stengt for anon og innloggede; fast search_path på elleve
+funksjoner. Verifisert med anon-nøkkelen at alle sidene fortsatt får data.
+Igjen står bare varselet om materialiserte visninger i API-et
+(`klubb_bruk`, `plattform_statistikk`, `aktivitet_*`): det er med vilje,
+tallene er offentlige.
