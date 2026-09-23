@@ -8,7 +8,8 @@ høyeste nivået de har et resultat for. Lager HTML, CSV og PDF.
     ../../scraper/venv/bin/python kontrakt_2027.py
 
 NIVÅER (beløp fra rad 1 i regnearket)
-  OL/VM     180 000  resultat på OL 24- ELLER VM 25-kravet
+  OL/VM     180 000  resultat på OL 24- ELLER VM 25-kravet, ELLER topp 25 på
+                     World Athletics' verdensranking (verdensranking.csv)
   EM        140 000  EM 26-kravet
   Elite A    80 000  «Elite A SKV» (EM-poeng minus 80, minus 50 for *-øvelser)
   U23 EM     60 000  «U23 EM 27», bare for født 2005–2007
@@ -218,6 +219,8 @@ def les_regneark():
 
 
 def vis_krav(v, ovelse):
+    if v is None:
+        return f'topp {RANKING_GRENSE} verdensranking'
     ovelse = ovelse.strip()
     if ovelse in POENG:
         return str(v)
@@ -231,6 +234,33 @@ def vis_krav(v, ovelse):
         m, s = divmod(sek, 60)
         return f'{int(m)}:{s:05.2f}'.replace('.', ',')
     return f'{sek:.2f}'.replace('.', ',')
+
+
+# ------------------------------------------------------------------ ranking
+
+RANKING_GRENSE = 25
+
+
+def les_ranking():
+    """{fullt navn: [(øvelse, plass, dato, kilde)]} fra verdensranking.csv.
+    Plassene er hentet fra worldathletics.org/world-rankings og må
+    oppdateres for hånd; World Athletics har ikke et åpent API."""
+    ut = defaultdict(list)
+    sti = MAPPE / 'verdensranking.csv'
+    if not sti.exists():
+        return ut
+    with open(sti, encoding='utf-8-sig') as f:
+        for r in csv.DictReader(f, delimiter=';'):
+            if (r.get('Plass') or '').strip():
+                ut[r['Utøver'].strip()].append((r['Øvelse'].strip(), int(r['Plass']), r['Dato'], r['Kilde']))
+    for liste in ut.values():
+        liste.sort(key=lambda x: x[1])
+    return ut
+
+
+def vis_ranking(liste):
+    """«Stav nr. 18», flere øvelser skilt med komma, beste først."""
+    return ', '.join(f'{o} nr. {p}' for o, p, *_ in liste) if liste else ''
 
 
 # ------------------------------------------------------------------ data
@@ -281,7 +311,7 @@ def gyldig(r):
 
 # ------------------------------------------------------------------ vurdering
 
-def vurder(utover, resultater, krav):
+def vurder(utover, resultater, krav, ranking=None):
     """Alle nivåer utøveren når, og nærmeste nivå over det høyeste."""
     kjonn = utover.get('gender')
     fodt = utover.get('birth_year') or 0
@@ -309,6 +339,13 @@ def vurder(utover, resultater, krav):
                 naadd.append(post)
             elif navn not in naermest or avvik < naermest[navn]['avvik']:
                 naermest[navn] = post
+    # OL/VM: topp 25 på verdensrankingen teller som resultat på kravet
+    for ovelse, plass, dato_, kilde in (ranking or {}).get(utover['full_name'], []):
+        if plass <= RANKING_GRENSE:
+            naadd.append({'nivaa': 'OL/VM', 'belop': NIVAAER[0][1], 'ovelse': ovelse,
+                          'krav': None, 'ranking': (plass, dato_, kilde), 'avvik': -1.0,
+                          'resultat': {'performance': f'nr. {plass} verdensranking', 'wind': None,
+                                       'meets': {'name': 'World Athletics World Rankings'}, 'date': dato_}})
     naadd.sort(key=lambda p: (RANG[p['nivaa']], p['avvik']))
     topp = naadd[0] if naadd else None
     # Nærmeste nivå som betaler mer enn det utøveren har
@@ -335,6 +372,7 @@ def vis_resultat(r):
 
 def main():
     krav = les_regneark()
+    ranking = les_ranking()
     utovere, resultater = hent()
     per_utover = defaultdict(list)
     for r in resultater:
@@ -344,10 +382,11 @@ def main():
     for aid, u in utovere.items():
         if not u.get('gender'):
             continue
-        topp, naadd, neste = vurder(u, per_utover.get(aid, []), krav)
+        topp, naadd, neste = vurder(u, per_utover.get(aid, []), krav, ranking)
         treff = navnemodul.finn(u['full_name'], stipendmodul.FLAT)
         rader.append({'u': u, 'topp': topp, 'naadd': naadd, 'neste': neste,
-                      'stipend': treff[1] if treff else None})
+                      'stipend': treff[1] if treff else None,
+                      'ranking': ranking.get(u['full_name'], [])})
 
     med = [r for r in rader if r['topp']]
     med.sort(key=lambda r: (RANG[r['topp']['nivaa']], r['topp']['avvik'], r['u']['full_name']))
@@ -367,7 +406,7 @@ def lag_csv(med, naer):
         w = csv.writer(f, delimiter=';')
         w.writerow(['Utøver', 'Født', 'Kjønn', 'Nivå 2027', 'Beløp 2027', 'Øvelse', 'Resultat 2026',
                     'Dato', 'Stevne', 'Krav', 'Andre nivåer nådd', 'Stipend 2026', 'Kategori 2026',
-                    'Nærmeste høyere nivå', 'Mangler'])
+                    'Nærmeste høyere nivå', 'Mangler', 'Verdensranking'])
         for r in med + naer:
             u, t, n, s = r['u'], r['topp'], r['neste'], r['stipend']
             andre = sorted({p['nivaa'] for p in r['naadd']} - ({t['nivaa']} if t else set()), key=RANG.get)
@@ -380,6 +419,7 @@ def lag_csv(med, naer):
                 ', '.join(andre), s['belop'] if s else '', s['kategori'] if s else '',
                 f"{n['nivaa']} ({n['ovelse'].strip()} {vis_krav(n['krav'], n['ovelse'])})" if n else '',
                 f"{n['avvik'] * 100:.1f} %" if n else '',
+                vis_ranking(r['ranking']),
             ])
 
 
@@ -445,12 +485,13 @@ def lag_html(med, naer, mistet, krav, antall):
             + f"<td class='tall'>{kr(s['belop']) + '<div class=mut>' + escape(s['kategori']) + '</div>' if s else '–'}</td>"
             + f"<td class='tall'>{endr}</td>"
             + f"<td class='skjul'>{naermere}</td>"
+            + f"<td>{escape(vis_ranking(r['ranking'])) or '<span class=mut>–</span>'}</td>"
             '</tr>'
         )
 
     hode = ('<tr><th>Utøver</th><th>Nivå 2027</th><th>Øvelse</th><th>Beste 2026</th>'
             '<th class="skjul">Stevne</th><th class="tall">2027</th><th class="tall">Stipend 2026</th>'
-            '<th class="tall">Endring</th><th class="skjul">Nærmeste høyere nivå</th></tr>')
+            '<th class="tall">Endring</th><th class="skjul">Nærmeste høyere nivå</th><th>Verdensranking</th></tr>')
 
     oversikt = ''.join(
         f"<tr><td><span class='niv'>{escape(navn)}</span></td><td class='tall'>{kr(belop)}</td>"
@@ -484,22 +525,24 @@ def lag_html(med, naer, mistet, krav, antall):
     if mistet:
         deler.append(f"<h2>Har stipend 2026, når ikke et nivå med 2026-resultater ({len(mistet)})</h2>"
                      "<div class='panel'><table><thead><tr><th>Utøver</th><th class='tall'>Stipend 2026</th>"
-                     "<th>Nærmeste nivå</th></tr></thead><tbody>"
+                     "<th>Nærmeste nivå</th><th>Verdensranking</th></tr></thead><tbody>"
                      + ''.join(
                          f"<tr><td><b>{escape(r['u']['full_name'])}</b><div class='mut'>{r['u'].get('birth_year') or '–'}</div></td>"
                          f"<td class='tall'>{kr(r['stipend']['belop'])}<div class='mut'>{escape(r['stipend']['kategori'])}</div></td>"
-                         f"<td>{(escape(r['neste']['nivaa']) + ': ' + escape(r['neste']['ovelse'].strip()) + ' ' + vis_krav(r['neste']['krav'], r['neste']['ovelse']) + ' <span class=mut>(mangler ' + format(r['neste']['avvik'] * 100, '.1f') + ' %)</span>') if r['neste'] else '<span class=mut>ingen resultater i kriterieøvelsene i 2026</span>'}</td></tr>"
+                         f"<td>{(escape(r['neste']['nivaa']) + ': ' + escape(r['neste']['ovelse'].strip()) + ' ' + vis_krav(r['neste']['krav'], r['neste']['ovelse']) + ' <span class=mut>(mangler ' + format(r['neste']['avvik'] * 100, '.1f') + ' %)</span>') if r['neste'] else '<span class=mut>ingen resultater i kriterieøvelsene i 2026</span>'}</td>"
+                         f"<td>{escape(vis_ranking(r['ranking'])) or '<span class=mut>–</span>'}</td></tr>"
                          for r in mistet)
                      + '</tbody></table>'
                      '<p class="merk">Fjelløp og OCR har ingen kriterier i forslaget og står her av den grunn.</p></div>')
 
     deler.append("""<h2>Slik er det regnet</h2><div class="panel"><ul class="regler">
-<li><b>Nivåer og beløp</b> er tatt rett fra regnearket. OL/VM: resultat på OL 24- eller VM 25-kravet. Elite A og B er kravene i kolonnene «Elite A SKV» og «Elite B SKV».</li>
+<li><b>Nivåer og beløp</b> er tatt rett fra regnearket. OL/VM: resultat på OL 24- eller VM 25-kravet, eller topp 25 på World Athletics' verdensranking i øvelsen (lagt til 23.09.2026; plassene per 15.09.2026, fra worldathletics.org). Elite A og B er kravene i kolonnene «Elite A SKV» og «Elite B SKV».</li>
 <li><b>Ungdomsnivåene</b> gjelder etter alder i 2027: U23 for født 2005–2007, U20 for født 2008 eller senere, U18 for født 2010 eller senere. Seniornivåene gjelder alle.</li>
 <li><b>Ungdomsnivåene bruker ungdommens redskap og hekkehøyder</b>: U20 menn kule 6 kg, diskos 1,75, slegge 6 kg, 110 m hekk 100 cm; U18 menn kule 5 kg, diskos 1,5, slegge 5 kg, spyd 700 g, 110 m hekk 91,4, 400 m hekk 84, 2000 m hinder; U18 kvinner kule 3 kg, slegge 3 kg, spyd 500 g, 100 m hekk 76,2, 2000 m hinder.</li>
 <li><b>Bare resultater fra 2026</b>, alle klubber utøveren stilte for i 2026. Lovlig vind i vindavhengige øvelser utendørs; resultater med ukjent vind teller ikke. Ikke håndtid i sprint og hekk. Innendørsresultater teller og er merket (i).</li>
 <li><b>5 km og 10 km landevei</b> teller mot 5000 m og 10 000 m, som forslaget sier.</li>
 <li><b>Ikke brukt:</b> kolonnen «Plass Europa max3» og kolonnen uten overskrift ved EM 26. Hva de betyr for tildelingen, må klubben avgjøre.</li>
+<li><b>Verdensranking</b> er World Athletics' rankingplass i hver øvelse utøveren er rangert i, fra worldathletics.org/world-rankings. Hentes med <code>hent_verdensranking.py</code>. «–» betyr ikke rangert.</li>
 <li><b>Stipend 2026</b> er fra «SKV budsjett 2026 – v1», koblet på navn.</li>
 </ul></div></div></body></html>""")
     (MAPPE / 'kontrakt_2027.html').write_text(''.join(deler), encoding='utf-8')
