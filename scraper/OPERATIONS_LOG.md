@@ -1006,3 +1006,19 @@ funksjoner. Verifisert med anon-nøkkelen at alle sidene fortsatt får data.
 Igjen står bare varselet om materialiserte visninger i API-et
 (`klubb_bruk`, `plattform_statistikk`, `aktivitet_*`): det er med vilje,
 tallene er offentlige.
+
+## 2026-09-23 — Tider uten hundredeler var usynlige; landeveistider
+
+Funnet under Vidar-analysen (kontraktskriterier 2027):
+
+- **7 280 rader uten tallverdi.** `parse_performance` i basen godtok ikke
+  «M:SS» uten hundredeler. Radene som ble rettet 18.–21.09 («2.25» → «2:25»,
+  «1.08» → «1:08») fikk derfor `performance_value` NULL og forsvant fra alle
+  lister i stedet for å vises riktig. Tolkeren godtar nå M:SS, og radene er
+  regnet ut på nytt. Samme format kommer fra importen.
+- **Landevei 3/5/10/100 km** manglet gulv: «43.34» på 10 km ble 43 sekunder
+  (2 600 rader). Gulv 150 s per km i `minste_hundredeler` og i
+  `_minste_sekunder`; todelt tid på distanser over 50 min er timer:minutter
+  («1.26» på 20 km kappgang = 1:26:00). 85 rester som ikke lot seg tolke
+  (5 km «17.60», 800 m «0:01») satt til status NM.
+- `test_urimelige_tider()` er 0. Se `migrations/tider_uten_hundredeler.sql`.

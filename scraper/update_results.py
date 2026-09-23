@@ -773,9 +773,9 @@ def _minste_sekunder(event_code):
         return 3300
     if 'maraton' in k:
         return 7000
-    m = re.match(r'^kappgang_(\d+)_km', k)
+    m = re.match(r'^(?:kappgang_)?(\d+)_?km$', k) or re.match(r'^kappgang_(\d+)_km', k)
     if m:
-        return int(m.group(1)) * 150
+        return int(m.group(1)) * 150          # 150 s per km; landevei og kappgang
     m = re.match(r'^(?:kappgang_)?(\d+)_?m', k)
     if m:
         return int(m.group(1)) // 10
@@ -818,6 +818,12 @@ def fix_performance_format(result_str, event_code=None):
         if len(hundredeler) == 2 and int(minutter) * 60 + int(sekunder) < _minste_sekunder(event_code):
             return f"{minutter}:{sekunder}:{hundredeler}"
         return f"{minutter}:{sekunder}.{hundredeler}"
+
+    m = re.match(r'^(\d{1,2})\.(\d{2})$', result_str)
+    if m and int(m.group(2)) < 60 and _minste_sekunder(event_code) >= 3000 \
+            and int(m.group(1)) * 3600 + int(m.group(2)) * 60 >= _minste_sekunder(event_code):
+        # «1.26» paa 20 km kappgang og «2.08» paa maraton: timer og minutter
+        return f"{m.group(1)}:{m.group(2)}:00"
 
     m = re.match(r'^(\d{1,3})\.(\d{2})$', result_str)
     if m and int(m.group(2)) < 60 and _er_minutter(event_code, result_str):
