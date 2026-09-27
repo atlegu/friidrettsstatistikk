@@ -1,58 +1,68 @@
 ---
 title: Svar til NFIF om pris
-subtitle: Gjennomgang og utkast · 27.09.2026
+subtitle: Gjennomgang og utkast · 27.09.2026 · versjon 2, to pakker
 ---
 
 # Hva du bør sende
 
-NFIF ber om et foreløpig og uforpliktende anslag på fire ting: etablering,
-årlig drift, utvikling utenfor fastprisen og samlet kostnad over fem år.
-Svaret bør være en kort e-post som svarer på nettopp de fire punktene.
+Prisen deles i to pakker og en liste med tillegg:
 
-1. **Fastpris på etablering og drift.** Det er de to postene NFIF trenger
-   forutsigbarhet på, og det tilbudet lovet å fastprise.
-2. **Spenn på resten.** Integrasjoner, løp utenfor bane, aktivitetsmodul og
-   historikk oppgis med lav og høy verdi. Da svarer vi uten å binde oss.
-3. **Driftsprisen fordelt på fire poster.** Plattformdelen alene er
-   260 000 kr i året. Det er den delen NFIF vil sammenligne med en ren
-   statistikklisens, som trolig koster 150 000–300 000 kr i året. Uten
-   fordelingen sammenligner de 480 000 med den lisensen.
-4. **Fri tilgang for alle.** Én setning om at vi ikke tar betalt av klubber,
-   utøvere eller publikum. I Sverige betaler klubbene 5 000–13 450 SEK i året
-   for statistikken. Vi nevner ingen konkurrenter.
-5. **Tre femårstall.** Fastprisen alene, et realistisk scenario og alt
-   inkludert. Da ser NFIF både bunnen og taket.
+1. **Nasjonal banestatistikk.** Det som er bygget, pluss det som mangler:
+   eldre statistikk, masters, og tre minstekrav fra kravspekken. Deretter
+   en årspris for drift, registrering og vedlikehold av basen.
+2. **Gateløp.** Egen pris for etablering og årlig drift. Kravspekken tillater
+   at gateløp kommer senere, så lenge NFIF får et veikart innen 31.12.2026.
+3. **Tillegg som bestilles ved behov.** Integrasjoner, aktivitetsmodul,
+   analyse og timepris.
 
-Ikke sett ned prisen for å møte lisensnivået. Kostnadsgrunnlaget vårt
-tåler det ikke, og tilbudet leverer vesentlig mer enn en lisens.
+Oppdelingen gjør banestatistikken direkte sammenlignbar med en ren
+statistikkleverandør. Årsprisen på 290 000 ligger i øvre del av det
+Tilastopaja trolig tar, som er 150 000–300 000.
 
-**Valgfritt:** Vil du gi NFIF mulighet til å komme lavere, kan du legge til
-denne setningen under punkt 2 i e-posten: «Analysedelen kan tas ut eller
-utvides etter NFIFs ønske.» Ulempen er at analysen er det som skiller oss
-tydeligst fra andre, og at den er lett å kutte når den står som egen post.
+Tre forhold bør du ta stilling til før du sender.
+
+- **Tre minstekrav er lagt inn i banepakken.** Kvalitetsnivå for
+  resultater, API og kretsstatistikk er obligatoriske i kravspekken §22, men
+  ikke bygget. Står de utenfor pakken, oppfyller banepakken ikke kravene.
+  Til sammen utgjør de 350 000 av etableringen.
+- **Årsprisen gir liten margin.** 290 000 i året dekker kostnadene med
+  mellom −45 000 og +77 000, etter prismodellen fra august. Fortjenesten
+  må komme fra gateløp, tillegg og analyse.
+- **Det er ingen fast utviklingspott lenger.** Alle endringer NFIF ønsker,
+  faktureres med timepris. Det er ryddig, men NFIF kan oppleve det som mindre
+  forutsigbart.
+
+Ikke nevn konkurrenter i e-posten.
 
 # Prisene du skal kontrollere
 
 Alle prisene ligger i regnearket **PRISANSLAG.xlsx**. Endre de gule cellene,
-så regnes summene og femårstallene ut på nytt. Skriv deretter de nye tallene
-inn i e-posten under. Tallene som skal rettes, er gulmarkert.
+så regnes summene og femårstallene ut på nytt. Tallene som skal rettes i
+e-posten, er gulmarkert.
 
 | Post | Forslag | Grunnlag |
 |---|---:|---|
-| Etablering | 950 000 | Kostnad 840 000–1 020 000, 1 080–1 490 timer |
+| Plattform og datagrunnlag, overført | 250 000 | Ditt valg: verdien av det som er bygget |
+| Masters | 100 000 | 80–120 timer |
+| Eldre statistikk | 200 000 | 180–320 timer, omfanget må avgrenses |
+| Dokumentasjon, DPIA, databehandleravtale | 80 000 | 80–120 timer |
+| Kvalitetsnivå A/B/C | 140 000 | 120–160 timer, minstekrav |
+| Dokumentert API | 140 000 | 120–160 timer, minstekrav |
+| Kretsstatistikk | 70 000 | 60–90 timer, minstekrav |
+| **Etablering banestatistikk** | **980 000** | |
 | Drift og infrastruktur | 90 000 / år | Kostnad 63 000–135 000 |
-| Import, kontroll og support | 170 000 / år | Ca. 250 timer, 150 000–200 000 |
-| Videreutvikling, 175 timer | 140 000 / år | Tilsvarer 800 kr timen, rabatt mot 950 |
+| Registrering og vedlikehold | 200 000 / år | Ca. 250 timer |
+| **Årlig banestatistikk** | **290 000 / år** | |
+| Gateløp, etablering | 450 000–600 000 | 360–520 timer |
+| Gateløp, årlig | 100 000 / år | Mitt anslag |
+| Integrasjon per system | 90 000–150 000 | 60–150 timer |
+| Aktivitetsmodul og dashbord | 200 000–300 000 | Aktivitetssiden finnes allerede |
 | Analyse | 80 000 / år | Ca. 70 timer à 1 100 kr |
-| **Sum årlig drift** | **480 000 / år** | Uendret fra august |
-| Integrasjon per system | 90 000–150 000 | 60–150 timer per system, med buffer |
-| Løp utenfor bane | 450 000–600 000 | 360–520 timer, med buffer |
-| Aktivitetsmodul og dashbord | 200 000–300 000 | Satt ned fordi aktivitetssiden er i drift |
-| Historisk utvidelse | 200 000–300 000 | 180–320 timer |
-| Timepris utvikling / analyse | 950 / 1 100 | Mellom egenkostnad og konsulenthus |
+| Timepris utvikling / analyse | 950 / 1 100 | |
 
-Fordelingen av de 480 000 på fire poster er ny og er mitt forslag. Summen er
-den samme som i august.
+Posten for plattform og datagrunnlag er den mest skjønnsmessige. Den skal
+dekke det du alt har bygget. 250 000 tilsvarer om lag 260 timer, som er lavt
+i forhold til arbeidet. Settes den høyere, øker etableringen tilsvarende.
 
 # E-posten
 
@@ -63,48 +73,64 @@ Hei,
 Takk for sist, og takk for gode spørsmål i møtet.
 
 Under står et foreløpig anslag. Alle beløp er eks. mva. og ikke bindende.
-Etablering og årlig drift er likevel tall vi står ved.
+Nasjonal banestatistikk er likevel et tall vi står ved.
 
-**1. Etablering frem til operativ løsning 01.01.2027**
+Vi har delt prisen i to deler: nasjonal banestatistikk og gateløp.
+Banestatistikken kan være i drift 01.01.2027. Gateløp bygges i 2027, etter
+et veikart som leveres innen utgangen av 2026.
 
-Fastpris [950 000]{.mark} kr. Beløpet faktureres mot milepæler, ikke som
-forskudd. Siste del faktureres først etter 90 dagers godkjent drift.
+**1. Nasjonal banestatistikk**
 
-Prisen er lavere enn for en løsning bygget fra bunnen, fordi plattformen,
-datagrunnlaget fra 2013 og den daglige importen allerede er i drift.
+Etablering, fastpris [980 000]{.mark} kr. Dette omfatter:
 
-**2. Årlig drift og forvaltning**
+- Plattformen og datagrunnlaget som er i drift, overført til NFIF:
+  [250 000]{.mark} kr
+- Masters, med femårsklasser og rekorder: [100 000]{.mark} kr
+- Opphenting og kontroll av eldre statistikk: [200 000]{.mark} kr
+- Kvalitetsnivå for resultater: [140 000]{.mark} kr
+- Dokumentert API: [140 000]{.mark} kr
+- Kretsstatistikk: [70 000]{.mark} kr
+- Dokumentasjon, personvernvurdering og databehandleravtale:
+  [80 000]{.mark} kr
 
-Fastpris [480 000]{.mark} kr per år, fordelt slik:
+Beløpet faktureres mot milepæler. Siste del faktureres først etter 90 dagers
+godkjent drift.
+
+Årlig drift, fastpris [290 000]{.mark} kr per år. Dette omfatter:
 
 - Drift i EU/EØS, overvåking og sikkerhetskopi: [90 000]{.mark} kr
-- Daglig import av resultater, kontroll mot kilden og support: [170 000]{.mark} kr
-- Videreutvikling som NFIF prioriterer fritt, [175]{.mark} timer: [140 000]{.mark} kr
-- Analyse, med to mesterskapspakker og én årsrapport: [80 000]{.mark} kr
+- Registrering av alle resultater, kontroll mot kilden og vedlikehold av
+  basen: [200 000]{.mark} kr
 
 Prisen er fast i tre år, og reguleres deretter etter konsumprisindeksen.
-
 All statistikk er fritt tilgjengelig. Vi tar ikke betalt av klubber, utøvere
 eller publikum.
 
-**3. Utvikling utenfor fastprisen**
+**2. Gateløp**
+
+- Etablering: [450 000–600 000]{.mark} kr, fastsettes etter kartlegging av
+  tidtakernes data
+- Årlig registrering og vedlikehold: [100 000]{.mark} kr
+
+**3. Tillegg som bestilles ved behov**
 
 - Integrasjon mot eksternt system: [90 000–150 000]{.mark} kr per system
-- Løp utenfor bane, full leveranse: [450 000–600 000]{.mark} kr
-- Aktivitetsmodul og dashbord for forbund og kretser: [200 000–300 000]{.mark} kr
-- Historisk utvidelse 2001–2012, inkludert kartlegging: [200 000–300 000]{.mark} kr
+- Aktivitetsmodul og dashbord for forbund og kretser:
+  [200 000–300 000]{.mark} kr
+- Analyse, med to mesterskapspakker og én årsrapport: [80 000]{.mark} kr
+  per år
 - Øvrig utvikling: [950]{.mark} kr per time
 - Analyse og utredning på bestilling: [1 100]{.mark} kr per time
 
-Dette er anslag, og vi fakturerer medgått tid. Arbeid utover avtalt ramme
+Tilleggene faktureres etter medgått tid. Arbeid utover avtalt ramme
 godkjennes av NFIF på forhånd.
 
 **4. Samlet kostnad over fem år**
 
-- Etablering og drift: [3 350 000]{.mark} kr
-- Med løp utenfor bane, to integrasjoner og aktivitetsmodulen: om lag
-  [4,2–4,6]{.mark} mill. kr
-- Med alle postene over: om lag [4,7–5,3]{.mark} mill. kr
+- Nasjonal banestatistikk: [2 430 000]{.mark} kr
+- Banestatistikk og gateløp: om lag [3,4–3,5]{.mark} mill. kr
+- Med analyse, aktivitetsmodul og to integrasjoner i tillegg: om lag
+  [4,2–4,5]{.mark} mill. kr
 
 Tallene er før KPI-regulering fra år fire.
 
@@ -118,7 +144,7 @@ Athlete Mindset AS
 # Før du sender
 
 1. Har du endret priser i regnearket, skriv de nye tallene inn i e-posten.
-   Femårstallene står i regnearkets punkt 4, der lav er venstre og høy er
+   Femårstallene står i regnearkets punkt 5, der lav er venstre og høy er
    høyre kolonne.
 2. Fjern den gule markeringen før du limer teksten inn i e-posten.
 3. Sett inn navnet på den som skrev til deg etter «Hei».
