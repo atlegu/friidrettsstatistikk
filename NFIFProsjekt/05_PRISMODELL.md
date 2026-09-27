@@ -122,6 +122,10 @@ ikke har sett grensesnittet til.
 
 ## 4. Konkurrentprising — hva NFIF sannsynligvis får inn ellers
 
+> **Oppdatert 27.09.2026:** Anslaget for OpenTrack/Tilastopaja under var for høyt.
+> Regnskapstall fra Danmark og Estland peker mot 150 000–300 000 kr i året,
+> 0,75–1,5 mill. over fem år. Se `10_KONKURRENT_PRISER.md`.
+
 | Tilbyder | Antatt femårsverdi | Kommentar |
 |---|---:|---|
 | Norsk konsulenthus | 4 000 000–6 000 000 | 2 000–3 000 timer til 1 400–1 800 kr/t, pluss drift. Ingen domenekunnskap, må migrere fra bunnen. |
