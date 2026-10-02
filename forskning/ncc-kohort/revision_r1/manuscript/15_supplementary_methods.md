@@ -56,25 +56,18 @@ The intraclass correlation of pre-milestone volume across baseline clubs was est
 
 {+To describe the target population, we extracted from the register, as it stood at the data extraction (rows registered by 18 May 2026; results through 2025), every athlete born 1998–2002 with at least one result at ages 13–14 (n = 7,266), defined cohort membership by venue and date exactly as for the analysis data (reproducing its 2,138 members), and computed, from the same register rows for members and non-members alike, the number of meets (competition days) at ages 13–14 and senior status (≥2 results in a calendar year at age 20 or later; SQL in the code repository). For cohort members the register counts agree closely with the analysis data (mean 20.4 vs. 20.5 meets; senior retention 15.9% vs. 16.3%); the small differences reflect rows re-registered after the extraction, which the analysis data retain from the original extract. An earlier version of this comparison used the September 2026 register, in which an import had registered some historical results a second time, inflating cohort members' meet counts by about 2.5; that version is superseded. The sex-adjusted association between volume and senior status was estimated per 10 meets, with repeated cross-validated AUC.+}
 
-## {+S-M12. Data audit and corrections made during the revision+}
+## {+S-M12. Data preparation and corrections made during the revision+}
 
-{+Before the revision we audited the data pipeline from register extraction to analysis file, re-deriving every variable independently. The original analysis file was exactly reproducible from the original extract, but the audit found the following problems, all corrected in the revised analyses (code in the repository; the original data and code are retained unchanged for comparison).+}
+{+Before the revision we audited the data pipeline, re-deriving every variable from the register; the original analysis file was exactly reproducible from the original extract. The following corrections were made (code in the repository):+}
 
-{+*Extraction.* The career data had been paginated on a non-unique sort key (date), so that rows tied on date at page boundaries could be returned twice or skipped: 332 rows appeared twice and 334 rows (240 athletes) were missing. A deterministic re-extraction (sorted on the result identifier, restricted to rows registered before the original extraction) supplied the missing rows; duplicates were removed.+}
-
-{+*Baseline meet and cohort membership.* The baseline meet had been identified by meet name, but two venue-days are registered under other names (Jessheim, 13 September 2014, as a national meet; Osterøy, 28 August 2016, as a series meet), some single events are filed under city-only records, and the name patterns used to select baseline results also matched other meets in the baseline year. Participation is now identified by venue and date: every result on the meet weekend at one of the three venues by an athlete aged 13–14 that year (a 600 m race for older athletes at Jessheim in 2016 excluded). All 2,123 original cohort members were confirmed, 15 participants born 1998–2002 who had been missed were added (n = 2,138), and the first edition changed for 5 athletes.+}
-
-{+*Follow-up.* The extract, made in May 2026, contained 339 results from the partial 2026 season; follow-up now ends on 31 December 2025, as stated in Section 2.3.+}
-
-{+*Sex.* Sex is taken from the register after its July 2026 correction of sex coding (S-M3).+}
-
-{+*Region and club.* The 600 m, 1500 m and race-walk results of all three venues are filed under one venue's meet record in 2013–2015, so the venue recorded for an athlete's first result could be the wrong one. Region is now read from the athlete's other events at the meet (for athletes who took part twice, the venue so identified was the same in both years for every athlete), and for athletes with endurance results only from the club's other participants that year (agreement with athletes' own venue 99.9%); region changed for 221 athletes. For Cohort A, the club variable had recorded the club of the athlete's last registered result rather than the baseline club, a post-baseline quantity (club and club size are used as controls and for club-level analyses); it is now the club under which the athlete competed at the baseline meet, for all athletes.+}
-
-{+*Volume.* The register stores each day of a multi-day meet as a separate meet, and on 1,046 athlete-days the results are filed under two meet records (largely the endurance lists above), which counted as two meets. Volume is now the number of competition days, which counts such days once; for all other athlete-days the two measures are identical.+}
-
-{+*Tyrving formulas.* Besides the event-mapping gap (only flat runs and four jumps had been matched to the table; S-M3), the original scoring used hundredths instead of tenths of a second for 600 m and longer races and race walking, and the steepest of the three throwing and pole-vault rates throughout. The corrected implementation reproduces the federation's workbook exactly (S-M3). The correction raises the association between baseline performance and retention (Table 3).+}
-
-{+*Secondary analyses.* The time origin of the baseline-only Cox model and the at-risk set of the age-16 landmark were corrected (S-M1); club-clustered and population-averaged estimates were added for the primary model (S-M7); the calibration figure now shows the cross-validated calibration of the primary model (it previously showed the in-sample fit of a post-baseline logistic model); and the register-population comparison now uses the register state of the extraction (S-M11).+}
+- {+Extraction: a deterministic re-extraction added 334 results missed by the original pagination and removed 332 duplicates.+}
+- {+Baseline meet: identified by venue and date rather than by meet name, because two venue-days are registered under other names; all 2,123 original cohort members were confirmed and 15 missed participants added.+}
+- {+Follow-up: results from the partial 2026 season were removed.+}
+- {+Sex: register values after its July 2026 correction (S-M3).+}
+- {+Region and club: region is read from events other than the 600 m, 1500 m and race walk, whose results from all venues are filed under one venue in 2013–2015; club is the club at the baseline meet (for Cohort A it had been the club of the athlete's last result).+}
+- {+Volume: counted as competition days, so that one day's results filed under two meet records count once.+}
+- {+Tyrving: the workbook's formulas for 600 m and longer races, race walking, throws and pole vault (S-M3).+}
+- {+Secondary analyses: the time origin of the baseline-only Cox model and the at-risk set of the age-16 landmark (S-M1); club-clustered and population-averaged estimates (S-M7); the cross-validated calibration figure (Supplementary Figure S1); the register-population comparison (S-M11).+}
 
 ## Supplementary references
 

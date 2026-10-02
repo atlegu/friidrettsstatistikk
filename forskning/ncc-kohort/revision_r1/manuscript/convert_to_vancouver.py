@@ -67,6 +67,7 @@ PAREN = [
     (" (Hunter, 2007)", sup(33)),
     (" (Heidari et al., 2016)", sup(34)),
     (" (Raedeke, 1997)", sup(35)),
+    (" (Larson et al., 2019; Baker et al., 2021)", sup(36, 37)),
     (" (Larson et al., 2019)", sup(36)),
     (" (Baker et al., 2021)", sup(37)),
 ]
