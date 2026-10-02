@@ -1,0 +1,6 @@
+Data / model,n,Volume OR,HHI OR,Tyrving OR,CV-AUC
+R1 scoring: complete case (primary),2095,"2.25 [1.99, 2.55]","1.27 [1.12, 1.44]","1.23 [1.06, 1.42]",0.746
+R1 scoring: multiple imputation (m = 20),2099,"2.25 [1.99, 2.55]","1.27 [1.12, 1.44]","1.23 [1.06, 1.42]",
+Submitted scoring: complete case,1704,"2.33 [2.02, 2.68]","1.24 [1.07, 1.44]","1.14 [0.98, 1.33]",0.746
+"Submitted scoring: MI (m = 20), outcome in imputation model",2099,"2.31 [2.04, 2.61]","1.25 [1.10, 1.41]","1.13 [0.98, 1.31]",0.746 (0.740-0.749)
+"Submitted scoring: MI with auxiliary variables (baseline event category, region, cohort, club size, result count)",2099,"2.30 [2.03, 2.60]","1.25 [1.10, 1.41]","1.16 [1.01, 1.34]",

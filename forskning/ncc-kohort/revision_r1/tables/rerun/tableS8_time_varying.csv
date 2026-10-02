@@ -1,0 +1,16 @@
+Period,n at risk,events in interval,Covariate,HR,CI low,CI high,p
+Years 0-3 (age 13-17),2095,1283,female,1.041,0.932,1.162,0.4754
+Years 0-3 (age 13-17),2095,1283,tyrving_best_z,0.992,0.939,1.048,0.775
+Years 0-3 (age 13-17),2095,1283,hhi_early_z,1.025,0.97,1.083,0.3847
+Years 0-3 (age 13-17),2095,1283,vol_milepael_z,0.134,0.113,0.158,0.0
+Years 0-3 (age 13-17),2095,1283,n_msk_typer,0.781,0.72,0.847,0.0
+Years 3-6 (age 16-19),812,481,female,1.396,1.159,1.682,0.0004
+Years 3-6 (age 16-19),812,481,tyrving_best_z,0.965,0.876,1.065,0.4813
+Years 3-6 (age 16-19),812,481,hhi_early_z,0.892,0.808,0.985,0.0245
+Years 3-6 (age 16-19),812,481,vol_milepael_z,0.705,0.623,0.799,0.0
+Years 3-6 (age 16-19),812,481,n_msk_typer,0.877,0.768,1.003,0.0545
+Years 6+ (age 19+),331,170,female,1.056,0.775,1.44,0.7291
+Years 6+ (age 19+),331,170,tyrving_best_z,1.15,0.971,1.362,0.1062
+Years 6+ (age 19+),331,170,hhi_early_z,1.008,0.868,1.169,0.9204
+Years 6+ (age 19+),331,170,vol_milepael_z,0.901,0.744,1.091,0.2842
+Years 6+ (age 19+),331,170,n_msk_typer,0.78,0.612,0.993,0.0438

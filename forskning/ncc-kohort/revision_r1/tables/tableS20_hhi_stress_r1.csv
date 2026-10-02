@@ -1,0 +1,5 @@
+Model,n,HHI OR,Volume OR
+Primary L4 (all),2095,"1.27 [1.12, 1.44]",2.25
+>= 5 results at ages 13-14,2019,"1.26 [1.11, 1.43]",2.23
+>= 8 results at ages 13-14,1873,"1.24 [1.10, 1.40]",2.19
+Finite-sample-corrected HHI* = (HHI - 1/n)/(1 - 1/n),2085,"1.29 [1.14, 1.46]",2.21

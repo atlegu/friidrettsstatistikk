@@ -1,0 +1,4 @@
+Event definition,n,events,Volume HR per SD [95% CI],HHI HR per SD,C-index
+Final active season (primary; censored if active 2024+),2095,1934,"0.54 [0.50, 0.57]",0.89,0.743
+First sustained exit (active season followed by >=2 inactive seasons),2095,1954,"0.51 [0.48, 0.54]",0.89,0.755
+First inactive season (any one-season gap ends the spell),2095,2022,"0.50 [0.47, 0.53]",0.92,0.771

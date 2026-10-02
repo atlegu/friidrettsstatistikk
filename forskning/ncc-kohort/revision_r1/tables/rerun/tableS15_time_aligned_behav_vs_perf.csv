@@ -1,0 +1,4 @@
+Model (both ages 13-14),n,CV-AUC,CV-AUC SD
+Performance only (Tyrving + sex),2095,0.639,0.032
+Behavior only (vol_pre + sex),2095,0.738,0.041
+Both behavior + performance,2095,0.737,0.036

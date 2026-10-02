@@ -1,0 +1,5 @@
+Metric,Value
+Calibration slope (cross-validated),0.968
+Calibration intercept,-0.05
+Brier score,0.1203
+n,2095.0

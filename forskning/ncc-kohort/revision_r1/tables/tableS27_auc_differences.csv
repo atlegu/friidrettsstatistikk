@@ -1,0 +1,8 @@
+Comparison (B vs. A),n,CV-AUC A,CV-AUC B,Difference (B - A),95% CI,p
+Sex + Tyrving vs. sex,2095,0.535,0.641,+0.106,"[+0.072, +0.140]",< .001
++ HHI vs. sex + Tyrving,2095,0.641,0.636,-0.005,"[-0.017, +0.008]",.471
++ volume vs. sex + Tyrving + HHI (L4 vs. L3),2095,0.636,0.746,+0.110,"[+0.081, +0.140]",< .001
+Sex + volume vs. sex + Tyrving (time-aligned),2095,0.641,0.739,+0.098,"[+0.063, +0.133]",< .001
+Sex + Tyrving + volume vs. sex + volume,2095,0.739,0.737,-0.002,"[-0.011, +0.007]",.636
+Full L4 vs. sex + volume,2095,0.739,0.746,+0.008,"[-0.006, +0.022]",.281
+Sex + volume vs. sex + Tyrving + Tyrving change 13-14,1692,0.701,0.734,+0.033,"[-0.003, +0.069]",.070

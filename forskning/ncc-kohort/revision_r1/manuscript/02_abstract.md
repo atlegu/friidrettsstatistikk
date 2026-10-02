@@ -1,0 +1,9 @@
+# Abstract
+
+(IJSSC/SAGE: unstructured abstract covering purpose, major findings, conclusions. No references. ≥5 keywords set in compile_manuscript.py.)
+
+---
+
+## Final version (R1, unstructured)
+
+Withdrawal from youth sport is theorized as a gradual process, but its longitudinal behavioral signature has been hard to observe directly. We used Norway's national competition register to follow 2,123 athletes who competed as 13–14-year-olds in a regional youth track-and-field meet (birth years 1998–2002) for up to 14 years. In a prospective logistic regression for active senior status (≥2 registered results in a calendar year at age 20+) using only ages-13–14 predictors, competition volume was the dominant predictor (OR = {+2.25+} per SD, 95% CI {+[1.99, 2.55]+}; cross-validated AUC = {+0.746+}; calibration slope {+0.98+}), {+discriminated retention better than+} age-normed performance measured in the same window, was robust to structural controls{+, club random effects, and club-grouped validation, and was reproduced in two adjacent birth cohorts (an internal replication). Competition participation declined within athletes before exit: relative to their own earlier seasons, dropouts competed 12% less two seasons and 24% less one season before their final season, and among athletes still active at 16, declining volume across ages 15–16 predicted lower senior retention (OR = 0.53 per SD of decline). Higher within-sport event concentration was modestly associated with higher retention.+} A register-based {+candidate+} flag at the end of the age-14 season (< 10 meets) identifies the 26% of athletes whose senior retention is 6%, versus 20% among the unflagged {+(similar when derived in one birth cohort and applied to the other)+}: a testable targeting rule for retention-supporting outreach in open-entry systems.

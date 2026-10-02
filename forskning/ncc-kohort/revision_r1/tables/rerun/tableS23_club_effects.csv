@@ -1,0 +1,5 @@
+Quantity,Value,n
+ICC of pre-milestone volume across baseline clubs,0.242,"2095 athletes, 287 clubs"
+"Volume OR, primary (no club terms)",2.25,2095
+"Volume OR, club random intercepts (Bayes VB)","2.43 [2.17, 2.72]",2095
+"HHI OR, club random intercepts",1.25,2095

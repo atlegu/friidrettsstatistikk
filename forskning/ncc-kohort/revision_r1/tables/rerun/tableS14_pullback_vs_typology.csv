@@ -1,0 +1,8 @@
+Model,Covariate,OR,CI low,CI high,p
+M1: Volume at 14 only,female,0.597,0.462,0.772,0.0001
+M1: Volume at 14 only,tyrving_best_z,1.21,1.043,1.405,0.012
+M1: Volume at 14 only,vol_age_14_z,2.197,1.933,2.496,0.0
+M2: + Volume change 14→15,female,0.598,0.454,0.788,0.0003
+M2: + Volume change 14→15,tyrving_best_z,1.12,0.964,1.303,0.1395
+M2: + Volume change 14→15,vol_age_14_z,2.689,2.328,3.106,0.0
+M2: + Volume change 14→15,vol_change_14_15_z,2.376,2.074,2.722,0.0

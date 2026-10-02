@@ -1,0 +1,5 @@
+Procedure,n,CV-AUC,Calibration slope,Calibration-in-the-large,Brier
+Submitted variables; standardised on full data before CV (as submitted),1704,0.751,0.96,0.00,0.122
+Submitted variables; standardised within training folds,1704,0.751,0.96,0.00,0.122
+"R1 variables; athlete-level stratified 5-fold, 20 repeats",2095,"0.746 [0.716, 0.776]; repeat range 0.742-0.749",0.98,-0.00,0.120
+"R1 variables; club-grouped stratified 5-fold, 20 repeats",2095,"0.746 [0.709, 0.783]; repeat range 0.743-0.750",0.96,-0.00,0.120

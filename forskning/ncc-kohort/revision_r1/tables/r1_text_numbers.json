@@ -1,0 +1,34 @@
+{
+ "rho_vol_tyr": 0.37841043912057304,
+ "rho_vol_peak_pre15": 0.547461892125087,
+ "rho_milestonevol_tyr15": 0.6029026866901678,
+ "r_hhi_tyr": -0.1981322741055897,
+ "quartile_table": [
+  {
+   "Baseline Tyrving quartile": "Q1 (lowest)",
+   "Senior retention, volume above median": "15.4% (n = 156)",
+   "Senior retention, volume at or below median": "9.5% (n = 368)"
+  },
+  {
+   "Baseline Tyrving quartile": "Q2",
+   "Senior retention, volume above median": "17.3% (n = 208)",
+   "Senior retention, volume at or below median": "5.7% (n = 316)"
+  },
+  {
+   "Baseline Tyrving quartile": "Q3",
+   "Senior retention, volume above median": "23.8% (n = 282)",
+   "Senior retention, volume at or below median": "4.3% (n = 256)"
+  },
+  {
+   "Baseline Tyrving quartile": "Q4 (highest)",
+   "Senior retention, volume above median": "36.0% (n = 372)",
+   "Senior retention, volume at or below median": "13.9% (n = 137)"
+  }
+ ],
+ "vol_median": 17.0,
+ "tyr_mean_by_cohort": {
+  "A": 712.3,
+  "B": 715.2
+ },
+ "tyr_mean_all": 713.4116372315035
+}

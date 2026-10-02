@@ -1,0 +1,4 @@
+# Persondata (utøver-ID, fødselsår, kjønn) skal ikke i git (GDPR)
+data_private/
+_rerun/
+__pycache__/

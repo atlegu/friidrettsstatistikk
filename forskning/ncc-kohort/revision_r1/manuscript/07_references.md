@@ -1,0 +1,77 @@
+# References
+
+(APA 7th edition format)
+
+Baker, J., Mosher, A., & Fraser-Thomas, J. (2021). Is it too early to condemn early sport specialisation? *British Journal of Sports Medicine, 55*(3), 179–180. https://doi.org/10.1136/bjsports-2020-102053
+
+Back, J., Johnson, U., Svedberg, P., McCall, A., & Ivarsson, A. (2022). Drop-out from team sport among adolescents: A systematic review and meta-analysis of prospective studies. *Psychology of Sport and Exercise, 61*, Article 102205. https://doi.org/10.1016/j.psychsport.2022.102205
+
+Bakken, A. (2019). *Idrettens posisjon i ungdomstida: Hvem deltar og hvem slutter i ungdomsidretten?* [The position of sport in adolescence: Who participates and who drops out of youth sport?] (NOVA Rapport 2/2019). Oslo Metropolitan University.
+
+Battaglia, A., Kerr, G., & Tamminen, K. (2024). The dropout from youth sport crisis: Not as simple as it appears. *Kinesiology Review, 13*(3), 345–356. https://doi.org/10.1123/kr.2023-0024
+
+Cobley, S., Baker, J., Wattie, N., & McKenna, J. (2009). Annual age-grouping and athlete development: A meta-analytical review of relative age effects in sport. *Sports Medicine, 39*(3), 235–256. https://doi.org/10.2165/00007256-200939030-00005
+
+Côté, J., & Hancock, D. J. (2016). Evidence-based policies for youth sport programmes. *International Journal of Sport Policy and Politics, 8*(1), 51–65. https://doi.org/10.1080/19406940.2014.919338
+
+Cox, D. R. (1972). Regression models and life-tables. *Journal of the Royal Statistical Society: Series B (Methodological), 34*(2), 187–202. https://doi.org/10.1111/j.2517-6161.1972.tb00899.x
+
+Crane, J., & Temple, V. (2015). A systematic review of dropout from organized sport among children and youth. *European Physical Education Review, 21*(1), 114–131. https://doi.org/10.1177/1356336X14555294
+
+Davidson-Pilon, C. (2019). lifelines: Survival analysis in Python. *Journal of Open Source Software, 4*(40), Article 1317. https://doi.org/10.21105/joss.01317
+
+DiFiori, J. P., Benjamin, H. J., Brenner, J. S., Gregory, A., Jayanthi, N., Landry, G. L., & Luke, A. (2014). Overuse injuries and burnout in youth sports: A position statement from the American Medical Society for Sports Medicine. *Clinical Journal of Sport Medicine, 24*(1), 3–20. https://doi.org/10.1097/JSM.0000000000000060
+
+Ebaugh, H. R. F. (1988). *Becoming an ex: The process of role exit*. University of Chicago Press.
+
+Eime, R. M., Young, J. A., Harvey, J. T., Charity, M. J., & Payne, W. R. (2013). A systematic review of the psychological and social benefits of participation in sport for children and adolescents: Informing development of a conceptual model of health through sport. *International Journal of Behavioral Nutrition and Physical Activity, 10*, Article 98. https://doi.org/10.1186/1479-5868-10-98
+
+Eliasson, I., & Johansson, A. (2021). The disengagement process among young athletes when withdrawing from sport: A new research approach. *International Review for the Sociology of Sport, 56*(4), 537–557. https://doi.org/10.1177/1012690219899614
+
+Enoksen, E. (2011). Drop-out rate and drop-out reasons among promising Norwegian track and field athletes: A 25 year study. *Scandinavian Sport Studies Forum, 2*, 19–43.
+
+Espedalen, L. E. (2025). *Organized sport in the lives of young Norwegians: Participation, exit, and social inequality* [Doctoral dissertation, Norwegian School of Sport Sciences].
+
+Espedalen, L. E., & Seippel, Ø. (2024). Dropout and social inequality: Young people's reasons for leaving organized sports. *Annals of Leisure Research, 27*(2), 197–214. https://doi.org/10.1080/11745398.2022.2070512
+
+Güllich, A., Macnamara, B. N., & Hambrick, D. Z. (2022). What makes a champion? Early multidisciplinary practice, not early specialization, predicts world-class performance. *Perspectives on Psychological Science, 17*(1), 6–29. https://doi.org/10.1177/1745691620974772
+
+Heidari, S., Babor, T. F., De Castro, P., Tort, S., & Curno, M. (2016). Sex and Gender Equity in Research: Rationale for the SAGER guidelines and recommended use. *Research Integrity and Peer Review, 1*, Article 2. https://doi.org/10.1186/s41073-016-0007-6
+
+Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. *Computing in Science & Engineering, 9*(3), 90–95. https://doi.org/10.1109/MCSE.2007.55
+
+Jayanthi, N. A., LaBella, C. R., Fischer, D., Pasulka, J., & Dugas, L. R. (2015). Sports-specialized intensive training and the risk of injury in young athletes: A clinical case-control study. *American Journal of Sports Medicine, 43*(4), 794–801. https://doi.org/10.1177/0363546514567298
+
+Kearney, P. E., & Hayes, P. R. (2018). Excelling at youth level in competitive track and field athletics is not a prerequisite for later success. *Journal of Sports Sciences, 36*(21), 2502–2509. https://doi.org/10.1080/02640414.2018.1465724
+
+Kretchmar, R. S. (2000). Movement subcultures: Sites for meaning. *Journal of Physical Education, Recreation & Dance, 71*(5), 19–25. https://doi.org/10.1080/07303084.2000.10605140
+
+Kuokkanen, J., Phipps, D. J., Saarinen, M., Korhonen, J., Romar, J.-E., & Gustafsson, H. (2026). Trajectories of sport exhaustion, cynicism and inadequacy among adolescent student-athletes: A three-year longitudinal study of social influences in the Finnish dual career context. *Psychology of Sport and Exercise, 82*, Article 103015. https://doi.org/10.1016/j.psychsport.2025.103015
+
+Larson, H. K., Young, B. W., McHugh, T.-L. F., & Rodgers, W. M. (2019). Markers of early specialization and their relationships with burnout and dropout in swimming. *Journal of Sport and Exercise Psychology, 41*(1), 46–54. https://doi.org/10.1123/jsep.2018-0305
+
+Norges Friidrettsforbund. (2024). *Tyrvingtabellen: Poengtabell for ungdomsfriidrett* [Tyrving table: Scoring table for youth athletics]. https://www.friidrett.no/arrangement/arrangementshjelp/poengtabeller/tyrvingtabellen/
+
+Norges Friidrettsforbund. (2026). *Lover og regler* [Laws and regulations]. https://www.friidrett.no/om-nfif/lover/
+
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
+
+Raedeke, T. D. (1997). Is athlete burnout more than just stress? A sport commitment perspective. *Journal of Sport & Exercise Psychology, 19*(4), 396–417. https://doi.org/10.1123/jsep.19.4.396
+
+Sarrazin, P., Vallerand, R. J., Guillet, E., Pelletier, L. G., & Cury, F. (2002). Motivation and dropout in female handballers: A 21-month prospective study. *European Journal of Social Psychology, 32*(3), 395–418. https://doi.org/10.1002/ejsp.98
+
+Scanlan, T. K., Carpenter, P. J., Simons, J. P., Schmidt, G. W., & Keeler, B. (1993). An introduction to the sport commitment model. *Journal of Sport & Exercise Psychology, 15*(1), 1–15. https://doi.org/10.1123/jsep.15.1.1
+
+Scanlan, T. K., Chow, G. M., Sousa, C., Scanlan, L. A., & Knifsend, C. A. (2016). The development of the Sport Commitment Questionnaire-2 (English version). *Psychology of Sport and Exercise, 22*, 233–246. https://doi.org/10.1016/j.psychsport.2015.08.002
+
+van Houwelingen, H. C. (2007). Dynamic prediction by landmarking in event history analysis. *Scandinavian Journal of Statistics, 34*(1), 70–85. https://doi.org/10.1111/j.1467-9469.2006.00529.x
+
+VanderWeele, T. J., & Ding, P. (2017). Sensitivity analysis in observational research: Introducing the E-value. *Annals of Internal Medicine, 167*(4), 268–274. https://doi.org/10.7326/M16-2607
+
+von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C., & Vandenbroucke, J. P. (2007). The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: Guidelines for reporting observational studies. *Annals of Internal Medicine, 147*(8), 573–577. https://doi.org/10.7326/0003-4819-147-8-200710160-00010
+
+Wall, M., & Côté, J. (2007). Developmental activities that lead to dropout and investment in sport. *Physical Education and Sport Pedagogy, 12*(1), 77–87. https://doi.org/10.1080/17408980601060358
+
+Worley, J. T., & Smith, A. L. (2026). Positive peer relationships, social identity, and adaptive sport motivation in youth athletes. *Psychology of Sport and Exercise, 82*, Article 102996. https://doi.org/10.1016/j.psychsport.2025.102996
+
+Zhong, J., Wang, Q., Bao, H., Wang, Y., & Guo, S. (2026). Effects of basic psychological needs on Chinese youth athlete burnout under coach burnout: Using hierarchical linear modeling. *Psychology of Sport and Exercise, 85*, Article 103099. https://doi.org/10.1016/j.psychsport.2026.103099
