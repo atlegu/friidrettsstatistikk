@@ -9,8 +9,10 @@ The scripts are copied into a private sandbox (revision_r1/_rerun/, not in git)
 next to the corrected career and cohort data, a modified analysedata_utvidet.csv and a
 shim `tyrvingtabellen.py` that re-exports the corrected scoring. With the ORIGINAL data
 the same sandbox reproduces every submitted table byte-for-byte (verified 2026-10-01), so
-any difference in the outputs is attributable to the corrections. The only code change is
-that 16 counts meets as competition days (meet_day), as 07 does in r1_00.
+any difference in the outputs is attributable to the corrections. The code changes are that
+16 counts meets as competition days (meet_day), as 07 does in r1_00, and that the scripts store
+estimates with 6 instead of 3 (p: 4) decimals: r1_06 rounds them to 2 for the tables, and
+rounding values already rounded to 3 decimals put some cells 0.01 off (final check, 2 Oct 2026).
 
 Outputs: revision_r1/tables/rerun/*.csv (original file names) + rerun.log
 """
@@ -38,6 +40,19 @@ SCRIPTS = ["08_analyser_pse.py", "09_sensitivity_pse.py", "10_time_varying_cox.p
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
+
+# prepended to every script: round(x, 3) / round(p, 4) keep 6 decimals; 0-2 decimals (percentages,
+# E-values, counts) are unchanged
+PRECISION = '''import builtins as _builtins
+
+
+def round(x, ndigits=None):  # noqa: A001  (R1 re-run: full precision in the stored tables)
+    if ndigits is None:
+        return _builtins.round(x)
+    return _builtins.round(x, 6 if ndigits >= 3 else ndigits)
+
+
+'''
 
 SHIM = '''"""Shim: the R1 re-run uses the exact Tyrving scoring (revision_r1/analysis/tyrving_r2.py)."""
 import sys
@@ -78,7 +93,7 @@ def main():
     (SANDBOX / "submission_pse" / "tables").mkdir(parents=True)
     (SANDBOX / "submission_pse" / "figures").mkdir(parents=True)
     for s in SCRIPTS:
-        shutil.copy(DATA / s, SANDBOX / "data" / s)
+        (SANDBOX / "data" / s).write_text(PRECISION + (DATA / s).read_text())
     # meets are counted as competition days (r1_00, correction 6): the one meet count outside 07
     f16 = SANDBOX / "data" / "16_revision_analyses.py"
     src = f16.read_text()

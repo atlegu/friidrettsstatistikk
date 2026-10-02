@@ -18,9 +18,9 @@ Summary of the main changes
 Effect on the findings. The central results hold. Pre-milestone competition volume has OR = 2.04 per SD (95% CI 1.80–2.32; submitted 2.40) and cross-validated AUC = 0.767 (0.737–0.797; submitted 0.751), unchanged with club-grouped folds, and it is reproduced in both birth cohorts. The within-athlete decline before exit is unchanged. Two conclusions have changed, and we have revised the text accordingly:
 
 - Performance matters more than we reported. With correct scoring, baseline Tyrving has a substantial independent association with retention (OR 1.75 [1.47, 2.08]; submitted 1.12, not significant). Volume still discriminates somewhat better than performance measured in the same window (AUC difference 0.040 [0.006, 0.074]), but the two are complementary, and with its within-baseline trajectory performance matches volume. Section 4.2 and the Abstract now say this, and Hypothesis 2 is described as partially supported.
-- Specialization. The HHI association is small (OR 1.18 [1.04, 1.34]; submitted 1.36), present only once volume is in the model and only in Cohort B, adds no discrimination, and is no longer significant once performance in the athlete’s main event is controlled. We no longer report it as a finding in the Abstract.
+- Specialization. The HHI association is small (OR 1.18 [1.04, 1.34]; submitted 1.36), present only once volume is in the model and only in Cohort B, adds no discrimination, and is no longer significant once performance in the athlete’s main event is controlled. The Abstract now says only that event concentration was not robustly associated with retention.
 
-Other corrections. All tables and figures are now generated directly from the analysis code. In doing so, and in the audit, we found and corrected several data-handling errors (an incomplete extraction, the identification of the baseline meet, results after the end of follow-up, register corrections of sex, the coding of region and club, and double-counted meet records), errors in two secondary Cox analyses and in the calibration figure, and some errors of transcription and presentation (Tables 5, S2 and S4, the Figure 3 caption, one unconverted citation, a box in Figure 1, and the Table 1 note). They are listed in Supplementary Methods S-M12. Apart from the changes in the role of performance and specialization described above, none alters the conclusions.
+Other corrections. All tables and figures are now generated directly from the analysis code. In doing so, and in the audit, we found and corrected several data-handling errors (an incomplete extraction, the identification of the baseline meet, results after the end of follow-up, register corrections of sex, the coding of region and club, and double-counted meet records), errors in two secondary Cox analyses and in the calibration figure, and some errors of transcription and presentation (Tables 5, S2 and S4, the Figure 3 caption and the Kaplan–Meier summary in Section 3.2, the title inside Figure 2, one unconverted citation, a box in Figure 1, the Table 1 note, and rounding in a few supplementary table cells). The data and analysis corrections are listed in Supplementary Methods S-M12. Apart from the changes in the role of performance and specialization described above, none alters the conclusions.
 
 Length. We have kept the main text close to its submitted length (about 6,200 words, against 6,036 at submission) by placing most new detail in the Supplementary Methods (S-M3, S-M4, S-M6, S-M9 to S-M12) and new Supplementary Tables S26–S32, and by shortening the Introduction and Discussion.
 
@@ -34,15 +34,15 @@ Comment 1. Please clarify exactly how hhi_early is calculated. In the Methods it
 
 Response. Thank you; the reviewer is correct, and this was an error rather than a design choice. The submitted index pooled every result up to the end of the second calendar year after the baseline meet, so depending on baseline age it covered ages 11–16 (about 35,000 of its results came from ages 15–16). The primary model was therefore not strictly baseline-only. The index is now computed from results in the age-13 and age-14 calendar years only, the same window as the volume predictor, and every model containing HHI has been re-estimated.
 
-On the submitted data, the correction changes the volume estimate little (OR 2.40 → 2.33) and reduces the HHI association (1.36 → 1.24). In the final revised model, HHI has OR 1.18 [1.04, 1.34]. This association is clear in Cohort B (1.32) but not in Cohort A (1.07 [0.90, 1.28]), and adding HHI does not improve discrimination (ΔAUC −0.002 [−0.005, 0.001]). With performance now correctly scored, it is also no longer significant once performance in the athlete’s main event category is controlled (1.07 [0.94, 1.23]; Table S18). We have therefore removed HHI from the findings stated in the Abstract and revised Sections 3.9, 4.1, 4.6 and 4.8 accordingly.
+On the submitted data, the correction changes the volume estimate little (OR 2.40 → 2.33) and reduces the HHI association (1.36 → 1.24). In the final revised model, HHI has OR 1.18 [1.04, 1.34]. This association is clear in Cohort B (1.32) but not in Cohort A (1.07 [0.90, 1.28]), and adding HHI does not improve discrimination (ΔAUC −0.002 [−0.005, 0.001]). With performance now correctly scored, it is also no longer significant once performance in the athlete’s main event category is controlled (1.07 [0.94, 1.23]; Table S18). The Abstract therefore now states only that event concentration was not robustly associated with retention, and Sections 3.9, 4.1, 4.6 and 4.8 are revised accordingly.
 
-Changes: Section 2.4.3; Supplementary Methods S-M8; all HHI-containing tables (Tables 3, 5, 7, S1–S2, S5–S11, S13, S16–S18, S20–S22, S25); Sections 3.3, 3.9, 4.1, 4.6.
+Changes: Abstract; Section 2.4.3; Supplementary Methods S-M8; all HHI-containing tables (Tables 3, 5, 7, S1–S2, S5–S11, S13, S16–S18, S20–S22, S25); Sections 3.3, 3.9, 4.1, 4.6, 4.8.
 
 Comment 2. Continuous variables were standardized before cross-validation. The standardization should be done inside each training fold and then applied to the validation fold. Please rerun the cross-validation this way and check whether AUC, calibration and Brier score change.
 
 Response. Agreed. Standardization is now refitted within each training fold and applied to the held-out fold (a pipeline; Section 2.5.1, Supplementary Methods S-M4). As expected for an unpenalized logistic regression, the results did not change. Standardizing on the full data uses no outcome information and is an affine re-parameterization, which leaves out-of-fold predictions unchanged. Re-running the submitted analysis with in-fold standardization reproduced its AUC (0.751), calibration slope (0.96) and Brier score (0.122) to the third decimal (Table S26, rows 1–2).
 
-All cross-validation in the revision uses in-fold standardization and 20 repeats of stratified 5-fold cross-validation. For the revised primary model, CV-AUC = 0.767 (95% CI 0.737–0.797), with calibration slope 0.98, calibration-in-the-large 0.00 and Brier score 0.117 (Table 3; Table S23; Figure S1).
+The primary and all new cross-validations use in-fold standardization and 20 repeats of stratified 5-fold cross-validation (Tables S9, S17 and S24, re-runs of the original scripts, keep the single split and say so). For the revised primary model, CV-AUC = 0.767 (95% CI 0.737–0.797), with calibration slope 0.98, calibration-in-the-large 0.00 and Brier score 0.117 (Table 3; Table S23; Figure S1).
 
 Changes: Sections 2.5.1 and 3.3; Supplementary Methods S-M4; Tables 3, S23, S26; Figure S1.
 
@@ -53,13 +53,13 @@ Response. Thank you; this is a useful check. We repeated the cross-validation wi
 - club-grouped folds: CV-AUC 0.766 (0.735–0.797), slope 0.97, Brier 0.117;
 - athlete-level folds: 0.767 (0.737–0.797), 0.98, 0.117.
 
-Together with the club random-intercept model (volume OR 2.10 [1.88, 2.34]) and club-clustered standard errors (2.04 [1.75, 2.39]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
+Together with the club random-intercept model (volume OR 2.10) and club-clustered standard errors (2.04 [1.75, 2.39]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
 
-Changes: Sections 2.5.1, 2.5.5 and 3.4; Supplementary Methods S-M4 and S-M7; Tables S22 and S26.
+Changes: Abstract; Sections 2.5.1, 2.5.5, 3.4, 4.1 and 4.7; Supplementary Methods S-M4 and S-M7; Tables S22 and S26.
 
 Comment 4. Missing data are not negligible, especially for Tyrving. Please give more details on the multiple imputation procedure: which variables were included, whether the outcome was included, and how the variables were imputed. It would also be useful to know whether the predictive performance remains similar after imputation, not only the ORs.
 
-Response. Thank you. Following up this comment led us to the source of the missingness. Our scoring routine matched only generic event codes to the Tyrving table, whereas the register codes throws, hurdles, take-off-zone jumps and race walking with their implement or hurdle specification (e.g., “shot put 3 kg”, “60 m hurdles 76.2 cm”). These events were therefore never scored, and athletes who competed only in them at the baseline meet had no score. The missingness was structural, driven by event choice rather than performance level. Checked against the federation’s scoring workbook, the routine also used wrong formulas for middle-distance races, throws and pole vault.
+Response. Thank you. Following up this comment led us to the source of the missingness. Our scoring routine matched only generic event codes to the Tyrving table, whereas the register codes throws, hurdles, take-off-zone jumps and race walking with their implement or hurdle specification (e.g., “shot put 3 kg”, “60 m hurdles 76.2 cm”). These events were therefore never scored, and athletes who competed only in them at the baseline meet had no score. The missingness was structural, driven by event choice rather than performance level. Checked against the federation’s scoring workbook, the routine also used wrong formulas for races of 600 m and longer, race walking, throws and pole vault.
 
 We corrected the scoring so that every result is scored against the table row for its event, specification, sex and age, with the workbook’s formulas (Section 2.4.2; Supplementary Methods S-M3).
 
@@ -78,15 +78,15 @@ As requested, Supplementary Methods S-M3 now details the imputation:
 Because no sex-known athlete now lacks a score, imputation and complete-case results coincide. To answer the question where it matters, Table S21 also repeats the analysis on the submitted analysis file (Tyrving missing for 18.8% of sex-known athletes):
 
 - pooled estimates were essentially unchanged (volume OR 2.34 [2.07, 2.66] vs. 2.40 complete-case);
-- predictive performance was the same as complete-case (CV-AUC 0.751, range 0.745–0.755 across imputations, vs. 0.753). Here the imputation model was fitted inside each training fold without the outcome, so no outcome information reached the validation fold.
+- predictive performance was the same as complete-case (CV-AUC 0.751, range 0.745–0.755 across imputations, vs. 0.753; both over 20 cross-validation splits). Here the imputation model was fitted inside each training fold without the outcome, so no outcome information reached the validation fold.
 
 Changes: Sections 2.4.2 and 2.5.5; Supplementary Methods S-M3 and S-M12; Tables 1, S12, S21, S25; all tables containing Tyrving.
 
 Comment 5. Please clarify how the 24 athletes with unknown sex were handled in the regression models.
 
-Response. They are excluded from all regression models (complete-case on sex) and included only in cohort totals and unstratified Kaplan–Meier curves; they cannot receive Tyrving scores, because the norms are sex-specific (Section 2.4.5; Supplementary Methods S-M3). Since our extraction, a register-wide correction of sex coding has resolved 22 of the 24, and the revised analyses use the corrected values (the sex-specific implements these athletes used agree with them), so only 2 athletes remain without registered sex. In the submitted data, a sensitivity model retaining the 24 as a separate category gave the same volume OR as excluding them (2.37 vs. 2.36).
+Response. They are excluded from all regression models (complete-case on sex), apart from a mean-imputation check of the post-baseline Cox model (Table S5) that keeps every athlete, and are included only in cohort totals and unstratified Kaplan–Meier curves; they cannot receive Tyrving scores, because the norms are sex-specific (Section 2.4.5; Supplementary Methods S-M3). Since our extraction, a register-wide correction of sex coding has resolved 22 of the 24, and the revised analyses use the corrected values (where these athletes’ sex-specific implements indicate a sex, 24 athletes, they agree with the corrected values), so only 2 athletes remain without registered sex. In the submitted data, a sensitivity model retaining the 24 as a separate category gave the same volume OR as excluding them (2.37 vs. 2.36).
 
-Changes: Section 2.4.5; Supplementary Methods S-M3 and S-M12; Table S12; Figure S0.
+Changes: Section 2.4.5; Supplementary Methods S-M3 and S-M12; Tables 1, S5, S12, S25; Figure S0.
 
 Comment 6. Please explain the coding of birth quarter. Why are Q1 and Q4 specifically mentioned in the structural controls?
 
@@ -111,7 +111,7 @@ Response. Thank you; the formula was not stated. Change is the later minus the e
 
 The text now states the formula and reports both directions (Sections 2.5.3 and 3.5; Table 4 note). The same applies to the 15→16 change: OR 1.87 per SD increase equals 0.54 [0.46, 0.63] per SD decline (Table S19). Because the model is linear in the logit, it is a re-parameterization of a model with the two levels; the per-meet OR for change equals that for the later level (Table 4 note).
 
-Changes: Sections 2.5.3 and 3.5; Table 4 and note; Tables S14 and S19; Supplementary Methods S-M6.
+Changes: Abstract; Sections 2.5.3 and 3.5; Table 4 and note; Tables S14 and S19; Supplementary Methods S-M6.
 
 Comment 8. The within-athlete pull-back result is interesting, but the conclusion may be slightly too strong… I would either moderate the wording around “genuine within-athlete pull-back” or add a formal longitudinal analysis of competition volume before exit.
 
@@ -127,23 +127,23 @@ The decline steepened towards exit (T−1 vs. T−3, p < .001) and was confirme
 
 Moderated wording. “Genuine within-athlete pull-back” is replaced by “within-athlete decline in competition participation”. The typical exit is now described as “preceded by declining participation” over one or two seasons, rather than as a “two-to-three-season taper”. We also state that the register establishes the timing of the decline, not its reasons (Sections 3.5, 4.1, 4.3, 4.4 and 4.11).
 
-Changes: Sections 2.5.3, 3.5, 4.1, 4.3, 4.4, 4.9, 4.11; Supplementary Methods S-M6; Table S28; Figure S5.
+Changes: Abstract; Sections 2.5.3, 3.5, 4.1, 4.3, 4.4, 4.9, 4.11; Supplementary Methods S-M6; Tables S12 and S28; Figure S5.
 
 Comment 9. The manuscript says that behavior “explains more variance” than performance, but the main comparison is based on AUC… I suggest using wording such as “competition volume showed better discrimination of later retention than Tyrving performance.”
 
-Response. Agreed. The text, the Abstract and Hypothesis 2 (Section 1.3) now refer to discrimination; the only variance-type quantity left is McFadden’s pseudo-R² in Table 4, labelled as such. With performance correctly scored (Comment 4), the comparison has also changed in substance. Volume still discriminates somewhat better than performance measured in the same window, but the two carry complementary information, and with its within-baseline trajectory performance matches volume (Comment 10). Section 4.2 is therefore retitled “Competition volume and performance carry complementary information”, and Hypothesis 2 is described as partially supported: behavior discriminates at least as well as performance, not instead of it.
+Response. Agreed. The text, the Abstract and Hypothesis 2 (Section 1.3) now refer to discrimination; the only variance-type quantity left is McFadden’s pseudo-R² for the level-and-change models (Section 3.5, Table 4, Table S14), labelled as such. With performance correctly scored (Comment 4), the comparison has also changed in substance. Volume still discriminates somewhat better than performance measured in the same window, but the two carry complementary information, and with its within-baseline trajectory performance matches volume (Comment 10). Section 4.2 is therefore retitled “Competition volume and performance carry complementary information”, and Hypothesis 2 is described as partially supported: behavior discriminates at least as well as performance, not instead of it.
 
 Changes: Abstract; Sections 1.3, 3.6, 4.1, 4.2.
 
 Comment 10. The AUC comparisons should be interpreted carefully. Small differences such as 0.740 versus 0.737 should not be discussed as meaningful without uncertainty around the difference.
 
-Response. We now report a 95% CI for every CV-AUC. Differences between models are estimated on identical folds, with CIs and p-values from the corrected resampled t-statistic for repeated cross-validation (Nadeau & Bengio, 2003; Supplementary Methods S-M4; Table S27).
+Response. We now report a 95% CI for the CV-AUC of every model in Table 3 and for every difference between models. Differences between models are estimated on identical folds, with CIs and p-values from the corrected resampled t-statistic for repeated cross-validation (Nadeau & Bengio, 2003; Supplementary Methods S-M4; Table S27).
 
 - The reviewer’s example (adding Tyrving to volume) now shows a small but clear gain once performance is scored correctly: +0.023 (0.007 to 0.038).
 - Volume versus Tyrving measured in the same window: +0.040 (0.006 to 0.074), a modest advantage for volume.
 - Adding volume to sex + Tyrving + HHI: +0.069 (0.047 to 0.091).
 - Performance with its within-baseline trajectory matches volume: −0.001 (−0.042 to 0.039).
-- A within-event rank at the baseline meet, which removes Tyrving’s unequal demands across event groups, discriminates no better than Tyrving (0.689 vs. 0.700; difference 0.011 [−0.007, 0.028]); volume again discriminates better (+0.051 [0.019, 0.083]).
+- A within-event rank at the baseline meet, which removes Tyrving’s unequal demands across event groups, discriminates no better than Tyrving (0.689 vs. 0.700; difference 0.011 [−0.006, 0.028]); volume again discriminates better (+0.051 [0.019, 0.083]).
 
 The text now interprets only differences whose intervals exclude zero, and describes performance and volume as complementary.
 
@@ -153,12 +153,12 @@ Comment 11. The <10 meets threshold is interesting, but it seems to be developed
 
 Response. Agreed on both points. The threshold is now presented throughout as a candidate rule (Sections 3.8, 4.8 and 4.9; Table 6 note), and, as suggested, we derived thresholds in one birth cohort and evaluated them in the other (Table S29; Supplementary Methods S-M9).
 
-- Capacity rule (pre-specified: flag the lowest volume quartile). Derived in either cohort, the cut-off is exactly < 10 meets. Applied unchanged to Cohort B, it flagged 26.1% of athletes, whose senior retention was 4.6%, against 21.4% among the unflagged (PPV 0.95, sensitivity 0.30). Applied to Cohort A, it gave 6.0% against 19.7%.
+- Capacity rule (fixed before the cohorts were compared: flag the lowest volume quartile). Derived in either cohort, the cut-off is exactly < 10 meets. Applied unchanged to Cohort B, it flagged 26.1% of athletes, whose senior retention was 4.6%, against 21.4% among the unflagged (PPV 0.95, sensitivity 0.30). Applied to Cohort A, it gave 6.0% against 19.7%.
 - Youden-optimal cut-offs also transferred, but select much broader screens (< 21 and < 29 meets, flagging 56–77% of athletes).
 
-Because both cohorts come from the same register, we describe this as temporal validation within one setting and state that external validation is still required.
+Because both cohorts come from the same register, we describe this as temporal validation within one setting and state that the thresholds have not been externally validated (Section 4.9; Supplementary Methods S-M9).
 
-Changes: Sections 2.5.3, 3.8, 4.8, 4.9; Table 6 note; Table S29; Supplementary Methods S-M9.
+Changes: Abstract; Sections 2.5.3, 3.8, 4.8, 4.9; Table 6 note; Table S29; Supplementary Methods S-M9.
 
 Interpretation
 
@@ -168,9 +168,9 @@ Response. We agree and have changed the terminology throughout.
 
 - Title: the subtitle now reads “Declining competition participation precedes exit”, and the running title “Declining participation precedes exit from youth track and field”.
 - Text: “declining competition participation” is used for the observed behavior, and “behavioral marker of disengagement” where the theoretical construct is meant.
-- Alternative causes: we state explicitly that a decline can also reflect injury, a move to another sport, or school and other time constraints (Sections 1.3, 2.4.4 and 4.2; Figure 1 and its caption).
+- Alternative causes: we state explicitly that a decline can also reflect injury, a move to another sport, or school and other time constraints (Sections 2.4.4 and 4.2; Figure 1 and its caption).
 
-Changes: Title; running title; Abstract; Sections 1.3, 2.4.4, 3.5, 4.2, 4.3; Figure 1 caption.
+Changes: Title; running title; Abstract; Sections 1.3, 2.4.4, 3.5, 4.2, 4.3; Figure 1 and its caption.
 
 Comment 13. Please clarify the target population. The cohort includes athletes who participated in a specific regional youth competition and were entered by district federations. This is not the full population of Norwegian youth track and field athletes, so the generalizability of the results should be discussed more clearly.
 

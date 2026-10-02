@@ -1,6 +1,6 @@
 Covariate,HR (complete case),n (CC),HR (mean imputation),n (imputed)
-female,1.152,2136,1.153,2138
-tyrving_best_z,0.909,2136,0.91,2138
-hhi_early_z,0.983,2136,0.983,2138
-vol_milepael_z,0.453,2136,0.453,2138
-n_msk_typer,0.748,2136,0.747,2138
+female,1.152426,2136,1.153465,2138
+tyrving_best_z,0.909485,2136,0.909818,2138
+hhi_early_z,0.982684,2136,0.983497,2138
+vol_milepael_z,0.453477,2136,0.452928,2138
+n_msk_typer,0.747777,2136,0.747417,2138

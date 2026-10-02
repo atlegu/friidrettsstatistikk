@@ -41,7 +41,10 @@ build prints it in blue (highlighted version) or strips the markers (clean versi
 ## Deliverables (`submission_r1/`)
 
 - `MANUSCRIPT_R1_highlighted.docx` (changes in blue, as the editor requested) and `MANUSCRIPT_R1_clean.docx`
-- `SUPPLEMENT_R1_highlighted.docx` / `SUPPLEMENT_R1_clean.docx` (methods, Tables S1–S32, Figures S0–S5)
+- `SUPPLEMENT_R1_highlighted.docx` / `SUPPLEMENT_R1_clean.docx` (methods, Tables S1–S32, Figures S0–S5, STROBE
+  checklist)
+- `TITLE_PAGE_R1.docx` (replaces the title page uploaded with the original submission)
+- `COVER_LETTER_R1.docx` (replaces the original cover letter; keeps the AI-use declaration)
 - `RESPONSE_TO_REVIEWER_R1.docx` / `.txt` (paste into the ScholarOne response box)
 - `figures/` (main Figures 1–3 and supplementary S0–S5, 300 dpi)
 - `../REVISION_TRACKING_R1.md` (comment-by-comment ledger, including the audit corrections)

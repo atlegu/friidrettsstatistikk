@@ -126,7 +126,11 @@
   "n": 813,
   "also_sprint": 0.984009840098401
  },
- "combined_share_13_14": 0.0,
+ "combined_totals_13_14": {
+  "n": 139,
+  "of": 88832,
+  "share": 0.0015647514409221901
+ },
  "hhi_early_results_age15_16": 34848,
  "submitted_refit_submitted": {
   "n": 1704,

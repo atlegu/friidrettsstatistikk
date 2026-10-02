@@ -10,7 +10,7 @@
 | Previous Decision | Revise (one reviewer, Dr Imad Hamri; 15 comments) |
 | Target Journal | International Journal of Sports Science & Coaching |
 | Original Word Count | 6,036 (main text, journal count) |
-| Revised Word Count | 6,185 (same count as 6,036 at submission; shortened from 6,889 after the audit, 2 Oct 2026) |
+| Revised Word Count | 6,218 (same count as 6,036 at submission; shortened from 6,889 after the audit, then +34 words of precision in the final check, 2 Oct 2026) |
 
 ## Revision Tracking Table
 
@@ -164,6 +164,15 @@
 | Figure 1 box cited self-determination theory (not in text or reference list) | Figure review | Replaced by meaning-in-movement accounts (Kretchmar, cited in §1.1) |
 | Table 1 note misdefined "active at age 17" | Code review (aktiv_17 = active season at 17 or later) | Note and row label corrected |
 | 90 athletes without birth date coded into the birth-quarter reference group | Comment 6 analysis | Disclosed; alternative codings in Table S13 Panel B |
+| Figure 2's in-figure title said divergence "emerges at the qualification milestone" (the groups already differ at 13–14) | Final check (figures viewed) | Neutral title; legend moved off the milestone label |
+| Figure S0 called the baseline meet "national" (it is regional; reviewer comment 13) | Final check | "Regional"; exclusions shown (631 born 1997/2003; 1,012 in both editions) |
+| Response letter said Figure 1 shows the alternative causes of decline (comment 12); it did not | Final check | Dashed box added to Figure 1 and named in its caption |
+| STROBE checklist, part of the original supplement, was missing from the R1 supplement; title page still had the old title | Final check | Checklist updated for R1 and appended to the supplement; TITLE_PAGE_R1.docx built |
+| Double rounding: the original scripts stored estimates to 3 decimals, which r1_06 rounded again to 2 (12 cells 0.01 off in Tables 5, S11, S13, S17, S18; S18 Model A disagreed with Table 3) | Final check (independent refits at full precision) | r1_02 keeps 6 decimals; all cells re-generated; no main-text number affected |
+| Identical computations in Table S29 had different bootstrap CIs | Final check | One bootstrap per cohort and cut-off |
+| Highlighting: new tables S26–S32 were blue only in the title; S21 and changed column headers were not highlighted | Final check | New tables highlighted throughout; changed headers and S21 cells highlighted |
+| Text claims: "all cross-validation uses 20 repeats" (S9, S17, S24 use the original single split); "CI for every CV-AUC"; external validation; §1.3 and Figure 1 named for alternative causes; unknown sex "excluded from all models" (S5 keeps them); 17–19 replication overstated; Table 1 note pointed to §2.4.3; S-M3 citation without reference; superseded S-M11 sentence | Final check (independent text audit) | All corrected in the manuscript, supplement and response letter; Changes lists completed |
+| Acknowledgements say the AI use is declared in the cover letter; the original cover letter carried outdated numbers | Final check | COVER_LETTER_R1 written (10_cover_letter_r1.md) |
 
 ## Summary Statistics
 
@@ -184,7 +193,7 @@
 - [x] Every RESOLVED item specifies the exact location of the change
 - [x] Limitations updated (§4.9: target population, candidate thresholds, fixed-effects analysis)
 - [x] The response letter addresses all comments in order
-- [ ] Word count is within the journal's limit after revisions — 6,185 vs. "should not normally exceed 6,000" (6,036 at submission); about 5,890 without headings and table/figure placeholders
+- [ ] Word count is within the journal's limit after revisions — 6,218 vs. "should not normally exceed 6,000" (6,036 at submission); about 5,890 without headings and table/figure placeholders
 - [x] All new references are added (supplementary list); main-text numbering verified in order of first appearance (1–37)
 - [x] No new errors introduced: all tables and figures generated from code; original-data sandbox reproduces every submitted table byte-for-byte; corrected data rebuilt deterministically (r1_00) and audited (audit/)
 - [x] AI disclosure statement unchanged and still accurate (Acknowledgements)

@@ -6,11 +6,11 @@
 
 ## Title
 
-**Pulling back before dropping out: Behavioral disengagement precedes exit from Norwegian youth track and field — a 14-year register study**
+**Pulling back before dropping out: Declining competition participation precedes exit from Norwegian youth track and field — a 14-year register study**
 
 ## Running title
 
-Behavioral disengagement precedes exit from youth track and field
+Declining participation precedes exit from youth track and field
 
 ## Author
 

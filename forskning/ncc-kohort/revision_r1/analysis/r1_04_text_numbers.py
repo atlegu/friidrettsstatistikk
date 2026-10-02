@@ -60,7 +60,9 @@ def descriptives(df):
     cats = w.groupby("athlete_id")["event_category"].agg(set)
     hurd = cats[cats.map(lambda c: "hurdles" in c)]
     o["hurdlers_13_14"] = dict(n=len(hurd), also_sprint=float(hurd.map(lambda c: "sprint" in c).mean()))
-    o["combined_share_13_14"] = float((w["event_category"] == "combined").mean())
+    # combined-event totals: event codes "6_k_..." and "kast_5_k_..." (they carry the category the register gives them)
+    tot = w["event_code"].fillna("").str.contains(r"^(?:\d+_k_|kast_\d+_k_)", regex=True)
+    o["combined_totals_13_14"] = dict(n=int(tot.sum()), of=len(w), share=float(tot.mean()))
     return o
 
 

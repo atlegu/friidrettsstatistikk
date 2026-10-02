@@ -3,9 +3,11 @@ r1_05_figures.py — Figures for the revised submission.
 
   * Figures 2, 3, S2, S3: redrawn from the corrected data (r1_00) with the code of the original
     pipeline (data/12 polish_figure_1 for Figure 2; data/08 kaplan_meier_plots for 3, S2, S3);
-    the annotations of Figure 2 are now computed instead of typed in.
-  * Figure 1 (conceptual model): SDT box replaced by Kretchmar (cited in the text).
-  * Figure S0 (flow diagram): all counts computed from the corrected data.
+    the annotations of Figure 2 are now computed instead of typed in, and its in-figure title no
+    longer says that divergence emerges at the milestone (the groups already differ at 13-14).
+  * Figure 1 (conceptual model): SDT box replaced by Kretchmar (cited in the text); a dashed box
+    adds the other reasons for competing less (reviewer comment 12).
+  * Figure S0 (flow diagram): all counts computed from the corrected data, including the exclusions.
   * Figure S1 (calibration): now the cross-validated calibration of the primary model, drawn by r1_03
     (the original was the apparent fit of a post-baseline logistic model, mislabelled as Cox).
   * Figure S4 (time-varying hazard ratios): now drawn from the re-run table
@@ -36,17 +38,18 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9.5, "axes.title
 
 def conceptual_model():
     """Figure 1, as submitted except: the SDT box (a framework not used or cited in the text)
-    is replaced by Kretchmar's meaning-in-movement account (cited in Section 1.1), and the
-    centre box is labelled a behavioral marker of (not a measure of) disengagement."""
-    fig, ax = plt.subplots(figsize=(8, 4.5))
+    is replaced by Kretchmar's meaning-in-movement account (cited in Section 1.1), the
+    centre box is labelled a behavioral marker of (not a measure of) disengagement, and a dashed
+    box shows that competing less can have other reasons (reviewer comment 12)."""
+    fig, ax = plt.subplots(figsize=(8, 5.0))
     ax.set_xlim(0, 10)
-    ax.set_ylim(0, 6)
+    ax.set_ylim(-0.5, 6)
     ax.axis("off")
     ax.text(5, 5.7, "A behavioral-marker model of youth-sport disengagement", fontsize=11, fontweight="bold", ha="center")
 
-    def box(x, y, w, h, text, color, fontsize=9, fc="white"):
+    def box(x, y, w, h, text, color, fontsize=9, fc="white", ls="-"):
         ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0.05", linewidth=1.4,
-                                    edgecolor=color, facecolor=fc, alpha=0.95))
+                                    edgecolor=color, facecolor=fc, alpha=0.95, linestyle=ls))
         ax.text(x, y, text, ha="center", va="center", fontsize=fontsize)
 
     ax.text(1.5, 4.85, "Theoretical mechanisms\n(not directly observed)", fontsize=8.5, ha="center", style="italic", color="#555555")
@@ -61,7 +64,11 @@ def conceptual_model():
     ax.annotate("", xy=(7.15, 3.2), xytext=(6.3, 3.2), arrowprops=dict(arrowstyle="->", color="#888", lw=1.4))
     ax.text(3.3, 3.4, "produces\nfootprint in", fontsize=7.5, ha="center", color="#555")
     ax.text(6.75, 3.4, "precedes", fontsize=7.5, ha="center", color="#555")
-    ax.text(5, 0.85, "Prediction: future retainers and future dropouts should differ in measurable competition behavior\n"
+    box(1.5, 1.35, 2.5, 0.55, "Other reasons for competing less\n(injury, another sport, school)", "#9E9E9E", 8,
+        fc="#FAFAFA", ls="--")
+    ax.annotate("", xy=(3.72, 2.52), xytext=(2.85, 1.55),
+                arrowprops=dict(arrowstyle="->", color="#9E9E9E", lw=1.2, linestyle="--"))
+    ax.text(5, 0.2, "Prediction: future retainers and future dropouts should differ in measurable competition behavior\n"
             "before formal exit, with divergence intensifying at qualification-milestone years (age 15–16).",
             fontsize=8.5, ha="center", style="italic",
             bbox=dict(boxstyle="round,pad=0.4", facecolor="#FAFAFA", edgecolor="#BDBDBD"))
@@ -103,8 +110,8 @@ def volume_trajectory(df):
     ax.set_ylim(0, 30)
     ax.set_xlabel("Age (years)")
     ax.set_ylabel("Competition days per year (median; IQR shaded)")
-    ax.set_title("Behavioral divergence emerges at the qualification milestone")
-    ax.legend(loc="upper left", fontsize=8.5, framealpha=0.92)
+    ax.set_title("Competition volume by age and senior-retention status")
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2, fontsize=8.5, frameon=False)
     ax.grid(alpha=0.25)
     ax.set_xticks(ages)
     fig.tight_layout()
@@ -206,14 +213,17 @@ def flow_diagram(df, n_participants):
     n_tyr_missing = int(df["gender"].notna().sum() - len(cc))
     fu = {c: (2025 - df.loc[m, "stevne_aar"].max(), 2025 - df.loc[m, "stevne_aar"].min())
           for c, m in [("A", df["birth_year"] <= 2000), ("B", df["birth_year"] >= 2001)]}
-    box(3, 9.3, 5.5, 0.7, f"Athletes aged 13–14 with a result at the national 13–14 meet, 2011–2016\n"
+    n_both = int(df["deltok_begge_aar"].fillna(0).astype(int).sum())
+    box(3, 9.3, 5.5, 0.7, f"Athletes aged 13–14 with a result at the regional 13–14 meet, 2011–2016\n"
         f"(three venues; identified by venue and date): N = {n_participants:,}", "#1565C0", "#E3F2FD")
     arrow(3, 8.9, 3, 8.35)
-    box(3, 8.0, 5.5, 0.6, "Restrict birth years to 1998–2002\n(1997 and 2003 had only one eligible edition)",
-        "#1565C0", "#E3F2FD")
+    box(3, 8.0, 5.5, 0.6, "Restrict birth years to 1998–2002", "#1565C0", "#E3F2FD")
+    arrow(5.8, 8.0, 6.2, 8.0)
+    box(8.0, 8.0, 3.5, 0.6, f"Excluded: born 1997 or 2003\n(only one eligible edition): n = {n_participants - n:,}",
+        "#C62828", "#FFEBEE", fontsize=8.5)
     arrow(3, 7.65, 3, 7.1)
-    box(3, 6.75, 5.5, 0.6, "De-duplicate athletes in both a 13- and a 14-year-old edition\n(earlier edition = baseline)",
-        "#1565C0", "#E3F2FD")
+    box(3, 6.75, 5.5, 0.6, f"De-duplicate athletes in both a 13- and a 14-year-old edition\n"
+        f"(n = {n_both:,}; earlier edition = baseline)", "#1565C0", "#E3F2FD")
     arrow(3, 6.4, 3, 5.85)
     box(3, 5.5, 5.5, 0.6, f"Total cohort: N = {n:,} ({sex.get('M', 0):,} male, {sex.get('F', 0):,} female, "
         f"{n_unknown} sex not registered)", "#2E7D32", "#E8F5E9", fontsize=9.5)
@@ -241,7 +251,8 @@ def forest_time_varying():
     names = {"vol_milepael_z": "Volume at ages 15–16 (per SD)", "n_msk_typer": "Championship types (per type)",
              "tyrving_best_z": "Tyrving (per SD)", "hhi_early_z": "HHI, ages 13–14 (per SD)", "female": "Female"}
     periods = list(dict.fromkeys(t["Period"]))
-    labels = {p: p.replace("-", "–").replace("age ", "ages ") for p in periods}
+    # ages as in Table 5 (baseline at 13 or 14, so years 3-6 span ages 16-20; the script's label says 16-19)
+    labels = {p: p.replace("16-19", "16-20").replace("-", "–").replace("age ", "approx. ages ") for p in periods}
     colors = dict(zip(periods, ["#2a78d6", "#eb6834", "#898781"]))
     offset = dict(zip(periods, [0.22, 0.0, -0.22]))
     covs = list(names)

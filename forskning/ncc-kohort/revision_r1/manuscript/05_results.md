@@ -2,7 +2,7 @@
 
 ## 3.1 Cohort characteristics
 
-The cohort comprised {+2,138+} athletes ({+52.9%+} female): {+1,309+} in Cohort A and {+829+} in Cohort B, closely matched at baseline (mean Tyrving {+816 and 836+} and ~41% active at 17 in each; Table 1). Senior retention (≥1 season with ≥2 results at age 20+) was 15.8% in Cohort A and {+17.0%+} in Cohort B (combined {+16.3%+}). The proportion still active in 2024+ was {+5.7%+} (A) and {+10.5%+} (B), reflecting Cohort B's shorter follow-up (fixed-window outcome at ages 20–22: 15.3% vs {+16.5%+}; Supplementary Table S24). {+Of all 7,266 register athletes born 1998–2002 with a result at ages 13–14, the cohort is 29% but contains 80% of those with ten or more meets at those ages and 80% of later seniors; the others had a median of 2 meets and 1.7% senior retention (Supplementary Table S31).+}
+The cohort comprised {+2,138+} athletes ({+52.9%+} female): {+1,309+} in Cohort A and {+829+} in Cohort B, closely matched at baseline (mean Tyrving {+816 and 836+} and ~41% active at 17{+ or later+} in each; Table 1). Senior retention (≥1 season with ≥2 results at age 20+) was 15.8% in Cohort A and {+17.0%+} in Cohort B (combined {+16.3%+}). The proportion still active in 2024+ was {+5.7%+} (A) and {+10.5%+} (B), reflecting Cohort B's shorter follow-up (fixed-window outcome at ages 20–22: 15.3% vs {+16.5%+}; Supplementary Table S24). {+Of all 7,266 register athletes born 1998–2002 with a result at ages 13–14, the cohort is 29% but contains 80% of those with ten or more meets at those ages and 80% of later seniors; the others had a median of 2 meets and 1.7% senior retention (Supplementary Table S31).+}
 
 [**Table 1 about here**]
 
@@ -38,7 +38,7 @@ Second, because a change score spanning the exit could conflate {+decline+} with
 
 Third, exit-aligned trajectories. Aligned to each dropout's own final active season (n = {+1,146+} with final seasons at ages 15–19), median volumes at T−3, T−2, T−1, and T were 12, 10, 9, and 4 meets{+; 95% were still competing in their penultimate season, and among final seasons at 16+ (n = 800), 74% had a *reduced-but-nonzero* penultimate season relative to their earlier peak, 6.5% a gap year, and 20% exited from peak volume (Supplementary Table S19)+}.
 
-{+Fourth, the athlete fixed-effects model (1,909 athletes; Supplementary Table S28, Supplementary Figure S5) placed volume 7% (95% CI 0–13%), 12% (5–19%), and 23% (16–31%) below each athlete's own earlier level three, two, and one season(s) before the final active season, net of the common age profile; the decline steepened towards exit (*p* < .001) and was reproduced among exits at ages 17–19.+}
+{+Fourth, the athlete fixed-effects model (1,909 athletes; Supplementary Table S28, Supplementary Figure S5) placed volume, measured as 1 + meets, 7% (95% CI 0–13%), 12% (5–19%), and 23% (16–31%) below each athlete's own earlier level three, two, and one season(s) before the final active season, net of the common age profile; the decline steepened towards exit (*p* < .001), and the decline one season before exit was reproduced among exits at ages 17–19 (−26%).+}
 
 [**Table 4 about here**]
 

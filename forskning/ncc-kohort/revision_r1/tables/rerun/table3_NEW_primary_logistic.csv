@@ -1,11 +1,11 @@
 Model,n,Covariate,OR,CI low,CI high,p,CV-AUC,CV-AUC SD
-L1: Sex only,2136,female,0.753,0.598,0.948,0.0158,0.535,0.025
-L2: + Performance (baseline),2136,female,0.629,0.495,0.8,0.0002,0.701,0.016
-L2: + Performance (baseline),2136,tyrving_best_z,2.545,2.141,3.024,0.0,0.701,0.016
-L3: + Specialization (early),2136,female,0.63,0.495,0.801,0.0002,0.701,0.017
-L3: + Specialization (early),2136,tyrving_best_z,2.544,2.14,3.024,0.0,0.701,0.017
-L3: + Specialization (early),2136,hhi_early_z,1.003,0.892,1.129,0.9564,0.701,0.017
-"L4: + Volume (pre-milestone, ages 13-14)",2136,female,0.561,0.434,0.724,0.0,0.77,0.023
-"L4: + Volume (pre-milestone, ages 13-14)",2136,tyrving_best_z,1.75,1.47,2.083,0.0,0.77,0.023
-"L4: + Volume (pre-milestone, ages 13-14)",2136,hhi_early_z,1.177,1.037,1.335,0.0118,0.77,0.023
-"L4: + Volume (pre-milestone, ages 13-14)",2136,vol_pre_milepael_z,2.043,1.799,2.32,0.0,0.77,0.023
+L1: Sex only,2136,female,0.753035,0.598064,0.948162,0.015833,0.535409,0.024528
+L2: + Performance (baseline),2136,female,0.629457,0.495256,0.800023,0.000155,0.701403,0.016449
+L2: + Performance (baseline),2136,tyrving_best_z,2.544907,2.141483,3.02433,0.0,0.701403,0.016449
+L3: + Specialization (early),2136,female,0.629741,0.49521,0.800819,0.000162,0.700941,0.016552
+L3: + Specialization (early),2136,tyrving_best_z,2.544099,2.14004,3.024449,0.0,0.700941,0.016552
+L3: + Specialization (early),2136,hhi_early_z,1.003288,0.891852,1.128648,0.956423,0.700941,0.016552
+"L4: + Volume (pre-milestone, ages 13-14)",2136,female,0.560684,0.434269,0.723898,9e-06,0.769893,0.023374
+"L4: + Volume (pre-milestone, ages 13-14)",2136,tyrving_best_z,1.749574,1.469819,2.082576,0.0,0.769893,0.023374
+"L4: + Volume (pre-milestone, ages 13-14)",2136,hhi_early_z,1.176599,1.036705,1.335371,0.011798,0.769893,0.023374
+"L4: + Volume (pre-milestone, ages 13-14)",2136,vol_pre_milepael_z,2.042875,1.798848,2.320006,0.0,0.769893,0.023374

@@ -1,9 +1,9 @@
 Sex,n,Covariate,HR,CI low,CI high,p
-Male,1006,tyrving_best_z,0.966,0.909,1.026,0.2602
-Male,1006,hhi_early_z,0.98,0.921,1.042,0.5185
-Male,1006,vol_milepael_z,0.457,0.406,0.514,0.0
-Male,1006,n_msk_typer,0.64,0.579,0.708,0.0
-Female,1130,tyrving_best_z,0.831,0.776,0.89,0.0
-Female,1130,hhi_early_z,0.987,0.925,1.053,0.6925
-Female,1130,vol_milepael_z,0.447,0.401,0.498,0.0
-Female,1130,n_msk_typer,0.848,0.776,0.926,0.0003
+Male,1006,tyrving_best_z,0.965628,0.908594,1.026242,0.260155
+Male,1006,hhi_early_z,0.979872,0.921222,1.042256,0.518483
+Male,1006,vol_milepael_z,0.456968,0.405897,0.514465,0.0
+Male,1006,n_msk_typer,0.640282,0.579142,0.707876,0.0
+Female,1130,tyrving_best_z,0.830772,0.775567,0.889908,0.0
+Female,1130,hhi_early_z,0.987038,0.925238,1.052967,0.692498
+Female,1130,vol_milepael_z,0.44676,0.401089,0.497631,0.0
+Female,1130,n_msk_typer,0.847886,0.776168,0.926232,0.000253

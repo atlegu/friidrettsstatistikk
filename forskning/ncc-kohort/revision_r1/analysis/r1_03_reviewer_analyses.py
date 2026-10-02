@@ -677,16 +677,22 @@ def threshold_validation(df):
             thr_metrics(d["aktiv_senior"].values, d["vol"].values, t)))
         return best
 
-    def boot_row(d, t, label):
+    cache = {}
+
+    def boot_row(c, t, label):
+        """One table row; the same cohort and cut-off reuse one bootstrap, so coinciding rows are identical."""
+        d = sets[c]
         y, v = d["aktiv_senior"].values, d["vol"].values
         m0 = thr_metrics(y, v, t)
-        bs = {k: [] for k in m0}
-        for _ in range(B):
-            i = rng.integers(0, len(y), len(y))
-            mb = thr_metrics(y[i], v[i], t)
-            for k in bs:
-                bs[k].append(mb[k])
-        ci = {k: np.nanpercentile(bs[k], [2.5, 97.5]) for k in bs}
+        if (c, t) not in cache:
+            bs = {k: [] for k in m0}
+            for _ in range(B):
+                i = rng.integers(0, len(y), len(y))
+                mb = thr_metrics(y[i], v[i], t)
+                for k in bs:
+                    bs[k].append(mb[k])
+            cache[(c, t)] = {k: np.nanpercentile(bs[k], [2.5, 97.5]) for k in bs}
+        ci = cache[(c, t)]
         rows.append({"Analysis": label, "Threshold (vol <)": t, "n": len(y), "Flagged %": f"{100 * m0['flagged']:.1f}",
                      "Sensitivity": f"{m0['sens']:.2f} [{ci['sens'][0]:.2f}, {ci['sens'][1]:.2f}]",
                      "Specificity": f"{m0['spec']:.2f} [{ci['spec'][0]:.2f}, {ci['spec'][1]:.2f}]",
@@ -699,18 +705,18 @@ def threshold_validation(df):
     qA = int(np.floor(sets["A"]["vol"].quantile(0.25))) + 1          # flag vol <= P25  <=>  vol < P25 + 1
     qB = int(np.floor(sets["B"]["vol"].quantile(0.25))) + 1
     RES["thr_quartile"] = dict(cut_A=qA, cut_B=qB)
-    RES["thr_quartile"]["A_derive"] = boot_row(sets["A"], qA, "Lowest-quartile rule derived in Cohort A")
-    RES["thr_quartile"]["A_to_B"] = boot_row(sets["B"], qA, "Cohort-A lowest-quartile cut-off applied to Cohort B (validation)")
-    RES["thr_quartile"]["B_derive"] = boot_row(sets["B"], qB, "Lowest-quartile rule derived in Cohort B")
-    RES["thr_quartile"]["B_to_A"] = boot_row(sets["A"], qB, "Cohort-B lowest-quartile cut-off applied to Cohort A (validation)")
+    RES["thr_quartile"]["A_derive"] = boot_row("A", qA, "Lowest-quartile rule derived in Cohort A")
+    RES["thr_quartile"]["A_to_B"] = boot_row("B", qA, "Cohort-A lowest-quartile cut-off applied to Cohort B (validation)")
+    RES["thr_quartile"]["B_derive"] = boot_row("B", qB, "Lowest-quartile rule derived in Cohort B")
+    RES["thr_quartile"]["B_to_A"] = boot_row("A", qB, "Cohort-B lowest-quartile cut-off applied to Cohort A (validation)")
     tA, tB = youden(sets["A"]), youden(sets["B"])
     RES["thr"] = dict(youden_A=tA, youden_B=tB)
-    RES["thr"]["A_derive"] = boot_row(sets["A"], tA, "Derived in Cohort A (Youden's J)")
-    RES["thr"]["A_to_B"] = boot_row(sets["B"], tA, "Cohort-A threshold applied to Cohort B (validation)")
-    RES["thr"]["B_derive"] = boot_row(sets["B"], tB, "Derived in Cohort B (Youden's J)")
-    RES["thr"]["B_to_A"] = boot_row(sets["A"], tB, "Cohort-B threshold applied to Cohort A (validation)")
-    RES["thr"]["cand10_A"] = boot_row(sets["A"], 10, "Candidate < 10 meets, Cohort A")
-    RES["thr"]["cand10_B"] = boot_row(sets["B"], 10, "Candidate < 10 meets, Cohort B")
+    RES["thr"]["A_derive"] = boot_row("A", tA, "Derived in Cohort A (Youden's J)")
+    RES["thr"]["A_to_B"] = boot_row("B", tA, "Cohort-A threshold applied to Cohort B (validation)")
+    RES["thr"]["B_derive"] = boot_row("B", tB, "Derived in Cohort B (Youden's J)")
+    RES["thr"]["B_to_A"] = boot_row("A", tB, "Cohort-B threshold applied to Cohort A (validation)")
+    RES["thr"]["cand10_A"] = boot_row("A", 10, "Candidate < 10 meets, Cohort A")
+    RES["thr"]["cand10_B"] = boot_row("B", 10, "Candidate < 10 meets, Cohort B")
     pd.DataFrame(rows).to_csv(TAB / "tableS29_threshold_validation.csv", index=False)
     logger.info(pd.DataFrame(rows).to_string(index=False))
 

@@ -46,6 +46,8 @@ K = dict(
     active14=int((DF["res_age_14"] >= 1).sum()), active16_any=int((DF["res_age_16"] >= 1).sum()),
     active16_two=int((DF["res_age_16"] >= 2).sum()),
     tyr_missing_known=int((DF["gender"].notna() & DF["tyrving_best_r1"].isna()).sum()),
+    nosex_at_risk14=int(((DF["alder_ved_slutt"] >= 14) & DF["gender"].isna()).sum()),
+    region_missing=int((DF["gender"].notna() & DF["region"].isna()).sum()),
     traj_n=RES["dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14"]["n"],
     no_birth_date=RES["bq_missing"]["n"], clubs=RES["n_clubs"], club_max=RES["club_size_max"],
     cindex_tv=logged("10_time_varying_cox.py", r"C-index=([0-9.]+)"),
@@ -115,26 +117,41 @@ def _plain(c):
     return re.sub(r"\*\*", "", c).strip()
 
 
+def _mark(c):
+    """Wrap a cell in highlight markers (inside bold markup)."""
+    c = c.replace("{+", "").replace("+}", "")
+    if not c.strip():
+        return c
+    bold = c.startswith("**") and c.endswith("**")
+    return f"**{{+{c[2:-2]}+}}**" if bold else f"{{+{c}+}}"
+
+
 def render(num, title, header, rows, note, new=False):
-    """Markdown table; cells differing from the submitted version are highlighted."""
+    """Markdown table; header cells, cells and note words differing from the submitted version are
+    highlighted, and a table that is new in the revision is highlighted throughout."""
     old = OLD.get(num)
     old_rows = old[1:] if old else None
     title = "{+" + title.replace("{+", "").replace("+}", "") + "+}" if new else hl_diff(title, OLD_TITLE.get(num))
-    note = note if new or not note else hl_diff(note, OLD_NOTE.get(num))
+    if new:
+        note = "{+" + note.replace("{+", "").replace("+}", "") + "+}" if note else note
+    elif note:
+        note = hl_diff(note, OLD_NOTE.get(num))
+    head = [h if (old is not None and j < len(old[0]) and _plain(old[0][j]) == _plain(h)) or "{+" in h else _mark(h)
+            for j, h in enumerate(header)]
     lines = [f"## Table {num}. {title}", "",
-             "| " + " | ".join(header) + " |", "|" + "|".join(["---"] * len(header)) + "|"]
+             "| " + " | ".join(head) + " |", "|" + "|".join(["---"] * len(header)) + "|"]
     for i, r in enumerate(rows):
         cells = []
         for j, c in enumerate(r):
             c = str(c)
             same = (old_rows is not None and i < len(old_rows) and j < len(old_rows[i])
                     and _plain(old_rows[i][j]) == _plain(c))
-            if c.strip() == "" or same or new or "{+" in c:
+            if new:
+                cells.append(_mark(c))
+            elif c.strip() == "" or same or "{+" in c:
                 cells.append(c)
             else:
-                bold = c.startswith("**") and c.endswith("**")
-                core = c[2:-2] if bold else c
-                cells.append(f"**{{+{core}+}}**" if bold else f"{{+{core}+}}")
+                cells.append(_mark(c))
         lines.append("| " + " | ".join(cells) + " |")
     lines += ["", note, "", "---", ""]
     return "\n".join(lines)
@@ -194,7 +211,7 @@ def table1():
             "Tyrving points = the Norwegian Athletics Federation's age-norm score, where 1,000 corresponds to the published "
             "reference performance for that event × sex × age combination" + hl("; all baseline events scored with implement- and "
             "hurdle-specific norms and the workbook's own formulas (Supplementary Methods S-M3). Meets are counted as competition days "
-            "(Section 2.4.3). Follow-up through 2025") + ".")
+            "(Section 2.4.4). Follow-up through 2025") + ".")
     return render("1", "Cohort characteristics by birth-year cohort",
                   ["Characteristic", "Cohort A (1998–2000)", "Cohort B (2001–2002)", "All cohorts"], rows, note)
 
@@ -339,7 +356,8 @@ def table7():
     hhi_txt = ("The HHI association is clear in the 2001–2002 cohort but not significant in the 1998–2000 cohort"
                if (hB[3] < .05) != (hA[3] < .05) else "The HHI association is " + ("present" if hA[3] < .05 else "not significant") + " in both cohorts")
     note = ("*Note.* The primary baseline-only logistic model re-estimated separately within each birth-year cohort. "
-            + hl("Both cohorts come from the same register and national system, so this is an internal replication. The "
+            + hl("ORs are per SD of the whole cohort, so the two cohorts are on the same scale. "
+                 "Both cohorts come from the same register and national system, so this is an internal replication. The "
                  "pre-milestone volume effect and the performance association are reproduced at similar magnitude in both cohorts; "
                  f"female sex predicts lower retention in both. {hhi_txt} (see Section 3.9)."))
     return render("7", hl("Internal cohort replication") + " of the primary L4 logistic model",
@@ -454,12 +472,14 @@ def supp():
     es = RES["es::log(1 + meets), all athletes"]
     nest = pd.read_csv(RERUN / "table5_auc_comparison.csv")
     rows = [["Total cohort", n(K["N"]), "All included athletes"],
-            ["Sex known", n(K["sex_known"]), f"Gender M/F registered ({K['sex_unknown']} unknown; excluded from regression models, included in cohort totals and unstratified KM curves)"],
+            ["Sex known", n(K["sex_known"]), f"Gender M/F registered ({K['sex_unknown']} unknown; excluded from regression models except the mean-imputation check in Table S5, included in cohort totals and unstratified KM curves)"],
             ["Primary logistic L1–L4", n(K["primary_n"]), "Complete case on sex, Tyrving, HHI, pre-milestone volume; L1–L3 fitted on the same fixed sample for AUC comparability"],
             ["Level-vs-change (Table 4)", n(RES["t4"]["n"]), f"Of {K['active14']:,} athletes with ≥1 result at age 14; complete case on sex and Tyrving"],
             ["Contamination-free change model", n(RES["s19"]["n"]), f"Of {K['active16_two']:,} athletes with ≥2 results at age 16; complete case on sex"],
             ["Baseline-only Cox (Supplementary Tables S10, S16, S30)", n(RES["cox14"]["main"]["n"]),
-             f"Time zero at the end of the age-14 season; excludes the {RES['cox14']['n_excluded']} athletes whose final active season was at 13"],
+             f"Time zero at the end of the age-14 season; excludes the {RES['cox14']['n_excluded']} athletes whose final active season was at 13"
+             + (f" and {K['nosex_at_risk14']} without registered sex" if K['nosex_at_risk14'] else "")
+             + "; the first-inactive-season definition in Table S30 also requires an active season at 14"],
             ["Landmark Cox at age 16", n(RES["lm16"]["n"]), f"Of {RES['lm16']['n_at_risk']:,} athletes still in their career at 16 (final active season at 16 or later); complete case on model covariates"],
             ["Performance-trajectory comparison (Table S15)", n(K["traj_n"]), "Complete case on Tyrving at both age 13 and age 14"],
             ["Nested predictor subsets (Table S17)", n(nest["n"].iloc[0]), "Complete case on all 22 candidate predictors"],
@@ -481,7 +501,9 @@ def supp():
     note = ("*Note.* " + hl(f"n = {K['primary_n']:,}. Panel A (as submitted): Q1 and Q4 indicators against Q2–Q3, the relative-age extremes; "
             f"the {K['no_birth_date']} athletes registered with birth year but no birth date (none of whom retained) fall in the reference group. "
             f"Pre-milestone volume effect unchanged: OR {tt.loc['vol_pre_milepael_z', 'OR']:.2f} with controls vs. "
-            f"{RES['primary_L4']['vol_z'][0]:.2f} without. {ctrl}"))
+            f"{RES['primary_L4']['vol_z'][0]:.2f} without. {ctrl}"
+            + (f" Region could not be determined for {K['region_missing']} athletes, who fall in the reference region (western Norway)."
+               if K["region_missing"] else "")))
     blockA = render("S13", "Primary logistic regression with structural controls (Panel A) and birth-quarter coding (Panel B)",
                     ["Covariate", "OR", "95% CI", "p"], rows, note)
     rowsB, prev = [], None
@@ -608,7 +630,7 @@ def supp():
                                       f"{100 * RES['miss']['tyr_sub_missing_sexknown'] / (RES['miss']['n_sub'] - RES['sex_unknown']['n_submitted']):.1f}%): "
                                       "chained-equation imputation (m = 20) with the outcome in the imputation model leaves the estimates essentially unchanged, and predictive "
                                       "performance with imputation fitted inside each training fold (outcome excluded) equals the complete-case CV-AUC. "
-                                      "Details: Supplementary Methods S-M3."), new=True))
+                                      "Details: Supplementary Methods S-M3.")))
     # S22
     t = pd.read_csv(RERUN / "tableS23_club_effects.csv")
     pn = n(K["primary_n"])
@@ -634,7 +656,7 @@ def supp():
     rows = [["≥2 results in any season at ages 20–22", f"{float(r['Prevalence']):.3f}", f"{float(r['Cohort A']):.3f}", f"{float(r['Cohort B']):.3f}",
              r["Volume OR [95% CI]"], f"{float(r['CV-AUC']):.3f}", n(r["n"])]]
     out.append(render("S24", "Fixed-window outcome (ages 20–22)", ["Outcome", "Prevalence", "Cohort A", "Cohort B", "Volume OR [95% CI]", "CV-AUC", "n"], rows,
-                      "*Note.* This outcome window is fully observable for every athlete in both cohorts, removing the follow-up asymmetry of the open-ended senior definition; results are near-identical to the primary model." + hl(" CV-AUC from a single stratified 5-fold split, as in the original analysis.")))
+                      "*Note.* This outcome window is fully observable for every athlete in both cohorts, removing the follow-up asymmetry of the open-ended senior definition; results are near-identical to the primary model." + hl(f" Prevalences are for all {K['N']:,} athletes; the model uses the {K['primary_n']:,} with complete data. CV-AUC from a single stratified 5-fold split, as in the original analysis.")))
     # S25
     t = pd.read_csv(RERUN / "tableS26_missing_comparison.csv").set_index("Variable")
     rows = [["Senior retention", f"{100 * t.loc['aktiv_senior', 'Included (complete case)']:.1f}%", f"{100 * t.loc['aktiv_senior', 'Excluded (any missing)']:.1f}%"],
@@ -673,17 +695,17 @@ def supp():
              r["Retention, flagged"], r["Retention, unflagged"]] for _, r in t.iterrows()]
     out.append(render("S29", "Early-warning thresholds derived in one birth cohort and validated in the other",
                       ["Analysis", "Threshold (meets)", "n", "Flagged %", "Sensitivity", "Specificity", "PPV", "Retention, flagged", "Retention, unflagged"], rows,
-                      "*Note.* Cohort A: births 1998–2000; Cohort B: births 2001–2002. Lowest-quartile rule: flag athletes at or below the 25th percentile of pre-milestone volume in the derivation cohort (" + f"≤ {RES['thr_quartile']['cut_A'] - 1} meets in Cohort A, i.e. < {RES['thr_quartile']['cut_A']}; ≤ {RES['thr_quartile']['cut_B'] - 1} in Cohort B, i.e. < {RES['thr_quartile']['cut_B']}" + "). Youden’s J maximizes sensitivity + specificity − 1 over cut-offs 2–40. Brackets: 2,000-replicate bootstrap 95% CIs within the evaluation cohort. Sensitivity and PPV refer to identifying athletes who did not retain senior activity.", new=True))
+                      "*Note.* Cohort A: births 1998–2000; Cohort B: births 2001–2002. Lowest-quartile rule: flag athletes at or below the 25th percentile of pre-milestone volume in the derivation cohort (" + f"≤ {RES['thr_quartile']['cut_A'] - 1} meets in Cohort A, i.e. < {RES['thr_quartile']['cut_A']}; ≤ {RES['thr_quartile']['cut_B'] - 1} in Cohort B, i.e. < {RES['thr_quartile']['cut_B']}" + "). Youden’s J maximizes sensitivity + specificity − 1 over cut-offs 2–40. Brackets: 2,000-replicate bootstrap 95% CIs within the evaluation cohort; rows with the same cohort and cut-off are one computation" + (" (the lowest-quartile cut-off is < 10 in both cohorts, so the quartile rows and the candidate rows coincide)" if RES['thr_quartile']['cut_A'] == RES['thr_quartile']['cut_B'] == 10 else "") + ". Sensitivity and PPV refer to identifying athletes who did not retain senior activity.", new=True))
     t = pd.read_csv(TAB / "tableS30_gaps_outcome_definitions.csv")
     g = RES["gaps"]
     rows = [[r["Event definition"].replace(">=", "≥"), n(r["n"]), n(r["events"]), r["Volume HR per SD [95% CI]"], f"{float(r['HHI HR per SD']):.2f}", f"{float(r['C-index']):.3f}"] for _, r in t.iterrows()]
     out.append(render("S30", "Temporary gaps, returns, and alternative event definitions (baseline-only Cox model)",
                       ["Event definition", "n", "Events", "Volume HR per SD [95% CI]", "HHI HR per SD", "C-index"], rows,
-                      f"*Note.* All models include sex, Tyrving, HHI (ages 13–14), and pre-milestone volume. An active season is a calendar year with ≥2 results. {100 * g['any_gap']:.1f}% of athletes ({g['n_any_gap']}) had at least one inactive season followed by a return, {100 * g['gap2plus_return']:.1f}% ({g['n_gap2plus']}) a gap of two or more seasons followed by a return, and {100 * g['gap3plus_return']:.1f}% a gap of three or more. Of {n(g['n_two_inactive'])} athletes who at some point (before 2020) missed two consecutive seasons, {100 * g['return_after_two_inactive']:.1f}% ever returned. Under the primary definition such returns are part of a continuing career; the alternative definitions instead end the spell at the first two-season gap or at the first inactive season (censored if no such pattern is observed through 2025).", new=True))
+                      f"*Note.* All models include sex, Tyrving, HHI (ages 13–14), and pre-milestone volume. An active season is a calendar year with ≥2 results. {100 * g['any_gap']:.1f}% of athletes ({g['n_any_gap']}) had at least one inactive season followed by a return, {100 * g['gap2plus_return']:.1f}% ({g['n_gap2plus']}) a gap of two or more seasons followed by a return, and {100 * g['gap3plus_return']:.1f}% a gap of three or more. Of {n(g['n_two_inactive'])} athletes with an active season in 2019 or earlier followed by two missed seasons, {100 * g['return_after_two_inactive']:.1f}% ever returned (at least four later seasons observable). Under the primary definition such returns are part of a continuing career; the alternative definitions instead end the spell at the first two-season gap or at the first inactive season (censored if no such pattern is observed through 2025). The first-inactive-season definition also requires an active season at 14, the season before time zero, which explains its smaller n.", new=True))
     t = pd.read_csv(TAB / "tableS31_target_population.csv")
     rows = [[r["Group"].replace(">=", "≥").replace("1998-2002", "1998–2002").replace("13-14", "13–14"), n(r["n"]), r["Female %"],
              r["Meets at 13-14, median [IQR]"].replace("-", "–"), r[">= 10 meets at 13-14 (%)"], r["Senior retention %"],
-             r["Volume OR per 10 meets (sex-adjusted)"], r["CV-AUC (sex + volume)"]] for _, r in t.iterrows()]
+             r["Volume OR per 10 meets (sex-adjusted)"], f"{float(r['CV-AUC (sex + volume)']):.3f}"] for _, r in t.iterrows()]
     out.append(render("S31", "The cohort within the register population of the same birth years",
                       ["Group", "n", "Female %", "Meets at 13–14, median [IQR]", "≥10 meets at 13–14 (%)", "Senior retention %", "Volume OR per 10 meets", "CV-AUC (sex + volume)"], rows,
                       f"*Note.* All athletes born 1998–2002 with at least one registered result at ages 13–14, from the register as it stood at the data extraction (rows registered by 18 May 2026; results through 2025), with cohort membership defined as in the main analyses. The cohort comprises {100 * RES['pop_share_cohort']:.0f}% of these athletes but {100 * RES['pop_share_active10_in_cohort']:.0f}% of those with ten or more meets at 13–14 and {100 * RES['pop_share_seniors_from_cohort']:.0f}% of the {RES['pop_n_seniors']} who later had an active senior season. Meets are competition days, as in the main analyses; for cohort members the register counts reproduce the analysis data closely (mean {RES['pop_check']['vol_mean_register']:.1f} vs. {RES['pop_check']['vol_mean_analysis']:.1f} meets; senior retention {100 * RES['pop_check']['senior_register']:.1f}% vs. {100 * RES['pop_check']['senior_analysis']:.1f}%), the small differences reflecting rows re-registered after the extraction. Senior retention: ≥2 results in a calendar year at age 20 or later.", new=True))

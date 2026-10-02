@@ -6,7 +6,9 @@ is wrapped in {+ ... +}. Outputs (folder ../submission_r1/):
 
   MANUSCRIPT_R1_highlighted.docx  changes in blue text (editor's request)
   MANUSCRIPT_R1_clean.docx        same text, no highlighting
-  SUPPLEMENT_R1_highlighted.docx / SUPPLEMENT_R1_clean.docx
+  SUPPLEMENT_R1_highlighted.docx / SUPPLEMENT_R1_clean.docx  (ends with the STROBE checklist)
+  TITLE_PAGE_R1.docx              title page (08_title_page.md)
+  COVER_LETTER_R1.docx            cover letter for the revision (10_cover_letter_r1.md)
   MANUSCRIPT_R1.md                Vancouver-converted markdown (clean)
 
 Citation conversion (APA -> Sage Vancouver) reuses the mapping of convert_to_vancouver.py.
@@ -124,11 +126,12 @@ def compile_supplement():
         if m:
             fig_md.append(f"![]({FIG / figs[m.group(1)]}){{width=15cm}}\n\n{para}\n")
     meth = (HERE / "15_supplementary_methods.md").read_text().split("\n", 1)[1]
+    strobe = (HERE / "16_strobe_checklist.md").read_text()    # in the supplement since the original submission
     return ("# Supplementary Material\n\n**Pulling back before dropping out: {+Declining competition participation+} precedes "
             "exit from Norwegian youth track and field — a 14-year register study**\n\n"
             "Atle Guttormsen, Norwegian University of Life Sciences (NMBU)\n\n---\n\n"
             "# Supplementary Methods\n" + meth + "\n\n---\n\n# Supplementary Tables\n" + tables +
-            "\n\n# Supplementary Figures\n\n" + "\n".join(fig_md))
+            "\n\n# Supplementary Figures\n\n" + "\n".join(fig_md) + "\n\n---\n\n" + strobe)
 
 
 # ----------------------------------------------------------------------------- highlighting
@@ -186,7 +189,7 @@ def to_docx(md_text, out_name, ref):
 def main():
     ms = compile_manuscript()
     for f in ["02_abstract.md", "03_introduction.md", "04_methods.md", "05_results.md", "06_discussion.md",
-              "11_tables.md", "12_figure_captions.md", "15_supplementary_methods.md"]:
+              "11_tables.md", "12_figure_captions.md", "15_supplementary_methods.md", "16_strobe_checklist.md"]:
         t = (HERE / f).read_text()
         assert t.count("{+") == t.count("+}"), f"unbalanced markers in {f}"
         depth = 0
@@ -200,6 +203,12 @@ def main():
     sup = compile_supplement()
     to_docx(highlighted(sup), "SUPPLEMENT_R1_highlighted.docx", ref)
     to_docx(clean(sup), "SUPPLEMENT_R1_clean.docx", ref)
+    # separate title page, as uploaded with the original submission (replaces TITLE_PAGE_IJSSC.docx);
+    # the file's note to the author (above the first rule) is left out
+    tp = (HERE / "08_title_page.md").read_text().split("\n---\n", 1)[1]
+    to_docx(clean("# Title page\n" + tp), "TITLE_PAGE_R1.docx", ref)
+    # cover letter for the revision (carries the AI-use declaration the Acknowledgements refer to)
+    to_docx((HERE / "10_cover_letter_r1.md").read_text(), "COVER_LETTER_R1.docx", ref)
     resp = OUT / "RESPONSE_TO_REVIEWER_R1.md"
     subprocess.run(["pandoc", str(resp), "-f", "markdown-yaml_metadata_block", "-o", str(OUT / "RESPONSE_TO_REVIEWER_R1.docx"),
                     f"--reference-doc={ref}"], check=True)
