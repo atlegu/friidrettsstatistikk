@@ -173,6 +173,8 @@
 | Highlighting: new tables S26–S32 were blue only in the title; S21 and changed column headers were not highlighted | Final check | New tables highlighted throughout; changed headers and S21 cells highlighted |
 | Text claims: "all cross-validation uses 20 repeats" (S9, S17, S24 use the original single split); "CI for every CV-AUC"; external validation; §1.3 and Figure 1 named for alternative causes; unknown sex "excluded from all models" (S5 keeps them); 17–19 replication overstated; Table 1 note pointed to §2.4.3; S-M3 citation without reference; superseded S-M11 sentence | Final check (independent text audit) | All corrected in the manuscript, supplement and response letter; Changes lists completed |
 | Acknowledgements say the AI use is declared in the cover letter; the original cover letter carried outdated numbers | Final check | COVER_LETTER_R1 written (10_cover_letter_r1.md) |
+| Club random intercepts fitted by variational Bayes (interval too narrow, as our own note admitted) | Final check (comment 3 strengthened) | Maximum likelihood with Gauss–Hermite quadrature (r1_03 `re_logit_ml`; likelihood checked by adaptive integration): volume OR 2.07 [1.80, 2.37], club SD 0.17, LR p = .31; §3.4, S-M7, Table S22, letter |
+| Possible reviewer queries on comments 1, 2, 4: changed category list in §2.4.3; submitted calibration intercept (−0.06) vs. calibration-in-the-large; CV-AUC 0.753 vs. 0.751 | Final check | Explained in the letter (comment 1) and the notes to Tables S26 and S21 |
 
 ## Summary Statistics
 

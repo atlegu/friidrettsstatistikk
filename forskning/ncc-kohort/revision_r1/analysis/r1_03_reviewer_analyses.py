@@ -613,9 +613,51 @@ def landmark16(df):
     logger.info(f"  n={len(c)}, volume HR {RES['lm16']['vol1516_z'][0]:.3f}, C={cph.concordance_index_:.3f}")
 
 
+def re_logit_ml(y, X, groups, nodes=40):
+    """Random-intercept logistic regression by maximum likelihood. The club intercept u ~ N(0, sigma^2) is
+    integrated out with Gauss-Hermite quadrature; standard errors come from the numerical Hessian of the
+    log-likelihood. Returns coefficients, standard errors, sigma and the likelihood-ratio test of sigma = 0."""
+    from scipy import optimize, special
+    z, w = np.polynomial.hermite.hermgauss(nodes)
+    logw = np.log(w) - 0.5 * np.log(np.pi)
+    order = np.argsort(groups, kind="stable")
+    y, X, groups = np.asarray(y, float)[order], np.asarray(X, float)[order], np.asarray(groups)[order]
+    starts = np.r_[0, np.flatnonzero(np.diff(groups)) + 1]
+    club_of = np.repeat(np.arange(len(starts)), np.diff(np.r_[starts, len(y)]))
+
+    def negll(theta):
+        u = np.sqrt(2) * np.exp(theta[-1]) * z
+        e = (X @ theta[:-1])[:, None] + u[None, :]
+        per_club = np.add.reduceat(y[:, None] * e - np.logaddexp(0, e), starts, axis=0) + logw[None, :]
+        return -special.logsumexp(per_club, axis=1).sum()
+
+    def negll_grad(theta):
+        u = np.sqrt(2) * np.exp(theta[-1]) * z
+        e = (X @ theta[:-1])[:, None] + u[None, :]
+        per_club = np.add.reduceat(y[:, None] * e - np.logaddexp(0, e), starts, axis=0) + logw[None, :]
+        post = np.exp(per_club - special.logsumexp(per_club, axis=1)[:, None])[club_of]   # node weights per club
+        r = post * (y[:, None] - special.expit(e))
+        return -special.logsumexp(per_club, axis=1).sum(), -np.r_[X.T @ r.sum(axis=1), (r @ u).sum()]
+
+    plain = sm.Logit(y, X).fit(disp=0)
+    res = optimize.minimize(negll_grad, np.r_[plain.params, np.log(0.2)], jac=True, method="BFGS",
+                            options={"gtol": 1e-6, "maxiter": 5000})
+    k, h = len(res.x), 1e-4
+    H = np.zeros((k, k))
+    for i in range(k):
+        for j in range(i, k):
+            di, dj = np.eye(k)[i] * h, np.eye(k)[j] * h
+            H[i, j] = H[j, i] = (negll(res.x + di + dj) - negll(res.x + di - dj) - negll(res.x - di + dj)
+                                 + negll(res.x - di - dj)) / (4 * h * h)
+    se = np.sqrt(np.diag(np.linalg.inv(H)))
+    lr = max(2 * (-res.fun - plain.llf), 0.0)
+    return dict(b=res.x[:-1], se=se[:-1], sigma=float(np.exp(res.x[-1])), lr=float(lr),
+                p_lr=float(0.5 * stats.chi2.sf(lr, 1)), converged=bool(res.success))
+
+
 def club_robust(df):
-    """Primary L4 logistic model with club-clustered standard errors and as a population-averaged GEE
-    (exchangeable working correlation within baseline clubs)."""
+    """Primary L4 logistic model with club random intercepts (maximum likelihood), with club-clustered
+    standard errors, and as a population-averaged GEE (exchangeable working correlation within baseline clubs)."""
     logger.info("=== Club-robust primary model ===")
     d = df[["aktiv_senior", "klubb"] + L4].dropna()
     g = pd.factorize(d["klubb"])[0]
@@ -623,9 +665,15 @@ def club_robust(df):
     m = sm.Logit(d["aktiv_senior"], X).fit(disp=0, cov_type="cluster", cov_kwds={"groups": g})
     gee = sm.GEE(d["aktiv_senior"], X, groups=g, family=sm.families.Binomial(),
                  cov_struct=sm.cov_struct.Exchangeable()).fit()
+    re = re_logit_ml(d["aktiv_senior"], X, g)
+    re_or = {c: [float(np.exp(re["b"][i])), float(np.exp(re["b"][i] - 1.96 * re["se"][i])),
+                 float(np.exp(re["b"][i] + 1.96 * re["se"][i])), float(2 * stats.norm.sf(abs(re["b"][i] / re["se"][i])))]
+             for i, c in enumerate(X.columns) if c != "const"}
     RES["club_robust"] = dict(n=len(d), clusters=int(len(set(g))), cluster_vol=orci(m, "vol_z"), cluster_hhi=orci(m, "hhi_z"),
                               cluster_tyr=orci(m, "tyr_z"), gee_vol=orci(gee, "vol_z"), gee_hhi=orci(gee, "hhi_z"),
-                              gee_tyr=orci(gee, "tyr_z"), gee_rho=float(gee.cov_struct.dep_params))
+                              gee_tyr=orci(gee, "tyr_z"), gee_rho=float(gee.cov_struct.dep_params),
+                              re_vol=re_or["vol_z"], re_hhi=re_or["hhi_z"], re_tyr=re_or["tyr_z"], re_female=re_or["female"],
+                              re_sigma=re["sigma"], re_lr=re["lr"], re_p_lr=re["p_lr"], re_converged=re["converged"])
     logger.info(f"  {RES['club_robust']}")
 
 

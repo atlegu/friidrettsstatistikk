@@ -619,7 +619,7 @@ def supp():
     # S21
     t = pd.read_csv(TAB / "tableS21_missing_data_r1.csv")
     rows = [[r["Data / model"],
-             n(r["n"]), r["Volume OR"], r["HHI OR"], r["Tyrving OR"], "" if pd.isna(r["CV-AUC"]) else str(r["CV-AUC"])] for _, r in t.iterrows()]
+             n(r["n"]), r["Volume OR"], r["HHI OR"], r["Tyrving OR"], "" if pd.isna(r["CV-AUC"]) else str(r["CV-AUC"]).replace("-", "–")] for _, r in t.iterrows()]
     out.append(render("S21", "Missing data: complete-case and multiple-imputation estimates and predictive performance",
                       ["Data / model", "n", "Volume OR [95% CI]", "HHI OR [95% CI]", "Tyrving OR [95% CI]", "CV-AUC"], rows,
                       "*Note.* " + hl(("In the corrected data no sex-known athlete lacks a baseline score" if K['tyr_missing_known'] == 0 else
@@ -630,20 +630,24 @@ def supp():
                                       f"{100 * RES['miss']['tyr_sub_missing_sexknown'] / (RES['miss']['n_sub'] - RES['sex_unknown']['n_submitted']):.1f}%): "
                                       "chained-equation imputation (m = 20) with the outcome in the imputation model leaves the estimates essentially unchanged, and predictive "
                                       "performance with imputation fitted inside each training fold (outcome excluded) equals the complete-case CV-AUC. "
+                                      "CV-AUCs use 20 cross-validation splits (with imputation, one per imputed dataset), so the submitted "
+                                      "complete-case value differs slightly from that of the submission's single split (0.751; Supplementary Table S26). "
                                       "Details: Supplementary Methods S-M3.")))
     # S22
     t = pd.read_csv(RERUN / "tableS23_club_effects.csv")
     pn = n(K["primary_n"])
     rows = [["ICC of pre-milestone volume across baseline clubs", f"{float(t.loc[0, 'Value']):.2f}", f"{pn} athletes, {K['clubs']} clubs"],
             ["Volume OR, primary (no club terms)", t.loc[1, "Value"], pn],
-            ["Volume OR, club random intercepts (variational Bayes)", t.loc[2, "Value"], pn],
-            ["HHI OR, club random intercepts (variational Bayes)", t.loc[3, "Value"], pn],
+            [hl("Volume OR, club random intercepts (maximum likelihood)"), hl(fmt_or(RES["club_robust"]["re_vol"])), pn],
+            [hl("HHI OR, club random intercepts (maximum likelihood)"), hl(fmt_or(RES["club_robust"]["re_hhi"])), pn],
+            [hl("SD of the club intercepts (log-odds); likelihood-ratio test of no club variation"),
+             hl(f"{RES['club_robust']['re_sigma']:.2f}; p = {p(RES['club_robust']['re_p_lr'])}"), pn],
             [hl("Volume OR, club-clustered standard errors"), hl(fmt_or(RES["club_robust"]["cluster_vol"])), pn],
             [hl("Volume OR, population-averaged GEE (exchangeable within club)"),
              hl(fmt_or(RES["club_robust"]["gee_vol"]) + "; within-club correlation " + f"{RES['club_robust']['gee_rho']:.3f}".replace("-", "−")), pn],
             ["CV-AUC, folds grouped by club (20 repeats)", hl(f"{RES['cvproc_club']['auc']:.3f} [{RES['cvproc_club']['auc_lo']:.3f}, {RES['cvproc_club']['auc_hi']:.3f}]"), pn]]
     out.append(render("S22", "Club-level analyses", ["Quantity", "Value", "n"], rows,
-                      "*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect is, if anything, slightly larger than the pooled estimate" + hl(", club-clustered and population-averaged estimates give the same odds ratio with wider intervals, and discrimination is unchanged when validation clubs are held out of fitting. Variational Bayes can understate posterior uncertainty, so the random-intercept interval is likely too narrow; the clustered interval is the conservative one") + ": the association is not a club-supply artifact. See Supplementary Methods S-M7."))
+                      "*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect is, if anything, slightly larger than the pooled estimate" + hl(", club-clustered and population-averaged estimates give the same odds ratio, the clubs differ little in retention itself, and discrimination is unchanged when validation clubs are held out of fitting. The random-intercept model is fitted by maximum likelihood (club intercepts integrated out with 40-node Gauss–Hermite quadrature; Wald intervals); the submission used a variational Bayes approximation, which understates uncertainty") + ": the association is not a club-supply artifact. See Supplementary Methods S-M7."))
     # S23
     c = RES["cvproc_athlete"]
     rows = [["Calibration slope", f"{c['slope']:.2f}"], [hl("Calibration-in-the-large"), f"{abs(c['citl']) if abs(c['citl']) < 0.005 else c['citl']:.2f}"],
@@ -672,7 +676,7 @@ def supp():
     rows = [[r["Procedure"].replace("standardised", "standardized"), n(r["n"]), r["CV-AUC"].replace("range 0.", "range 0.").replace("-0.", "–0."), r["Calibration slope"], r["Calibration-in-the-large"].replace("-0.00", "0.00"), r["Brier"]] for _, r in t.iterrows()]
     out.append(render("S26", "Cross-validation procedure: standardization inside folds and club-grouped folds",
                       ["Procedure", "n", "CV-AUC", "Calibration slope", "Calibration-in-the-large", "Brier"], rows,
-                      "*Note.* Rows 1–2 use the variables and the single 5-fold split (seed 42) of the original submission. Because the logistic models are unpenalized, standardizing inside the training folds is an affine re-parameterization that leaves out-of-fold predictions unchanged; the two procedures therefore agree to the third decimal. Rows 3–4 use the corrected data and revised variables (HHI from ages 13–14; complete Tyrving scoring) with 20 repeats; club-grouped folds keep every baseline club (" + f"{K['clubs']} clubs; largest {K['club_max']} athletes" + ") entirely in either the training or the validation fold.", new=True))
+                      "*Note.* Rows 1–2 use the variables and the single 5-fold split (seed 42) of the original submission. Because the logistic models are unpenalized, standardizing inside the training folds is an affine re-parameterization that leaves out-of-fold predictions unchanged; the two procedures therefore agree to the third decimal. Rows 3–4 use the corrected data and revised variables (HHI from ages 13–14; complete Tyrving scoring) with 20 repeats; club-grouped folds keep every baseline club (" + f"{K['clubs']} clubs; largest {K['club_max']} athletes" + ") entirely in either the training or the validation fold. Calibration-in-the-large is the intercept of a logistic model with the linear predictor as offset; the submitted Table S23 reported instead the intercept estimated jointly with the slope (−0.06), a different quantity.", new=True))
     t = pd.read_csv(TAB / "tableS27_auc_differences.csv", dtype=str)
     rows = [[r["Comparison (B vs. A)"].replace("13-14", "13–14"), n(r["n"]), r["CV-AUC A"], r["CV-AUC B"], r["Difference (B - A)"].replace("-", "−"), r["95% CI"].replace("-", "−"), r["p"]] for _, r in t.iterrows()]
     out.append(render("S27", "Differences in cross-validated AUC between models (paired, identical folds)",

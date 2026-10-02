@@ -38,7 +38,7 @@ To test the within-athlete {+decline+} claim at the individual level, each dropo
 
 ## S-M7. Club-level analyses
 
-The intraclass correlation of pre-milestone volume across baseline clubs was estimated from a random-intercept linear mixed model (ICC = between-club variance / total variance). The primary logistic model was refit with club random intercepts via a Bayesian binomial mixed model (variational approximation), Supplementary Table S22{+; because the variational approximation can understate posterior uncertainty, the model was also estimated with club-clustered (sandwich) standard errors and as a population-averaged model (generalized estimating equations with an exchangeable correlation within baseline clubs). Club-grouped cross-validation is described in S-M4+}.
+The intraclass correlation of pre-milestone volume across baseline clubs was estimated from a random-intercept linear mixed model (ICC = between-club variance / total variance). The primary logistic model was refit with club random intercepts{+, now by maximum likelihood with the club intercepts integrated out by Gauss–Hermite quadrature (40 nodes; the submission used a variational Bayes approximation, which understates uncertainty), with a likelihood-ratio test of no club variation (p-value halved for the boundary),+} Supplementary Table S22{+. The model was also estimated with club-clustered (sandwich) standard errors and as a population-averaged model (generalized estimating equations with an exchangeable correlation within baseline clubs). Club-grouped cross-validation is described in S-M4+}.
 
 ## S-M8. HHI {+window,+} count-dependence stress tests{+, and combined events+}
 

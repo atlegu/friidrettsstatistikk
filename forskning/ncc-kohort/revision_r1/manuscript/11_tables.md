@@ -447,10 +447,10 @@
 | {+Corrected data: complete case (primary)+} | {+2,136+} | {+2.04 [1.80, 2.32]+} | {+1.18 [1.04, 1.34]+} | {+1.75 [1.47, 2.08]+} | {+0.767+} |
 | {+Corrected data: multiple imputation (m = 20)+} | {+2,136+} | {+2.04 [1.80, 2.32]+} | {+1.18 [1.04, 1.34]+} | {+1.75 [1.47, 2.08]+} |  |
 | {+Submitted data: complete case+} | {+1,704+} | {+2.40 [2.08, 2.76]+} | {+1.36 [1.17, 1.57]+} | {+1.12 [0.96, 1.30]+} | {+0.753+} |
-| {+Submitted data: MI (m = 20), outcome in imputation model+} | {+2,099+} | {+2.34 [2.07, 2.66]+} | {+1.32 [1.16, 1.49]+} | {+1.12 [0.97, 1.29]+} | {+0.751 (0.745-0.755)+} |
+| {+Submitted data: MI (m = 20), outcome in imputation model+} | {+2,099+} | {+2.34 [2.07, 2.66]+} | {+1.32 [1.16, 1.49]+} | {+1.12 [0.97, 1.29]+} | {+0.751 (0.745–0.755)+} |
 | {+Submitted data: MI with auxiliary variables (baseline event category, region, cohort, club size, result count)+} | {+2,099+} | {+2.34 [2.06, 2.65]+} | {+1.31 [1.16, 1.49]+} | {+1.14 [0.99, 1.31]+} |  |
 
-*Note.* {+In the corrected data no sex-known athlete lacks a baseline score, so imputation and complete-case analysis coincide. The lower rows repeat the analysis on the submitted analysis file (n = 2,123; Tyrving missing for 395 sex-known athletes, 18.8%): chained-equation imputation (m = 20) with the outcome in the imputation model leaves the estimates essentially unchanged, and predictive performance with imputation fitted inside each training fold (outcome excluded) equals the complete-case CV-AUC. Details: Supplementary Methods S-M3.+}
+*Note.* {+In the corrected data no sex-known athlete lacks a baseline score, so imputation and complete-case analysis coincide. The lower rows repeat the analysis on the submitted analysis file (n = 2,123; Tyrving missing for 395 sex-known athletes, 18.8%): chained-equation imputation (m = 20) with the outcome in the imputation model leaves the estimates essentially unchanged, and predictive performance with imputation fitted inside each training fold (outcome excluded) equals the complete-case CV-AUC. CV-AUCs use 20 cross-validation splits (with imputation, one per imputed dataset), so the submitted complete-case value differs slightly from that of the submission's single split (0.751; Supplementary Table S26). Details: Supplementary Methods S-M3.+}
 
 ---
 
@@ -460,13 +460,14 @@
 |---|---|---|
 | ICC of pre-milestone volume across baseline clubs | {+0.27+} | {+2,136 athletes, 287 clubs+} |
 | Volume OR, primary (no club terms) | {+2.04+} | {+2,136+} |
-| {+Volume OR, club random intercepts (variational Bayes)+} | {+2.10 [1.88, 2.34]+} | {+2,136+} |
-| {+HHI OR, club random intercepts (variational Bayes)+} | {+1.17+} | {+2,136+} |
+| {+Volume OR, club random intercepts (maximum likelihood)+} | {+2.07 [1.80, 2.37]+} | {+2,136+} |
+| {+HHI OR, club random intercepts (maximum likelihood)+} | {+1.17 [1.03, 1.34]+} | {+2,136+} |
+| {+SD of the club intercepts (log-odds); likelihood-ratio test of no club variation+} | {+0.17; p = .311+} | {+2,136+} |
 | {+Volume OR, club-clustered standard errors+} | {+2.04 [1.75, 2.39]+} | {+2,136+} |
 | {+Volume OR, population-averaged GEE (exchangeable within club)+} | {+2.03 [1.74, 2.38]; within-club correlation −0.003+} | {+2,136+} |
 | {+CV-AUC, folds grouped by club (20 repeats)+} | {+0.766 [0.735, 0.797]+} | {+2,136+} |
 
-*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect is, if anything, slightly larger than the pooled {+estimate, club-clustered and population-averaged estimates give the same odds ratio with wider intervals, and discrimination is unchanged when validation clubs are held out of fitting. Variational Bayes can understate posterior uncertainty, so the random-intercept interval is likely too narrow; the clustered interval is the conservative one:+} the association is not a club-supply artifact. See Supplementary Methods S-M7.
+*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect is, if anything, slightly larger than the pooled {+estimate, club-clustered and population-averaged estimates give the same odds ratio, the clubs differ little in retention itself, and discrimination is unchanged when validation clubs are held out of fitting. The random-intercept model is fitted by maximum likelihood (club intercepts integrated out with 40-node Gauss–Hermite quadrature; Wald intervals); the submission used a variational Bayes approximation, which understates uncertainty:+} the association is not a club-supply artifact. See Supplementary Methods S-M7.
 
 ---
 
@@ -515,7 +516,7 @@
 | {+Corrected data; athlete-level stratified 5-fold, 20 repeats+} | {+2,136+} | {+0.767 [0.737, 0.797]; repeat range 0.762–0.769+} | {+0.98+} | {+0.00+} | {+0.117+} |
 | {+Corrected data; club-grouped stratified 5-fold, 20 repeats+} | {+2,136+} | {+0.766 [0.735, 0.797]; repeat range 0.761–0.772+} | {+0.97+} | {+0.00+} | {+0.117+} |
 
-{+*Note.* Rows 1–2 use the variables and the single 5-fold split (seed 42) of the original submission. Because the logistic models are unpenalized, standardizing inside the training folds is an affine re-parameterization that leaves out-of-fold predictions unchanged; the two procedures therefore agree to the third decimal. Rows 3–4 use the corrected data and revised variables (HHI from ages 13–14; complete Tyrving scoring) with 20 repeats; club-grouped folds keep every baseline club (287 clubs; largest 65 athletes) entirely in either the training or the validation fold.+}
+{+*Note.* Rows 1–2 use the variables and the single 5-fold split (seed 42) of the original submission. Because the logistic models are unpenalized, standardizing inside the training folds is an affine re-parameterization that leaves out-of-fold predictions unchanged; the two procedures therefore agree to the third decimal. Rows 3–4 use the corrected data and revised variables (HHI from ages 13–14; complete Tyrving scoring) with 20 repeats; club-grouped folds keep every baseline club (287 clubs; largest 65 athletes) entirely in either the training or the validation fold. Calibration-in-the-large is the intercept of a logistic model with the linear predictor as offset; the submitted Table S23 reported instead the intercept estimated jointly with the slope (−0.06), a different quantity.+}
 
 ---
 

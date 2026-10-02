@@ -32,7 +32,7 @@ Methods
 
 Comment 1. Please clarify exactly how hhi_early is calculated. In the Methods it is defined using the first three active seasons, but the main model is described as using only data from ages 13–14. If hhi_early includes information after age 14, then the primary model is not fully baseline-only.
 
-Response. Thank you; the reviewer is correct, and this was an error rather than a design choice. The submitted index pooled every result up to the end of the second calendar year after the baseline meet, so depending on baseline age it covered ages 11–16 (about 35,000 of its results came from ages 15–16). The primary model was therefore not strictly baseline-only. The index is now computed from results in the age-13 and age-14 calendar years only, the same window as the volume predictor, and every model containing HHI has been re-estimated.
+Response. Thank you; the reviewer is correct, and this was an error rather than a design choice. The submitted index pooled every result up to the end of the second calendar year after the baseline meet, so depending on baseline age it covered ages 11–16 (about 35,000 of its results came from ages 15–16). The primary model was therefore not strictly baseline-only. The index is now computed from results in the age-13 and age-14 calendar years only, the same window as the volume predictor, and every model containing HHI has been re-estimated. We also corrected the list of categories in Section 2.4.3: the index has always used the register’s own event categories, but the submitted text listed combined events and relays, which the register does not use as categories, and omitted steeplechase and ball throws.
 
 On the submitted data, the correction changes the volume estimate little (OR 2.40 → 2.33) and reduces the HHI association (1.36 → 1.24). In the final revised model, HHI has OR 1.18 [1.04, 1.34]. This association is clear in Cohort B (1.32) but not in Cohort A (1.07 [0.90, 1.28]), and adding HHI does not improve discrimination (ΔAUC −0.002 [−0.005, 0.001]). With performance now correctly scored, it is also no longer significant once performance in the athlete’s main event category is controlled (1.07 [0.94, 1.23]; Table S18). The Abstract therefore now states only that event concentration was not robustly associated with retention, and Sections 3.9, 4.1, 4.6 and 4.8 are revised accordingly.
 
@@ -53,7 +53,7 @@ Response. Thank you; this is a useful check. We repeated the cross-validation wi
 - club-grouped folds: CV-AUC 0.766 (0.735–0.797), slope 0.97, Brier 0.117;
 - athlete-level folds: 0.767 (0.737–0.797), 0.98, 0.117.
 
-Together with the club random-intercept model (volume OR 2.10) and club-clustered standard errors (2.04 [1.75, 2.39]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
+Together with the club random-intercept model, now fitted by maximum likelihood (volume OR 2.07 [1.80, 2.37]; the clubs differ little in retention itself: SD of the club intercepts 0.17, likelihood-ratio p = .31), and club-clustered standard errors (2.04 [1.75, 2.39]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
 
 Changes: Abstract; Sections 2.5.1, 2.5.5, 3.4, 4.1 and 4.7; Supplementary Methods S-M4 and S-M7; Tables S22 and S26.
 
