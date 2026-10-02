@@ -8,3 +8,5 @@ Full L4 vs. sex + volume,2136,0.740,0.767,+0.026,"[+0.008, +0.044]",.004
 Sex + volume vs. sex + Tyrving + Tyrving change 13-14,1721,0.737,0.736,-0.001,"[-0.042, +0.039]",.943
 Sex + volume vs. sex + within-event percentile at the meet,2136,0.689,0.740,+0.051,"[+0.019, +0.083]",.002
 Sex + percentile + volume vs. sex + volume,2136,0.740,0.757,+0.017,"[+0.003, +0.031]",.020
+Sex + Tyrving vs. sex + within-event percentile at the meet,2136,0.689,0.700,+0.011,"[-0.006, +0.028]",.216
++ HHI vs. sex + Tyrving + volume (L4 vs. L4 without HHI),2136,0.763,0.767,+0.004,"[-0.003, +0.010]",.277

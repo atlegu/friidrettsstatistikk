@@ -16,7 +16,7 @@ import pandas as pd
 HERE = Path(__file__).parent
 R1 = HERE.parent
 sys.path.insert(0, str(HERE))
-from r1_paths import CDATA, PRIV  # noqa: E402
+from r1_paths import CDATA, DATA, PRIV  # noqa: E402
 
 
 def baseline_points_by_category():
@@ -33,6 +33,67 @@ def baseline_points_by_category():
     k["pts"] = [ty.beregn_tyrving_poeng(None if pd.isna(v) else float(v), c, r, g, y - b, t)
                 for v, c, r, g, y, b in zip(k["performance_value"], k["event_code"], k["result_type"], k["gender"], k["year"], k["birth_year"])]
     return k.groupby("event_category")["pts"].mean().round(0).to_dict()
+
+
+def descriptives(df):
+    """Section 2.2, 3.2 and 4.9 / S-M8 numbers: Kaplan-Meier summary, exit rate by age, club changes,
+    hurdlers who also sprinted, combined-event totals."""
+    from lifelines import KaplanMeierFitter
+    o = {}
+    d = df.copy()
+    d["event"] = (d["aktiv_naa"] == 0).astype(int)
+    d["dur"] = (d["alder_ved_slutt"] - (d["stevne_aar"] - d["birth_year"])).clip(lower=0.5)
+    km = KaplanMeierFitter().fit(d["dur"], d["event"])
+    o["km_surv"] = {t: float(km.survival_function_at_times(t).iloc[0]) for t in (2, 3, 5, 14)}
+    o["km_median"] = float(km.median_survival_time_)
+    o["exit_rate_by_age"] = {a: float(((d["alder_ved_slutt"] == a) & (d["event"] == 1)).sum() / (d["alder_ved_slutt"] >= a).sum())
+                             for a in range(13, 24)}
+    d["vol_q"] = pd.cut(d["vol_milepael"], [-0.5, 0.5, 5.5, 15.5, 30.5, np.inf], labels=["0", "1-5", "6-15", "16-30", "31+"])
+    o["fig3_strata"] = {}
+    for q, g in d.groupby("vol_q", observed=True):
+        k = KaplanMeierFitter().fit(g["dur"], g["event"])
+        o["fig3_strata"][q] = dict(n=len(g), surv14=float(k.survival_function_at_times(14).iloc[0]), senior=float(g["aktiv_senior"].mean()))
+    kar = pd.read_csv(CDATA / "karrieredata_utvidet.csv", low_memory=False, usecols=["athlete_id", "date", "club_name", "event_category", "event_code"])
+    o["share_two_or_more_clubs"] = float((kar.groupby("athlete_id")["club_name"].nunique() >= 2).mean())
+    kar = kar.merge(df[["athlete_id", "birth_year"]], on="athlete_id")
+    w = kar[(pd.to_datetime(kar["date"]).dt.year - kar["birth_year"]).between(13, 14)]
+    cats = w.groupby("athlete_id")["event_category"].agg(set)
+    hurd = cats[cats.map(lambda c: "hurdles" in c)]
+    o["hurdlers_13_14"] = dict(n=len(hurd), also_sprint=float(hurd.map(lambda c: "sprint" in c).mean()))
+    o["combined_share_13_14"] = float((w["event_category"] == "combined").mean())
+    return o
+
+
+def submitted_data_checks():
+    """Response-letter numbers that refer to the submitted analysis file (data/analysedata_utvidet.csv)."""
+    import statsmodels.api as sm
+    sub = pd.read_csv(DATA / "analysedata_utvidet.csv", low_memory=False)
+    kar = pd.read_csv(DATA / "karrieredata_utvidet.csv", low_memory=False, usecols=["athlete_id", "date", "event_category"])
+    kar = kar.merge(sub[["athlete_id", "birth_year", "stevne_aar"]], on="athlete_id")
+    kar["year"] = pd.to_datetime(kar["date"]).dt.year
+    kar["age"] = kar["year"] - kar["birth_year"]
+    early = kar[kar["year"] <= kar["stevne_aar"] + 2]
+    hh = kar[kar["age"].between(13, 14)].groupby("athlete_id")["event_category"].apply(
+        lambda c: float((c.value_counts(normalize=True) ** 2).sum())).rename("hhi1314")
+    sub = sub.merge(hh, on="athlete_id", how="left")
+    sub["female"] = sub["gender"].map({"M": 0, "F": 1})
+    zz = lambda v: (v - v.mean()) / v.std()  # noqa: E731
+    o = {"hhi_early_results_age15_16": int(early["age"].between(15, 16).sum())}
+    for lab, h in [("submitted", "hhi_early"), ("hhi_13_14", "hhi1314")]:
+        dd = sub.assign(tyr_z=zz(sub["tyrving_best"]), hhi_z=zz(sub[h]), vol_z=zz(sub["vol_pre_milepael"]))
+        dd = dd[["aktiv_senior", "female", "tyr_z", "hhi_z", "vol_z"]].dropna()
+        m = sm.Logit(dd["aktiv_senior"], sm.add_constant(dd[["female", "tyr_z", "hhi_z", "vol_z"]])).fit(disp=0)
+        o[f"submitted_refit_{lab}"] = dict(n=len(dd), vol=float(np.exp(m.params["vol_z"])), hhi=float(np.exp(m.params["hhi_z"])))
+    # unknown sex as a separate category (no Tyrving), submitted data, HHI from ages 13-14 (R1 response, Comment 5)
+    dd = sub.assign(hhi_z=zz(sub["hhi1314"]), vol_z=zz(sub["vol_pre_milepael"]))
+    dd["sex_unknown"] = dd["female"].isna().astype(int)
+    dd["female3"] = dd["female"].fillna(0)
+    m_all = sm.Logit(dd["aktiv_senior"], sm.add_constant(dd[["female3", "sex_unknown", "hhi_z", "vol_z"]])).fit(disp=0)
+    kn = dd[dd["sex_unknown"] == 0]
+    m_kn = sm.Logit(kn["aktiv_senior"], sm.add_constant(kn[["female", "hhi_z", "vol_z"]])).fit(disp=0)
+    o["submitted_unknown_sex"] = dict(n_all=len(dd), vol_all=float(np.exp(m_all.params["vol_z"])),
+                                      n_known=len(kn), vol_known=float(np.exp(m_kn.params["vol_z"])))
+    return o
 
 
 def main():
@@ -75,6 +136,8 @@ def main():
                                  auc=cvr["auc"])
     out["retainers_primary"] = int(df.loc[df["gender"].notna() & df["tyrving_best_r1"].notna(), "aktiv_senior"].sum())
     out["tyr_mean_by_category"] = TYR_BY_CAT
+    out.update(descriptives(df))
+    out.update(submitted_data_checks())
     (R1 / "tables" / "r1_text_numbers.json").write_text(json.dumps(out, indent=1))
     print(json.dumps(out, indent=1))
 

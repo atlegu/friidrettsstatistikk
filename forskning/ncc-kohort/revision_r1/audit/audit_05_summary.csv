@@ -1,0 +1,11 @@
+Check,Value
+athletes with sex-specific results at ages 12-17,1828
+athletes with clear implement evidence (margin >= 3 results),1296
+  clear evidence contradicts the register sex now,2
+  clear evidence contradicts the sex in the original analysis file,28
+athletes whose implements lean to one sex (margin >= 1),1665
+  leaning contradicts the register sex now,10
+original cohort members whose sex differs from the register now (with implement results),27
+  of whom implements lean to one sex (margin >= 1),24
+  ... leaning agrees with the register now,24
+  ... leaning agrees with the original file,0

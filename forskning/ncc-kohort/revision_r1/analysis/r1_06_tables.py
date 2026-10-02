@@ -260,7 +260,7 @@ def table4():
             f"the level at age 14; per 5 fewer meets, OR = {t4['change_per5_decline']:.2f}. Because the model is linear in "
             f"the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for "
             f"change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from {t4['r2_m1']:.3f} (M1) to "
-            f"{t4['r2_m2']:.3f} (M2); CV-AUC {t4['auc_m1']:.3f} → {t4['auc_m2']:.3f}. {K['active14'] - t4['n']} of the {K['active14']:,} athletes active at 14 "
+            f"{t4['r2_m2']:.3f} (M2); CV-AUC {t4['auc_m1']:.3f} → {t4['auc_m2']:.3f}. {K['active14'] - t4['n']} of the {K['active14']:,} athletes with a result at 14 "
             f"{'lacks' if K['active14'] - t4['n'] == 1 else 'lack'} registered sex or a Tyrving score (sample n = {t4['n']:,}).") + " Both baseline level and within-athlete "
             + hl("decline") + " contribute substantially and independently.")
     return render("4", "Level versus within-athlete change: volume at age 14 and change from 14 to 15",
@@ -381,9 +381,15 @@ def supp():
                       ["Effect", "Estimate", "Approx. RR (common outcome; protective effects inverted)", "E-value (point)", "E-value (CI bound)"], rows,
                       f"*Note.* Because the outcome is common ({100 * K['prevalence']:.1f}%), the odds ratio is converted to an approximate risk ratio (RR ≈ √OR) before computing E = RR + √(RR(RR − 1)); the hazard ratio uses the common-outcome conversion RR ≈ (1 − 0.5^√HR)/(1 − 0.5^√(1/HR)), inverted because the association is protective (Supplementary Methods S-M5). E-values are reported for the primary baseline-window specification only; the post-baseline (ages-15–16) specification is not an admissible E-value input because it overlaps the outcome window and violates proportional hazards."))
     # S4
-    t = pd.read_csv(RERUN / "tableS4_sample_size.csv")
-    rows = [[r["Cohort"].replace("-", "–"), n(r["N"]), n(r["Events"]), f"{r['Min detectable HR']:.2f}"] for _, r in t.iterrows()]
-    out.append(render("S4", "Sample-size sensitivity: minimum detectable HR", ["Cohort", "N", "Events", "Min. detectable HR (80% power, α = .05)"], rows, ""))
+    det = RES["detect"]
+    rows = [[c.replace("-", "–"), n(v["cox_n"]), n(v["cox_events"]), f"{v['hr_min']:.3f}", n(v["logit_n"]), n(v["retainers"]), f"{v['or_min']:.3f}"]
+            for c, v in det.items()]
+    out.append(render("S4", "Sample-size sensitivity: minimum detectable hazard and odds ratios", ["Cohort", "N (Cox)", "Events", "Min. detectable HR",
+                                                                              hl("n (logistic)"), hl("Retainers"), hl("Min. detectable OR")], rows,
+                      hl("*Note.* 80% power, α = .05, per SD of a standardized covariate. Cox: the baseline-only model with time zero at the end of the "
+                         "age-14 season (Supplementary Table S10); log HR_min = (z₀.₉₇₅ + z₀.₈₀)/√events. Logistic: the primary model; "
+                         "log OR_min = (z₀.₉₇₅ + z₀.₈₀)/√(n·p·(1 − p)), with p the retention rate (normal-covariate approximation). "
+                         "Supplementary Methods S-M2.")))
     # S5
     t = pd.read_csv(RERUN / "tableS5_imputation.csv")
     rows = [[NAMES[r["Covariate"]] if r["Covariate"] != "vol_milepael_z" else "Volume at age 15–16 (z)",
@@ -432,7 +438,7 @@ def supp():
              f"{r['CV-AUC (L4)']:.3f}"] for _, r in t.iterrows()]
     out.append(render("S9", "Outcome-definition sensitivity (primary L4 specification, baseline-only predictors)",
                       ["Outcome", "Description", "Retainer n (%)", "OR (pre-milestone vol per SD)", "95% CI", "CV-AUC"], rows,
-                      "*Note.* All three rows re-estimate the primary L4 model (sex, Tyrving, HHI, pre-milestone volume; " + hl(f"n = {K['primary_n']:,}") + ") with the alternative outcome definitions. The volume effect is stable across definitions."))
+                      "*Note.* All three rows re-estimate the primary L4 model (sex, Tyrving, HHI, pre-milestone volume; " + hl(f"n = {K['primary_n']:,}") + ") with the alternative outcome definitions. The volume effect is stable across definitions." + hl(" CV-AUC here is from a single stratified 5-fold split, as in the original analysis, so it differs slightly from the repeated cross-validation in Table 3.")))
     # S10
     c14 = RES["cox14"]["main"]
     rows = [[f"**{NAMES[c]}**" if c == "vol_z" else NAMES[c], f"{c14[c][0]:.2f}", ci(c14[c][1], c14[c][2]), p(c14[c][3])] for c in L4]
@@ -446,14 +452,15 @@ def supp():
                       f"*Note.* {hl('Excludes ' + str(K['primary_n'] - int(t['n'].iloc[0])) + ' athletes with vol_milestone = 0; remaining n = ' + n(t['n'].iloc[0]) + '; C-index = ' + format(t['C-index'].iloc[0], '.3f') + '. Follow-up starts at baseline, and having any volume at 15–16 requires remaining active to 15–16, so this restriction does not remove the survival conditioning of the post-baseline specification; descriptive only. The landmark analysis (Supplementary Table S8) is the appropriate check.')}"))
     # S12
     es = RES["es::log(1 + meets), all athletes"]
-    lm = pd.read_csv(RERUN / "tableS8_landmark_age16.csv")
     nest = pd.read_csv(RERUN / "table5_auc_comparison.csv")
     rows = [["Total cohort", n(K["N"]), "All included athletes"],
             ["Sex known", n(K["sex_known"]), f"Gender M/F registered ({K['sex_unknown']} unknown; excluded from regression models, included in cohort totals and unstratified KM curves)"],
             ["Primary logistic L1–L4", n(K["primary_n"]), "Complete case on sex, Tyrving, HHI, pre-milestone volume; L1–L3 fitted on the same fixed sample for AUC comparability"],
             ["Level-vs-change (Table 4)", n(RES["t4"]["n"]), f"Of {K['active14']:,} athletes with ≥1 result at age 14; complete case on sex and Tyrving"],
             ["Contamination-free change model", n(RES["s19"]["n"]), f"Of {K['active16_two']:,} athletes with ≥2 results at age 16; complete case on sex"],
-            ["Landmark Cox at age 16", n(lm["n"].iloc[0]), f"Of {K['active16_any']:,} athletes with ≥1 result at age 16; complete case on model covariates"],
+            ["Baseline-only Cox (Supplementary Tables S10, S16, S30)", n(RES["cox14"]["main"]["n"]),
+             f"Time zero at the end of the age-14 season; excludes the {RES['cox14']['n_excluded']} athletes whose final active season was at 13"],
+            ["Landmark Cox at age 16", n(RES["lm16"]["n"]), f"Of {RES['lm16']['n_at_risk']:,} athletes still in their career at 16 (final active season at 16 or later); complete case on model covariates"],
             ["Performance-trajectory comparison (Table S15)", n(K["traj_n"]), "Complete case on Tyrving at both age 13 and age 14"],
             ["Nested predictor subsets (Table S17)", n(nest["n"].iloc[0]), "Complete case on all 22 candidate predictors"],
             ["Multiple imputation", n(K["sex_known"]), "All athletes with known sex; Tyrving imputed (m = 20)"],
@@ -627,7 +634,7 @@ def supp():
     rows = [["≥2 results in any season at ages 20–22", f"{float(r['Prevalence']):.3f}", f"{float(r['Cohort A']):.3f}", f"{float(r['Cohort B']):.3f}",
              r["Volume OR [95% CI]"], f"{float(r['CV-AUC']):.3f}", n(r["n"])]]
     out.append(render("S24", "Fixed-window outcome (ages 20–22)", ["Outcome", "Prevalence", "Cohort A", "Cohort B", "Volume OR [95% CI]", "CV-AUC", "n"], rows,
-                      "*Note.* This outcome window is fully observable for every athlete in both cohorts, removing the follow-up asymmetry of the open-ended senior definition; results are near-identical to the primary model."))
+                      "*Note.* This outcome window is fully observable for every athlete in both cohorts, removing the follow-up asymmetry of the open-ended senior definition; results are near-identical to the primary model." + hl(" CV-AUC from a single stratified 5-fold split, as in the original analysis.")))
     # S25
     t = pd.read_csv(RERUN / "tableS26_missing_comparison.csv").set_index("Variable")
     rows = [["Senior retention", f"{100 * t.loc['aktiv_senior', 'Included (complete case)']:.1f}%", f"{100 * t.loc['aktiv_senior', 'Excluded (any missing)']:.1f}%"],
@@ -669,7 +676,7 @@ def supp():
                       "*Note.* Cohort A: births 1998–2000; Cohort B: births 2001–2002. Lowest-quartile rule: flag athletes at or below the 25th percentile of pre-milestone volume in the derivation cohort (" + f"≤ {RES['thr_quartile']['cut_A'] - 1} meets in Cohort A, i.e. < {RES['thr_quartile']['cut_A']}; ≤ {RES['thr_quartile']['cut_B'] - 1} in Cohort B, i.e. < {RES['thr_quartile']['cut_B']}" + "). Youden’s J maximizes sensitivity + specificity − 1 over cut-offs 2–40. Brackets: 2,000-replicate bootstrap 95% CIs within the evaluation cohort. Sensitivity and PPV refer to identifying athletes who did not retain senior activity.", new=True))
     t = pd.read_csv(TAB / "tableS30_gaps_outcome_definitions.csv")
     g = RES["gaps"]
-    rows = [[r["Event definition"].replace(">=", "≥"), n(r["n"]), n(r["events"]), r["Volume HR per SD [95% CI]"], f"{float(r['HHI HR per SD']):.2f}", r["C-index"]] for _, r in t.iterrows()]
+    rows = [[r["Event definition"].replace(">=", "≥"), n(r["n"]), n(r["events"]), r["Volume HR per SD [95% CI]"], f"{float(r['HHI HR per SD']):.2f}", f"{float(r['C-index']):.3f}"] for _, r in t.iterrows()]
     out.append(render("S30", "Temporary gaps, returns, and alternative event definitions (baseline-only Cox model)",
                       ["Event definition", "n", "Events", "Volume HR per SD [95% CI]", "HHI HR per SD", "C-index"], rows,
                       f"*Note.* All models include sex, Tyrving, HHI (ages 13–14), and pre-milestone volume. An active season is a calendar year with ≥2 results. {100 * g['any_gap']:.1f}% of athletes ({g['n_any_gap']}) had at least one inactive season followed by a return, {100 * g['gap2plus_return']:.1f}% ({g['n_gap2plus']}) a gap of two or more seasons followed by a return, and {100 * g['gap3plus_return']:.1f}% a gap of three or more. Of {n(g['n_two_inactive'])} athletes who at some point (before 2020) missed two consecutive seasons, {100 * g['return_after_two_inactive']:.1f}% ever returned. Under the primary definition such returns are part of a continuing career; the alternative definitions instead end the spell at the first two-season gap or at the first inactive season (censored if no such pattern is observed through 2025).", new=True))

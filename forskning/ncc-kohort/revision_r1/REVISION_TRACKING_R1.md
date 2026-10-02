@@ -10,7 +10,7 @@
 | Previous Decision | Revise (one reviewer, Dr Imad Hamri; 15 comments) |
 | Target Journal | International Journal of Sports Science & Coaching |
 | Original Word Count | 6,036 (main text, journal count) |
-| Revised Word Count | about 6,700 (journal count; build count 6,852, +134 from the audit corrections) |
+| Revised Word Count | about 6,700 (journal count; build count 6,889, +171 from the audit corrections) |
 
 ## Revision Tracking Table
 
@@ -146,7 +146,7 @@
 | Career extraction paginated on non-unique key (date): 332 rows duplicated, 334 skipped (240 athletes) | Data audit (audit_01/02: deterministic re-extraction ordered by id, created_at ≤ 2026-05-18) | Rows added/de-duplicated (r1_00) |
 | Baseline meet identified by name: 2 venue-days under other names; loose patterns matched other meets | Data audit (audit_04) | Venue-and-date definition; all 2,123 confirmed, 15 added (n 2,138); first edition changed for 5 |
 | Partial 2026 season in follow-up | Data audit | Follow-up ends 2025-12-31 (339 rows removed) |
-| Sex from May 2026 extract (pre-correction) | Data audit vs current register | Register values after July 2026 correction; validated against implements (24/24 decidable cases) |
+| Sex from May 2026 extract (pre-correction) | Data audit vs current register | Register values after July 2026 correction; implements agree for all 24 changed athletes with implement evidence, and contradict the register for 2 of 1,296 athletes with clear evidence (audit/audit_05) |
 | Region misassigned (endurance lists of all venues filed under one venue, 2013–2015) | Data audit | Region from other events (same venue both editions: 100%; club rule 99.9%); 221 athletes changed |
 | Cohort A club = club of last result (post-baseline) | Data audit (klubb matched last result's club for 99.8%) | Club = club at the baseline meet for all; club size recomputed |
 | Same-day results under two meet records counted as two meets | Data audit | Volume = competition days (1,046 athlete-days affected) |
@@ -156,6 +156,8 @@
 | Figure 3 caption (71% vs 4%) and §3.2 KM summary (3 years, steepest at 17) did not match the curves | Same / audit | Corrected (KM: 22% vs 0.3% at 14 years; senior 50% vs 0.8%; median 2 years; exit rate peaks at 18–19) |
 | Table S31 used the September 2026 register (post-May import had duplicated historical results) | Data audit (DB rows created 2026-08-29 duplicate existing results) | Register state of the extraction; cohort reproduced exactly (2,138) |
 | Robustness claims for clustering/mean imputation pointed to the post-baseline Cox (S2, S5) | Independent code review | Club-clustered SE and GEE for the primary model (Table S22); text corrected |
+| Detection capacity (S-M2, Table S4) used the old event count and derived values from the submission | Independent number cross-check | Recomputed from the correctly timed Cox model and the primary logistic model (HR_min 1.07, OR_min 1.18) |
+| Several quoted numbers had no stored source (KM summary, club changes, hurdlers, submitted-data refits) | Same | Added to r1_04 (tables/r1_text_numbers.json) |
 | Table 5 non-volume rows from an earlier model run | Regenerating all tables from code | Table 5 fully regenerated; Figure S4 now drawn from the table |
 | Table S2 CIs and Table S4 event counts transcribed inaccurately | Same | Regenerated |
 | Citation "(van Houwelingen, 2007; …)" not converted to Vancouver | Citation check in build | Reference 29 now cited by number |
@@ -172,7 +174,7 @@
 | Deliberate Limitation | 0 (generalizability and threshold transfer also stated as limitations, §4.9) |
 | Unresolvable | 0 |
 | Reviewer Disagree | 0 |
-| Word count change | about +660 (journal count; +134 of it from the audit corrections) |
+| Word count change | about +690 (journal count; +171 of it from the audit corrections) |
 | New references | 0 main text; 2 supplementary (verified in CrossRef) |
 | New tables/figures | 7 supplementary tables (S26–S32), Table S13 Panel B, Figure S5; Figure S1 replaced; Supplementary Methods S-M12 (data audit) |
 

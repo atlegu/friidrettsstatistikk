@@ -62,7 +62,7 @@
 |  | **Volume at age 14 (z)** | **{+2.51+}** | **{+[2.17, 2.89]+}** | **< .001** |
 |  | **Volume change 14→15 (z)** | **{+2.29+}** | **{+[2.00, 2.62]+}** | **< .001** |
 
-*Note.* {+Change = volume at 15 minus volume at 14 (positive = increase; mean −2.2, SD 6.4 meets). The OR of 2.29 per SD increase is equivalent+} to {+OR = 0.44 [0.38, 0.50] per SD of greater decline (about 6.4 fewer meets),+} conditional on {+the+} level at age {+14; per 5 fewer meets, OR = 0.52. Because the model is linear in the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from 0.150 (M1) to 0.245 (M2); CV-AUC 0.763 → 0.833. 1 of the 1,926 athletes active at 14 lacks registered sex or a Tyrving score (sample n = 1,925).+} Both baseline level and within-athlete {+decline+} contribute substantially and independently.
+*Note.* {+Change = volume at 15 minus volume at 14 (positive = increase; mean −2.2, SD 6.4 meets). The OR of 2.29 per SD increase is equivalent+} to {+OR = 0.44 [0.38, 0.50] per SD of greater decline (about 6.4 fewer meets),+} conditional on {+the+} level at age {+14; per 5 fewer meets, OR = 0.52. Because the model is linear in the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from 0.150 (M1) to 0.245 (M2); CV-AUC 0.763 → 0.833. 1 of the 1,926 athletes with a result at 14 lacks registered sex or a Tyrving score (sample n = 1,925).+} Both baseline level and within-athlete {+decline+} contribute substantially and independently.
 
 ---
 ## Table 5. Time-varying hazard ratios (post-baseline Cox specification, period-specific)
@@ -151,15 +151,15 @@
 
 ---
 
-## Table S4. Sample-size sensitivity: minimum detectable HR
+## Table S4. Sample-size sensitivity: minimum detectable {+hazard and odds ratios+}
 
-| Cohort | N | Events | Min. detectable HR (80% power, α = .05) |
-|---|---|---|---|
-| Combined | {+2,136+} | {+1,975+} | {+1.06+} |
-| 1998–2000 | {+1,308+} | {+1,233+} | {+1.08+} |
-| 2001–2002 | {+828+} | {+742+} | {+1.11+} |
+| Cohort | N (Cox) | Events | Min. detectable HR | {+n (logistic)+} | {+Retainers+} | {+Min. detectable OR+} |
+|---|---|---|---|---|---|---|
+| Combined | {+1,908+} | {+1,747+} | {+1.069+} | {+2,136+} | {+347+} | {+1.179+} |
+| 1998–2000 | {+1,169+} | {+1,094+} | {+1.088+} | {+1,308+} | {+207+} | {+1.236+} |
+| 2001–2002 | {+739+} | {+653+} | {+1.116+} | {+828+} | {+140+} | {+1.297+} |
 
-
+{+*Note.* 80% power, α = .05, per SD of a standardized covariate. Cox: the baseline-only model with time zero at the end of the age-14 season (Supplementary Table S10); log HR_min = (z₀.₉₇₅ + z₀.₈₀)/√events. Logistic: the primary model; log OR_min = (z₀.₉₇₅ + z₀.₈₀)/√(n·p·(1 − p)), with p the retention rate (normal-covariate approximation). Supplementary Methods S-M2.+}
 
 ---
 
@@ -232,7 +232,7 @@
 | B | ≥2 results in any senior-age year (primary) | {+348 (16.3%)+} | {+2.04+} | {+[1.80, 2.32]+} | {+0.770+} |
 | C | ≥2 results in each of two distinct senior-age years | {+255 (11.9%)+} | {+1.87+} | {+[1.64, 2.14]+} | {+0.767+} |
 
-*Note.* All three rows re-estimate the primary L4 model (sex, Tyrving, HHI, pre-milestone volume; n = {+2,136)+} with the alternative outcome definitions. The volume effect is stable across definitions.
+*Note.* All three rows re-estimate the primary L4 model (sex, Tyrving, HHI, pre-milestone volume; n = {+2,136)+} with the alternative outcome definitions. The volume effect is stable across definitions. {+CV-AUC here is from a single stratified 5-fold split, as in the original analysis, so it differs slightly from the repeated cross-validation in Table 3.+}
 
 ---
 
@@ -272,7 +272,8 @@
 | Primary logistic L1–L4 | {+2,136+} | Complete case on sex, Tyrving, HHI, pre-milestone volume; L1–L3 fitted on the same fixed sample for AUC comparability |
 | Level-vs-change (Table 4) | {+1,925+} | {+Of 1,926 athletes with ≥1 result at age 14; complete case on sex and Tyrving+} |
 | Contamination-free change model | {+1,088+} | {+Of 1,089 athletes with ≥2 results at age 16; complete case on sex+} |
-| Landmark Cox at age 16 | {+1,171+} | {+Of 1,172 athletes with ≥1 result at age 16; complete case on model covariates+} |
+| {+Baseline-only Cox (Supplementary Tables S10, S16, S30)+} | {+1,908+} | {+Time zero at the end of the age-14 season; excludes the 229 athletes whose final active season was at 13+} |
+| {+Landmark Cox at age 16+} | {+1,147+} | {+Of 1,148 athletes still in their career at 16 (final active season at 16 or later); complete case on model covariates+} |
 | {+Performance-trajectory comparison (Table S15)+} | {+1,721+} | {+Complete case on Tyrving at both age 13 and age 14+} |
 | {+Nested predictor subsets (Table S17)+} | {+1,501+} | {+Complete case on all 22 candidate predictors+} |
 | {+Multiple imputation+} | {+2,136+} | {+All athletes with known sex; Tyrving imputed (m = 20)+} |
@@ -488,7 +489,7 @@
 |---|---|---|---|---|---|---|
 | ≥2 results in any season at ages 20–22 | 0.158 | 0.153 | {+0.165+} | {+2.08 [1.83, 2.37]+} | {+0.773+} | {+2,136+} |
 
-*Note.* This outcome window is fully observable for every athlete in both cohorts, removing the follow-up asymmetry of the open-ended senior definition; results are near-identical to the primary model.
+*Note.* This outcome window is fully observable for every athlete in both cohorts, removing the follow-up asymmetry of the open-ended senior definition; results are near-identical to the primary model. {+CV-AUC from a single stratified 5-fold split, as in the original analysis.+}
 
 ---
 
@@ -531,6 +532,8 @@
 | Sex + volume vs. sex + Tyrving + Tyrving change 13–14 | 1,721 | 0.737 | 0.736 | −0.001 | [−0.042, +0.039] | .943 |
 | Sex + volume vs. sex + within-event percentile at the meet | 2,136 | 0.689 | 0.740 | +0.051 | [+0.019, +0.083] | .002 |
 | Sex + percentile + volume vs. sex + volume | 2,136 | 0.740 | 0.757 | +0.017 | [+0.003, +0.031] | .020 |
+| Sex + Tyrving vs. sex + within-event percentile at the meet | 2,136 | 0.689 | 0.700 | +0.011 | [−0.006, +0.028] | .216 |
+| + HHI vs. sex + Tyrving + volume (L4 vs. L4 without HHI) | 2,136 | 0.763 | 0.767 | +0.004 | [−0.003, +0.010] | .277 |
 
 *Note.* Both models are fitted and validated on the same 100 folds (stratified 5-fold, 20 repeats); the difference is the mean of the 100 fold-level differences, with 95% CI and p from the corrected resampled t-statistic (Nadeau & Bengio, 2003), which inflates the variance for the overlap between training sets.
 
@@ -580,7 +583,7 @@
 
 | Event definition | n | Events | Volume HR per SD [95% CI] | HHI HR per SD | C-index |
 |---|---|---|---|---|---|
-| Final active season (primary; censored if active 2024+) | 1,908 | 1,747 | 0.65 [0.62, 0.69] | 0.91 | 0.69 |
+| Final active season (primary; censored if active 2024+) | 1,908 | 1,747 | 0.65 [0.62, 0.69] | 0.91 | 0.690 |
 | First sustained exit (active season followed by ≥2 inactive seasons) | 1,908 | 1,768 | 0.62 [0.59, 0.66] | 0.90 | 0.698 |
 | First inactive season (any one-season gap ends the spell) | 1,867 | 1,792 | 0.62 [0.58, 0.66] | 0.92 | 0.707 |
 

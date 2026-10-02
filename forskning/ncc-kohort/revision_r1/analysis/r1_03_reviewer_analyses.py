@@ -253,6 +253,8 @@ def auc_differences(df):
          ["female", "vol_z"], ["tyr_d1314_z"]),
         ("Sex + volume vs. sex + within-event percentile at the meet", ["female", "pct_z"], ["female", "vol_z"], None),
         ("Sex + percentile + volume vs. sex + volume", ["female", "vol_z"], ["female", "pct_z", "vol_z"], None),
+        ("Sex + Tyrving vs. sex + within-event percentile at the meet", ["female", "pct_z"], ["female", "tyr_z"], None),
+        ("+ HHI vs. sex + Tyrving + volume (L4 vs. L4 without HHI)", ["female", "tyr_z", "vol_z"], L4, None),
     ]
     rows = []
     for lab, ca, cb, extra in comps:
@@ -627,6 +629,27 @@ def club_robust(df):
     logger.info(f"  {RES['club_robust']}")
 
 
+def detection_capacity(df):
+    """Supplementary Table S4: smallest effects detectable with 80% power at alpha = .05.
+    Cox (Schoenfeld): log HR_min = (z_.975 + z_.80) / sqrt(d) per SD of a standardized covariate, d = events in
+    the baseline-only Cox model (time zero at the end of age 14); a balanced binary covariate divides d by 4.
+    Logistic (Hsieh 1989, normal covariate): log OR_min = (z_.975 + z_.80) / sqrt(n p (1 - p))."""
+    zsum = stats.norm.ppf(0.975) + stats.norm.ppf(0.80)
+    rows = {}
+    for lab, m in [("Combined", df["birth_year"] > 0), ("1998-2000", df["birth_year"] <= 2000), ("2001-2002", df["birth_year"] >= 2001)]:
+        d = df[m & df["female"].notna() & df["tyr"].notna()]
+        risk = d[d["alder_ved_slutt"] >= 14]
+        ev = int((risk["aktiv_naa"] == 0).sum())
+        pr = float(d["aktiv_senior"].mean())
+        rows[lab] = dict(cox_n=len(risk), cox_events=ev, hr_min=float(np.exp(zsum / np.sqrt(ev))),
+                         hr_min_binary=float(np.exp(zsum / np.sqrt(ev / 4))),
+                         hr_min_rho=[float(np.exp(zsum / np.sqrt(ev * (1 - r ** 2)))) for r in (0.3, 0.45)],
+                         logit_n=len(d), retainers=int(d["aktiv_senior"].sum()),
+                         or_min=float(np.exp(zsum / np.sqrt(len(d) * pr * (1 - pr)))))
+    RES["detect"] = rows
+    logger.info(f"  detection capacity: {rows}")
+
+
 def activity17_flag(df):
     """Retention-related check quoted in Section 4.8: share active at 17 or later by the < 10 flag."""
     flag = df["vol"] < 10
@@ -887,6 +910,7 @@ def main():
     landmark16(df)
     club_robust(df)
     activity17_flag(df)
+    detection_capacity(df)
     target_population(df)
     cohort_replication(df)
     hhi_stress(df)

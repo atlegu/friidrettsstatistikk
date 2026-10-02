@@ -189,6 +189,10 @@ def main():
               "11_tables.md", "12_figure_captions.md", "15_supplementary_methods.md"]:
         t = (HERE / f).read_text()
         assert t.count("{+") == t.count("+}"), f"unbalanced markers in {f}"
+        depth = 0
+        for m in re.finditer(r"\{\+|\+\}", t):
+            depth += 1 if m.group() == "{+" else -1
+            assert 0 <= depth <= 1, f"nested or stray highlight marker in {f} at {m.start()}"
     ref = reference_docx()
     (OUT / "MANUSCRIPT_R1.md").write_text(clean(ms))
     to_docx(highlighted(ms), "MANUSCRIPT_R1_highlighted.docx", ref)

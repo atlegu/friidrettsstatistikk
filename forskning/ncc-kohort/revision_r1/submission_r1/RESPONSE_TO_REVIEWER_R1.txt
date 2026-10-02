@@ -152,7 +152,7 @@ Response. We now report a 95% CI for every CV-AUC. Differences between models ar
 - Volume versus Tyrving measured in the same window: +0.040 (0.006 to 0.074), a modest advantage for volume.
 - Adding volume to sex + Tyrving + HHI: +0.069 (0.047 to 0.091).
 - Performance with its within-baseline trajectory matches volume: −0.001 (−0.042 to 0.039).
-- A within-event rank at the baseline meet, which removes Tyrving’s unequal demands across event groups, discriminates less well than Tyrving (0.689; volume +0.051 [0.019, 0.083]).
+- A within-event rank at the baseline meet, which removes Tyrving’s unequal demands across event groups, discriminates no better than Tyrving (0.689 vs. 0.700; difference 0.011 [−0.007, 0.028]); volume again discriminates better (+0.051 [0.019, 0.083]).
 
 The text now interprets only differences whose intervals exclude zero, and describes performance and volume as complementary.
 
