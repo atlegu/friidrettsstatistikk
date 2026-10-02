@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "friidrettresultater.no - Norsk Friidrettsstatistikk",
-    template: "%s | friidrettresultater.no",
+    default: "friidrettsresultater.no - Norsk Friidrettsstatistikk",
+    template: "%s | friidrettsresultater.no",
   },
   description:
     "Komplett statistikk for norsk friidrett - årslister, rekorder, utøverprofiler og stevneresultater.",
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="no" data-density="compact">
+    <html lang="no">
       <body className={`${inter.variable} font-sans`}>
         <Providers>
           <AuthErrorHandler />

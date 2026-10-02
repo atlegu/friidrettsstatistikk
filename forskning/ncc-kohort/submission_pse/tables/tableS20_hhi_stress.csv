@@ -1,0 +1,5 @@
+Model,n,HHI OR [95% CI],Volume OR
+Primary L4 (all),1704,"1.36 [1.17, 1.57]",2.40
+Restricted: >= 5 results in first three seasons,1673,"1.38 [1.20, 1.59]",2.36
+Restricted: >= 8 results in first three seasons,1608,"1.39 [1.20, 1.60]",2.31
+Finite-sample-corrected HHI* = (HHI - 1/n)/(1 - 1/n),1699,"1.39 [1.20, 1.60]",2.36

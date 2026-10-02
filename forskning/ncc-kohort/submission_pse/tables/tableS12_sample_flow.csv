@@ -1,0 +1,7 @@
+Analysis,n,Definition
+Total cohort,2123,All included athletes
+Sex known,2099,"gender M/F (24 unknown; excluded from models, included in KM totals)"
+Primary logistic L1-L4,1704,"complete case on sex, Tyrving, HHI, pre-milestone volume; L1-L3 fitted on the same fixed sample"
+Level-vs-change (Table 4),1549,">=1 result at age 14, complete case on sex, Tyrving, vol_14; Tyrving missingness is concentrated among early-inactive athletes"
+"Change model, active at 16 (new)",1085,>=2 results at age 16
+Multiple imputation,2099,all athletes with known sex; Tyrving & HHI imputed (m=20)

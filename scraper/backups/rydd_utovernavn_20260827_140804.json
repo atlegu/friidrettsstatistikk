@@ -1,0 +1,1463 @@
+{
+  "generated_at": "20260827_140804",
+  "plan": [
+    {
+      "id": "0074ef6a-dbf3-44f5-b665-d07a37a079e1",
+      "fra": "Emily Solem-Yound (GBR)",
+      "til": "Emily Solem-Yound",
+      "nasjonalitet": "GBR",
+      "hvorfor": [
+        "nasjonalitet GBR"
+      ]
+    },
+    {
+      "id": "02809179-bd0e-4253-b021-9d77ba9dba6e",
+      "fra": "Leonora H, Berglund",
+      "til": "Leonora H. Berglund",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "046acde3-4fa9-4223-b091-7be65e97fe9f",
+      "fra": "Amalie A, Bjerkås",
+      "til": "Amalie A. Bjerkås",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "05389b90-510b-4038-a2ed-da0707ec1abd",
+      "fra": "Anna H, Østhus",
+      "til": "Anna H. Østhus",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "05f5d8ee-e4f9-4548-9985-c5b36075c385",
+      "fra": "Simen D, Fiske",
+      "til": "Simen D. Fiske",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "06728861-7232-4d11-980c-1f7493670a45",
+      "fra": "Johanne M, Idsøe",
+      "til": "Johanne M. Idsøe",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "087b0934-e94e-4c33-a3cb-205f713ca8ca",
+      "fra": "Petter A,J, Jensen",
+      "til": "Petter A. J. Jensen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "089c52d3-a5b0-4750-b856-53e3ae5879a7",
+      "fra": "Fernando Ramirez (DOM)",
+      "til": "Fernando Ramirez",
+      "nasjonalitet": "DOM",
+      "hvorfor": [
+        "nasjonalitet DOM"
+      ]
+    },
+    {
+      "id": "0c4da364-0444-4972-a3a5-5274a0d9a657",
+      "fra": "Signe K, Duedahl",
+      "til": "Signe K. Duedahl",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "0e031a68-b353-4b67-930b-7cb890fb0a48",
+      "fra": "Katharina S, Meinseth",
+      "til": "Katharina S. Meinseth",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "0e7ab9e1-32cd-40b0-907e-eda28b712e48",
+      "fra": "Magdalena A, Veselinova",
+      "til": "Magdalena A. Veselinova",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "0f0921e2-b202-433f-8c22-253591f33a2d",
+      "fra": "Ofelia H, Berglund",
+      "til": "Ofelia H. Berglund",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "10fed7ba-687e-4e00-8aec-d96b2723d44e",
+      "fra": "Marin Stray Gautadottir (ISL)",
+      "til": "Marin Stray Gautadottir",
+      "nasjonalitet": "ISL",
+      "hvorfor": [
+        "nasjonalitet ISL"
+      ]
+    },
+    {
+      "id": "11c54c97-dbb1-464d-969d-c18bd86f95dd",
+      "fra": "Cidi Nzita (ANG)",
+      "til": "Cidi Nzita",
+      "nasjonalitet": "ANG",
+      "hvorfor": [
+        "nasjonalitet ANG"
+      ]
+    },
+    {
+      "id": "158baf4b-3ad9-405c-a1aa-bfae567ce75e",
+      "fra": "Iben H, Wetlesen",
+      "til": "Iben H. Wetlesen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "178b68e9-6b85-4861-b916-9e1bc26cb6f3",
+      "fra": "Martin K, Lerfall",
+      "til": "Martin K. Lerfall",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "182d1227-b468-4838-be6e-05a91ddc2987",
+      "fra": "Alvin K, Altenborn",
+      "til": "Alvin K. Altenborn",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "1c5c165b-467b-45fc-b10b-2ac5412576bb",
+      "fra": "Lilje Lopes Patey (DEN)",
+      "til": "Lilje Lopes Patey",
+      "nasjonalitet": "DEN",
+      "hvorfor": [
+        "nasjonalitet DEN"
+      ]
+    },
+    {
+      "id": "1d795586-8d11-44d8-bf45-c70c0e7f9755",
+      "fra": "Vilma J, Bekkevold",
+      "til": "Vilma J. Bekkevold",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "1d8051d3-3005-4f5c-84f0-012979107620",
+      "fra": "Julie H, Jetlund",
+      "til": "Julie H. Jetlund",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "201b4762-bba5-4103-95d7-1f5a73c7fc86",
+      "fra": "Frida M, Fondenes",
+      "til": "Frida M. Fondenes",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "21d7a188-8294-4222-b6b6-f3e48b530bab",
+      "fra": "Eivind V, Sjøtun",
+      "til": "Eivind V. Sjøtun",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "240beb40-7b42-4c64-8005-3b0c0f009c4f",
+      "fra": "Valentin Jensen (DEN)",
+      "til": "Valentin Jensen",
+      "nasjonalitet": "DEN",
+      "hvorfor": [
+        "nasjonalitet DEN"
+      ]
+    },
+    {
+      "id": "2737c6e0-8734-4c99-8e7c-094e5c4862fd",
+      "fra": "Henriette F, Moe",
+      "til": "Henriette F. Moe",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "284c7793-5632-4a57-9975-d6b6f7a24d42",
+      "fra": "William H, Kornmo",
+      "til": "William H. Kornmo",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "2949fa29-d77a-4097-8b00-7875d9b53785",
+      "fra": "Sigmund A,K Forberg",
+      "til": "Sigmund A. K Forberg",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "2af42edc-0b86-46c9-8c46-c0d5b84442e1",
+      "fra": "Tobias S, Skas",
+      "til": "Tobias S. Skas",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "2d7bb194-afa1-46ed-975e-1b9e5db389d3",
+      "fra": "Helle Haukås, Eidsvåg IL",
+      "til": "Helle Haukås",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "2dd95f7b-69e0-4b79-bca3-36003d54617c",
+      "fra": "Liv H, Bruhjell",
+      "til": "Liv H. Bruhjell",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "2ee8fb46-cdce-4e97-8614-771ed845f4bc",
+      "fra": "Hermon Angesom Araya (ERI)",
+      "til": "Hermon Angesom Araya",
+      "nasjonalitet": "ERI",
+      "hvorfor": [
+        "nasjonalitet ERI"
+      ]
+    },
+    {
+      "id": "30c56851-ab34-41a7-9cf8-ec36aa844f88",
+      "fra": "Sindre S, Olsen",
+      "til": "Sindre S. Olsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "31c6047e-b667-4340-a4ea-d70f53e2420d",
+      "fra": "Håkon V, Teigen",
+      "til": "Håkon V. Teigen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "34a740e0-6c4c-425b-88e2-3d0684a0ad8f",
+      "fra": "Eirik Leknessund, Eidsvåg IL",
+      "til": "Eirik Leknessund",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "35a546d8-4ad4-4fa7-bf43-61557bd7a994",
+      "fra": "Knut S, Svanheld",
+      "til": "Knut S. Svanheld",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "35b4b5d3-a272-4686-aa77-8e8a90c99644",
+      "fra": "Martine B, Hagelund",
+      "til": "Martine B. Hagelund",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "3617414a-b6fc-4ce9-8dc9-c35a32c399c4",
+      "fra": "Hans R, Fry",
+      "til": "Hans R. Fry",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "36f00a72-e2cf-44fb-9de1-530c19180ae1",
+      "fra": "Andreas Kramer (SWE)",
+      "til": "Andreas Kramer",
+      "nasjonalitet": "SWE",
+      "hvorfor": [
+        "nasjonalitet SWE"
+      ]
+    },
+    {
+      "id": "38120175-df0c-472e-9e8d-18f7a130679f",
+      "fra": "Lasse P, Sara Anti",
+      "til": "Lasse P. Sara Anti",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "3e6c97be-e424-4457-b57b-d637f547cc96",
+      "fra": "Synne T, Knutsen",
+      "til": "Synne T. Knutsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "3f35b895-99a6-4356-aa1d-76764b823c0f",
+      "fra": "Bruno Brunovski (LAT)",
+      "til": "Bruno Brunovski",
+      "nasjonalitet": "LAT",
+      "hvorfor": [
+        "nasjonalitet LAT"
+      ]
+    },
+    {
+      "id": "3f7d96aa-b1fd-4470-9f17-a09000988a50",
+      "fra": "Wilma A, Risberg-Rolsdorph",
+      "til": "Wilma A. Risberg-Rolsdorph",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4251e05c-92ec-472c-9cec-7b5bcaf534e6",
+      "fra": "Sol A, Olsen Berg",
+      "til": "Sol A. Olsen Berg",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "469d13d5-8cc5-48c3-abe3-7d494cbbecb2",
+      "fra": "Damian Steinke (GER)",
+      "til": "Damian Steinke",
+      "nasjonalitet": "GER",
+      "hvorfor": [
+        "nasjonalitet GER"
+      ]
+    },
+    {
+      "id": "47086fde-c915-4bd0-b8e0-d44d0dcb296c",
+      "fra": "Ova E, Fjørthoft",
+      "til": "Ova E. Fjørthoft",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "48987ba8-ed9f-4c15-8751-caf31fdae28a",
+      "fra": "Abdullahi Dahir Rabi (SOM)",
+      "til": "Abdullahi Dahir Rabi",
+      "nasjonalitet": "SOM",
+      "hvorfor": [
+        "nasjonalitet SOM"
+      ]
+    },
+    {
+      "id": "48bdbdaf-e304-44c9-a491-73e20c3f3b9d",
+      "fra": "Gard L, Solheim",
+      "til": "Gard L. Solheim",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4a7db7c5-c5fa-464b-9ca4-5884d229e79b",
+      "fra": "Sofia T, Thornæs",
+      "til": "Sofia T. Thornæs",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4a9a369a-93ba-4837-a2db-8fec37e1e9d5",
+      "fra": "Selma Lif Thorolfsdottir(ISL)",
+      "til": "Selma Lif Thorolfsdottir",
+      "nasjonalitet": "ISL",
+      "hvorfor": [
+        "nasjonalitet ISL"
+      ]
+    },
+    {
+      "id": "4b305126-5f7f-4682-98a8-17ab4e0c5c87",
+      "fra": "Kurt M, Somby",
+      "til": "Kurt M. Somby",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4b8812fd-ee6f-43cf-a6fc-3a5feef7249a",
+      "fra": "Jonas Halonen (FIN)",
+      "til": "Jonas Halonen",
+      "nasjonalitet": "FIN",
+      "hvorfor": [
+        "nasjonalitet FIN"
+      ]
+    },
+    {
+      "id": "4be626f0-4bc2-4c20-89ae-957e8507bb7e",
+      "fra": "Tiril Olivia N, Slettingdalen",
+      "til": "Tiril Olivia N. Slettingdalen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4d1ab2b9-37ee-4575-a464-bc4aa9481b24",
+      "fra": "Oddvar A, Berntsen",
+      "til": "Oddvar A. Berntsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4d432bec-dc51-403b-b41d-551c22562eee",
+      "fra": "Amalie J, Hartberg",
+      "til": "Amalie J. Hartberg",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4dbdbf6d-fb6d-41bb-bade-b8e68770039f",
+      "fra": "Gustav J, Møller",
+      "til": "Gustav J. Møller",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4e26d26d-3cee-4a2b-9bfe-fbd98480c913",
+      "fra": "Alexander T, Kjerland",
+      "til": "Alexander T. Kjerland",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4e7f57eb-9feb-45d3-8a4b-069843176da1",
+      "fra": "Amalie M, Blekkerud",
+      "til": "Amalie M. Blekkerud",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "4fa5264c-19bf-4fc5-9eac-1fcac8969052",
+      "fra": "Vegard B, Rørvik",
+      "til": "Vegard B. Rørvik",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "54048ad9-c357-45dc-a108-7fda99ef35b6",
+      "fra": "Ole Kristian H, Eriksen",
+      "til": "Ole Kristian H. Eriksen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "544002de-5615-4336-9cde-7cee631582c9",
+      "fra": "Kristine L, Ruskoen",
+      "til": "Kristine L. Ruskoen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "550f66f8-a01d-4414-b85f-9442932b95b3",
+      "fra": "Karen R, Skogli",
+      "til": "Karen R. Skogli",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "557a4c7c-ed66-4ce1-9a98-80113d3e1147",
+      "fra": "Vilde Almeland, Eidsvåg IL",
+      "til": "Vilde Almeland",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "55ca60d2-9fbd-45fb-a2b7-f61df0887326",
+      "fra": "Håkon Mjelde, Eidsvåg IL",
+      "til": "Håkon Mjelde",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "5728ae0e-a8f7-480e-b837-af2bdbf91f57",
+      "fra": "Jonas Legernes, SWE",
+      "til": "Jonas Legernes",
+      "nasjonalitet": "SWE",
+      "hvorfor": [
+        "nasjonalitet SWE"
+      ]
+    },
+    {
+      "id": "57c0a54f-e688-4c82-a113-75a53b6bfb6f",
+      "fra": "Ivar Andre F, Hærem",
+      "til": "Ivar Andre F. Hærem",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "5b8fbed4-1bc2-4151-85c4-bc5c7e4c5e8b",
+      "fra": "Martin V, Hayes",
+      "til": "Martin V. Hayes",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "5d06320a-cd82-4d4d-996f-c191b85364ea",
+      "fra": "Nikoline E, Strandsveen",
+      "til": "Nikoline E. Strandsveen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "5d096440-1250-4bec-b6e5-ae93e37edfbc",
+      "fra": "Jonas Legernes (SWE)",
+      "til": "Jonas Legernes",
+      "nasjonalitet": "SWE",
+      "hvorfor": [
+        "nasjonalitet SWE"
+      ]
+    },
+    {
+      "id": "61603a33-234f-4684-93d4-6c36c216d70e",
+      "fra": "Tessa den Heijer (NED)",
+      "til": "Tessa den Heijer",
+      "nasjonalitet": "NED",
+      "hvorfor": [
+        "nasjonalitet NED"
+      ]
+    },
+    {
+      "id": "622c7341-fcb0-4f4d-9a65-6a7218520b42",
+      "fra": "Christopher J, Quamme Hafsten",
+      "til": "Christopher J. Quamme Hafsten",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "6432280b-c894-439d-a8bf-f9325b5d8d04",
+      "fra": "Oscar A, Stakkestad",
+      "til": "Oscar A. Stakkestad",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "651a7580-2eb4-419d-b7bc-ff4947f78cdd",
+      "fra": "Lilly C, Sandnes",
+      "til": "Lilly C. Sandnes",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "66684c96-475c-43a0-bd88-e75b75dd07cc",
+      "fra": "Jonathan Wik, Eidsvåg IL",
+      "til": "Jonathan Wik",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "6766d118-742a-4bf2-8f27-442ab173dce8",
+      "fra": "Synne I, B, Lacroise",
+      "til": "Synne I. B. Lacroise",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "67d6132f-f708-4f99-bea7-84b6ab2266f4",
+      "fra": "Marianne S, Fiske",
+      "til": "Marianne S. Fiske",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "684bd871-42f0-4351-8675-b694999c5d5e",
+      "fra": "Amanda Hamlid Juel (DEN)",
+      "til": "Amanda Hamlid Juel",
+      "nasjonalitet": "DEN",
+      "hvorfor": [
+        "nasjonalitet DEN"
+      ]
+    },
+    {
+      "id": "699572c7-6b1d-42ea-bd98-1b2efab3e6f9",
+      "fra": "Jostein C, Vrålstad Vissers",
+      "til": "Jostein C. Vrålstad Vissers",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "6acdea11-f573-45cf-aca2-185afe876818",
+      "fra": "Aleksander T, Hovland",
+      "til": "Aleksander T. Hovland",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "6add0ea3-33ef-4dbe-8879-6a8d7a1dc6ec",
+      "fra": "Aham Okeke (NGR)",
+      "til": "Aham Okeke",
+      "nasjonalitet": "NGR",
+      "hvorfor": [
+        "nasjonalitet NGR"
+      ]
+    },
+    {
+      "id": "6fcb439e-33ed-4c40-9235-0e611e6bf2dc",
+      "fra": "Christoffer Ruger (GER)",
+      "til": "Christoffer Ruger",
+      "nasjonalitet": "GER",
+      "hvorfor": [
+        "nasjonalitet GER"
+      ]
+    },
+    {
+      "id": "700d203b-2973-42ca-86e8-fbea0f390db6",
+      "fra": "Johan Harald R, Lillebø",
+      "til": "Johan Harald R. Lillebø",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "710409d9-da54-46de-b15f-48d375b4aceb",
+      "fra": "Kaja Haukås, Eidsvåg IL",
+      "til": "Kaja Haukås",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "722fe644-0f61-4e09-aa8c-cdb2afd8ca46",
+      "fra": "Jonas S, Bruvik",
+      "til": "Jonas S. Bruvik",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "725ba7bb-8e52-4719-9ec6-f925c5e81a01",
+      "fra": "Terje Magnus B, Sørensen",
+      "til": "Terje Magnus B. Sørensen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "73b26d0f-0c44-4a3b-9d77-fbee68a77aed",
+      "fra": "Nahom Tesfalem Tewelde (ERI)",
+      "til": "Nahom Tesfalem Tewelde",
+      "nasjonalitet": "ERI",
+      "hvorfor": [
+        "nasjonalitet ERI"
+      ]
+    },
+    {
+      "id": "77189d5d-1315-4bda-bf8d-d04f256754d0",
+      "fra": "Louie S, Hocken",
+      "til": "Louie S. Hocken",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "78674241-3b64-443a-939e-79a193c7bf63",
+      "fra": "Maiken H, Prøytz",
+      "til": "Maiken H. Prøytz",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "78b3377e-0349-4df2-af0d-4acc59c7ed01",
+      "fra": "Jaysuma Saidy Ndure (GAM)",
+      "til": "Jaysuma Saidy Ndure",
+      "nasjonalitet": "GAM",
+      "hvorfor": [
+        "nasjonalitet GAM"
+      ]
+    },
+    {
+      "id": "793f7a76-c21e-4c46-a5aa-8859bd753f5c",
+      "fra": "Vincent Scillitani (Italia)",
+      "til": "Vincent Scillitani",
+      "nasjonalitet": "ITA",
+      "hvorfor": [
+        "land Italia -> ITA"
+      ]
+    },
+    {
+      "id": "79c9f27c-3fe3-4b69-badc-04ab1e0dd2d3",
+      "fra": "Ellen S, Fiske",
+      "til": "Ellen S. Fiske",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "7a2b313f-b1a3-46d9-b3a1-ed74b9f6a146",
+      "fra": "Kristina S, Olsen",
+      "til": "Kristina S. Olsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "7eb436aa-476c-4a79-8021-b21514b34d25",
+      "fra": "Tomasz Siemieniuch (POL)",
+      "til": "Tomasz Siemieniuch",
+      "nasjonalitet": "POL",
+      "hvorfor": [
+        "nasjonalitet POL"
+      ]
+    },
+    {
+      "id": "815bf5e0-c805-4749-aca6-5c6da90613f3",
+      "fra": "Thea H, Aunaas",
+      "til": "Thea H. Aunaas",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "830dc6de-a927-4425-8036-a8e213b902f7",
+      "fra": "Julian O, Stensrud",
+      "til": "Julian O. Stensrud",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8699f3be-80b7-475e-aa62-4b8294084395",
+      "fra": "Vebjørn A, Gaard",
+      "til": "Vebjørn A. Gaard",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8769875c-cff1-4599-9cf4-2f7c49b704c9",
+      "fra": "Mathias T, Losnegard",
+      "til": "Mathias T. Losnegard",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "89477c35-489d-4a7c-8166-d2f3372d25ca",
+      "fra": "Karsten K, Grønnerud",
+      "til": "Karsten K. Grønnerud",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8a57bb1f-e511-4dfd-bb63-64e80b004b84",
+      "fra": "Linnea M, Madeira",
+      "til": "Linnea M. Madeira",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8ab541ee-24f4-4ec6-999f-e8c2251e38aa",
+      "fra": "Emma A, Vågene",
+      "til": "Emma A. Vågene",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8b2f5a3b-be21-42b2-a000-5b7d36800269",
+      "fra": "Ola S, Sæther",
+      "til": "Ola S. Sæther",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8cc65d5c-e5c0-4015-a37e-220060939513",
+      "fra": "Emilie T, Mangen",
+      "til": "Emilie T. Mangen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8d4bb789-93d7-4e20-8d1b-f7daf7103c4c",
+      "fra": "Andrias T, Ødegård Bakke",
+      "til": "Andrias T. Ødegård Bakke",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "8f7b5a40-9364-4ba6-a347-9cc2d1d59a83",
+      "fra": "Martin N, Giskås",
+      "til": "Martin N. Giskås",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "90726dcb-0463-4446-8ca0-4f6c400fe619",
+      "fra": "Vilja E, W, Hermann",
+      "til": "Vilja E. W. Hermann",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "92f0e0c4-2bae-4761-8907-bb764353342e",
+      "fra": "Lisa Wilker (GER)",
+      "til": "Lisa Wilker",
+      "nasjonalitet": "GER",
+      "hvorfor": [
+        "nasjonalitet GER"
+      ]
+    },
+    {
+      "id": "931e246b-09b8-4d02-9500-98c4cc0d7ebd",
+      "fra": "Sunniva R, Eidsnes",
+      "til": "Sunniva R. Eidsnes",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "964d5b2f-781b-46db-baa8-09fc1b1bbe7e",
+      "fra": "Sander Joakim H, Andersen",
+      "til": "Sander Joakim H. Andersen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "994d1215-19be-4623-8c49-4108e7e92f9b",
+      "fra": "Tuva A, Sørensen Vogt",
+      "til": "Tuva A. Sørensen Vogt",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "9952adbd-bb25-4ff0-81de-ca6b5469fb71",
+      "fra": "Ida S, Andersen",
+      "til": "Ida S. Andersen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "9c5d2b02-d2e5-4a7b-8d5d-1845f29d0354",
+      "fra": "Tindra M, Olsen",
+      "til": "Tindra M. Olsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "a08cdfbb-e8e8-4cea-8543-110bda355953",
+      "fra": "Dominik Reszka (POL)",
+      "til": "Dominik Reszka",
+      "nasjonalitet": "POL",
+      "hvorfor": [
+        "nasjonalitet POL"
+      ]
+    },
+    {
+      "id": "a0f793e1-594d-456e-988a-db14a7ca2093",
+      "fra": "Joakim R, Misje",
+      "til": "Joakim R. Misje",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "a1fcdedd-e1e1-46cd-a6b0-75f6774c0e15",
+      "fra": "Sebastian C, Schjølberg",
+      "til": "Sebastian C. Schjølberg",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "a36cde7c-5525-420a-817f-2687167715e9",
+      "fra": "Timofej Porjajev (EST)",
+      "til": "Timofej Porjajev",
+      "nasjonalitet": "EST",
+      "hvorfor": [
+        "nasjonalitet EST"
+      ]
+    },
+    {
+      "id": "a5805197-31f7-4828-a90b-5606d0843f96",
+      "fra": "Edvard W, Telnes",
+      "til": "Edvard W. Telnes",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "a8dbb0f5-30c6-4ca6-84d1-f6598969b644",
+      "fra": "Elle Johanne W, Bjørgård",
+      "til": "Elle Johanne W. Bjørgård",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "a98daa14-f9da-4ee7-a856-cf427a6e6505",
+      "fra": "Naomi Van den Broeck (BEL)",
+      "til": "Naomi Van den Broeck",
+      "nasjonalitet": "BEL",
+      "hvorfor": [
+        "nasjonalitet BEL"
+      ]
+    },
+    {
+      "id": "abc50058-4795-4cc1-9b9a-f19bfb92a2b6",
+      "fra": "Andrè Johnsen, Eidsvåg IL",
+      "til": "Andrè Johnsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "b09cbaeb-de36-44c6-9d4c-fb623939fce5",
+      "fra": "Alva Linde, Eidsvåg IL",
+      "til": "Alva Linde",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "b2582dab-eff7-4177-879b-e64e4fc79bc4",
+      "fra": "Kåre A, Rabben",
+      "til": "Kåre A. Rabben",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "b309f08c-543c-43b4-8223-f14f7ddd3eb5",
+      "fra": "Martin V, Lindgjerdet",
+      "til": "Martin V. Lindgjerdet",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "b329cb15-f4a5-4056-afeb-2a3c9b60465b",
+      "fra": "Tesfaye Bekele (ETH)",
+      "til": "Tesfaye Bekele",
+      "nasjonalitet": "ETH",
+      "hvorfor": [
+        "nasjonalitet ETH"
+      ]
+    },
+    {
+      "id": "b33f0ede-d316-4174-ac11-ec9d4fefdc34",
+      "fra": "Ådne K, Støyva",
+      "til": "Ådne K. Støyva",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "b48a2804-0396-4df1-b5b5-863b105a677f",
+      "fra": "Emil G, Stordahl",
+      "til": "Emil G. Stordahl",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "b4c5ee80-1314-4650-a748-4aedc0e86d35",
+      "fra": "Henrik Gateman (SWE)",
+      "til": "Henrik Gateman",
+      "nasjonalitet": "SWE",
+      "hvorfor": [
+        "nasjonalitet SWE"
+      ]
+    },
+    {
+      "id": "b57269f7-8377-4054-895b-6c0dc7c01852",
+      "fra": "Lettia Wilsen, USA",
+      "til": "Lettia Wilsen",
+      "nasjonalitet": "USA",
+      "hvorfor": [
+        "nasjonalitet USA"
+      ]
+    },
+    {
+      "id": "b86b3429-7c50-4e03-a163-a5c3e153c2e1",
+      "fra": "Hedda A, Grønnern",
+      "til": "Hedda A. Grønnern",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "ba24b685-14c6-4634-8048-b863cb23263a",
+      "fra": "Jenny C, Fjelstad",
+      "til": "Jenny C. Fjelstad",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "bbb25dbd-e531-4452-8c61-b71d1c5d803a",
+      "fra": "Nahom Tesfalem Tewelde (ERI)",
+      "til": "Nahom Tesfalem Tewelde",
+      "nasjonalitet": "ERI",
+      "hvorfor": [
+        "nasjonalitet ERI"
+      ]
+    },
+    {
+      "id": "bbc18880-bd7a-48a7-96c5-43c3d3e226fe",
+      "fra": "Alexander Tesfamariam (ERI)",
+      "til": "Alexander Tesfamariam",
+      "nasjonalitet": "ERI",
+      "hvorfor": [
+        "nasjonalitet ERI"
+      ]
+    },
+    {
+      "id": "bd41617e-dd40-4ba1-b7cc-38b5859fd26d",
+      "fra": "Hilde F, Amundsen",
+      "til": "Hilde F. Amundsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "be0d4126-f47c-4a71-ac32-a395fbb12a6b",
+      "fra": "Filmon Gidey Hagos (ERI)",
+      "til": "Filmon Gidey Hagos",
+      "nasjonalitet": "ERI",
+      "hvorfor": [
+        "nasjonalitet ERI"
+      ]
+    },
+    {
+      "id": "c00abe2e-8e0a-4584-adb9-5c9707b4137b",
+      "fra": "Hanne T, Pettersen",
+      "til": "Hanne T. Pettersen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "c0706b49-cec3-481d-91d5-a3ab8dcfcaa1",
+      "fra": "Alexander Tesfamariam (ERI)",
+      "til": "Alexander Tesfamariam",
+      "nasjonalitet": "ERI",
+      "hvorfor": [
+        "nasjonalitet ERI"
+      ]
+    },
+    {
+      "id": "c6b5f23c-7e77-464a-99dd-7174b079cdbd",
+      "fra": "Vetle R, Nefjen",
+      "til": "Vetle R. Nefjen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d0525c56-1e86-4e76-a25d-815fce0dbda4",
+      "fra": "Rayan Rangassamy (MRI)",
+      "til": "Rayan Rangassamy",
+      "nasjonalitet": "MRI",
+      "hvorfor": [
+        "nasjonalitet MRI"
+      ]
+    },
+    {
+      "id": "d0c3871b-4d62-47d6-9d89-14ebcefc9673",
+      "fra": "Mina B, Julma",
+      "til": "Mina B. Julma",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d21fee1f-50af-45ea-b231-c37aa30585fe",
+      "fra": "Andrea W, Toft",
+      "til": "Andrea W. Toft",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d440f277-b5ac-442a-a53b-920e7acb282c",
+      "fra": "Thea Sofie E, Mundal",
+      "til": "Thea Sofie E. Mundal",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d4f71b5c-4747-4d6b-bf53-3bda79bcb97b",
+      "fra": "Andrea V, Epland",
+      "til": "Andrea V. Epland",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d5821c8f-ab75-4a69-871f-d7ed1d877b65",
+      "fra": "Oda B, Røsand",
+      "til": "Oda B. Røsand",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d58fb44d-5a8c-4f5a-a550-d9831c713cdf",
+      "fra": "Thilde Jeeves, Eidsvåg IL",
+      "til": "Thilde Jeeves",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "d5d45d37-a17f-49ab-8950-72b08f74bfbc",
+      "fra": "Fredrik K, Ramstad",
+      "til": "Fredrik K. Ramstad",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d9292129-0a51-45ac-ba5d-4675abd47256",
+      "fra": "Ulrik E, Seglem",
+      "til": "Ulrik E. Seglem",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "d976005e-7efe-4356-a911-7fb683a6d4ef",
+      "fra": "Tuva H, Michelsen",
+      "til": "Tuva H. Michelsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "dc9ae5eb-c37c-47e4-90bf-5fd41df994bf",
+      "fra": "Emma N, Alme",
+      "til": "Emma N. Alme",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "e1b3148b-0f26-4853-b8dc-8b711a17d563",
+      "fra": "Francesca T, Kjerland",
+      "til": "Francesca T. Kjerland",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "e1e70404-447e-44fa-9698-8006595bd8b4",
+      "fra": "Mari V, Ødegård",
+      "til": "Mari V. Ødegård",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "e234f4dc-67e4-40b2-9aa6-2a8bd7da1579",
+      "fra": "Nikolai Svendsen, Eidsvåg IL",
+      "til": "Nikolai Svendsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "fjernet klubb «Eidsvåg IL»"
+      ]
+    },
+    {
+      "id": "e3af2af8-b143-45fa-9324-e8d17d8d9b99",
+      "fra": "Hanne O, Leren",
+      "til": "Hanne O. Leren",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "e50f5129-12e3-47e7-a080-45cdcfd623f9",
+      "fra": "Vincent Scillitani (ITA)",
+      "til": "Vincent Scillitani",
+      "nasjonalitet": "ITA",
+      "hvorfor": [
+        "nasjonalitet ITA"
+      ]
+    },
+    {
+      "id": "e58db859-ec85-4c04-ad9c-0941084f428d",
+      "fra": "Bartek Sakowski (POL)",
+      "til": "Bartek Sakowski",
+      "nasjonalitet": "POL",
+      "hvorfor": [
+        "nasjonalitet POL"
+      ]
+    },
+    {
+      "id": "e6ecb5f8-6384-4b33-ada7-79a4f07b05d0",
+      "fra": "Jørgen L, Rørvik",
+      "til": "Jørgen L. Rørvik",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "e9141a1e-300b-4581-92c2-f5f135ce0d11",
+      "fra": "Tapakorn Sitawan (THA)",
+      "til": "Tapakorn Sitawan",
+      "nasjonalitet": "THA",
+      "hvorfor": [
+        "nasjonalitet THA"
+      ]
+    },
+    {
+      "id": "ec1fbe48-8c3d-449b-8898-8370310e3760",
+      "fra": "Jan Robert Nijmeijer (NED)",
+      "til": "Jan Robert Nijmeijer",
+      "nasjonalitet": "NED",
+      "hvorfor": [
+        "nasjonalitet NED"
+      ]
+    },
+    {
+      "id": "f5061564-cb32-4729-9d1b-73230bd415c0",
+      "fra": "Storm R, Gulbrandsen",
+      "til": "Storm R. Gulbrandsen",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "f64db0cf-cfcc-406c-8147-9370ec9476c4",
+      "fra": "Anastasia Schnell (GER)",
+      "til": "Anastasia Schnell",
+      "nasjonalitet": "GER",
+      "hvorfor": [
+        "nasjonalitet GER"
+      ]
+    },
+    {
+      "id": "f8809166-e7ef-4259-b278-1a26ecf8ec6a",
+      "fra": "Sigurdur Jonsson (ISL)",
+      "til": "Sigurdur Jonsson",
+      "nasjonalitet": "ISL",
+      "hvorfor": [
+        "nasjonalitet ISL"
+      ]
+    },
+    {
+      "id": "fc884573-d2a9-4163-9aa0-d02c8038e21c",
+      "fra": "Kari B, Støa",
+      "til": "Kari B. Støa",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "fcfe062f-e9ee-4780-8438-507432aa5251",
+      "fra": "Astrid Sofie N, Rogde",
+      "til": "Astrid Sofie N. Rogde",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    },
+    {
+      "id": "fe00f3a1-8bac-447a-af53-b5d3bb7dd9c4",
+      "fra": "Nicolai W, Moholt",
+      "til": "Nicolai W. Moholt",
+      "nasjonalitet": null,
+      "hvorfor": [
+        "komma etter initial -> punktum"
+      ]
+    }
+  ],
+  "urort": [
+    "Geir Jønholt (Gjelstad)",
+    "Gunnar Sjurseth (Sjursæter)",
+    "Jacob Bohlin, Lea",
+    "Per Linge (Syversen)",
+    "Linnea Elise Westre, Byåsen IL11,95(+0,0)-3,12(+0,0)-4,71-2,36",
+    "Heidi Vien (Meyer)",
+    "Alfred Lund Stende, Bøler IF10,20(-1,3)-3,04(+2,0)-5,92-2,23",
+    "Andersen, Pål Masdal",
+    "Per Linge (Syversen)",
+    "Lena Carina (Berntsson) Hordnes",
+    "John Einar Jr, Kildal",
+    "Toril Lauritsen (Nyborg)",
+    "Tobias Eimhj, Fjelltvedt",
+    "Siv Sundt (12)",
+    "Alfred Lund Stende, Bøler IF10,20(-1,3)-3,04(+2,0)-5,92-2,23",
+    "Christopher Martinsen (Selmer)"
+  ]
+}

@@ -29,11 +29,11 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-primary">friidrettresultater</span>
+              <span className="text-xl font-bold text-primary">friidrettsresultater</span>
               <span className="text-xl font-light">.no</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
-              Norsk friidrettsstatistikk - fra rekrutt til veteran.
+              Norsk friidrettsstatistikk.
             </p>
           </div>
 
@@ -108,7 +108,7 @@ export function Footer() {
 
         <div className="mt-8 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            Friidrettsresultater.no utviklet av Athlete Mindset Inc.
+            Friidrettsresultater.no utviklet av Athlete Mindset AS
           </p>
         </div>
       </div>

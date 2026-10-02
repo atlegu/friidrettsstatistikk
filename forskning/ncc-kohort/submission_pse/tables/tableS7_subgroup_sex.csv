@@ -1,0 +1,9 @@
+Sex,n,Covariate,HR,CI low,CI high,p
+Male,805,tyrving_best_z,1.128,1.051,1.211,0.0009
+Male,805,hhi_early_z,0.951,0.881,1.026,0.1922
+Male,805,vol_milepael_z,0.434,0.379,0.497,0.0
+Male,805,n_msk_typer,0.66,0.589,0.74,0.0
+Female,899,tyrving_best_z,0.959,0.894,1.029,0.2486
+Female,899,hhi_early_z,0.956,0.885,1.034,0.2626
+Female,899,vol_milepael_z,0.445,0.393,0.504,0.0
+Female,899,n_msk_typer,0.806,0.731,0.889,0.0

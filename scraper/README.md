@@ -1,4 +1,4 @@
-# Scraper — friidrett.live
+# Scraper — friidrettsresultater.no
 
 Verktøy for å scrape og importere friidrettsresultater til Supabase.
 

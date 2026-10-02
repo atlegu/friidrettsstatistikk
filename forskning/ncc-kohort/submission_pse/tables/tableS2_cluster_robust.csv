@@ -1,0 +1,6 @@
+Covariate,HR,Robust CI low,Robust CI high,p (robust)
+female,1.122,0.982,1.282,0.0902
+tyrving_best_z,1.049,0.986,1.116,0.1267
+hhi_early_z,0.953,0.876,1.036,0.2577
+vol_milepael_z,0.441,0.39,0.499,0.0
+n_msk_typer,0.74,0.676,0.81,0.0

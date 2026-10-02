@@ -3,8 +3,8 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight } from "lucide-react"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
-import { formatPerformance } from "@/lib/format-performance"
-import { getBirthYear } from "@/lib/date-utils"
+import { erVindpaavirket } from "@/lib/vind"
+import { AarslisteTabell } from "@/components/statistikk/AarslisteTabell"
 
 export const metadata = {
   title: "Statistikk",
@@ -38,9 +38,6 @@ const AGE_GROUP_MAPPINGS: Record<string, string[]> = {
 // Events where manual times should be excluded (sprint and hurdles)
 const MANUAL_TIME_CATEGORIES = ["sprint", "hurdles"]
 
-// Events where wind affects validity
-const WIND_AFFECTED_EVENTS = ["60 meter", "80 meter", "100 meter", "150 meter", "200 meter"]
-const WIND_AFFECTED_CATEGORIES = ["jumps"]
 
 // Determine default venue based on current date
 // Indoor: December 1 - March 31, Outdoor: April 1 - November 30
@@ -61,12 +58,13 @@ async function getEvents() {
 async function getTopResults(
   year: number,
   eventId: string,
-  eventName: string,
+  eventCode: string,
   gender: string,
   ageGroup: string,
   resultType: string,
   eventCategory: string,
   venue: string,
+  vind: "lovlig" | "ukjent" = "lovlig",
   limit = 25
 ) {
   const supabase = await createClient()
@@ -101,12 +99,23 @@ async function getTopResults(
 
   // Exclude manual times for sprint and hurdles events
   if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
-    query = query.eq("is_manual_time", false)
+    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
+    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
+    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
+    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
+    query = query.not("is_manual_time", "is", true)
   }
 
-  // Exclude wind-assisted results for affected events
-  if (WIND_AFFECTED_EVENTS.includes(eventName) || WIND_AFFECTED_CATEGORIES.includes(eventCategory)) {
-    query = query.eq("is_wind_legal", true)
+  // Vind. Gjelder bare sprint til og med 200 m og horisontale hopp med
+  // tilløp, se lib/vind.ts. Den vanlige lista krever lovlig vind. Lista for
+  // ukjent vind tar resultatene uten vindmåling, utendørs: innendørs finnes
+  // det ikke vind, så der er ingenting ukjent.
+  if (erVindpaavirket(eventCode)) {
+    if (vind === "ukjent") {
+      query = query.is("is_wind_legal", null).eq("meet_indoor", false)
+    } else {
+      query = query.eq("is_wind_legal", true)
+    }
   }
 
   const { data } = await query
@@ -139,13 +148,15 @@ export default async function StatistikkPage({
   const events = await getEvents()
   const selectedEvent = selectedEventId
     ? events.find((e) => e.id === selectedEventId)
-    : events[0]
+    // Standardøvelse: 100 m ute, 60 m inne. Første i sorteringen er 60 m,
+    // som knapt løpes utendørs, så listen så tynn ut.
+    : (events.find((e) => e.code === (venue === "indoor" ? "60m" : "100m")) ?? events[0])
 
   const results = selectedEvent
     ? await getTopResults(
         currentYear,
         selectedEvent.id,
-        selectedEvent.name,
+        selectedEvent.code ?? "",
         gender,
         age,
         selectedEvent.result_type ?? "time",
@@ -153,6 +164,16 @@ export default async function StatistikkPage({
         venue
       )
     : []
+
+  // Resultater uten vindmåling, i egen liste under den vanlige. Bare for
+  // vindpåvirkede øvelser, og ikke når lista er innendørs.
+  const ukjentVind =
+    selectedEvent && erVindpaavirket(selectedEvent.code) && venue !== "indoor"
+      ? await getTopResults(
+          currentYear, selectedEvent.id, selectedEvent.code ?? "", gender, age,
+          selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue, "ukjent"
+        )
+      : []
 
   const genderLabel = gender === "M" ? "Menn" : "Kvinner"
   const ageLabel = age === "all" ? "Alle aldersgrupper" : AGE_GROUPS.find(a => a.value === age)?.label ?? age
@@ -379,66 +400,7 @@ export default async function StatistikkPage({
             </CardHeader>
             <CardContent className="p-0">
               {results.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b bg-muted/50">
-                        <th className="px-3 py-2 text-left text-sm font-medium w-10">#</th>
-                        <th className="px-3 py-2 text-left text-sm font-medium">Resultat</th>
-                        <th className="px-3 py-2 text-left text-sm font-medium">Utøver</th>
-                        <th className="px-3 py-2 text-left text-sm font-medium w-14">Født</th>
-                        <th className="hidden px-3 py-2 text-left text-sm font-medium md:table-cell">Klubb</th>
-                        <th className="hidden px-3 py-2 text-left text-sm font-medium lg:table-cell">Stevne</th>
-                        <th className="hidden px-3 py-2 text-left text-sm font-medium lg:table-cell">Dato</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {results.map((result, index) => (
-                        <tr key={result.id} className="border-b last:border-0 hover:bg-muted/30">
-                          <td className="px-3 py-2 text-sm text-muted-foreground">{index + 1}</td>
-                          <td className="px-3 py-2">
-                            <span className="perf-value">{formatPerformance(result.performance, result.result_type)}</span>
-                            {result.wind !== null && (
-                              <span className="ml-1 text-xs text-muted-foreground">
-                                ({result.wind > 0 ? "+" : ""}{result.wind})
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-3 py-2">
-                            <Link
-                              href={`/utover/${result.athlete_id}`}
-                              className="font-medium text-primary hover:underline"
-                            >
-                              {result.athlete_name}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-2 text-sm text-muted-foreground">
-                            {getBirthYear(result.birth_date) ?? "-"}
-                          </td>
-                          <td className="hidden px-3 py-2 text-sm md:table-cell">
-                            {result.club_name ?? "-"}
-                          </td>
-                          <td className="hidden px-3 py-2 text-sm lg:table-cell">
-                            <Link
-                              href={`/stevner/${result.meet_id}`}
-                              className="hover:text-primary hover:underline"
-                            >
-                              {result.meet_name}
-                            </Link>
-                          </td>
-                          <td className="hidden px-3 py-2 text-sm text-muted-foreground lg:table-cell">
-                            {result.date
-                              ? new Date(result.date).toLocaleDateString("no-NO", {
-                                  day: "numeric",
-                                  month: "short",
-                                })
-                              : "-"}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                <AarslisteTabell rader={results} />
               ) : (
                 <p className="p-4 text-center text-muted-foreground">
                   {selectedEvent
@@ -448,6 +410,21 @@ export default async function StatistikkPage({
               )}
             </CardContent>
           </Card>
+
+          {ukjentVind.length > 0 && (
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="text-base">Ukjent vind</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Resultater fra stevner uten vindmåling. De kan ikke godkjennes
+                  til lista over, men er reelle resultater. Beste per utøver.
+                </p>
+              </CardHeader>
+              <CardContent className="p-0">
+                <AarslisteTabell rader={ukjentVind} />
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </div>

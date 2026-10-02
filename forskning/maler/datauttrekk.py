@@ -1,5 +1,5 @@
 """
-Mal for datauttrekk fra friidrett.live (Supabase).
+Mal for datauttrekk fra friidrettsresultater.no (Supabase).
 
 Bruk:
     cd forskning/<prosjektnavn>

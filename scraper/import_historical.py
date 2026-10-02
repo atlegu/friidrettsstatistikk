@@ -1620,8 +1620,8 @@ def import_results(parsed_results: List[Dict], event_id: str, source_id: Optiona
         # Optional fields
         if row['wind'] is not None:
             result_data['wind'] = row['wind']
-            if row['wind'] > 2.0:
-                result_data['is_wind_legal'] = False
+            # is_wind_legal utledes av en trigger i basen (sett_vindflagg),
+            # ikke her. Se migrations/vindflagg.sql.
 
         if row.get('lane'):
             result_data['lane'] = row['lane']

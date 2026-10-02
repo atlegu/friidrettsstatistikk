@@ -24,10 +24,10 @@ export function CopyLink({ className }: CopyLinkProps) {
     <button
       onClick={handleCopy}
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-1 text-[12px] font-medium",
-        "rounded border border-[var(--border-default)] bg-[var(--bg-surface)]",
-        "text-[var(--text-secondary)] hover:bg-[var(--bg-muted)] hover:text-[var(--text-primary)]",
-        "transition-colors",
+        // Brukes på den mørke utøvertoppen
+        "inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-4 py-2",
+        "text-[13px] font-medium rounded-lg border border-white/25 bg-white/10",
+        "text-white hover:bg-white/20 transition-colors",
         className
       )}
     >

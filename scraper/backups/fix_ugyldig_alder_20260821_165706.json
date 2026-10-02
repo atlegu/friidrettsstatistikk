@@ -1,0 +1,71 @@
+{
+  "generated_at": "20260821_165706",
+  "meet_fix": {
+    "2f6040b4-8bfe-4ca7-a62f-e8f773333011": [
+      "Distriktskampen",
+      "1926-01-10",
+      "2026-01-10"
+    ],
+    "35f5c810-ed6a-4b41-9673-d48b0e497aa3": [
+      "Kengurukarusellen 1",
+      "1926-01-08",
+      "2026-01-08"
+    ],
+    "1f2a792c-4f6a-48b5-9d9b-7913e399adf3": [
+      "Nyttårsstevnet",
+      "1926-01-11",
+      "2026-01-11"
+    ],
+    "b3b2687f-80e7-4ba4-a57b-9ab1bf53b6ac": [
+      "Sprintstevne",
+      "1926-01-06",
+      "2026-01-06"
+    ]
+  },
+  "meet_results": {
+    "2f6040b4-8bfe-4ca7-a62f-e8f773333011": [
+      "3194af0e-e799-4452-b15c-dc52a5f5b509",
+      "33d961ee-7ef5-47e7-8390-6be7174a8765",
+      "ed211070-a9b0-4d09-9620-c23076898d0a",
+      "5bb4155d-4b7d-4bcd-92cb-b50abdcddbd2",
+      "853ab7da-a398-40f6-95f5-d497368054bf",
+      "868b1b7d-9b75-4287-a64d-f81955feb33e",
+      "54a31ea4-8ada-451a-827f-fa25add534bc",
+      "666920f3-883b-4092-aa8a-2992bb0ff70b",
+      "46e15e06-84d5-41df-bca1-e51bea23ac62",
+      "97d50154-1e6b-41c8-b14d-bcf6c52228b6",
+      "fd13531e-9373-4fa5-b4ae-3842c29d98c5",
+      "88a1089b-95c9-4055-9152-1024dd52ea99",
+      "2591498b-708a-43f3-aa3c-6becdbec0dde",
+      "904ac4d8-c0c7-4e5b-8e25-96d36009e26b",
+      "3e7d5986-c30c-4ead-a098-d41fd2ea4dd8",
+      "7eec0f14-3223-44fa-9ba7-63f82e23043d",
+      "b55eccc2-5801-4b50-82f0-26c9200ffa76",
+      "c1c4b06f-12f0-49ce-8b17-a4ed9952463f",
+      "ffb4798f-1b93-4a3f-ad62-a08a01f0aea4"
+    ],
+    "35f5c810-ed6a-4b41-9673-d48b0e497aa3": [
+      "93731aa0-1d38-423d-866e-17f83b340b2b",
+      "1dd8d8b3-f557-4fd1-bf11-902ca9768d3a",
+      "e5460367-ab5f-4330-8bb5-01c6959c8c55",
+      "da5fa35e-242c-4fcf-9d71-c8fed0db8a5b",
+      "175fb408-b074-4848-a482-0c7db48162b9"
+    ],
+    "1f2a792c-4f6a-48b5-9d9b-7913e399adf3": [
+      "6d22b1c2-fd6f-4b9c-80e0-8005ba9696e7",
+      "f3f63c5b-4e4c-4ba8-8d68-112d5cfc9fba",
+      "ef906f6f-418b-4b3f-a934-d8019f73c5ae"
+    ],
+    "b3b2687f-80e7-4ba4-a57b-9ab1bf53b6ac": [
+      "1711f76e-78f4-4b9c-9716-f06ccbfeb064"
+    ]
+  },
+  "fra_dato": [],
+  "merge": [],
+  "null": [],
+  "kasper": {
+    "junk": "347f75f1-ca15-4aa2-a8e0-e1a2df382bcf",
+    "target": "f2bb6f54-1046-48ba-8410-68345fa63ddc",
+    "birth_date": "2003-01-20"
+  }
+}

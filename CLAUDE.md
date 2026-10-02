@@ -1,4 +1,4 @@
-# CLAUDE.md — Prosjekthukommelse for friidrett.live
+# CLAUDE.md — Prosjekthukommelse for friidrettsresultater.no
 
 ## Hva er dette?
 Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 frontend, Python-scraper mot minfriidrettsstatistikk.info og friidrett.no.
@@ -32,10 +32,15 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 
 | Script | Formål | Når |
 |--------|--------|-----|
-| `update_results.py` | Scrape + importer nye stevner | Regelmessig oppdatering |
+| `update_results.py` | Scrape + importer nye stevner, og avstem de siste 6 ukene mot kilden (rettelser kommer inn, ingenting slettes) | Regelmessig oppdatering |
 | `import_historical.py` | Import historiske all-time data fra friidrett.no | Ved behov, sjelden |
 | `backfill_birth_years.py` | Hent fødselsår fra kilden for utøvere som mangler | Ved behov |
 | `merge_duplicate_meets.py` | Slå sammen duplikate stevner | Vedlikehold |
+| `test_fullstendighet.py` | Sjekk at sidene viser alt basen har, og at basen er konsistent (vindflagg, dubletter) | Etter hver import, og mot prod med `--url` |
+| `rydd_innholdsdubletter.py` | Fjern rader som er like på alt unntatt vind | Når `test_fullstendighet.py` melder dubletter |
+| `slaa_sammen_utoverdubletter.py` | Slå sammen utøverposter som er samme person (aldri ved ulikt fødselsår) | Når `test_fullstendighet.py` melder avdrift |
+| `nm_medaljer_fra_kilden.py` | NM-medaljer fra kildens resultatside (bare finaler, A-heat-regel) | Etter hvert NM |
+| `rydd_stevnedubletter.py` | Slå sammen stevneposter som er samme stevne (tvillingresultater slettes, resten flyttes bare når det er entydig) | Når `test_fullstendighet.py` melder stevnedubletter |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

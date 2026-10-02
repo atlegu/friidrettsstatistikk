@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================
-   DESIGN TOKENS - friidrettresultater.no
+   DESIGN TOKENS - friidrettsresultater.no
    Stats-first, Nordic, dense UI
    Based on UIdefinisjon.pdf
    ============================================ */
@@ -28,6 +28,25 @@
   --border-default: #E2E8F0;
   --border-strong: #CBD5E1;
   --focus-ring: #93C5FD;
+
+  /* ---- NORSK FRIIDRETT (dark profile surfaces) ----
+     Colours read from friidrett.no 2026-09-14. Same value in light and dark
+     mode: the surface is dark either way, so these must not be inverted.
+     NB: keep comments in this block ASCII-only. A multi-line comment with
+     Norwegian letters made the parser drop every declaration that followed
+     it, while the generated utility classes still referenced them. */
+  --nfif-navy: #192E5D;
+  --nfif-navy-dyp: #12224A;
+  --nfif-navy-lys: #2B4A86;
+  --nfif-navy-blekk: #C3CFE4;
+  --nfif-navy-blekk-svak: #9DB0CF;
+  --nfif-rod: #DC2626;
+  /* Kategoriske seriefarger for grafer, i fast rekkefoelge. Validert mot
+     fargeblindhet i lys modus (validate_palette.js, alle seks kontroller). */
+  --serie-1: #2F5DA8;
+  --serie-2: #DC2626;
+  --serie-3: #12907C;
+  --serie-4: #B8761A;
 
   /* ---- PRIMARY ACCENT (links, active states) ---- */
   --accent-primary: #1D4ED8;
@@ -205,6 +224,24 @@
     line-height: 1.45;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---- SEARCH FIELDS ----
+     Browsers draw their own clear control inside input[type=search]. It is
+     styled by the browser, not by us: in Safari it is a filled circle with a
+     cross that reads as an emoji, and on the dark navy fields it is close to
+     invisible. It is switched off here, and the SokeFelt component draws a
+     plain cross instead. */
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="search"]::-ms-clear {
+    display: none;
   }
 
   /* ---- LINKS: Color only, underline on hover ---- */
@@ -502,48 +539,18 @@
 }
 
 /* ============================================
-   DENSITY MODES
+   TETTHET
+   Én tetthet, kompakt. Velgeren Romslig/Kompakt/Ultra er fjernet
+   (Atle, 21.09.2026); tabeller og kort har samme mål overalt.
    ============================================ */
 
-/* Comfortable density */
-[data-density="comfortable"] table th,
-[data-density="comfortable"] table td {
-  padding: 8px 12px;
-}
-
-[data-density="comfortable"] .card-flat {
-  padding: 16px;
-}
-
-/* Compact density (default) */
-[data-density="compact"] table th,
-[data-density="compact"] table td {
+table th,
+table td {
   padding: 6px 12px;
 }
 
-[data-density="compact"] .card-flat {
+.card-flat {
   padding: 12px;
-}
-
-/* Ultra-compact density (desktop only) */
-@media (min-width: 768px) {
-  [data-density="ultra"] table th,
-  [data-density="ultra"] table td {
-    padding: 4px 10px;
-    font-size: 12px;
-  }
-
-  [data-density="ultra"] .card-flat {
-    padding: 8px;
-  }
-
-  [data-density="ultra"] h2 {
-    font-size: 1.143rem; /* 16px */
-  }
-
-  [data-density="ultra"] h3 {
-    font-size: 1rem; /* 14px */
-  }
 }
 
 /* ============================================

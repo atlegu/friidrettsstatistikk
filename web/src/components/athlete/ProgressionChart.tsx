@@ -32,6 +32,12 @@ interface ProgressionChartProps {
   // Controlled mode props - when provided, hides internal selector
   selectedEventId?: string
   hideSelector?: boolean
+  /** Overskrift; standard «Progresjon». */
+  tittel?: string
+  /** Kort tekst under grafen. */
+  fotnote?: string
+  /** Kompakt: ingen egen ramme, ingen tabell, første og beste punkt merket. */
+  kompakt?: boolean
 }
 
 function formatPerformanceForChart(value: number, resultType: string): string {
@@ -71,7 +77,7 @@ function formatYAxisTick(value: number, resultType: string): string {
   return value.toString()
 }
 
-export function ProgressionChart({ seasonBests, events, selectedEventId: controlledEventId, hideSelector }: ProgressionChartProps) {
+export function ProgressionChart({ seasonBests, events, selectedEventId: controlledEventId, hideSelector, tittel, fotnote, kompakt }: ProgressionChartProps) {
   const router = useRouter()
   const [internalEventId, setInternalEventId] = useState<string>(
     events.length > 0 ? events[0].id : ""
@@ -139,10 +145,28 @@ export function ProgressionChart({ seasonBests, events, selectedEventId: control
     return [Math.max(0, min - padding), max + padding]
   }, [chartData, resultType])
 
+  // Merk første punkt og beste punkt, som i designskissen
+  const besteIdx = chartData.reduce((b, r, i) =>
+    (resultType === "time" ? r.value < chartData[b].value : r.value > chartData[b].value) ? i : b, 0)
+  const punktMerke = (p: { x?: number | string; y?: number | string; index?: number }) => {
+    const x = Number(p.x), y = Number(p.y)
+    if (!kompakt || p.index === undefined || Number.isNaN(x) || Number.isNaN(y)) return <></>
+    const erBeste = p.index === besteIdx
+    if (!erBeste && p.index !== 0) return <></>
+    const rad = chartData[p.index]
+    const over = !erBeste || resultType !== "time"
+    return (
+      <text x={erBeste ? x : x + 6} y={over ? y - 10 : y + 18} textAnchor={erBeste ? "middle" : "start"} fontSize={12} fontWeight={700}
+            fill={erBeste ? "var(--nfif-rod)" : "var(--text-primary)"}>
+        {formatPerformance(rad.performance, resultType)}
+      </text>
+    )
+  }
+
   return (
-    <div className="card-flat">
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h3>Progresjon</h3>
+    <div className={kompakt ? "" : "card-flat"}>
+      <div className={`flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between ${kompakt ? "" : "mb-4"}`}>
+        {(!kompakt || tittel) && <h3>{tittel ?? "Progresjon"}</h3>}
         {!hideSelector && (
           <select
             value={selectedEventId}
@@ -174,7 +198,7 @@ export function ProgressionChart({ seasonBests, events, selectedEventId: control
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={chartData}
-                margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+                margin={{ top: kompakt ? 22 : 5, right: 20, left: 10, bottom: kompakt ? 12 : 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
                 <XAxis
@@ -215,6 +239,8 @@ export function ProgressionChart({ seasonBests, events, selectedEventId: control
                   stroke="var(--accent-primary)"
                   strokeWidth={2}
                   dot={{ fill: "var(--accent-primary)", strokeWidth: 2, r: 4, cursor: "pointer" }}
+                  label={kompakt ? punktMerke : undefined}
+                  isAnimationActive={false}
                   activeDot={{
                     r: 6,
                     fill: "var(--accent-primary)",
@@ -231,8 +257,9 @@ export function ProgressionChart({ seasonBests, events, selectedEventId: control
             </ResponsiveContainer>
           </div>
 
+          {fotnote && <p className="mt-2 text-[12.5px] text-[var(--text-muted)]">{fotnote}</p>}
           {/* Data table below chart */}
-          <div className="mt-4 overflow-x-auto border-t pt-2">
+          {!kompakt && <div className="mt-4 overflow-x-auto border-t pt-2">
             <table className="table-compact">
               <thead>
                 <tr>
@@ -262,7 +289,7 @@ export function ProgressionChart({ seasonBests, events, selectedEventId: control
                 ))}
               </tbody>
             </table>
-          </div>
+          </div>}
         </>
       )}
     </div>

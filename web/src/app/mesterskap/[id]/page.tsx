@@ -18,6 +18,7 @@ import {
   type Championship,
 } from "@/lib/championship-config"
 import { ClubFilter } from "@/components/championship/ClubFilter"
+import { hentAlle } from "@/lib/hent-alle"
 
 export const dynamic = 'force-dynamic'
 
@@ -47,59 +48,83 @@ async function getQualifiedAthletesForQuery(
   if (!eventCodes.length) return []
 
   const supabase = await createClient()
-
-  let query = supabase
-    .from('results_full')
-    .select('athlete_id, athlete_name, birth_date, club_id, club_name, performance, performance_value, result_type, wind, meet_name, meet_id, date, event_code, meet_indoor')
-    .in('event_code', eventCodes)
-    .gte('date', championship.qualificationStart)
-    .lte('date', championship.qualificationEnd)
-    .eq('gender', gender)
-    .eq('status', 'OK')
-    .gt('performance_value', 0)
-
-  if (standard.resultType === 'time') {
-    query = query.lte('performance_value', threshold)
-  } else {
-    query = query.gte('performance_value', threshold)
-  }
-
-  // Technical events: outdoor only (unless indoorCounts is true)
-  if (!standard.indoorCounts) {
-    query = query.eq('meet_indoor', false)
-  }
-
-  // Filter manual times for sprint/hurdle events
-  if (shouldFilterManualTimes(eventCodes)) {
-    query = query.eq('is_manual_time', false)
-  }
-
-  // Filter wind-assisted results
-  if (eventCodes.some(isWindAffected)) {
-    query = query.eq('is_wind_legal', true)
-  }
-
-  // Club filter
-  if (clubId) {
-    query = query.eq('club_id', clubId)
-  }
-
-  // Junior age filter
-  if (ageClassId && championship.ageClasses) {
-    const ac = championship.ageClasses.find(a => a.id === ageClassId)
-    if (ac) {
-      query = query.gte('birth_date', `${ac.minBirthYear}-01-01`)
-    }
-  }
-
   const ascending = standard.resultType === 'time'
-  query = query.order('performance_value', { ascending }).limit(500)
 
-  const { data } = await query
+  // Spoerringen bygges paa nytt for hver side. En Supabase-bygger er
+  // foranderlig og kan bare ventes paa én gang, saa den kan ikke gjenbrukes.
+  const byggSpoerring = (fra: number, til: number) => {
+    let query = supabase
+      .from('results_full')
+      .select('athlete_id, athlete_name, birth_date, club_id, club_name, performance, performance_value, result_type, wind, meet_name, meet_id, date, event_code, meet_indoor')
+      .in('event_code', eventCodes)
+      .gte('date', championship.qualificationStart)
+      .lte('date', championship.qualificationEnd)
+      .eq('gender', gender)
+      .eq('status', 'OK')
+      .gt('performance_value', 0)
 
-  // Deduplicate: best result per athlete
-  const bestByAthlete = new Map<string, NonNullable<typeof data>[0]>()
-  for (const r of data ?? []) {
+    if (standard.resultType === 'time') {
+      query = query.lte('performance_value', threshold)
+    } else {
+      query = query.gte('performance_value', threshold)
+    }
+
+    // Utendørs bare (med mindre innendørs teller). IS NOT TRUE, ikke = false:
+    // et stevne uten bane-flagg er utendørs, og tellingen i sidestolpen
+    // (tell_kvalifiserte) regner slik. Med «= false» var listen én kortere.
+    if (!standard.indoorCounts) {
+      query = query.not('meet_indoor', 'is', true)
+    }
+
+    // Filter manual times for sprint/hurdle events
+    if (shouldFilterManualTimes(eventCodes)) {
+      // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
+      // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
+      // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
+      // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
+      query = query.not('is_manual_time', 'is', true)
+    }
+
+    // Filter wind-assisted results
+    if (eventCodes.some(isWindAffected)) {
+      query = query.eq('is_wind_legal', true)
+    }
+
+    // Club filter
+    if (clubId) {
+      query = query.eq('club_id', clubId)
+    }
+
+    // Junior age filter
+    if (ageClassId && championship.ageClasses) {
+      const ac = championship.ageClasses.find(a => a.id === ageClassId)
+      if (ac) {
+        query = query.gte('birth_date', `${ac.minBirthYear}-01-01`)
+      }
+    }
+
+    return query
+      .order('performance_value', { ascending })
+      .order('athlete_id')
+      .range(fra, til)
+  }
+
+  // Her hentes ALLE resultatene som er innenfor kravet, ikke de 500 beste.
+  //
+  // Lista skal vise én utoever per rad, og utoeverne plukkes ut etterpaa.
+  // Med en grense paa raa resultater ble det en helt annen liste enn
+  // ventet: de raskeste har mange godkjente loep hver, saa de 500 beste
+  // resultatene paa 100 m menn dekket bare 64 utoevere. 138 hadde kravet.
+  // 74 kvalifiserte sto ikke paa lista over hvem som er kvalifisert.
+  const data = await hentAlle(
+    byggSpoerring,
+    `Kvalifiserte ${standard.id} ${gender}`
+  )
+
+  // Beste resultat per utoever. Radene er sortert, saa foerste treff paa en
+  // utoever er utoeverens beste.
+  const bestByAthlete = new Map<string, (typeof data)[0]>()
+  for (const r of data) {
     if (r.athlete_id && !bestByAthlete.has(r.athlete_id)) {
       bestByAthlete.set(r.athlete_id, r)
     }
@@ -150,15 +175,45 @@ async function getQualifiedAthletes(
   return getQualifiedAthletesForQuery(standard, gender, championship, ageClassId, clubId)
 }
 
-async function getQualifiedCount(
-  standard: QualificationStandard,
+/** Antall kvalifiserte per krav, alle kravene i ett kall (tell_kvalifiserte
+ *  i basen). Før ble alle kvalifiserte rader hentet for hvert krav, side for
+ *  side, bare for å telle dem: 20–40 tunge spørringer per sidevisning. */
+async function getQualifiedCounts(
+  standards: QualificationStandard[],
   gender: 'M' | 'F',
   championship: Championship,
   ageClassId?: string,
   clubId?: string
-): Promise<number> {
-  const results = await getQualifiedAthletes(standard, gender, championship, ageClassId, clubId)
-  return results.length
+): Promise<Map<string, number>> {
+  const klasser = championship.type === 'junior' && !ageClassId && championship.ageClasses
+    ? championship.ageClasses.map(ac => ac.id)
+    : [ageClassId]
+  const p_standarder = standards.map(s => ({
+    id: s.id,
+    fra: championship.qualificationStart,
+    til: championship.qualificationEnd,
+    lavere: s.resultType === 'time',
+    inne_teller: !!s.indoorCounts,
+    klubb: clubId ?? null,
+    varianter: klasser.flatMap(k => {
+      const terskel = getStandardValue(s, gender, k)
+      const koder = getEventCodes(s, gender, k)
+      if (terskel === undefined || !koder.length) return []
+      const ac = k ? championship.ageClasses?.find(a => a.id === k) : undefined
+      return [{
+        koder, terskel,
+        manuell: shouldFilterManualTimes(koder),
+        vind: koder.some(isWindAffected),
+        min_fodselsaar: ac?.minBirthYear ?? null,
+      }]
+    }),
+  })).filter(s => s.varianter.length > 0)
+
+  const supabase = await createClient()
+  const { data, error } = await supabase.rpc('tell_kvalifiserte', { p_standarder, p_kjonn: gender })
+  if (error) console.error('tell_kvalifiserte:', error.message)
+  const tall = (data ?? {}) as Record<string, number>
+  return new Map(standards.map(s => [s.id, tall[s.id] ?? 0]))
 }
 
 // --- Page ---
@@ -203,14 +258,8 @@ export default async function ChampionshipDetailPage({
     ? await getQualifiedAthletes(selectedStandard, genderKey, championship, validAgeClassId, clubId)
     : []
 
-  // Get counts for all events in sidebar
-  const counts = await Promise.all(
-    filteredStandards.map(async (s) => {
-      const count = await getQualifiedCount(s, genderKey, championship, validAgeClassId, clubId)
-      return { id: s.id, count }
-    })
-  )
-  const countMap = new Map(counts.map(c => [c.id, c.count]))
+  // Antall kvalifiserte per øvelse til sidestolpen, ett kall
+  const countMap = await getQualifiedCounts(filteredStandards, genderKey, championship, validAgeClassId, clubId)
 
   // Group events by category for sidebar
   const groupedStandards = EVENT_CATEGORY_ORDER

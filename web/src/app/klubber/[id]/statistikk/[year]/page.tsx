@@ -102,7 +102,11 @@ async function getClubTopResults(
 
   // Exclude manual times for sprint and hurdles events
   if (MANUAL_TIME_CATEGORIES.includes(eventCategory)) {
-    query = query.eq("is_manual_time", false)
+    // IS NOT TRUE, ikke = false: 42 356 resultater har is_manual_time som
+    // NULL, og NULL betyr «ikke manuell», altsaa det samme som false. Med
+    // «= false» falt de ut av lista. 23 040 av dem er i sprint- og
+    // hekkoevelser, der dette filteret brukes. Se CLAUDE.md punkt 8.
+    query = query.not("is_manual_time", "is", true)
   }
 
   // Exclude wind-assisted results for affected events
@@ -162,7 +166,9 @@ export default async function ClubYearListPage({
   const events = await getEvents()
   const selectedEvent = selectedEventId
     ? events.find((e) => e.id === selectedEventId)
-    : events[0]
+    // Standardøvelse: 100 m ute, 60 m inne. Første i sorteringen er 60 m,
+    // som knapt løpes utendørs, så listen så tom ut.
+    : (events.find((e) => e.code === (venue === "indoor" ? "60m" : "100m")) ?? events[0])
 
   const results = selectedEvent
     ? await getClubTopResults(id, yearNum, selectedEvent.id, selectedEvent.name, gender, age, selectedEvent.result_type ?? "time", selectedEvent.category ?? "", venue)

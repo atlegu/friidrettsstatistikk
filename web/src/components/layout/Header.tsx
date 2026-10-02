@@ -7,7 +7,6 @@ import { Menu, Search, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { DensityToggle } from "@/components/ui/density-toggle"
 import { UserMenu } from "@/components/auth/UserMenu"
 
 const navigation = [
@@ -45,6 +44,10 @@ const navigation = [
     ],
   },
   { name: "Klubber", href: "/klubber" },
+  {
+    name: "Aktivitet",
+    href: "/aktivitet",
+  },
   { name: "Spør AI", href: "/spor" },
 ]
 
@@ -116,7 +119,7 @@ export function Header() {
 
         {/* Logo */}
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">friidrettresultater</span>
+          <span className="text-xl font-bold text-primary">friidrettsresultater</span>
           <span className="text-xl font-light">.no</span>
         </Link>
 
@@ -173,8 +176,6 @@ export function Header() {
           </Button>
         )}
 
-        {/* Density toggle (desktop only) */}
-        <DensityToggle className="ml-4 hidden lg:flex" />
 
         {/* User menu */}
         <UserMenu />

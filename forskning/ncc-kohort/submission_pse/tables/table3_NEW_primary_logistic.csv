@@ -1,0 +1,11 @@
+Model,n,Covariate,OR,CI low,CI high,p,CV-AUC,CV-AUC SD
+L1: Sex only,1704,female,0.72,0.557,0.93,0.0121,0.541,0.023
+L2: + Performance (baseline),1704,female,0.677,0.522,0.877,0.0032,0.607,0.014
+L2: + Performance (baseline),1704,tyrving_best_z,1.413,1.216,1.641,0.0,0.607,0.014
+L3: + Specialization (early),1704,female,0.68,0.525,0.882,0.0037,0.6,0.019
+L3: + Specialization (early),1704,tyrving_best_z,1.411,1.216,1.637,0.0,0.6,0.019
+L3: + Specialization (early),1704,hhi_early_z,1.085,0.948,1.242,0.2384,0.6,0.019
+"L4: + Volume (pre-milestone, ages 13-14)",1704,female,0.605,0.457,0.8,0.0004,0.751,0.026
+"L4: + Volume (pre-milestone, ages 13-14)",1704,tyrving_best_z,1.119,0.962,1.302,0.1443,0.751,0.026
+"L4: + Volume (pre-milestone, ages 13-14)",1704,hhi_early_z,1.356,1.17,1.571,0.0001,0.751,0.026
+"L4: + Volume (pre-milestone, ages 13-14)",1704,vol_pre_milepael_z,2.396,2.077,2.764,0.0,0.751,0.026

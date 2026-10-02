@@ -1,0 +1,14 @@
+Model,Covariate,OR,CI low,CI high,p
+Model A: with tyrving_best,female,0.605,0.457,0.8,0.0004
+Model A: with tyrving_best,tyrving_best_z,1.119,0.962,1.302,0.1443
+Model A: with tyrving_best,hhi_early_z,1.356,1.17,1.571,0.0001
+Model A: with tyrving_best,vol_pre_milepael_z,2.396,2.077,2.764,0.0
+Model B: + tyrving_main,female,0.623,0.466,0.833,0.0014
+Model B: + tyrving_main,tyrving_best_z,1.08,0.893,1.305,0.4275
+Model B: + tyrving_main,hhi_early_z,1.321,1.134,1.539,0.0004
+Model B: + tyrving_main,vol_pre_milepael_z,2.313,1.972,2.714,0.0
+Model B: + tyrving_main,tyrving_main_z,1.08,0.886,1.316,0.4452
+Model C: tyrving_main replaces tyrving_best,female,0.622,0.47,0.825,0.001
+Model C: tyrving_main replaces tyrving_best,tyrving_main_z,1.135,0.964,1.337,0.1283
+Model C: tyrving_main replaces tyrving_best,hhi_early_z,1.329,1.145,1.543,0.0002
+Model C: tyrving_main replaces tyrving_best,vol_pre_milepael_z,2.318,1.987,2.704,0.0

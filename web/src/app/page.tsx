@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Users, Trophy, Calendar, Building2, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { ForsideSok } from "@/components/ForsideSok"
 import { formatPerformance } from "@/lib/format-performance"
+import { erVindpaavirket } from "@/lib/vind"
 import {
   INDOOR_CHAMPIONSHIP_EVENTS,
   OUTDOOR_CHAMPIONSHIP_EVENTS,
@@ -11,22 +11,51 @@ import {
   getEventDisplayName,
 } from "@/lib/event-config"
 
+export const revalidate = 900
+
+/** Loep der haandtidtaking ikke forekommer (800 m og lengre). */
+const LANGE_LOEP = new Set(["800m", "1500m", "3000m", "5000m", "10000m", "3000mhinder_91_4cm", "3000mhinder_76_2cm"])
+
+// Tellerne leses fra en materialisert visning, ikke med count: "exact".
+// En exact count over results (1,95 mill. rader) tar 0,3 s alene, men 2,8 s
+// når siden fyrer av knapt 40 spørringer samtidig — og feilet i produksjon,
+// der resultattelleren sto tom. Visningen oppdateres av importen.
 async function getStats() {
   const supabase = await createClient()
 
-  const [athletesResult, clubsResult, resultsResult, meetsResult] = await Promise.all([
-    supabase.from("athletes").select("id", { count: "exact", head: true }),
-    supabase.from("clubs").select("id", { count: "exact", head: true }),
-    supabase.from("results").select("id", { count: "exact", head: true }),
-    supabase.from("meets").select("id", { count: "exact", head: true }),
-  ])
+  const { data } = await supabase
+    .from("plattform_statistikk")
+    .select("antall_utovere,antall_klubber,antall_resultater,antall_stevner")
+    .single()
 
+  // Naar importen sist kjoerte (skrives av update_results.py)
+  const { data: v } = await supabase.from("vedlikehold").select("sist_oppdatert").eq("nokkel", "import").maybeSingle()
+
+  // Uten tall vises en strek. Et 0 ville sett ut som et gyldig svar.
   return {
-    athletes: athletesResult.count ?? 0,
-    clubs: clubsResult.count ?? 0,
-    results: resultsResult.count ?? 0,
-    meets: meetsResult.count ?? 0,
+    athletes: data?.antall_utovere ?? null,
+    clubs: data?.antall_klubber ?? null,
+    results: data?.antall_resultater ?? null,
+    meets: data?.antall_stevner ?? null,
+    oppdatert: v?.sist_oppdatert ?? null,
   }
+}
+
+/** «Oppdatert i dag kl. 04.12», «i går», eller dato. */
+function oppdatertTekst(iso: string | null) {
+  if (!iso) return null
+  const d = new Date(iso)
+  const tz = "Europe/Oslo"
+  const dag = d.toLocaleDateString("nb-NO", { timeZone: tz, day: "numeric", month: "long" })
+  const kl = d.toLocaleTimeString("nb-NO", { timeZone: tz, hour: "2-digit", minute: "2-digit" }).replace(":", ".")
+  const iDag = new Date().toLocaleDateString("nb-NO", { timeZone: tz, day: "numeric", month: "long" })
+  const iGaar = new Date(Date.now() - 86400000).toLocaleDateString("nb-NO", { timeZone: tz, day: "numeric", month: "long" })
+  const naar = dag === iDag ? "i dag" : dag === iGaar ? "i går" : dag
+  return `Oppdatert ${naar} kl. ${kl}`
+}
+
+function formatAntall(n: number | null) {
+  return n === null ? "–" : n.toLocaleString("no-NO")
 }
 
 async function getSeasonLeaders() {
@@ -49,7 +78,12 @@ async function getSeasonLeaders() {
     const results = await Promise.all(
       eventCodes.map(async (code) => {
         const isTime = TIME_EVENT_CODES.has(code)
-        const { data } = await supabase
+        // Feiler én av de 36 spoerringene (siden er ISR-cachet i 15 minutter,
+        // saa et forbigaaende avbrudd under tung last i basen fryser inn i
+        // sida), skal oevelsen fortsatt staa i lista - med en strek, ikke
+        // forsvinne. 18.09.2026 manglet stav og lengde paa forsiden en stund
+        // av akkurat den grunnen.
+        let q = supabase
           .from("results_full")
           .select(selectCols)
           .eq("event_code", code)
@@ -58,8 +92,19 @@ async function getSeasonLeaders() {
           .eq("gender", gender)
           .eq("status", "OK")
           .gt("performance_value", 0)
+        // Bare godkjente resultater: lovlig vind i vindpaavirkede oevelser
+        // (utendoers), og ikke haandtid i sprint og hekk. Samme regel som
+        // aarslistene. Foer kunne et medvindsloep eller en haandtid staa som
+        // aarsbeste paa forsiden.
+        if (!isIndoor && erVindpaavirket(code)) q = q.eq("is_wind_legal", true)
+        if (isTime && !LANGE_LOEP.has(code)) q = q.not("is_manual_time", "is", true)
+        const { data, error } = await q
           .order("performance_value", { ascending: isTime })
           .limit(1)
+        if (error) {
+          console.error(`Aarsbeste ${gender} ${code}:`, error.message)
+          return { event_code: code, feilet: true as const }
+        }
         return data?.[0] ?? null
       })
     )
@@ -75,265 +120,193 @@ async function getSeasonLeaders() {
   return { men, women, isIndoor, year: currentYear }
 }
 
+type Leder = Awaited<ReturnType<typeof getSeasonLeaders>>["men"][number]
+
+/** Ett inngangskort i «Finn fram»-rutenettet. */
+function Inngang({ href, tittel, beskrivelse }: {
+  href: string; tittel: string; beskrivelse: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="group flex items-start justify-between gap-3 rounded-xl border
+                 border-[var(--border-default)] bg-[var(--bg-surface)] p-4
+                 transition-colors hover:border-[var(--nfif-navy-lys)]"
+    >
+      <div>
+        <div className="font-semibold text-[var(--text-primary)]">{tittel}</div>
+        <p className="mt-0.5 text-[13px] text-[var(--text-secondary)]">{beskrivelse}</p>
+      </div>
+      <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[var(--text-muted)] transition-transform group-hover:translate-x-0.5" />
+    </Link>
+  )
+}
+
+/** Årsbestetabell for ett kjønn. Mann og kvinne var før to like blokker. */
+function Aarsbeste({ tittel, ledere, venueParam }: {
+  tittel: string; ledere: Leder[]; venueParam: string
+}) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)]">
+      <h3 className="border-b border-[var(--border-default)] bg-[var(--bg-muted)] px-4 py-2.5 text-[13px] font-bold uppercase tracking-wide text-[var(--nfif-navy)]">
+        {tittel}
+      </h3>
+      {ledere.length === 0 ? (
+        <p className="p-4 text-center text-sm text-[var(--text-muted)]">Ingen resultater ennå</p>
+      ) : (
+        <table className="w-full">
+          <tbody>
+            {ledere.map((r) => "feilet" in r ? (
+              <tr key={r.event_code} className="border-b border-[var(--border-default)] last:border-0">
+                <td className="px-4 py-2 text-[13px] text-[var(--text-secondary)]">
+                  {getEventDisplayName(r.event_code)}
+                </td>
+                <td className="px-4 py-2 text-right text-[13px] text-[var(--text-muted)]">–</td>
+                <td className="px-4 py-2 text-[12px] text-[var(--text-muted)]">kunne ikke hentes</td>
+              </tr>
+            ) : (
+              <tr
+                key={r.event_code}
+                className="border-b border-[var(--border-default)] last:border-0 hover:bg-[var(--bg-muted)]"
+              >
+                <td className="px-4 py-2 text-[13px]">
+                  <Link
+                    href={`/statistikk?event=${r.event_id}&gender=${tittel === "Menn" ? "M" : "F"}&venue=${venueParam}`}
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)]"
+                  >
+                    {getEventDisplayName(r.event_code!)}
+                  </Link>
+                </td>
+                <td className="whitespace-nowrap px-4 py-2 text-right">
+                  <span className="perf-value text-[13px] font-bold tabular-nums">
+                    {formatPerformance(r.performance, r.result_type)}
+                  </span>
+                  {r.wind !== null && r.wind !== undefined && (
+                    <span className="ml-1 text-[11px] text-[var(--text-muted)]">
+                      ({r.wind > 0 ? "+" : ""}{r.wind})
+                    </span>
+                  )}
+                </td>
+                <td className="px-4 py-2 text-[13px]">
+                  <Link
+                    href={`/utover/${r.athlete_id}`}
+                    className="font-medium text-[var(--accent-primary)] hover:underline"
+                  >
+                    {r.athlete_name}
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  )
+}
+
 export default async function Home() {
   const [stats, seasonLeaders] = await Promise.all([getStats(), getSeasonLeaders()])
 
   const venueLabel = seasonLeaders.isIndoor ? "Innendørs" : "Utendørs"
   const venueParam = seasonLeaders.isIndoor ? "indoor" : "outdoor"
+  const aar = seasonLeaders.year
+
+  const noekkeltall = [
+    { merkelapp: "Resultater", verdi: stats.results },
+    { merkelapp: "Utøvere", verdi: stats.athletes },
+    { merkelapp: "Stevner", verdi: stats.meets },
+    { merkelapp: "Klubber", verdi: stats.clubs },
+  ]
 
   return (
-    <div className="container py-8 md:py-12">
-      {/* Hero Section */}
-      <section className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
-          Norsk Friidrettsstatistikk
-        </h1>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          Komplett oversikt over norsk friidrett - fra rekrutt til veteran.
-          Resultater, rekorder, utøverprofiler og stevnekalender.
-        </p>
-      </section>
+    <>
+      {/* Topp med søk. Det vanligste er å slå opp en person, så søket
+          står åpent i stedet for bak et ikon i menyen. */}
+      <section className="relative overflow-hidden bg-[var(--nfif-navy)]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--nfif-navy-dyp)] via-[var(--nfif-navy)] to-[var(--nfif-navy-lys)]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 -top-48 hidden h-[520px] w-[520px] rounded-full border-[64px] border-white/[0.04] lg:block"
+        />
+        <div className="container relative py-10 md:py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-white md:text-[2.5rem]">
+              Norsk friidrettsstatistikk
+            </h1>
+            <p className="mx-auto mt-2 max-w-lg text-[15px] text-[var(--nfif-navy-blekk)]">
+              Resultater, rekorder og utøverprofiler.
+            </p>
+            <div className="mt-6">
+              <ForsideSok />
+            </div>
+          </div>
 
-      {/* Stats Cards */}
-      <section className="mb-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Utøvere</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.athletes.toLocaleString("no-NO")}</div>
-            <Link href="/utover" className="text-xs text-muted-foreground hover:text-primary">
-              Se alle utøvere
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Klubber</CardTitle>
-            <Building2 className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.clubs.toLocaleString("no-NO")}</div>
-            <Link href="/klubber" className="text-xs text-muted-foreground hover:text-primary">
-              Se alle klubber
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Resultater</CardTitle>
-            <Trophy className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.results.toLocaleString("no-NO")}</div>
-            <Link href="/statistikk/2025" className="text-xs text-muted-foreground hover:text-primary">
-              Se årslister
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Stevner</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.meets.toLocaleString("no-NO")}</div>
-            <Link href="/stevner" className="text-xs text-muted-foreground hover:text-primary">
-              Se stevnekalender
-            </Link>
-          </CardContent>
-        </Card>
-      </section>
-
-      {/* Quick Links */}
-      <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-semibold">Utforsk statistikken</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Link href="/statistikk/2025">
-            <Card className="cursor-pointer transition-colors hover:bg-muted/50">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  Årslister 2025
-                  <ArrowRight className="h-4 w-4" />
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Se årets beste resultater fordelt på øvelser og aldersklasser
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/statistikk/all-time">
-            <Card className="cursor-pointer transition-colors hover:bg-muted/50">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  All-time lister
-                  <ArrowRight className="h-4 w-4" />
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Historiske toppresultater gjennom alle tider
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/statistikk/rekorder">
-            <Card className="cursor-pointer transition-colors hover:bg-muted/50">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  Norske rekorder
-                  <ArrowRight className="h-4 w-4" />
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Offisielle norske rekorder i alle øvelser
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <dl className="mx-auto mt-9 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+            {noekkeltall.map((n) => (
+              <div key={n.merkelapp} className="text-center">
+                <dd className="text-2xl font-bold tabular-nums text-white md:text-[1.75rem]">
+                  {formatAntall(n.verdi)}
+                </dd>
+                <dt className="mt-0.5 text-[11px] font-bold uppercase tracking-[0.07em] text-[var(--nfif-navy-blekk-svak)]">
+                  {n.merkelapp}
+                </dt>
+              </div>
+            ))}
+          </dl>
+          {stats.oppdatert && (
+            <p className="mt-5 text-center text-[12.5px] text-[var(--nfif-navy-blekk-svak)]">
+              {oppdatertTekst(stats.oppdatert)} · resultatene hentes og avstemmes mot kilden hver natt
+            </p>
+          )}
         </div>
       </section>
 
-      {/* Season Leaders */}
-      <section>
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">
-            Årsbeste {seasonLeaders.year} – {venueLabel}
-          </h2>
-          <Button variant="ghost" asChild>
-            <Link href={`/statistikk?venue=${venueParam}`}>
-              Se årslister <ArrowRight className="ml-2 h-4 w-4" />
+      <div className="container py-8 md:py-10">
+        {/* Inngangene. Seks veier videre, ikke tre. */}
+        <section className="mb-10">
+          <h2 className="mb-4 text-xl font-semibold">Finn fram</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <Inngang href={`/statistikk/${aar}`} tittel={`Årslister ${aar}`}
+                     beskrivelse="Årets beste, per øvelse og aldersklasse" />
+            <Inngang href="/statistikk/all-time" tittel="Alle tiders"
+                     beskrivelse="De beste noteringene gjennom historien" />
+            <Inngang href="/statistikk/rekorder" tittel="Norske rekorder"
+                     beskrivelse="Offisielle rekorder i alle øvelser" />
+            <Inngang href="/mesterskap" tittel="Mesterskap"
+                     beskrivelse="Hvem er kvalifisert til NM" />
+            <Inngang href="/stevner" tittel="Stevner"
+                     beskrivelse="Stevnekalender og resultatlister" />
+            <Inngang href="/klubber" tittel="Klubber"
+                     beskrivelse="Klubbstatistikk, rekorder og utøvere" />
+          </div>
+        </section>
+
+        {/* Årsbeste */}
+        <section>
+          <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-xl font-semibold">
+              Årsbeste {aar}
+              <span className="ml-2 text-[13px] font-normal text-[var(--text-muted)]">
+                {venueLabel.toLowerCase()}
+              </span>
+            </h2>
+            <Link
+              href={`/statistikk?venue=${venueParam}`}
+              className="inline-flex items-center gap-1 text-[13px] font-medium text-[var(--accent-primary)] hover:underline"
+            >
+              Se alle årslister <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-          </Button>
-        </div>
+          </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Men */}
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Menn</CardTitle>
-            </CardHeader>
-            <CardContent className="p-0">
-              {seasonLeaders.men.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b bg-muted/50">
-                        <th className="px-3 py-2 text-left text-xs font-medium">Øvelse</th>
-                        <th className="px-3 py-2 text-left text-xs font-medium">Resultat</th>
-                        <th className="px-3 py-2 text-left text-xs font-medium">Utøver</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {seasonLeaders.men.map((result) => (
-                        <tr key={result.event_code} className="border-b last:border-0 hover:bg-muted/30">
-                          <td className="px-3 py-1.5 text-sm">
-                            <Link
-                              href={`/statistikk?event=${result.event_id}&gender=M&venue=${venueParam}`}
-                              className="hover:text-primary hover:underline"
-                            >
-                              {getEventDisplayName(result.event_code!)}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-1.5">
-                            <span className="perf-value text-sm">
-                              {formatPerformance(result.performance, result.result_type)}
-                            </span>
-                            {result.wind !== null && result.wind !== undefined && (
-                              <span className="ml-1 text-xs text-muted-foreground">
-                                ({result.wind > 0 ? "+" : ""}{result.wind})
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-3 py-1.5 text-sm">
-                            <Link
-                              href={`/utover/${result.athlete_id}`}
-                              className="font-medium text-primary hover:underline"
-                            >
-                              {result.athlete_name}
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <p className="p-4 text-center text-sm text-muted-foreground">
-                  Ingen resultater ennå
-                </p>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* Women */}
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Kvinner</CardTitle>
-            </CardHeader>
-            <CardContent className="p-0">
-              {seasonLeaders.women.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b bg-muted/50">
-                        <th className="px-3 py-2 text-left text-xs font-medium">Øvelse</th>
-                        <th className="px-3 py-2 text-left text-xs font-medium">Resultat</th>
-                        <th className="px-3 py-2 text-left text-xs font-medium">Utøver</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {seasonLeaders.women.map((result) => (
-                        <tr key={result.event_code} className="border-b last:border-0 hover:bg-muted/30">
-                          <td className="px-3 py-1.5 text-sm">
-                            <Link
-                              href={`/statistikk?event=${result.event_id}&gender=F&venue=${venueParam}`}
-                              className="hover:text-primary hover:underline"
-                            >
-                              {getEventDisplayName(result.event_code!)}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-1.5">
-                            <span className="perf-value text-sm">
-                              {formatPerformance(result.performance, result.result_type)}
-                            </span>
-                            {result.wind !== null && result.wind !== undefined && (
-                              <span className="ml-1 text-xs text-muted-foreground">
-                                ({result.wind > 0 ? "+" : ""}{result.wind})
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-3 py-1.5 text-sm">
-                            <Link
-                              href={`/utover/${result.athlete_id}`}
-                              className="font-medium text-primary hover:underline"
-                            >
-                              {result.athlete_name}
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <p className="p-4 text-center text-sm text-muted-foreground">
-                  Ingen resultater ennå
-                </p>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-    </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Aarsbeste tittel="Menn" ledere={seasonLeaders.men} venueParam={venueParam} />
+            <Aarsbeste tittel="Kvinner" ledere={seasonLeaders.women} venueParam={venueParam} />
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

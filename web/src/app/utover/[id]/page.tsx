@@ -2,14 +2,16 @@ import { Suspense } from "react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
+import { hentAlle } from "@/lib/hent-alle"
 
 export const dynamic = 'force-dynamic'
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
 import { AthleteHeader } from "@/components/athlete/AthleteHeader"
-import { PersonalBestsSection } from "@/components/athlete/PersonalBestsSection"
 import { ResultsSection } from "@/components/athlete/ResultsSection"
-import { AthleteChartsSection } from "@/components/athlete/AthleteChartsSection"
 import { ChampionshipMedalsSection } from "@/components/athlete/ChampionshipMedalsSection"
+import { ProgressionChart } from "@/components/athlete/ProgressionChart"
+import { Kort, PersonligeRekorder, NmKrav, KlubbHistorikk, klubbPerioder, SesongTabell } from "@/components/athlete/ProfilKort"
+import { nmStatus } from "@/lib/nm-status"
 
 // Type definitions
 interface AthleteStats {
@@ -49,12 +51,21 @@ async function getAthlete(id: string) {
 async function getAthleteStats(athleteId: string): Promise<AthleteStats> {
   const supabase = await createClient()
 
-  const { data: statsData } = await supabase
-    .from("results_full")
-    .select("id, meet_id, event_id, season_year, is_national_record")
-    .eq("athlete_id", athleteId)
+  // Nøkkeltallene telles opp fra radene, så de blir bare riktige når alle
+  // radene er med. Uten sidehenting sto de 37 utøverne med over tusen
+  // resultater oppført med nøyaktig 1000.
+  const statsData = await hentAlle(
+    (fra, til) =>
+      supabase
+        .from("results_full")
+        .select("id, meet_id, event_id, season_year, is_national_record")
+        .eq("athlete_id", athleteId)
+        .order("id", { ascending: true })
+        .range(fra, til),
+    "Utøvernøkkeltall"
+  )
 
-  if (!statsData || statsData.length === 0) {
+  if (statsData.length === 0) {
     return {
       totalResults: 0,
       totalMeets: 0,
@@ -80,25 +91,18 @@ async function getAthleteStats(athleteId: string): Promise<AthleteStats> {
   }
 }
 
-async function getMainEvent(athleteId: string): Promise<string | null> {
-  const supabase = await createClient()
-
-  const { data } = await supabase
-    .from("results_full")
-    .select("event_name")
-    .eq("athlete_id", athleteId)
-
-  if (!data || data.length === 0) return null
-
-  const eventCounts: Record<string, number> = {}
-  data.forEach((r) => {
-    if (r.event_name) {
-      eventCounts[r.event_name] = (eventCounts[r.event_name] || 0) + 1
-    }
-  })
-
-  const sortedEvents = Object.entries(eventCounts).sort((a, b) => b[1] - a[1])
-  return sortedEvents.length > 0 ? sortedEvents[0][0] : null
+/** Hovedøvelse: øvelsen med flest resultater, der nyere sesonger teller
+ *  mest (hver sesong tilbake halverer vekten). En tidligere mangekjemper som
+ *  nå løper hekk får hekk, ikke lengde. */
+function finnHovedovelse(rader: { event_name: string | null; season_year: number | null }[]): string | null {
+  const siste = Math.max(...rader.map((r) => r.season_year ?? 0), 0)
+  const vekt = new Map<string, number>()
+  for (const r of rader) {
+    if (!r.event_name) continue
+    const alder = Math.max(0, siste - (r.season_year ?? siste))
+    vekt.set(r.event_name, (vekt.get(r.event_name) ?? 0) + Math.pow(0.5, alder))
+  }
+  return [...vekt.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
 }
 
 async function getPersonalBestsDetailed(athleteId: string) {
@@ -112,17 +116,26 @@ async function getPersonalBestsDetailed(athleteId: string) {
   return data ?? []
 }
 
+// De 37 utøverne med mer enn tusen resultater fikk bare de tusen første, og
+// «Resultater» i toppen viste 1000 i stedet for det virkelige tallet. Mest
+// for Gjert Høie Sjursen, som har 2 070.
 async function getAthleteResults(athleteId: string) {
   const supabase = await createClient()
 
-  const { data } = await supabase
-    .from("results_full")
-    .select("*")
-    .eq("athlete_id", athleteId)
-    .eq("status", "OK")
-    .order("date", { ascending: false })
-
-  return data ?? []
+  return hentAlle(
+    (fra, til) =>
+      supabase
+        .from("results_full")
+        .select(
+          "id,date,performance,performance_value,wind,place,round,is_pb,is_sb,is_national_record,is_manual_time,event_id,event_name,event_code,result_type,meet_id,meet_name,meet_indoor,season_year,club_id,club_name"
+        )
+        .eq("athlete_id", athleteId)
+        .eq("status", "OK")
+        .order("date", { ascending: false })
+        .order("id", { ascending: true })
+        .range(fra, til),
+    "Utøverresultater"
+  )
 }
 
 async function getAthleteSeasons(athleteId: string): Promise<number[]> {
@@ -197,6 +210,7 @@ async function getSeasonBests(athleteId: string) {
     performance: sb.performance || "",
     performance_value: sb.performance_value || 0,
     meet_id: sb.meet_id || "",
+    indoor: /innend/i.test(sb.season_name ?? ""),
   }))
 }
 
@@ -223,10 +237,9 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
   }
 
   // Fetch all data in parallel
-  const [stats, mainEvent, personalBests, results, seasons, events, seasonBests, championshipMedals] =
+  const [stats, personalBests, results, seasons, events, seasonBests, championshipMedals] =
     await Promise.all([
       getAthleteStats(id),
-      getMainEvent(id),
       getPersonalBestsDetailed(id),
       getAthleteResults(id),
       getAthleteSeasons(id),
@@ -236,6 +249,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
     ])
 
   const club = athlete.club as { id: string; name: string } | null
+  const mainEvent = finnHovedovelse(results)
   const fullName = athlete.full_name || `${athlete.first_name} ${athlete.last_name}`
 
   // Medal counts for header badge — only outdoor NM
@@ -268,6 +282,9 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
     meet_name: r.meet_name || "",
     meet_indoor: r.meet_indoor,
     season_year: r.season_year,
+    is_manual_time: r.is_manual_time,
+    club_id: r.club_id,
+    club_name: r.club_name,
   }))
 
   // Map personal bests for PersonalBestsSection
@@ -326,46 +343,65 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
         />
       </div>
 
-      {/* Championship Medals */}
-      {championshipMedals.length > 0 && (
-        <div className="mt-6">
-          <ChampionshipMedalsSection medals={championshipMedals} />
-        </div>
-      )}
+      {/* To kolonner, som designskissen: utvikling og sesong til venstre,
+          rekorder, NM-status og klubbhistorikk til hoeyre. */}
+      {(() => {
+        const kjonn = (athlete.gender === "F" ? "F" : "M") as "M" | "F"
+        const hovedEvent = events.find((e) => e.name === mainEvent) ?? events[0]
+        const iAar = new Date().getFullYear()
+        const sesongAar = mappedResults.some((r) => r.season_year === iAar) ? iAar : (seasons[0] ?? iAar)
+        // Aarsbeste utendoers til utviklingskurven; innendoers har egne lister.
+        const uteBests = seasonBests.filter((sb) => !sb.indoor)
+        const senior = nmStatus("nm-senior-2026", kjonn, athlete.birth_year, mappedResults)
+        const junior = athlete.birth_year && athlete.birth_year >= 2004
+          ? nmStatus("nm-junior-2026", kjonn, athlete.birth_year, mappedResults) : null
+        const perioder = klubbPerioder(mappedResults)
+        // Øvelser med resultater i de tre siste sesongene utøveren har vært aktiv
+        const sisteSesong = Math.max(...mappedResults.map((r) => r.season_year ?? 0), 0)
+        const aktiveEventIds = new Set(
+          mappedResults.filter((r) => (r.season_year ?? 0) >= sisteSesong - 2).map((r) => r.event_id))
 
-      {/* Main content - "At a glance" layout */}
-      <div className="mt-6 space-y-6">
-        {/* Section 1: Personal Bests (full width, most important) */}
-        <section>
-          <h2 className="mb-3">Personlige rekorder</h2>
-          <PersonalBestsSection personalBests={mappedPBs} />
-        </section>
+        return (
+          <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
+            <div className="grid min-w-0 grid-cols-1 gap-4">
+              {hovedEvent && (
+                <Kort tittel="Utvikling">
+                  <ProgressionChart
+                    seasonBests={uteBests.length > 0 ? uteBests : seasonBests}
+                    events={[hovedEvent, ...events.filter((e) => e.id !== hovedEvent.id)]}
+                    kompakt
+                    fotnote="Årsbeste utendørs. Hold over et punkt for år og resultat, klikk for stevnet."
+                  />
+                </Kort>
+              )}
 
-        {/* Section 2: Charts with shared event selector */}
-        <section>
-          <Suspense fallback={<div className="h-[400px] bg-muted animate-pulse rounded" />}>
-            <AthleteChartsSection
-              seasonBests={seasonBests}
-              results={mappedResults}
-              events={events}
-              pbResultIds={pbResultIds}
-            />
-          </Suspense>
-        </section>
+              <SesongTabell aar={sesongAar} rader={mappedResults} pbIds={pbResultIds} />
 
-        {/* Section 4: All Results (filterable) */}
-        <section>
-          <h2 className="mb-3">Alle resultater</h2>
-          <Suspense fallback={<div className="h-[300px] bg-muted animate-pulse rounded" />}>
-            <ResultsSection
-              results={mappedResults}
-              seasons={seasons}
-              events={events.map((e) => ({ id: e.id, name: e.name, code: e.code }))}
-              pbResultIds={pbResultIds}
-            />
-          </Suspense>
-        </section>
-      </div>
+              <section>
+                <h2 className="mb-3">Alle resultater</h2>
+                <Suspense fallback={<div className="h-[300px] animate-pulse rounded bg-muted" />}>
+                  <ResultsSection
+                    results={mappedResults}
+                    seasons={seasons}
+                    events={events.map((e) => ({ id: e.id, name: e.name, code: e.code }))}
+                    pbResultIds={pbResultIds}
+                  />
+                </Suspense>
+              </section>
+            </div>
+
+            <div className="grid min-w-0 grid-cols-1 gap-4">
+              <PersonligeRekorder pbs={mappedPBs} aktiveEventIds={aktiveEventIds} />
+              {senior && <NmKrav navn={senior.mesterskap.shortName} aar={senior.mesterskap.year} rader={senior.rader}
+                                 lenke={`/mesterskap/${senior.mesterskap.id}?gender=${kjonn}`} />}
+              {junior && junior.rader.length > 0 && <NmKrav navn={junior.mesterskap.shortName} aar={junior.mesterskap.year} rader={junior.rader}
+                                 lenke={`/mesterskap/${junior.mesterskap.id}?gender=${kjonn}`} />}
+              <KlubbHistorikk perioder={perioder} />
+              {championshipMedals.length > 0 && <ChampionshipMedalsSection medals={championshipMedals} />}
+            </div>
+          </div>
+        )
+      })()}
     </div>
   )
 }

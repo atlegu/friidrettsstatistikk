@@ -1,39 +1,37 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { SokeFelt } from "@/components/ui/soke-felt"
 
 export const metadata = {
   title: "Utøvere",
   description: "Søk blant alle registrerte utøvere i norsk friidrett",
 }
 
+/** Hvor mange utoevere lista viser. «Hansen» treffer 1 410, «Lie» 2 864. */
+const ANTALL = 100
+
 async function getAthletes(search?: string) {
   const supabase = await createClient()
 
   let query = supabase
     .from("athletes")
-    .select(`
-      id,
-      first_name,
-      last_name,
-      full_name,
-      birth_year,
-      gender,
-      current_club_id
-    `)
+    .select(
+      "id, first_name, last_name, full_name, birth_year, gender, current_club_id",
+      { count: "exact" }
+    )
     .order("last_name", { ascending: true })
-    .limit(100)
+    .limit(ANTALL)
 
   if (search) {
     query = query.or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%,full_name.ilike.%${search}%`)
   }
 
-  const { data: athletes } = await query
+  const { data: athletes, count } = await query
 
-  if (!athletes) return []
+  if (!athletes) return { utovere: [], totalt: 0 }
 
   // Get club names for athletes with current_club_id
   const clubIds = [...new Set(athletes.filter(a => a.current_club_id).map(a => a.current_club_id!))]
@@ -50,10 +48,13 @@ async function getAthletes(search?: string) {
     }
   }
 
-  return athletes.map(athlete => ({
-    ...athlete,
-    club_name: athlete.current_club_id ? clubsMap[athlete.current_club_id] : null
-  }))
+  return {
+    utovere: athletes.map(athlete => ({
+      ...athlete,
+      club_name: athlete.current_club_id ? clubsMap[athlete.current_club_id] : null
+    })),
+    totalt: count ?? athletes.length,
+  }
 }
 
 export default async function UtoverPage({
@@ -62,7 +63,7 @@ export default async function UtoverPage({
   searchParams: Promise<{ search?: string }>
 }) {
   const { search } = await searchParams
-  const athletes = await getAthletes(search)
+  const { utovere: athletes, totalt } = await getAthletes(search)
 
   return (
     <div className="container py-6">
@@ -71,13 +72,20 @@ export default async function UtoverPage({
 
       {/* Search */}
       <form className="mb-8 flex gap-2 max-w-md" autoComplete="off">
-        <Input
-          type="search"
-          name="search"
-          placeholder="Søk etter utøver..."
-          defaultValue={search}
-          autoComplete="off"
-        />
+        <div className="flex-1">
+          <label htmlFor="utoversok" className="sr-only">
+            Søk etter utøver
+          </label>
+          <SokeFelt
+            id="utoversok"
+            standardVerdi={search}
+            plassholder="Søk etter utøver …"
+            klasse="h-9 w-full rounded-md border border-[var(--border-default)]
+                    bg-[var(--bg-card)] pl-3 pr-9 text-sm text-[var(--text-primary)]
+                    outline-none transition-colors placeholder:text-[var(--text-muted)]
+                    focus:border-[var(--accent-primary)]"
+          />
+        </div>
         <Button type="submit">Søk</Button>
       </form>
 
@@ -125,9 +133,24 @@ export default async function UtoverPage({
         </CardContent>
       </Card>
 
-      <p className="mt-4 text-sm text-muted-foreground">
-        Viser {athletes.length} utøvere {search && `for søk "${search}"`}
-      </p>
+      {athletes.length > 0 && (
+        <p className="mt-4 text-sm text-muted-foreground">
+          {totalt > athletes.length ? (
+            <>
+              Viser {athletes.length.toLocaleString("nb-NO")} av{" "}
+              {totalt.toLocaleString("nb-NO")} utøvere
+              {search && ` for søket «${search}»`}, alfabetisk på etternavn.
+              Skriv mer av navnet for å snevre inn.
+            </>
+          ) : (
+            <>
+              Viser {athletes.length.toLocaleString("nb-NO")}{" "}
+              {athletes.length === 1 ? "utøver" : "utøvere"}
+              {search && ` for søket «${search}»`}.
+            </>
+          )}
+        </p>
+      )}
     </div>
   )
 }

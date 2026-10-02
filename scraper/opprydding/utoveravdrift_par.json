@@ -1,0 +1,442 @@
+[
+ {
+  "a": "5272ea0d-d19e-46c9-8367-67483d95632f",
+  "b": "6b8a82e9-1395-4b24-808d-3686469154be",
+  "felles_resultater": 20,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Alfred Lund Stende",
+  "aar": [
+   2012,
+   2012
+  ]
+ },
+ {
+  "a": "6487ad0e-7e57-40ca-8b50-d8b9033ef102",
+  "b": "dfc158a3-cac0-4a5d-9b58-99f912fac546",
+  "felles_resultater": 16,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Synne Eline Skånø Willmann",
+  "aar": [
+   2005,
+   2005
+  ]
+ },
+ {
+  "a": "6487ad0e-7e57-40ca-8b50-d8b9033ef102",
+  "b": "782a1fc4-2668-41fa-a282-54fdd9be89e9",
+  "felles_resultater": 11,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Synne Eline Skånø Willmann",
+  "aar": [
+   2005,
+   2005
+  ]
+ },
+ {
+  "a": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "b": "75eee2a5-f742-43d3-a222-d56e0efb9020",
+  "felles_resultater": 9,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "90b7bde1-215a-4b47-9bae-856b5250e416",
+  "b": "c4a3460d-0649-4072-bd22-2a8d86e8a27f",
+  "felles_resultater": 6,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Ole Theodor Knobelauch",
+  "aar": [
+   2006,
+   2006
+  ]
+ },
+ {
+  "a": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "b": "b56ea8e2-671b-4330-bab3-e35e98e2aaf4",
+  "felles_resultater": 6,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "1aa87b62-dbf0-467d-bf3e-b84f21ede7c2",
+  "b": "a491dd1e-e715-4990-81f8-bb014805d096",
+  "felles_resultater": 6,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Lucas Andreas Bøen-Hope",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "435e6a76-81c7-459e-a698-b7aaa3fb5571",
+  "b": "a491dd1e-e715-4990-81f8-bb014805d096",
+  "felles_resultater": 6,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Lucas Andreas Bøen-Hope",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "b": "f4c38b71-f881-484c-9e44-07ba2c5d4f45",
+  "felles_resultater": 5,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "0657d28e-2e08-4258-9415-72d0f9ad7056",
+  "b": "94eedafd-5c7d-4acc-9931-1d2d17cd82aa",
+  "felles_resultater": 4,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Aaron Johannes Augensen-Kristiansen",
+  "aar": [
+   2003,
+   2003
+  ]
+ },
+ {
+  "a": "4b9ada75-1bb4-4e8a-ad2b-a6faa5eb9753",
+  "b": "ad581e64-dbf8-4cad-9c3c-51eb0715c9ad",
+  "felles_resultater": 4,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Tone Bjørdalsbakke Saure",
+  "aar": [
+   1987,
+   1987
+  ]
+ },
+ {
+  "a": "091e2f9d-9490-4d32-a0ba-6385ae9b4e10",
+  "b": "f3aff983-fc74-46c2-a842-8bd2483ff46b",
+  "felles_resultater": 3,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Audun Ludvig Sjöström-Johnsen",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "53be002b-a28b-4ac2-b849-9a50752ad902",
+  "b": "ad581e64-dbf8-4cad-9c3c-51eb0715c9ad",
+  "felles_resultater": 3,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Tone Bjørdalsbakke Saure",
+  "aar": [
+   1987,
+   1987
+  ]
+ },
+ {
+  "a": "28b93d80-a497-4acd-a8dc-aaa76f136dcf",
+  "b": "a491dd1e-e715-4990-81f8-bb014805d096",
+  "felles_resultater": 2,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Lucas Andreas Bøen-Hope",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "1de1d00c-a070-4db9-8545-e3fb38788c1f",
+  "b": "6487ad0e-7e57-40ca-8b50-d8b9033ef102",
+  "felles_resultater": 2,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Synne Eline Skånø Willmann",
+  "aar": [
+   2005,
+   2005
+  ]
+ },
+ {
+  "a": "515431e2-8fa5-46d6-a881-46434b2579f0",
+  "b": "7f82c736-5d70-4bc8-9376-068b3b1b78a2",
+  "felles_resultater": 2,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Luna Erin Beite",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "3706c1eb-b150-493e-a77f-fd243c6492ad",
+  "b": "9da7e541-88d7-4cfb-8db8-fec53a767e5f",
+  "felles_resultater": 2,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Julie Amundsen Haug",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "051f5de8-4584-4e4e-a082-a82dbe105496",
+  "b": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "3e785451-688e-4c46-83f9-81b467732237",
+  "b": "f3aff983-fc74-46c2-a842-8bd2483ff46b",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Audun Ludvig Sjöström-Johnsen",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "b": "b4dffdc0-91b3-44f1-b946-fcd104de7b44",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "289e2764-d99c-4152-8302-6a65d5898831",
+  "b": "d74a4e92-9c9a-4784-a200-3d63db907e72",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Victoria Gjerde Berge",
+  "aar": [
+   2003,
+   2003
+  ]
+ },
+ {
+  "a": "e33ecd10-9b7d-4841-9b5b-d02a4642f8f1",
+  "b": "f3aff983-fc74-46c2-a842-8bd2483ff46b",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Audun Ludvig Sjöström-Johnsen",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "f3aff983-fc74-46c2-a842-8bd2483ff46b",
+  "b": "f949f10f-3818-40c2-8862-8570da6a5092",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Audun Ludvig Sjöström-Johnsen",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "7dcb061d-baa5-46b7-8049-a2d97c8d9026",
+  "b": "bdc9cb15-35da-430a-a367-0cbcfcb9a966",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Aron Alexander Høgmoen",
+  "aar": [
+   2011,
+   2011
+  ]
+ },
+ {
+  "a": "4e5acdc5-3487-4004-840d-77313f5efb7a",
+  "b": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "0657d28e-2e08-4258-9415-72d0f9ad7056",
+  "b": "0bf8abac-f8da-49c6-b185-cca3d1743be6",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Aaron Johannes Augensen-Kristiansen",
+  "aar": [
+   2003,
+   2003
+  ]
+ },
+ {
+  "a": "10fed7ba-687e-4e00-8aec-d96b2723d44e",
+  "b": "b296bc50-6e70-4a97-98d7-94e744ef36e9",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marin Stray Gautadottir",
+  "aar": [
+   2003,
+   2003
+  ]
+ },
+ {
+  "a": "092a5684-fa37-41e8-81b0-1b920ff03a77",
+  "b": "6784ef48-56fc-4b3b-b631-9326e54900ed",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Mats Muluken Flogeland",
+  "aar": [
+   2002,
+   2002
+  ]
+ },
+ {
+  "a": "a491dd1e-e715-4990-81f8-bb014805d096",
+  "b": "b0db984a-ef8e-4d46-8cf0-be43edbded52",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Lucas Andreas Bøen-Hope",
+  "aar": [
+   2009,
+   2009
+  ]
+ },
+ {
+  "a": "235d02a8-0665-448d-a3e4-35812965a654",
+  "b": "abed6a17-7df6-416c-b6a5-ef7c60708821",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Karl Anders Nilsen",
+  "aar": [
+   1975,
+   1975
+  ]
+ },
+ {
+  "a": "092a5684-fa37-41e8-81b0-1b920ff03a77",
+  "b": "503508ce-4baa-4a5e-8022-dcdc1a757619",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Mats Muluken Flogeland",
+  "aar": [
+   2002,
+   2002
+  ]
+ },
+ {
+  "a": "c9b80768-f463-4e8c-8556-36f6afc44a42",
+  "b": "fd3f6367-0c3e-4134-8af4-7debf0c6b211",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Simen Hagerup Kjeldsen",
+  "aar": [
+   1986,
+   1986
+  ]
+ },
+ {
+  "a": "64a8fd19-e4ac-4653-b08c-02e682dbeccb",
+  "b": "f2997b51-7d4b-4201-b777-d93faee12715",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Thor Eirik Skaret Monsen",
+  "aar": [
+   1997,
+   1997
+  ]
+ },
+ {
+  "a": "6487ad0e-7e57-40ca-8b50-d8b9033ef102",
+  "b": "e89fa684-e0b7-4d83-baa0-e19749c9fb1a",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Synne Eline Skånø Willmann",
+  "aar": [
+   2005,
+   2005
+  ]
+ },
+ {
+  "a": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "b": "81c1314b-f9a5-4853-b137-2d45c3aa42c5",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "4abd36b6-e3d1-4c1b-b38c-89a518d3052d",
+  "b": "70330683-2ce1-4dba-bea5-aac1ab370691",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Marc Christian Legayada Berntsen",
+  "aar": [
+   1999,
+   1999
+  ]
+ },
+ {
+  "a": "0bf7ab1d-3f64-4974-be50-4b2b842b6ba5",
+  "b": "c98cc31d-54cb-4998-ae35-7b80061c4aca",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Trine Audsdotter Gjelsvik",
+  "aar": [
+   1981,
+   1981
+  ]
+ },
+ {
+  "a": "33d35fcc-ba95-4c74-8cf3-73a39919b99e",
+  "b": "ad581e64-dbf8-4cad-9c3c-51eb0715c9ad",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Tone Bjørdalsbakke Saure",
+  "aar": [
+   1987,
+   1987
+  ]
+ },
+ {
+  "a": "7ad9982b-d247-43fb-b44e-714698ea6b39",
+  "b": "c157a86d-d12a-41c0-9bc5-3e4a8a40c5c2",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Eivind Torgeir Reien-Frestad",
+  "aar": [
+   2003,
+   2003
+  ]
+ },
+ {
+  "a": "007d2724-bc1a-4b75-8def-9314ba95b5c2",
+  "b": "c157a86d-d12a-41c0-9bc5-3e4a8a40c5c2",
+  "felles_resultater": 1,
+  "type": "samme aar og kjoenn (trygg)",
+  "navn": "Eivind Torgeir Reien-Frestad",
+  "aar": [
+   2003,
+   2003
+  ]
+ }
+]

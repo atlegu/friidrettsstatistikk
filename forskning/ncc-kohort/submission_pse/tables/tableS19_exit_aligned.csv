@@ -1,0 +1,13 @@
+Quantity,Value,n
+Aligned volume T-3 (median [IQR]),12 [6-18],795
+Aligned volume T-2 (median [IQR]),10 [6-16],1139
+Aligned volume T-1 (median [IQR]),9 [5-14],1139
+Aligned volume T-0 (median [IQR]),4 [2-8],1139
+Dropouts (final season at ages 15-19),1139,1139
+Active (>0 meets) in penultimate season,95.2%,1139
+Reduced-but-nonzero penultimate season (final age >=16),74.2%,795
+Penultimate season zero (gap year before final),6.5%,795
+Penultimate at personal peak (abrupt profile),19.2%,795
+Volume in final season below personal peak,93.5%,1139
+Change model among active at 16: level at 15 OR (per SD),"3.04 [2.55, 3.62]",1075
+Change model among active at 16: change 15->16 OR (per SD),"1.88 [1.60, 2.20]",1075
