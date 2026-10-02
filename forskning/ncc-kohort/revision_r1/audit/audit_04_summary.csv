@@ -1,0 +1,15 @@
+Check,Value
+participants at the lekene venue-days (any birth year),2785
+  of whom born 1998-2002,2139
+analysis cohort,2123
+cohort members found among venue-day participants,2123
+cohort members NOT found (no venue-day result in register state May 2026),0
+participants born 1998-2002 NOT in the cohort,16
+cohort first edition differs from venue-day first edition,5
+cohort region differs from venue region (first edition),139
+"  not in cohort: born 1998, first edition 2012",1
+"  not in cohort: born 2000, first edition 2014",7
+"  not in cohort: born 2001, first edition 2011",1
+"  not in cohort: born 2001, first edition 2014",4
+"  not in cohort: born 2001, first edition 2015",1
+"  not in cohort: born 2002, first edition 2016",2

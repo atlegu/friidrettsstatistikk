@@ -196,6 +196,14 @@ def main():
     sup = compile_supplement()
     to_docx(highlighted(sup), "SUPPLEMENT_R1_highlighted.docx", ref)
     to_docx(clean(sup), "SUPPLEMENT_R1_clean.docx", ref)
+    resp = OUT / "RESPONSE_TO_REVIEWER_R1.md"
+    subprocess.run(["pandoc", str(resp), "-f", "markdown-yaml_metadata_block", "-o", str(OUT / "RESPONSE_TO_REVIEWER_R1.docx"),
+                    f"--reference-doc={ref}"], check=True)
+    subprocess.run(["pandoc", str(resp), "-f", "markdown-yaml_metadata_block", "-t", "plain", "--wrap=none",
+                    "-o", str(OUT / "RESPONSE_TO_REVIEWER_R1.txt")], check=True)
+    (OUT / "figures").mkdir(exist_ok=True)
+    for f in sorted((HERE.parent / "figures").glob("*.png")):
+        shutil.copy(f, OUT / "figures" / f.name)
     ref.unlink()
 
     body = clean(ms)[: clean(ms).index("## References")]

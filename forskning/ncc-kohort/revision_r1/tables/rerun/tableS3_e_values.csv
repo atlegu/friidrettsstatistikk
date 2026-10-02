@@ -1,3 +1,3 @@
 Effect,Estimate,"Approx. RR (common outcome, sqrt-OR)",E-value (point),E-value (CI bound),Note
-"Pre-milestone volume, primary logistic (per SD)","OR 2.25 [1.99, 2.55]",1.5,2.37,2.17,Outcome prevalence 16.4%; OR converted to RR before E-value (VanderWeele & Ding 2017)
-"Pre-milestone volume, baseline-only Cox (per SD)",HR 0.54,1.54,2.44,,HR converted for common outcome
+"Pre-milestone volume, primary logistic (per SD)","OR 2.04 [1.80, 2.32]",1.43,2.21,2.02,Outcome prevalence 16.4%; OR converted to RR before E-value (VanderWeele & Ding 2017)
+"Pre-milestone volume, baseline-only Cox (per SD)",HR 0.56,1.5,2.37,,HR converted for common outcome

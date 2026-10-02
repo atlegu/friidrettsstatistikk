@@ -1,4 +1,4 @@
 Group,n,Female %,"Meets at 13-14, median [IQR]",>= 10 meets at 13-14 (%),Senior retention %,Volume OR per 10 meets (sex-adjusted),CV-AUC (sex + volume)
-Cohort (attended the baseline meet),2123,52.9,19 [10-33],77.2,16.7,"1.62 [1.51, 1.73]",0.741
-"Not in cohort (same birth years, >=1 result at 13-14)",5204,52.6,2 [1-4],9.0,2.0,"2.07 [1.70, 2.52]",0.680
-All athletes born 1998-2002 with >=1 result at 13-14,7327,52.7,3 [1-12],28.8,6.3,"1.97 [1.87, 2.08]",0.828
+Cohort (attended the baseline meet),2138,52.9,17 [9-29],72.5,15.9,"1.70 [1.58, 1.84]",0.740
+"Not in cohort (same birth years, >=1 result at 13-14)",5128,52.9,2 [1-4],7.4,1.7,"2.17 [1.70, 2.77]",0.680
+All athletes born 1998-2002 with >=1 result at 13-14,7266,52.9,3 [1-10],26.5,5.8,"2.15 [2.02, 2.29]",0.835

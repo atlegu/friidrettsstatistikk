@@ -1,13 +1,13 @@
 Outcome / sample,Season,Estimate,95% CI,As % change in (1 + meets),p,athletes,athlete-seasons,Meets
-"log(1 + meets), all athletes",T-3,-0.069,"[-0.137, -0.002]",-7,.045,1897,8447,
-"log(1 + meets), all athletes",T-2,-0.131,"[-0.213, -0.049]",-12,.002,1897,8447,
-"log(1 + meets), all athletes",T-1,-0.271,"[-0.370, -0.173]",-24,< .001,1897,8447,
-"log(1 + meets), all athletes",T,-0.646,"[-0.756, -0.535]",-48,< .001,1897,8447,
-"meets (linear), all athletes",T-3,-0.396,"[-1.065, 0.274]",,.247,1897,8447,-0.4
-"meets (linear), all athletes",T-2,-1.087,"[-1.940, -0.233]",,.013,1897,8447,-1.1
-"meets (linear), all athletes",T-1,-2.7,"[-3.747, -1.654]",,< .001,1897,8447,-2.7
-"meets (linear), all athletes",T,-6.44,"[-7.662, -5.217]",,< .001,1897,8447,-6.4
-"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T-3,-0.039,"[-0.114, 0.037]",-4,.314,692,4239,
-"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T-2,-0.093,"[-0.194, 0.007]",-9,.070,692,4239,
-"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T-1,-0.308,"[-0.432, -0.183]",-26,< .001,692,4239,
-"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T,-0.603,"[-0.733, -0.472]",-45,< .001,692,4239,
+"log(1 + meets), all athletes",T-3,-0.069,"[-0.136, -0.002]",-7,.044,1909,8490,
+"log(1 + meets), all athletes",T-2,-0.132,"[-0.214, -0.050]",-12,.002,1909,8490,
+"log(1 + meets), all athletes",T-1,-0.267,"[-0.365, -0.169]",-23,< .001,1909,8490,
+"log(1 + meets), all athletes",T,-0.64,"[-0.751, -0.530]",-47,< .001,1909,8490,
+"meets (linear), all athletes",T-3,-0.432,"[-1.093, 0.229]",,.200,1909,8490,-0.4
+"meets (linear), all athletes",T-2,-1.084,"[-1.929, -0.239]",,.012,1909,8490,-1.1
+"meets (linear), all athletes",T-1,-2.659,"[-3.696, -1.622]",,< .001,1909,8490,-2.7
+"meets (linear), all athletes",T,-6.381,"[-7.594, -5.168]",,< .001,1909,8490,-6.4
+"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T-3,-0.039,"[-0.114, 0.036]",-4,.305,693,4244,
+"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T-2,-0.089,"[-0.189, 0.011]",-9,.081,693,4244,
+"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T-1,-0.296,"[-0.419, -0.172]",-26,< .001,693,4244,
+"log(1 + meets), exits at ages 17-19 only (reference seasons observed)",T,-0.59,"[-0.720, -0.459]",-45,< .001,693,4244,

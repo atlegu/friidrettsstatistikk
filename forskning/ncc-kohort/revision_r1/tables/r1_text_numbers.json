@@ -1,34 +1,77 @@
 {
- "rho_vol_tyr": 0.37841043912057304,
- "rho_vol_peak_pre15": 0.547461892125087,
- "rho_milestonevol_tyr15": 0.6029026866901678,
- "r_hhi_tyr": -0.1981322741055897,
+ "rho_vol_tyr": 0.3493795250607471,
+ "rho_vol_peak_pre15": 0.5176794907490443,
+ "rho_milestonevol_tyr15": 0.6261732428699542,
+ "r_hhi_tyr": 0.017763155113074178,
  "quartile_table": [
   {
    "Baseline Tyrving quartile": "Q1 (lowest)",
-   "Senior retention, volume above median": "15.4% (n = 156)",
-   "Senior retention, volume at or below median": "9.5% (n = 368)"
+   "Senior retention, volume above median": "15.8% (n = 152)",
+   "Senior retention, volume at or below median": "3.9% (n = 382)"
   },
   {
    "Baseline Tyrving quartile": "Q2",
-   "Senior retention, volume above median": "17.3% (n = 208)",
-   "Senior retention, volume at or below median": "5.7% (n = 316)"
+   "Senior retention, volume above median": "18.1% (n = 221)",
+   "Senior retention, volume at or below median": "6.0% (n = 315)"
   },
   {
    "Baseline Tyrving quartile": "Q3",
-   "Senior retention, volume above median": "23.8% (n = 282)",
-   "Senior retention, volume at or below median": "4.3% (n = 256)"
+   "Senior retention, volume above median": "20.8% (n = 269)",
+   "Senior retention, volume at or below median": "10.6% (n = 263)"
   },
   {
    "Baseline Tyrving quartile": "Q4 (highest)",
-   "Senior retention, volume above median": "36.0% (n = 372)",
-   "Senior retention, volume at or below median": "13.9% (n = 137)"
+   "Senior retention, volume above median": "38.1% (n = 378)",
+   "Senior retention, volume at or below median": "13.5% (n = 156)"
   }
  ],
  "vol_median": 17.0,
  "tyr_mean_by_cohort": {
-  "A": 712.3,
-  "B": 715.2
+  "A": 816.2,
+  "B": 835.9
  },
- "tyr_mean_all": 713.4116372315035
+ "tyr_mean_all": 823.8384831460675,
+ "tyr_zone_as_board": {
+  "n": 2136,
+  "missing": 2,
+  "vol": [
+   2.0428570026698583,
+   1.7988350631595103,
+   2.3199818698370662,
+   3.5674482607842197e-28
+  ],
+  "tyr": [
+   1.7495940681320854,
+   1.469837015436948,
+   2.0825978466279085,
+   3.122144615199846e-10
+  ],
+  "auc": 0.7667753747114585
+ },
+ "tyr_zone_missing": {
+  "n": 2121,
+  "missing": 17,
+  "vol": [
+   2.0641655104737118,
+   1.8196227550273307,
+   2.3415728578120585,
+   1.9612522515135767e-29
+  ],
+  "tyr": [
+   1.7838210468435376,
+   1.5006520068807099,
+   2.120423331040079,
+   5.298817745837149e-11
+  ],
+  "auc": 0.7681098416586475
+ },
+ "retainers_primary": 347,
+ "tyr_mean_by_category": {
+  "hurdles": 778.0,
+  "jumps": 803.0,
+  "middle_distance": 747.0,
+  "sprint": 798.0,
+  "throws": 501.0,
+  "walking": 278.0
+ }
 }

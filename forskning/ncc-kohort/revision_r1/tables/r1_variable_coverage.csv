@@ -1,8 +1,10 @@
 Quantity,Original scoring,Corrected scoring
-Baseline-meet results,7204,7204.0
-Baseline results with a Tyrving score (%),50.8,97.9
-Athletes without baseline Tyrving (n),419,28.0
-"Athletes without baseline Tyrving, zone jumps unscored (n)",,45.0
-Mean baseline Tyrving best,666.2,713.4
-Correlation original vs corrected (athletes scored by both),,0.857
-Athletes with HHI (ages 13-14) available (n),2123,2123.0
+Cohort (n),2123,2138.0
+Baseline-meet results,,7400.0
+Baseline results with a Tyrving score (%),50.5,99.1
+Athletes without baseline Tyrving (n),419,2.0
+"Athletes without baseline Tyrving, zone jumps unscored (n)",,17.0
+Mean baseline Tyrving best,666.2,823.8
+Correlation original vs corrected (athletes scored by both),,0.492
+Athletes with HHI (ages 13-14) available (n),2123,2138.0
+"Baseline results at the 1,500-point cap (n)",,0.0

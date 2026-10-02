@@ -1,6 +1,6 @@
 Variable,Included (complete case),Excluded (any missing),n included,n excluded (non-missing on var)
-aktiv_senior,0.164,0.143,2095,28
-female,0.526,0.25,2095,4
-vol_pre_milepael,20.911,18.643,2095,28
-hhi_early,0.456,0.421,2095,28
-tyrving_best,713.412,,2095,0
+aktiv_senior,0.162,0.5,2136,2
+female,0.529,,2136,0
+vol_pre_milepael,20.526,12.5,2136,2
+hhi_early,0.456,0.398,2136,2
+tyrving_best,823.838,,2136,0

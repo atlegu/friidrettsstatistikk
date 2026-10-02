@@ -1,8 +1,10 @@
 Comparison (B vs. A),n,CV-AUC A,CV-AUC B,Difference (B - A),95% CI,p
-Sex + Tyrving vs. sex,2095,0.535,0.641,+0.106,"[+0.072, +0.140]",< .001
-+ HHI vs. sex + Tyrving,2095,0.641,0.636,-0.005,"[-0.017, +0.008]",.471
-+ volume vs. sex + Tyrving + HHI (L4 vs. L3),2095,0.636,0.746,+0.110,"[+0.081, +0.140]",< .001
-Sex + volume vs. sex + Tyrving (time-aligned),2095,0.641,0.739,+0.098,"[+0.063, +0.133]",< .001
-Sex + Tyrving + volume vs. sex + volume,2095,0.739,0.737,-0.002,"[-0.011, +0.007]",.636
-Full L4 vs. sex + volume,2095,0.739,0.746,+0.008,"[-0.006, +0.022]",.281
-Sex + volume vs. sex + Tyrving + Tyrving change 13-14,1692,0.701,0.734,+0.033,"[-0.003, +0.069]",.070
+Sex + Tyrving vs. sex,2136,0.535,0.700,+0.165,"[+0.127, +0.203]",< .001
++ HHI vs. sex + Tyrving,2136,0.700,0.698,-0.002,"[-0.005, +0.001]",.173
++ volume vs. sex + Tyrving + HHI (L4 vs. L3),2136,0.698,0.767,+0.069,"[+0.047, +0.091]",< .001
+Sex + volume vs. sex + Tyrving (time-aligned),2136,0.700,0.740,+0.040,"[+0.006, +0.074]",.022
+Sex + Tyrving + volume vs. sex + volume,2136,0.740,0.763,+0.023,"[+0.007, +0.038]",.005
+Full L4 vs. sex + volume,2136,0.740,0.767,+0.026,"[+0.008, +0.044]",.004
+Sex + volume vs. sex + Tyrving + Tyrving change 13-14,1721,0.737,0.736,-0.001,"[-0.042, +0.039]",.943
+Sex + volume vs. sex + within-event percentile at the meet,2136,0.689,0.740,+0.051,"[+0.019, +0.083]",.002
+Sex + percentile + volume vs. sex + volume,2136,0.740,0.757,+0.017,"[+0.003, +0.031]",.020

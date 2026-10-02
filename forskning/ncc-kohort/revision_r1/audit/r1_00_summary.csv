@@ -1,0 +1,27 @@
+Check,Value
+meet records on the venue-days,45
+"results at the meet's venue-days (register state 18 May 2026), by status",{'OK': 13208}
+venue-day rows in the original extract no longer in the register (kept),0
+participants aged 13-14 at the venue-days (any birth year),2769
+cohort (born 1998-2002),2138
+original extract rows for cohort members / duplicate ids,"230,868 / 332"
+"rows skipped by the original extraction, added",334
+rows of the newly included cohort members,613 (15 athletes)
+rows after 31 Dec 2025 removed (partial 2026 season),339
+athletes with a clear venue in both editions: same venue both years,1.000 (n = 913)
+"club rule (club's other athletes, same year) agrees with clear own venue",0.999 (n = 2475)
+region source,"{'own events': 1913, 'club, same year': 177, 'own, incl. endurance': 23, 'club, all years': 23}"
+original cohort members confirmed,2123
+original cohort members not confirmed (dropped),0
+participants added to the cohort,15
+first edition changed,5
+region changed,221
+club changed,217
+sex: original -> register now,"{'F->F': 1101, 'F->M': 2, 'M->F': 6, 'M->M': 990, 'unknown->F': 15, 'unknown->M': 7, 'unknown->unknown': 2}"
+birth year changed,0
+cohort members with baseline-meet results in the career data,2138 of 2138
+meet records spanning more than one date,"20 of 11,345"
+athlete-days with results under more than one meet record,"1,046 of 127,456"
+career data rows / athletes,"231,144 / 2,138"
+analysis data rows,2138
+"active senior (n, %)",348 (16.3%)

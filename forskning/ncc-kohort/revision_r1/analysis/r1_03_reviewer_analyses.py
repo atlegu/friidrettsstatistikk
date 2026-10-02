@@ -1,7 +1,9 @@
 """
 r1_03_reviewer_analyses.py — New analyses for the IJSSC revision (SPO-26-1604.R1),
-reviewer comments 1-14. Uses the corrected variables from r1_01_build_variables.py:
-HHI from ages 13-14 only (comment 1) and corrected Tyrving scoring (comment 4).
+reviewer comments 1-14. Uses the corrected data (r1_00_corrected_data.py, data audit of
+2 October 2026) and the corrected variables from r1_01_build_variables.py: HHI from ages
+13-14 only (comment 1) and exact Tyrving scoring (comment 4). Comparisons labelled
+"submitted" use the submitted analysis file (data/analysedata_utvidet.csv) unchanged.
 
 Outputs: revision_r1/tables/*.csv, revision_r1/figures/figS5_event_study.png,
          revision_r1/tables/r1_results.json (every number quoted in the revised text)
@@ -9,6 +11,7 @@ Outputs: revision_r1/tables/*.csv, revision_r1/figures/figS5_event_study.png,
 
 import json
 import logging
+import sys
 import warnings
 from pathlib import Path
 
@@ -34,8 +37,10 @@ logger = logging.getLogger(__name__)
 
 HERE = Path(__file__).parent
 R1 = HERE.parent
-DATA = Path("/Users/atleguttormsen/Dropbox/Aktuelt1/Florida25/Statistikk/forskning/ncc-kohort/data")
-TAB, FIG, PRIV = R1 / "tables", R1 / "figures", R1 / "data_private"
+sys.path.insert(0, str(HERE))
+from r1_paths import CDATA, DATA, PRIV  # noqa: E402
+
+TAB, FIG = R1 / "tables", R1 / "figures"
 TAB.mkdir(exist_ok=True)
 FIG.mkdir(exist_ok=True)
 SEED, REPEATS, B = 20261001, 20, 2000
@@ -50,21 +55,27 @@ def z(s):
 
 
 def load():
-    df = pd.read_csv(DATA / "analysedata_utvidet.csv", low_memory=False)
+    df = pd.read_csv(CDATA / "analysedata_utvidet.csv", low_memory=False)
     df = df.merge(pd.read_csv(PRIV / "r1_variables.csv"), on="athlete_id", how="left")
     df["female"] = df["gender"].map({"M": 0, "F": 1})
     df["cohort"] = np.where(df["birth_year"] <= 2000, "A", "B")
     df["tyr"], df["hhi"], df["vol"] = df["tyrving_best_r1"], df["hhi_13_14"], df["vol_pre_milepael"]
-    df["tyr_sub"], df["hhi_sub"] = df["tyrving_best"], df["hhi_early"]           # as submitted
     df["tyr_d1314"] = df["tyrving_age_14_r1"] - df["tyrving_age_13_r1"]
-    for c in ["tyr", "hhi", "vol", "tyr_sub", "hhi_sub", "tyr_d1314", "klubb_storrelse"]:
+    df["pct"] = df["pctile_best_r1"]                 # within-event rank at the meet (r1_01)
+    for c in ["tyr", "hhi", "vol", "tyr_d1314", "klubb_storrelse", "pct"]:
         df[c + "_z"] = z(df[c])
-    kar = pd.read_csv(DATA / "karrieredata_utvidet.csv", low_memory=False,
-                      usecols=["athlete_id", "date", "meet_id", "event_category"])
+    kar = pd.read_csv(CDATA / "karrieredata_utvidet.csv", low_memory=False,
+                      usecols=["athlete_id", "date", "meet_day", "event_category"])
     kar["year"] = pd.to_datetime(kar["date"], errors="coerce").dt.year
     kar = kar.merge(df[["athlete_id", "birth_year"]], on="athlete_id", how="inner")
     kar["age"] = kar["year"] - kar["birth_year"]
-    return df, kar
+    # the submitted analysis file, unchanged (comparisons "as submitted")
+    sub = pd.read_csv(DATA / "analysedata_utvidet.csv", low_memory=False)
+    sub["female"] = sub["gender"].map({"M": 0, "F": 1})
+    sub["tyr"], sub["hhi"], sub["vol"] = sub["tyrving_best"], sub["hhi_early"], sub["vol_pre_milepael"]
+    for c in ["tyr", "hhi", "vol"]:
+        sub[c + "_z"] = z(sub[c])
+    return df, kar, sub
 
 
 # ----------------------------------------------------------------------------- helpers
@@ -165,18 +176,46 @@ def primary(df):
         logger.info(f"  {name}: AUC={cvr['auc']:.3f} [{cvr['auc_lo']:.3f},{cvr['auc_hi']:.3f}]")
     pd.DataFrame(rows).to_csv(TAB / "table3_primary_r1.csv", index=False)
     RES["primary_n"] = len(d)
+    calibration_figure(y, oofs["L4"])
     return d, oofs
 
 
+def calibration_figure(y, p):
+    """Supplementary Figure S1: calibration of the primary L4 model from cross-validated predictions
+    (out-of-fold predictions averaged over the 20 repeats), by decile of predicted probability."""
+    t = pd.DataFrame({"y": y, "p": p})
+    t["dec"] = pd.qcut(t["p"], 10, labels=False, duplicates="drop")
+    g = t.groupby("dec").agg(n=("y", "size"), obs=("y", "mean"), pred=("p", "mean"), k=("y", "sum"))
+    zc = 1.96
+    centre = (g["k"] + zc ** 2 / 2) / (g["n"] + zc ** 2)
+    half = zc * np.sqrt(g["obs"] * (1 - g["obs"]) / g["n"] + zc ** 2 / (4 * g["n"] ** 2)) / (1 + zc ** 2 / g["n"])
+    fig, ax = plt.subplots(figsize=(5.2, 4.8))
+    ax.plot([0, 0.7], [0, 0.7], color="#898781", ls="--", lw=1, label="Perfect calibration")
+    ax.errorbar(g["pred"], g["obs"], yerr=[g["obs"] - (centre - half), (centre + half) - g["obs"]], fmt="o-",
+                color="#2a78d6", ecolor="#2a78d6", capsize=3, lw=2, ms=6,
+                label=f"Primary model L4 (n = {len(t):,})")
+    ax.set_xlim(0, 0.7)
+    ax.set_ylim(0, 0.7)
+    ax.set_xlabel("Predicted probability of senior retention\n(cross-validated, decile means)")
+    ax.set_ylabel("Observed proportion retained (95% CI)")
+    ax.grid(alpha=0.3)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.legend(loc="upper left", fontsize=8.5, frameon=False)
+    fig.tight_layout()
+    fig.savefig(FIG / "figS1_calibration.png", dpi=300)
+    plt.close(fig)
+    RES["calib_deciles"] = g[["n", "obs", "pred"]].round(4).to_dict(orient="list")
+
+
 # ----------------------------------------------------------------------------- comments 2-3: CV procedure
-def cv_procedures(df):
+def cv_procedures(df, sub):
     logger.info("=== CV procedures (comments 2-3) ===")
     rows = []
-    # (a/b) submitted variables, global z vs in-fold standardisation, seed 42 as submitted
-    sub = df[["aktiv_senior", "female", "tyr_sub_z", "hhi_sub_z", "vol_z"]].dropna()
-    Xs, ys = sub[["female", "tyr_sub_z", "hhi_sub_z", "vol_z"]].values, sub["aktiv_senior"].values
-    for lab, inf in [("Submitted variables; standardised on full data before CV (as submitted)", False),
-                     ("Submitted variables; standardised within training folds", True)]:
+    # (a/b) submitted data and variables, global z vs in-fold standardisation, seed 42 as submitted
+    sub = sub[["aktiv_senior"] + L4].dropna()
+    Xs, ys = sub[L4].values, sub["aktiv_senior"].values
+    for lab, inf in [("Submitted data; standardised on full data before CV (as submitted)", False),
+                     ("Submitted data; standardised within training folds", True)]:
         a, p = cv_run(Xs, ys, StratifiedKFold(5, shuffle=True, random_state=42), scale_in_fold=inf)
         s, c, b = calib(ys, p)
         rows.append({"Procedure": lab, "n": len(ys), "CV-AUC": f"{a:.3f}", "Calibration slope": f"{s:.2f}",
@@ -186,8 +225,8 @@ def cv_procedures(df):
     d = df[["aktiv_senior", "klubb"] + L4].dropna()
     X, y = d[L4].values, d["aktiv_senior"].values
     groups = pd.factorize(d["klubb"])[0]
-    for lab, g in [("R1 variables; athlete-level stratified 5-fold, 20 repeats", None),
-                   ("R1 variables; club-grouped stratified 5-fold, 20 repeats", groups)]:
+    for lab, g in [("Corrected data; athlete-level stratified 5-fold, 20 repeats", None),
+                   ("Corrected data; club-grouped stratified 5-fold, 20 repeats", groups)]:
         r, _ = repeated_cv(X, y, g)
         rows.append({"Procedure": lab, "n": len(y),
                      "CV-AUC": f"{r['auc']:.3f} [{r['auc_lo']:.3f}, {r['auc_hi']:.3f}]; repeat range {r['auc_min']:.3f}-{r['auc_max']:.3f}",
@@ -212,6 +251,8 @@ def auc_differences(df):
         ("Full L4 vs. sex + volume", ["female", "vol_z"], L4, None),
         ("Sex + volume vs. sex + Tyrving + Tyrving change 13-14", ["female", "tyr_z", "tyr_d1314_z"],
          ["female", "vol_z"], ["tyr_d1314_z"]),
+        ("Sex + volume vs. sex + within-event percentile at the meet", ["female", "pct_z"], ["female", "vol_z"], None),
+        ("Sex + percentile + volume vs. sex + volume", ["female", "vol_z"], ["female", "pct_z", "vol_z"], None),
     ]
     rows = []
     for lab, ca, cb, extra in comps:
@@ -287,47 +328,47 @@ def mi_prediction(d, feats, covars_raw, m=20):
                 slope=float(np.mean(slopes)), citl=float(np.mean(citls)), brier=float(np.mean(briers)), n=len(y))
 
 
-def missing_data(df):
+def missing_data(df, sub):
     logger.info("=== Missing data and MI (comment 4) ===")
     known = df[df["female"].notna()].copy()
     RES["miss"] = dict(
-        tyr_sub_missing_all=int(df["tyr_sub"].isna().sum()), tyr_sub_missing_sexknown=int(known["tyr_sub"].isna().sum()),
+        tyr_sub_missing_all=int(sub["tyr"].isna().sum()),
+        tyr_sub_missing_sexknown=int(sub.loc[sub["female"].notna(), "tyr"].isna().sum()), n_sub=len(sub),
         tyr_r1_missing_all=int(df["tyr"].isna().sum()), tyr_r1_missing_sexknown=int(known["tyr"].isna().sum()),
         hhi_missing=int(df["hhi"].isna().sum()), vol_missing=int(df["vol"].isna().sum()),
         outcome_missing=int(df["aktiv_senior"].isna().sum()), sex_unknown=int(df["female"].isna().sum()))
     rows = []
     feats = ["aktiv_senior", "female", "tyr", "hhi", "vol"]
     cc, _ = logit(known, L4)
-    rows.append({"Data / model": "R1 scoring: complete case (primary)", "n": int(cc.nobs),
+    rows.append({"Data / model": "Corrected data: complete case (primary)", "n": int(cc.nobs),
                  "Volume OR": fmt(orci(cc, "vol_z")), "HHI OR": fmt(orci(cc, "hhi_z")),
                  "Tyrving OR": fmt(orci(cc, "tyr_z")), "CV-AUC": f"{RES['primary_L4']['cv']['auc']:.3f}"})
     mi = mi_estimates(known, feats, ["tyr"], L4)
-    rows.append({"Data / model": "R1 scoring: multiple imputation (m = 20)", "n": len(known),
+    rows.append({"Data / model": "Corrected data: multiple imputation (m = 20)", "n": len(known),
                  "Volume OR": fmt(mi["vol_z"]), "HHI OR": fmt(mi["hhi_z"]), "Tyrving OR": fmt(mi["tyr_z"]), "CV-AUC": ""})
-    # submitted scoring (19% missing Tyrving): MI estimation + predictive performance
-    s = known.copy()
-    s["tyr"] = s["tyr_sub"]
-    s["tyr_z"] = z(s["tyr"])
+    # submitted data (19.7% missing Tyrving): MI estimation + predictive performance
+    s = sub[sub["female"].notna()].copy()
     cc2, _ = logit(s, L4)
     cv2, _ = repeated_cv(s[L4].dropna().values, s[L4 + ["aktiv_senior"]].dropna()["aktiv_senior"].values)
-    rows.append({"Data / model": "Submitted scoring: complete case", "n": int(cc2.nobs),
+    rows.append({"Data / model": "Submitted data: complete case", "n": int(cc2.nobs),
                  "Volume OR": fmt(orci(cc2, "vol_z")), "HHI OR": fmt(orci(cc2, "hhi_z")),
                  "Tyrving OR": fmt(orci(cc2, "tyr_z")), "CV-AUC": f"{cv2['auc']:.3f}"})
     mi2 = mi_estimates(s, feats, ["tyr"], L4)
     pr2 = mi_prediction(s, ["female", "tyr", "hhi", "vol"], L4)
-    rows.append({"Data / model": "Submitted scoring: MI (m = 20), outcome in imputation model", "n": len(s),
+    rows.append({"Data / model": "Submitted data: MI (m = 20), outcome in imputation model", "n": len(s),
                  "Volume OR": fmt(mi2["vol_z"]), "HHI OR": fmt(mi2["hhi_z"]), "Tyrving OR": fmt(mi2["tyr_z"]),
                  "CV-AUC": f"{pr2['auc']:.3f} ({pr2['auc_min']:.3f}-{pr2['auc_max']:.3f})"})
     # auxiliary-variable imputation model
     s2 = s.copy()
     s2["region_e"] = (s2["region"] == "Østlandet").astype(int)
     s2["region_m"] = (s2["region"] == "Midt-Norge").astype(int)
-    s2["cohort_b"] = (s2["cohort"] == "B").astype(int)
+    s2["cohort_b"] = (s2["birth_year"] >= 2001).astype(int)
+    s2["res_13_14"] = s2["res_age_13"] + s2["res_age_14"]
     cats = pd.get_dummies(s2["primaer_kategori_baseline"], prefix="cat", drop_first=True).astype(int)
     s2 = pd.concat([s2, cats], axis=1)
     aux = ["region_e", "region_m", "cohort_b", "klubb_storrelse", "res_13_14"] + list(cats.columns)
     mi3 = mi_estimates(s2, feats, ["tyr"], L4, aux=aux)
-    rows.append({"Data / model": "Submitted scoring: MI with auxiliary variables (baseline event category, region, cohort, club size, result count)",
+    rows.append({"Data / model": "Submitted data: MI with auxiliary variables (baseline event category, region, cohort, club size, result count)",
                  "n": len(s2), "Volume OR": fmt(mi3["vol_z"]), "HHI OR": fmt(mi3["hhi_z"]),
                  "Tyrving OR": fmt(mi3["tyr_z"]), "CV-AUC": ""})
     RES["mi"] = dict(r1=mi, submitted=mi2, submitted_aux=mi3, submitted_pred=pr2, submitted_cc_auc=cv2["auc"],
@@ -337,11 +378,16 @@ def missing_data(df):
 
 
 # ----------------------------------------------------------------------------- comment 5: unknown sex
-def unknown_sex(df):
+def unknown_sex(df, sub):
     logger.info("=== Unknown sex (comment 5) ===")
     u = df[df["female"].isna()]
-    RES["sex_unknown"] = dict(n=len(u), senior=float(u["aktiv_senior"].mean()), vol_median=float(u["vol"].median()),
-                              tyr_scored=int(u["tyr"].notna().sum()))
+    RES["sex_unknown"] = dict(n=len(u), senior=float(u["aktiv_senior"].mean()) if len(u) else None,
+                              tyr_scored=int(u["tyr"].notna().sum()), n_submitted=int(sub["female"].isna().sum()))
+    if len(u) < 10:          # after the register's sex correction too few remain for a separate estimate
+        m1, d1 = logit(df[df["female"].notna()], ["female", "hhi_z", "vol_z"])
+        RES["sex_unknown"].update(vol_or_known=orci(m1, "vol_z"), n_known=len(d1))
+        logger.info(f"  {RES['sex_unknown']}")
+        return
     d = df.copy()
     d["sex_unknown"] = d["female"].isna().astype(int)
     d["female3"] = d["female"].fillna(0)
@@ -441,7 +487,7 @@ def change_models(df):
 # ----------------------------------------------------------------------------- comment 8: event study
 def event_study(df, kar):
     logger.info("=== Within-athlete event study (comment 8) ===")
-    vol = kar[kar["age"].between(13, 19)].groupby(["athlete_id", "age"])["meet_id"].nunique()
+    vol = kar[kar["age"].between(13, 19)].groupby(["athlete_id", "age"])["meet_day"].nunique()
     ids = df[["athlete_id", "alder_ved_slutt", "aktiv_naa", "female"]].copy()
     grid = pd.MultiIndex.from_product([ids["athlete_id"], range(13, 20)], names=["athlete_id", "age"])
     p = vol.reindex(grid, fill_value=0).rename("meets").reset_index().merge(ids, on="athlete_id")
@@ -497,6 +543,94 @@ def event_study(df, kar):
     fig.savefig(FIG / "figS5_event_study.png", dpi=300)
     plt.close(fig)
     logger.info(pd.DataFrame(out_rows).to_string(index=False))
+
+
+# ----------------------------------------------------------------------------- Cox models with a correct time origin
+def evalue_rr(rr):
+    rr = 1 / rr if rr < 1 else rr
+    return float(rr + np.sqrt(rr * (rr - 1)))
+
+
+def hr_to_rr(hr):
+    """Common-outcome conversion of a hazard ratio to an approximate risk ratio (VanderWeele & Ding, 2017)."""
+    return float((1 - 0.5 ** np.sqrt(hr)) / (1 - 0.5 ** np.sqrt(1 / hr)))
+
+
+def cox_rows(cph, covs):
+    s = cph.summary
+    return {c: (float(s.loc[c, "exp(coef)"]), float(s.loc[c, "exp(coef) lower 95%"]),
+                float(s.loc[c, "exp(coef) upper 95%"]), float(s.loc[c, "p"])) for c in covs}
+
+
+def structural(d):
+    d = d.copy()
+    d["q1_born"] = (d["fodt_kvartal"] == "Q1").astype(int)
+    d["q4_born"] = (d["fodt_kvartal"] == "Q4").astype(int)
+    d["region_ostlandet"] = (d["region"] == "Østlandet").astype(int)
+    d["region_midt"] = (d["region"] == "Midt-Norge").astype(int)
+    return d
+
+
+def cox_landmark14(df):
+    """Baseline-only Cox model with time zero at the end of the age-14 season, when the predictor
+    window (ages 13-14) closes. Athletes whose final active season was at 13 had left before time zero
+    and are not at risk. (The original scripts started the clock at the baseline meet, which for athletes
+    first seen at 13 lies inside the predictor window.) Replaces Supplementary Tables S10 and S16."""
+    logger.info("=== Baseline-only Cox, time zero at the end of age 14 (S10, S16) ===")
+    d = structural(df[df["alder_ved_slutt"] >= 14])
+    d["dur"] = (d["alder_ved_slutt"] - 14).clip(lower=0.5)
+    d["ev"] = (d["aktiv_naa"] == 0).astype(int)
+    out = dict(n_excluded=int((df["alder_ved_slutt"] < 14).sum()))
+    for lab, covs in [("main", L4), ("structural", L4 + ["q1_born", "q4_born", "region_ostlandet", "region_midt",
+                                                          "klubb_storrelse_z"])]:
+        c = d[["dur", "ev"] + covs].dropna()
+        cph = CoxPHFitter().fit(c, duration_col="dur", event_col="ev")
+        out[lab] = dict(n=len(c), events=int(c["ev"].sum()), cindex=float(cph.concordance_index_), **cox_rows(cph, covs))
+        logger.info(f"  {lab}: n={len(c)}, volume HR {out[lab]['vol_z'][0]:.3f}, C={cph.concordance_index_:.3f}")
+    hr, hr_hi = out["main"]["vol_z"][0], out["main"]["vol_z"][2]
+    out["evalue"] = dict(rr=1 / hr_to_rr(hr), e=evalue_rr(hr_to_rr(hr)), e_ci=evalue_rr(hr_to_rr(hr_hi)))
+    RES["cox14"] = out
+
+
+def landmark16(df):
+    """Landmark analysis at age 16 among athletes still in their career at 16 (final active season at 16
+    or later). The original script entered everyone with >=1 result at 16, including athletes whose final
+    active season was earlier (their event fell before time zero). Replaces Supplementary Table S8."""
+    logger.info("=== Landmark at age 16 (S8) ===")
+    d = df.assign(vol1516_z=z(df["vol_milepael"]))          # per SD of the whole cohort, as in the original S8
+    d = d[d["alder_ved_slutt"] >= 16].copy()
+    d["dur"] = (d["alder_ved_slutt"] - 16).clip(lower=0.5)
+    d["ev"] = (d["aktiv_naa"] == 0).astype(int)
+    covs = ["female", "tyr_z", "hhi_z", "vol1516_z", "n_msk_typer"]
+    c = d[["dur", "ev"] + covs].dropna()
+    cph = CoxPHFitter().fit(c, duration_col="dur", event_col="ev")
+    RES["lm16"] = dict(n_at_risk=len(d), n=len(c), events=int(c["ev"].sum()), cindex=float(cph.concordance_index_),
+                       n_old_entry=int((df["res_age_16"] >= 1).sum()),
+                       n_old_entry_already_exited=int(((df["res_age_16"] >= 1) & (df["alder_ved_slutt"] < 16)).sum()),
+                       **cox_rows(cph, covs))
+    logger.info(f"  n={len(c)}, volume HR {RES['lm16']['vol1516_z'][0]:.3f}, C={cph.concordance_index_:.3f}")
+
+
+def club_robust(df):
+    """Primary L4 logistic model with club-clustered standard errors and as a population-averaged GEE
+    (exchangeable working correlation within baseline clubs)."""
+    logger.info("=== Club-robust primary model ===")
+    d = df[["aktiv_senior", "klubb"] + L4].dropna()
+    g = pd.factorize(d["klubb"])[0]
+    X = sm.add_constant(d[L4])
+    m = sm.Logit(d["aktiv_senior"], X).fit(disp=0, cov_type="cluster", cov_kwds={"groups": g})
+    gee = sm.GEE(d["aktiv_senior"], X, groups=g, family=sm.families.Binomial(),
+                 cov_struct=sm.cov_struct.Exchangeable()).fit()
+    RES["club_robust"] = dict(n=len(d), clusters=int(len(set(g))), cluster_vol=orci(m, "vol_z"), cluster_hhi=orci(m, "hhi_z"),
+                              cluster_tyr=orci(m, "tyr_z"), gee_vol=orci(gee, "vol_z"), gee_hhi=orci(gee, "hhi_z"),
+                              gee_tyr=orci(gee, "tyr_z"), gee_rho=float(gee.cov_struct.dep_params))
+    logger.info(f"  {RES['club_robust']}")
+
+
+def activity17_flag(df):
+    """Retention-related check quoted in Section 4.8: share active at 17 or later by the < 10 flag."""
+    flag = df["vol"] < 10
+    RES["flag10_active17"] = dict(flagged=float(df.loc[flag, "aktiv_17"].mean()), unflagged=float(df.loc[~flag, "aktiv_17"].mean()))
 
 
 # ----------------------------------------------------------------------------- comment 11: thresholds
@@ -607,21 +741,33 @@ def gaps_and_returns(df, kar):
                 break
     RES["gaps"]["return_after_two_inactive"] = retn / max(tot, 1)
     RES["gaps"]["n_two_inactive"] = tot
-    # Cox (baseline-only predictors) under three event definitions
-    d["base_age"] = d["stevne_aar"] - d["birth_year"]
+    # Cox (baseline-only predictors) under three event definitions; time zero at the end of the age-14
+    # season (landmark L = birth year + 14), when the predictor window closes; athletes whose spell had
+    # ended before L are not at risk
+    L = d["birth_year"] + 14
+    sus_from_L, gap_from_L = [], []
+    for _, r in d.iterrows():
+        s_ = act.get(r["athlete_id"], set())
+        lm = int(r["birth_year"]) + 14
+        yrs = list(range(lm, 2026))
+        sus = next((y for i, y in enumerate(yrs) if y in s_ and i + 2 < len(yrs) and yrs[i + 1] not in s_
+                    and yrs[i + 2] not in s_), None)
+        sus_from_L.append(sus)
+        gap_from_L.append(next((y for y in yrs[1:] if y not in s_), None) if lm in s_ else -1)
+    d["sus_L"], d["gap_L"] = sus_from_L, gap_from_L
     out = []
     defs = {
         "Final active season (primary; censored if active 2024+)":
-            (d["alder_ved_slutt"] - d["base_age"], (d["aktiv_naa"] == 0).astype(int)),
+            (d["alder_ved_slutt"] >= 14, d["alder_ved_slutt"] - 14, (d["aktiv_naa"] == 0).astype(int)),
         "First sustained exit (active season followed by >=2 inactive seasons)":
-            (np.where(d["sustained_year"].notna(), d["sustained_year"] - d["stevne_aar"], d["last"] - d["stevne_aar"]),
-             (d["sustained_year"].notna() & (d["sustained_year"] <= 2023)).astype(int)),
+            (d["alder_ved_slutt"] >= 14, np.where(d["sus_L"].notna(), d["sus_L"] - L, d["last"] - L),
+             (d["sus_L"].notna() & (d["sus_L"] <= 2023)).astype(int)),
         "First inactive season (any one-season gap ends the spell)":
-            (np.where(d["first_gap_year"].notna(), d["first_gap_year"] - 1 - d["stevne_aar"], 2025 - d["stevne_aar"]),
-             d["first_gap_year"].notna().astype(int)),
+            (d["gap_L"] != -1, np.where(d["gap_L"].notna(), d["gap_L"] - 1 - L, 2025 - L),
+             d["gap_L"].notna().astype(int)),
     }
-    for lab, (dur, ev) in defs.items():
-        c = d.assign(dur=np.clip(np.asarray(dur, dtype=float), 0.5, None), ev=np.asarray(ev))
+    for lab, (risk, dur, ev) in defs.items():
+        c = d.assign(dur=np.clip(np.asarray(dur, dtype=float), 0.5, None), ev=np.asarray(ev))[np.asarray(risk, dtype=bool)]
         c = c[["dur", "ev"] + L4].dropna()
         cph = CoxPHFitter().fit(c, duration_col="dur", event_col="ev")
         s = cph.summary.loc["vol_z"]
@@ -637,11 +783,17 @@ def gaps_and_returns(df, kar):
 
 # ----------------------------------------------------------------------------- comment 13: target population
 def target_population(df):
+    """Register population born 1998-2002 with >=1 result at ages 13-14, from the register state at the
+    original extraction (analysis/register_population.sql; frequency table cohort x sex x volume x senior)."""
     logger.info("=== Target population (comment 13) ===")
-    pop = pd.read_csv(PRIV / "register_population_1998_2002.csv")
+    f = pd.read_csv(PRIV / "register_population_freq.csv")
+    pop = f.loc[f.index.repeat(f["n"])].drop(columns="n").reset_index(drop=True)
+    pop = pop.rename(columns={"vol": "vol_13_14"})
     pop["female"] = pop["gender"].map({"M": 0, "F": 1})
-    chk = df[["athlete_id", "vol"]].merge(pop, on="athlete_id")
-    RES["pop_volume_db_minus_analysis"] = float((chk["vol_13_14"] - chk["vol"]).mean())
+    c = pop[pop["cohort"] == 1]
+    RES["pop_check"] = dict(n_cohort_register=len(c), n_cohort_analysis=len(df),
+                            vol_mean_register=float(c["vol_13_14"].mean()), vol_mean_analysis=float(df["vol"].mean()),
+                            senior_register=float(c["senior"].mean()), senior_analysis=float(df["aktiv_senior"].mean()))
     rows = []
     for lab, sub in [("Cohort (attended the baseline meet)", pop[pop["cohort"] == 1]),
                      ("Not in cohort (same birth years, >=1 result at 13-14)", pop[pop["cohort"] == 0]),
@@ -720,17 +872,21 @@ def evalues():
 
 
 def main():
-    df, kar = load()
+    df, kar, sub = load()
     primary(df)
-    cv_procedures(df)
+    cv_procedures(df, sub)
     auc_differences(df)
-    missing_data(df)
-    unknown_sex(df)
+    missing_data(df, sub)
+    unknown_sex(df, sub)
     birth_quarter(df)
     change_models(df)
     event_study(df, kar)
     threshold_validation(df)
     gaps_and_returns(df, kar)
+    cox_landmark14(df)
+    landmark16(df)
+    club_robust(df)
+    activity17_flag(df)
     target_population(df)
     cohort_replication(df)
     hhi_stress(df)

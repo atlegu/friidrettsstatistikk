@@ -1,11 +1,11 @@
 Sample,Model,Covariate,OR per SD,p,McFadden pseudo-R2,CV-AUC
-"Active at 14 (>=1 result), n = 1888",M1: level at 14,female,"0.60 [0.46, 0.77]",< .001,0.122,0.735
-"Active at 14 (>=1 result), n = 1888",M1: level at 14,tyr_zs,"1.21 [1.04, 1.41]",.012,0.122,0.735
-"Active at 14 (>=1 result), n = 1888",M1: level at 14,v14_z,"2.20 [1.94, 2.50]",< .001,0.122,0.735
-"Active at 14 (>=1 result), n = 1888",M2: level at 14 + change 14->15,female,"0.60 [0.45, 0.79]",< .001,0.229,0.823
-"Active at 14 (>=1 result), n = 1888",M2: level at 14 + change 14->15,tyr_zs,"1.12 [0.96, 1.30]",.140,0.229,0.823
-"Active at 14 (>=1 result), n = 1888",M2: level at 14 + change 14->15,v14_z,"2.70 [2.33, 3.12]",< .001,0.229,0.823
-"Active at 14 (>=1 result), n = 1888",M2: level at 14 + change 14->15,d1415_z,"2.38 [2.08, 2.73]",< .001,0.229,0.823
-"Active at 16 (>=2 results), n = 1075",Level at 15 + change 15->16,female,"0.54 [0.40, 0.72]",< .001,0.161,0.761
-"Active at 16 (>=2 results), n = 1075",Level at 15 + change 15->16,v15_z,"3.04 [2.55, 3.63]",< .001,0.161,0.761
-"Active at 16 (>=2 results), n = 1075",Level at 15 + change 15->16,d1516_z,"1.88 [1.60, 2.20]",< .001,0.161,0.761
+"Active at 14 (>=1 result), n = 1925",M1: level at 14,female,"0.55 [0.42, 0.71]",< .001,0.15,0.763
+"Active at 14 (>=1 result), n = 1925",M1: level at 14,tyr_zs,"1.79 [1.50, 2.13]",< .001,0.15,0.763
+"Active at 14 (>=1 result), n = 1925",M1: level at 14,v14_z,"2.05 [1.80, 2.33]",< .001,0.15,0.763
+"Active at 14 (>=1 result), n = 1925",M2: level at 14 + change 14->15,female,"0.55 [0.42, 0.72]",< .001,0.245,0.833
+"Active at 14 (>=1 result), n = 1925",M2: level at 14 + change 14->15,tyr_zs,"1.59 [1.33, 1.91]",< .001,0.245,0.833
+"Active at 14 (>=1 result), n = 1925",M2: level at 14 + change 14->15,v14_z,"2.51 [2.17, 2.89]",< .001,0.245,0.833
+"Active at 14 (>=1 result), n = 1925",M2: level at 14 + change 14->15,d1415_z,"2.29 [2.00, 2.62]",< .001,0.245,0.833
+"Active at 16 (>=2 results), n = 1088",Level at 15 + change 15->16,female,"0.53 [0.40, 0.72]",< .001,0.162,0.762
+"Active at 16 (>=2 results), n = 1088",Level at 15 + change 15->16,v15_z,"3.04 [2.56, 3.62]",< .001,0.162,0.762
+"Active at 16 (>=2 results), n = 1088",Level at 15 + change 15->16,d1516_z,"1.87 [1.60, 2.19]",< .001,0.162,0.762
