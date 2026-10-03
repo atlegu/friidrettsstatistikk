@@ -2,15 +2,15 @@ Model,Covariate,HR,CI low,CI high,p,C-index,n
 M1: Sex only,female,1.040561,0.952465,1.136805,0.378361,0.498404,2138
 M2: + Performance,female,1.159906,1.059731,1.26955,0.001287,0.627347,2136
 M2: + Performance,tyrving_z,0.740674,0.711775,0.770746,0.0,0.627347,2136
-M3: + Specialization,female,1.168654,1.067476,1.279422,0.000743,0.629283,2136
-M3: + Specialization,tyrving_z,0.738749,0.70993,0.768737,0.0,0.629283,2136
-M3: + Specialization,hhi_early_z,1.055073,1.008611,1.103675,0.019643,0.629283,2136
-M4: + Volume at milestone,female,1.132196,1.034433,1.239198,0.007045,0.844984,2136
-M4: + Volume at milestone,tyrving_z,0.879625,0.841448,0.919534,0.0,0.844984,2136
-M4: + Volume at milestone,hhi_early_z,0.975351,0.932661,1.019995,0.274411,0.844984,2136
-M4: + Volume at milestone,vol_milepael_z,0.369513,0.34586,0.394782,0.0,0.844984,2136
-M5: + Championship types,female,1.152426,1.05308,1.261144,0.00204,0.84516,2136
-M5: + Championship types,tyrving_z,0.909485,0.868902,0.951963,4.6e-05,0.84516,2136
-M5: + Championship types,hhi_early_z,0.982684,0.939731,1.0276,0.443668,0.84516,2136
-M5: + Championship types,vol_milepael_z,0.453477,0.418837,0.490982,0.0,0.84516,2136
-M5: + Championship types,n_msk_typer,0.747777,0.699954,0.798868,0.0,0.84516,2136
+M3: + Specialization,female,1.168652,1.067474,1.27942,0.000743,0.629282,2136
+M3: + Specialization,tyrving_z,0.738749,0.709931,0.768738,0.0,0.629282,2136
+M3: + Specialization,hhi_early_z,1.055056,1.008594,1.103658,0.01968,0.629282,2136
+M4: + Volume at milestone,female,1.132194,1.034432,1.239196,0.007046,0.844982,2136
+M4: + Volume at milestone,tyrving_z,0.879625,0.841448,0.919534,0.0,0.844982,2136
+M4: + Volume at milestone,hhi_early_z,0.975342,0.932652,1.019986,0.274239,0.844982,2136
+M4: + Volume at milestone,vol_milepael_z,0.369512,0.34586,0.394782,0.0,0.844982,2136
+M5: + Championship types,female,1.15675,1.05684,1.266105,0.001581,0.844725,2136
+M5: + Championship types,tyrving_z,0.921355,0.879823,0.964848,0.0005,0.844725,2136
+M5: + Championship types,hhi_early_z,0.976508,0.933718,1.02126,0.298431,0.844725,2136
+M5: + Championship types,vol_milepael_z,0.486355,0.447325,0.52879,0.0,0.844725,2136
+M5: + Championship types,n_msk_typer,0.702296,0.653936,0.754232,0.0,0.844725,2136

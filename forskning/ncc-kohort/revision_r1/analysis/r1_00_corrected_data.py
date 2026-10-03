@@ -28,6 +28,17 @@ created on or before 18 May 2026) and corrects them:
    therefore counted as competition days (distinct dates with a result): column meet_day, used
    in place of meet_id wherever meets are counted (07 and 16 are patched accordingly).
 
+7. Championship types (n_msk_typer and um_15_16, post-baseline models only; final check, 3 October
+   2026). Every meet name matched before age 17 was read. The pattern for youth championships ("UM")
+   matched the letters anywhere in a name, so meets in Bærum and Brumunddal and every
+   "Jubileumsstevne" counted as UM (90 of 116 matched names); junior championships written
+   "Junior-NM" or "NM junior" counted as senior championships; "KM ... og NM veteraner", a meet in
+   Albuquerque/NM/USA, an "NM-test" and qualification, preparation ("oppkjøring") and unofficial
+   ("Uoff") meets counted as championships; results at national championship meets before 15 (side
+   events) counted; district championships for veterans or upper-secondary schools counted, and the
+   Nynorsk "Kretsmeisterskap"/"Distriktsmeisterskap" did not. All corrected (CHAMPIONSHIPS below):
+   n_msk_typer changes for 318 of 2,138 athletes, um_15_16 for 83.
+
 Tyrving scores in the analysis file use the exact workbook formulas (tyrving_r2.py, via a shim).
 
 Outputs (data_private/corrected/, git-ignored): kohort_utvidet.csv, karrieredata_utvidet.csv,
@@ -231,6 +242,28 @@ def region_and_club(kar, coh):
 
 
 # ----------------------------------------------------------------------------- analysis data
+# Championship detection for 07 (docstring item 7). A type counts when the athlete has a result before 17
+# at a meet whose name identifies it as that championship. Qualification, preparation and unofficial
+# meets are not championships; national championships are open from the year of 15, so results at them
+# at younger ages are side events; district championships for veterans only or for upper-secondary
+# schools are not youth championships.
+CHAMPIONSHIPS = r'''    # Mesterskap-deteksjon (R1, see r1_00_corrected_data.py item 7)
+    navn = karriere["meet_name"].fillna("")
+    ikke_msk = navn.str.contains(r"kvalifisering|oppkjøring|\bUoff\b|NM-test|/NM/USA", case=False, regex=True)
+    nasjonal = (karriere["age"] >= 15) & ~ikke_msk
+    karriere["er_um"] = navn.str.contains(r"\bUM\b|U-mester|Ungdomsmesterskap", case=False, regex=True) & nasjonal
+    karriere["er_jrm"] = navn.str.contains(
+        r"JrNM|Jr\.? ?NM|Junior[- ]?NM|NM[- ]junior|Juniormesterskap", case=False, regex=True) & nasjonal
+    karriere["er_nm"] = (navn.str.contains(r"\bNM\b|Norgesmesterskap", case=False, regex=True)
+                         & ~navn.str.contains("NM veteran", case=False, regex=False)
+                         & ~karriere["er_jrm"] & ~karriere["er_um"] & nasjonal)
+    kun_vet_skole = (navn.str.contains(r"veteran|vetraner|\bvet\.|videregående", case=False, regex=True)
+                     & ~navn.str.contains(r"\d+ ?- ?\d+ ?år|senior|NM veteran", case=False, regex=True))
+    karriere["er_km"] = (navn.str.contains(r"KM|Kretsme(?:i)?ster|Distriktsme(?:i)?ster", case=False, regex=True)
+                         & ~kun_vet_skole & ~ikke_msk)
+'''
+
+
 def patch(src, old, new, count):
     assert src.count(old) == count, f"patch target found {src.count(old)} times, expected {count}: {old}"
     return src.replace(old, new)
@@ -243,6 +276,10 @@ def build_analysis_data():
     src = (DATA / "07_bygg_analysedata_utvidet.py").read_text()
     src = patch(src, '(karriere["meet_name"].str.contains(pattern, case=False, na=False))', '(karriere["er_lekene"] == 1)', 1)
     src = patch(src, '"meet_id"', '"meet_day"', 4)          # meets counted as competition days
+    # championship types (item 7 in the docstring): the whole detection block is replaced
+    start, end = src.index("    # Mesterskap-deteksjon\n"), src.index('"KM|Kretsmester|Distriktsmester", case=False, na=False, regex=True\n    )\n')
+    assert src.count("    # Mesterskap-deteksjon\n") == 1 and start < end
+    src = src[:start] + CHAMPIONSHIPS + src[end + len('"KM|Kretsmester|Distriktsmester", case=False, na=False, regex=True\n    )\n'):]
     (SANDBOX / "07_bygg_analysedata_utvidet.py").write_text(src)
     (SANDBOX / "tyrvingtabellen.py").write_text(SHIM.format(analysis=HERE))
     for f in ["kohort_utvidet.csv", "karrieredata_utvidet.csv"]:

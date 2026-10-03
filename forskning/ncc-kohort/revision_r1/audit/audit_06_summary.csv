@@ -1,0 +1,60 @@
+check,value
+athletes: R-built / analysis file / matched,2138 / 2138 / 2138
+mismatches: vol_13,0
+mismatches: vol_14,0
+mismatches: vol_15,0
+mismatches: vol_16,0
+mismatches: vol_17,0
+mismatches: vol_18,0
+mismatches: res_14,0
+mismatches: res_16,0
+mismatches: vol_pre,0
+mismatches: vol_mil,0
+mismatches: aktiv_senior,0
+mismatches: aktiv_17,0
+mismatches: aktiv_naa,0
+mismatches: alder_ved_slutt,0
+mismatches: HHI 13-14 (> 1e-9 from r1_variables),0
+Table 3 L4 n,2136
+Table 3 L4 female OR [CI] (R),0.5607 0.4343 0.7239
+Table 3 L4 female OR [CI] (pipeline),0.5607 0.4343 0.7239
+Table 3 L4 female OR [CI] max abs diff,6.60e-07
+Table 3 L4 tyr_z OR [CI] (R),1.7496 1.4698 2.0826
+Table 3 L4 tyr_z OR [CI] (pipeline),1.7496 1.4698 2.0826
+Table 3 L4 tyr_z OR [CI] max abs diff,4.43e-06
+Table 3 L4 hhi_z OR [CI] (R),1.1766 1.0367 1.3354
+Table 3 L4 hhi_z OR [CI] (pipeline),1.1766 1.0367 1.3354
+Table 3 L4 hhi_z OR [CI] max abs diff,6.42e-07
+Table 3 L4 vol_z OR [CI] (R),2.0429 1.7988 2.3200
+Table 3 L4 vol_z OR [CI] (pipeline),2.0429 1.7988 2.3200
+Table 3 L4 vol_z OR [CI] max abs diff,8.67e-07
+Table 7 cohort A volume OR [CI] (R),2.0268 1.7228 2.3844
+Table 7 cohort A volume OR [CI] (pipeline),2.0268 1.7228 2.3844
+Table 7 cohort A volume OR [CI] max abs diff,1.66e-06
+Table 7 cohort B volume OR [CI] (R),2.1008 1.7079 2.5840
+Table 7 cohort B volume OR [CI] (pipeline),2.1008 1.7079 2.5840
+Table 7 cohort B volume OR [CI] max abs diff,1.25e-06
+Table 4 M2 volume at 14 OR [CI] (R),2.5052 2.1711 2.8908
+Table 4 M2 volume at 14 OR [CI] (pipeline),2.5052 2.1711 2.8908
+Table 4 M2 volume at 14 OR [CI] max abs diff,6.32e-06
+Table 4 M2 change 14-15 OR [CI] (R),2.2905 2.0008 2.6221
+Table 4 M2 change 14-15 OR [CI] (pipeline),2.2905 2.0008 2.6221
+Table 4 M2 change 14-15 OR [CI] max abs diff,5.84e-06
+"Change model at 16, change 15-16 OR [CI] (R)",1.8679 1.5964 2.1855
+"Change model at 16, change 15-16 OR [CI] (pipeline)",1.8679 1.5964 2.1855
+"Change model at 16, change 15-16 OR [CI] max abs diff",5.66e-07
+"Cox, clock from end of age 14, volume HR [CI] (R)",0.6531 0.6157 0.6927
+"Cox, clock from end of age 14, volume HR [CI] (pipeline)",0.6531 0.6157 0.6927
+"Cox, clock from end of age 14, volume HR [CI] max abs diff",5.41e-09
+"Fixed effects T-3: % change (R, cluster SE) / pipeline","-6.7 [-12.7, -0.2] / -6.7 [-12.7, -0.2]"
+"Fixed effects T-2: % change (R, cluster SE) / pipeline","-12.3 [-19.2, -4.9] / -12.3 [-19.2, -4.8]"
+"Fixed effects T-1: % change (R, cluster SE) / pipeline","-23.4 [-30.6, -15.6] / -23.4 [-30.6, -15.6]"
+Fixed effects: athletes / athlete-seasons (R),1909 / 8490
+mismatches: championship types before 17,0
+mismatches: youth championship at 15-16,0
+"Landmark Cox at 16, volume 15-16 HR [CI] (R)",0.7125 0.6502 0.7807
+"Landmark Cox at 16, volume 15-16 HR [CI] (pipeline)",0.7125 0.6502 0.7807
+"Landmark Cox at 16, volume 15-16 HR [CI] max abs diff",7.76e-06
+"Landmark Cox at 16, championship types HR [CI] (R)",0.8147 0.7419 0.8947
+"Landmark Cox at 16, championship types HR [CI] (pipeline)",0.8147 0.7419 0.8947
+"Landmark Cox at 16, championship types HR [CI] max abs diff",3.76e-06

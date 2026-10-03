@@ -428,7 +428,7 @@ def birth_quarter(df):
         for t in qs + ["vol_z"]:
             o = orci(m, t)
             rows.append({"Specification": lab, "Covariate": t, "OR": round(o[0], 2), "95% CI": f"[{o[1]:.2f}, {o[2]:.2f}]",
-                         "p": pfmt(o[3]), "LR test of quarter terms": f"chi2({len(qs)}) = {lr:.2f}, p = {p_lr:.2f}",
+                         "p": pfmt(o[3]), "LR test of quarter terms": f"chi2({len(qs)}) = {lr:.2f}, p = {pfmt(p_lr)}",
                          "n": len(dd)})
         RES[f"bq::{lab}"] = dict(vol=orci(m, "vol_z"), lr=float(lr), df=len(qs), p=p_lr,
                                  **{q: orci(m, q) for q in qs}, n=len(dd))

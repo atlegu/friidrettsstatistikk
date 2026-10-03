@@ -1081,8 +1081,10 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 **For forskningsuttrekk:**
 - Filteret `created_at <= 2026-05-18` gjenskaper ikke lenger mai-tilstanden: 18.09
   slettet i mange par den eldre kopien og beholdt den nyere. IJSSC-artikkelen bygger
-  på det lagrede mai-uttrekket (4 110 av dets rader finnes nå bare som rader lagt inn
-  i august) og er upåvirket; dobbeltrader i uttrekket endrer ingen utfall.
+  på det lagrede mai-uttrekket (4 110 av radene der finnes ikke lenger med
+  registreringsdato før grensen: slettet, slått sammen med en annen utøver eller
+  erstattet av en nyere kopi) og er upåvirket: hele kjeden kjørt på nytt 03.10 etter
+  oppryddingen ga byte-identiske resultater, og dobbeltrader i uttrekket endrer ingen utfall.
 - Åpent: importen gir fortsatt alle resultater i et flerdagsstevne startdatoen
   (stevnelisten i kilden har én dato). Stevnedager telles derfor for lavt for nye
   flerdagsstevner.

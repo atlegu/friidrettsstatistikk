@@ -1,4 +1,4 @@
 Outcome,Description,Retainer n,Retainer %,OR (vol_milepael_z),AUC (full model)
-A,≥1 senior result (age 20+),411,19.2,2.622088,0.838159
-B,≥2 results in any senior year (primary),347,16.2,2.876678,0.869618
-C,≥2 results in 2 different senior years,254,11.9,2.764088,0.878501
+A,≥1 senior result (age 20+),411,19.2,2.384533,0.840725
+B,≥2 results in any senior year (primary),347,16.2,2.594641,0.872579
+C,≥2 results in 2 different senior years,254,11.9,2.390602,0.881591

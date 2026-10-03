@@ -472,7 +472,7 @@ def supp():
     es = RES["es::log(1 + meets), all athletes"]
     nest = pd.read_csv(RERUN / "table5_auc_comparison.csv")
     rows = [["Total cohort", n(K["N"]), "All included athletes"],
-            ["Sex known", n(K["sex_known"]), f"Gender M/F registered ({K['sex_unknown']} unknown; excluded from regression models except the mean-imputation check in Table S5, included in cohort totals and unstratified KM curves)"],
+            ["Sex known", n(K["sex_known"]), f"Gender M/F registered ({K['sex_unknown']} unknown; excluded from models that adjust for sex except the mean-imputation check in Table S5; included in cohort totals, the fixed-effects model and full-cohort descriptive analyses)"],
             ["Primary logistic L1–L4", n(K["primary_n"]), "Complete case on sex, Tyrving, HHI, pre-milestone volume; L1–L3 fitted on the same fixed sample for AUC comparability"],
             ["Level-vs-change (Table 4)", n(RES["t4"]["n"]), f"Of {K['active14']:,} athletes with ≥1 result at age 14; complete case on sex and Tyrving"],
             ["Contamination-free change model", n(RES["s19"]["n"]), f"Of {K['active16_two']:,} athletes with ≥2 results at age 16; complete case on sex"],
@@ -487,7 +487,7 @@ def supp():
             ["Within-athlete fixed-effects model (Table S28)", n(es["n_athletes"]), f"Athletes with ≥2 athlete-seasons at ages 13–19 up to and including the final active season ({es['n_obs']:,} athlete-seasons)"],
             ["Specialization confound models (S18 B/C)", " / ".join(n(x) for x in K["s18_n"][1:]), "Complete case on primary-category Tyrving"]]
     out.append(render("S12", "Analysis sample flow", ["Analysis", "n", "Definition"], rows,
-                      "*Note.* One map of every analysis sample in the manuscript; each n is derivable from the row's definition."))
+                      "*Note.* " + hl("Map of the main analysis samples") + "; each n is derivable from the row's definition."))
     # S13
     t = pd.read_csv(RERUN / "tableS13_structural_controls.csv")
     rows = [[f"**{NAMES[r['Covariate']]}**" if r["Covariate"] == "vol_pre_milepael_z" else NAMES[r["Covariate"]],
@@ -578,7 +578,8 @@ def supp():
                       "*Note.* Descriptive comparison on the subsample with complete data on all 22 candidate predictors (" + hl("n = " + n(t["n"].iloc[0])) + "; see Supplementary Table S12). This table includes post-baseline behavioral predictors (ages 15–16) and therefore overlaps with the early portion of the at-risk window; AUCs are descriptive rather than ordinary prospective prediction quantities."
                       + hl(f" The complete-case requirement (which includes HHI at age 15) keeps only athletes who competed at 15 "
                            f"(senior retention {100 * cc['aktiv_senior'].mean():.1f}% vs. {100 * K['prevalence']:.1f}% in the cohort), so every row, "
-                           "including the baseline-only one, is computed on a sample selected on later participation.")))
+                           "including the baseline-only one, is computed on a sample selected on later participation. "
+                           "AUCs (± SD over folds) are from a single stratified 5-fold split (seed 42), as in the original analysis.")))
     # S18
     t = pd.read_csv(RERUN / "tableS18_specialization_confound.csv")
     rows = []
@@ -612,10 +613,12 @@ def supp():
                       + hl(f"{s19['auc']:.3f}; change = volume at 16 minus volume at 15") + "); all predictors are measured by 16, so neither predictor can be the exit itself. See Supplementary Methods S-M6."))
     # S20
     t = pd.read_csv(TAB / "tableS20_hhi_stress_r1.csv")
-    rows = [[r["Model"].replace(">=", "≥"), n(r["n"]), r["HHI OR"], f"{float(r['Volume OR']):.2f}"] for _, r in t.iterrows()]
+    rows = [[r["Model"].replace(">=", "≥").replace("13-14", "13–14").replace(" - ", " − "), n(r["n"]), r["HHI OR"], f"{float(r['Volume OR']):.2f}"] for _, r in t.iterrows()]
+    n_single = int(t["n"].iloc[0] - t.loc[t["Model"].str.startswith("Finite"), "n"].iloc[0])   # corrected index needs >= 2 results
     out.append(render("S20", "HHI count-dependence stress tests", ["Model", "n", "HHI OR [95% CI]", "Volume OR"], rows,
-                      "*Note.* " + hl(f"HHI computed from results at ages 13–14. Spearman correlations: HHI vs. result count at ages 13–14 ρ = {RES['hhi_rho_res']:.2f}; "
-                                      f"HHI vs. pre-milestone volume ρ = {RES['hhi_rho_vol']:.2f}.") + " The HHI–retention association is unchanged under count restrictions and the corrected index; it is not a small-count artifact. See Supplementary Methods S-M8."))
+                      "*Note.* " + hl(f"HHI computed from results at ages 13–14. Spearman correlations: HHI vs. result count at ages 13–14 ρ = {RES['hhi_rho_res']:.2f}; ".replace("= -", "= −")
+                                      + f"HHI vs. pre-milestone volume ρ = {RES['hhi_rho_vol']:.2f}. ".replace("= -", "= −")
+                                      + f"The corrected index is undefined for the {n_single} athletes with a single result at ages 13–14.") + " The HHI–retention association is unchanged under count restrictions and the corrected index; it is not a small-count artifact. See Supplementary Methods S-M8."))
     # S21
     t = pd.read_csv(TAB / "tableS21_missing_data_r1.csv")
     rows = [[r["Data / model"],
@@ -668,8 +671,8 @@ def supp():
             ["Pre-milestone volume (mean meets)", f"{t.loc['vol_pre_milepael', 'Included (complete case)']:.1f}", f"{t.loc['vol_pre_milepael', 'Excluded (any missing)']:.1f}"],
             ["HHI, ages 13–14 (mean)", f"{t.loc['hhi_early', 'Included (complete case)']:.2f}", f"{t.loc['hhi_early', 'Excluded (any missing)']:.2f}"]]
     out.append(render("S25", "Included versus excluded athletes (complete-case comparison)", ["Variable", "Included (complete case)", "Excluded (any missing)"], rows,
-                      "*Note.* " + hl(f"n = {K['primary_n']:,} included, {K['N'] - K['primary_n']} excluded ({K['sex_unknown']} without registered sex, "
-                                      f"{K['tyr_missing_known']} without a baseline Tyrving score). The excluded athletes are too few to affect the estimates; "
+                      "*Note.* " + hl(f"n = {K['primary_n']:,} included, {K['N'] - K['primary_n']} excluded ({K['sex_unknown']} without registered sex; "
+                                      f"{K['tyr_missing_known']} further without a baseline Tyrving score). The excluded athletes are too few to affect the estimates; "
                                       "multiple imputation gives identical results (Supplementary Table S21).")))
     # S26-S32 (new)
     t = pd.read_csv(TAB / "tableS26_cv_procedures.csv", dtype=str)

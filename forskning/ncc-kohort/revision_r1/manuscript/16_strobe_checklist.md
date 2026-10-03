@@ -20,13 +20,13 @@ Manuscript: *Pulling back before dropping out: {+Declining competition participa
 | 12 Statistical methods (a) | All statistical methods, including confounding control | §2.5.1–2.5.6; {+S-M1–S-M12+} |
 | 12 (b) | Subgroups and interactions | §2.5.2 (structural controls), Supplementary Table S7 (sex-stratified) |
 | 12 (c) | Missing data | §2.5.5, S-M3, Supplementary Tables S12/S21/S25 |
-| 12 (d) | Loss to follow-up | §2.3 (complete register follow-up; censoring for athletes active 2024+), Supplementary Table S24 (fixed observation window){+; S-M10 and Supplementary Table S30 (temporary gaps and returns)+} |
+| 12 (d) | Loss to follow-up | §2.3 (complete register follow-up), {+§2.4.1 and §2.5.4 (censoring for athletes active 2024+),+} Supplementary Table S24 (fixed observation window){+; S-M10 and Supplementary Table S30 (temporary gaps and returns)+} |
 | 12 (e) | Sensitivity analyses | §3.10; Supplementary Tables S2, S5, S9, S11, S20, S21, {+S22,+} S24{+, S26, S27, S29, S30+} |
 | 13 Participants (a) | Numbers at each stage | Supplementary Figure S0 (flow diagram); Supplementary Table S12 (sample flow) |
 | 13 (b) | Reasons for non-participation | §2.2 (boundary birth years; de-duplication) |
 | 13 (c) | Flow diagram | Supplementary Figure S0 |
 | 14 Descriptive data (a) | Characteristics of participants | Table 1 |
-| 14 (b) | Missing data per variable | §2.5.5 ({+baseline Tyrving missing for 2 athletes, 0.1%; other variables complete+}); Supplementary Table S25 |
+| 14 (b) | Missing data per variable | §2.5.5 ({+baseline Tyrving and sex missing for the same 2 athletes, 0.1%; HHI, volume and the outcome complete+}); Supplementary Table S25 |
 | 14 (c) | Follow-up time | §2.3 (9–14 years) |
 | 15 Outcome data | Numbers of outcome events over time | §3.1 (retention rates), Table 2, Supplementary Figure S2 |
 | 16 Main results (a) | Unadjusted and adjusted estimates with CIs; which confounders adjusted | Table 3 (nested L1–L4), Supplementary Table S13 |

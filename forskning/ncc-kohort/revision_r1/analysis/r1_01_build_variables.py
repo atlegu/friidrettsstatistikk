@@ -80,6 +80,7 @@ def main():
     bad = pd.Series(False, index=kar.index)
     for code, mn in MIN_CS.items():
         bad |= (kar["event_code"] == code) & (kar["pv_repaired"] < mn)
+    kar_all = kar.copy()      # every result: HHI counts participation, whatever the recorded time
     kar = kar[~bad].copy()
 
     table = ty.parse_tyrving_xls()
@@ -109,8 +110,9 @@ def main():
     per.columns = [f"tyrving_age_{a}_r1" for a in per.columns]
     pre15 = kar[kar["age"].between(13, 14)].groupby("athlete_id")["tyr"].max().rename("tyrving_peak_pre15_r1")
 
-    # --- HHI from ages 13-14 only
-    w = kar[kar["age"].between(13, 14)]
+    # --- HHI from ages 13-14 only, from every result (the time filter above is for scoring only;
+    #     final check, 3 October 2026: it had dropped 1 result of 1 athlete from HHI)
+    w = kar_all[kar_all["age"].between(13, 14)]
     h = pd.DataFrame({"hhi_13_14": w.groupby("athlete_id")["event_category"].apply(hhi),
                       "res_13_14": w.groupby("athlete_id").size(),
                       "nkat_13_14": w.groupby("athlete_id")["event_category"].nunique()})
