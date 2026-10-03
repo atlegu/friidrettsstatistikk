@@ -1,4 +1,4 @@
-\artikkelopener{Løper som før,\\ kaster kortere}{Femten utgaver av lekene for 13- og 14-åringer viser stabile løp, svakt svakere hopp og et markert fall i kast}{Atle Guttormsen}{Fagnytt 2026}{Ungdomsfriidrett}{Hver høst siden 2012 har de beste 13- og 14-åringene fra hele landet møttes til samme stevne, med samme øvelser og samme redskap. Det gjør lekene til en sjelden målestokk. Har nivået i ungdomsfriidretten endret seg? Svaret avhenger av hvilken øvelse du spør om.}
+\artikkelopener{Løper som før,\\ kaster kortere}{Femten utgaver av lekene for 13- og 14-åringer viser stabile løp, svakt svakere hopp og et markert fall i kast}{Atle G. Guttormsen}{Fagnytt 2026}{Ungdomsfriidrett}{Hver høst siden 2012 har de beste 13- og 14-åringene fra hele landet møttes til samme stevne, med samme øvelser og samme redskap. Det gjør lekene til en sjelden målestokk. Har nivået i ungdomsfriidretten endret seg? Svaret avhenger av hvilken øvelse du spør om.}
 
 \lettrine[lines=3]{D}{e} har skiftet navn fem ganger. NCC-lekene i 2012, PEAB-lekene i 2013 og 2014, Bendit-lekene i 2015, Ungdomslekene i 2016, Lerøy-lekene fra 2017 til 2025, og Extra-lekene i år. Men stevnet er det samme: en helg tidlig i september, tre arenaer i Øst, Vest og Midt/Nord, og 13- og 14-åringer tatt ut av kretsene. Mellom 520 og 660 utøvere har deltatt hvert år, med unntak av pandemiåret 2020.
 
@@ -145,7 +145,7 @@ Men kastene har mistet mye, og de har mistet det før utøverne kommer til 13-å
 :::
 
 ::: {.forfatter}
-**Atle Guttormsen** er professor ved Handelshøyskolen ved NMBU og står bak friidrettsresultater.no, som tilrettelegger Norges Friidrettsforbunds resultater for trenere og utøvere.
+**Atle G. Guttormsen** er professor ved Handelshøyskolen ved NMBU og står bak friidrettsresultater.no, som tilrettelegger Norges Friidrettsforbunds resultater for trenere og utøvere.
 :::
 
 ### Referanser

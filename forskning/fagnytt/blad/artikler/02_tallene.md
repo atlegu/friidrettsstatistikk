@@ -1,6 +1,6 @@
 \artikkelopener{Tallene finnes. Bruk dem.}{Hva en komplett resultatdatabase kan
 fortelle norske friidrettstrenere om utvikling, frafall og hvor idretten er på
-vei}{Atle Guttormsen}{Fagnytt 2026}{Statistikk og trenerarbeid}{Friidrett er den
+vei}{Atle G. Guttormsen}{Fagnytt 2026}{Statistikk og trenerarbeid}{Friidrett er den
 mest målte idretten som finnes. Likevel bruker vi tallene nesten bare til én
 ting: å rangere. Med en database over samtlige godkjente resultater siden 2011
 kan vi nå svare på tre spørsmål trenere alltid har stilt. Hva er normal
@@ -355,7 +355,7 @@ store, sterke barn i klubbene, før de fyller 13.
 
 
 ::: {.forfatter}
-**Atle Guttormsen** er professor ved Handelshøyskolen ved NMBU og står bak friidrettsresultater.no. Han har publisert en rekke vitenskapelige arbeider om utvikling, frafall og seleksjon i friidrett, basert på Norges Friidrettsforbunds resultatdatabase.
+**Atle G. Guttormsen** er professor ved Handelshøyskolen ved NMBU og står bak friidrettsresultater.no. Han har publisert en rekke vitenskapelige arbeider om utvikling, frafall og seleksjon i friidrett, basert på Norges Friidrettsforbunds resultatdatabase.
 :::
 
 ### Referanser
