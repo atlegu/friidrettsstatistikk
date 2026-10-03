@@ -217,42 +217,6 @@ som gikk 15 stevner i fjor, går 6 i år, ser du frafallet mens det ennå kan
 påvirkes. I analysen hang både nivået som 14-åring og nedgangen fra 14 til 15
 sammen med hvem som fortsatt konkurrerte som seniorer.
 
-::: {.sitat}
-«Deltakelse i mesterskap er ikke en belønning for de beste. Det er et av de mest virksomme tiltakene vi har for å beholde folk.»
-:::
-
-### Å klare kravet hjelper lite hvis du ikke drar
-
-Den første kvalifiseringsgrensen norske ungdommer møter, er UM-kravet ved
-15–16 år. I en egen, foreløpig upublisert analyse av den eldste delen av
-samme kohort (1 301 utøvere født 1998–2000) delte jeg utøverne etter status
-ved den grensen: kvalifisert og deltok, kvalifisert men deltok ikke, og fire
-grupper etter hvor langt under kravet de lå. Figur 6 viser andelen som
-fortsatt konkurrerte fem år senere.
-
-![Figur 6. Status ved UM-kvalifisering som 15–16-åring og andel som fortsatt konkurrerte fem år senere.](figurer/fig5s_um.png){.smal}
-
-Det ventede mønsteret er der: jo lenger under kravet, desto større frafall.
-Men se på de to søylene i midten. Utøvere som *klarte* kravet, men ikke dro
-på UM, hadde like høyt frafall som dem som bommet med under to prosent, og
-høyere etter justering for kjønn, nivå, konkurransevolum og region
-(hasardratio 2,05 mot 1,72). Det til tross for at de var klart bedre utøvere.
-
-Jeg tolker dette som et spørsmål om tilhørighet. Den som så vidt bommer på
-kravet, men fortsetter å konkurrere, er fortsatt «innenfor». Den som klarer
-kravet og lar være å dra, har allerede begynt å gå. Årsaken kan være
-motivasjon, skader, treningsmiljø eller andre idretter, og databasen kan
-ikke skille dem. Men handlingsregelen for treneren er den samme uansett:
-utøvere som kvalifiserer seg, bør dras med. Deltakelse i mesterskap er ikke
-en belønning for de beste, det er et av de mest virksomme tiltakene vi har
-for å beholde folk.
-
-Blant dem som både kvalifiserte seg og deltok, avgjorde juniorårene resten.
-De som fortsatte å konkurrere jevnlig som 17–19-åringer og samtidig forbedret
-seg, var i 85 prosent av tilfellene aktive ved 20. De som deltok i færre enn
-to juniorsesonger, var det i 5 prosent, uansett hvor gode de hadde vært som
-16-åringer.
-
 ## Del 3: Hvilken vei går det?
 
 ### Toppen er bedre enn noen gang
@@ -279,7 +243,7 @@ meter etter 2020, bør trekke fra noe for skoene.
 ### Femtenåringene er færre og svakere
 
 Under seniortoppen er bildet et annet. Antall aktive 10–19-åringer falt fra
-8 715 i 2019 til 6 392 i 2025, en nedgang på 27 prosent, og har ikke tatt seg
+8 706 i 2019 til 6 365 i 2025, en nedgang på 27 prosent, og har ikke tatt seg
 opp igjen etter pandemien. Barnerekrutteringen er på vei tilbake, men
 tenåringsdebuten, altså utøvere som får sitt første resultat som 14–19-åring,
 er omtrent halvert. Veien inn i friidretten fra andre idretter og fra
@@ -289,11 +253,11 @@ Og nivået i de yngste ungdomsklassene faller. Topp-10-snittet for 15-årige
 gutter på 800 meter har gått fra 1:59,8 til 2:03,8, i lengde fra 5,96 til 5,73
 meter. Tydeligst er det i kast, der redskapet er det samme gjennom hele
 perioden. Kule for 15-årige gutter (4 kg) har gått fra 14,32 til 12,04 meter
-(figur 7). Spyd gutter 15 fra 50,4 til 43,7. Diskos jenter 15 fra 32,3 til
+(figur 6). Spyd gutter 15 fra 50,4 til 43,7. Diskos jenter 15 fra 32,3 til
 27,2. Mens seniorkasterne aldri har vært bedre, har de beste 15-åringene
 mistet fem til femten prosent.
 
-![Figur 7. Snittet av de ti beste 15-årige guttene i kule (4 kg), utendørs, 2013–2025.](figurer/fig7s_kule.png){.smal}
+![Figur 6. Snittet av de ti beste 15-årige guttene i kule (4 kg), utendørs, 2013–2025.](figurer/fig7s_kule.png){.smal}
 
 ::: {.sitat}
 «Det trenerne i denne aldersgruppen gjør, virker som det alltid har gjort. Det som har endret seg, er nivået utøverne kommer inn med.»
@@ -303,22 +267,22 @@ mistet fem til femten prosent.
 
 Hvor tidlig starter dette? Ungdomslekene for 13–14-åringer har vært arrangert
 hvert år i hele datasettets levetid, med samme øvelsesprogram og samme redskap per klasse, og
-gir en sjelden mulighet til å følge én aldersgruppe over 14 utgaver. Jeg har
-analysert alle 30 000 resultater fra lekene og estimert trenden i hver øvelse
+gir en sjelden mulighet til å følge én aldersgruppe over 15 utgaver, fra 2012
+til 2026. Jeg har analysert alle 30 000 resultater fra lekene og estimert trenden i hver øvelse
 og klasse, både for medianen (bredden) og for beste desil (toppen).
 
 Løp og hekk er stabile. Guttenes topp i sprint og mellomdistanse er blitt
 litt bedre, jentenes bredde i sprint litt svakere, men utslagene er tideler
-over 14 år. Hopp går svakt tilbake i bredden. Kastene faller markert: spyd 14
-til 17 prosent per tiår i alle fire klasser, kule 5 til 8, diskos 5 til 11.
-Kontrollert mot sesongbeste for *alle* norske 13- og 14-åringer, ikke bare dem
-på lekene, er fallet like stort. Det er altså ikke uttaket til lekene som har
+over 15 år. Hopp går svakt tilbake i bredden. Kastene faller markert: spyd 14
+til 17 prosent per tiår i alle fire klasser, kule 5 til 7, diskos 3 til 9.
+Sesongbeste for *alle* norske 13- og 14-åringer, ikke bare dem på lekene,
+viser det samme fallet, om enn noe mindre i spyd. Det er altså ikke uttaket til lekene som har
 endret seg. Det er kastferdigheten hos norske 13-åringer.
 
 Det viktigste funnet for trenere ligger likevel et annet sted. Fordi to
 tredjedeler av 14-åringene også deltok året før, kan jeg måle hvor mye samme
-utøver forbedrer seg fra 13 til 14 år. Den forbedringen er *uendret* i alle
-øvelser gjennom hele perioden: gutter 4–7 prosent i løp og 5–9 i hopp, jenter
+utøver forbedrer seg fra 13 til 14 år. Den forbedringen er *uendret* i løp,
+lengde, tresteg og høyde gjennom hele perioden: gutter 4–6 prosent i løp og 5–8 i hopp, jenter
 2–3 og 1–3. Utøverne utvikler seg like mye i løpet av 13-årssesongen som
 før. Det trenerne i denne aldersgruppen gjør, virker som det alltid har
 gjort. Det som har endret seg, er nivået utøverne kommer inn med. Kastfallet
@@ -327,7 +291,7 @@ i ungdomstreningen.
 
 ## Hva betyr dette for oss som trener?
 
-Fem punkter, i den rekkefølgen jeg mener de er viktigst. De står samlet i boksen «Fem råd til treneren».
+Fire punkter, i den rekkefølgen jeg mener de er viktigst. De står samlet i boksen «Fire råd til treneren».
 
 Alt dette er beskrivende funn fra én database, og de bør leses slik. Men de
 er også det nærmeste vi kommer et samlet bilde av norsk friidrett sett
@@ -345,24 +309,19 @@ tidligste varsellampen vi har for frafall, ett til to år før utøveren er
 borte. En 14-åring som går halvparten så mange stevner som i fjor, trenger en
 samtale nå, ikke neste vår. Utøvere som er på trening, men nesten ikke deltar på stevner, vil i de aller fleste tilfeller bli helt borte fra konkurransene ganske snart.
 
-**2. Send dem som kvalifiserer seg.** Utøvere som klarer UM-kravet uten å dra,
-slutter oftere enn dem som så vidt bommer. Mesterskapsdeltakelse er et
-tiltak for å beholde utøvere. Det samme gjelder juniorårene: to sesonger med
-jevn konkurransering som 17–19-åring skiller 85 prosent fra 5.
-
-**3. Bruk longitudinelle forventninger når du setter mål.** Utviklingen
+**2. Bruk longitudinelle forventninger når du setter mål.** Utviklingen
 fortsetter til midten av 20-årene i alle øvelser og for begge kjønn. Platået
 ved 17–18 finnes bare i topp-100-kurvene. En junior som står stille ett år,
 er ikke ferdig, og det finnes 20–30 prosentpoeng fremgang igjen i hopp fra 18
 til 25.
 
-**4. Skill relativ alder fra modning, og ikke forveksle noen av dem med
+**3. Skill relativ alder fra modning, og ikke forveksle noen av dem med
 talent.** Fødselsmåneden er lagt før 10 år og forsterkes ikke; den kan bare
 barneidretten gjøre noe med. Modningen er midlertidig og stor; den må
 ungdomstreneren se forbi. Topp-100-listene for 13-åringer er halvfulle av
 januarbarn og tidlig modne. De er ikke et mål på hvem som blir best.
 
-**5. Kastene trenger et løft fra 10-årsalderen.** Fallet i kast er det
+**4. Kastene trenger et løft fra 10-årsalderen.** Fallet i kast er det
 største enkeltfunnet i materialet, det er nasjonalt, det begynner før 13, og
 det skjer samtidig som de aller beste seniorkasterne er bedre enn noen gang. Utviklingstakten
 i ungdomsklassene er intakt, så løsningen ligger ikke i mer press på

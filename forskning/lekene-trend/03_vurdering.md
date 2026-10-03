@@ -2,6 +2,21 @@
 
 *Arbeidsnotat, 2026-09-05. Grunnlag for artikkel til trenerforeningens tidsskrift. Tallene er hentet fra `tables/` (produsert av `02_deskriptiv.py` og `03_trender.py`); vedleggstabellen med alle 56 seriene ligger i `tables/vedlegg_trender.md`.*
 
+> **Oppdatering 2026-10-03 (nytt uttrekk, 15 utgaver 2012–2026).** Tallene i teksten under gjelder
+> uttrekket fra 05.09.2026 (2012–2025). Nytt uttrekk finner serien på sted og dato, fører sonehopp
+> som lengde/tresteg, og har med 2026-utgaven (Rjukan, Ålgård, Kristiansund; 545 utøvere).
+> 29 945 resultater fra 6 051 utøvere. Hovedbildet er uendret:
+> - 45 av 56 serier har negativ mediantrend, 17 signifikant negative, ingen signifikant positive
+>   (snitt −3,3 % per tiår, median −1,8 %).
+> - Toppen: 33 av 56 negative, 14 signifikant negative, tre signifikant positive (60 m G14,
+>   600 m G14, 1500 m G13).
+> - Kast, median per tiår: spyd −13,8 til −17,3 % (alle p < 0,001), kule −5,0 til −6,6 %,
+>   diskos −3,5 til −9,3 %, slegge gutter −9,6 til −12,8 %, slegge jenter flat.
+> - Gjentakerforbedring 13→14 uten trend i løp, lengde, tresteg og høyde (gutter 4–6 % i løp,
+>   5–8 % i hopp; jenter 2–3 % og 1–3 %). Stav jenter øker (p < 0,001).
+> - 62–75 % av 14-åringene deltok også året før (snitt 67 %).
+> - Den nasjonale kontrollen (`tables/nasjonal_*.csv`) er ikke kjørt på nytt; den er fra 05.09.2026.
+
 ## Grunnlag og metode i korte trekk
 
 Datasettet omfatter alle 14 utgavene av lekene (NCC-lekene 2012, PEAB-lekene 2013–2014, Bendit-lekene 2015, Ungdomslekene 2016, Lerøy-lekene 2017–2025): 30 078 resultater fra 5 705 utøvere, ett beste resultat per utøver, øvelse og år. Manuelle tider er utelatt. Kappgang er holdt utenfor. Antall øvelser per utøver er ikke brukt som indikator, siden det styres av kretsenes deltakerregler, som både varierer med kretsstørrelse og er endret i perioden.

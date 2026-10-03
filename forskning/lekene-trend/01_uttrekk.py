@@ -5,6 +5,12 @@ fra Supabase og lagrer et deduplisert analysedatasett (ett resultat per utøver 
 Lerøy (2017-2025), Extra-lekene (2026-). Extralekene på Ålgård i juni (KM Rogaland)
 er et annet stevne og holdes utenfor via måned.
 
+Serien finnes på stevnenavn, og dessuten på sted og dato: i basen ligger en del av
+resultatene i poster som i kilden er andre, små stevner samme dag og sted
+(«Jessheim, Nasjonalt stevne» 13.09.2014, «Osterøy, Seriestevne» 28.08.2016). Se
+sosken_poster(). 13-åringene hopper fra sone; «Lengde (Sone 0,5m)» og
+«Tresteg (Sone 0,5m)» føres her som lengde og tresteg.
+
 Kjør:  scraper/venv/bin/python forskning/lekene-trend/01_uttrekk.py
 Ut:    forskning/lekene-trend/data/lekene.csv
 """
@@ -39,7 +45,8 @@ def serie_meets() -> pd.DataFrame:
     q = (sb.table("meets").select("id,name,city,start_date")
          .gte("start_date", f"{START_AAR}-01-01").lte("start_date", datetime.now().strftime("%Y-%m-%d"))
          .or_("name.ilike.%ncc%lek%,name.ilike.%peab%lek%,name.ilike.%bendit%lek%,"
-              "name.ilike.%lerøy%,name.ilike.%leroy%,name.ilike.%ungdomslekene%,name.ilike.%extra%lek%"))
+              "name.ilike.%lerøy%,name.ilike.%leroy%,name.ilike.%ungdomslekene%,name.ilike.%extra%lek%,"
+              "name.ilike.%ekstra%lek%"))
     m = pd.DataFrame(q.execute().data)
     m["start_date"] = pd.to_datetime(m["start_date"])
     m["yr"] = m["start_date"].dt.year
@@ -51,17 +58,61 @@ def serie_meets() -> pd.DataFrame:
             | name.str.contains("lerøy|leroy", regex=True)
             | (name.str.contains("ungdomslekene")
                & m["start_date"].between("2016-08-26", "2016-08-29"))
-            # Extra-lekene fra 2026 (august/september); Extralekene på Ålgård i juni er KM Rogaland
-            | (name.str.contains(r"extra[- ]?lek", regex=True)
+            # Extra-lekene fra 2026 (august/september); Extralekene på Ålgård i juni er KM Rogaland.
+            # Midt/Nord 2026 heter «Ekstralekene 2026» i kilden.
+            | (name.str.contains(r"e(?:x|ks)tra[- ]?lek", regex=True)
                & (m["yr"] >= 2026) & m["start_date"].dt.month.isin([8, 9]))
         )
     )
     m = m[keep].copy()
+    m = pd.concat([m, sosken_poster(m)], ignore_index=True)
     logger.info(f"Serie: {len(m)} stevnerader, år {sorted(m['yr'].unique().tolist())}")
     for yr, g in m.groupby("yr"):
         logger.info(f"  {yr}: " + "; ".join(f"{n} ({c}, {d:%d.%m})" for n, c, d in
                                             zip(g["name"], g["city"], g["start_date"])))
     return m
+
+
+def _sted(name: str, city: str) -> str:
+    """Stedsnavnet: det som står foran komma i stevnenavnet, ellers første ord i city."""
+    s = name.split(",")[0] if "," in name else (city or "")
+    return s.strip().lower().split(" ")[0] if s.strip() else ""
+
+
+def sosken_poster(m: pd.DataFrame) -> pd.DataFrame:
+    """Andre stevneposter samme sted og dag som en serie-post.
+
+    Kilden har små seniorstevner samme dag og sted som lekene, og basen har lagt en
+    del av lekene-resultatene i de postene. Navnefilteret finner dem ikke. Bare
+    13-14-åringene tas med videre, så de få seniorresultatene faller ut av seg selv.
+    Varig løsning er å flytte resultatene til riktig post i basen.
+    """
+    ut = []
+    for dato, g in m.groupby("start_date"):
+        steder = {_sted(n, c) for n, c in zip(g["name"], g["city"])} - {""}
+        kand = pd.DataFrame(sb.table("meets").select("id,name,city,start_date")
+                            .eq("start_date", f"{dato:%Y-%m-%d}").execute().data)
+        if kand.empty:
+            continue
+        kand = kand[~kand["id"].isin(m["id"])
+                    & [_sted(n, c) in steder for n, c in zip(kand["name"], kand["city"])]]
+        # Bare poster som i praksis er lekene: minst 100 resultater av 13-14-åringer, og minst
+        # ni av ti resultater i posten. Et annet stevne samme dag (Haugesund Sparebank Cup 4,
+        # 08.09.2020: 13 av 59) holdes utenfor.
+        for i, mid in zip(kand.index, kand["id"]):
+            r = pd.DataFrame(sb.table("results").select("date,athletes(birth_year)")
+                             .eq("meet_id", mid).order("id").range(0, 999).execute().data)
+            fy = pd.json_normalize(r["athletes"])["birth_year"] if len(r) else pd.Series(dtype=float)
+            n = int((dato.year - fy).isin([13, 14]).sum())
+            if n < 100 or n < 0.9 * len(r):
+                kand = kand.drop(i)
+        ut.append(kand)
+    s = pd.concat(ut, ignore_index=True) if ut else pd.DataFrame(columns=["id", "name", "city", "start_date"])
+    s["start_date"] = pd.to_datetime(s["start_date"])
+    s["yr"] = s["start_date"].dt.year
+    for n, c, d in zip(s["name"], s["city"], s["start_date"]):
+        logger.info(f"  Søskenpost (sted og dato): {n} ({c}, {d:%d.%m.%Y})")
+    return s
 
 
 def fetch_results(meet_ids: list[str]) -> pd.DataFrame:
@@ -72,7 +123,7 @@ def fetch_results(meet_ids: list[str]) -> pd.DataFrame:
            "athletes(gender,birth_date,birth_year),events(code,name,result_type,category),"
            "meets(city,start_date)")
     while True:
-        res = (sb.table("results").select(sel).in_("meet_id", meet_ids)
+        res = (sb.table("results").select(sel).in_("meet_id", meet_ids).order("id")
                .range(page * size, (page + 1) * size - 1).execute())
         out.extend(res.data)
         logger.info(f"  side {page}: {len(res.data)} rader (totalt {len(out)})")
@@ -121,6 +172,12 @@ def main():
     logger.info(f"13-14-åringer: {len(d)} rader, {d['athlete_id'].nunique()} utøvere")
     # Slå sammen kappgang-kodene før dedup, ellers overlever samme resultat under to koder
     d["e_code"] = d["e_code"].replace({"1000mg": "kappgang_1000_m"})
+    # Sonehopp (13-åringene) føres som lengde/tresteg. Basen hadde lenge samme hopp under
+    # begge koder; etter rydd_sonehopp.py ligger de bare i soneøvelsen.
+    sone = {"lengde_sone_05m": ("lengde", "Lengde"), "tresteg_sone_05m": ("tresteg", "Tresteg")}
+    for kode, (ny, navn) in sone.items():
+        d.loc[d["e_code"] == kode, "e_name"] = navn
+        d["e_code"] = d["e_code"].replace({kode: ny})
     d["e_name"] = d["e_name"].where(d["e_code"] != "kappgang_1000_m", "Kappgang 1000 meter")
     d["verdi"] = [parse_verdi(p, c, r) for p, c, r in zip(d["performance"], d["e_code"], d["e_result_type"])]
     d["manuell"] = d["is_manual_time"].eq(True) | pd.Series(
