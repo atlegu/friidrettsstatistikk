@@ -1,6 +1,6 @@
 \artikkelopener{Hvor forsvant alle høydehopperne?}{Et historisk tilbakeblikk på norsk høydehopp fra 1965 – og hvorfor dagens nivå er som det er}{Henning Hofstad}{Fagnytt 1 · 2026}{Høydehopp}{Alt var ikke bedre før, men norske høydehoppere var det. Her gir redaktøren et historisk tilbakeblikk på norsk høydehopp fra 1965 og filosoferer om hvorfor dagens nivå er som det er.}
 
-Mitt første friidrettsminne kan tidfestes til 4. august 1965. Jeg var 8 år gammel og hørte tilfeldigvis på radioen. Det var landskamp i friidrett. 20 år gamle Stein Sletten gjorde seg klar til å hoppe på rekordhøyden 2,10m. Han gikk over i sin slepne dykkstil. Norsk rekord!
+\lettrine[lines=3]{M}{itt} første friidrettsminne kan tidfestes til 4. august 1965. Jeg var 8 år gammel og hørte tilfeldigvis på radioen. Det var landskamp i friidrett. 20 år gamle Stein Sletten gjorde seg klar til å hoppe på rekordhøyden 2,10m. Han gikk over i sin slepne dykkstil. Norsk rekord!
 
 Stein sitt rekordhopp var samtidig slutten på en epoke norsk høydehopp. Han var den siste rekordholderen som hoppet dykk. Etter han kom flophopperne Leif Roar Falkum, Terje Totland, Håkon Særnblom og dagens rekordholder, Steinar Hoen.
 
