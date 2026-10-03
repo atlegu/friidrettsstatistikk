@@ -15,7 +15,12 @@
 > - Gjentakerforbedring 13→14 uten trend i løp, lengde, tresteg og høyde (gutter 4–6 % i løp,
 >   5–8 % i hopp; jenter 2–3 % og 1–3 %). Stav jenter øker (p < 0,001).
 > - 62–75 % av 14-åringene deltok også året før (snitt 67 %).
-> - Den nasjonale kontrollen (`tables/nasjonal_*.csv`) er ikke kjørt på nytt; den er fra 05.09.2026.
+> - Nasjonal kontroll kjørt på nytt 03.10.2026 (`05_nasjonal_kontroll.py`, 2012–2026, sonehopp ført
+>   som lengde): median per tiår for alle norske 13–14-åringer er spyd −6,9 til −12,3 %
+>   (alle p < 0,05), kule −4,8 til −5,9 % (alle p < 0,05), diskos −4,4 til −10,5 % i tre av fire
+>   klasser (G14 +3,1 %, ikke signifikant; toppen −7,7 %), lengde −0,5 til −2,5 % (ingen
+>   signifikante), høyde uendret. Samme retning som på lekene; spydfallet er om lag halvparten
+>   til to tredjedeler så stort nasjonalt.
 
 ## Grunnlag og metode i korte trekk
 

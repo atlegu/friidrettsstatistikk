@@ -276,7 +276,7 @@ litt bedre, jentenes bredde i sprint litt svakere, men utslagene er tideler
 over 15 år. Hopp går svakt tilbake i bredden. Kastene faller markert: spyd 14
 til 17 prosent per tiår i alle fire klasser, kule 5 til 7, diskos 3 til 9.
 Sesongbeste for *alle* norske 13- og 14-åringer, ikke bare dem på lekene,
-viser det samme fallet, om enn noe mindre i spyd. Det er altså ikke uttaket til lekene som har
+viser det samme fallet: spyd 7 til 12 prosent per tiår, kule 5 til 6. Det er altså ikke uttaket til lekene som har
 endret seg. Det er kastferdigheten hos norske 13-åringer.
 
 Det viktigste funnet for trenere ligger likevel et annet sted. Fordi to

@@ -12,4 +12,5 @@ fi
 "$PY" 02_deskriptiv.py
 "$PY" 03_trender.py
 "$PY" 04_vedleggstabell.py
+"$PY" 05_nasjonal_kontroll.py 2>&1 | grep -v "utøvere, "
 echo "Ferdig. Se over figures/ og tables/, og oppdater tallene i 03_vurdering.md."
