@@ -25,14 +25,15 @@
     \fill[hovedbla, opacity={min(1,(\i/59)^1.35)}]
       ($(current page.north west)+(0,-205mm-\i*0.5mm)$) rectangle ++(210mm,-0.52mm);
   }
-  \node[anchor=north east,text=white,inner sep=2pt,font=\sffamily\tiny,opacity=0.8] at ($(current page.north east)+(-4mm,-54mm)$) {Foto: Reidar Langkjær};
+  % bildetekst nede til høyre i bildet
+  \node[anchor=south east,text=white,inner sep=0,align=right] at ($(current page.north east)+(-18mm,-216mm)$)
+    {{\sffamily\fontsize{8.5}{11}\selectfont Henriette Jæger, EM-gull og norsk rekord}\\[1pt]
+     {\sffamily\fontsize{6.5}{8}\selectfont\color{white!80!hovedbla}Foto: Reidar Langkjær}};
   % tekst nede til venstre, i bildet
   \node[anchor=south west,inner sep=0,text width=128mm] at ($(current page.south west)+(18mm,15mm)$)
     {\RaggedRight
-     {\headfont\fontsize{27}{29}\selectfont\color{white}Henriette Jæger\par}\vspace{3pt}
-     {\medfont\fontsize{14}{17}\selectfont\color{white}EM-gull og norsk rekord\par}\vspace{13pt}
-     {\kickfont\small\color{white}I DETTE NUMMERET\par}\vspace{4pt}
-     {\sffamily\fontsize{10.5}{14.5}\selectfont\color{white}%
+     {\kickfont\normalsize\color{white}I DETTE NUMMERET\par}\vspace{6pt}
+     {\sffamily\fontsize{12}{17.5}\selectfont\color{white}%
       Fantastisk sesong – og et varselskudd\\
       Tallene finnes. Bruk dem.\\
       Hvor forsvant alle høydehopperne?\\
