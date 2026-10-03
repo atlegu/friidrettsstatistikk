@@ -1,0 +1,16 @@
+\documentclass[a4paper,10pt,twocolumn,twoside]{article}
+\usepackage[top=22mm,bottom=22mm,inner=18mm,outer=18mm,headsep=8mm]{geometry}
+\usepackage{polyglossia}
+\setmainlanguage{norsk}
+\input{preamble.tex}
+\setlength{\parindent}{3.2mm}
+
+\graphicspath{{../}{./}}
+\begin{document}
+\input{forside.tex}
+\input{innhold.tex}
+
+\gdef\arttag{leder}\input{artikler/01_leder.tex}
+\gdef\arttag{tallene}\input{artikler/02_tallene.tex}
+\gdef\arttag{hoydehopp}\input{artikler/03_hoydehopp.tex}
+\end{document}

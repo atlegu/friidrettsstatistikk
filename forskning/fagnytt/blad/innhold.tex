@@ -1,0 +1,44 @@
+% Side 2: innhold (venstre) og styre/ansvarlige (høyre)
+\newcommand{\innholdslinje}[4]{%
+  \noindent\begin{minipage}[t]{12mm}{\headfont\fontsize{22}{22}\selectfont\color{aksent}\pageref{art:#1}}\end{minipage}%
+  \begin{minipage}[t]{\dimexpr\linewidth-12mm\relax}%
+    {\kickfont\footnotesize\color{hovedbla}\MakeUppercase{#2}\par}\vspace{1pt}%
+    {\RaggedRight\sffamily\bfseries\fontsize{12}{14}\selectfont\color{morkgra}#3\par}\vspace{1pt}%
+    {\RaggedRight\sffamily\footnotesize\color{lysgra}#4\par}%
+  \end{minipage}\par\vspace{11pt}}
+\newcommand{\styrerad}[2]{\noindent{\sffamily\footnotesize\bfseries\color{morkgra}#1}\\{\sffamily\footnotesize\color{lysgra}#2}\par\vspace{5pt}}
+
+\makeatletter
+\twocolumn[%
+  \begin{@twocolumnfalse}
+    \thispagestyle{empty}\gdef\toppseksjon{Innhold}\toppstripe{Innhold}
+    \vspace*{6mm}
+    {\kickfont\small\color{aksent}I DETTE NUMMERET\par}
+    \vspace{6pt}
+    {\headfont\fontsize{34}{36}\selectfont\color{morkgra}Innhold\par}
+    \vspace{6pt}{\noindent\color{aksent}\rule{22mm}{2.4pt}\par}\vspace{14pt}
+  \end{@twocolumnfalse}]
+\makeatother
+
+\innholdslinje{leder}{Leder}{Fantastisk sesong – og et varselskudd}{Henning Hofstad}
+\innholdslinje{tallene}{Statistikk og trenerarbeid}{Tallene finnes. Bruk dem.}{Atle Guttormsen}
+\innholdslinje{hoydehopp}{Høydehopp}{Hvor forsvant alle høydehopperne?}{Henning Hofstad}
+
+\newpage
+\noindent{\kickfont\small\color{aksent}STYRE 2024–25\par}\vspace{3pt}
+{\noindent\color{lysgra!35}\rule{\linewidth}{0.5pt}\par}\vspace{8pt}
+\styrerad{Formann · Lars Ola Sundt}{lars.ola.sundt@idk.no}
+\styrerad{Kast · Katarina Sederholm Hoff}{katarina.hoff@stjordal.kommune.no}
+\styrerad{Sprint · Bjørn Johansen}{bjorn.johans1@gmail.com}
+\styrerad{Mellom-/langdistanse · Knut Wilhelm Svendsen}{knut@husvarme.as}
+\styrerad{Mangekamp/stav/hekk · Bjørn Bogsti}{bbogsti@online.no}
+\styrerad{Hopp · Henning Hofstad}{henhofs@gmail.com}
+\styrerad{Barn/ung · Hilde Stokvold Gundersen}{Hilde.Stokvold.Gundersen@hvl.no}
+\vspace{6pt}
+\noindent{\kickfont\small\color{aksent}REDAKSJON\par}\vspace{3pt}
+{\noindent\color{lysgra!35}\rule{\linewidth}{0.5pt}\par}\vspace{8pt}
+\styrerad{Redaktør · Henning Hofstad}{henhofs@gmail.com}
+\styrerad{Forsidebilde og bilder}{Reidar Langkjær}
+\vfill
+\begin{center}\includegraphics[width=30mm]{bilder/logo_ft.png}\end{center}
+\clearpage

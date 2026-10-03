@@ -1,0 +1,31 @@
+% Forside: helside, bilde med blå mast over og tekstfelt under
+\onecolumn
+\thispagestyle{empty}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  % blå mast
+  \fill[hovedbla] (current page.north west) rectangle ($(current page.north east)+(0,-50mm)$);
+  \fill[aksent] ($(current page.north west)+(0,-50mm)$) rectangle ($(current page.north east)+(0,-52.4mm)$);
+  \node[anchor=north west,text=white,inner sep=0] at ($(current page.north west)+(18mm,-11mm)$)
+    {\kickfont\small MEDLEMSBLAD FOR FRIIDRETTENS TRENERFORENING};
+  \node[anchor=south west,text=white,inner sep=0] at ($(current page.north west)+(16mm,-46mm)$)
+    {\headfont\fontsize{66}{66}\selectfont FAGNYTT};
+  \node[anchor=south east,text=white,inner sep=0,align=right] at ($(current page.north east)+(-18mm,-46mm)$)
+    {\kickfont\Large NR.~1\,·\,2026};
+  % bilde
+  \begin{scope}
+    \clip ($(current page.north west)+(0,-52.4mm)$) rectangle ($(current page.north west)+(210mm,-235mm)$);
+    \node[anchor=north,inner sep=0] at ($(current page.north west)+(105mm,-52.4mm)$)
+      {\includegraphics[width=210mm]{bilder/forside_jaeger.jpg}};
+  \end{scope}
+  \node[anchor=south east,text=white,inner sep=2pt,font=\sffamily\tiny] at ($(current page.north east)+(-4mm,-234mm)$) {Foto: Reidar Langkjær};
+  % tekstfelt under bildet
+  \node[anchor=north west,inner sep=0,text width=130mm] at ($(current page.north west)+(18mm,-243mm)$)
+    {\RaggedRight{\kickfont\small\color{aksent}FORSIDEN}\\[3pt]
+     {\headfont\fontsize{23}{25}\selectfont\color{morkgra}Henriette Jæger –\\fantastisk sesong}\\[8pt]
+     {\sffamily\small\color{lysgra}Dessuten: Tallene finnes – bruk dem · Hvor forsvant alle høydehopperne?}};
+  \node[anchor=south east,inner sep=0] at ($(current page.south east)+(-18mm,14mm)$)
+    {\includegraphics[height=26mm]{bilder/logo_ft.png}};
+  \fill[aksent] ($(current page.south west)+(18mm,14mm)$) rectangle ++(22mm,1.6mm);
+\end{tikzpicture}
+\clearpage
