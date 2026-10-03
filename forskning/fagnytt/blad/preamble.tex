@@ -151,8 +151,8 @@
   }
 }
 \newtcolorbox{faktaboks}{fagboks, title=\MakeUppercase{Fakta: Slik er tallene laget}}
-\newtcolorbox{raadboks}{fagboks, colback=white, colframe=aksent, boxrule=0.8pt,
-  colbacktitle=aksent, title=\MakeUppercase{Fem råd til treneren},
+\newtcolorbox{raadboks}[1][Råd til treneren]{fagboks, colback=white, colframe=aksent, boxrule=0.8pt,
+  colbacktitle=aksent, title=\MakeUppercase{#1},
   before upper={\sffamily\small\setlength{\parskip}{5pt}\RaggedRight}}
 \newtcolorbox{forfatterboks}{fagboks, colback=white, colframe=lysgra!40, boxrule=0.6pt,
   colbacktitle=lysgra, title=\MakeUppercase{Om forfatteren}}
