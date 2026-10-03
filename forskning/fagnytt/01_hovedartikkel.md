@@ -13,7 +13,7 @@ de hundre beste norske utøverne gjennom tidene på hvert alderstrinn
 (Tønnessen mfl., 2015), hvor undertegnede var en av medforfatterne. Kurvene derfra er de beste vi har hatt. Denne artikkelen tar opp tråden, men
 med et annet verktøy. Norges Friidrettsforbund har gjennom mange år bygget
 opp en database over alle godkjente konkurranseresultater i norsk friidrett,
-om lag 1,4 millioner resultater fra 87 000 utøvere. Det er et
+om lag 1,5 millioner resultater fra 87 000 utøvere. Det er et
 statistikkarbeid få andre idretter kan vise maken til. Mitt bidrag har vært
 å gjøre disse tallene tilgjengelige for egen forskning, analysere dem i en
 serie vitenskapelige arbeider, og prøve ut andre måter å presentere dem på.
@@ -63,7 +63,7 @@ er i all hovedsak forskjellige mennesker. Når en tidlig moden 14-åring
 forsvinner fra listen og en sen 17-åring kommer inn, endrer snittet seg uten
 at noen enkeltutøver har utviklet seg.
 
-I en artikkel som nå er antatt i *Journal of Science and Medicine in Sport*
+I en artikkel som nå er publisert i *Journal of Science and Medicine in Sport*
 (Guttormsen, 2026a) sammenlignet jeg tverrsnittskurvene med en
 *panelkurve*: gjennomsnittet for utøvere som har minst tre sesonger i samme
 øvelse, fulgt fra alder til alder. Øvelsene er de samme som hos Tønnessen mfl.
@@ -151,7 +151,7 @@ kullene etter pandemien.
 
 ![Figur 3. Andel av 13-åringene som fortsatt konkurrerer ved hver alder, ti årskull.](figurer/fig6s_frafall.png){.smal}
 
-Det som har endret seg, er inntaket. I 2013 konkurrerte 1 220 13-åringer; i
+Det som har endret seg, er inntaket. I 2013 konkurrerte 1 226 13-åringer; i
 2021- og 2022-kullene var tallet rundt 820. Frafallet spiser samme andel som
 før av et kull som er 30 prosent mindre. Det betyr at når vi diskuterer
 «frafallsproblemet», bør vi være presise. Problemet sitter i døren inn, ikke i
@@ -195,22 +195,21 @@ slik Gundersen og Tønnessen også påpekte.
 
 Hvis frafallet er stabilt og forutsigbart, kan det da forutsies for den
 enkelte? Med utgangspunkt i ungdomslekene for 13–14-åringer (NCC-, PEAB-,
-Bendit- og Lerøy-lekene) har jeg fulgt 2 123 utøvere født 1998–2002 i inntil
+Bendit- og Lerøy-lekene) har jeg fulgt 2 138 utøvere født 1998–2002 i inntil
 14 år, til de var seniorer (Guttormsen, 2026c). Spørsmålet var enkelt: hva
 ved en 13–14-åring forteller om hun eller han fortsatt konkurrerer ved 20?
 
 Svaret overrasket meg. Prestasjonsnivået ved 13–14, målt i Tyrving-poeng,
-sier noe, men lite: alene skiller det bare svakt mellom dem som blir og dem
-som slutter. Det som skiller, er *atferd*. Antall stevner utøveren deltok i
-som 13- og 14-åring gir alene en treffsikkerhet (AUC) på 0,75, mot 0,61 for
-prestasjon. Figur 5 viser hvorfor. De som senere var aktive som seniorer,
-gikk i median 13 stevner som 13-åringer og 17 som 14-åringer; de som sluttet
-før 20, gikk 8 og 8. Og skillet vokser: ved 15 år er tallene 19 mot 3, ved 16
+sier en god del. Men *atferd* sier mer. Antall stevner utøveren deltok i som
+13- og 14-åring gir alene en treffsikkerhet (AUC) på 0,74, mot 0,70 for
+prestasjon, og de to utfyller hverandre: sammen gir de 0,77. Figur 5 viser
+hvorfor. De som senere var aktive som seniorer, gikk i median 13 stevner som
+13-åringer og 16,5 som 14-åringer; de som sluttet før 20, gikk 8 og 8. Og skillet vokser: ved 15 år er tallene 19 mot 3, ved 16
 er medianen for de som skulle slutte, null. Flertallet av dem vi mister, er
 med andre ord borte fra stevnene ett til to år før de formelt er borte fra
 idretten. De trekker seg tilbake før de slutter.
 
-![Figur 5. Antall stevner per år for 13–14-åringer fra ungdomslekene 2011–2016, etter om de var aktive som seniorer.](figurer/fig4s_volum.png){.smal}
+![Figur 5. Antall stevner (konkurransedager) per år for 13–14-åringer fra ungdomslekene 2011–2016, etter om de var aktive som seniorer.](figurer/fig4s_volum.png){.smal}
 
 Dette er den mest praktisk anvendelige observasjonen i hele materialet. En
 trener trenger ingen database for å telle starter. Ser du at en 14-åring
@@ -264,7 +263,7 @@ I juli la jeg ut en lengre gjennomgang av nivåutviklingen 2013–2025 på
 Trenerforeningens Facebook-side, så jeg nøyer meg her med hovedlinjene. Målt
 som snittet av de ti beste årsbestenoteringene, utendørs og med elektronisk
 tid, har seniortoppen gått frem i de aller fleste øvelsene. 100 meter menn
-fra 10,48 til 10,39, kvinner fra 11,83 til 11,61. 800 meter menn fra 1:48,9
+fra 10,56 til 10,39, kvinner fra 11,83 til 11,61. 800 meter menn fra 1:48,9
 til 1:47,4, kvinner fra 2:07,8 til 2:03,7. 5000 meter menn fra 14:01 til
 13:15. Slegge menn fra 57,0 til 61,7 meter, diskos kvinner fra 45,3 til 48,9.
 Og dybden følger med: nummer 25, 50 og 100 på årslistene har flyttet seg
@@ -289,7 +288,7 @@ er omtrent halvert. Veien inn i friidretten fra andre idretter og fra
 skolemiljøene er i ferd med å gro igjen.
 
 Og nivået i de yngste ungdomsklassene faller. Topp-10-snittet for 15-årige
-gutter på 800 meter har gått fra 2:00,5 til 2:03,8, i lengde fra 5,96 til 5,73
+gutter på 800 meter har gått fra 1:59,8 til 2:03,8, i lengde fra 5,96 til 5,73
 meter. Tydeligst er det i kast, der redskapet er det samme gjennom hele
 perioden. Kule for 15-årige gutter (4 kg) har gått fra 14,32 til 12,04 meter
 (figur 7). Spyd gutter 15 fra 50,4 til 43,7. Diskos jenter 15 fra 32,3 til
@@ -375,8 +374,8 @@ store, sterke barn i klubbene, før de fyller 13.
 
 ::: {.faktaboks}
 - **Datagrunnlag:** Norges Friidrettsforbunds resultatdatabase, komplett
-  elektronisk fra 2011 (minfriidrettsstatistikk.info). Om lag 1,4 mill.
-  resultater fra 87 000 utøvere per august 2026. Analysene er gjort på et
+  elektronisk fra 2011 (minfriidrettsstatistikk.info). Om lag 1,5 mill.
+  resultater fra 87 000 utøvere per oktober 2026. Analysene er gjort på et
   uttrekk av disse tallene; tilrettelagt på friidrettsresultater.no.
 - **Utviklingskurver (del 1):** Sesongbeste per utøver og øvelse, 2011–2025,
   utøvere 10–25 år. Panel: utøvere med minst tre sesonger i øvelsen. Tverrsnitt:
@@ -413,18 +412,18 @@ Gundersen, H. og Tønnessen, E. (2023). Prestasjonsfremgang og
 prestasjonsforskjeller mellom gutter og jenter i løps- og hoppøvelser i
 friidrett. Hva skyldes det? *Fagnytt*, 1/2023, 4–8.
 
-Guttormsen, A. G. (2026a). Within-athlete performance development in youth
-track and field: A population-level longitudinal study. *Journal of Science
-and Medicine in Sport*, antatt for publisering.
+Guttormsen, A. G. (2026a). Longitudinal performance development in youth
+track and field: A population-level study. *Journal of Science and Medicine
+in Sport*. https://doi.org/10.1016/j.jsams.2026.07.006
 
 Guttormsen, A. G. (2026b). Dropped out before they ever competed: A
 population-wide registry analysis of the relative age effect in Norwegian
 track and field from age 10 to 25. Manuskript under vurdering, *Sports
 Medicine – Open*.
 
-Guttormsen, A. G. (2026c). Pulling back before dropout: Behavioral
-disengagement precedes youth-sport exit by years in a 14-year register study.
-Manuskript under vurdering.
+Guttormsen, A. G. (2026c). Pulling back before dropping out: Declining
+competition participation precedes exit from Norwegian youth track and field
+— a 14-year register study. Manuskript under vurdering.
 
 Guttormsen, A. G. og Guttormsen, S. (2026). Super shoes and track
 performance: Evidence from collegiate leaderboards. Manuskript under
