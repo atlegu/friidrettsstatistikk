@@ -51,7 +51,7 @@ jobs:
         run: python update_results.py --avstem-uker "${{ github.event.inputs.avstem_uker || '6' }}"
 
       - name: Kontroller basen
-        run: python test_fullstendighet.py --bare vindflagg dubletter avdrift tider stevnedubletter
+        run: python test_fullstendighet.py --bare vindflagg dubletter avdrift tider stevnedubletter importdubletter
 
       - name: Ta vare på loggen
         if: always()
