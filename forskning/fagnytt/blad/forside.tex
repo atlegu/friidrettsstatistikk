@@ -27,16 +27,19 @@
   }
   \node[anchor=north east,text=white,inner sep=2pt,font=\sffamily\tiny,opacity=0.8] at ($(current page.north east)+(-4mm,-54mm)$) {Foto: Reidar Langkjær};
   % tekst nede til venstre, i bildet
-  \node[anchor=south west,inner sep=0,text width=128mm] at ($(current page.south west)+(18mm,20mm)$)
-    {\RaggedRight{\kickfont\small\color{aksent!70!white}I DETTE NUMMERET}\\[5pt]
-     {\headfont\fontsize{27}{29}\selectfont\color{white}Fantastisk sesong –\\og et varselskudd}\\[10pt]
-     {\sffamily\fontsize{10.5}{15.5}\selectfont\color{white}%
+  \node[anchor=south west,inner sep=0,text width=128mm] at ($(current page.south west)+(18mm,15mm)$)
+    {\RaggedRight
+     {\headfont\fontsize{27}{29}\selectfont\color{white}Henriette Jæger\par}\vspace{3pt}
+     {\medfont\fontsize{14}{17}\selectfont\color{white}EM-gull og norsk rekord\par}\vspace{13pt}
+     {\kickfont\small\color{white}I DETTE NUMMERET\par}\vspace{4pt}
+     {\sffamily\fontsize{10.5}{14.5}\selectfont\color{white}%
+      Fantastisk sesong – og et varselskudd\\
       Tallene finnes. Bruk dem.\\
       Hvor forsvant alle høydehopperne?\\
       Kan en enkel hoppøvelse gi bedre sprint?\\
       Hvor vinnes en tikamp?\\
       Trenerseminaret 2026: program og fagpersoner\par}};
-  \fill[aksent] ($(current page.south west)+(18mm,12mm)$) rectangle ++(22mm,1.6mm);
+  \fill[aksent] ($(current page.south west)+(18mm,9mm)$) rectangle ++(22mm,1.6mm);
   % logo nede til høyre, på hvit bunn
   \node[anchor=south east,inner sep=2.2mm,fill=white,rounded corners=1.5mm] at ($(current page.south east)+(-18mm,12mm)$)
     {\includegraphics[height=22mm]{bilder/logo_ft.png}};
