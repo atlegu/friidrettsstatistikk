@@ -199,10 +199,10 @@ Bendit- og Lerøy-lekene) har jeg fulgt 2 138 utøvere født 1998–2002 i innti
 14 år, til de var seniorer (Guttormsen, 2026c). Spørsmålet var enkelt: hva
 ved en 13–14-åring forteller om hun eller han fortsatt konkurrerer ved 20?
 
-Svaret overrasket meg. Prestasjonsnivået ved 13–14, målt i Tyrving-poeng,
-sier en god del. Men *atferd* sier mer. Antall stevner utøveren deltok i som
-13- og 14-åring gir alene en treffsikkerhet (AUC) på 0,74, mot 0,70 for
-prestasjon, og de to utfyller hverandre: sammen gir de 0,77. Figur 5 viser
+Svaret overrasket meg. Prestasjonsnivået på lekene, målt i Tyrving-poeng,
+sier en god del. Men *atferd* sier minst like mye. Antall stevner utøveren
+deltok i som 13- og 14-åring gir alene en treffsikkerhet (AUC) på 0,74, mot
+0,70 for prestasjon, og de to utfyller hverandre: sammen gir de 0,77. Figur 5 viser
 hvorfor. De som senere var aktive som seniorer, gikk i median 13 stevner som
 13-åringer og 16,5 som 14-åringer; de som sluttet før 20, gikk 8 og 8. Og skillet vokser: ved 15 år er tallene 19 mot 3, ved 16
 er medianen for de som skulle slutte, null. Flertallet av dem vi mister, er
@@ -214,8 +214,8 @@ idretten. De trekker seg tilbake før de slutter.
 Dette er den mest praktisk anvendelige observasjonen i hele materialet. En
 trener trenger ingen database for å telle starter. Ser du at en 14-åring
 som gikk 15 stevner i fjor, går 6 i år, ser du frafallet mens det ennå kan
-påvirkes. Nedgangen i seg selv var en selvstendig varsellampe i analysen,
-også når vi tok hensyn til hvor mange stevner utøveren startet med.
+påvirkes. I analysen hang både nivået som 14-åring og nedgangen fra 14 til 15
+sammen med hvem som fortsatt konkurrerte som seniorer.
 
 ::: {.sitat}
 «Deltakelse i mesterskap er ikke en belønning for de beste. Det er et av de mest virksomme tiltakene vi har for å beholde folk.»
@@ -237,8 +237,6 @@ Men se på de to søylene i midten. Utøvere som *klarte* kravet, men ikke dro
 på UM, hadde like høyt frafall som dem som bommet med under to prosent, og
 høyere etter justering for kjønn, nivå, konkurransevolum og region
 (hasardratio 2,05 mot 1,72). Det til tross for at de var klart bedre utøvere.
-Prestasjonsnivået i seg selv hadde ingen selvstendig sammenheng med frafall
-når atferd var tatt hensyn til.
 
 Jeg tolker dette som et spørsmål om tilhørighet. Den som så vidt bommer på
 kravet, men fortsetter å konkurrere, er fortsatt «innenfor». Den som klarer
