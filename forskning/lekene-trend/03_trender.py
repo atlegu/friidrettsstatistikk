@@ -122,7 +122,7 @@ def fig_trendoversikt(t):
         for gr, evs in GRUPPER:
             if i > 0:
                 ax.axhline(i - 0.5, color=AXIS, lw=0.8)
-            ax.text(1.01, i + len(evs) / 2 - 0.5, gr, transform=ax.get_yaxis_transform(),
+            ax.text(1.01, i + len(evs) / 2 - 0.5, gr.replace(" hopp", "\nhopp").replace("Mellomdistanse", "Mellom-\ndistanse"), transform=ax.get_yaxis_transform(),
                     fontsize=7.5, color=MUTED, rotation=270, va="center", ha="left") if ax is axes[1] else None
             i += len(evs)
         ax.set_yticks(range(len(order))); ax.set_yticklabels(order)

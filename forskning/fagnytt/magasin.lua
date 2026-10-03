@@ -52,7 +52,8 @@ function Div(el)
   elseif el.classes:includes('faktaboks') then
     return wrap(el, '\\begin{figure*}[t]\n\\begin{faktaboks}\n\\begin{multicols}{2}', '\\end{multicols}\n\\end{faktaboks}\n\\end{figure*}')
   elseif el.classes:includes('raad') then
-    return wrap(el, '\\begin{figure*}[t]\n\\begin{raadboks}\n\\begin{multicols}{2}', '\\end{multicols}\n\\end{raadboks}\n\\end{figure*}')
+    local t = el.attributes['tittel'] or 'Råd til treneren'
+    return wrap(el, '\\begin{figure*}[t]\n\\begin{raadboks}[' .. t .. ']\n\\begin{multicols}{2}', '\\end{multicols}\n\\end{raadboks}\n\\end{figure*}')
   elseif el.classes:includes('boks') then
     local t = el.attributes['tittel'] or ''
     return wrap(el, '\\begin{tcolorbox}[fagboks,title={\\MakeUppercase{' .. t .. '}}]', '\\end{tcolorbox}')

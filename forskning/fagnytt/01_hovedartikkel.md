@@ -303,7 +303,7 @@ kastfallet, utviklingen i ungdomslekene 2012–2026 og forutsigelse av frafall.
 Klubber og kretser som ønsker egne uttrekk fra friidrettsresultater.no, er
 velkomne til å ta kontakt.\sluttmerke
 
-::: {.raad}
+::: {.raad tittel="Fire råd til treneren"}
 **1. Tell starter, ikke bare tider.** Fallende konkurransevolum er den
 tidligste varsellampen vi har for frafall, ett til to år før utøveren er
 borte. En 14-åring som går halvparten så mange stevner som i fjor, trenger en
