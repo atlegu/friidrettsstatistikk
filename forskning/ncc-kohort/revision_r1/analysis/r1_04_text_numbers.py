@@ -137,6 +137,17 @@ def main():
         out[f"tyr_{lab}"] = dict(n=len(dd), missing=int(e[col].isna().sum()), vol=ra.orci(m, "vol_z"), tyr=ra.orci(m, "tyr_z"),
                                  auc=cvr["auc"])
     out["retainers_primary"] = int(df.loc[df["gender"].notna() & df["tyrving_best_r1"].notna(), "aktiv_senior"].sum())
+    # Section 4.8(1): flagged athletes (< 10 meets at 13-14) without a result at 14
+    flag = df["vol_pre_milepael"] < 10
+    out["flagged_no_result_14"] = dict(n=int((flag & (df["vol_age_14"] == 0)).sum()), of=int(flag.sum()),
+                                       share=float((flag & (df["vol_age_14"] == 0)).sum() / flag.sum()))
+    # Section 3.9: HHI association in Cohort A vs. B (Table 7), z-test on the log-OR difference
+    res = json.loads((R1 / "tables" / "r1_results.json").read_text())
+    (ea, la, ua, _), (eb, lb, ub, _) = res["t7::A::hhi_z"], res["t7::B::hhi_z"]
+    se = lambda lo, hi: (np.log(hi) - np.log(lo)) / (2 * 1.959964)  # noqa: E731
+    zd = (np.log(eb) - np.log(ea)) / np.sqrt(se(la, ua) ** 2 + se(lb, ub) ** 2)
+    from scipy.stats import norm
+    out["hhi_cohort_difference"] = dict(z=float(zd), p=float(2 * norm.sf(abs(zd))))
     out["tyr_mean_by_category"] = TYR_BY_CAT
     out.update(descriptives(df))
     out.update(submitted_data_checks())

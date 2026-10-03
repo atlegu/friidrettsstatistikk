@@ -465,8 +465,9 @@ def change_models(df):
     # equivalent level parameterisation: logit = a + b1*vol14 + b2*(vol15 - vol14) = a + (b1-b2)*vol14 + b2*vol15
     lv, _ = logit(a14.assign(v14=a14["vol_age_14"], v15=a14["vol_age_15"]), ["female", "tyr_zs", "v14", "v15"])
     RES["t4"]["levels_param_v15_per_meet"] = float(np.exp(lv.params["v15"]))
+    RES["t4"]["levels_v14_given_v15_per_meet"] = orci(lv, "v14")      # earlier level once the later one is known
     RES["t4"]["change_param_per_meet"] = float(np.exp(b))
-    # contamination-free change model, active at 16 (>=2 results at 16)
+    # change model among athletes still active at 16 (>=2 results at 16)
     a16 = df[(df["res_age_16"] >= 2) & df["female"].notna()].copy()
     a16["d1516"] = a16["vol_age_16"] - a16["vol_age_15"]
     sd16 = a16["d1516"].std()
@@ -480,8 +481,11 @@ def change_models(df):
                      "McFadden pseudo-R2": round(float(m3.prsquared), 3), "CV-AUC": f"{cv3['auc']:.3f}"})
     o3 = orci(m3, "d1516_z")
     b3 = m3.params["d1516_z"] / sd16
+    lv3, _ = logit(a16.assign(v15=a16["vol_age_15"], v16=a16["vol_age_16"]), ["female", "v15", "v16"])
     RES["s19"] = dict(n=int(m3.nobs), level=orci(m3, "v15_z"), change=o3, change_decline_or=(1 / o3[0], 1 / o3[2], 1 / o3[1]),
-                      sd_change=float(sd16), change_per5_decline=float(np.exp(-5 * b3)), auc=cv3["auc"])
+                      sd_change=float(sd16), change_per5_decline=float(np.exp(-5 * b3)), auc=cv3["auc"],
+                      final_season_16=int((a16["alder_ved_slutt"] == 16).sum()),        # 16 was their final active season
+                      levels_v15_given_v16_per_meet=orci(lv3, "v15"))
     pd.DataFrame(rows).to_csv(TAB / "table4_level_change_r1.csv", index=False)
     logger.info(f"  T4: {RES['t4']}\n  S19: {RES['s19']}")
 

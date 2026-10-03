@@ -10,7 +10,7 @@
 | Previous Decision | Revise (one reviewer, Dr Imad Hamri; 15 comments) |
 | Target Journal | International Journal of Sports Science & Coaching |
 | Original Word Count | 6,036 (main text, journal count) |
-| Revised Word Count | 6,218 (same count as 6,036 at submission; shortened from 6,889 after the audit, then +34 words of precision in the final check, 2 Oct 2026) |
+| Revised Word Count | 6,339 (same count as 6,036 at submission; shortened from 6,889 after the audit, then +34 words of precision in the final check, 2 Oct 2026, and +121 in the final check of 3 Oct 2026: precision fixes and the author's rewording of four claims) |
 
 ## Revision Tracking Table
 
@@ -188,7 +188,7 @@
 | Deliberate Limitation | 0 (generalizability and threshold transfer also stated as limitations, §4.9) |
 | Unresolvable | 0 |
 | Reviewer Disagree | 0 |
-| Word count change | +149 (Introduction and Discussion shortened; correction details moved to S-M12) |
+| Word count change | +303 (Introduction and Discussion shortened; correction details moved to S-M12) |
 | New references | 0 main text; 2 supplementary (verified in CrossRef) |
 | New tables/figures | 7 supplementary tables (S26–S32), Table S13 Panel B, Figure S5; Figure S1 replaced; Supplementary Methods S-M12 (data audit) |
 
@@ -198,7 +198,7 @@
 - [x] Every RESOLVED item specifies the exact location of the change
 - [x] Limitations updated (§4.9: target population, candidate thresholds, fixed-effects analysis)
 - [x] The response letter addresses all comments in order
-- [ ] Word count is within the journal's limit after revisions — 6,218 vs. "should not normally exceed 6,000" (6,036 at submission); about 5,890 without headings and table/figure placeholders
+- [ ] Word count is within the journal's limit after revisions — 6,339 vs. "should not normally exceed 6,000" (6,036 at submission); 6,043 without headings and table/figure placeholders
 - [x] All new references are added (supplementary list); main-text numbering verified in order of first appearance (1–37)
 - [x] No new errors introduced: all tables and figures generated from code; original-data sandbox reproduces every submitted table byte-for-byte; corrected data rebuilt deterministically (r1_00) and audited (audit/)
 - [x] AI disclosure statement unchanged and still accurate (Acknowledgements)

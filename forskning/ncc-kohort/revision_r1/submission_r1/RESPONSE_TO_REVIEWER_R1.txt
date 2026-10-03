@@ -17,12 +17,12 @@ Summary of the main changes
 
 Effect on the findings. The central results hold. Pre-milestone competition volume has OR = 2.04 per SD (95% CI 1.80–2.32; submitted 2.40) and cross-validated AUC = 0.767 (0.737–0.797; submitted 0.751), unchanged with club-grouped folds, and it is reproduced in both birth cohorts. The within-athlete decline before exit is unchanged. Two conclusions have changed, and we have revised the text accordingly:
 
-- Performance matters more than we reported. With correct scoring, baseline Tyrving has a substantial independent association with retention (OR 1.75 [1.47, 2.08]; submitted 1.12, not significant). Volume still discriminates somewhat better than performance measured in the same window (AUC difference 0.040 [0.006, 0.074]), but the two are complementary, and with its within-baseline trajectory performance does not differ from volume. Section 4.2 and the Abstract now say this, and Hypothesis 2 is described as partially supported.
+- Performance matters more than we reported. With correct scoring, baseline Tyrving has a substantial independent association with retention (OR 1.75 [1.47, 2.08]; submitted 1.12, not significant). Volume still discriminates somewhat better than performance at the baseline meet (AUC difference 0.040 [0.006, 0.074]), but the two are complementary, and with its within-baseline trajectory performance does not differ from volume. Section 4.2 and the Abstract now say this, and Hypothesis 2 is described as partially supported.
 - Specialization. The HHI association is small (OR 1.18 [1.04, 1.34]; submitted 1.36), present only once volume is in the model and only in Cohort B, adds no discrimination, and is no longer significant once performance in the athlete’s main event is controlled. The Abstract now says only that event concentration was not robustly associated with retention.
 
 Other corrections. All tables and figures are now generated directly from the analysis code. In doing so, and in the audit, we found and corrected several data-handling errors (an incomplete extraction, the identification of the baseline meet, results after the end of follow-up, register corrections of sex, the coding of region, club and championship types, and double-counted meet records), errors in two secondary Cox analyses and in the calibration figure, and some errors of transcription and presentation (Tables 5, S2 and S4, the Figure 3 caption and the Kaplan–Meier summary in Section 3.2, the title inside Figure 2, one unconverted citation, a box in Figure 1, the Table 1 note, and rounding in a few supplementary table cells). The data and analysis corrections are listed in Supplementary Methods S-M12. Apart from the changes in the role of performance and specialization described above, none alters the conclusions.
 
-Length. We have kept the main text close to its submitted length (about 6,200 words, against 6,036 at submission) by placing most new detail in the Supplementary Methods (S-M3, S-M4, S-M6, S-M9 to S-M12) and new Supplementary Tables S26–S32, and by shortening the Introduction and Discussion.
+Length. We have kept the main text close to its submitted length (6,339 words, against 6,036 at submission) by placing most new detail in the Supplementary Methods (S-M3, S-M4, S-M6, S-M9 to S-M12) and new Supplementary Tables S26–S32, and by shortening the Introduction and Discussion.
 
 ------------------------------------------------------------------------
 
@@ -109,9 +109,9 @@ Response. Thank you; the formula was not stated. Change is the later minus the e
 - OR = 0.44 [0.38, 0.50] for a one-SD (about 6.4 meets) greater decline;
 - OR = 0.52 for 5 fewer meets.
 
-The text now states the formula and reports both directions (Sections 2.5.3 and 3.5; Table 4 note). The same applies to the 15→16 change: OR 1.87 per SD increase equals 0.54 [0.46, 0.63] per SD decline (Table S19). Because the model is linear in the logit, it is a re-parameterization of a model with the two levels; the per-meet OR for change equals that for the later level (Table 4 note).
+The text now states the formula and reports both directions (Sections 2.5.3 and 3.5; Table 4 note). The same applies to the 15→16 change: OR 1.87 per SD increase equals 0.54 [0.46, 0.63] per SD decline (Table S19). Because the model is linear in the logit, it is a re-parameterization of a model with the two levels; the per-meet OR for change equals that for the later level (Table 4 note). Given the later level, the earlier one adds nothing (OR 0.98 per meet [0.95, 1.00]), so the text now says that level and change both predict retention, not that they contribute independently.
 
-Changes: Abstract; Sections 2.5.3 and 3.5; Table 4 and note; Tables S14 and S19; Supplementary Methods S-M6.
+Changes: Abstract; Sections 2.5.3, 3.5, 4.3, 4.8 and 4.11; Table 4 and note; Tables S14 and S19; Supplementary Methods S-M6.
 
 Comment 8. The within-athlete pull-back result is interesting, but the conclusion may be slightly too strong… I would either moderate the wording around “genuine within-athlete pull-back” or add a formal longitudinal analysis of competition volume before exit.
 
@@ -131,7 +131,7 @@ Changes: Abstract; Sections 2.5.3, 3.5, 4.1, 4.3, 4.4, 4.9, 4.11; Supplementary 
 
 Comment 9. The manuscript says that behavior “explains more variance” than performance, but the main comparison is based on AUC… I suggest using wording such as “competition volume showed better discrimination of later retention than Tyrving performance.”
 
-Response. Agreed. The text, the Abstract and Hypothesis 2 (Section 1.3) now refer to discrimination; the only variance-type quantity left is McFadden’s pseudo-R² for the level-and-change models (Section 3.5, Table 4, Table S14), labelled as such. With performance correctly scored (Comment 4), the comparison has also changed in substance. Volume still discriminates somewhat better than performance measured in the same window, but the two carry complementary information, and with its within-baseline trajectory performance does not differ from volume (Comment 10). Section 4.2 is therefore retitled “Competition volume and performance carry complementary information”, and Hypothesis 2 is described as partially supported: behavior discriminates at least as well as performance, not instead of it.
+Response. Agreed. The text, the Abstract and Hypothesis 2 (Section 1.3) now refer to discrimination; the only variance-type quantity left is McFadden’s pseudo-R² for the level-and-change models (Section 3.5, Table 4, Table S14), labelled as such. With performance correctly scored (Comment 4), the comparison has also changed in substance. Volume still discriminates somewhat better than performance at the baseline meet, but the two carry complementary information, and with its within-baseline trajectory performance does not differ from volume (Comment 10). Section 4.2 is therefore retitled “Competition volume and performance carry complementary information”, and Hypothesis 2 is described as partially supported: behavior discriminates at least as well as performance, not instead of it.
 
 Changes: Abstract; Sections 1.3, 3.6, 4.1, 4.2.
 
@@ -140,7 +140,7 @@ Comment 10. The AUC comparisons should be interpreted carefully. Small differenc
 Response. We now report a 95% CI for the CV-AUC of every model in Table 3 and for every difference between models. Differences between models are estimated on identical folds, with CIs and p-values from the corrected resampled t-statistic for repeated cross-validation (Nadeau & Bengio, 2003; Supplementary Methods S-M4; Table S27).
 
 - The reviewer’s example (adding Tyrving to volume) now shows a small but clear gain once performance is scored correctly: +0.023 (0.007 to 0.038).
-- Volume versus Tyrving measured in the same window: +0.040 (0.006 to 0.074), a modest advantage for volume.
+- Volume versus Tyrving at the baseline meet (both from ages 13–14): +0.040 (0.006 to 0.074), a modest advantage for volume.
 - Adding volume to sex + Tyrving + HHI: +0.069 (0.047 to 0.091).
 - Performance with its within-baseline trajectory does not differ from volume: −0.001 (−0.042 to 0.039).
 - A within-event rank at the baseline meet, which removes Tyrving’s unequal demands across event groups, discriminates no better than Tyrving (0.689 vs. 0.700; difference 0.011 [−0.006, 0.028]); volume again discriminates better (+0.051 [0.019, 0.083]).
@@ -211,7 +211,7 @@ Summary of changes
   --------------------------------------- -------------------------------------------------------------------
   Reviewer comments addressed             15 of 15
 
-  Main-text word count                    6,036 → about 6,200
+  Main-text word count                    6,036 → 6,339
 
   New main-text references                0 (reference list unchanged, 37 items)
 

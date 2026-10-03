@@ -66,6 +66,15 @@
   "auc": 0.7681098416586475
  },
  "retainers_primary": 347,
+ "flagged_no_result_14": {
+  "n": 172,
+  "of": 584,
+  "share": 0.2945205479452055
+ },
+ "hhi_cohort_difference": {
+  "z": 1.589665500031699,
+  "p": 0.1119102241988355
+ },
  "tyr_mean_by_category": {
   "hurdles": 778.0,
   "jumps": 803.0,

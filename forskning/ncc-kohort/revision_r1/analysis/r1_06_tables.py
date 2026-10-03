@@ -278,8 +278,10 @@ def table4():
             f"the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for "
             f"change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from {t4['r2_m1']:.3f} (M1) to "
             f"{t4['r2_m2']:.3f} (M2); CV-AUC {t4['auc_m1']:.3f} → {t4['auc_m2']:.3f}. {K['active14'] - t4['n']} of the {K['active14']:,} athletes with a result at 14 "
-            f"{'lacks' if K['active14'] - t4['n'] == 1 else 'lack'} registered sex or a Tyrving score (sample n = {t4['n']:,}).") + " Both baseline level and within-athlete "
-            + hl("decline") + " contribute substantially and independently.")
+            f"{'lacks' if K['active14'] - t4['n'] == 1 else 'lack'} registered sex or a Tyrving score (sample n = {t4['n']:,}).")
+            + hl(" In the level form, volume at 14 added nothing once volume at 15 was known (OR = "
+                 f"{t4['levels_v14_given_v15_per_meet'][0]:.2f} per meet [{t4['levels_v14_given_v15_per_meet'][1]:.2f}, "
+                 f"{t4['levels_v14_given_v15_per_meet'][2]:.2f}]): the change term carries the information in the later season's volume."))
     return render("4", "Level versus within-athlete change: volume at age 14 and change from 14 to 15",
                   ["Model", "Covariate", "OR per SD", "95% CI", "p"], rows, note)
 
@@ -447,7 +449,8 @@ def supp():
                       "*Note.* " + hl("Athletes still in their career at age 16 (final active season at 16 or later), with follow-up time measured "
                                       f"from age 16 forward ({lm['events']:,} events). The earlier entry rule (≥1 result at 16) also admitted "
                                       f"{lm['n_old_entry_already_exited']} athletes whose final active season was earlier, so that their event preceded time zero.")
-                      + " The age-16 share of the exposure window lies at the start of the at-risk window (see Supplementary Methods S-M1). The fully contamination-free logistic analogue is the change model in main-text Section 3.5 / Supplementary Table S19."))
+                      + " The age-16 share of the exposure window lies at the start of the at-risk window (see Supplementary Methods S-M1). The "
+                      + hl("logistic analogue among athletes still active at 16") + " is the change model in main-text Section 3.5 / Supplementary Table S19."))
     # S9
     t = pd.read_csv(RERUN / "tableS9_outcome_sensitivity.csv")
     rows = [[r["Outcome"], {"A": "≥1 senior-age (20+) result", "B": "≥2 results in any senior-age year (primary)",
@@ -475,7 +478,7 @@ def supp():
             ["Sex known", n(K["sex_known"]), f"Gender M/F registered ({K['sex_unknown']} unknown; excluded from models that adjust for sex except the mean-imputation check in Table S5; included in cohort totals, the fixed-effects model and full-cohort descriptive analyses)"],
             ["Primary logistic L1–L4", n(K["primary_n"]), "Complete case on sex, Tyrving, HHI, pre-milestone volume; L1–L3 fitted on the same fixed sample for AUC comparability"],
             ["Level-vs-change (Table 4)", n(RES["t4"]["n"]), f"Of {K['active14']:,} athletes with ≥1 result at age 14; complete case on sex and Tyrving"],
-            ["Contamination-free change model", n(RES["s19"]["n"]), f"Of {K['active16_two']:,} athletes with ≥2 results at age 16; complete case on sex"],
+            [hl("Change model among athletes active at 16"), n(RES["s19"]["n"]), f"Of {K['active16_two']:,} athletes with ≥2 results at age 16; complete case on sex"],
             ["Baseline-only Cox (Supplementary Tables S10, S16, S30)", n(RES["cox14"]["main"]["n"]),
              f"Time zero at the end of the age-14 season; excludes the {RES['cox14']['n_excluded']} athletes whose final active season was at 13"
              + (f" and {K['nosex_at_risk14']} without registered sex" if K['nosex_at_risk14'] else "")
@@ -610,7 +613,10 @@ def supp():
     n_drop = int(t.loc[t["Quantity"].str.startswith("Dropouts"), "n"].iloc[0])
     out.append(render("S19", "Exit-aligned volume trajectories among dropouts", ["Quantity", "Value", "n"], rows,
                       "*Note.* Each dropout's volume history aligned to their own final active season (T; last calendar year with ≥2 results); dropouts with final seasons at ages 15–19 (n = " + n(n_drop) + "; T−3 observable only where final age ≥16). \"Reduced-but-nonzero\" = penultimate volume above zero but below the athlete's earlier personal peak. The change model is a logistic regression for senior status among athletes with ≥2 results at age 16 (CV-AUC = "
-                      + hl(f"{s19['auc']:.3f}; change = volume at 16 minus volume at 15") + "); all predictors are measured by 16, so neither predictor can be the exit itself. See Supplementary Methods S-M6."))
+                      + hl(f"{s19['auc']:.3f}; change = volume at 16 minus volume at 15") + "); all predictors are measured by 16, so neither predictor can be the exit itself"
+                      + hl(f", although 16 was the final active season for {s19['final_season_16']:,} of the {s19['n']:,}. In the level form, volume at 15 had "
+                           f"OR = {s19['levels_v15_given_v16_per_meet'][0]:.2f} per meet [{s19['levels_v15_given_v16_per_meet'][1]:.2f}, "
+                           f"{s19['levels_v15_given_v16_per_meet'][2]:.2f}] once volume at 16 was known") + ". See Supplementary Methods S-M6."))
     # S20
     t = pd.read_csv(TAB / "tableS20_hhi_stress_r1.csv")
     rows = [[r["Model"].replace(">=", "≥").replace("13-14", "13–14").replace(" - ", " − "), n(r["n"]), r["HHI OR"], f"{float(r['Volume OR']):.2f}"] for _, r in t.iterrows()]

@@ -62,7 +62,7 @@
 |  | **Volume at age 14 (z)** | **{+2.51+}** | **{+[2.17, 2.89]+}** | **< .001** |
 |  | **Volume change 14→15 (z)** | **{+2.29+}** | **{+[2.00, 2.62]+}** | **< .001** |
 
-*Note.* {+Change = volume at 15 minus volume at 14 (positive = increase; mean −2.2, SD 6.4 meets). The OR of 2.29 per SD increase is equivalent+} to {+OR = 0.44 [0.38, 0.50] per SD of greater decline (about 6.4 fewer meets),+} conditional on {+the+} level at age {+14; per 5 fewer meets, OR = 0.52. Because the model is linear in the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from 0.150 (M1) to 0.245 (M2); CV-AUC 0.763 → 0.833. 1 of the 1,926 athletes with a result at 14 lacks registered sex or a Tyrving score (sample n = 1,925).+} Both baseline level and within-athlete {+decline+} contribute substantially and independently.
+*Note.* {+Change = volume at 15 minus volume at 14 (positive = increase; mean −2.2, SD 6.4 meets). The OR of 2.29 per SD increase is equivalent+} to {+OR = 0.44 [0.38, 0.50] per SD of greater decline (about 6.4 fewer meets),+} conditional on {+the+} level at age {+14; per 5 fewer meets, OR = 0.52. Because the model is linear in the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from 0.150 (M1) to 0.245 (M2); CV-AUC 0.763 → 0.833. 1 of the 1,926 athletes with a result at 14 lacks registered sex or a Tyrving score (sample n = 1,925). In the+} level {+form, volume at 14 added nothing once volume at 15 was known (OR = 0.98 per meet [0.95, 1.00]): the change term carries the information in the later season's volume.+}
 
 ---
 ## Table 5. Time-varying hazard ratios (post-baseline Cox specification, period-specific)
@@ -220,7 +220,7 @@
 | n complete | {+1,147+} |  |  |
 | C-index | {+0.696+} |  |  |
 
-*Note.* Athletes {+still in their career+} at age {+16 (final active season at 16 or later),+} with follow-up time measured from age 16 {+forward (986 events). The earlier entry rule (≥1 result at 16) also admitted 71 athletes whose final active season was earlier, so that their event preceded time zero. The+} age-16 share of the exposure window lies at the start of the at-risk window (see Supplementary Methods S-M1). The fully contamination-free logistic analogue is the change model in main-text Section 3.5 / Supplementary Table S19.
+*Note.* Athletes {+still in their career+} at age {+16 (final active season at 16 or later),+} with follow-up time measured from age 16 {+forward (986 events). The earlier entry rule (≥1 result at 16) also admitted 71 athletes whose final active season was earlier, so that their event preceded time zero. The+} age-16 share of the exposure window lies at the start of the at-risk window (see Supplementary Methods S-M1). The logistic analogue {+among athletes still active at 16+} is the change model in main-text Section 3.5 / Supplementary Table S19.
 
 ---
 
@@ -271,7 +271,7 @@
 | Sex known | {+2,136+} | {+Gender M/F registered (2 unknown; excluded from models that adjust for sex except the mean-imputation check in Table S5; included in cohort totals, the fixed-effects model and full-cohort descriptive analyses)+} |
 | Primary logistic L1–L4 | {+2,136+} | Complete case on sex, Tyrving, HHI, pre-milestone volume; L1–L3 fitted on the same fixed sample for AUC comparability |
 | Level-vs-change (Table 4) | {+1,925+} | {+Of 1,926 athletes with ≥1 result at age 14; complete case on sex and Tyrving+} |
-| Contamination-free change model | {+1,088+} | {+Of 1,089 athletes with ≥2 results at age 16; complete case on sex+} |
+| {+Change model among athletes active at 16+} | {+1,088+} | {+Of 1,089 athletes with ≥2 results at age 16; complete case on sex+} |
 | {+Baseline-only Cox (Supplementary Tables S10, S16, S30)+} | {+1,908+} | {+Time zero at the end of the age-14 season; excludes the 229 athletes whose final active season was at 13 and 1 without registered sex; the first-inactive-season definition in Table S30 also requires an active season at 14+} |
 | {+Landmark Cox at age 16+} | {+1,147+} | {+Of 1,148 athletes still in their career at 16 (final active season at 16 or later); complete case on model covariates+} |
 | {+Performance-trajectory comparison (Table S15)+} | {+1,721+} | {+Complete case on Tyrving at both age 13 and age 14+} |
@@ -423,7 +423,7 @@
 | {+Change model among active at 16: change 15→16 (per SD increase)+} | {+OR 1.87 [1.60, 2.19]+} | {+1,088+} |
 | {+Change model among active at 16: change 15→16 (per SD decline)+} | {+OR 0.54 [0.46, 0.63]+} | {+1,088+} |
 
-*Note.* Each dropout's volume history aligned to their own final active season (T; last calendar year with ≥2 results); dropouts with final seasons at ages 15–19 (n = {+1,146;+} T−3 observable only where final age ≥16). "Reduced-but-nonzero" = penultimate volume above zero but below the athlete's earlier personal peak. The change model is a logistic regression for senior status among athletes with ≥2 results at age 16 (CV-AUC = {+0.762; change = volume at 16 minus volume at 15);+} all predictors are measured by 16, so neither predictor can be the exit itself. See Supplementary Methods S-M6.
+*Note.* Each dropout's volume history aligned to their own final active season (T; last calendar year with ≥2 results); dropouts with final seasons at ages 15–19 (n = {+1,146;+} T−3 observable only where final age ≥16). "Reduced-but-nonzero" = penultimate volume above zero but below the athlete's earlier personal peak. The change model is a logistic regression for senior status among athletes with ≥2 results at age 16 (CV-AUC = {+0.762; change = volume at 16 minus volume at 15);+} all predictors are measured by 16, so neither predictor can be the exit {+itself, although 16 was the final active season for 269 of the 1,088. In the level form, volume at 15 had OR = 1.03 per meet [1.01, 1.05] once volume at 16 was known.+} See Supplementary Methods S-M6.
 
 ---
 

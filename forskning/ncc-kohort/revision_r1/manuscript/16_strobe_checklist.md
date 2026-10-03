@@ -14,7 +14,7 @@ Manuscript: *Pulling back before dropping out: {+Declining competition participa
 | 6 (b) | Matched studies — n/a | — |
 | 7 Variables | Define outcomes, exposures, predictors, confounders, effect modifiers | §2.4.1–2.4.5 |
 | 8 Data sources/measurement | Sources of data and details of assessment methods | §2.2, §2.4 (national competition register; Tyrving scoring; HHI construction){+; S-M3 (performance scoring); S-M12 (data preparation)+} |
-| 9 Bias | Efforts to address potential sources of bias | §2.5.1 (baseline-only design), §2.5.3 (exit-aligned + contamination-free change model{+ + athlete fixed-effects model, S-M6+}), S-M1 (landmark timing), §3.4/S-M7 (club confounding{+; club-grouped validation, S-M4+}), {+S-M10 (temporary gaps and returns),+} §4.2 (alternative explanations) |
+| 9 Bias | Efforts to address potential sources of bias | §2.5.1 (baseline-only design), §2.5.3 (exit-aligned + {+active-at-16+} change model{+ + athlete fixed-effects model, S-M6+}), S-M1 (landmark timing), §3.4/S-M7 (club confounding{+; club-grouped validation, S-M4+}), {+S-M10 (temporary gaps and returns),+} §4.2 (alternative explanations) |
 | 10 Study size | How the study size was arrived at | §2.2 (full eligible population), §2.5.5 + S-M2 (detection capacity in lieu of a priori power) |
 | 11 Quantitative variables | How quantitative variables were handled; groupings | §2.4{+, §2.5.1+} (z-standardization{+, within training folds in cross-validation+}; per-SD effects; threshold grid in §2.5.3/Table 6) |
 | 12 Statistical methods (a) | All statistical methods, including confounding control | §2.5.1–2.5.6; {+S-M1–S-M12+} |

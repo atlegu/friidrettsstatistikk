@@ -28,7 +28,22 @@ for s in r1_01_build_variables r1_02_rerun_original_scripts r1_03_reviewer_analy
 done
 
 echo "== 4. Word files"
-(cd manuscript && "$PY" build_r1.py)
+BUILD=$(cd manuscript && "$PY" build_r1.py)
+echo "$BUILD"
+"$PY" - <<'EOF'
+import re, sys
+b = open("submission_r1/MANUSCRIPT_R1.md").read()
+main = b[b.index("## 1. Introduction"): b.index("## Acknowledgements")]
+left = re.findall(r"[A-Z][A-Za-zæøåÆØÅéüö'\-]+(?: et al\.)?(?: (?:&|and) [A-Z][A-Za-zæøåÆØÅéüö'\-]+)?, (?:19|20)\d{2}[a-z]?[;)]", main)
+print("   author-year citations left in the main text:", left if left else "none")
+sys.exit(1 if left else 0)
+EOF
+WC=$(printf '%s\n' "$BUILD" | sed -n 's/^main text \([0-9]*\) words.*/\1/p')
+WCF=$("$PY" -c "print(f'{int(\"$WC\"):,}')")
+for f in submission_r1/RESPONSE_TO_REVIEWER_R1.md manuscript/10_cover_letter_r1.md; do
+  grep -q "$WCF words" "$f" || { echo "   $f does not state the main-text count ($WCF words)"; exit 1; }
+done
+echo "   word count stated in both letters: $WCF"
 
 echo "== 5. Outputs identical to the frozen outputs"
 shasum -a 256 -c FREEZE_outputs.sha256 --quiet
