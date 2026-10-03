@@ -51,6 +51,11 @@
 \renewcommand{\headrule}{{\color{lysgra!30}\hrule width\headwidth height 0.4pt}}
 \setlength{\headheight}{14pt}
 
+% sidetall på åpningssider (stripe i toppen, tall nederst ytterst)
+\fancypagestyle{apner}{\fancyhf{}%
+  \fancyfoot[LE,RO]{\sffamily\footnotesize\color{lysgra}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+
 % ---------- blå toppstripe på åpningssider ----------
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,arrows.meta}
@@ -70,7 +75,7 @@
 \gdef\arttag{x}\newcommand{\artikkelopener}[6]{%
   \twocolumn[%
     \begin{@twocolumnfalse}
-      \thispagestyle{empty}%
+      \thispagestyle{apner}%
       \gdef\toppseksjon{#5}\toppstripe{#5}\label{art:\arttag}%
       \vspace*{4mm}
       {\kickfont\small\color{aksent}\MakeUppercase{#5}\par}
