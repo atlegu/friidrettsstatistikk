@@ -32,7 +32,7 @@ Adding region, birth quarter (Q1/Q4), and club size left the volume coefficient 
 
 **Early behavioral heterogeneity and within-athlete {+decline both predict retention+}.** {+Four+} analyses separate the two readings of Figure 2.
 
-First, level and change. Among athletes still {+competing at age 14 (≥1 result; 1,926+}; complete-case model n = {+1,925+}), the age-14 volume level (OR = {+2.51+} per SD, 95% CI {+[2.17, 2.89]+}) and the change from age 14 to 15 (OR = {+2.29 per SD increase+}, 95% CI {+[2.00, 2.62]; i.e., OR = 0.44 per SD, about 6.4 meets, of decline+}) {+both predicted retention+} (both *p* < .001); adding change {+raised pseudo-*R*² from 0.150 to 0.245+} (Table 4{+; Supplementary Table S14+}). {+Equivalently, volume at 14 added nothing once volume at 15 was known (OR = 0.98 per meet, 95% CI 0.95–1.00; Table 4 note).+}
+First, level and change. Among athletes still {+competing at age 14 (≥1 result; 1,926+}; complete-case model n = {+1,925+}), the age-14 volume level (OR = {+2.51+} per SD, 95% CI {+[2.17, 2.89]+}) and the change from age 14 to 15 (OR = {+2.29 per SD increase+}, 95% CI {+[2.00, 2.62]; i.e., OR = 0.44 per SD, about 6.4 meets, of decline+}) {+both predicted retention+} (both *p* < .001); adding change {+raised pseudo-*R*² from 0.150 to 0.245+} (Table 4{+; Supplementary Table S14+}). {+Equivalently, volume at 14 added little once volume at 15 was known (OR = 0.98 per meet, 95% CI 0.95–1.00, *p* = .06; Table 4 note).+}
 
 Second, because a change score spanning the exit could conflate {+decline+} with the exit itself, we repeated the test among athletes still competing at age 16 (≥2 results; n = {+1,088, of whom 269 had their final active season at 16+}), volume at 15 (OR = 3.04, 95% CI {+[2.56, 3.62]+}) and change from 15 to 16 (OR = {+1.87+} {+per SD increase+}, 95% CI {+[1.60, 2.19]+}{+; 0.54 per SD of decline+}; both *p* < .001) predicted senior status four or more years later: decline predicts exit among athletes who are all, at measurement, still active.
 
@@ -42,7 +42,7 @@ Third, exit-aligned trajectories. Aligned to each dropout's own final active sea
 
 [**Table 4 about here**]
 
-## 3.6 Time-aligned behavior vs. performance
+## 3.6 {+Baseline-window+} behavior vs. performance
 
 {+With volume over ages 13–14 and performance at the baseline meet, volume discriminated somewhat better than baseline performance: CV-AUC = 0.700 for sex + baseline Tyrving and 0.740 for sex + volume (difference 0.040, 95% CI 0.006–0.074; Supplementary Tables S15 and S27). The two were complementary: adding Tyrving to volume raised the AUC by 0.023 (0.007–0.038). With its within-baseline trajectory (change from 13 to 14), performance did not differ from volume (0.737 vs. 0.736; 95% CI for the difference −0.04 to 0.04; n = 1,721). A within-event rank at the baseline meet, which removes Tyrving's unequal demands across event groups (mean baseline-meet points 798 in sprints, 501 in throws), did no better than Tyrving (0.689).+}
 
@@ -50,7 +50,7 @@ Volume and performance were {+moderately+} correlated (Spearman ρ = {+.35+} wit
 
 ## 3.7 Landmark analysis: post-baseline behavior among continuing athletes
 
-Conditioning on athletes {+still in their career at age 16 (final active season at 16 or later; n = 1,148)+}, volume across ages 15–16 was the largest contributor to subsequent cessation risk (HR = {+0.71+} per SD, 95% CI {+[0.65, 0.78]+}, C-index = {+0.696+}; complete-case n = {+1,147+}; Supplementary Table S8). {+The baseline-only Cox model (volume HR = 0.65 per SD, 95% CI [0.62, 0.69], Supplementary Table S10; with structural controls, Supplementary Table S16), the period-specific decomposition (Table 5), and the remaining descriptive analyses (Supplementary Tables S1, S6, S11, S17; Supplementary Figure S4) are companions; post-baseline Cox estimates are not primary (predictor and at-risk window overlap), and their analogue among athletes still active at 16 is the change model in Section 3.5.+}
+Conditioning on athletes {+still in their career at age 16 (final active season at 16 or later; n = 1,148)+}, volume across ages 15–16 was the largest contributor to subsequent cessation risk (HR = {+0.71+} per SD, 95% CI {+[0.65, 0.77]+}, C-index = {+0.696+}; complete-case n = {+1,147+}; Supplementary Table S8). {+The baseline-only Cox model (volume HR = 0.65 per SD, 95% CI [0.62, 0.69], Supplementary Table S10; with structural controls, Supplementary Table S16), the period-specific decomposition (Table 5), and the remaining descriptive analyses (Supplementary Tables S1, S6, S11, S17; Supplementary Figure S4) are companions; post-baseline Cox estimates are not primary (predictor and at-risk window overlap), and their analogue among athletes still active at 16 is the change model in Section 3.5.+}
 
 [**Table 5 about here**]
 
@@ -62,7 +62,7 @@ Conditioning on athletes {+still in their career at age 16 (final active season 
 
 ## 3.9 Within-sport event concentration and retention
 
-Higher baseline HHI (more event-category concentration {+at ages 13–14+}) {+was associated with higher senior retention only once volume was in the model (OR = 1.18 per SD, 95% CI [1.04, 1.34]; without volume, 1.00), more clearly in Cohort B (1.32 [1.10, 1.60]) than in Cohort A (1.07 [0.90, 1.28]; cohort difference *p* = .11), without gain in discrimination (ΔAUC = −0.002 without volume and 0.004 [−0.003, 0.010] with it), and not once performance in the athlete's main event category was controlled (1.07 [0.94, 1.23]; Supplementary Table S18); Cox models with volume agree (HR = 0.91 per SD; Supplementary Tables S10, S16)+}. Because HHI is bounded below by 1/(result count), we stress-tested for count-dependence; the association {+was unchanged under+} restriction to ≥5 and ≥8 {+results at ages 13–14 (OR = 1.17, 1.17)+} and a finite-sample-corrected index (OR = {+1.20+}, 95% CI {+[1.05, 1.35]+}; Supplementary Table S20){+. The index captures concentration *within* track and field, not multisport diversification (§4.6).+}
+Higher baseline HHI (more event-category concentration {+at ages 13–14+}) {+was associated with higher senior retention only once volume was in the model (OR = 1.18 per SD, 95% CI [1.04, 1.34]; without volume, 1.00; the baseline-only Cox models, which include volume, agree: HR = 0.91 per SD, Supplementary Tables S10, S16), more clearly in Cohort B (1.32 [1.10, 1.60]) than in Cohort A (1.07 [0.90, 1.28]; cohort difference *p* = .11), without gain in discrimination (ΔAUC = −0.002 without volume and 0.004 [−0.003, 0.010] with it), and not once performance in the athlete's main event category was controlled (1.07 [0.94, 1.23]; Supplementary Table S18)+}. Because HHI is bounded below by 1/(result count), we stress-tested for count-dependence; the association {+was unchanged under+} restriction to ≥5 and ≥8 {+results at ages 13–14 (OR = 1.17, 1.17)+} and a finite-sample-corrected index (OR = {+1.20+}, 95% CI {+[1.05, 1.35]+}; Supplementary Table S20){+. The index captures concentration *within* track and field, not multisport diversification (§4.6).+}
 
 ## 3.10 {+Internal cohort replication+} and sensitivity
 

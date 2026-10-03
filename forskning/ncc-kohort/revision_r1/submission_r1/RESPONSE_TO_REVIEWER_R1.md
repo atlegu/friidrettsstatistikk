@@ -18,11 +18,11 @@ Thank you for the opportunity to revise the manuscript, and thank you to Dr Hamr
 **Effect on the findings.** The central results hold. Pre-milestone competition volume has OR = 2.04 per SD (95% CI 1.80–2.32; submitted 2.40) and cross-validated AUC = 0.767 (0.737–0.797; submitted 0.751), unchanged with club-grouped folds, and it is reproduced in both birth cohorts. The within-athlete decline before exit is unchanged. Two conclusions have changed, and we have revised the text accordingly:
 
 - **Performance matters more than we reported.** With correct scoring, baseline Tyrving has a substantial independent association with retention (OR 1.75 [1.47, 2.08]; submitted 1.12, not significant). Volume still discriminates somewhat better than performance at the baseline meet (AUC difference 0.040 [0.006, 0.074]), but the two are complementary, and with its within-baseline trajectory performance does not differ from volume. Section 4.2 and the Abstract now say this, and Hypothesis 2 is described as partially supported.
-- **Specialization.** The HHI association is small (OR 1.18 [1.04, 1.34]; submitted 1.36), present only once volume is in the model and only in Cohort B, adds no discrimination, and is no longer significant once performance in the athlete's main event is controlled. The Abstract now says only that event concentration was not robustly associated with retention.
+- **Specialization.** The HHI association is small (OR 1.18 [1.04, 1.34]; submitted 1.36), present only once volume is in the model and more clearly in Cohort B than in Cohort A (difference p = .11), adds no discrimination, and is no longer significant once performance in the athlete's main event is controlled. The Abstract now says only that event concentration was not robustly associated with retention.
 
 **Other corrections.** All tables and figures are now generated directly from the analysis code. In doing so, and in the audit, we found and corrected several data-handling errors (an incomplete extraction, the identification of the baseline meet, results after the end of follow-up, register corrections of sex, the coding of region, club and championship types, and double-counted meet records), errors in two secondary Cox analyses and in the calibration figure, and some errors of transcription and presentation (Tables 5, S2 and S4, the Figure 3 caption and the Kaplan–Meier summary in Section 3.2, the title inside Figure 2, one unconverted citation, a box in Figure 1, the Table 1 note, and rounding in a few supplementary table cells). The data and analysis corrections are listed in Supplementary Methods S-M12. Apart from the changes in the role of performance and specialization described above, none alters the conclusions.
 
-**Length.** We have kept the main text close to its submitted length (6,339 words, against 6,036 at submission) by placing most new detail in the Supplementary Methods (S-M3, S-M4, S-M6, S-M9 to S-M12) and new Supplementary Tables S26–S32, and by shortening the Introduction and Discussion.
+**Length.** We have kept the main text close to its submitted length (6,352 words, against 6,036 at submission) by placing most new detail in the Supplementary Methods (S-M3, S-M4, S-M6, S-M9 to S-M12) and new Supplementary Tables S26–S32, and by shortening the Introduction and Discussion.
 
 ---
 
@@ -34,7 +34,7 @@ Thank you for the opportunity to revise the manuscript, and thank you to Dr Hamr
 
 **Response.** Thank you; the reviewer is correct, and this was an error rather than a design choice. The submitted index pooled every result up to the end of the second calendar year after the baseline meet, so depending on baseline age it covered ages 11–16 (about 35,000 of its results came from ages 15–16). The primary model was therefore not strictly baseline-only. The index is now computed from results in the age-13 and age-14 calendar years only, the same window as the volume predictor, and every model containing HHI has been re-estimated. We also corrected the list of categories in Section 2.4.3: the index has always used the register's own event categories, but the submitted text listed combined events and relays, which the register does not use as categories, and omitted steeplechase and ball throws.
 
-On the submitted data, the correction changes the volume estimate little (OR 2.40 → 2.33) and reduces the HHI association (1.36 → 1.24). In the final revised model, HHI has OR 1.18 [1.04, 1.34]. This association is clear in Cohort B (1.32) but not in Cohort A (1.07 [0.90, 1.28]), and adding HHI does not improve discrimination (ΔAUC −0.002 [−0.005, 0.001]). With performance now correctly scored, it is also no longer significant once performance in the athlete's main event category is controlled (1.07 [0.94, 1.23]; Table S18). The Abstract therefore now states only that event concentration was not robustly associated with retention, and Sections 3.9, 4.1, 4.6 and 4.8 are revised accordingly.
+On the submitted data, the correction changes the volume estimate little (OR 2.40 → 2.33) and reduces the HHI association (1.36 → 1.24). In the final revised model, HHI has OR 1.18 [1.04, 1.34]. This association is clearer in Cohort B (1.32 [1.10, 1.60]) than in Cohort A (1.07 [0.90, 1.28]; difference p = .11), and adding HHI does not improve discrimination (ΔAUC −0.002 [−0.005, 0.001]). With performance now correctly scored, it is also no longer significant once performance in the athlete's main event category is controlled (1.07 [0.94, 1.23]; Table S18). The Abstract therefore now states only that event concentration was not robustly associated with retention, and Sections 3.9, 4.1, 4.6 and 4.8 are revised accordingly.
 
 *Changes:* Abstract; Section 2.4.3; Supplementary Methods S-M8; all HHI-containing tables (Tables 3, 5, 7, S1–S2, S5–S11, S13, S16–S18, S20–S22, S25); Sections 3.3, 3.9, 4.1, 4.6, 4.8.
 
@@ -53,7 +53,7 @@ The primary and all new cross-validations use in-fold standardization and 20 rep
 - club-grouped folds: CV-AUC 0.766 (0.735–0.797), slope 0.97, Brier 0.117;
 - athlete-level folds: 0.767 (0.737–0.797), 0.98, 0.117.
 
-Together with the club random-intercept model, now fitted by maximum likelihood (volume OR 2.07 [1.80, 2.37]; the clubs differ little in retention itself: SD of the club intercepts 0.17, likelihood-ratio p = .31), and club-clustered standard errors (2.04 [1.75, 2.39]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
+Together with the club random-intercept model, now fitted by maximum likelihood (volume OR 2.07 [1.80, 2.37]; the clubs differ little in retention itself: SD of the club intercepts 0.17, likelihood-ratio p = .31), and club-clustered standard errors (2.04 [1.75, 2.39]), and club fixed effects, which compare athletes only with others from their own club (2.28 [1.93, 2.69]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
 
 *Changes:* Abstract; Sections 2.5.1, 2.5.5, 3.4, 4.1 and 4.7; Supplementary Methods S-M4 and S-M7; Tables S22 and S26.
 
@@ -109,7 +109,7 @@ With performance correctly scored, a modest pattern emerged: conditional on perf
 - OR = 0.44 [0.38, 0.50] for a one-SD (about 6.4 meets) greater decline;
 - OR = 0.52 for 5 fewer meets.
 
-The text now states the formula and reports both directions (Sections 2.5.3 and 3.5; Table 4 note). The same applies to the 15→16 change: OR 1.87 per SD increase equals 0.54 [0.46, 0.63] per SD decline (Table S19). Because the model is linear in the logit, it is a re-parameterization of a model with the two levels; the per-meet OR for change equals that for the later level (Table 4 note). Given the later level, the earlier one adds nothing (OR 0.98 per meet [0.95, 1.00]), so the text now says that level and change both predict retention, not that they contribute independently.
+The text now states the formula and reports both directions (Sections 2.5.3 and 3.5; Table 4 note). The same applies to the 15→16 change: OR 1.87 per SD increase equals 0.54 [0.46, 0.63] per SD decline (Table S19). Because the model is linear in the logit, it is a re-parameterization of a model with the two levels; the per-meet OR for change equals that for the later level (Table 4 note). Given the later level, the earlier one adds little (OR 0.98 per meet [0.95, 1.00], p = .06), so the text now says that level and change both predict retention, not that they contribute independently.
 
 *Changes:* Abstract; Sections 2.5.3, 3.5, 4.3, 4.8 and 4.11; Table 4 and note; Tables S14 and S19; Supplementary Methods S-M6.
 
@@ -137,7 +137,7 @@ The decline steepened towards exit (T−1 vs. T−3, p < .001) and was confirmed
 
 **Comment 10.** *The AUC comparisons should be interpreted carefully. Small differences such as 0.740 versus 0.737 should not be discussed as meaningful without uncertainty around the difference.*
 
-**Response.** We now report a 95% CI for the CV-AUC of every model in Table 3 and for every difference between models. Differences between models are estimated on identical folds, with CIs and p-values from the corrected resampled t-statistic for repeated cross-validation (Nadeau & Bengio, 2003; Supplementary Methods S-M4; Table S27).
+**Response.** We now report a 95% CI for the CV-AUC of every model in Table 3 and for the differences between models that the text discusses (Table S27). Differences between models are estimated on identical folds, with CIs and p-values from the corrected resampled t-statistic for repeated cross-validation (Nadeau & Bengio, 2003; Supplementary Methods S-M4; Table S27).
 
 - **The reviewer's example (adding Tyrving to volume)** now shows a small but clear gain once performance is scored correctly: +0.023 (0.007 to 0.038).
 - **Volume versus Tyrving at the baseline meet (both from ages 13–14):** +0.040 (0.006 to 0.074), a modest advantage for volume.
@@ -209,7 +209,7 @@ Re-estimating the baseline-only Cox model with definitions that do not use later
 | Item | Count |
 |---|---|
 | Reviewer comments addressed | 15 of 15 |
-| Main-text word count | 6,036 → 6,339 |
+| Main-text word count | 6,036 → 6,352 |
 | New main-text references | 0 (reference list unchanged, 37 items) |
 | New supplementary references | 2 (Nadeau & Bengio, 2003; van Buuren & Groothuis-Oudshoorn, 2011) |
 | New supplementary tables | 7 (S26–S32) and a new Panel B in Table S13 |

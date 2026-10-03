@@ -62,21 +62,21 @@
 |  | **Volume at age 14 (z)** | **{+2.51+}** | **{+[2.17, 2.89]+}** | **< .001** |
 |  | **Volume change 14→15 (z)** | **{+2.29+}** | **{+[2.00, 2.62]+}** | **< .001** |
 
-*Note.* {+Change = volume at 15 minus volume at 14 (positive = increase; mean −2.2, SD 6.4 meets). The OR of 2.29 per SD increase is equivalent+} to {+OR = 0.44 [0.38, 0.50] per SD of greater decline (about 6.4 fewer meets),+} conditional on {+the+} level at age {+14; per 5 fewer meets, OR = 0.52. Because the model is linear in the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from 0.150 (M1) to 0.245 (M2); CV-AUC 0.763 → 0.833. 1 of the 1,926 athletes with a result at 14 lacks registered sex or a Tyrving score (sample n = 1,925). In the+} level {+form, volume at 14 added nothing once volume at 15 was known (OR = 0.98 per meet [0.95, 1.00]): the change term carries the information in the later season's volume.+}
+*Note.* {+Change = volume at 15 minus volume at 14 (positive = increase; mean −2.2, SD 6.4 meets). The OR of 2.29 per SD increase is equivalent+} to {+OR = 0.44 [0.38, 0.50] per SD of greater decline (about 6.4 fewer meets),+} conditional on {+the+} level at age {+14; per 5 fewer meets, OR = 0.52. Because the model is linear in the logit, it is identical to one with volume at 14 and volume at 15 as separate levels (the per-meet OR for change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from 0.150 (M1) to 0.245 (M2); CV-AUC 0.763 → 0.833. 1 of the 1,926 athletes with a result at 14 lacks registered sex or a Tyrving score (sample n = 1,925). In the+} level {+form, volume at 14 added little once volume at 15 was known (OR = 0.98 per meet [0.95, 1.00], p = .056): the information lies mainly in the later season's volume.+}
 
 ---
 ## Table 5. Time-varying hazard ratios (post-baseline Cox specification, period-specific)
 
 | Covariate | Years 0–3 since baseline (approx. ages 13–17) | Years 3–6 (approx. ages 16–20) | Years 6+ (approx. ages 19+) |
 |---|---|---|---|
-| Volume at age 15–16 (per SD) | {+0.14 [0.12, 0.17]+} | {+0.74 [0.66, 0.84]+} | {+1.01 [0.84, 1.21]+} |
-| Championship types (count) | {+0.78 [0.71, 0.86]+} | {+0.84 [0.74, 0.96]+} | {+0.68 [0.54, 0.85]+} |
-| Tyrving (z) | {+0.93 [0.88, 0.98]+} | {+0.87 [0.78, 0.96]+} | {+1.09 [0.89, 1.34]+} |
-| {+HHI, ages 13–14 (z)+} | {+1.03 [0.97, 1.08]+} | {+0.90 [0.82, 1.00]+} | {+0.99 [0.85, 1.14]+} |
-| Female | {+1.06 [0.95, 1.19]+} | {+1.49 [1.24, 1.80]+} | {+1.05 [0.77, 1.43]+} |
+| Volume at age 15–16 (per SD) | {+0.14 [0.12, 0.17]+} | {+0.73 [0.65, 0.83]+} | {+0.99 [0.82, 1.19]+} |
+| Championship types (count) | {+0.77 [0.70, 0.84]+} | {+0.86 [0.75, 0.98]+} | {+0.70 [0.56, 0.88]+} |
+| Tyrving (z) | {+0.93 [0.89, 0.98]+} | {+0.86 [0.77, 0.96]+} | {+1.08 [0.88, 1.32]+} |
+| {+HHI, ages 13–14 (z)+} | {+1.02 [0.97, 1.08]+} | {+0.90 [0.82, 0.99]+} | {+0.98 [0.85, 1.14]+} |
+| Female | {+1.07 [0.96, 1.19]+} | {+1.49 [1.24, 1.79]+} | {+1.04 [0.77, 1.42]+} |
 | n at risk in interval | {+2,136+} | {+823+} | {+335+} |
 | events in interval | {+1,313+} | {+488+} | {+174+} |
-| C-index | {+0.897+} | {+0.664+} | {+0.596+} |
+| C-index | {+0.897+} | {+0.663+} | {+0.592+} |
 
 *Note.* Period-specific Cox estimates from the post-baseline specification with covariates measured at ages 15–16 and ≤17. The early-window HR for ages-15–16 volume partly reflects operational overlap between predictor and outcome (low milestone volume is mechanical for athletes who drop out before age 15); this estimate should be read as descriptive of the time-varying association rather than as an independent prospective effect. Substantively, the protective association attenuates across follow-up, consistent with a proximal disengagement-marker interpretation. {+All rows are generated directly from the analysis code (C-index per interval from the same models).+}
 
@@ -116,11 +116,11 @@
 
 | Covariate | χ²₁ | p |
 |---|---|---|
-| Female | {+3.07+} | {+.080+} |
-| Tyrving (z) | {+0.02+} | {+.877+} |
-| {+HHI, ages 13–14 (z)+} | {+12.98+} | < .001 |
-| Volume at age 15–16 (z) | {+264.28+} | < .001 |
-| Championship types | {+6.32+} | {+.012+} |
+| Female | {+2.58+} | {+.108+} |
+| Tyrving (z) | {+0.00+} | {+.954+} |
+| {+HHI, ages 13–14 (z)+} | {+12.86+} | < .001 |
+| Volume at age 15–16 (z) | {+262.84+} | < .001 |
+| Championship types | {+8.71+} | {+.003+} |
 
 
 
@@ -130,11 +130,11 @@
 
 | Covariate | HR | Robust 95% CI | p (robust) |
 |---|---|---|---|
-| Female | {+1.16+} | {+[1.03, 1.30]+} | {+.018+} |
-| Tyrving (z) | {+0.92+} | {+[0.87, 0.98]+} | {+.010+} |
-| {+HHI, ages 13–14 (z)+} | {+0.98+} | {+[0.92, 1.04]+} | {+.450+} |
-| Volume at age 15–16 (z) | {+0.49+} | {+[0.43, 0.54]+} | < .001 |
-| Championship types | {+0.70+} | {+[0.64, 0.77]+} | < .001 |
+| Female | {+1.16+} | {+[1.03, 1.30]+} | {+.017+} |
+| Tyrving (z) | {+0.92+} | {+[0.86, 0.98]+} | {+.009+} |
+| {+HHI, ages 13–14 (z)+} | {+0.97+} | {+[0.91, 1.03]+} | {+.374+} |
+| Volume at age 15–16 (z) | {+0.48+} | {+[0.43, 0.54]+} | < .001 |
+| Championship types | {+0.70+} | {+[0.64, 0.76]+} | < .001 |
 
 *Note.* Post-baseline specification; pooled HRs average over the strongly time-varying pattern shown in Table 5 and are descriptive. {+Club-clustered errors for the primary logistic model are in Supplementary Table S22.+}
 
@@ -169,8 +169,8 @@
 |---|---|---|
 | Female | {+1.16+} | {+1.16+} |
 | Tyrving (z) | {+0.92+} | {+0.92+} |
-| {+HHI, ages 13–14 (z)+} | {+0.98+} | {+0.98+} |
-| Volume at age 15–16 (z) | {+0.49+} | {+0.49+} |
+| {+HHI, ages 13–14 (z)+} | {+0.97+} | {+0.97+} |
+| Volume at age 15–16 (z) | {+0.48+} | {+0.48+} |
 | Championship types | {+0.70+} | {+0.70+} |
 | n | {+2,136+} | {+2,138+} |
 
@@ -187,7 +187,7 @@
 | Volume at age 15–16 (z) | {+0.47+} | < .001 |
 | Championship types | {+0.71+} | < .001 |
 
-{+*Note.* Post-baseline specification. HHI is one of the covariates that violate proportional hazards (Supplementary Table S1); stratifying on it leaves the other estimates unchanged. The dominant violation, ages-15–16 volume, is addressed by the period-specific estimates in Table 5, not by this model.+}
+{+*Note.* Post-baseline specification. HHI is one of the covariates that violate proportional hazards (Supplementary Table S1); stratifying on it leaves the other estimates essentially unchanged. The dominant violation, ages-15–16 volume, is addressed by the period-specific estimates in Table 5, not by this model.+}
 
 ---
 
@@ -195,16 +195,16 @@
 
 | Sex | n | Covariate | HR | 95% CI | p |
 |---|---|---|---|---|---|
-| Male | {+1,006+} | Tyrving (z) | {+0.99+} | {+[0.93, 1.05]+} | {+.674+} |
-|  |  | {+HHI, ages 13–14 (z)+} | {+0.97+} | {+[0.91, 1.03]+} | {+.284+} |
-|  |  | Volume at age 15–16 (z) | {+0.49+} | {+[0.43, 0.55]+} | < .001 |
-|  |  | Championship types | {+0.61+} | {+[0.55, 0.68]+} | < .001 |
-| Female | {+1,130+} | Tyrving (z) | {+0.84+} | {+[0.78, 0.90]+} | {+< .001+} |
-|  |  | {+HHI, ages 13–14 (z)+} | {+0.99+} | {+[0.92, 1.05]+} | {+.671+} |
+| Male | {+1,006+} | Tyrving (z) | {+0.99+} | {+[0.93, 1.05]+} | {+.698+} |
+|  |  | {+HHI, ages 13–14 (z)+} | {+0.97+} | {+[0.91, 1.03]+} | {+.274+} |
+|  |  | Volume at age 15–16 (z) | {+0.48+} | {+[0.43, 0.55]+} | < .001 |
+|  |  | Championship types | {+0.60+} | {+[0.54, 0.67]+} | < .001 |
+| Female | {+1,130+} | Tyrving (z) | {+0.83+} | {+[0.78, 0.89]+} | {+< .001+} |
+|  |  | {+HHI, ages 13–14 (z)+} | {+0.98+} | {+[0.92, 1.05]+} | {+.553+} |
 |  |  | Volume at age 15–16 (z) | {+0.48+} | {+[0.43, 0.54]+} | < .001 |
 |  |  | Championship types | {+0.78+} | {+[0.71, 0.86]+} | < .001 |
 
-*Note.* Post-baseline specification (descriptive; see Table 5 note). C-index = {+0.852 (male) and 0.844 (female).+} The dominant behavioral covariate is near-identical across sexes (volume HR {+0.49+} vs {+0.48).+}
+*Note.* Post-baseline specification (descriptive; see Table 5 note). C-index = {+0.851 (male) and 0.846 (female).+} The dominant behavioral covariate is near-identical across sexes (volume HR {+0.48+} vs {+0.48).+}
 
 ---
 
@@ -212,11 +212,11 @@
 
 | Covariate | HR | 95% CI | p |
 |---|---|---|---|
-| Female | {+1.25+} | {+[1.10, 1.43]+} | < .001 |
-| Tyrving (z) | {+0.91+} | {+[0.85, 0.98]+} | {+.014+} |
-| {+HHI, ages 13–14 (z)+} | {+0.90+} | {+[0.85, 0.97]+} | {+.003+} |
-| **Volume at age 15–16 (z)** | {+0.71+} | {+[0.65, 0.78]+} | < .001 |
-| Championship types | {+0.81+} | {+[0.74, 0.89]+} | < .001 |
+| Female | {+1.25+} | {+[1.10, 1.42]+} | < .001 |
+| Tyrving (z) | {+0.91+} | {+[0.84, 0.98]+} | {+.010+} |
+| {+HHI, ages 13–14 (z)+} | {+0.90+} | {+[0.84, 0.96]+} | {+.003+} |
+| **Volume at age 15–16 (z)** | {+0.71+} | {+[0.65, 0.77]+} | < .001 |
+| Championship types | {+0.82+} | {+[0.75, 0.90]+} | < .001 |
 | n complete | {+1,147+} |  |  |
 | C-index | {+0.696+} |  |  |
 
@@ -254,10 +254,10 @@
 | Covariate | HR | 95% CI | p |
 |---|---|---|---|
 | Female | {+1.23+} | {+[1.10, 1.37]+} | {+< .001+} |
-| Tyrving (z) | {+0.92+} | {+[0.87, 0.98]+} | {+.006+} |
-| {+HHI, ages 13–14 (z)+} | 0.96 | {+[0.91, 1.01]+} | {+.104+} |
-| **Volume at age 15–16 (z)** | {+0.55+} | {+[0.50, 0.60]+} | < .001 |
-| Championship types | {+0.76+} | {+[0.70, 0.82]+} | < .001 |
+| Tyrving (z) | {+0.92+} | {+[0.87, 0.97]+} | {+.005+} |
+| {+HHI, ages 13–14 (z)+} | {+0.95+} | {+[0.90, 1.01]+} | {+.079+} |
+| **Volume at age 15–16 (z)** | {+0.54+} | {+[0.50, 0.59]+} | < .001 |
+| Championship types | {+0.76+} | {+[0.70, 0.83]+} | < .001 |
 
 *Note.* Excludes {+595+} athletes with vol_milestone = 0; remaining n = {+1,541;+} C-index = {+0.789. Follow-up starts at baseline, and having any volume at 15–16 requires remaining active to 15–16, so this restriction does not remove the survival conditioning of the post-baseline specification; descriptive only. The landmark analysis (Supplementary Table S8) is the appropriate check.+}
 
@@ -337,7 +337,7 @@
 
 ---
 
-## Table S15. Time-aligned behavior versus performance {+(repeated 5-fold+} CV-AUC)
+## Table S15. {+Baseline-window+} behavior versus performance {+(repeated 5-fold+} CV-AUC)
 
 | Predictor set (all ages 13–14 measurements) | n | CV-AUC |
 |---|---|---|
@@ -423,7 +423,7 @@
 | {+Change model among active at 16: change 15→16 (per SD increase)+} | {+OR 1.87 [1.60, 2.19]+} | {+1,088+} |
 | {+Change model among active at 16: change 15→16 (per SD decline)+} | {+OR 0.54 [0.46, 0.63]+} | {+1,088+} |
 
-*Note.* Each dropout's volume history aligned to their own final active season (T; last calendar year with ≥2 results); dropouts with final seasons at ages 15–19 (n = {+1,146;+} T−3 observable only where final age ≥16). "Reduced-but-nonzero" = penultimate volume above zero but below the athlete's earlier personal peak. The change model is a logistic regression for senior status among athletes with ≥2 results at age 16 (CV-AUC = {+0.762; change = volume at 16 minus volume at 15);+} all predictors are measured by 16, so neither predictor can be the exit {+itself, although 16 was the final active season for 269 of the 1,088. In the level form, volume at 15 had OR = 1.03 per meet [1.01, 1.05] once volume at 16 was known.+} See Supplementary Methods S-M6.
+*Note.* Each dropout's volume history aligned to their own final active season (T; last calendar year with ≥2 results); dropouts with final seasons at ages 15–19 (n = {+1,146;+} T−3 observable only where final age ≥16). "Reduced-but-nonzero" = penultimate volume above zero but below the athlete's earlier personal peak. The change model is a logistic regression for senior status among athletes with ≥2 results at age 16 (CV-AUC = {+0.762; change = volume at 16 minus volume at 15);+} all predictors are measured by 16, so {+no+} predictor {+is measured after exit; for 269 of+} the {+1,088, 16 was the final active season, so their change from 15 to 16 ends in that season. In the level form, volume at 15 had OR = 1.03 per meet [1.01, 1.05] once volume at 16 was known.+} See Supplementary Methods S-M6.
 
 ---
 
@@ -465,9 +465,10 @@
 | {+SD of the club intercepts (log-odds); likelihood-ratio test of no club variation+} | {+0.17; p = .311+} | {+2,136+} |
 | {+Volume OR, club-clustered standard errors+} | {+2.04 [1.75, 2.39]+} | {+2,136+} |
 | {+Volume OR, population-averaged GEE (exchangeable within club)+} | {+2.03 [1.74, 2.38]; within-club correlation −0.003+} | {+2,136+} |
+| {+Volume OR, club fixed effects (conditional logit; comparisons within clubs)+} | {+2.28 [1.93, 2.69]+} | {+1,698 athletes in the 127 clubs with both outcomes+} |
 | {+CV-AUC, folds grouped by club (20 repeats)+} | {+0.766 [0.735, 0.797]+} | {+2,136+} |
 
-*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect is, if anything, slightly larger than the pooled {+estimate, club-clustered and population-averaged estimates give the same odds ratio, the clubs differ little in retention itself, and discrimination is unchanged when validation clubs are held out of fitting. The random-intercept model is fitted by maximum likelihood (club intercepts integrated out with 40-node Gauss–Hermite quadrature; Wald intervals); the submission used a variational Bayes approximation, which understates uncertainty:+} the association is not a club-supply artifact. See Supplementary Methods S-M7.
+*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect {+(club fixed effects)+} is, if anything, slightly larger than the pooled {+estimate, club-clustered and population-averaged estimates give the same odds ratio, the clubs differ little in retention itself, and discrimination is unchanged when validation clubs are held out of fitting. The random-intercept model is fitted by maximum likelihood (club intercepts integrated out with 40-node Gauss–Hermite quadrature; Wald intervals); the submission used a variational Bayes approximation, which understates uncertainty:+} the association is not a club-supply artifact. See Supplementary Methods S-M7.
 
 ---
 
@@ -527,7 +528,7 @@
 | {+Sex + Tyrving vs. sex+} | {+2,136+} | {+0.535+} | {+0.700+} | {++0.165+} | {+[+0.127, +0.203]+} | {+< .001+} |
 | {++ HHI vs. sex + Tyrving+} | {+2,136+} | {+0.700+} | {+0.698+} | {+−0.002+} | {+[−0.005, +0.001]+} | {+.173+} |
 | {++ volume vs. sex + Tyrving + HHI (L4 vs. L3)+} | {+2,136+} | {+0.698+} | {+0.767+} | {++0.069+} | {+[+0.047, +0.091]+} | {+< .001+} |
-| {+Sex + volume vs. sex + Tyrving (time-aligned)+} | {+2,136+} | {+0.700+} | {+0.740+} | {++0.040+} | {+[+0.006, +0.074]+} | {+.022+} |
+| {+Sex + volume vs. sex + Tyrving (baseline window)+} | {+2,136+} | {+0.700+} | {+0.740+} | {++0.040+} | {+[+0.006, +0.074]+} | {+.022+} |
 | {+Sex + Tyrving + volume vs. sex + volume+} | {+2,136+} | {+0.740+} | {+0.763+} | {++0.023+} | {+[+0.007, +0.038]+} | {+.005+} |
 | {+Full L4 vs. sex + volume+} | {+2,136+} | {+0.740+} | {+0.767+} | {++0.026+} | {+[+0.008, +0.044]+} | {+.004+} |
 | {+Sex + volume vs. sex + Tyrving + Tyrving change 13–14+} | {+1,721+} | {+0.737+} | {+0.736+} | {+−0.001+} | {+[−0.042, +0.039]+} | {+.943+} |

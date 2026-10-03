@@ -279,9 +279,10 @@ def table4():
             f"change equals the per-meet OR for volume at 15). Pseudo-R² (McFadden) rose from {t4['r2_m1']:.3f} (M1) to "
             f"{t4['r2_m2']:.3f} (M2); CV-AUC {t4['auc_m1']:.3f} → {t4['auc_m2']:.3f}. {K['active14'] - t4['n']} of the {K['active14']:,} athletes with a result at 14 "
             f"{'lacks' if K['active14'] - t4['n'] == 1 else 'lack'} registered sex or a Tyrving score (sample n = {t4['n']:,}).")
-            + hl(" In the level form, volume at 14 added nothing once volume at 15 was known (OR = "
+            + hl(" In the level form, volume at 14 added little once volume at 15 was known (OR = "
                  f"{t4['levels_v14_given_v15_per_meet'][0]:.2f} per meet [{t4['levels_v14_given_v15_per_meet'][1]:.2f}, "
-                 f"{t4['levels_v14_given_v15_per_meet'][2]:.2f}]): the change term carries the information in the later season's volume."))
+                 f"{t4['levels_v14_given_v15_per_meet'][2]:.2f}], p = {p(t4['levels_v14_given_v15_per_meet'][3])}): "
+                 "the information lies mainly in the later season's volume."))
     return render("4", "Level versus within-athlete change: volume at age 14 and change from 14 to 15",
                   ["Model", "Covariate", "OR per SD", "95% CI", "p"], rows, note)
 
@@ -424,7 +425,7 @@ def supp():
              f"{r['HR (strat. by hhi_early_z)']:.2f}", p(r["p"])] for _, r in t.iterrows()]
     out.append(render("S6", "Cox model stratified on HHI tercile (sensitivity to PH violation)", ["Covariate", "HR", "p"], rows,
                       hl("*Note.* Post-baseline specification. HHI is one of the covariates that violate proportional hazards (Supplementary Table S1); "
-                         "stratifying on it leaves the other estimates unchanged. The dominant violation, ages-15–16 volume, is addressed by the "
+                         "stratifying on it leaves the other estimates essentially unchanged. The dominant violation, ages-15–16 volume, is addressed by the "
                          "period-specific estimates in Table 5, not by this model.")))
     # S7
     t = pd.read_csv(RERUN / "tableS7_subgroup_sex.csv")
@@ -553,7 +554,7 @@ def supp():
             ["Sex + pre-milestone volume", n(d(ta)["n"]), f"{d(ta)['auc_b']:.3f}"],
             ["Sex + pre-milestone volume (trajectory subsample)", n(d(tc)["n"]), f"{d(tc)['auc_b']:.3f}"],
             ["Sex + Tyrving + pre-milestone volume", n(d(vt)["n"]), f"{d(vt)['auc_b']:.3f}"]]
-    out.append(render("S15", "Time-aligned behavior versus performance (repeated 5-fold CV-AUC)", ["Predictor set (all ages 13–14 measurements)", "n", "CV-AUC"], rows,
+    out.append(render("S15", "Baseline-window behavior versus performance (repeated 5-fold CV-AUC)", ["Predictor set (all ages 13–14 measurements)", "n", "CV-AUC"], rows,
                       "*Note.* " + hl("Both predictors are observed during the baseline window (ages 13–14). "
                                       f"Volume versus baseline Tyrving: difference {dauc(ta)}; adding Tyrving to volume: {dauc(vt)}; "
                                       f"volume versus Tyrving with its within-baseline trajectory (subsample with Tyrving at both ages): {dauc(tc)}; "
@@ -613,8 +614,9 @@ def supp():
     n_drop = int(t.loc[t["Quantity"].str.startswith("Dropouts"), "n"].iloc[0])
     out.append(render("S19", "Exit-aligned volume trajectories among dropouts", ["Quantity", "Value", "n"], rows,
                       "*Note.* Each dropout's volume history aligned to their own final active season (T; last calendar year with ≥2 results); dropouts with final seasons at ages 15–19 (n = " + n(n_drop) + "; T−3 observable only where final age ≥16). \"Reduced-but-nonzero\" = penultimate volume above zero but below the athlete's earlier personal peak. The change model is a logistic regression for senior status among athletes with ≥2 results at age 16 (CV-AUC = "
-                      + hl(f"{s19['auc']:.3f}; change = volume at 16 minus volume at 15") + "); all predictors are measured by 16, so neither predictor can be the exit itself"
-                      + hl(f", although 16 was the final active season for {s19['final_season_16']:,} of the {s19['n']:,}. In the level form, volume at 15 had "
+                      + hl(f"{s19['auc']:.3f}; change = volume at 16 minus volume at 15") + "); all predictors are measured by 16, so "
+                      + hl(f"no predictor is measured after exit; for {s19['final_season_16']:,} of the {s19['n']:,}, 16 was the final active season, "
+                           "so their change from 15 to 16 ends in that season. In the level form, volume at 15 had "
                            f"OR = {s19['levels_v15_given_v16_per_meet'][0]:.2f} per meet [{s19['levels_v15_given_v16_per_meet'][1]:.2f}, "
                            f"{s19['levels_v15_given_v16_per_meet'][2]:.2f}] once volume at 16 was known") + ". See Supplementary Methods S-M6."))
     # S20
@@ -654,9 +656,11 @@ def supp():
             [hl("Volume OR, club-clustered standard errors"), hl(fmt_or(RES["club_robust"]["cluster_vol"])), pn],
             [hl("Volume OR, population-averaged GEE (exchangeable within club)"),
              hl(fmt_or(RES["club_robust"]["gee_vol"]) + "; within-club correlation " + f"{RES['club_robust']['gee_rho']:.3f}".replace("-", "−")), pn],
+            [hl("Volume OR, club fixed effects (conditional logit; comparisons within clubs)"), hl(fmt_or(RES["club_robust"]["fe_vol"])),
+             hl(f"{RES['club_robust']['fe_n']:,} athletes in the {RES['club_robust']['fe_clubs']} clubs with both outcomes")],
             ["CV-AUC, folds grouped by club (20 repeats)", hl(f"{RES['cvproc_club']['auc']:.3f} [{RES['cvproc_club']['auc_lo']:.3f}, {RES['cvproc_club']['auc_hi']:.3f}]"), pn]]
     out.append(render("S22", "Club-level analyses", ["Quantity", "Value", "n"], rows,
-                      "*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect is, if anything, slightly larger than the pooled estimate" + hl(", club-clustered and population-averaged estimates give the same odds ratio, the clubs differ little in retention itself, and discrimination is unchanged when validation clubs are held out of fitting. The random-intercept model is fitted by maximum likelihood (club intercepts integrated out with 40-node Gauss–Hermite quadrature; Wald intervals); the submission used a variational Bayes approximation, which understates uncertainty") + ": the association is not a club-supply artifact. See Supplementary Methods S-M7."))
+                      "*Note.* A quarter of the variance in pre-milestone volume lies between clubs, but the within-club volume effect" + hl(" (club fixed effects)") + " is, if anything, slightly larger than the pooled estimate" + hl(", club-clustered and population-averaged estimates give the same odds ratio, the clubs differ little in retention itself, and discrimination is unchanged when validation clubs are held out of fitting. The random-intercept model is fitted by maximum likelihood (club intercepts integrated out with 40-node Gauss–Hermite quadrature; Wald intervals); the submission used a variational Bayes approximation, which understates uncertainty") + ": the association is not a club-supply artifact. See Supplementary Methods S-M7."))
     # S23
     c = RES["cvproc_athlete"]
     rows = [["Calibration slope", f"{c['slope']:.2f}"], [hl("Calibration-in-the-large"), f"{abs(c['citl']) if abs(c['citl']) < 0.005 else c['citl']:.2f}"],
@@ -687,7 +691,7 @@ def supp():
                       ["Procedure", "n", "CV-AUC", "Calibration slope", "Calibration-in-the-large", "Brier"], rows,
                       "*Note.* Rows 1–2 use the variables and the single 5-fold split (seed 42) of the original submission. Because the logistic models are unpenalized, standardizing inside the training folds is an affine re-parameterization that leaves out-of-fold predictions unchanged; the two procedures therefore agree to the third decimal. Rows 3–4 use the corrected data and revised variables (HHI from ages 13–14; complete Tyrving scoring) with 20 repeats; club-grouped folds keep every baseline club (" + f"{K['clubs']} clubs; largest {K['club_max']} athletes" + ") entirely in either the training or the validation fold. Calibration-in-the-large is the intercept of a logistic model with the linear predictor as offset; the submitted Table S23 reported instead the intercept estimated jointly with the slope (−0.06), a different quantity.", new=True))
     t = pd.read_csv(TAB / "tableS27_auc_differences.csv", dtype=str)
-    rows = [[r["Comparison (B vs. A)"].replace("13-14", "13–14"), n(r["n"]), r["CV-AUC A"], r["CV-AUC B"], r["Difference (B - A)"].replace("-", "−"), r["95% CI"].replace("-", "−"), r["p"]] for _, r in t.iterrows()]
+    rows = [[r["Comparison (B vs. A)"].replace("13-14", "13–14").replace(" (time-aligned)", " (baseline window)"), n(r["n"]), r["CV-AUC A"], r["CV-AUC B"], r["Difference (B - A)"].replace("-", "−"), r["95% CI"].replace("-", "−"), r["p"]] for _, r in t.iterrows()]
     out.append(render("S27", "Differences in cross-validated AUC between models (paired, identical folds)",
                       ["Comparison (B vs. A)", "n", "CV-AUC A", "CV-AUC B", "Difference", "95% CI", "p"], rows,
                       "*Note.* Both models are fitted and validated on the same 100 folds (stratified 5-fold, 20 repeats); the difference is the mean of the 100 fold-level differences, with 95% CI and p from the corrected resampled t-statistic (Nadeau & Bengio, 2003), which inflates the variance for the overlap between training sets.", new=True))

@@ -125,10 +125,13 @@ add("Fixed effects: athletes / athlete-seasons (R)", sprintf("%d / %d", uniqueN(
 
 # ---------------------------------------------------------------- championship types (Supplementary Methods S-M12)
 # Written from the rule, with word tokens instead of the pipeline's regular expressions: a type counts
-# when the athlete has a result before 17 at a meet whose name identifies it as a district (KM),
-# youth-national (UM), junior-national or senior-national (NM) championship. Not championships:
-# qualification, preparation, unofficial and test meets, meets abroad, veterans' or school district
-# championships, and national championship meets before 15 (side events).
+# when the athlete has a result before 17 at a meet whose name identifies it as a district (KM, DM, FM),
+# youth-national (UM), junior-national or senior-national (NM) championship, in an age class open to
+# the athlete. Not championships: qualification, preparation, unofficial and test meets, meets abroad,
+# veterans' or school district championships, relay championships (individual results there are side
+# events) and national championship meets before 15 (side events). National combined-events meets are
+# youth classes for under-17s (UM); a district championship named for some age classes ("11-14 år",
+# senior) counts only for those ages.
 invisible(Sys.setlocale("LC_CTYPE", "en_US.UTF-8"))
 cm <- fread(file.path(dir, "corrected", "karrieredata_utvidet.csv"), select = c("athlete_id", "date", "meet_name"), encoding = "UTF-8")
 cm[, age := as.integer(substr(date, 1, 4)) - koh$birth_year[match(athlete_id, koh$athlete_id)]]
@@ -143,17 +146,32 @@ place <- sub(",.*$", "", nm_u)        # meets abroad: a country code after the t
 abroad <- grepl("/[A-Z]{3}(/|$)", place) & !grepl("/(NIH|TYR)(/|$)", place)
 not_champ <- grepl("kvalifisering|oppkjøring|nm-test", low) | has_tok("UOFF") | abroad
 jr <- grepl("juniormesterskap", low) | has_tok(c("JRNM", "JUNIORNM")) | pair(c("JR", "JUNIOR"), "NM") | pair("NM", "JUNIOR")
-um <- has_tok("UM") | grepl("u-mester|ungdomsmesterskap", low)
+nm_any <- has_tok("NM") | grepl("norgesmesterskap", low)
+um <- has_tok("UM") | grepl("u-mester|ungdomsmesterskap", low) | (nm_any & grepl("mangekamp", low))
+relay <- grepl("stafett", low)
 nm_vet <- vapply(tok, function(x) { i <- which(x == "NM"); any(i < length(x) & startsWith(x[pmin(i + 1, length(x))], "VETERAN")) }, logical(1))
-nm <- (has_tok("NM") | grepl("norgesmesterskap", low)) & !nm_vet & !jr & !um
+nm <- nm_any & !nm_vet & !jr & !um
 vet_school <- (grepl("veteran|vetraner|videregående", low) | has_tok("VET")) &
   !(grepl("[0-9]+ ?- ?[0-9]+ ?år|senior", low) | nm_vet)
-km <- (starts_tok("KM") | grepl("kretsme(i)?ster|distriktsme(i)?ster", low)) & !vet_school
-type <- data.table(meet_name = nm_u, not_champ, jr, um, nm, km)
+km <- (starts_tok("KM") | has_tok(c("DM", "FM")) | grepl("kretsme(i)?ster|distriktsme(i)?ster|finnmarksme(i)?sterskap", low)) & !vet_school
+# age classes named for the district championship (a "Kretskarusell" range belongs to the karusell)
+km_txt <- gsub("kretskarusell\\s*[0-9]{1,2}\\s*[-/]\\s*[0-9]{1,2}(\\s*år)?", "", low, perl = TRUE)
+rng <- regmatches(km_txt, gregexpr("(?<![0-9])[0-9]{1,2} ?[-/] ?[0-9]{1,2}(?![0-9])", km_txt, perl = TRUE))
+rng <- lapply(rng, function(v) {
+  if (!length(v)) return(matrix(integer(0), ncol = 2))
+  m <- do.call(rbind, lapply(strsplit(gsub(" ", "", v), "[-/]"), as.integer))
+  m[m[, 1] >= 6 & m[, 1] < m[, 2], , drop = FALSE]
+})
+senior_cls <- grepl("\\bsenior|\\bsen\\b|\\bsr\\b", low, perl = TRUE)
+type <- data.table(meet_name = nm_u, idx = seq_along(nm_u), not_champ, relay, jr, um, nm, km)
 cm <- merge(cm, type, by = "meet_name")
-cm[, national := age >= 15 & !not_champ]
+cm[, km_open := mapply(function(i, a) {
+  r <- rng[[i]]
+  (nrow(r) == 0 && !senior_cls[i]) || any(r[, 1] <= a & a <= r[, 2]) || (senior_cls[i] && a >= 15)
+}, idx, age)]
+cm[, national := age >= 15 & !not_champ & !relay]
 pre <- cm[age < 17, .(t_um = any(um & national), t_jr = any(jr & national), t_nm = any(nm & national),
-                      t_km = any(km & !not_champ)), by = athlete_id]
+                      t_km = any(km & !not_champ & km_open)), by = athlete_id]
 pre[, n_types := t_um + t_jr + t_nm + t_km]
 u1516 <- cm[age %between% c(15, 16), .(um1516 = as.integer(any(um & national))), by = athlete_id]
 ct <- merge(ana[, .(athlete_id, a_types = n_msk_typer, a_um = um_15_16)], pre[, .(athlete_id, n_types)], by = "athlete_id", all.x = TRUE)

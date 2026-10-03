@@ -678,6 +678,15 @@ def club_robust(df):
                               gee_tyr=orci(gee, "tyr_z"), gee_rho=float(gee.cov_struct.dep_params),
                               re_vol=re_or["vol_z"], re_hhi=re_or["hhi_z"], re_tyr=re_or["tyr_z"], re_female=re_or["female"],
                               re_sigma=re["sigma"], re_lr=re["lr"], re_p_lr=re["p_lr"], re_converged=re["converged"])
+    # club fixed effects (conditional logit): athletes are compared only with others from their own club;
+    # clubs where every athlete has the same outcome carry no information
+    from statsmodels.discrete.conditional_models import ConditionalLogit
+    fe = ConditionalLogit(d["aktiv_senior"], d[L4], groups=g).fit(disp=0)
+    fci = fe.conf_int()
+    both = d.groupby(g)["aktiv_senior"].transform("nunique").values > 1
+    RES["club_robust"].update(fe_vol=[float(np.exp(fe.params["vol_z"])), float(np.exp(fci.loc["vol_z", 0])),
+                                      float(np.exp(fci.loc["vol_z", 1])), float(fe.pvalues["vol_z"])],
+                              fe_n=int(both.sum()), fe_clubs=int(len(set(g[both]))))
     logger.info(f"  {RES['club_robust']}")
 
 

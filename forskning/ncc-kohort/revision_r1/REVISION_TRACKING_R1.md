@@ -10,7 +10,7 @@
 | Previous Decision | Revise (one reviewer, Dr Imad Hamri; 15 comments) |
 | Target Journal | International Journal of Sports Science & Coaching |
 | Original Word Count | 6,036 (main text, journal count) |
-| Revised Word Count | 6,339 (same count as 6,036 at submission; shortened from 6,889 after the audit, then +34 words of precision in the final check, 2 Oct 2026, and +121 in the final check of 3 Oct 2026: precision fixes and the author's rewording of four claims) |
+| Revised Word Count | 6,352 (same count as 6,036 at submission; shortened from 6,889 after the audit, then +34 words of precision in the final check, 2 Oct 2026, and +134 in the final check of 3 Oct 2026: precision fixes, the author's rewording of four claims, and the final narrow review) |
 
 ## Revision Tracking Table
 
@@ -175,9 +175,11 @@
 | Acknowledgements say the AI use is declared in the cover letter; the original cover letter carried outdated numbers | Final check | COVER_LETTER_R1 written (10_cover_letter_r1.md) |
 | Club random intercepts fitted by variational Bayes (interval too narrow, as our own note admitted) | Final check (comment 3 strengthened) | Maximum likelihood with Gauss–Hermite quadrature (r1_03 `re_logit_ml`; likelihood checked by adaptive integration): volume OR 2.07 [1.80, 2.37], club SD 0.17, LR p = .31; §3.4, S-M7, Table S22, letter |
 | Possible reviewer queries on comments 1, 2, 4: changed category list in §2.4.3; submitted calibration intercept (−0.06) vs. calibration-in-the-large; CV-AUC 0.753 vs. 0.751 | Final check | Explained in the letter (comment 1) and the notes to Tables S26 and S21 |
-| Championship types (post-baseline covariate): "UM" matched as letters anywhere (Bærum, Brumunddal, Jubileumsstevne: 90 of 116 names); "Junior-NM"/"NM junior" counted as senior; "KM … og NM veteraner", Albuquerque/NM/USA, NM-test, qualification, preparation and unofficial meets, veterans'/school KM and side events at national championships before 15 counted; Nynorsk "Kretsmeisterskap" missed | Final check, 3 Oct 2026 (independent data review; every matched meet name read) | Corrected in r1_00 (count changed for 318 athletes); independent token-based R classification agrees for all 2,138; Table 5, S1, S2, S5–S8, S11, Figures S3–S4 regenerated; §3.7, §4.5, §4.9 numbers updated; S-M12, Figure S3 caption, letter ("Other corrections") |
+| Championship types (post-baseline covariate): "UM" matched as letters anywhere (Bærum, Brumunddal, Jubileumsstevne: 90 of 116 names); "Junior-NM"/"NM junior" counted as senior; "KM … og NM veteraner", Albuquerque/NM/USA, NM-test, qualification, preparation and unofficial meets, veterans'/school KM and side events at national championships before 15 counted; Nynorsk "Kretsmeisterskap" missed | Final check, 3 Oct 2026 (independent data review; every matched meet name read) | Corrected in r1_00 (count changed for 318 athletes; 361 after the final narrow review, below); independent token-based R classification agrees for all 2,138; Table 5, S1, S2, S5–S8, S11, Figures S3–S4 regenerated; §3.7, §4.5, §4.9 numbers updated; S-M12, Figure S3 caption, letter ("Other corrections") |
 | HHI and result count at 13–14 excluded one result of one athlete that failed the sprint-time sanity filter (a scoring filter) | Final check (independent R implementation, 1 mismatch) | HHI from every result; no displayed number changed except one Table S13 cell (1.55 → 1.54) |
 | Text precision: FE sentence in the Abstract said "dropouts'" (the model pools all observed exits, 186 at 20+); "only in Cohort B" (cohort difference p = .11); "performance matched volume" without CI; "low-but-active" (29% of flagged athletes had no result at 14); "1 ≤ vol"; "holds within clubs" (random intercepts, not a within-club estimate); §4.5 causal wording; Table S20 n not explained; letter omitted T−2 in the 17–19 replication | Final check (independent claims review) | All corrected; §2.5.1 cites Table 4 M1 for athletes still competing at 14 |
+| Final narrow review (independent agent, 3 Oct 2026), championship types: Finnmark's district championship ("FM") and Norwegian "DM" missed; individual results at NM relay meets (100 m side events) and youth classes at "NM Mangekamp inne 2018" counted as senior NM; district championships for ages 11–14 credited to 15–16-year-olds | Final narrow review (verified on the data) | Rules refined in r1_00 and, independently, in the R check (0 mismatches); count changed for 361 athletes in all; post-baseline tables and §3.7, §4.5, §4.9 numbers moved by at most 0.01 (χ² 264.3 → 262.8); 10 athletes whose district type rests only on embedded KM events stated in S-M12 |
+| Final narrow review, claims and letter: "only in Cohort B" left in the letter (twice); S22 note and letter said "within clubs" without a within-club estimate; §3.9 "Cox models with volume agree" holds only for the baseline-only Cox models; "volume at 14 added nothing" (p = .056); "tapered" (letter says the taper wording was replaced); §4.5 called the sex-only OR adjusted; S19 note; "CI for every difference"; "time-aligned" labels; S6 "unchanged" | Final narrow review | All corrected; club fixed effects (conditional logit) added to Table S22: OR 2.28 [1.93, 2.69] |
 
 ## Summary Statistics
 
@@ -188,7 +190,7 @@
 | Deliberate Limitation | 0 (generalizability and threshold transfer also stated as limitations, §4.9) |
 | Unresolvable | 0 |
 | Reviewer Disagree | 0 |
-| Word count change | +303 (Introduction and Discussion shortened; correction details moved to S-M12) |
+| Word count change | +316 (Introduction and Discussion shortened; correction details moved to S-M12) |
 | New references | 0 main text; 2 supplementary (verified in CrossRef) |
 | New tables/figures | 7 supplementary tables (S26–S32), Table S13 Panel B, Figure S5; Figure S1 replaced; Supplementary Methods S-M12 (data audit) |
 
@@ -198,7 +200,7 @@
 - [x] Every RESOLVED item specifies the exact location of the change
 - [x] Limitations updated (§4.9: target population, candidate thresholds, fixed-effects analysis)
 - [x] The response letter addresses all comments in order
-- [ ] Word count is within the journal's limit after revisions — 6,339 vs. "should not normally exceed 6,000" (6,036 at submission); 6,043 without headings and table/figure placeholders
+- [ ] Word count is within the journal's limit after revisions — 6,352 vs. "should not normally exceed 6,000" (6,036 at submission); 6,056 without headings and table/figure placeholders
 - [x] All new references are added (supplementary list); main-text numbering verified in order of first appearance (1–37)
 - [x] No new errors introduced: all tables and figures generated from code; original-data sandbox reproduces every submitted table byte-for-byte; corrected data rebuilt deterministically (r1_00) and audited (audit/)
 - [x] AI disclosure statement unchanged and still accurate (Acknowledgements)

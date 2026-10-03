@@ -52,9 +52,9 @@ Table 4 M2 change 14-15 OR [CI] max abs diff,5.84e-06
 Fixed effects: athletes / athlete-seasons (R),1909 / 8490
 mismatches: championship types before 17,0
 mismatches: youth championship at 15-16,0
-"Landmark Cox at 16, volume 15-16 HR [CI] (R)",0.7125 0.6502 0.7807
-"Landmark Cox at 16, volume 15-16 HR [CI] (pipeline)",0.7125 0.6502 0.7807
-"Landmark Cox at 16, volume 15-16 HR [CI] max abs diff",7.76e-06
-"Landmark Cox at 16, championship types HR [CI] (R)",0.8147 0.7419 0.8947
-"Landmark Cox at 16, championship types HR [CI] (pipeline)",0.8147 0.7419 0.8947
-"Landmark Cox at 16, championship types HR [CI] max abs diff",3.76e-06
+"Landmark Cox at 16, volume 15-16 HR [CI] (R)",0.7066 0.6452 0.7739
+"Landmark Cox at 16, volume 15-16 HR [CI] (pipeline)",0.7067 0.6452 0.7739
+"Landmark Cox at 16, volume 15-16 HR [CI] max abs diff",7.88e-06
+"Landmark Cox at 16, championship types HR [CI] (R)",0.8195 0.7450 0.9015
+"Landmark Cox at 16, championship types HR [CI] (pipeline)",0.8195 0.7450 0.9015
+"Landmark Cox at 16, championship types HR [CI] max abs diff",3.82e-06
