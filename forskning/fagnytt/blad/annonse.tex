@@ -1,0 +1,20 @@
+% Siste side: helsides annonse (baksiden). Legg annonsen som blad/bilder/annonse.pdf (eller .png/.jpg) i A4,
+% gjerne med 3 mm utfall. Finnes ingen fil, settes en plassholder.
+\onecolumn
+\thispagestyle{empty}
+\gdef\annfil{}
+\IfFileExists{bilder/annonse.pdf}{\gdef\annfil{bilder/annonse.pdf}}{%
+\IfFileExists{bilder/annonse.png}{\gdef\annfil{bilder/annonse.png}}{%
+\IfFileExists{bilder/annonse.jpg}{\gdef\annfil{bilder/annonse.jpg}}{}}}
+\null
+\ifx\annfil\empty
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[bakgrunn] (current page.north west) rectangle (current page.south east);
+  \draw[lysgra,dashed,line width=0.8pt] ($(current page.north west)+(18mm,-18mm)$) rectangle ($(current page.south east)+(-18mm,18mm)$);
+  \node[text=lysgra,align=center,inner sep=0] at (current page.center) {\kickfont\large ANNONSE\\[6pt]\sffamily\small Helside A4, 210 x 297 mm\\[2pt]Legges som blad/bilder/annonse.pdf};
+\end{tikzpicture}
+\else
+\begin{tikzpicture}[remember picture,overlay]
+  \node[inner sep=0,anchor=north west] at (current page.north west) {\includegraphics[width=210mm,height=297mm]{\annfil}};
+\end{tikzpicture}
+\fi

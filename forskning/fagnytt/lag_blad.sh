@@ -7,5 +7,7 @@ for f in artikler/*.md; do
 done
 xelatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null || { tail -40 main.log; exit 1; }
 xelatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
+N=$(pdfinfo main.pdf | awk '/Pages/{print $2}')
+[ "$N" -le 28 ] || { echo "FEIL: $N sider, maks 28 (siste side er annonse)"; exit 1; }
 cp main.pdf ../Fagnytt_pilot.pdf
 echo "Skrev $(cd .. && pwd)/Fagnytt_pilot.pdf ($(pdfinfo main.pdf | grep Pages))"
