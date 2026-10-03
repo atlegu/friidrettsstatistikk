@@ -1,7 +1,5 @@
 \artikkelopener{Kan en enkel hoppøvelse gi bedre sprint?}{Seks uker med single leg jumps ga bedre utvikling enn bounding hos unge fotballspillere}{Bjørn Johansen}{Fagnytt 1 · 2026}{Sprint og hopp}{Bounding brukes mye i sprinttrening fordi øvelsen ligner løping i høy fart. Likevel ga single leg jumps for speed et tydeligere resultat i vår studie. Det mest interessante er ikke bare hva som skjedde, men hvorfor en tilsynelatende mindre sprintlik øvelse kan ha fungert bedre.}
 
-## Fra en kjent øvelse til et åpent spørsmål
-
 \lettrine[lines=3]{H}{orisontal} hopptrening har lenge hatt en naturlig plass i sprint og lagidrett. Tanken er enkel: Skal utøveren løpe fort framover, bør noe av styrke- og spensttreningen også rette kraften framover.
 
 Bounding passer godt inn i denne tanken. Øvelsen har vekselvis sats på høyre og venstre bein, relativt korte bakkekontakter og en rytme som minner om sprint.
