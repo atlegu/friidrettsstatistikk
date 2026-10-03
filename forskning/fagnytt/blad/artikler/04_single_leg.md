@@ -1,15 +1,5 @@
 \artikkelopener{Kan en enkel hoppøvelse gi bedre sprint?}{Seks uker med single leg jumps ga bedre utvikling enn bounding hos unge fotballspillere}{Bjørn Johansen}{Fagnytt 1 · 2026}{Sprint og hopp}{Bounding brukes mye i sprinttrening fordi øvelsen ligner løping i høy fart. Likevel ga single leg jumps for speed et tydeligere resultat i vår studie. Det mest interessante er ikke bare hva som skjedde, men hvorfor en tilsynelatende mindre sprintlik øvelse kan ha fungert bedre.}
 
-![Bounding (øverst) og single leg jumps for speed (nederst). A: sats, B: svev, C: landing. Foto/figur fra den publiserte studien, CC BY 4.0.](blad/bilder/bj-000.jpg){.smal}
-
-::: {.boks tittel="Studien kort fortalt"}
-- 19 kvinnelige fotballspillere, i gjennomsnitt 15 år
-- Seks ukers trening, to økter per uke
-- Én gruppe trente bounding, én gruppe trente single leg jumps for speed
-- Begge gruppene avsluttet hver økt med 3 × 30 m sprint
-- Vi målte 10 m, 20 m, maksimal hastighet, 40 m og bevegelsen i hoppene
-:::
-
 ## Fra en kjent øvelse til et åpent spørsmål
 
 \lettrine[lines=3]{H}{orisontal} hopptrening har lenge hatt en naturlig plass i sprint og lagidrett. Tanken er enkel: Skal utøveren løpe fort framover, bør noe av styrke- og spensttreningen også rette kraften framover.
@@ -18,6 +8,22 @@ Bounding passer godt inn i denne tanken. Øvelsen har vekselvis sats på høyre 
 
 Men likheten med konkurranseøvelsen er ikke hele svaret. En støtteøvelse må også kunne gjennomføres med høy nok kvalitet og gi en tydelig belastning. Dersom øvelsen blir for krevende teknisk, kan mye av treningen gå med til å løse selve bevegelsen. Da er det ikke sikkert den gir den utviklingen treneren ønsker.
 
+```{=latex}
+\begin{figure}[t]
+\begin{tcolorbox}[fagboks,title={\MakeUppercase{Studien kort fortalt}}]
+\begin{itemize}
+\item 19 kvinnelige fotballspillere, i gjennomsnitt 15 år
+\item Seks ukers trening, to økter per uke
+\item Én gruppe trente bounding, én gruppe trente single leg jumps for speed
+\item Begge gruppene avsluttet hver økt med 3 × 30 m sprint
+\item Vi målte 10 m, 20 m, maksimal hastighet, 40 m og bevegelsen i hoppene
+\end{itemize}
+\end{tcolorbox}
+\centering\includegraphics[width=0.52\linewidth]{blad/bilder/bj-000.jpg}
+\caption{Bounding (øverst) og single leg jumps for speed (nederst). A: sats, B: svev, C: landing. Foto/figur fra den publiserte studien, CC BY 4.0.}
+\end{figure}
+```
+
 I studien sammenlignet vi derfor bounding for speed med single leg jumps for speed. I single leg jumps hopper utøveren gjentatte ganger på samme bein med mål om størst mulig framoverfart. Etter 15 meter byttes bein. Begge øvelsene er horisontale og gjennomføres med maksimal eller nesten maksimal innsats, men rytmen og kravene er forskjellige.
 
 ## Slik trente spillerne
@@ -25,8 +31,8 @@ I studien sammenlignet vi derfor bounding for speed med single leg jumps for spe
 Treningsperioden varte i seks uker. Øvelsene ble lagt inn etter fotballoppvarmingen og før resten av fotballtreningen. Belastningen ble gradvis økt:
 
 ```{=latex}
-\begin{table}[t]
-\centering\sffamily\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{center}
+\sffamily\footnotesize\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{@{}llll@{}}
 \toprule
 \textbf{Periode} & \textbf{Bounding} & \textbf{Single leg jumps} & \textbf{Begge} \\
@@ -36,7 +42,7 @@ Uke 3–4 & 4 × 30 m & 4 × (15 + 15 m) & 3 × 30 m sprint \\
 Uke 5–6 & 5 × 30 m & 5 × (15 + 15 m) & 3 × 30 m sprint \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
 ```
 
 Alle drag ble utført med omtrent 95–100 prosent innsats og 90 sekunders pause. I praksis gjennomførte gruppene rundt elleve av tolv planlagte økter. Det var altså et kort og enkelt opplegg som kunne legges inn i vanlig trening uten store endringer i ukeplanen.
