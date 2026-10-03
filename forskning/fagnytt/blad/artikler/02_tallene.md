@@ -386,11 +386,6 @@ Guttormsen, A. G. og Guttormsen, S. (2026). Super shoes and track
 performance: Evidence from collegiate leaderboards. Manuskript under
 vurdering.
 
-Güllich, A., Barth, M., Macnamara, B. N. og Hambrick, D. Z. (2023). Quantifying
-the extent to which successful juniors and successful seniors are two disparate
-populations: A systematic review and synthesis of findings. *Sports Medicine*,
-53(6), 1201–1217.
-
 Tønnessen, E., Svendsen, I. S., Olsen, I. C., Guttormsen, A. og Haugen, T.
 (2015). Performance development in adolescent track and field athletes
 according to age, sex and sport discipline. *PLoS ONE*, 10(6), e0129014.
