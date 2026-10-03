@@ -142,8 +142,8 @@ tok <- lapply(strsplit(toupper(nm_u), "[^A-Za-z0-9ÆØÅæøå]+"), function(x) 
 has_tok <- function(t) vapply(tok, function(x) any(x %in% t), logical(1))
 pair <- function(a, b) vapply(tok, function(x) { i <- which(x %in% a); any(i < length(x) & x[pmin(i + 1, length(x))] %in% b) }, logical(1))
 starts_tok <- function(pfx) vapply(tok, function(x) any(startsWith(x, pfx)), logical(1))
-place <- sub(",.*$", "", nm_u)        # meets abroad: a country code after the town (NIH and TYR are Norwegian venues)
-abroad <- grepl("/[A-Z]{3}(/|$)", place) & !grepl("/(NIH|TYR)(/|$)", place)
+place <- sub(",.*$", "", nm_u)        # meets abroad: a country code after the town (NIH is a Norwegian venue)
+abroad <- grepl("/[A-Z]{3}(/|$)", place) & !grepl("/NIH(/|$)", place)
 not_champ <- grepl("kvalifisering|oppkjøring|nm-test", low) | has_tok("UOFF") | abroad
 jr <- grepl("juniormesterskap", low) | has_tok(c("JRNM", "JUNIORNM")) | pair(c("JR", "JUNIOR"), "NM") | pair("NM", "JUNIOR")
 nm_any <- has_tok("NM") | grepl("norgesmesterskap", low)
@@ -154,8 +154,8 @@ nm <- nm_any & !nm_vet & !jr & !um
 vet_school <- (grepl("veteran|vetraner|videregående", low) | has_tok("VET")) &
   !(grepl("[0-9]+ ?- ?[0-9]+ ?år|senior", low) | nm_vet)
 km <- (starts_tok("KM") | has_tok(c("DM", "FM")) | grepl("kretsme(i)?ster|distriktsme(i)?ster|finnmarksme(i)?sterskap", low)) & !vet_school
-# age classes named for the district championship (a "Kretskarusell" range belongs to the karusell)
-km_txt <- gsub("kretskarusell\\s*[0-9]{1,2}\\s*[-/]\\s*[0-9]{1,2}(\\s*år)?", "", low, perl = TRUE)
+# age classes named for the district championship (a range attached to "Kretskarusell" or "Indoor games" belongs to that)
+km_txt <- gsub("(kretskarusell|indoor games)\\s*[0-9]{1,2}\\s*[-/]\\s*[0-9]{1,2}(\\s*år)?", "", low, perl = TRUE)
 rng <- regmatches(km_txt, gregexpr("(?<![0-9])[0-9]{1,2} ?[-/] ?[0-9]{1,2}(?![0-9])", km_txt, perl = TRUE))
 rng <- lapply(rng, function(v) {
   if (!length(v)) return(matrix(integer(0), ncol = 2))

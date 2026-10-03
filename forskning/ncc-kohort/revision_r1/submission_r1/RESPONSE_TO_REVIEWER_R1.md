@@ -53,7 +53,7 @@ The primary and all new cross-validations use in-fold standardization and 20 rep
 - club-grouped folds: CV-AUC 0.766 (0.735–0.797), slope 0.97, Brier 0.117;
 - athlete-level folds: 0.767 (0.737–0.797), 0.98, 0.117.
 
-Together with the club random-intercept model, now fitted by maximum likelihood (volume OR 2.07 [1.80, 2.37]; the clubs differ little in retention itself: SD of the club intercepts 0.17, likelihood-ratio p = .31), and club-clustered standard errors (2.04 [1.75, 2.39]), and club fixed effects, which compare athletes only with others from their own club (2.28 [1.93, 2.69]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
+Together with the club random-intercept model, now fitted by maximum likelihood (volume OR 2.07 [1.80, 2.37]; the clubs differ little in retention itself: SD of the club intercepts 0.17, likelihood-ratio p = .31), club-clustered standard errors (2.04 [1.75, 2.39]) and club fixed effects, which compare athletes only with others from their own club (2.28 [1.93, 2.69]), this shows that the association holds within clubs and carries over to clubs not used for fitting. (The ICC of volume is 0.27 in the corrected data.)
 
 *Changes:* Abstract; Sections 2.5.1, 2.5.5, 3.4, 4.1 and 4.7; Supplementary Methods S-M4 and S-M7; Tables S22 and S26.
 

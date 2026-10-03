@@ -255,7 +255,7 @@ CHAMPIONSHIPS = r'''    # Mesterskap-deteksjon (R1, see r1_00_corrected_data.py 
     import re as _re
     navn = karriere["meet_name"].fillna("")
     sted = navn.str.split(",").str[0]
-    utland = sted.str.contains(r"/[A-Z]{3}(?:/|$)", regex=True) & ~sted.str.contains(r"/(?:NIH|TYR)(?:/|$)", regex=True)
+    utland = sted.str.contains(r"/[A-Z]{3}(?:/|$)", regex=True) & ~sted.str.contains(r"/NIH(?:/|$)", regex=True)
     ikke_msk = navn.str.contains(r"kvalifisering|oppkjøring|\bUoff\b|NM-test", case=False, regex=True) | utland
     nasjonal = (karriere["age"] >= 15) & ~ikke_msk & ~navn.str.contains("stafett", case=False, regex=False)
     nm_navn = navn.str.contains(r"\bNM\b|Norgesmesterskap", case=False, regex=True)
@@ -270,8 +270,8 @@ CHAMPIONSHIPS = r'''    # Mesterskap-deteksjon (R1, see r1_00_corrected_data.py 
 
     def km_klasser(n):
         # age classes named for the district championship: (age ranges, senior class); a range that
-        # belongs to a "Kretskarusell" (series for 10-14-year-olds held alongside) is not the championship's
-        n = _re.sub(r"(?i)kretskarusell\s*\d{1,2}\s*[-/]\s*\d{1,2}(\s*år)?", "", n)
+        # belongs to a "Kretskarusell" or "Indoor games" held alongside is not the championship's
+        n = _re.sub(r"(?i)(?:kretskarusell|indoor games)\s*\d{1,2}\s*[-/]\s*\d{1,2}(\s*år)?", "", n)
         r = [(int(a), int(b)) for a, b in _re.findall(r"(?<!\d)(\d{1,2}) ?[-/] ?(\d{1,2})(?!\d)", n) if 6 <= int(a) < int(b)]
         return r, bool(_re.search(r"(?i)\bsenior|\bsen\b|\bsr\b", n))
     klasser = {n: km_klasser(n) for n in navn.unique()}
