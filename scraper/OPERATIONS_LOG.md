@@ -1022,3 +1022,67 @@ Funnet under Vidar-analysen (kontraktskriterier 2027):
   («1.26» på 20 km kappgang = 1:26:00). 85 rester som ikke lot seg tolke
   (5 km «17.60», 800 m «0:01») satt til status NM.
 - `test_urimelige_tider()` er 0. Se `migrations/tider_uten_hundredeler.sql`.
+
+## 2026-10-03 — 290 000 dubletter fra importene 24.08–06.09.2026 fjernet
+
+**Funn** (under dataauditen for IJSSC-artikkelen 02.10, kartlagt 03.10). Historiske
+sesonger ble hentet på nytt 24.08–06.09.2026: 401 108 rader. 289 451 av dem hadde
+en eldre tvilling i samme stevne: samme utøver, øvelse og resultat, dato innen fem
+dager. To mekanismer:
+
+- **Flerdagsstevner.** Basen har én post per dag med riktig dato (Framolekene 2014:
+  29.05, 30.05, 31.05, 01.06). Importen gir alle kildens resultater startdatoen og
+  legger dem i posten med kildens stevne-id, og avstemmingen så bare den posten.
+  Dag 2, 3 … kom inn på nytt med feil dato (Framolekene 2014: 906 rader datert 29.05).
+  `rydd_stevnedubletter.py` (18.09) tok bare par med samme dato og så dem ikke.
+- **Samme post**, der plass eller vind var ulik i kilden (`results_innhold_unik`
+  omfatter begge), og samme stevne under ulike navn i de to importene
+  («UKI-karusell 2013»/Jessheim og «Jessheim, UKI-karusell 2013 Eliteheat»).
+
+**Rot** (`update_results.py`, `_uten_soeskendubletter`): rader som alt ligger i en
+søskenpost av stevnet (samme navn og sted, startdato fra dagen før til seks dager
+etter) legges ikke inn igjen. Testet mot Framolekene 2014: 10 av 10 kjente rader
+stoppet, et nytt resultat sluppet gjennom. **Virker i nattkjøringen først når
+endringen er pushet til GitHub.**
+
+**Opprydding** (`rydd_importdubletter.py`; funksjonene `rydd_importdubletter`,
+`rydd_tomme_importstevner`, `test_importdubletter` i `migrations/importdubletter.sql`).
+Regel: den eldste raden beholdes (riktig dato), den nye slettes. Én-til-én per
+importdag, slik at forsøk og finale med lik tid blir stående; par med hver sin kjente
+runde røres ikke; helst paret med samme plass. Vind, runde og plass kopiert til den
+beholdte raden der den manglet. Stikkprøve før kjøring: 10 av 10 ekte dubletter.
+
+**Kjørt 03.10.2026** (Atle: «fjern ihvertfall duplikater»):
+- 288 725 rader slettet (to runder); 129 817 beholdte rader fikk vind, runde eller
+  plass (101 kopieringer stoppet av unik indeks; radene slettet likevel).
+- 34 par byttet: første runde hadde i noen tilfeller slettet det ekte andre løpet
+  (annen plass og vind) og latt kopien med samme plass stå. Lagt tilbake fra reserven.
+- 1 275 rader i samme stevne under annet navn: samme dato, plass og by (engangs-SQL,
+  dokumentert nederst i `migrations/importdubletter.sql`).
+- 327 stevneposter ble tomme og er slettet (ingen hadde kilde-id, så ingen alias).
+- **Totalt 290 000 rader fjernet; 1 480 048 resultater igjen.** Alle slettede rader
+  ligger i `opprydding_importdubletter` (med `beholdt_id`) og kan legges tilbake.
+
+**Etterkontroll:** av importradene som er igjen (111 108 med resultatverdi) har 731 en
+eldre tvilling etter regelen, men den eldre raden er alt paret med en annen ny rad fra
+samme import (trolig forsøk og finale med lik tid) og blir stående; stikkprøve av
+januarimportene: 8 av 4 000 har lik prestasjon i en annen
+post av samme stevne innen fem dager (forsøk/finale på ulike dager o.l.), 0 med samme
+dato og plass. `test_fullstendighet.py`: importdubletter, stevnedubletter, dubletter,
+avdrift, vindflagg, tider – alle 0. Forsidetallene oppdatert.
+
+**Ny indeks** `idx_results_created_at`. Spørringene bruker `performance_value + 0` og
+et datointervall for å tvinge planleggeren til indeksen på (utøver, øvelse, resultat);
+med indeksen på (øvelse, resultat) tok et kvarter over 110 s.
+
+**Kontroll:** `test_fullstendighet.py --bare importdubletter` (rader lagt inn siste
+tre dager med en eldre tvilling i samme stevne; skal være 0).
+
+**For forskningsuttrekk:**
+- Filteret `created_at <= 2026-05-18` gjenskaper ikke lenger mai-tilstanden: 18.09
+  slettet i mange par den eldre kopien og beholdt den nyere. IJSSC-artikkelen bygger
+  på det lagrede mai-uttrekket (4 110 av dets rader finnes nå bare som rader lagt inn
+  i august) og er upåvirket; dobbeltrader i uttrekket endrer ingen utfall.
+- Åpent: importen gir fortsatt alle resultater i et flerdagsstevne startdatoen
+  (stevnelisten i kilden har én dato). Stevnedager telles derfor for lavt for nye
+  flerdagsstevner.

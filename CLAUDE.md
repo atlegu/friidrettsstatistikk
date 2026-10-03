@@ -41,6 +41,7 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 | `slaa_sammen_utoverdubletter.py` | Slå sammen utøverposter som er samme person (aldri ved ulikt fødselsår) | Når `test_fullstendighet.py` melder avdrift |
 | `nm_medaljer_fra_kilden.py` | NM-medaljer fra kildens resultatside (bare finaler, A-heat-regel) | Etter hvert NM |
 | `rydd_stevnedubletter.py` | Slå sammen stevneposter som er samme stevne (tvillingresultater slettes, resten flyttes bare når det er entydig) | Når `test_fullstendighet.py` melder stevnedubletter |
+| `rydd_importdubletter.py` | Fjern rader en import la inn på nytt i samme stevne (eldste rad beholdes, én-til-én per importdag; reserve i `opprydding_importdubletter`) | Når `test_fullstendighet.py` melder importdubletter (perioden står i skriptet) |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

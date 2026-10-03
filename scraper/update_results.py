@@ -1439,6 +1439,45 @@ def _avstem_stevne(meet_name: str, kilde: List[Dict], eksisterende: Dict[tuple, 
     return rest2
 
 
+def _uten_soeskendubletter(meet_id: str, rader: List[Dict], stats: Dict) -> List[Dict]:
+    """Fjern rader som alt ligger i en soeskenpost av samme stevne.
+
+    Flerdagsstevner ligger i basen som én post per dag med riktig dato
+    (Framolekene 2014: 29.05, 30.05, 31.05, 01.06), mens kilden gir alle
+    resultatene startdatoen og havner i posten med kildens stevne-id.
+    Avstemmingen ser bare den posten, saa resultatene fra dag 2, 3 ... ble
+    lagt inn en gang til, med feil dato: importene 24.08-06.09.2026 la inn
+    290 000 slike dubletter (ryddet med rydd_importdubletter.py).
+    Soeskenpost: samme navn, samme sted (naar stedet er kjent) og startdato fra
+    dagen foer til seks dager etter - «Treningsstevne» samme uke i to byer er
+    to stevner. Noekkel: utoever, oevelse og resultat (plass kan avvike).
+    """
+    m = supabase.table('meets').select('name, start_date, city').eq('id', meet_id).limit(1).execute().data
+    if not m or not rader:
+        return rader
+    start = datetime.strptime(m[0]['start_date'], '%Y-%m-%d').date()
+    q = (supabase.table('meets').select('id').ilike('name', m[0]['name'])
+         .gte('start_date', (start - timedelta(days=1)).isoformat())
+         .lte('start_date', (start + timedelta(days=6)).isoformat())
+         .neq('id', meet_id))
+    if m[0].get('city'):
+        q = q.eq('city', m[0]['city'])
+    sosken = q.execute().data
+    if not sosken:
+        return rader
+    finnes = set()
+    for s in sosken:
+        for key, liste in _hent_eksisterende_rader(s['id']).items():
+            if key != '_navn':
+                finnes.update((r['athlete_id'], r['event_id'], r['performance']) for r in liste)
+    beholdt = [r for r in rader if (r['athlete_id'], r['event_id'], r['performance']) not in finnes]
+    if len(beholdt) < len(rader):
+        stats['skipped_sibling'] += len(rader) - len(beholdt)
+        logger.info(f"  {len(rader) - len(beholdt)} rader ligger alt i {len(sosken)} soeskenpost(er) "
+                    f"for {m[0]['name']} - ikke lagt inn paa nytt")
+    return beholdt
+
+
 def _ulik_vind(a, b) -> bool:
     if a is None and b is None:
         return False
@@ -1463,6 +1502,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         'skipped_no_athlete': 0,
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
+        'skipped_sibling': 0,
         'updated_wind': 0,
         'updated_round': 0,
         'updated_row': 0,
@@ -1605,6 +1645,9 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
     # oppdater det som er endret, legg inn det som er nytt, flagg det kilden
     # ikke lenger har. Se _avstem_stevne().
     nye = _avstem_stevne(meet_name, result_batch, eksisterende, stats)
+    # Flerdagsstevner: resultater som alt ligger i posten for en annen dag av
+    # stevnet, legges ikke inn igjen. Se _uten_soeskendubletter().
+    nye = _uten_soeskendubletter(meet_id, nye, stats)
 
     # Insert batch.
     # NB: try/except ligger INNE i chunk-lokken. Lå den rundt hele lokken, ville
@@ -1810,6 +1853,7 @@ def main():
         'skipped_no_athlete': 0,
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
+        'skipped_sibling': 0,
         'updated_wind': 0,
         'updated_round': 0,
         'updated_row': 0,
@@ -1840,7 +1884,7 @@ def main():
 
         for key in ['imported', 'matched_existing_athlete', 'created_new_athlete',
                      'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet',
-                     'skipped_duplicate', 'updated_wind', 'updated_round', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
+                     'skipped_duplicate', 'skipped_sibling', 'updated_wind', 'updated_round', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
             totals[key] += meet_stats.get(key, 0)
 
     # Summary
@@ -1859,6 +1903,7 @@ def main():
     logger.info(f"  Skipped (no event mapping): {totals['skipped_no_event']}")
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
+    logger.info(f"  Ikke lagt inn (ligger i en soeskenpost av flerdagsstevnet): {totals['skipped_sibling']}")
     logger.info(f"  Vind oppdatert paa eksisterende rader: {totals['updated_wind']}")
     logger.info(f"  Runde fylt inn paa eksisterende rader: {totals['updated_round']}")
     logger.info(f"  Rader rettet (resultat/plass/vind): {totals['updated_row']}")

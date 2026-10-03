@@ -32,7 +32,7 @@ Avslutter med kode 1 hvis noe avviker, så den kan brukes i CI.
 """
 
 import argparse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 import re
 import sys
@@ -417,6 +417,22 @@ def sjekk_stevnedubletter(base: str, res: Resultat):
             'kjoer rydd_stevnedubletter.py')
 
 
+def sjekk_importdubletter(base: str, res: Resultat):
+    """Nye rader skal ikke ha en eldre tvilling i samme stevne.
+
+    Importene 24.08-06.09.2026 la historiske flerdagsstevner inn paa nytt i
+    posten med kildens stevne-id, med startdatoen paa alle resultater, mens
+    de alt laa i én post per dag med riktig dato. Ryddet 03.10.2026 med
+    rydd_importdubletter.py; update_results.py sjekker naa soeskenpostene.
+    Sjekkes for rader lagt inn de siste tre dagene (test_importdubletter).
+    """
+    res.sjekket += 1
+    fra = (datetime.now(timezone.utc) - timedelta(days=3)).isoformat()
+    n = sb.rpc('test_importdubletter', {'p_fra': fra}).execute().data
+    res.lik('results', 'rader lagt inn siste tre dager med en eldre tvilling i samme stevne', n, 0,
+            'sjekk update_results.py (_uten_soeskendubletter) og kjoer rydd_importdubletter.py')
+
+
 def sjekk_tider(base: str, res: Resultat):
     """Ingen tider under ett minutt i loep der det ikke er mulig.
 
@@ -436,6 +452,7 @@ def sjekk_tider(base: str, res: Resultat):
 SJEKKER = {
     'tider': lambda base, n, res: sjekk_tider(base, res),
     'stevnedubletter': lambda base, n, res: sjekk_stevnedubletter(base, res),
+    'importdubletter': lambda base, n, res: sjekk_importdubletter(base, res),
     'vindflagg': lambda base, n, res: sjekk_vindflagg(base, res),
     'dubletter': lambda base, n, res: sjekk_dubletter(base, res),
     'avdrift': lambda base, n, res: sjekk_utoveravdrift(base, res),
