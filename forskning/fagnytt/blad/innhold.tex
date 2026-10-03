@@ -1,24 +1,20 @@
-% Side 2: innhold (venstre) og styre/ansvarlige (høyre)
+% Side 2: innhold øverst, styre og redaksjon under
 \newcommand{\innholdslinje}[4]{%
-  \noindent\begin{minipage}[t]{12mm}{\headfont\fontsize{22}{22}\selectfont\color{aksent}\pageref{art:#1}}\end{minipage}%
-  \begin{minipage}[t]{\dimexpr\linewidth-12mm\relax}%
+  \noindent\begin{minipage}[t]{16mm}{\headfont\fontsize{22}{22}\selectfont\color{aksent}\pageref{art:#1}}\end{minipage}%
+  \begin{minipage}[t]{\dimexpr\linewidth-16mm\relax}%
     {\kickfont\footnotesize\color{hovedbla}\MakeUppercase{#2}\par}\vspace{1pt}%
     {\RaggedRight\sffamily\bfseries\fontsize{12}{14}\selectfont\color{morkgra}#3\par}\vspace{1pt}%
     {\RaggedRight\sffamily\footnotesize\color{lysgra}#4\par}%
   \end{minipage}\par\vspace{11pt}}
-\newcommand{\styrerad}[2]{\noindent{\sffamily\footnotesize\bfseries\color{morkgra}#1}\\{\sffamily\footnotesize\color{lysgra}#2}\par\vspace{5pt}}
+\newcommand{\styrerad}[2]{{\RaggedRight\noindent{\sffamily\footnotesize\bfseries\color{morkgra}#1}\\{\sffamily\footnotesize\color{lysgra}#2}\par}\vspace{5pt}}
 
-\makeatletter
-\twocolumn[%
-  \begin{@twocolumnfalse}
-    \thispagestyle{apner}\gdef\toppseksjon{Innhold}\toppstripe{Innhold}
-    \vspace*{6mm}
-    {\kickfont\small\color{aksent}I DETTE NUMMERET\par}
-    \vspace{6pt}
-    {\headfont\fontsize{34}{36}\selectfont\color{morkgra}Innhold\par}
-    \vspace{6pt}{\noindent\color{aksent}\rule{22mm}{2.4pt}\par}\vspace{14pt}
-  \end{@twocolumnfalse}]
-\makeatother
+\onecolumn
+\thispagestyle{apner}\gdef\toppseksjon{Innhold}\toppstripe{Innhold}
+\vspace*{6mm}
+{\noindent\kickfont\small\color{aksent}I DETTE NUMMERET\par}
+\vspace{6pt}
+{\noindent\headfont\fontsize{34}{36}\selectfont\color{morkgra}Innhold\par}
+\vspace{6pt}{\noindent\color{aksent}\rule{22mm}{2.4pt}\par}\vspace{16pt}
 
 \innholdslinje{leder}{Leder}{Fantastisk sesong – og et varselskudd}{Henning Hofstad}
 \innholdslinje{seminar}{Trenerforeningen}{Trenerseminaret 2026: program og fagpersoner}{21.–22. november, Lillestrøm og Nes}
@@ -27,9 +23,11 @@
 \innholdslinje{singleleg}{Sprint og hopp}{Kan en enkel hoppøvelse gi bedre sprint?}{Bjørn Johansen}
 \innholdslinje{tikamp}{Mangekamp, utvikling og risiko}{Hvor vinnes en tikamp?}{Atle G. Guttormsen}
 
-\newpage
-\noindent{\kickfont\small\color{aksent}STYRE 2024–25\par}\vspace{3pt}
-{\noindent\color{lysgra!35}\rule{\linewidth}{0.5pt}\par}\vspace{8pt}
+\vspace{10pt}
+{\noindent\color{lysgra!35}\rule{\linewidth}{0.5pt}\par}\vspace{12pt}
+\noindent{\kickfont\small\color{aksent}STYRE 2024–25\par}\vspace{8pt}
+\begin{multicols}{3}
+\raggedcolumns
 \styrerad{Formann · Lars Ola Sundt}{lars.ola.sundt@idk.no}
 \styrerad{Kast · Katarina Sederholm Hoff}{katarina.hoff@stjordal.kommune.no}
 \styrerad{Sprint · Bjørn Johansen}{bjorn.johans1@gmail.com}
@@ -37,11 +35,15 @@
 \styrerad{Mangekamp/stav/hekk · Bjørn Bogsti}{bbogsti@online.no}
 \styrerad{Hopp · Henning Hofstad}{henhofs@gmail.com}
 \styrerad{Barn/ung · Hilde Stokvold Gundersen}{Hilde.Stokvold.Gundersen@hvl.no}
+\end{multicols}
 \vspace{6pt}
-\noindent{\kickfont\small\color{aksent}REDAKSJON\par}\vspace{3pt}
-{\noindent\color{lysgra!35}\rule{\linewidth}{0.5pt}\par}\vspace{8pt}
+\noindent{\kickfont\small\color{aksent}REDAKSJON\par}\vspace{8pt}
+\begin{multicols}{3}
+\raggedcolumns
 \styrerad{Redaktør · Henning Hofstad}{henhofs@gmail.com}
 \styrerad{Forsidebilde og bilder}{Reidar Langkjær}
-\vfill
-\begin{center}\includegraphics[width=30mm]{bilder/logo_ft.png}\end{center}
+\end{multicols}
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south east,inner sep=0] at ($(current page.south east)+(-18mm,20mm)$) {\includegraphics[width=26mm]{bilder/logo_ft.png}};
+\end{tikzpicture}
 \clearpage
