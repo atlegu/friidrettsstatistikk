@@ -72,6 +72,23 @@
 % ---------- åpner: kicker, tittel, undertittel, byline, ingress ----------
 % \artikkelopener{Tittel}{Undertittel}{Forfatter}{Dato}{Kicker}{Ingress}
 \makeatletter
+% Ingress og byline til venstre, rundt portrett til høyre (brukes av \artikkelopener når \aapnerportrett er satt)
+\newcommand{\portrettblokk}[3]{%
+      % Åpner med rundt portrett til høyre for ingress og byline (leder/spalte)
+      \noindent\begin{minipage}[b]{\dimexpr\textwidth-40mm\relax}
+        {\RaggedRight\itshape\fontsize{13}{18.5}\selectfont\color{morkgra}#3\par}
+        \vspace{14pt}
+        {\kickfont\footnotesize\color{lysgra}AV\hspace{0.5em}\textcolor{morkgra}{\mbox{\MakeUppercase{#1}}}\hspace{1.2em}\textcolor{aksent}{/}\hspace{1.2em}\MakeUppercase{#2}\par}
+      \end{minipage}\hfill
+      \begin{minipage}[b]{32mm}\raggedleft
+        \begin{tikzpicture}
+          \clip (0,0) circle (15mm);
+          \node[inner sep=0pt] at (0,0) {\includegraphics[width=30mm]{\aapnerportrett}};
+          \draw[aksent, line width=1.6pt] (0,0) circle (15mm);
+        \end{tikzpicture}
+      \end{minipage}\par
+}
+\gdef\aapnerportrett{}
 \gdef\arttag{x}\newcommand{\artikkelopener}[6]{%
   \twocolumn[%
     \begin{@twocolumnfalse}
@@ -86,11 +103,16 @@
       \vspace{14pt}
       {\noindent\color{aksent}\rule{22mm}{2.4pt}\par}
       \vspace{12pt}
+      \ifx\aapnerportrett\empty
       \begin{minipage}{0.86\textwidth}
         {\RaggedRight\itshape\fontsize{13}{18.5}\selectfont\color{morkgra}#6\par}
       \end{minipage}\par
       \vspace{14pt}
       {\kickfont\footnotesize\color{lysgra}AV\hspace{0.5em}\textcolor{morkgra}{\mbox{\MakeUppercase{#3}}}\hspace{1.2em}\textcolor{aksent}{/}\hspace{1.2em}\MakeUppercase{#4}\par}
+      \else
+      \portrettblokk{#3}{#4}{#6}%
+      \gdef\aapnerportrett{}%
+      \fi
       \vspace{4pt}
       {\noindent\color{lysgra!35}\rule{\textwidth}{0.5pt}\par}
       \vspace{16pt}
