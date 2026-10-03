@@ -53,7 +53,7 @@
 
 % ---------- blå toppstripe på åpningssider ----------
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,positioning,arrows.meta}
 \newcommand{\toppstripe}[1]{%
   \begin{tikzpicture}[remember picture,overlay]
     \fill[hovedbla] (current page.north west) rectangle ($(current page.north east)+(0,-13mm)$);
@@ -124,7 +124,7 @@
 \usepackage{caption}
 \captionsetup{font={sf,footnotesize},labelformat=empty,skip=5pt,justification=RaggedRight,singlelinecheck=false}
 \newcommand{\figlabel}[1]{{\kickfont\color{hovedbla}#1}\hspace{0.7em}}
-\usepackage{booktabs}
+\usepackage{array,booktabs}
 \setlength{\tabcolsep}{6.5pt}
 
 % ---------- sitat (uthevet sitat i spalten) ----------
