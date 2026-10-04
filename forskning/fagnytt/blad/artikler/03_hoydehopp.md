@@ -114,7 +114,6 @@ Uavhengig av klubbenes ansvar må NFIF gjøre noe for å bedre situasjonen. Resu
 
 Junior-NM og UM ble heller ikke noen opptur når det gjelder tekniske øvelser. Det var kun enkeltstående prestasjoner som holdt et greit nivå. Ellers var det svært lite å glede seg over. Det svinger resultatmessig og akkurat nå er vi i en bølgedal. Det som må til, er at hele organisasjonen tar et tak for å snu den nedadgående trenden.
 
-Og initiativet må komme fra de ansvarlige i NFIF.
+Og initiativet må komme fra de ansvarlige i NFIF. \sluttmerke
 
-
-\sluttmerke
+![Leif Roar Falkum og Terje Totland.](blad/bilder/falkum_totland.jpg){.smal}
