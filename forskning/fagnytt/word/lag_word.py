@@ -35,7 +35,7 @@ if m:
     flat = lambda t: re.sub(r'\s+', ' ', t).strip()
     head = f"# {flat(tittel)}\n\n**{flat(under)}**\n\n*{flat(kicker)}* · Av {flat(forf)} · {flat(dato)}\n\n*{flat(ingress)}*\n\n"
     s = s[:m.start()] + head + s[e:]
-s = re.sub(r'\\lettrine\[[^\]]*\]\{(.)\}\{\}', r'\1', s)
+s = re.sub(r'\\lettrine\[[^\]]*\]\{(.)\}\{([^}]*)\}', r'\1\2', s)
 s = s.replace('\\sluttmerke', '')
 
 
