@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Figurer til høydehopp-artikkelen (Hofstad) i Fagnytt: resultatet til nr. 1, 5, 10, 25 og 50 på årslisten, 1968-2026.
 
-Kilde: Høydetilgraf.csv (årslister, norske utøvere). Damer 2006 mangler i filen og vises som brudd.
+Kilde: Høydetilgraf.csv (årslister, norske utøvere).
 
     ../../scraper/venv/bin/python figurer_hoyde.py
 """

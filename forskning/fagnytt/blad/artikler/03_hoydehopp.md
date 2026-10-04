@@ -42,7 +42,7 @@ Både bredde og topp har vist en sterk nedgang helt siden tusenårsskiftet, båd
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.495\textwidth]{figurer/hoyde_fig1_herrer.png}\hfill\includegraphics[width=0.495\textwidth]{figurer/hoyde_fig2_damer.png}
-\caption{\figlabel{FIGUR 1}Resultatet til nr.~1, 5, 10, 25 og 50 på norsk årsliste i høyde, herrer til venstre og damer til høyre, 1968–2026. Linjene viser at både toppen og bredden har gått tilbake siden tusenårsskiftet. Damenes resultater for 2006 mangler i grunnlaget og vises som brudd i linjene. Tall for 2026 er sesongen til nå.}
+\caption{\figlabel{FIGUR 1}Resultatet til nr.~1, 5, 10, 25 og 50 på norsk årsliste i høyde, herrer til venstre og damer til høyre, 1968–2026. Linjene viser at både toppen og bredden har gått tilbake siden tusenårsskiftet.}
 \end{figure*}
 ```
 
