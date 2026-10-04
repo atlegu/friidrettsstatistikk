@@ -46,11 +46,11 @@ y = H - 88 * mm
 y = avsnitt(y, 'Dette er', [
     f'Artikkelen slik den står i bladet, med endelige sidetall ({FRA}–{TIL}). Tekst, bilder og',
     'grafer er satt i bladets nye layout. Teksten er din, med de endringene som er listet under.'])
-y = avsnitt(y, 'Vi ber deg sjekke', [
+y = avsnitt(y, 'Jeg ber deg sjekke', [
     '•  navn, årstall, høyder, rekorder og plasseringer i teksten',
     '•  at oppsettet ikke har endret meningen noen steder',
     '•  Figur 1 (se under)'])
-y = avsnitt(y, 'Det redaksjonen har lagt til', [
+y = avsnitt(y, 'Det jeg har lagt til', [
     '•  Fire mellomtitler: «Fra dykk til flop», «Gode år – og så nedturen», «Hva er årsaken?»,',
     '    «Hva må gjøres?». To uthevede sitater er tatt ordrett fra teksten din.',
     '•  Undertittel og ingress (ingressen er presentasjonsteksten fra nr. 1-utkastet).',
@@ -59,7 +59,7 @@ y = avsnitt(y, 'Det redaksjonen har lagt til', [
 y = avsnitt(y, 'Slik sender du rettelser', [
     'Skriv sidetall, spalte og ordene som skal endres, for eksempel:',
     '«s. 17, venstre spalte, 2. avsnitt: ‹1 976› skal være ‹1 977›». Du kan også sende',
-    'PDF-en tilbake med kommentarer. Endringer i selve layouten tar vi hos oss.'])
+    'PDF-en tilbake med kommentarer. Endringer i selve layouten tar jeg.'])
 c.setFillColorRGB(*GRAA); c.setFont('Helvetica-Oblique', 9)
 c.drawString(18 * mm, 18 * mm, 'Korrektur er ikke endelig trykkfil. Tallene i Figur 1 er hentet fra årslistene i Høydetilgraf.csv.')
 c.showPage(); c.save()
