@@ -10,7 +10,7 @@ function Div(el)
   elseif el.classes:includes('faktaboks') then
     return titled('Faktaboks: Slik er tallene laget', el)
   elseif el.classes:includes('raad') then
-    return titled('Fem råd til treneren', el)
+    return titled(el.attributes['tittel'] or 'Råd til treneren', el)
   elseif el.classes:includes('forfatter') then
     return titled('Om forfatteren', el)
   elseif el.classes:includes('boks') then
