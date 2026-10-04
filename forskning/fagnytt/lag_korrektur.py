@@ -49,14 +49,13 @@ y = avsnitt(y, 'Dette er', [
 y = avsnitt(y, 'Vi ber deg sjekke', [
     '•  navn, årstall, høyder, rekorder og plasseringer i teksten',
     '•  at oppsettet ikke har endret meningen noen steder',
-    '•  Figur 1 (se under) og bildeteksten til bildet på s. 20'])
+    '•  Figur 1 (se under)'])
 y = avsnitt(y, 'Det redaksjonen har lagt til', [
     '•  Fire mellomtitler: «Fra dykk til flop», «Gode år – og så nedturen», «Hva er årsaken?»,',
     '    «Hva må gjøres?». To uthevede sitater er tatt ordrett fra teksten din.',
     '•  Undertittel og ingress (ingressen er presentasjonsteksten fra nr. 1-utkastet).',
     '•  Figur 1: nr. 1, 5, 10, 25 og 50 på norsk årsliste i høyde, herrer og damer, 1968–2026.',
-    '•  Bildet av Falkum og Totland sist i artikkelen. Vi trenger bekreftet hvem som er hvem',
-    '    og hvem vi skal kreditere som fotograf eller kilde.'])
+    '•  Bildet av Falkum og Totland sist i artikkelen.'])
 y = avsnitt(y, 'Slik sender du rettelser', [
     'Skriv sidetall, spalte og ordene som skal endres, for eksempel:',
     '«s. 17, venstre spalte, 2. avsnitt: ‹1 976› skal være ‹1 977›». Du kan også sende',
