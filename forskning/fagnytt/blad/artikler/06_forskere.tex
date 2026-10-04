@@ -1,0 +1,53 @@
+% Siste fra norske forskere: kort om nye internasjonale publikasjoner om friidrett.
+% Legg til nye saker med \forskning{Tidsskrift}{Status}{Tittel}{Forfattere}{Tekst}
+\tcbset{forsk/.style={enhanced,breakable=false,colback=bakgrunn,colframe=bakgrunn,boxrule=0pt,arc=0pt,
+  borderline west={3pt}{0pt}{aksent},left=11pt,right=9pt,top=6pt,bottom=7pt,before skip=0pt,after skip=8pt}}
+\newcommand{\forskning}[5]{\begin{tcolorbox}[forsk]
+  {\kickfont\footnotesize\color{aksent}\MakeUppercase{#1}}\hfill{\kickfont\footnotesize\color{white}\colorbox{hovedbla}{\,\MakeUppercase{#2}\,}}\par\vspace{5pt}
+  {\RaggedRight\sffamily\bfseries\fontsize{10.5}{12.6}\selectfont\color{morkgra}#3\par}\vspace{3pt}
+  {\RaggedRight\sffamily\footnotesize\color{hovedbla}#4\par}\vspace{6pt}
+  {\setlength{\parindent}{0pt}\RaggedRight\fontsize{8.6}{10.8}\selectfont\linespread{1}\selectfont #5\par}
+\end{tcolorbox}}
+
+\gdef\arttag{forskere}
+\makeatletter
+\twocolumn[\begin{@twocolumnfalse}
+  \thispagestyle{apner}\gdef\toppseksjon{Forskning}\toppstripe{Forskning}\label{art:forskere}
+  \vspace*{3mm}
+  {\kickfont\small\color{aksent}FORSKNING\par}\vspace{4pt}
+  {\RaggedRight\headfont\fontsize{30}{32}\selectfont\color{morkgra}Siste fra norske forskere\par}\vspace{5pt}
+  {\RaggedRight\medfont\fontsize{13}{16}\selectfont\color{hovedbla}Kort om nye internasjonale publikasjoner om friidrett\par}\vspace{7pt}
+  {\noindent\color{aksent}\rule{22mm}{2.4pt}\par}\vspace{10pt}
+\end{@twocolumnfalse}]
+\makeatother
+
+\forskning{Medicine \& Science in Sports \& Exercise 57(9), 1968–1978}{Publisert 2025}
+  {Is the Classification of Athletes Based on Force–Velocity Profiling from Countermovement Jumps Influenced by the Choice of Method?}
+  {Gøran Paulsen, Kolbjørn Lindberg, Ola Eriksrud, Paul Solberg m.fl.}
+  {Kraft–hastighetsprofilen fra mothoppsprang brukes til å si om en utøver mangler kraft eller fart. 16 kvinnelige elitehåndballspillere ble profilert med fire metoder. Helningen på profilen avvek 30–39 prosent mellom metodene, og over 80 prosent av utøverne ble klassifisert ulikt etter hvilken metode som ble brukt. Flight-time-metoden kan gi feilklassifisering.}
+
+\forskning{Frontiers in Sports and Active Living}{Publisert 2025}
+  {Relationships between horizontal jump kinematics and sprint performance in female sprinters and team sport athletes}
+  {Bjørn Johansen, Roland van den Tillaar (Nord universitet) og Jonathon Neville}
+  {24 kvinnelige utøvere, 12 sprintere og 12 lagidrettsutøvere, løp 40 meter og gjennomførte fire horisontale hopptester. Single leg jumps for speed hang tettest sammen med sprintfart (r = 0,70–0,92 hos sprinterne). Bounding hang sterkere sammen med sprint hos lagidrettsutøverne enn hos sprinterne. Utvalgte hopptester kan brukes både til testing og til sprinttrening.}
+
+\forskning{Journal of Functional Morphology and Kinesiology 10(4), 468}{Publisert 2025}
+  {Comparison of Training Effects of Bounding and Single Leg Jumps for Speed on Sprint and Jump Kinematics in Young Female Football Players}
+  {Bjørn Johansen, Roland van den Tillaar (Nord universitet) og Jonathon Neville}
+  {Seks ukers hopptrening hos unge fotballspillere. Gruppen som trente single leg jumps ble bedre på alle sprintmål, mens bounding-gruppen bare økte stegfrekvensen. Studien er omtalt i artikkelen på side~\pageref{art:singleleg}.}
+
+\forskning{Journal of Functional Morphology and Kinesiology 11(1), 95}{Publisert 2026}
+  {Relationship and Training Effects of Horizontal Multi-Step Jumps on Sprint Performance: A Systematic Review}
+  {Bjørn Johansen og Roland van den Tillaar, Nord universitet}
+  {Oversikt over 19 studier (10 treningsstudier og 9 korrelasjonsstudier) av horisontale flerhopp og sprint til 100 meter. Sammenhengen er sterkest i akselerasjonsfasen, og treningsstudiene viser forbedring av korte sprint, opptil 7–12 prosent i noen studier. På lengre distanser er effekten mindre eller uklar.}
+
+\forskning{International Journal of Sports Physiology and Performance}{Forthcoming}
+  {How Fast Is Thin Air? Empirical Altitude Adjustments for Indoor Track and Field Performance}
+  {Atle G. Guttormsen og Simen Guttormsen, NMBU}
+  {688\,625 løpsresultater og 215\,933 hopp fra amerikanske innendørsstevner på 382 baner. Høyden gir 0,3–0,5 prosent bedre sprinttid og 0,5–0,7 prosent bedre hoppresultater per 1\,000 meter, mens lange distanser straffes (2,7–3,0 prosent på 5\,000 meter). NCAAs sprintkorreksjoner dekker bare 42–71 prosent av effekten, og tekniske øvelser har ingen korreksjon.}
+
+\forskning{International Journal of Sports Science \& Coaching}{Forthcoming}
+  {Cross-championship reaction-time discrepancies undermine the 0.100 s false-start rule}
+  {Atle G. Guttormsen og Simen Guttormsen, NMBU}
+  {1\,558 offisielle reaksjonstider fra fem VM. Tre mesterskap lå likt (155 ms i snitt), men Eugene 2022 var 18,8 ms raskere og Tokyo 2025 24,9 ms tregere. Det peker mot ulik måling og ikke fysiologi. Forfatterne anbefaler kalibreringsstandarder for tidtakingen og lagring av rådata.}
+\clearpage
