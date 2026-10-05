@@ -157,9 +157,11 @@
 
 % ---------- sitat (uthevet sitat i spalten) ----------
 \newenvironment{sitat}
-  {\par\vspace{9pt}\noindent{\color{aksent}\rule{\linewidth}{1.2pt}}\par\vspace{6pt}%
+  {\par\vspace{9pt}\noindent\begin{minipage}{\linewidth}%
+   {\color{aksent}\rule{\linewidth}{1.2pt}}\par\vspace{6pt}%
    \begingroup\RaggedRight\sffamily\bfseries\fontsize{12}{15}\selectfont\color{hovedbla}}
-  {\par\endgroup\vspace{5pt}\noindent{\color{aksent}\rule{\linewidth}{1.2pt}}\par\vspace{9pt}}
+  {\par\endgroup\vspace{5pt}{\color{aksent}\rule{\linewidth}{1.2pt}}%
+   \end{minipage}\par\vspace{9pt}}
 
 % ---------- bokser ----------
 \usepackage[most]{tcolorbox}
