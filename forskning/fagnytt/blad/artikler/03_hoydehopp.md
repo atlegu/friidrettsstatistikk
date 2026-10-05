@@ -24,6 +24,8 @@ I 1976 kom Terje Totland og tok opp kampen med Leif Roar. Han tangerte rekorden 
 
 Både Leif Roar og Terje deltok under OL i 1976. Begge kvalifiserte seg til finalen og den foregikk under et voldsomt regnvær. Terje, som var ung og uredd (og dessuten vant til å hoppe i regnvær) leverte en glimrende konkurranse og ble nr. 9 på 2,18m. Leif Roar ble nr. 14 med 2,10m. Dette var første gang siden 1952 Norge hadde høydehoppere som var med i olympiske leker. Etter at Terje ikke lenger holdt samme nivå og Leif Roar la opp, så var det ingen tydelige arvtagere.
 
+![Leif Roar Falkum og Terje Totland.](blad/bilder/falkum_totland.jpg){.smal}
+
 Terje kombinerte enorm spenst med svær fart i tilløpet. Det var banebrytende, men etter min mening samtidig en hemsko for konkurrentene. Det oppstod nemlig en forståelse av at det bare var Terje som kunne løpe så fort i tilløpet. Det gikk 10 år før noen forsøkte og like lenge før noen hoppet like høyt. Ikke før Håkon Särnblom hoppet 2,23m i 1987 ble rekorden forbedret.
 
 ## Gode år – og så nedturen
@@ -116,4 +118,3 @@ Junior-NM og UM ble heller ikke noen opptur når det gjelder tekniske øvelser. 
 
 Og initiativet må komme fra de ansvarlige i NFIF. \sluttmerke
 
-![Leif Roar Falkum og Terje Totland.](blad/bilder/falkum_totland.jpg){.smal}
