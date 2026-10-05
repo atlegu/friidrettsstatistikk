@@ -1,4 +1,4 @@
-\artikkelopener{Tallene finnes. Bruk dem.}{Hva en komplett resultatdatabase kan
+\artikkelopener{Tallene finnes. Bruk dem}{Hva en komplett resultatdatabase kan
 fortelle norske friidrettstrenere om utvikling, frafall og hvor idretten er på
 vei}{Atle G. Guttormsen}{Fagnytt 2026}{Statistikk og trenerarbeid}{Friidrett er den
 mest målte idretten som finnes. Likevel bruker vi tallene nesten bare til én
