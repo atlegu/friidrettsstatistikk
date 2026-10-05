@@ -118,3 +118,30 @@ Junior-NM og UM ble heller ikke noen opptur når det gjelder tekniske øvelser. 
 
 Og initiativet må komme fra de ansvarlige i NFIF. \sluttmerke
 
+```{=latex}
+\begin{tcolorbox}[fagboks,title={\MakeUppercase{Fakta: Norske rekorder i høyde}},breakable=false,left=6pt,right=6pt]
+\sffamily\fontsize{7.4}{9.2}\selectfont\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.1}
+{\kickfont\footnotesize\color{hovedbla}REKORDENE I DAG}\par\vspace{2pt}
+\noindent\begin{tabular}{@{}>{\bfseries}l>{\bfseries}rl@{\hspace{6pt}}>{\bfseries}rl@{}}
+ & \multicolumn{2}{l}{\textbf{\color{hovedbla}Herrer}} & \multicolumn{2}{l}{\textbf{\color{aksent}Damer}}\\
+\midrule
+Senior & 2,36 & S. Hoen 1997 & 2,01 & H. Haugland 1997\\
+U23 & 2,32 & S. Hoen 1993 & 1,97 & T. Angelsen 2012\\
+U20 & 2,21 & B. Olsson 1994 & 1,89 & H. Haugland 1986\\
+\end{tabular}
+\vspace{7pt}\par
+{\kickfont\footnotesize\color{hovedbla}SLIK UTVIKLET NORGESREKORDEN}\par\vspace{2pt}
+\noindent\begin{tabular}{@{}>{\color{lysgra}}l>{\bfseries}rl@{\hspace{7pt}}>{\color{lysgra}}l>{\bfseries}rl@{}}
+\multicolumn{3}{@{}l}{\textbf{\color{hovedbla}Herrer}} & \multicolumn{3}{l}{\textbf{\color{aksent}Damer}}\\
+1902 & 1,75 & C. A. Andersen & 1927 & 1,24 & S. G. Olsen\\
+1915 & 1,90 & F. Warendorph & 1949 & 1,50 & K. Jordet\\
+1940 & 2,00 & E. Stai & 1967 & 1,70 & A. L. Wærness\\
+1965 & 2,10 & S. Sletten & 1971 & 1,80 & K. Karlsen\\
+1976 & 2,20 & L. R. Falkum & 1982 & 1,90 & A. Tveit\\
+1992 & 2,30 & S. Hoen & 1997 & 2,00 & H. Haugland\\
+1997 & 2,36 & S. Hoen & 1997 & 2,01 & H. Haugland\\
+\end{tabular}
+\vspace{4pt}\par
+{\fontsize{6.4}{7.6}\selectfont\color{lysgra}Kilde: Norges Friidrettsforbund (rekordenes utvikling og rekordlister). U20 og U23 gjelder utendørs, pr. 1.1.2024.}
+\end{tcolorbox}
+```
