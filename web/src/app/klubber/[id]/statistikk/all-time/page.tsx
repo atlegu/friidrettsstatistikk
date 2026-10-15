@@ -85,6 +85,8 @@ async function getClubAllTimeResults(
       .eq("status", "OK")
       .not("performance_value", "is", null)
       .gt("performance_value", 0)
+          // Barn til og med 11 år vises ikke offentlig (get_age_group gir «Yngre»)
+          .or("age_group.is.null,age_group.neq.Yngre")
 
     // Handle composite age groups (Senior, U23, U20) and individual ages
     if (ageGroup !== "all") {

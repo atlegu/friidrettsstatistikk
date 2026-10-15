@@ -92,6 +92,8 @@ async function getSeasonLeaders() {
           .eq("gender", gender)
           .eq("status", "OK")
           .gt("performance_value", 0)
+          // Barn til og med 11 år vises ikke offentlig (get_age_group gir «Yngre»)
+          .or("age_group.is.null,age_group.neq.Yngre")
         // Bare godkjente resultater: lovlig vind i vindpaavirkede oevelser
         // (utendoers), og ikke haandtid i sprint og hekk. Samme regel som
         // aarslistene. Foer kunne et medvindsloep eller en haandtid staa som

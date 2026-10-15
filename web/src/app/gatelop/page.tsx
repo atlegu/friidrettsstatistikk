@@ -20,10 +20,10 @@ const DISTANSER = [
   { m: 42195, navn: "Maraton" },
 ]
 
-/** Aldersklasser som i Kondis' statistikk: ungdom og femårsklasser fra 40 år. */
+/** Aldersklasser som i Kondis' statistikk: ungdom og femårsklasser fra 40 år.
+ *  Barn til og med 11 år vises ikke offentlig (skjult_alder() i basen). */
 const KLASSER: { id: string; navn: string; fra: number | null; til: number | null }[] = [
   { id: "", navn: "Alle", fra: null, til: null },
-  { id: "11", navn: "11 år", fra: 0, til: 11 },
   { id: "12-13", navn: "12–13", fra: 12, til: 13 },
   { id: "14-15", navn: "14–15", fra: 14, til: 15 },
   { id: "16-17", navn: "16–17", fra: 16, til: 17 },
@@ -153,7 +153,7 @@ export default async function GatelopPage({
               </>
             )}
             <MetaSkille />
-            <span>Kilde: EQ Timing</span>
+            <span>Kilder: EQ Timing og Ultimate Sport Service</span>
           </>
         }
         merker={<ToppMerke>Prototype</ToppMerke>}
@@ -350,7 +350,8 @@ export default async function GatelopPage({
       </div>
 
       <p className="mt-4 text-[12.5px] text-[var(--text-muted)]">
-        Resultatene hentes automatisk fra tidtakeren. Løpere kobles til utøverregisteret når navn, kjønn og fødselsår
+        Resultatene hentes automatisk fra tidtakerne. Fra Ultimate Sport Service hentes bare norske løpere innenfor
+        tidskravene for årsbeste, med tid fra startskuddet. Løpere kobles til utøverregisteret når navn, kjønn og fødselsår
         gir ett entydig treff. Kvalitetsnivået settes maskinelt ut fra løypemåling, distanse og type løp.
       </p>
     </div>

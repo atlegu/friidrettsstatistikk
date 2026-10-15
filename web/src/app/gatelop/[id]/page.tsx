@@ -58,8 +58,9 @@ export default async function ArrangementPage({ params }: { params: Promise<{ id
       )
     : []
 
-  const koblet = res.filter((r) => r.athlete_id).length
-  const fullforte = res.filter((r) => r.status === "OK").length
+  const synlige = res.filter((r) => !(r.fodt && new Date(arr.dato).getFullYear() - r.fodt <= 11))
+  const koblet = synlige.filter((r) => r.athlete_id).length
+  const fullforte = synlige.filter((r) => r.status === "OK").length
 
   return (
     <div className="container py-6">
@@ -90,7 +91,7 @@ export default async function ArrangementPage({ params }: { params: Promise<{ id
               </>
             )}
             <MetaSkille />
-            <span>Kilde: EQ Timing</span>
+            <span>Kilde: {arr.kilde === "ultimate" ? "Ultimate Sport Service" : "EQ Timing"}</span>
           </>
         }
         merker={
@@ -108,7 +109,9 @@ export default async function ArrangementPage({ params }: { params: Promise<{ id
 
       <div className="mt-6 space-y-5">
         {lop.map((l) => {
-          const rader = res.filter((r) => r.lop_id === l.id)
+          // Barn til og med 11 år (etter kalenderåret) vises ikke offentlig
+          const aar = new Date(l.dato ?? arr.dato).getFullYear()
+          const rader = res.filter((r) => r.lop_id === l.id && !(r.fodt && aar - r.fodt <= 11))
           return (
             <Flate
               key={l.id}
