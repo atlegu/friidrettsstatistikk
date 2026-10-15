@@ -13,10 +13,30 @@ export const metadata = {
 }
 
 const DISTANSER = [
+  { m: 3000, navn: "3 km" },
   { m: 5000, navn: "5 km" },
   { m: 10000, navn: "10 km" },
   { m: 21097, navn: "Halvmaraton" },
   { m: 42195, navn: "Maraton" },
+]
+
+/** Aldersklasser som i Kondis' statistikk: ungdom og femårsklasser fra 40 år. */
+const KLASSER: { id: string; navn: string; fra: number | null; til: number | null }[] = [
+  { id: "", navn: "Alle", fra: null, til: null },
+  { id: "11", navn: "11 år", fra: 0, til: 11 },
+  { id: "12-13", navn: "12–13", fra: 12, til: 13 },
+  { id: "14-15", navn: "14–15", fra: 14, til: 15 },
+  { id: "16-17", navn: "16–17", fra: 16, til: 17 },
+  { id: "18-19", navn: "18–19", fra: 18, til: 19 },
+  { id: "20-22", navn: "20–22", fra: 20, til: 22 },
+  { id: "40-44", navn: "40–44", fra: 40, til: 44 },
+  { id: "45-49", navn: "45–49", fra: 45, til: 49 },
+  { id: "50-54", navn: "50–54", fra: 50, til: 54 },
+  { id: "55-59", navn: "55–59", fra: 55, til: 59 },
+  { id: "60-64", navn: "60–64", fra: 60, til: 64 },
+  { id: "65-69", navn: "65–69", fra: 65, til: 69 },
+  { id: "70-74", navn: "70–74", fra: 70, til: 74 },
+  { id: "75-", navn: "75+", fra: 75, til: null },
 ]
 
 type Arr = {
@@ -45,6 +65,7 @@ type Beste = {
   dato: string
   sted: string | null
   kvalitetsnivaa: string
+  nasjon: string | null
 }
 
 function maaned(d: string) {
@@ -55,13 +76,15 @@ function maaned(d: string) {
 export default async function GatelopPage({
   searchParams,
 }: {
-  searchParams: Promise<{ vis?: string; distanse?: string; gender?: string; nivaa?: string }>
+  searchParams: Promise<{ vis?: string; distanse?: string; gender?: string; nivaa?: string; klasse?: string; alle?: string }>
 }) {
   const p = await searchParams
   const vis = p.vis === "lop" ? "lop" : "arsbeste"
   const distanse = DISTANSER.find((d) => String(d.m) === p.distanse)?.m ?? 10000
   const gender = p.gender === "F" ? "F" : "M"
   const bareA = p.nivaa === "A"
+  const klasse = KLASSER.find((k) => k.id === (p.klasse ?? "")) ?? KLASSER[0]
+  const alleNasjoner = p.alle === "1"
 
   const supabase = (await createClient()) as unknown as SupabaseClient
   const [arr, { count: antallLop }, { data: besteData }] = await Promise.all([
@@ -77,7 +100,10 @@ export default async function GatelopPage({
           p_distanse: distanse,
           p_kjonn: gender,
           p_nivaa: bareA ? ["A"] : ["A", "B"],
-          p_antall: 100,
+          p_antall: 200,
+          p_bare_norske: !alleNasjoner,
+          p_alder_fra: klasse.fra,
+          p_alder_til: klasse.til,
         })
       : Promise.resolve({ data: null }),
   ])
@@ -89,7 +115,16 @@ export default async function GatelopPage({
   const til = arr.length ? arr[0].dato : null
 
   const url = (o: Record<string, string>) => {
-    const q = new URLSearchParams({ vis, distanse: String(distanse), gender, nivaa: bareA ? "A" : "AB", ...o })
+    const q = new URLSearchParams({
+      vis,
+      distanse: String(distanse),
+      gender,
+      nivaa: bareA ? "A" : "AB",
+      klasse: klasse.id,
+      alle: alleNasjoner ? "1" : "",
+      ...o,
+    })
+    for (const [k, v] of [...q.entries()]) if (!v) q.delete(k)
     return `/gatelop?${q}`
   }
 
@@ -157,6 +192,21 @@ export default async function GatelopPage({
                 Kvinner
               </Chip>
             </Filterrad>
+            <Filterrad navn="Alder">
+              {KLASSER.map((k) => (
+                <Chip key={k.id || "alle"} href={url({ klasse: k.id })} aktiv={k.id === klasse.id}>
+                  {k.navn}
+                </Chip>
+              ))}
+            </Filterrad>
+            <Filterrad navn="Løpere">
+              <Chip href={url({ alle: "" })} aktiv={!alleNasjoner}>
+                Norske
+              </Chip>
+              <Chip href={url({ alle: "1" })} aktiv={alleNasjoner}>
+                Også utenlandske
+              </Chip>
+            </Filterrad>
             <Filterrad navn="Nivå">
               <Chip href={url({ nivaa: "AB" })} aktiv={!bareA}>
                 A og B
@@ -175,10 +225,12 @@ export default async function GatelopPage({
       <div className="mt-5">
         {vis === "arsbeste" ? (
           <Flate
-            tittel={`${distanseTekst(distanse)} · ${gender === "M" ? "Menn" : "Kvinner"} · 2026`}
-            undertittel={`Beste tid per løper. ${
+            tittel={`${distanseTekst(distanse)} · ${gender === "M" ? "Menn" : "Kvinner"}${
+              klasse.id ? ` ${klasse.navn}${klasse.navn.includes("år") ? "" : " år"}` : ""
+            } · 2026`}
+            undertittel={`Beste tid per løper${alleNasjoner ? "; utenlandske løpere er merket med *" : ", norske løpere"}. ${
               bareA ? "Bare rekordgodkjente løyper." : "Rekord- og statistikkgodkjente løyper."
-            } Tider rundes opp til hele sekunder.`}
+            } Tider rundes opp til hele sekunder, og lik tid gir lik plass. Alder etter kalenderåret.`}
           >
             {beste.length === 0 ? (
               <p className="px-5 py-8 text-center text-[13.5px] text-[var(--text-muted)]">
@@ -215,6 +267,11 @@ export default async function GatelopPage({
                             </Link>
                           ) : (
                             <span className="font-medium">{b.navn}</span>
+                          )}
+                          {b.nasjon && b.nasjon !== "NOR" && (
+                            <span className="ml-1 text-[12px] text-[var(--text-muted)]" title={`Nasjon: ${b.nasjon}`}>
+                              * {b.nasjon}
+                            </span>
                           )}
                           {b.klubb ? <div className="text-[12px] text-[var(--text-muted)]">{b.klubb}</div> : null}
                         </td>

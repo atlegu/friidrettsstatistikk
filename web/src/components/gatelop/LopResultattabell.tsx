@@ -12,6 +12,7 @@ export interface Loprad {
   tid_ms: number | null
   status: string
   athlete_id: string | null
+  nasjon?: string | null
 }
 
 const TH = "px-4 py-2.5 text-left text-[11.5px] font-semibold uppercase tracking-wide text-[var(--text-muted)]"
@@ -46,6 +47,9 @@ export function LopResultattabell({ rader }: { rader: Loprad[] }) {
                   </a>
                 ) : (
                   <span className="font-medium">{r.navn}</span>
+                )}
+                {r.nasjon && r.nasjon !== "NOR" && (
+                  <span className="ml-1 text-[12px] text-[var(--text-muted)]">{r.nasjon}</span>
                 )}
               </td>
               <td className="px-4 py-2 text-[13px] tabular-nums text-[var(--text-muted)]">{r.fodt ?? "–"}</td>

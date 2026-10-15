@@ -129,3 +129,40 @@ update public.lop_lop l set kvalitetsnivaa = 'C'
 from public.lop_arrangement a
 where a.id = l.arrangement_id and l.kvalitetsnivaa <> 'C'
   and coalesce(a.gren, '') not in ('Gateløp', 'Annet', 'Annet/Kombinert');
+
+-- Tillegg samme dag: nasjonalitet og løpsdag, aldersklasser i årsbeste.
+alter table public.lop_resultat add column if not exists nasjon text;
+alter table public.lop_lop add column if not exists dato date;
+drop function if exists public.lop_arsbeste(int, int, text, text[], int);
+create or replace function public.lop_arsbeste(p_aar int, p_distanse int, p_kjonn text,
+                                    p_nivaa text[] default array['A', 'B'],
+                                    p_antall int default 100,
+                                    p_bare_norske boolean default true,
+                                    p_alder_fra int default null,
+                                    p_alder_til int default null)
+returns table (plass bigint, resultat_id uuid, navn text, fodt int, klubb text, tid_ms int,
+               athlete_id uuid, lop_navn text, arrangement_id uuid, dato date, sted text,
+               kvalitetsnivaa char(1), nasjon text)
+language sql stable set search_path = public
+as $$
+  -- Alder etter kalenderåret. Lik tid i hele sekunder gir lik plass.
+  with beste as (
+    select distinct on (coalesce(r.athlete_id::text, lower(r.navn) || coalesce(r.fodt::text, '')))
+           r.id, r.navn, r.fodt, r.klubb, r.tid_ms, r.athlete_id, r.nasjon,
+           a.id arr_id, a.navn arr_navn, coalesce(l.dato, a.dato) dato, a.sted, l.kvalitetsnivaa
+    from lop_resultat r
+    join lop_lop l on l.id = r.lop_id
+    join lop_arrangement a on a.id = l.arrangement_id
+    where l.distanse_m = p_distanse and l.kvalitetsnivaa = any (p_nivaa)
+      and extract(year from coalesce(l.dato, a.dato)) = p_aar
+      and r.kjonn = p_kjonn and r.status = 'OK' and r.tid_ms > 0
+      and (not p_bare_norske or r.nasjon = 'NOR')
+      and (p_alder_fra is null or p_aar - r.fodt >= p_alder_fra)
+      and (p_alder_til is null or p_aar - r.fodt <= p_alder_til)
+    order by coalesce(r.athlete_id::text, lower(r.navn) || coalesce(r.fodt::text, '')), r.tid_ms
+  )
+  select rank() over (order by ceil(tid_ms / 1000.0)), id, navn, fodt, klubb, tid_ms, athlete_id,
+         arr_navn, arr_id, dato, sted, kvalitetsnivaa, nasjon
+  from beste order by tid_ms limit p_antall;
+$$;
+grant execute on function public.lop_arsbeste(int, int, text, text[], int, boolean, int, int) to anon, authenticated;

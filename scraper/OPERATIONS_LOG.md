@@ -1168,3 +1168,17 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   opp fra 15.10.2026.
 - **Side:** `/admin/terminliste` med status, purring/avlyst/ingen resultater, og
   purreliste per arrangør med e-postutkast.
+
+### Gateløp: hele 2026, nasjonalitet og måling mot Kondis
+
+- `importer_eqtiming.py` henter nå arrangementene måned for måned (tjenesten
+  gir høyst 1 500 per oppslag, og et helt år ble avkortet til 204), og lagrer
+  nasjonalitet og løpsdag (fra målpasseringen).
+- **Kjøring:** `--fra 2026-01-01 --til 2026-10-14`: 640 arrangementer, 1 582
+  løp, 158 793 resultater, 12 936 koblet til utøverregisteret.
+- Årsbeste viser norske løpere som standard, med aldersklasser (ungdom og
+  femårsklasser fra 40) og lik plass ved lik tid.
+- **Ny:** `sammenlign_kondis.py` (leser bare). Mot Kondis' «De beste 2026»:
+  vi har 2 102 av 4 244 løpere fra norske gateløp (50 %), og 446 innenfor
+  tidskravene som Kondis ikke har. Største hull: Drammen, Oslo, Sentrumsløpet
+  og Bergen (andre tidtakere), 605 bane/inne-resultater og 1 150 fra utlandet.

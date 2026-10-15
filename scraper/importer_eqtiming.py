@@ -30,7 +30,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -124,12 +124,27 @@ def grad_fra(navn: str | None) -> str | None:
 
 
 def arrangementer(fra: str, til: str) -> list[dict]:
-    d = hent('Events', query='', dateFrom=f'{fra} 00:00', dateTo=f'{til} 23:59', organizationId=0,
-             regionIds='', levelIds='', sportIds='', take=1500, dateSort='true', desc='false',
-             onlyValidated='false', onlyshowfororganizer='false', organizerIds='', graded='false',
-             racequality='false') or []
-    return [e for e in d
-            if (e.get('Organization') or {}).get('Name') == FORBUND and (e.get('Meta') or {}).get('GotResults')]
+    """Arrangementer under NFIF med resultater. Hentes måned for måned: tjenesten
+    gir høyst 1 500 arrangementer per oppslag, på tvers av alle idretter, og
+    et helt år ble stille avkortet."""
+    ut, sett = [], set()
+    start, slutt = date.fromisoformat(fra), date.fromisoformat(til)
+    while start <= slutt:
+        neste = (start.replace(day=1) + timedelta(days=32)).replace(day=1)
+        til_d = min(slutt, neste - timedelta(days=1))
+        d = hent('Events', query='', dateFrom=f'{start} 00:00', dateTo=f'{til_d} 23:59', organizationId=0,
+                 regionIds='', levelIds='', sportIds='', take=1500, dateSort='true', desc='false',
+                 onlyValidated='false', onlyshowfororganizer='false', organizerIds='', graded='false',
+                 racequality='false') or []
+        if len(d) >= 1500:
+            logger.warning(f'{start}–{til_d}: 1 500 arrangementer, listen kan være avkortet')
+        for e in d:
+            if ((e.get('Organization') or {}).get('Name') == FORBUND and (e.get('Meta') or {}).get('GotResults')
+                    and e['Id'] not in sett):
+                sett.add(e['Id'])
+                ut.append(e)
+        start = til_d + timedelta(days=1)
+    return ut
 
 
 def stoppstasjoner(ev: dict) -> list[tuple[int, int, float]]:
@@ -237,6 +252,8 @@ def main():
                     'klasse': ((it.get('Deltaker') or {}).get('Klasse') or {}).get('Navn'),
                     'tid_ms': it.get('AkkumulertTid') if status == 'OK' else None,
                     'status': status, 'athlete_id': None,
+                    'nasjon': ((u.get('Land') or {}).get('ISO3') or None),
+                    '_dato': (it.get('PasseringstidAsDateTime') or '')[:10] or None,
                 })
             for dist, res in grupper.items():
                 unike = {}
@@ -254,8 +271,12 @@ def main():
                 if dist and dist >= 800 and beste and beste < dist * MINSTE_MS_PER_M:
                     nivaa = 'C'
                     merknad = 'Vinnertiden er raskere enn mulig på oppgitt distanse. Distansen må kontrolleres.'
+                datoer = sorted(r.pop('_dato') for r in res if r.get('_dato') and r['_dato'] > '2000')
+                for r in res:
+                    r.pop('_dato', None)
                 lop_rader.append(({
                     'kilde_id': stasjon, 'navn': f'{dist / 1000:g} km' if dist else None,
+                    'dato': datoer[len(datoer) // 2] if datoer else arr['dato'],
                     'distanse_m': dist, 'loypegrad': grad, 'ranking': ranking,
                     'kvalitetsnivaa': nivaa, 'merknad': merknad,
                 }, res))

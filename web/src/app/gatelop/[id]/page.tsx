@@ -16,6 +16,7 @@ type Lop = {
   ranking: boolean
   kvalitetsnivaa: string
   merknad: string | null
+  dato: string | null
 }
 
 const GYLDIG_ID = /^[0-9a-f-]{36}$/i
@@ -47,7 +48,7 @@ export default async function ArrangementPage({ params }: { params: Promise<{ id
         (fra, til) =>
           supabase
             .from("lop_resultat")
-            .select("id, lop_id, plass, navn, fodt, klubb, klasse, tid_ms, status, athlete_id")
+            .select("id, lop_id, plass, navn, fodt, klubb, klasse, tid_ms, status, athlete_id, nasjon")
             .in("lop_id", lop.map((l) => l.id))
             .order("lop_id")
             .order("plass", { nullsFirst: false })
@@ -119,6 +120,9 @@ export default async function ArrangementPage({ params }: { params: Promise<{ id
               }
               undertittel={
                 <>
+                  {l.dato && l.dato !== arr.dato
+                    ? `${new Date(l.dato).toLocaleDateString("no-NO", { day: "numeric", month: "long" })} · `
+                    : ""}
                   {rader.length.toLocaleString("no-NO")} løpere
                   {l.loypegrad ? ` · Sertifisert målt løype, ${l.loypegrad}-måling` : ""}
                   {l.ranking ? " · World Ranking-løp" : ""}
