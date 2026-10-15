@@ -57,6 +57,9 @@ export default async function AdminLayout({
               <Link href="/admin" className="text-muted-foreground hover:text-foreground">
                 Dashboard
               </Link>
+              <Link href="/admin/avvik" className="text-muted-foreground hover:text-foreground">
+                Avvik
+              </Link>
               <Link href="/admin/import" className="text-muted-foreground hover:text-foreground">
                 Import
               </Link>

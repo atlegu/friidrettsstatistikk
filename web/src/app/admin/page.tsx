@@ -1,4 +1,5 @@
 import Link from "next/link"
+import type { SupabaseClient } from "@supabase/supabase-js"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Trophy, Calendar, Building2, Upload, AlertCircle } from "lucide-react"
@@ -6,12 +7,16 @@ import { Users, Trophy, Calendar, Building2, Upload, AlertCircle } from "lucide-
 async function getStats() {
   const supabase = await createClient()
 
-  const [athletesResult, clubsResult, resultsResult, meetsResult, pendingImports] = await Promise.all([
+  const [athletesResult, clubsResult, resultsResult, meetsResult, pendingImports, openAvvik] = await Promise.all([
     supabase.from("athletes").select("id", { count: "exact", head: true }),
     supabase.from("clubs").select("id", { count: "exact", head: true }),
     supabase.from("results").select("id", { count: "exact", head: true }),
     supabase.from("meets").select("id", { count: "exact", head: true }),
     supabase.from("import_batches").select("id", { count: "exact", head: true }).eq("status", "pending"),
+    (supabase as unknown as SupabaseClient)
+      .from("avvik")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "aapen"),
   ])
 
   return {
@@ -20,6 +25,7 @@ async function getStats() {
     results: resultsResult.count ?? 0,
     meets: meetsResult.count ?? 0,
     pendingImports: pendingImports.count ?? 0,
+    openAvvik: openAvvik.count ?? 0,
   }
 }
 
@@ -104,6 +110,27 @@ export default async function AdminDashboardPage() {
       <div className="mb-8">
         <h2 className="mb-4 text-xl font-semibold">Administrasjon</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <Link href="/admin/avvik">
+            <Card
+              className={`cursor-pointer transition-colors hover:bg-muted/50 ${
+                stats.openAvvik > 0 ? "border-yellow-500" : ""
+              }`}
+            >
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <AlertCircle className="h-5 w-5" />
+                  Avvik
+                  <span className="ml-auto text-2xl font-bold tabular-nums">{stats.openAvvik}</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Åpne funn fra de automatiske kontrollene som må behandles
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
           <Link href="/admin/athletes">
             <Card className="cursor-pointer transition-colors hover:bg-muted/50">
               <CardHeader>

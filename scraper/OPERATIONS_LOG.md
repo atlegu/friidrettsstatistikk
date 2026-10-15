@@ -1086,3 +1086,32 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - Åpent: importen gir fortsatt alle resultater i et flerdagsstevne startdatoen
   (stevnelisten i kilden har én dato). Stevnedager telles derfor for lavt for nye
   flerdagsstevner.
+
+## 2026-10-15 — Avviksliste, og ballkast lagret i feil enhet
+
+### Avviksliste
+
+- **Migrering:** `migrations/avviksliste.sql` (tabell `avvik`, funksjon
+  `finn_avvik()`, pg_cron-jobb `finn_avvik` kl. 02.30 UTC hver natt).
+- **Kontroller:** mulig rekord eller bestenotering, uvanlig stor forbedring
+  (mot beste siste 18 måneder, fra 16 år), urimelig tid, manglende vind i
+  vindavhengig øvelse, utøver uten kjønn eller fødselsår.
+- **Første fylling** for hele 2026, ett kvartal om gangen: 54 198 resultater
+  kontrollert, 301 avvik (44 mulig rekord, 123 stor forbedring, 98 mangler
+  vind, 30 uten fødselsår, 6 uten kjønn).
+- **Administrasjon:** `/admin/avvik`. Hvert avvik settes til riktig, rettet
+  eller underkjent, med kommentar. Nøkkelen er unik, så et behandlet avvik
+  legges ikke inn på nytt.
+
+### 11 630 kastresultater lagret i centimeter i stedet for millimeter
+
+- **Funnet av:** avvikskontrollen («stor forbedring» der resultatet var dårligere).
+- **Omfang:** `performance_value` = resultat × 100 i stedet for × 1000 på
+  11 630 rader, nesten bare liten ball og slengball. Radene ble lagt inn
+  januar–august 2026 og sist endret 15. og 18. september. Årsaken er ikke
+  fastslått. `parse_performance()` gir riktig verdi i dag.
+- **Rettet:** satt til `parse_performance(performance, 'distance')` i fire
+  omganger på 3 000 rader. Gamle verdier ligger i `opprydding_enhetsfeil_lengde`.
+  Fire rader med 0,00 er uendret.
+- **Virkning:** lister, personlige rekorder og klubbrekorder i ballkast og
+  slengball for barn var feil fordi eldre rader ble sammenlignet med nyere.
