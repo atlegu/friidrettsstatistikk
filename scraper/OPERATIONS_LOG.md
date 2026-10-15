@@ -1125,3 +1125,19 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - Ny side `/statistikk/masters` med beste resultat per øvelse og klasse,
   ute og inne. Klassene fra V105 og oppover skyldes feil fødselsår og vises
   ikke.
+
+### Gateløp: prototype med import fra EQ Timing
+
+- **Migrering:** `migrations/gatelop.sql` (tabellene `lop_arrangement`,
+  `lop_lop`, `lop_resultat`, visningen `lop_oversikt`, funksjonen
+  `lop_arsbeste()`), og kolonnen `lop_lop.merknad`.
+- **Script:** `importer_eqtiming.py --fra 2026-09-01 --til 2026-10-14`
+  (dry-run først). Henter arrangementer under Norges Friidrettsforbund fra
+  EQ Timings åpne resultattjeneste.
+- **Resultat:** 155 arrangementer, 367 løp, 38 893 resultater, 3 396 løpere
+  koblet til utøverregisteret (navn, kjønn og fødselsår, bare entydige treff).
+- **Kvalitetsnivå** settes ut fra EQ Timings løypegradering (sertifisert målt
+  A/B/C) og distanse: 24 løp på nivå A, 143 på B, resten C. Åtte løp med
+  umulig vinnertid for oppgitt distanse er satt til C med merknad.
+- **Sider:** `/gatelop` (årsbeste og alle løp) og `/gatelop/[id]`.
+- Importen er ikke satt opp som nattlig jobb. Det bør avtales med EQ Timing først.

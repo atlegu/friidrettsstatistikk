@@ -18,6 +18,7 @@ const navigation = [
       { name: "All-time", href: "/statistikk/all-time" },
       { name: "Rekorder", href: "/statistikk/rekorder" },
       { name: "Masters", href: "/statistikk/masters" },
+      { name: "Gateløp", href: "/gatelop" },
     ],
   },
   {
