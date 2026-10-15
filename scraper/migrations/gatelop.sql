@@ -166,3 +166,19 @@ as $$
   from beste order by tid_ms limit p_antall;
 $$;
 grant execute on function public.lop_arsbeste(int, int, text, text[], int, boolean, int, int) to anon, authenticated;
+
+-- Tillegg: resultater raskere enn mulig på distansen (verdensrekord på vei)
+-- får status KONTROLL og holdes utenfor listene. Fant f.eks. barn som løp
+-- kortere løype men var registrert på 10 km (20:21).
+create or replace function public.lop_minste_ms(p_distanse int) returns int
+language sql immutable as $$
+  select case p_distanse
+    when 3000 then 440000 when 5000 then 765000 when 10000 then 1580000
+    when 15000 then 2460000 when 21097 then 3440000 when 42195 then 7200000
+    else case when p_distanse < 5000 then p_distanse * 125 else p_distanse * 150 end
+  end
+$$;
+update public.lop_resultat r set status = 'KONTROLL'
+from public.lop_lop l
+where r.lop_id = l.id and r.status = 'OK' and r.tid_ms > 0 and l.distanse_m >= 800
+  and r.tid_ms < public.lop_minste_ms(l.distanse_m);

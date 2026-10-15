@@ -54,6 +54,13 @@ MINSTE_MS_PER_M = 120
 # Bare disse arrangementstypene rangeres på distanse. Terreng-, motbakke-,
 # fjell- og ultraløp er registrert aktivitet (nivå C) og får lister per løype.
 RANGERES = {'Gateløp', 'Annet', 'Annet/Kombinert'}
+# Raskeste mulige tid per distanse (verdensrekord på vei, avrundet ned), som
+# lop_minste_ms() i basen. Raskere resultater holdes utenfor listene.
+MINSTE_MS = {3000: 440000, 5000: 765000, 10000: 1580000, 15000: 2460000, 21097: 3440000, 42195: 7200000}
+
+
+def minste_ms(dist: int) -> int:
+    return MINSTE_MS.get(dist, dist * (125 if dist < 5000 else 150))
 
 sesjon = requests.Session()
 sesjon.headers['User-Agent'] = 'friidrettsresultater.no (prototype for NFIF)'
@@ -274,6 +281,15 @@ def main():
                 datoer = sorted(r.pop('_dato') for r in res if r.get('_dato') and r['_dato'] > '2000')
                 for r in res:
                     r.pop('_dato', None)
+                if dist and dist >= 800:
+                    for r in res:
+                        if r['status'] == 'OK' and r['tid_ms'] and r['tid_ms'] < minste_ms(dist):
+                            r['status'], r['plass'] = 'KONTROLL', None
+                    n_kontroll = sum(1 for r in res if r['status'] == 'KONTROLL')
+                    if n_kontroll:
+                        merknad = ((merknad + ' ') if merknad else '') + (
+                            f'{n_kontroll} resultater er raskere enn mulig på distansen og holdes utenfor listene '
+                            'til de er kontrollert.')
                 lop_rader.append(({
                     'kilde_id': stasjon, 'navn': f'{dist / 1000:g} km' if dist else None,
                     'dato': datoer[len(datoer) // 2] if datoer else arr['dato'],
