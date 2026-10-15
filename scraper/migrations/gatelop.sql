@@ -115,3 +115,17 @@ as $$
   from beste order by tid_ms limit p_antall;
 $$;
 grant execute on function public.lop_arsbeste(int, int, text, text[], int) to anon, authenticated;
+
+-- Tillegg samme dag:
+-- Merknad på løp der distansen må kontrolleres (vinnertid raskere enn
+-- verdensrekordfart, 120 ms per meter).
+alter table public.lop_lop add column if not exists merknad text;
+-- Unik også når distansen er ukjent, så en ny import ikke dupliserer løpet.
+alter table public.lop_lop drop constraint if exists lop_lop_arrangement_id_kilde_id_distanse_m_key;
+alter table public.lop_lop add constraint lop_lop_unik unique nulls not distinct (arrangement_id, kilde_id, distanse_m);
+-- Bare gateløp og «Annet» rangeres på distanse. Terreng-, motbakke-, fjell-
+-- og ultraløp er registrert aktivitet (nivå C).
+update public.lop_lop l set kvalitetsnivaa = 'C'
+from public.lop_arrangement a
+where a.id = l.arrangement_id and l.kvalitetsnivaa <> 'C'
+  and coalesce(a.gren, '') not in ('Gateløp', 'Annet', 'Annet/Kombinert');

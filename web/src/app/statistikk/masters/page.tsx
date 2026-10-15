@@ -2,7 +2,7 @@ import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
-import { formatPerformance } from "@/lib/format-performance"
+import { formatPerformance, formatPerformanceValue } from "@/lib/format-performance"
 
 export const metadata = {
   title: "Masters",
@@ -17,6 +17,7 @@ type Rekord = {
   result_type: string
   result_id: string
   performance: string
+  performance_value: number
   wind: number | null
   athlete_id: string
   athlete_name: string
@@ -184,7 +185,11 @@ export default async function MastersPage({
                         <tr key={r.event_id} className="border-b last:border-0 hover:bg-muted/30">
                           <td className="px-3 py-2 font-medium">{r.event_name}</td>
                           <td className="px-3 py-2">
-                            <span className="perf-value">{formatPerformance(r.performance, r.result_type)}</span>
+                            <span className="perf-value">
+                              {r.result_type === "time" && !r.performance.includes(":") && r.performance_value >= 6000
+                                ? formatPerformanceValue(r.performance_value, "time")
+                                : formatPerformance(r.performance, r.result_type)}
+                            </span>
                             {r.wind !== null && (
                               <span className="ml-1 text-xs text-muted-foreground">
                                 ({Number(r.wind) > 0 ? "+" : ""}

@@ -38,11 +38,12 @@ create index masters_resultater_klasse on public.masters_resultater (gender, kla
 
 revoke all on public.masters_resultater from anon, authenticated;
 
-create or replace function public.masters_rekorder(p_kjonn text, p_klasse text, p_inne boolean default false)
+drop function if exists public.masters_rekorder(text, text, boolean);
+create function public.masters_rekorder(p_kjonn text, p_klasse text, p_inne boolean default false)
 returns table (event_id uuid, event_name text, event_code text, sort_order int, result_type text,
-               result_id uuid, performance text, wind numeric, athlete_id uuid, athlete_name text,
-               fodt int, club_name text, meet_id uuid, meet_name text, meet_city text, date date,
-               antall_utovere bigint)
+               result_id uuid, performance text, performance_value int, wind numeric, athlete_id uuid,
+               athlete_name text, fodt int, club_name text, meet_id uuid, meet_name text, meet_city text,
+               date date, antall_utovere bigint)
 language sql stable security definer set search_path = public
 as $$
   with klasse as (
@@ -57,8 +58,9 @@ as $$
   ), bredde as (
     select k.event_id, count(distinct k.athlete_id) n from klasse k group by 1
   )
-  select b.event_id, e.name, e.code, e.sort_order, b.result_type, b.result_id, b.performance, b.wind,
-         b.athlete_id, b.full_name, b.fodt, c.name, b.meet_id, m.name, m.city, b.date, br.n
+  select b.event_id, e.name, e.code, e.sort_order, b.result_type, b.result_id, b.performance,
+         b.performance_value, b.wind, b.athlete_id, b.full_name, b.fodt, c.name, b.meet_id, m.name,
+         m.city, b.date, br.n
   from beste b
   join events e on e.id = b.event_id
   join meets m on m.id = b.meet_id
@@ -81,3 +83,4 @@ grant execute on function public.masters_oversikt() to anon, authenticated;
 -- Bygges om hver mandag kl. 03.00 UTC
 select cron.schedule('masters_resultater', '0 3 * * 1',
   $$set statement_timeout = '600s'; refresh materialized view concurrently public.masters_resultater;$$);
+

@@ -1121,7 +1121,7 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - **Migrering:** `migrations/masters.sql` (materialisert utvalg
   `masters_resultater`, funksjonene `masters_rekorder()` og
   `masters_oversikt()`, pg_cron-jobb `masters_resultater` mandager 03.00 UTC).
-- 98 600 resultater fra 35 år, i femårsklasser etter kalenderåret.
+- Om lag 96 000 resultater fra 35 år (V35–V95), i femårsklasser etter kalenderåret.
 - Ny side `/statistikk/masters` med beste resultat per øvelse og klasse,
   ute og inne. Klassene fra V105 og oppover skyldes feil fødselsår og vises
   ikke.
@@ -1137,7 +1137,8 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - **Resultat:** 155 arrangementer, 367 løp, 38 893 resultater, 3 396 løpere
   koblet til utøverregisteret (navn, kjønn og fødselsår, bare entydige treff).
 - **Kvalitetsnivå** settes ut fra EQ Timings løypegradering (sertifisert målt
-  A/B/C) og distanse: 24 løp på nivå A, 143 på B, resten C. Åtte løp med
-  umulig vinnertid for oppgitt distanse er satt til C med merknad.
+  A/B/C), distanse og type: 4 løp på nivå A, 119 på B, 244 på C. Bare
+  gateløp og «Annet» rangeres; terreng-, motbakke-, fjell- og ultraløp er C.
+  Åtte løp med umulig vinnertid for oppgitt distanse er satt til C med merknad.
 - **Sider:** `/gatelop` (årsbeste og alle løp) og `/gatelop/[id]`.
 - Importen er ikke satt opp som nattlig jobb. Det bør avtales med EQ Timing først.

@@ -51,6 +51,9 @@ OFFISIELLE = {3000, 5000, 10000, 15000, 20000, 21097, 25000, 30000, 42195, 50000
 FORBUND = 'Norges Friidrettsforbund'
 # Raskere enn verdensrekordfart på alle distanser fra 800 m (800 m: 126 ms/m)
 MINSTE_MS_PER_M = 120
+# Bare disse arrangementstypene rangeres på distanse. Terreng-, motbakke-,
+# fjell- og ultraløp er registrert aktivitet (nivå C) og får lister per løype.
+RANGERES = {'Gateløp', 'Annet', 'Annet/Kombinert'}
 
 sesjon = requests.Session()
 sesjon.headers['User-Agent'] = 'friidrettsresultater.no (prototype for NFIF)'
@@ -245,6 +248,8 @@ def main():
                         r['plass'] = i
                 grad = graderte.get(dist) or (graderte.get(0) if len(graderte) == 1 and len(stopp) == 1 else None)
                 nivaa, merknad = kvalitetsnivaa(dist, grad or ''), None
+                if arr['gren'] not in RANGERES:
+                    nivaa = 'C'
                 beste = min((r['tid_ms'] for r in res if r['tid_ms']), default=None)
                 if dist and dist >= 800 and beste and beste < dist * MINSTE_MS_PER_M:
                     nivaa = 'C'
