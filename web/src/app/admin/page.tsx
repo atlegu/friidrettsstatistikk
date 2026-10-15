@@ -131,6 +131,22 @@ export default async function AdminDashboardPage() {
             </Card>
           </Link>
 
+          <Link href="/admin/terminliste">
+            <Card className="cursor-pointer transition-colors hover:bg-muted/50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <Calendar className="h-5 w-5" />
+                  Terminliste
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Hvilke stevner og løp som mangler resultater, og purreliste per arrangør
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
           <Link href="/admin/athletes">
             <Card className="cursor-pointer transition-colors hover:bg-muted/50">
               <CardHeader>

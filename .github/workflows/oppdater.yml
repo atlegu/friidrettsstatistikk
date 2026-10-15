@@ -50,6 +50,13 @@ jobs:
       - name: Hent og avstem resultater
         run: python update_results.py --avstem-uker "${{ github.event.inputs.avstem_uker || '6' }}"
 
+      # Terminlisten fra friidrett.no koblet mot resultatene, til
+      # oppfølgingssiden i administrasjonsverktøyet. Feiler den (f.eks. fordi
+      # friidrett.no endrer siden), skal ikke resten av jobben stoppe.
+      - name: Koble terminlisten
+        continue-on-error: true
+        run: python hent_terminliste.py
+
       - name: Kontroller basen
         run: python test_fullstendighet.py --bare vindflagg dubletter avdrift tider stevnedubletter importdubletter
 

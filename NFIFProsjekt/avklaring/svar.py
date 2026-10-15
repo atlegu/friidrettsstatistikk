@@ -35,8 +35,9 @@ Oppgavene for Norsk Friidrett:
 - **Underkjenning av stevner og resultater.** Sjelden. NFIF melder fra, og vi registrerer underkjenningen med årsakskode.
 - **Regeltolkning i tvilstilfeller.** For eksempel redskap, blandede heat og utenlandske utøvere. Vi foreslår at fagrådet i tilbudets kapittel 9.4 tar disse.
 Samlet anslår vi 1–2 timer i uken i høysesongen, og under én time i uken ellers. Kompetansen som trengs, er den statistikkansvarlig og SRU har i dag: rekordregler og regelverk. Det trengs ingen teknisk kompetanse.
-Første sesong blir behovet noe større, anslagsvis 2–3 timer i uken, fordi kontrollene skal justeres etter NFIFs praksis. Når terminlisten og lisensregisteret er koblet til, settes kvalitetsnivået maskinelt. Da går behovet ned mot ren rekordgodkjenning.
-I tillegg kommer to engangsoppgaver ved oppstart: klubbenes kretstilhørighet, og tilgang til terminliste og lisensregister.""",
+Første sesong blir behovet noe større, anslagsvis 2–3 timer i uken, fordi kontrollene skal justeres etter NFIFs praksis. Når også lisensregisteret er koblet til, settes kvalitetsnivået maskinelt. Da går behovet ned mot ren rekordgodkjenning.
+Purring på arrangører som ikke har sendt resultater, gjør vi selv. Arrangementene som mangler, finner vi ved å kontrollere terminlisten mot basen hver natt, jf. svar 1.5.
+I tillegg kommer to engangsoppgaver ved oppstart: klubbenes kretstilhørighet, og tilgang til lisensregisteret.""",
 
 # 1.2 Gjenstående arbeid for løp utenfor bane
 """Siden presentasjonen har vi bygget en første versjon av løp utenfor bane. Den kan ses på friidrettsresultater.no/gatelop. Den omfatter:
@@ -61,6 +62,7 @@ Det dekker i dag:
 - **Utøvere:** søk, redigering og sammenslåing av dubletter.
 - **Resultater:** redigering og sletting av feilregistreringer.
 - **Stevner og klubber:** redigering av navn, dato, sted og tilhørighet.
+- **Terminliste:** hvilke arrangementer i terminlisten som mangler resultater, hvor lenge de har manglet, og om arrangøren er purret. En purreliste samler det som mangler per arrangør, med ferdig e-postutkast. Denne delen er ny siden presentasjonen.
 - **Import:** opplasting av resultatlister fra FriRes og Excel, med validering og godkjenningskø før publisering.
 Dette gjenstår:
 - Rekordgodkjenning med dokumentasjon og status. Desember 2026.
@@ -81,21 +83,26 @@ Argumentene for egen database, og hvordan de møtes:
 Ulempen med én database er at mastersklassene må holdes adskilt i presentasjonen, så seniorlistene ikke blir uoversiktlige. Det er gjort i løsningen.""",
 
 # 1.5 Integrasjoner og automatisert resultatinnsamling
-"""I dag hentes alle baneresultater automatisk hver natt. De siste seks ukene kontrolleres i tillegg på nytt mot kilden, slik at rettelser kommer med. Status for de enkelte systemene:
-- **iSonen (terminliste og lisensregister):** ikke utviklet. Avhenger av tilgang fra NFIF og Buypass. Integrasjonen trengs for å sette kvalitetsnivå maskinelt. Q1 2027, etter at tilgang er gitt.
-- **FriRes og LiveRes:** resultatlister fra FriRes kan lastes opp som fil i administrasjonsverktøyet i dag. Direkte overføring fra LiveRes krever et avtalt format, og vi vil gjerne utforme det sammen med utvikleren.
+"""Resultatene skal samles inn fra to steder:
+- **Resultatlister som kommer inn til Norsk Friidrett.** De fleste kommer gjennom iSonen, resten som filer fra FriRes og LiveRes, OpenTrack og tidtakerne. Plattformen tar imot alle, og alle går gjennom de samme kontrollene.
+- **Resultater vi henter selv.** Et eget system søker opp norske utøveres resultater rundt i verden. Søket tar utgangspunkt i utøveren, ikke i stevnet: World Athletics-profiler, TFRRS for collegeutøvere i USA, og resultattjenestene i andre land. Utøvere og klubber kan i tillegg melde inn resultater med dokumentasjon.
+**Kontroll av at alt er kommet inn.** Terminlisten hentes hver natt, og hvert avholdt arrangement kontrolleres mot resultatene i basen. Arrangementer som mangler resultater tre dager etter siste stevnedag, vises i administrasjonsverktøyet, og arrangøren purres etter en uke. Dette er i drift, både for banestevner og gateløp.
+Status for de enkelte systemene:
+- **iSonen:** API-tilgang forutsetter avtale med NFIF og Buypass, og vi tar kontakt om dette etter en eventuell tildeling. Frem til da brukes den åpne terminlisten til kontrollen over. Q1 2027, etter at tilgang er gitt.
+- **FriRes og LiveRes:** vi har direkte tilgang til LiveRes' datastrøm, avtalt med utvikleren. Den gir stevnelisten og fullstendige resultatlister per stevnedag, med FriSys-id, fødselsdato, klubb, vind og hvert forsøk. Importen kan bygges nå.
 - **OpenTrack:** ikke utviklet. OpenTrack har et åpent API, så integrasjonen avhenger ikke av tilrettelegging. Q1–Q2 2027.
-- **EQ Timing:** fungerer som prototype, jf. svar 1.2. Importen bruker EQ Timings åpne resultattjeneste. For varig drift ønsker vi en avtale med EQ Timing om grensesnittet og varsling ved endringer.
+- **EQ Timing:** fungerer som prototype, jf. svar 1.2. Importen bruker EQ Timings åpne resultattjeneste. For varig drift ønsker vi en avtale om grensesnittet og varsling ved endringer.
 - **Ultimate Sport Service:** ikke kartlagt. Avhenger av tilgang fra leverandøren.
-Dersom API-tilgang ikke blir gitt, stopper ikke løsningen opp. Resultatlister kan lastes opp som fil (CSV, Excel eller FriRes) i administrasjonsverktøyet, og de går gjennom de samme kontrollene. Offentlige resultatsider kan hentes der tidtakeren tillater det. Det gir mer manuelt arbeid, men ikke tapte resultater. Uten terminliste og lisensregister settes kvalitetsnivået ut fra stevnenivå og tidtaking, og det overstyres manuelt der det trengs.""",
+Dersom API-tilgang ikke blir gitt, stopper ikke løsningen opp. Resultatlister kan lastes opp som fil (CSV, Excel eller FriRes) i administrasjonsverktøyet, og de går gjennom de samme kontrollene. Offentlige resultatsider kan hentes der tidtakeren tillater det. Det gir mer manuelt arbeid, men terminlistekontrollen sikrer at ingenting faller ut i det stille. Uten lisensregisteret settes kvalitetsnivået ut fra stevnenivå og tidtaking, og det overstyres manuelt der det trengs.""",
 
 # 1.6 Kvalitetssikring og avvikshåndtering
 """Athlete Mindset har ansvaret for å behandle avvikene i ordinær drift. NFIF trekkes inn bare der saken krever forbundets myndighet.
 Innenfor den årlige driftsprisen:
 - Registreringsfeil: feil øvelse, redskap, enhet eller distanse, og tider i feil format.
 - Dubletter av resultater, stevner og utøvere, og sammenslåing av utøvere.
-- Manglende kjønn, fødselsår eller vind, kontrollert mot kilden.
-- Avstemming mot kilden, og retting når kilden endres.
+- Manglende kjønn, fødselsår eller vind, kontrollert mot resultatlisten.
+- Retting når en arrangør sender en korrigert resultatliste.
+- Oppfølging og purring av arrangører som ikke har sendt resultater, ut fra terminlisten.
 - Kobling av løpere i gateløp til utøverregisteret.
 Krever avgjørelse fra NFIF. Vi utreder og dokumenterer sakene:
 - Godkjenning av rekorder og bestenoteringer.
@@ -112,7 +119,7 @@ Faktureres særskilt, etter timepris og bare etter forhåndsgodkjenning:
 - NM-kvalifisering, oppdatert fortløpende.
 - Aktivitet og deltakelse, med eksport til Excel.
 - Masterstatistikk per femårsklasse.
-- Nattlig import og avstemming mot kilden, med automatiske kontroller og avviksliste.
+- Automatiske kontroller med avviksliste, og nattlig kontroll mot terminlisten med purreliste.
 - Administrasjonsverktøy for utøvere, resultater, stevner, klubber, import og avvik.
 **Gjenstår, leveres før 1. januar 2027:**
 - Kvalitetsnivå A, B og C for baneresultater, med filter.
@@ -120,14 +127,14 @@ Faktureres særskilt, etter timepris og bare etter forhåndsgodkjenning:
 - Kretsstatistikk.
 - Rekordgodkjenning og underkjenning med årsakskode i administrasjonsverktøyet.
 - Dokumentasjon, personvernvurdering og databehandleravtale.
-- Egen innsamling av resultatlister direkte fra arrangører og tidtakere, i parallell drift med dagens kilde til NFIF bekrefter overgangen.
+- Innsamling av resultatlister fra LiveRes og tidtakerne, og første versjon av søket etter norske resultater i utlandet.
 **Leveres i 2027:**
 - Løp utenfor bane i full drift, jf. svar 1.2. Q1–Q2.
-- Integrasjoner, jf. svar 1.5. Q1–Q3.
+- Integrasjoner, med iSonen etter avtale, jf. svar 1.5. Q1–Q3.
 - Brukere og roller for kretsene, og logg over endringer. Q1.
 - Eldre statistikk, etter NFIFs valg.
 **Avhengig av eksterne:**
-- Maskinelt kvalitetsnivå: tilgang til terminliste og lisensregister fra NFIF og Buypass.
+- Maskinelt kvalitetsnivå: tilgang til lisensregisteret fra NFIF og Buypass. Terminlisten er allerede i bruk.
 - Kretsstatistikk: klubbenes kretstilhørighet fra NFIF.
 - Integrasjoner mot iSonen, LiveRes og Ultimate Sport Service: tilgang fra leverandørene.
 - EQ Timing i varig drift: avtale med EQ Timing.""",

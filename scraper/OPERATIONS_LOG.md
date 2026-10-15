@@ -1153,3 +1153,18 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   (alle kombinasjoner av kjønn, alder og øvelsesgruppe per år); funksjonene
   leser derfra og bruker 1,5 ms. Kontrollert mot de gamle funksjonene: 56 av
   56 rader like. Bygges om i `refresh_klubb_bruk_hvis_utdatert()`.
+
+### Terminlistekontroll
+
+- **Migrering:** `migrations/terminliste.sql`. **Script:** `hent_terminliste.py`
+  (dry-run først), lagt inn i den nattlige jobben (`oppdater.yml`, feiler ikke jobben).
+- Henter terminlisten fra friidrett.no/terminliste (1 062 arrangementer: 766 fra
+  iSonen, 296 fra EQ Timing) og stevnelisten i LiveRes. Bane og gateløp skilles
+  på iSonen-type, deretter øvelsene (meter eller tekniske øvelser = bane), så navnet.
+- Kobling: samme dato pluss likt navn eller samme by (eneste stevne i byen den
+  dagen); annen by trekker ned. EQ Timing-arrangementer kobles på EQ-id.
+- **Resultat:** 576 banestevner avholdt i 2026, 447 med resultater i basen.
+  Gateløp faller ut av terminlisten etter at de er avholdt; historikken bygges
+  opp fra 15.10.2026.
+- **Side:** `/admin/terminliste` med status, purring/avlyst/ingen resultater, og
+  purreliste per arrangør med e-postutkast.
