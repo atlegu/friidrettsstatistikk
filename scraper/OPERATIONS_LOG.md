@@ -1182,3 +1182,31 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   vi har 2 102 av 4 244 løpere fra norske gateløp (50 %), og 446 innenfor
   tidskravene som Kondis ikke har. Største hull: Drammen, Oslo, Sentrumsløpet
   og Bergen (andre tidtakere), 605 bane/inne-resultater og 1 150 fra utlandet.
+
+## 2026-10-15 (kveld) — Ultimate Sport Service, og barn til og med 11 år skjules
+
+### Gateløp fra Ultimate (Oslo Maraton, Drammen10K m.fl.)
+
+- **Script:** `importer_ultimate.py` (dry-run først). Henter bare norske løpere
+  innenfor Kondis' tidskrav, med bruttotid fra deltakersiden. Ultimate har
+  ikke fødselsår; `lop_fyll_fra_andre_kilder()` henter fødselsår og
+  utøverkobling fra EQ-resultater med samme navn og kjønn.
+- **Hendelser:** første kjøring hang i en løkke (results_startrecord gir hele
+  listen på nytt; brudd uten tid sist stoppet aldri hentingen) og sendte
+  mange forespørsler før den ble stoppet. Rettet: stopp når en side ikke gir
+  nye løpere, maks ti sider, samlet tidsgrense 60 s per forespørsel. Ny
+  kjøring stoppet opp ved Bergen City Marathon: tjenesten svarer trolig
+  sakte på oss etter løkken. Stoppet, pausen økt til 1 s per kall.
+- **Importert:** Drammen10K (569), Holmestrand Maraton (51), AKVA Robust (33)
+  og tre Lierløp. Diplomkopien av Drammen10K slettet og utelates.
+- **Gjenstår:** 39 arrangementer, blant dem Oslo Maraton, Sentrumsløpet,
+  Drammen Halvmaraton og Bergen City. Kjøres igjen senere med
+  `python importer_ultimate.py --aar 2026` (hopper over det som er hentet).
+
+### Barn til og med 11 år vises ikke offentlig
+
+- **Migrering:** `migrations/synlighet_barn.sql`. `skjult_alder()` er grensen
+  (ett sted), `get_age_group()` skiller ut 12-åringer («12»), og «Yngre» er
+  nå til og med 11 år. Årslister, alle-tiders, rekorder, klubbstatistikk,
+  forsiden, klubbsiden (siste resultater og utøvere) og gateløp holder dem
+  utenfor. Dataene ligger i basen som før.

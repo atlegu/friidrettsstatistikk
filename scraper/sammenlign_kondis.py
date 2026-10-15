@@ -126,13 +126,19 @@ def main():
         vaar = sb.rpc('lop_arsbeste', {'p_aar': args.aar, 'p_distanse': dist, 'p_kjonn': kj,
                                        'p_nivaa': ['A', 'B'], 'p_antall': 5000, 'p_bare_norske': True}).execute().data
         vaar_k = {nokkel(r['navn'], r['fodt'] or 0): r for r in vaar if r['fodt']}
+        # Uten fødselsår (Ultimate) kan bare navnet sammenlignes
+        bare_navn = {nokkel(r['navn'], 0)[0] for r in vaar if not r['fodt']}
         bane = [r for r in kondis if r['bane'] and not r['utland']]
         innenlands = [r for r in kondis if not r['utland'] and not r['bane']]
-        har = [r for r in innenlands if nokkel(r['navn'], r['aa']) in vaar_k]
-        mangler = [r for r in innenlands if nokkel(r['navn'], r['aa']) not in vaar_k]
+        def finnes(r):
+            k = nokkel(r['navn'], r['aa'])
+            return k in vaar_k or k[0] in bare_navn
+        har = [r for r in innenlands if finnes(r)]
+        mangler = [r for r in innenlands if not finnes(r)]
         kondis_k = {nokkel(r['navn'], r['aa']) for r in kondis}
+        kondis_navn = {k[0] for k in kondis_k}
         ekstra = [r for r in vaar if r['tid_ms'] and r['tid_ms'] <= grense + 999
-                  and r['fodt'] and nokkel(r['navn'], r['fodt']) not in kondis_k]
+                  and (nokkel(r['navn'], r['fodt']) not in kondis_k if r['fodt'] else nokkel(r['navn'], 0)[0] not in kondis_navn)]
         dekning = 100 * len(har) / len(innenlands) if innenlands else 0
         utland = sum(1 for r in kondis if r['utland'])
         totalt.update(kondis=len(innenlands), har=len(har), ekstra=len(ekstra), utland=utland, bane=len(bane))
