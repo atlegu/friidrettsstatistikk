@@ -1,4 +1,4 @@
 Outcome,Description,Retainer n,Retainer %,"OR (pre-milestone volume, per SD)",95% CI,CV-AUC (L4)
-A,>=1 senior result (age 20+),412,19.3,1.95,"[1.73, 2.20]",0.744765
-B,>=2 results in any senior year (primary),348,16.3,2.04,"[1.80, 2.32]",0.769853
+A,>=1 senior result (age 20+),412,19.3,1.95,"[1.73, 2.20]",0.74478
+B,>=2 results in any senior year (primary),348,16.3,2.04,"[1.80, 2.32]",0.769861
 C,>=2 results in each of two senior years,255,11.9,1.87,"[1.64, 2.14]",0.767351

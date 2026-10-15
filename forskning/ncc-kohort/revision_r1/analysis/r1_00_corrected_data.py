@@ -28,6 +28,21 @@ created on or before 18 May 2026) and corrects them:
    therefore counted as competition days (distinct dates with a result): column meet_day, used
    in place of meet_id wherever meets are counted (07 and 16 are patched accordingly).
 
+7. Championship types (n_msk_typer and um_15_16, post-baseline models only; final check, 3 October
+   2026). Every meet name matched before age 17 was read. The pattern for youth championships ("UM")
+   matched the letters anywhere in a name, so meets in Bærum and Brumunddal and every
+   "Jubileumsstevne" counted as UM (90 of 116 matched names); junior championships written
+   "Junior-NM" or "NM junior" counted as senior championships; "KM ... og NM veteraner", a meet in
+   Albuquerque/NM/USA, an "NM-test" and qualification, preparation ("oppkjøring") and unofficial
+   ("Uoff") meets counted as championships; results at national championship meets before 15 (side
+   events) counted; district championships for veterans or upper-secondary schools counted, and the
+   Nynorsk "Kretsmeisterskap"/"Distriktsmeisterskap" did not. The final narrow review added: Finnmark's
+   district championship ("FM", "Finnmarksmesterskapet") and Norwegian "DM"; individual results at NM
+   relay meets are side events (100 m); national combined-events meets for under-17s are youth classes
+   (UM); a district championship named for some age classes counts only for those ages ("11-14 år",
+   senior), and meets abroad never count. All in CHAMPIONSHIPS below; the count of types differs from
+   the submitted coding for the number of athletes logged as "championship types changed".
+
 Tyrving scores in the analysis file use the exact workbook formulas (tyrving_r2.py, via a shim).
 
 Outputs (data_private/corrected/, git-ignored): kohort_utvidet.csv, karrieredata_utvidet.csv,
@@ -231,6 +246,46 @@ def region_and_club(kar, coh):
 
 
 # ----------------------------------------------------------------------------- analysis data
+# Championship detection for 07 (docstring item 7). A type counts when the athlete has a result before 17
+# at a meet whose name identifies it as that championship. Qualification, preparation and unofficial
+# meets are not championships; national championships are open from the year of 15, so results at them
+# at younger ages are side events; district championships for veterans only or for upper-secondary
+# schools are not youth championships.
+CHAMPIONSHIPS = r'''    # Mesterskap-deteksjon (R1, see r1_00_corrected_data.py item 7)
+    import re as _re
+    navn = karriere["meet_name"].fillna("")
+    sted = navn.str.split(",").str[0]
+    utland = sted.str.contains(r"/[A-Z]{3}(?:/|$)", regex=True) & ~sted.str.contains(r"/NIH(?:/|$)", regex=True)
+    ikke_msk = navn.str.contains(r"kvalifisering|oppkjøring|\bUoff\b|NM-test", case=False, regex=True) | utland
+    nasjonal = (karriere["age"] >= 15) & ~ikke_msk & ~navn.str.contains("stafett", case=False, regex=False)
+    nm_navn = navn.str.contains(r"\bNM\b|Norgesmesterskap", case=False, regex=True)
+    karriere["er_um"] = (navn.str.contains(r"\bUM\b|U-mester|Ungdomsmesterskap", case=False, regex=True)
+                         | (nm_navn & navn.str.contains("mangekamp", case=False, regex=False))) & nasjonal
+    karriere["er_jrm"] = navn.str.contains(
+        r"JrNM|Jr\.? ?NM|Junior[- ]?NM|NM[- ]junior|Juniormesterskap", case=False, regex=True) & nasjonal
+    karriere["er_nm"] = (nm_navn & ~navn.str.contains("NM veteran", case=False, regex=False)
+                         & ~karriere["er_jrm"] & ~karriere["er_um"] & nasjonal)
+    kun_vet_skole = (navn.str.contains(r"veteran|vetraner|\bvet\.|videregående", case=False, regex=True)
+                     & ~navn.str.contains(r"\d+ ?- ?\d+ ?år|senior|NM veteran", case=False, regex=True))
+
+    def km_klasser(n):
+        # age classes named for the district championship: (age ranges, senior class); a range that
+        # belongs to a "Kretskarusell" or "Indoor games" held alongside is not the championship's
+        n = _re.sub(r"(?i)(?:kretskarusell|indoor games)\s*\d{1,2}\s*[-/]\s*\d{1,2}(\s*år)?", "", n)
+        r = [(int(a), int(b)) for a, b in _re.findall(r"(?<!\d)(\d{1,2}) ?[-/] ?(\d{1,2})(?!\d)", n) if 6 <= int(a) < int(b)]
+        return r, bool(_re.search(r"(?i)\bsenior|\bsen\b|\bsr\b", n))
+    klasser = {n: km_klasser(n) for n in navn.unique()}
+
+    def km_aapen(n, alder):
+        r, sen = klasser[n]
+        return (not r and not sen) or any(a <= alder <= b for a, b in r) or (sen and alder >= 15)
+    km_navn = navn.str.contains(r"KM|Kretsme(?:i)?ster|Distriktsme(?:i)?ster|\bDM\b|\bFM\b|Finnmarksme(?:i)?sterskap",
+                                case=False, regex=True)
+    aapen = pd.Series([km_aapen(n, a) for n, a in zip(navn, karriere["age"])], index=karriere.index)
+    karriere["er_km"] = km_navn & ~kun_vet_skole & ~ikke_msk & aapen
+'''
+
+
 def patch(src, old, new, count):
     assert src.count(old) == count, f"patch target found {src.count(old)} times, expected {count}: {old}"
     return src.replace(old, new)
@@ -243,6 +298,10 @@ def build_analysis_data():
     src = (DATA / "07_bygg_analysedata_utvidet.py").read_text()
     src = patch(src, '(karriere["meet_name"].str.contains(pattern, case=False, na=False))', '(karriere["er_lekene"] == 1)', 1)
     src = patch(src, '"meet_id"', '"meet_day"', 4)          # meets counted as competition days
+    # championship types (item 7 in the docstring): the whole detection block is replaced
+    start, end = src.index("    # Mesterskap-deteksjon\n"), src.index('"KM|Kretsmester|Distriktsmester", case=False, na=False, regex=True\n    )\n')
+    assert src.count("    # Mesterskap-deteksjon\n") == 1 and start < end
+    src = src[:start] + CHAMPIONSHIPS + src[end + len('"KM|Kretsmester|Distriktsmester", case=False, na=False, regex=True\n    )\n'):]
     (SANDBOX / "07_bygg_analysedata_utvidet.py").write_text(src)
     (SANDBOX / "tyrvingtabellen.py").write_text(SHIM.format(analysis=HERE))
     for f in ["kohort_utvidet.csv", "karrieredata_utvidet.csv"]:
@@ -253,6 +312,28 @@ def build_analysis_data():
     if r.returncode != 0:
         raise SystemExit(f"07 failed:\n{r.stderr[-3000:]}")
     shutil.copy(SANDBOX / "analysedata_utvidet.csv", CDATA / "analysedata_utvidet.csv")
+    championship_change()
+
+
+def championship_change():
+    """Athletes whose championship variables differ from the submitted coding on the same career data
+    (Supplementary Methods S-M12)."""
+    new = pd.read_csv(CDATA / "analysedata_utvidet.csv", usecols=["athlete_id", "n_msk_typer", "um_15_16"]).set_index("athlete_id")
+    kar = pd.read_csv(CDATA / "karrieredata_utvidet.csv", usecols=["athlete_id", "date", "meet_name"], low_memory=False)
+    by = pd.read_csv(CDATA / "kohort_utvidet.csv", usecols=["athlete_id", "birth_year"]).set_index("athlete_id")["birth_year"]
+    kar["age"] = pd.to_datetime(kar["date"]).dt.year - kar["athlete_id"].map(by)
+    n = kar["meet_name"]
+    um = n.str.contains("UM|U-mester|Ungdomsmesterskap", case=False, na=False, regex=True)            # as submitted
+    jr = n.str.contains("JrNM|Jr NM|Junior NM|Juniormesterskap|Jr.NM", case=False, na=False, regex=True)
+    nm = n.str.contains(r"\bNM\b|Norgesmesterskap", case=False, na=False, regex=True) & ~jr & ~um
+    km = n.str.contains("KM|Kretsmester|Distriktsmester", case=False, na=False, regex=True)
+
+    def per_athlete(flag, rows):
+        return flag[rows].groupby(kar.loc[rows, "athlete_id"]).any().reindex(new.index, fill_value=False).astype(int)
+    pre17, a1516 = kar["age"] < 17, kar["age"].isin([15, 16])
+    old = sum(per_athlete(f, pre17) for f in (um, jr, nm, km))
+    note("championship types changed (vs. the submitted coding, same career data)", int((old != new["n_msk_typer"]).sum()))
+    note("youth championship at 15-16 changed", int((per_athlete(um, a1516) != new["um_15_16"]).sum()))
 
 
 def main():

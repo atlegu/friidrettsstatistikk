@@ -8,7 +8,7 @@
 
 **Figure 2.** Competition volume trajectory by senior-retention status. Median competitions {+(competition days)+} per year (with interquartile range as shaded band) plotted by athlete age (13–18), separately for athletes who retained active senior status (≥2 results in any year at age ≥20; n = 348) and those who did not (n = {+1,790+}). The dashed vertical line at age 15 marks the first qualification milestone (Norwegian Youth Championships). Future retainers and future dropouts already differ at ages 13–14; the gap widens further across the age-14-to-15 transition.
 
-**Figure 3.** Kaplan–Meier retention curves stratified by total competition volume across ages 15 and 16 (descriptive). Strata are: 0 meets, 1–5 meets, 6–15 meets, 16–30 meets, and 31+ meets. {+In the highest stratum 22% were still active 14 years after baseline and 50% reached active senior status; in the lowest stratum, 0.3% and 0.8%.+} (Note: this descriptive stratification uses post-baseline measurement; primary effect estimates in Table 3 use only baseline-window predictors.)
+**Figure 3.** Kaplan–Meier retention curves stratified by total competition volume across ages 15 and 16 (descriptive). Strata are: 0 meets, 1–5 meets, 6–15 meets, 16–30 meets, and 31+ meets. {+In the highest stratum 22% were still active 14 years after baseline and 50% reached active senior status; in the lowest stratum, 0.3% were still active at the end of its curve (11 years) and 0.8% reached active senior status.+} (Note: this descriptive stratification uses post-baseline measurement; primary effect estimates in Table 3 use only baseline-window predictors.)
 
 ---
 
@@ -18,9 +18,9 @@
 
 **Figure S1.** {+Calibration of the primary logistic model (L4). Cross-validated predicted probabilities of senior retention (out-of-fold predictions averaged over 20 repeats of stratified 5-fold cross-validation; n = 2,136) are binned into deciles (x-axis); the y-axis shows the observed proportion retained in each decile with 95% Wilson confidence intervals. Points on the diagonal indicate perfect calibration (calibration slope 0.98, calibration-in-the-large 0.00; Supplementary Table S23).+}
 
-**Figure S2.** Kaplan–Meier retention curves: **(A)** overall retention from baseline (age 13/14); **(B)** retention stratified by sex. Log-rank test for sex difference: χ² = {+0.66+}, p = {+0.42+}.
+**Figure S2.** Kaplan–Meier retention curves: **(A)** overall retention from baseline (age 13/14); **(B)** retention stratified by sex. Log-rank test for sex difference: χ² = {+0.66+}, *p* = {+.42+}.
 
-**Figure S3.** Kaplan–Meier retention curves stratified by the number of championship types entered before age 17 (range 0–4, comprising regional, youth-national, junior-national, and senior-national championships). Retention is strongly monotonic in number of championship types.
+**Figure S3.** Kaplan–Meier retention curves stratified by the number of championship types entered before age 17 (range 0–4, comprising {+district+}, youth-national, junior-national, and senior-national championships{+; classification in Supplementary Methods S-M12+}). Retention is strongly monotonic in number of championship types.
 
 **Figure S4.** Time-varying hazard ratios from the secondary (post-baseline) Cox specification across three follow-up periods (years 0–3, 3–6, 6+ post-baseline){+, drawn from the estimates in Table 5+}. Hazard ratios are per-SD for standardized covariates and per-unit for championship types and female. Note: the early-window HR for ages-15–16 volume partly reflects operational overlap between predictor and outcome (low milestone volume is mechanical for athletes who drop out before age 15); this estimate is descriptive of the time-varying association rather than an independent prospective effect.
 

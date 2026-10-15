@@ -175,7 +175,7 @@ def km_figures(df):
         sub = d[d["n_msk_typer"] == n_typer]
         if len(sub) < 10:
             continue
-        kmf.fit(sub["duration_age"], sub["event"], label=f"{n_typer} types (n={len(sub)})")
+        kmf.fit(sub["duration_age"], sub["event"], label=f"{n_typer} type{'' if n_typer == 1 else 's'} (n={len(sub)})")
         kmf.plot_survival_function(ax=ax, ci_show=False, color=color)
     ax.set_title("Retention by number of championship types (pre-age 17)")
     ax.set_xlabel("Years since baseline (age 13/14)")

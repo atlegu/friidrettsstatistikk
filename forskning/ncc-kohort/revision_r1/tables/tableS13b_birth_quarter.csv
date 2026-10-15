@@ -1,13 +1,13 @@
 Specification,Covariate,OR,95% CI,p,LR test of quarter terms,n
-As submitted: Q1 and Q4 indicators vs. Q2-Q3 (unknown quarter coded to the reference),q1,0.73,"[0.55, 0.98]",.036,"chi2(2) = 6.32, p = 0.04",2136
-As submitted: Q1 and Q4 indicators vs. Q2-Q3 (unknown quarter coded to the reference),q4,1.14,"[0.80, 1.64]",.465,"chi2(2) = 6.32, p = 0.04",2136
-As submitted: Q1 and Q4 indicators vs. Q2-Q3 (unknown quarter coded to the reference),vol_z,2.07,"[1.82, 2.37]",< .001,"chi2(2) = 6.32, p = 0.04",2136
-"Q1 and Q4 indicators vs. Q2-Q3, known quarter only",q1,0.7,"[0.53, 0.94]",.017,"chi2(2) = 7.17, p = 0.03",2046
-"Q1 and Q4 indicators vs. Q2-Q3, known quarter only",q4,1.08,"[0.76, 1.55]",.659,"chi2(2) = 7.17, p = 0.03",2046
-"Q1 and Q4 indicators vs. Q2-Q3, known quarter only",vol_z,2.02,"[1.77, 2.31]",< .001,"chi2(2) = 7.17, p = 0.03",2046
-"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",q2,1.37,"[0.99, 1.90]",.061,"chi2(3) = 7.45, p = 0.06",2046
-"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",q3,1.5,"[1.06, 2.13]",.022,"chi2(3) = 7.45, p = 0.06",2046
-"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",q4,1.55,"[1.04, 2.30]",.032,"chi2(3) = 7.45, p = 0.06",2046
-"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",vol_z,2.02,"[1.77, 2.30]",< .001,"chi2(3) = 7.45, p = 0.06",2046
-"Linear trend across quarters 1-4, known quarter only",q_lin,1.16,"[1.03, 1.31]",.013,"chi2(1) = 6.11, p = 0.01",2046
-"Linear trend across quarters 1-4, known quarter only",vol_z,2.01,"[1.76, 2.30]",< .001,"chi2(1) = 6.11, p = 0.01",2046
+As submitted: Q1 and Q4 indicators vs. Q2-Q3 (unknown quarter coded to the reference),q1,0.73,"[0.55, 0.98]",.036,"chi2(2) = 6.32, p = .042",2136
+As submitted: Q1 and Q4 indicators vs. Q2-Q3 (unknown quarter coded to the reference),q4,1.14,"[0.80, 1.64]",.465,"chi2(2) = 6.32, p = .042",2136
+As submitted: Q1 and Q4 indicators vs. Q2-Q3 (unknown quarter coded to the reference),vol_z,2.07,"[1.82, 2.37]",< .001,"chi2(2) = 6.32, p = .042",2136
+"Q1 and Q4 indicators vs. Q2-Q3, known quarter only",q1,0.7,"[0.53, 0.94]",.017,"chi2(2) = 7.17, p = .028",2046
+"Q1 and Q4 indicators vs. Q2-Q3, known quarter only",q4,1.08,"[0.76, 1.55]",.659,"chi2(2) = 7.17, p = .028",2046
+"Q1 and Q4 indicators vs. Q2-Q3, known quarter only",vol_z,2.02,"[1.77, 2.31]",< .001,"chi2(2) = 7.17, p = .028",2046
+"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",q2,1.37,"[0.99, 1.90]",.061,"chi2(3) = 7.45, p = .059",2046
+"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",q3,1.5,"[1.06, 2.13]",.022,"chi2(3) = 7.45, p = .059",2046
+"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",q4,1.54,"[1.04, 2.30]",.032,"chi2(3) = 7.45, p = .059",2046
+"Full coding: Q2, Q3, Q4 vs. Q1, known quarter only",vol_z,2.02,"[1.77, 2.30]",< .001,"chi2(3) = 7.45, p = .059",2046
+"Linear trend across quarters 1-4, known quarter only",q_lin,1.16,"[1.03, 1.31]",.013,"chi2(1) = 6.11, p = .013",2046
+"Linear trend across quarters 1-4, known quarter only",vol_z,2.01,"[1.76, 2.30]",< .001,"chi2(1) = 6.11, p = .013",2046
