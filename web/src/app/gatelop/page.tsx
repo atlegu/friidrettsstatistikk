@@ -1,13 +1,15 @@
 import Link from "next/link"
 import type { SupabaseClient } from "@supabase/supabase-js"
 import { createClient } from "@/lib/supabase/server"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/ui/breadcrumbs"
+import { SideTopp, MetaSkille, ToppMerke } from "@/components/ui/side-topp"
+import { Chip, Filterrad, Flate, Nivaamerke, NivaaForklaring, TD, TH } from "@/components/gatelop/Deler"
 import { hentAlle } from "@/lib/hent-alle"
-import { NIVAA, datoKort, distanseTekst, lopetid } from "@/lib/gatelop"
+import { datoKort, distanseTekst, lopetid } from "@/lib/gatelop"
 
 export const metadata = {
   title: "Gateløp",
-  description: "Løp utenfor bane: resultater, årsbeste og kvalitetsnivå (prototype)",
+  description: "Løp utenfor bane: årsbeste, løpssider og kvalitetsnivå",
 }
 
 const DISTANSER = [
@@ -45,13 +47,9 @@ type Beste = {
   kvalitetsnivaa: string
 }
 
-function Merke({ nivaa }: { nivaa: string }) {
-  const n = NIVAA[nivaa] ?? NIVAA.C
-  return (
-    <span title={n.forklaring} className={`rounded px-1.5 py-0.5 text-xs font-semibold ${n.klasse}`}>
-      {n.tekst}
-    </span>
-  )
+function maaned(d: string) {
+  const s = new Date(d).toLocaleDateString("no-NO", { month: "long", year: "numeric" })
+  return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
 export default async function GatelopPage({
@@ -66,27 +64,27 @@ export default async function GatelopPage({
   const bareA = p.nivaa === "A"
 
   const supabase = (await createClient()) as unknown as SupabaseClient
-  const arr = await hentAlle<Arr>(
-    (fra, til) =>
-      supabase.from("lop_oversikt").select("*").order("dato", { ascending: false }).order("navn").range(fra, til),
-    "lop_oversikt"
-  )
-  const { data: besteData } =
+  const [arr, { count: antallLop }, { data: besteData }] = await Promise.all([
+    hentAlle<Arr>(
+      (fra, til) =>
+        supabase.from("lop_oversikt").select("*").order("dato", { ascending: false }).order("navn").range(fra, til),
+      "lop_oversikt"
+    ),
+    supabase.from("lop_lop").select("id", { count: "exact", head: true }),
     vis === "arsbeste"
-      ? await supabase.rpc("lop_arsbeste", {
+      ? supabase.rpc("lop_arsbeste", {
           p_aar: 2026,
           p_distanse: distanse,
           p_kjonn: gender,
           p_nivaa: bareA ? ["A"] : ["A", "B"],
           p_antall: 100,
         })
-      : { data: null }
+      : Promise.resolve({ data: null }),
+  ])
   const beste = (besteData ?? []) as Beste[]
 
-  const sum = arr.reduce(
-    (s, a) => ({ lopere: s.lopere + Number(a.lopere), koblet: s.koblet + Number(a.koblet) }),
-    { lopere: 0, koblet: 0 }
-  )
+  const lopere = arr.reduce((s, a) => s + Number(a.lopere), 0)
+  const koblet = arr.reduce((s, a) => s + Number(a.koblet), 0)
   const fra = arr.length ? arr[arr.length - 1].dato : null
   const til = arr.length ? arr[0].dato : null
 
@@ -94,200 +92,210 @@ export default async function GatelopPage({
     const q = new URLSearchParams({ vis, distanse: String(distanse), gender, nivaa: bareA ? "A" : "AB", ...o })
     return `/gatelop?${q}`
   }
-  const knapp = (aktiv: boolean) =>
-    `rounded px-3 py-1.5 text-sm font-medium ${
-      aktiv ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"
-    }`
+
+  // Alle løp gruppert per måned
+  const perMaaned = new Map<string, Arr[]>()
+  for (const a of arr) {
+    const m = maaned(a.dato)
+    perMaaned.set(m, [...(perMaaned.get(m) ?? []), a])
+  }
 
   return (
     <div className="container py-6">
-      <div className="mb-1 flex flex-wrap items-baseline gap-3">
-        <h1>Gateløp</h1>
-        <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900 dark:bg-amber-950 dark:text-amber-200">
-          Prototype
-        </span>
-      </div>
-      <p className="mb-6 max-w-3xl text-sm text-muted-foreground">
-        Resultater hentet automatisk fra EQ Timing for løp under Norges Friidrettsforbund
-        {fra && til ? `, ${datoKort(fra)}–${datoKort(til)}` : ""}: {arr.length.toLocaleString("no-NO")}{" "}
-        arrangementer og {sum.lopere.toLocaleString("no-NO")} resultater.{" "}
-        {sum.koblet.toLocaleString("no-NO")} løpere er koblet til utøverregisteret på navn, kjønn og
-        fødselsår. Kvalitetsnivået settes maskinelt ut fra løypemåling og distanse.
-      </p>
+      <Breadcrumbs items={[{ label: "Statistikk", href: "/statistikk" }, { label: "Gateløp" }]} />
 
-      <div className="mb-6 flex gap-2">
-        <Link href={url({ vis: "arsbeste" })} className={knapp(vis === "arsbeste")}>
-          Årsbeste 2026
-        </Link>
-        <Link href={url({ vis: "lop" })} className={knapp(vis === "lop")}>
-          Alle løp
-        </Link>
-      </div>
+      <SideTopp
+        tittel="Gateløp"
+        meta={
+          <>
+            <span>Løp utenfor bane under Norges Friidrettsforbund</span>
+            {fra && til && (
+              <>
+                <MetaSkille />
+                <span className="font-bold text-white">
+                  {datoKort(fra)}–{datoKort(til)}
+                </span>
+              </>
+            )}
+            <MetaSkille />
+            <span>Kilde: EQ Timing</span>
+          </>
+        }
+        merker={<ToppMerke>Prototype</ToppMerke>}
+        noekkeltall={[
+          { merkelapp: "Arrangementer", verdi: arr.length },
+          { merkelapp: "Løp", verdi: antallLop ?? null },
+          { merkelapp: "Resultater", verdi: lopere },
+          { merkelapp: "Koblet til utøverregisteret", verdi: koblet },
+        ]}
+      />
 
-      {vis === "arsbeste" ? (
-        <div className="grid gap-6 lg:grid-cols-5">
-          <div className="space-y-4 lg:col-span-1 lg:max-w-[200px]">
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm">Distanse</CardTitle>
-              </CardHeader>
-              <CardContent className="grid gap-1">
-                {DISTANSER.map((d) => (
-                  <Link key={d.m} href={url({ distanse: String(d.m) })} className={knapp(d.m === distanse)}>
-                    {d.navn}
-                  </Link>
-                ))}
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm">Kjønn</CardTitle>
-              </CardHeader>
-              <CardContent className="flex gap-2">
-                <Link href={url({ gender: "M" })} className={`flex-1 text-center ${knapp(gender === "M")}`}>
-                  Menn
-                </Link>
-                <Link href={url({ gender: "F" })} className={`flex-1 text-center ${knapp(gender === "F")}`}>
-                  Kvinner
-                </Link>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm">Kvalitetsnivå</CardTitle>
-              </CardHeader>
-              <CardContent className="grid gap-1">
-                <Link href={url({ nivaa: "AB" })} className={knapp(!bareA)}>
-                  A og B
-                </Link>
-                <Link href={url({ nivaa: "A" })} className={knapp(bareA)}>
-                  Bare A
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="lg:col-span-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  {distanseTekst(distanse)} · {gender === "M" ? "Menn" : "Kvinner"} · 2026
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  Beste resultat per løper. {bareA ? "Bare rekordgodkjente løyper." : "Rekord- og statistikkgodkjente løyper."}
-                </p>
-              </CardHeader>
-              <CardContent className="p-0">
-                {beste.length === 0 ? (
-                  <p className="p-6 text-sm text-muted-foreground">Ingen resultater med dette utvalget.</p>
-                ) : (
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b bg-muted/50 text-left">
-                          <th className="w-10 px-3 py-2 font-medium">#</th>
-                          <th className="px-3 py-2 font-medium">Tid</th>
-                          <th className="px-3 py-2 font-medium">Løper</th>
-                          <th className="w-14 px-3 py-2 font-medium">Født</th>
-                          <th className="hidden px-3 py-2 font-medium md:table-cell">Løp</th>
-                          <th className="hidden px-3 py-2 font-medium lg:table-cell">Dato</th>
-                          <th className="px-3 py-2 font-medium">Nivå</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {beste.map((b) => (
-                          <tr key={b.resultat_id} className="border-b last:border-0 hover:bg-muted/30">
-                            <td className="px-3 py-2 tabular-nums text-muted-foreground">{b.plass}</td>
-                            <td className="px-3 py-2 font-medium tabular-nums">{lopetid(b.tid_ms)}</td>
-                            <td className="px-3 py-2">
-                              {b.athlete_id ? (
-                                <Link href={`/utover/${b.athlete_id}`} className="text-primary hover:underline">
-                                  {b.navn}
-                                </Link>
-                              ) : (
-                                b.navn
-                              )}
-                              {b.klubb ? <div className="text-xs text-muted-foreground">{b.klubb}</div> : null}
-                            </td>
-                            <td className="px-3 py-2 text-muted-foreground">{b.fodt ?? "–"}</td>
-                            <td className="hidden px-3 py-2 md:table-cell">
-                              <Link href={`/gatelop/${b.arrangement_id}`} className="hover:text-primary hover:underline">
-                                {b.lop_navn}
-                              </Link>
-                            </td>
-                            <td className="hidden px-3 py-2 text-muted-foreground lg:table-cell">{datoKort(b.dato)}</td>
-                            <td className="px-3 py-2">
-                              <Merke nivaa={b.kvalitetsnivaa} />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </div>
+      {/* Filtre */}
+      <div className="mt-5 space-y-2">
+        <Filterrad navn="Visning">
+          <Chip href={url({ vis: "arsbeste" })} aktiv={vis === "arsbeste"}>
+            Årsbeste 2026
+          </Chip>
+          <Chip href={url({ vis: "lop" })} aktiv={vis === "lop"}>
+            Alle løp
+          </Chip>
+        </Filterrad>
+        {vis === "arsbeste" && (
+          <>
+            <Filterrad navn="Distanse">
+              {DISTANSER.map((d) => (
+                <Chip key={d.m} href={url({ distanse: String(d.m) })} aktiv={d.m === distanse}>
+                  {d.navn}
+                </Chip>
+              ))}
+            </Filterrad>
+            <Filterrad navn="Kjønn">
+              <Chip href={url({ gender: "M" })} aktiv={gender === "M"}>
+                Menn
+              </Chip>
+              <Chip href={url({ gender: "F" })} aktiv={gender === "F"}>
+                Kvinner
+              </Chip>
+            </Filterrad>
+            <Filterrad navn="Nivå">
+              <Chip href={url({ nivaa: "AB" })} aktiv={!bareA}>
+                A og B
+              </Chip>
+              <Chip href={url({ nivaa: "A" })} aktiv={bareA}>
+                Bare A
+              </Chip>
+            </Filterrad>
+          </>
+        )}
+        <div className="pt-1 sm:pl-[104px]">
+          <NivaaForklaring />
         </div>
-      ) : (
-        <Card>
-          <CardContent className="p-0">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b bg-muted/50 text-left">
-                    <th className="px-3 py-2 font-medium">Dato</th>
-                    <th className="px-3 py-2 font-medium">Arrangement</th>
-                    <th className="hidden px-3 py-2 font-medium md:table-cell">Type</th>
-                    <th className="hidden px-3 py-2 font-medium lg:table-cell">Distanser</th>
-                    <th className="px-3 py-2 text-right font-medium">Løpere</th>
-                    <th className="hidden px-3 py-2 text-right font-medium sm:table-cell">Koblet</th>
-                    <th className="px-3 py-2 font-medium">Nivå</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {arr.map((a) => (
-                    <tr key={a.id} className="border-b last:border-0 hover:bg-muted/30">
-                      <td className="whitespace-nowrap px-3 py-2 text-muted-foreground">{datoKort(a.dato)}</td>
-                      <td className="px-3 py-2">
-                        <Link href={`/gatelop/${a.id}`} className="font-medium hover:text-primary hover:underline">
-                          {a.navn}
-                        </Link>
-                        {a.sted ? <div className="text-xs text-muted-foreground">{a.sted}</div> : null}
-                      </td>
-                      <td className="hidden px-3 py-2 md:table-cell">{a.gren ?? "–"}</td>
-                      <td className="hidden px-3 py-2 lg:table-cell">
-                        {(a.distanser ?? []).map((d) => distanseTekst(d)).join(", ") || "–"}
-                      </td>
-                      <td className="px-3 py-2 text-right tabular-nums">{Number(a.lopere).toLocaleString("no-NO")}</td>
-                      <td className="hidden px-3 py-2 text-right tabular-nums text-muted-foreground sm:table-cell">
-                        {Number(a.koblet).toLocaleString("no-NO")}
-                      </td>
-                      <td className="px-3 py-2">
-                        <Merke nivaa={a.beste_nivaa} />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+      </div>
 
-      <Card className="mt-6">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm">Kvalitetsnivå</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-1.5 text-sm">
-          {Object.entries(NIVAA).map(([k, n]) => (
-            <div key={k} className="flex items-start gap-2">
-              <Merke nivaa={k} />
-              <span className="text-muted-foreground">{n.forklaring}</span>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+      <div className="mt-5">
+        {vis === "arsbeste" ? (
+          <Flate
+            tittel={`${distanseTekst(distanse)} · ${gender === "M" ? "Menn" : "Kvinner"} · 2026`}
+            undertittel={`Beste tid per løper. ${
+              bareA ? "Bare rekordgodkjente løyper." : "Rekord- og statistikkgodkjente løyper."
+            } Tider rundes opp til hele sekunder.`}
+          >
+            {beste.length === 0 ? (
+              <p className="px-5 py-8 text-center text-[13.5px] text-[var(--text-muted)]">
+                Ingen resultater med dette utvalget.
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-[var(--border-default)] bg-[var(--bg-muted)]/60">
+                      <th className={`${TH} w-12`}>#</th>
+                      <th className={TH}>Tid</th>
+                      <th className={TH}>Løper</th>
+                      <th className={`${TH} w-16`}>Født</th>
+                      <th className={`${TH} hidden md:table-cell`}>Løp</th>
+                      <th className={`${TH} hidden lg:table-cell`}>Dato</th>
+                      <th className={`${TH} w-14`}>Nivå</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {beste.map((b) => (
+                      <tr
+                        key={b.resultat_id}
+                        className="border-b border-[var(--border-default)] last:border-0 hover:bg-[var(--bg-muted)]/50"
+                      >
+                        <td className={`${TD} tabular-nums text-[var(--text-muted)]`}>{b.plass}</td>
+                        <td className={TD}>
+                          <span className="perf-value">{lopetid(b.tid_ms)}</span>
+                        </td>
+                        <td className={TD}>
+                          {b.athlete_id ? (
+                            <Link href={`/utover/${b.athlete_id}`} className="font-medium text-primary hover:underline">
+                              {b.navn}
+                            </Link>
+                          ) : (
+                            <span className="font-medium">{b.navn}</span>
+                          )}
+                          {b.klubb ? <div className="text-[12px] text-[var(--text-muted)]">{b.klubb}</div> : null}
+                        </td>
+                        <td className={`${TD} tabular-nums text-[var(--text-muted)]`}>{b.fodt ?? "–"}</td>
+                        <td className={`${TD} hidden md:table-cell`}>
+                          <Link href={`/gatelop/${b.arrangement_id}`} className="text-primary hover:underline">
+                            {b.lop_navn}
+                          </Link>
+                          {b.sted ? <div className="text-[12px] text-[var(--text-muted)]">{b.sted}</div> : null}
+                        </td>
+                        <td className={`${TD} hidden whitespace-nowrap text-[var(--text-muted)] lg:table-cell`}>
+                          {datoKort(b.dato)}
+                        </td>
+                        <td className={TD}>
+                          <Nivaamerke nivaa={b.kvalitetsnivaa} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </Flate>
+        ) : (
+          <div className="space-y-5">
+            {[...perMaaned.entries()].map(([m, liste]) => (
+              <Flate
+                key={m}
+                tittel={m}
+                undertittel={`${liste.length} arrangementer · ${liste
+                  .reduce((s, a) => s + Number(a.lopere), 0)
+                  .toLocaleString("no-NO")} resultater`}
+              >
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-[var(--border-default)] bg-[var(--bg-muted)]/60">
+                        <th className={`${TH} w-28`}>Dato</th>
+                        <th className={TH}>Arrangement</th>
+                        <th className={`${TH} hidden md:table-cell`}>Type</th>
+                        <th className={`${TH} hidden lg:table-cell`}>Distanser</th>
+                        <th className={`${TH} text-right`}>Løpere</th>
+                        <th className={`${TH} w-14`}>Nivå</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {liste.map((a) => (
+                        <tr
+                          key={a.id}
+                          className="border-b border-[var(--border-default)] last:border-0 hover:bg-[var(--bg-muted)]/50"
+                        >
+                          <td className={`${TD} whitespace-nowrap text-[var(--text-muted)]`}>{datoKort(a.dato)}</td>
+                          <td className={TD}>
+                            <Link href={`/gatelop/${a.id}`} className="font-medium text-primary hover:underline">
+                              {a.navn}
+                            </Link>
+                            {a.sted ? <div className="text-[12px] text-[var(--text-muted)]">{a.sted}</div> : null}
+                          </td>
+                          <td className={`${TD} hidden text-[var(--text-secondary)] md:table-cell`}>{a.gren ?? "–"}</td>
+                          <td className={`${TD} hidden text-[var(--text-secondary)] lg:table-cell`}>
+                            {(a.distanser ?? []).map((d) => distanseTekst(d)).join(", ") || "–"}
+                          </td>
+                          <td className={`${TD} text-right tabular-nums`}>{Number(a.lopere).toLocaleString("no-NO")}</td>
+                          <td className={TD}>
+                            <Nivaamerke nivaa={a.beste_nivaa} />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Flate>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <p className="mt-4 text-[12.5px] text-[var(--text-muted)]">
+        Resultatene hentes automatisk fra tidtakeren. Løpere kobles til utøverregisteret når navn, kjønn og fødselsår
+        gir ett entydig treff. Kvalitetsnivået settes maskinelt ut fra løypemåling, distanse og type løp.
+      </p>
     </div>
   )
 }

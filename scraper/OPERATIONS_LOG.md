@@ -1144,3 +1144,12 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   Åtte løp med umulig vinnertid for oppgitt distanse er satt til C med merknad.
 - **Sider:** `/gatelop` (årsbeste og alle løp) og `/gatelop/[id]`.
 - Importen er ikke satt opp som nattlig jobb. Det bør avtales med EQ Timing først.
+
+### Aktivitetssiden: ferdig utregnede tall
+
+- **Problem:** `aktivitet_per_aar()` brukte 6,8 s med kald hurtigbuffer, over
+  grensen på 3 s for anonyme kall, så siden viste «Ingen aktivitet i utvalget».
+- **Migrering:** `migrations/aktivitet_kube.sql`. Materialisert `aktivitet_kube`
+  (alle kombinasjoner av kjønn, alder og øvelsesgruppe per år); funksjonene
+  leser derfra og bruker 1,5 ms. Kontrollert mot de gamle funksjonene: 56 av
+  56 rader like. Bygges om i `refresh_klubb_bruk_hvis_utdatert()`.

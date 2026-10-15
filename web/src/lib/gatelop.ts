@@ -19,21 +19,25 @@ export function distanseTekst(m: number | null | undefined): string {
   return `${(m / 1000).toLocaleString("no-NO", { maximumFractionDigits: 1 })} km`
 }
 
-export const NIVAA: Record<string, { tekst: string; forklaring: string; klasse: string }> = {
+export const NIVAA: Record<string, { tekst: string; kort: string; forklaring: string; klasse: string }> = {
   A: {
     tekst: "A",
+    kort: "Rekordgodkjent",
     forklaring: "Rekordgodkjent: sertifisert målt løype (A- eller B-måling) og offisiell distanse",
     klasse: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
   },
   B: {
     tekst: "B",
+    kort: "Statistikkgodkjent",
     forklaring: "Statistikkgodkjent: offisiell distanse eller sertifisert målt løype (C-måling)",
-    klasse: "bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-200",
+    klasse: "bg-[var(--nfif-navy)]/10 text-[var(--nfif-navy)] dark:bg-white/10 dark:text-[var(--nfif-navy-blekk)]",
   },
   C: {
     tekst: "C",
-    forklaring: "Registrert aktivitet: ikke målt løype, distanse som ikke er standard, eller distanse som må kontrolleres",
-    klasse: "bg-muted text-muted-foreground",
+    kort: "Registrert aktivitet",
+    forklaring:
+      "Registrert aktivitet: terreng-, motbakke- og fjelløp, ikke målt løype, distanse som ikke er standard, eller distanse som må kontrolleres",
+    klasse: "bg-[var(--bg-muted)] text-[var(--text-muted)] ring-1 ring-[var(--border-default)]",
   },
 }
 
