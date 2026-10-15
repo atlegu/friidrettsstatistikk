@@ -17,6 +17,7 @@ const navigation = [
       { name: "Årslister 2025", href: "/statistikk/2025" },
       { name: "All-time", href: "/statistikk/all-time" },
       { name: "Rekorder", href: "/statistikk/rekorder" },
+      { name: "Masters", href: "/statistikk/masters" },
     ],
   },
   {

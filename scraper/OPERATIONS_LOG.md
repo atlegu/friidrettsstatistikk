@@ -1115,3 +1115,13 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   Fire rader med 0,00 er uendret.
 - **Virkning:** lister, personlige rekorder og klubbrekorder i ballkast og
   slengball for barn var feil fordi eldre rader ble sammenlignet med nyere.
+
+### Masters-statistikk
+
+- **Migrering:** `migrations/masters.sql` (materialisert utvalg
+  `masters_resultater`, funksjonene `masters_rekorder()` og
+  `masters_oversikt()`, pg_cron-jobb `masters_resultater` mandager 03.00 UTC).
+- 98 600 resultater fra 35 år, i femårsklasser etter kalenderåret.
+- Ny side `/statistikk/masters` med beste resultat per øvelse og klasse,
+  ute og inne. Klassene fra V105 og oppover skyldes feil fødselsår og vises
+  ikke.

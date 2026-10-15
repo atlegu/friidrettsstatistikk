@@ -198,7 +198,7 @@ export default async function StatistikkPage({
       <h1 className="mt-4 mb-4">Statistikk</h1>
 
       {/* Navigation cards */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
         {/* Annual lists */}
         <Card>
           <CardHeader>
@@ -251,6 +251,23 @@ export default async function StatistikkPage({
             <CardContent>
               <p className="text-sm text-muted-foreground">
                 Offisielle norske rekorder i alle øvelser og aldersklasser
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
+
+        {/* Masters */}
+        <Link href="/statistikk/masters">
+          <Card className="h-full cursor-pointer transition-colors hover:bg-muted/50">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                Masters
+                <ArrowRight className="h-4 w-4" />
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Beste norske resultater per femårsklasse fra 35 år
               </p>
             </CardContent>
           </Card>
