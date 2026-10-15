@@ -182,3 +182,32 @@ update public.lop_resultat r set status = 'KONTROLL'
 from public.lop_lop l
 where r.lop_id = l.id and r.status = 'OK' and r.tid_ms > 0 and l.distanse_m >= 800
   and r.tid_ms < public.lop_minste_ms(l.distanse_m);
+
+-- Tillegg: fødselsår og utøverkobling fra andre gateløpsresultater (Ultimate
+-- har ikke fødselsår). Kalles til slutt av importer_ultimate.py.
+create or replace function public.lop_fyll_fra_andre_kilder()
+returns jsonb language plpgsql security definer set search_path = public
+set statement_timeout = '300s'
+as $$
+declare n_fodt int; n_utover int;
+begin
+  with kjent as (
+    select lower(r.navn) navn, r.kjonn,
+           min(r.fodt) fodt, count(distinct r.fodt) n_fodt,
+           min(r.athlete_id::text)::uuid athlete_id, count(distinct r.athlete_id) n_utover
+    from lop_resultat r
+    where r.fodt is not null
+    group by 1, 2
+  ), oppdatert as (
+    update lop_resultat u
+    set fodt = k.fodt,
+        athlete_id = coalesce(u.athlete_id, case when k.n_utover = 1 then k.athlete_id end)
+    from kjent k
+    where u.fodt is null and lower(u.navn) = k.navn and u.kjonn = k.kjonn and k.n_fodt = 1
+    returning u.athlete_id
+  )
+  select count(*), count(athlete_id) into n_fodt, n_utover from oppdatert;
+  return jsonb_build_object('fodt_fylt', n_fodt, 'med_utover', n_utover);
+end;
+$$;
+revoke all on function public.lop_fyll_fra_andre_kilder() from public, anon, authenticated;
