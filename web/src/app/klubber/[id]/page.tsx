@@ -26,6 +26,8 @@ async function getClubAthletes(clubId: string) {
     .from("athletes")
     .select("id, first_name, last_name, full_name, birth_year, gender")
     .eq("current_club_id", clubId)
+    // Barn til og med 11 år (etter kalenderåret) vises ikke offentlig
+    .or(`birth_year.is.null,birth_year.lte.${new Date().getFullYear() - 12}`)
     .order("last_name", { ascending: true })
     .limit(50)
 
@@ -50,6 +52,8 @@ async function getClubResults(clubId: string) {
     .from("results_full")
     .select("*")
     .eq("club_id", clubId)
+    // Barn til og med 11 år vises ikke offentlig (get_age_group gir «Yngre»)
+    .or("age_group.is.null,age_group.neq.Yngre")
     .order("date", { ascending: false })
     .limit(20)
 
