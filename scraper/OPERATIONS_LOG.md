@@ -1242,3 +1242,10 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - Etter Atles beskjed: atle@stavhopp.no og atle.guttormsen@nmbu.no har begge
   rollen super_admin.
 - Brukermenyen viser «Administrasjon» for administratorer.
+
+## 2026-10-16 — Skriverett, norske rekorder og nasjonalitet
+- Migrering `skriverett_bare_admin.sql`: results, athletes, meets, clubs og sources kunne endres/opprettes av enhver innlogget bruker. Nå kreves is_admin(). Testet: admin kan, vanlig bruker kan ikke.
+- Migrering `user_profiles_rls.sql`: policyene på user_profiles ga evig løkke; nå via is_admin()/is_super_admin().
+- Migrering `norgesrekord_statsborger.sql`: norgesrekorder() (og dermed finn_avvik «mulig rekord») tar bare med nasjonalitet NOR eller ukjent.
+- Patricia Silva (Sandnes IL) satt til POR (portugisisk landslagsløper, 3:58.74 Paris 28.06.2026). Avvik 188 underkjent med kommentar.
+- Avvik 329 (Elea Jørstad Bock, 100 m hekk) åpnet igjen etter at Enter i kommentarfeltet godkjente det ved et uhell.
