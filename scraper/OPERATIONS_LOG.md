@@ -1249,3 +1249,10 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - Migrering `norgesrekord_statsborger.sql`: norgesrekorder() (og dermed finn_avvik «mulig rekord») tar bare med nasjonalitet NOR eller ukjent.
 - Patricia Silva (Sandnes IL) satt til POR (portugisisk landslagsløper, 3:58.74 Paris 28.06.2026). Avvik 188 underkjent med kommentar.
 - Avvik 329 (Elea Jørstad Bock, 100 m hekk) åpnet igjen etter at Enter i kommentarfeltet godkjente det ved et uhell.
+
+## 2026-10-16 — Martine Hjørnevik slått sammen
+- To poster for samme person (2001, F, Norna-Salhus IL): «Martine Hjørnevik» (36d0182e, fra jan. 2026, external_id 4167) og «Martine Kolbeinshavn Hjørnevik» (03a97cd7, opprettet 31.08.2026 da kilden byttet navneform).
+- 2 NM-medaljer (2026) flyttet. `slaa_sammen_utoverdubletter.py --fil opprydding/utoverpar_hjornevik_20261016.json --apply`: 61 resultater flyttet, 37 dubletter slettet, den nye posten slettet.
+- 4 rester (like på alt unntatt at plassering manglet; NM junior 2019, Norgeslekene 2022) slettet; raden med plassering beholdt.
+- Beholdt post omdøpt til kildens nåværende navn «Martine Kolbeinshavn Hjørnevik», så importen (navn + år + kjønn) treffer den.
+- Resultat: 682 resultater, 10 medaljer, én post. Reserve: `opprydding/reserve_hjornevik_20261016.json`.
