@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Chip, Filterrad, Flate, TD, TH } from "@/components/gatelop/Deler"
 import { hentAlle } from "@/lib/hent-alle"
 import { folgOpp } from "./actions"
+import { BehandleKnapp } from "@/components/admin/BehandleKnapp"
 
 export const metadata = { title: "Terminliste" }
 
@@ -292,23 +293,23 @@ export default async function TerminlistePage({
                                 className="h-8 rounded-md border bg-background px-2 text-xs"
                               />
                               <div className="flex flex-wrap gap-1.5">
-                                <button formAction={folgOpp.bind(null, "purret")} className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
+                                <BehandleKnapp formAction={folgOpp.bind(null, "purret")} className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
                                   Purret
-                                </button>
-                                <button formAction={folgOpp.bind(null, "avlyst")} className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
+                                </BehandleKnapp>
+                                <BehandleKnapp formAction={folgOpp.bind(null, "avlyst")} className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
                                   Avlyst
-                                </button>
-                                <button
+                                </BehandleKnapp>
+                                <BehandleKnapp
                                   formAction={folgOpp.bind(null, "ingen_resultater")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                   title="For eksempel barneidrett eller skolestevne uten statistikk"
                                 >
                                   Ingen resultater
-                                </button>
+                                </BehandleKnapp>
                                 {o && (
-                                  <button formAction={folgOpp.bind(null, "nullstill")} className="px-1 text-xs text-muted-foreground underline">
+                                  <BehandleKnapp formAction={folgOpp.bind(null, "nullstill")} className="px-1 text-xs text-muted-foreground underline">
                                     Nullstill
-                                  </button>
+                                  </BehandleKnapp>
                                 )}
                               </div>
                             </form>

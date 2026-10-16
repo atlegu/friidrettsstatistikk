@@ -18,9 +18,28 @@ const GYLDIGE = ["aapen", "godkjent", "rettet", "underkjent"] as const
  */
 export async function behandleAvvik(status: string, formData: FormData) {
   const feil = await lagre(status, formData)
-  if (feil) redirect(`/admin/avvik?feil=${encodeURIComponent(feil)}`)
   revalidatePath("/admin/avvik")
   revalidatePath("/admin")
+
+  // Tilbake til samme visning, med en bekreftelse eller feilmelding øverst
+  const sok = new URLSearchParams()
+  const visStatus = String(formData.get("vis_status") ?? "")
+  const visType = String(formData.get("vis_type") ?? "")
+  if (visStatus && visStatus !== "aapen") sok.set("status", visStatus)
+  if (visType) sok.set("type", visType)
+  if (feil) sok.set("feil", feil)
+  else {
+    const hva = String(formData.get("hva") ?? "").slice(0, 200)
+    sok.set("lagret", `${hva ? `${hva}: ` : ""}${UTFALL[status] ?? status}`)
+  }
+  redirect(`/admin/avvik?${sok}`)
+}
+
+const UTFALL: Record<string, string> = {
+  godkjent: "godkjent som riktig",
+  rettet: "merket som rettet",
+  underkjent: "underkjent",
+  aapen: "åpnet igjen",
 }
 
 async function lagre(status: string, formData: FormData): Promise<string | null> {

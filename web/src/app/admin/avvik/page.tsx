@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
 import { formatPerformance, formatPerformanceValue } from "@/lib/format-performance"
 import { behandleAvvik } from "./actions"
+import { BehandleKnapp } from "@/components/admin/BehandleKnapp"
 
 export const metadata = {
   title: "Avvik",
@@ -139,6 +140,7 @@ export default async function AvvikPage({
   const status = typeof params.status === "string" && STATUS[params.status] ? params.status : "aapen"
   const type = typeof params.type === "string" && TYPER[params.type] ? params.type : null
   const feil = typeof params.feil === "string" ? params.feil.slice(0, 300) : null
+  const lagret = typeof params.lagret === "string" ? params.lagret.slice(0, 300) : null
   const { rader, telling } = await hent(status, type)
 
   const iStatus = telling[status] ?? {}
@@ -163,6 +165,11 @@ export default async function AvvikPage({
       {feil ? (
         <p className="mb-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200">
           {feil}
+        </p>
+      ) : null}
+      {lagret && !feil ? (
+        <p className="mb-4 rounded-md border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-900 dark:bg-green-950 dark:text-green-200">
+          Lagret. {lagret}
         </p>
       ) : null}
 
@@ -281,47 +288,61 @@ export default async function AvvikPage({
                           {status === "aapen" ? (
                             <form className="flex min-w-[260px] flex-col gap-1.5">
                               <input type="hidden" name="id" value={r.id} />
+                              <input type="hidden" name="vis_status" value={status} />
+                              <input type="hidden" name="vis_type" value={type ?? ""} />
+                              <input
+                                type="hidden"
+                                name="hva"
+                                value={[utover?.full_name, r.events?.name, r.results ? formatPerformance(r.results.performance, r.events?.result_type) : null].filter(Boolean).join(", ")}
+                              />
                               <input
                                 name="kommentar"
                                 placeholder="Kommentar (valgfritt)"
                                 className="h-8 rounded-md border bg-background px-2 text-xs"
                               />
                               <div className="flex flex-wrap gap-1.5">
-                                <button
+                                <BehandleKnapp
                                   formAction={behandleAvvik.bind(null, "godkjent")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                 >
                                   Riktig
-                                </button>
-                                <button
+                                </BehandleKnapp>
+                                <BehandleKnapp
                                   formAction={behandleAvvik.bind(null, "rettet")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                 >
                                   Rettet
-                                </button>
-                                <button
+                                </BehandleKnapp>
+                                <BehandleKnapp
                                   formAction={behandleAvvik.bind(null, "underkjent")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                 >
                                   Underkjent
-                                </button>
+                                </BehandleKnapp>
                               </div>
                             </form>
                           ) : (
                             <form className="flex flex-col gap-1 text-xs">
                               <input type="hidden" name="id" value={r.id} />
+                              <input type="hidden" name="vis_status" value={status} />
+                              <input type="hidden" name="vis_type" value={type ?? ""} />
+                              <input
+                                type="hidden"
+                                name="hva"
+                                value={[utover?.full_name, r.events?.name, r.results ? formatPerformance(r.results.performance, r.events?.result_type) : null].filter(Boolean).join(", ")}
+                              />
                               <span>
                                 {STATUS[r.status]} {datoTekst(r.behandlet_tid)}
                               </span>
                               {r.kommentar ? (
                                 <span className="text-muted-foreground">{r.kommentar}</span>
                               ) : null}
-                              <button
+                              <BehandleKnapp
                                 formAction={behandleAvvik.bind(null, "aapen")}
                                 className="self-start text-muted-foreground underline hover:text-foreground"
                               >
                                 Åpne igjen
-                              </button>
+                              </BehandleKnapp>
                             </form>
                           )}
                         </td>
