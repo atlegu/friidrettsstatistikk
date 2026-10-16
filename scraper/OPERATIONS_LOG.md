@@ -1276,3 +1276,8 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 
 ## 2026-10-17 — Avviksliste for mastersrekordene på nytt
 - `masters_avviksliste.py opprydding/masters_rekorder_20261016_095759.csv` → NFIFProsjekt/Mastersrekorder_avvik_2026-10-17.xlsx. Etter etternavnsoppryddingen: 903 av 1 004 hovedrekorder stemmer, 99 der basen har bedre resultat (41 nyere enn lista, 12 avkortet/feil format, 14 stor forskjell, 2 samme utøver, 30 annen utøver), 2 vises ikke, 6 annen dato, 37 navn/fødselsår.
+
+## 2026-10-17 — Avkortede tider i mastersavvikene
+- Av de 12 «avkortet/feil format» i Mastersrekorder_avvik_2026-10-17.xlsx: 10 avkortede dubletter slettet der den presise tiden finnes samme dag/mesterskap (Merete Helgheim 13:42, Anita Botnevik 20:49, Eva Nordqvist 1:09:00, Signy Henden Rustlie 85:00, Erik Tysse 1:20:00, Herborg Ninni Blakstad 1.57, Kjell Steinset 1.15 og 1.25, Erik Wagner-Larsen 1.10 og 1.14). Åse Rekkebo 10000 m 1984 «2349.00» → «39:09.0» (samme verdi). Reserve i opprydding_masters_20261016.
+- Ikke rettet (ingen presis tid i basen): Vigdis Bringedal Holst 1500 m 4:42 (2014), Julika Fidjeland 10000 m 44:01 (2021).
+- Funnet: 11 905 avkortede tider i hele basen med presis tvilling (samme utøver, øvelse, ±10 dager), 11 902 lagt inn i januar 2026, presis tvilling lagt inn senere. 6 817 på 400 m, 2 954 kappgang. Ikke ryddet, venter på Atles beslutning.
