@@ -32,3 +32,12 @@ export function BehandleKnapp({
     </button>
   )
 }
+
+/**
+ * Settes først i skjemaet. Enter i et tekstfelt sender skjemaet med første
+ * knapp, og da ble avviket godkjent når man bare skrev en kommentar. Er første
+ * knapp deaktivert, sender Enter ingenting (HTML-standardens «default button»).
+ */
+export function IngenEnterSending() {
+  return <button type="submit" disabled hidden aria-hidden tabIndex={-1} />
+}

@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Chip, Filterrad, Flate, TD, TH } from "@/components/gatelop/Deler"
 import { hentAlle } from "@/lib/hent-alle"
 import { folgOpp } from "./actions"
-import { BehandleKnapp } from "@/components/admin/BehandleKnapp"
+import { BehandleKnapp, IngenEnterSending } from "@/components/admin/BehandleKnapp"
 
 export const metadata = { title: "Terminliste" }
 
@@ -286,6 +286,7 @@ export default async function TerminlistePage({
                         <td className={TD}>
                           {!["kommer", "pagar", "inne"].includes(r.status) && (
                             <form className="flex flex-col gap-1.5">
+                              <IngenEnterSending />
                               <input type="hidden" name="id" value={r.isonen_id} />
                               <input
                                 name="kommentar"

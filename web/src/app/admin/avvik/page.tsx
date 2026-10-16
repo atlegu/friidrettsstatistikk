@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
 import { formatPerformance, formatPerformanceValue } from "@/lib/format-performance"
 import { behandleAvvik } from "./actions"
-import { BehandleKnapp } from "@/components/admin/BehandleKnapp"
+import { BehandleKnapp, IngenEnterSending } from "@/components/admin/BehandleKnapp"
 
 export const metadata = {
   title: "Avvik",
@@ -287,6 +287,7 @@ export default async function AvvikPage({
                         <td className="px-3 py-2">
                           {status === "aapen" ? (
                             <form className="flex min-w-[260px] flex-col gap-1.5">
+                              <IngenEnterSending />
                               <input type="hidden" name="id" value={r.id} />
                               <input type="hidden" name="vis_status" value={status} />
                               <input type="hidden" name="vis_type" value={type ?? ""} />
@@ -297,6 +298,7 @@ export default async function AvvikPage({
                               />
                               <input
                                 name="kommentar"
+                                defaultValue={r.kommentar ?? ""}
                                 placeholder="Kommentar (valgfritt)"
                                 className="h-8 rounded-md border bg-background px-2 text-xs"
                               />
