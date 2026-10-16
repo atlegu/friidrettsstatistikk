@@ -1,8 +1,10 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { User, LogOut, Settings, Crown } from "lucide-react"
+import { User, LogOut, Settings, Crown, ShieldCheck } from "lucide-react"
+import { createClient } from "@/lib/supabase/client"
 import { useAuth } from "./AuthProvider"
 import { Button } from "@/components/ui/button"
 import {
@@ -17,6 +19,18 @@ import {
 export function UserMenu() {
   const { user, profile, loading, isPremium, signOut } = useAuth()
   const router = useRouter()
+  // Lenke til administrasjon for administratorer. Tilgangen kontrolleres
+  // uansett på serveren og i basen; dette styrer bare om lenken vises.
+  const [erAdmin, setErAdmin] = useState(false)
+  useEffect(() => {
+    if (!user) {
+      setErAdmin(false)
+      return
+    }
+    createClient()
+      .rpc("is_admin" as never)
+      .then(({ data }) => setErAdmin(data === true))
+  }, [user])
 
   if (loading) {
     return (
@@ -87,6 +101,15 @@ export function UserMenu() {
         )}
 
         <DropdownMenuSeparator />
+
+        {erAdmin && (
+          <DropdownMenuItem asChild>
+            <Link href="/admin" className="cursor-pointer">
+              <ShieldCheck className="mr-2 h-4 w-4" />
+              Administrasjon
+            </Link>
+          </DropdownMenuItem>
+        )}
 
         <DropdownMenuItem asChild>
           <Link href="/min-side" className="cursor-pointer">

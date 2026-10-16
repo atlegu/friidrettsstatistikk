@@ -1232,3 +1232,13 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - Bane: nasjonalitet i `results_full`, `get_all_time_best()` og
   `norgesrekorder()`; årslister, alle-tiders og rekorder viser * bak navnet.
 - Migrering: `migrations/nasjonalitet.sql`.
+
+## 2026-10-16 — Administratortilgang
+
+- `check_is_admin()` (brukt i middleware) leste `profiles.is_admin`, mens admin-
+  sidene og radnivåsikkerheten bruker `user_profiles.role`. Nå én regel:
+  `user_profiles.role` in ('admin', 'super_admin'). Migrering:
+  `migrations/check_is_admin.sql`.
+- Etter Atles beskjed: atle@stavhopp.no og atle.guttormsen@nmbu.no har begge
+  rollen super_admin.
+- Brukermenyen viser «Administrasjon» for administratorer.
