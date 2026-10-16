@@ -188,6 +188,18 @@ def deltaker(eid: int, pid: int) -> dict:
     return {'brutto': ms(brutto.group(1)) if brutto else None, 'by': by.group(1).strip().title() if by else None}
 
 
+def velg_tid(brutto: int | None, netto: int | None) -> int | None:
+    """Bruttotid fra startskuddet, men bare når den er troverdig.
+
+    Bruttotid kan ikke være kortere enn nettotid. Er den det, er starttiden
+    feil hos tidtakeren (Drammen10K 2026: «faktisk starttid» fire minutter før
+    «offisiell starttid», så Knut Sverre Jørgenvåg fikk 27:46 i stedet for
+    31:57). Da, og når forskjellen er urimelig stor, brukes nettotiden."""
+    if brutto and netto and netto - 1_500 <= brutto <= netto + 30 * 60_000:  # 1,5 s for avrunding
+        return brutto
+    return netto or brutto
+
+
 def klasse_alder(klasse: str | None) -> tuple[int, int] | None:
     m = re.search(r'(\d{1,2})\s*-\s*(\d{1,2})', klasse or '')
     return (int(m.group(1)), int(m.group(2))) if m else None
@@ -211,6 +223,26 @@ def koble(sb, rader: list[dict], aar: int) -> int:
     return n
 
 
+def rett_tider(sb, dry_run: bool):
+    """Hent nettotidene på nytt og rett lagrede tider som er kortere."""
+    arrangementer = sb.table('lop_arrangement').select('id, kilde_id, navn').eq('kilde', 'ultimate').execute().data
+    n_rettet = 0
+    for a in arrangementer:
+        for l in sb.table('lop_lop').select('id, kilde_id, distanse_m, navn').eq('arrangement_id', a['id']).execute().data:
+            dist_id, kj = str(l['kilde_id'] // 10), 'M' if l['kilde_id'] % 10 == 1 else 'F'
+            kat = 'S_M' if kj == 'M' else 'S_W'
+            netto = {r['pid']: r['netto'] for r in resultatliste(a['kilde_id'], dist_id, kat, KRAV[l['distanse_m']][0 if kj == 'M' else 1] + 60_000)}
+            lagret = sb.table('lop_resultat').select('id, kilde_id, navn, tid_ms').eq('lop_id', l['id']).execute().data
+            for r in lagret:
+                ny = velg_tid(r['tid_ms'], netto.get(r['kilde_id']))
+                if netto.get(r['kilde_id']) and ny != r['tid_ms']:
+                    n_rettet += 1
+                    logger.info(f'{a["navn"]} {l["navn"]}: {r["navn"]} {r["tid_ms"] / 1000:.0f} s -> {ny / 1000:.0f} s')
+                    if not dry_run:
+                        sb.table('lop_resultat').update({'tid_ms': ny}).eq('id', r['id']).execute()
+    logger.info(f'{n_rettet} tider {"ville blitt " if dry_run else ""}rettet')
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--aar', type=int, default=date.today().year)
@@ -218,9 +250,13 @@ def main():
     ap.add_argument('--event', type=int, help='bare dette arrangementet')
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--alle', action='store_true', help='hent også arrangementer som alt er importert')
+    ap.add_argument('--rett-tider', action='store_true',
+                    help='rett lagrede tider som er kortere enn nettotiden (henter bare listene)')
     args = ap.parse_args()
     sb = create_client(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SERVICE_KEY'])
 
+    if args.rett_tider:
+        return rett_tider(sb, args.dry_run)
     arr = [e for e in kalender(args.aar) if e['land'] == 'NOR' and e['resultater'] and e['dato'] <= date.today()
            and not KOPI.search(e['navn'])]
     if args.event:
@@ -256,7 +292,7 @@ def main():
                 for r in liste:
                     info = deltaker(e['id'], r['pid'])
                     tot_kall += 1
-                    tid = info['brutto'] or r['netto']
+                    tid = velg_tid(info['brutto'], r['netto'])
                     status = 'KONTROLL' if tid < MINSTE.get(dist, 0) else 'OK'
                     res.append({'kilde_id': r['pid'], 'plass': r['plass'], 'navn': r['navn'], 'kjonn': kj,
                                 'fodt': None, 'klubb': r['klubb'], 'klasse': r['klasse'], 'tid_ms': tid,

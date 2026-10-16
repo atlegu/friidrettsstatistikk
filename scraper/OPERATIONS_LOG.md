@@ -1210,3 +1210,15 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   nå til og med 11 år. Årslister, alle-tiders, rekorder, klubbstatistikk,
   forsiden, klubbsiden (siste resultater og utøvere) og gateløp holder dem
   utenfor. Dataene ligger i basen som før.
+
+## 2026-10-16 — Feil bruttotid fra Ultimate (Drammen10K)
+
+- **Funnet av:** Atle (Knut Sverre Jørgenvåg 27:46 hos oss, 31:57 i resultatlisten).
+- **Årsak:** i Drammen10K er «faktisk starttid» før «offisiell starttid» hos
+  Ultimate, så bruttotiden ble kortere enn nettotiden. Bruttotid kan ikke være
+  kortere enn nettotid.
+- **Rettet i importen:** `velg_tid()` bruker bruttotid bare når den er lik
+  eller lengre enn nettotid (1,5 s slingring for avrunding) og høyst 30 min
+  lengre; ellers nettotid.
+- **Rettet i basen:** `importer_ultimate.py --rett-tider` (dry-run først),
+  henter bare listene på nytt: 330 tider rettet, nesten alle Drammen10K.
