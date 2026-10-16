@@ -124,7 +124,7 @@ def main():
             continue
         grense = max(r['tid'] for r in kondis if r['tid'])
         vaar = sb.rpc('lop_arsbeste', {'p_aar': args.aar, 'p_distanse': dist, 'p_kjonn': kj,
-                                       'p_nivaa': ['A', 'B'], 'p_antall': 5000, 'p_bare_norske': True}).execute().data
+                                       'p_nivaa': ['A', 'B'], 'p_antall': 5000}).execute().data
         vaar_k = {nokkel(r['navn'], r['fodt'] or 0): r for r in vaar if r['fodt']}
         # Uten fødselsår (Ultimate) kan bare navnet sammenlignes
         bare_navn = {nokkel(r['navn'], 0)[0] for r in vaar if not r['fodt']}

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Utenlandsk } from "@/components/statistikk/Utenlandsk"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatPerformance } from "@/lib/format-performance"
@@ -442,6 +443,7 @@ export default async function AllTimePage({
                               >
                                 {result.athlete_name}
                               </Link>
+                              <Utenlandsk nasjon={result.athlete_nationality} />
                             </td>
                             <td className="px-2 py-1.5 text-sm text-muted-foreground">
                               {getBirthYear(result.birth_date) ?? "-"}

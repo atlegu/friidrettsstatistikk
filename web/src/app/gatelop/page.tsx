@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Utenlandsk } from "@/components/statistikk/Utenlandsk"
 import type { SupabaseClient } from "@supabase/supabase-js"
 import { createClient } from "@/lib/supabase/server"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
@@ -76,7 +77,7 @@ function maaned(d: string) {
 export default async function GatelopPage({
   searchParams,
 }: {
-  searchParams: Promise<{ vis?: string; distanse?: string; gender?: string; nivaa?: string; klasse?: string; alle?: string }>
+  searchParams: Promise<{ vis?: string; distanse?: string; gender?: string; nivaa?: string; klasse?: string }>
 }) {
   const p = await searchParams
   const vis = p.vis === "lop" ? "lop" : "arsbeste"
@@ -84,7 +85,6 @@ export default async function GatelopPage({
   const gender = p.gender === "F" ? "F" : "M"
   const bareA = p.nivaa === "A"
   const klasse = KLASSER.find((k) => k.id === (p.klasse ?? "")) ?? KLASSER[0]
-  const alleNasjoner = p.alle === "1"
 
   const supabase = (await createClient()) as unknown as SupabaseClient
   const [arr, { count: antallLop }, { data: besteData }] = await Promise.all([
@@ -101,7 +101,6 @@ export default async function GatelopPage({
           p_kjonn: gender,
           p_nivaa: bareA ? ["A"] : ["A", "B"],
           p_antall: 200,
-          p_bare_norske: !alleNasjoner,
           p_alder_fra: klasse.fra,
           p_alder_til: klasse.til,
         })
@@ -121,7 +120,6 @@ export default async function GatelopPage({
       gender,
       nivaa: bareA ? "A" : "AB",
       klasse: klasse.id,
-      alle: alleNasjoner ? "1" : "",
       ...o,
     })
     for (const [k, v] of [...q.entries()]) if (!v) q.delete(k)
@@ -199,14 +197,6 @@ export default async function GatelopPage({
                 </Chip>
               ))}
             </Filterrad>
-            <Filterrad navn="Løpere">
-              <Chip href={url({ alle: "" })} aktiv={!alleNasjoner}>
-                Norske
-              </Chip>
-              <Chip href={url({ alle: "1" })} aktiv={alleNasjoner}>
-                Også utenlandske
-              </Chip>
-            </Filterrad>
             <Filterrad navn="Nivå">
               <Chip href={url({ nivaa: "AB" })} aktiv={!bareA}>
                 A og B
@@ -228,7 +218,7 @@ export default async function GatelopPage({
             tittel={`${distanseTekst(distanse)} · ${gender === "M" ? "Menn" : "Kvinner"}${
               klasse.id ? ` ${klasse.navn}${klasse.navn.includes("år") ? "" : " år"}` : ""
             } · 2026`}
-            undertittel={`Beste tid per løper${alleNasjoner ? "; utenlandske løpere er merket med *" : ", norske løpere"}. ${
+            undertittel={`Beste tid per løper. Utenlandske løpere står bare når de representerer en norsk klubb, merket med *. ${
               bareA ? "Bare rekordgodkjente løyper." : "Rekord- og statistikkgodkjente løyper."
             } Tider rundes opp til hele sekunder, og lik tid gir lik plass. Alder etter kalenderåret.`}
           >
@@ -268,11 +258,7 @@ export default async function GatelopPage({
                           ) : (
                             <span className="font-medium">{b.navn}</span>
                           )}
-                          {b.nasjon && b.nasjon !== "NOR" && (
-                            <span className="ml-1 text-[12px] text-[var(--text-muted)]" title={`Nasjon: ${b.nasjon}`}>
-                              * {b.nasjon}
-                            </span>
-                          )}
+                          <Utenlandsk nasjon={b.nasjon} />
                           {b.klubb ? <div className="text-[12px] text-[var(--text-muted)]">{b.klubb}</div> : null}
                         </td>
                         <td className={`${TD} tabular-nums text-[var(--text-muted)]`}>{b.fodt ?? "–"}</td>

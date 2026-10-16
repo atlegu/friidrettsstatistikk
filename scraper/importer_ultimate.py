@@ -8,7 +8,7 @@ Ultimate tar tiden i mange av de største norske løpene (Oslo Maraton,
 Drammen10K, Sentrumsløpet, Bergen City Marathon ...). Løpene har opptil
 25 000 deltakere, så vi henter bare det statistikken trenger:
 
-  1. Norske løpere innenfor tidskravene i Kondis' «De beste»-lister
+  1. Norske løpere (og utenlandske i norske klubber) innenfor tidskravene i Kondis' «De beste»-lister
      (f.eks. 35:00/42:00 på 10 km for menn/kvinner). Listene er sortert på
      tid, så hentingen stopper ved kravet.
   2. Bruttotid (fra startskuddet) og bosted for hver av disse, fra
@@ -223,6 +223,16 @@ def koble(sb, rader: list[dict], aar: int) -> int:
     return n
 
 
+def alle_klubber(sb) -> list[dict]:
+    ut, fra = [], 0
+    while True:
+        bit = sb.table('clubs').select('name').range(fra, fra + 999).execute().data
+        ut += bit
+        if len(bit) < 1000:
+            return ut
+        fra += 1000
+
+
 def rett_tider(sb, dry_run: bool):
     """Hent nettotidene på nytt og rett lagrede tider som er kortere."""
     arrangementer = sb.table('lop_arrangement').select('id, kilde_id, navn').eq('kilde', 'ultimate').execute().data
@@ -268,6 +278,7 @@ def main():
         arr = arr[:args.maks]
     logger.info(f'{len(arr)} norske arrangementer med resultater hos Ultimate i {args.aar} som skal hentes')
 
+    norske_klubber = {c['name'].strip().lower() for c in alle_klubber(sb)}
     tot_lop = tot_res = tot_koblet = tot_kall = 0
     for e in arr:
         side = hent(f'{LIVE}/index.php', eventid=e['id'], language='no')
@@ -287,7 +298,9 @@ def main():
                 continue
             for kj, kat in kjonn_kat.items():
                 krav = KRAV[dist][0 if kj == 'M' else 1]
-                liste = [r for r in resultatliste(e['id'], dist_id, kat, krav) if r['nasjon'] == 'NOR']
+                # Norske løpere, og utenlandske som representerer en norsk klubb
+                liste = [r for r in resultatliste(e['id'], dist_id, kat, krav)
+                         if r['nasjon'] == 'NOR' or (r['klubb'] or '').strip().lower() in norske_klubber]
                 res = []
                 for r in liste:
                     info = deltaker(e['id'], r['pid'])
@@ -296,7 +309,7 @@ def main():
                     status = 'KONTROLL' if tid < MINSTE.get(dist, 0) else 'OK'
                     res.append({'kilde_id': r['pid'], 'plass': r['plass'], 'navn': r['navn'], 'kjonn': kj,
                                 'fodt': None, 'klubb': r['klubb'], 'klasse': r['klasse'], 'tid_ms': tid,
-                                'status': status, 'athlete_id': None, 'nasjon': 'NOR'})
+                                'status': status, 'athlete_id': None, 'nasjon': r['nasjon']})
                 if res:
                     lop_rader.append(({'kilde_id': int(dist_id) * 10 + (1 if kj == 'M' else 2),
                                        'navn': dist_navn, 'distanse_m': dist, 'loypegrad': None, 'ranking': False,

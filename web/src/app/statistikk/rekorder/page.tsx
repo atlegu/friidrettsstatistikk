@@ -1,4 +1,5 @@
 import { Fragment } from "react"
+import { Utenlandsk } from "@/components/statistikk/Utenlandsk"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -199,6 +200,7 @@ function RecordRow({ event, record, gender, age, venue }: RecordRowProps) {
         >
           {record.athlete_name}
         </Link>
+        <Utenlandsk nasjon={record.athlete_nationality} />
       </td>
       <td className="px-3 py-2 text-sm text-muted-foreground">
         {getBirthYear(record.birth_date) ?? "-"}

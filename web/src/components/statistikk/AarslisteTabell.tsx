@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Utenlandsk } from "@/components/statistikk/Utenlandsk"
 import { formatPerformance } from "@/lib/format-performance"
 import { getBirthYear } from "@/lib/date-utils"
 
@@ -9,6 +10,7 @@ export interface AarslisteRad {
   wind: number | null
   athlete_id: string | null
   athlete_name: string | null
+  athlete_nationality?: string | null
   birth_date: string | null
   club_name: string | null
   meet_id: string | null
@@ -52,6 +54,7 @@ export function AarslisteTabell({ rader }: { rader: AarslisteRad[] }) {
                 <Link href={`/utover/${r.athlete_id}`} className="font-medium text-primary hover:underline">
                   {r.athlete_name}
                 </Link>
+                <Utenlandsk nasjon={r.athlete_nationality} />
               </td>
               <td className="px-3 py-2 text-sm text-muted-foreground">
                 {getBirthYear(r.birth_date) ?? "-"}

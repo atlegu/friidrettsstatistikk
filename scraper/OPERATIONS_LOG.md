@@ -1222,3 +1222,13 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
   lengre; ellers nettotid.
 - **Rettet i basen:** `importer_ultimate.py --rett-tider` (dry-run først),
   henter bare listene på nytt: 330 tider rettet, nesten alle Drammen10K.
+
+## 2026-10-16 — Utenlandske utøvere bare når de representerer norsk klubb
+
+- Regel fra Atle. Gateløp: `lop_arsbeste()` tar bare med utenlandske løpere i
+  norske klubber (klubbnavn i registeret, eller koblet til utøver med norsk
+  klubb); valget «Også utenlandske» er fjernet. Ultimate-importen tar med
+  utenlandske i norske klubber.
+- Bane: nasjonalitet i `results_full`, `get_all_time_best()` og
+  `norgesrekorder()`; årslister, alle-tiders og rekorder viser * bak navnet.
+- Migrering: `migrations/nasjonalitet.sql`.
