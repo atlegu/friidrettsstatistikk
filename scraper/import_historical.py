@@ -610,7 +610,44 @@ def parse_senior_page(html: str, gender: str, event_code: str) -> List[Dict]:
     # Track ALL bold entries by last_name for reference-back in interleaved rows.
     # Results are sorted by performance, so athlete A's non-bold rows can appear
     # after athlete B's bold entry. We need to look up by last_name.
-    bold_athletes = {}  # last_name.lower() -> {first_name, club, birth_year, birth_date_str}
+    # Flere utøvere kan ha samme etternavn (ti «Olsen» på stavlista). Tidligere
+    # var dette en dict med ett innslag per etternavn, og den siste fete raden
+    # vant: alle Tom Erik Olsens innendørsrader (5.51 i 2003) havnet hos Øyvind
+    # Olsen, f. 1954. Nå holdes alle, og velg_ref() velger ut fra alder og tid.
+    bold_athletes = {}  # last_name.lower() -> [{first_name, club, birth_year, birth_date_str, aar}]
+
+    # Tid: lavere er bedre. Hopp, kast og mangekamp: høyere er bedre.
+    lavere_bedre = event_code[:1].isdigit() and 'kamp' not in event_code and '_k' not in event_code
+
+    def kan_ha(b, verdi):
+        """Den fete raden er utøverens beste på lista, så en gjentakelse kan
+        ikke være bedre enn den."""
+        if verdi is None or b.get('beste') is None:
+            return True
+        return verdi >= b['beste'] if lavere_bedre else verdi <= b['beste']
+
+    def velg_ref(etternavn, aar, verdi=None):
+        """Den fete utøveren en gjentakelsesrad (bare etternavn) hører til.
+        Kandidatene må ha et beste resultat minst like godt som raden og rimelig
+        alder (10–75 år) i konkurranseåret. Ved flere velges den som er nærmest
+        i tid, men bare når den er klart nærmest (minst 5 år foran nestemann).
+        Ellers None: raden hoppes over."""
+        kandidater = [b for b in bold_athletes.get(etternavn.lower(), [])
+                      if kan_ha(b, verdi)
+                      and (not b['birth_year'] or not aar or 10 <= aar - b['birth_year'] <= 75)]
+        # Samme person kan stå med fet rad både ute og inne (Ketil Rønneberg)
+        unike = {}
+        for b in kandidater:
+            unike.setdefault((b['first_name'].lower(), b['birth_date_str'] or b['birth_year']), b)
+        kandidater = list(unike.values())
+        if len(kandidater) <= 1:
+            return kandidater[0] if kandidater else None
+        if not aar:
+            return None
+        rang = sorted(kandidater, key=lambda b: abs(aar - (b['aar'] or aar)))
+        if abs(aar - (rang[1]['aar'] or aar)) - abs(aar - (rang[0]['aar'] or aar)) >= 5:
+            return rang[0]
+        return None
 
     for child in section.children:
         if not hasattr(child, 'name') or child.name is None:
@@ -713,22 +750,22 @@ def parse_senior_page(html: str, gender: str, event_code: str) -> List[Dict]:
                         'club': club,
                         'birth_year': by,
                         'birth_date_str': birth_date_str,
+                        'aar': cd.year if cd else None,
+                        'beste': performance_to_value(perf_formatted),
                     }
-                    bold_athletes[last_name.lower()] = last_athlete.copy()
+                    bold_athletes.setdefault(last_name.lower(), []).append(last_athlete.copy())
+                    ref = last_athlete
                 else:
                     # Non-bold row: determine which bold athlete this belongs to
                     if not last_name:
                         # Truly empty last_name — continuation of last_athlete
                         ref = last_athlete
-                    elif last_name.lower() == last_athlete['last_name'].lower():
-                        # Same last_name as last bold entry — continuation
-                        ref = last_athlete
-                    elif last_name.lower() in bold_athletes:
-                        # Different last_name — look up in bold_athletes registry
-                        ref = bold_athletes[last_name.lower()]
                     else:
-                        # Unknown athlete (not seen in bold) — use what we have
-                        ref = None
+                        cd = parse_date_dmy(comp_date_str)
+                        ref = velg_ref(last_name, cd.year if cd else None, performance_to_value(perf_formatted))
+                        if ref is None and last_name.lower() in bold_athletes:
+                            logger.warning(f"Tvetydig etternavn, hopper over: '{last_name}' {perf_raw} {comp_date_str} "
+                                           f"({len(bold_athletes[last_name.lower()])} utøvere med navnet)")
 
                     if ref:
                         if not first_name:
@@ -756,12 +793,7 @@ def parse_senior_page(html: str, gender: str, event_code: str) -> List[Dict]:
                 # Get birth_year: parse from birth_date_str if present, else from ref
                 if birth_date_str:
                     birth_year = parse_birth_date_to_year(birth_date_str, comp_date.year)
-                elif is_new_entry:
-                    birth_year = last_athlete.get('birth_year')
                 else:
-                    ref = bold_athletes.get(last_name.lower()) if last_name else None
-                    if not ref and last_name and last_name.lower() == last_athlete['last_name'].lower():
-                        ref = last_athlete
                     birth_year = ref['birth_year'] if ref else None
 
                 is_indoor = is_indoor_section

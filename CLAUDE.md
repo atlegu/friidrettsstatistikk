@@ -43,6 +43,7 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 | `rydd_stevnedubletter.py` | Slå sammen stevneposter som er samme stevne (tvillingresultater slettes, resten flyttes bare når det er entydig) | Når `test_fullstendighet.py` melder stevnedubletter |
 | `rydd_importdubletter.py` | Fjern rader en import la inn på nytt i samme stevne (eldste rad beholdes, én-til-én per importdag; reserve i `opprydding_importdubletter`) | Når `test_fullstendighet.py` melder importdubletter (perioden står i skriptet) |
 | `masters_rekorder_fra_liste.py` | Kontroller de offisielle mastersrekordlistene (PDF) mot basen, legg inn manglende, rett avkortede tider og merk godkjente rekorder | Når nye rekordlister kommer |
+| `rydd_etternavnsfeil.py` | Finn resultater fra alle tiders-listene som står på feil utøver med samme etternavn (tolker listene på nytt) | Etter ny historisk import |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 
