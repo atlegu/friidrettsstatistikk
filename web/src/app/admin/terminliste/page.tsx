@@ -92,11 +92,12 @@ function purretekst(arrangor: string, liste: Rad[]) {
 export default async function TerminlistePage({
   searchParams,
 }: {
-  searchParams: Promise<{ kategori?: string; vis?: string }>
+  searchParams: Promise<{ kategori?: string; vis?: string; feil?: string }>
 }) {
   const sp = await searchParams
   const kategori = sp.kategori === "gate" ? "gate" : "bane"
   const vis = ["mangler", "purret", "alle", "kommende"].includes(sp.vis ?? "") ? sp.vis! : "mangler"
+  const feil = sp.feil ? sp.feil.slice(0, 300) : null
   const idag = new Date()
 
   const supabase = (await createClient()) as unknown as SupabaseClient
@@ -153,6 +154,11 @@ export default async function TerminlistePage({
           </p>
         )}
       </div>
+      {feil ? (
+        <p className="mb-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200">
+          {feil}
+        </p>
+      ) : null}
       <p className="mb-5 max-w-3xl text-sm text-muted-foreground">
         Arrangementene i terminlisten fra iSonen, hentet fra friidrett.no hver natt og koblet mot resultatene i basen.
         Et arrangement uten resultater {VENTETID} dager etter siste stevnedag regnes som manglende, og etter{" "}
@@ -278,7 +284,7 @@ export default async function TerminlistePage({
                         </td>
                         <td className={TD}>
                           {!["kommer", "pagar", "inne"].includes(r.status) && (
-                            <form action={folgOpp} className="flex flex-col gap-1.5">
+                            <form className="flex flex-col gap-1.5">
                               <input type="hidden" name="id" value={r.isonen_id} />
                               <input
                                 name="kommentar"
@@ -286,22 +292,21 @@ export default async function TerminlistePage({
                                 className="h-8 rounded-md border bg-background px-2 text-xs"
                               />
                               <div className="flex flex-wrap gap-1.5">
-                                <button name="handling" value="purret" className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
+                                <button formAction={folgOpp.bind(null, "purret")} className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
                                   Purret
                                 </button>
-                                <button name="handling" value="avlyst" className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
+                                <button formAction={folgOpp.bind(null, "avlyst")} className="rounded-md border px-2 py-1 text-xs hover:bg-muted">
                                   Avlyst
                                 </button>
                                 <button
-                                  name="handling"
-                                  value="ingen_resultater"
+                                  formAction={folgOpp.bind(null, "ingen_resultater")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                   title="For eksempel barneidrett eller skolestevne uten statistikk"
                                 >
                                   Ingen resultater
                                 </button>
                                 {o && (
-                                  <button name="handling" value="nullstill" className="px-1 text-xs text-muted-foreground underline">
+                                  <button formAction={folgOpp.bind(null, "nullstill")} className="px-1 text-xs text-muted-foreground underline">
                                     Nullstill
                                   </button>
                                 )}

@@ -138,6 +138,7 @@ export default async function AvvikPage({
   const params = await searchParams
   const status = typeof params.status === "string" && STATUS[params.status] ? params.status : "aapen"
   const type = typeof params.type === "string" && TYPER[params.type] ? params.type : null
+  const feil = typeof params.feil === "string" ? params.feil.slice(0, 300) : null
   const { rader, telling } = await hent(status, type)
 
   const iStatus = telling[status] ?? {}
@@ -158,6 +159,12 @@ export default async function AvvikPage({
         Hvert avvik behandles én gang: godkjent som riktig, rettet eller underkjent. Et behandlet
         avvik kommer ikke tilbake.
       </p>
+
+      {feil ? (
+        <p className="mb-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200">
+          {feil}
+        </p>
+      ) : null}
 
       {/* Status */}
       <div className="mb-4 flex flex-wrap gap-2">
@@ -272,7 +279,7 @@ export default async function AvvikPage({
                         <td className="px-3 py-2 whitespace-nowrap tabular-nums">{datoTekst(r.dato)}</td>
                         <td className="px-3 py-2">
                           {status === "aapen" ? (
-                            <form action={behandleAvvik} className="flex min-w-[260px] flex-col gap-1.5">
+                            <form className="flex min-w-[260px] flex-col gap-1.5">
                               <input type="hidden" name="id" value={r.id} />
                               <input
                                 name="kommentar"
@@ -281,22 +288,19 @@ export default async function AvvikPage({
                               />
                               <div className="flex flex-wrap gap-1.5">
                                 <button
-                                  name="status"
-                                  value="godkjent"
+                                  formAction={behandleAvvik.bind(null, "godkjent")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                 >
                                   Riktig
                                 </button>
                                 <button
-                                  name="status"
-                                  value="rettet"
+                                  formAction={behandleAvvik.bind(null, "rettet")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                 >
                                   Rettet
                                 </button>
                                 <button
-                                  name="status"
-                                  value="underkjent"
+                                  formAction={behandleAvvik.bind(null, "underkjent")}
                                   className="rounded-md border px-2 py-1 text-xs hover:bg-muted"
                                 >
                                   Underkjent
@@ -304,7 +308,7 @@ export default async function AvvikPage({
                               </div>
                             </form>
                           ) : (
-                            <form action={behandleAvvik} className="flex flex-col gap-1 text-xs">
+                            <form className="flex flex-col gap-1 text-xs">
                               <input type="hidden" name="id" value={r.id} />
                               <span>
                                 {STATUS[r.status]} {datoTekst(r.behandlet_tid)}
@@ -313,8 +317,7 @@ export default async function AvvikPage({
                                 <span className="text-muted-foreground">{r.kommentar}</span>
                               ) : null}
                               <button
-                                name="status"
-                                value="aapen"
+                                formAction={behandleAvvik.bind(null, "aapen")}
                                 className="self-start text-muted-foreground underline hover:text-foreground"
                               >
                                 Åpne igjen
