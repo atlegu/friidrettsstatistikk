@@ -42,6 +42,7 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 | `nm_medaljer_fra_kilden.py` | NM-medaljer fra kildens resultatside (bare finaler, A-heat-regel) | Etter hvert NM |
 | `rydd_stevnedubletter.py` | Slå sammen stevneposter som er samme stevne (tvillingresultater slettes, resten flyttes bare når det er entydig) | Når `test_fullstendighet.py` melder stevnedubletter |
 | `rydd_importdubletter.py` | Fjern rader en import la inn på nytt i samme stevne (eldste rad beholdes, én-til-én per importdag; reserve i `opprydding_importdubletter`) | Når `test_fullstendighet.py` melder importdubletter (perioden står i skriptet) |
+| `masters_rekorder_fra_liste.py` | Kontroller de offisielle mastersrekordlistene (PDF) mot basen, legg inn manglende, rett avkortede tider og merk godkjente rekorder | Når nye rekordlister kommer |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

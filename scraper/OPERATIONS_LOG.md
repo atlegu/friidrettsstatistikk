@@ -1256,3 +1256,13 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - 4 rester (like på alt unntatt at plassering manglet; NM junior 2019, Norgeslekene 2022) slettet; raden med plassering beholdt.
 - Beholdt post omdøpt til kildens nåværende navn «Martine Kolbeinshavn Hjørnevik», så importen (navn + år + kjønn) treffer den.
 - Resultat: 682 resultater, 10 medaljer, én post. Reserve: `opprydding/reserve_hjornevik_20261016.json`.
+
+## 2026-10-16 — Offisielle mastersrekorder kontrollert og lagt inn
+- Kilde: rekordlistene fra Stein Fossen (kappgang Erling Andersen) i NFIFProsjekt/norgesrekorder-{mvu,kvu,mvi,kvi}.pdf (ute pr. 31.12.2025, inne pr. 30.06.2026).
+- `masters_rekorder_fra_liste.py --apply`: 1 085 rekordlinjer lest. 503 fantes, 551 lagt inn (45 nye utøvere, 324 nye stevner med samme navneform som den historiske importen). Kilde «Norske mastersrekorder (Stein Fossen / Erling Andersen)», importbatch 6516f1ce-8544-4268-a650-b9fb2a1ca78a (alle radene kan fjernes samlet).
+- Ikke lagt inn: 26 i øvelser uten kode (110 m/60 m hekk 99,1 cm, kappgang 15–50 km bane, 100 km, spyd 600 g gammel type), 3 med ufullstendig dato, 2 avvik mot basen (Erik Tysse 3000 m kappgang 11:18.45 mot 11:28.45 i basen), stafetter.
+- Feil i egen tolkning rettet: fødselsår «(95)» i 1950 ble 1995, skal være 1895 (Harald Hoffengh, Arthur Andersen, Lilly Henriette Berg).
+- `--rett-avkortede`: 26 avkortede dubletter slettet («1.10» ved 1:10.80 på 400 m, «19:15» ved 19:15.33), 1 rettet. Merete Helgheim 26:13 → 26:13.98 for hånd.
+- Rettet underveis (reserve i `opprydding_masters_20261016`): 55 innendørsmesterskap sto som ute; 13 610 resultater i løp med bare tideler merket manuell tid (løp med blanding av tideler og hundredeler er ikke rørt, 1 475 rader); Aham Okeke fikk kjønn.
+- Migrering `masters_offisielle_rekorder.sql`: tabell med resultat-id for hver godkjent rekord (1 006, fylt med `--merk-offisielle`). masters_resultater tar alltid med godkjente rekorder (også uten vind og med manuell tid), og spyd/diskos/slegge regnes som ute (kastene på innendørsmesterskap foregår ute).
+- Etter kontrollen: 902 av 1 004 hovedrekorder vises likt på rekordsiden. 100 der basen har et bedre resultat (41 satt etter listedatoen), 2 vises ikke. Gjennomgang: NFIFProsjekt/Mastersrekorder_kontroll_2026-10-16.xlsx.

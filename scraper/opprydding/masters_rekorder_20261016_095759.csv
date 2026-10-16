@@ -1,0 +1,1086 @@
+fil;overskrift;klasse;hoved;perf;vind;navn;klubb;fodt;sted;dato;status;merknad;koblet;koder;athlete_id;pv
+norgesrekorder-mvu.pdf;100m;M35-39;True;10.50;+1,3;Aham Okeke;IF Hellas;69;Oslo/Bi;07.06.2006;finnes;;navn;100m;303d6bb7-f2ae-4040-a95a-d7eea8d2c33c;1050
+norgesrekorder-mvu.pdf;100m;M40-44;True;11.59;+1,7;Rune Bråten Liholt;IK Tjalve;76;Oslo/St;15.08.2020;finnes;;navn;100m;5ac4eb6c-3596-45de-8853-04e933cefbee;1159
+norgesrekorder-mvu.pdf;100m;M40-44;False;11.3;+1,3;Kåre Strande;Fagernes IL;61;Fagernes;15.06.2001;mangler;;navn;100m;71a61bb1-8298-42bd-86a8-64967a57f600;1130
+norgesrekorder-mvu.pdf;100m;M45-49;True;11.63;+1,2;Jøran Laukeland;Førde IL;77;Tromsø;19.08.2022;finnes;;navn;100m;5a01ee24-558c-44a6-afa2-ae57c0212a99;1163
+norgesrekorder-mvu.pdf;100m;M45-49;False;11.6;;Hermund Høgheim;IL Norrøna;32;Fana;08.07.1980;mangler;;navn;100m;28fa23cd-5eae-4e62-b489-085e496e4f18;1160
+norgesrekorder-mvu.pdf;100m;M45-49;False;11.6;;Nils Adolf Balto;IL Nordlys;35;Lakselv;21.08.1982;mangler (ny utøver);;;100m;;1160
+norgesrekorder-mvu.pdf;100m;M45-49;False;11.6;;Arne Johan Svendsen;Kristiansands IF;38;Kristiansand;13.08.1983;mangler;;navn;100m;36675723-0b8b-42b0-8a93-deeaa781f064;1160
+norgesrekorder-mvu.pdf;100m;M45-49;False;11.6;;Freddy Hørven;Asker SK;53;Asker;26.09.1999;mangler;;navn;100m;2b98ae92-638c-4862-af73-1762f1eb45f4;1160
+norgesrekorder-mvu.pdf;100m;M50-54;True;11.97;;Hermund Høgheim;IL Gular;32;Strasbourg, FRA;16.07.1982;mangler;;navn;100m;28fa23cd-5eae-4e62-b489-085e496e4f18;1197
+norgesrekorder-mvu.pdf;100m;M50-54;False;11.4;;Hermund Høgheim;IL Gular;32;Fana;08.06.1983;mangler;;navn;100m;28fa23cd-5eae-4e62-b489-085e496e4f18;1140
+norgesrekorder-mvu.pdf;100m;M55-59;True;12.24;;Hermund Høgheim;IL Norrøna;32;Melbourne, AUS;29.11.1987;mangler;;navn;100m;28fa23cd-5eae-4e62-b489-085e496e4f18;1224
+norgesrekorder-mvu.pdf;100m;M60-64;True;12.37;+1,5;Ivar Njøs;Romerike Friidrett;65;Oslo/St;11.05.2025;finnes;;navn;100m;cc9831e2-8a71-4b84-b76f-e38f11ceeac3;1237
+norgesrekorder-mvu.pdf;100m;M60-64;False;12.3;;Arne Tangen;Steinkjer FIK;37;Trondheim/Le;21.06.1997;mangler (ny utøver);;;100m;;1230
+norgesrekorder-mvu.pdf;100m;M65-69;True;13.22;+1,4;Dag Kåshagen;Moelven IL;60;Rud;15.06.2025;finnes;;fornavn+etternavn;100m;5a4fdafb-5d98-4aae-86ef-1179ec9853df;1322
+norgesrekorder-mvu.pdf;100m;M65-69;False;13.1;;Arne Ueland;Tønsberg FIK;34;Oslo/So;03.06.2000;mangler;;navn;100m;6e42175c-a601-4a62-beb3-b31dbfa42a50;1310
+norgesrekorder-mvu.pdf;100m;M70-74;True;13.62;+0,6;Jostein Haraldseid;Bækkelagets SK;35;Geithus;30.06.2006;mangler;;navn;100m;32f33c70-c6a0-4fba-9487-300665a19bcb;1362
+norgesrekorder-mvu.pdf;100m;M75-79;True;14.49;-0,3;Jostein Haraldseid;Bækkelagets SK;35;Sacramento, USA;09.07.2011;mangler;;navn;100m;32f33c70-c6a0-4fba-9487-300665a19bcb;1449
+norgesrekorder-mvu.pdf;100m;M75-79;False;14.4;+1,6;Arne Ueland;Tønsberg FIK;34;Sande;08.09.2010;mangler;;navn;100m;6e42175c-a601-4a62-beb3-b31dbfa42a50;1440
+norgesrekorder-mvu.pdf;100m;M80-84;True;15.21;+1,1;Arne Ueland;Tønsberg FIK;34;Larvik/Lo;28.05.2014;finnes;;navn;100m;6e42175c-a601-4a62-beb3-b31dbfa42a50;1521
+norgesrekorder-mvu.pdf;100m;M85-89;True;16.94;+1,7;Arne Ueland;Tønsberg FIK;34;Tønsberg;29.06.2019;finnes;;navn;100m;6e42175c-a601-4a62-beb3-b31dbfa42a50;1694
+norgesrekorder-mvu.pdf;100m;M85-89;False;16.9;;Torgeir Brandvold;Oslo IL;13;Oslo/So;13.06.1998;mangler;;navn;100m;65fa42e4-2179-4dd1-a9c9-166254d2702f;1690
+norgesrekorder-mvu.pdf;100m;M90-94;True;18.54;-0,4;Torgeir Brandvold;Oslo IL;13;Lahti, FIN;13.06.2003;mangler;;navn;100m;65fa42e4-2179-4dd1-a9c9-166254d2702f;1854
+norgesrekorder-mvu.pdf;200m;M35-39;True;21.35;-0,7;Aham Okeke;IK Tjalve;69;Florø;08.08.2004;mangler;;navn;200m;303d6bb7-f2ae-4040-a95a-d7eea8d2c33c;2135
+norgesrekorder-mvu.pdf;200m;M40-44;True;23.37;+1,8;Jøran Laukeland;Førde IL;77;Førde;15.06.2020;finnes;;navn;200m;5a01ee24-558c-44a6-afa2-ae57c0212a99;2337
+norgesrekorder-mvu.pdf;200m;M40-44;False;23.2;;Freddy Hørven;Asker SK;53;Oslo/La;25.08.1994;mangler;;navn;200m;2b98ae92-638c-4862-af73-1762f1eb45f4;2320
+norgesrekorder-mvu.pdf;200m;M45-49;True;23.65;+0,5;Jøran Laukeland;Førde IL;77;Tromsø;20.08.2022;finnes;;navn;200m;5a01ee24-558c-44a6-afa2-ae57c0212a99;2365
+norgesrekorder-mvu.pdf;200m;M50-54;True;24.02;;Hermund Høgheim;IL Gular;32;Strasbourg, FRA;15.07.1982;mangler;;navn;200m;28fa23cd-5eae-4e62-b489-085e496e4f18;2402
+norgesrekorder-mvu.pdf;200m;M55-59;True;25.08;+0,4;Freddy Hørven;Asker SK;53;Asker;01.06.2008;mangler;;navn;200m;2b98ae92-638c-4862-af73-1762f1eb45f4;2508
+norgesrekorder-mvu.pdf;200m;M60-64;True;25.43;+1,0;Ivar Njøs;Romerike Friidrett;65;Oslo/St;10.05.2025;finnes;;navn;200m;cc9831e2-8a71-4b84-b76f-e38f11ceeac3;2543
+norgesrekorder-mvu.pdf;200m;M65-69;True;27.04;+0,7;Dag Kåshagen;Moelven IL;60;Lillehammer;20.06.2025;finnes;;fornavn+etternavn;200m;5a4fdafb-5d98-4aae-86ef-1179ec9853df;2704
+norgesrekorder-mvu.pdf;200m;M70-74;True;28.14;+0,9;Freddy Hørven;Asker SK;53;Asker;27.08.2025;finnes;;navn;200m;2b98ae92-638c-4862-af73-1762f1eb45f4;2814
+norgesrekorder-mvu.pdf;200m;M75-79;True;30.55;+0,2;Jostein Haraldseid;Bækkelagets SK;35;Florø;14.08.2010;mangler;;navn;200m;32f33c70-c6a0-4fba-9487-300665a19bcb;3055
+norgesrekorder-mvu.pdf;200m;M80-84;True;32.79;-1,7;Trond Einar Furuly;IL Stålkameratene;44;Stjørdal;22.06.2024;finnes;;navn;200m;20fa4ac3-ddbe-4f5d-a995-c56337d0e75d;3279
+norgesrekorder-mvu.pdf;200m;M85-89;True;37.88;-0,7;Torgeir Brandvold;Oslo IL;13;Odense, DEN;03.09.1999;mangler;;navn;200m;65fa42e4-2179-4dd1-a9c9-166254d2702f;3788
+norgesrekorder-mvu.pdf;200m;M90-94;True;49.70;+0,0;Henry Thune Mathisen;Fossum IF;16;Oslo/Bi;26.09.2007;mangler (ny utøver);;;200m;;4970
+norgesrekorder-mvu.pdf;200m;M90-94;False;44.6;;Torgeir Brandvold;Oslo IL;13;Oslo/So;06.09.2003;mangler;;navn;200m;65fa42e4-2179-4dd1-a9c9-166254d2702f;4460
+norgesrekorder-mvu.pdf;400m;M35-39;True;49.52;;Tor Øivind Ødegård;Fredrikstad IF;69;Lisleby;15.05.2004;mangler;;navn;400m;a8469ff4-47e8-4e92-98aa-94dd32778354;4952
+norgesrekorder-mvu.pdf;400m;M40-44;True;51.32;;Stig Wemundstad;Strindheim IL;57;Florø;27.06.1997;mangler;;navn;400m;720356d4-35ac-424a-a76d-08aea6a5b322;5132
+norgesrekorder-mvu.pdf;400m;M40-44;False;51.1;;Bjørn Rolland;Tingvoll FIK;55;Fosnavåg;02.09.1995;mangler;;navn;400m;9305290b-3101-44f1-bee7-9385c875a4cf;5110
+norgesrekorder-mvu.pdf;400m;M45-49;True;52.40;;Bjørn Rolland;Tingvoll FIK;55;Elnesvågen;09.09.2000;mangler;;navn;400m;9305290b-3101-44f1-bee7-9385c875a4cf;5240
+norgesrekorder-mvu.pdf;400m;M45-49;False;52.1;;Johan Petter Hesselberg;Byåsen IL;32;Göteborg, SWE;10.08.1977;mangler (ny utøver);;;400m;;5210
+norgesrekorder-mvu.pdf;400m;M50-54;True;54.47;;Stig Wemundstad;Strindheim IL;57;Misano, ITA;13.09.2007;mangler;;navn;400m;720356d4-35ac-424a-a76d-08aea6a5b322;5447
+norgesrekorder-mvu.pdf;400m;M50-54;False;53.7;;Johan Petter Hesselberg;Byåsen IL;32;Trondheim/Le;28.06.1983;mangler (ny utøver);;;400m;;5370
+norgesrekorder-mvu.pdf;400m;M55-59;True;56.49;;Freddy Hørven;Asker SK;53;Tønsberg;17.08.2008;mangler;;navn;400m;2b98ae92-638c-4862-af73-1762f1eb45f4;5649
+norgesrekorder-mvu.pdf;400m;M60-64;True;58.75;;Arnfinn Haugland;Høybråten & Stovner IL;30;Budapest, HUN;30.06.1990;mangler;;navn;400m;25c98088-1447-4095-a3d6-abc78d1b41ed;5875
+norgesrekorder-mvu.pdf;400m;M65-69;True;61.03;;Stig Wemundstad;Stadsbygd IL;57;Tampere, FIN;08.07.2022;finnes;;navn;400m;720356d4-35ac-424a-a76d-08aea6a5b322;6103
+norgesrekorder-mvu.pdf;400m;M70-74;True;66.99;;Arne Warem;Gjesdal IL;46;Stavanger/St;21.07.2016;finnes;;navn;400m;2d219463-a749-4f44-8c72-d3405ae17ac4;6699
+norgesrekorder-mvu.pdf;400m;M75-79;True;70.63;;Knut Bergesen;IL Gular;30;Knarvik;09.10.2005;mangler;;navn;400m;c0199a0a-21e2-44ad-83d4-d9daef20d990;7063
+norgesrekorder-mvu.pdf;400m;M80-84;True;76.90;;Kjell Steinset;Jølster IL;36;Aarhus, DEN;02.08.2017;finnes med annen dato;2017-07-27;fornavn+etternavn;400m;fe0e1e4f-a834-47bd-aa61-527073b17b13;7690
+norgesrekorder-mvu.pdf;400m;M85-89;True;85.07;;Kjell Steinset;Jølster IL;36;Førde;27.06.2021;finnes;;fornavn+etternavn;400m;fe0e1e4f-a834-47bd-aa61-527073b17b13;8507
+norgesrekorder-mvu.pdf;400m;M90-94;True;143.02;;Harald Aanerud;Lørenskog FIL;27;Aarhus, DEN;02.08.2017;finnes med annen dato;2017-07-27;navn;400m;fb8acab2-4191-4789-aee4-c115e7dbcd94;14302
+norgesrekorder-mvu.pdf;800m;M35-39;True;1:50.37;;Ådne Svahn Dæhlin;IL Gular;82;Nittedal;08.06.2019;finnes;;navn;800m;3b143702-e2c9-4d5f-857f-fb756d43da2e;11037
+norgesrekorder-mvu.pdf;800m;M40-44;True;1:57.04;;Ådne Svahn Dæhlin;IL Gular;82;Nittedal;17.09.2022;finnes;;navn;800m;3b143702-e2c9-4d5f-857f-fb756d43da2e;11704
+norgesrekorder-mvu.pdf;800m;M45-49;True;1:57.9;;Johan Petter Hesselberg;Byåsen IL;32;Göteborg, SWE;09.08.1977;mangler (ny utøver);;;800m;;11790
+norgesrekorder-mvu.pdf;800m;M50-54;True;2:01.3;;Johan Petter Hesselberg;Byåsen IL;32;Trondheim/Le;08.09.1983;mangler (ny utøver);;;800m;;12130
+norgesrekorder-mvu.pdf;800m;M55-59;True;2:10.71;;Paul Dahl;IL Kolbukameratene;44;Steinkjer;03.07.1999;mangler;;navn;800m;2b2895d2-9a33-44a0-a590-8ad08dcfc1bd;13071
+norgesrekorder-mvu.pdf;800m;M60-64;True;2:16.70;;Arnfinn Haugland;Høybråten & Stovner IL;30;Kristiansand;01.07.1992;mangler;;navn;800m;25c98088-1447-4095-a3d6-abc78d1b41ed;13670
+norgesrekorder-mvu.pdf;800m;M65-69;True;2:23.97;;Ragnar Jakobsen;Kristiansands IF;43;Lahti, FIN;02.08.2009;mangler;;navn;800m;7570fcd5-cd42-40d5-a9c7-57e13a80692c;14397
+norgesrekorder-mvu.pdf;800m;M70-74;True;2:30.19;;Ragnar Jakobsen;Kristiansands IF;43;Moss;29.06.2013;finnes;;navn;800m;7570fcd5-cd42-40d5-a9c7-57e13a80692c;15019
+norgesrekorder-mvu.pdf;800m;M75-79;True;2:45.86;;Tormod Bønes;IL i BUL;42;Oslo/Bi;27.09.2017;finnes;;navn;800m;ca50634e-2d18-43f1-bd35-78c4081f7393;16586
+norgesrekorder-mvu.pdf;800m;M80-84;True;2:59.45;;Kjell Steinset;Jølster IL;36;Aarhus, DEN;05.08.2017;finnes;;fornavn+etternavn;800m;fe0e1e4f-a834-47bd-aa61-527073b17b13;17945
+norgesrekorder-mvu.pdf;800m;M85-89;True;3:23.73;;Kjell Steinset;Jølster IL;36;Førde;26.06.2021;finnes;;fornavn+etternavn;800m;fe0e1e4f-a834-47bd-aa61-527073b17b13;20373
+norgesrekorder-mvu.pdf;800m;M90-94;True;4:41.11;;Petter Green;IL Stjørdals-Blink;12;Trondheim/Da;30.08.2003;mangler (ny utøver);;;800m;;28111
+norgesrekorder-mvu.pdf;1500m;M35-39;True;3:44.62;;Bård Kvalheim;IK Tjalve;73;Oslo/Bi;06.06.2008;mangler;;navn;1500m;f6b52317-4668-421d-b9bc-04f704ded726;22462
+norgesrekorder-mvu.pdf;1500m;M40-44;True;3:57.9;;Arne Hamarsland;IL Gular;33;Fana;30.05.1973;mangler;;navn;1500m;7778163a-24b9-4478-880d-d123a92a5bdd;23790
+norgesrekorder-mvu.pdf;1500m;M45-49;True;4:01.54;;Paul Dahl;Hadeland FIK;44;Jessheim;08.08.1989;mangler;;navn;1500m;2b2895d2-9a33-44a0-a590-8ad08dcfc1bd;24154
+norgesrekorder-mvu.pdf;1500m;M50-54;True;4:16.29;;Paul Dahl;IL Kolbukameratene;44;Oslo/Bi;17.07.1995;mangler;;navn;1500m;2b2895d2-9a33-44a0-a590-8ad08dcfc1bd;25629
+norgesrekorder-mvu.pdf;1500m;M55-59;True;4:22.4;;Alf Eidsæther;Selsbakk IF;28;Trondheim;24.07.1984;mangler;;navn;1500m;5a8b88f4-1ec5-407c-9552-2f395298ac49;26240
+norgesrekorder-mvu.pdf;1500m;M60-64;True;4:40.46;;Bjarte Bogstad;IL Gular;63;Indre Arna;05.07.2023;finnes;;navn;1500m;28bfdb08-3aab-44c8-a798-947e946f8e68;28046
+norgesrekorder-mvu.pdf;1500m;M65-69;True;4:57.81;;Gunnar Gaulen;FIL AKS-77;41;Misano, ITA;14.09.2007;mangler;;navn;1500m;0bffec35-305d-4d05-be4b-963a2a885224;29781
+norgesrekorder-mvu.pdf;1500m;M70-74;True;5:14.45;;Ivar Sandø;BFG Bergen LK;53;Os;01.10.2023;finnes;;navn;1500m;0930218e-0eb2-4479-9434-543a7f22a9b2;31445
+norgesrekorder-mvu.pdf;1500m;M75-79;True;5:44.73;;Kjell Steinset;Jølster IL;36;Zittau, GER;19.08.2012;mangler;;fornavn+etternavn;1500m;fe0e1e4f-a834-47bd-aa61-527073b17b13;34473
+norgesrekorder-mvu.pdf;1500m;M80-84;True;6:26.56;;Kjell Steinset;Jølster IL;36;Aarhus, DEN;30.07.2017;finnes;;fornavn+etternavn;1500m;fe0e1e4f-a834-47bd-aa61-527073b17b13;38656
+norgesrekorder-mvu.pdf;1500m;M85-89;True;7:29.0;;Petter Green;IL Stjørdals-Blink;12;Stjørdal;15.08.1997;mangler (ny utøver);;;1500m;;44900
+norgesrekorder-mvu.pdf;1500m;M90-94;True;8:40.0;;Petter Green;IL Stjørdals-Blink;12;Stjørdal;21.08.2002;mangler (ny utøver);;;1500m;;52000
+norgesrekorder-mvu.pdf;1500m;M95-99;True;12:57.7;;Petter Green;IL Stjørdals-Blink;12;Stjørdal;08.08.2007;mangler (ny utøver);;;1500m;;77770
+norgesrekorder-mvu.pdf;3000m;M35-39;True;7:47.16;;Zerei Kbrom Mezngi;Stavanger FIK;86;Oslo/Bi;01.07.2021;finnes;;navn;3000m;42ae5dc6-defe-4662-8aca-68cb381a716a;46716
+norgesrekorder-mvu.pdf;3000m;M40-44;True;8:22.93;;Ebrahim Abdulaziz;Strindheim IL;78;Trondheim/St;02.09.2020;finnes;;navn;3000m;dfe0d205-c3c1-48f2-8f50-03af023f14e3;50293
+norgesrekorder-mvu.pdf;3000m;M45-49;True;8:35.38;;Tor Vevle;IL Fri;40;Fana;26.06.1986;mangler;;navn;3000m;4f5bd110-cbb3-4708-a896-7a56ebac1cf3;51538
+norgesrekorder-mvu.pdf;3000m;M50-54;True;9:08.2;;Nils Undersåker;Inderøy IL;39;Steinkjer;22.08.1990;mangler;;navn;3000m;528ac82f-bd2e-4200-8667-692f19bfea6c;54820
+norgesrekorder-mvu.pdf;3000m;M55-59;True;9:24.66;;Gunnar Gaulen;FIL AKS-77;41;Ulvik;07.07.1996;mangler;;navn;3000m;0bffec35-305d-4d05-be4b-963a2a885224;56466
+norgesrekorder-mvu.pdf;3000m;M60-64;True;9:49.74;;Gunnar Gaulen;FIL AKS-77;41;Haukås;22.08.2001;mangler;;navn;3000m;0bffec35-305d-4d05-be4b-963a2a885224;58974
+norgesrekorder-mvu.pdf;3000m;M65-69;True;10:45.10;;Gunnar Gaulen;FIL AKS-77;41;Geithus;30.06.2006;mangler;;navn;3000m;0bffec35-305d-4d05-be4b-963a2a885224;64510
+norgesrekorder-mvu.pdf;3000m;M70-74;True;10:43.13;;Ivar Sandø;BFG Bergen LK;53;Indre Arna;14.08.2023;finnes;;navn;3000m;0930218e-0eb2-4479-9434-543a7f22a9b2;64313
+norgesrekorder-mvu.pdf;3000m;M75-79;True;12:27.81;;Knut Austlid;Veldre Friidrett;31;Geithus;30.06.2006;mangler (ny utøver);;;3000m;;74781
+norgesrekorder-mvu.pdf;3000m;M80-84;True;13:27.17;;Henrik Lund Raagaard;Fredrikstad IF;44;Lisleby;25.09.2025;finnes;;navn;3000m;afd994ea-0ac1-49b8-a88f-b742dc1886b2;80717
+norgesrekorder-mvu.pdf;3000m;M85-89;True;16:04.6;;Petter Green;IL Stjørdals-Blink;12;Stjørdal;18.06.1997;mangler (ny utøver);;;3000m;;96460
+norgesrekorder-mvu.pdf;3000m;M90-94;True;18:36.0;;Petter Green;IL Stjørdals-Blink;12;Stjørdal;19.06.2002;mangler (ny utøver);;;3000m;;111600
+norgesrekorder-mvu.pdf;3000m;M95-99;True;26:17.4;;Petter Green;IL Stjørdals-Blink;12;Stjørdal;20.06.2007;mangler (ny utøver);;;3000m;;157740
+norgesrekorder-mvu.pdf;5000m;M35-39;True;13:27.31;;Zerei Kbrom Mezngi;Stavanger FIK;86;Oslo/Bi;15.06.2023;finnes;;navn;5000m;42ae5dc6-defe-4662-8aca-68cb381a716a;80731
+norgesrekorder-mvu.pdf;5000m;M40-44;True;14:21.59;;Ebrahim Abdulaziz;Strindheim IL;78;Trondheim/St;01.08.2020;finnes;;navn;5000m;dfe0d205-c3c1-48f2-8f50-03af023f14e3;86159
+norgesrekorder-mvu.pdf;5000m;M45-49;True;14:56.9;;Tor Vevle;IL Fri;40;Voss;24.08.1985;mangler;;navn;5000m;4f5bd110-cbb3-4708-a896-7a56ebac1cf3;89690
+norgesrekorder-mvu.pdf;5000m;M50-54;True;15:40.3;;Gunnar Gaulen;FIL AKS-77;41;Knarvik;29.09.1993;mangler;;navn;5000m;0bffec35-305d-4d05-be4b-963a2a885224;94030
+norgesrekorder-mvu.pdf;5000m;M55-59;True;16:05.46;;Kristen Aaby;Sigdal FIK;61;Geithus;21.06.2019;finnes;;navn;5000m;32c62670-130f-4cf3-8ccc-1455686f3ed0;96546
+norgesrekorder-mvu.pdf;5000m;M60-64;True;17:05.37;;Kristen Aaby;Sigdal FIK;61;Prestfoss;21.09.2022;finnes;;navn;5000m;32c62670-130f-4cf3-8ccc-1455686f3ed0;102537
+norgesrekorder-mvu.pdf;5000m;M65-69;True;18:25.11;;Einar Færø;Eikanger IL;56;Indre Arna;15.08.2022;finnes;;navn;5000m;8d0d28f7-1328-4c50-9cd8-c9b44ab85dcb;110511
+norgesrekorder-mvu.pdf;5000m;M70-74;True;18:32.41;;Ivar Sandø;BFG Bergen LK;53;Indre Arna;05.07.2023;finnes;;navn;5000m;0930218e-0eb2-4479-9434-543a7f22a9b2;111241
+norgesrekorder-mvu.pdf;5000m;M75-79;True;21:34.1;;Henrik Lund Raagaard;Fredrikstad IF;44;Lisleby;23.10.2019;finnes;;navn;5000m;afd994ea-0ac1-49b8-a88f-b742dc1886b2;129410
+norgesrekorder-mvu.pdf;5000m;M80-84;True;24:57.50;;Kjell Steinset;Jølster IL;36;Odense, DEN;01.07.2016;finnes;;fornavn+etternavn;5000m;fe0e1e4f-a834-47bd-aa61-527073b17b13;149750
+norgesrekorder-mvu.pdf;5000m;M85-89;True;27:37.87;;Ingolf Hådem;NTNUI;29;Ravnanger;22.06.2014;finnes;;navn;5000m;d4c070c5-062e-4e3d-8439-536dc7f6df28;165787
+norgesrekorder-mvu.pdf;5000m;M90-94;True;32:48.0;;Petter Green;IL Stjørdals-Blink;12;Levanger;05.09.2002;mangler (ny utøver);;;5000m;;196800
+norgesrekorder-mvu.pdf;10000m;M35-39;True;27:41.44;;Zerei Kbrom Mezngi;Stavanger FIK;86;London, GBR;20.05.2023;finnes;;navn;10000m;42ae5dc6-defe-4662-8aca-68cb381a716a;166144
+norgesrekorder-mvu.pdf;10000m;M40-44;True;29:28.35;;Ebrahim Abdulaziz;Strindheim IL;78;Fana;20.09.2020;finnes;;navn;10000m;dfe0d205-c3c1-48f2-8f50-03af023f14e3;176835
+norgesrekorder-mvu.pdf;10000m;M45-49;True;31:31.01;;Paul Dahl;Hadeland FIK;44;Oslo/Bi;18.07.1989;finnes;;navn;10000m;2b2895d2-9a33-44a0-a590-8ad08dcfc1bd;189101
+norgesrekorder-mvu.pdf;10000m;M50-54;True;32:27.1;;Gunnar Gaulen;FIL AKS-77;41;Ulvik;19.09.1993;mangler;;navn;10000m;0bffec35-305d-4d05-be4b-963a2a885224;194710
+norgesrekorder-mvu.pdf;10000m;M55-59;True;33:44.21;;Kristen Aaby;Sigdal FIK;61;Geithus;23.06.2019;finnes;;navn;10000m;32c62670-130f-4cf3-8ccc-1455686f3ed0;202421
+norgesrekorder-mvu.pdf;10000m;M60-64;True;35:53.5;;Gunnar Gaulen;FIL AKS-77;41;Fana;19.09.2001;mangler;;navn;10000m;0bffec35-305d-4d05-be4b-963a2a885224;215350
+norgesrekorder-mvu.pdf;10000m;M65-69;True;38:44.07;;Svein Arne Sølvberg;Oppegård IL;48;Moss;30.06.2013;finnes;;navn;10000m;d2aa4f91-0045-448d-a53d-66a834b68044;232407
+norgesrekorder-mvu.pdf;10000m;M70-74;True;40:57.2;;Gudmund Straume;Drangedal IL;18;Larvik/Lo;02.07.1989;mangler (ny utøver);;;10000m;;245720
+norgesrekorder-mvu.pdf;10000m;M75-79;True;46:00.90;;Ingolf Hådem;NTNUI;29;San Sebastian, ESP;28.08.2005;mangler;;navn;10000m;d4c070c5-062e-4e3d-8439-536dc7f6df28;276090
+norgesrekorder-mvu.pdf;10000m;M80-84;True;55:42.12;;Ingolf Hådem;NTNUI;29;Huddinge, SWE;28.06.2009;mangler;;navn;10000m;d4c070c5-062e-4e3d-8439-536dc7f6df28;334212
+norgesrekorder-mvu.pdf;80m hekk / hurdles 76.2 cm;M70-74;True;14.24;+1,0;Jostein Haraldseid;Bækkelagets SK;35;Århus, DEN;01.07.2007;mangler;;navn;80mh_76_2cm,80mh;32f33c70-c6a0-4fba-9487-300665a19bcb;1424
+norgesrekorder-mvu.pdf;80m hekk / hurdles 76.2 cm;M75-79;True;15.25;-0,7;Jostein Haraldseid;Bækkelagets SK;35;Florø;15.08.2010;mangler;;navn;80mh_76_2cm,80mh;32f33c70-c6a0-4fba-9487-300665a19bcb;1525
+norgesrekorder-mvu.pdf;80m hekk / hurdles 76.2 cm;M80-84;True;20.05;+0,1;Teodor Solheim;IL Jotun;15;Bismo;12.08.1995;mangler (ny utøver);;;80mh_76_2cm,80mh;;2005
+norgesrekorder-mvu.pdf;80m hekk / hurdles 68.6 cm;M80-84;True;15.99;+0,6;Trond Einar Furuly;IL Stålkameratene;44;Moss;14.09.2025;finnes;;navn;80mh_68cm,80mh;20fa4ac3-ddbe-4f5d-a995-c56337d0e75d;1599
+norgesrekorder-mvu.pdf;80m hekk / hurdles 68.6 cm;M85-89;True;20.06;+1,1;Arne Ueland;Tønsberg FIK;34;Tønsberg;24.08.2019;finnes;;navn;80mh_68cm,80mh;6e42175c-a601-4a62-beb3-b31dbfa42a50;2006
+norgesrekorder-mvu.pdf;80m hekk / hurdles 68.6 cm;M85-89;False;20.0;-2,1;Jostein Haraldseid;Bækkelagets SK;35;Oslo/St;31.08.2021;finnes;;navn;80mh_68cm,80mh;32f33c70-c6a0-4fba-9487-300665a19bcb;2000
+norgesrekorder-mvu.pdf;100m hekk / hurdles 91.4 cm;M50-54;True;15.33;-0,2;Frode Holt;IF Sturla;64;Aarhus, DEN;02.08.2017;finnes;;navn;100mh_91_4cm,100mh;0c00e2c4-f308-46bf-a477-14cb69fc4f44;1533
+norgesrekorder-mvu.pdf;100m hekk / hurdles 91.4 cm;M55-59;True;15.17;-1,9;Frode Holt;IF Sturla;64;Jesolo, ITA;12.09.2019;finnes;;navn;100mh_91_4cm,100mh;0c00e2c4-f308-46bf-a477-14cb69fc4f44;1517
+norgesrekorder-mvu.pdf;100m hekk / hurdles 84.0 cm;M60-64;True;15.94;+1,3;Frode Holt;IF Sturla;64;Kristiansand;29.06.2025;finnes;;navn;100mh_84cm,100mh;0c00e2c4-f308-46bf-a477-14cb69fc4f44;1594
+norgesrekorder-mvu.pdf;100m hekk / hurdles 84.0 cm;M65-69;True;18.21;-0,4;Svein Høilo;Oslo IL;27;Kristiansand;29.06.1992;mangler;;navn;100mh_84cm,100mh;a1ede781-d778-4dd1-b791-fb7745c13485;1821
+norgesrekorder-mvu.pdf;100m hekk / hurdles 84.0 cm;M65-69;False;17.7;;Gudmund Skrivervik;Stryn T&IL;21;;.1986;ufullstendig dato;;;100mh_84cm,100mh;;
+norgesrekorder-mvu.pdf;110m hekk / hurdles 106.7 cm;M35-39;True;15.18;-0,8;Per Olaf Nicolaisen;IK Tjalve;61;Oslo/Bi;14.05.1996;mangler;;navn;110mh_106_7cm,110mh;64679c82-59d9-4837-982c-e3b149be7978;1518
+norgesrekorder-mvu.pdf;110m hekk / hurdles 106.7 cm;M35-39;False;14.8;;Håkon Fimland;Førde IL;42;Førde;09.08.1978;mangler;;navn;110mh_106_7cm,110mh;1ccbc155-e810-4658-82e5-2e1003d46934;1480
+norgesrekorder-mvu.pdf;110m hekk / hurdles 99.1 cm;M35-39;True;16.39;+1,6;Magnus Dehli Vigeland;Oslostudentenes IK;78;Finnfjordbotn;28.06.2015;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;110m hekk / hurdles 99.1 cm;M40-44;True;15.82;+1,62;Olav Grasbakken;Raufoss IL;45;Oslo/Bi;09.08.1986;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;110m hekk / hurdles 99.1 cm;M40-44;False;15.6;+0,42;Olav Grasbakken;Raufoss IL;45;Trondheim/Le;30.07.1988;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;110m hekk / hurdles 99.1 cm;M45-49;True;16.84;;Audun Hopland;Asker SK;52;Oslo/St;08.08.1998;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;110m hekk / hurdles 99.1 cm;M45-49;False;16.4;-3,6;Olav Grasbakken;Raufoss IL;45;Kristiansand;11.08.1990;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;200m hekk / hurdles 68.6 cm;M80-84;True;36.84;-1,2;Trond Einar Furuly;IL Stålkameratene;44;Stjørdal;22.06.2024;finnes;;navn;200mh_68cm,200mh;20fa4ac3-ddbe-4f5d-a995-c56337d0e75d;3684
+norgesrekorder-mvu.pdf;200m hekk / hurdles 68.6 cm;M85-89;True;52.31;-3,0;Jostein Haraldseid;Bækkelagets SK;35;Tampere, FIN;05.07.2022;finnes;;navn;200mh_68cm,200mh;32f33c70-c6a0-4fba-9487-300665a19bcb;5231
+norgesrekorder-mvu.pdf;300m hekk / hurdles 76.2 cm;M60-64;True;46.61;;Svein Høilo;Oslo IL;27;Melbourne, AUS;01.12.1987;mangler;;navn;300mh_76_2cm,300mh;a1ede781-d778-4dd1-b791-fb7745c13485;4661
+norgesrekorder-mvu.pdf;300m hekk / hurdles 76.2 cm;M65-69;True;50.01;;Svein Høilo;Oslo IL;27;Miyazaki, JPN;13.10.1993;mangler;;navn;300mh_76_2cm,300mh;a1ede781-d778-4dd1-b791-fb7745c13485;5001
+norgesrekorder-mvu.pdf;300m hekk / hurdles 76.2 cm;M70-74;True;54.99;;Trygve Syversen;Ski IL;22;Bjørkelangen;09.08.1992;mangler;;navn;300mh_76_2cm,300mh;fdb6cc81-7344-4edc-ac95-b280e7f8df84;5499
+norgesrekorder-mvu.pdf;300m hekk / hurdles 76.2 cm;M75-79;True;57.69;;Gudmund Skrivervik;Gloppen FIL;21;Lillehammer;16.08.1997;mangler;;navn;300mh_76_2cm,300mh;07ef86c5-12d7-4931-9102-6659cac69e66;5769
+norgesrekorder-mvu.pdf;300m hekk / hurdles 68.6 cm;M70-74;True;53.01;;Jostein Haraldseid;Bækkelagets SK;35;Ravnanger;26.06.2005;mangler;;navn;300mh_68cm,300mh;32f33c70-c6a0-4fba-9487-300665a19bcb;5301
+norgesrekorder-mvu.pdf;300m hekk / hurdles 68.6 cm;M75-79;True;55.98;;Erik Wagner-Larsen;IL Gular;44;Jesolo, ITA;07.09.2019;finnes;;navn;300mh_68cm,300mh;0e6ae4c9-36c8-423e-ad9e-8826ac695b1a;5598
+norgesrekorder-mvu.pdf;300m hekk / hurdles 68.6 cm;M80-84;True;67.30;;Gudmund Skrivervik;Gloppen FIL;21;Carolina, PUR;05.07.2003;mangler;;navn;300mh_68cm,300mh;07ef86c5-12d7-4931-9102-6659cac69e66;6730
+norgesrekorder-mvu.pdf;400m hekk / hurdles 91.4 cm;M35-39;True;54.48;;Olav Grasbakken;Raufoss IL;45;Bodø;04.07.1980;mangler;;navn;400mh_91_4cm,400mh;3854befc-a3a2-4dc9-a729-9ca71cb628a3;5448
+norgesrekorder-mvu.pdf;400m hekk / hurdles 91.4 cm;M35-39;False;54.2;;Olav Grasbakken;Raufoss IL;45;Raufoss;30.05.1982;mangler;;navn;400mh_91_4cm,400mh;3854befc-a3a2-4dc9-a729-9ca71cb628a3;5420
+norgesrekorder-mvu.pdf;400m hekk / hurdles 91.4 cm;M40-44;True;55.74;;Olav Grasbakken;Raufoss IL;45;Lillehammer;11.06.1988;mangler;;navn;400mh_91_4cm,400mh;3854befc-a3a2-4dc9-a729-9ca71cb628a3;5574
+norgesrekorder-mvu.pdf;400m hekk / hurdles 91.4 cm;M40-44;False;55.4;;Olav Grasbakken;Raufoss IL;45;Raufoss;05.10.1985;mangler;;navn;400mh_91_4cm,400mh;3854befc-a3a2-4dc9-a729-9ca71cb628a3;5540
+norgesrekorder-mvu.pdf;400m hekk / hurdles 91.4 cm;M45-49;True;58.58;;Olav Grasbakken;Raufoss IL;45;Byrkjelo;11.08.1991;mangler;;navn;400mh_91_4cm,400mh;3854befc-a3a2-4dc9-a729-9ca71cb628a3;5858
+norgesrekorder-mvu.pdf;400m hekk / hurdles 91.4 cm;M45-49;False;58.1;;Olav Grasbakken;Raufoss IL;45;Kristiansand;12.08.1990;mangler;;navn;400mh_91_4cm,400mh;3854befc-a3a2-4dc9-a729-9ca71cb628a3;5810
+norgesrekorder-mvu.pdf;400m hekk / hurdles 84.0 cm;M50-54;True;59.26;;Johan Petter Hesselberg;Byåsen IL;32;Strasbourg, FRA;14.07.1982;mangler (ny utøver);;;400mh_84cm,400mh;;5926
+norgesrekorder-mvu.pdf;400m hekk / hurdles 84.0 cm;M55-59;True;66.98;;Hilmar Knudsen;Malvik IL;31;Pori, FIN;01.08.1987;mangler (ny utøver);;;400mh_84cm,400mh;;6698
+norgesrekorder-mvu.pdf;2000m hinder / steeplechase 76.2 cm;M60-64;True;7:01.22;;Nils Undersåker;Inderøy IL;39;Jyväskylä, FIN;15.07.2000;mangler;;navn;2000mhinder_76_2cm,2000mhinder;528ac82f-bd2e-4200-8667-692f19bfea6c;42122
+norgesrekorder-mvu.pdf;2000m hinder / steeplechase 76.2 cm;M65-69;True;7:47.24;;Gunnar Gaulen;FIL AKS-77;41;Misano, ITA;15.09.2007;mangler;;navn;2000mhinder_76_2cm,2000mhinder;0bffec35-305d-4d05-be4b-963a2a885224;46724
+norgesrekorder-mvu.pdf;2000m hinder / steeplechase 76.2 cm;M70-74;True;8:28.48;;Ari Valdemarsson;IL Flint;33;Århus, DEN;01.08.2004;mangler (ny utøver);;;2000mhinder_76_2cm,2000mhinder;;50848
+norgesrekorder-mvu.pdf;2000m hinder / steeplechase 76.2 cm;M75-79;True;10:19.54;;Aksel Røste;IL Runar;35;Sacramento, USA;17.07.2011;mangler;;fornavn+etternavn;2000mhinder_76_2cm,2000mhinder;6169a755-33b2-4e78-ace6-3959945b4410;61954
+norgesrekorder-mvu.pdf;3000m hinder / steeplechase 91.4 cm;M35-39;True;8:34.56;;Tom Erling Kårbø;Stord IL;89;Brüssel, BEL;25.05.2024;finnes;;navn;3000mhinder_91_4cm,3000mhinder;6752d04e-8726-4eb1-981d-cd7d8e27f06b;51456
+norgesrekorder-mvu.pdf;3000m hinder / steeplechase 91.4 cm;M40-44;True;9:18.2;;Nils Undersåker;Inderøy IL;39;Steinkjer;06.09.1980;mangler;;navn;3000mhinder_91_4cm,3000mhinder;528ac82f-bd2e-4200-8667-692f19bfea6c;55820
+norgesrekorder-mvu.pdf;3000m hinder / steeplechase 91.4 cm;M45-49;True;9:16.1;;Nils Undersåker;Inderøy IL;39;Ørsta;02.09.1984;finnes;;navn;3000mhinder_91_4cm,3000mhinder;528ac82f-bd2e-4200-8667-692f19bfea6c;55610
+norgesrekorder-mvu.pdf;3000m hinder / steeplechase 91.4 cm;M50-54;True;9:38.6;;Nils Undersåker;Inderøy IL;39;Steinkjer;10.06.1989;mangler;;navn;3000mhinder_91_4cm,3000mhinder;528ac82f-bd2e-4200-8667-692f19bfea6c;57860
+norgesrekorder-mvu.pdf;3000m hinder / steeplechase 91.4 cm;M55-59;True;10:28.18;;Nils Undersåker;Inderøy IL;39;Leirvik;06.08.1994;mangler;;navn;3000mhinder_91_4cm,3000mhinder;528ac82f-bd2e-4200-8667-692f19bfea6c;62818
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M35-39;True;11:18.45;;Erik Tysse;IL Norna Salhus;80;Fana;28.05.2015;avvik mot basen;"basen har 11:28.45 samme dag; en av dem er feil";navn;kappgang_3000_m,3000mg;bfca0999-9109-4955-8190-437a562041a3;67845
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M40-44;True;12:16.1;;Kjell Tysse;Søfteland T&IL;49;Fana;25.09.1990;mangler (ny utøver);;;kappgang_3000_m,3000mg;;73610
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M45-49;True;13:44.0;;Kjell Tysse;Søfteland T&IL;49;Fana;27.09.1994;mangler (ny utøver);;;kappgang_3000_m,3000mg;;82400
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M50-54;True;14:08.74;;Arild Fotland;Søfteland T&IL;59;Knarvik;01.10.2011;mangler;;navn;kappgang_3000_m,3000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;84874
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M55-59;True;14:28.2;;Håkon Foss Nilsen;T&IF Viking;21;Bergen/Sk;30.08.1978;mangler (ny utøver);;;kappgang_3000_m,3000mg;;86820
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M60-64;True;15:02.0;;Arild Fotland;Søfteland T&IL;59;Venezia, ITA;06.09.2019;mangler;;navn;kappgang_3000_m,3000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;90200
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M65-69;True;15:34.0;;Håkon Foss Nilsen;T&IF Viking;21;Fana;09.09.1987;mangler (ny utøver);;;kappgang_3000_m,3000mg;;93400
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M70-74;True;17:59.0;;Torkjell Spigseth;Sarpsborg IL;44;Lisleby;21.09.2015;finnes;;navn;kappgang_3000_m,3000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;107900
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M75-79;True;20.47,9;;Jan Rolstad;TIF Viking;50;Laksevåg;12.05.2025;finnes;;navn;kappgang_3000_m,3000mg;8661daf9-a841-4151-b00a-08419d79ad19;124790
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M80-84;True;19:03.1;;Sigurd Tørmoen;Nykirke IF;05;Nykirke;26.09.1987;mangler (ny utøver);;;kappgang_3000_m,3000mg;;114310
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M85-89;True;24:21.0;;Sigurd Tørmoen;Nykirke IF;05;Horten;12.09.1992;mangler (ny utøver);;;kappgang_3000_m,3000mg;;146100
+norgesrekorder-mvu.pdf;3000m kappgang / Race Walk;M95-99;True;30:57.0;;Harald Meinhardt;Costatrimmen;16;Drammen;26.08.2011;mangler (ny utøver);;;kappgang_3000_m,3000mg;;185700
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M35-39;True;19:15.33;;Erik Tysse;IL Norna Salhus;80;Ravnanger;29.07.2016;finnes;;navn;kappgang_5000_m,5000mg;bfca0999-9109-4955-8190-437a562041a3;115533
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M40-44;True;21:05.9;;Edgar Bruun;IL Frogg;05;Oslo/Bi;30.09.1945;mangler (ny utøver);;;kappgang_5000_m,5000mg;;126590
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M45-49;True;22:16.0;;Kjell Tysse;Søfteland T&IL;49;Lisleby;11.06.1995;mangler (ny utøver);;;kappgang_5000_m,5000mg;;133600
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M50-54;True;23:59.4;;Kjell Tysse;Søfteland T&IL;49;Steinkjer;02.07.1999;mangler (ny utøver);;;kappgang_5000_m,5000mg;;143940
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M55-59;True;24:46.1;;Håkon Foss Nilsen;T&IF Viking;21;Göteborg, SWE;09.08.1977;mangler (ny utøver);;;kappgang_5000_m,5000mg;;148610
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M60-64;True;25:00.34;;Arild Fotland;Søfteland T&IL;59;Venezia, ITA;06.09.2019;finnes;;navn;kappgang_5000_m,5000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;150034
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M65-69;True;26:29.2;;Håkon Foss Nilsen;T&IF Viking;21;Budapest, HUN;02.07.1990;mangler (ny utøver);;;kappgang_5000_m,5000mg;;158920
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M70-74;True;27:53.60;;Oddvar Sandvik;IL Frogg;17;Verona, ITA;26.06.1988;mangler (ny utøver);;;kappgang_5000_m,5000mg;;167360
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M75-79;True;32:13.93;;Torkjell Spigseth;Sarpsborg IL;44;Geithus;21.06.2019;finnes;;navn;kappgang_5000_m,5000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;193393
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M80-84;True;33:13.73;;Sigurd Tørmoen;Nykirke IF;05;Melbourne, AUS;04.12.1987;mangler (ny utøver);;;kappgang_5000_m,5000mg;;199373
+norgesrekorder-mvu.pdf;5000m kappgang / Race Walk;M85-89;True;39:56.1;;Sigurd Tørmoen;Nykirke IF;05;Bergen/Sk;15.08.1992;mangler (ny utøver);;;kappgang_5000_m,5000mg;;239610
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M35-39;True;41:02.69;;Trond Nymark;T&IF Viking;76;Fana;25.05.2011;mangler;;navn;kappgang_10000_m,10000mg;51d43bbb-441c-427e-9db4-d99b116696dc;246269
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M40-44;True;42:41.2;;Edgar Bruun;IL Frogg;05;Oslo/Bi;30.09.1945;mangler (ny utøver);;;kappgang_10000_m,10000mg;;256120
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M45-49;True;45:47.4;;Kjell Tysse;Søfteland T&IL;49;Ågotnes;13.06.1994;mangler (ny utøver);;;kappgang_10000_m,10000mg;;274740
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M50-54;True;49:32.3;;Arild Fotland;Søfteland T&IL;59;Indre Arna;04.06.2011;mangler;;navn;kappgang_10000_m,10000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;297230
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M55-59;True;53:00.0;;Håkon Foss Nilsen;T&IF Viking;21;Fana;10.06.1977;mangler (ny utøver);;;kappgang_10000_m,10000mg;;318000
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M60-64;True;52:41.33;;Arild Fotland;Søfteland T&IL;59;Os;26.10.2019;finnes;;navn;kappgang_10000_m,10000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;316133
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M65-69;True;56:08.0;;Håkon Foss Nilsen;T&IF Viking;21;Bergen/Sk;29.08.1987;mangler (ny utøver);;;kappgang_10000_m,10000mg;;336800
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M70-74;True;59:31.0;;Oddvar Sandvik;IL Frogg;17;Bergen/Sk;29.08.1987;mangler (ny utøver);;;kappgang_10000_m,10000mg;;357100
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M75-79;True;75:09.00;;Arvid Bjørsvik;T&IF Viking;43;Borås, SWE;08.07.2018;finnes;;navn;kappgang_10000_m,10000mg;b3029163-4b98-46a9-849c-68a957671ea6;450900
+norgesrekorder-mvu.pdf;10000m kappgang / Race Walk;M80-84;True;69:13.0;;Sigurd Tørmoen;Nykirke IF;05;Frederiksberg, DEN;04.06.1988;mangler (ny utøver);;;kappgang_10000_m,10000mg;;415300
+norgesrekorder-mvu.pdf;15000m kappgang / Race Walk;M35-39;True;1:08:51.0;;Erling Andersen;Søfteland T&IL;60;Fana;22.05.1999;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;15000m kappgang / Race Walk;M40-44;True;1:04:54.0;;Edgar Bruun;IL Frogg;05;Oslo/Bi;30.09.1945;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;15000m kappgang / Race Walk;M45-49;True;1:11:28.0;;Kjell Tysse;Søfteland T&IL;49;Bergen/Sk;07.05.1994;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;15000m kappgang / Race Walk;M50-54;True;1:17:23.3;;Kjell Tysse;Søfteland T&IL;49;Ulvik;18.06.1999;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;15000m kappgang / Race Walk;M55-59;True;1:28:59.0;;Arthur Lillefosse;T&IF Viking;44;Kristiansand;18.08.2000;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;15000m kappgang / Race Walk;M60-64;True;1:34:39.6;;Arthur Lillefosse;T&IF Viking;44;Fana;02.07.2004;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;20000m kappgang / Race Walk;M35-39;True;1:33:08.9;;Per Ola Sverre;Oslo GK;46;Fana;11.05.1985;mangler;;navn;kappgang_20000_m;533252a4-ae60-43fa-9b08-2e3791a7c811;558890
+norgesrekorder-mvu.pdf;20000m kappgang / Race Walk;M40-44;True;1:30:46.6;;Kjell Tysse;Søfteland T&IL;49;Fana;26.05.1990;mangler (ny utøver);;;kappgang_20000_m;;544660
+norgesrekorder-mvu.pdf;20000m kappgang / Race Walk;M45-49;True;1:35:24.1;;Kjell Tysse;Søfteland T&IL;49;Bergen/Sk;07.05.1994;mangler (ny utøver);;;kappgang_20000_m;;572410
+norgesrekorder-mvu.pdf;20000m kappgang / Race Walk;M50-54;True;1:42:25.2;;Kjell Tysse;Søfteland T&IL;49;Ulvik;18.06.1999;mangler (ny utøver);;;kappgang_20000_m;;614520
+norgesrekorder-mvu.pdf;20000m kappgang / Race Walk;M55-59;True;2:01:16.0;;Arthur Lillefosse;T&IF Viking;44;Kristiansand;18.08.2000;mangler;;fornavn+etternavn;kappgang_20000_m;f70d87cc-efc3-4d67-86bc-85388ddc2684;727600
+norgesrekorder-mvu.pdf;20000m kappgang / Race Walk;M60-64;True;2:07:37.7;;Arthur Lillefosse;T&IF Viking;44;Fana;02.07.2004;mangler;;fornavn+etternavn;kappgang_20000_m;f70d87cc-efc3-4d67-86bc-85388ddc2684;765770
+norgesrekorder-mvu.pdf;25000m kappgang / Race Walk;M35-39;True;2:01:29.6;;Edgar Bruun;IL Frogg;05;Söderhamn, SWE;27.10.1940;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;25000m kappgang / Race Walk;M40-44;True;2:02:36.0;;Edgar Bruun;IL Frogg;05;Bergen/Sk;29.09.1946;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;30000m kappgang / Race Walk;M35-39;True;2:42:54.0;;Rolf Jenssen;T&IF Viking;36;Fana;08.11.1975;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;30000m kappgang / Race Walk;M40-44;True;2:43:16.0;;Rolf Jenssen;T&IF Viking;36;Fana;17.09.1977;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;35000m kappgang / Race Walk;M40-44;True;3:13:21.0;;Rolf Jenssen;T&IF Viking;36;Fana;17.09.1977;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;50000m kappgang / Race Walk;M35-39;True;4:41:18.0;;Rolf Jenssen;T&IF Viking;36;Fana;08.11.1975;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;50000m kappgang / Race Walk;M40-44;True;4:53:08.0;;Rolf Jenssen;T&IF Viking;36;Fana;17.09.1977;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M35-39;True;12:06;;Erik Tysse;IL Norna Salhus;80;Bergen/Lungegårdsvann;13.06.2015;mangler;;navn;kappgang_3_km;bfca0999-9109-4955-8190-437a562041a3;72600
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M40-44;True;13:08;;Erling Andersen;Søfteland T&IL;60;Klokkarvik;27.05.1990;mangler;;navn;kappgang_3_km;771402ee-61bf-449b-b9f6-98920c4a7457;78800
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M45-49;True;13:34;;Kjell Tysse;Søfteland T&IL;49;Søfteland;11.09.1994;mangler (ny utøver);;;kappgang_3_km;;81400
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M50-54;True;14:20;;Arild Fotland;Søfteland T&IL;59;Søfteland;06.09.2009;mangler;;navn;kappgang_3_km;d263cb7a-8454-4e5a-932c-3b7619920b6d;86000
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M55-59;True;15:29;;Harald Persson;Trondheim GK;25;Trondheim/Lade;12.04.1980;mangler (ny utøver);;;kappgang_3_km;;92900
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M60-64;True;15:03;;Arild Fotland;Søfteland T&IL;59;Podebrady, CZE;06.04.2019;finnes;;navn;kappgang_3_km;d263cb7a-8454-4e5a-932c-3b7619920b6d;90300
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M65-69;True;17:26;;Arvid Bjørsvik;T&IF Viking;43;Søfteland;06.09.2009;mangler;;navn;kappgang_3_km;b3029163-4b98-46a9-849c-68a957671ea6;104600
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M70-74;True;17:42;;Einar O. Tobiassen;Kristiansand GK;14;Vågsbygd;17.04.1985;mangler (ny utøver);;;kappgang_3_km;;106200
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M75-79;True;21:55;;Kaare Hammer;Oslo GK;18;Oslo/Trasop;27.05.1993;mangler (ny utøver);;;kappgang_3_km;;131500
+norgesrekorder-mvu.pdf;3 km kappgang / Race Walk;M80-84;True;19:05;;Sigurd Tørmoen;Nykirke IF;05;Nykirke;14.05.1985;mangler (ny utøver);;;kappgang_3_km;;114500
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M35-39;True;20:08;;Erik Tysse;IL Norna Salhus;80;Bergen;13.08.2015;mangler;;navn;kappgang_5_km;bfca0999-9109-4955-8190-437a562041a3;120800
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M40-44;True;21:46;;Kjell Tysse;Søfteland T&IL;49;Søfteland;27.05.1990;mangler (ny utøver);;;kappgang_5_km;;130600
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M45-49;True;21:53;;Kjell Tysse;Søfteland T&IL;49;Klokkarvik;31.08.1995;mangler (ny utøver);;;kappgang_5_km;;131300
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M50-54;True;23:56;;Harald Persson;Trondheim GK;25;Trondheim/Lea;25.08.1977;mangler (ny utøver);;;kappgang_5_km;;143600
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M55-59;True;24:37;;Håkon Foss Nilsen;T&IF Viking;21;Søfteland;15.08.1978;mangler (ny utøver);;;kappgang_5_km;;147700
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M60-64;True;25:18;;Arild Fotland;Søfteland T&IL;59;Podebrady, CZE;06.04.2019;finnes;;navn;kappgang_5_km;d263cb7a-8454-4e5a-932c-3b7619920b6d;151800
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M65-69;True;26:40;;Håkon Foss Nilsen;T&IF Viking;21;Søfteland;04.09.1988;mangler (ny utøver);;;kappgang_5_km;;160000
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M70-74;True;28:25;;Einar O. Tobiassen;Kristiansand GK;14;Vågsbygd;.06.1985;ufullstendig dato;;;kappgang_5_km;;
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M75-79;True;33:38;;Einar Søfteland;Søfteland T&IL;30;Søfteland;10.04.2005;mangler (ny utøver);;;kappgang_5_km;;201800
+norgesrekorder-mvu.pdf;5 km kappgang / Race Walk;M80-84;True;33:34;;Sigurd Tørmoen;Nykirke IF;05;Fredrikstad/Bjørndalen;21.09.1988;mangler (ny utøver);;;kappgang_5_km;;201400
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M35-39;True;40:23;;Erik Tysse;IL Norna Salhus;80;Vallensbæk, DEN;02.05.2015;finnes med annen dato;2015-06-14;navn;kappgang_10_km;bfca0999-9109-4955-8190-437a562041a3;242300
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M40-44;True;43:29;;Kjell Tysse;Søfteland T&IL;49;Storetveit;08.04.1992;mangler (ny utøver);;;kappgang_10_km;;260900
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M45-49;True;46:07;;Edgar Bruun;IL Frogg;05;Oslo/Torshovparken;08.06.1952;mangler (ny utøver);;;kappgang_10_km;;276700
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M50-54;True;47:53;;Edgar Bruun;IL Frogg;05;Oslo/Sankt Hanshaugen;05.10.1955;mangler (ny utøver);;;kappgang_10_km;;287300
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M55-59;True;51:05;;Håkon Foss Nilsen;T&IF Viking;21;Søfteland;22.06.1976;mangler (ny utøver);;;kappgang_10_km;;306500
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M60-64;True;50:55;;Oddvar Sandvik;IL Frogg;17;Vretstorp, SWE;10.09.1977;mangler (ny utøver);;;kappgang_10_km;;305500
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M65-69;True;55:48;;Håkon Foss Nilsen;T&IF Viking;21;Gimo, SWE;11.07.1987;mangler (ny utøver);;;kappgang_10_km;;334800
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M70-74;True;58:46;;Oddvar Sandvik;IL Frogg;17;Gimo, SWE;11.07.1987;mangler (ny utøver);;;kappgang_10_km;;352600
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M75-79;True;70:47;;Sigurd Tørmoen;Nykirke IF;05;Larvik;09.08.1981;mangler (ny utøver);;;kappgang_10_km;;424700
+norgesrekorder-mvu.pdf;10 km kappgang / Race Walk;M80-84;True;66:46;;Sigurd Tørmoen;Nykirke IF;05;Trondheim/Dragvoll;05.07.1986;mangler (ny utøver);;;kappgang_10_km;;400600
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M35-39;True;1:00:37;;Erik Tysse;IL Norna Salhus;80;Vallensbæk, DEN;02.05.2015;mangler;;navn;kappgang_15_km;bfca0999-9109-4955-8190-437a562041a3;363700
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M40-44;True;1:07:35;;Kjell Tysse;Søfteland T&IL;49;Kyrksæterøra;03.08.1990;mangler (ny utøver);;;kappgang_15_km;;405500
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M45-49;True;1:12:11;;Kjell Tysse;Søfteland T&IL;49;Kalandseidet/Haugland;30.06.1994;mangler (ny utøver);;;kappgang_15_km;;433100
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M50-54;True;1:12:42;;Edgar Bruun;IL Frogg;05;Bergen/Lille Lungegårdsvan;14.10.1956;mangler (ny utøver);;;kappgang_15_km;;436200
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M55-59;True;1:24:32;;Arild Fotland;Søfteland T&IL;59;Kalandseidet/Haugland;01.06.2014;mangler;;navn;kappgang_15_km;d263cb7a-8454-4e5a-932c-3b7619920b6d;507200
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M60-64;True;1:22:30;;Einar O. Tobiassen;Kristiansand GK;14;Vågsbygd;28.08.1974;mangler (ny utøver);;;kappgang_15_km;;495000
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M65-69;True;1:33:51;;Arvid Bjørsvik;T&IF Viking;43;Os/Ulven;26.04.2009;mangler;;navn;kappgang_15_km;b3029163-4b98-46a9-849c-68a957671ea6;563100
+norgesrekorder-mvu.pdf;15 km kappgang / Race Walk;M70-74;True;1:40:09;;Arvid Bjørsvik;T&IF Viking;43;Os/Ulven;21.04.2013;mangler;;navn;kappgang_15_km;b3029163-4b98-46a9-849c-68a957671ea6;600900
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M35-39;True;1:20:52;;Erik Tysse;IL Norna Salhus;80;Vallensbæk, DEN;02.05.2015;finnes;;navn;kappgang_20_km,20kmg;bfca0999-9109-4955-8190-437a562041a3;485200
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M40-44;True;1:31:22;;Kjell Tysse;Søfteland T&IL;49;Kyrksæterøra;03.08.1990;mangler (ny utøver);;;kappgang_20_km,20kmg;;548200
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M45-49;True;1:35:37;;Kjell Tysse;Søfteland T&IL;49;Kalandseidet/Haugland;30.06.1994;mangler (ny utøver);;;kappgang_20_km,20kmg;;573700
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M50-54;True;1:43:01;;Edgar Bruun;IL Frogg;05;København, DEN;25.09.1955;mangler (ny utøver);;;kappgang_20_km,20kmg;;618100
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M55-59;True;1:45:49;;Håkon Foss Nilsen;T&IF Viking;21;Viareggio, ITA;15.09.1978;mangler (ny utøver);;;kappgang_20_km,20kmg;;634900
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M60-64;True;1:46:40;;Oddvar Sandvik;IL Frogg;17;Viareggio, ITA;15.09.1978;mangler (ny utøver);;;kappgang_20_km,20kmg;;640000
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M65-69;True;2:01:25;;Håkon Foss Nilsen;T&IF Viking;21;Budapest, HUN;06.07.1990;mangler (ny utøver);;;kappgang_20_km,20kmg;;728500
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M70-74;True;1:58:38;;Oddvar Sandvik;IL Frogg;17;Verona, ITA;01.07.1988;mangler (ny utøver);;;kappgang_20_km,20kmg;;711800
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M75-79;True;2:13:13;;Sigurd Tørmoen;Nykirke IF;05;San Juan, PR;.09.1983;ufullstendig dato;;;kappgang_20_km,20kmg;;
+norgesrekorder-mvu.pdf;20 km kappgang / Race Walk;M80-84;True;2:25:06;;Sigurd Tørmoen;Nykirke IF;05;Melbourne, AUS;29.11.1987;mangler (ny utøver);;;kappgang_20_km,20kmg;;870600
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M35-39;True;2:13:07;;Trond Nymark;T&IF Viking;76;London, GBR;11.08.2012;mangler;;navn;kappgang_30_km;51d43bbb-441c-427e-9db4-d99b116696dc;798700
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M40-44;True;2:31:55;;Edgar Bruun;IL Frogg;05;Sandvika;01.08.1946;mangler (ny utøver);;;kappgang_30_km;;911500
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M45-49;True;2:33:53;;Edgar Bruun;IL Frogg;05;Oslo/Ekeberg;30.06.1951;mangler (ny utøver);;;kappgang_30_km;;923300
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M50-54;True;2:47:19;;Edgar Bruun;IL Frogg;05;Oslo/Ekeberg;07.10.1956;mangler (ny utøver);;;kappgang_30_km;;1003900
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M55-59;True;3:08:51;;Rolf Jenssen;T&IF Viking;36;Upice, CZE;29.05.1993;mangler (ny utøver);;;kappgang_30_km;;1133100
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M60-64;True;3:23:12;;Arthur Lillefosse;T&IF Viking;44;Algarve, POR;15.05.2005;mangler;;fornavn+etternavn;kappgang_30_km;f70d87cc-efc3-4d67-86bc-85388ddc2684;1219200
+norgesrekorder-mvu.pdf;30 km kappgang / Race Walk;M65-69;True;3:22:46;;Arvid Bjørsvik;T&IF Viking;43;Thonville, FRA;13.05.2011;mangler;;navn;kappgang_30_km;b3029163-4b98-46a9-849c-68a957671ea6;1216600
+norgesrekorder-mvu.pdf;35 km kappgang / Race Walk;M35-39;True;2:35:04;;Trond Nymark;T&IF Viking;76;London, GBR;11.08.2012;mangler;;navn;kappgang_35_km;51d43bbb-441c-427e-9db4-d99b116696dc;930400
+norgesrekorder-mvu.pdf;35 km kappgang / Race Walk;M40-44;True;2:58:29;;Edgar Bruun;IL Frogg;05;Sandvika;01.08.1946;mangler (ny utøver);;;kappgang_35_km;;1070900
+norgesrekorder-mvu.pdf;35 km kappgang / Race Walk;M45-49;True;3:13:14;;Rolf Jenssen;T&IF Viking;36;Bergen/Årstad (Haukeland);17.10.1981;mangler (ny utøver);;;kappgang_35_km;;1159400
+norgesrekorder-mvu.pdf;35 km kappgang / Race Walk;M50-54;True;3:26:58;;Edgar Bruun;IL Frogg;05;Säffle, SWE;21.05.1957;mangler (ny utøver);;;kappgang_35_km;;1241800
+norgesrekorder-mvu.pdf;50 km kappgang / Race Walk;M35-39;True;3:48:37;;Trond Nymark;T&IF Viking;76;London, GBR;11.08.2012;finnes;;navn;kappgang_50_km;51d43bbb-441c-427e-9db4-d99b116696dc;1371700
+norgesrekorder-mvu.pdf;50 km kappgang / Race Walk;M40-44;True;4:12:37;;Kjell Tysse;Søfteland T&IL;49;Kyrksæterøra;05.08.1990;mangler (ny utøver);;;kappgang_50_km;;1515700
+norgesrekorder-mvu.pdf;50 km kappgang / Race Walk;M45-49;True;4:41:51;;Edgar Bruun;IL Frogg;05;Podebrady, CZE;24.08.1952;mangler (ny utøver);;;kappgang_50_km;;1691100
+norgesrekorder-mvu.pdf;50 km kappgang / Race Walk;M50-54;True;4:45:59;;Edgar Bruun;IL Frogg;05;Velje, DEN;08.09.1957;mangler (ny utøver);;;kappgang_50_km;;1715900
+norgesrekorder-mvu.pdf;50 km kappgang / Race Walk;M55-59;True;5:19:32;;Harald Hoffengh;Oslo GK;95;Oslo/Jordal;25.06.1950;mangler (ny utøver);;;kappgang_50_km;;1917200
+norgesrekorder-mvu.pdf;50 km kappgang / Race Walk;M60-64;True;6:13:48;;(Karl) Arthur Andersen;Moss IL;89;Oslo/Jordal;25.06.1950;mangler (ny utøver);;;kappgang_50_km;;2242800
+norgesrekorder-mvu.pdf;100 km kappgang / Race Walk;M35-39;True;10:54:22;;Rolf Jenssen;T&IF Viking;36;Lugano, SUI;21.10.1974;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;Høyde / High Jump;M35-39;True;2.05;;Per Kristian Vik;Os TF;47;Fana;19.06.1983;mangler;;navn;hoyde;eaa1267c-32e2-4052-b766-3f528b3a2f22;2050
+norgesrekorder-mvu.pdf;Høyde / High Jump;M40-44;True;1.99;;Per Kristian Vik;Os TF;47;Garnmertingen, GER;16.06.1987;mangler;;navn;hoyde;eaa1267c-32e2-4052-b766-3f528b3a2f22;1990
+norgesrekorder-mvu.pdf;Høyde / High Jump;M45-49;True;1.90;;Per Kristian Vik;Os TF;47;Kristiansand;29.06.1992;mangler;;navn;hoyde;eaa1267c-32e2-4052-b766-3f528b3a2f22;1900
+norgesrekorder-mvu.pdf;Høyde / High Jump;M50-54;True;1.80;;Bjarte Holmeide;Tingvoll FIK;44;Torvikbukt;03.08.1997;mangler;;navn;hoyde;f3d3fa3c-bb14-4249-a33b-b1fac450112a;1800
+norgesrekorder-mvu.pdf;Høyde / High Jump;M50-54;False;1.80;;Per Erling Eide;IF Fram, Larvik;51;Tønsberg;05.08.2004;mangler;;navn;hoyde;8e9c4aa2-8cd8-4a47-95ff-651959cd4689;1800
+norgesrekorder-mvu.pdf;Høyde / High Jump;M55-59;True;1.76;;Per Erling Eide;IF Fram, Larvik;51;Larvik;31.05.2006;mangler;;navn;hoyde;8e9c4aa2-8cd8-4a47-95ff-651959cd4689;1760
+norgesrekorder-mvu.pdf;Høyde / High Jump;M60-64;True;1.68;;Per Erling Eide;IF Fram, Larvik;51;Tønsberg;24.09.2011;finnes;;navn;hoyde;8e9c4aa2-8cd8-4a47-95ff-651959cd4689;1680
+norgesrekorder-mvu.pdf;Høyde / High Jump;M65-69;True;1.61;;Ulf Tudem;Sandefjord T&IF;51;Larvik/Lo;03.08.2018;finnes;;navn;hoyde;7729ff2c-6b39-4634-89cf-24a1c72df9f9;1610
+norgesrekorder-mvu.pdf;Høyde / High Jump;M70-74;True;1.58;;Ulf Tudem;Tønsberg FIK;51;Askim;07.05.2022;finnes;;navn;hoyde;7729ff2c-6b39-4634-89cf-24a1c72df9f9;1580
+norgesrekorder-mvu.pdf;Høyde / High Jump;M75-79;True;1.42;;Harald Søbstad;IL Norodd;32;Riccione, ITA;09.09.2007;mangler;;navn;hoyde;7028ee0c-2271-4caf-a2dd-33abb0889ec2;1420
+norgesrekorder-mvu.pdf;Høyde / High Jump;M80-84;True;1.31;;Gudmund Skrivervik;Gloppen FIL;21;Bismo;04.08.2001;mangler;;navn;hoyde;07ef86c5-12d7-4931-9102-6659cac69e66;1310
+norgesrekorder-mvu.pdf;Høyde / High Jump;M85-89;True;1.19;;Gudmund Skrivervik;Gloppen FIL;21;Geithus;01.07.2006;mangler;;navn;hoyde;07ef86c5-12d7-4931-9102-6659cac69e66;1190
+norgesrekorder-mvu.pdf;Høyde / High Jump;M90-94;True;1.05;;Gudmund Skrivervik;Gloppen FIL;21;Sacramento, USA;11.07.2011;mangler;;navn;hoyde;07ef86c5-12d7-4931-9102-6659cac69e66;1050
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M35-39;True;4.87;;Alexander Grelland;Spydeberg IL;66;Lyngby, DEN;11.05.2003;mangler;;navn;stav;7e2f0ac5-da28-4b84-8b7e-51bcc02bbdea;4870
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M40-44;True;4.77;;Alexander Grelland;Spydeberg IL;66;København, DEN;10.06.2006;mangler;;navn;stav;7e2f0ac5-da28-4b84-8b7e-51bcc02bbdea;4770
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M45-49;True;3.90;;Einar Johan Svendgård;Skogn IL;49;Buffalo, USA;14.07.1995;mangler;;navn;stav;e7f52deb-5cda-4615-8d3e-16f3c2c37319;3900
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M50-54;True;3.56;;Oddvar Hårde;Stord IL;69;Leirvik;03.06.2020;finnes;;navn;stav;3933c726-badf-4807-aa89-ad2ad015cf61;3560
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M55-59;True;3.25;;Oddvar Hårde;Stord IL;69;Leirvik;16.09.2024;finnes;;navn;stav;3933c726-badf-4807-aa89-ad2ad015cf61;3250
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M60-64;True;3.10;;Knut Henrik Skramstad;Kongsberg IF;37;Huddinge, SWE;28.06.1998;mangler;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;3100
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M65-69;True;2.92;;Knut Henrik Skramstad;Kongsberg IF;37;Tønsberg;04.08.2002;mangler;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2920
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M70-74;True;2.82;;Knut Henrik Skramstad;Kongsberg IF;37;Ravnanger;15.06.2007;mangler;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2820
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M75-79;True;2.85;;Ole Kristian Skaug;Moss IL;43;Stjørdal;24.08.2018;finnes;;navn;stav;da64d972-5571-40d1-8221-31f0cf409008;2850
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M80-84;True;2.40;;Knut Henrik Skramstad;Kongsberg IF;37;Málaga, ESP;12.09.2018;finnes;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2400
+norgesrekorder-mvu.pdf;Stav / Pole Vault;M85-89;True;1.90;;Knut Henrik Skramstad;Kongsberg IF;37;Tampere, FIN;06.07.2022;finnes;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;1900
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M35-39;True;7.49;+2,0;Kristen Fløgstad;Søgne IL;47;Øvre Årdal;26.08.1984;mangler;;navn;lengde;5f196e4b-6f53-4232-8e8f-8be18489a6d8;7490
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M40-44;True;6.95;;Kristen Fløgstad;Søgne IL;47;Kristiansand;24.06.1988;mangler;;navn;lengde;5f196e4b-6f53-4232-8e8f-8be18489a6d8;6950
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M45-49;True;6.71;+1,7;Kristen Fløgstad;Søgne IL;47;Kristiansand;25.06.1996;mangler;;navn;lengde;5f196e4b-6f53-4232-8e8f-8be18489a6d8;6710
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M50-54;True;6.63;+1,3;Kristen Fløgstad;Søgne IL;47;Lillehammer;15.08.1997;mangler;;navn;lengde;5f196e4b-6f53-4232-8e8f-8be18489a6d8;6630
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M55-59;True;5.94;+1,3;Oddvar Viulsrød;Tønsberg FIK;64;Tønsberg;31.08.2019;finnes;;navn;lengde;48dcae19-ff86-4173-a40a-5794215cda45;5940
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M60-64;True;5.61;+0,0;Oddvar Viulsrød;Tønsberg FIK;64;Larvik/Lo;24.08.2025;finnes;;navn;lengde;48dcae19-ff86-4173-a40a-5794215cda45;5610
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M65-69;True;5.32;;Gudmund Skrivervik;Stryn T&IL;21;Byrkjelo;24.08.1986;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;5320
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M70-74;True;4.98;-1,5;Gudmund Skrivervik;Hornindal IL;21;Turku, FIN;25.07.1991;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;4980
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M75-79;True;4.27;+0,8;Gudmund Skrivervik;Hornindal IL;21;Malmö, SWE;26.07.1996;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;4270
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M80-84;True;3.90;;Gudmund Skrivervik;Gloppen FIL;21;Bismo;03.08.2001;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;3900
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M85-89;True;3.77;+1,6;Gudmund Skrivervik;Gloppen FIL;21;Poznan, POL;23.07.2006;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;3770
+norgesrekorder-mvu.pdf;Lengde / Long Jump;M90-94;True;2.78;+0,0;Gudmund Skrivervik;Gloppen FIL;21;Sacramento, USA;08.07.2011;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;2780
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M35-39;True;15.52;+1,0;Kristen Fløgstad;Søgne IL;47;Oslo/Bi;21.07.1982;mangler;;navn;tresteg;5f196e4b-6f53-4232-8e8f-8be18489a6d8;15520
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M40-44;True;14.84;+1,0;Kristen Fløgstad;Søgne IL;47;Tønsberg;13.05.1989;mangler;;navn;tresteg;5f196e4b-6f53-4232-8e8f-8be18489a6d8;14840
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M45-49;True;13.22;;Odd Bergh;Tønsberg FIK;37;Larvik/Lo;15.06.1982;mangler;;navn;tresteg;6567dd48-98c0-49e4-bfaa-3a093708b588;13220
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M50-54;True;13.50;+1,4;Kristen Fløgstad;Søgne IL;47;Kristiansand;31.05.1997;mangler;;navn;tresteg;5f196e4b-6f53-4232-8e8f-8be18489a6d8;13500
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M55-59;True;12.30;;Jakob Rypdal;Tresfjord IL;26;Brighton, GBR;20.08.1984;mangler;;navn;tresteg;784aff51-80fe-42e0-9c32-feeac17cdb33;12300
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M60-64;True;12.01;;Jakob Rypdal;Tresfjord IL;26;Melbourne, AUS;05.12.1987;mangler;;navn;tresteg;784aff51-80fe-42e0-9c32-feeac17cdb33;12010
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M65-69;True;11.11;+1,0;Stein Tore Klungland;Ullensaker/Kisa IL;58;Geithus;25.06.2023;finnes;;navn;tresteg;62c0c06d-d41b-4272-b218-dbc06bc88716;11110
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M70-74;True;10.77;+1,0;Arne Tefre;Førde IL;55;Câmara de Lobos, POR;19.10.2025;finnes;;navn;tresteg;cf0d3929-8257-4421-9c25-7a5d128f2188;10770
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M75-79;True;9.48;;Teodor Solheim;IL Jotun;15;Budapest, HUN;04.07.1990;mangler (ny utøver);;;tresteg;;9480
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M80-84;True;8.36;+0,2;Trond Einar Furuly;IL Stålkameratene;44;Stjørdal;13.06.2024;finnes;;navn;tresteg;20fa4ac3-ddbe-4f5d-a995-c56337d0e75d;8360
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M85-89;True;6.73;+0,0;Trygve Monstad;IL Gular;31;Knarvik;02.10.2016;finnes;;navn;tresteg;35b853e7-8765-442f-a408-05434036d01d;6730
+norgesrekorder-mvu.pdf;Tresteg / Triple Jump;M90-94;True;5.01;+1,9;Jostein Haraldseid;Bækkelagets SK;35;Kristiansand;29.06.2025;finnes;;navn;tresteg;32f33c70-c6a0-4fba-9487-300665a19bcb;5010
+norgesrekorder-mvu.pdf;Kule / Shot Put 7.26 kg;M35-39;True;19.29;;Bjørn Bang Andersen;IL i BUL;37;Stavanger/St;12.08.1972;finnes;;navn;kule_7_26kg,kule;f567c262-f8f3-4161-a1af-6383fedaf768;19290
+norgesrekorder-mvu.pdf;Kule / Shot Put 7.26 kg;M40-44;True;18.39;;Jan Sagedal;IK Tjalve;60;Steinkjer;13.08.2000;mangler;;navn;kule_7_26kg,kule;af5f16a3-d14c-4d76-98b4-7f76853db487;18390
+norgesrekorder-mvu.pdf;Kule / Shot Put 7.26 kg;M45-49;True;17.46;;Bjørn Bang Andersen;IL i BUL;37;Meisingset;03.07.1982;mangler;;navn;kule_7_26kg,kule;f567c262-f8f3-4161-a1af-6383fedaf768;17460
+norgesrekorder-mvu.pdf;Kule / Shot Put 6.0 kg;M50-54;True;17.16;;Bjørn Bang Andersen;IF Urædd;37;Ålesund;09.08.1987;mangler;;navn;kule_6kg,kule;f567c262-f8f3-4161-a1af-6383fedaf768;17160
+norgesrekorder-mvu.pdf;Kule / Shot Put 6.0 kg;M55-59;True;14.70;;Iver Hytten;Tønsberg FIK;66;Tønsberg;29.04.2023;finnes;;navn;kule_6kg,kule;e6f8a7bc-fa27-4742-9193-0595c44f2edc;14700
+norgesrekorder-mvu.pdf;Kule / Shot Put 5.0 kg;M60-64;True;15.53;;Knut Olav Bjorvatn;Tvedestrand T&IF;61;Kristiansand;22.07.2021;finnes;;navn;kule_5kg,kule;531ce256-5434-4dbb-b8ce-b1c67f55de2a;15530
+norgesrekorder-mvu.pdf;Kule / Shot Put 5.0 kg;M65-69;True;14.50;;Arild Busterud;Løten Friidrett;48;Perth, AUS;29.10.2016;finnes;;navn;kule_5kg,kule;c9f8ac2a-1351-4317-b150-03dbc7e8825f;14500
+norgesrekorder-mvu.pdf;Kule / Shot Put 4.0 kg;M70-74;True;15.16;;Arild Busterud;Løten Friidrett;48;Borås, SWE;07.07.2018;finnes;;navn;kule_4kg,kule;c9f8ac2a-1351-4317-b150-03dbc7e8825f;15160
+norgesrekorder-mvu.pdf;Kule / Shot Put 4.0 kg;M75-79;True;13.78;;Arild Busterud;Løten Friidrett;48;Geithus;24.06.2023;finnes;;navn;kule_4kg,kule;c9f8ac2a-1351-4317-b150-03dbc7e8825f;13780
+norgesrekorder-mvu.pdf;Kule / Shot Put 4.0 kg;M80-84;True;10.60;;Erling Svennevik;Oslo IL;18;Rolvsrud;23.09.1998;mangler (ny utøver);;;kule_4kg,kule;;10600
+norgesrekorder-mvu.pdf;Kule / Shot Put 4.0 kg;M85-89;True;9.30;;Erling Svennevik;Oslo IL;18;Moss;17.09.2003;mangler (ny utøver);;;kule_4kg,kule;;9300
+norgesrekorder-mvu.pdf;Kule / Shot Put 4.0 kg;M90-94;True;7.33;;Torgeir Brandvold;Oslo IL;13;Heggedal/Gj;08.05.2003;mangler;;navn;kule_4kg,kule;65fa42e4-2179-4dd1-a9c9-166254d2702f;7330
+norgesrekorder-mvu.pdf;Kule / Shot Put 3.0 kg;M80-84;True;12.18;;Kjartan Sølvberg;Sandefjord T&IF;36;Geithus;12.08.2016;finnes;;navn;kule_3kg,kule;213c5769-3e36-46b3-8c36-64b01cb8f7a2;12180
+norgesrekorder-mvu.pdf;Kule / Shot Put 3.0 kg;M85-89;True;10.14;;Gudmund Skrivervik;Gloppen FIL;21;Geithus;30.06.2006;mangler;;navn;kule_3kg,kule;07ef86c5-12d7-4931-9102-6659cac69e66;10140
+norgesrekorder-mvu.pdf;Kule / Shot Put 3.0 kg;M90-94;True;8.88;;Gudmund Skrivervik;Gloppen FIL;21;Sacramento, USA;08.07.2011;mangler;;navn;kule_3kg,kule;07ef86c5-12d7-4931-9102-6659cac69e66;8880
+norgesrekorder-mvu.pdf;Kule / Shot Put 3.0 kg;M95-99;True;6.28;;Torgeir Brandvold;Oslo IL;13;Tønsberg;15.08.2008;mangler;;navn;kule_3kg,kule;65fa42e4-2179-4dd1-a9c9-166254d2702f;6280
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 2.0 kg;M35-39;True;68.50;;Knut Hjeltnes;IL Gular;51;Salinas, USA;12.04.1986;finnes;;navn;diskos_2kg,diskos;3a1de613-8aad-48f2-9830-ec9fe4ff98ec;68500
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 2.0 kg;M40-44;True;64.22;;Svein Inge Valvik;IK Tjalve;56;Haugesund;21.06.1996;mangler;;navn;diskos_2kg,diskos;0239c223-e3f0-4e81-894f-ff6d9bce9103;64220
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 2.0 kg;M45-49;True;62.52;;Knut Hjeltnes;Bergen FIK;51;Modesto, USA;10.05.1997;mangler;;navn;diskos_2kg,diskos;3a1de613-8aad-48f2-9830-ec9fe4ff98ec;62520
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 2.0 kg;M50-54;True;54.40;;Svein Inge Valvik;Urædd Friidrett;56;Porsgrunn/Kj;27.09.2009;mangler;;navn;diskos_2kg,diskos;0239c223-e3f0-4e81-894f-ff6d9bce9103;54400
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 2.0 kg;M55-59;True;48.15;;Svein Inge Valvik;IK Tjalve;56;Spikkestad;15.10.2011;finnes;;navn;diskos_2kg,diskos;0239c223-e3f0-4e81-894f-ff6d9bce9103;48150
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.5 kg;M50-54;True;56.48;;Bjørn Terje Pay;IL ROS;74;Ballerup, DEN;30.05.2025;finnes;;navn;diskos_1_5kg,diskos;0d4f212b-1216-4794-a9b2-ee14815048a3;56480
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.5 kg;M55-59;True;47.90;;Leif Gundersrud;IL Tyrving;34;Oslo/So;28.05.1989;mangler;;navn;diskos_1_5kg,diskos;99baa8ca-837c-4598-9f05-00239ba0e075;47900
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M60-64;True;54.20;;Stein Haugen;Oslo Politis IL;33;Heggedal/Gj;02.09.1995;mangler;;navn;diskos_1kg,diskos;2898434e-415c-48e6-b01b-69bf7dc2597f;54200
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M65-69;True;51.44;;Kjell Adamski;Sarpsborg IL;50;Aremark;24.09.2016;finnes;;fornavn+etternavn;diskos_1kg,diskos;ea87f7dd-38ce-47cf-8238-2f338076cb2a;51440
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M70-74;True;47.70;;Olav Reppen;Brønnøysund IL;11;Brønnøysund;11.09.1982;mangler;;navn;diskos_1kg,diskos;fd0b8544-b0f0-4ce7-b22e-9caa82bd82b5;47700
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M75-79;True;42.38;;Arild Busterud;Løten Friidrett;48;Pescara, ITA;26.09.2023;finnes;;navn;diskos_1kg,diskos;c9f8ac2a-1351-4317-b150-03dbc7e8825f;42380
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M80-84;True;32.01;;Erling Svennevik;Oslo IL;18;Oslo/So;05.09.1998;mangler (ny utøver);;;diskos_1kg,diskos;;32010
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M85-89;True;26.88;;Herman Henriksen;GTI;37;Tromsø;20.08.2022;finnes;;navn;diskos_1kg,diskos;b27be0dc-15d8-41a8-a4bf-4665d8690ef8;26880
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M90-94;True;21.32;;Gudmund Skrivervik;Gloppen FIL;21;Sacramento, USA;09.07.2011;mangler;;navn;diskos_1kg,diskos;07ef86c5-12d7-4931-9102-6659cac69e66;21320
+norgesrekorder-mvu.pdf;Diskos / Discus Throw 1.0 kg;M95-99;True;13.32;;Torgeir Brandvold;Oslo IL;13;Oslo/La;02.05.2009;mangler;;navn;diskos_1kg,diskos;65fa42e4-2179-4dd1-a9c9-166254d2702f;13320
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 7.26 kg;M35-39;True;77.70;;Eivind Prestegård Henriksen;IK Tjalve;90;Tokyo, JPN;15.09.2025;finnes;;navn;slegge_726kg/1215cm,slegge_7_26kg,slegge;f8c07d11-6897-4a0d-bb5a-b88f1c0d4eca;77700
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 7.26 kg;M40-44;True;62.52;;Magne Føleide;Florø T&IF;37;Florø;21.09.1977;mangler;;navn;slegge_726kg/1215cm,slegge_7_26kg,slegge;ce875518-c449-44e1-9dbe-03c578f3dae8;62520
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 7.26 kg;M45-49;True;58.96;;Magne Føleide;Florø T&IF;37;Florø;18.08.1982;mangler;;navn;slegge_726kg/1215cm,slegge_7_26kg,slegge;ce875518-c449-44e1-9dbe-03c578f3dae8;58960
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 6.0 kg;M50-54;True;62.16;;Arne Lothe;IL Gular;38;Bergen/Sk;15.04.1989;mangler;;navn;slegge_60kg/1215cm,slegge_6kg,slegge_60kg/110cm,slegge;c06b97eb-7b5c-4113-9445-0f672fc07add;62160
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 6.0 kg;M55-59;True;59.76;;Arne Lothe;IL Gular;38;Sandane;28.08.1993;mangler;;navn;slegge_60kg/1215cm,slegge_6kg,slegge_60kg/110cm,slegge;c06b97eb-7b5c-4113-9445-0f672fc07add;59760
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 5.0 kg;M60-64;True;63.32;;Arild Busterud;Løten Friidrett;48;Ljubljana, SLO;28.07.2008;mangler;;navn;slegge_50kg/120cm,slegge_5kg,slegge;c9f8ac2a-1351-4317-b150-03dbc7e8825f;63320
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 5.0 kg;M65-69;True;60.65;;Arild Busterud;Løten Friidrett;48;Tønsberg;23.07.2013;finnes;;navn;slegge_50kg/120cm,slegge_5kg,slegge;c9f8ac2a-1351-4317-b150-03dbc7e8825f;60650
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 4.0 kg;M70-74;True;57.42;;Arild Busterud;Løten Friidrett;48;Løten;18.05.2019;finnes;;navn;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;c9f8ac2a-1351-4317-b150-03dbc7e8825f;57420
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 4.0 kg;M75-79;True;52.22;;Arild Busterud;Løten Friidrett;48;Tønsberg;29.04.2023;finnes;;navn;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;c9f8ac2a-1351-4317-b150-03dbc7e8825f;52220
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 4.0 kg;M80-84;True;34.48;;Erling Svennevik;Oslo IL;18;Tønsberg;25.04.1998;mangler (ny utøver);;;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;;34480
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 4.0 kg;M85-89;True;27.90;;Erling Svennevik;Oslo IL;18;Moss;17.09.2003;mangler (ny utøver);;;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;;27900
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 4.0 kg;M90-94;True;19.06;;Olav O. Reigstad;Osterøy IL;12;Knarvik;24.05.2003;mangler (ny utøver);;;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;;19060
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 4.0 kg;M95-99;True;14.09;;Olav O. Reigstad;Osterøy IL;12;Hatland;29.06.2007;mangler (ny utøver);;;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;;14090
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 3.0 kg;M80-84;True;38.44;;Arne Sæther;Heggedal FIK;31;Heggedal/Ka;19.05.2011;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;74b985b1-2ab8-4de3-9167-0f01e6f08ecb;38440
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 3.0 kg;M85-89;True;31.66;;Arne Ueland;Tønsberg FIK;34;Tønsberg;13.04.2019;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;6e42175c-a601-4a62-beb3-b31dbfa42a50;31660
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 3.0 kg;M90-94;True;25.11;;Arne Ueland;Tønsberg FIK;34;Sandefjord;10.05.2024;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;6e42175c-a601-4a62-beb3-b31dbfa42a50;25110
+norgesrekorder-mvu.pdf;Slegge / Hammer Throw 3.0 kg;M95-99;True;15.50;;Olav O. Reigstad;Osterøy IL;12;Hatland;27.08.2007;mangler (ny utøver);;;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;;15500
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M35-39;True;77.52;;Ronny Nilsen;IL Norna-Salhus;71;Asker;04.06.2006;mangler;;navn;spyd_800g,spyd;8fe07830-a63a-4b66-8721-3ae7654d6035;77520
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M35-39;False;82.54;***;Terje Thorslund;Nittedal IL;45;Bodø;04.07.1980;mangler;;navn;spyd_800g_old;06ed4f32-0b76-4536-9e77-188867ea3f68;82540
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M40-44;True;63.78;;Narve Hoff;Ålesund FIK;57;Ålesund;28.08.1999;mangler;;navn;spyd_800g,spyd;94ccda36-7400-4d7a-ac77-9d821424ce00;63780
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M40-44;False;67.34;***;Harald Lorentzen;Byåsen IL;44;Trondheim/Le;09.09.1985;mangler;;navn;spyd_800g_old;790ac522-ee9f-453b-b0b5-69be3c75f479;67340
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M45-49;True;61.91;;Dag Inge Hansen;Herkules Friidrett;69;Larvik/Lo;24.05.2017;finnes;;navn;spyd_800g,spyd;ab342e42-792c-4677-b4b2-4b36e8056bb5;61910
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M50-54;True;60.68;;Pål Berntsen;Minerva IS;60;Lillestrøm;07.09.2011;finnes;;navn;spyd_800g,spyd;39e63505-38c4-41ad-b959-914d2cc04e6c;60680
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M55-59;True;51.38;;Egil Danielsen;Romedal IL;33;Ski;12.06.1988;mangler;;navn;spyd_800g,spyd;12f1bc33-6618-4617-ba2c-4aaf9d76286c;51380
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 800 g;M55-59;False;55.16;***;Hans Øverland;Høybråten & Stovner IL;24;Helsinki, FIN;10.08.1980;mangler;;navn;spyd_800g_old;1b728fa0-c070-4cd9-a3d7-e536333bf330;55160
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 700 g;M50-54;True;61.75;;Pål Berntsen;Minerva IS;60;Lillestrøm;14.09.2011;finnes;;navn;spyd_700g,spyd,spyd_700_gram_2025;39e63505-38c4-41ad-b959-914d2cc04e6c;61750
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 700 g;M55-59;True;54.94;;Birger Søyland;FIK Orion;61;Málaga, ESP;12.09.2018;finnes;;navn;spyd_700g,spyd,spyd_700_gram_2025;47bbc2ae-2b25-4e8b-94d2-b9eab5206b95;54940
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M60-64;True;51.24;;Marius Gannsen;GTI;64;Stavanger/St;07.09.2024;finnes;;navn;spyd_600g,spyd;2eb010f0-6e94-44f7-b097-280dc66a522a;51240
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M60-64;False;54.90;***;Hans Øverland;Høybråten & Stovner IL;24;Helsingborg, SWE;04.08.1985;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M65-69;True;46.92;;Kolbjørn Jordfald;Ski IL;37;Oslo/Bi;05.09.2002;mangler;;navn;spyd_600g,spyd;c1049104-12fe-4893-849c-521c0274226f;46920
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M70-74;True;35.75;;Reidar Dahl;Ski IL;48;Ski;05.09.2018;finnes;;fornavn+etternavn;spyd_600g,spyd;60394666-9fbc-462b-a8e4-b1b2ea5949ba;35750
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M70-74;False;40.28;***;Bjarne Bryntesen;IF Sturla;12;Spikkestad;19.09.1982;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M75-79;True;33.61;;Reidar Dahl;Ski IL;48;Ski;02.05.2023;finnes;;fornavn+etternavn;spyd_600g,spyd;60394666-9fbc-462b-a8e4-b1b2ea5949ba;33610
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M80-84;True;24.82;;Gudmund Skrivervik;Gloppen FIL;21;Byrkjelo;02.06.2004;mangler;;navn;spyd_600g,spyd;07ef86c5-12d7-4931-9102-6659cac69e66;24820
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M80-84;False;27.58;***;Olav Nyvoll;Hannevikas IL;16;Tønsberg;11.08.1996;øvelse uten kode i basen;;;;;
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 600 g;M85-89;True;22.12;;Torgeir Brandvold;Oslo IL;13;Oslo/So;29.05.1999;mangler;;navn;spyd_600g,spyd;65fa42e4-2179-4dd1-a9c9-166254d2702f;22120
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 500 g;M70-74;True;43.04;;Gunnar Helstad;Veldre Friidrett;47;Stjørdal;26.08.2018;finnes;;navn;spyd_500g,spyd;cf232e3a-48d9-4807-bdee-d2499f5c08e3;43040
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 500 g;M75-79;True;36.86;;Knut Henrik Skramstad;Tønsberg FIK;37;San Sebastian, SPA;19.03.2013;mangler;;navn;spyd_500g,spyd;a75114c3-9e81-4588-8245-183555d9d567;36860
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 400 g;M80-84;True;34.28;;Olav Egeland;IK Tjalve;45;Kristiansand;29.06.2025;finnes;;navn;spyd_400g,spyd;1023a43b-3023-4cfc-97cb-cff0669f4427;34280
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 400 g;M85-89;True;29.57;;Gudmund Skrivervik;Gloppen FIL;21;Poznan, POL;27.07.2006;mangler;;navn;spyd_400g,spyd;07ef86c5-12d7-4931-9102-6659cac69e66;29570
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 400 g;M90-94;True;22.88;;Gudmund Skrivervik;Gloppen FIL;21;Sacramento, USA;11.07.2011;mangler;;navn;spyd_400g,spyd;07ef86c5-12d7-4931-9102-6659cac69e66;22880
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 400 g;M95-99;True;11.90;;Torgeir Brandvold;Oslo IL;13;Oslo/Tr;18.06.2008;mangler;;navn;spyd_400g,spyd;65fa42e4-2179-4dd1-a9c9-166254d2702f;11900
+norgesrekorder-mvu.pdf;Spyd / Javelin Throw 400 g;M105-109;True;2.53;;Alf Odd Dehlin Eriksen;Bækkelagets SK;18;Oslo/St;22.08.2023;finnes;;navn;spyd_400g,spyd;257c3c9a-9ad5-400b-98d3-aaa598c7139a;2530
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 15.88 kg;M35-39;True;18.15;;Anders Halvorsen;IL Norna-Salhus;69;Newark, USA;19.09.2004;finnes;;navn;vektkast_1588kg,vektkast;6033fed2-61dc-48c3-bcce-0e09a0597872;18150
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 15.88 kg;M40-44;True;17.67;;Iver Hytten;Tønsberg FIK;66;Moss;23.08.2009;finnes;;navn;vektkast_1588kg,vektkast;e6f8a7bc-fa27-4742-9193-0595c44f2edc;17670
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 15.88 kg;M45-49;True;17.12;;Iver Hytten;Tønsberg FIK;66;Tønsberg;06.10.2012;finnes;;navn;vektkast_1588kg,vektkast;e6f8a7bc-fa27-4742-9193-0595c44f2edc;17120
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 11.34 kg;M50-54;True;21.57;;Arild Busterud;Løten IL;48;Gateshead, GBR;06.08.1999;mangler;;navn;vektkast_1134kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;21570
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 11.34 kg;M55-59;True;21.29;;Arild Busterud;Løten IL;48;Århus, DEN;22.07.2004;mangler;;navn;vektkast_1134kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;21290
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 9.08 kg;M60-64;True;24.20;;Arild Busterud;Løten Friidrett;48;Ljubljana, SLO;25.07.2008;mangler;;navn;vektkast_908kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;24200
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 9.08 kg;M65-69;True;22.10;;Arild Busterud;Løten Friidrett;48;Vénissieux, FRA;05.08.2015;finnes;;navn;vektkast_908kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;22100
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 7.26 kg;M70-74;True;23.15;;Arild Busterud;Løten Friidrett;48;Málaga, ESP;11.09.2018;finnes;;navn;vektkast_726kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;23150
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 7.26 kg;M75-79;True;20.93;;Arild Busterud;Løten Friidrett;48;Geithus;25.06.2023;finnes;;navn;vektkast_726kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;20930
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 5.45 kg;M80-84;True;15.94;;Erling Svennevik;Oslo IL;18;Heggedal/Gj;23.06.1998;mangler (ny utøver);;;vektkast_545kg,vektkast;;15940
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 5.45 kg;M85-89;True;14.83;;Erling Svennevik;Oslo IL;18;Århus, DEN;31.07.2004;mangler (ny utøver);;;vektkast_545kg,vektkast;;14830
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 5.45 kg;M90-94;True;10.82;;Torgeir Brandvold;Oslo IL;13;Heggedal/Gj;26.05.2003;mangler;;navn;vektkast_545kg,vektkast;65fa42e4-2179-4dd1-a9c9-166254d2702f;10820
+norgesrekorder-mvu.pdf;Vektkast / Weight Throw 5.45 kg;M95-99;True;6.31;;Torgeir Brandvold;Oslo IL;13;Tønsberg;17.08.2008;mangler;;navn;vektkast_545kg,vektkast;65fa42e4-2179-4dd1-a9c9-166254d2702f;6310
+norgesrekorder-kvu.pdf;100m;K35-39;True;11.42;+1,7;Line Kloster;SK Vidar;90;Ravnanger;01.08.2025;finnes;;navn;100m;2fe86dab-5110-49ba-b154-a3bdffbcd3a9;1142
+norgesrekorder-kvu.pdf;100m;K40-44;True;12.79;-0,9;Randi Nymoen;Strømmen IF;68;Oslo/Bi;29.05.2008;mangler;;navn;100m;217856d0-99d0-4b71-a7eb-191ab4efa2f9;1279
+norgesrekorder-kvu.pdf;100m;K45-49;True;13.21;+1,0;Maya Pedersen;Moelven IL;72;Lillehammer;26.06.2021;finnes;;navn;100m;81a9d880-6166-4318-8a2c-00765fae96b8;1321
+norgesrekorder-kvu.pdf;100m;K50-54;True;13.55;+1,6;Maya Pedersen;Moelven IL;72;Lillehammer;18.09.2022;finnes;;navn;100m;81a9d880-6166-4318-8a2c-00765fae96b8;1355
+norgesrekorder-kvu.pdf;100m;K55-59;True;13.78;+1,7;Heidi Barth (Andersen);Larvik T&IF;61;Tønsberg;18.09.2018;finnes;;navn;100m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1378
+norgesrekorder-kvu.pdf;100m;K60-64;True;14.15;+1,0;Heidi Barth (Andersen);Larvik T&IF;61;Larvik/Lo;08.09.2021;finnes;;navn;100m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1415
+norgesrekorder-kvu.pdf;100m;K65-69;True;15.22;+1,7;Anny Undheim;IL Framsteg;56;Geithus;23.06.2023;finnes;;navn;100m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1522
+norgesrekorder-kvu.pdf;100m;K65-69;False;15.1;;Åse Nyland;Gjøvik FIK;33;Oslo/So;13.06.1998;mangler (ny utøver);;;100m;;1510
+norgesrekorder-kvu.pdf;100m;K70-74;True;16.07;+0,2;Marit Huflåtten;Tønsberg FIK;53;Geithus;23.06.2023;finnes;;navn;100m;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;1607
+norgesrekorder-kvu.pdf;100m;K75-79;True;17.58;-1,4;Åse Nyland;Gjøvik FIK;33;Huddinge, SWE;26.06.2009;mangler (ny utøver);;;100m;;1758
+norgesrekorder-kvu.pdf;100m;K80-84;True;19.80;-1,0;Åse Nyland;Gjøvik FIK;33;Izmir, TUR;24.08.2014;finnes (annen navneform i basen);Aase Nyland (1933);;100m;;1980
+norgesrekorder-kvu.pdf;100m;K85-89;True;32.63;-0,1;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;28.05.2024;finnes;;navn;100m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;3263
+norgesrekorder-kvu.pdf;100m;K100-104;True;76.6;;Ester Melstein;Sømna IL;10;Vik i Helgeland;28.07.2011;mangler (ny utøver);;;100m;;7660
+norgesrekorder-kvu.pdf;200m;K35-39;True;23.17;+0,0;Line Kloster;SK Vidar;90;Maribor, SLO;29.06.2025;finnes;;navn;200m;2fe86dab-5110-49ba-b154-a3bdffbcd3a9;2317
+norgesrekorder-kvu.pdf;200m;K40-44;True;26.15;;Inger Bækken Kulstad;Steinkjer FIK;48;Eugene, USA;03.08.1989;mangler;;navn;200m;b2c50945-6490-4e4e-9226-40159724442b;2615
+norgesrekorder-kvu.pdf;200m;K45-49;True;27.52;+1,9;Maya Pedersen;Moelven IL;72;Lillehammer;27.06.2021;finnes;;navn;200m;81a9d880-6166-4318-8a2c-00765fae96b8;2752
+norgesrekorder-kvu.pdf;200m;K50-54;True;28.19;+0,7;Maylem Lauvstad;IL Tyrving;73;Lillestrøm;25.05.2024;finnes;;fornavn+etternavn;200m;65c99cdf-feab-4390-b892-caa1af12c096;2819
+norgesrekorder-kvu.pdf;200m;K55-59;True;29.30;+0,2;Heidi Barth (Andersen);Larvik T&IF;61;Málaga, ESP;09.09.2018;finnes;;navn;200m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;2930
+norgesrekorder-kvu.pdf;200m;K60-64;True;29.43;+1,9;Heidi Barth (Andersen);Larvik T&IF;61;Larvik/Lo;21.07.2021;finnes;;navn;200m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;2943
+norgesrekorder-kvu.pdf;200m;K65-69;True;31.33;-2,9;Anny Undheim;IL Framsteg;56;Göteborg, SWE;20.08.2024;finnes;;navn;200m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;3133
+norgesrekorder-kvu.pdf;200m;K70-74;True;34.54;+0,0;Åse Nyland;Gjøvik FIK;33;Århus, DEN;30.07.2004;mangler (ny utøver);;;200m;;3454
+norgesrekorder-kvu.pdf;200m;K75-79;True;36.67;-1,1;Åse Nyland;Gjøvik FIK;33;Huddinge, SWE;27.06.2009;mangler (ny utøver);;;200m;;3667
+norgesrekorder-kvu.pdf;200m;K80-84;True;40.59;+1,3;Åse Nyland;Gjøvik FIK;33;Moss;29.06.2013;finnes (annen navneform i basen);Aase Nyland (1933);;200m;;4059
+norgesrekorder-kvu.pdf;200m;K85-89;True;70.80;-0,6;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;03.09.2024;finnes;;navn;200m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;7080
+norgesrekorder-kvu.pdf;400m;K35-39;True;53.15;;Elisabeth Slettum;IL Skjalg;86;Berlin, GER;04.09.2022;finnes;;navn;400m;a3c7b926-65b0-40ae-ae73-95407c2c091d;5315
+norgesrekorder-kvu.pdf;400m;K40-44;True;58.72;;Anne Karine Storsveen;IL i BUL;58;Oslo/Bi;15.06.1999;mangler;;navn;400m;b0bbcf26-2528-4fac-bfd0-4da98403fe2d;5872
+norgesrekorder-kvu.pdf;400m;K45-49;True;60.36;;Anny Undheim;IL Framsteg;56;Århus, DEN;28.07.2004;finnes;;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;6036
+norgesrekorder-kvu.pdf;400m;K50-54;True;61.60;;Maylem Lauvstad;IL Tyrving;73;Oslo/St;13.07.2024;finnes;;fornavn+etternavn;400m;65c99cdf-feab-4390-b892-caa1af12c096;6160
+norgesrekorder-kvu.pdf;400m;K55-59;True;65.47;;Anny Undheim;IL Framsteg;56;Drammen;28.08.2011;mangler;;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;6547
+norgesrekorder-kvu.pdf;400m;K55-59;False;63.6;***;Oddbjørg Haakensveen;Veldre IL;45;Brumunddal;16.09.2004;mangler;;fornavn+etternavn;400m;01465007-15ab-4e62-80a9-a707755c37c9;6360
+norgesrekorder-kvu.pdf;400m;K60-64;True;69.87;;Oddbjørg Haakensveen;Veldre Friidrett;45;San Sebastian, ESP;02.09.2005;mangler;;fornavn+etternavn;400m;01465007-15ab-4e62-80a9-a707755c37c9;6987
+norgesrekorder-kvu.pdf;400m;K65-69;True;71.19;;Anny Undheim;IL Framsteg;56;Tampere, FIN;08.07.2022;finnes med annen dato;2022-06-29;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;7119
+norgesrekorder-kvu.pdf;400m;K70-74;True;81.04;;Åse Nyland;Gjøvik FIK;33;San Sebastian, ESP;02.09.2005;mangler (ny utøver);;;400m;;8104
+norgesrekorder-kvu.pdf;400m;K75-79;True;86.66;;Åse Nyland;Gjøvik FIK;33;Tønsberg;17.08.2008;mangler (ny utøver);;;400m;;8666
+norgesrekorder-kvu.pdf;400m;K80-84;True;117.33;;Sofie A. Jakobsen;Stovnerkameratene;43;Stjørdal;23.06.2024;finnes;;fornavn+etternavn;400m;d91f4534-cc22-43c3-bf5e-b311c6c7d69f;11733
+norgesrekorder-kvu.pdf;400m;K85-89;True;164.61;;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;28.05.2024;finnes;;navn;400m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;16461
+norgesrekorder-kvu.pdf;800m;K35-39;True;2:03.64;;Ingvill Måkestad Bovim;IK Tjalve;81;Oslo/Bi;24.06.2016;finnes;;navn;800m;8fda8ece-d44d-47a4-aafa-bb2fc68c74ec;12364
+norgesrekorder-kvu.pdf;800m;K40-44;True;2:10.51;;Sissel Grottenberg;SK Vidar;56;Overhalla;19.07.1997;mangler;;navn;800m;bb055252-0ddf-4465-9bb2-8c2c9e7d7337;13051
+norgesrekorder-kvu.pdf;800m;K45-49;True;2:22.77;;Oddbjørg Haakensveen;Veldre IL;45;Oslo/Bi;17.07.1990;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;14277
+norgesrekorder-kvu.pdf;800m;K50-54;True;2:22.28;;Bente Rosvold Midtun;Osterøy IL;58;Fana;13.06.2009;mangler;;navn;800m;dab4222b-f005-4716-8889-362b1a3e1067;14228
+norgesrekorder-kvu.pdf;800m;K55-59;True;2:37.76;;Oddbjørg Haakensveen;Veldre IL;45;Gjøvik;18.08.2001;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;15776
+norgesrekorder-kvu.pdf;800m;K60-64;True;2:43.57;;Oddbjørg Haakensveen;Veldre Friidrett;45;San Sebastian, ESP;29.08.2005;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;16357
+norgesrekorder-kvu.pdf;800m;K65-69;True;2:50.00;;Oddbjørg Haakensveen;Veldre Friidrett;45;Nyiregyhaza, HUN;23.07.2010;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;17000
+norgesrekorder-kvu.pdf;800m;K70-74;True;3:05.38;;Oddbjørg Haakensveen;Veldre Friidrett;45;Hamar;30.08.2015;finnes;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;18538
+norgesrekorder-kvu.pdf;800m;K75-79;True;3:42.71;;Åse Nyland;Gjøvik FIK;33;Ljubljana, SLO;02.08.2008;mangler (ny utøver);;;800m;;22271
+norgesrekorder-kvu.pdf;800m;K80-84;True;4:22.56;;Vera Nystad;Søgne IL;45;Kristiansand;28.06.2025;finnes;;navn;800m;40dde3aa-6313-482f-bb6a-58e523d8a1bb;26256
+norgesrekorder-kvu.pdf;800m;K85-89;True;5:48.42;;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;03.09.2024;finnes;;navn;800m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;34842
+norgesrekorder-kvu.pdf;1500m;K35-39;True;4:05.35;;Ingvill Måkestad Bovim;IK Tjalve;81;London, GBR;22.07.2016;finnes;;navn;1500m;8fda8ece-d44d-47a4-aafa-bb2fc68c74ec;24535
+norgesrekorder-kvu.pdf;1500m;K40-44;True;4:26.41;;Kirsten Hausken;Haugesund IL;48;Sandnes;09.06.1988;mangler;;navn;1500m;af28653d-08a7-4937-8502-98c67ece3d9f;26641
+norgesrekorder-kvu.pdf;1500m;K45-49;True;4:46.06;;Vigdis Bringedal Holst;IL Skjalg;69;Stavanger/St;19.06.2014;finnes;;navn;1500m;f1272258-38f2-436c-801c-6034b5e4aa51;28606
+norgesrekorder-kvu.pdf;1500m;K50-54;True;4:52.31;;Inger Lise Fængsrud;Royal SK;55;San Sebastian, ESP;02.09.2005;mangler;;navn;1500m;7303c517-df13-4fb5-8ae0-60b6440e787a;29231
+norgesrekorder-kvu.pdf;1500m;K55-59;True;5:18.92;;Valborg Østberg;Gjøvik FIK;31;Malmö, SWE;28.07.1986;mangler;;navn;1500m;bf7014cd-b45b-4d3d-9d6c-f5cb621183ad;31892
+norgesrekorder-kvu.pdf;1500m;K60-64;True;5:37.40;;Nina Rødsmoen;Sandnes IL;61;Geithus;23.06.2023;finnes;;navn;1500m;1fcff305-59ad-4ca3-a48d-25959c5e3355;33740
+norgesrekorder-kvu.pdf;1500m;K65-69;True;5:49.8;;Oddbjørg Haakensveen;Veldre Friidrett;45;Løten;21.08.2010;mangler;;fornavn+etternavn;1500m;01465007-15ab-4e62-80a9-a707755c37c9;34980
+norgesrekorder-kvu.pdf;1500m;K70-74;True;6:32.25;;Ragnhild Guri Korneliussen;IL Fri;51;Os;26.09.2021;finnes;;navn;1500m;c6356a9f-caa3-4ce5-9082-43af22d96a93;39225
+norgesrekorder-kvu.pdf;1500m;K75-79;True;7:25.5;;Aase Sofie Rekkebo;Byåsen IL;32;Stjørdal;06.08.2008;mangler (ny utøver);;;1500m;;44550
+norgesrekorder-kvu.pdf;1500m;K80-84;True;8:50.7;;Aase Sofie Rekkebo;Byåsen IL;32;Stjørdal;22.08.2012;mangler (ny utøver);;;1500m;;53070
+norgesrekorder-kvu.pdf;1500m;K85-89;True;11:24.97;;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;28.05.2024;finnes;;navn;1500m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;68497
+norgesrekorder-kvu.pdf;3000m;K35-39;True;8:55.01;;Kristine Eikrem Engeset;IL Norna-Salhus;88;Kuortane, FIN;22.06.2024;finnes;;navn;3000m;1d9bb933-ad1c-49fd-b30f-bec6f83f64af;53501
+norgesrekorder-kvu.pdf;3000m;K40-44;True;9:32.16;;Kirsten Hausken;Haugesund IL;48;Byrkjelo;12.08.1988;mangler;;navn;3000m;af28653d-08a7-4937-8502-98c67ece3d9f;57216
+norgesrekorder-kvu.pdf;3000m;K45-49;True;10:15.31;;Vigdis Bringedal Holst;IL Skjalg;69;Stavanger/St;05.06.2014;finnes;;navn;3000m;f1272258-38f2-436c-801c-6034b5e4aa51;61531
+norgesrekorder-kvu.pdf;3000m;K50-54;True;10:34.1;;Valborg Østberg;Gjøvik FIK;31;Steinkjer;25.07.1981;mangler;;navn;3000m;bf7014cd-b45b-4d3d-9d6c-f5cb621183ad;63410
+norgesrekorder-kvu.pdf;3000m;K55-59;True;11:35.36;;Valborg Østberg;Gjøvik FIK;31;Byrkjelo;24.08.1986;mangler;;navn;3000m;bf7014cd-b45b-4d3d-9d6c-f5cb621183ad;69536
+norgesrekorder-kvu.pdf;3000m;K60-64;True;11:57.91;;Nina Rødsmoen;Sandnes IL;61;Sandnes;17.06.2021;finnes;;navn;3000m;1fcff305-59ad-4ca3-a48d-25959c5e3355;71791
+norgesrekorder-kvu.pdf;3000m;K65-69;True;13:01.89;;Kirsti Mathilde Johnsen;Tønsberg FIK;53;Tønsberg;24.08.2019;finnes;;fornavn+etternavn;3000m;311f9c3b-79f8-4d7a-8eca-1ba3ac1c7edc;78189
+norgesrekorder-kvu.pdf;3000m;K70-74;True;13:46.75;;Kirsti Mathilde Johnsen;Tønsberg FIK;53;Sem;20.08.2025;finnes;;fornavn+etternavn;3000m;311f9c3b-79f8-4d7a-8eca-1ba3ac1c7edc;82675
+norgesrekorder-kvu.pdf;3000m;K75-79;True;17:08.0;;Aase Sofie Rekkebo;Byåsen IL;32;Stjørdal;15.06.2011;mangler (ny utøver);;;3000m;;102800
+norgesrekorder-kvu.pdf;3000m;K80-84;True;18:41.62;;Vera Nystad;Søgne IL;45;Søgne;31.08.2025;finnes;;navn;3000m;40dde3aa-6313-482f-bb6a-58e523d8a1bb;112162
+norgesrekorder-kvu.pdf;3000m;K85-89;True;23:45.30;;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;03.09.2024;finnes;;navn;3000m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;142530
+norgesrekorder-kvu.pdf;5000m;K35-39;True;15:13.39;;Ingrid Kristiansen;IL i BUL;56;Fana;04.08.1991;finnes;;navn;5000m;e49048c8-fbaf-4faf-b8bf-20955b431d7b;91339
+norgesrekorder-kvu.pdf;5000m;K40-44;True;16:19.96;;Kristin Waaktaar Opland;Bratsberg IL;82;Jessheim;06.07.2023;finnes;;navn;5000m;e31b8e63-cfed-4bda-82dc-ef04669bb2c1;97996
+norgesrekorder-kvu.pdf;5000m;K45-49;True;17:00.17;;Jorunn Rekkedal;Ås IL;61;Ås;25.06.2008;mangler;;navn;5000m;99894132-9bad-47fd-9b68-75e58a1e2e01;102017
+norgesrekorder-kvu.pdf;5000m;K50-54;True;18:14.9;;Valborg Østberg;Gjøvik FIK;31;Larvik/Lo;08.08.1981;finnes;;navn;5000m;bf7014cd-b45b-4d3d-9d6c-f5cb621183ad;109490
+norgesrekorder-kvu.pdf;5000m;K55-59;True;18:54.4;;Synøve Brox;IF Sturla;59;Ås;07.10.2015;finnes (annen navneform i basen);Synnøve Brox (1959);;5000m;;113440
+norgesrekorder-kvu.pdf;5000m;K60-64;True;20:41.49;;Nina Rødsmoen;Sandnes IL;61;Egersund;25.08.2022;finnes;;navn;5000m;1fcff305-59ad-4ca3-a48d-25959c5e3355;124149
+norgesrekorder-kvu.pdf;5000m;K65-69;True;20:17.99;;Synøve Brox;SK Vidar;59;Göteborg, SWE;15.08.2024;finnes (annen navneform i basen);Synnøve Brox (1959);;5000m;;121799
+norgesrekorder-kvu.pdf;5000m;K70-74;True;23:48.52;;Ragnhild Guri Korneliussen;IL Fri;51;Stjørdal;23.06.2024;finnes;;navn;5000m;c6356a9f-caa3-4ce5-9082-43af22d96a93;142852
+norgesrekorder-kvu.pdf;5000m;K75-79;True;28:34.66;;Eva Carlsen;Ready;40;Finnfjordbotn;28.06.2015;finnes;;navn;5000m;84d44faf-12da-45db-a8d0-5306d7b0cf3d;171466
+norgesrekorder-kvu.pdf;5000m;K80-84;True;31:33.31;;Marian Stenbakk;Moss IL;44;Göteborg, SWE;15.08.2024;finnes;;navn;5000m;fe3ac516-5d34-429b-b25e-e0548a9600e8;189331
+norgesrekorder-kvu.pdf;5000m;K85-89;True;40:57.0;;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;27.08.2024;finnes;;navn;5000m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;245700
+norgesrekorder-kvu.pdf;10000m;K35-39;True;30:41.66;;Karoline Bjerkeli Grøvdal;IK Tjalve;90;Oslo/Bi;11.06.2025;finnes;;navn;10000m;6265004b-87fd-4e42-8c36-561500bf4127;184166
+norgesrekorder-kvu.pdf;10000m;K40-44;True;34:11.04;;Kirsten Marathon Melkevik;FIK BFG Fana;70;Byrkjelo;12.08.2011;finnes;;fornavn+etternavn;10000m;67e7610a-6936-42f5-aff7-2bc07cf3d269;205104
+norgesrekorder-kvu.pdf;10000m;K45-49;True;35:08.32;;Jorunn Rekkedal;Ås IL;61;Trondheim/St;18.07.2008;mangler;;navn;10000m;99894132-9bad-47fd-9b68-75e58a1e2e01;210832
+norgesrekorder-kvu.pdf;10000m;K50-54;True;39:42.71;;Ann Kristin Amundsen;IL Norodd;70;Kristiansund;06.06.2024;finnes;;navn;10000m;072192e3-057b-41cd-ad8a-937ebc2c6092;238271
+norgesrekorder-kvu.pdf;10000m;K55-59;True;43:48.57;;Marian Stenbakk;Moss IL;44;Jyväskylä, FIN;08.07.2000;mangler;;navn;10000m;fe3ac516-5d34-429b-b25e-e0548a9600e8;262857
+norgesrekorder-kvu.pdf;10000m;K60-64;True;47:55.2;;Ragnhild Solli;Sømna IL;59;Vik i Helgeland;24.10.2020;finnes;;navn;10000m;33492959-3ca8-4a8a-9cf4-b2a931218312;287520
+norgesrekorder-kvu.pdf;10000m;K65-69;True;45:59.71;;Tove Elisabeth Hassing;Fredrikstad IF;40;Lisleby;23.10.2006;mangler (ny utøver);;;10000m;;275971
+norgesrekorder-kvu.pdf;10000m;K85-89;True;85:29.2;;Signy Henden Rustlie;Lørenskog FIL;38;Oslo/St;21.05.2024;finnes;;navn;10000m;f19f4e4b-0e97-4c1a-9861-69b4917f3cb2;512920
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K40-44;True;12.53;+0,17;Grete Rivenes;Gjøvik FIK;48;Larvik/Lo;30.06.1989;mangler;;fornavn+etternavn;80mh_76_2cm,80mh;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;1253
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K40-44;False;12.4;+0,63;Grete Rivenes;Gjøvik FIK;48;Trondheim/Le;30.07.1988;mangler;;fornavn+etternavn;80mh_76_2cm,80mh;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;1240
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K45-49;True;12.87;+0,1;Anny Undheim;IL Framsteg;56;Århus, DEN;30.07.2004;mangler;;navn;80mh_76_2cm,80mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1287
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K50-54;True;13.58;+2,0;Grete Rivenes;Gjøvik FIK;48;Cesenatico, ITA;16.09.1998;mangler;;fornavn+etternavn;80mh_76_2cm,80mh;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;1358
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K55-59;True;14.11;+1,3;Heidi Barth (Andersen);Larvik T&IF;61;Hvidovre, DEN;17.08.2019;finnes;;navn;80mh_76_2cm,80mh;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1411
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K60-64;True;15.56;;Kirsten Hveem;IL i BUL;25;Roma, ITA;22-30.06.1985;mangler (ny utøver);;;80mh_76_2cm,80mh;;1556
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K60-64;False;15.5;-1,0;Kirsten Hveem;IL i BUL;25;Malmö, SWE;30.08.1986;mangler (ny utøver);;;80mh_76_2cm,80mh;;1550
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K65-69;True;17.86;;Gerd Mjelde;Bærum SK;33;Oslo/St;08.08.1998;mangler;;navn;80mh_76_2cm,80mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;1786
+norgesrekorder-kvu.pdf;80m hekk / hurdles 76.2 cm;K65-69;False;17.3;;Gerd Mjelde;Bærum SK;33;Oslo/St;31.05.1999;mangler;;navn;80mh_76_2cm,80mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;1730
+norgesrekorder-kvu.pdf;80m hekk / hurdles 68.6 cm;K60-64;True;14.12;+0,5;Heidi Barth (Andersen);Larvik T&IF;61;Tampere, FIN;01.07.2022;finnes;;navn;80mh_68cm,80mh;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1412
+norgesrekorder-kvu.pdf;80m hekk / hurdles 68.6 cm;K65-69;True;14.31;+0,2;Anny Undheim;IL Framsteg;56;Stjørdal;23.06.2024;finnes;;navn;80mh_68cm,80mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1431
+norgesrekorder-kvu.pdf;80m hekk / hurdles 68.6 cm;K70-74;True;16.21;+0,0;Marit Huflåtten;Tønsberg FIK;53;Larvik/Lo;24.08.2025;finnes;;navn;80mh_68cm,80mh;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;1621
+norgesrekorder-kvu.pdf;80m hekk / hurdles 68.6 cm;K75-79;True;38.97;-0,5;Gerd Mjelde;Bærum SK;33;Ljubljana, SLO;30.07.2008;mangler;;navn;80mh_68cm,80mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;3897
+norgesrekorder-kvu.pdf;100m hekk / hurdles 84.0 cm;K35-39;True;13.51;+0,3;Line Kloster;SK Vidar;90;Maribor, SLO;29.06.2025;finnes;;navn;100mh_84cm,100mh;2fe86dab-5110-49ba-b154-a3bdffbcd3a9;1351
+norgesrekorder-kvu.pdf;300m hekk / hurdles 76.2 cm;K50-54;True;49.49;;Anny Undheim;IL Framsteg;56;Geithus;01.07.2006;mangler;;navn;300mh_76_2cm,300mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;4949
+norgesrekorder-kvu.pdf;300m hekk / hurdles 76.2 cm;K55-59;True;51.58;;Anny Undheim;IL Framsteg;56;Lappeenranta, FIN;02.07.2011;mangler;;navn;300mh_76_2cm,300mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;5158
+norgesrekorder-kvu.pdf;300m hekk / hurdles 76.2 cm;K60-64;True;61.16;;Gerd Mjelde;Bærum SK;33;Miyazaki, JPN;13.10.1993;mangler;;navn;300mh_76_2cm,300mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;6116
+norgesrekorder-kvu.pdf;300m hekk / hurdles 76.2 cm;K65-69;True;65.74;;Gerd Mjelde;Bærum SK;33;Gateshead, GBR;01.08.1999;mangler;;navn;300mh_76_2cm,300mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;6574
+norgesrekorder-kvu.pdf;300m hekk / hurdles 68.6 cm;K60-64;True;53.40;;Oddbjørg Haakensveen;Veldre Friidrett;45;San Sebastian, ESP;26.08.2005;mangler;;fornavn+etternavn;300mh_68cm,300mh;01465007-15ab-4e62-80a9-a707755c37c9;5340
+norgesrekorder-kvu.pdf;300m hekk / hurdles 68.6 cm;K65-69;True;54.39;;Anny Undheim;IL Framsteg;56;Göteborg, SWE;17.08.2024;finnes;;navn;300mh_68cm,300mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;5439
+norgesrekorder-kvu.pdf;300m hekk / hurdles 68.6 cm;K70-74;True;71.67;;Gerd Mjelde;Bærum SK;33;Carolina, PUR;05.07.2003;mangler;;navn;300mh_68cm,300mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;7167
+norgesrekorder-kvu.pdf;400m hekk / hurdles 76.2 cm;K35-39;True;55.77;;Elisabeth Slettum;IL Skjalg;86;Oslo/Bi;30.06.2022;finnes;;navn;400mh_76_2cm,400mh;a3c7b926-65b0-40ae-ae73-95407c2c091d;5577
+norgesrekorder-kvu.pdf;400m hekk / hurdles 76.2 cm;K40-44;True;66.16;;Inger Bækken Kulstad;Steinkjer FIK;48;Eugene, USA;03.08.1989;finnes;;navn;400mh_76_2cm,400mh;b2c50945-6490-4e4e-9226-40159724442b;6616
+norgesrekorder-kvu.pdf;400m hekk / hurdles 76.2 cm;K45-49;True;67.42;;Jorunn Sundal;Florø T&IF;47;Kristiansand;27.06.1992;mangler (ny utøver);;;400mh_76_2cm,400mh;;6742
+norgesrekorder-kvu.pdf;2000m hinder / steeplechase 76.2 cm;K35-39;True;6:55.26;;Christina Maria Toogood;Sandnes IL;89;Björlanda, SWE;13.08.2024;finnes;;navn;2000mhinder_76_2cm,2000mhinder;f69d1bcc-4644-437c-a965-006bca7ce5e1;41526
+norgesrekorder-kvu.pdf;2000m hinder / steeplechase 76.2 cm;K50-54;True;8:06.13;;Ragnhild Lie Anderson;IL Bjarg;69;Geithus;24.06.2023;finnes;;navn;2000mhinder_76_2cm,2000mhinder;aa88074c-1149-4358-ad5c-b774a3dca456;48613
+norgesrekorder-kvu.pdf;2000m hinder / steeplechase 76.2 cm;K55-59;True;8:05.07;;Ragnhild Lie Anderson;IL Bjarg;69;Björlanda, SWE;13.08.2024;finnes;;navn;2000mhinder_76_2cm,2000mhinder;aa88074c-1149-4358-ad5c-b774a3dca456;48507
+norgesrekorder-kvu.pdf;2000m hinder / steeplechase 76.2 cm;K60-64;True;10:41.21;;Bjørg Reknes;Florø T&IF;52;Odense, DEN;02.07.2016;finnes;;navn;2000mhinder_76_2cm,2000mhinder;f9bbd3a9-c2e2-4271-ada6-af2388e0c0b5;64121
+norgesrekorder-kvu.pdf;2000m hinder / steeplechase 76.2 cm;K65-69;True;11:13.31;;Bjørg Reknes;Florø T&IF;52;Aarhus, DEN;31.07.2017;finnes;;navn;2000mhinder_76_2cm,2000mhinder;f9bbd3a9-c2e2-4271-ada6-af2388e0c0b5;67331
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K35-39;True;12:00.53;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Lillehammer;31.07.2009;mangler;;navn;kappgang_3000_m,3000mg;eed3419e-a38b-4b4c-9524-663c3848b281;72053
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K40-44;True;15:19.8;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Bergen/Sk;26.09.2012;mangler;;navn;kappgang_3000_m,3000mg;eed3419e-a38b-4b4c-9524-663c3848b281;91980
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K45-49;True;14:42.25;;Sigrun R. Sangvik;Royal SK;57;Stjørdal;02.08.2003;mangler;;fornavn+etternavn;kappgang_3000_m,3000mg;f25cc52b-89cd-4f9b-9ded-5479376e0144;88225
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K50-54;True;17:56.8;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Bergen/Sk;02.10.1996;mangler;;alias;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;107680
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K55-59;True;17:43.0;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Bergen/Sk;22.09.1998;mangler;;alias;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;106300
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K60-64;True;19:21.05;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Ravnanger;25.06.2005;mangler;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;116105
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K65-69;True;19:30.0;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Bergen/Sk;23.05.2007;mangler;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;117000
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K70-74;True;21:01.91;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Stavanger;14.09.2012;finnes;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;126191
+norgesrekorder-kvu.pdf;3000 m kappgang / Race Walk;K75-79;True;25:51.11;;Kirsten Lien (Garbo) Skarsvåg;Gjerdrum IL;26;Askim;29.06.2002;mangler (ny utøver);;;kappgang_3000_m,3000mg;;155111
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K35-39;True;21:13.6;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Fana;28.09.2009;mangler;;navn;kappgang_5000_m,5000mg;eed3419e-a38b-4b4c-9524-663c3848b281;127360
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K40-44;True;26:13.98;;Merete Helgheim;Gloppen FIL;80;Björlanda, SWE;19.08.2024;avvik mot basen;"basen hadde 26:13 (avkortet); rettet til 26:13.98 for hånd";navn;kappgang_5000_m,5000mg;f609b772-46fe-4961-bc41-64d0b5141b9f;157398
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K45-49;True;26:12.63;;Sigrun R. Sangvik;Royal SK;57;Randers, DEN;26.07.2004;mangler;;fornavn+etternavn;kappgang_5000_m,5000mg;f25cc52b-89cd-4f9b-9ded-5479376e0144;157263
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K50-54;True;32:09.3;;Ingrid (Eide) Storedale;Døves IK, Bergen;44;Bergen/Sk;25.06.1994;mangler (ny utøver);;;kappgang_5000_m,5000mg;;192930
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K55-59;True;30:25.8;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Fana;05.08.1998;mangler;;alias;kappgang_5000_m,5000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;182580
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K60-64;True;34:28.2;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Haukås;11.06.2006;mangler;;navn;kappgang_5000_m,5000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;206820
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K65-69;True;33:27.52;;Kirsten Lien (Garbo) Skarsvåg;Oslo GK;26;Søgne;29.06.1992;mangler (ny utøver);;;kappgang_5000_m,5000mg;;200752
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K70-74;True;35:47.67;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Zittau, GER;19.08.2012;mangler;;navn;kappgang_5000_m,5000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;214767
+norgesrekorder-kvu.pdf;5000 m kappgang / Race Walk;K75-79;True;44:17.30;;Kirsten Lien (Garbo) Skarsvåg;Gjerdrum IL;26;Potsdam, GER;18.08.2002;mangler (ny utøver);;;kappgang_5000_m,5000mg;;265730
+norgesrekorder-kvu.pdf;10000 m kappgang / Race Walk;K35-39;True;52:38.3;;Hanne Liland;T&IF Viking;69;Fana;02.07.2004;mangler;;navn;kappgang_10000_m,10000mg;9ba00de2-16a8-4f87-99e8-4d6f905ef5ff;315830
+norgesrekorder-kvu.pdf;10000 m kappgang / Race Walk;K40-44;True;55:30.80;;Hanne Liland;T&IF Viking;69;Ballerup, DEN;05.09.2009;mangler;;navn;kappgang_10000_m,10000mg;9ba00de2-16a8-4f87-99e8-4d6f905ef5ff;333080
+norgesrekorder-kvu.pdf;10000 m kappgang / Race Walk;K45-49;True;55:04.5;;Sigrun R. Sangvik;Royal SK;57;Fana;02.07.2004;mangler;;fornavn+etternavn;kappgang_10000_m,10000mg;f25cc52b-89cd-4f9b-9ded-5479376e0144;330450
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K35-39;True;12:24;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Osøyro;12.06.2009;mangler;;navn;kappgang_3_km;eed3419e-a38b-4b4c-9524-663c3848b281;74400
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K40-44;True;15:13;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Søfteland;08.09.2013;finnes;;navn;kappgang_3_km;eed3419e-a38b-4b4c-9524-663c3848b281;91300
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K45-49;True;18:04;;Hanne Liland;IL Varegg;69;Søfteland;09.04.2015;mangler;;navn;kappgang_3_km;9ba00de2-16a8-4f87-99e8-4d6f905ef5ff;108400
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K50-54;True;20:41;;Eva E. Nordqvist;Moss IL;63;Kalandseidet/Selsvik;01.06.2014;mangler;;fornavn+etternavn;kappgang_3_km;37020f4c-6f32-4f1c-8d4a-1884dae0cf76;124100
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K55-59;True;17:39;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Klokkarvik;14.06.1999;mangler;;alias;kappgang_3_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;105900
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K60-64;True;18:24;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Bergen/Tveitevannet;15.05.2002;mangler;;navn;kappgang_3_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;110400
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K65-69;True;18:55;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Bergen/Tveitevannet;10.04.2008;mangler;;navn;kappgang_3_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;113500
+norgesrekorder-kvu.pdf;3 km kappgang / Race Walk;K70-74;True;21:08;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Søfteland;09.09.2012;mangler;;navn;kappgang_3_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;126800
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K35-39;True;20:38;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Osøyro;12.06.2009;mangler;;navn;kappgang_5_km;eed3419e-a38b-4b4c-9524-663c3848b281;123800
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K40-44;True;26:28;;Hanne Liland;T&IF Viking;69;Sandane;04.06.2010;mangler;;navn;kappgang_5_km;9ba00de2-16a8-4f87-99e8-4d6f905ef5ff;158800
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K45-49;True;25:51;;Sigrun R. Sangvik;Royal SK;57;Tømmerholt;13.05.2004;mangler;;fornavn+etternavn;kappgang_5_km;f25cc52b-89cd-4f9b-9ded-5479376e0144;155100
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K50-54;True;33:22;;Lilly Henriette (Gillerstedt) Berg;IL Stjernen;91;Fredrikstad/Rolvsøy;21.10.1945;mangler (ny utøver);;;kappgang_5_km;;200200
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K55-59;True;30:12;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Storetveit;14.04.1999;mangler;;alias;kappgang_5_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;181200
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K60-64;True;32:15;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Bergen/Tveitevatnet;20.06.2006;mangler;;navn;kappgang_5_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;193500
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K65-69;True;31:54;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Helsinki, FIN;22.03.2007;mangler;;navn;kappgang_5_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;191400
+norgesrekorder-kvu.pdf;5 km kappgang / Race Walk;K70-74;True;36:12;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;San Sebastian, ESP;05.08.2013;mangler;;navn;kappgang_5_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;217200
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K35-39;True;41:41;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Krakow, POL;30.05.2009;mangler;;navn;kappgang_10_km;eed3419e-a38b-4b4c-9524-663c3848b281;250100
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K40-44;True;55:06;;Hanne Liland;T&IF Viking;69;Osøyro;13.06.2009;mangler;;navn;kappgang_10_km;9ba00de2-16a8-4f87-99e8-4d6f905ef5ff;330600
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K45-49;True;53:28;;Sigrun R. Sangvik;Royal SK;57;Eskilstuna, SWE;15.05.2004;mangler;;fornavn+etternavn;kappgang_10_km;f25cc52b-89cd-4f9b-9ded-5479376e0144;320800
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K50-54;True;69:07;;Eva E. Nordqvist;Moss IL;63;Kalandseidet/Selsvik;01.06.2014;finnes;;fornavn+etternavn;kappgang_10_km;37020f4c-6f32-4f1c-8d4a-1884dae0cf76;414700
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K55-59;True;63:27;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Storetveit;20.05.1998;mangler;;alias;kappgang_10_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;380700
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K60-64;True;65:47;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Søfteland;15.06.2005;mangler;;navn;kappgang_10_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;394700
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K65-69;True;66:54;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Søfteland;21.06.2007;mangler;;navn;kappgang_10_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;401400
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K70-74;True;71:57;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Zittau, GER;22.08.2012;mangler;;navn;kappgang_10_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;431700
+norgesrekorder-kvu.pdf;10 km kappgang / Race Walk;K75-79;True;85:39;;Kirsten Lien (Garbo) Skarsvåg;Gjerdrum IL;26;Potsdam, GER;21.08.2002;mangler (ny utøver);;;kappgang_10_km;;513900
+norgesrekorder-kvu.pdf;15 km kappgang / Race Walk;K35-39;True;1:05:16;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Beijing, CHN;21.08.2008;mangler;;navn;kappgang_15_km;eed3419e-a38b-4b4c-9524-663c3848b281;391600
+norgesrekorder-kvu.pdf;15 km kappgang / Race Walk;K40-44;True;1:32:40;;Hanne Liland;T&IF Viking;69;Os/Ulven;25.04.2010;mangler;;navn;kappgang_15_km;9ba00de2-16a8-4f87-99e8-4d6f905ef5ff;556000
+norgesrekorder-kvu.pdf;15 km kappgang / Race Walk;K45-49;True;1:24:21;;Sigrun R. Sangvik;Royal SK;57;Søfteland;23.03.2003;mangler;;fornavn+etternavn;kappgang_15_km;f25cc52b-89cd-4f9b-9ded-5479376e0144;506100
+norgesrekorder-kvu.pdf;15 km kappgang / Race Walk;K60-64;True;1:41:52;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Sund/Steinsland;01.06.2002;mangler;;navn;kappgang_15_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;611200
+norgesrekorder-kvu.pdf;15 km kappgang / Race Walk;K65-69;True;1:41:29;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Os/Ulven;20.04.2008;mangler;;navn;kappgang_15_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;608900
+norgesrekorder-kvu.pdf;15 km kappgang / Race Walk;K70-74;True;1:51:07;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Os/Ulven;21.04.2013;mangler;;navn;kappgang_15_km;ab700a2b-7151-4c75-8e8b-0991b0eaf330;666700
+norgesrekorder-kvu.pdf;20 km kappgang / Race Walk;K35-39;True;1:27:07;;Kjersti Tysse Plätzer;IL Norna Salhus;72;Beijing, CHN;21.08.2008;mangler;;navn;kappgang_20_km,20kmg;eed3419e-a38b-4b4c-9524-663c3848b281;522700
+norgesrekorder-kvu.pdf;20 km kappgang / Race Walk;K40-44;True;2:09:50;;Ingrid (Eide) Storedale;Døves IK, Bergen;44;Bergen;20.08.1986;mangler (ny utøver);;;kappgang_20_km,20kmg;;779000
+norgesrekorder-kvu.pdf;20 km kappgang / Race Walk;K45-49;True;1:53:40;;Sigrun R. Sangvik;Royal SK;57;Søfteland;23.03.2003;mangler;;fornavn+etternavn;kappgang_20_km,20kmg;f25cc52b-89cd-4f9b-9ded-5479376e0144;682000
+norgesrekorder-kvu.pdf;20 km kappgang / Race Walk;K55-59;True;2:15:42;;Halldis Marit (Waaga) (Nagell-)Dahl;T&IF Viking;42;Brügge, BEL;26.06.1999;mangler;;alias;kappgang_20_km,20kmg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;814200
+norgesrekorder-kvu.pdf;20 km kappgang / Race Walk;K60-64;True;2:16:56;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Sund/Steinsland;01.06.2002;mangler;;navn;kappgang_20_km,20kmg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;821600
+norgesrekorder-kvu.pdf;20 km kappgang / Race Walk;K65-69;True;2:23:34;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Regensburg, GER;20.05.2007;mangler;;navn;kappgang_20_km,20kmg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;861400
+norgesrekorder-kvu.pdf;Høyde / High Jump;K35-39;True;1.60;;Randi Før;Os IL;48;Atna;23.08.1986;mangler;;navn;hoyde;91e71303-6224-428e-9edf-c6a32f7f8d80;1600
+norgesrekorder-kvu.pdf;Høyde / High Jump;K35-39;False;1.60;;Mariann Sandsund;Steinkjer FIK;64;Ravnanger;01.07.2000;mangler;;navn;hoyde;2d311b3a-1d07-4771-a2c1-ebf5cac5e2ec;1600
+norgesrekorder-kvu.pdf;Høyde / High Jump;K40-44;True;1.62;;Anny Undheim;IL Framsteg;56;Lillehammer;16.08.1997;finnes;;navn;hoyde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1620
+norgesrekorder-kvu.pdf;Høyde / High Jump;K45-49;True;1.54;;Anny Undheim;IL Framsteg;56;Kristiansand;26.06.2004;mangler;;navn;hoyde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1540
+norgesrekorder-kvu.pdf;Høyde / High Jump;K50-54;True;1.50;;Helen K. Røstad-Tollefsen;IL Tyrving;64;Ski;10.06.2015;finnes;;navn;hoyde;2e3d3fb2-b6fc-430f-bf86-551782e8c9fe;1500
+norgesrekorder-kvu.pdf;Høyde / High Jump;K55-59;True;1.40;;Grethe Bolstad;Bolstadøyri TL;35;Budapest, HUN;30.06.1990;mangler (ny utøver);;;hoyde;;1400
+norgesrekorder-kvu.pdf;Høyde / High Jump;K55-59;False;1.40;;Anny Undheim;IL Framsteg;56;Lappeenranta, FIN;01.07.2011;mangler;;navn;hoyde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1400
+norgesrekorder-kvu.pdf;Høyde / High Jump;K60-64;True;1.25;;Kirsten Hveem;IL i BUL;25;Roma, ITA;22.06.1985;mangler (ny utøver);;;hoyde;;1250
+norgesrekorder-kvu.pdf;Høyde / High Jump;K60-64;False;1.25;;Grethe Maren Myklestad;Florø T&IF;42;Byrkjelo;19.06.2005;mangler;;navn;hoyde;d84eccb0-d014-4b67-9a41-1f9d01b6bbce;1250
+norgesrekorder-kvu.pdf;Høyde / High Jump;K60-64;False;1.25;;Heidi Barth (Andersen);Larvik T&IF;61;Førde;25.06.2021;finnes;;navn;hoyde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1250
+norgesrekorder-kvu.pdf;Høyde / High Jump;K65-69;True;1.29;;Inger-Lise Sundheim;Ullensaker/Kisa IL;55;Oslo/St;03.09.2024;finnes (annen navneform i basen);Inger Lise Sundheim (1955);;hoyde;;1290
+norgesrekorder-kvu.pdf;Høyde / High Jump;K70-74;True;1.26;;Inger-Lise Sundheim;Ullensaker/Kisa IL;55;Arvika, SWE;27.07.2025;finnes (annen navneform i basen);Inger Lise Sundheim (1955);;hoyde;;1260
+norgesrekorder-kvu.pdf;Høyde / High Jump;K75-79;True;1.05;;Grete Rivenes;Tønsberg FIK;48;Stjørdal;21.06.2024;finnes;;fornavn+etternavn;hoyde;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;1050
+norgesrekorder-kvu.pdf;Høyde / High Jump;K80-84;True;0.91;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Ravnanger;20.06.2014;finnes;;fornavn+etternavn;hoyde;5626954e-637e-44ce-ab62-a0353b40a5de;910
+norgesrekorder-kvu.pdf;Høyde / High Jump;K85-89;True;0.79;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Os;03.10.2020;finnes;;fornavn+etternavn;hoyde;5626954e-637e-44ce-ab62-a0353b40a5de;790
+norgesrekorder-kvu.pdf;Stav / Pole Vault;K35-39;True;3.50;;Elin Margrete Dølør;IL i BUL;65;Oslo/So;30.07.2000;finnes;;fornavn+etternavn;stav;1afdf61c-519e-49d4-8e28-6379411e52b4;3500
+norgesrekorder-kvu.pdf;Stav / Pole Vault;K40-44;True;3.36;;Elin Margrete Dølør;IL i BUL;65;Göteborg, SWE;05.08.2006;mangler;;fornavn+etternavn;stav;1afdf61c-519e-49d4-8e28-6379411e52b4;3360
+norgesrekorder-kvu.pdf;Stav / Pole Vault;K45-49;True;2.31;;Britt Eva Fauskanger Brurås;IL Norna-Salhus;65;Knarvik;14.06.2014;finnes;;navn;stav;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;2310
+norgesrekorder-kvu.pdf;Stav / Pole Vault;K50-54;True;2.20;;Britt Eva Fauskanger Brurås;IL Norna-Salhus;65;Fana;06.06.2015;finnes;;navn;stav;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;2200
+norgesrekorder-kvu.pdf;Stav / Pole Vault;K55-59;True;1.60;;Grethe Bolstad;Mjøsdalen IL;35;Hosanger;20.08.1994;mangler (ny utøver);;;stav;;1600
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K35-39;True;5.50;-0,4;Anne Karine Storsveen;IL BUL;58;Oslo/Bi;23.05.1996;mangler;;navn;lengde;b0bbcf26-2528-4fac-bfd0-4da98403fe2d;5500
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K40-44;True;5.37;+1,93;Solveig Moen;Steinkjer FIK;48;Brekstad;06.08.1988;mangler;;navn;lengde;8b2c2d3e-8413-46bd-ae5c-69b2ddc70771;5370
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K45-49;True;5.30;+1,1;Anny Undheim;IL Framsteg;56;Århus, DEN;25.07.2004;mangler;;navn;lengde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;5300
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K50-54;True;4.95;+1,0;Anny Undheim;IL Framsteg;56;Riccione, ITA;13.09.2007;mangler;;navn;lengde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;4950
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K55-59;True;4.70;+2,0;Heidi Barth (Andersen);Larvik T&IF;61;Larvik/Lo;25.08.2019;finnes;;navn;lengde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;4700
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K60-64;True;4.40;+1,4;Heidi Barth (Andersen);Larvik T&IF;61;Tønsberg;14.09.2021;finnes;;navn;lengde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;4400
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K65-69;True;3.88;+1,5;Marit Huflåtten;Tønsberg FIK;53;Tønsberg;05.09.2020;finnes;;navn;lengde;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;3880
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K70-74;True;3.70;+1,2;Marit Huflåtten;Tønsberg FIK;53;Tønsberg;29.07.2025;finnes;;navn;lengde;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;3700
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K75-79;True;3.23;-0,6;Grethe Maren Myklestad;Florø T&IF;42;Sogndal;29.10.2017;finnes;;navn;lengde;d84eccb0-d014-4b67-9a41-1f9d01b6bbce;3230
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K80-84;True;2.72;-2,1;Elise Marie Wåle;Larvik T&IF;42;Tampere, FIN;05.07.2022;finnes;;fornavn+etternavn;lengde;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;2720
+norgesrekorder-kvu.pdf;Lengde / Long Jump;K85-89;True;1.39;-0,2;Ragnhild Hanstvedt;Mjøsdalen IL;34;Hosanger;03.07.2019;finnes;;fornavn+etternavn;lengde;5626954e-637e-44ce-ab62-a0353b40a5de;1390
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K35-39;True;11.09;+1,2;Nina (Johannessen) Naalsund;Kristiansands IF;75;Kristiansand;30.06.2012;finnes;;navn;tresteg;6142076b-8ce1-4ddd-9e02-7ef17c59057d;11090
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K40-44;True;11.56;+1,5;Cecilie Rise Ortner;Gloppen FIL;77;Linz, AUT;30.06.2018;finnes;;navn;tresteg;12c9396e-d8f2-44c2-b482-e34952e1adaf;11560
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K45-49;True;10.37;+1,1;Anny Undheim;IL Framsteg;56;Århus, DEN;31.07.2004;mangler;;navn;tresteg;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;10370
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K50-54;True;9.87;+0,4;Anny Undheim;IL Framsteg;56;Nyiregyhaza, HUN;23.07.2010;mangler;;navn;tresteg;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;9870
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K55-59;True;9.19;+0,1;Heidi Barth (Andersen);Larvik T&IF;61;Stjørdal;26.08.2018;finnes;;navn;tresteg;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;9190
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K60-64;True;8.83;;Kirsten Hveem;IL i BUL;25;Hobart, AUS;10.12.1987;mangler (ny utøver);;;tresteg;;8830
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K65-69;True;8.60;+1,3;Marit Huflåtten;Tønsberg FIK;53;Tønsberg;07.08.2019;finnes;;navn;tresteg;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;8600
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K70-74;True;7.80;+1,2;Marit Huflåtten;Tønsberg FIK;53;Göteborg, SWE;17.08.2024;finnes;;navn;tresteg;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;7800
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K75-79;True;6.59;-0,9;Grethe Maren Myklestad;Florø T&IF;42;Sogndal;29.10.2017;finnes;;navn;tresteg;d84eccb0-d014-4b67-9a41-1f9d01b6bbce;6590
+norgesrekorder-kvu.pdf;Tresteg / Triple Jump;K80-84;True;5.75;+0,8;Herborg Ninni Blakstad;IL Gular;42;Tromsø;21.08.2022;finnes;;navn;tresteg;a05b57e8-4800-45c7-be2b-8e25f77ba93f;5750
+norgesrekorder-kvu.pdf;Kule / Shot Put 4.0 kg;K35-39;True;13.95;;Tania Longe;Fredrikstad IF;74;Kristiansand;25.08.2012;finnes;;navn;kule_4kg,kule;a69eda2f-312b-4196-be8b-dce3f6af888d;13950
+norgesrekorder-kvu.pdf;Kule / Shot Put 4.0 kg;K40-44;True;12.77;;Tania Longe;Fredrikstad IF;74;Oslo/Bi;16.08.2014;finnes;;navn;kule_4kg,kule;a69eda2f-312b-4196-be8b-dce3f6af888d;12770
+norgesrekorder-kvu.pdf;Kule / Shot Put 4.0 kg;K45-49;True;11.34;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Mosjøen;15.06.1994;mangler;;fornavn+etternavn;kule_4kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;11340
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K50-54;True;12.17;;Mari Tuulikki Kjølberg;Romerike Friidrett;72;Funchal, POR;16.10.2025;finnes;;navn;kule_3kg,kule;48511278-0ea7-46e5-ac38-a3fc7b7e3f55;12170
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K55-59;True;10.92;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Geithus;01.07.2006;mangler;;fornavn+etternavn;kule_3kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;10920
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K60-64;True;11.85;;Aslaug Snøås;IL ROS;65;Kristiansand;27.06.2025;finnes;;navn;kule_3kg,kule;67634de3-5262-47cf-951c-ec5d2f87aef3;11850
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K65-69;True;10.17;;Grete Bjørdalsbakke (Mo);Ørsta IL;60;Hareid;24.05.2025;finnes;;navn;kule_3kg,kule;a8e14de4-046b-4338-b8db-03a8e2c45a0b;10170
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K70-74;True;9.21;;Inger Marie Vingdal;Øystre Slidre IL;55;Fagernes;07.06.2025;finnes;;navn;kule_3kg,kule;7ac279a0-b627-467b-b4e7-d874162f4a5f;9210
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K75-79;True;7.34;;Reidun Nordvik;Sparbu IL;28;Stjørdal;02.08.2003;mangler (ny utøver);;;kule_3kg,kule;;7340
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K75-79;False;7.34;;Emma Stuberg Grønmo;Lånke IL;44;Stjørdal;03.10.2019;finnes;;navn;kule_3kg,kule;4208debb-3f62-473d-a3c7-be306cb61bb6;7340
+norgesrekorder-kvu.pdf;Kule / Shot Put 3.0 kg;K80-84;True;5.29;;Bodil Hestmann;Oslo IL;28;Heggedal/Torpv. 34;30.08.2008;mangler;;navn;kule_3kg,kule;ec6835a3-d120-4883-af55-779545c3b3e6;5290
+norgesrekorder-kvu.pdf;Kule / Shot Put 2.0 kg;K75-79;True;9.82;;Grete Rivenes;Tønsberg FIK;48;Geithus;11.06.2024;finnes;;fornavn+etternavn;kule_2kg,kule;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;9820
+norgesrekorder-kvu.pdf;Kule / Shot Put 2.0 kg;K80-84;True;8.02;;Emma Stuberg Grønmo;Lånke IL;44;Stjørdal;07.05.2024;finnes;;navn;kule_2kg,kule;4208debb-3f62-473d-a3c7-be306cb61bb6;8020
+norgesrekorder-kvu.pdf;Kule / Shot Put 2.0 kg;K85-89;True;5.81;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Hatland;28.06.2021;finnes;;fornavn+etternavn;kule_2kg,kule;5626954e-637e-44ce-ab62-a0353b40a5de;5810
+norgesrekorder-kvu.pdf;Kule / Shot Put 2.0 kg;K90-94;True;4.69;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Fotlandsvåg;22.05.2025;finnes;;fornavn+etternavn;kule_2kg,kule;5626954e-637e-44ce-ab62-a0353b40a5de;4690
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K35-39;True;64.54;;Mette Bergmann;SK Vidar;62;Spikkestad;25.07.1997;finnes;;navn;diskos_1kg,diskos;ee9e2544-a2d3-4c48-811e-c3357d0daa7a;64540
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K40-44;True;52.20;;Grete Etholm;IK Tjalve;76;Hamar;18.05.2016;finnes (annen navneform i basen);Grete Etholm Snyder (1976);navn;diskos_1kg,diskos;2dbe2e8c-2b18-4196-b5bf-573dfa499dc5;52200
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K45-49;True;47.23;;Else Lundestad Bakkelid;Gloppen FIL;76;Rygg;08.08.2021;finnes;;navn;diskos_1kg,diskos;a29fae91-a053-45c6-9385-061aa4ce6a93;47230
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K50-54;True;39.41;;Jorunn Tangen Hole;IL ROS;61;Sæby, DEN;19.10.2013;finnes;;navn;diskos_1kg,diskos;6073642d-de75-4ee9-8860-f7c9db105978;39410
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K55-59;True;41.24;;Jorunn Tangen Hole;IL ROS;61;Spikkestad;16.06.2018;finnes;;navn;diskos_1kg,diskos;6073642d-de75-4ee9-8860-f7c9db105978;41240
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K60-64;True;38.22;;Jorunn Tangen Hole;IL ROS;61;Spikkestad;28.05.2022;finnes;;navn;diskos_1kg,diskos;6073642d-de75-4ee9-8860-f7c9db105978;38220
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K65-69;True;27.90;;Inger Marie Vingdal;Øystre Slidre IL;55;Knarvik;27.07.2024;finnes;;navn;diskos_1kg,diskos;7ac279a0-b627-467b-b4e7-d874162f4a5f;27900
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K70-74;True;26.02;;Inger Marie Vingdal;Øystre Slidre IL;55;Kristiansand;28.06.2025;finnes;;navn;diskos_1kg,diskos;7ac279a0-b627-467b-b4e7-d874162f4a5f;26020
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K75-79;True;18.81;;Emma Stuberg Grønmo;Lånke IL;44;Stjørdal;03.10.2019;finnes;;navn;diskos_1kg,diskos;4208debb-3f62-473d-a3c7-be306cb61bb6;18810
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 1.0 kg;K80-84;True;11.51;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Bergen/Sk;08.07.2014;finnes;;fornavn+etternavn;diskos_1kg,diskos;5626954e-637e-44ce-ab62-a0353b40a5de;11510
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 0.75 kg;K75-79;True;24.14;;Inger Ramberg Røthe;Sparbu IL;49;Stjørdal;22.06.2024;finnes;;navn;diskos_750g,diskos;33225be7-0d9c-4d24-8e3c-87f535d9a2ea;24140
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 0.75 kg;K80-84;True;18.71;;Emma Stuberg Grønmo;Lånke IL;44;Stjørdal;08.07.2025;finnes;;navn;diskos_750g,diskos;4208debb-3f62-473d-a3c7-be306cb61bb6;18710
+norgesrekorder-kvu.pdf;Diskos / Discus Throw 0.75 kg;K85-89;True;9.94;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Os;03.10.2020;finnes;;fornavn+etternavn;diskos_750g,diskos;5626954e-637e-44ce-ab62-a0353b40a5de;9940
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 4.0 kg;K35-39;True;57.42;;Mette Bergmann;SK Vidar;62;Aremark;29.07.2000;finnes;;navn;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;ee9e2544-a2d3-4c48-811e-c3357d0daa7a;57420
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 4.0 kg;K40-44;True;44.78;;Veronica Celin Juvik;FIL AKS-77;74;Fana;05.06.2015;finnes;;navn;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;6238a98d-b513-4ab1-84b4-6c9a03a2e0ec;44780
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 4.0 kg;K45-49;True;39.16;;Else Lundestad Bakkelid;Gloppen FIL;76;Førde;25.06.2021;finnes;;navn;slegge_40kg/1195cm,slegge_4kg,slegge_40kg/100cm,slegge;a29fae91-a053-45c6-9385-061aa4ce6a93;39160
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K50-54;True;49.26;;Mari Tuulikki Kjølberg;Romerike Friidrett;72;Rud;17.09.2022;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;48511278-0ea7-46e5-ac38-a3fc7b7e3f55;49260
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K55-59;True;39.39;;Inger Austbø;Kongsberg IF;47;Potsdam, GER;22.08.2002;mangler;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;5aee0f16-7154-4824-9914-993bc7a2104f;39390
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K60-64;True;35.93;;Live Båsen (Eriksen);Modum FIK;58;Stjørdal;24.08.2018;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;00c226db-b96b-4995-adf1-9dd2f0f6fe35;35930
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K65-69;True;34.69;;Inger Marie Vingdal;Øystre Slidre IL;55;Geithus;30.04.2024;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;7ac279a0-b627-467b-b4e7-d874162f4a5f;34690
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K70-74;True;34.42;;Inger Marie Vingdal;Øystre Slidre IL;55;Tønsberg;01.07.2025;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;7ac279a0-b627-467b-b4e7-d874162f4a5f;34420
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K75-79;True;22.96;;Grethe Maren Myklestad;Florø T&IF;42;Aarhus, DEN;03.08.2017;finnes;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;d84eccb0-d014-4b67-9a41-1f9d01b6bbce;22960
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 3.0 kg;K80-84;True;11.85;;Bodil Hestmann;Oslo IL;28;Lyngdal;19.09.2009;mangler;;navn;slegge_30kg_1195cm,slegge_30kg/110cm,slegge_3kg,slegge;ec6835a3-d120-4883-af55-779545c3b3e6;11850
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 2.0 kg;K75-79;True;30.83;;Grete Rivenes;Tønsberg FIK;48;Tønsberg;01.08.2023;finnes;;fornavn+etternavn;slegge_20kg/110cm,slegge_2kg,slegge;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;30830
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 2.0 kg;K80-84;True;26.42;;Elise Marie Wåle;Larvik T&IF;42;Sandefjord/Bu;13.05.2022;finnes;;fornavn+etternavn;slegge_20kg/110cm,slegge_2kg,slegge;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;26420
+norgesrekorder-kvu.pdf;Slegge / Hammer Trow 2.0 kg;K85-89;True;16.36;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Os;03.10.2020;finnes;;fornavn+etternavn;slegge_20kg/110cm,slegge_2kg,slegge;5626954e-637e-44ce-ab62-a0353b40a5de;16360
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 600 g;K35-39;True;49.82;;Anne Grethe Bæraas;SK Vidar;63;Oslo/St;16.08.1999;finnes;;navn;spyd_600g,spyd;f97bc4e4-efaf-4e08-bc09-bb13a9879380;49820
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 600 g;K40-44;True;42.15;;Helga Reigstad;Osterøy IL;72;Hatland;07.05.2012;finnes;;navn;spyd_600g,spyd;e22c2055-3af2-457c-881b-f9ef2dfa0fc9;42150
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 600 g;K40-44;False;43.78;***;Elisabeth Wormsen;SK Snøgg;55;Notodden;29.05.1996;øvelse uten kode i basen;;;;;
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 600 g;K45-49;True;40.83;;Elisabeth Wormsen;SK Snøgg;55;Notodden;23.09.2000;finnes (annen navneform i basen);Elisabeth Wormsen Dubowski (1955);;spyd_600g,spyd;;40830
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 500 g;K50-54;True;38.91;;Marianne Engebø;Førde IL;70;Førde;26.06.2021;finnes;;navn;spyd_500g,spyd;0623d50e-8de8-4812-a953-81a54f3cd71c;38910
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 500 g;K55-59;True;31.64;;Janice Terjesen Flaathe;GTI;59;Ravnanger;20.06.2014;finnes;;fornavn+etternavn;spyd_500g,spyd;375ad184-dac8-4bc6-b1c3-84a82403bad3;31640
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 500 g;K60-64;True;28.05;;Live Båsen (Eriksen);Modum FIK;58;Málaga, ESP;11.09.2018;finnes;;navn;spyd_500g,spyd;00c226db-b96b-4995-adf1-9dd2f0f6fe35;28050
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 500 g;K65-69;True;24.74;;Live Båsen (Eriksen);Modum FIK;58;Francavilla al Mare, ITA;21.09.2023;finnes;;navn;spyd_500g,spyd;00c226db-b96b-4995-adf1-9dd2f0f6fe35;24740
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 500 g;K70-74;True;22.45;;Inger Marie Vingdal;Øystre Slidre IL;55;Fagernes;07.06.2025;finnes;;navn;spyd_500g,spyd;7ac279a0-b627-467b-b4e7-d874162f4a5f;22450
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 500 g;K75-79;True;18.94;;Emma Stuberg Grønmo;Lånke IL;44;Stjørdal;28.09.2021;finnes;;navn;spyd_500g,spyd;4208debb-3f62-473d-a3c7-be306cb61bb6;18940
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K50-54;True;34.52;;Grethe Bolstad;Bolstadøyri TL;35;Mo i Rana;20.07.1985;mangler (ny utøver);;;spyd_400g,spyd;;34520
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K55-59;True;32.62;;Grethe Bolstad;Bolstadøyri TL;35;Lund, SWE;29.07.1990;mangler (ny utøver);;;spyd_400g,spyd;;32620
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K60-64;True;30.02;;Astrid Førde;Gloppen FIL;33;Malmö, SWE;24.07.1996;mangler;;alias;spyd_400g,spyd;b826e412-3917-4d2a-8e39-45f6bf2596b8;30020
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K65-69;True;27.12;;Astrid Førde;Gloppen FIL;33;Knarvik;30.08.1998;mangler;;alias;spyd_400g,spyd;b826e412-3917-4d2a-8e39-45f6bf2596b8;27120
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K70-74;True;22.64;;Emma Stuberg Grønmo;Stjørdal FIK;44;Stjørdal;21.09.2014;finnes;;navn;spyd_400g,spyd;4208debb-3f62-473d-a3c7-be306cb61bb6;22640
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K75-79;True;20.89;;Emma Stuberg Grønmo;Lånke IL;44;Geithus;22.06.2019;finnes;;navn;spyd_400g,spyd;4208debb-3f62-473d-a3c7-be306cb61bb6;20890
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K80-84;True;19.97;;Elise Marie Wåle;Larvik T&IF;42;Torun, POL;29.03.2023;finnes;;fornavn+etternavn;spyd_400g,spyd;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;19970
+norgesrekorder-kvu.pdf;Spyd / Javelin Throw 400 g;K85-89;True;9.59;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Knarvik;10.08.2019;finnes;;fornavn+etternavn;spyd_400g,spyd;5626954e-637e-44ce-ab62-a0353b40a5de;9590
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 9.08 kg;K35-39;True;15.90;;Mette Bergmann;SK Vidar;62;Oslo/So;24.07.1999;finnes;;navn;vektkast_908kg,vektkast;ee9e2544-a2d3-4c48-811e-c3357d0daa7a;15900
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 9.08 kg;K40-44;True;13.83;;Veronica Celin Juvik;FIL AKS-77;74;Knarvik;14.06.2014;finnes;;navn;vektkast_908kg,vektkast;6238a98d-b513-4ab1-84b4-6c9a03a2e0ec;13830
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 9.08 kg;K45-49;True;13.08;;Else Lundestad Bakkelid;Gloppen FIL;76;Førde;27.06.2021;finnes;;navn;vektkast_908kg,vektkast;a29fae91-a053-45c6-9385-061aa4ce6a93;13080
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 7.26 kg;K50-54;True;15.91;;Mari Tuulikki Kjølberg;Romerike Friidrett;72;Torun, POL;20.03.2024;finnes;;navn;vektkast_726kg,vektkast;48511278-0ea7-46e5-ac38-a3fc7b7e3f55;15910
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 7.26 kg;K55-59;True;13.11;;Inger Austbø;Kongsberg IF;47;Tønsberg;02.08.2002;mangler;;navn;vektkast_726kg,vektkast;5aee0f16-7154-4824-9914-993bc7a2104f;13110
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 5.45 kg;K60-64;True;14.19;;Inger Austbø;Kongsberg IF;47;Tønsberg;25.04.2009;mangler;;navn;vektkast_545kg,vektkast;5aee0f16-7154-4824-9914-993bc7a2104f;14190
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 5.45 kg;K65-69;True;13.97;;Inger Austbø;Kongsberg IF;47;Tønsberg;28.04.2012;mangler;;navn;vektkast_545kg,vektkast;5aee0f16-7154-4824-9914-993bc7a2104f;13970
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 5.45 kg;K70-74;True;14.15;;Inger Marie Vingdal;Øystre Slidre IL;55;Funchal, POR;10.10.2025;finnes;;navn;vektkast_545kg,vektkast;7ac279a0-b627-467b-b4e7-d874162f4a5f;14150
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 5.45 kg;K75-79;True;9.22;;Grethe Maren Myklestad;Florø T&IF;42;Viby, DEN;28.07.2017;finnes;;navn;vektkast_545kg,vektkast;d84eccb0-d014-4b67-9a41-1f9d01b6bbce;9220
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 5.45 kg;K80-84;True;6.16;;Bodil Hestmann;Oslo IL;28;Lyngdal;19.09.2009;mangler;;navn;vektkast_545kg,vektkast;ec6835a3-d120-4883-af55-779545c3b3e6;6160
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 4.00 kg;K75-79;True;12.20;;Grete Rivenes;Tønsberg FIK;48;Pescara, ITA;24.09.2023;finnes;;fornavn+etternavn;vektkast40kg,vektkast;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;12200
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 4.00 kg;K80-84;True;10.88;;Elise Marie Wåle;Larvik T&IF;42;Tampere, FIN;01.07.2022;finnes;;fornavn+etternavn;vektkast40kg,vektkast;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;10880
+norgesrekorder-kvu.pdf;Vektkast / Weight Throw 4.00 kg;K85-89;True;6.25;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Knarvik;10.08.2019;finnes;;fornavn+etternavn;vektkast40kg,vektkast;5626954e-637e-44ce-ab62-a0353b40a5de;6250
+norgesrekorder-mvi.pdf;60m;M35-39;True;6.86;;Christian Marthinussen;Fana IL;83;Haugesund;02.02.2019;finnes;;navn;60m;3fc4414e-796b-40e1-b99c-495817313f08;686
+norgesrekorder-mvi.pdf;60m;M40-44;True;7.27;;Bård Venholen;FIK Ren-Eng;75;Lillestrøm;31.01.2015;finnes;;navn;60m;6e8c8bfc-f297-45b0-9ecf-406ca881148d;727
+norgesrekorder-mvi.pdf;60m;M40-44;False;7.2;;Freddy Hørven;Asker SK;53;Skedsmo;06.03.1994;mangler;;navn;60m;2b98ae92-638c-4862-af73-1762f1eb45f4;720
+norgesrekorder-mvi.pdf;60m;M45-49;True;7.31;;Jon-Magnus Eliassen Restad;Romerike Friidrett;81;Torun, POL;29.03.2026;finnes;;navn;60m;289e8618-598d-41a9-9082-4b53ea0524ba;731
+norgesrekorder-mvi.pdf;60m;M50-54;True;7.68;;Per Sletholt;IK Tjalve;46;Stange;03.03.1996;mangler;;navn;60m;28be5d17-70c5-4286-b27d-3a7444bc6a42;768
+norgesrekorder-mvi.pdf;60m;M55-59;True;7.86;;Freddy Hørven;Asker SK;53;Lillestrøm;05.04.2008;mangler;;navn;60m;2b98ae92-638c-4862-af73-1762f1eb45f4;786
+norgesrekorder-mvi.pdf;60m;M55-59;False;7.7;;Kåre Strande;Fagernes IL;61;Leira;30.04.2016;finnes;;navn;60m;71a61bb1-8298-42bd-86a8-64967a57f600;770
+norgesrekorder-mvi.pdf;60m;M60-64;True;7.96;;Ivar Njøs;Romerike Friidrett;65;Hvam;14.02.2025;finnes;;navn;60m;cc9831e2-8a71-4b84-b76f-e38f11ceeac3;796
+norgesrekorder-mvi.pdf;60m;M60-64;False;7.6;;Ivar Njøs;Romerike Friidrett;65;Oslo/Ek;07.04.2025;finnes;;navn;60m;cc9831e2-8a71-4b84-b76f-e38f11ceeac3;760
+norgesrekorder-mvi.pdf;60m;M65-69;True;8.24;;Dag Kåshagen;Moelven IL;60;Hvam;01.02.2026;finnes;;fornavn+etternavn;60m;5a4fdafb-5d98-4aae-86ef-1179ec9853df;824
+norgesrekorder-mvi.pdf;60m;M70-74;True;8.45;;Freddy Hørven;Asker SK;53;Rud;14.02.2026;finnes;;navn;60m;2b98ae92-638c-4862-af73-1762f1eb45f4;845
+norgesrekorder-mvi.pdf;60m;M75-79;True;8.95;;Jostein Haraldseid;Bækkelagets SK;35;Kristiansand;23.01.2010;mangler;;navn;60m;32f33c70-c6a0-4fba-9487-300665a19bcb;895
+norgesrekorder-mvi.pdf;60m;M75-79;False;8.8;;Jostein Haraldseid;Bækkelagets SK;35;Oslo/Ek;28.01.2010;mangler;;navn;60m;32f33c70-c6a0-4fba-9487-300665a19bcb;880
+norgesrekorder-mvi.pdf;60m;M80-84;True;9.52;;Arne Ueland;Tønsberg FIK;34;Haugesund;07.03.2014;finnes;;navn;60m;6e42175c-a601-4a62-beb3-b31dbfa42a50;952
+norgesrekorder-mvi.pdf;60m;M85-89;True;10.31;;Arne Ueland;Tønsberg FIK;34;Hvam;10.03.2019;finnes;;navn;60m;6e42175c-a601-4a62-beb3-b31dbfa42a50;1031
+norgesrekorder-mvi.pdf;60m;M90-94;True;11.57;;Jostein Haraldseid;Bækkelagets SK;35;Hvam;14.02.2025;finnes;;navn;60m;32f33c70-c6a0-4fba-9487-300665a19bcb;1157
+norgesrekorder-mvi.pdf;60m;M90-94;False;11.0;;Jostein Haraldseid;Bækkelagets SK;35;Oslo/Ek;04.02.2025;finnes;;navn;60m;32f33c70-c6a0-4fba-9487-300665a19bcb;1100
+norgesrekorder-mvi.pdf;200m;M35-39;True;22.49;;Ove Lindekleiv;Sandnes IL;76;Trondheim/Ra;12.02.2011;finnes;;navn;200m;b199d250-8fb3-4524-a886-f2ab4a5e8ead;2249
+norgesrekorder-mvi.pdf;200m;M40-44;True;23.96;;Rune Peder Hansen;GTI;74;Sandnes;09.02.2014;finnes;;navn;200m;fdd4f737-a271-40c9-9cc6-16f52938e943;2396
+norgesrekorder-mvi.pdf;200m;M45-49;True;24.04;;Freddy Hørven;Asker SK;53;Stange;25.03.2000;mangler;;navn;200m;2b98ae92-638c-4862-af73-1762f1eb45f4;2404
+norgesrekorder-mvi.pdf;200m;M50-54;True;24.96;;Asle Offerdal;IL i BUL;66;Rud;20.01.2018;finnes;;navn;200m;54971cd7-0088-44fd-85b6-5602c2c7f356;2496
+norgesrekorder-mvi.pdf;200m;M55-59;True;25.89;;Freddy Hørven;Asker SK;53;Stange;02.02.2008;mangler;;navn;200m;2b98ae92-638c-4862-af73-1762f1eb45f4;2589
+norgesrekorder-mvi.pdf;200m;M60-64;True;25.98;;Ivar Njøs;Romerike Friidrett;65;Hvam;15.02.2025;finnes;;navn;200m;cc9831e2-8a71-4b84-b76f-e38f11ceeac3;2598
+norgesrekorder-mvi.pdf;200m;M65-69;True;27.86;;Dag Kåshagen;Moelven IL;60;Hvam;31.01.2026;finnes;;fornavn+etternavn;200m;5a4fdafb-5d98-4aae-86ef-1179ec9853df;2786
+norgesrekorder-mvi.pdf;200m;M70-74;True;28.28;;Freddy Hørven;Asker SK;53;Stange;28.01.2023;finnes;;navn;200m;2b98ae92-638c-4862-af73-1762f1eb45f4;2828
+norgesrekorder-mvi.pdf;200m;M75-79;True;30.62;;Jostein Haraldseid;Bækkelagets SK;35;Jyväskylä, FIN;20.03.2010;mangler;;navn;200m;32f33c70-c6a0-4fba-9487-300665a19bcb;3062
+norgesrekorder-mvi.pdf;200m;M80-84;True;33.83;;Arne Ueland;Tønsberg FIK;34;Haugesund;08.03.2014;finnes;;navn;200m;6e42175c-a601-4a62-beb3-b31dbfa42a50;3383
+norgesrekorder-mvi.pdf;200m;M85-89;True;36.87;;Per Vik Ongstad;Oslostudentenes IK;34;Hvam;09.03.2019;finnes;;navn;200m;0324b581-f546-4390-ba77-5f17a6e0fed9;3687
+norgesrekorder-mvi.pdf;200m;M90-94;True;43.04;;Kjell Steinset;Jølster IL;36;Hvam;31.01.2026;finnes;;fornavn+etternavn;200m;fe0e1e4f-a834-47bd-aa61-527073b17b13;4304
+norgesrekorder-mvi.pdf;400m;M35-39;True;52.09;;Bo Breigan;Bislett FIK;58;Göteborg, SWE;04.02.1995;mangler;;navn;400m;271d3b2b-efdb-426b-bce9-ff53ea92fa0f;5209
+norgesrekorder-mvi.pdf;400m;M40-44;True;54.24;;Rune Bråten Liholt;IK Tjalve;77;Rud;08.02.2020;finnes;;navn, fødselsår 1976 i basen;400m;5ac4eb6c-3596-45de-8853-04e933cefbee;5424
+norgesrekorder-mvi.pdf;400m;M45-49;True;54.04;;Asle Offerdal;IL i BUL;66;Gent, BEL;19.03.2011;mangler;;navn;400m;54971cd7-0088-44fd-85b6-5602c2c7f356;5404
+norgesrekorder-mvi.pdf;400m;M50-54;True;55.74;;Asle Offerdal;IL i BUL;66;Rud;20.01.2018;finnes;;navn;400m;54971cd7-0088-44fd-85b6-5602c2c7f356;5574
+norgesrekorder-mvi.pdf;400m;M55-59;True;57.00;;Stig Wemundstad;Strindheim IL;57;Jyväskylä, FIN;08.04.2012;mangler;;navn;400m;720356d4-35ac-424a-a76d-08aea6a5b322;5700
+norgesrekorder-mvi.pdf;400m;M60-64;True;60.77;;Kjell Olav Førde;Jølster IL;66;Torun, POL;27.03.2026;finnes;;navn;400m;b1d84402-9775-4d6b-a54a-b8c99384de2c;6077
+norgesrekorder-mvi.pdf;400m;M65-69;True;61.96;;Dag Kåshagen;Moelven IL;60;Hvam;06.12.2025;finnes;;fornavn+etternavn;400m;5a4fdafb-5d98-4aae-86ef-1179ec9853df;6196
+norgesrekorder-mvi.pdf;400m;M70-74;True;67.83;;Johan Bergersen;Ask Friidrett;46;Ancona, ITA;03.04.2016;finnes;;navn;400m;ffd24045-c96d-4911-9b17-702fc7ceed28;6783
+norgesrekorder-mvi.pdf;400m;M75-79;True;75.21;;Arne Warem;Gjesdal IL;46;Sandnes;24.02.2024;finnes;;navn;400m;2d219463-a749-4f44-8c72-d3405ae17ac4;7521
+norgesrekorder-mvi.pdf;400m;M80-84;True;79.00;;Kjell Steinset;Jølster IL;36;Huddinge, SWE;12.03.2017;finnes;;fornavn+etternavn;400m;fe0e1e4f-a834-47bd-aa61-527073b17b13;7900
+norgesrekorder-mvi.pdf;400m;M85-89;True;90.46;;Kjell Steinset;Jølster IL;36;Reykjavik, ISL;26.02.2023;finnes;;fornavn+etternavn;400m;fe0e1e4f-a834-47bd-aa61-527073b17b13;9046
+norgesrekorder-mvi.pdf;400m;M90-94;True;148.37;;Harald Aanerud;Lørenskog FIL;27;Madrid, ESP;20.03.2018;finnes;;navn;400m;fb8acab2-4191-4789-aee4-c115e7dbcd94;14837
+norgesrekorder-mvi.pdf;800m menn;M35-39;True;1:56.79;;Åge Galgerud;Lalm IL;47;Oslo/Ek;12.02.1983;mangler;;navn;800m;c2df7be4-8540-4a13-ad42-c386473a2da0;11679
+norgesrekorder-mvi.pdf;800m menn;M40-44;True;2:00.22;;Kristian Nedregård;Spjelkavik og Omegn FIK;74;Stockholm, SWE;06.02.2014;finnes;;navn;800m;bf67ed79-641c-40f5-b9ad-6f38bef84958;12022
+norgesrekorder-mvi.pdf;800m menn;M45-49;True;2:03.32;;Ketil Helgevold;IL Skjalg;69;Sandnes;01.03.2015;finnes;;navn;800m;64d6533b-7b32-4605-91b6-cfb81680a140;12332
+norgesrekorder-mvi.pdf;800m menn;M50-54;True;2:09.50;;Ketil Helgevold;IL Skjalg;69;Sandnes;13.01.2019;finnes;;navn;800m;64d6533b-7b32-4605-91b6-cfb81680a140;12950
+norgesrekorder-mvi.pdf;800m menn;M55-59;True;2:14.15;;Øivind Bernes;Osterøy IL;58;Torun, POL;26.03.2015;finnes;;navn;800m;6a5dde1e-9780-4d55-9cc8-ece03edefb27;13415
+norgesrekorder-mvi.pdf;800m menn;M60-64;True;2:19.88;;Øivind Bernes;Mjøsdalen IL;58;Madrid, ESP;22.03.2018;finnes;;navn;800m;6a5dde1e-9780-4d55-9cc8-ece03edefb27;13988
+norgesrekorder-mvi.pdf;800m menn;M65-69;True;2:25.10;;Øivind Bernes;Mjøsdalen IL;58;Torun, POL;30.03.2023;finnes;;navn;800m;6a5dde1e-9780-4d55-9cc8-ece03edefb27;14510
+norgesrekorder-mvi.pdf;800m menn;M70-74;True;2:34.30;;Ragnar Jakobsen;Kristiansands IF;43;Budapest, HUN;28.03.2014;finnes;;navn;800m;7570fcd5-cd42-40d5-a9c7-57e13a80692c;15430
+norgesrekorder-mvi.pdf;800m menn;M75-79;True;2:48.88;;Kjell Steinset;Jølster IL;36;Haugesund;03.03.2013;finnes;;fornavn+etternavn;800m;fe0e1e4f-a834-47bd-aa61-527073b17b13;16888
+norgesrekorder-mvi.pdf;800m menn;M80-84;True;3:04.60;;Kjell Steinset;Jølster IL;36;Hvam;13.03.2016;finnes;;fornavn+etternavn;800m;fe0e1e4f-a834-47bd-aa61-527073b17b13;18460
+norgesrekorder-mvi.pdf;800m menn;M85-89;True;3:40.45;;Kjell Steinset;Jølster IL;36;Reykjavik, ISL;24.02.2023;finnes;;fornavn+etternavn;800m;fe0e1e4f-a834-47bd-aa61-527073b17b13;22045
+norgesrekorder-mvi.pdf;800m menn;M90-94;True;4:00.28;;Kjell Steinset;Jølster IL;36;Hvam;01.02.2026;finnes;;fornavn+etternavn;800m;fe0e1e4f-a834-47bd-aa61-527073b17b13;24028
+norgesrekorder-mvi.pdf;1500m;M35-39;True;3:58.79;;Leif Inge Tjelta;IL Skjalg;49;Oslo/Ek;25.01.1987;mangler;;navn;1500m;ad0793e7-445a-41c4-90a1-046ffa26808c;23879
+norgesrekorder-mvi.pdf;1500m;M40-44;True;4:01.37;;Andreas Penne Nygård;Sandnes IL;82;Haukås;10.02.2024;finnes;;navn;1500m;2b7079f1-dbda-480b-b823-96d10c7c01f3;24137
+norgesrekorder-mvi.pdf;1500m;M45-49;True;4:08.96;;Harald Nygård;FIL AKS-77;51;Malmö, SWE;07.03.1999;mangler;;navn;1500m;08fff9f7-bba9-43f0-8eff-ec7948c726c3;24896
+norgesrekorder-mvi.pdf;1500m;M50-54;True;4:23.31;;Harald Nygård;FIL AKS-77;51;Eskilstuna, SWE;13.03.2005;mangler;;navn;1500m;08fff9f7-bba9-43f0-8eff-ec7948c726c3;26331
+norgesrekorder-mvi.pdf;1500m;M55-59;True;4:37.45;;Gunnar Gaulen;FIL AKS-77;41;Birmingham, GBR;02.03.1997;mangler;;navn;1500m;0bffec35-305d-4d05-be4b-963a2a885224;27745
+norgesrekorder-mvi.pdf;1500m;M60-64;True;4:47.28;;Harald Nygård;FIL AKS-77;51;Haukås;17.03.2012;finnes;;navn;1500m;08fff9f7-bba9-43f0-8eff-ec7948c726c3;28728
+norgesrekorder-mvi.pdf;1500m;M65-69;True;4:55.94;;Øivind Bernes;Mjøsdalen IL;58;Torun, POL;01.04.2023;finnes;;navn;1500m;6a5dde1e-9780-4d55-9cc8-ece03edefb27;29594
+norgesrekorder-mvi.pdf;1500m;M70-74;True;5:20.81;;Ragnar Jakobsen;Kristiansands IF;43;Budapest, HUN;30.03.2014;finnes;;navn;1500m;7570fcd5-cd42-40d5-a9c7-57e13a80692c;32081
+norgesrekorder-mvi.pdf;1500m;M75-79;True;6:00.75;;Harald Nygård;FIL AKS-77;51;Hvam;31.01.2026;finnes;;navn;1500m;08fff9f7-bba9-43f0-8eff-ec7948c726c3;36075
+norgesrekorder-mvi.pdf;1500m;M80-84;True;6:30.46;;Kjell Steinset;Jølster IL;36;Hvam;12.03.2016;finnes;;fornavn+etternavn;1500m;fe0e1e4f-a834-47bd-aa61-527073b17b13;39046
+norgesrekorder-mvi.pdf;1500m;M85-89;True;7:55.49;;Ingolf Hådem;NTNUI;29;Haugesund;09.03.2014;finnes;;navn;1500m;d4c070c5-062e-4e3d-8439-536dc7f6df28;47549
+norgesrekorder-mvi.pdf;1500m;M90-94;True;8:26.58;;Kjell Steinset;Jølster IL;36;Hvam;31.01.2026;finnes;;fornavn+etternavn;1500m;fe0e1e4f-a834-47bd-aa61-527073b17b13;50658
+norgesrekorder-mvi.pdf;3000m;M35-39;True;8:22.3;;Kåre Osnes;Haugesund IL;50;Stavanger;04.01.1987;mangler;;navn;3000m;496dc949-87e0-444d-96a9-38a36325a468;50230
+norgesrekorder-mvi.pdf;3000m;M40-44;True;8:31.69;;Andreas Penne Nygård;Sandnes IL;82;Fana/Gn;01.03.2026;finnes;;navn;3000m;2b7079f1-dbda-480b-b823-96d10c7c01f3;51169
+norgesrekorder-mvi.pdf;3000m;M45-49;True;9:01.24;;Robert Hisdal;BFG Bergen LK;78;Haukås;10.02.2023;finnes;;navn;3000m;49b87684-673b-48fa-961f-fbf5ed967a09;54124
+norgesrekorder-mvi.pdf;3000m;M50-54;True;9:15.10;;Kristian Nedregård;Spjelkavik og Omegn FIK;74;Torun, POL;17.03.2024;finnes;;navn;3000m;bf67ed79-641c-40f5-b9ad-6f38bef84958;55510
+norgesrekorder-mvi.pdf;3000m;M55-59;True;9:42.89;;Øyvind Trongmo;Korgen IL;53;Clermont-Ferrand, FRA;20.03.2008;mangler;;navn;3000m;cd5c32fe-dff6-4a6e-bf95-d8eca88b8cad;58289
+norgesrekorder-mvi.pdf;3000m;M60-64;True;10:21.8;;Harald Nygård;FIL AKS-77;51;Haukås;18.03.2012;finnes;;navn;3000m;08fff9f7-bba9-43f0-8eff-ec7948c726c3;62180
+norgesrekorder-mvi.pdf;3000m;M60-64;False;10:21.82;;Øivind Bernes;Mjøsdalen IL;58;Madrid, ESP;19.03.2018;finnes;;navn;3000m;6a5dde1e-9780-4d55-9cc8-ece03edefb27;62182
+norgesrekorder-mvi.pdf;3000m;M65-69;True;10:36.07;;Øivind Bernes;Mjøsdalen IL;58;Torun, POL;26.03.2023;finnes;;navn;3000m;6a5dde1e-9780-4d55-9cc8-ece03edefb27;63607
+norgesrekorder-mvi.pdf;3000m;M70-74;True;11:51.01;;Bjørn Tvedt;Veldre Friidrett;38;Stange;30.01.2011;finnes;;navn;3000m;4e2f2608-9d69-4c74-919a-2bc610d05ca1;71101
+norgesrekorder-mvi.pdf;3000m;M75-79;True;13:08.87;;Olav Hagland;GTI;48;Sandnes;25.02.2023;finnes;;navn;3000m;b06eea0d-839b-45f3-9b63-cc25c8b28fa2;78887
+norgesrekorder-mvi.pdf;3000m;M80-84;True;14:26.19;;Axel Henrik Staib;Rygge IL;45;Hvam;01.02.2026;finnes;;navn;3000m;665922c3-b4e0-47e8-9f5a-d977345d5581;86619
+norgesrekorder-mvi.pdf;3000m;M85-89;True;16:33.66;;Ingolf Hådem;NTNUI;29;Haugesund;08.03.2014;finnes;;navn;3000m;d4c070c5-062e-4e3d-8439-536dc7f6df28;99366
+norgesrekorder-mvi.pdf;5000m;M35-39;True;15:20.74;;Øystein Kvaal Østerbø;Strindheim IL;81;Huddinge, SWE;22.03.2016;finnes;;navn;5000m;e3309835-8a34-4612-ad9f-a961daeac004;92074
+norgesrekorder-mvi.pdf;5000m;M45-49;True;16:22.91;;Robert Hisdal;BFG Bergen LK;78;Haukås;11.02.2024;finnes;;navn;5000m;49b87684-673b-48fa-961f-fbf5ed967a09;98291
+norgesrekorder-mvi.pdf;5000m;M55-59;True;18:54.13;;Hans Rune Eikeskog;Stegaberg IL;62;Haugesund;29.12.2018;finnes;;navn;5000m;c7731d0f-7b2a-42b2-b1fa-f4b625544756;113413
+norgesrekorder-mvi.pdf;60m hekk / hurdles 106.7 cm;M35-39;True;8.39;;Per Olaf Nicolaisen;IK Tjalve;61;Drammen;28.01.1996;mangler;;navn;60mh_106_7cm,60mh;64679c82-59d9-4837-982c-e3b149be7978;839
+norgesrekorder-mvi.pdf;60m hekk / hurdles 99.1 cm;M35-39;True;8.84;;Magnus Dehli Vigeland;Oslostudentenes IK;78;Haukås;07.03.2015;øvelse uten kode i basen;;;;;
+norgesrekorder-mvi.pdf;60m hekk / hurdles 99.1 cm;M40-44;True;8.73;;Per Olaf Nicolaisen;Horten FIK;61;Stange;26.02.2005;øvelse uten kode i basen;;;;;
+norgesrekorder-mvi.pdf;60m hekk / hurdles 99.1 cm;M45-49;True;8.72;;Per Olaf Nicolaisen;Horten FIK;61;Linz, AUT;15-20.03.2006;øvelse uten kode i basen;;;;;
+norgesrekorder-mvi.pdf;60m hekk / hurdles 91.4 cm;M50-54;True;9.02;;Frode Holt;IF Sturla;64;Hvam;12.03.2016;finnes;;navn;60mh_91_4cm,60mh;0c00e2c4-f308-46bf-a477-14cb69fc4f44;902
+norgesrekorder-mvi.pdf;60m hekk / hurdles 91.4 cm;M55-59;True;9.22;;Frode Holt;IF Sturla;64;Rud;22.01.2022;finnes;;navn;60mh_91_4cm,60mh;0c00e2c4-f308-46bf-a477-14cb69fc4f44;922
+norgesrekorder-mvi.pdf;60m hekk / hurdles 84.0 cm;M60-64;True;9.53;;Frode Holt;IF Sturla;64;Rud;18.01.2025;finnes;;navn;60mh_84cm,60mh;0c00e2c4-f308-46bf-a477-14cb69fc4f44;953
+norgesrekorder-mvi.pdf;60m hekk / hurdles 84.0 cm;M65-69;True;10.49;;Knut Henrik Skramstad;Kongsberg IF;37;Linz, AUT;15-20.03.2006;mangler;;navn;60mh_84cm,60mh;a75114c3-9e81-4588-8245-183555d9d567;1049
+norgesrekorder-mvi.pdf;60m hekk / hurdles 76.2 cm;M70-74;True;10.65;;Jostein Haraldseid;Bækkelagets SK;35;Helsinki, FIN;25.03.2007;mangler;;navn;60mh_76_2cm,60mh;32f33c70-c6a0-4fba-9487-300665a19bcb;1065
+norgesrekorder-mvi.pdf;60m hekk / hurdles 76.2 cm;M70-74;False;10.5;;Jostein Haraldseid;Bækkelagets SK;35;Stange;01.04.2006;mangler;;navn;60mh_76_2cm,60mh;32f33c70-c6a0-4fba-9487-300665a19bcb;1050
+norgesrekorder-mvi.pdf;60m hekk / hurdles 76.2 cm;M75-79;True;11.15;;Trond Einar Furuly;IL Stålkameratene;44;Haukås;29.02.2020;finnes;;navn;60mh_76_2cm,60mh;20fa4ac3-ddbe-4f5d-a995-c56337d0e75d;1115
+norgesrekorder-mvi.pdf;60m hekk / hurdles 68.6 cm;M80-84;True;11.92;;Knut Henrik Skramstad;Tønsberg FIK;37;Daegu, KOR;24.03.2017;finnes;;navn;60mh_68cm,60mh;a75114c3-9e81-4588-8245-183555d9d567;1192
+norgesrekorder-mvi.pdf;60m hekk / hurdles 68.6 cm;M85-89;True;13.93;;Jostein Haraldseid;Bækkelagets SK;35;Hvam;23.10.2021;finnes;;navn;60mh_68cm,60mh;32f33c70-c6a0-4fba-9487-300665a19bcb;1393
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M35-39;True;11:17.33;;Erik Tysse;IL Norna Salhus;80;Haukås;24.01.2015;finnes;;navn;kappgang_3000_m,3000mg;bfca0999-9109-4955-8190-437a562041a3;67733
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M40-44;True;13:27.0;;Per Ola Sverre;Oslo GK;46;Fredrikstad;12.02.1988;mangler;;navn;kappgang_3000_m,3000mg;533252a4-ae60-43fa-9b08-2e3791a7c811;80700
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M45-49;True;13:36.3;;Sverre Kristoffer Jensen;Søfteland T&IL;66;Haukås;18.03.2012;finnes;;fornavn+etternavn;kappgang_3000_m,3000mg;6da3e73d-9a06-4ac1-bdbb-d1aa37d1e4df;81630
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M50-54;True;14:37.33;;Arild Fotland;Søfteland T&IL;59;Haugesund;02.03.2013;finnes;;navn;kappgang_3000_m,3000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;87733
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M55-59;True;15:06.0;;Harald Persson;Trondheim GK;25;Trondheim/Lea;16.03.1980;mangler (ny utøver);;;kappgang_3000_m,3000mg;;90600
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M60-64;True;14:25.33;;Arild Fotland;Søfteland T&IL;59;Haukås;29.02.2020;finnes;;navn;kappgang_3000_m,3000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;86533
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M65-69;True;17:03.70;;Torkjell Spigseth;Fredrikstad IF;44;Juvasjula, FIN;19.03.2010;mangler;;navn;kappgang_3000_m,3000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;102370
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M70-74;True;17:37.49;;Torkjell Spigseth;Sarpsborg IL;44;Torun, POL;24.03.2015;finnes;;navn;kappgang_3000_m,3000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;105749
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M75-79;True;19:21.07;;Torkjell Spigseth;Sarpsborg IL;44;Haukås;29.02.2020;finnes;;navn;kappgang_3000_m,3000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;116107
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M80-84;True;21:03.29;;Torkjell Spigseth;Sarpsborg IL;44;Hvam;31.01.2026;finnes;;navn;kappgang_3000_m,3000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;126329
+norgesrekorder-mvi.pdf;3000m kappgang / Race Walk;M85-89;True;25:15.07;;Johannes Johannesson Vaag;Surnadal IL;37;Stange;27.01.2024;finnes;;navn;kappgang_3000_m,3000mg;6ea6b944-4304-48e5-a928-75e530da67b9;151507
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M35-39;True;19:52.62;;Trond Nymark;T&IF Viking;76;Haukås;06.02.2012;finnes;;navn;kappgang_5000_m,5000mg;51d43bbb-441c-427e-9db4-d99b116696dc;119262
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M40-44;True;21:31.56;;Kjell Tysse;Søfteland T&IL;49;Stange;09.02.1992;mangler (ny utøver);;;kappgang_5000_m,5000mg;;129156
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M45-49;True;21:44.02;;Kjell Tysse;Søfteland T&IL;49;Stange;11.02.1995;mangler (ny utøver);;;kappgang_5000_m,5000mg;;130402
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M50-54;True;24:10.06;;Kjell Tysse;Søfteland T&IL;49;Stange;21.02.1999;mangler (ny utøver);;;kappgang_5000_m,5000mg;;145006
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M55-59;True;25:41.8;;Harald Persson;Trondheim GK;25;Trondheim/Lea;13.01.1980;mangler (ny utøver);;;kappgang_5000_m,5000mg;;154180
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M60-64;True;25:37.61;;Arild Fotland;Søfteland T&IL;59;Haugesund;02.02.2019;finnes;;navn;kappgang_5000_m,5000mg;d263cb7a-8454-4e5a-932c-3b7619920b6d;153761
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M65-69;True;30:54.11;;Erling Andersen;Søfteland T&IL;60;Haukås;27.01.2025;finnes;;navn;kappgang_5000_m,5000mg;771402ee-61bf-449b-b9f6-98920c4a7457;185411
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M70-74;True;33:26.0;;Kaare Hammer;Oslo GK;18;Fredrikstad;12.03.1990;mangler (ny utøver);;;kappgang_5000_m,5000mg;;200600
+norgesrekorder-mvi.pdf;5000m kappgang / Race Walk;M75-79;True;35:23.0;;Kaare Hammer;Oslo GK;18;Fredrikstad;12.02.1993;mangler (ny utøver);;;kappgang_5000_m,5000mg;;212300
+norgesrekorder-mvi.pdf;10000m kappgang / Race Walk;M35-39;True;52:36.0;;Torkjell Spigseth;IL Stjernen;44;Fredrikstad;09.01.1980;mangler;;navn;kappgang_10000_m,10000mg;217b3483-c666-4eaa-a49d-428f02b4dd6f;315600
+norgesrekorder-mvi.pdf;10000m kappgang / Race Walk;M40-44;True;57:16.5;;Tor Iversen;IL Frogg;37;Oslo/Ek;08.02.1981;mangler (ny utøver);;;kappgang_10000_m,10000mg;;343650
+norgesrekorder-mvi.pdf;10000m kappgang / Race Walk;M60-64;True;58:46.6;;Kaare Hammer;Oslo GK;18;Oslo/Ek;08.02.1981;mangler (ny utøver);;;kappgang_10000_m,10000mg;;352660
+norgesrekorder-mvi.pdf;Høyde / High Jump;M35-39;True;1.95;;Terje Skarderud;Kongsvinger IL;52;Oslo/Ek;22.01.1989;mangler;;navn;hoyde;b26acb2d-0f43-4996-8e14-66a2915bde91;1950
+norgesrekorder-mvi.pdf;Høyde / High Jump;M40-44;True;1.94;;Jan Albrigtsen;Larvik T&IF;50;Stange;28.02.1993;mangler;;navn;hoyde;f95fc064-cfe0-4e3c-b624-4eab503beddc;1940
+norgesrekorder-mvi.pdf;Høyde / High Jump;M45-49;True;1.90;;Jan Albrigtsen;Larvik T&IF;50;Stange;04.03.1995;mangler;;navn;hoyde;f95fc064-cfe0-4e3c-b624-4eab503beddc;1900
+norgesrekorder-mvi.pdf;Høyde / High Jump;M50-54;True;1.78;;Per Erling Eide;Tjølling IF;51;Drammen;07.04.2002;mangler;;navn;hoyde;8e9c4aa2-8cd8-4a47-95ff-651959cd4689;1780
+norgesrekorder-mvi.pdf;Høyde / High Jump;M55-59;True;1.77;;Per Erling Eide;IF Fram, Larvik;51;Stange;02.04.2006;mangler;;navn;hoyde;8e9c4aa2-8cd8-4a47-95ff-651959cd4689;1770
+norgesrekorder-mvi.pdf;Høyde / High Jump;M60-64;True;1.70;;Per Erling Eide;IF Fram, Larvik;51;Stange;30.01.2011;finnes;;navn;hoyde;8e9c4aa2-8cd8-4a47-95ff-651959cd4689;1700
+norgesrekorder-mvi.pdf;Høyde / High Jump;M65-69;True;1.63;;Ulf Tudem;Sandefjord T&IF;51;Hvam;14.01.2017;finnes;;navn;hoyde;7729ff2c-6b39-4634-89cf-24a1c72df9f9;1630
+norgesrekorder-mvi.pdf;Høyde / High Jump;M70-74;True;1.54;;Ulf Tudem;Tønsberg FIK;51;Grimstad;27.03.2022;finnes;;navn;hoyde;7729ff2c-6b39-4634-89cf-24a1c72df9f9;1540
+norgesrekorder-mvi.pdf;Høyde / High Jump;M75-79;True;1.41;;Ulf Tudem;Tønsberg FIK;51;Hvam;01.02.2026;finnes;;navn;hoyde;7729ff2c-6b39-4634-89cf-24a1c72df9f9;1410
+norgesrekorder-mvi.pdf;Høyde / High Jump;M80-84;True;1.24;;Kjartan Sølvberg;Sandefjord T&IF;36;Ancona, ITA;30.03.2016;finnes;;navn;hoyde;213c5769-3e36-46b3-8c36-64b01cb8f7a2;1240
+norgesrekorder-mvi.pdf;Høyde / High Jump;M85-89;True;1.14;;Torgeir Brandvold;Oslo IL;13;Stange;21.03.1999;mangler;;navn;hoyde;65fa42e4-2179-4dd1-a9c9-166254d2702f;1140
+norgesrekorder-mvi.pdf;Høyde / High Jump;M90-94;True;1.00;;Torgeir Brandvold;Oslo IL;13;Drammen;20.03.2004;mangler;;navn;hoyde;65fa42e4-2179-4dd1-a9c9-166254d2702f;1000
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M35-39;True;1.65;;Klaus Arthur Hansen;HIF/Stein;58;Kvalsund;10.03.1996;mangler;;fornavn+etternavn;hoyde_ut;c2ebc160-a4db-4272-aec8-a2724c2d5db0;1650
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M40-44;True;1.71;;Klaus Arthur Hansen;IL Flint;58;Stange;24.02.2001;mangler;;fornavn+etternavn;hoyde_ut;c2ebc160-a4db-4272-aec8-a2724c2d5db0;1710
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M45-49;True;1.70;;Klaus Arthur Hansen;IL Flint;58;Drammen;22.03.2003;mangler;;fornavn+etternavn;hoyde_ut;c2ebc160-a4db-4272-aec8-a2724c2d5db0;1700
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M50-54;True;1.55;;Thor Andreas Wiersdalen;IF Urædd;46;Notodden;18.03.2000;mangler;;navn;hoyde_ut;edc11ffb-7324-41db-b97a-7b5920d07ec0;1550
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M55-59;True;1.47;;Magnar Olden;Frol IL;26;Ogndal;18.02.1981;mangler (ny utøver);;;hoyde_ut;;1470
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M60-64;True;1.43;;Per Stavem;Stabæk IF;26;Haslum;31.03.1990;mangler;;navn;hoyde_ut;02275cb5-ff03-4123-9bb2-db35e3eee339;1430
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M65-69;True;1.41;;Per Stavem;Oslo IL;26;Haslum;16.03.1991;mangler;;navn;hoyde_ut;02275cb5-ff03-4123-9bb2-db35e3eee339;1410
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M70-74;True;1.39;;Arne Søgård;Raumnes & Årnes IL;36;Stange;01.04.2006;mangler;;navn;hoyde_ut;be36b6d1-dbd0-44c4-834e-a5a39f8519b4;1390
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M75-79;True;1.26;;Per Andenæs;Gloppen FIL;50;Sandane;16.12.2025;finnes;;navn;hoyde_ut;0cab343f-ec72-4c00-8ab0-f453f08b8c6f;1260
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M80-84;True;1.25;;Torgeir Brandvold;Oslo IL;13;Haslum;20.02.1993;mangler;;navn;hoyde_ut;65fa42e4-2179-4dd1-a9c9-166254d2702f;1250
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M85-89;True;1.14;;Torgeir Brandvold;Oslo IL;13;Heggedal;21.01.1998;mangler;;navn;hoyde_ut;65fa42e4-2179-4dd1-a9c9-166254d2702f;1140
+norgesrekorder-mvi.pdf;Høyde u.t. / Standing High Jump;M90-94;True;0.94;;Jostein Haraldseid;Bækkelagets SK;35;Hvam;16.02.2025;finnes;;navn;hoyde_ut;32f33c70-c6a0-4fba-9487-300665a19bcb;940
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M35-39;True;4.70;;Bjørn Morten Moss;IK Tjalve;60;Askim;22.01.1995;mangler;;fornavn+etternavn;stav;c12f2e54-9fd4-48b3-b0f9-d7cbb308272d;4700
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M35-39;False;4.70;;Alexander Grelland;Spydeberg IL;66;Malmö, SWE;23.02.2002;mangler;;navn;stav;7e2f0ac5-da28-4b84-8b7e-51bcc02bbdea;4700
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M40-44;True;3.60;;Per Gregersen;Stord IL;70;Haugesund;19.03.2014;finnes;;navn;stav;f6789c7c-a431-47c0-b696-115754b604c7;3600
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M45-49;True;3.70;;Oddvar Hårde;Stord IL;69;Haugesund;12.02.2014;finnes;;navn;stav;3933c726-badf-4807-aa89-ad2ad015cf61;3700
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M50-54;True;3.42;;Per Gregersen;Stord IL;70;Sandnes;15.02.2022;finnes;;navn;stav;f6789c7c-a431-47c0-b696-115754b604c7;3420
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M55-59;True;3.41;;Oddvar Hårde;Stord IL;69;Stange;27.01.2024;finnes;;navn;stav;3933c726-badf-4807-aa89-ad2ad015cf61;3410
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M60-64;True;3.20;;Ole Hartvig Nissen Viken;IL Fri;60;Haukås;15.02.2020;finnes;;navn;stav;4c6b0f5e-480a-45ac-b02c-484003fd9978;3200
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M65-69;True;2.80;;Knut Henrik Skramstad;Kongsberg IF;37;Drammen;21.03.2004;mangler;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2800
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M70-74;True;2.75;;Knut Henrik Skramstad;Kongsberg IF;37;Reykjavik, ISL;01.03.2008;mangler;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2750
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M75-79;True;2.60;;Knut Henrik Skramstad;Tønsberg FIK;37;Haugesund;02.03.2013;finnes;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2600
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M80-84;True;2.40;;Knut Henrik Skramstad;Tønsberg FIK;37;Hvam;04.03.2017;finnes;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;2400
+norgesrekorder-mvi.pdf;Stav / Pole Vault;M85-89;True;1.96;;Knut Henrik Skramstad;Kongsberg IF;37;Grimstad;26.03.2022;finnes;;navn;stav;a75114c3-9e81-4588-8245-183555d9d567;1960
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M35-39;True;6.81;;Stein Tore Klungland;IL i BUL;58;Stange;02.03.1996;mangler;;navn;lengde;62c0c06d-d41b-4272-b218-dbc06bc88716;6810
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M40-44;True;6.39;;Stein Tore Klungland;Asker SK;58;Stange;28.02.1998;mangler;;navn;lengde;62c0c06d-d41b-4272-b218-dbc06bc88716;6390
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M45-49;True;6.30;;Oddvar Viulsrød;Tønsberg FIK;64;Jyväskylä, FIN;07.04.2012;mangler;;navn;lengde;48dcae19-ff86-4173-a40a-5794215cda45;6300
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M50-54;True;5.97;;Oddvar Viulsrød;Tønsberg FIK;64;Torun, POL;23.03.2015;finnes;;navn;lengde;48dcae19-ff86-4173-a40a-5794215cda45;5970
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M55-59;True;5.85;;Oddvar Viulsrød;Tønsberg FIK;64;Tønsberg;11.04.2019;finnes;;navn;lengde;48dcae19-ff86-4173-a40a-5794215cda45;5850
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M60-64;True;5.49;;Oddvar Viulsrød;Tønsberg FIK;64;Tønsberg;04.02.2025;finnes;;navn;lengde;48dcae19-ff86-4173-a40a-5794215cda45;5490
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M65-69;True;4.93;;Stein Tore Klungland;Ullensaker/Kisa IL;58;Rud;10.02.2024;finnes;;navn;lengde;62c0c06d-d41b-4272-b218-dbc06bc88716;4930
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M70-74;True;4.70;;Kristen Fløgstad;Søgne IL;47;Grimstad;10.03.2018;finnes;;navn;lengde;5f196e4b-6f53-4232-8e8f-8be18489a6d8;4700
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M75-79;True;4.18;;Gudmund Skrivervik;Gloppen FIL;21;Stange;01.03.1997;mangler;;navn;lengde;07ef86c5-12d7-4931-9102-6659cac69e66;4180
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M80-84;True;3.63;;Knut Henrik Skramstad;Tønsberg FIK;37;Daegu, KOR;24.03.2017;finnes;;navn;lengde;a75114c3-9e81-4588-8245-183555d9d567;3630
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M85-89;True;3.08;;Arne Ueland;Tønsberg FIK;34;Tønsberg;11.04.2019;finnes;;navn;lengde;6e42175c-a601-4a62-beb3-b31dbfa42a50;3080
+norgesrekorder-mvi.pdf;Lengde / Long Jump;M90-94;True;2.55;;Arne Ueland;Tønsberg FIK;34;Tønsberg;05.03.2024;finnes;;navn;lengde;6e42175c-a601-4a62-beb3-b31dbfa42a50;2550
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M35-39;True;3.42;;Thor Hjelkrem;IL Norodd;45;Kristiansund;06.03.1982;mangler (ny utøver);;;lengde_ut;;3420
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M40-44;True;3.30;;Tor Agnar Breistein;IL Norna-Salhus;45;Haus;15.02.1985;mangler;;navn;lengde_ut;29acc673-a4ed-4faf-b7c6-cd5030ffac6e;3300
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M45-49;True;3.29;;Alv Monrad Vik;IF Ørnulf, Oslo;21;Oslo;13.02.1966;mangler (ny utøver);;;lengde_ut;;3290
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M50-54;True;3.03;;Bendik Dale;Gjerpen IF;38;Gjerpen;10.02.1988;mangler;;navn;lengde_ut;b3ecfc82-8a3e-4616-b252-c401704560b6;3030
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M50-54;False;3.03;;Frank Furnes;Elverum IL;42;Rena;26.01.1992;mangler (ny utøver);;;lengde_ut;;3030
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M55-59;True;2.96;;Audun Aasen;Mo IL;33;Mo i Rana;28.02.1989;mangler (ny utøver);;;lengde_ut;;2960
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M60-64;True;2.90;;Audun Aasen;Rana FIK;33;Mo i Rana;09.02.1993;mangler (ny utøver);;;lengde_ut;;2900
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M60-64;False;2.90;;Herman Henriksen;Odda IL;37;Kinsarvik;18.01.1997;mangler;;navn;lengde_ut;b27be0dc-15d8-41a8-a4bf-4665d8690ef8;2900
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M60-64;False;2.90;;Knut Olav Bjorvatn;Tvedestrand TIF;61;Tvedestrand;06.03.2024;finnes;;navn;lengde_ut;531ce256-5434-4dbb-b8ce-b1c67f55de2a;2900
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M65-69;True;2.83;;Per Stavem;Oslo IL;26;Haslum;07.01.1991;mangler;;navn;lengde_ut;02275cb5-ff03-4123-9bb2-db35e3eee339;2830
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M70-74;True;2.63;;Arne Søgård;Raumnes & Årnes IL;36;Stange;01.04.2006;mangler;;navn;lengde_ut;be36b6d1-dbd0-44c4-834e-a5a39f8519b4;2630
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M75-79;True;2.50;;Teodor Solheim;IL Jotun;15;Øvre Årdal;19.01.1990;mangler (ny utøver);;;lengde_ut;;2500
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M80-84;True;2.32;;Torgeir Brandvold;Oslo IL;13;Haslum;30.01.1993;mangler;;navn;lengde_ut;65fa42e4-2179-4dd1-a9c9-166254d2702f;2320
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M85-89;True;2.14;;Torgeir Brandvold;Oslo IL;13;Heggedal;11.03.1998;mangler;;navn;lengde_ut;65fa42e4-2179-4dd1-a9c9-166254d2702f;2140
+norgesrekorder-mvi.pdf;Lengde u.t. / Standing Long Jump;M90-94;True;2.02;;Torgeir Brandvold;Oslo IL;13;Drammen;22.03.2003;mangler;;navn;lengde_ut;65fa42e4-2179-4dd1-a9c9-166254d2702f;2020
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M35-39;True;15.11;;Trond Erik Nilsen;Ask Friidrett;72;Clermont-Ferrand, FRA;22.03.2008;mangler;;alias;tresteg;a2f4889d-9deb-4e29-a6e8-8682a406ed73;15110
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M40-44;True;14.57;;Birger Søyland;FIK Orion;61;Stange;24.02.2001;mangler;;navn;tresteg;47bbc2ae-2b25-4e8b-94d2-b9eab5206b95;14570
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M45-49;True;13.46;;Jan Albrigtsen;Larvik T&IF;50;Stange;05.03.1995;mangler;;navn;tresteg;f95fc064-cfe0-4e3c-b624-4eab503beddc;13460
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M50-54;True;12.57;;Oddvar Viulsrød;Tønsberg FIK;64;Haugesund;07.03.2014;finnes;;navn;tresteg;48dcae19-ff86-4173-a40a-5794215cda45;12570
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M55-59;True;12.26;;Stein Tore Klungland;Ullensaker/Kisa IL;58;Budapest, HUN;27.03.2014;finnes;;navn;tresteg;62c0c06d-d41b-4272-b218-dbc06bc88716;12260
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M60-64;True;11.66;;Arne Tefre;Førde IL;55;Ancona, ITA;30.03.2016;finnes;;navn;tresteg;cf0d3929-8257-4421-9c25-7a5d128f2188;11660
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M65-69;True;10.95;;Arne Tefre;Førde IL;55;Haukås;01.03.2020;finnes;;navn;tresteg;cf0d3929-8257-4421-9c25-7a5d128f2188;10950
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M70-74;True;10.36;;Arne Tefre;Førde IL;55;Hvam;14.02.2025;finnes;;navn;tresteg;cf0d3929-8257-4421-9c25-7a5d128f2188;10360
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M75-79;True;8.98;;Jakob Rypdal;Tresfjord IL;26;Stange;25.03.2001;mangler;;navn;tresteg;784aff51-80fe-42e0-9c32-feeac17cdb33;8980
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M80-84;True;8.10;;Trond Einar Furuly;IL Stålkameratene;44;Stange;28.01.2024;finnes;;navn;tresteg;20fa4ac3-ddbe-4f5d-a995-c56337d0e75d;8100
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M85-89;True;6.69;;John Arve Johansen;Ullensaker/Kisa IL;36;Hvam;24.10.2021;finnes;;navn;tresteg;c2df8852-c35d-4570-b1fd-8ba67d434d21;6690
+norgesrekorder-mvi.pdf;Tresteg / Triple Jump;M90-94;True;4.94;;Bjarne Bjorvatn;Birkenes IL;36;Hvam;01.02.2026;finnes;;navn;tresteg;8ab5c1d3-35c4-4a1b-8d34-457117c9eb72;4940
+norgesrekorder-mvi.pdf;Kule / Shot Put 7.26 kg;M35-39;True;18.09;;Bjørn Bang Andersen;IL i BUL;37;Göteborg, SWE;05.02.1972;finnes;;navn;kule_7_26kg,kule;f567c262-f8f3-4161-a1af-6383fedaf768;18090
+norgesrekorder-mvi.pdf;Kule / Shot Put 7.26 kg;M40-44;True;18.05;;Jan Sagedal;IK Tjalve;60;Stange;24.02.2001;mangler;;navn;kule_7_26kg,kule;af5f16a3-d14c-4d76-98b4-7f76853db487;18050
+norgesrekorder-mvi.pdf;Kule / Shot Put 7.26 kg;M45-49;True;14.81;;Karl Jørgen Hoff;Spydeberg IL;59;Stange;14.02.2004;mangler;;navn;kule_7_26kg,kule;3f753d05-17de-4490-8bbe-241d4cfe5a08;14810
+norgesrekorder-mvi.pdf;Kule / Shot Put 6.0 kg;M50-54;True;16.48;;Iver Hytten;Tønsberg FIK;66;Ancona, ITA;01.04.2016;finnes;;navn;kule_6kg,kule;e6f8a7bc-fa27-4742-9193-0595c44f2edc;16480
+norgesrekorder-mvi.pdf;Kule / Shot Put 6.0 kg;M55-59;True;14.19;;Knut Olav Bjorvatn;Tvedestrand TIF;61;Lyngdal;28.02.2016;finnes;;navn;kule_6kg,kule;531ce256-5434-4dbb-b8ce-b1c67f55de2a;14190
+norgesrekorder-mvi.pdf;Kule / Shot Put 5.0 kg;M60-64;True;15.51;;Iver Hytten;Tønsberg FIK;66;Torun, POL;28.03.2026;finnes;;navn;kule_5kg,kule;e6f8a7bc-fa27-4742-9193-0595c44f2edc;15510
+norgesrekorder-mvi.pdf;Kule / Shot Put 5.0 kg;M65-69;True;15.45;;Knut Olav Bjorvatn;Tvedestrand TIF;61;Hvam;01.02.2026;finnes;;navn;kule_5kg,kule;531ce256-5434-4dbb-b8ce-b1c67f55de2a;15450
+norgesrekorder-mvi.pdf;Kule / Shot Put 4.0 kg;M70-74;True;13.94;;Arne Sæther;Heggedal Veteran FIK;31;Stange;25.03.2001;mangler;;navn;kule_4kg,kule;74b985b1-2ab8-4de3-9167-0f01e6f08ecb;13940
+norgesrekorder-mvi.pdf;Kule / Shot Put 4.0 kg;M75-79;True;13.94;;Arild Busterud;Løten Friidrett;48;Torun, POL;30.03.2023;finnes;;navn;kule_4kg,kule;c9f8ac2a-1351-4317-b150-03dbc7e8825f;13940
+norgesrekorder-mvi.pdf;Kule / Shot Put 4.0 kg;M80-84;True;10.61;;Erling Svennevik;Oslo IL;18;Heggedal;21.01.1998;mangler (ny utøver);;;kule_4kg,kule;;10610
+norgesrekorder-mvi.pdf;Kule / Shot Put 4.0 kg;M85-89;True;8.96;;Torgeir Brandvold;Oslo IL;13;Stange;11.02.1998;mangler;;navn;kule_4kg,kule;65fa42e4-2179-4dd1-a9c9-166254d2702f;8960
+norgesrekorder-mvi.pdf;Kule / Shot Put 4.0 kg;M90-94;True;6.99;;Torgeir Brandvold;Oslo IL;13;Drammen;23.03.2003;mangler;;navn;kule_4kg,kule;65fa42e4-2179-4dd1-a9c9-166254d2702f;6990
+norgesrekorder-mvi.pdf;Kule / Shot Put 3.0 kg;M80-84;True;11.58;;Kjartan Sølvberg;Sandefjord T&IF;36;Hvam;05.03.2017;finnes;;navn;kule_3kg,kule;213c5769-3e36-46b3-8c36-64b01cb8f7a2;11580
+norgesrekorder-mvi.pdf;Kule / Shot Put 3.0 kg;M85-89;True;9.25;;Arne Sæther;Heggedal FIK;31;Hvam;13.03.2016;finnes;;navn;kule_3kg,kule;74b985b1-2ab8-4de3-9167-0f01e6f08ecb;9250
+norgesrekorder-mvi.pdf;Kule / Shot Put 3.0 kg;M90-94;True;8.87;;Arne Ueland;Tønsberg FIK;34;Stange;28.01.2024;finnes;;navn;kule_3kg,kule;6e42175c-a601-4a62-beb3-b31dbfa42a50;8870
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 15.88 kg;M35-39;True;15.36;;Thomas Rosvold;IK Tjalve;67;Oslo/So;20.01.2006;mangler;;navn;vektkast_1588kg,vektkast;44fa576d-1a77-44bc-8dd1-c080241f7a9a;15360
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 15.88 kg;M40-44;True;13.82;;Kjetil Reistad Aasen;Løten Friidrett;82;Hvam;15.02.2025;finnes;;navn;vektkast_1588kg,vektkast;f6d9ed65-5be0-4c15-bc59-8b5f563faa32;13820
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 15.88 kg;M45-49;True;14.56;;Karl Jørgen Hoff;Spydeberg IL;59;Eskilstuna, SWE;13.03.2005;finnes;;navn;vektkast_1588kg,vektkast;3f753d05-17de-4490-8bbe-241d4cfe5a08;14560
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 11.34 kg;M50-54;True;18.38;;Iver Hytten;Tønsberg FIK;66;Torun, POL;28.03.2019;finnes;;navn;vektkast_1134kg,vektkast;e6f8a7bc-fa27-4742-9193-0595c44f2edc;18380
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 11.34 kg;M55-59;True;17.02;;Tom Arne Helgesen;IK Grane;70;Hvam;15.02.2025;finnes;;navn;vektkast_1134kg,vektkast;08599ade-609b-46a8-b509-e31b6e3c14af;17020
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 9.08 kg;M60-64;True;17.54;;Arild Greger Ro;Søndre Land IL;64;Hvam;15.02.2025;finnes;;navn;vektkast_908kg,vektkast;b0759dbf-9aea-44cd-937b-fb9b2a54fb26;17540
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 9.08 kg;M65-69;True;16.79;;Svein Hytten;Tønsberg FIK;40;Sandbu;26.02.2005;mangler;;navn;vektkast_908kg,vektkast;c1e76513-554f-4478-8187-566b08209ea3;16790
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 7.26 kg;M70-74;True;16.30;;Jostein Myrvang;Larvik T&IF;46;Larvik;05.01.2016;finnes;;navn;vektkast_726kg,vektkast;c111e79c-bb1c-418d-8483-73ec10eefed0;16300
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 7.26 kg;M75-79;True;20.99;;Arild Busterud;Løten Friidrett;48;Torun, POL;26.03.2023;finnes;;navn;vektkast_726kg,vektkast;c9f8ac2a-1351-4317-b150-03dbc7e8825f;20990
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 5.45 kg;M80-84;True;13.80;;Håvard Lund;Ullensaker/Kisa IL;24;Sandbu;26.02.2005;mangler (ny utøver);;;vektkast_545kg,vektkast;;13800
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 5.45 kg;M85-89;True;12.51;;Arne Ueland;Tønsberg FIK;34;Larvik;03.01.2019;finnes;;navn;vektkast_545kg,vektkast;6e42175c-a601-4a62-beb3-b31dbfa42a50;12510
+norgesrekorder-mvi.pdf;Vektkast / Weight Throw 5.45 kg;M90-94;True;10.03;;Arne Ueland;Tønsberg FIK;34;Hvam;15.02.2025;finnes;;navn;vektkast_545kg,vektkast;6e42175c-a601-4a62-beb3-b31dbfa42a50;10030
+norgesrekorder-kvi.pdf;60m;K35-39;True;8.37;;Anne-Mari Stenbro Dombu;Oslo Politis IL;56;Oslo/Ek;24.02.1991;mangler;;navn;60m;18a6f94e-cb0d-45e5-b644-a566e0a77898;837
+norgesrekorder-kvi.pdf;60m;K35-39;False;8.2;;Inger Blikra;Rana FIK;61;Mo i Rana;23.01.1999;mangler;;navn;60m;039c40f8-ab13-4e6a-8600-b40c1f105991;820
+norgesrekorder-kvi.pdf;60m;K40-44;True;8.42;;Toril Lauritsen Nyborg;Steinkjer FIK;67;Steinkjer;14.02.2009;mangler;;fornavn+etternavn;60m;db1ff850-acf3-47d7-989f-8e83f70544e1;842
+norgesrekorder-kvi.pdf;60m;K40-44;False;8.3;;Inger Bækken Kulstad;Steinkjer FIK;48;Oslo/Ek;22.01.1989;mangler;;navn;60m;b2c50945-6490-4e4e-9226-40159724442b;830
+norgesrekorder-kvi.pdf;60m;K45-49;True;8.42;;Maya Pedersen;Gausdal FIK;72;Hvam;10.03.2019;finnes;;navn;60m;81a9d880-6166-4318-8a2c-00765fae96b8;842
+norgesrekorder-kvi.pdf;60m;K50-54;True;8.49;;Maya Pedersen;Moelven IL;72;Hvam;04.02.2023;finnes;;navn;60m;81a9d880-6166-4318-8a2c-00765fae96b8;849
+norgesrekorder-kvi.pdf;60m;K55-59;True;8.66;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;27.03.2019;finnes;;navn;60m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;866
+norgesrekorder-kvi.pdf;60m;K60-64;True;9.03;;Heidi Barth (Andersen);Larvik T&IF;61;Hvam;24.10.2021;finnes;;navn;60m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;903
+norgesrekorder-kvi.pdf;60m;K65-69;True;9.09;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;29.03.2026;finnes;;navn;60m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;909
+norgesrekorder-kvi.pdf;60m;K70-74;True;9.55;;Anny Undheim;IL Framsteg;56;Hvam;01.02.2026;finnes;;navn;60m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;955
+norgesrekorder-kvi.pdf;60m;K75-79;True;11.11;;Herborg Ninni Blakstad;IL Gular;42;Hvam;05.03.2017;finnes;;navn;60m;a05b57e8-4800-45c7-be2b-8e25f77ba93f;1111
+norgesrekorder-kvi.pdf;60m;K75-79;False;10.0;;Åse Nyland;Gjøvik FIK;33;Drammen;08.03.2009;mangler (ny utøver);;;60m;;1000
+norgesrekorder-kvi.pdf;60m;K80-84;True;11.62;;Herborg Ninni Blakstad;IL Gular;42;Torun, POL;29.03.2023;finnes;;navn;60m;a05b57e8-4800-45c7-be2b-8e25f77ba93f;1162
+norgesrekorder-kvi.pdf;60m;K85-89;True;15.60;;Edith Margrethe Rongved Tvedt;IL Gular;41;Haukås;12.01.2026;finnes;;navn;60m;eab0568b-0cee-4c08-abd9-711c48695d25;1560
+norgesrekorder-kvi.pdf;200m;K35-39;True;23.39;;Elisabeth Slettum;IL Skjalg;86;Rud;29.01.2022;finnes;;navn;200m;a3c7b926-65b0-40ae-ae73-95407c2c091d;2339
+norgesrekorder-kvi.pdf;200m;K40-44;True;24.11;;Elisabeth Slettum;IL Skjalg;86;Rud;14.02.2026;finnes;;navn;200m;a3c7b926-65b0-40ae-ae73-95407c2c091d;2411
+norgesrekorder-kvi.pdf;200m;K45-49;True;28.04;;Inger Bækken Kulstad;Steinkjer FIK;48;Stange;27.02.1993;mangler;;navn;200m;b2c50945-6490-4e4e-9226-40159724442b;2804
+norgesrekorder-kvi.pdf;200m;K50-54;True;27.93;;Maylem Lauvstad;IL Tyrving;73;Torun, POL;22.03.2024;finnes;;fornavn+etternavn;200m;65c99cdf-feab-4390-b892-caa1af12c096;2793
+norgesrekorder-kvi.pdf;200m;K55-59;True;29.24;;Anny Undheim;IL Framsteg;56;Jyväskylä, FIN;05.04.2012;mangler;;navn;200m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;2924
+norgesrekorder-kvi.pdf;200m;K60-64;True;30.35;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;21.03.2024;finnes;;navn;200m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;3035
+norgesrekorder-kvi.pdf;200m;K65-69;True;30.44;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;31.03.2026;finnes med annen dato;2026-03-27;navn;200m;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;3044
+norgesrekorder-kvi.pdf;200m;K70-74;True;31.73;;Anny Undheim;IL Framsteg;56;Hvam;31.01.2026;finnes;;navn;200m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;3173
+norgesrekorder-kvi.pdf;200m;K75-79;True;39.24;;Herborg Ninni Blakstad;IL Gular;42;Hvam;04.03.2017;finnes;;navn;200m;a05b57e8-4800-45c7-be2b-8e25f77ba93f;3924
+norgesrekorder-kvi.pdf;200m;K80-84;True;42.03;;Herborg Ninni Blakstad;IL Gular;42;Torun, POL;31.03.2023;finnes;;navn;200m;a05b57e8-4800-45c7-be2b-8e25f77ba93f;4203
+norgesrekorder-kvi.pdf;400m;K35-39;True;60.24;;Else Karin Systad;Eidsvåg IL;54;Oslo/Ek;04.02.1989;mangler;;navn;400m;ea108751-ab67-4318-92a2-39e252adeb33;6024
+norgesrekorder-kvi.pdf;400m;K40-44;True;64.02;;Jorunn Sundal;Florø T&IF;47;Oslo/Ek;24.02.1991;mangler (ny utøver);;;400m;;6402
+norgesrekorder-kvi.pdf;400m;K45-49;True;61.25;;Anny Undheim;IL Framsteg;56;Eskilstuna, SWE;13.03.2005;mangler;;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;6125
+norgesrekorder-kvi.pdf;400m;K50-54;True;62.86;;Maylem Lauvstad;IL Tyrving;73;Torun, POL;18.03.2024;finnes;;fornavn+etternavn;400m;65c99cdf-feab-4390-b892-caa1af12c096;6286
+norgesrekorder-kvi.pdf;400m;K55-59;True;65.74;;Anny Undheim;IL Framsteg;56;Jyväskylä, FIN;08.04.2012;mangler;;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;6574
+norgesrekorder-kvi.pdf;400m;K60-64;True;69.97;;Anny Undheim;IL Framsteg;56;Torun, POL;26.03.2019;finnes;;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;6997
+norgesrekorder-kvi.pdf;400m;K65-69;True;71.76;;Anny Undheim;IL Framsteg;56;Torun, POL;19.03.2024;finnes;;navn;400m;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;7176
+norgesrekorder-kvi.pdf;400m;K70-74;True;87.25;;Åse Nyland;Gjøvik FIK;33;Drammen;22.03.2003;mangler (ny utøver);;;400m;;8725
+norgesrekorder-kvi.pdf;400m;K80-84;True;115.56;;Marian Stenbakk;Moss IL;44;Hvam;16.02.2025;finnes;;navn;400m;fe3ac516-5d34-429b-b25e-e0548a9600e8;11556
+norgesrekorder-kvi.pdf;800m;K35-39;True;2:10.27;;Lisbet Pedersen;IK Tjalve;75;Linz, AUT;04.02.2010;mangler;;alias;800m;83874154-887e-452b-8d35-d37b94b075a3;13027
+norgesrekorder-kvi.pdf;800m;K40-44;True;2:24.57;;Vigdis Bringedal Holst;IL Skjalg;69;Haugesund;20.01.2013;finnes;;navn;800m;f1272258-38f2-436c-801c-6034b5e4aa51;14457
+norgesrekorder-kvi.pdf;800m;K45-49;True;2:26.52;;Vigdis Bringedal Holst;IL Skjalg;69;Sandnes;09.01.2014;finnes;;navn;800m;f1272258-38f2-436c-801c-6034b5e4aa51;14652
+norgesrekorder-kvi.pdf;800m;K50-54;True;2:30.14;;Oddbjørg Haakensveen;Veldre IL;45;Stange;04.03.1995;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;15014
+norgesrekorder-kvi.pdf;800m;K55-59;True;2:38.41;;Oddbjørg Haakensveen;Veldre IL;45;Stange;25.03.2001;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;15841
+norgesrekorder-kvi.pdf;800m;K60-64;True;2:44.37;;Oddbjørg Haakensveen;Veldre Friidrett;45;Stange;02.04.2006;mangler;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;16437
+norgesrekorder-kvi.pdf;800m;K65-69;True;2:55.41;;Oddbjørg Haakensveen;Veldre Friidrett;45;Stange;30.01.2011;finnes;;fornavn+etternavn;800m;01465007-15ab-4e62-80a9-a707755c37c9;17541
+norgesrekorder-kvi.pdf;800m;K70-74;True;3:11.17;;Bjørg Hagen;GTI;42;Haugesund;03.03.2013;finnes;;navn;800m;71172dcb-0e48-4dc0-a9ae-b90f192bc1ec;19117
+norgesrekorder-kvi.pdf;800m;K75-79;True;3:19.16;;Bjørg Hagen;GTI;42;Hvam;05.03.2017;finnes;;navn;800m;71172dcb-0e48-4dc0-a9ae-b90f192bc1ec;19916
+norgesrekorder-kvi.pdf;800m;K80-84;True;4:21.88;;Marian Stenbakk;Moss IL;44;Stange;28.01.2024;finnes;;navn;800m;fe3ac516-5d34-429b-b25e-e0548a9600e8;26188
+norgesrekorder-kvi.pdf;1500m;K35-39;True;4:23.66;;Lisbet Pedersen;IK Tjalve;75;Wien, AUT;02.02.2010;mangler;;alias;1500m;83874154-887e-452b-8d35-d37b94b075a3;26366
+norgesrekorder-kvi.pdf;1500m;K40-44;True;4:36.11;;Kirsten Hausken;Haugesund IL;48;Stavanger;16.01.1988;mangler;;navn;1500m;af28653d-08a7-4937-8502-98c67ece3d9f;27611
+norgesrekorder-kvi.pdf;1500m;K45-49;True;4:46.52;;Vigdis Bringedal Holst;IL Skjalg;69;Sandnes;15.01.2014;finnes;;navn;1500m;f1272258-38f2-436c-801c-6034b5e4aa51;28652
+norgesrekorder-kvi.pdf;1500m;K50-54;True;5:11.80;;Inger Lise Fængsrud;Royal SK;55;Oslo/Ek;24.02.2007;mangler;;navn;1500m;7303c517-df13-4fb5-8ae0-60b6440e787a;31180
+norgesrekorder-kvi.pdf;1500m;K55-59;True;5:18.60;;Ann Kristin Amundsen;IL Norodd;70;Hvam;16.02.2025;finnes;;navn;1500m;072192e3-057b-41cd-ad8a-937ebc2c6092;31860
+norgesrekorder-kvi.pdf;1500m;K60-64;True;5:33.13;;Nina Rødsmoen;Sandnes IL;61;Hvam;23.10.2021;finnes;;navn;1500m;1fcff305-59ad-4ca3-a48d-25959c5e3355;33313
+norgesrekorder-kvi.pdf;1500m;K65-69;True;6:03.92;;Ingrid Sogstad;Oslo IL;26;Oslo/Ek;24.02.1991;mangler (ny utøver);;;1500m;;36392
+norgesrekorder-kvi.pdf;1500m;K70-74;True;6:31.63;;Bjørg Hagen;GTI;42;Haugesund;02.03.2013;finnes;;navn;1500m;71172dcb-0e48-4dc0-a9ae-b90f192bc1ec;39163
+norgesrekorder-kvi.pdf;1500m;K75-79;True;6:47.56;;Bjørg Hagen;GTI;42;Hvam;04.03.2017;finnes;;navn;1500m;71172dcb-0e48-4dc0-a9ae-b90f192bc1ec;40756
+norgesrekorder-kvi.pdf;1500m;K80-84;True;8:55.58;;Marian Stenbakk;Moss IL;44;Stange;27.01.2024;finnes;;navn;1500m;fe3ac516-5d34-429b-b25e-e0548a9600e8;53558
+norgesrekorder-kvi.pdf;3000m;K35-39;True;9:13.86;;Kristine Eikrem Engeset;IL Norna-Salhus;88;Göteborg, SWE;02.02.2023;finnes;;navn;3000m;1d9bb933-ad1c-49fd-b30f-bec6f83f64af;55386
+norgesrekorder-kvi.pdf;3000m;K40-44;True;9:43.53;;Kristin Waaktaar Opland;Bratsberg IL;82;Trondheim/Ra;25.01.2023;finnes;;navn;3000m;e31b8e63-cfed-4bda-82dc-ef04669bb2c1;58353
+norgesrekorder-kvi.pdf;3000m;K45-49;True;10:16.84;;Vigdis Bringedal Holst;IL Skjalg;69;Stange;02.02.2014;finnes;;navn;3000m;f1272258-38f2-436c-801c-6034b5e4aa51;61684
+norgesrekorder-kvi.pdf;3000m;K50-54;True;10:39.75;;Anna Magrethe Tråve;SK Vidar;55;Stange;27.02.2005;mangler;;fornavn+etternavn;3000m;5c8913f2-c1c9-4ef1-ac79-f1479c3b1557;63975
+norgesrekorder-kvi.pdf;3000m;K55-59;True;11:12.37;;Ann Kristin Amundsen;IL Norodd;70;Hvam;15.02.2025;finnes;;navn;3000m;072192e3-057b-41cd-ad8a-937ebc2c6092;67237
+norgesrekorder-kvi.pdf;3000m;K60-64;True;12:04.16;;Nina Rødsmoen;Sandnes IL;61;Hvam;15.02.2025;finnes;;navn;3000m;1fcff305-59ad-4ca3-a48d-25959c5e3355;72416
+norgesrekorder-kvi.pdf;3000m;K65-69;True;13:43.36;;Marian Stenbakk;Moss IL;44;Kristiansand;23.01.2010;mangler;;navn;3000m;fe3ac516-5d34-429b-b25e-e0548a9600e8;82336
+norgesrekorder-kvi.pdf;3000m;K70-74;True;14:01.36;;Marian Stenbakk;Moss IL;44;Haugesund;08.03.2014;finnes (annen navneform i basen);Mariann Stenbakk (1944);navn;3000m;fe3ac516-5d34-429b-b25e-e0548a9600e8;84136
+norgesrekorder-kvi.pdf;3000m;K75-79;True;15:34.87;;Vera Nystad;Søgne IL;45;Grimstad;27.03.2022;finnes;;navn;3000m;40dde3aa-6313-482f-bb6a-58e523d8a1bb;93487
+norgesrekorder-kvi.pdf;60m hekk / hurdles 84.0 cm;K35-39;True;9.93;;Nina (Johannessen) Naalsund;Kristiansands IF;75;Kristiansand;23.01.2010;mangler;;navn;60mh_84cm,60mh;6142076b-8ce1-4ddd-9e02-7ef17c59057d;993
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K40-44;True;9.90;;Anny Undheim;IL Framsteg;56;Stange;25.03.2000;mangler;;navn;60mh_76_2cm,60mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;990
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K40-44;False;9.8;;Grethe Rivenes;Gjøvik FIK;48;Oslo/Ek;22.01.1989;mangler (ny utøver);;;60mh_76_2cm,60mh;;980
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K45-49;True;9.95;;Anny Undheim;IL Framsteg;56;Stange;24.03.2001;mangler;;navn;60mh_76_2cm,60mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;995
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K50-54;True;10.33;;Anny Undheim;IL Framsteg;56;Jyväskylä, FIN;21.03.2010;mangler;;navn;60mh_76_2cm,60mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1033
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K50-54;False;10.1;;Anny Undheim;IL Framsteg;56;Stange;01.04.2006;mangler;;navn;60mh_76_2cm,60mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1010
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K55-59;True;10.61;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;30.03.2019;finnes;;navn;60mh_76_2cm,60mh;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1061
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K55-59;False;10.4;;Anny Undheim;IL Framsteg;56;Lyngdal;27.02.2011;finnes;;navn;60mh_76_2cm,60mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1040
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K60-64;True;12.92;;Gerd Mjelde;Bærums SK;33;Stange;05.02.1994;mangler;;navn;60mh_76_2cm,60mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;1292
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K60-64;False;12.4;;Kirsten Hveem;IL i BUL;25;Oslo/Ek;22.01.1989;mangler (ny utøver);;;60mh_76_2cm,60mh;;1240
+norgesrekorder-kvi.pdf;60m hekk / hurdles 76.2 cm;K65-69;True;12.49;;Gerd Mjelde;Bærum SK;33;Stange;25.03.2000;mangler;;navn;60mh_76_2cm,60mh;4a140614-ae70-4ac4-a84b-7701a8c6702d;1249
+norgesrekorder-kvi.pdf;60m hekk / hurdles 68.6 cm;K60-64;True;10.57;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;22.03.2024;finnes;;navn;60mh_68cm,60mh;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1057
+norgesrekorder-kvi.pdf;60m hekk / hurdles 68.6 cm;K65-69;True;10.59;;Heidi Barth (Andersen);Larvik T&IF;61;Torun, POL;28.03.2026;finnes;;navn;60mh_68cm,60mh;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1059
+norgesrekorder-kvi.pdf;60m hekk / hurdles 68.6 cm;K70-74;True;11.52;;Anny Undheim;IL Framsteg;56;Hvam;31.01.2026;finnes;;navn;60mh_68cm,60mh;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1152
+norgesrekorder-kvi.pdf;60m hekk / hurdles 68.6 cm;K75-79;True;14.53;;Grete Rivenes;Tønsberg FIK;48;Torun, POL;01.04.2023;finnes;;fornavn+etternavn;60mh_68cm,60mh;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;1453
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K35-39;True;13:42.22;;Merete Helgheim;Gloppen FIL;80;Rud;04.02.2018;finnes;;navn;kappgang_3000_m,3000mg;f609b772-46fe-4961-bc41-64d0b5141b9f;82222
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K40-44;True;14:45.68;;Merete Helgheim;Førde IL;80;Stange;27.01.2024;finnes;;navn;kappgang_3000_m,3000mg;f609b772-46fe-4961-bc41-64d0b5141b9f;88568
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K45-49;True;15:00.64;;Sigrun R. Sangvik;Royal SK;57;Stange;23.02.2003;mangler;;fornavn+etternavn;kappgang_3000_m,3000mg;f25cc52b-89cd-4f9b-9ded-5479376e0144;90064
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K50-54;True;20:49.24;;Anita Botnevik (Gjelsvik);T&IF Viking;60;Haukås;17.03.2012;finnes med annen dato;2014-02-05;navn;kappgang_3000_m,3000mg;4f2facba-f7a1-408b-8393-ea4d95b48e98;124924
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K55-59;True;18:52.4;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Malmö, SWE;06.03.1999;mangler;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;113240
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K60-64;True;19:28.3;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Drammen;06.04.2002;mangler;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;116830
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K65-69;True;19:41.44;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Helsinki, FIN;24.03.2007;mangler;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;118144
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K70-74;True;21:26.90;;Halldis Marit (Waaga) Nagell-Dahl;T&IF Viking;42;Hvam;12.03.2016;finnes;;navn;kappgang_3000_m,3000mg;ab700a2b-7151-4c75-8e8b-0991b0eaf330;128690
+norgesrekorder-kvi.pdf;3000m kappgang / Race Walk;K75-79;True;25:10.43;;Jorun Marie Gundersen;Byåsen IL;40;Hvam;04.03.2017;finnes;;navn;kappgang_3000_m,3000mg;82914ef5-af50-47cb-ac85-78e6923ea6e9;151043
+norgesrekorder-kvi.pdf;Høyde / High Jump;K35-39;True;1.55;;Anne Karine Storsveen;IL i BUL;58;Stange;03.03.1996;mangler;;navn;hoyde;b0bbcf26-2528-4fac-bfd0-4da98403fe2d;1550
+norgesrekorder-kvi.pdf;Høyde / High Jump;K40-44;True;1.55;;Anny Undheim;IL Framsteg;56;Kristiansand;30.01.1999;mangler;;navn;hoyde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1550
+norgesrekorder-kvi.pdf;Høyde / High Jump;K45-49;True;1.52;;Anny Undheim;IL Framsteg;56;Drammen;20.03.2004;mangler;;navn;hoyde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1520
+norgesrekorder-kvi.pdf;Høyde / High Jump;K50-54;True;1.44;;Anny Undheim;IL Framsteg;56;Malmö, SWE;05.03.2006;mangler;;navn;hoyde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;1440
+norgesrekorder-kvi.pdf;Høyde / High Jump;K55-59;True;1.39;;Grethe Bolstad;Vossaalliansen;35;Oslo/Ek;24.02.1991;mangler (ny utøver);;;hoyde;;1390
+norgesrekorder-kvi.pdf;Høyde / High Jump;K60-64;True;1.26;;Heidi Barth (Andersen);Larvik T&IF;61;Grimstad;27.03.2022;finnes;;navn;hoyde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;1260
+norgesrekorder-kvi.pdf;Høyde / High Jump;K65-69;True;1.28;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Grimstad;27.03.2022;finnes;;navn;hoyde;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;1280
+norgesrekorder-kvi.pdf;Høyde / High Jump;K70-74;True;1.30;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Hvam;31.12.2025;finnes;;navn;hoyde;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;1300
+norgesrekorder-kvi.pdf;Høyde / High Jump;K75-79;True;1.06;;Grete Rivenes;Tønsberg FIK;48;Stange;29.01.2023;finnes;;fornavn+etternavn;hoyde;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;1060
+norgesrekorder-kvi.pdf;Høyde / High Jump;K80-84;True;0.98;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Haugesund;09.03.2014;finnes;;fornavn+etternavn;hoyde;5626954e-637e-44ce-ab62-a0353b40a5de;980
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K35-39;True;1.31;;Emma Grønmo;Sømna IL;44;Vik i Helgeland;25.02.1979;mangler;;fornavn+etternavn;hoyde_ut;4208debb-3f62-473d-a3c7-be306cb61bb6;1310
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K40-44;True;1.38;;Grete Bjørdalsbakke Mo;Ørsta IL;60;Ørsta;10.01.2002;mangler;;navn;hoyde_ut;7303d5a4-d652-46d9-a674-de6155c4fd58;1380
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K45-49;True;1.27;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Lørenskog;02.04.2001;mangler;;navn;hoyde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;1270
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K50-54;True;1.23;;Claire Phytian;Ullensaker/Kisa IL;73;Hvam;31.01.2026;finnes (annen navneform i basen);Claire Phythian (1973);;hoyde_ut;;1230
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K55-59;True;1.15;;Jorunn Ellefsen;Sørild FIK;63;Hvam;23.10.2021;finnes;;navn;hoyde_ut;17e4d042-cabc-4aac-b5ca-bc3c891786aa;1150
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K60-64;True;1.05;;Gerd Mjelde;Bærums SK;33;Haslum;30.01.1993;mangler;;navn;hoyde_ut;4a140614-ae70-4ac4-a84b-7701a8c6702d;1050
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K65-69;True;1.17;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Oslo/Ek;16.02.2022;finnes;;navn;hoyde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;1170
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K70-74;True;1.17;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Hvam;14.02.2025;finnes;;navn;hoyde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;1170
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K75-79;True;0.88;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Haugesund;02.03.2013;finnes;;fornavn+etternavn;hoyde_ut;5626954e-637e-44ce-ab62-a0353b40a5de;880
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K80-84;True;0.86;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Haugesund;08.03.2014;finnes;;fornavn+etternavn;hoyde_ut;5626954e-637e-44ce-ab62-a0353b40a5de;860
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K85-89;True;0.82;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Hosanger;06.03.2019;finnes;;fornavn+etternavn;hoyde_ut;5626954e-637e-44ce-ab62-a0353b40a5de;820
+norgesrekorder-kvi.pdf;Høyde u.t. / Standing High Jump;K90-94;True;0.60;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Fotlandsvåg;24.01.2024;finnes;;fornavn+etternavn;hoyde_ut;5626954e-637e-44ce-ab62-a0353b40a5de;600
+norgesrekorder-kvi.pdf;Stav / Pole Vault;K35-39;True;3.50;;Elin Margrete Dølør;IL i BUL;65;Stange;24.02.2001;finnes;;fornavn+etternavn;stav;1afdf61c-519e-49d4-8e28-6379411e52b4;3500
+norgesrekorder-kvi.pdf;Stav / Pole Vault;K40-44;True;2.22;;May Britt Hasselquist Borge;IL Fri;61;Fana;08.12.2001;mangler;;fornavn+etternavn;stav;5069ceaf-7e1b-4121-8f06-a0fc364f6581;2220
+norgesrekorder-kvi.pdf;Stav / Pole Vault;K45-49;True;2.25;;Britt Eva Fauskanger Brurås;IL Norna-Salhus;65;Haukås;09.02.2013;finnes;;navn;stav;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;2250
+norgesrekorder-kvi.pdf;Stav / Pole Vault;K50-54;True;2.31;;Britt Eva Fauskanger Brurås;IL Norna-Salhus;65;Haukås;31.01.2015;finnes;;navn;stav;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;2310
+norgesrekorder-kvi.pdf;Stav / Pole Vault;K55-59;True;1.25;;Marianne Johansen Myrbraaten;Ski IL;68;Stange;27.01.2024;finnes;;navn;stav;33b76c83-4095-4508-b2b3-5063726bf0f0;1250
+norgesrekorder-kvi.pdf;Stav / Pole Vault;K60-64;True;1.65;;Britt Eva Fauskanger Brurås;IL Fri;65;Haukås;23.02.2026;finnes;;navn;stav;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;1650
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K35-39;True;5.63;;Margrethe Renstrøm;IK Tjalve;85;Göteborg, SWE;01.02.2020;finnes;;navn;lengde;3c77fe7b-1dac-4e64-94bf-cc0fde98fc66;5630
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K40-44;True;5.25;;Lene Berger;IL Tyrving;81;Hvam;15.02.2025;finnes;;navn;lengde;9ce0bf7c-9d9f-4c88-9220-25ff2afbcb3c;5250
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K45-49;True;4.92;;Anny Undheim;IL Framsteg;56;Stange;24.03.2001;mangler;;navn;lengde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;4920
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K50-54;True;4.68;;Anny Undheim;IL Framsteg;56;Reykjavik, ISL;01.03.2008;mangler;;navn;lengde;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;4680
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K55-59;True;4.59;;Heidi Barth (Andersen);Larvik T&IF;61;Tønsberg;04.04.2019;finnes;;navn;lengde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;4590
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K60-64;True;4.20;;Heidi Barth (Andersen);Larvik T&IF;61;Rud;25.11.2023;finnes;;navn;lengde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;4200
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K65-69;True;4.09;;Heidi Barth (Andersen);Larvik T&IF;61;Hvam;31.01.2026;finnes;;navn;lengde;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;4090
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K70-74;True;3.80;;Marit Huflåtten;Tønsberg FIK;53;Tønsberg;04.02.2025;finnes;;navn;lengde;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;3800
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K75-79;True;2.39;;Elise Marie Wåle;Larvik T&IF;42;Hvam;23.10.2021;finnes;;fornavn+etternavn;lengde;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;2390
+norgesrekorder-kvi.pdf;Lengde / Long Jump;K80-84;True;2.75;;Elise Marie Wåle;Larvik T&IF;42;Hvam;09.11.2024;finnes;;fornavn+etternavn;lengde;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;2750
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K35-39;True;2.74;;Inger Blikra;Rana FIK;61;Mo i Rana;18.02.1997;mangler;;navn;lengde_ut;039c40f8-ab13-4e6a-8600-b40c1f105991;2740
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K40-44;True;2.66;;Inger Blikra;Rana FIK;61;Mo i Rana;08.03.2004;mangler;;navn;lengde_ut;039c40f8-ab13-4e6a-8600-b40c1f105991;2660
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K45-49;True;2.55;;Elin Bjørge (Madsen);Sandefjord T&IF;76;Tønsberg;19.01.2023;finnes;;navn;lengde_ut;31e9da24-4bfc-4504-9182-462b356a07b8;2550
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K50-54;True;2.47;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Stange;01.04.2006;mangler;;navn;lengde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;2470
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K55-59;True;2.47;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Oslo/Bi;31.08.2012;mangler;;navn;lengde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;2470
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K60-64;True;2.25;;Gerd Mjelde;Bærum SK;33;Heggedal;11.03.1995;mangler;;navn;lengde_ut;4a140614-ae70-4ac4-a84b-7701a8c6702d;2250
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K65-69;True;2.34;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Ås;06.11.2022;finnes;;navn;lengde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;2340
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K70-74;True;2.33;;Inger Lise Sundheim;Ullensaker/Kisa IL;55;Hvam;16.02.2025;finnes;;navn;lengde_ut;4419fe4c-857f-4a39-aa33-7e7ed0503bc8;2330
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K75-79;True;1.77;;Åse Nyland;Gjøvik FIK;33;Drammen;07.03.2009;mangler (ny utøver);;;lengde_ut;;1770
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K80-84;True;1.73;;Elise Marie Wåle;Larvik T&IF;42;Tønsberg;17.02.2022;finnes;;fornavn+etternavn;lengde_ut;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;1730
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K85-89;True;1.32;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Hatland;13.02.2019;finnes;;fornavn+etternavn;lengde_ut;5626954e-637e-44ce-ab62-a0353b40a5de;1320
+norgesrekorder-kvi.pdf;Lengde u.t. / Standing Long Jump;K90-94;True;1.05;;Ragnhild Hanstvedt;Mjøsdalen IL;34;Fotlandsvåg;24.01.2024;finnes;;fornavn+etternavn;lengde_ut;5626954e-637e-44ce-ab62-a0353b40a5de;1050
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K35-39;True;11.22;;Nina (Johannessen) Naalsund;Kristiansands IF;75;Kristiansand;23.01.2010;finnes;;navn;tresteg;6142076b-8ce1-4ddd-9e02-7ef17c59057d;11220
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K40-44;True;10.47;;Anny Undheim;IL Framsteg;56;Stange;03.03.1996;mangler;;navn;tresteg;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;10470
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K45-49;True;10.21;;Anny Undheim;IL Framsteg;56;Stange;24.03.2001;mangler;;navn;tresteg;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;10210
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K50-54;True;9.83;;Anny Undheim;IL Framsteg;56;Ancona, ITA;25.03.2009;mangler;;navn;tresteg;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;9830
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K55-59;True;9.56;;Anny Undheim;IL Framsteg;56;Gent, BEL;17.03.2011;mangler;;navn;tresteg;222ef5a0-8fbf-4b7b-bca1-aee18f31a3c5;9560
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K60-64;True;8.60;;Heidi Barth (Andersen);Larvik T&IF;61;Hvam;24.10.2021;finnes;;navn;tresteg;41ecbbf3-bef7-4ac2-a658-8b1372afc2b7;8600
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K65-69;True;8.27;;Marit Huflåtten;Tønsberg FIK;53;Haukås;01.03.2020;finnes;;navn;tresteg;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;8270
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K70-74;True;7.89;;Marit Huflåtten;Tønsberg FIK;53;Torun, POL;19.03.2024;finnes;;navn;tresteg;ca6cd1f7-d1f5-49a8-a7aa-2137f948fa85;7890
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K75-79;True;5.67;;Grethe Maren Myklestad;Gloppen FIL;42;Haukås;01.03.2020;finnes;;navn;tresteg;d84eccb0-d014-4b67-9a41-1f9d01b6bbce;5670
+norgesrekorder-kvi.pdf;Tresteg / Triple Jump;K80-84;True;5.24;;Herborg Ninni Blakstad;IL Gular;42;Reykjavik, ISL;24.02.2023;finnes;;navn;tresteg;a05b57e8-4800-45c7-be2b-8e25f77ba93f;5240
+norgesrekorder-kvi.pdf;Kule / Shot Put 4.0 kg;K35-39;True;13.12;;Katarina Sederholm Hoff;Stjørdal FIK;68;Selbu;29.02.2004;mangler;;fornavn+etternavn;kule_4kg,kule;3507423e-a848-4eb8-82e0-bd3387b5711f;13120
+norgesrekorder-kvi.pdf;Kule / Shot Put 4.0 kg;K40-44;True;11.73;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Oslo/Ek;24.02.1991;mangler;;fornavn+etternavn;kule_4kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;11730
+norgesrekorder-kvi.pdf;Kule / Shot Put 4.0 kg;K45-49;True;10.86;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Stange;04.03.1995;mangler;;fornavn+etternavn;kule_4kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;10860
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K50-54;True;12.36;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Stange;25.03.2001;mangler;;fornavn+etternavn;kule_3kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;12360
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K55-59;True;11.06;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Drammen;21.03.2004;mangler;;fornavn+etternavn;kule_3kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;11060
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K60-64;True;9.40;;Inger Elisabeth Holter Holmgrunn;Oslo Politis IL;49;Drammen;08.03.2009;mangler;;fornavn+etternavn;kule_3kg,kule;a491fb23-b12c-4353-a0ad-91745844a7a5;9400
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K65-69;True;10.30;;Grete Bjørdalsbakke (Mo);Ørsta IL;60;Ørsta;04.12.2025;finnes;;navn;kule_3kg,kule;a8e14de4-046b-4338-b8db-03a8e2c45a0b;10300
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K70-74;True;8.99;;Inger Marie Vingdal;Øystre Slidre IL;55;Torun, POL;30.03.2026;finnes;;navn;kule_3kg,kule;7ac279a0-b627-467b-b4e7-d874162f4a5f;8990
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K75-79;True;6.14;;Bodil Hestmann;Oslo IL;28;Drammen;22.03.2003;mangler;;navn;kule_3kg,kule;ec6835a3-d120-4883-af55-779545c3b3e6;6140
+norgesrekorder-kvi.pdf;Kule / Shot Put 3.0 kg;K80-84;True;4.89;;Bodil Hestmann;Oslo IL;28;Oslo/Ek;02.02.2010;mangler;;navn;kule_3kg,kule;ec6835a3-d120-4883-af55-779545c3b3e6;4890
+norgesrekorder-kvi.pdf;Kule / Shot Put 2.0 kg;K75-79;True;9.48;;Grete Rivenes;Tønsberg FIK;48;Torun, POL;20.03.2024;finnes;;fornavn+etternavn;kule_2kg,kule;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;9480
+norgesrekorder-kvi.pdf;Kule / Shot Put 2.0 kg;K80-84;True;7.82;;Emma Stuberg Grønmo;Stjørdal FIK;44;Stange;28.01.2024;finnes;;navn;kule_2kg,kule;4208debb-3f62-473d-a3c7-be306cb61bb6;7820
+norgesrekorder-kvi.pdf;Kule / Shot Put 2.0 kg;K85-89;True;5.18;;Edith Margrethe Rongved Tvedt;IL Gular;41;Haukås;12.01.2026;finnes;;navn;kule_2kg,kule;eab0568b-0cee-4c08-abd9-711c48695d25;5180
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 9.08 kg;K35-39;True;9.87;;Torgunn Henden;Larvik T&IF;80;Larvik;05.01.2016;finnes;;navn;vektkast_908kg,vektkast;d58d1429-1a3b-45b7-bee9-9a0c028c9098;9870
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 9.08 kg;K40-44;True;11.02;;Britt Eva Fauskanger Brurås;IL Norna-Salhus;65;Kópavogur, ISL;02.03.2008;mangler;;navn;vektkast_908kg,vektkast;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;11020
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 9.08 kg;K45-49;True;10.88;;Britt Eva Fauskanger Brurås;IL Norna-Salhus;65;Jyväskylä, FIN;04.04.2012;mangler;;navn;vektkast_908kg,vektkast;4043be91-8db7-4ff2-a586-b3cd8cc3eae6;10880
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 7.26 kg;K50-54;True;15.70;;Mari Tuulikki Kjølberg;Romerike Friidrett;72;Hvam;15.02.2025;finnes;;navn;vektkast_726kg,vektkast;48511278-0ea7-46e5-ac38-a3fc7b7e3f55;15700
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 7.26 kg;K55-59;True;11.99;;Inger Austbø;Kongsberg IF;47;Sandbu;26.02.2005;mangler;;navn;vektkast_726kg,vektkast;5aee0f16-7154-4824-9914-993bc7a2104f;11990
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 7.26 kg;K70-74;True;9.77;;Grete Rivenes;Tønsberg FIK;48;Larvik;25.02.2018;finnes;;fornavn+etternavn;vektkast_726kg,vektkast;ebd4f122-94a2-4e9a-b2cc-ced4544ef616;9770
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 5.45 kg;K60-64;True;13.72;;Janice Terjesen Flaathe;GTI;59;Larvik;06.02.2020;finnes;;fornavn+etternavn;vektkast_545kg,vektkast;375ad184-dac8-4bc6-b1c3-84a82403bad3;13720
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 5.45 kg;K65-69;True;11.11;;Live Båsen (Eriksen);Modum FIK;58;Torun, POL;28.03.2023;finnes;;navn;vektkast_545kg,vektkast;00c226db-b96b-4995-adf1-9dd2f0f6fe35;11110
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 5.45 kg;K70-74;True;13.14;;Inger Marie Vingdal;Øystre Slidre IL;55;Hvam;15.02.2025;finnes;;navn;vektkast_545kg,vektkast;7ac279a0-b627-467b-b4e7-d874162f4a5f;13140
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 5.45 kg;K75-79;True;8.84;;Elise Marie Wåle;Larvik T&IF;42;Larvik;06.02.2020;finnes;;fornavn+etternavn;vektkast_545kg,vektkast;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;8840
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 4.00 kg;K75-79;True;11.54;;Elise Marie Wåle;Larvik T&IF;42;Torun, POL;26.03.2019;finnes;;fornavn+etternavn;vektkast40kg,vektkast;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;11540
+norgesrekorder-kvi.pdf;Vektkast / Weight Throw 4.00 kg;K80-84;True;10.67;;Elise Marie Wåle;Larvik T&IF;42;Larvik;17.02.2023;finnes;;fornavn+etternavn;vektkast40kg,vektkast;8e5cf8f1-bbfc-4c76-9e34-7dc84a5bc116;10670
