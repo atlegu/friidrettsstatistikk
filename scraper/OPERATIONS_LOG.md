@@ -1299,3 +1299,6 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - To importer i januar 2026 la inn samme løp med ulik skrivemåte («61.4» / «1:01.40», «688.00» / «11:28»), ofte med ulikt håndtidsflagg. Migrering `skrivemaate_dubletter.sql` (funksjon skrivemaate_dubletter()).
 - `rydd_skrivemaate_dubletter.py --apply`: 1 172 grupper (samme utøver, øvelse, dato, verdi). Tideler mot hundredeler avgjort av kilden (minfriidrettsstatistikk.info skriver «2,14,1» for håndtid og «2,14,10» for elektronisk): 549 var håndtid (hundredelsraden slettet), 139 elektronisk. 446 samme presisjon, annet format (minuttformat beholdt), 43 sekunder over 100 (minuttformat beholdt). 1 177 slettet, reserve i opprydding_avkortede. Håndtidsflagg på beholdte rader kontrollert: ingen avvik.
 - Holdt utenfor (opprydding/skrivemaate_dubletter_20261017_120855.csv): 3 grupper som kan være to løp (ulike runder/plassering), 11 der kilden ikke avgjør tideler/hundredeler.
+
+## 2026-10-17 — Navneavvik i mastersrekordene bekreftet
+- Atle bekreftet at alle 37 med annet navn eller fødselsår i basen er samme person. Rune Bråten Liholt er født 1976 (innelista har «77», basen har 1976). Lagt inn som BEKREFTET_SAMME i masters_avviksliste.py, så de ikke kommer igjen. Avviksliste laget på nytt.

@@ -42,6 +42,22 @@ LISTEDATO = {'u': '2025-12-31', 'i': '2026-06-30'}
 ALIAS_NAVN = {'Halldis Marit (Waaga) (Nagell-)Dahl': 'Halldis Marit Nagell-Dahl',
               'Astrid Førde': 'Astrid Mæhre Førde Johannessen',
               'Trond Erik Nilsen': 'Trond-Erik Nilsen', 'Lisbet Pedersen': 'Lisbeth Pedersen'}
+# Navn i rekordlista som Atle har bekreftet er samme person som i basen
+# (17.10.2026). Rune Bråten Liholt er født 1976; «(77)» i innelista er feil.
+BEKREFTET_SAMME = {
+    ('Aksel Røste', '35'), ('Anna Magrethe Tråve', '55'), ('Arthur Lillefosse', '44'), ('Astrid Førde', '33'),
+    ('Bjørn Morten Moss', '60'), ('Claire Phytian', '73'), ('Dag Kåshagen', '60'), ('Elin Margrete Dølør', '65'),
+    ('Elisabeth Wormsen', '55'), ('Elise Marie Wåle', '42'), ('Emma Grønmo', '44'), ('Eva E. Nordqvist', '63'),
+    ('Grete Rivenes', '48'), ('Halldis Marit (Waaga) (Nagell-)Dahl', '42'), ('Inger Elisabeth Holter Holmgrunn', '49'),
+    ('Inger-Lise Sundheim', '55'), ('Janice Terjesen Flaathe', '59'), ('Katarina Sederholm Hoff', '68'),
+    ('Kirsten Marathon Melkevik', '70'), ('Kirsti Mathilde Johnsen', '53'), ('Kjell Adamski', '50'),
+    ('Kjell Steinset', '36'), ('Klaus Arthur Hansen', '58'), ('Lisbet Pedersen', '75'),
+    ('May Britt Hasselquist Borge', '61'), ('Maylem Lauvstad', '73'), ('Oddbjørg Haakensveen', '45'),
+    ('Ragnhild Hanstvedt', '34'), ('Reidar Dahl', '48'), ('Rune Bråten Liholt', '77'), ('Sigrun R. Sangvik', '57'),
+    ('Sofie A. Jakobsen', '43'), ('Sverre Kristoffer Jensen', '66'), ('Synøve Brox', '59'),
+    ('Toril Lauritsen Nyborg', '67'), ('Trond Erik Nilsen', '72'), ('Åse Nyland', '33'),
+}
+
 MERKNAD = {'Erik Tysse': 'Basen har 11:28.45 samme dag (Framolekene 2015). En av tidene er feil. Godkjent tid er ikke lagt inn.',
            'Erling Andersen': 'Lista: M40-44 i 1990, men oppgitt født 1960 (30 år). Feil klasse, dato eller fødselsår i lista.'}
 
@@ -180,6 +196,8 @@ def main():
         koblet = r['koblet'] or ''
         if not (r['status'] == 'finnes (annen navneform i basen)' or koblet.startswith(('alias', 'navn, fødselsår', 'fornavn+etternavn'))):
             continue
+        if (r['navn'], r['fodt']) in BEKREFTET_SAMME:
+            continue
         if r['athlete_id']:
             a = sb.table('athletes').select('full_name,birth_year').eq('id', r['athlete_id']).execute().data
             i_basen = f"{a[0]['full_name']} ({a[0]['birth_year']})" if a else ''
@@ -208,7 +226,8 @@ def main():
     linjer += [('   ' + k[2:], v) for k, v in sorted(c.items())]
     linjer += [('Godkjent rekord vises ikke på rekordsiden (ark «Godkjent rekord vises ikke»)', n2),
                ('Samme resultat, men annen dato i basen (ark «Annen dato i basen»)', n3),
-               ('Samme person, men annet navn eller fødselsår i basen (ark «Navn og fødselsår»)', n4), ('', None),
+               ('Samme person, men annet navn eller fødselsår i basen, ikke bekreftet (ark «Navn og fødselsår»)', n4),
+               (f'   Bekreftet samme person (17.10.2026), ikke tatt med', len(BEKREFTET_SAMME)), ('', None),
                ('Årsakene er satt maskinelt og er et utgangspunkt for vurdering, ikke en konklusjon.', None),
                ('«Stor forskjell»: over 8 % bedre tid eller 12 % lengre/høyere enn rekorden. Ofte feil fødselsår, '
                 'øvelse eller utøver, men kan være ekte.', None),
