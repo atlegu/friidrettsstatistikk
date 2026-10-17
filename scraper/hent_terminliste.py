@@ -240,6 +240,11 @@ def main():
         sb.table('terminliste').upsert(liste[i:i + 200], on_conflict='isonen_id').execute()
     logger.info(f'{len(liste)} arrangementer lagret')
 
+    # Arrangør, arrangementstype, krets og iSonen-lenke til de koblede
+    # stevnene, til stevnesidene (migrations/eksport_og_stevneinfo.sql)
+    n = sb.rpc('stevneinfo_fra_terminliste').execute().data
+    logger.info(f'Stevneinfo fra terminlisten oppdatert på {n} stevner')
+
 
 if __name__ == '__main__':
     sys.exit(main())

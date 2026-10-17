@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { EksportKnapp } from "@/components/admin/EksportKnapp"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -201,7 +202,10 @@ export default async function ClubYearListPage({
         { label: "Statistikk", href: `/klubber/${id}/statistikk` },
         { label: `Årsliste ${year}` }
       ]} />
-      <h1 className="mt-4 mb-4">{club.name} - Årsliste {year}</h1>
+      <div className="mt-4 mb-4 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="m-0">{club.name} - Årsliste {year}</h1>
+        <EksportKnapp href={`/api/eksport?type=klubb&klubb=${id}&aar=${year}`} />
+      </div>
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* Sidebar - Filters */}

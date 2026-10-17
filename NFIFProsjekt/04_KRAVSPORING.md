@@ -31,14 +31,14 @@ før 2013, eldste 1921), 87 842 utøvere, 302 øvelser, 44 945 stevner. Løp ute
 | 6 | Nasjonal statistikk | I DRIFT | Årsstatistikk, alle tiders, rekorder, masters. |
 | 7 | Klubbstatistikk | I DRIFT | Klubbside med årsstatistikk, alle tiders, klubbrekorder, antall utøvere og resultater. |
 | 8 | Regionsstatistikk | MANGLER | Ingen klubber har krets/fylke (0 av 2 484). Krever klubb-til-krets-liste fra NFIF. Når den finnes, er regionstatistikk en filtrering på eksisterende data. |
-| 9 | Stevnesider | DELVIS | 44 945 stevner med resultater og lenker til utøvere. Mangler: arrangør (0 stevner har arrangør), stevnetype/nivå (alle står som «local») og merking av ikke godkjente resultater på stevnesiden. |
+| 9 | Stevnesider | I DRIFT | 44 945 stevner med resultater og lenker til utøvere. Fra 17.10: arrangør, arrangementstype, krets og iSonen-lenke fra terminlisten (stevner fra 2026, oppdateres hver natt), og ikke godkjente resultater merket med årsak. Eldre stevner har ingen kilde for arrangør. |
 | 10 | Historiske data | I DRIFT | Fullt fra 2013 (kravets førsteprioritet). 223 242 resultater før 2013, tilbake til 1921. 1 006 godkjente mastersrekorder kontrollert og merket. |
 | 11 | Kvalitetsklassifisering A/B/C | DELVIS | Endret fra MANGLER. I drift for løp utenfor bane, med filter. Mangler for bane: der gjelder i praksis «godkjent/ikke godkjent» + vind/håndtid, men ikke A/B/C-merking. |
 | 12 | API-støtte | MANGLER | Ingen offentlig API eller dokumentasjon. Basen har et internt REST-grensesnitt (Supabase/PostgREST) som et dokumentert JSON-API kan bygges på. |
-| 13 | Eksportfunksjonalitet | DELVIS | CSV-eksport fra aktivitetssiden. Mangler eksport fra årslister, alle tiders, klubb- og stevnesider. |
+| 13 | Eksportfunksjonalitet | I DRIFT | CSV (Excel-vennlig) fra årslister, alle tiders, klubbens årsliste, stevnesider og aktivitetssiden. Bare for administratorer, hver nedlasting logges (personvern). Kan utvides med roller, f.eks. klubber for egne lister. |
 | 14 | Mobilvennlig løsning | I DRIFT | Responsivt grensesnitt. WCAG 2.1 AA bør dokumenteres. |
 
-**Oppsummert:** 7 i drift, 4 delvis, 2 mangler (region, API), 2 avtale. Ingen er
+**Oppsummert:** 9 i drift, 2 delvis, 2 mangler (region, API), 2 avtale. Ingen er
 teknisk risikofylte; region avhenger av en liste fra NFIF.
 
 ---
@@ -67,7 +67,7 @@ teknisk risikofylte; region avhenger av en liste fra NFIF.
 | §10 | Klubbstatistikk | DELVIS | Lister, resultathistorikk, aktive utøvere, antall resultater, utvikling. Mangler antall arrangerte stevner (arrangør mangler, se §11). |
 | §10 | Regionsstatistikk og sammenligning | MANGLER | Se §22 nr. 8. |
 | §11 | Stevneside: navn, dato, sted, resultater, lenker | I DRIFT | — |
-| §11 | Stevneside: arrangør, type, godkjennings-/statusinfo | MANGLER | Ingen arrangørdata; nivå «local» på alt; ikke godkjente resultater vises uten merking. Arrangør kan hentes fra terminlisten (iSonen-data via friidrett.no). |
+| §11 | Stevneside: arrangør, type, godkjennings-/statusinfo | I DRIFT | Fra terminlisten for stevner fra 2026; World Ranking-stevner merkes; ikke godkjente resultater merket med årsak. |
 | §12 | Aktivitet: stevner, starter, unike deltakere, klubb, alder, kjønn, øvelse, utvikling | I DRIFT | /aktivitet med kube over kjønn, alder og kategori, CSV-eksport. |
 | §12 | Aktivitet per region | MANGLER | Krets mangler. |
 | §12 | Antall fullførte | DELVIS | Løp utenfor bane ja; bane ikke relevant på samme måte. |
@@ -93,7 +93,7 @@ teknisk risikofylte; region avhenger av en liste fra NFIF.
 | §17 | Filter: distanse, kvalitetsnivå | DELVIS | For løp utenfor bane. |
 | §17 | Filter: region | MANGLER | Krets mangler. |
 | §18 | Dokumentert JSON-API | MANGLER | Se §22 nr. 12. |
-| §18 | Eksport Excel/CSV | DELVIS | Se §22 nr. 13. |
+| §18 | Eksport Excel/CSV | I DRIFT | Se §22 nr. 13. |
 | §19 | Personvern og sikkerhet | DELVIS | Radnivåsikkerhet, roller, skriverett bare for administratorer (strammet inn 16.10), barn til og med 11 år ikke vist. Mangler skriftlig beskrivelse/DPIA og databehandleravtale. |
 
 ---
@@ -136,9 +136,9 @@ teknisk risikofylte; region avhenger av en liste fra NFIF.
 | # | Mangel | Krav | Avhengighet | Omfang |
 |---|---|---|---|---|
 | 1 | Dokumentert JSON-API (lesetilgang for godkjente brukere) | §18, §22 nr. 12 | — | Middels |
-| 2 | Eksport til CSV/Excel fra årslister, alle tiders, klubb og stevner | §18, §22 nr. 13 | — | Lite |
+| 2 | ~~Eksport til CSV/Excel~~ — i drift 17.10 | §18, §22 nr. 13 | — | — |
 | 3 | Regionsstatistikk og regionfilter | §10, §17, §22 nr. 8 | Klubb-til-krets-liste fra NFIF | Lite når listen finnes |
-| 4 | Stevneside: arrangør, stevnetype og merking av ikke godkjente resultater | §11, §22 nr. 9 | Arrangør fra terminlisten | Lite |
+| 4 | ~~Stevneside: arrangør, type, merking~~ — i drift 17.10 | §11, §22 nr. 9 | — | — |
 | 5 | Kvalitetsnivå for bane (A/B/C) med filter | §6, §16 | Delvis lisensregisteret | Middels |
 | 6 | Personvernbeskrivelse og DPIA | §19 | — | Lite |
 

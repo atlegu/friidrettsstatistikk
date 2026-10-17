@@ -13,6 +13,8 @@ export interface Stevnerad {
   result_type: string | null
   wind: number | null
   is_pb: boolean | null
+  /** Statistikkførerens årsak når resultatet ikke er godkjent */
+  ikke_godkjent?: string | null
 }
 
 /**
@@ -43,7 +45,7 @@ export function Resultattabell({ rader }: { rader: Stevnerad[] }) {
         </thead>
         <tbody>
           {rader.map((r, i) => (
-            <tr key={r.id} className="border-b last:border-0 hover:bg-muted/30">
+            <tr key={r.id} className={`border-b last:border-0 hover:bg-muted/30 ${r.ikke_godkjent ? "text-muted-foreground" : ""}`}>
               <td className="px-4 py-2 text-sm text-muted-foreground">
                 {r.place ?? i + 1}
               </td>
@@ -68,7 +70,15 @@ export function Resultattabell({ rader }: { rader: Stevnerad[] }) {
                     {r.wind})
                   </span>
                 )}
-                {r.is_pb && (
+                {r.ikke_godkjent && (
+                  <span
+                    className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-950 dark:text-amber-200"
+                    title={r.ikke_godkjent}
+                  >
+                    Ikke godkjent: {r.ikke_godkjent}
+                  </span>
+                )}
+                {r.is_pb && !r.ikke_godkjent && (
                   <span className="ml-2 rounded bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
                     PB
                   </span>

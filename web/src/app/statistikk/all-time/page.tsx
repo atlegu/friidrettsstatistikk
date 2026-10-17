@@ -1,6 +1,8 @@
 import Link from "next/link"
+import { EksportKnapp } from "@/components/admin/EksportKnapp"
 import { Utenlandsk } from "@/components/statistikk/Utenlandsk"
 import { createClient } from "@/lib/supabase/server"
+import { getAllTimeResults } from "@/lib/alltime"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { formatPerformance } from "@/lib/format-performance"
 import { getBirthYear } from "@/lib/date-utils"
@@ -47,11 +49,6 @@ const AGE_GROUPS = [
 ] as const
 
 // Age group mappings for composite categories
-const AGE_GROUP_MAPPINGS: Record<string, string[]> = {
-  "Senior": ["15", "16", "17", "18-19", "20-22", "Senior"],
-  "U23": ["15", "16", "17", "18-19", "20-22"],
-  "U20": ["15", "16", "17", "18-19"],
-}
 
 // Wind-affected events: sprints ≤200m + horizontal jumps
 const WIND_AFFECTED_EVENT_CODES = ["60m", "80m", "100m", "150m", "200m", "lengde", "tresteg"]
@@ -67,63 +64,6 @@ async function getEvents() {
   return data ?? []
 }
 
-async function getAllTimeResults(
-  eventId: string,
-  gender: string,
-  ageGroup: string,
-  resultType: string,
-  venue: string,
-  timing: string,
-  wind: string,
-  limit: number,
-  offset: number
-) {
-  const supabase = await createClient()
-
-  const ascending = resultType === "time"
-
-  // Resolve age groups
-  let ageGroups: string[] | null = null
-  if (ageGroup !== "all") {
-    const mapped = AGE_GROUP_MAPPINGS[ageGroup]
-    ageGroups = mapped ?? [ageGroup]
-  }
-
-  // Resolve venue
-  const indoor = venue === "indoor" ? true : venue === "outdoor" ? false : null
-
-  // Timing filter only applies to running events (result_type "time")
-  // Field events (distance/height) have no concept of electronic/manual timing
-  const isTimingRelevant = resultType === "time"
-  const excludeManual = isTimingRelevant && timing === "electronic"
-  const onlyManual = isTimingRelevant && timing === "manual"
-  const excludeWindIllegal = wind === "legal"
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data, error } = await (supabase.rpc as any)("get_all_time_best", {
-    p_event_id: eventId,
-    p_gender: gender,
-    p_age_groups: ageGroups,
-    p_indoor: indoor,
-    p_ascending: ascending,
-    p_exclude_manual: excludeManual,
-    p_exclude_wind_illegal: excludeWindIllegal,
-    p_only_manual: onlyManual,
-    p_limit: limit,
-    p_offset: offset,
-  })
-
-  if (error) {
-    console.error("RPC error:", error)
-    return { results: [] as any[], totalCount: 0 }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const results = (data ?? []) as any[]
-  const totalCount = results.length > 0 ? Number(results[0].total_count) : 0
-
-  return { results, totalCount }
-}
 
 const RESULTS_PER_PAGE = 100
 
@@ -198,7 +138,12 @@ export default async function AllTimePage({
         { label: "Statistikk", href: "/statistikk" },
         { label: "All-time" }
       ]} />
-      <h1 className="mt-4 mb-4">All-time lister</h1>
+      <div className="mt-4 mb-4 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="m-0">All-time lister</h1>
+        {selectedEvent && (
+          <EksportKnapp href={`/api/eksport?type=alltime&event=${selectedEvent.id}&gender=${gender}&age=${age}&venue=${venue}&timing=${timing}&wind=${wind}`} />
+        )}
+      </div>
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* Sidebar - Filters */}

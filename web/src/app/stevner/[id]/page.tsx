@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import { EksportKnapp } from "@/components/admin/EksportKnapp"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/ui/breadcrumbs"
@@ -25,7 +26,8 @@ async function getMeet(id: string) {
     .eq("id", id)
     .single()
 
-  return data
+  // arrangementstype og krets kommer fra terminlisten (migrations/eksport_og_stevneinfo.sql)
+  return data as (NonNullable<typeof data> & { arrangementstype: string | null; krets: string | null }) | null
 }
 
 /**
@@ -52,7 +54,8 @@ type Stevneresultat = Pick<
   | "wind"
   | "is_pb"
   | "event_name"
->
+  | "status"
+> & { ikke_godkjent?: string | null }
 
 async function getMeetResults(meetId: string): Promise<Stevneresultat[]> {
   const supabase = await createClient()
@@ -63,7 +66,7 @@ async function getMeetResults(meetId: string): Promise<Stevneresultat[]> {
         .from("results_full")
         // Bare feltene tabellen under bruker. Med «*» ble hver rad mange
         // ganger stoerre, og sidene her er lange.
-        .select("id,place,athlete_id,athlete_name,club_name,performance,result_type,wind,is_pb,event_name")
+        .select("id,place,athlete_id,athlete_name,club_name,performance,result_type,wind,is_pb,event_name,status")
         .eq("meet_id", meetId)
         .order("event_name", { ascending: true })
         .order("performance_value", { ascending: true })
@@ -71,6 +74,18 @@ async function getMeetResults(meetId: string): Promise<Stevneresultat[]> {
         .range(fra, til),
     "Stevneresultater"
   )
+}
+
+/** Årsaken for resultatene som ikke er godkjent (status IKKE_GODKJENT). */
+async function getIkkeGodkjente(meetId: string): Promise<Map<string, string>> {
+  const supabase = await createClient()
+  const { data } = await supabase
+    .from("results")
+    .select("id,ikke_godkjent_aarsak" as never)
+    .eq("meet_id", meetId)
+    .eq("status", "IKKE_GODKJENT" as never)
+  const rader = (data ?? []) as unknown as { id: string; ikke_godkjent_aarsak: string | null }[]
+  return new Map(rader.map((r) => [r.id, r.ikke_godkjent_aarsak || "Ikke godkjent"]))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -95,7 +110,10 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
     notFound()
   }
 
-  const results = await getMeetResults(id)
+  const [alle, aarsaker] = await Promise.all([getMeetResults(id), getIkkeGodkjente(id)])
+  const results = alle.map((r) => ({ ...r, ikke_godkjent: r.id ? aarsaker.get(r.id) ?? null : null }))
+  const godkjente = results.filter((r) => !r.ikke_godkjent)
+  const erWorldRanking = /world ranking/i.test(meet.arrangementstype ?? "")
 
   // Group results by event
   const resultsByEvent = results.reduce((acc, result) => {
@@ -136,7 +154,13 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
             {meet.organizer_name && (
               <>
                 <MetaSkille />
-                <span>{meet.organizer_name}</span>
+                <span>Arrangør: {meet.organizer_name}</span>
+              </>
+            )}
+            {meet.krets && (
+              <>
+                <MetaSkille />
+                <span>{meet.krets}</span>
               </>
             )}
             {meet.website && (
@@ -148,7 +172,7 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
                   rel="noopener noreferrer"
                   className="underline-offset-2 hover:underline"
                 >
-                  Stevnets nettside
+                  {/isonen\.no/.test(meet.website) ? "Arrangementet i iSonen" : "Stevnets nettside"}
                 </a>
               </>
             )}
@@ -157,11 +181,18 @@ export default async function MeetPage({ params }: { params: Promise<{ id: strin
         merker={
           <>
             <ToppMerke>{meet.indoor ? "Innendørs" : "Utendørs"}</ToppMerke>
-            {meet.level && <ToppMerke>{NIVAA[meet.level] ?? meet.level}</ToppMerke>}
+            {/* Arrangementstypen fra terminlisten. Nivået «local» står på alle
+                stevnene i basen og sier ingenting, så det vises ikke. */}
+            {meet.arrangementstype && !erWorldRanking && <ToppMerke>{meet.arrangementstype}</ToppMerke>}
+            {erWorldRanking && <ToppMerke>World Ranking-stevne</ToppMerke>}
+            {!meet.arrangementstype && meet.level && meet.level !== "local" && (
+              <ToppMerke>{NIVAA[meet.level] ?? meet.level}</ToppMerke>
+            )}
           </>
         }
+        handlinger={<EksportKnapp href={`/api/eksport?type=stevne&stevne=${id}`} />}
         noekkeltall={[
-          { merkelapp: "Resultater", verdi: results.length },
+          { merkelapp: "Resultater", verdi: godkjente.length },
           { merkelapp: "Øvelser", verdi: eventNames.length },
           {
             merkelapp: "Utøvere",

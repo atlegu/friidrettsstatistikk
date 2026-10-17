@@ -1310,3 +1310,9 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - `hent_ikke_godkjente.py`: tørrkjørt på 50 utøvere, startet for hele basen 17.10 ca. 16:00 (63 849 utøvere, ~27 timer, caffeinate). Kan avbrytes og startes igjen; fortsetter der den slapp.
 - Nattlig steg i oppdater.yml: de 1 500 sist aktive som ikke er sjekket på 28 dager.
 - Utøversiden viser en egen tabell «Ikke godkjente resultater» med årsak.
+
+## 2026-10-17 — Eksport for administratorer, stevneinfo fra terminlisten
+- Migrering `eksport_og_stevneinfo.sql`: eksport_logg (hvem, hva, når, rader), meets.arrangementstype og meets.krets, funksjonen stevneinfo_fra_terminliste() (arrangør, type, krets, iSonen-lenke fra terminlisten til koblede stevner). Kjørt: 394 stevner fikk arrangør. hent_terminliste.py kaller funksjonen hver natt.
+- /api/eksport: CSV fra årsliste, alle tiders, klubbens årsliste og stevne. Bare administratorer (401/403 ellers), hver nedlasting logges, barn til og med 11 år aldri med. Knappen «Last ned CSV» vises bare for administratorer.
+- Stevnesiden: arrangør, krets, arrangementstype (World Ranking merkes), iSonen-lenke; ikke godkjente resultater merket med årsak og telles ikke i «Resultater». Nivået «local» (satt på alle) vises ikke.
+- Årsliste- og alle tiders-logikken flyttet til lib/arsliste.ts og lib/alltime.ts, så eksport og side gir samme liste.
