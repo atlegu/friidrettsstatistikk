@@ -47,6 +47,20 @@ from supabase import create_client
 HER = Path(__file__).parent
 load_dotenv(HER / '.env')
 sb = create_client(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SERVICE_KEY'])
+
+
+def _http11():
+    """HTTP/1.1 mot Supabase: under HTTP/2 avslutter serveren forbindelsen
+    etter 20 000 strømmer (ConnectionTerminated last_stream_id:19999), og
+    klienten reiser seg ikke. Samme løsning som i update_results.py."""
+    import httpx
+    gammel = sb.postgrest.session
+    sb.postgrest.session = httpx.Client(base_url=gammel.base_url, headers=gammel.headers,
+                                        timeout=httpx.Timeout(120.0), http2=False,
+                                        limits=httpx.Limits(max_keepalive_connections=5, max_connections=10))
+
+
+_http11()
 TS = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
 (HER / 'logs').mkdir(exist_ok=True)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
@@ -173,6 +187,32 @@ def main():
                     sb.table('kilde_utover_kontroll').upsert({'athlete_id': a['id'], 'kontrollert': datetime.now(timezone.utc).isoformat(),
                                                               'feil': str(e)[:200]}).execute()
                 continue
+            for forsok in range(3):
+                try:
+                    _behandle(a, rader, args, ovelser, teller, aarsaker, ukjente_ov)
+                    break
+                except Exception as e:      # brudd mot basen: prøv igjen, ellers hopp over
+                    log.warning(f"Feil mot basen for {a['navn']} (forsøk {forsok + 1}): {e.__class__.__name__}: {str(e)[:120]}")
+                    time.sleep(10 * (forsok + 1))
+                    _http11()
+            if behandlet % 250 == 0:
+                log.info(f"{behandlet} utøvere kontrollert. {dict(teller)}")
+        if not args.apply:
+            break   # tørrkjøring: køen endres ikke, ta bare én runde
+
+    log.info(f"Ferdig: {behandlet} utøvere. {dict(teller)}")
+    for k, v in aarsaker.most_common(25):
+        log.info(f"   {v} | {k}")
+    if ukjente_ov:
+        log.info(f"Øvelsesnavn uten kode: {dict(ukjente_ov.most_common(15))}")
+    if not args.apply:
+        log.info("DRY-RUN. Kjør med --apply.")
+
+
+def _behandle(a, rader, args, ovelser, teller, aarsaker, ukjente_ov):
+    """Match én utøvers ikke godkjente rader mot basen og merk dem."""
+    if True:
+        if True:
             merket = ikke_funnet = 0
             # Alle utøverens resultater i ett kall; matching i minnet
             mine = []
@@ -231,18 +271,6 @@ def main():
                 sb.table('kilde_utover_kontroll').upsert({'athlete_id': a['id'], 'kontrollert': datetime.now(timezone.utc).isoformat(),
                                                           'ikke_godkjente': len(rader), 'merket': merket,
                                                           'ikke_funnet': ikke_funnet, 'feil': None}).execute()
-            if behandlet % 250 == 0:
-                log.info(f"{behandlet} utøvere kontrollert. {dict(teller)}")
-        if not args.apply:
-            break   # tørrkjøring: køen endres ikke, ta bare én runde
-
-    log.info(f"Ferdig: {behandlet} utøvere. {dict(teller)}")
-    for k, v in aarsaker.most_common(25):
-        log.info(f"   {v} | {k}")
-    if ukjente_ov:
-        log.info(f"Øvelsesnavn uten kode: {dict(ukjente_ov.most_common(15))}")
-    if not args.apply:
-        log.info("DRY-RUN. Kjør med --apply.")
 
 
 if __name__ == '__main__':
