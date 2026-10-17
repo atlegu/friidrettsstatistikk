@@ -1294,3 +1294,8 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - `gjenopprett_hundredeler.py --apply` (utøversidene hentet fra minfriidrettsstatistikk.info, 615 utøvere, 1,5 s pause, mellomlagret i logs/kilde_utover/): 994 rettet til hundredeler, 103 til tideler (håndtid, is_manual_time satt), 5 der kilden bare har hele sekunder vist som «M:SS», 17 slettet fordi den presise tiden fantes alt. 5 ikke funnet/tvetydige i kilden står urørt. Gamle rader i opprydding_avkortede. Migrering: rader_med_punktum_minutter() i avkortede_dubletter.sql.
 - Kontroll av håndtidsmerkingen 16.10: ingen 400 m-rader i løp med hundredeler; 20 på 200/300 m.
 - Funnet, ikke ryddet: 1 198 par med samme utøver, øvelse, dato og verdi men ulik skrivemåte («61.4» / «1:01.40»), 711 av dem med ulikt håndtidsflagg.
+
+## 2026-10-17 — 1 177 kopier med annen skrivemåte slettet
+- To importer i januar 2026 la inn samme løp med ulik skrivemåte («61.4» / «1:01.40», «688.00» / «11:28»), ofte med ulikt håndtidsflagg. Migrering `skrivemaate_dubletter.sql` (funksjon skrivemaate_dubletter()).
+- `rydd_skrivemaate_dubletter.py --apply`: 1 172 grupper (samme utøver, øvelse, dato, verdi). Tideler mot hundredeler avgjort av kilden (minfriidrettsstatistikk.info skriver «2,14,1» for håndtid og «2,14,10» for elektronisk): 549 var håndtid (hundredelsraden slettet), 139 elektronisk. 446 samme presisjon, annet format (minuttformat beholdt), 43 sekunder over 100 (minuttformat beholdt). 1 177 slettet, reserve i opprydding_avkortede. Håndtidsflagg på beholdte rader kontrollert: ingen avvik.
+- Holdt utenfor (opprydding/skrivemaate_dubletter_20261017_120855.csv): 3 grupper som kan være to løp (ulike runder/plassering), 11 der kilden ikke avgjør tideler/hundredeler.
