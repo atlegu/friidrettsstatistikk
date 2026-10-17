@@ -48,6 +48,7 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 | `rydd_avkortede_tider.py` | Slett avkortede tider («1.15», «13:42») som har en presis tvilling hos samme utøver | Når avkortede tider dukker opp i avvikslister |
 | `gjenopprett_hundredeler.py` | Hent hundredeler fra kilden for 400 m-tider lagret som «1.02» | Hvis «M.SS»-tider dukker opp igjen |
 | `rydd_skrivemaate_dubletter.py` | Slett kopier av samme resultat med annen skrivemåte («61.4» / «1:01.40»); kilden avgjør tideler mot hundredeler | Når slike par dukker opp |
+| `hent_ikke_godkjente.py` | Hent «Ikke godkjente resultater» med årsak fra kildens utøversider; setter status IKKE_GODKJENT | Nattlig (1 500 utøvere), og for hele basen ved behov |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

@@ -1302,3 +1302,11 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 
 ## 2026-10-17 — Navneavvik i mastersrekordene bekreftet
 - Atle bekreftet at alle 37 med annet navn eller fødselsår i basen er samme person. Rune Bråten Liholt er født 1976 (innelista har «77», basen har 1976). Lagt inn som BEKREFTET_SAMME i masters_avviksliste.py, så de ikke kommer igjen. Avviksliste laget på nytt.
+
+## 2026-10-17 — Ikke godkjente resultater
+- Kilden viser «Ikke godkjente resultater» med årsak bare på utøversidene (ikke på stevnesidene importen leser). Basen hadde ikke felt for årsaken, så slike resultater sto som godkjente (Kåre Strande 200 m 23.24, Fagernes 2002: kort bane).
+- Migrering `ikke_godkjente.sql`: status IKKE_GODKJENT, kolonnen results.ikke_godkjent_aarsak, kilde_utover_kontroll (hvem som er sjekket), opprydding_ikke_godkjente (logg), funksjonen utovere_til_kontroll().
+- Regel: alle årsaker gir status IKKE_GODKJENT (ute av alle lister/rekorder som krever OK), unntatt ren vind («For mye vind», «Manglende informasjon om vind»), der bare årsaken lagres og vindregelen gjelder som før.
+- `hent_ikke_godkjente.py`: tørrkjørt på 50 utøvere, startet for hele basen 17.10 ca. 16:00 (63 849 utøvere, ~27 timer, caffeinate). Kan avbrytes og startes igjen; fortsetter der den slapp.
+- Nattlig steg i oppdater.yml: de 1 500 sist aktive som ikke er sjekket på 28 dager.
+- Utøversiden viser en egen tabell «Ikke godkjente resultater» med årsak.

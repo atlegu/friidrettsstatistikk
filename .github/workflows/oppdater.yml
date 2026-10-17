@@ -27,7 +27,7 @@ concurrency:
 jobs:
   oppdater:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: scraper
@@ -56,6 +56,15 @@ jobs:
       - name: Koble terminlisten
         continue-on-error: true
         run: python hent_terminliste.py
+
+      # Ikke godkjente resultater (kort bane, ikke medlem av NFIF, feil
+      # startutstyr ...) står bare på utøversidene i kilden, ikke på
+      # stevnesidene importen leser. Hver natt kontrolleres de 1 500 sist
+      # aktive utøverne som ikke er sjekket de siste fire ukene (~40 min).
+      - name: Ikke godkjente resultater fra utøversidene
+        continue-on-error: true
+        timeout-minutes: 50
+        run: python hent_ikke_godkjente.py --eldre-enn '28 days' --antall 1500 --apply
 
       - name: Kontroller basen
         run: python test_fullstendighet.py --bare vindflagg dubletter avdrift tider stevnedubletter importdubletter

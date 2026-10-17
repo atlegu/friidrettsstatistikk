@@ -10,7 +10,7 @@ import { AthleteHeader } from "@/components/athlete/AthleteHeader"
 import { ResultsSection } from "@/components/athlete/ResultsSection"
 import { ChampionshipMedalsSection } from "@/components/athlete/ChampionshipMedalsSection"
 import { ProgressionChart } from "@/components/athlete/ProgressionChart"
-import { Kort, PersonligeRekorder, NmKrav, KlubbHistorikk, klubbPerioder, SesongTabell } from "@/components/athlete/ProfilKort"
+import { Kort, PersonligeRekorder, NmKrav, KlubbHistorikk, klubbPerioder, SesongTabell, IkkeGodkjente, type IkkeGodkjent } from "@/components/athlete/ProfilKort"
 import { nmStatus } from "@/lib/nm-status"
 
 // Type definitions
@@ -138,6 +138,25 @@ async function getAthleteResults(athleteId: string) {
   )
 }
 
+// Resultater statistikkføreren ikke har godkjent (status IKKE_GODKJENT, med
+// kildens årsak). Ren vind («For mye vind») står fortsatt i resultatlisten.
+async function getIkkeGodkjente(athleteId: string): Promise<IkkeGodkjent[]> {
+  const supabase = await createClient()
+  const { data } = await supabase
+    .from("results")
+    .select("id,date,performance,wind,ikke_godkjent_aarsak,events(name,result_type),meets(id,name,indoor)" as never)
+    .eq("athlete_id", athleteId)
+    .eq("status", "IKKE_GODKJENT" as never)
+    .order("date", { ascending: false })
+  type Rad = { id: string; date: string; performance: string; wind: number | null; ikke_godkjent_aarsak: string | null
+    events: { name: string; result_type: string } | null; meets: { id: string; name: string; indoor: boolean | null } | null }
+  return ((data ?? []) as unknown as Rad[]).map((r) => ({
+    id: r.id, date: r.date, performance: r.performance, wind: r.wind, aarsak: r.ikke_godkjent_aarsak ?? "",
+    event_name: r.events?.name ?? "", result_type: r.events?.result_type ?? "time",
+    meet_id: r.meets?.id ?? "", meet_name: r.meets?.name ?? "", meet_indoor: r.meets?.indoor ?? null,
+  }))
+}
+
 async function getAthleteSeasons(athleteId: string): Promise<number[]> {
   const supabase = await createClient()
 
@@ -237,7 +256,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
   }
 
   // Fetch all data in parallel
-  const [stats, personalBests, results, seasons, events, seasonBests, championshipMedals] =
+  const [stats, personalBests, results, seasons, events, seasonBests, championshipMedals, ikkeGodkjente] =
     await Promise.all([
       getAthleteStats(id),
       getPersonalBestsDetailed(id),
@@ -246,6 +265,7 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
       getAthleteEvents(id),
       getSeasonBests(id),
       getChampionshipMedals(id),
+      getIkkeGodkjente(id),
     ])
 
   const club = athlete.club as { id: string; name: string } | null
@@ -388,6 +408,8 @@ export default async function AthletePage({ params }: { params: Promise<{ id: st
                   />
                 </Suspense>
               </section>
+
+              <IkkeGodkjente rader={ikkeGodkjente} />
             </div>
 
             <div className="grid min-w-0 grid-cols-1 gap-4">

@@ -216,3 +216,58 @@ export function SesongTabell({ aar, rader, pbIds }: {
     </Kort>
   )
 }
+
+/* ---------------------------------------------------------- ikke godkjente */
+
+export interface IkkeGodkjent {
+  id: string
+  date: string
+  performance: string
+  wind: number | null
+  aarsak: string
+  event_name: string
+  result_type: string
+  meet_id: string
+  meet_name: string
+  meet_indoor: boolean | null
+}
+
+/** Resultater statistikkføreren ikke har godkjent (kort bane, ikke medlem av
+ * NFIF, feil startutstyr ...). De står utenfor alle lister og rekorder, men
+ * vises her med årsak, slik kilden gjør. */
+export function IkkeGodkjente({ rader }: { rader: IkkeGodkjent[] }) {
+  if (rader.length === 0) return null
+  const fmtDato = (d: string) => new Date(d).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "numeric" })
+  return (
+    <Kort tittel="Ikke godkjente resultater">
+      <p className="mb-3 text-[13px] text-[var(--text-muted)]">
+        Står utenfor alle lister og rekorder. Årsaken er statistikkførerens.
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[14px]">
+          <thead>
+            <tr className="border-b border-[var(--border-default)] text-left text-[11.5px] uppercase tracking-wide text-[var(--text-muted)]">
+              <th className="py-1.5 pr-3 font-bold">Dato</th><th className="py-1.5 pr-3 font-bold">Øvelse</th>
+              <th className="py-1.5 pr-3 font-bold">Resultat</th><th className="py-1.5 pr-3 font-bold">Stevne</th>
+              <th className="py-1.5 font-bold">Årsak</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rader.map((r) => (
+              <tr key={r.id} className="border-b border-[var(--border-default)] align-top last:border-0">
+                <td className="whitespace-nowrap py-2 pr-3 tabular-nums text-[var(--text-secondary)]">{fmtDato(r.date)}</td>
+                <td className="py-2 pr-3">{r.event_name}{r.meet_indoor && <span className="ml-1 text-[11px] text-[var(--text-muted)]">(i)</span>}</td>
+                <td className="whitespace-nowrap py-2 pr-3 tabular-nums">
+                  {formatPerformance(r.performance, r.result_type)}
+                  {r.wind !== null && <span className="ml-1 text-[var(--text-muted)]">({r.wind > 0 ? "+" : ""}{r.wind})</span>}
+                </td>
+                <td className="py-2 pr-3"><Link href={`/stevner/${r.meet_id}`} className="text-[var(--text-primary)]">{r.meet_name}</Link></td>
+                <td className="py-2 text-[var(--text-secondary)]">{r.aarsak}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Kort>
+  )
+}
