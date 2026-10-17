@@ -1288,3 +1288,9 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - `rydd_avkortede_tider.py --apply` (maks 3 dager mellom radene): 11 905 avkortede rader, hver koblet til sitt eget presise motstykke. 11 853 slettet (8 586 samme dag, resten 1–3 dager, typisk mesterskap der importene brukte ulik dato). Alle presise tvillinger står igjen. Typer: 8 018 «1.15»-format (400 m, 400 m hekk, 300 m hekk), 2 907 kappgang, 912 manglende hundredeler, 56 avrundet til hele minutter.
 - Til manuell kontroll (opprydding/avkortede_tider_20261016_224933.csv): 40 par med 4–9 dagers avstand, og 12 avkortede rader som deler presis rad med en annen.
 - masters_resultater og plattform_statistikk oppdatert.
+
+## 2026-10-17 — Hundredeler hentet fra kilden for 400 m-tider som sto som «1.02»
+- Kilden skriver tider over ett minutt som «1,01,40». Januarimporten leste dette som «1.01» (verdi 1:01.00). 1 124 slike rader på 400 m og 400 m hekk uten presis tvilling.
+- `gjenopprett_hundredeler.py --apply` (utøversidene hentet fra minfriidrettsstatistikk.info, 615 utøvere, 1,5 s pause, mellomlagret i logs/kilde_utover/): 994 rettet til hundredeler, 103 til tideler (håndtid, is_manual_time satt), 5 der kilden bare har hele sekunder vist som «M:SS», 17 slettet fordi den presise tiden fantes alt. 5 ikke funnet/tvetydige i kilden står urørt. Gamle rader i opprydding_avkortede. Migrering: rader_med_punktum_minutter() i avkortede_dubletter.sql.
+- Kontroll av håndtidsmerkingen 16.10: ingen 400 m-rader i løp med hundredeler; 20 på 200/300 m.
+- Funnet, ikke ryddet: 1 198 par med samme utøver, øvelse, dato og verdi men ulik skrivemåte («61.4» / «1:01.40»), 711 av dem med ulikt håndtidsflagg.

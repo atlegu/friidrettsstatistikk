@@ -38,3 +38,16 @@ revoke all on function public.avkortede_dubletter() from public, anon, authentic
 create table if not exists public.opprydding_avkortede (
   result_id uuid primary key, rad jsonb not null, presis_id uuid, tid timestamptz default now());
 alter table public.opprydding_avkortede enable row level security;
+
+-- Tillegg: rader der minuttformatet ble lest som «1.02» (kilden: «1,02,37»).
+-- Brukes av gjenopprett_hundredeler.py, som henter hundredelene fra kilden.
+create or replace function public.rader_med_punktum_minutter()
+returns jsonb
+language sql stable security definer set search_path = public set statement_timeout = '120s'
+as $$
+  select coalesce(jsonb_agg(jsonb_build_object('id', r.id, 'athlete_id', r.athlete_id, 'event_id', r.event_id,
+           'date', r.date, 'performance', r.performance, 'performance_value', r.performance_value, 'meet_id', r.meet_id)), '[]'::jsonb)
+  from results r join events e on e.id = r.event_id
+  where e.result_type = 'time' and e.code ~ '^400mh?(_|$)' and r.performance ~ '^\d\.\d\d$'
+$$;
+revoke all on function public.rader_med_punktum_minutter() from public, anon, authenticated;
