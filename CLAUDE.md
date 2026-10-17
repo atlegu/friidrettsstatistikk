@@ -45,6 +45,7 @@ Norsk friidrettsstatistikk-plattform. Supabase (Postgres) backend, Next.js 16 fr
 | `masters_rekorder_fra_liste.py` | Kontroller de offisielle mastersrekordlistene (PDF) mot basen, legg inn manglende, rett avkortede tider og merk godkjente rekorder | Når nye rekordlister kommer |
 | `masters_avviksliste.py` | Excel-avviksliste: basen mot de godkjente mastersrekordene, med sannsynlig årsak | Etter opprydding eller nye rekordlister |
 | `rydd_etternavnsfeil.py` | Finn resultater fra alle tiders-listene som står på feil utøver med samme etternavn (tolker listene på nytt) | Etter ny historisk import |
+| `rydd_avkortede_tider.py` | Slett avkortede tider («1.15», «13:42») som har en presis tvilling hos samme utøver | Når avkortede tider dukker opp i avvikslister |
 
 ## Utdaterte/farlige scripts (IKKE KJØR)
 

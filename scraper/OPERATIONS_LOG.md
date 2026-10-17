@@ -1281,3 +1281,10 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - Av de 12 «avkortet/feil format» i Mastersrekorder_avvik_2026-10-17.xlsx: 10 avkortede dubletter slettet der den presise tiden finnes samme dag/mesterskap (Merete Helgheim 13:42, Anita Botnevik 20:49, Eva Nordqvist 1:09:00, Signy Henden Rustlie 85:00, Erik Tysse 1:20:00, Herborg Ninni Blakstad 1.57, Kjell Steinset 1.15 og 1.25, Erik Wagner-Larsen 1.10 og 1.14). Åse Rekkebo 10000 m 1984 «2349.00» → «39:09.0» (samme verdi). Reserve i opprydding_masters_20261016.
 - Ikke rettet (ingen presis tid i basen): Vigdis Bringedal Holst 1500 m 4:42 (2014), Julika Fidjeland 10000 m 44:01 (2021).
 - Funnet: 11 905 avkortede tider i hele basen med presis tvilling (samme utøver, øvelse, ±10 dager), 11 902 lagt inn i januar 2026, presis tvilling lagt inn senere. 6 817 på 400 m, 2 954 kappgang. Ikke ryddet, venter på Atles beslutning.
+
+## 2026-10-17 — 11 853 avkortede tider slettet
+- Importen i januar 2026 lagret tider avkortet («1.15» for 1:15.44 på 400 m, «13:42» for 13:42.78, «1:20:00» for 1:20:52). Senere importer la inn den presise tiden ved siden av.
+- Migrering `avkortede_dubletter.sql`: funksjonen avkortede_dubletter() (kandidatpar: samme utøver, øvelse — kappgang_3000_m = 3000mg — innen ti dager, presis tid begynner med den avkortede) og reservetabellen opprydding_avkortede.
+- `rydd_avkortede_tider.py --apply` (maks 3 dager mellom radene): 11 905 avkortede rader, hver koblet til sitt eget presise motstykke. 11 853 slettet (8 586 samme dag, resten 1–3 dager, typisk mesterskap der importene brukte ulik dato). Alle presise tvillinger står igjen. Typer: 8 018 «1.15»-format (400 m, 400 m hekk, 300 m hekk), 2 907 kappgang, 912 manglende hundredeler, 56 avrundet til hele minutter.
+- Til manuell kontroll (opprydding/avkortede_tider_20261016_224933.csv): 40 par med 4–9 dagers avstand, og 12 avkortede rader som deler presis rad med en annen.
+- masters_resultater og plattform_statistikk oppdatert.
