@@ -174,6 +174,21 @@ def main():
                                                               'feil': str(e)[:200]}).execute()
                 continue
             merket = ikke_funnet = 0
+            # Alle utøverens resultater i ett kall; matching i minnet
+            mine = []
+            if rader:
+                fra = 0
+                while True:
+                    bit = sb.table('results').select('id,event_id,date,performance,performance_value,status,ikke_godkjent_aarsak') \
+                        .eq('athlete_id', a['id']).order('id').range(fra, fra + 999).execute().data
+                    mine += bit
+                    if len(bit) < 1000:
+                        break
+                    fra += 1000
+            per_nokkel = {}
+            for r in mine:
+                per_nokkel.setdefault((r['event_id'], r['date']), []).append(r)
+            endringer = {}   # (aarsak, ren_vind) -> [rad]
             for ov_navn, dato, res, aarsak in rader:
                 kand = ovelser(ov_navn)
                 if not kand:
@@ -185,29 +200,33 @@ def main():
                     pv = verdi(res, e['result_type'])
                     if pv is None:
                         continue
-                    treff += sb.table('results').select('id,performance,performance_value,status,ikke_godkjent_aarsak') \
-                        .eq('athlete_id', a['id']).eq('event_id', e['id']).eq('date', dato.isoformat()) \
-                        .gte('performance_value', pv - 1).lte('performance_value', pv + 1).execute().data
+                    treff += [r for r in per_nokkel.get((e['id'], dato.isoformat()), [])
+                              if r['performance_value'] is not None and abs(r['performance_value'] - pv) <= 1]
                 if not treff:
                     ikke_funnet += 1
                     teller['ikke funnet i basen'] += 1
+                    if teller['ikke funnet i basen'] <= 30:
+                        log.info(f"   ikke funnet: {a['navn']} | {ov_navn} {dato} {res[:15]} | {aarsak[:30]}")
                     continue
                 ren_vind = aarsak.lower().startswith(REN_VIND)
                 for t in treff:
-                    endring = {'ikke_godkjent_aarsak': aarsak}
-                    if not ren_vind:
-                        endring['status'] = 'IKKE_GODKJENT'
                     if t['ikke_godkjent_aarsak'] == aarsak and (ren_vind or t['status'] == 'IKKE_GODKJENT'):
                         continue
+                    endringer.setdefault((aarsak, ren_vind), []).append(t)
                     aarsaker[aarsak[:60]] += 1
                     teller['vind (bare årsak)' if ren_vind else 'merket ikke godkjent'] += 1
                     merket += 1
-                    if args.apply:
-                        sb.table('opprydding_ikke_godkjente').insert({'result_id': t['id'], 'gammel_status': t['status'],
-                                                                      'aarsak': aarsak}).execute()
-                        sb.table('results').update(endring).eq('id', t['id']).execute()
-                    if behandlet <= 200 or not ren_vind:
+                    if not ren_vind:
                         log.info(f"   {a['navn']} | {ov_navn} {dato} {t['performance']} | {aarsak}")
+            if args.apply and endringer:
+                sb.table('opprydding_ikke_godkjente').insert(
+                    [{'result_id': t['id'], 'gammel_status': t['status'], 'aarsak': aarsak}
+                     for (aarsak, _), tt in endringer.items() for t in tt]).execute()
+                for (aarsak, ren_vind), tt in endringer.items():
+                    endring = {'ikke_godkjent_aarsak': aarsak}
+                    if not ren_vind:
+                        endring['status'] = 'IKKE_GODKJENT'
+                    sb.table('results').update(endring).in_('id', [t['id'] for t in tt]).execute()
             if args.apply:
                 sb.table('kilde_utover_kontroll').upsert({'athlete_id': a['id'], 'kontrollert': datetime.now(timezone.utc).isoformat(),
                                                           'ikke_godkjente': len(rader), 'merket': merket,
