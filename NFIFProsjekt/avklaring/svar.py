@@ -192,24 +192,26 @@ Prisen forutsetter at tidtakeren tilbyr et dokumentert API eller en strukturert 
 Årlig registrering og vedlikehold av gateløp er ==200 000 kr== per år, som før.""",
 
 # 3.3 Samlet kostnad over fem år
-"""Alle beløp er eks. mva. og før KPI-regulering fra år fire.
-**Faste priser:**
-- Nasjonal banestatistikk, etablering: ==350 000 kr==
-- Nasjonal banestatistikk, drift i fem år à ==300 000 kr==: ==1 500 000 kr==
-- Gateløp, etablering: ==300 000 kr==
-- Gateløp, drift i fem år à ==200 000 kr==: ==1 000 000 kr==
-- **Sum faste priser: ==3 150 000 kr==**
-**Estimater for nødvendige integrasjoner.** Prisene forutsetter at leverandøren tilbyr et dokumentert API eller en strukturert datafil. Da er arbeidet begrenset, og for LiveRes og Ultimate Sport Service er formatet allerede testet:
-- iSonen, terminliste og lisensregister: ==50 000–80 000 kr==
-- Direkte overføring fra LiveRes: ==30 000–50 000 kr==
-- Ultimate Sport Service: ==30 000–50 000 kr==
-- **Sum estimater: ==110 000–180 000 kr==**
-Avgifter som leverandørene eventuelt krever for tilgang til sine grensesnitt, er ikke med i prisene og avtales særskilt. Må resultatene hentes fra offentlige resultatsider fordi det ikke finnes et grensesnitt, blir arbeidet større, og det prises særskilt.
+"""Alle beløp er eks. mva. og før KPI-regulering fra år fire. Banestatistikk og gateløp kan velges hver for seg.
+**Nasjonal banestatistikk:**
+- Etablering: ==350 000 kr== (fast pris)
+- Drift i fem år à ==300 000 kr==: ==1 500 000 kr== (fast pris)
+- Integrasjon mot iSonen, terminliste og lisensregister: inntil ==80 000 kr==
+- Direkte overføring fra LiveRes: inntil ==50 000 kr==
+- **Sum banestatistikk over fem år: høyst ==1 980 000 kr==**, hvorav ==1 850 000 kr== er faste priser.
+**Gateløp og andre løp utenfor bane:**
+- Etablering, inkludert integrasjonen mot EQ Timing: ==300 000 kr== (fast pris)
+- Drift i fem år à ==200 000 kr==: ==1 000 000 kr== (fast pris)
+- Integrasjon mot Ultimate Sport Service: inntil ==50 000 kr==
+- **Sum gateløp over fem år: høyst ==1 350 000 kr==**, hvorav ==1 300 000 kr== er faste priser.
+**Samlet over fem år: høyst ==3 330 000 kr==**, hvorav ==3 150 000 kr== er faste priser.
+**Integrasjonene er gitt med tak.** Beløpene er øvre grenser, ikke anslag som kan øke. De forutsetter at leverandøren tilbyr et dokumentert API eller en strukturert datafil. For LiveRes og Ultimate Sport Service er formatet allerede testet. Avgifter som leverandørene eventuelt krever for tilgang til sine grensesnitt, er ikke med og avtales særskilt. Finnes det ikke et grensesnitt, slik at resultatene må hentes fra offentlige resultatsider, prises det særskilt.
 **Tillegg etter behov:**
-- OpenTrack: ==30 000–50 000 kr==
+- OpenTrack: inntil ==50 000 kr==
+- Andre tidtakere for løp utenfor bane, for eksempel Racedays: inntil ==50 000 kr== per system, jf. svar 3.2.
 - Eldre statistikk og kretsenes statistikker: prises i hvert enkelt tilfelle, jf. svar 1.6.
 - Øvrig utvikling: ==950 kr== per time. Analyse og utredning: ==1 100 kr== per time.
-**Forventet samlet kostnad over fem år**, med faste priser og nødvendige integrasjoner: ==3,26–3,33 mill. kr==.""",
+**NFIFs egen arbeidstid.** Prisene omfatter behandlingen av avvik og kontakten med arrangørene (svar 1.6). NFIFs egen innsats er anslått til under én time i uken i høysesongen, i hovedsak godkjenning av rekorder (svar 1.1). I en løsning der forbundet selv kvalitetssikrer resultatene, kommer den arbeidstiden i tillegg til prisen.""",
 ]
 
 VEDLEGG = [
