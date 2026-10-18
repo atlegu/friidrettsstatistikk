@@ -667,7 +667,7 @@ export function ImportReview({ batch, athletes, events, meets, clubs }: Props) {
                   <option value="__create_new__">➕ Opprett nytt fra fil-data</option>
                   {meets.map(meet => (
                     <option key={meet.id} value={meet.id}>
-                      {meet.name} ({meet.city}, {meet.start_date ? new Date(meet.start_date).toLocaleDateString("no-NO") : "?"})
+                      {meet.name} ({[meet.city, meet.start_date ? new Date(meet.start_date).toLocaleDateString("no-NO") : "?"].filter(Boolean).join(", ")})
                     </option>
                   ))}
                 </select>
