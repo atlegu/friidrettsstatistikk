@@ -7,51 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Upload, FileSpreadsheet, Loader2, AlertCircle, CheckCircle } from "lucide-react"
 import * as XLSX from "xlsx"
+import { lesResultatliste, arrangorNavn, type ListeRad } from "@/lib/resultatliste"
 
-// Convert Excel serial date to YYYY-MM-DD string
-function excelDateToString(serial: number | string): string | null {
-  if (typeof serial === "string") {
-    // Already a string, check if it looks like a date
-    if (serial.match(/^\d{4}-\d{2}-\d{2}$/)) return serial
-    if (serial.match(/^\d{1,2}\.\d{1,2}\.\d{4}$/)) {
-      // Norwegian format DD.MM.YYYY
-      const [d, m, y] = serial.split(".")
-      return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`
-    }
-    if (serial.match(/^\d{1,2}\/\d{1,2}\/\d{4}$/)) {
-      // US format MM/DD/YYYY
-      const [m, d, y] = serial.split("/")
-      return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`
-    }
-    return null
-  }
-
-  if (typeof serial !== "number" || isNaN(serial)) return null
-
-  // Excel serial date: days since 1900-01-01 (with a bug for 1900 leap year)
-  const excelEpoch = new Date(1899, 11, 30) // Dec 30, 1899
-  const date = new Date(excelEpoch.getTime() + serial * 24 * 60 * 60 * 1000)
-
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, "0")
-  const day = String(date.getDate()).padStart(2, "0")
-
-  return `${year}-${month}-${day}`
-}
-
-type ParsedRow = {
-  place?: string
-  bib?: string
-  name: string
-  birth_year?: string
-  club?: string
-  performance?: string
-  wind?: string
-  event?: string
-  event_class?: string
-  round?: string
-  indoor?: boolean
-}
+type ParsedRow = ListeRad
 
 type ParsedMetadata = {
   meetName?: string
@@ -132,139 +90,39 @@ export function UploadForm() {
     }
   }
 
-  // Parse Excel file using xlsx library
+  // Les Excel på friidrettens standardmal. Selve tolkningen ligger i
+  // lib/resultatliste.ts, felles regler med scraper/importer_resultatliste.py.
   const parseExcel = async (file: File): Promise<ValidationResult> => {
-    const rows: ParsedRow[] = []
     const errors: string[] = []
-    const warnings: string[] = []
-    const metadata: ParsedMetadata = {}
-
     try {
-      const arrayBuffer = await file.arrayBuffer()
-      const workbook = XLSX.read(arrayBuffer, { type: "array" })
-      const sheetName = workbook.SheetNames[0]
-      const sheet = workbook.Sheets[sheetName]
-      const data = XLSX.utils.sheet_to_json<string[]>(sheet, { header: 1 })
-
-      let currentEvent = ""
-      let currentClass = ""
-      let currentWind = ""
-
-      for (let i = 0; i < data.length; i++) {
-        const row = data[i]
-        if (!row || row.length === 0) continue
-
-        const firstCell = String(row[0] || "").trim()
-        const secondCell = String(row[1] || "").trim()
-
-        // Parse header metadata (friidrett.no mal format)
-        if (firstCell === "Stevne:") {
-          metadata.meetName = secondCell
-          continue
-        }
-        if (firstCell === "Stevnested:") {
-          metadata.meetCity = secondCell
-          continue
-        }
-        if (firstCell === "Stevnedato:") {
-          // Convert Excel serial date if needed
-          const dateFrom = row[1]
-          const dateTo = row[2]
-          metadata.meetDateFrom = excelDateToString(dateFrom) || undefined
-          metadata.meetDateTo = excelDateToString(dateTo) || undefined
-          continue
-        }
-        if (firstCell === "Arrangør:") {
-          metadata.organizer = secondCell
-          continue
-        }
-        if (firstCell === "Utendørs:") {
-          metadata.outdoor = secondCell.toUpperCase() === "J"
-          continue
-        }
-
-        // Skip other header rows
-        if (firstCell.endsWith(":") && !firstCell.match(/^\d/)) {
-          continue
-        }
-
-        // Detect class and event row (e.g., "Jenter 14", "100m")
-        if (firstCell && secondCell && !firstCell.match(/^\d/) &&
-            (secondCell.match(/^\d+m$/) || secondCell.match(/^(kule|diskos|slegge|spyd|høyde|stav|lengde|tresteg)/i))) {
-          currentClass = firstCell
-          currentEvent = secondCell
-          continue
-        }
-
-        // Detect Heat/Finale with wind
-        if (firstCell === "Heat:" || firstCell === "Finale:") {
-          currentWind = String(row[3] || "").trim()
-          continue
-        }
-
-        // Skip template placeholder rows
-        if (firstCell.startsWith("<") || secondCell.startsWith("<")) {
-          continue
-        }
-
-        // Parse result rows - check if first cell is a number (placement)
-        const place = parseInt(firstCell)
-        if (!isNaN(place) && place > 0 && place < 1000) {
-          // Detect column structure:
-          // With bib: [place, bib, name, birthYear, club, result, wind]
-          // Without bib: [place, name, birthYear, club, result, wind]
-          // Check if column 1 looks like a name (not a number) and column 2 looks like a birth year (4-digit number)
-          const col1 = String(row[1] || "").trim()
-          const col2 = String(row[2] || "").trim()
-          const col1IsName = isNaN(parseInt(col1)) || col1.length > 4
-          const col2IsBirthYear = !isNaN(parseInt(col2)) && col2.length === 4
-
-          // If col1 is a name and col2 is a birth year, there's no bib column
-          const hasBibColumn = !(col1IsName && col2IsBirthYear)
-          const offset = hasBibColumn ? 0 : -1
-
-          const name = String(row[2 + offset] || "").trim()
-          if (!name || name.startsWith("<")) continue
-
-          const parsedRow: ParsedRow = {
-            place: String(place),
-            bib: hasBibColumn ? String(row[1] || "").trim() : "",
-            name: name,
-            birth_year: String(row[3 + offset] || "").trim(),
-            club: String(row[4 + offset] || "").trim(),
-            performance: String(row[5 + offset] || "").trim(),
-            wind: String(row[6 + offset] || "").trim() || currentWind,
-            event: currentEvent,
-            event_class: currentClass,
-          }
-
-          // Validate
-          if (!parsedRow.name) {
-            warnings.push(`Rad ${i + 1}: Mangler navn`)
-            continue
-          }
-
-          rows.push(parsedRow)
-        }
+      const workbook = XLSX.read(await file.arrayBuffer(), { type: "array" })
+      const sheet = workbook.Sheets[workbook.SheetNames[0]]
+      const raa = XLSX.utils.sheet_to_json<unknown[]>(sheet, { header: 1, blankrows: true })
+      const vist = XLSX.utils.sheet_to_json<unknown[]>(sheet, { header: 1, blankrows: true, raw: false })
+      const { info, rows, warnings } = lesResultatliste(raa, vist)
+      if (rows.length === 0) errors.push("Ingen gyldige resultatrader funnet i filen")
+      if (info.outdoor === undefined) warnings.push("Fant ikke «Utendørs:» i filen. Sjekk innendørs/utendørs før godkjenning.")
+      // Innendørs/utendørs og arrangør følger radene til gjennomgangen
+      const indoor = info.outdoor === undefined ? undefined : !info.outdoor
+      const organizer = arrangorNavn(info.organizer) ?? undefined
+      rows.forEach((r) => { r.indoor = indoor; r.organizer = organizer })
+      return {
+        rows,
+        metadata: {
+          meetName: info.meetName,
+          meetCity: info.meetVenue,
+          meetDateFrom: info.meetDateFrom,
+          meetDateTo: info.meetDateTo,
+          organizer: info.organizer,
+          outdoor: info.outdoor,
+        },
+        errors,
+        warnings,
       }
-
-      if (rows.length === 0) {
-        errors.push("Ingen gyldige resultatrader funnet i filen")
-      }
-
-      // Set indoor flag on all rows based on metadata
-      // outdoor = true means NOT indoor, so indoor = !outdoor
-      // Default to indoor if not specified (most imports are from indoor season)
-      const isIndoor = metadata.outdoor === undefined ? true : !metadata.outdoor
-      rows.forEach(row => {
-        row.indoor = isIndoor
-      })
-
     } catch (err) {
       errors.push(`Feil ved lesing av Excel-fil: ${err instanceof Error ? err.message : "Ukjent feil"}`)
+      return { rows: [], metadata: {}, errors, warnings: [] }
     }
-
-    return { rows, metadata, errors, warnings }
   }
 
   // Parse CSV/text file

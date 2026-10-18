@@ -1316,3 +1316,39 @@ tre dager med en eldre tvilling i samme stevne; skal være 0).
 - /api/eksport: CSV fra årsliste, alle tiders, klubbens årsliste og stevne. Bare administratorer (401/403 ellers), hver nedlasting logges, barn til og med 11 år aldri med. Knappen «Last ned CSV» vises bare for administratorer.
 - Stevnesiden: arrangør, krets, arrangementstype (World Ranking merkes), iSonen-lenke; ikke godkjente resultater merket med årsak og telles ikke i «Resultater». Nivået «local» (satt på alle) vises ikke.
 - Årsliste- og alle tiders-logikken flyttet til lib/arsliste.ts og lib/alltime.ts, så eksport og side gir samme liste.
+
+## 2026-10-18 — Innsendt resultatliste lagt inn: Skansemyren kastkarusell 13
+
+- **Kilde:** Excel-liste fra Stein Fossen til resultater@friidrett.no 17.10.2026
+  (lagret i `innsendte_resultatlister/`). Stevnet var ikke i kilden ennå.
+- **Script:** `importer_resultatliste.py` (nytt; tørrkjøring først, så `--apply`)
+- **Resultat:** stevne 68033c42 opprettet (utendørs, Hordaland Friidrettskrets,
+  sted tomt), 48 resultater, 15 utøvere — alle koblet entydig, ingen nye.
+  Herborg Blakstad og Helge Andreas Lorentzen koblet med/uten mellomnavn.
+  Daniel Moss «nm» ikke lagt inn (som kildeimporten). Import 0ea601f7;
+  angres med `delete from results where import_batch_id = '0ea601f7-7e32-4b65-896d-1e7a293addfd'`.
+- **Første forsøk feilet** før noe ble skrevet: `meets.city` tillater ikke NULL.
+  Bruker nå tom tekst.
+- **Merk:** delresultatene i kastfemkampen er ofte lavere enn de samme
+  øvelsene ført alene (Herborg Blakstad slegge 13,16 alene, 10,99 i femkampen).
+  Lagt inn slik lista viser dem.
+
+### Vern mot dubletter når stevnet kommer fra kilden
+
+`finn_tvilling()` i `update_results.py` kjenner nå også igjen et stevne vi har
+lagt inn selv (ingen kilde-id, rader med import_batch_id) samme dag: er minst
+halvparten av kildens rader (navn, øvelse, resultat; plass teller ikke) alt
+der, gjenbrukes posten og får kildens id. Testet uten skriving: hele lista
+under annet navn («Skansemyren Kastkarusell-13») ble funnet, halve lista med
+annen plassering ble funnet, et fremmed stevne samme dag ble ikke.
+
+### Admin-importen rettet
+
+Med denne fila ville `/admin/import` gitt feil: «Utendørs: Y» ble lest som
+innendørs, vekt og kastfemkamp havnet under spyd, bare 1 000 av 2 464 klubber
+ble lastet og klubb ble valgt på delstreng («IL Fri» = første «IL Friidrett»),
+«Helge Andreas Lorentzen» ble ny utøver, «Skansemyren kastkarusell 13» kunne
+velge karusell 1 som stevne, sesong ble valgt uten hensyn til innendørs/utendørs,
+og femkamppoeng ble «1552.00». Tolkningen ligger nå i `web/src/lib/resultatliste.ts`
+med samme regler som skriptet. Gjennomgangen hopper over rader som alt ligger i
+stevnet. Testbatch 74650c8a (venter på gjennomgang) skal gi 0 nye, 48 hoppet over.

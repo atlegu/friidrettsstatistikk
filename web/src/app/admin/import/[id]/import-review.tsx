@@ -4,6 +4,15 @@ import { useState, useMemo, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/client"
+import {
+  arrangorNavn,
+  formaterResultat,
+  kastkode,
+  kjonnFraKlasse,
+  klubbNoekkel,
+  navnTreff,
+  type ListeRad,
+} from "@/lib/resultatliste"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,19 +28,7 @@ import {
   X,
 } from "lucide-react"
 
-type ParsedRow = {
-  place?: string
-  name: string
-  birth_year?: string
-  club?: string
-  performance?: string
-  wind?: string
-  event?: string
-  event_class?: string
-  round?: string
-  lane?: string
-  indoor?: boolean
-}
+type ParsedRow = ListeRad
 
 type Athlete = {
   id: string
@@ -47,6 +44,7 @@ type Event = {
   name: string
   code: string | null
   category: string | null
+  result_type: string | null
 }
 
 type Meet = {
@@ -137,7 +135,7 @@ function fuzzyMatch(name: string, athletes: Athlete[], birthYear?: string): Athl
   return matches
 }
 
-export function ImportReview({ batch, athletes, events, meets, seasons, clubs }: Props) {
+export function ImportReview({ batch, athletes, events, meets, clubs }: Props) {
   const router = useRouter()
   const rows = (batch.raw_data as ParsedRow[]) || []
 
@@ -149,45 +147,32 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
   const [success, setSuccess] = useState<string | null>(null)
 
   // Row mappings - athleteId and eventId for each row
+  // Automatisk kobling bare når den er entydig: samme fødselsår, samme kjønn
+  // (fra klassen), og navnet likt eller med/uten mellomnavn («Helge Lorentzen»
+  // = «Helge Andreas Lorentzen»). Eksakt navn går foran mellomnavn. Ellers
+  // må raden kobles for hånd. Tidligere ble beste treff valgt selv med ulikt
+  // fødselsår, og navn med mellomnavn ble ikke funnet (ny utøver = dublett).
   const [mappings, setMappings] = useState<Record<number, RowMapping>>(() => {
     const initial: Record<number, RowMapping> = {}
-    const yearNum = (y: string | undefined) => y ? parseInt(y) : null
+    const etterAar = new Map<number, Athlete[]>()
+    athletes.forEach(a => {
+      if (a.birth_year) etterAar.set(a.birth_year, [...(etterAar.get(a.birth_year) ?? []), a])
+    })
 
     rows.forEach((row, idx) => {
-      const matches = fuzzyMatch(row.name, athletes, row.birth_year)
-
-      let bestMatch: typeof matches[0] | null = null
-
-      if (matches.length === 1) {
-        // Only one match - use it
-        bestMatch = matches[0]
-      } else if (matches.length > 1) {
-        const rowYear = yearNum(row.birth_year)
-        const rowName = row.name.toLowerCase().trim().normalize("NFC")
-
-        // First try: exact name + exact birth year
-        bestMatch = matches.find(m =>
-          m.full_name?.toLowerCase().normalize("NFC") === rowName &&
-          m.birth_year === rowYear
-        ) || null
-
-        // Second try: exact name match (any birth year)
-        if (!bestMatch) {
-          bestMatch = matches.find(m =>
-            m.full_name?.toLowerCase().normalize("NFC") === rowName
-          ) || null
-        }
-
-        // Third try: birth year matches and it's the top scored match
-        if (!bestMatch && rowYear && matches[0].birth_year === rowYear) {
-          bestMatch = matches[0]
-        }
-      }
-
+      const aar = row.birth_year ? parseInt(row.birth_year) : NaN
+      const kj = kjonnFraKlasse(row.event_class)
+      const treff = (etterAar.get(aar) ?? [])
+        .filter(a => !kj || !a.gender || a.gender === kj)
+        .map(a => ({ a, t: navnTreff(row.name, a.full_name ?? "") }))
+        .filter(x => x.t)
+      const eksakte = treff.filter(x => x.t === "eksakt")
+      const kandidater = eksakte.length ? eksakte : treff
       initial[idx] = {
-        athleteId: bestMatch?.id || null,
+        athleteId: kandidater.length === 1 ? kandidater[0].a.id : null,
         eventId: null,
         isNewAthlete: false,
+        newAthleteGender: kj ?? undefined,
       }
     })
     return initial
@@ -204,11 +189,11 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
   // Auto-select meet based on file data, or default to "create new"
   useEffect(() => {
     if (!selectedMeetId && batch.meet_name) {
+      // Samme navn og samme dato. Delstrengtreff uten dato valgte feil stevne:
+      // «Skansemyren kastkarusell 13» inneholder «Skansemyren kastkarusell 1».
       const meetNameFromFile = batch.meet_name.toLowerCase().trim()
       const matchedMeet = meets.find(m =>
-        m.name.toLowerCase() === meetNameFromFile ||
-        m.name.toLowerCase().includes(meetNameFromFile) ||
-        meetNameFromFile.includes(m.name.toLowerCase())
+        m.name.toLowerCase().trim() === meetNameFromFile && m.start_date === batch.meet_date
       )
       if (matchedMeet) {
         setSelectedMeetId(matchedMeet.id)
@@ -217,7 +202,7 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
         setSelectedMeetId("__create_new__")
       }
     }
-  }, [meets, batch.meet_name, selectedMeetId])
+  }, [meets, batch.meet_name, batch.meet_date, selectedMeetId])
 
   // Search state for athlete matching
   const [searchingRow, setSearchingRow] = useState<number | null>(null)
@@ -249,8 +234,11 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
   }
 
   // Helper to match event from file to database
-  const matchEventFromFile = (eventName: string): string | null => {
+  const matchEventFromFile = (eventName: string, klasse?: string): string | null => {
     if (!eventName) return null
+    // Kast med redskapsvekt og kastfemkamp: samme koder som kilden bruker
+    const kode = kastkode(eventName, klasse)
+    if (kode) return events.find(e => e.code === kode)?.id ?? null
     const normalized = eventName.toLowerCase().trim()
     // Also try without 'm' suffix for cases like "3000m" -> "3000"
     const withoutM = normalized.replace(/m$/, "")
@@ -288,9 +276,8 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
 
     // Check that all events can be matched
     const unmatchedEvents = rows
-      .map(r => r.event)
-      .filter(Boolean)
-      .filter(e => !matchEventFromFile(e!))
+      .filter(r => r.event && !matchEventFromFile(r.event, r.event_class))
+      .map(r => `${r.event} (${r.event_class ?? "?"})`)
     if (unmatchedEvents.length > 0) {
       const uniqueUnmatched = Array.from(new Set(unmatchedEvents))
       setError(`Kunne ikke matche øvelser: ${uniqueUnmatched.join(", ")}. Sjekk at øvelsene finnes i databasen.`)
@@ -305,36 +292,43 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
 
       let actualMeetId = selectedMeetId
       let meetDate = batch.meet_date
+      const utendors = !isIndoor
 
-      // Create or find meet if "__create_new__" selected
+      // Nytt stevne fra fila. «Stevnested» i malen er anlegget, ikke byen, så
+      // det går i venue og city står tom: når stevnet senere kommer fra
+      // minfriidrettsstatistikk, finner importen posten igjen (navn + dato, eller
+      // på de felles radene) og fyller inn sted og kilde-id selv.
       if (selectedMeetId === "__create_new__") {
-        if (!batch.meet_name) {
-          throw new Error("Mangler stevnenavn fra fil")
+        if (!batch.meet_name || !batch.meet_date) {
+          throw new Error("Mangler stevnenavn eller dato fra fila")
         }
-
-        // First check if meet already exists
-        const { data: existingMeet } = await supabase
+        const { data: finnes } = await supabase
           .from("meets")
           .select("id, start_date")
-          .eq("name", batch.meet_name)
-          .eq("city", batch.meet_city || "Ukjent")
-          .eq("start_date", batch.meet_date || new Date().toISOString().split("T")[0])
-          .single()
+          .ilike("name", batch.meet_name)
+          .eq("start_date", batch.meet_date)
+          .limit(1)
 
-        if (existingMeet) {
-          // Use existing meet
-          actualMeetId = existingMeet.id
-          meetDate = existingMeet.start_date
-          console.log("Using existing meet:", existingMeet.id)
+        if (finnes?.length) {
+          actualMeetId = finnes[0].id
+          meetDate = finnes[0].start_date
         } else {
-          // Create new meet
+          const aar = Number(batch.meet_date.slice(0, 4)) + (!utendors && Number(batch.meet_date.slice(5, 7)) >= 10 ? 1 : 0)
+          const { data: sesongRad } = await supabase
+            .from("seasons").select("id").eq("year", aar).eq("indoor", !utendors).limit(1)
           const { data: newMeet, error: meetError } = await supabase
             .from("meets")
             .insert({
               name: batch.meet_name,
-              city: batch.meet_city || "Ukjent",
-              start_date: batch.meet_date || new Date().toISOString().split("T")[0],
-              indoor: isIndoor,
+              city: "",
+              venue: batch.meet_city || null,
+              country: "NOR",
+              start_date: batch.meet_date,
+              end_date: batch.meet_date,
+              indoor: !utendors,
+              level: "local",
+              season_id: sesongRad?.[0]?.id ?? null,
+              organizer_name: arrangorNavn(rows.find(r => r.organizer)?.organizer),
             })
             .select("id, start_date")
             .single()
@@ -342,208 +336,142 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
           if (meetError) throw new Error(`Kunne ikke opprette stevne: ${meetError.message}`)
           actualMeetId = newMeet.id
           meetDate = newMeet.start_date
-          console.log("Created new meet:", newMeet.id)
         }
       } else {
         const selectedMeet = meets.find(m => m.id === selectedMeetId)
         meetDate = selectedMeet?.start_date || batch.meet_date
       }
+      if (!meetDate) throw new Error("Stevnet mangler dato")
 
-      const year = meetDate ? new Date(meetDate).getFullYear() : new Date().getFullYear()
-      const season = seasons.find(s => s.year === year)
-
+      // Sesong: utendørs og innendørs er hver sin, og innendørssesongen som
+      // starter i oktober hører til året etter (samme regel som kildeimporten).
+      const sesongAar = Number(meetDate.slice(0, 4)) + (!utendors && Number(meetDate.slice(5, 7)) >= 10 ? 1 : 0)
+      const { data: sesongRader } = await supabase
+        .from("seasons").select("id").eq("year", sesongAar).eq("indoor", !utendors).limit(1)
+      const season = sesongRader?.[0]
       if (!season) {
-        throw new Error(`Ingen sesong funnet for år ${year}`)
+        throw new Error(`Ingen ${utendors ? "utendørs" : "innendørs"}sesong funnet for ${sesongAar}`)
       }
 
-      // First, create any clubs that don't exist and build a club lookup map
-      const clubNameToId = new Map<string, string>()
-      clubs.forEach(c => clubNameToId.set(c.name.toLowerCase(), c.id))
-
-      const uniqueClubNames = new Set<string>()
-      rows.forEach(row => {
-        if (row.club) uniqueClubNames.add(row.club.trim())
+      // Klubb: samme klubb når navnet er likt uten hensyn til rekkefølge og
+      // vanlige forkortelser («IL Norna-Salhus» = «Norna-Salhus IL», «Gloppen
+      // FIL» = «Gloppen Friidrettslag»). Utøverens egen klubb går foran når
+      // den er den samme. Tidligere ble første klubb med navnet som delstreng
+      // valgt, så «IL Fri» kunne bli en hvilken som helst «IL Friidrett».
+      const klubbNavn = new Map(clubs.map(c => [c.id, c.name]))
+      const etterNoekkel = new Map<string, string[]>()
+      clubs.forEach(c => {
+        const n = klubbNoekkel(c.name)
+        etterNoekkel.set(n, [...(etterNoekkel.get(n) ?? []), c.id])
       })
-
-      for (const clubName of uniqueClubNames) {
-        const normalizedName = clubName.toLowerCase()
-        // Check if club exists (exact or partial match)
-        let existingClubId: string | null = null
-        for (const [name, id] of clubNameToId.entries()) {
-          if (name === normalizedName || name.includes(normalizedName) || normalizedName.includes(name)) {
-            existingClubId = id
-            break
-          }
-        }
-
-        if (!existingClubId) {
-          // Create new club
-          const { data: newClub, error: clubError } = await supabase
-            .from("clubs")
-            .insert({ name: clubName })
-            .select("id")
-            .single()
-
-          if (clubError) {
-            console.error("Club creation error:", clubError)
-            // Continue without club - not a critical error
-          } else if (newClub) {
-            clubNameToId.set(normalizedName, newClub.id)
-            console.log("Created new club:", clubName, newClub.id)
-          }
-        }
+      const nyeKlubber = new Map<string, string>()
+      const finnKlubb = (radKlubb: string | undefined, athleteId: string | null): string | null => {
+        const egen = athleteId ? athletes.find(a => a.id === athleteId)?.current_club_id ?? null : null
+        const n = klubbNoekkel(radKlubb)
+        if (!n) return egen
+        if (egen && klubbNoekkel(klubbNavn.get(egen)) === n) return egen
+        const like = etterNoekkel.get(n) ?? []
+        if (like.length) return egen && like.includes(egen) ? egen : like[0]
+        return nyeKlubber.get(n) ?? null
       }
 
-      // Create new athletes first
-      const newAthleteRows = rows
-        .map((row, idx) => ({ row, idx, mapping: mappings[idx] }))
-        .filter(({ mapping }) => mapping?.isNewAthlete)
+      // Klubber som ikke finnes, opprettes (en ny klubb, eller et navn basen ikke kjenner)
+      for (const row of rows) {
+        const n = klubbNoekkel(row.club)
+        if (!n || etterNoekkel.has(n) || nyeKlubber.has(n)) continue
+        const { data: newClub, error: clubError } = await supabase
+          .from("clubs").insert({ name: row.club!.trim() }).select("id").single()
+        if (clubError) console.error("Club creation error:", clubError)
+        else if (newClub) nyeKlubber.set(n, newClub.id)
+      }
 
+      // Nye utøvere
       const newAthleteIds: Record<number, string> = {}
-
-      for (const { row, idx, mapping } of newAthleteRows) {
+      for (const [i, row] of rows.entries()) {
+        const mapping = mappings[i]
+        if (!mapping?.isNewAthlete) continue
         const nameParts = (mapping.newAthleteName || row.name).trim().split(/\s+/)
-        const firstName = nameParts.slice(0, -1).join(" ") || nameParts[0]
-        const lastName = nameParts[nameParts.length - 1]
-
-        // Get club_id for new athlete from row data
-        let newAthleteClubId: string | null = null
-        if (row.club) {
-          const normalizedClubName = row.club.trim().toLowerCase()
-          for (const [name, id] of clubNameToId.entries()) {
-            if (name === normalizedClubName || name.includes(normalizedClubName) || normalizedClubName.includes(name)) {
-              newAthleteClubId = id
-              break
-            }
-          }
-        }
-
         const { data: newAthlete, error: athleteError } = await supabase
           .from("athletes")
           .insert({
-            first_name: firstName,
-            last_name: lastName,
-            gender: mapping.newAthleteGender || null,
+            first_name: nameParts.slice(0, -1).join(" ") || nameParts[0],
+            last_name: nameParts[nameParts.length - 1],
+            gender: mapping.newAthleteGender || kjonnFraKlasse(row.event_class),
             birth_year: row.birth_year ? parseInt(row.birth_year) : null,
-            current_club_id: newAthleteClubId,
+            current_club_id: finnKlubb(row.club, null),
           })
           .select("id")
           .single()
-
         if (athleteError) throw athleteError
-        newAthleteIds[idx] = newAthlete.id
+        newAthleteIds[i] = newAthlete.id
       }
 
-      // Create results
-      const results = rows.map((row, idx) => {
+      // Rader som alt ligger i stevnet (samme utøver, øvelse, resultat og
+      // plass) legges ikke inn på nytt - samme nøkkel som kildeimporten bruker.
+      const finnes = new Set<string>()
+      for (let fra = 0; ; fra += 1000) {
+        const { data } = await supabase
+          .from("results").select("athlete_id, event_id, performance, place")
+          .eq("meet_id", actualMeetId).order("id").range(fra, fra + 999)
+        data?.forEach(r => finnes.add(`${r.athlete_id}|${r.event_id}|${r.performance}|${r.place}`))
+        if (!data || data.length < 1000) break
+      }
+
+      let hoppetOver = 0
+      const results = rows.flatMap((row, idx) => {
         const mapping = mappings[idx]
-        const athleteId = mapping.isNewAthlete
-          ? newAthleteIds[idx]
-          : mapping.athleteId
-
-        // Match event from file
-        const eventId = matchEventFromFile(row.event || "")
-
-        // Validate IDs
-        if (!athleteId) {
-          throw new Error(`Mangler utøver-ID for rad ${idx + 1} (${row.name})`)
+        const athleteId = mapping.isNewAthlete ? newAthleteIds[idx] : mapping.athleteId
+        const eventId = matchEventFromFile(row.event || "", row.event_class)
+        if (!athleteId) throw new Error(`Mangler utøver-ID for rad ${idx + 1} (${row.name})`)
+        if (!eventId) throw new Error(`Mangler øvelse-ID for rad ${idx + 1} (${row.event})`)
+        const ev = events.find(e => e.id === eventId)
+        const performance = formaterResultat(row.performance || "", ev?.code, ev?.result_type)
+        const place = row.place ? parseInt(row.place) : null
+        if (finnes.has(`${athleteId}|${eventId}|${performance}|${place}`)) {
+          hoppetOver++
+          return []
         }
-        if (!eventId) {
-          throw new Error(`Mangler øvelse-ID for rad ${idx + 1} (${row.event})`)
-        }
-
-        // Get club_id from the row's club name (from Excel file)
-        let clubId: string | null = null
-        if (row.club) {
-          const normalizedClubName = row.club.trim().toLowerCase()
-          // Use the clubNameToId map which includes newly created clubs
-          for (const [name, id] of clubNameToId.entries()) {
-            if (name === normalizedClubName || name.includes(normalizedClubName) || normalizedClubName.includes(name)) {
-              clubId = id
-              break
-            }
-          }
-        }
-        // Fallback to athlete's current club if no club in row
-        if (!clubId && !mapping.isNewAthlete && mapping.athleteId) {
-          const matchedAthlete = athletes.find(a => a.id === mapping.athleteId)
-          clubId = matchedAthlete?.current_club_id || null
-        }
-
-        // Parse performance - convert to seconds format (e.g., "7,54,96" -> "474.96")
-        const rawPerf = (row.performance || "").replace(/,/g, ".").trim()
-        const performanceValue = parsePerformance(rawPerf)
-        // Convert to seconds string for database (which expects seconds, not MM.SS.hh)
-        const perfStr = performanceValue ? (performanceValue / 1000).toFixed(2) : rawPerf
-
-        return {
+        finnes.add(`${athleteId}|${eventId}|${performance}|${place}`)
+        return [{
           athlete_id: athleteId,
           event_id: eventId,
           meet_id: actualMeetId,
           season_id: season.id,
-          club_id: clubId,
-          performance: perfStr,
-          performance_value: performanceValue,
-          date: meetDate || new Date().toISOString().split("T")[0],
-          place: row.place ? parseInt(row.place) : null,
+          club_id: finnKlubb(row.club, athleteId),
+          performance, // performance_value regnes ut av triggeren i basen
+          date: meetDate!,
+          place,
           wind: row.wind ? parseFloat(row.wind.replace(",", ".")) : null,
           status: "OK" as const,
           import_batch_id: batch.id,
-        }
+        }]
       })
 
-      if (results.length === 0) {
+      if (results.length === 0 && hoppetOver === 0) {
         throw new Error("Ingen resultater å importere")
       }
 
-      // Insert results in smaller batches to avoid timeout issues
-      const batchSize = 10
       let insertedCount = 0
-
-      for (let i = 0; i < results.length; i += batchSize) {
-        const batch = results.slice(i, i + batchSize)
-
-        const { data: insertedData, error: insertError } = await supabase
-          .from("results")
-          .insert(batch)
-          .select("id")
-
+      for (let i = 0; i < results.length; i += 50) {
+        const del = results.slice(i, i + 50)
+        const { error: insertError } = await supabase.from("results").insert(del)
         if (insertError) {
-          console.error("Insert error at batch", i, ":", insertError)
-          throw new Error(`Feil ved innsetting av resultat ${i + 1}: ${insertError.message}`)
+          throw new Error(`Feil ved innsetting av resultat ${i + 1}: ${insertError.message}` +
+            (insertedCount ? ` (${insertedCount} rader var alt lagt inn, merket med denne importen)` : ""))
         }
-
-        insertedCount += batch.length
+        insertedCount += del.length
       }
 
-      // Update athletes' current_club_id if they don't have one
-      const athleteClubUpdates: { athleteId: string; clubId: string }[] = []
-      rows.forEach((row, idx) => {
+      // Utøvere uten klubb får klubben fra lista
+      for (const [idx, row] of rows.entries()) {
         const mapping = mappings[idx]
-        if (row.club && mapping?.athleteId && !mapping.isNewAthlete) {
-          const matchedAthlete = athletes.find(a => a.id === mapping.athleteId)
-          if (matchedAthlete && !matchedAthlete.current_club_id) {
-            const normalizedClubName = row.club.trim().toLowerCase()
-            for (const [name, id] of clubNameToId.entries()) {
-              if (name === normalizedClubName || name.includes(normalizedClubName) || normalizedClubName.includes(name)) {
-                athleteClubUpdates.push({ athleteId: mapping.athleteId, clubId: id })
-                break
-              }
-            }
-          }
+        if (!row.club || !mapping?.athleteId || mapping.isNewAthlete) continue
+        const a = athletes.find(x => x.id === mapping.athleteId)
+        const klubb = finnKlubb(row.club, null)
+        if (a && !a.current_club_id && klubb) {
+          await supabase.from("athletes").update({ current_club_id: klubb }).eq("id", a.id)
+          a.current_club_id = klubb
         }
-      })
-
-      // Update athletes in batch
-      for (const { athleteId, clubId } of athleteClubUpdates) {
-        await supabase
-          .from("athletes")
-          .update({ current_club_id: clubId })
-          .eq("id", athleteId)
-      }
-
-      if (athleteClubUpdates.length > 0) {
-        console.log(`Updated current_club_id for ${athleteClubUpdates.length} athletes`)
       }
 
       // Update batch status
@@ -565,7 +493,7 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
       }
 
       setIsProcessing(false)
-      setSuccess(`Importerte ${insertedCount} resultater! Omdirigerer...`)
+      setSuccess(`Importerte ${insertedCount} resultater${hoppetOver ? ` (${hoppetOver} lå inne fra før og ble hoppet over)` : ""}. Omdirigerer …`)
       setTimeout(() => router.push("/admin/import"), 2000)
 
     } catch (err) {
@@ -1055,25 +983,4 @@ export function ImportReview({ batch, athletes, events, meets, seasons, clubs }:
       </div>
     </div>
   )
-}
-
-// Helper to parse performance string to milliseconds
-function parsePerformance(perf: string): number | null {
-  if (!perf) return null
-
-  const cleaned = perf.replace(",", ".").trim()
-
-  // Format: MM.SS.hh (minutes.seconds.hundredths)
-  if (cleaned.split(".").length === 3) {
-    const [mins, secs, hundredths] = cleaned.split(".").map(Number)
-    return Math.round((mins * 60 + secs + hundredths / 100) * 1000)
-  }
-
-  // Format: SS.hh or S.hh
-  const num = parseFloat(cleaned)
-  if (!isNaN(num)) {
-    return Math.round(num * 1000)
-  }
-
-  return null
 }

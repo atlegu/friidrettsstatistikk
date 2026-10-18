@@ -1281,6 +1281,15 @@ def finn_tvilling(name, date, external_id, rows):
     er det samme stevne. Returnerer (meet_id, eksisterende rader) eller
     (None, None). Navn + dato alene holder ikke: «Treningsstevne» samme dag i
     to byer er to stevner, og de deler ingen rader.
+
+    Det samme gjelder et stevne vi har lagt inn selv før kilden hadde det
+    (resultatliste sendt på e-post, importer_resultatliste.py eller
+    admin-importen): posten har ingen kilde-id, og kilden kan skrive navnet
+    annerledes. Er minst halvparten av kildens rader (navn, øvelse,
+    resultat - plass teller ikke, den kan være ført ulikt) alt lagt inn
+    samme dag i et stevne uten kilde-id, er det samme stevne. Posten får
+    kildens id, så neste kjøring finner den direkte. Skansemyren
+    kastkarusell 13, 17.10.2026, ble lagt inn slik 18.10.2026.
     """
     if not external_id or not rows:
         return None, None
@@ -1291,7 +1300,8 @@ def finn_tvilling(name, date, external_id, rows):
     kand = supabase.table('meets').select('id,name,external_id') \
         .eq('start_date', date).ilike('name', name).execute().data
     kand = [k for k in kand if k.get('external_id') and str(k['external_id']) != str(external_id)]
-    if not kand:
+    manuelle = _manuelle_stevner(date)
+    if not kand and not manuelle:
         return None, None
     noekler = set()
     for row in rows:
@@ -1310,7 +1320,29 @@ def finn_tvilling(name, date, external_id, rows):
             logger.info(f"  Kildens stevne {external_id} «{name}» er samme som {k['id'][:8]} "
                         f"(kilde-id {k['external_id']}): {treff} av {len(noekler)} rader ligger der. Gjenbrukes.")
             return k['id'], eks
+    uten_plass = {n[:3] for n in noekler}
+    for k in manuelle:
+        eks = _hent_eksisterende_rader(k['id'])
+        lagt_inn = {n[:3] for n in eks.get('_navn', {})}
+        treff = len(uten_plass & lagt_inn)
+        if treff * 2 >= len(uten_plass):
+            logger.info(f"  Kildens stevne {external_id} «{name}» er samme som {k['id'][:8]} «{k['name']}» "
+                        f"(lagt inn uten kilde-id): {treff} av {len(uten_plass)} rader ligger der. "
+                        f"Gjenbrukes og får kilde-id.")
+            supabase.table('meets').update({'external_id': str(external_id)}).eq('id', k['id']).execute()
+            return k['id'], eks
     return None, None
+
+
+def _manuelle_stevner(date) -> List[Dict]:
+    """Stevner samme dag uten kilde-id som har rader fra en import
+    (import_batch_id satt): lagt inn fra en innsendt resultatliste."""
+    ider = {r['meet_id'] for r in (supabase.table('results').select('meet_id').eq('date', date)
+                                   .not_.is_('import_batch_id', 'null').limit(1000).execute().data or [])}
+    if not ider:
+        return []
+    return [m for m in (supabase.table('meets').select('id,name,external_id')
+                        .in_('id', list(ider)).execute().data or []) if not m.get('external_id')]
 
 
 def _avstem_stevne(meet_name: str, kilde: List[Dict], eksisterende: Dict[tuple, List[Dict]],
