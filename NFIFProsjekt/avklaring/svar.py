@@ -216,8 +216,8 @@ Prisen forutsetter at tidtakeren tilbyr et dokumentert API eller en strukturert 
 
 VEDLEGG = [
     'Ingen',
-    'Vedlegg 2: Skjermbilder av gateløp',
-    'Vedlegg 1: Skjermbilder av administrasjonsverktøyet',
+    'Vedlegg 2a og 2b: Skjermbilder av gateløp (årsbeste og løpsside)',
+    'Vedlegg 1a–1c: Skjermbilder av administrasjonsverktøyet (avvik, terminliste og import av en innsendt resultatliste)',
     'Vedlegg 3: Skjermbilde av masterstatistikken',
     'Ingen', 'Ingen', 'Ingen', 'Ingen', 'Ingen', 'Ingen', 'Ingen',
 ]
