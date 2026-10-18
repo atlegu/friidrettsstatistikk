@@ -42,7 +42,7 @@ Oppgavene for Norsk Friidrett:
 I tillegg kommer noen engangsoppgaver ved oppstart:
 - klubbenes kretstilhørighet
 - tilgang til lisensregisteret
-- hjelp til å få tilgang til API-ene i iSonen
+- aksept overfor NIF for at vi får tilgang til API-ene i iSonen
 - en grundig gjennomgang av eldre statistikk, for eksempel sammen med SRU. Deler av den gamle statistikken har svakheter, og en felles gjennomgang sikrer at listene er riktige per 1.1.2027.""",
 
 # 1.2 Gjenstående arbeid for løp utenfor bane
@@ -99,12 +99,12 @@ Ulempen med én database er at mastersklassene må holdes adskilt i presentasjon
 
 # 1.5 Integrasjoner og automatisert resultatinnsamling
 """Resultatene skal samles inn fra to steder:
-- **Resultatlister som kommer inn til Norsk Friidrett.** De fleste kommer gjennom iSonen, resten fra FriRes og LiveRes, OpenTrack og tidtakerne. Plattformen tar imot alle, og alle går gjennom de samme kontrollene. Lister som sendes på e-post til resultater@friidrett.no, kan legges inn samme dag. Når stevnet senere kommer gjennom den ordinære importen, kjennes radene igjen, så det ikke blir dubletter.
+- **Resultatlister som kommer inn til Norsk Friidrett.** De kommer fra stevneprogrammene FriRes og LiveRes, fra OpenTrack og tidtakerne, og på e-post. Plattformen tar imot alle, og alle går gjennom de samme kontrollene. Lister som sendes på e-post til resultater@friidrett.no, kan legges inn samme dag. Når stevnet senere kommer gjennom den ordinære importen, kjennes radene igjen, så det ikke blir dubletter.
 - **Resultater vi henter selv.** Et eget system søker opp norske utøveres resultater rundt i verden. Søket tar utgangspunkt i utøveren, ikke i stevnet: World Athletics-profiler, TFRRS for collegeutøvere i USA, og resultattjenestene i andre land. Utøvere og klubber kan i tillegg melde inn resultater med dokumentasjon.
 **Kontroll av at alt er kommet inn.** Terminlisten hentes hver natt, og hvert avholdt arrangement kontrolleres mot resultatene i basen. Arrangementer som mangler resultater tre dager etter siste stevnedag, vises i administrasjonsverktøyet, og arrangøren purres etter en uke. Dette er i drift, både for banestevner og gateløp.
 **Avtaler med leverandørene.** Vi har ingen formell rolle for Norsk Friidrett i dag, og har derfor ikke kunnet forhandle om API-er eller diskutere integrasjoner med leverandørene av resultater. Blir vi valgt, tar vi straks kontakt med iSonen, OpenTrack, FriRes/LiveRes, EQ Timing og Ultimate Sport Service, for å sikre at resultatene kan listeføres umiddelbart etter hvert stevne. Vi har testet dataformatene der det har vært mulig, og vet at importen fungerer. De endelige løsningene må likevel avtales med hver leverandør.
 Status for de enkelte systemene:
-- **iSonen:** API-tilgang forutsetter avtale med NFIF og Buypass. Frem til da brukes den åpne terminlisten, med arrangement, arrangør og krets, til kontrollen over. Resultatoverføring fra Q1 2027, etter at tilgang er gitt.
+- **iSonen:** iSonen er stedet arrangementet opprettes, med øvelser og klasser, og der deltakerne meldes på. Vi har spurt NIF IT, som drifter iSonen. De bekrefter at arrangementene og deltakerne kan hentes via API, og at deltakerlistene også kan eksporteres til Excel. Idrettens ID kan brukes til innlogging og kontroll av roller. Tilgangen krever aksept fra NFIF, og koster etter NIFs prisliste fra 0 til om lag 30 000 kr i året, lavest for offisielle leverandører til forbundet. Resultatene kommer ikke fra iSonen, men iSonen gir grunnlaget for å knytte resultatene til riktig arrangement og for kontrollen av at alle arrangementer har levert resultater. Frem til tilgangen er på plass, brukes den åpne terminlisten, med arrangement, arrangør og krets, til kontrollen over. Integrasjonen kan være på plass i Q1 2027, når NFIF har gitt aksept.
 - **FriRes og LiveRes:** vi har fått tilgang til LiveRes' datastrøm fra utvikleren, og har testet formatet. Den gir stevnelisten og fullstendige resultatlister per stevnedag, med FriSys-id, fødselsdato, klubb, vind og hvert forsøk. Importen bygges når bruken er avtalt.
 - **OpenTrack:** ikke utviklet, og ikke testet ennå. OpenTrack har et åpent API, så integrasjonen bør ikke avhenge av særskilt tilrettelegging. Q1–Q2 2027.
 - **EQ Timing:** fungerer. Importen bruker EQ Timings åpne resultattjeneste og er testet på hele 2026, jf. svar 1.2. For varig drift ønsker vi en avtale om grensesnittet og varsling ved endringer.
@@ -196,7 +196,7 @@ Prisen forutsetter at tidtakeren tilbyr et dokumentert API eller en strukturert 
 **Nasjonal banestatistikk:**
 - Etablering: ==350 000 kr== (fast pris)
 - Drift i fem år à ==300 000 kr==: ==1 500 000 kr== (fast pris)
-- Integrasjon mot iSonen, terminliste og lisensregister: inntil ==80 000 kr==
+- Integrasjon mot iSonen, terminliste og lisensregister: inntil ==80 000 kr==. NIFs avgift for tilgang, fra 0 til om lag 30 000 kr i året, kommer i tillegg (svar 1.5).
 - Direkte overføring fra LiveRes: inntil ==50 000 kr==
 - **Sum banestatistikk over fem år: høyst ==1 980 000 kr==**, hvorav ==1 850 000 kr== er faste priser.
 **Gateløp og andre løp utenfor bane:**
