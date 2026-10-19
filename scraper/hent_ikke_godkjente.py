@@ -173,8 +173,18 @@ def main():
     teller, aarsaker, ukjente_ov = Counter(), Counter(), Counter()
     behandlet = 0
     while behandlet < args.antall:
-        ko = sb.rpc('utovere_til_kontroll', {'p_antall': min(500, args.antall - behandlet),
-                                             'p_eldre_enn': args.eldre_enn}).execute().data
+        # Brudd mot basen her stoppet hele kjøringen 19.10.2026 00:28 etter
+        # 41 500 utøvere: forsøk på nytt, som for hver utøver
+        ko = None
+        for forsok in range(5):
+            try:
+                ko = sb.rpc('utovere_til_kontroll', {'p_antall': min(500, args.antall - behandlet),
+                                                     'p_eldre_enn': args.eldre_enn}).execute().data
+                break
+            except Exception as e:
+                log.warning(f"Feil ved henting av køen (forsøk {forsok + 1}): {e.__class__.__name__}: {str(e)[:120]}")
+                time.sleep(15 * (forsok + 1))
+                _http11()
         if not ko:
             break
         for a in ko:
