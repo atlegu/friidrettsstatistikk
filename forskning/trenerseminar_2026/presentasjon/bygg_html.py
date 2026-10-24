@@ -29,12 +29,14 @@ BLOB = {
     "c5c79940817f892d471162bb9c75417b": "forskning/fagnytt/figurer/lek_fig2_kast.png",
     "98213fa2375c8825d1800b93c13f59b3": "forskning/fagnytt/figurer/lek_fig3_forbedring.png",
     "7a74126aa47ed4a9ebfe39ab5efa5ca7": "forskning/fagnytt/figurer/sko_fig1_trend.png",
+    "c45ab8d87eb25480bc047b46441ec592": "forskning/fagnytt/blad/bilder/forside_jaeger.jpg",
 }
 
 
 def data_uri(rel):
     b = (ROOT / rel).read_bytes()
-    return "data:image/png;base64," + base64.b64encode(b).decode()
+    mime = "image/jpeg" if rel.endswith((".jpg", ".jpeg")) else "image/png"
+    return f"data:{mime};base64," + base64.b64encode(b).decode()
 
 
 def main():
