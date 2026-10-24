@@ -30,6 +30,8 @@ BLOB = {
     "98213fa2375c8825d1800b93c13f59b3": "forskning/fagnytt/figurer/lek_fig3_forbedring.png",
     "7a74126aa47ed4a9ebfe39ab5efa5ca7": "forskning/fagnytt/figurer/sko_fig1_trend.png",
     "c45ab8d87eb25480bc047b46441ec592": "forskning/fagnytt/blad/bilder/forside_jaeger.jpg",
+    "0f7a34fce926bf1df273847881bf1cc6": "forskning/trenerseminar_2026/presentasjon/bilder/web_utover.png",
+    "e28fc358f61090fb0e5819aaae6c52eb": "forskning/trenerseminar_2026/presentasjon/bilder/web_sammenlign.png",
 }
 
 
