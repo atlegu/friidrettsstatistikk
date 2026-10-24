@@ -3,7 +3,7 @@
   "createdOnFiles": {"v": 1, "at": "2026-10-24T10:00:00Z"},
   "lists": "css",
   "title": "Har bredde noe å si for topp?",
-  "order": ["cover","hands","data","claims","guess1","topp","shoes","s1","guess2","knekk","frafall","trakt","debut","s2","rae","modning","guess3","volum","varsel","s3","kurve","utvikling","finn","finn2","jenter","tabell","s4","femten","arvtakere","lekene","forbedring","s5","jakob","s6","raad","tallene","takk"],
+  "order": ["cover","hands","data","claims","guess1","topp","shoes","s1","guess2","knekk","frafall","trakt","debut","s2","rae","modning","guess3","volum","varsel","s3","kurve","utvikling","finn","finn2","liste","liste2","jenter","tabell","s4","femten","arvtakere","lekene","forbedring","s5","jakob","s6","raad","tallene","takk"],
   "sections": {
     "apning": {"description": "Åpning: håndsopprekning, datagrunnlaget og ni påstander.", "start": "cover"},
     "toppen": {"description": "Toppen er bedre enn noen gang, også dybden.", "start": "guess1"},

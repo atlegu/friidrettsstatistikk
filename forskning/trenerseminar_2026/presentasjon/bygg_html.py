@@ -32,6 +32,7 @@ BLOB = {
     "c45ab8d87eb25480bc047b46441ec592": "forskning/fagnytt/blad/bilder/forside_jaeger.jpg",
     "0f7a34fce926bf1df273847881bf1cc6": "forskning/trenerseminar_2026/presentasjon/bilder/web_utover.png",
     "e28fc358f61090fb0e5819aaae6c52eb": "forskning/trenerseminar_2026/presentasjon/bilder/web_sammenlign.png",
+    "6422efc64c5cfd9626f332477908dbfb": "forskning/trenerseminar_2026/presentasjon/bilder/g11_spyd_sladdet.png",
 }
 
 
