@@ -1,0 +1,22 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-24T10:00:00Z"},
+  "lists": "css",
+  "title": "Har bredde noe å si for topp?",
+  "order": ["cover","hands","data","claims","guess1","topp","shoes","s1","guess2","knekk","frafall","trakt","debut","s2","rae","modning","guess3","volum","varsel","s3","kurve","utvikling","finn","jenter","tabell","s4","femten","arvtakere","lekene","forbedring","s5","jakob","s6","raad","tallene","takk"],
+  "sections": {
+    "apning": {"description": "Åpning: håndsopprekning, datagrunnlaget og ni påstander.", "start": "cover"},
+    "toppen": {"description": "Toppen er bedre enn noen gang, også dybden.", "start": "guess1"},
+    "bredden": {"description": "Bredden har krympet, men frafallet er uendret: problemet sitter i døren inn.", "start": "guess2"},
+    "slutter": {"description": "Hvem slutter: født i januar, og de trekker seg tilbake før de slutter.", "start": "rae"},
+    "utvikling": {"description": "Normal utvikling: kurvene vi bruker lyver, 18 er ikke ferdig.", "start": "kurve"},
+    "bredde-topp": {"description": "Har bredde noe å si for topp? Ja, og det synes på 15-åringene.", "start": "femten"},
+    "topp-bredde": {"description": "Har topp noe å si for bredde? Ikke av seg selv.", "start": "jakob"},
+    "avslutning": {"description": "Fire råd, tallene finnes, spørsmål.", "start": "raad"}
+  },
+  "faces": {
+    "rubik": {"family": "Rubik", "href": "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap"},
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"}
+  },
+  "designSystems": []
+}
