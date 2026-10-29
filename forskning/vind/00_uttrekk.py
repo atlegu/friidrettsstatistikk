@@ -83,9 +83,24 @@ def main():
     total = 0
     for kode in KODER:
         eid = id_per_kode[kode]
-        rader = hent_alt(lambda: sb.table("results").select(RSEL)
-                         .eq("event_id", eid)
-                         .gte("date", "2011-01-01").lte("date", CUTOFF_DATO))
+        rader = []
+        for aar in range(2011, 2027):
+            til = CUTOFF_DATO if aar == 2026 else f"{aar}-12-31"
+            try:
+                rader.extend(hent_alt(lambda a=aar, t=til: sb.table("results").select(RSEL)
+                                      .eq("event_id", eid)
+                                      .gte("date", f"{a}-01-01").lte("date", t)))
+            except Exception:
+                logger.warning(f"{kode} {aar}: årsspørring feilet, prøver per måned")
+                for mnd in range(1, 13):
+                    fra = f"{aar}-{mnd:02d}-01"
+                    slutt = f"{aar}-{mnd:02d}-{28 if mnd == 2 else 30 if mnd in (4, 6, 9, 11) else 31}"
+                    if fra > til:
+                        break
+                    rader.extend(hent_alt(lambda f=fra, s=min(slutt, til):
+                                          sb.table("results").select(RSEL)
+                                          .eq("event_id", eid)
+                                          .gte("date", f).lte("date", s)))
         d = pd.DataFrame(rader)
         if len(d):
             d["event_code"] = kode
