@@ -1,0 +1,4 @@
+modell,OR_per_kvartal,KI_lav,KI_hoy,n
+uten_delta,1.0944,0.9941,1.2049,3781
+med_delta,1.0663,0.9675,1.1751,3781
+delta_z_paa_kvartal_c_OLS,0.0697,0.0401,0.0992,3781
