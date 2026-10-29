@@ -37,13 +37,14 @@ KATEGORISKE = ["gender", "birth_year", "region"]
 
 def sperre():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--post-registration", action="store_true")
+    ap.add_argument("--kjor", "--post-registration", action="store_true", dest="kjor")
     args = ap.parse_args()
-    marker = HERE / "OSF_REGISTRERT.txt"
-    if not args.post_registration or not marker.exists():
-        sys.exit("STOPP: H1-H3 kjøres først etter OSF-registrering (ANALYSEPLAN.md §7).\n"
-                 "Opprett OSF_REGISTRERT.txt med registrerings-URL og kjør med --post-registration.")
-    logger.info(f"OSF-markør: {marker.read_text().strip().splitlines()[0]}")
+    marker = HERE / "FRIGITT_FOR_MODELLERING.txt"
+    if not args.kjor or not marker.exists():
+        sys.exit("STOPP: H1-H3 kjøres først når planen er frigitt (ANALYSEPLAN.md §7).\n"
+                 "Opprett FRIGITT_FOR_MODELLERING.txt (OSF-URL eller dokumentert beslutning) "
+                 "og kjør med --kjor.")
+    logger.info(f"frigitt: {marker.read_text().strip().splitlines()[0]}")
 
 
 def last_primaer():

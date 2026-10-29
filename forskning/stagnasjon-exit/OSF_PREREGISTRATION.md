@@ -1,6 +1,6 @@
 # Preregistration: Stagnation before exit? Within-athlete performance progression, relative age, and retention in youth track and field
 
-*Preregistration of analyses of existing registry data (secondary data). Drafted 29 October 2026 from the Norwegian analysis plan (`ANALYSEPLAN.md`, version 1). To be registered on OSF before any exposure–outcome model is estimated.*
+*Written analysis plan (English), drafted 29 October 2026 from the Norwegian analysis plan (`ANALYSEPLAN.md`, version 1) and committed to version control (367f03f) before any exposure–outcome model was estimated. **Not registered on an external registry** — decision of 29 October 2026, documented in `FRIGITT_FOR_MODELLERING.txt`; this document stands as the timestamped plan of record, and the manuscript will state this.*
 
 ## 1. Study information
 

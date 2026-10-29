@@ -73,7 +73,7 @@ Ingen populasjonsstudie har koblet objektive progresjonsbaner til senere frafall
 ## 7. Forhåndsregistrering og arbeidsflyt
 
 1. **Tillatt før registrering:** dekningstall, flytdiagram, missingness, fordelinger av Δ/k/kvartal — ingen eksponering–utfall-krysninger.
-2. OSF-registrering (engelsk oversettelse av dette dokumentet, med hypoteser, estimander, modeller og tolkningsregler).
+2. OSF-registrering (engelsk oversettelse av dette dokumentet, med hypoteser, estimander, modeller og tolkningsregler). *Besluttet 29.10.2026 (Atle): ingen ekstern registrering — tidsskriftene krever det ikke. Planen står som tidsstemplet plan committet før estimering (367f03f); beslutningen er dokumentert i `FRIGITT_FOR_MODELLERING.txt`, og manuset oppgir dette.*
 3. Uttrekk → frossent datasett → variabler → modeller. Kode i `forskning/stagnasjon-exit/`: `00_uttrekk.py`, `01_variabler.py`, `02_deskriptiv.py`, `03_modeller.py`, `04_robusthet.py`, `RUN_ALL.sh`, med logg og frossen CSV i `data_private/` (git-ignorert; aggregerte tabeller i repo).
 4. Manus: mål **Sports Medicine – Open** (naturlig oppfølger til RAE-artikkelen; samme leserkrets, åpen tilgang); alternativer JSAMS og Psychology of Sport and Exercise (hvis mekanismerammen løftes).
 

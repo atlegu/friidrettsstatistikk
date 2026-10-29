@@ -1,0 +1,3 @@
+Frigitt for modellering 29.10.2026 UTEN OSF-forhåndsregistrering — Atles beslutning samme kveld («tror ingen journaler er opptatt av forhåndsregistrering»).
+Analyseplanen (ANALYSEPLAN.md) og den engelske planteksten (OSF_PREREGISTRATION.md) var skrevet og committet i git (367f03f) FØR noen eksponering–utfall-modell ble estimert.
+Manuset skal oppgi: «The analysis plan, including hypotheses, estimands, model specifications and interpretation rules, was written and committed to version control before any exposure–outcome model was estimated; the study was not preregistered on an external registry.»

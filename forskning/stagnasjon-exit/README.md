@@ -12,11 +12,27 @@ Full plan i [ANALYSEPLAN.md](ANALYSEPLAN.md); engelsk forhåndsregistreringsteks
 | 0 | `00_uttrekk.py` | Kjørt 29.10.2026 → frosset uttrekk i `data_private/` (git-ignorert, regenererbart) |
 | 1 | `01_variabler.py` | Kjørt → `data_private/analysedata.csv` + `data_private/flyt.json` |
 | 2 | `02_deskriptiv.py` | Kjørt → `tables/` (kun prereg-trygge aggregater) |
-| — | **OSF-registrering** | Oversett/registrer OSF_PREREGISTRATION.md; legg URL i `OSF_REGISTRERT.txt` |
-| 3 | `03_modeller.py --post-registration` | **Sperret** til markørfilen finnes |
-| 4 | `04_robusthet.py --post-registration` | **Sperret** til markørfilen finnes |
+| — | Frigivelse | Besluttet 29.10.2026 (Atle): ingen ekstern registrering; planen var committet før estimering. Se `FRIGITT_FOR_MODELLERING.txt` |
+| 3 | `03_modeller.py --kjor` | Kjørt 29.10.2026 → `tables/modeller/` |
+| 4 | `04_robusthet.py --kjor` | Kjørt 29.10.2026 → `tables/robusthet/` |
 
 `RUN_ALL.sh` kjører steg 0–2. Python: `scraper/venv` (pandas, statsmodels, sklearn, lifelines).
+
+## Hovedresultater (29.10.2026)
+
+- **H1 støttet:** fremgang 13–14 → 15–16 predikerer seniorstatus, OR **2,03 per SD** [1,73–2,37],
+  utover nivå, volum (nivå og endring), k-ene og struktur. CV-AUC 0,855 → 0,864 (+0,009).
+  Kalibreringsslope 0,97, Brier 0,098.
+- **H2 ikke støttet:** interaksjon med fødselskvartal OR 0,95 [0,85–1,07]; fremgang beskytter
+  i begge strata (Q1–Q2: 2,19; Q3–Q4: 1,89). Den relative-alder-spesifikke mastery-prediksjonen
+  fikk ikke støtte — sammenhengen er generell.
+- **H3:** gitt volum diskriminerer fremgang og nivå likt (ΔAUC −0,001 [−0,002, −0,001]).
+- **Robusthet:** kohort A 2,00 / B 2,03; uten covid-kull 1,95; k≥2 2,18; byttegruppe 1,92;
+  vindgyldig 2,00; klubbklynger uendret; negativkontrollen (Δ 13→14 i baselinevinduet) **null**
+  (OR 1,00); E-verdi 2,84 (KI-grense 2,45). Landmark-Cox: HR 0,86 per SD fremgang;
+  volum 15–16 dominerer (HR 0,47); kvinner HR 1,19.
+
+Gjenstår for manus: exit-justerte Tyrving-baner (deskriptiv figur), tabeller/figurer og tekst.
 
 ## Nøkkeltall fra det frosne uttrekket (29.10.2026)
 

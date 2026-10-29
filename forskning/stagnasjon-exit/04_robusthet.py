@@ -31,9 +31,9 @@ KATEGORISKE = ["gender", "birth_year", "region"]
 
 def sperre():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--post-registration", action="store_true")
-    if not ap.parse_args().post_registration or not (HERE / "OSF_REGISTRERT.txt").exists():
-        sys.exit("STOPP: robusthetsanalysene kjøres først etter OSF-registrering "
+    ap.add_argument("--kjor", "--post-registration", action="store_true", dest="kjor")
+    if not ap.parse_args().kjor or not (HERE / "FRIGITT_FOR_MODELLERING.txt").exists():
+        sys.exit("STOPP: robusthetsanalysene kjøres først når planen er frigitt "
                  "(se 03_modeller.py og ANALYSEPLAN.md §7).")
 
 
@@ -52,7 +52,7 @@ def last():
 def design(d, kolonner):
     kat = [k for k in KATEGORISKE if k in kolonner]
     X = pd.get_dummies(d[kolonner], columns=kat, drop_first=True, dtype=float)
-    return sm.add_constant(X, has_constant="add")
+    return sm.add_constant(X.astype(float), has_constant="add")
 
 
 def eksponerings_or(d, eksponering, utfall="senior", cov_type="nonrobust", grupper=None):
@@ -93,7 +93,8 @@ def main():
     uten = prim[~prim["birth_year"].isin([2004, 2005])]
     rader.append({**eksponerings_or(uten, "delta_z"), "analyse": "uten_covid_kull"})
     pc = prim.copy()
-    pc["delta_x_covid"] = pc["delta_z"] * pc["covid_w2"].astype(float)
+    pc["covid_w2"] = pc["covid_w2"].astype(float)
+    pc["delta_x_covid"] = pc["delta_z"] * pc["covid_w2"]
     X = design(pc, M1_KOL + ["delta_z", "covid_w2", "delta_x_covid"])
     m = sm.Logit(pc["senior"], X).fit(disp=0)
     ci = m.conf_int().loc["delta_x_covid"]
