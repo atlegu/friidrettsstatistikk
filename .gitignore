@@ -59,3 +59,4 @@ scraper/logs/kilde_utover/
 # Utøvernivådata for forskningsprosjekter (regenererbare fra basen)
 forskning/stagnasjon-exit/data_private/
 forskning/debutalder/data_private/
+forskning/vind/data_private/
