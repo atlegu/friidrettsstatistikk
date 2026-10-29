@@ -55,3 +55,6 @@ coverage/
 # Mellomlagrede kildesider (opprydningsskript)
 scraper/logs/alletiders_cache/
 scraper/logs/kilde_utover/
+
+# Utøvernivådata for forskningsprosjekter (regenererbare fra basen)
+forskning/stagnasjon-exit/data_private/
