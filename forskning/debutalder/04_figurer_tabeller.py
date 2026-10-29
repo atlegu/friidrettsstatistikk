@@ -150,8 +150,11 @@ def tabeller(prim):
 
     rad("n", lambda g: f"{len(g):,}")
     rad("Female, %", lambda g: f"{(g['gender'] == 'F').mean() * 100:.1f}")
-    rad("Born Q1, %", lambda g: f"{(g['kvartal'] == 1).mean() * 100:.1f}")
-    rad("Born Q4, %", lambda g: f"{(g['kvartal'] == 4).mean() * 100:.1f}")
+    rad("Exact birth date available, %", lambda g: f"{g['kvartal'].notna().mean() * 100:.1f}")
+    rad("Born Q1, % of those with birth date",
+        lambda g: f"{(g['kvartal'] == 1).sum() / max(g['kvartal'].notna().sum(), 1) * 100:.1f}")
+    rad("Born Q4, % of those with birth date",
+        lambda g: f"{(g['kvartal'] == 4).sum() / max(g['kvartal'].notna().sum(), 1) * 100:.1f}")
     rad("Competition days, debut season, median (IQR)", lambda g: med_iqr(g["vol_debutaar"]))
     rad("Career length, seasons, median (IQR)", lambda g: med_iqr(g["karriere_aar"]))
     rad("Debut season 2020–2021, %", lambda g: f"{g['covid_debut'].mean() * 100:.1f}")
