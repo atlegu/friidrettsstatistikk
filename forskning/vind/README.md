@@ -13,7 +13,9 @@ vindlitteraturen bare dekker for gode seniorer. Full plan i
 | 1 | `01_variabler.py` | Filtre med flyt, enhetsautodeteksjon, celler (utøver × år × øvelse), nivå-z, aldersbånd |
 | 2 | `02_deskriptiv.py` | Heaping (0,0-andel, hele m/s), dekning per øvelse × år, celletellinger |
 | 3 | `03_estimering.py` | Hovedeffekter, alder × kjønn-skalering, nivåtertiler, asymmetri, kvadratisk, robusthet (inkl. to-veis FE), +2,0 m/s-fordelen |
-| 4 | `04_figurer_tabeller.py` | β(alder)-figuren m.m. (skrives etter første estimering) |
+| 4 | `04_figurer_tabeller.py` | β(alder)-figuren, asymmetri, nivå, manustabeller |
+| 0b | `00b_uttrekk_hekk.py` | Tillegg 29.10 (Atles forespørsel): ti korthekk-koder med vinddata |
+| 5 | `05_hekk.py` | Hekkestimering per kode (= per klassespesifikasjon) + fig5 med flat sprint-referanse |
 
 Python: `scraper/venv`. Data i `data_private/` (git-ignorert, regenererbart).
 

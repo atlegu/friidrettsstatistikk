@@ -54,6 +54,10 @@ Vindfordelingens heaping (andel eksakt 0,0; topper på hele tall), dekning per �
 
 Kode i `forskning/vind/`: `00_uttrekk.py` → `data_private/` (git-ignorert), `01_variabler.py`, `02_deskriptiv.py`, `03_estimering.py`, `04_figurer_tabeller.py`. Hovedfigur: β(alder) per øvelse med KI; asymmetrifigur; «+2,0 m/s-fordelen» som tabell per øvelse × kjønn × aldersbånd. Offentlige resultater; ingen individer identifiseres; prestasjonsdata ved 10–12 brukes her til å estimere *målebetingelser*, ikke til å rangere eller vurdere barn — ingen lister, persentiler eller individnivåfunn under 13 publiseres (barneidrettsbestemmelsenes formål respekteres; dette avsnittet står også i manuset). Samme hjemmelsgrunnlag som A1/A3. Manusets transparenssetning: plan committet før estimering, ikke eksternt registrert. Måltidsskrift: Journal of Sports Sciences, EJSS eller IJSPP. Naturlig medforfatter: Simen (Part I-profilen); avklares med Atle.
 
+## Tillegg 29.10.2026 (etter hovedestimeringene, på Atles forespørsel): korthekk
+
+Korthekk ble opprinnelig utelatt fordi vinddekningen så tynn ut; en kontroll viste at ti korthekk-koder har reelle vinddata (34 700 vindmålte rader; 60 m hekk-kodene for eldre klasser er innendørsøvelser og har ingen). Siden kodene bærer klassespesifikasjonen (distanse + hekkehøyde), estimeres effekten **per kode**, som i praksis er per aldersklasse-spesifikasjon, med samme within utøver × sesong-design (`00b_uttrekk_hekk.py`, `05_hekk.py`). Flat sprint på samme distanse og modalt aldersbånd brukes som referanse. Tillegget er lagt til etter at hovedestimeringene var kjørt, og merkes slik i manuset.
+
 ## 7. Hva studien ikke gjør
 
 Ingen temperatur-/værkobling i v1 (MET-utvidelse er mulig oppfølging); ingen hekk; ingen korreksjonsformel «vedtas» — studien leverer estimatene og usikkerheten, og diskuterer regelimplikasjoner uten å foreskrive regelendring.
