@@ -1,0 +1,59 @@
+# Response to the round-1 panel — "Does starting age predict who stays?"
+
+We thank all three reviewers. Every analysis point was either re-estimated or newly computed (script `05_revisjon_r1.py`; outputs in `tables/modeller/r1_*.csv`), and the Introduction, §4.2, §4.4 and Perspective were rewritten as requested. Point-by-point:
+
+## Reviewer 1 (epidemiologist)
+
+**R1-1 (landmark may condition on the future).** The reviewer is right, and we are grateful: the condition was interpretation (a) — any result at age ≥17 — which lets future senior activity qualify athletes into the landmark. H3 has been re-estimated on the proper landmark (≥1 approved result **in the age-17 season itself**): n = 1,637 (9.4 % of debutants), 472 seniors (28.8 %); 74 seniors had a fully idle age-17 season before returning, which is reported and is exactly why the correct definition matters. The corrected estimates are OR 0.85 (0.80–0.90) per year of later debut without current volume and 0.99 (0.92–1.05) with it — the conclusion is unchanged and now valid. Methods §2.4 defines the landmark precisely (predictors measured by the end of the age-17 season; outcome window begins at age 20); the abstract and all text numbers are updated. The Table 4 outcome row has been relabelled "any result at age ≥17" to avoid the same ambiguity (as an *outcome*, future activity is legitimate).
+
+**R1-2 ("significantly" at debut 13; test the U).** Corrected: the Results now state that debuts at 11, 12 and 14 had significantly lower odds (OR 0.53–0.63) while debut at 13 was directionally lower (OR 0.75, 95 % CI 0.55–1.02). A likelihood-ratio test of categorical vs linear coding has been added: LR = 43.2, df = 5, p = 3.3 × 10⁻⁸ (abstract, §3.2, Table 2 caption).
+
+**R1-3 (17+ arithmetic and outcome overlap).** Both points were real. The debut-age distribution within the late group was 193 (17), 153 (18), 56 (19) and 165 (≥20); the ≥20 debuts can coincide with the outcome itself and are now excluded. The re-estimated sensitivity uses debuts 17–19 only: OR 3.36 (2.42–4.67) vs debut at 10, n = 17,898, 595 events — the right arm of the U strengthens when the mechanical cases are removed. Text and Table 4 updated, with the distribution reported.
+
+**R1-4 (retention denominators, definition, CIs, composition).** "Still competing k years after debut" is now defined (≥1 approved result in calendar year debut + k; point prevalence) in Methods and the Table 3 caption. Per-k denominators are stated: they equal the debut-age n except debut 16 at k = 5 (424 → 389). Wilson 95 % CIs for every cell are provided in new Supplementary Table S2. On composition: sex-specific conversion is now reported (Supplementary Table S3) with a sex × debut-age interaction (OR 0.92, 0.82–1.02); a covariate-adjusted duration-scale model is beyond what we want to claim from descriptive retention, and the adjusted conversion models (Table 2) carry the inferential weight.
+
+**R1-5 (exit/censoring operational definition; 2026).** Added verbatim to §2.3: an exit requires at least two fully idle calendar years for athletes last active in 2024 or earlier; returns after 2026 are unknowable; the extract runs to 29 Oct 2026, slightly shortening the youngest cohort's senior window, addressed by the cohort covariate and cohort-split robustness.
+
+**R1-6 (covariate sets).** Methods now state the exact covariate set per hypothesis, the region level count (18 + unknown), and a robustness row adding the COVID-19 debut flag to the primary trend (OR 0.95, 0.90–1.01; Table 4). Full coefficient tables are generated with the analysis code (`r1_h1_full_koeffisienter.csv`).
+
+**R1-7 (STROBE flow).** Supplementary Table S1 now gives the full flow, the 9,246 born 2006–2008 are stated explicitly in §2.2, and the debut-assignment implication of excluded non-approved/sub-age-10 rows is noted. The STROBE checklist will accompany submission.
+
+**Minors.** The 2.0/2.1 % sentence rewritten with all actual values including debut 13; "17 % against 3–7 %" now reads 17 % (10) and 10 % (11) vs 3–7 % (12–16); "teenage debutants" specified as 14–16; abstract direction of the landmark OR fixed ("earlier debut appeared advantageous… OR 0.85 per year of later debut"); sparse-events note added for debut 16 (28 events); Anderson et al. moved to the landmark sentence and Korn et al. (1997, Am J Epidemiol 145:72–80, CrossRef-verified) now supports age-as-timescale with delayed entry; reference [2] verified against CrossRef (published online 17 Jan 2022; volume 3 carries the 2021 volume year — a bibliographic note added) and [5] verified (2022;27(2):197–214); Figure 4 retained alongside Table 3 (the figure communicates trajectory shape, the table exact values — we are happy to move it to the supplement at the editor's preference); code/plan deposition at acceptance is our intention.
+
+## Reviewer 2 (sport sociologist)
+
+**R2-1 (registration practice as competing explanation).** Added to limitations: registered debut reflects registration practice (which meets submit results for the youngest classes, and how clubs handle them), so cohort trends in debut age may be partly organisational rather than behavioural. The regulatory meaning of the age-10 boundary is now carried by the same passage.
+
+**R2-2 (van Yperen not like-for-like).** Agreed. The Introduction now flags the construct gap at first mention ("its exposure, joining organised football, is not the same construct as the registered-competition debut studied here"), H1 is framed as the entry-timing margin ("read onto this margin, the two positions suggest opposite directions"), and §4.2 is rewritten around what the margin can and cannot test.
+
+**R2-3 (gender).** Added: sex-specific conversion by debut age (Supplementary Table S3; boys higher at every debut age, e.g. 4.3 vs 3.4 % at 10 and 7.1 vs 5.7 % at 16), the male tilt of the late channel in §3.2 and Perspective, and the single interaction test (OR 0.92, 0.82–1.02, n.s.), with no finer stratification — as the editor's synthesis suggested.
+
+**R2-4 ("halved" unsupported).** Deleted. The Perspective no longer contains the claim; the sentence now motivates nothing beyond what the manuscript shows.
+
+**R2-5 (selection → strategy).** The Perspective is rewritten as three descriptive planning parameters, with the average-vs-marginal sentence the reviewer asked for ("adolescents recruited into entry who would not have come on their own cannot be assumed to convert at the observed 6.6 %") and the male-tilt caveat. The first-season-support conclusion is explicitly marked as not depending on the selection caveat.
+
+**R2-6 (structural selection).** Limitations now name geography, club culture, family resources and socioeconomic access, and acknowledge the endogeneity of the club-size proxy.
+
+**R2-7 (parental-decision claim).** Now explicitly marked as interpretation, not evidence (§4.2).
+
+**Minors.** The 865 sex-missing athletes characterised (brief early participants) in §2.2 and §3.1; registry-scope sentence added to the Perspective's closing line; keyword "early specialisation" replaced with "competition entry age"; the "renders moot" phrasing rewritten; the Sikt reference number will be inserted at submission.
+
+## Reviewer 3 (talent development)
+
+**R3-1 (strawman framing).** Accepted in full. §4.2 is retitled "What the entry-timing margin can and cannot test" and rewritten: the study directly tests entry timing into registered competition and comments on the specialisation debate only indirectly; the Introduction carries the same framing.
+
+**R3-2 (mechanism symmetry; compositional U).** The rewritten §4.2 offers left-arm candidate mechanisms (first-eligible-age enrolment by attached families; mid-childhood samplers; club pathways formed at 10) and states plainly that the entire U may be compositional. The LRT (R1-2) gives the U a test statistic.
+
+**R3-3 (average vs marginal).** Added, in nearly the reviewer's words (see R2-5). The Perspective was retained, as the reviewer preferred, with the two caveats inserted.
+
+**R3-4 (prediction vs etiology; mediation and collider).** §3.4 now separates the two readings explicitly (current volume as plausible mediator; index-event selection at the landmark), and §4.4 restates the lesson as strictly predictive ("the claim is strictly predictive… no claim that entry history is causally inert").
+
+**R3-5 (retention is not attainment).** The symmetric caveat is added to limitations: the expertise literature cannot speak to retention, and this study cannot speak to attainment; no performance data were used.
+
+**R3-6 (debut-16 reversal; convergence billing).** The reversal is now reported in §3.3 with its interpretation ("a reversal at the latest entry age that itself fits the self-selection account"). Convergence already appears in the abstract and now carries parallel standing in the Perspective's third parameter.
+
+**Minors.** "First *registered* behavioural fact" adopted; the sampling-years literature is engaged thematically in §4.2's left-arm mechanisms; companion manuscripts will be provided to reviewers, and §4.4 states what this paper adds beyond them (the entry margin); the flat debut-season dose sentence added to §3.1; the delayed-entry caveat added to the Figure 3 caption.
+
+## Editor
+
+All seven convergent points are implemented as above; on the three noted disagreements we followed the synthesis (descriptive sex split + one interaction; duration table primary with convergence given parallel standing; Perspective retained with both caveats and "halved" deleted).

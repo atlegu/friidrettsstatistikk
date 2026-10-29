@@ -12,6 +12,8 @@ Nico~W. Van~Yperen, Laura Jonker, and Jan Verbeek.
 \newblock Predicting dropout from organized football: a prospective 4-year
   study among adolescent and young adult football players.
 \newblock {\em Frontiers in Sports and Active Living}, 3:752884, 2022.
+\newblock Published online 17 January 2022; the DOI string carries the 2021
+  volume year.
 
 \bibitem{larson2019}
 Heather~K. Larson, Bradley~W. Young, Tara-Leigh~F. McHugh, and Wendy~M.
@@ -72,6 +74,12 @@ Erik von Elm, Douglas~G. Altman, Matthias Egger, Stuart~J. Pocock, Peter~C.
   {E}pidemiology ({STROBE}) statement: guidelines for reporting observational
   studies.
 \newblock {\em The Lancet}, 370(9596):1453--1457, 2007.
+
+\bibitem{korn1997}
+Edward~L. Korn, Barry~I. Graubard, and Douglas Midthune.
+\newblock Time-to-event analysis of longitudinal follow-up of a survey: choice
+  of the time-scale.
+\newblock {\em American Journal of Epidemiology}, 145(1):72--80, 1997.
 
 \bibitem{anderson1983}
 James~R. Anderson, Kevin~C. Cain, and Richard~D. Gelber.
