@@ -6,7 +6,7 @@ Samme visuelle språk som A1/frafallsartikkelen. Kjøres etter 03.
 Output:
   figures/fig1_debut_age_by_cohort.png     debutaldersfordeling per fødselskohort
   figures/fig2_senior_by_debut_age.png     seniorandel per debutalder (Wilson-KI)
-  figures/fig4_retention_k.png             andel aktiv k år etter debut
+  figures/fig3_retention_k.png             andel aktiv k år etter debut (figur 3 i trykk)
   tables/manus/table1_characteristics.csv
   tables/manus/table2_h1.csv  table3_h2_h3.csv  table4_robustness.csv
 """
@@ -90,7 +90,7 @@ def fig2(prim):
     plt.close(fig)
 
 
-def fig4():
+def fig3():
     rk = pd.read_csv(MOD / "retention_k.csv")
     fig, ax = plt.subplots(figsize=(8.2, 5.2))
     farger = plt.cm.viridis(np.linspace(0.1, 0.9, 7))
@@ -106,7 +106,7 @@ def fig4():
     ax.legend(ncol=4, frameon=False, fontsize=8.5, loc="upper center",
               bbox_to_anchor=(0.5, -0.12))
     fig.tight_layout()
-    fig.savefig(FIG / "fig4_retention_k.png", bbox_inches="tight")
+    fig.savefig(FIG / "fig3_retention_k.png", bbox_inches="tight")
     plt.close(fig)
 
 
@@ -172,9 +172,9 @@ def main():
     d, prim = last()
     fig1(d)
     fig2(prim)
-    fig4()
+    fig3()
     tabeller(prim)
-    logger.info(f"3 figurer i {FIG}/ (figur 3 lages i 05b_revisjon_r2.py), 4 tabeller i {TABM}/")
+    logger.info(f"3 figurer i {FIG}/ (figur 4 lages i 05b_revisjon_r2.py), 4 tabeller i {TABM}/")
 
 
 if __name__ == "__main__":

@@ -134,6 +134,35 @@ for (kn in list(c("kohort_2001_2003", 2001, 2003), c("kohort_2004_2005", 2004, 2
                           kn[1], nrow(g), sum(g$senior))
 }
 
+# Debut 16 mot koronadebutene (Atles beslutning 30.10.2026): kull 2004-2005 fylte 16 i 2020-2021,
+# så den kategoriske kontrasten regnes uten 2020-2021-debuter, med koronaflagg og per kohorthalvdel,
+# med LRT kategorisk mot lineær i hvert utvalg
+lrt_rad <- function(g, merk) {
+  mk <- glm(senior ~ debut_kat + gender + bk + log_klubb, binomial, g)
+  ml <- glm(senior ~ debut_alder + gender + bk + log_klubb, binomial, g)
+  lr <- as.numeric(2 * (logLik(mk) - logLik(ml)))
+  df <- attr(logLik(mk), "df") - attr(logLik(ml), "df")
+  list(mod = mk, lrt = data.table(analyse = paste0("LRT_", merk), variabel = "kat_vs_lin", OR = lr,
+                                  KI_lav = df, KI_hoy = 1 - pchisq(lr, df), p = NA,
+                                  n = nrow(g), hendelser = sum(g$senior)))
+}
+pu <- prim[covid_debut == FALSE]
+x <- lrt_rad(pu, "uten_covid_debut")
+ut$c16u <- or_rader(x$mod, "uten_covid_kategorisk", nrow(pu), sum(pu$senior))
+ut$c16ul <- x$lrt
+pf <- copy(prim)[, cflagg := as.numeric(covid_debut)]
+ut$c16f <- or_rader(glm(senior ~ debut_kat + cflagg + gender + bk + log_klubb, binomial, pf),
+                    "covid_flagg_kategorisk", nrow(pf), sum(pf$senior))
+for (kn in list(c("kohort_2001_2003", 2001, 2003), c("kohort_2004_2005", 2004, 2005))) {
+  g <- prim[birth_year %between% c(as.integer(kn[2]), as.integer(kn[3]))]
+  g[, bk := droplevels(bk)]
+  x <- lrt_rad(g, kn[1])
+  ut[[paste0(kn[1], "_kat")]] <- or_rader(x$mod, paste0(kn[1], "_kategorisk"), nrow(g), sum(g$senior))
+  ut[[paste0(kn[1], "_lrt")]] <- x$lrt
+}
+fwrite(prim[debut_alder == 16, .(n = .N, seniorer = sum(senior), kull_2004_2005 = sum(birth_year >= 2004)),
+            by = covid_debut][order(covid_debut)], "audit/r_out/debut16_covid.csv")
+
 # ---- Revisjon r2 (audit 30.10.2026) ---------------------------------------------------------
 # Utfall ved lik karrierelengde: >= 2 konkurransedager i en sesong minst D år etter debutsesongen,
 # blant utøvere der sesongen debutalder + D er observert ut 2025

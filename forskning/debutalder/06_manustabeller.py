@@ -1,7 +1,9 @@
 r"""
-06_manustabeller.py — A3: manustabellene 1–4 og S1–S3 som LaTeX, rett fra modell- og datafilene.
+06_manustabeller.py — A3: manustabellene 1–4 og S1–S4 som LaTeX, rett fra modell- og datafilene.
 
-Ingen tall skrives for hånd (audit 30.10.2026): tabellene \input-es i manus/main.tex.
+Ingen tall skrives for hånd (audit 30.10.2026): tabellene \input-es i manus/main.tex og
+manus/supplement.tex. S-tabellene er nummerert etter første sitering i teksten (S2 kjønn, S3
+retention med Wilson-KI; byttet 30.10.2026).
 """
 
 import json
@@ -122,6 +124,7 @@ def t4():
     cov = pd.read_csv(MOD / "r1_covid_flagg.csv")
     u01 = pd.read_csv(MOD / "r2_uten_2001.csv")
     ukj = pd.read_csv(MOD / "r2_ukjent_kjonn.csv")
+    c16 = pd.read_csv(MOD / "r2_covid_kategorisk.csv")
 
     def rad(df, an, var="debut_alder"):
         t = df[(df["analyse"] == an) & (df["variabel"] == var)].iloc[0]
@@ -130,6 +133,11 @@ def t4():
     rader = [
         ["Primary linear trend"] + rad(h1, "H1_trend"),
         ["Excluding debuts in 2020--2021"] + rad(rob, "uten_covid_debut"),
+        ["Debut at 16 vs.\\ debut at 10 (categorical), primary"] + rad(h1, "H1_kategorisk", "debut_kat_16"),
+        ["\\quad excluding debuts in 2020--2021"] + rad(c16, "uten_covid_kategorisk", "debut_kat_16"),
+        ["\\quad adding the COVID-19 debut flag"] + rad(c16, "covid_flagg_kategorisk", "debut_kat_16"),
+        ["\\quad cohorts born 2001--2003"] + rad(c16, "kohort_2001_2003_kategorisk", "debut_kat_16"),
+        ["\\quad cohorts born 2004--2005"] + rad(c16, "kohort_2004_2005_kategorisk", "debut_kat_16"),
         ["Excluding the 2001 cohort (debut at 10 in 2011)"] + rad(u01, "uten_2001_trend"),
         ["Including athletes without registered sex"] + rad(ukj, "med_ukjent_kjonn_trend"),
         ["Outcome: $\\geq$1 result at age $\\geq$20"] + rad(rob, "utfall_min1"),
@@ -166,7 +174,8 @@ def s1():
     return tabular(["Step", "n"], rader, "lr")
 
 
-def s2():
+def s3():
+    """Retention k år etter debut med Wilson-KI (S3; var S2 før 30.10.2026)."""
     r = retention()
     rader = []
     for a in range(10, 17):
@@ -177,7 +186,8 @@ def s2():
     return tabular(["Debut age", "n"] + [f"$k$={k}" for k in range(1, 6)], rader, "lcccccc")
 
 
-def s3():
+def s2():
+    """Seniorkonvertering per debutalder og kjønn (S2; var S3 før 30.10.2026)."""
     kk = pd.read_csv(MOD / "r1_kjonn_konvertering.csv")
     rader = []
     for a in range(10, 17):

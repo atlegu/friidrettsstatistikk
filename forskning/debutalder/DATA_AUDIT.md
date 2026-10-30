@@ -104,3 +104,20 @@ En uavhengig agent gikk gjennom definisjoner, noter og påstander (`final_review
 - **Typografi:** caption-pakken er lagt inn, så PDF-en ikke lenger viser «Table 5: *».
 - **Status:** 102 ankrede sjekker, 0 feil, 0 udekkede tall.
 - **Atles beslutning:** debut-16-armen hviler på debutanter fra koronaårene (uten debuter i 2020–21: OR 1,32, 0,79–2,19). Se endringsrapportens avsnitt 8.
+
+## Debut-16-armen og formkravene, Atles beslutning 30.10.2026 («Gjør det andre»)
+
+- **Ny analyse (lagt til etter planen):** `05b_revisjon_r2.py::covid_debut16` → `r2_covid_kategorisk.csv`, `r2_covid_lrt.csv`, `r2_debut16_covid.csv`; speilet i R, og `sammenlign.py` passerer.
+  - Alle 107 debut-16-utøvere i kull 2004–2005 debuterte i 2020–2021. 10,3 % ble seniorer, mot 5,4 % av de 317 andre.
+  - Debut 16 mot 10 uten koronadebuter: OR 1,32 (0,79–2,19). Med koronaflagg: 1,38 (0,86–2,19).
+  - Kohorthalvdelene gir 1,35 (0,80–2,26) mot 3,08 (1,59–5,96). Ikke-lineariteten holder uten koronadebuter (LR 30,5, p = 1,2e-5) og i begge halvdeler.
+- **Tekst:**
+  - Debut 16 er tatt ut av sammendraget.
+  - Results, tabell 2 og 4, Principal findings, avsnittet om hva marginen kan teste, Strengths og Perspective sier at forhøyelsen ved 16 hviler på koronadebutene.
+  - Methods opplyser at koronavariantene på kategorisk koding er lagt til etter planen.
+- **Formkrav (SJMSS):**
+  - Sammendraget har 242 ord (grense 250).
+  - S1–S4 ligger i egen fil `manus/supplement.tex`, med S2 og S3 nummerert etter første sitering.
+  - Figurfilene har trykkrekkefølgens nummer (`fig3_retention_k`, `fig4_shares_by_age`).
+  - Tabellene har forkortelsesnoter.
+- **Status:** `RUN_ALL.sh` er grønn, og to kjøringer ga like hasher på alle 52 utdatafiler. Kontrollen ga 125 ankrede sjekker (123 i manus, 2 i supplementet), 0 feil og 0 udekkede tall. Kontrollen teller også ordene i sammendraget.

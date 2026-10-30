@@ -13,10 +13,11 @@ debutaldre i én kurve. H2 besvares i stedet
     kull 2001–2004 (fullt observert til 21 år) — figur 3.
 
 I tillegg: H1 uten 2001-kullet (tynnest dekning i 2011), H1 med utøvere uten registrert kjønn
-(kjønn som «ukjent»), og andelen med fødselsdato etter utfall og debutalder (seleksjonen som gjør
-fødselskvartal-interaksjonen uegnet).
+(kjønn som «ukjent»), andelen med fødselsdato etter utfall og debutalder (seleksjonen som gjør
+fødselskvartal-interaksjonen uegnet), og debut 16-armen mot koronadebutene (Atles beslutning
+30.10.2026, endringsrapporten avsnitt 8, punkt 1).
 
-Output: tables/modeller/r2_*.csv, figures/fig3_shares_by_age.png
+Output: tables/modeller/r2_*.csv, figures/fig4_shares_by_age.png
 """
 
 import importlib.util
@@ -28,6 +29,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import statsmodels.api as sm
+from scipy import stats as scst
 from statsmodels.stats.proportion import proportion_confint
 
 HERE = Path(__file__).parent
@@ -74,7 +77,7 @@ def direkte_andeler(p):
     return pd.DataFrame(rader)
 
 
-def fig3(da):
+def fig4(da):
     fig, ax = plt.subplots(figsize=(8.2, 5.4))
     for (navn, _, _), farge, mark in zip(GRUPPER, [GRONN, GRAA, ROD], ["o", "s", "^"]):
         g = da[(da["gruppe"] == navn) & (da["alder"] >= 16)]
@@ -87,7 +90,7 @@ def fig3(da):
     ax.set_xticks(range(16, 22))
     ax.legend(frameon=False, fontsize=9.5)
     fig.tight_layout()
-    fig.savefig(FIG / "fig3_shares_by_age.png", bbox_inches="tight")
+    fig.savefig(FIG / "fig4_shares_by_age.png", bbox_inches="tight")   # figur 4 i trykk
     plt.close(fig)
 
 
@@ -138,18 +141,58 @@ def seleksjon_kvartal(p):
     return pd.DataFrame(rader)
 
 
+def lrt(q):
+    """Kategorisk mot lineær debutalder (samme justering som H1)."""
+    xl, xk = m03.design(q, ["debut_alder"] + m03.JUST), m03.design(q, ["debut_kat"] + m03.JUST)
+    ml, mk = sm.Logit(q["senior"], xl).fit(disp=0), sm.Logit(q["senior"], xk).fit(disp=0)
+    lr, df = 2 * (mk.llf - ml.llf), xk.shape[1] - xl.shape[1]
+    return {"LR": lr, "df": df, "p": float(1 - scst.chi2.cdf(lr, df)), "n": len(q),
+            "hendelser": int(q["senior"].sum())}
+
+
+def covid_debut16(p):
+    """Debut 16-armen mot koronadebutene. Kull 2004 og 2005 fylte 16 i 2020 og 2021, så hele
+    debut-16-gruppen deres er koronadebuter. Den kategoriske kontrasten (primærvisningen) regnes
+    derfor uten 2020–2021-debuter, med koronaflagg og per kohorthalvdel; robusthetsanalysene i
+    03 gjaldt bare den lineære trenden."""
+    q = p[~p["covid_debut"]]
+    pc = p.copy()
+    pc["covid_debut"] = pc["covid_debut"].astype(float)
+    halv = {"kohort_2001_2003": p[p["birth_year"].between(2001, 2003)],
+            "kohort_2004_2005": p[p["birth_year"].between(2004, 2005)]}
+    mod = pd.concat([m03.logit_rader(q, ["debut_kat"] + m03.JUST, "senior", "uten_covid_kategorisk"),
+                     m03.logit_rader(pc, ["debut_kat", "covid_debut"] + m03.JUST, "senior",
+                                     "covid_flagg_kategorisk")]
+                    + [m03.logit_rader(g, ["debut_kat"] + m03.JUST, "senior", f"{navn}_kategorisk")
+                       for navn, g in halv.items()])
+    lr = pd.DataFrame([{"utvalg": "uten_covid_debut", **lrt(q)}]
+                      + [{"utvalg": navn, **lrt(g)} for navn, g in halv.items()])
+    d16 = p[p["debut_alder"] == 16]
+    konv = (d16.groupby("covid_debut")["senior"].agg(n="size", seniorer="sum").reset_index()
+            .assign(andel=lambda x: x["seniorer"] / x["n"]))
+    konv["kull_2004_2005"] = [int(((d16["covid_debut"] == c) & d16["birth_year"].between(2004, 2005)).sum())
+                              for c in konv["covid_debut"]]
+    return mod, lr, konv
+
+
 def main():
     _, p = last()
     da = direkte_andeler(p)
     da.to_csv(MOD / "r2_andel_etter_alder.csv", index=False)
-    fig3(da)
+    fig4(da)
     andel, mod = lik_varighet(p)
     andel.to_csv(MOD / "r2_varighet_andeler.csv", index=False)
     mod.to_csv(MOD / "r2_varighet_modeller.csv", index=False)
     uten_2001(p).to_csv(MOD / "r2_uten_2001.csv", index=False)
     med_ukjent_kjonn().to_csv(MOD / "r2_ukjent_kjonn.csv", index=False)
     seleksjon_kvartal(p).to_csv(MOD / "r2_seleksjon_kvartal.csv", index=False)
-    logger.info(f"r2-filer i {MOD}/ og figur 3 i {FIG}/")
+    cmod, clr, ckonv = covid_debut16(p)
+    cmod.to_csv(MOD / "r2_covid_kategorisk.csv", index=False)
+    clr.to_csv(MOD / "r2_covid_lrt.csv", index=False)
+    ckonv.to_csv(MOD / "r2_debut16_covid.csv", index=False)
+    t = cmod[(cmod["analyse"] == "uten_covid_kategorisk") & (cmod["variabel"] == "debut_kat_16")].iloc[0]
+    logger.info(f"debut 16 uten koronadebuter: OR {t['OR']:.2f} [{t['KI_lav']:.2f}, {t['KI_hoy']:.2f}]")
+    logger.info(f"r2-filer i {MOD}/ og figur 4 i {FIG}/")
 
 
 if __name__ == "__main__":

@@ -139,6 +139,27 @@ def main():
         sjekk(f"andel {t['gruppe']} alder {t['alder']} n", t["n_py"], t["n_r"], 0)
         sjekk(f"andel {t['gruppe']} alder {t['alder']} aktive", t["aktive_py"], t["aktive_r"], 0)
 
+    # ---- debut 16 mot koronadebutene (Atles beslutning 30.10.2026) ----
+    c16 = pd.read_csv(TAB / "r2_covid_kategorisk.csv")
+    for an in ["uten_covid_kategorisk", "covid_flagg_kategorisk", "kohort_2001_2003_kategorisk",
+               "kohort_2004_2005_kategorisk"]:
+        for alder in range(11, 17):
+            or_sjekk(c16, an, f"debut_kat_{alder}", lg, an, f"debut_kat{alder}", f"{an} debut {alder}")
+    clr = pd.read_csv(TAB / "r2_covid_lrt.csv").set_index("utvalg")
+    for u_ in clr.index:
+        rr = lg[lg["analyse"] == f"LRT_{u_}"]
+        if not len(rr):
+            feil.append(f"LRT {u_}: mangler i R")
+            continue
+        sjekk(f"LRT {u_} LR", clr.loc[u_, "LR"], rr.iloc[0]["OR"], 0.1)
+        sjekk(f"LRT {u_} df", clr.loc[u_, "df"], rr.iloc[0]["KI_lav"], 0)
+        sjekk(f"LRT {u_} n", clr.loc[u_, "n"], rr.iloc[0]["n"], 0)
+    k16_py = pd.read_csv(TAB / "r2_debut16_covid.csv").set_index("covid_debut")
+    k16_r = pd.read_csv(R / "debut16_covid.csv").set_index("covid_debut")
+    for c in k16_py.index:
+        for kol in ["n", "seniorer", "kull_2004_2005"]:
+            sjekk(f"debut 16 covid={c} {kol}", k16_py.loc[c, kol], k16_r.loc[c, kol], 0)
+
     u10 = pd.read_csv(R / "debut_under10.csv").iloc[0, 0]
     print(f"A3-2: utøvere med første resultat før fylte 10: {u10}")
 
