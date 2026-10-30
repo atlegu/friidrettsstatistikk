@@ -260,11 +260,72 @@ def lybbert():
     return len(m) + len(fp)
 
 
+def eliteende():
+    """Eliteenden (tabell S8): utvalgene som multisett, hovedtall, prosent, asymmetri med drag, knekk ved +2,
+    stevne-FE og TFRRS-tertilene, for Norge (alle aldre, 20-34), TFRRS og Tilastopaja per øvelse og kjønn."""
+    tidk = {"100m", "200m", "100mH", "110mH"}
+    p = pd.read_csv(EST / "r3_eliteende.csv")
+    u = pd.read_csv(R / "eliteende_utvalg.csv")
+    n = 0
+    for _, rr in u.iterrows():
+        t = p[(p["kilde"] == rr["kilde"]) & (p["event"] == rr["event_code"]) & (p["kjonn"] == rr["gender"])]
+        if not len(t):
+            # grupper uten python-rad skal ligge under rapporteringsterskelen (300 rader i 100 celler)
+            if rr["min2"] >= 300 and rr["celler2"] >= 100:
+                feil.append(f"eliteende utvalg {rr['kilde']} {rr['event_code']} {rr['gender']}: {rr['min2']} rader i "
+                            f"{rr['celler2']} celler, men ingen python-rad")
+            continue
+        sjekk(f"eliteende utvalg {rr['kilde']} {rr['event_code']} {rr['gender']} rader", int(t["n_analysert"].iloc[0]),
+              rr["rader"], 0)
+        sjekk(f"eliteende utvalg {rr['kilde']} {rr['event_code']} {rr['gender']} rader i celler >=2", int(t["n"].iloc[0]),
+              rr["min2"], 0)
+        n += 1
+    ms = pd.read_csv(R / "eliteende_multisett.csv").iloc[0]
+    for k in ["avvikende_nokler", "rader_kun_R", "rader_kun_python"]:
+        sjekk(f"eliteende multisett {k}", 0, ms[k], 0)
+    r = pd.read_csv(R / "eliteende.csv")
+    m = p.merge(r, on=["kilde", "event", "kjonn"], suffixes=("", "_r"), how="outer", indicator=True)
+    if (m["_merge"] != "both").any():
+        feil.append(f"eliteende: {(m['_merge'] != 'both').sum()} rader bare i én implementasjon")
+    felles = set(p.columns) & set(r.columns)
+    for _, t in m[m["_merge"] == "both"].iterrows():
+        tid = t["event"] in tidk
+        tol = 2e-4 if tid else 2e-2
+        par = [("gevinst_per_ms", "gevinst", tol), ("ki_lav", "ki_lav", tol), ("ki_hoy", "ki_hoy", tol),
+               ("pst", "pst", 2e-3), ("pst_ki_lav", "pst_ki_lav", 2e-3), ("pst_ki_hoy", "pst_ki_hoy", 2e-3),
+               ("medvind", "medvind", tol), ("motvind", "motvind", tol), ("ratio_obs", "ratio_obs", 1e-3),
+               ("ratio_ki_lav", "ratio_ki_lav", 2e-3), ("ratio_ki_hoy", "ratio_ki_hoy", 2e-3), ("p_lik", "p_lik", 2e-3),
+               ("medvind_0_2", "medvind_0_2", tol), ("over_2", "over_2", tol), ("over_2_se", "over_2_se", tol),
+               ("stevne_fe", "stevne_fe", tol), ("stevne_fe_ki_lav", "stevne_fe_ki_lav", 5 * tol),
+               ("stevne_fe_ki_hoy", "stevne_fe_ki_hoy", 5 * tol), ("snitt", "snitt", 5e-3),
+               ("n", "n", 0), ("celler", "celler", 0)]
+        for kp, kr, tl in par:
+            sjekk(f"eliteende {t['kilde']} {t['event']} {t['kjonn']} {kp}", t[kp], t[kr + ("_r" if kr in felles else "")], tl)
+        sjekk(f"eliteende {t['kilde']} {t['event']} {t['kjonn']} over_2_vs_0_2", t["over_2_vs_0_2"], t["over_2_vs_0_2_r"], 2e-3)
+        if not pd.isna(t["ratio_drag"]):
+            sjekk(f"eliteende {t['kilde']} {t['event']} {t['kjonn']} ratio_drag", t["ratio_drag"], t["ratio_drag_r"], 1e-3)
+            sjekk(f"eliteende {t['kilde']} {t['event']} {t['kjonn']} over_2_vs_0_2_drag", t["over_2_vs_0_2_drag"],
+                  t["over_2_vs_0_2_drag_r"], 2e-3)
+        n += 1
+    rt = pd.read_csv(R / "eliteende_tertil.csv")
+    pt = pd.read_csv(EST / "r3_eliteende_tertil.csv")
+    mt = pt.merge(rt, on=["kilde", "event", "kjonn", "tertil"], suffixes=("", "_r"), how="outer", indicator=True)
+    if (mt["_merge"] != "both").any():
+        feil.append(f"eliteende tertil: {(mt['_merge'] != 'both').sum()} rader bare i én implementasjon")
+    for _, t in mt[mt["_merge"] == "both"].iterrows():
+        tol = 2e-4 if t["event"] in tidk else 2e-2
+        for kp, kr, tl in [("gevinst_per_ms", "gevinst", tol), ("ki_lav", "ki_lav_r", tol), ("ki_hoy", "ki_hoy_r", tol),
+                           ("snitt", "snitt_r", 5e-3), ("n", "n_r", 0), ("celler", "celler_r", 0)]:
+            sjekk(f"eliteende tertil {t['event']} {t['kjonn']} {t['tertil']} {kp}", t[kp], t[kr], tl)
+        n += 1
+    return n
+
+
 def main():
     deler = [("utvalg", utvalg), ("hoved", hoved), ("alder", alder),
              ("asym", asym), ("vindu", vindu), ("hekk", hekk),
              ("tertil", tertil), ("deskriptiv", deskriptiv), ("kvad", kvad), ("stevne-FE", stevne_fe),
-             ("lybbert", lybbert)]
+             ("lybbert", lybbert), ("eliteende", eliteende)]
     for navn, fn in deler:
         n = fn()
         print(f"{navn}: {n} enheter sammenlignet")

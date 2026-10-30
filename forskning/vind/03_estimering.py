@@ -78,8 +78,19 @@ def estimer(d, y_kol, vindkolonner=("wind",), meet_fe=False, cluster="athlete_id
     Xk = [k for k in vindkolonner if k in Md.columns]
     if not Xk:
         return None
-    X = Md.drop(columns=[y_kol]).to_numpy()
-    navn = Md.drop(columns=[y_kol]).columns.tolist()
+    # Kontrollkolonner som er lineærkombinasjoner av de andre tas ut (vindkolonnene holdes fast):
+    # et fullt sett rundedummyer blir kollineært med den absorberte konstanten når referanse-
+    # kategorien bare finnes i stevner med én rad, som stevne-FE absorberer; X'X blir nær-singulær
+    # og klyngevariansen eksploderer (Tilastopaja kvinner 100 m, 30.10.2026). fixest gjør det samme.
+    andre = [k for k in Md.columns if k not in Xk and k != y_kol]
+    A = Md[Xk + andre].to_numpy()
+    behold = list(range(len(Xk)))
+    for j in range(len(Xk), A.shape[1]):
+        s = np.linalg.svd(A[:, behold + [j]], compute_uv=False)
+        if s[-1] > 1e-8 * s[0]:
+            behold.append(j)
+    navn = [(Xk + andre)[j] for j in behold]
+    X = Md[navn].to_numpy()
     m = sm.OLS(y, X).fit(cov_type="cluster", cov_kwds={"groups": d[cluster]})
     V = np.asarray(m.cov_params())
     # De absorberte cellene telles i småutvalgskorreksjonen når de ikke er nøstet i klyngene,

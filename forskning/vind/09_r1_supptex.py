@@ -1,5 +1,5 @@
 r"""
-09_r1_supptex.py — A6: alle manustabeller (1–6) og supplementstabeller (S1–S5) som LaTeX.
+09_r1_supptex.py — A6: alle manustabeller (1–6) og supplementstabeller (S1–S8) som LaTeX.
 
 Ingen verdier skrives for hånd (audit 30.10.2026): tabellene bygges her fra
 estimeringsfilene i full presisjon og \input-es i manus/main.tex. Desimalvalget står
@@ -275,11 +275,45 @@ def s7():
                     "Head/tail ratio (95\\,\\% CI)", "Drag-only ratio"], rader, "llrccccc")
 
 
+def s8():
+    """Eliteenden med samme estimator: TFRRS og Tilastopaja mot registerets referanserader (11_eliteende.py)."""
+    e = pd.read_csv(EST / "r3_eliteende.csv")
+    tid = {"100m", "200m", "100mH", "110mH"}
+    kilder = [("Norge", "Registry, all ages"), ("Norge_20_34", "Registry, 20--34"),
+              ("TFRRS", "US collegiate (TFRRS)"), ("Tilastopaja", "Championship finalists (Tilastopaja)")]
+    ovelser = [("100m", "100 m"), ("200m", "200 m"), ("100mH", "100 m hurdles"), ("110mH", "110 m hurdles"),
+               ("LJ", "Long jump"), ("TJ", "Triple jump")]
+    rader = []
+    for kode, navn in ovelser:
+        d = 3 if kode in tid else 2
+        for kj, kjn in [("M", "men"), ("F", "women")]:
+            t = e[(e["event"] == kode) & (e["kjonn"] == kj)]
+            if not len(t):
+                continue
+            rader.append([f"\\multicolumn{{11}}{{l}}{{\\textit{{{navn}, {kjn}}}}}"])
+            for k, kn in kilder:
+                tt = t[t["kilde"] == k]
+                if not len(tt):
+                    continue
+                tt = tt.iloc[0]
+                drag = "" if pd.isna(tt["ratio_drag"]) else f" ({tt['ratio_drag']:.2f})"
+                rader.append([kn, tusen(tt["n"]), f"{tt['snitt']:.2f}",
+                              ki(tt["gevinst_per_ms"], tt["ki_lav"], tt["ki_hoy"], d),
+                              f"{tt['per_sekund']:.4f}" if kode in tid else "---",
+                              tall(tt["medvind"], d), tall(tt["motvind"], d), f"{tt['ratio_obs']:.2f}{drag}",
+                              tall(tt["medvind_0_2"], d), f"{tall(tt['over_2'], d)} ({tt['over_2_se']:.{d}f})",
+                              tall(tt["stevne_fe"], d)])
+    hode = ["Sample", "n", "Mean mark", "Per m/s, linear (95\\,\\% CI)", "Per s", "Tailwind", "Headwind",
+            "Head/tail (drag)", "0 to +2", "Above +2 (SE)", "Meet FE"]
+    return tabular(hode, rader, "lrccccccccc")
+
+
 def main():
     for navn, fn in [("t1", t1), ("t2", t2), ("t3", t3), ("t4", t4), ("t5", t5), ("t6", t6),
-                     ("s1", s1), ("s2", s2), ("s3", s3), ("s4", s4), ("s5", s5), ("s6", s6), ("s7", s7)]:
+                     ("s1", s1), ("s2", s2), ("s3", s3), ("s4", s4), ("s5", s5), ("s6", s6), ("s7", s7),
+                     ("s8", s8)]:
         (UT / f"{navn}.tex").write_text(fn())
-    logger.info(f"t1–t6 og s1–s7 skrevet til {UT}/")
+    logger.info(f"t1–t6 og s1–s8 skrevet til {UT}/")
 
 
 if __name__ == "__main__":

@@ -561,7 +561,135 @@ k.need("abstract", "Almost all wind-effect estimates in athletics come from elit
 krav(Ma["ki_lav"] <= Ma["forhold_drag"] <= Ma["ki_hoy"], "gutter: drag innenfor KI («in both sexes»)")
 k.need("abstract", "on the 100 m by about as much as drag physics predicts at athletes' own speeds, in both sexes",
        "drag-påstand (krav: begge kjønn innenfor KI; 100 m samlet innen 5 %)")
-k.need("methods", "and the sex- and age-specific asymmetry comparison (Table S7) were added after the plan", "planavvik S7")
+k.need("methods", "the sex- and age-specific asymmetry comparison (Table S7) and the external-sample comparison (Table S8) were "
+       "added after the plan", "planavvik S7 og S8")
+
+# ================================================================ ELITEENDEN (tabell S8, 11_eliteende.py)
+ee = les("r3_eliteende.csv").set_index(["kilde", "event", "kjonn"])
+eet = les("r3_eliteende_tertil.csv").set_index(["event", "kjonn", "tertil"])
+eer = les("r3_eliteende_robusthet.csv")
+eef = json.loads((DATA / "eliteende_flyt.json").read_text())
+tfm, tff = ee.loc[("TFRRS", "100m", "M")], ee.loc[("TFRRS", "100m", "F")]
+tpm, tpf = ee.loc[("Tilastopaja", "100m", "M")], ee.loc[("Tilastopaja", "100m", "F")]
+nom, nof = ee.loc[("Norge", "100m", "M")], ee.loc[("Norge", "100m", "F")]
+snm, snf = ee.loc[("Norge_20_34", "100m", "M")], ee.loc[("Norge_20_34", "100m", "F")]
+seks = [nom, nof, tfm, tff, tpm, tpf]
+tl = lambda kj, t: eet.loc[("100m", kj, t)]
+# Norge-radene i S8 er regnet med samme kode som tabell 2-4/S7 og skal gi de samme tallene
+krav(abs(snm["gevinst_per_ms"] - a("100m", "M", "20-34")["gevinst_per_ms"]) < 1e-9
+     and abs(snf["gevinst_per_ms"] - a("100m", "F", "20-34")["gevinst_per_ms"]) < 1e-9, "S8: Norge 20-34 = tabell 3")
+krav(all(abs(x["ratio_drag"] - la_alle.loc[(kj, False), "forhold_drag"]) < 1e-9 for x, kj in [(nom, "M"), (nof, "F")]),
+     "S8: Norge alle aldre drag-forhold = S7")
+k.need("methods", f"NCAA Division I athletes, {eef['TFRRS']['aar_fra']}--{eef['TFRRS']['aar_til']}, read from a cleaned, "
+       f"hash-checked shared build of the profiles ({eef['TFRRS']['uten_eksakte_dubletter']} results of "
+       f"{eef['TFRRS']['utovere']} athletes", "TFRRS-utvalg")
+k.need("methods", f"final between {eef['Tilastopaja']['aar_fra']} and {eef['Tilastopaja']['aar_til']} "
+       f"({eef['Tilastopaja']['med_kjonn']} results of {eef['Tilastopaja']['utovere']} athletes)", "Tilastopaja-utvalg")
+k.need("results", f"on the 100 m, {f(tfm['gevinst_per_ms'], 3)} s per m/s (95% CI {f(tfm['ki_lav'], 3)}--"
+       f"{f(tfm['ki_hoy'], 3)}) for collegiate men and {f(tff['gevinst_per_ms'], 3)} ({f(tff['ki_lav'], 3)}--"
+       f"{f(tff['ki_hoy'], 3)}) for collegiate women, {f(tpm['gevinst_per_ms'], 3)} ({f(tpm['ki_lav'], 3)}--"
+       f"{f(tpm['ki_hoy'], 3)}) and {f(tpf['gevinst_per_ms'], 3)} ({f(tpf['ki_lav'], 3)}--{f(tpf['ki_hoy'], 3)}) for "
+       f"championship finalists", "eliteenden 100 m")
+andel = [x["gevinst_per_ms"] / h("100m")["gevinst_per_ms"] for x in (tfm, tff, tpm, tpf)]
+k.need("results", f"{pst(min(andel))}--{pst(max(andel))}% of the registry's {f(h('100m')['gevinst_per_ms'], 3)}",
+       "andel av registeret")
+krav(max(abs(x["gevinst_per_ms"] - x["moinat_plus1"]) for x in (tfm, tpm, tpf)) < 0.002
+     and abs(tff["gevinst_per_ms"] - tff["moinat_plus1"]) > 0.002, "Moinat: tre av fire innen 0,002 s")
+k.need("results", "for three of the four groups within 0.002 s of the level formula of", "Moinat-avvik (krav over)")
+ps6 = [tl(kj, t)["per_sekund"] for kj in "MF" for t in ("lav", "midt", "hoy")]
+k.need("results", f"its ability tertiles sit at {f(min(ps6), 4)}--{f(max(ps6), 4)} per second of race time",
+       "tertiler per sekund")
+krav(max(ps6) - min(ps6) < 0.0006, "tertiler «flat» per sekund")
+rel = [1 - x["per_sekund"] / ref["per_sekund"] for x, ref in [(tfm, nom), (tff, nof), (tpm, nom), (tpf, nof)]]
+reg = [nom["per_sekund"], nof["per_sekund"]]
+eks = [x["per_sekund"] for x in (tfm, tff, tpm, tpf)]
+k.need("results", f"the 100 m rate is {f(min(reg), 4)}--{f(max(reg), 4)} in the registry against {f(min(eks), 4)}--"
+       f"{f(max(eks), 4)} in the external samples, {pst(min(rel))}--{pst(max(rel))}% lower for the same sex",
+       "per sekund tre kilder")
+lov = [x["a6_lov_lav"] for x in (tfm, tff, tpm, tpf)] + [x["a6_lov_hoy"] for x in (tfm, tff, tpm, tpf)]
+obs = [x["gevinst_per_ms"] for x in (tfm, tff, tpm, tpf)]
+k.need("results", f"predicts {f(min(lov), 3)}--{f(max(lov), 3)} s per m/s at their mean times against the observed "
+       f"{f(min(obs), 3)}--{f(max(obs), 3)}", "S4-loven mot observert")
+krav(min(lov) > max(obs), "S4-loven over alle observerte")
+k.need("results", f"the registry's seniors gained {f(snm['gevinst_per_ms'], 3)} s per m/s ({f(snm['ki_lav'], 3)}--"
+       f"{f(snm['ki_hoy'], 3)}) against {f(tl('M', 'lav')['gevinst_per_ms'], 3)} ({f(tl('M', 'lav')['ki_lav'], 3)}--"
+       f"{f(tl('M', 'lav')['ki_hoy'], 3)}) for the slowest collegiate tertile of men, at "
+       f"{f(snm['snitt'], 1)} and {f(tl('M', 'lav')['snitt'], 1)} s, and {f(snf['gevinst_per_ms'], 3)} "
+       f"({f(snf['ki_lav'], 3)}--{f(snf['ki_hoy'], 3)}) against {f(tl('F', 'lav')['gevinst_per_ms'], 3)} "
+       f"({f(tl('F', 'lav')['ki_lav'], 3)}--{f(tl('F', 'lav')['ki_hoy'], 3)}) for women, at {f(snf['snitt'], 1)} and "
+       f"{f(tl('F', 'lav')['snitt'], 1)} s", "lik løpstid")
+krav(snm["ki_lav"] > tl("M", "lav")["ki_hoy"] and snf["ki_lav"] > tl("F", "lav")["ki_hoy"],
+     "lik løpstid: intervallene overlapper ikke")
+krav(abs(snm["snitt"] - tl("M", "lav")["snitt"]) < 0.25 and abs(snf["snitt"] - tl("F", "lav")["snitt"]) < 0.25,
+     "lik løpstid: snittider innen 0,25 s")
+k.need("results", f"({f(tfm['ratio_obs'], 2)} and {f(tff['ratio_obs'], 2)} against {f(tfm['ratio_drag'], 2)} and "
+       f"{f(tff['ratio_drag'], 2)}, men and women)", "TFRRS asymmetri")
+krav(all(x["ratio_ki_lav"] <= x["ratio_drag"] <= x["ratio_ki_hoy"] for x in (tfm, tff)), "college: drag innenfor KI («matched»)")
+k.need("results", f"({f(tpm['ratio_obs'], 2)} and {f(tpf['ratio_obs'], 2)} against {f(tpm['ratio_drag'], 2)} and "
+       f"{f(tpf['ratio_drag'], 2)}; Table S8)", "Tilastopaja asymmetri")
+krav(all(x["ratio_drag"] < x["ratio_ki_lav"] for x in (tpm, tpf)), "finalister: drag under KI («exceeded»)")
+fall = [1 - x["over_2_vs_0_2"] for x in seks]
+fall_d = [1 - x["over_2_vs_0_2_drag"] for x in seks]
+k.need("results", f"was {pst(min(fall))}--{pst(max(fall))}% lower than over 0 to +2 m/s, against the {pst(min(fall_d))}--"
+       f"{pst(max(fall_d))}% that drag-only physics predicts", "knekk over +2")
+krav(min(fall) > 0 and max(fall) <= max(fall_d), "medvindshelningen over +2 lavere enn over 0-2 i alle seks grupper, "
+     "og det største fallet ligger innenfor dragspennet")
+prim = eer[eer["analyse"] == "primaer"].set_index(["kilde", "event", "kjonn"])["gevinst_per_ms"]
+sp = eer[eer["event"].isin(["100m", "200m"]) & (eer["analyse"] != "primaer")]
+maks = max(abs(r["gevinst_per_ms"] / prim[(r["kilde"], r["event"], r["kjonn"])] - 1) for _, r in sp.iterrows())
+k.need("supplementary material", f"the 100 and 200 m slopes moved by at most {pst(maks)}%", "ekstern robusthet (S8-note)")
+demp = [1 - x["stevne_fe"] / x["gevinst_per_ms"] for x in seks]
+k.need("supplementary material", f"attenuated the 100 m slopes by {pst(min(demp))}--{pst(max(demp))}% in all three samples",
+       "ekstern stevne-FE (S8-note)")
+k.need("discussion", f"and the {f(min(obs), 3)}--{f(max(obs), 3)} s per m/s that the same estimator returns in collegiate "
+       "and world-class 100 m samples", "eliteenden i diskusjonen")
+k.need("discussion", f"the collegiate and world-class 100 m slopes lie {pst(min(rel))}--{pst(max(rel))}% below the registry's",
+       "per sekund i diskusjonen")
+mer = [snm["gevinst_per_ms"] / tl("M", "lav")["gevinst_per_ms"] - 1, snf["gevinst_per_ms"] / tl("F", "lav")["gevinst_per_ms"] - 1]
+krav(0.18 <= min(mer) and max(mer) <= 0.27, f"«a fifth to a quarter more» ({[round(x, 3) for x in mer]})")
+k.need("discussion", "gain a fifth to a quarter more than the slowest collegiate tertile", "lik løpstid i diskusjonen")
+krav(f(tpm["ratio_obs"], 1) == f(tpf["ratio_obs"], 1), "begge finalistforhold runder til samme verdi med én desimal")
+k.need("discussion", f"only the championship finalists exceed it ({f(tpm['ratio_obs'], 1)} against {f(tpm['ratio_drag'], 2)}--"
+       f"{f(tpf['ratio_drag'], 2)})", "finalister i diskusjonen")
+k.need("discussion", f"a tailwind is worth least to them ({f(tpm['medvind'], 3)} and {f(tpf['medvind'], 3)} s per m/s) while "
+       f"their headwind slopes ({f(tpm['motvind'], 3)} and {f(tpf['motvind'], 3)}) are about the collegiate ones "
+       f"({f(tfm['motvind'], 3)} and {f(tff['motvind'], 3)})", "medvind/motvind finalister")
+krav(tpm["medvind"] < min(tfm["medvind"], nom["medvind"], snm["medvind"])
+     and tpf["medvind"] < min(tff["medvind"], nof["medvind"], snf["medvind"]), "finalistene: minst medvindsgevinst")
+krav(abs(tpm["motvind"] - tfm["motvind"]) < 0.01 and abs(tpf["motvind"] - tff["motvind"]) < 0.01,
+     "finalistenes motvindshelning ≈ college (innen 0,01 s)")
+k.need("conclusion", f"the same estimator gives {f(min(obs), 3)}--{f(max(obs), 3)} s per m/s on the 100 m in collegiate and "
+       f"world-class samples against {f(h('100m')['gevinst_per_ms'], 3)} in the registry", "konklusjon eliteenden")
+# tabell S8 mot R: utvalg, snittmerke og lineært estimat med KI, rad for rad
+if not (R / "eliteende.csv").exists():
+    FEIL.append("R-utdata audit/r_out/eliteende.csv mangler (kjør audit/uavhengig.R)")
+rs = pd.read_csv(R / "eliteende.csv") if (R / "eliteende.csv").exists() else pd.DataFrame(columns=["kilde", "event", "kjonn"])
+navn_k = {"Registry, all ages": "Norge", "Registry, 20--34": "Norge_20_34", "US collegiate (TFRRS)": "TFRRS",
+          "Championship finalists (Tilastopaja)": "Tilastopaja"}
+ev_k = {"100 m": "100m", "200 m": "200m", "100 m hurdles": "100mH", "110 m hurdles": "110mH", "Long jump": "LJ",
+        "Triple jump": "TJ"}
+ev_s8, kj_s8, n_s8 = None, None, 0
+for ln in (PROSJ / "manus" / "s8.tex").read_text().splitlines():
+    m_ = re.match(r"\\multicolumn\{11\}\{l\}\{\\textit\{(.+), (men|women)\}\}", ln)
+    if m_:
+        ev_s8, kj_s8 = ev_k[m_.group(1)], {"men": "M", "women": "F"}[m_.group(2)]
+        continue
+    lab = ln.split(" &")[0]
+    if lab not in navn_k:
+        continue
+    n_s8 += 1
+    rr = rs[(rs["kilde"] == navn_k[lab]) & (rs["event"] == ev_s8) & (rs["kjonn"] == kj_s8)]
+    if not len(rr):
+        continue
+    rr = rr.iloc[0]
+    vist = tall_i(ln.split("&", 1)[1])
+    dd = 3 if ev_s8 in ("100m", "200m", "100mH", "110mH") else 2
+    forvent = [str(int(rr["n"])), f(rr["snitt"], 2), f(rr["gevinst"], dd), f(rr["ki_lav"], dd), f(rr["ki_hoy"], dd)]
+    if vist[:5] != forvent:
+        FEIL.append(f"s8 {lab} {ev_s8} {kj_s8}: vist {vist[:5]}, R gir {forvent}")
+    else:
+        k.n_ok += 1
+krav(n_s8 == len(ee), f"S8 har like mange rader som estimeringsfilen ({n_s8} mot {len(ee)})")
 
 # ================================================================ TABELLER mot R (uavhengig)
 rh = pd.read_csv(R / "hoved.csv")
@@ -577,7 +705,7 @@ for tex in ["t2"]:
             FEIL.append(f"t2 {navn}: vist {vist[:3]}, R gir {forvent}")
         else:
             k.n_ok += 1
-for t in ["t1", "t2", "t3", "t4", "t5", "t6", "s1", "s2", "s3", "s4", "s5", "s6", "s7"]:
+for t in ["t1", "t2", "t3", "t4", "t5", "t6", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"]:
     krav(f"\\input{{{t}}}" in k.raa, f"\\input{{{t}}} i manus (genererte tabeller)")
 
 # ================================================================ ORDTELLING
@@ -605,6 +733,7 @@ UNNTAK = [
     r"60 m above 17", r"cells-≥3", r"10--12 age classes", r"In cells ≥2",
     r"ages 11--13", r"0 to \+2 m/s", r"above \+2\b", r"\+2\b(?= \()", r"1\.4826( times| \$\\times\$)",
     r"200 m times filed as 100 m", r"exactly ±1 m/s", r"20--34 \(", r"1\.4826 ×",
+    r"version 1\.2", r"\b(19|20)\d\d--(19|20)\d\d\b",
 ]
 k.need("results", f"Dashes: fewer than {m03.MIN_N} results in {m03.MIN_CELLER} athlete-seasons", "tabellnote 3")
 k.need("results", f"Codes with fewer than {m03.MIN_N} results for one sex", "tabellnote 5")

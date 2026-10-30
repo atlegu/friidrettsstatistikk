@@ -326,4 +326,155 @@ hk <- rbindlist(lapply(sort(unique(h$event_code)), function(k) rbindlist(lapply(
 }))), fill = TRUE)
 fwrite(hk, "audit/r_out/hekk.csv")
 
+# ---- Eliteenden (tabell S8): eksterne utvalg bygget fra kildene etter reglene i 11_eliteende.py ----
+# Lagt til etter planen 30.10.2026. De eksterne utvalgene bygges her på nytt fra fellesbyggingen
+# tfrrs_shared v1.2 og Alder-prosjektets Tilastopaja-uttrekk (reglene i 11_eliteende.py og
+# DATA_AUDIT.md), kontrolleres som multisett mot Pythons eliteende_analyseklar.csv, og
+# estimeres med est(); Norge-radene (alle aldre og 20-34, per kjønn) tas fra d.
+EE_TID <- c("100m", "200m", "100mH", "110mH")
+EE_GR <- list("100m" = c(9.5, 14.5), "200m" = c(19, 30), "100mH" = c(11, 20), "110mH" = c(12, 20),
+              "LJ" = c(3, 9), "TJ" = c(8, 18.5))
+ee_lo <- sapply(EE_GR, `[`, 1); ee_hi <- sapply(EE_GR, `[`, 2)
+tf <- fread("../../../Covid/tfrrs_shared/v1.2/output/results_clean.csv",
+            select = c("athlete_id", "gender", "event", "mark", "mark_numeric", "wind_num", "round", "meet_id",
+                       "date", "season", "is_xc", "is_multi_sub", "valid", "hand", "flag_error"),
+            colClasses = list(character = c("athlete_id", "gender", "event", "mark", "round", "meet_id", "date",
+                                            "season")))
+tf <- tf[season == "outdoor" & event %chin% c("100", "200", "100H", "110H", "LJ", "TJ")]
+tf[, event_code := c("100" = "100m", "200" = "200m", "100H" = "100mH", "110H" = "110mH", "LJ" = "LJ",
+                     "TJ" = "TJ")[event]]
+tf <- tf[is_xc != 1 & is_multi_sub != 1]
+tf <- tf[valid == TRUE & !is.na(mark_numeric)]
+tf <- tf[hand == FALSE & (!(event_code %chin% EE_TID) | grepl("^[0-9]{1,2}\\.[0-9]{2}$", mark))]
+tf <- tf[flag_error == FALSE]
+tf <- tf[!is.na(wind_num) & abs(wind_num) <= 8]
+tf <- tf[mark_numeric >= ee_lo[event_code] & mark_numeric <= ee_hi[event_code]]
+tf <- tf[gender %chin% c("M", "F")]
+tf[, runde := fcase(round == "F", "finale", round == "P", "forsok", default = "ukjent")]
+tf <- unique(tf, by = c("athlete_id", "event_code", "date", "meet_id", "runde", "mark", "wind_num"))
+tf[, dato := as.IDate(date)]
+tf <- tf[!is.na(dato)]
+tf[, `:=`(kilde = "TFRRS", aar = year(dato), maaned = month(dato), y = mark_numeric, wind = wind_num)]
+
+tp <- fread("../../../../2026Host/Idrettsanlyser/Alder/data/processed/season_results.csv",
+            colClasses = "character")
+tp <- tp[event %chin% names(EE_GR)]
+tp <- unique(tp, by = c("athlete_id", "event", "date", "raw", "cid"))
+tp <- tp[indoor == "0"]
+tp <- tp[!(place %chin% c("D", "H"))]
+tp <- tp[hand == "0" & annulled == "0"]
+tp[, y := suppressWarnings(as.numeric(value))]
+tp <- tp[!is.na(y)]
+tp[, wind := suppressWarnings(as.numeric(wind))]
+tp <- tp[!is.na(wind) & abs(wind) <= 8]
+tp[, event_code := event]
+tp <- tp[y >= ee_lo[event_code] & y <= ee_hi[event_code]]
+tp[, dato := as.IDate(date)]
+tp <- tp[!is.na(dato)]
+tp[, `:=`(aar = year(dato), maaned = month(dato))]
+tp[, runde := fcase(is.na(place) | place == "" | place == "-", "ukjent", grepl("h", place), "heat",
+                    grepl("s", place), "semi", grepl("q", place), "kval", grepl("r", place), "runde",
+                    default = "finale")]
+tp[, meet_id := fifelse(is.na(cid) | cid == "", paste0(venue, "_", date), cid)]
+tp[, gender := fcase(sex == "M", "M", sex == "W", "F", default = NA_character_)]
+tp <- tp[!is.na(gender)]
+tp[, kilde := "Tilastopaja"]
+
+ee_kol <- c("kilde", "event_code", "gender", "athlete_id", "aar", "maaned", "runde", "meet_id", "y", "wind")
+ee <- rbind(tf[, ..ee_kol], tp[, ..ee_kol])
+ee[, celle := paste(athlete_id, aar, event_code, sep = "_")][, n_i_celle := .N, by = celle]
+fwrite(ee[, .(rader = .N, min2 = sum(n_i_celle >= 2), celler2 = uniqueN(celle[n_i_celle >= 2])),
+          by = .(kilde, event_code, gender)][order(kilde, event_code, gender)], "audit/r_out/eliteende_utvalg.csv")
+py <- fread("data_private/eliteende_analyseklar.csv",
+            colClasses = list(character = c("athlete_id", "meet_id", "runde", "kilde", "event_code", "gender")))
+ke1 <- ee[, .(n_r = .N), by = .(kilde, athlete_id = as.character(athlete_id), meet_id = as.character(meet_id),
+                                 event_code, aar, y = round(y, 4), wind)]
+ke2 <- py[, .(n_p = .N), by = .(kilde, athlete_id, meet_id, event_code, aar, y = round(y, 4), wind)]
+mke <- merge(ke1, ke2, all = TRUE)
+mke[is.na(n_r), n_r := 0L][is.na(n_p), n_p := 0L]
+fwrite(data.table(avvikende_nokler = nrow(mke[n_r != n_p]), rader_kun_R = sum(mke[n_p == 0, n_r]),
+                  rader_kun_python = sum(mke[n_r == 0, n_p])), "audit/r_out/eliteende_multisett.csv")
+
+nor <- d[event_code %chin% c("100m", "200m", "lengde", "tresteg"),
+         .(event_code = c("100m" = "100m", "200m" = "200m", "lengde" = "LJ", "tresteg" = "TJ")[event_code],
+           gender, athlete_id, aar, maaned, runde, meet_id = as.character(meet_id), y, wind, celle, n_i_celle,
+           aldersband)]
+alle_ee <- rbind(copy(nor)[, kilde := "Norge"], nor[aldersband == "20-34"][, kilde := "Norge_20_34"], ee,
+                 fill = TRUE)
+alle_ee[, `:=`(logy = log(y), wind_pos = pmax(wind, 0), wind_neg = pmin(wind, 0),
+               w02 = pmin(pmax(wind, 0), 2), w2p = pmax(wind - 2, 0))]
+
+ee_rad <- function(g, kilde, kode, kj) {
+  r <- est(g)
+  if (is.null(r)) return(NULL)
+  s <- if (kode %chin% EE_TID) -1 else 1; sk <- if (kode %chin% EE_TID) 1 else 100
+  b <- coef(r$m)["wind"]; se <- sqrt(vcov(r$m)["wind", "wind"])
+  p <- est(g, "logy"); bl <- coef(p$m)["wind"]; sel <- sqrt(vcov(p$m)["wind", "wind"])
+  a <- est(g, vind = c("wind_pos", "wind_neg")); ba <- coef(a$m); Va <- vcov(a$m)
+  R <- unname(ba["wind_neg"] / ba["wind_pos"])
+  seR <- abs(R) * sqrt(Va["wind_neg", "wind_neg"] / ba["wind_neg"]^2 + Va["wind_pos", "wind_pos"] / ba["wind_pos"]^2
+                       - 2 * Va["wind_neg", "wind_pos"] / (ba["wind_neg"] * ba["wind_pos"]))
+  dif <- ba["wind_pos"] - ba["wind_neg"]
+  sed <- sqrt(Va["wind_pos", "wind_pos"] + Va["wind_neg", "wind_neg"] - 2 * Va["wind_pos", "wind_neg"])
+  drag <- NA_real_; drag_over2 <- NA_real_
+  if (kode %chin% c("100m", "200m")) {
+    gg <- copy(g)
+    gg[, tm := mean(y), by = celle][, v := c("100m" = 100, "200m" = 200)[[kode]] / tm]
+    gg[, ysim := tm * ((v - wind)^2 - v^2) / v^2]
+    bb <- coef(est(gg, "ysim", vind = c("wind_pos", "wind_neg"))$m)
+    drag <- unname(bb["wind_neg"] / bb["wind_pos"])
+    bq <- coef(est(gg, "ysim", vind = c("w02", "w2p", "wind_neg"))$m)
+    drag_over2 <- unname(bq["w2p"] / bq["w02"])
+  }
+  k <- est(g, vind = c("w02", "w2p", "wind_neg")); bk <- coef(k$m); sek <- sqrt(diag(vcov(k$m)))
+  fe <- est(g, fe2 = TRUE); bf <- coef(fe$m)["wind"]; sef <- sqrt(vcov(fe$m)["wind", "wind"])
+  data.table(kilde = kilde, event = kode, kjonn = kj, n = r$n, celler = r$celler, snitt = mean(g$y),
+             gevinst = s * b * sk, ki_lav = s * b * sk - 1.96 * se * sk, ki_hoy = s * b * sk + 1.96 * se * sk,
+             pst = s * 100 * bl, pst_ki_lav = min(s * 100 * (bl - 1.96 * sel), s * 100 * (bl + 1.96 * sel)),
+             pst_ki_hoy = max(s * 100 * (bl - 1.96 * sel), s * 100 * (bl + 1.96 * sel)),
+             medvind = s * ba["wind_pos"] * sk, motvind = s * ba["wind_neg"] * sk,
+             ratio_obs = R, ratio_ki_lav = R - 1.96 * seR, ratio_ki_hoy = R + 1.96 * seR,
+             p_lik = 2 * (1 - pnorm(abs(dif / sed))), ratio_drag = drag,
+             medvind_0_2 = s * bk["w02"] * sk, over_2 = s * bk["w2p"] * sk, over_2_se = sek["w2p"] * sk,
+             over_2_vs_0_2 = unname(bk["w2p"] / bk["w02"]), over_2_vs_0_2_drag = drag_over2,
+             stevne_fe = s * bf * sk, stevne_fe_ki_lav = s * bf * sk - 1.96 * sef * sk,
+             stevne_fe_ki_hoy = s * bf * sk + 1.96 * sef * sk)
+}
+ee_out <- rbindlist(lapply(c("Norge", "Norge_20_34", "TFRRS", "Tilastopaja"), function(k)
+  rbindlist(lapply(names(EE_GR), function(kode) rbindlist(lapply(c("M", "F"), function(kj) {
+    g <- alle_ee[kilde == k & event_code == kode & gender == kj]
+    if (!nrow(g)) NULL else ee_rad(g, k, kode, kj)
+  }))))))
+num <- names(ee_out)[vapply(ee_out, is.double, logical(1))]
+ee_out[, (num) := lapply(.SD, signif, 10), .SDcols = num]   # toveis FE: maskinpresisjonsstøy
+fwrite(ee_out, "audit/r_out/eliteende.csv")
+
+# TFRRS-tertiler av utøversesonger på vindjustert sesongsnitt innen øvelse x kjønn (som tertilene over)
+tft <- alle_ee[kilde == "TFRRS"]
+ter_ee <- rbindlist(lapply(names(EE_GR), function(kode) rbindlist(lapply(c("M", "F"), function(kj) {
+  g <- tft[event_code == kode & gender == kj]
+  r0 <- est(g)
+  if (is.null(r0)) return(NULL)
+  b <- coef(r0$m)["wind"]
+  g <- copy(g)[, y_adj := y - b * wind]
+  cel <- g[n_i_celle >= 2, .(cm = mean(y_adj)), by = celle]
+  cel[, prest := if (kode %chin% EE_TID) -cm else cm]
+  setorder(cel, prest, celle)
+  m <- nrow(cel)
+  if (m < 30) return(NULL)
+  cel[, tert := c("lav", "midt", "hoy")[floor(3 * (seq_len(m) - 1) / m) + 1]]
+  g[cel, tert := i.tert, on = "celle"]
+  s <- if (kode %chin% EE_TID) -1 else 1; sk <- if (kode %chin% EE_TID) 1 else 100
+  rbindlist(lapply(c("lav", "midt", "hoy"), function(t) {
+    gg <- g[tert == t]
+    r <- est(gg)
+    if (is.null(r)) return(NULL)
+    bb <- coef(r$m)["wind"]; se <- sqrt(vcov(r$m)["wind", "wind"])
+    data.table(kilde = "TFRRS", event = kode, kjonn = kj, tertil = t, n = r$n, celler = r$celler,
+               snitt = mean(gg$y), gevinst = s * bb * sk, ki_lav = s * bb * sk - 1.96 * se * sk,
+               ki_hoy = s * bb * sk + 1.96 * se * sk)
+  }))
+}))))
+fwrite(ter_ee, "audit/r_out/eliteende_tertil.csv")
+
 cat("uavhengig A6 ferdig\n")
