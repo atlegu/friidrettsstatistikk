@@ -68,15 +68,37 @@ def t1():
 
 
 def t2():
+    """Seniorutfallet (fast alder) og utfallet ved lik karrierelengde (D = 4), side om side."""
     h1 = pd.read_csv(MOD / "h1_debutalder.csv")
+    va = pd.read_csv(MOD / "r2_varighet_andeler.csv")
+    vm = pd.read_csv(MOD / "r2_varighet_modeller.csv")
     p = prim_utvalg()
-    rader = [[f"10 (reference; raw conversion {p.loc[p['debut_alder'] == 10, 'senior'].mean() * 100:.1f}\\,\\%)", "1.00"]]
-    for a in range(11, 17):
-        t = h1[(h1["analyse"] == "H1_kategorisk") & (h1["variabel"] == f"debut_kat_{a}")].iloc[0]
-        rader.append([str(a), ki(t["OR"], t["KI_lav"], t["KI_hoy"])])
-    t = h1[(h1["analyse"] == "H1_trend") & (h1["variabel"] == "debut_alder")].iloc[0]
-    rader.append(["Linear trend, per +1 year of debut age", ki(t["OR"], t["KI_lav"], t["KI_hoy"])])
-    return tabular(["Debut age", "OR (95\\,\\% CI)"], rader, "lc", midtlinjer=(7,))
+
+    def or_rad(df, analyse, var):
+        t = df[(df["analyse"] == analyse) & (df["variabel"] == var)].iloc[0]
+        return ki(t["OR"], t["KI_lav"], t["KI_hoy"])
+
+    rader = []
+    for a in range(10, 17):
+        g = p[p["debut_alder"] == a]
+        v = va[(va["D"] == 4) & (va["debut_alder"] == a)].iloc[0]
+        rader.append([str(a), tusen(len(g)), f"{g['senior'].mean() * 100:.1f}",
+                      "1.00 (ref.)" if a == 10 else or_rad(h1, "H1_kategorisk", f"debut_kat_{a}"),
+                      f"{v['andel'] * 100:.1f}",
+                      "1.00 (ref.)" if a == 10 else or_rad(vm, "varighet_4_kategorisk", f"debut_kat_{a}")])
+    rader.append(["Linear trend, per +1 year", "", "", or_rad(h1, "H1_trend", "debut_alder"), "",
+                  or_rad(vm, "varighet_4", "debut_alder")])
+    hode = ["Debut age", "n", "\\%", "OR (95\\,\\% CI)", "\\%", "OR (95\\,\\% CI)"]
+    linjer = ["\\begin{tabular}{lrcccc}", "\\toprule",
+              " & & \\multicolumn{2}{c}{Active senior (age $\\geq$20)} & "
+              "\\multicolumn{2}{c}{Competing $\\geq$4 years after debut} \\\\",
+              "\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}", " & ".join(hode) + " \\\\", "\\midrule"]
+    for i, r in enumerate(rader):
+        if i == 7:
+            linjer.append("\\midrule")
+        linjer.append(" & ".join(r) + " \\\\")
+    linjer += ["\\bottomrule", "\\end{tabular}"]
+    return "\n".join(linjer) + "\n"
 
 
 def retention():
@@ -98,6 +120,8 @@ def t4():
     rob = pd.read_csv(MOD / "robusthet.csv")
     d17 = pd.read_csv(MOD / "r1_debut1719.csv")
     cov = pd.read_csv(MOD / "r1_covid_flagg.csv")
+    u01 = pd.read_csv(MOD / "r2_uten_2001.csv")
+    ukj = pd.read_csv(MOD / "r2_ukjent_kjonn.csv")
 
     def rad(df, an, var="debut_alder"):
         t = df[(df["analyse"] == an) & (df["variabel"] == var)].iloc[0]
@@ -106,6 +130,8 @@ def t4():
     rader = [
         ["Primary linear trend"] + rad(h1, "H1_trend"),
         ["Excluding debuts in 2020--2021"] + rad(rob, "uten_covid_debut"),
+        ["Excluding the 2001 cohort (debut at 10 in 2011)"] + rad(u01, "uten_2001_trend"),
+        ["Including athletes without registered sex"] + rad(ukj, "med_ukjent_kjonn_trend"),
         ["Outcome: $\\geq$1 result at age $\\geq$20"] + rad(rob, "utfall_min1"),
         ["Outcome: any result at age $\\geq$17 (debuts 10--14)"] + rad(rob, "utfall_aktiv17_debut_10_14"),
         ["Adding debut-season competition days"] + rad(rob, "betinget_debutvolum"),
@@ -113,8 +139,6 @@ def t4():
         ["Cohorts born 2004--2005"] + rad(rob, "kohort_2004_2005"),
         ["Debut at 17--19 vs.\\ debut at 10 (categorical)"] + rad(d17, "r1_debut_17_19", "debut_kat_17"),
         ["Adding the COVID-19 debut flag (linear trend)"] + rad(cov, "r1_med_covid_flagg"),
-        ["Debut age $\\times$ birth quarter (exploratory; OR per quarter-year)"] + rad(rob, "kvartal_interaksjon_eksplorativ",
-                                                                   "debut_x_kvartal"),
         ["Club-clustered robust SE (trend)"] + rad(h1, "H1_trend_klubbrobust"),
     ]
     return tabular(["Analysis", "n", "Events", "OR (95\\,\\% CI)"], rader, "lccc")
@@ -166,10 +190,31 @@ def s3():
     return tabular(["Debut age", "Girls, n", "Girls, \\% (CI)", "Boys, n", "Boys, \\% (CI)"], rader, "lcccc")
 
 
+def s4():
+    """Utfallet ved lik karrierelengde, D = 4, 5 og 6 år etter debut."""
+    va = pd.read_csv(MOD / "r2_varighet_andeler.csv")
+    vm = pd.read_csv(MOD / "r2_varighet_modeller.csv")
+    rader = []
+    for a in range(10, 17):
+        rad = [str(a)]
+        for D in (4, 5, 6):
+            v = va[(va["D"] == D) & (va["debut_alder"] == a)].iloc[0]
+            rad.append(f"{v['andel'] * 100:.1f} ({tusen(v['n'])})")
+        rader.append(rad)
+    trend = ["Linear trend, OR per +1 year"]
+    for D in (4, 5, 6):
+        t = vm[(vm["analyse"] == f"varighet_{D}") & (vm["variabel"] == "debut_alder")].iloc[0]
+        trend.append(ki(t["OR"], t["KI_lav"], t["KI_hoy"]))
+    rader.append(trend)
+    return tabular(["Debut age", "4 years: \\% (n)", "5 years: \\% (n)", "6 years: \\% (n)"], rader, "lccc",
+                   midtlinjer=(7,))
+
+
 def main():
-    for navn, fn in [("t1", t1), ("t2", t2), ("t3", t3), ("t4", t4), ("s1", s1), ("s2", s2), ("s3", s3)]:
+    for navn, fn in [("t1", t1), ("t2", t2), ("t3", t3), ("t4", t4), ("s1", s1), ("s2", s2), ("s3", s3),
+                     ("s4", s4)]:
         (UT / f"{navn}.tex").write_text(fn())
-    logger.info(f"t1–t4 og s1–s3 skrevet til {UT}/")
+    logger.info(f"t1–t4 og s1–s4 skrevet til {UT}/")
 
 
 if __name__ == "__main__":

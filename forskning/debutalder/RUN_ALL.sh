@@ -23,8 +23,8 @@ $PY 02_deskriptiv.py
 $PY 03_modeller.py
 $PY 04_figurer_tabeller.py
 $PY 05_revisjon_r1.py
+$PY 05b_revisjon_r2.py
 $PY 06_manustabeller.py
-$PY 07_audit_alternativer.py
 
 echo "== 2. Manus (full LaTeX-syklus)"
 (

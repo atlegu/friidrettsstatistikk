@@ -53,9 +53,11 @@ def main():
     flyt["debutanter_alder_10plus"] = len(base)
     flyt["debut_17plus"] = int((base["debut_alder"] >= 17).sum())
 
+    # Utøvere uten registrert kjønn holdes utenfor analysefilen, men variablene bygges også for
+    # dem og lagres separat (følsomhetsanalyse med kjønn som «ukjent», audit 30.10.2026)
     uten_kjonn = base["gender"].isna() | ~base["gender"].isin(["M", "F"])
     flyt["uten_kjonn"] = int(uten_kjonn.sum())
-    base = base[~uten_kjonn].copy()
+    base["kjent_kjonn"] = ~uten_kjonn
 
     bd = pd.to_datetime(base["birth_date"], errors="coerce")
     base["kvartal"] = ((bd.dt.month - 1) // 3 + 1).astype("Int64")
@@ -98,6 +100,8 @@ def main():
     debutsesong = debutsesong[debutsesong["aar"] == debutsesong["debut_aar"]]
     base["region"] = base["athlete_id"].map(debutsesong.groupby("athlete_id")["krets"].agg(modal))
     base["club_id"] = base["athlete_id"].map(debutsesong.groupby("athlete_id")["club_id"].agg(modal))
+    ukjent = base[~base["kjent_kjonn"]].drop(columns="kjent_kjonn").copy()
+    base = base[base["kjent_kjonn"]].drop(columns="kjent_kjonn").copy()
     base["klubbstorrelse"] = base.groupby("club_id")["athlete_id"].transform("count")
     base["log_klubbstorrelse"] = np.log1p(base["klubbstorrelse"])
 
@@ -110,6 +114,10 @@ def main():
     flyt["primaerutvalg_seniorer"] = int(base.loc[prim, "senior"].sum())
 
     base.drop(columns=["birth_date"]).to_csv(DATA / "analysedata.csv", index=False)
+    ukjent["covid_debut"] = ukjent["debut_aar"].isin([2020, 2021])
+    ukjent["kohort_primar"] = ukjent["birth_year"].between(2001, 2005)
+    ukjent["debut_10_16"] = ukjent["debut_alder"].between(10, 16)
+    ukjent.drop(columns=["birth_date"]).to_csv(DATA / "analysedata_ukjent_kjonn.csv", index=False)
     with open(DATA / "flyt.json", "w") as f:
         json.dump(flyt, f, indent=2, ensure_ascii=False)
     logger.info(f"analysedata: {len(base)} debutanter; primærutvalg {flyt['primaerutvalg_fodt_2001_2005_debut_10_16']} "

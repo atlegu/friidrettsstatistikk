@@ -6,7 +6,6 @@ Samme visuelle språk som A1/frafallsartikkelen. Kjøres etter 03.
 Output:
   figures/fig1_debut_age_by_cohort.png     debutaldersfordeling per fødselskohort
   figures/fig2_senior_by_debut_age.png     seniorandel per debutalder (Wilson-KI)
-  figures/fig3_km_entry.png                KM med forsinket inntreden per debutgruppe
   figures/fig4_retention_k.png             andel aktiv k år etter debut
   tables/manus/table1_characteristics.csv
   tables/manus/table2_h1.csv  table3_h2_h3.csv  table4_robustness.csv
@@ -20,7 +19,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from lifelines import KaplanMeierFitter
 from statsmodels.stats.proportion import proportion_confint
 
 HERE = Path(__file__).parent
@@ -89,29 +87,6 @@ def fig2(prim):
     ax.set_ylim(bottom=0)
     fig.tight_layout()
     fig.savefig(FIG / "fig2_senior_by_debut_age.png", bbox_inches="tight")
-    plt.close(fig)
-
-
-def fig3(prim):
-    cx = prim.copy()
-    cx["slutt_alder"] = np.maximum(cx["siste_alder"], cx["debut_alder"]) + 0.5
-    cx["hendelse"] = (~cx["aktiv_naa"].astype(bool)).astype(int)
-    grupper = [("Debut 10–11", cx["debut_alder"].between(10, 11), GRONN),
-               ("Debut 12–13", cx["debut_alder"].between(12, 13), GRAA),
-               ("Debut 14–16", cx["debut_alder"].between(14, 16), ROD)]
-    fig, ax = plt.subplots(figsize=(8.2, 5.4))
-    for navn, maske, farge in grupper:
-        g = cx[maske]
-        KaplanMeierFitter().fit(g["slutt_alder"], g["hendelse"], entry=g["debut_alder"],
-                                label=f"{navn} (n = {len(g):,})").plot_survival_function(
-            ax=ax, color=farge, lw=2.4, ci_alpha=0.12)
-    ax.set_xlabel("Age (years)")
-    ax.set_ylabel("Proportion still competing")
-    ax.set_xlim(10, 26)
-    ax.set_title("Participation by age and debut group (delayed entry at debut)")
-    ax.legend(frameon=False, fontsize=9.5)
-    fig.tight_layout()
-    fig.savefig(FIG / "fig3_km_entry.png", bbox_inches="tight")
     plt.close(fig)
 
 
@@ -197,10 +172,9 @@ def main():
     d, prim = last()
     fig1(d)
     fig2(prim)
-    fig3(prim)
     fig4()
     tabeller(prim)
-    logger.info(f"4 figurer i {FIG}/, 4 tabeller i {TABM}/")
+    logger.info(f"3 figurer i {FIG}/ (figur 3 lages i 05b_revisjon_r2.py), 4 tabeller i {TABM}/")
 
 
 if __name__ == "__main__":

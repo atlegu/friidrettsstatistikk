@@ -107,6 +107,38 @@ def main():
         sjekk(f"{pre} ki_lav", t["ki_lav_py"], t["ki_lav_r"], 2e-4)
         sjekk(f"{pre} ki_hoy", t["ki_hoy_py"], t["ki_hoy_r"], 2e-4)
 
+    # ---- revisjon r2 (audit 30.10.2026) ----
+    va_py = pd.read_csv(TAB / "r2_varighet_andeler.csv")
+    va_r = pd.read_csv(R / "varighet_andeler.csv")
+    m = va_py.merge(va_r, on=["D", "debut_alder"], suffixes=("_py", "_r"))
+    if len(m) != len(va_py) or len(m) != len(va_r):
+        feil.append(f"varighet: radantall py={len(va_py)} R={len(va_r)} felles={len(m)}")
+    for _, t in m.iterrows():
+        sjekk(f"varighet D={t['D']} debut {t['debut_alder']} n", t["n_py"], t["n_r"], 0)
+        sjekk(f"varighet D={t['D']} debut {t['debut_alder']} hendelser", t["hendelser_py"], t["hendelser_r"], 0)
+    vm = pd.read_csv(TAB / "r2_varighet_modeller.csv")
+    for D in (4, 5, 6):
+        or_sjekk(vm, f"varighet_{D}", "debut_alder", lg, f"varighet_{D}", "debut_alder", f"varighet {D} trend")
+        for alder in range(11, 17):
+            or_sjekk(vm, f"varighet_{D}_kategorisk", f"debut_kat_{alder}", lg, f"varighet_{D}_kategorisk",
+                     f"debut_kat{alder}", f"varighet {D} debut {alder}")
+    u01 = pd.read_csv(TAB / "r2_uten_2001.csv")
+    or_sjekk(u01, "uten_2001_trend", "debut_alder", lg, "uten_2001_trend", "debut_alder", "uten 2001 trend")
+    for alder in range(11, 17):
+        or_sjekk(u01, "uten_2001_kategorisk", f"debut_kat_{alder}", lg, "uten_2001_kategorisk",
+                 f"debut_kat{alder}", f"uten 2001 debut {alder}")
+    ukj = pd.read_csv(TAB / "r2_ukjent_kjonn.csv")
+    or_sjekk(ukj, "med_ukjent_kjonn_trend", "debut_alder", lg, "med_ukjent_kjonn_trend", "debut_alder",
+             "ukjent kjønn trend")
+    da_py = pd.read_csv(TAB / "r2_andel_etter_alder.csv")
+    da_r = pd.read_csv(R / "andel_alder.csv")
+    m = da_py.merge(da_r, on=["alder", "gruppe"], suffixes=("_py", "_r"))
+    if len(m) != len(da_py) or len(m) != len(da_r):
+        feil.append(f"andel etter alder: radantall py={len(da_py)} R={len(da_r)} felles={len(m)}")
+    for _, t in m.iterrows():
+        sjekk(f"andel {t['gruppe']} alder {t['alder']} n", t["n_py"], t["n_r"], 0)
+        sjekk(f"andel {t['gruppe']} alder {t['alder']} aktive", t["aktive_py"], t["aktive_r"], 0)
+
     u10 = pd.read_csv(R / "debut_under10.csv").iloc[0, 0]
     print(f"A3-2: utøvere med første resultat før fylte 10: {u10}")
 

@@ -26,6 +26,7 @@ setorder(r, date)
 base <- r[, .SD[1], by = athlete_id][, .(athlete_id, debut_dato = date)]
 base <- merge(base, utv, by = "athlete_id")
 base[, debut_aar := year(debut_dato)][, debut_alder := debut_aar - birth_year]
+base0 <- copy(base)   # alle debutanter, også uten registrert kjønn (følsomhetsanalysen)
 base <- base[gender %chin% c("M", "F")]
 base[, kvartal := (month(as.IDate(birth_date)) - 1) %/% 3 + 1]
 
@@ -133,7 +134,51 @@ for (kn in list(c("kohort_2001_2003", 2001, 2003), c("kohort_2004_2005", 2004, 2
                           kn[1], nrow(g), sum(g$senior))
 }
 
+# ---- Revisjon r2 (audit 30.10.2026) ---------------------------------------------------------
+# Utfall ved lik karrierelengde: >= 2 konkurransedager i en sesong minst D år etter debutsesongen,
+# blant utøvere der sesongen debutalder + D er observert ut 2025
+var_andel <- list()
+for (D in 4:6) {
+  q <- prim[debut_alder + D <= 2025 - birth_year]
+  tr <- merge(arsvol[dager >= 2], q[, .(athlete_id, debut_alder)], by = "athlete_id")[alder >= debut_alder + D]
+  q[, utfall := as.integer(athlete_id %in% tr$athlete_id)]
+  var_andel[[D]] <- q[, .(D = D, n = .N, hendelser = sum(utfall)), by = debut_alder]
+  ut[[paste0("v", D)]] <- or_rader(glm(utfall ~ debut_alder + gender + bk + log_klubb, binomial, q),
+                                   paste0("varighet_", D), nrow(q), sum(q$utfall))
+  ut[[paste0("vk", D)]] <- or_rader(glm(utfall ~ debut_kat + gender + bk + log_klubb, binomial, q),
+                                    paste0("varighet_", D, "_kategorisk"), nrow(q), sum(q$utfall))
+}
+fwrite(rbindlist(var_andel), "audit/r_out/varighet_andeler.csv")
+
+# Uten 2001-kullet (debut ved 10 i 2011, året med tynnest dekning)
+g01 <- prim[birth_year != 2001][, bk := droplevels(bk)]
+ut$u01 <- or_rader(glm(senior ~ debut_alder + gender + bk + log_klubb, binomial, g01),
+                   "uten_2001_trend", nrow(g01), sum(g01$senior))
+ut$u01k <- or_rader(glm(senior ~ debut_kat + gender + bk + log_klubb, binomial, g01),
+                    "uten_2001_kategorisk", nrow(g01), sum(g01$senior))
+
+# Utøvere uten registrert kjønn som egen kategori; klubbstørrelse over alle debutanter
+b0 <- copy(base0)
+b0[!(gender %chin% c("M", "F")), gender := "ukjent"]
+b0[, senior := as.integer(athlete_id %in% sen[N >= 2, unique(athlete_id)])]
+ds0 <- merge(r[, .(athlete_id, aar, club_id)], b0[, .(athlete_id, debut_aar)], by = "athlete_id")
+ds0 <- ds0[aar == debut_aar & !is.na(club_id) & club_id != ""]
+mk0 <- ds0[, .N, by = .(athlete_id, club_id)][order(athlete_id, -N, as.character(club_id)), .SD[1], by = athlete_id]
+b0 <- merge(b0, mk0[, .(athlete_id, club_id)], by = "athlete_id", all.x = TRUE)
+b0[, klubbstorrelse := .N, by = club_id][is.na(club_id), klubbstorrelse := NA_integer_]
+b0[, log_klubb := log1p(klubbstorrelse)]
+b0[is.na(log_klubb), log_klubb := median(b0$log_klubb, na.rm = TRUE)]
+p0 <- b0[birth_year %between% c(2001, 2005) & debut_alder %between% c(10, 16)][, bk := factor(birth_year)]
+ut$ukj <- or_rader(glm(senior ~ debut_alder + gender + bk + log_klubb, binomial, p0),
+                   "med_ukjent_kjonn_trend", nrow(p0), sum(p0$senior))
+
 fwrite(rbindlist(ut), "audit/r_out/logit.csv")
+
+# Direkte andel med resultat ved alder t eller senere, kull 2001-2004, per debutgruppe
+s4 <- prim[birth_year %between% c(2001, 2004)]
+s4[, gruppe := fcase(debut_alder <= 11, "10-11", debut_alder <= 13, "12-13", default = "14-16")]
+fwrite(rbindlist(lapply(14:21, function(t) s4[, .(alder = t, n = .N, aktive = sum(siste_alder >= t)), by = gruppe])),
+       "audit/r_out/andel_alder.csv")
 
 # ---- Cox med alder som tidsskala og forsinket inntreden -----------------------------------
 cx <- copy(prim)

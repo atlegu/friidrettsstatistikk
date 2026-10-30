@@ -1,3 +1,5 @@
+> **Historisk dokument.** Svar til den simulerte refereerunden 29.10.2026. Det vedlikeholdes ikke etter dataauditen 30.10.2026 (Atles beslutning: ingen svarbrev til simulerte refereer), og tall og formuleringer stemmer ikke med gjeldende manus.
+
 # Response to the round-1 panel — "How much is the wind worth?"
 
 All new analyses are in `07_revisjon_r1.py` and `10_eiv_kalibrering.py` (outputs `tables/estimering/r1_*.csv`); every figure and table is generated from those files by `08_r1_figurer_tabeller.py` and `09_r1_supptex.py`, and every number in the text and in this letter is checked against them by an automated checker (`audit/kontroll_tall.py`). An independent reimplementation in R reproduces the analysis sample row for row and all estimates. That pre-submission audit also found and corrected errors of our own, listed under R2-2 and R2-4. The two reworks the editor made preconditions — design-consistent clustering and the H5 recomputation from the tailwind branch — were both done, and the H5 rework changed a headline conclusion: we report that openly below (R2-5).

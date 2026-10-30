@@ -146,21 +146,6 @@ def main():
                          "r1_med_covid_flagg")
     rc.to_csv(TAB / "r1_covid_flagg.csv", index=False)
 
-    # ---- KM med forsinket inntreden per debutgruppe: overlevelse ved hel alder ------------
-    # (tallgrunnlag for «converge from about age 16»; audit 30.10.2026)
-    from lifelines import KaplanMeierFitter
-    km = prim.copy()
-    km["slutt"] = np.maximum(km["siste_alder"], km["debut_alder"]) + 0.5
-    km["hendelse"] = (~km["aktiv_naa"].astype(bool)).astype(int)
-    km["gruppe"] = pd.cut(km["debut_alder"], [9, 11, 13, 16], labels=["10-11", "12-13", "14-16"])
-    km_rader = []
-    for gnavn, g in km.groupby("gruppe", observed=True):
-        kmf = KaplanMeierFitter().fit(g["slutt"], g["hendelse"], entry=g["debut_alder"].astype(float))
-        for alder in range(14, 26):
-            km_rader.append({"gruppe": str(gnavn), "alder": alder,
-                             "overlevelse": float(kmf.survival_function_at_times(alder + 0.5).iloc[0])})
-    pd.DataFrame(km_rader).to_csv(TAB / "r1_km_alder.csv", index=False)
-
     # ---- Debutforskyvning: utøvere med tidligere rader som ble utelatt før debut ---------
     # (ikke-godkjente rader eller rader før fylte 10; audit 30.10.2026, A3-2)
     utv = pd.read_csv(DATA / "utovere.csv").rename(columns={"id": "athlete_id"})
