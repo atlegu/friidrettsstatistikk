@@ -740,13 +740,19 @@ k.need("results", f"Dashes: fewer than {m03.MIN_N} results in {m03.MIN_CELLER} a
 k.need("results", f"Codes with fewer than {m03.MIN_N} results for one sex", "tabellnote 5")
 # ================================================================ ANONYMITET (JSS, dobbeltanonym)
 # Forfatteropplysninger og identifiserende erklæringer står i title_page.tex (egen fil, 30.10.2026).
-for s in ["Atle", "NMBU", "ORCID", "nmbu.no", "AGG", "Ås", "author's initiative", "from the author",
+for s in ["Atle", "Simen", "NMBU", "ORCID", "nmbu.no", "AGG", "Ås", "author's initiative", "from the author",
           "Acknowledgements", "Competing interests", "Author contributions"]:
     krav(s not in k.raa, f"anonymt manus: «{s}» står ikke i main.tex")
+krav(not re.search(r"\bSG\b", k.raa), "anonymt manus: «SG» står ikke i main.tex")
+# Simen Guttormsen medforfatter med samme tilknytning (Atles beslutning 30.10.2026): to forfattere,
+# erklæringene i flertall
 kt = Kontroll(PROSJ / "manus" / "title_page.tex", "A6 tittelside")
-for s in ["Guttormsen", "ORCID", "Disclosure of interest", "Funding", "Author contributions",
-          "Declaration of AI use", "Acknowledgements", "Tilastopaja Oy"]:
+for s in ["Guttormsen", "Simen Guttormsen$^{1}$", "ORCID", "Disclosure of interest", "Funding",
+          "Author contributions", "Both authors approved", "Declaration of AI use", "Acknowledgements",
+          "Tilastopaja Oy"]:
     krav(s in kt.raa, f"tittelsiden har «{s}»")
+for s in ["The author ", "The author's", "takes full responsibility"]:
+    krav(s not in kt.raa, f"tittelsiden står i flertall («{s}» finnes ikke)")
 kode_m = k.rapport(UNNTAK)
 kode_t = kt.rapport(UNNTAK)
 print(f"\nA6 TOTALT: {k.n_ok + kt.n_ok} sjekker OK, {len(k.feil) + len(kt.feil)} feil")

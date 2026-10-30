@@ -257,6 +257,10 @@ Filgjennomgangen (fase 7) fant også disse formkravene, men de kom ikke med i li
   - **Tittelside:** `manus/title_page.tex` er en egen fil med forfatter, ORCID og kontaktinformasjon. Den har også Disclosure of interest, Funding, Author contributions, KI-bruk og Acknowledgements.
   - **Manus:** Forfatterblokken er erstattet med en anonymiseringsnotis, «the author's initiative» er blitt «by a post-plan decision», og «available from the author» er blitt «available on request».
   - **Sjekk:** RUN_ALL stopper hvis manus-PDF-en har forfatteropplysninger i teksten eller metadataene. Selvsitering i tredje person, «Guttormsen (2026)», er tillatt.
+- **A6, medforfatter: Simen Guttormsen LAGT INN 30.10.2026** (Atles beslutning). Han har samme tilknytning, og Atle er fortsatt korresponderende forfatter.
+  - **Må bekreftes av deg og Simen:** «SG collected the TFRRS profiles used in the external validation and revised the manuscript critically. Both authors approved the final version.» Setningen følger høydeartikkelen.
+  - Simen må godkjenne endelig versjon før innsending. ScholarOne ber om e-posten hans (simen.guttormsen@nmbu.no i de andre artiklene), og ORCID-en hans kan legges til på tittelsiden.
+  - Simen står selv i registerutvalget: 75 av 392 797 rader, ungdomsresultater fra 2011–2020. Det er ikke skrevet inn i erklæringen. I høydeartikkelen ble det opplyst «for full transparency».
 - **Upubliserte følgestudier i referanselistene (A1 og A3).**
   - SMO godtar bare publiserte arbeider, «in press» eller preprint. SJMSS (AMA) lister ikke innsendte manus.
   - Dette gjelder dropout-artikkelen («under review») og A1, som A3 siterer som «in preparation».

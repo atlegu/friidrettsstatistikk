@@ -47,7 +47,7 @@ if pdftotext manus/main.pdf - | grep -q '??'; then
 fi
 # anonymitet: ingen forfatteropplysninger i manus-PDF-en eller metadataene (selvsitering i
 # tredje person, «Guttormsen (2026)», er tillatt)
-if pdftotext manus/main.pdf - | grep -Eq "Atle|NMBU|ORCID|nmbu\.no|\bAGG\b|Ås|author's initiative|from the author"; then
+if pdftotext manus/main.pdf - | grep -Eq "Atle|Simen|NMBU|ORCID|nmbu\.no|\bAGG\b|\bSG\b|Ås|author's initiative|from the author"; then
   echo "FEIL: identifiserende tekst i det anonymiserte manuset"; exit 1
 fi
 if pdfinfo manus/main.pdf | grep -Eq "^Author: +[^ ]"; then
