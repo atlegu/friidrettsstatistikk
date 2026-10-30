@@ -35,6 +35,8 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
+from kodegrupper import beslektede_koder, resultatnoekkel
+
 # Load environment variables
 load_dotenv()
 
@@ -222,6 +224,7 @@ def build_youth_url(gender: str, event_key: str) -> str:
 # Caches
 # ============================================================
 _event_cache: Dict[str, str] = {}
+_beslektet: Dict[str, set] = {}  # event_id -> {event_id-er der samme resultat kan ligge}, se kodegrupper.py
 _club_cache: Dict[str, str] = {}
 _athlete_cache: Dict[Tuple, str] = {}
 _athlete_details: Dict[str, Dict] = {}
@@ -239,6 +242,9 @@ def load_events():
         _event_cache[e['code']] = e['id']
         if e.get('name'):
             _event_cache[e['name']] = e['id']
+    kode_til_id = {e['code']: e['id'] for e in response.data if e['code']}
+    for kode, andre in beslektede_koder(kode_til_id).items():
+        _beslektet[kode_til_id[kode]] = {kode_til_id[k] for k in andre}
     logger.info(f"Loaded {len(response.data)} events")
 
 
@@ -305,23 +311,31 @@ def load_age_classes():
 
 
 def load_existing_results_for_event(event_id: str):
-    """Load existing results for dedup. Keyed by (athlete_id, event_id, date, performance)."""
+    """Load existing results for dedup. Keyed by (athlete_id, event_id, date, performance).
+
+    Rader under en beslektet kode (kodegrupper.py) legges inn under event_id, og resultatet
+    sammenlignes som tall («4.1» = «4.10»). Alle tiders-listene skiller ikke sonehopp fra
+    brett, så sonehopp som lå inne fra januar kom inn en gang til som lengde/tresteg
+    14.02.2026 (117 rader).
+    """
     global _existing_results
     _existing_results = {}
-    offset, chunk_size, total = 0, 1000, 0
-    while True:
-        response = supabase.table('results').select(
-            'id, athlete_id, event_id, date, performance'
-        ).eq('event_id', event_id).range(offset, offset + chunk_size - 1).execute()
-        if not response.data:
-            break
-        for r in response.data:
-            key = (r['athlete_id'], r['event_id'], r['date'], r['performance'])
-            _existing_results[key] = r['id']
-        total += len(response.data)
-        offset += chunk_size
-        if len(response.data) < chunk_size:
-            break
+    total = 0
+    for eid in (event_id, *sorted(_beslektet.get(event_id, ()))):
+        offset, chunk_size = 0, 1000
+        while True:
+            response = supabase.table('results').select(
+                'id, athlete_id, event_id, date, performance'
+            ).eq('event_id', eid).range(offset, offset + chunk_size - 1).execute()
+            if not response.data:
+                break
+            for r in response.data:
+                key = (r['athlete_id'], event_id, r['date'], resultatnoekkel(r['performance']))
+                _existing_results[key] = r['id']
+            total += len(response.data)
+            offset += chunk_size
+            if len(response.data) < chunk_size:
+                break
     logger.info(f"Loaded {total} existing results for event dedup")
 
 
@@ -1539,8 +1553,8 @@ def get_or_create_meet_historical(city: str, date_str: str, indoor: bool) -> Opt
 
 def result_already_exists(athlete_id: str, event_id: str, date_str: str,
                           performance: str) -> bool:
-    """Level 1 dedup: check if result already in DB."""
-    return (athlete_id, event_id, date_str, performance) in _existing_results
+    """Level 1 dedup: check if result already in DB (også under beslektede koder)."""
+    return (athlete_id, event_id, date_str, resultatnoekkel(performance)) in _existing_results
 
 
 def get_season_id(date_str: str, indoor: bool) -> Optional[str]:
@@ -1677,7 +1691,7 @@ def import_results(parsed_results: List[Dict], event_id: str, source_id: Optiona
         result_batch.append(result_data)
 
         # Track in cache to prevent intra-batch duplicates
-        _existing_results[(athlete_id, event_id, row['date_str'], row['performance'])] = 'pending'
+        _existing_results[(athlete_id, event_id, row['date_str'], resultatnoekkel(row['performance']))] = 'pending'
 
     # Insert
     if result_batch and not dry_run:

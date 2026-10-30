@@ -142,7 +142,7 @@ begin
 end;
 $$;
 
--- Stevneposter som ble tomme av oppryddingen (poster i reserven uten resultater igjen; 78 etter
+-- Stevneposter som ble tomme av oppryddingen (poster i reserven uten resultater igjen; 81 etter
 -- tørrkjøringen 30.10.2026, mest små poster fra ungdomsimporten 19.05 og alle tiders-importen
 -- 14.02). De lagres i opprydding_kryssposter og slettes. Har posten kildens stevne-id, får posten
 -- der de beholdte radene ligger et alias i stevne_alias, så importen ikke oppretter posten på nytt
@@ -245,8 +245,11 @@ as $$
 $$;
 
 -- Kontroll for test_fullstendighet.py (2): rader lagt inn etter p_fra som har en tvilling under en
--- annen kode med samme resultattype (samme utøver, dato, resultatverdi og vind). Fanger en ny
--- importvei eller en ny kodeoversettelse som legger samme resultat inn under feil kode.
+-- annen kode med samme resultattype (samme utøver, dato, resultatverdi og vind) lagt inn en annen
+-- dag. Fanger en ny importvei eller en ny kodeoversettelse som legger et resultat som alt ligger
+-- inne, inn under en annen kode. Tvillinger fra samme kjøring står hver for seg i kilden og er
+-- tilfeldig like (diskos 1,5 kg og spyd 700 g samme dag); de telles ikke. Siden 15.09.2026 gir
+-- regelen 2 rader (hekkehøyde rettet i kilden, ny rad under ny kode), de siste 30 dagene 0.
 create or replace function test_kryssdubletter_nye(p_fra timestamptz)
 returns table (ny text, eldre text, antall bigint)
 language sql
@@ -260,6 +263,7 @@ as $$
   join events en on en.id = n.event_id
   join results o on o.athlete_id = n.athlete_id and o.date = n.date and o.performance_value + 0 = n.performance_value
                 and o.wind is not distinct from n.wind and o.event_id <> n.event_id and o.status = 'OK'
+                and o.created_at::date <> n.created_at::date
   join events eo on eo.id = o.event_id and eo.result_type = en.result_type
   where n.created_at >= p_fra and n.status = 'OK' and n.performance_value is not null
   group by 1, 2;

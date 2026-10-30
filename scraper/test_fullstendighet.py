@@ -433,6 +433,31 @@ def sjekk_importdubletter(base: str, res: Resultat):
             'sjekk update_results.py (_uten_soeskendubletter) og kjoer rydd_importdubletter.py')
 
 
+def sjekk_kryssdubletter(base: str, res: Resultat):
+    """Samme resultat skal ikke ligge under to oevelseskoder.
+
+    Sonehoppene laa inne under lengde_sone_05m/tresteg_sone_05m fra januar 2026, men
+    importene oversatte «Lengde (Sone 0,5m)» til lengde og sjekket bare innen én kode. Da
+    stevnene ble hentet paa nytt (13.-14.02, 19.05 og 24.08-06.09.2026), kom 56 931 sonehopp
+    inn en gang til under brettkoden: 48 085 samme dag og 8 846 i flerdagsstevner med
+    startdatoen. Ryddes med rydd_kryssdubletter.py; importene ser naa paa beslektede koder
+    (kodegrupper.py).
+
+    To deler: brettrader med en sonetvilling i hele basen (test_kryssdubletter), og rader lagt
+    inn de siste tre dagene med en tvilling under en annen kode fra en tidligere kjoering
+    (test_kryssdubletter_nye) - fanger en ny importvei eller oversettelse som gjoer det samme
+    med andre oevelser.
+    """
+    res.sjekket += 1
+    for r in sb.rpc('test_kryssdubletter').execute().data:
+        res.lik('results', f"{r['kopi']} med tvilling i {r['beholdt']} ({r['regel']})", r['antall'], 0,
+                'kjoer rydd_kryssdubletter.py')
+    fra = (datetime.now(timezone.utc) - timedelta(days=3)).isoformat()
+    for r in sb.rpc('test_kryssdubletter_nye', {'p_fra': fra}).execute().data:
+        res.lik('results', f"rader lagt inn siste tre dager under {r['ny']} med tvilling i {r['eldre']}",
+                r['antall'], 0, 'sjekk oversettelsen i importen og kodegrupper.py')
+
+
 def sjekk_tider(base: str, res: Resultat):
     """Ingen tider under ett minutt i loep der det ikke er mulig.
 
@@ -453,6 +478,7 @@ SJEKKER = {
     'tider': lambda base, n, res: sjekk_tider(base, res),
     'stevnedubletter': lambda base, n, res: sjekk_stevnedubletter(base, res),
     'importdubletter': lambda base, n, res: sjekk_importdubletter(base, res),
+    'kryssdubletter': lambda base, n, res: sjekk_kryssdubletter(base, res),
     'vindflagg': lambda base, n, res: sjekk_vindflagg(base, res),
     'dubletter': lambda base, n, res: sjekk_dubletter(base, res),
     'avdrift': lambda base, n, res: sjekk_utoveravdrift(base, res),

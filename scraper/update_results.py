@@ -24,6 +24,8 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
+from kodegrupper import beslektede_koder, resultatnoekkel, vindnoekkel
+
 # Load environment variables
 load_dotenv()
 
@@ -177,9 +179,12 @@ EVENT_NAME_TO_CODE = {
     'Kappgang 2000 meter': '2000mg',
     'Kappgang 3000 meter': '3000mg',
 
-    # Zone jumps (map to base event)
-    'Lengde (Sone 0,5m)': 'lengde',
-    'Tresteg (Sone 0,5m)': 'tresteg',
+    # Sonehopp er egne øvelser, i kilden og i basen (lengde_sone_05m/tresteg_sone_05m fra
+    # januarimporten). Til 30.10.2026 sto de her som 'lengde'/'tresteg', og importene la
+    # sonehopp som alt lå inne, inn en gang til under brettkoden: 57 000 kopier. Se
+    # kodegrupper.py og _uten_kryssdubletter().
+    'Lengde (Sone 0,5m)': 'lengde_sone_05m',
+    'Tresteg (Sone 0,5m)': 'tresteg_sone_05m',
 }
 
 SKIP_EVENTS = {
@@ -216,6 +221,7 @@ _club_cache = {}       # club_name -> club_id
 _athlete_cache = {}    # (name, birth_year, gender) -> athlete_id
 _meet_cache = {}       # (kilde-id eller navn, dato, sted) -> meet_id
 _event_id_til_kode = {}  # event_id -> kode, til tidsformatet
+_beslektet = {}        # event_id -> {event_id-er der samme resultat kan ligge}, se kodegrupper.py
 _season_cache = {}     # (year, indoor) -> season_id
 
 
@@ -694,6 +700,9 @@ def load_events():
             m = re.match(r'^(\d+)m', e['code'] or '')
             if m and int(m.group(1)) < 800:
                 _event_manual_eligible.add(e['id'])
+    kode_til_id = {e['code']: e['id'] for e in response.data if e['code']}
+    for kode, andre in beslektede_koder(kode_til_id).items():
+        _beslektet[kode_til_id[kode]] = {kode_til_id[k] for k in andre}
     logger.info(f"Loaded {len(response.data)} events "
                 f"({len(_event_manual_eligible)} kan ha manuell tidtaking)")
 
@@ -1510,6 +1519,74 @@ def _uten_soeskendubletter(meet_id: str, rader: List[Dict], stats: Dict) -> List
     return beholdt
 
 
+def _uten_sted(navn):
+    """«Fana, Framolekene 2014» -> «framolekene 2014» (som i migrations/importdubletter.sql)."""
+    return re.sub(r'^[^,]*,\s*', '', navn or '').strip().lower() or None
+
+
+def _uten_kryssdubletter(meet_id: str, dato: str, rader: List[Dict], kilde: List[Dict],
+                         stats: Dict) -> List[Dict]:
+    """Fjern rader som alt ligger i basen under en beslektet øvelseskode.
+
+    Basen har noen øvelser under to koder (kodegrupper.py). Oversettelsen 'Lengde (Sone 0,5m)'
+    -> 'lengde' la sonehopp som alt lå inne fra januar, inn en gang til under brettkoden da
+    stevnene ble hentet på nytt 13.-14.02 og 24.08-06.09.2026: 48 085 kopier samme dag og
+    8 846 i flerdagsstevner (rydd_kryssdubletter.py). Avstemmingen og søskensjekken ser bare
+    innen én kode, og det gjorde ryddingen 03.10.2026 også.
+
+    Samme resultat: samme utøver, resultat og vind under en beslektet kode, samme dag eller
+    inntil seks dager senere i en søskenpost (samme navn uten sted foran, eller samme sted) -
+    importen gir alle resultater i et flerdagsstevne startdatoen. Står resultatet i kilden
+    under begge kodene, er det to resultater, og begge legges inn.
+    """
+    aktuelle = [r for r in rader if r['event_id'] in _beslektet]
+    if not aktuelle:
+        return rader
+    m = supabase.table('meets').select('name, city').eq('id', meet_id).limit(1).execute().data
+    navn = _uten_sted(m[0]['name']) if m else None
+    by = (m[0].get('city') or None) if m else None
+    fra = datetime.strptime(dato, '%Y-%m-%d').date()
+    andre = sorted(set().union(*(_beslektet[r['event_id']] for r in aktuelle)))
+    utovere = sorted({r['athlete_id'] for r in aktuelle})
+    finnes = set()
+    for i in range(0, len(utovere), 100):
+        side = 0
+        while True:
+            svar = (supabase.table('results')
+                      .select('athlete_id, event_id, performance, wind, date, meets(name, city)')
+                      .in_('athlete_id', utovere[i:i + 100]).in_('event_id', andre).eq('status', 'OK')
+                      .gte('date', fra.isoformat()).lte('date', (fra + timedelta(days=6)).isoformat())
+                      .order('id').range(side, side + 999).execute().data or [])
+            for e in svar:
+                mm = e.get('meets') or {}
+                soesken = (navn is not None and _uten_sted(mm.get('name')) == navn) or (by and mm.get('city') == by)
+                if e['date'] == dato or soesken:
+                    finnes.add((e['athlete_id'], e['event_id'], resultatnoekkel(e['performance']),
+                                vindnoekkel(e['wind'])))
+            if len(svar) < 1000:
+                break
+            side += 1000
+    i_kilden = {(k['athlete_id'], k['event_id'], resultatnoekkel(k['performance']), vindnoekkel(k.get('wind')))
+                for k in kilde}
+    beholdt = []
+    for r in rader:
+        noekkel = (resultatnoekkel(r['performance']), vindnoekkel(r.get('wind')))
+        tvilling = next((e for e in _beslektet.get(r['event_id'], ())
+                         if (r['athlete_id'], e, *noekkel) in finnes
+                         and (r['athlete_id'], e, *noekkel) not in i_kilden), None)
+        if tvilling is None:
+            beholdt.append(r)
+            continue
+        stats['skipped_crosscode'] += 1
+        if stats['skipped_crosscode'] <= 3:
+            logger.info(f"    {r['performance']} under {_event_id_til_kode.get(r['event_id'])} ligger alt under "
+                        f"{_event_id_til_kode.get(tvilling)} - ikke lagt inn paa nytt")
+    if len(beholdt) < len(rader):
+        logger.info(f"  {len(rader) - len(beholdt)} rader ligger alt under en beslektet oevelseskode "
+                    f"- ikke lagt inn paa nytt")
+    return beholdt
+
+
 def _ulik_vind(a, b) -> bool:
     if a is None and b is None:
         return False
@@ -1535,6 +1612,7 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
         'skipped_sibling': 0,
+        'skipped_crosscode': 0,
         'updated_wind': 0,
         'updated_round': 0,
         'updated_row': 0,
@@ -1680,6 +1758,9 @@ def import_meet_results(meet_results: List[Dict], dry_run: bool = False) -> Dict
     # Flerdagsstevner: resultater som alt ligger i posten for en annen dag av
     # stevnet, legges ikke inn igjen. Se _uten_soeskendubletter().
     nye = _uten_soeskendubletter(meet_id, nye, stats)
+    # Samme resultat under en beslektet oevelseskode (sonehopp under brettkoden,
+    # kappgang under to koder). Se _uten_kryssdubletter().
+    nye = _uten_kryssdubletter(meet_id, meet_date, nye, result_batch, stats)
 
     # Insert batch.
     # NB: try/except ligger INNE i chunk-lokken. Lå den rundt hele lokken, ville
@@ -1886,6 +1967,7 @@ def main():
         'skipped_no_meet': 0,
         'skipped_duplicate': 0,
         'skipped_sibling': 0,
+        'skipped_crosscode': 0,
         'updated_wind': 0,
         'updated_round': 0,
         'updated_row': 0,
@@ -1916,7 +1998,7 @@ def main():
 
         for key in ['imported', 'matched_existing_athlete', 'created_new_athlete',
                      'skipped_no_event', 'skipped_no_athlete', 'skipped_no_meet',
-                     'skipped_duplicate', 'skipped_sibling', 'updated_wind', 'updated_round', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
+                     'skipped_duplicate', 'skipped_sibling', 'skipped_crosscode', 'updated_wind', 'updated_round', 'updated_row', 'unmatched_db', 'athlete_id_avvik', 'errors']:
             totals[key] += meet_stats.get(key, 0)
 
     # Summary
@@ -1936,6 +2018,7 @@ def main():
     logger.info(f"  Skipped (no athlete): {totals['skipped_no_athlete']}")
     logger.info(f"  Skipped (already in db): {totals['skipped_duplicate']}")
     logger.info(f"  Ikke lagt inn (ligger i en soeskenpost av flerdagsstevnet): {totals['skipped_sibling']}")
+    logger.info(f"  Ikke lagt inn (ligger under en beslektet oevelseskode): {totals['skipped_crosscode']}")
     logger.info(f"  Vind oppdatert paa eksisterende rader: {totals['updated_wind']}")
     logger.info(f"  Runde fylt inn paa eksisterende rader: {totals['updated_round']}")
     logger.info(f"  Rader rettet (resultat/plass/vind): {totals['updated_row']}")

@@ -26,6 +26,8 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from supabase import create_client
 
+from kodegrupper import beslektede_koder, resultatnoekkel
+
 load_dotenv()
 
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -114,9 +116,12 @@ EVENT_NAME_TO_CODE = {
     'Høyde': 'hoyde',
     'Stav': 'stav',
     'Lengde': 'lengde',
-    'Lengde (Sone 0,5m)': 'lengde',
     'Tresteg': 'tresteg',
-    'Tresteg (Sone 0,5m)': 'tresteg',
+    # Sonehopp er egne øvelser i kilden og i basen. Til 30.10.2026 sto de her som
+    # 'lengde'/'tresteg', og kjøringen 19.05.2026 la 27 752 sonehopp som alt lå inne fra
+    # januar, inn en gang til under brettkoden. Se kodegrupper.py.
+    'Lengde (Sone 0,5m)': 'lengde_sone_05m',
+    'Tresteg (Sone 0,5m)': 'tresteg_sone_05m',
 
     # Throws - kule
     'Kule 2,0kg': 'kule_2kg',
@@ -191,6 +196,7 @@ SKIP_SECTIONS = {
 # Caches
 # ============================================================
 _event_cache = {}
+_beslektet = {}        # event_id -> {event_id-er der samme resultat kan ligge}, se kodegrupper.py
 _club_cache = {}
 _athlete_cache = {}
 _meet_cache = {}
@@ -558,6 +564,9 @@ def load_events():
         _event_cache[e['code']] = e['id']
         if e['name']:
             _event_cache[e['name']] = e['id']
+    kode_til_id = {e['code']: e['id'] for e in response.data if e['code']}
+    for kode, andre in beslektede_koder(kode_til_id).items():
+        _beslektet[kode_til_id[kode]] = {kode_til_id[k] for k in andre}
     logger.info(f"Loaded {len(response.data)} events")
 
 
@@ -795,6 +804,7 @@ def create_athlete(name: str, birth_year: Optional[int], gender: str,
 # ============================================================
 
 _existing_results = set()
+_eksisterende_tall = set()   # (utøver, øvelse, dato, resultat som tall), bare rader fra basen
 _athlete_results_loaded = set()
 
 
@@ -813,6 +823,7 @@ def _load_athlete_results(athlete_id: str):
                 break
             for r in response.data:
                 _existing_results.add((athlete_id, r['event_id'], r['date'], r['performance']))
+                _eksisterende_tall.add((athlete_id, r['event_id'], r['date'], resultatnoekkel(r['performance'])))
             if len(response.data) < 1000:
                 break
             offset += 1000
@@ -821,9 +832,17 @@ def _load_athlete_results(athlete_id: str):
 
 
 def is_duplicate(athlete_id: str, event_id: str, comp_date: str, performance: str) -> bool:
-    """Check dedup via in-memory cache (pre-loaded per athlete)."""
+    """Check dedup via in-memory cache (pre-loaded per athlete).
+
+    Ser også under beslektede øvelseskoder (kodegrupper.py), men bare på rader som lå i
+    basen før kjøringen: står utøveren i listene under begge kodene samme dag, er det to
+    resultater. Sjekken så tidligere bare innen én kode.
+    """
     _load_athlete_results(athlete_id)
-    return (athlete_id, event_id, comp_date, performance) in _existing_results
+    if (athlete_id, event_id, comp_date, performance) in _existing_results:
+        return True
+    tall = resultatnoekkel(performance)
+    return any((athlete_id, e, comp_date, tall) in _eksisterende_tall for e in _beslektet.get(event_id, ()))
 
 
 # ============================================================
