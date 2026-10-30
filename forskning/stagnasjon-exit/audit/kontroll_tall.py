@@ -19,7 +19,7 @@ import pandas as pd
 HER = Path(__file__).resolve().parent
 PROSJ = HER.parent
 sys.path.insert(0, str(PROSJ.parent))
-from audit_felles import Kontroll, avrund as f, ordtelling  # noqa: E402
+from audit_felles import Kontroll, avrund as f, normaliser, ordtelling  # noqa: E402
 
 MOD, ROB, TABM, DATA = (PROSJ / "tables" / "modeller", PROSJ / "tables" / "robusthet",
                         PROSJ / "tables" / "manus", PROSJ / "data_private")
@@ -120,6 +120,17 @@ neg = {s: (g["delta"] < 0).mean() for s, g in [(1, ret), (0, dro)]}
 negl = {s: (g["delta_lik"] < 0).mean() for s, g in [(1, ret), (0, dro)]}
 
 # ================================================================ ABSTRACT + KEY POINTS
+# Sammendraget kortet 30.10.2026 (SMO: høyst 350 ord; overskriftene Background, Results, Conclusions)
+# og konklusjonen omskrevet etter Atles beslutning (endringsrapporten avsnitt 8, punkt 4).
+sammendrag = k.raa.split("\\section*{Abstract}", 1)[1].split("\\textbf{Keywords:}", 1)[0]
+abs_ord = len([x for x in re.sub(r"\\[a-zA-Z]+\s*", " ", normaliser(sammendrag)).split()
+               if re.search(r"[A-Za-z0-9]", x)])
+krav(abs_ord <= 350, f"sammendraget har høyst 350 ord (SMO): {abs_ord}")
+krav(re.findall(r"\\textbf\{(\w+)\.\}", sammendrag) == ["Background", "Results", "Conclusions"],
+     "SMO-overskriftene Background, Results, Conclusions")
+k.need("abstract", "Low progression accompanies and precedes exit from youth track and field", "hovedsetning (Atles beslutning)")
+k.need("abstract", f"and remained among athletes still competing after age 16 ({f(fs.loc['aktiv_etter_16', 'OR'], 2)})",
+       "aktive etter 16")
 k.need("abstract", f"(n = {flyt['primaerutvalg_fodt_1998_2005']}; {pst((prim['gender'] == 'F').mean(), 0)}% female; "
        f"{flyt['primaerutvalg_seniorer']} [{pst(prim['senior'].mean())}%] later active as seniors", "utvalg")
 k.need("abstract", f"OR = {f(m2d['OR'], 2)} per SD (95% CI {f(m2d['KI_lav'], 2)}--{f(m2d['KI_hoy'], 2)}; "
@@ -130,27 +141,22 @@ k.need("abstract", f"(OR {f(a_['OR'], 2)} and {f(b_['OR'], 2)})", "kohorter")
 k.need("abstract", f"at equal numbers of results ({f(fs.loc['like_mange_resultater', 'OR'], 2)}), with event-equated points "
        f"({f(fs.loc['ovelsesjusterte_poeng', 'OR'], 2)}) and with outdoor marks only ({f(fs.loc['bare_utendors', 'OR'], 2)})",
        "følsomhet")
-k.need("abstract", f"The E-value was {f(ev['E_verdi_punkt'], 2)}", "E-verdi")
 k.need("abstract", f"until the penultimate season (+{f(fig2p.loc['T-1', 'median'], 0)} points) and fell "
        f"{f(-fig2p.loc['T-0', 'median'], 0)} points below it in the final season", "exit like mange")
 krav(fig2p.loc["T-1", "ki_lav"] > 0 and fig2p.loc["T-0", "ki_hoy"] < 0, "T−1 over eget nivå, T0 under (KI)")
 k.need("abstract", f"(OR {f(inter['OR'], 2)}, 95% CI {f(inter['KI_lav'], 2)}--{f(inter['KI_hoy'], 2)})", "H2")
-k.need("abstract", f"older (OR {f(s12['OR'], 2)}) and relatively younger athletes (OR {f(s34['OR'], 2)})", "strata")
-k.need("abstract", f"progression was +{f(abet['estimat'], 3)} SD per quarter (95% CI {f(abet['ki_lav'], 3)} to "
-       f"{f(abet['ki_hoy'], 3)})", "a-sti betinget")
 ind_b = np.exp(abet["estimat"] * np.log(m2d["OR"]))
 ind_u = np.exp(aubet["estimat"] * np.log(m2d["OR"]))
 krav(ind_u < 1.10, f"«weak»: selv ujustert a-sti gir indirekte OR under 1,10 per kvartal ({ind_u:.3f})")
 k.need("abstract", f"an implied indirect association of about OR {f(ind_b, 2)} per quarter", "indirekte (betinget)")
 k.need("results", f"this implies an indirect association of about OR {f(ind_b, 2)} per quarter", "indirekte (betinget), tekst")
 k.need("results", f"even it implies only about OR {f(ind_u, 2)} per quarter", "indirekte (ubetinget), øvre grense")
-k.need("abstract", f"not associated with senior activity before adjustment for level and volume (OR {f(tot['estimat'], 2)})", "kvartal M0")
 krav(tot["ki_lav"] < 1 < tot["ki_hoy"], "kvartal M0: KI inkluderer 1")
-k.need("abstract", f"(DeLong p = {f(dlh['p'], 2)})", "H3")
+krav(dlh["p"] > 0.05, "H3: «discriminated similarly» (DeLong p over 0,05)")
+k.need("abstract", "Given volume, progression and level discriminated similarly", "H3 (krav over)")
 k.need("abstract", "(2.04 per SD)", "følgestudien (IJSSC-manus)")
 k.need("key points", f"following {flyt['primaerutvalg_fodt_1998_2005']} athletes", "KP utvalg")
 k.need("key points", f"odds ratio of {f(m2d['OR'], 1)} per SD", "KP OR")
-k.need("key points", "(2.04 per SD)", "følgestudien")
 k.need("key points", f"then fell about {f(-fig2p.loc['T-0', 'median'], 0)} points below their own earlier level", "KP exit")
 
 # ================================================================ BACKGROUND (følgestudier)
@@ -318,12 +324,21 @@ k.need("results", f"(season best {f(mx['OR'], 2)}; wind-legal marks {f(vi['OR'],
        f"{f(fs.loc['like_mange_resultater', 'OR'], 2)}; event-equated points {f(fs.loc['ovelsesjusterte_poeng', 'OR'], 2)}; "
        f"outdoor marks only {f(fs.loc['bare_utendors', 'OR'], 2)};", "eksponeringsvarianter")
 krav(int(sw["prim_i_modell"]) + int(sw["ekskluderte_734_i_modell"]) == int(sw["inklusiv_n"]),
-     "inklusivt utvalg: primær med bg2 + gjenvunne i modell = n")
+     "inklusivt utvalg (planen): primær med bg2 + gjenvunne i modell = n")
 krav(len(prim) - int(sw["prim_uten_bg2"]) == int(sw["prim_i_modell"]), "primær − uten bg2 = primær i modell")
-k.need("results", f"n = {int(sw['inklusiv_n'])}, recovering {int(sw['ekskluderte_734_i_modell'])} of the "
-       f"{flyt['uten_skaarbar_tyrving_i_hovedgruppen']} excluded from the primary definition while {int(sw['prim_uten_bg2'])} primary "
-       f"athletes drop out of it --- {f(float(sw['inklusiv_OR']), 2)}, 95% CI {f(float(sw['inklusiv_KI_lav']), 2)}--"
-       f"{f(float(sw['inklusiv_KI_hoy']), 2)})", "switcher")
+# gruppekonsistent spesifikasjon som hovedtall, planens variant ved siden av (Atles beslutning 30.10.2026)
+krav(int(sw["kons_prim_i_modell"]) + int(sw["kons_gjenvunnet_578"]) + int(sw["kons_gjenvunnet_smaa_celler"])
+     == int(sw["kons_n"]), "konsistent utvalg: primær + gjenvunne fra 578 + fra små celler = n")
+krav(len(prim) - int(sw["kons_prim_utenfor"]) == int(sw["kons_prim_i_modell"]), "konsistent: primær − utenfor = i modell")
+krav(int(sw["kons_gjenvunnet_smaa_celler"]) <= flyt["ekskludert_gruppecelle_under_20"], "gjenvunnet fra småcellene ≤ 20")
+k.need("results", f"n = {int(sw['kons_n'])}, recovering {int(sw['kons_gjenvunnet_578'])} of the "
+       f"{flyt['uten_skaarbar_tyrving_i_hovedgruppen']} excluded from the primary definition and "
+       f"{int(sw['kons_gjenvunnet_smaa_celler'])} of the {flyt['ekskludert_gruppecelle_under_20']} in small cells while "
+       f"{int(sw['kons_prim_utenfor'])} primary athletes drop out of it --- {f(float(sw['kons_OR']), 2)}, 95% CI "
+       f"{f(float(sw['kons_KI_lav']), 2)}--{f(float(sw['kons_KI_hoy']), 2)}; {f(float(sw['inklusiv_OR']), 2)}, 95% CI "
+       f"{f(float(sw['inklusiv_KI_lav']), 2)}--{f(float(sw['inklusiv_KI_hoy']), 2)}, under the analysis plan's specification, "
+       f"which keeps level and counts from the original main group although the best group differs from it for "
+       f"{pst(int(sw['kons_ulik_gruppe']) / int(sw['kons_n']), 0)}% of the sample)", "switcher")
 k.need("results", f"held with spline terms for result counts and volumes ({f(fs.loc['splines_k_og_volum', 'OR'], 2)})", "splines")
 k2, uc, ci_ = robr("k_minst_2"), robr("uten_covid_kull"), robr("covid_interaksjon")
 k.need("results", f"at least two or three results per window ({f(k2['OR'], 2)} and {f(fs.loc['k13_og_k15_minst_3', 'OR'], 2)}),",
@@ -368,11 +383,13 @@ k.need("discussion", "the four processes above cannot be separated", "fire prose
 krav("Four processes" in k.tekst, "Discussion lister fire prosesser")
 
 # ================================================================ ORDTELLING
-ord_n = ordtelling(PROSJ / "manus" / "main.tex", fra=r"\section{Background}")
+# løpende tekst: Background til og med Conclusions (forkortelseslisten fra 30.10.2026 regnes ikke med)
+ord_n = ordtelling(PROSJ / "manus" / "main.tex", fra=r"\section{Background}", til=r"\section*{Abbreviations}")
 k.need("tittelside", f"Word count: $\\sim${int(round(ord_n, -2))}", f"ordtelling ({ord_n})")
 
 # ================================================================ DEKNING
 UNNTAK = [
+    r"Additional file 1\b", r"Table S1\b",
     r"\\vspace\*?\{[^}]*\}", r"\d*\.?\d+\\textwidth", r"orcid\.org/[\d-]+\}\{ORCID: [\d-]+\}", r"Box 5003, 1432",
     r"\$\^\{?1,?\*?\}?\$", r"\$\^1\$", r"\\begin\{titlepage\}", r"leftmargin=1\.2em",
     r"\b(19|20)\d\d\b", r"\b(19|20)\d\d--(19|20)\d\d\b", r"\bH[1-3]\b", r"\bS1\b", r"\b(13|15)--(14|16)\b", r"\b13--16\b",
@@ -383,6 +400,11 @@ UNNTAK = [
     r"Tables? [1-4]", r"Figures? [1-4]", r"\bstratified 5-fold", r"one-SD", r"at least three",
     r"per 100 points", r"two or three", r"three seasons before exit",
 ]
+# ================================================================ ADDITIONAL FILE 1 (egen fil, SMO)
+ka = Kontroll(PROSJ / "manus" / "additional_file_1.tex", "A1 Additional file 1")
+krav("\\input{s1}" not in k.raa and "\\input{s1}" in ka.raa, "S1 står i Additional file 1, ikke i hovedfila")
+krav("Sports Medicine -- Open" in ka.raa and "Guttormsen" in ka.raa, "forside med tidsskrift, tittel og forfatter")
 kode_m = k.rapport(UNNTAK)
-print(f"\nA1 TOTALT: {k.n_ok} sjekker OK, {len(k.feil)} feil")
-sys.exit(1 if kode_m else 0)
+kode_a = ka.rapport(UNNTAK)
+print(f"\nA1 TOTALT: {k.n_ok + ka.n_ok} sjekker OK, {len(k.feil) + len(ka.feil)} feil")
+sys.exit(1 if (kode_m or kode_a) else 0)

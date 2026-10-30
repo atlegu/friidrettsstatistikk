@@ -32,11 +32,14 @@ echo "== 2. Manus (full LaTeX-syklus)"
   bibtex main > /dev/null || [ $? -eq 1 ]
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
+  # Additional file 1 (tabell S1) som egen fil (SMO)
+  pdflatex -interaction=nonstopmode -halt-on-error additional_file_1.tex > /dev/null
+  pdflatex -interaction=nonstopmode -halt-on-error additional_file_1.tex > /dev/null
 )
-if grep -Eq "Reference .* undefined|Citation .* undefined" manus/main.log; then
+if grep -Eq "Reference .* undefined|Citation .* undefined" manus/main.log manus/additional_file_1.log; then
   echo "FEIL: udefinerte referanser"; exit 1
 fi
-if pdftotext manus/main.pdf - | grep -q '??'; then
+if pdftotext manus/main.pdf - | grep -q '??' || pdftotext manus/additional_file_1.pdf - | grep -q '??'; then
   echo "FEIL: ?? i PDF"; exit 1
 fi
 

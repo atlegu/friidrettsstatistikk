@@ -7,8 +7,10 @@ Sports Medicine - Open); visuell stil som frafallsartikkelens figurer
 
 Output:
   figures/fig1_performance_by_age.png      medianprestasjon per alder, retainers mot dropouts
-  figures/fig2_exit_aligned.png            within-utøver endring T-3..T0 (prestasjon og volum)
-  figures/fig3_retention_by_progression.png  seniorandel per fremgangskvintil x volumtertil
+  figures/fig3_exit_aligned.png            within-utøver endring T-3..T0 (figur 3 i trykk; data i fig2_data.csv)
+  figures/fig2_retention_by_progression.png  seniorandel per fremgangskvintil x volumtertil (figur 2; fig3_data.csv)
+Filnavnene følger trykkrekkefølgen, og figurene har ingen innebygd tittel (SMO: titlene står i manus;
+endret 30.10.2026). Datafilene beholder de gamle navnene.
   figures/fig4_km_progression.png          Kaplan-Meier per fremgangstertil
   tables/manus/table1_characteristics.csv  baseline/landmark-karakteristika etter utfall
   tables/manus/table2_models.csv           hovedmodeller (OR, AUC, kalibrering)
@@ -123,7 +125,6 @@ def fig1(base, sesong):
         ax.fill_between(st.index, st["q1"], st["q3"], color=farge, alpha=0.13)
     ax.set_xlabel("Age (years)")
     ax.set_ylabel("Age-graded points in main event group\n(mean of 3 best; median, IQR shaded)")
-    ax.set_title("Age-graded performance by age and senior-retention status")
     ax.text(0.015, 0.03, "Flat = keeping pace with age norms; athletes competing in the main group that season",
             transform=ax.transAxes, fontsize=8.5, color=GRAA)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2, frameon=False, fontsize=9.5)
@@ -181,11 +182,8 @@ def fig2(base, sesong, lister):
         ax.set_title(navn)
         ax.set_ylabel(f"Within-athlete change ({enhet})\nmedian, bootstrap 95% CI")
     akser[0].set_title("Age-graded performance\n(equal numbers of results per season)")
-    fig.suptitle(f"Within-athlete change over the four last active seasons\n"
-                 f"(dropouts with final season at ages 16–19; performance n = {len(T):,}, "
-                 f"volume n = {len(D):,})", fontsize=12)
     fig.tight_layout()
-    fig.savefig(FIG / "fig2_exit_aligned.png", bbox_inches="tight")
+    fig.savefig(FIG / "fig3_exit_aligned.png", bbox_inches="tight")
     plt.close(fig)
     pd.DataFrame(figdata + ekstra).to_csv(TABM / "fig2_data.csv", index=False)
     return len(T), len(D)
@@ -212,11 +210,10 @@ def fig3(base):
     pd.DataFrame(figdata).to_csv(TABM / "fig3_data.csv", index=False)
     ax.set_xlabel("Progression quintile, ages 13–14 → 15–16 (1 = largest decline)")
     ax.set_ylabel("Active as senior, age ≥ 20 (%)")
-    ax.set_title("Senior retention by performance progression and competition volume")
     ax.set_xticks([1, 2, 3, 4, 5])
     ax.legend(frameon=False, loc="upper left", fontsize=9.5)
     fig.tight_layout()
-    fig.savefig(FIG / "fig3_retention_by_progression.png", bbox_inches="tight")
+    fig.savefig(FIG / "fig2_retention_by_progression.png", bbox_inches="tight")
     plt.close(fig)
 
 
@@ -236,7 +233,6 @@ def fig4(base):
             ax=ax, color=farge, lw=2.4, ci_alpha=0.12)
     ax.set_xlabel("Age (years)")
     ax.set_ylabel("Proportion still competing")
-    ax.set_title("Continued participation after the landmark, by progression tertile")
     ticks = np.arange(0, 11, 2)
     ax.set_xticks(ticks, [str(int(t + 16)) for t in ticks])
     ax.legend(frameon=False, fontsize=9.5)
@@ -400,7 +396,7 @@ def main():
     tabell3()
     tabell4()
     tabell_cox()
-    logger.info(f"4 figurer i {FIG}/ (fig2: prestasjon n={n_t}, volum n={n_d}); "
+    logger.info(f"4 figurer i {FIG}/ (fig3: prestasjon n={n_t}, volum n={n_d}); "
                 f"5 tabeller i {TABM}/")
 
 

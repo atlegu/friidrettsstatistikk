@@ -143,6 +143,16 @@ def main():
     lo, hi = str(sw["inklusiv_KI"]).replace("–", "-").split("-")
     sjekk("switcher KI_lav", lo, rr["KI_lav"], 1e-3)
     sjekk("switcher KI_hoy", hi, rr["KI_hoy"], 1e-3)
+    # gruppekonsistent spesifikasjon (Atles beslutning 30.10.2026)
+    rk = lg[(lg["analyse"] == "switcher_konsistent") & (lg["variabel"] == "dz")].iloc[0]
+    sjekk("switcher konsistent n", sw["kons_n"], rk["n"], 0)
+    sjekk("switcher konsistent hendelser", sw["kons_hendelser"], rk["hendelser"], 0)
+    for py_k, r_k in [("kons_OR", "OR"), ("kons_KI_lav", "KI_lav"), ("kons_KI_hoy", "KI_hoy")]:
+        sjekk(f"switcher konsistent {r_k}", sw[py_k], rk[r_k], 1e-3)
+    skr = pd.read_csv(R / "switcher_konsistent.csv").iloc[0]
+    for py_k, r_k in [("kons_prim_i_modell", "prim_i_modell"), ("kons_gjenvunnet_578", "gjenvunnet_578"),
+                      ("kons_gjenvunnet_smaa_celler", "gjenvunnet_smaa_celler"), ("kons_ulik_gruppe", "ulik_gruppe")]:
+        sjekk(f"switcher konsistent {r_k}", sw[py_k], skr[r_k], 0)
 
     rob = pd.read_csv(TAB / "robusthet" / "robusthet_or.csv")
     kart = [("eksponeringsvariant", "delta_z", "eksvar_delta_z", "delta_z"),

@@ -216,24 +216,57 @@ Tre uavhengige agenter gikk gjennom definisjoner, tabell- og figurnoter og påst
 - Drag-referansens kalibrering er beskrevet.
 - Tresteg er unntaket i periodekontrollen (+14–24 %).
 
-## 8. Det du må avgjøre
+## 8. Det du måtte avgjøre (alt avgjort og skrevet inn 30.10.2026)
 
-Dette endrer en hovedpåstand, så jeg har ikke skrevet det inn. Tallene er verifisert og forslagene klare.
+Punkt 2–3 ble skrevet inn etter ditt «Ja, skriv inn». Punkt 1, 4 og 5 ble skrevet inn etter «Gjør det andre» (commit 49cf90d for A3, A1 i egen commit). Punkt 6 er avgjort: Athlete Mindset er ikke relevant, og erklæringen står uendret.
 
-1. **A3, debut-16-armen.**
+1. **A3, debut-16-armen. SKREVET INN 30.10.2026.**
    - **Funnet:** Alle 107 debut-16-utøvere i kull 2004–05 debuterte i koronaårene og konverterte 10,3 %, mot 5,4 % for de andre debut-16-utøverne. Uten debuter i 2020–21 er OR 1,32 (0,79–2,19), og med koronaflagg 1,38 (0,86–2,19). Kohorthalvdelene er 1,35 mot 3,08.
    - **Det som står:** U-formens venstre arm (debut 10 mot 11–14; LR 30,5, p = 1,2e-5 uten koronadebuter) og 17–19-armen.
-   - **Forslag:** Ta «highest for debut at 16 (6.6 %; OR 1.73)» ut av sammendraget, rapporter estimatet uten koronadebuter, nevn forskjøvet debut i koronaårene som forklaring, og presiser «replication across cohort halves» og «observed 6.6 %».
+   - **Skrevet inn:**
+     - Debut 16 er tatt ut av sammendraget.
+     - Estimatet uten koronadebuter og med flagg står i Results og i tabell 4, analysen ligger i `05b_revisjon_r2.py` og er speilet i R.
+     - Forskjøvet debut i koronaårene er nevnt som forklaring.
+     - «Replication across cohort halves» gjelder nå U-en, med debut 16 som unntak, og «observed 6.6 %» har fått tillegget 5,4 % utenfor koronaårene.
 2. **A6, H5 «størst for de yngste». SKREVET INN 30.10.2026 etter Atles ja.**
    - **Funnet:** For gutter er vinduet flatt i sekunder (100 m: 0,165 / 0,146 / 0,139 / 0,158 / 0,146 s). Som andel av løpstid er det ikke størst for de yngste. Bare jentene har et fall, og KI-ene overlapper.
    - **Skrevet inn:** Sammendraget, H5-avsnittet, Implications og Conclusion sier nå «omtrent likt i sekunder for gutter, større for jenter enn for seniorkvinner». Andel av løpstid er oppgitt: 1,10 mot 1,27 % for gutter, 0,95 mot 0,87 % for jenter. «Largest share of race time», «exactly where raw marks are most used to rank and select» og kalibreringssetningen er fjernet.
 3. **A6, Tyrving-poengene. SKREVET INN 30.10.2026.** «Similar points … so the inequity is specific to raw-seconds comparisons» er fjernet. H5 sier nå at ungdomsmarginen i poeng har omtrent samme forhold som i sekunder.
-4. **A1, tittel og hovedsetning.** «Stagnation before exit» / «Stagnation precedes exit» holder delvis: sammenhengen gjelder også blant dem som er aktive etter 16, men prestasjonen holder seg til siste sesong hos de utholdende frafallerne. Forslag: behold tittelen, men skriv sammendragets konklusjon som «Low progression accompanies and precedes exit». Alternativt en nøytral tittel.
-5. **A1, switcher-analysen.** Den følger planen, men justerer for nivå og antall fra en annen øvelsesgruppe enn fremgangen for 32 % av utvalget. Konsistent spesifikasjon ga om lag 2,24 før datarettingen. Velg mellom planens versjon med en merknad og den konsistente.
-6. **A1, interesseerklæringen.** «Non-commercial statistics platform». Hvis Athlete Mindset AS-tilbudet til NFIF gjelder deg, bør det trolig oppgis.
+4. **A1, tittel og hovedsetning. SKREVET INN 30.10.2026.** Tittelen er beholdt. Sammendragets konklusjon er nå «Low progression accompanies and precedes exit», og sammendraget tar med at sammenhengen holder blant dem som konkurrerte etter fylte 16 (OR 1,83).
+5. **A1, switcher-analysen. SKREVET INN 30.10.2026 (den konsistente varianten).**
+   - **Definisjon:** fremgang, nivå og antall måles i beste gruppe og standardiseres innen kjønn × beste gruppe i det inklusive utvalget, som primærmålene innen kjønn × hovedgruppe. Celler under 20 tas ut.
+   - **Resultat:** OR 2,53 (2,13–3,01), n = 3 990. Planens variant gir 1,87 (1,64–2,12) og står ved siden av i tabell 4. Avviket er opplyst i Methods, og R-speilet passerer.
+   - **Merk:** Gjennomgangens 2,24 standardiserte nivået innen kjønn × hovedgruppe. Varianten som standardiserer begge innen beste gruppe, ble definert før tallet ble sett.
+6. **A1, interesseerklæringen. AVGJORT:** Athlete Mindset er ikke relevant, og setningen står uendret i alle tre manus.
 
-**Formkrav (uendret siden filgjennomgangen):**
-- Sammendragene er for lange: A1 530 ord mot 350 (og «Methods» er ikke en tillatt overskrift) og A3 301 mot 250. A6 er rettet 30.10: 197 ord mot 200.
-- A6 er rettet 30.10: 6 nøkkelord, og Methods har fått avsnittet «Sample size estimation and justification».
-- Figurfilene har feil nummer i navnet (A1: fig2/fig3, A3: fig3/fig4) og bør døpes om før opplasting.
-- A3 må levere supplementet som egne filer for å holde seg innenfor 8 visningselementer.
+**Formkrav: rettet 30.10.2026:**
+- **Sammendrag:** A1 om lag 345 ord mot 350, med SMOs overskrifter Background, Results og Conclusions. A3 242 mot 250. A6 197 mot 200.
+- **A6:** 6 nøkkelord og avsnittet «Sample size estimation and justification».
+- **Figurfiler:** har nå trykkrekkefølgens nummer i A1 og A3. A1-figurene har ingen innebygd tittel.
+- **A3:** S1–S4 er i egen fil (`supplement.tex`), med S2 og S3 nummerert etter første sitering.
+- **A1:**
+  - S1 er Additional file 1 i egen fil med forside.
+  - SMOs erklæringsoverskrifter, forkortelsesliste og forkortelsesnoter er på plass.
+  - KI-bruken er omtalt i Methods.
+
+## 9. Gjenstår før innsending (din handling eller beslutning)
+
+Filgjennomgangen (fase 7) fant også disse formkravene, men de kom ikke med i listen over. De krever et valg eller en handling fra deg.
+
+- **A6, JSS er dobbeltanonym (blokkerende).**
+  - Manus har navn, ORCID, adresse og «AGG» på tittelsiden og i erklæringene.
+  - Det trengs en egen tittelside og et anonymisert manus der «the author's initiative» blir «a post-plan decision» og «from the author» blir «on request», og erklæringsoverskriften skal være «Disclosure of interest».
+  - Gjøres når eliteenden (S8) er committet. Den andre økten jobber i A6 nå.
+- **Upubliserte følgestudier i referanselistene (A1 og A3).**
+  - SMO godtar bare publiserte arbeider, «in press» eller preprint. SJMSS (AMA) lister ikke innsendte manus.
+  - Dette gjelder dropout-artikkelen («under review») og A1, som A3 siterer som «in preparation».
+  - Valg: legg ut preprint (for eksempel SportRxiv) og siter med DOI, eller siter i teksten som «unpublished work under journal review».
+- **Data availability (alle tre):** Både SMO og Wiley forventer deponering, for eksempel kode og aggregerte filer på OSF med DOI, slik RAE-artikkelen gjorde.
+- **Sikt-referansenummeret** mangler i alle tre etikksetningene.
+- **A3, SJMSS Section Specialty Area** må stå på tittelsiden. Velg fra SJMSS-listen.
+- **A1, STROBE-sjekklisten** må fylles ut og lastes opp. Teksten sier at den følger med.
+- **A6, lengde:** JSS oppgir om lag 4 000 ord løpende tekst som veiledning (ikke absolutt grense). Med eliteenden (S8, commit 6bfc077) er A6 nå ~5 800.
+- **A6, øvrige formkrav:**
+  - figurfilene har feil nummer (fig3/fig4);
+  - S-tabellene er nummerert mot siteringsrekkefølgen;
+  - Tilastopaja-tillatelsen for S8 må avklares.

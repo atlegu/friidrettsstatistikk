@@ -174,6 +174,12 @@ def main():
     base["delta_all"] = kol(p_w2, np.mean) - kol(p_w1, np.mean)
     base["delta_vind"] = kol(p_w2v, mean3) - kol(p_w1v, mean3)
     base["delta_bg2"] = kol(p_w2bg, mean3) - kol(p_w1bg, mean3)
+    # gruppekonsistent switcher-variant (Atles beslutning 30.10.2026): nivå og antall i samme
+    # gruppe som fremgangen, ikke i hovedgruppen ved 13-14 (gruppene er ulike for ~1/3)
+    base["bestgruppe"] = base["athlete_id"].map(bg["event_category"])
+    base["niva_w1_bg"] = kol(p_w1bg, mean3)
+    base["k13_bg"] = kol(p_w1bg, len).fillna(0).astype(int)
+    base["k15_bg"] = kol(p_w2bg, len).fillna(0).astype(int)
     base["delta_nk_1314"] = kol(p14, mean3) - kol(p13, mean3)   # negativkontroll innen W1
     lik = {a: delta_like_mange(p_w1.get(a), p_w2.get(a)) for a in base["athlete_id"]}
     base["delta_lik"] = base["athlete_id"].map(lik)

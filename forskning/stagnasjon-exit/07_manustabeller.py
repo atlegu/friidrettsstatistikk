@@ -177,7 +177,11 @@ def t4():
         ["Exposure: equal numbers of results in both windows"] + r2rad("like_mange_resultater"),
         ["Exposure: event-equated points"] + r2rad("ovelsesjusterte_poeng"),
         ["Exposure: outdoor marks only"] + r2rad("bare_utendors"),
-        ["Exposure: best event group at 15--16, inclusive sample", tusen(sw["inklusiv_n"]),
+        # gruppekonsistent (nivå og antall i beste gruppe) som hovedrad; planens variant under
+        # (Atles beslutning 30.10.2026)
+        ["Exposure: best event group at 15--16, inclusive sample", tusen(sw["kons_n"]),
+         tusen(sw["kons_hendelser"]), ki(float(sw["kons_OR"]), float(sw["kons_KI_lav"]), float(sw["kons_KI_hoy"]))],
+        ["\\quad level and counts from the main group (analysis plan)", tusen(sw["inklusiv_n"]),
          tusen(sw["inklusiv_hendelser"]), ki(float(sw["inklusiv_OR"]), lo, hi)],
         ["Splines for result counts and competition days"] + r2rad("splines_k_og_volum"),
         ["Earlier level given later level, per 100 points"] + r2rad("tidlig_niva_per_100p_gitt_senere"),
@@ -224,7 +228,7 @@ def s1():
         ["\\quad with exact birth date (H2 analyses)", tusen(med.loc["uten_delta", "n"])],
         ["Exit-aligned trajectory subsamples (performance / volume)",
          f"{tusen(f2['Age-graded performance'])} / {tusen(f2['Competition volume'])}"],
-        ["Inclusive best-group exposure sample", tusen(sw["inklusiv_n"])],
+        ["Inclusive best-group exposure sample", tusen(sw["kons_n"])],
         ["Activity-at-$\\geq$18 outcome sample (primary sample plus born 2006)", tusen(a18)],
     ]
     return tabular(["Step", "n"], rader, "lr")

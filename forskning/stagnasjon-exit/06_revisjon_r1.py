@@ -236,9 +236,41 @@ def main():
     flyt["inklusiv_KI"] = f"{t['KI_lav']:.3f}–{t['KI_hoy']:.3f}"
     flyt["inklusiv_KI_lav"] = float(t["KI_lav"])
     flyt["inklusiv_KI_hoy"] = float(t["KI_hoy"])
+    flyt["inklusiv_ulik_gruppe"] = int((inkl["bestgruppe"] != inkl["hovedgruppe"]).sum())
+
+    # Gruppekonsistent spesifikasjon (Atles beslutning 30.10.2026; final review B-2). Over følger
+    # planen: nivå og antall fra hovedgruppen ved 13-14, selv om fremgangen måles i beste gruppe ved
+    # 15-16. Her måles fremgang, nivå og antall alle i beste gruppe; fremgang og nivå standardiseres
+    # innen kjønn × beste gruppe i det inklusive utvalget (som primærmålene innen kjønn ×
+    # hovedgruppe i primærutvalget), og celler med færre enn 20 utøvere tas ut som i primærutvalget.
+    kons = base[base["kohort_primar"] & base["delta_bg2"].notna()].copy()
+    celle = kons.groupby(["gender", "bestgruppe"])["athlete_id"].transform("count")
+    flyt["kons_celle_under_20"] = int((celle < 20).sum())
+    kons = kons[celle >= 20].copy()
+    for v in ["delta_bg2", "niva_w1_bg"]:
+        g = kons.groupby(["gender", "bestgruppe"])[v]
+        kons[v + "_kz"] = (kons[v] - g.transform("mean")) / g.transform("std")
+    prim_id = set(prim["athlete_id"])
+    i578 = kons["skaarbar"] == False  # noqa: E712  (de 578 uten skårbare hovedgruppepoeng)
+    iliten = kons["skaarbar"] & kons["liten_gruppecelle"]
+    flyt.update({
+        "kons_n": len(kons),
+        "kons_hendelser": int(kons["senior"].sum()),
+        "kons_prim_i_modell": int(kons["athlete_id"].isin(prim_id).sum()),
+        "kons_prim_utenfor": len(prim_id) - int(kons["athlete_id"].isin(prim_id).sum()),
+        "kons_gjenvunnet_578": int(i578.sum()),
+        "kons_gjenvunnet_smaa_celler": int(iliten.sum()),
+        "kons_ulik_gruppe": int((kons["bestgruppe"] != kons["hovedgruppe"]).sum()),
+    })
+    kol_k = m03.M0_KOL + ["niva_w1_bg_kz", "vol1314_g", "vol1516_g", "k13_bg", "k15_bg", "delta_bg2_kz"]
+    _, uk = m03.logit_or(kons, kol_k)
+    t = uk[uk["variabel"] == "delta_bg2_kz"].iloc[0]
+    flyt["kons_OR"], flyt["kons_KI_lav"], flyt["kons_KI_hoy"] = float(t["OR"]), float(t["KI_lav"]), float(t["KI_hoy"])
     pd.DataFrame([flyt]).T.rename(columns={0: "verdi"}).to_csv(TAB / "r1_switcher_flyt.csv")
-    logger.info(f"inklusiv bg2: n={flyt['inklusiv_n']} (hvorav {flyt['ekskluderte_734_med_bg2']} "
+    logger.info(f"inklusiv bg2 (planen): n={flyt['inklusiv_n']} (hvorav {flyt['ekskluderte_734_med_bg2']} "
                 f"fra de 734), OR {flyt['inklusiv_OR']} [{flyt['inklusiv_KI']}]")
+    logger.info(f"inklusiv bg2 (gruppekonsistent): n={flyt['kons_n']}, OR {flyt['kons_OR']:.3f} "
+                f"[{flyt['kons_KI_lav']:.3f}, {flyt['kons_KI_hoy']:.3f}]")
 
     # ---- Per-alders-n til figur 1 ---------------------------------------------------------
     spec5 = importlib.util.spec_from_file_location("m05", HERE / "05_figurer_tabeller.py")

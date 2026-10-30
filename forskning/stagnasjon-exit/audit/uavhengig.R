@@ -103,6 +103,11 @@ base[, delta_max := hent(p_w2, "mx") - hent(p_w1, "mx")]
 base[, delta_all := hent(p_w2, "ma") - hent(p_w1, "ma")]
 base[, delta_vind := hent(p_w2v, "m3") - hent(p_w1v, "m3")]
 base[, delta_bg2 := hent(p_w2bg, "m3") - hent(p_w1bg, "m3")]
+# nivå og antall i beste gruppe (gruppekonsistent switcher-variant, Atles beslutning 30.10.2026)
+base[, bestgruppe := bgt$bg[match(athlete_id, bgt$athlete_id)]]
+base[, niva_w1_bg := hent(p_w1bg, "m3")]
+base[, k13_bg := fifelse(is.na(hent(p_w1bg, "k")), 0L, as.integer(hent(p_w1bg, "k")))]
+base[, k15_bg := fifelse(is.na(hent(p_w2bg, "k")), 0L, as.integer(hent(p_w2bg, "k")))]
 base[, delta_nk := hent(p14, "m3") - hent(p13, "m3")]
 
 # ---- Volum, utfall, klubb ------------------------------------------------------------------
@@ -295,6 +300,23 @@ inkl <- sw_base[kohort_primar & !liten & !is.na(delta_bg2_z) & !is.na(niva_w1_z)
 m <- glm(senior ~ gender + bk + log_klubb_f + niva_w1_z + vol1314_g + vol1516_g
          + k13 + k15 + delta_bg2_z, binomial, inkl)
 ut$sw <- or_rader(m, "switcher_inklusiv", nrow(inkl), sum(inkl$senior))
+
+# Gruppekonsistent switcher-spesifikasjon: fremgang, nivå og antall i beste gruppe ved 15-16,
+# standardisert innen kjønn × beste gruppe i det inklusive utvalget; celler med færre enn 20 ut
+kons <- sw_base[kohort_primar & !is.na(delta_bg2)]
+kons[, celle_n := .N, by = .(gender, bestgruppe)]
+kons <- kons[celle_n >= 20]
+kons[, `:=`(dz = (delta_bg2 - mean(delta_bg2)) / sd(delta_bg2),
+            nz = (niva_w1_bg - mean(niva_w1_bg)) / sd(niva_w1_bg)), by = .(gender, bestgruppe)]
+m <- glm(senior ~ gender + bk + log_klubb_f + nz + vol1314_g + vol1516_g + k13_bg + k15_bg + dz,
+         binomial, kons)
+ut$sw_kons <- or_rader(m, "switcher_konsistent", nrow(kons), sum(kons$senior))
+fwrite(data.table(n = nrow(kons), hendelser = sum(kons$senior),
+                  prim_i_modell = sum(kons$athlete_id %in% prim$athlete_id),
+                  gjenvunnet_578 = sum(!kons$skaarbar),
+                  gjenvunnet_smaa_celler = sum(kons$skaarbar & kons$liten),
+                  ulik_gruppe = sum(kons$bestgruppe != kons$hovedgruppe)),
+       "audit/r_out/switcher_konsistent.csv")
 
 # Robusthet: eksponeringsvarianter, covid, k>=2, utfall, kohorter, klubbklynge
 eksp_or <- function(dd, ekspo, merk, utfall = "senior") {

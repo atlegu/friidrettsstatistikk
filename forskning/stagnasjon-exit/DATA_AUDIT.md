@@ -128,3 +128,20 @@ En uavhengig agent gikk gjennom definisjoner, noter og påstander (`final_review
 - **Ordlyd rettet:** post hoc-analyser og avvik fra planen er opplyst, tolkningsregelen er presisert, kohortbeskrivelsen og exit-delutvalget presisert, «equally»/«same» er dempet, «equalised» er rettet og de praktiske påstandene uten dekning er tatt ut. Medieringen er begrunnet med størrelse (indirekte OR om lag 1,02, høyst 1,06), siden KI for den betingede a-stien nå utelukker null.
 - **Status:** 143 ankrede sjekker, 0 feil, 0 udekkede tall; R-speilet passerer.
 - **Atles beslutning:** tittel og hovedsetning («Stagnation precedes exit»), switcher-spesifikasjonen og interesseerklæringen. Se endringsrapportens avsnitt 8.
+
+## Hovedsetning, switcher og formkravene, Atles beslutning 30.10.2026 («Gjør det andre»)
+
+- **Hovedsetning:** Tittelen beholdes. Konklusjonen i sammendraget er nå «Low progression accompanies and precedes exit». Sammendraget tar også med at sammenhengen holder blant dem som konkurrerte etter fylte 16 (OR 1,83).
+- **Interesseerklæringen:** uendret. Ifølge Atle er Athlete Mindset-tilbudet ikke relevant.
+- **Switcher (final review B-2):**
+  - Planens variant tar nivå og antall fra hovedgruppen ved 13–14, men fremgangen fra beste gruppe ved 15–16. Gruppene er ulike for 31 %.
+  - Den gruppekonsistente varianten måler alt i beste gruppe, standardiserer innen kjønn × beste gruppe i det inklusive utvalget og tar ut celler under 20. Den gir OR 2,53 (2,13–3,01), n = 3 990 (3 657 primære, 318 fra de 578 og 15 fra småcellene).
+  - Planens variant gir 1,87 (1,64–2,12) og står ved siden av i tabell 4. Avviket er opplyst i Methods.
+  - Varianten er speilet i R (`switcher_konsistent`), og sammenligningen passerer.
+- **Formkrav (SMO, filgjennomgangen):**
+  - Sammendraget har om lag 345 ord, med overskriftene Background, Results og Conclusions. Key Points er kortet.
+  - S1 ligger som Additional file 1 i egen fil (`manus/additional_file_1.tex`), med forside og en seksjon «Additional files».
+  - SMOs erklæringsoverskrifter er på plass, og det er lagt til en liste over forkortelser og forkortelsesnoter under tabeller og figurer.
+  - KI-bruken er omtalt i Methods.
+  - Figurfilene har trykkrekkefølgens nummer og ingen innebygd tittel.
+- **Status:** 148 ankrede sjekker, 0 feil, 0 udekkede tall. Kontrollen teller også ordene i sammendraget og sjekker overskriftene. Ordtellingen for løpende tekst stopper før forkortelseslisten.
