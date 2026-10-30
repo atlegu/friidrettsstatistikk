@@ -715,6 +715,7 @@ k.need("tittelside", f"Word count: $\\sim${int(round(ord_n, -2))}", f"ordtelling
 # ================================================================ DEKNING
 UNNTAK = [
     r"\$\(2v\+w\)/\(2v-w\)\$",
+    r"\\S\\S 2 and 4", r"ages 13 and above",   # helseforskningsloven §§ 2 og 4; datatilgang (30.10.2026)
     r"\\vspace\*?\{[^}]*\}", r"\d*\.?\d+\\textwidth", r"width=\d*\.?\d+\\textwidth",
     r"orcid\.org/[\d-]+\}\{ORCID: [\d-]+\}", r"Box 5003, 1432", r"\$\^\{?1,?\*?\}?\$", r"\$\^1\$",
     r"\\setcounter\{table\}\{0\}", r"\\begin\{titlepage\}", r"\{S\\arabic\{table\}\}",

@@ -363,7 +363,7 @@ UNNTAK = [
     r"competing at 17", r"active at age 17", r"at ages 15 and 16", r"sub-age-10", r"10--12 age classes",
     r"Section 3\.3", r"at least 4, 5 and 6 years", r"result at 16 or later", r"from about 19", r"at 20, ", r"at 21, ",
     r"before age 20", r"\bat 19\b", r"debut-at-10", r"debut-10", r"debut-16", r"age 21 for everyone",
-    r"At 16 the late group",
+    r"At 16 the late group", r"\\S\\S 2 and 4",   # helseforskningsloven §§ 2 og 4
 ]
 kode_m = k.rapport(UNNTAK)
 kode_s = ks.rapport(UNNTAK + [r"Table S[1-4]\.", r"at least 4, 5 and 6 years"])

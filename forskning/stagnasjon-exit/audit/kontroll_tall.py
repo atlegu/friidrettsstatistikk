@@ -389,7 +389,7 @@ k.need("tittelside", f"Word count: $\\sim${int(round(ord_n, -2))}", f"ordtelling
 
 # ================================================================ DEKNING
 UNNTAK = [
-    r"Additional file 1\b", r"Table S1\b",
+    r"Additional file 1\b", r"Table S1\b", r"\\S\\S 2 and 4",   # helseforskningsloven §§ 2 og 4
     r"\\vspace\*?\{[^}]*\}", r"\d*\.?\d+\\textwidth", r"orcid\.org/[\d-]+\}\{ORCID: [\d-]+\}", r"Box 5003, 1432",
     r"\$\^\{?1,?\*?\}?\$", r"\$\^1\$", r"\\begin\{titlepage\}", r"leftmargin=1\.2em",
     r"\b(19|20)\d\d\b", r"\b(19|20)\d\d--(19|20)\d\d\b", r"\bH[1-3]\b", r"\bS1\b", r"\b(13|15)--(14|16)\b", r"\b13--16\b",

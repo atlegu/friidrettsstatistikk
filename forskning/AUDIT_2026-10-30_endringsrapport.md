@@ -261,12 +261,15 @@ Filgjennomgangen (fase 7) fant også disse formkravene, men de kom ikke med i li
   - SMO godtar bare publiserte arbeider, «in press» eller preprint. SJMSS (AMA) lister ikke innsendte manus.
   - Dette gjelder dropout-artikkelen («under review») og A1, som A3 siterer som «in preparation».
   - Valg: legg ut preprint (for eksempel SportRxiv) og siter med DOI, eller siter i teksten som «unpublished work under journal review».
-- **Data availability (alle tre):** Både SMO og Wiley forventer deponering, for eksempel kode og aggregerte filer på OSF med DOI, slik RAE-artikkelen gjorde.
-- **Sikt-referansenummeret** mangler i alle tre etikksetningene.
+- **Data availability og Sikt (alle tre): AVKLART 30.10.2026.**
+  - Atle: samme datatilgang som de andre artiklene på disse dataene, og Sikt er godkjent som tidligere.
+  - Etikk- og datatilgangssetningene følger nå dropout-artikkelen (IJSSC R1): ikke helseforskning etter helseforskningsloven §§ 2 og 4, Sikt har bekreftet at bruken ikke reiser personvernspørsmål, og samtykke var ikke nødvendig.
+  - Analysedatasettet deles ikke (GDPR), og koden deponeres ved aksept. Det finnes ikke noe Sikt-nummer i de tidligere artiklene heller.
+  - A6 har i tillegg fått en setning om Helsinki-erklæringen, som JSS krever.
 - **A3, SJMSS Section Specialty Area** må stå på tittelsiden. Velg fra SJMSS-listen.
 - **A1, STROBE-sjekklisten** må fylles ut og lastes opp. Teksten sier at den følger med.
 - **A6, lengde:** JSS oppgir om lag 4 000 ord løpende tekst som veiledning (ikke absolutt grense). Med eliteenden (S8, commit 6bfc077) er A6 nå ~5 800.
 - **A6, øvrige formkrav:**
   - figurfilene har feil nummer (fig3/fig4);
-  - S-tabellene er nummerert mot siteringsrekkefølgen;
-  - Tilastopaja-tillatelsen for S8 må avklares.
+  - S-tabellene er nummerert mot siteringsrekkefølgen.
+- **Tilastopaja-tillatelsen for S8: AVKLART.** Tillatelsen foreligger fra tidligere, og merknaden i manus er fjernet.
