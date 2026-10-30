@@ -11,7 +11,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy import stats as scst
 
 HERE = Path(__file__).parent
 DATA = HERE / "data_private"
@@ -75,8 +74,12 @@ def t1():
     for kol, navn in [("vol1314", "Competition days 13--14"), ("vol1516", "Competition days 15--16"),
                       ("k13", "Scored results 13--14 ($k_{13}$)"), ("k15", "Scored results 15--16 ($k_{15}$)"),
                       ("niva_w1", "Age-graded points 13--14"), ("niva_w2", "Age-graded points 15--16"),
-                      ("delta", "Progression, points")]:
+                      ("delta", "Progression, points"),
+                      ("delta_lik", "Progression at equal numbers of results, points")]:
         rader.append([f"{navn}, median (IQR)"] + [med_iqr(g[kol]) for g in grupper])
+    rader.append(["Negative progression, \\%"] + [f"{(g['delta'] < 0).mean() * 100:.1f}" for g in grupper])
+    rader.append(["Negative progression at equal numbers of results, \\%"]
+                 + [f"{(g['delta_lik'] < 0).mean() * 100:.1f}" for g in grupper])
     return tabular(["Characteristic", "All", "Senior retainers", "Future dropouts"], rader, "lccc")
 
 
@@ -126,15 +129,16 @@ def t3():
                    ("H2_strata_Q3-Q4", "Progression per SD, born Q3--Q4")]:
         t = h2[(h2["modell"] == s) & (h2["variabel"] == "delta_z")].iloc[0]
         rader.append([lab, ki(t["OR"], t["KI_lav"], t["KI_hoy"]), p_tekst(t["p"])])
-    o = med.loc["delta_z_paa_kvartal_c_OLS"]
-    se = (o["KI_hoy"] - o["KI_lav"]) / (2 * 1.96)
-    p_ols = 2 * (1 - scst.norm.cdf(abs(o["OR_per_kvartal"] / se)))
-    rader.append(["Progression on birth quarter, SD per quarter (mediation step)",
-                  f"+{o['OR_per_kvartal']:.2f} ({o['KI_lav']:.2f}--{o['KI_hoy']:.2f})", p_tekst(p_ols)])
-    u, w = med.loc["uten_delta"], med.loc["med_delta"]
-    rader.append(["Birth-quarter retention trend without / with progression",
-                  f"{ki(u['OR_per_kvartal'], u['KI_lav'], u['KI_hoy'])} / "
-                  f"{ki(w['OR_per_kvartal'], w['KI_lav'], w['KI_hoy'])}", ""])
+    r2 = pd.read_csv(MOD / "r2_mediering.csv").set_index("storrelse")
+    for nokkel, lab in [("a_sti_ubetinget_SD_per_kvartal", "Progression on birth quarter, SD per quarter, unadjusted"),
+                        ("a_sti_betinget_M1_SD_per_kvartal",
+                         "Progression on birth quarter, adjusted for level, volume, $k$ and covariates")]:
+        o = r2.loc[nokkel]
+        rader.append([lab, f"{tall(o['estimat'], 3)} ({tall(o['ki_lav'], 3)}--{tall(o['ki_hoy'], 3)})",
+                      p_tekst(o["p"])])
+    o = r2.loc["kvartal_OR_bare_M0"]
+    rader.append(["Birth quarter and senior activity, sex, cohort and club size only (OR per quarter)",
+                  ki(o["estimat"], o["ki_lav"], o["ki_hoy"]), p_tekst(o["p"])])
     n_p = len(prim_utvalg())
     rader.append([f"CV-AUC: sex + volume + $k$ + progression (n = {tusen(n_p)})",
                   f"{h3.loc['volum+fremgang', 'cv_auc']:.3f} (repetition spread "
@@ -145,7 +149,7 @@ def t3():
     rader.append(["Difference (progression $-$ level), DeLong 95\\,\\% CI",
                   f"{tall(dl['diff'], 3)} ({tall(dl['ki_lav'], 3)} to {tall(dl['ki_hoy'], 3)})",
                   f"{dl['p']:.2f}"])
-    return tabular(["Analysis", "Estimate", "$p$"], rader, "lcc", midtlinjer=(5,))
+    return tabular(["Analysis", "Estimate", "$p$"], rader, "lcc", midtlinjer=(6,))
 
 
 def t4():
@@ -158,18 +162,30 @@ def t4():
               & ((r["utfall"] == utf) if utf else True)].iloc[0]
         return [tusen(t["n"]), tusen(t["hendelser"]), ki(t["OR"], t["KI_lav"], t["KI_hoy"])]
 
+    r2 = pd.read_csv(MOD / "r2_h1_folsomhet.csv").set_index("analyse")
+
+    def r2rad(an, d=2):
+        t = r2.loc[an]
+        return [tusen(t["n"]), tusen(t["hendelser"]), ki(t["OR"], t["KI_lav"], t["KI_hoy"], d)]
+
     lo, hi = float(sw["inklusiv_KI_lav"]), float(sw["inklusiv_KI_hoy"])
     rader = [
         ["Primary: $\\Delta$ mean of 3 best, main event group"] + rad("eksponeringsvariant", "delta_z"),
         ["Exposure: season best (maximum)"] + rad("eksponeringsvariant", "delta_max_z"),
         ["Exposure: mean of all results"] + rad("eksponeringsvariant", "delta_all_z"),
         ["Exposure: wind-legal marks only"] + rad("eksponeringsvariant", "delta_vind_z"),
+        ["Exposure: equal numbers of results in both windows"] + r2rad("like_mange_resultater"),
+        ["Exposure: event-equated points"] + r2rad("ovelsesjusterte_poeng"),
+        ["Exposure: outdoor marks only"] + r2rad("bare_utendors"),
         ["Exposure: best event group at 15--16, inclusive sample", tusen(sw["inklusiv_n"]),
          tusen(sw["inklusiv_hendelser"]), ki(float(sw["inklusiv_OR"]), lo, hi)],
+        ["Splines for result counts and competition days"] + r2rad("splines_k_og_volum"),
+        ["Earlier level given later level, per 100 points"] + r2rad("tidlig_niva_per_100p_gitt_senere"),
         ["Specification check: $\\Delta$ within ages 13$\\to$14"] + rad("eksponeringsvariant", "delta_nk_1314_z"),
         ["Excluding cohorts born 2004--2005 (COVID window)"] + rad("uten_covid_kull"),
         ["Progression $\\times$ COVID-window interaction"] + rad("covid_interaksjon"),
         ["$\\geq$2 scored results in both windows"] + rad("k_minst_2"),
+        ["$\\geq$3 scored results in both windows"] + r2rad("k13_og_k15_minst_3"),
         ["Outcome: $\\geq$1 result at age $\\geq$20"] + rad("utfallsvariant", utf="senior_min1"),
         ["Outcome: $\\geq$2 results in a year, ages 20--21"] + rad("utfallsvariant", utf="senior_20_21"),
         ["Outcome: active at $\\geq$18 (cohorts incl.\\ 2006)"] + rad("utfallsvariant_inkl_2006"),

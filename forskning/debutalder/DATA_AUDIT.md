@@ -1,6 +1,6 @@
 # DATA_AUDIT — A3 «Does starting age predict who stays?»
 
-Audit startet 30.10.2026 etter `paper-data-audit`-skillen. Status: fase 0–1 ferdig; funn nederst.
+Audit startet 30.10.2026 etter `paper-data-audit`-skillen. Status 30.10.2026: fase 0–7 ferdig, teksten omskrevet (fase 6 nederst), fryst (`FREEZE.md`).
 
 ## Fase 0 — Inventar
 
@@ -66,6 +66,22 @@ Alle data leses fra `data_private/` (frosset uttrekk 29.10.2026, 20:45–20:48 U
 - **Fødselskvartal-interaksjonen (A3-5):** Utvalget er selektert. 98,5 % av seniorene har fødselsdato, mot 51,9 % av de andre; andelen er 39 % ved debut 10 og 94 % ved debut 16.
 - **Mindre punkter:** H3-ordbruk; «altered nothing material» ved siden av p = 0,03; følsomhetsanalyse for manglende kjønn (549 i primærkullene, konsentrert ved debut 10–12).
 
+## Fase 6 (30.10.2026) — omskriving etter Atles beslutning
+
+Atle godtok punkt 14–19 i `../AUDIT_2026-10-30_endringsrapport.md`. Svarbrevet oppdateres ikke (Atles beskjed); `manus/RESPONSE_PANEL1.md` er historisk.
+
+- **Nye analyser** i `05b_revisjon_r2.py` (tidligere `07_audit_alternativer.py`) → `tables/modeller/r2_*.csv`:
+  - direkte andeler aktive etter alder (ny figur 3, `figures/fig3_shares_by_age.png`);
+  - lik karrierelengde som medprimært utfall (minst to konkurransedager i en sesong minst D år etter debut, D = 4, 5, 6);
+  - H1 uten 2001-kullet;
+  - følsomhet for ukjent kjønn, der klubbstørrelsen telles over alle debutanter (OR 0,98 → 0,99, teksten rettet);
+  - seleksjonen i fødselskvartal-analysen.
+- **Tatt ut:** Kaplan–Meier med forsinket inngang (figur 3) og Cox på alderskala (04, 05).
+- **Tabeller:** t2 (to utfall), t4 og s4 fra `06_manustabeller.py`.
+- **Uavhengig R** speiler de nye analysene (debutgrunnlag, varighetsutfall D = 4–6, uten 2001, ukjent kjønn, andeler etter alder). `audit/sammenlign.py` passerer.
+- **Tallsporing:** `audit/kontroll_tall.py` er skrevet om etter den nye teksten; 93 ankrede sjekker, 0 feil, 0 udekkede tall. Brevdelen er fjernet.
+- **Ordtelling:** ~4 100 (skript).
+
 ## Fase 5 — RUN_ALL.sh
 
-`RUN_ALL.sh` (`set -eo pipefail`, hashkontroll, `SOURCE_DATE_EPOCH`) kjører 01–07, full LaTeX-syklus med referansekontroll, uavhengig R, sammenligning og tallkontroll.
+`RUN_ALL.sh` (`set -eo pipefail`, hashkontroll mot FREEZE-filene, `SOURCE_DATE_EPOCH`) kjører 01, 02, 03, 04, 05, 05b og 06, full LaTeX-syklus med kontroll av udefinerte referanser og «??», deretter uavhengig R, sammenligning og tallkontroll. Grønn og deterministisk 30.10.2026 (to kjøringer gir like hasher på alle utdata).

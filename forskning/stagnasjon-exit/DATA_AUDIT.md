@@ -1,6 +1,6 @@
 # DATA_AUDIT — A1 «Stagnation before exit»
 
-Audit startet 30.10.2026 etter `paper-data-audit`-skillen. Status: fase 0–1 ferdig; funn nederst.
+Audit startet 30.10.2026 etter `paper-data-audit`-skillen. Status 30.10.2026: fase 0–7 ferdig, teksten omskrevet (fase 6 nederst), fryst (`FREEZE.md`).
 
 ## Fase 0 — Inventar
 
@@ -97,6 +97,20 @@ NA-mønsteret i analysedata stemmer med flyten (43 uten fødselsdato; 734 uten s
 
 **D4 Dekning 2011.** 1998-kullets 13-årssesong er 2011, året med tynnest dekning. «Electronically complete from 2011» må mykes opp. Kohortdummiene tar opp nivåforskjellen.
 
+## Fase 6 (30.10.2026) — omskriving etter Atles beslutning
+
+Atle godtok punkt 6–13 i `../AUDIT_2026-10-30_endringsrapport.md`. Svarbrevet oppdateres ikke (Atles beskjed); `manus/RESPONSE_PANEL1.md` er historisk.
+
+- **Nye analyser** i `06b_revisjon_r2.py` (tidligere `08_audit_alternativer.py`) → `tables/modeller/r2_*.csv`: følsomhet for H1, mediering (betinget a-sti, kvartal i M0, nivå per kvartal), nivåtertiler med k ≥ 3, kjønn i én modell og tidligere nivå gitt senere nivå. E-verdien bruker √OR (`04_robusthet.py`).
+- **Like mange resultater:** Tabell 1 (`01_variabler.py`, `delta_lik`) og figur 2 (`05_figurer_tabeller.py`) sammenligner sesongene ved like mange resultater.
+- **Like mange resultater, eksakt (rettet under speilingen):** Først ble snittet av 30 tilfeldige trekk brukt. Trekkstøyen ga 24,2 mot 25,5 % negativ fremgang blant seniorene i Python og R, altså mer presisjon i teksten enn tallene har. Nå brukes forventet snitt av tre beste over alle utvalg på min(k) resultater, regnet eksakt; formelen er kontrollert mot full opptelling (største avvik 5e-13). Endrede tall: OR 1,85 → 1,86; exit T−2 / T−1 / T0 +8,0 / +5,0 / −11,8 → +8,2 / +5,0 / −12,3. Tabell 1 og sammendragets avrundede tall er uendret.
+- **Øvelsesjusterte poeng (rettet under speilingen):** Guttenes kastredskaper skifter ved 16 år. Kast menn har derfor to sett av øvelser som aldri deler en utøversesong (4 og 9 koder), og forskyvningen mellom settene er ikke identifisert. Python (minste norm) og R (utelatt kolonne) normerte den ulikt: OR 1,912 mot 1,910. Nå beholder hvert sett snittpoengene sine, og begge gir 1,9123. Én setning er lagt til i Methods.
+- **Uavhengig R** speiler alle nye analyser. `audit/sammenlign.py` sammenligner Δ ved like mange resultater per utøver (1e-6, ingen rader bare i én implementasjon), alle følsomhetsmodeller, medieringen, tertilene med median k15 og SD, kjønnsmodellen og exit-banene (prestasjon i fire varianter og volum). Alt passerer.
+- **Tallsporing:** `audit/kontroll_tall.py` er skrevet om etter den nye teksten; 126 ankrede sjekker, 0 feil, 0 udekkede tall. Brevdelen er fjernet.
+- **Ordtelling:** ~5 500 (skript), mot ~4 900 før omskrivingen.
+
 ## Fase 5 — RUN_ALL.sh
 
-Det gamle `RUN_ALL.sh` kjørte uttrekket på nytt og er erstattet. Det nye (`set -eo pipefail`, hashkontroll, `SOURCE_DATE_EPOCH`) kjører 01–08, full LaTeX-syklus med referansekontroll, eksport av Tyrving-poeng, uavhengig R, DeLong-broen, sammenligning og tallkontroll. Status 30.10: tallkontrollen feiler på 98 av 133 punkter til teksten er oppdatert etter D1–D3. Avledede filer (analysedata.csv, flyt.json) har nye hasher; råuttrekket er uendret.
+Det gamle `RUN_ALL.sh` kjørte uttrekket på nytt og er erstattet. Det nye (`set -eo pipefail`, hashkontroll mot FREEZE-filene, `SOURCE_DATE_EPOCH`) kjører 01–07 med 06b, full LaTeX-syklus med kontroll av udefinerte referanser og «??», eksport av Tyrving-poeng, uavhengig R, DeLong-broen, sammenligning og tallkontroll. Avledede filer (analysedata.csv, flyt.json) har nye hasher etter D1–D3; råuttrekket er uendret og fryst.
+
+**Determinisme (30.10.2026):** Kjeden er grønn fra start til slutt. R-speilet kjører fixest med én tråd, og to R-kjøringer ga like hasher på alle utdata, identiske med RUN_ALL-kjøringen.

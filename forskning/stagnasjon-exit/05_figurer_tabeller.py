@@ -17,6 +17,7 @@ Output:
   tables/manus/tableS_cox.csv              landmark-Cox
 """
 
+import importlib.util
 import json
 import logging
 import sys
@@ -38,6 +39,10 @@ TABM.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(HERE.parent))
 from a1_tyrving import beregn_tyrving_poeng, parse_tyrving_xls  # noqa: E402
 from rens_felles import fjern_kopier  # noqa: E402
+
+spec1 = importlib.util.spec_from_file_location("m01", HERE / "01_variabler.py")
+m01 = importlib.util.module_from_spec(spec1)
+spec1.loader.exec_module(m01)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -88,7 +93,14 @@ def last_grunnlag():
     ty = (sc.groupby(["athlete_id", "alder"])["tyrving"].agg(list).map(mean3)
           .rename("tyrving_m3").reset_index())
     sesong = dager.merge(ty, on=["athlete_id", "alder"], how="left")
-    return base, sesong
+    lister = sc.groupby(["athlete_id", "alder"])["tyrving"].agg(list).to_dict()
+    return base, sesong, lister
+
+
+def lik_k(a, b):
+    """mean3(b) − mean3(a) med like mange resultater fra hver sesong (eksakt forventning, se 01)."""
+    n = min(len(a), len(b))
+    return m01.forventet_mean3(b, n) - m01.forventet_mean3(a, n)
 
 
 # ---------------------------------------------------------------------------- figur 1
@@ -122,25 +134,38 @@ def fig1(base, sesong):
 
 
 # ---------------------------------------------------------------------------- figur 2
-def fig2(base, sesong):
+def fig2(base, sesong, lister):
+    """Exit-justerte baner. Prestasjon måles med like mange poengsatte resultater i de to sesongene
+    som sammenlignes (forventet snitt av tre beste over alle utvalg av min(k_T−3, k_T) resultater):
+    snitt av tre beste stiger mekanisk med antall resultater, og frafallere konkurrerer mindre mot
+    slutten (audit 30.10.2026, funn A1-1). Ujusterte medianer og sesongmedianer lagres ved siden av."""
     prim = base[base["prim"]]
-    exits = prim[(~prim["aktiv_naa"]) & prim["siste_alder"].between(16, 19)]
-    piv_t = sesong.pivot(index="athlete_id", columns="alder", values="tyrving_m3")
+    exits = prim[(~prim["aktiv_naa"]) & prim["siste_alder"].between(16, 19)].sort_values("athlete_id")
     piv_d = sesong.pivot(index="athlete_id", columns="alder", values="dager")
 
-    rader_t, rader_d = [], []
+    rader_t, rader_raa, rader_med, rader_k, rader_d = [], [], [], [], []
     for _, u in exits.iterrows():
         aldre = [int(u["siste_alder"]) - k for k in (3, 2, 1, 0)]
-        if aldre[0] < 13 or u["athlete_id"] not in piv_t.index:
+        if aldre[0] < 13:
             continue
-        tv = [piv_t.at[u["athlete_id"], a] if a in piv_t.columns else np.nan for a in aldre]
-        dg = [piv_d.at[u["athlete_id"], a] if a in piv_d.columns else np.nan for a in aldre]
-        if not any(np.isnan(tv)):
-            rader_t.append([tv[k] - tv[0] for k in range(4)])
-        if not any(np.isnan(dg)):
-            rader_d.append([dg[k] - dg[0] for k in range(4)])
-    T = np.array(rader_t)
-    D = np.array(rader_d)
+        L = [lister.get((u["athlete_id"], a)) for a in aldre]
+        if all(x is not None for x in L):
+            rader_t.append([lik_k(L[0], x) for x in L])
+            rader_raa.append([mean3(x) - mean3(L[0]) for x in L])
+            rader_med.append([float(np.median(x) - np.median(L[0])) for x in L])
+            rader_k.append([len(x) for x in L])
+        if u["athlete_id"] in piv_d.index:
+            dg = [piv_d.at[u["athlete_id"], a] if a in piv_d.columns else np.nan for a in aldre]
+            if not any(np.isnan(dg)):
+                rader_d.append([dg[k] - dg[0] for k in range(4)])
+    T, D = np.array(rader_t), np.array(rader_d)
+    ekstra = []
+    for navn, M in [("ujustert", np.array(rader_raa)), ("sesongmedian", np.array(rader_med))]:
+        med, lo, hi = zip(*[boot_median_ci(M[:, k]) for k in range(4)])
+        ekstra += [{"panel": navn, "t": f"T-{3 - k}", "median": med[k], "ki_lav": lo[k], "ki_hoy": hi[k],
+                    "n": len(M), "n_kandidater": len(exits)} for k in range(4)]
+    ekstra += [{"panel": "antall_resultater", "t": f"T-{3 - k}", "median": float(np.median(np.array(rader_k)[:, k])),
+                "ki_lav": np.nan, "ki_hoy": np.nan, "n": len(rader_k), "n_kandidater": len(exits)} for k in range(4)]
 
     fig, akser = plt.subplots(1, 2, figsize=(10.5, 4.8), sharex=True)
     figdata = []
@@ -155,13 +180,14 @@ def fig2(base, sesong):
         ax.set_xticks(range(4), ["T−3", "T−2", "T−1", "T0\n(final season)"])
         ax.set_title(navn)
         ax.set_ylabel(f"Within-athlete change ({enhet})\nmedian, bootstrap 95% CI")
-    fig.suptitle(f"The slide before exit: within-athlete change over the four last active seasons\n"
+    akser[0].set_title("Age-graded performance\n(equal numbers of results per season)")
+    fig.suptitle(f"Within-athlete change over the four last active seasons\n"
                  f"(dropouts with final season at ages 16–19; performance n = {len(T):,}, "
                  f"volume n = {len(D):,})", fontsize=12)
     fig.tight_layout()
     fig.savefig(FIG / "fig2_exit_aligned.png", bbox_inches="tight")
     plt.close(fig)
-    pd.DataFrame(figdata).to_csv(TABM / "fig2_data.csv", index=False)
+    pd.DataFrame(figdata + ekstra).to_csv(TABM / "fig2_data.csv", index=False)
     return len(T), len(D)
 
 
@@ -363,9 +389,9 @@ def tabell_cox():
 
 
 def main():
-    base, sesong = last_grunnlag()
+    base, sesong, lister = last_grunnlag()
     fig1(base, sesong)
-    n_t, n_d = fig2(base, sesong)
+    n_t, n_d = fig2(base, sesong, lister)
     fig3(base)
     fig4(base)
     tabell1(base)

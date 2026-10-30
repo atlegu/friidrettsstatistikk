@@ -9,14 +9,10 @@ cd "$(dirname "$0")"
 PY=../../scraper/venv/bin/python
 export SOURCE_DATE_EPOCH=1793318400 FORCE_SOURCE_DATE=1   # reproduserbare PDF-er
 
-echo "== 0. Frysekontroll"
-if [[ -f FREEZE_data.sha256 && -f FREEZE_code.sha256 ]]; then
-  shasum -a 256 -c --quiet FREEZE_data.sha256
-  shasum -a 256 -c --quiet FREEZE_code.sha256
-  echo "data og kode stemmer med FREEZE"
-else
-  echo "ADVARSEL: ingen FREEZE-filer (før frysing)"
-fi
+echo "== 0. Frysekontroll (fryst 30.10.2026, se FREEZE.md)"
+shasum -a 256 -c --quiet FREEZE_data.sha256
+shasum -a 256 -c --quiet FREEZE_code.sha256
+echo "data og kode stemmer med FREEZE"
 
 echo "== 1. Analysekjede"
 $PY 01_variabler.py
@@ -25,8 +21,8 @@ $PY 03_modeller.py --kjor
 $PY 04_robusthet.py --kjor
 $PY 05_figurer_tabeller.py
 $PY 06_revisjon_r1.py
+$PY 06b_revisjon_r2.py
 $PY 07_manustabeller.py
-$PY 08_audit_alternativer.py
 
 echo "== 2. Manus (full LaTeX-syklus)"
 (

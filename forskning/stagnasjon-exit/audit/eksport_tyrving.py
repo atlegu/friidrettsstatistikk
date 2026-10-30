@@ -1,5 +1,6 @@
 """
-eksport_tyrving.py — A1-audit: eksporter Tyrving-poeng per resultat (alder 13–16,
+eksport_tyrving.py — A1-audit: eksporter Tyrving-poeng per resultat (alder 13–19; 17–19 brukes bare
+til de exit-justerte banene,
 elektronisk) fra den validerte skåringsmodulen (tyrving_r2.py, 2014-arbeidsboken, med A1s
 komplette kodekobling i a1_tyrving.py).
 
@@ -27,7 +28,7 @@ def main():
     r = r.drop(columns=["birth_year"], errors="ignore").merge(utv, on="athlete_id", how="inner")
     r = r[r["status"] == "OK"].copy()
     r["alder"] = r["date"].dt.year - r["birth_year"]
-    r = r[r["alder"].between(13, 16) & (r["is_manual_time"].astype(str) != "True")
+    r = r[r["alder"].between(13, 19) & (r["is_manual_time"].astype(str) != "True")
           & r["gender"].isin(["M", "F"])].copy()
     tab = parse_tyrving_xls()
     r["tyrving"] = [

@@ -312,6 +312,149 @@ pc <- copy(prim)[, covid := as.numeric(birth_year %in% 2004:2006)][, dxc := delt
 ut$cov <- or_rader(glm(update(f_m2, . ~ . + covid + dxc), binomial, pc), "covid_interaksjon",
                    nrow(pc), sum(pc$senior))
 
+# ---- Revisjon r2 (audit 30.10.2026) ---------------------------------------------------------
+suppressMessages({library(splines); library(fixest)})
+setFixest_nthreads(1)   # flere tråder gir flyttallsstøy mellom kjøringer; én tråd gir like hasher
+m3 <- function(x) mean(sort(x, decreasing = TRUE)[seq_len(min(3, length(x)))])
+# like mange resultater: forventet snitt av tre beste over alle utvalg på n uten tilbakelegging;
+# verdi nr. j (synkende) teller når den er med og færre enn min(3, n) høyere verdier er med
+fm3 <- function(x, n) {
+  x <- sort(x, decreasing = TRUE); k <- length(x); m <- min(3, n); i <- 0:(m - 1)
+  p <- vapply(seq_len(k) - 1, function(j) sum(choose(j, i) * choose(k - 1 - j, n - 1 - i)), 0) / choose(k, n)
+  sum(x * p) / m
+}
+lik_k <- function(a, b) { n <- min(length(a), length(b)); fm3(b, n) - fm3(a, n) }
+std_prim <- function(dd, kol) {   # standardisering innen kjønn x gruppe over primærutvalget
+  st <- dd[, .(mu = mean(get(kol), na.rm = TRUE), s = sd(get(kol), na.rm = TRUE)), by = .(gender, hovedgruppe)]
+  dd[st, paste0(kol, "_z") := (get(kol) - i.mu) / i.s, on = c("gender", "hovedgruppe")]
+}
+hg_sc <- merge(sc[event_category == hovedgruppe], base[, .(athlete_id, gender)], by = "athlete_id")
+l1 <- hg_sc[alder %in% 13:14, .(l = list(tyrving)), by = athlete_id]
+l2 <- hg_sc[alder %in% 15:16, .(l = list(tyrving)), by = athlete_id]
+ll <- merge(l1, l2, by = "athlete_id", suffixes = c("1", "2"))
+ll <- ll[athlete_id %chin% prim$athlete_id][order(athlete_id)]
+ll[, delta_lik := mapply(lik_k, l1, l2)]
+pl <- merge(copy(prim), ll[, .(athlete_id, delta_lik)], by = "athlete_id", all.x = TRUE)
+std_prim(pl, "delta_lik")
+ut$r2_lik <- eksp_or(pl, "delta_lik_z", "r2_like_mange")
+ut$r2_k3 <- eksp_or(prim[k13 >= 3 & k15 >= 3], "delta_z", "r2_k_minst_3")
+ms <- glm(senior ~ gender + bk + log_klubb_f + niva_w1_z + delta_z + bs(k13, df = 4) + bs(k15, df = 4)
+          + bs(vol1314_g, df = 4) + bs(vol1516_g, df = 4), binomial, prim)
+ut$r2_spl <- or_rader(ms, "r2_splines", nrow(prim), sum(prim$senior))[variabel == "delta_z"]
+# bare utendørs og øvelsesjusterte poeng: Δ bygget på nytt fra poengradene (13-16)
+me_i <- fread("data_private/meets.csv")[, .(meet_id = id, indoor)]
+inne <- merge(r[, .(id, meet_id)], me_i, by = "meet_id")[tolower(as.character(indoor)) == "true", id]
+d_fra <- function(s2, navn) {
+  a <- s2[alder %in% 13:14, .(m1 = m3(tyrving)), by = athlete_id]
+  b <- s2[alder %in% 15:16, .(m2 = m3(tyrving)), by = athlete_id]
+  dd <- merge(copy(prim), merge(a, b, by = "athlete_id"), by = "athlete_id", all.x = TRUE)
+  dd[, dx := m2 - m1]; std_prim(dd, "dx")
+  eksp_or(dd, "dx_z", navn)
+}
+s16 <- hg_sc[alder <= 16 & athlete_id %chin% prim$athlete_id]
+ut$r2_ute <- d_fra(s16[!(id %chin% inne)], "r2_bare_utendors")
+s16[, celle := paste(athlete_id, alder)]
+s16[, just := tyrving]
+# forskyvningene er bare identifisert innen sett av øvelser som deler en utøversesong
+# (guttekast: redskapene skifter ved 16); hvert sett beholder snittpoengene sine
+sett_av <- function(ev, celle) {
+  f <- setNames(sort(unique(ev)), sort(unique(ev)))
+  rot <- function(e) { while (f[[e]] != e) e <- f[[e]]; e }
+  for (u in split(ev, celle)) {
+    u <- unique(u)
+    for (e in u[-1]) { a <- rot(u[1]); b <- rot(e); if (a != b) f[[b]] <- a }
+  }
+  vapply(ev, rot, "")
+}
+for (gk in split(seq_len(nrow(s16)), paste(s16$gender, s16$hovedgruppe))) {
+  g <- s16[gk]
+  if (uniqueN(g$event_code) < 2) next
+  fm <- feols(tyrving ~ factor(event_code) | celle, g, notes = FALSE, warn = FALSE)
+  b <- coef(fm); b <- b[!is.na(b)]
+  forsk <- setNames(rep(0, uniqueN(g$event_code)), sort(unique(g$event_code)))
+  forsk[sub("factor\\(event_code\\)", "", names(b))] <- b
+  fr <- unname(forsk[g$event_code])
+  sett <- sett_av(g$event_code, g$celle)
+  cat("øvelsessett", g$gender[1], g$hovedgruppe[1], uniqueN(sett), "\n")
+  s16[gk, just := tyrving - (fr - ave(fr, sett))]
+}
+ut$r2_ovj <- d_fra(s16[, .(athlete_id, alder, tyrving = just)], "r2_ovelsesjustert")
+# tidligere nivå gitt senere nivå
+pn <- copy(prim)[!is.na(niva_w2)][, `:=`(l1 = niva_w1 / 100, l2 = niva_w2 / 100)]
+ut$r2_l1l2 <- or_rader(glm(senior ~ gender + bk + log_klubb_f + vol1314_g + vol1516_g + k13 + k15 + l1 + l2,
+                           binomial, pn), "r2_l1l2", nrow(pn), sum(pn$senior))[variabel %in% c("l1", "l2")]
+# mediering: a-sti betinget på M1-kovariatene (klubbklynget) og kvartal i M0
+klynge_ols <- function(X, yv, grp) {
+  bh <- solve(crossprod(X), crossprod(X, yv)); u <- as.vector(yv - X %*% bh)
+  meat <- Reduce(`+`, lapply(split(seq_len(nrow(X)), grp), function(i) {
+    xu <- crossprod(X[i, , drop = FALSE], u[i]); xu %*% t(xu) }))
+  G <- uniqueN(grp); N <- nrow(X); K <- ncol(X)
+  V <- solve(crossprod(X)) %*% meat %*% solve(crossprod(X)) * G / (G - 1) * (N - 1) / (N - K)
+  list(b = bh, V = V)
+}
+Xa <- model.matrix(~ gender + bk + log_klubb_f + niva_w1_z + vol1314_g + vol1516_g + k13 + k15 + kvartal_c, dq)
+ka <- klynge_ols(Xa, dq$delta_z, grp); ia <- which(colnames(Xa) == "kvartal_c")
+ut$r2_abet <- data.table(analyse = "r2_a_sti_betinget", variabel = "kvartal_c", OR = ka$b[ia],
+                         KI_lav = ka$b[ia] - z975 * sqrt(ka$V[ia, ia]), KI_hoy = ka$b[ia] + z975 * sqrt(ka$V[ia, ia]),
+                         p = NA, n = nrow(dq), hendelser = NA)
+kn <- klynge_ols(cbind(1, dq$kvartal_c), dq$niva_w1_z, grp)
+ut$r2_nivq <- data.table(analyse = "r2_niva_per_kvartal", variabel = "kvartal_c", OR = kn$b[2],
+                         KI_lav = kn$b[2] - z975 * sqrt(kn$V[2, 2]), KI_hoy = kn$b[2] + z975 * sqrt(kn$V[2, 2]),
+                         p = NA, n = nrow(dq), hendelser = NA)
+ut$r2_tot <- or_rader(glm(senior ~ gender + bk + log_klubb_f + kvartal_c, binomial, dq), "r2_kvartal_M0",
+                      nrow(dq), sum(dq$senior))[variabel == "kvartal_c"]
+# nivåtertiler med k13 >= 3 og k15 >= 3 (tertilgrensene fra hele utvalget)
+dk3 <- di[k13 >= 3 & k15 >= 3]
+for (t in c("lav", "midt", "hoy")) {
+  g <- dk3[ntert == t]
+  ut[[paste0("r2_nt_", t)]] <- or_rader(glm(f_m2, binomial, g), paste0("r2_nivastrata_k3_", t),
+                                        nrow(g), sum(g$senior))[variabel == "delta_z"]
+}
+ut$r2_nik3 <- or_rader(glm(update(f_m2, . ~ . + dxn), binomial, dk3), "r2_nivainteraksjon_k3",
+                       nrow(dk3), sum(dk3$senior))[variabel == "dxn"]
+fwrite(rbind(di[, .(utvalg = "alle", median_k15 = as.numeric(median(k15)), sd_delta_z = sd(delta_z)), by = ntert],
+             dk3[, .(utvalg = "k_minst_3", median_k15 = as.numeric(median(k15)), sd_delta_z = sd(delta_z)), by = ntert]),
+       "audit/r_out/nivatertiler.csv")
+# kjønn i én modell: OR for menn og kvinner fra interaksjonsmodellen
+mk <- glm(update(f_m2, . ~ . + dxk), binomial, di); bk_ <- coef(mk); Vk <- vcov(mk)
+for (kj in c("menn", "kvinner")) {
+  l <- if (kj == "menn") "delta_z" else c("delta_z", "dxk")
+  e <- sum(bk_[l]); s <- sqrt(sum(Vk[l, l]))
+  ut[[paste0("r2_kj_", kj)]] <- data.table(analyse = paste0("r2_kjonn_", kj), variabel = "delta_z", OR = exp(e),
+                                          KI_lav = exp(e - z975 * s), KI_hoy = exp(e + z975 * s),
+                                          p = summary(mk)$coefficients["dxk", 4], n = nrow(di), hendelser = NA)
+}
+# exit-justerte baner: ujustert, sesongmedian og like mange resultater
+ex <- copy(prim)[, aktiv_naa := (birth_year + siste_alder) >= 2025][!aktiv_naa & siste_alder %between% c(16, 19)]
+ex <- ex[order(athlete_id)]
+lis <- hg_sc[, .(l = list(tyrving)), by = .(athlete_id, alder)]
+setkey(lis, athlete_id, alder)
+eb <- rbindlist(lapply(seq_len(nrow(ex)), function(i) {
+  a <- ex$athlete_id[i]; aldre <- ex$siste_alder[i] - 3:0
+  if (aldre[1] < 13) return(NULL)
+  L <- lapply(aldre, function(x) { rr <- lis[.(a, x), nomatch = NULL]; if (nrow(rr)) rr$l[[1]] else NULL })
+  if (any(vapply(L, is.null, logical(1)))) return(NULL)
+  data.table(t = c("T-3", "T-2", "T-1", "T-0"), raa = sapply(L, m3) - m3(L[[1]]),
+             med = sapply(L, median) - median(L[[1]]), lik = sapply(L, function(x) lik_k(L[[1]], x)),
+             k = lengths(L))
+}))
+fwrite(eb[, .(n = .N, raa = median(raa), med = median(med), lik = median(lik), k = median(k)), by = t],
+       "audit/r_out/exit_baner.csv")
+# volumbanen: konkurransedager (alle øvelser) i alle fire sesonger
+dg <- r[alder %between% c(13, 19), .(dager = uniqueN(date)), by = .(athlete_id, alder)]
+setkey(dg, athlete_id, alder)
+evol <- rbindlist(lapply(seq_len(nrow(ex)), function(i) {
+  aldre <- ex$siste_alder[i] - 3:0
+  if (aldre[1] < 13) return(NULL)
+  d <- dg[.(ex$athlete_id[i], aldre)]$dager
+  if (anyNA(d)) return(NULL)
+  data.table(t = c("T-3", "T-2", "T-1", "T-0"), dager = d - d[1])
+}))
+fwrite(evol[, .(n = .N, dager = median(dager), n_kandidater = nrow(ex)), by = t], "audit/r_out/exit_volum.csv")
+fwrite(pl[, .(median_lik = median(delta_lik, na.rm = TRUE), andel_neg_lik = mean(delta_lik < 0, na.rm = TRUE)),
+          by = senior], "audit/r_out/delta_lik.csv")
+fwrite(pl[, .(athlete_id, k13, k15, delta_lik)], "data_private/r_delta_lik_rader.csv")   # radnivå: ikke i git
+
 fwrite(rbindlist(ut, fill = TRUE), "audit/r_out/logit.csv")
 
 # Cox landmark fra 17
@@ -331,7 +474,8 @@ fwrite(data.table(variabel = rownames(s), HR = exp(s[, 1]),
 h1or <- ut$e1[variabel == "delta_z", OR]
 h1lo <- ut$e1[variabel == "delta_z", KI_lav]
 p0 <- mean(prim$senior)
-ev <- function(o) { rr <- o / (1 - p0 + p0 * o); if (rr < 1) rr <- 1 / rr; rr + sqrt(rr * (rr - 1)) }
+# vanlig utfall: RR ≈ √OR (VanderWeele og Ding 2017)
+ev <- function(o) { rr <- sqrt(o); if (rr < 1) rr <- 1 / rr; rr + sqrt(rr * (rr - 1)) }
 fwrite(data.table(p0 = p0, E_punkt = ev(h1or), E_grense = ev(h1lo)), "audit/r_out/everdi.csv")
 
 # SD-er og andeler

@@ -5,6 +5,7 @@
 # Output: audit/r_out/*.csv — sammenlignes mot tables/estimering/r1_* av sammenlign.py.
 
 suppressMessages({library(data.table); library(fixest)})
+setFixest_nthreads(1)   # flere tråder ga avvik på 1e-13 mellom kjøringer (se også stevne-FE nedenfor)
 setwd(dirname(dirname(normalizePath(sub("--file=", "", grep("--file=", commandArgs(FALSE), value = TRUE)[1])))))
 dir.create("audit/r_out", showWarnings = FALSE)
 
@@ -231,6 +232,10 @@ fe <- rbindlist(lapply(c("60m", "100m", "200m"), function(k) rbindlist(lapply(c(
     data.table(event = k, kjonn = kj, aldersband = b, stevne_fe = -bb,
                ki_lav = -bb - qnorm(.975) * se, ki_hoy = -bb + qnorm(.975) * se, n = r$n)
   }))))), fill = TRUE)
+# toveis FE gir maskinpresisjonsstøy (1e-16) mellom R-prosesser selv med én tråd; avrund før
+# skriving så filen får samme hash ved hver kjøring (sammenlign.py har toleranser >= 1e-6)
+num <- names(fe)[vapply(fe, is.double, logical(1))]
+fe[, (num) := lapply(.SD, signif, 10), .SDcols = num]
 fwrite(fe, "audit/r_out/stevne_fe_alder.csv")
 
 # ---- Evnetertiler av utøversesonger (celler >= 2), vindjustert cellesnitt ----------------

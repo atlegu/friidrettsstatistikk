@@ -1,6 +1,6 @@
 # DATA_AUDIT — A6 «How much is the wind worth?»
 
-Audit startet 30.10.2026 etter `paper-data-audit`-skillen. Status: fase 0–1 ferdig; funn nederst.
+Audit startet 30.10.2026 etter `paper-data-audit`-skillen. Status 30.10.2026: fase 0–7 ferdig, teksten omskrevet (fase 6 nederst), fryst (`FREEZE.md`).
 
 ## Fase 0 — Inventar
 
@@ -83,6 +83,22 @@ Agentenes rapporter: data, statistikk og filer. Hvert funn under er kontrollert 
 
 **D4 Dekning 2011.** Stevner med resultater i juni, august og september var 164, 118 og 143 i 2011, mot 238, 197 og 201 i 2012. «Electronically complete from 2011» må mykes opp.
 
+## Fase 6 (30.10.2026) — omskriving etter Atles beslutning
+
+Atle godtok punkt 1–5, 20 og 21 i `../AUDIT_2026-10-30_endringsrapport.md`. Svarbrevet oppdateres ikke (Atles beskjed); `manus/RESPONSE_PANEL1.md` er historisk.
+
+- **Asymmetri:** drag-referansen sendes gjennom estimatoren (`drag_referanse` i `07_revisjon_r1.py`); tabell 4 og figur 3 viser den. Forklaringen om selektiv atferd er fjernet.
+- **Medvind:** medvindsgrenen brukes der teksten sier medvind; de lineære helningene kalles «per m/s of wind».
+- **H5:** verdsatt fra 0–2 m/s-segmentet med robust skala (1,4826 · MAD · √(n/frihetsgrader)).
+- **Stevne-FE etter alder** i `07b_revisjon_r2.py` (tidligere `11_audit_alternativer.py`); kalibreringen omtales som illustrasjon.
+- **Standardfeil:** de absorberte cellene telles i småutvalgskorreksjonen (fixest-standard `fixef.K = "nested"`), i `03_estimering.py`. Toveis demeaning itererer til 1e-10.
+- **Lister:** omstokkingen måles som inn og ut av topp 10; teksten om månedsdummyer er rettet.
+- **Uavhengig R** speiler alt (fixef.K nested, drag, 0–2-segmentet, MAD, stevne-FE etter alder). `audit/sammenlign.py` passerer; KI for stevne-FE sammenlignes med toleranse 1e-3 fordi regressortellingen skiller seg i én celle (200 m menn 10–11).
+- **Tallsporing:** `audit/kontroll_tall.py` er skrevet om etter den nye teksten; 133 ankrede sjekker, 0 feil, 0 udekkede tall. Brevdelen er fjernet.
+- **Ordtelling:** ~4 200 (skript).
+
 ## Fase 5 — RUN_ALL.sh
 
-`RUN_ALL.sh` (`set -eo pipefail`, hashkontroll når FREEZE-filene finnes, `SOURCE_DATE_EPOCH`) kjører 01, 02, 03, 05, 07, 10, 08, 09, 11, full LaTeX-syklus med kontroll av udefinerte referanser og «??», deretter uavhengig R, sammenligning og tallkontroll. 04 og 06 er erstattet av 08/09 og kjøres ikke. Status 30.10: tallkontrollen feiler på 43 av 142 punkter til teksten er oppdatert etter D1/D3. Avledede filer (analyseklar.csv, flyt.json, missing.csv) har nye hasher; råuttrekket er uendret.
+`RUN_ALL.sh` (`set -eo pipefail`, hashkontroll mot FREEZE-filene, `SOURCE_DATE_EPOCH`) kjører 01, 02, 03, 05, 07, 07b, 10, 08 og 09, full LaTeX-syklus med kontroll av udefinerte referanser og «??», deretter uavhengig R, sammenligning og tallkontroll. 04 og 06 er erstattet av 08/09 og kjøres ikke. Avledede filer (analyseklar.csv, flyt.json, missing.csv) har nye hasher etter D1/D3; råuttrekket er uendret og fryst.
+
+**Determinisme (30.10.2026):** To kjøringer ga like hasher på alle Python-utdata (tabeller, figurer, PDF, avledede data). Bare R-filen `stevne_fe_alder.csv` skilte seg, med 1e-13 i KI-ene. Fixest kjører nå med én tråd, men toveis FE (utøversesong + stevne) ga fortsatt maskinpresisjonsstøy (1,8e-16) mellom R-prosesser med samme radrekkefølge. Den filen avrundes derfor til 10 gjeldende siffer før skriving. Nå er alle R-utdata like mellom kjøringer.

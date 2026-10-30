@@ -70,9 +70,11 @@ def eksponerings_or(d, eksponering, utfall="senior", cov_type="nonrobust", grupp
             "p": float(m.pvalues[eksponering])}
 
 
-def e_verdi(or_est, p0):
-    """E-verdi for H1-OR; vanlig utfall -> OR konverteres til RR før formelen."""
-    rr = or_est / (1 - p0 + p0 * or_est)
+def e_verdi(or_est):
+    """E-verdi for H1-OR. Utfallet er vanlig (> 15 %), så OR konverteres med RR ≈ √OR (VanderWeele
+    og Ding 2017). Den tidligere konverteringen OR/(1 − p0 + p0·OR) med samlet prevalens krever risikoen
+    i en ueksponert gruppe, som ikke finnes for en kontinuerlig eksponering (audit 30.10.2026, A1-4)."""
+    rr = float(np.sqrt(or_est))
     if rr < 1:
         rr = 1 / rr
     return float(rr + np.sqrt(rr * (rr - 1)))
@@ -155,8 +157,8 @@ def main():
     p0 = prim["senior"].mean()
     pd.DataFrame([{
         "OR": h1["OR"], "utfallsandel": round(float(p0), 3),
-        "E_verdi_punkt": round(e_verdi(h1["OR"], p0), 2),
-        "E_verdi_KI_grense": round(e_verdi(h1["KI_lav"] if h1["OR"] > 1 else h1["KI_hoy"], p0), 2),
+        "E_verdi_punkt": e_verdi(h1["OR"]),
+        "E_verdi_KI_grense": e_verdi(h1["KI_lav"] if h1["OR"] > 1 else h1["KI_hoy"]),
     }]).to_csv(TAB / "e_verdi.csv", index=False)
 
     logger.info(f"ferdig; tabeller i {TAB}/")

@@ -16,6 +16,7 @@ Output:
 import json
 import logging
 import sys
+from math import comb
 from pathlib import Path
 
 import numpy as np
@@ -48,6 +49,31 @@ def mean3(poeng):
     if not poeng:
         return np.nan
     return float(np.mean(sorted(poeng, reverse=True)[:3]))
+
+
+def forventet_mean3(poeng, n):
+    """Forventet snitt av tre beste i et tilfeldig utvalg på n av poengsummene (uten
+    tilbakelegging), regnet eksakt: verdi nr. j i synkende rekkefølge teller med sannsynligheten
+    for at den er i utvalget sammen med færre enn m = min(3, n) av de j høyere verdiene."""
+    x = sorted(poeng, reverse=True)
+    k, m = len(x), min(3, n)
+    alle = comb(k, n)
+    return sum(xj * sum(comb(j, i) * comb(k - 1 - j, n - 1 - i) for i in range(m)) / alle
+               for j, xj in enumerate(x)) / m
+
+
+def delta_like_mange(p1, p2):
+    """Fremgang med like mange resultater i begge vinduer (audit 30.10.2026, funn A1-1).
+
+    Snitt av tre beste stiger mekanisk med antall poengsatte resultater, og frafallere har
+    færre resultater ved 15–16. Begge vinduer vurderes ved min(k13, k15) resultater uten
+    tilbakelegging, som forventet snitt av tre beste over alle slike utvalg. Eksakt i stedet
+    for snitt av 30 tilfeldige trekk: trekkstøyen ga 24,2 mot 25,5 % negativ fremgang blant
+    seniorene i Python og R."""
+    if not isinstance(p1, list) or not isinstance(p2, list):
+        return np.nan
+    n = min(len(p1), len(p2))
+    return forventet_mean3(p2, n) - forventet_mean3(p1, n)
 
 
 def main():
@@ -143,6 +169,8 @@ def main():
     base["delta_vind"] = kol(p_w2v, mean3) - kol(p_w1v, mean3)
     base["delta_bg2"] = kol(p_w2bg, mean3) - kol(p_w1bg, mean3)
     base["delta_nk_1314"] = kol(p14, mean3) - kol(p13, mean3)   # negativkontroll innen W1
+    lik = {a: delta_like_mange(p_w1.get(a), p_w2.get(a)) for a in base["athlete_id"]}
+    base["delta_lik"] = base["athlete_id"].map(lik)
 
     # ---- Volum: konkurransedager (alle OK-resultater, også manuelle/stafett) -------------
     for navn, aldre in [("vol1314", [13, 14]), ("vol1516", [15, 16])]:
@@ -192,7 +220,7 @@ def main():
 
     ref = base[prim]
     for kolonne in ["delta", "delta_max", "delta_all", "delta_vind", "delta_bg2",
-                    "delta_nk_1314", "niva_w1", "vol1314", "vol1516"]:
+                    "delta_nk_1314", "delta_lik", "niva_w1", "vol1314", "vol1516"]:
         grp = ref.groupby(["gender", "hovedgruppe"])[kolonne]
         mu, sd = grp.transform("mean"), grp.transform("std")
         z = pd.Series(np.nan, index=base.index)

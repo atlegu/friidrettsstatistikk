@@ -2,7 +2,9 @@
 
 30.10.2026. Full `paper-data-audit` (fase 0–8) på manus, supplement og svarbrev for A1 (stagnasjon-exit), A3 (debutalder) og A6 (vind).
 
-## Konklusjon
+> **Status 30.10.2026, kveld:** Atle godtok alle forslagene i avsnitt 3, og teksten i alle tre manus er skrevet om etter dem. Svarbrevene oppdateres ikke (Atles beskjed; punkt 22 bortfaller). Avsnitt 6 viser status nå. Konklusjonen rett under gjaldt før omskrivingen.
+
+## Konklusjon (før omskrivingen)
 
 **Ingen av de tre manusene er klare til innsending.** Ikke les PDF-ene som ligger i mappene nå: tabellene er generert på nytt med rettede data, men teksten er ikke oppdatert.
 

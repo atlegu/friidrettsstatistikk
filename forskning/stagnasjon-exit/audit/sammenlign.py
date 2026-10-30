@@ -4,6 +4,8 @@ sammenlign.py — A1-audit fase 3: R-reimplementasjonen mot de publiserte modell
 Toleranser: utvalg/tellinger eksakt; variabelverdier (radkontroll) 1e-6;
 logit-OR/KI 2e-4 (region er konstant i A1, så modellene skal være identiske);
 klyngede/Cox/E-verdi 2e-3–0.02. CV-baserte størrelser dekkes av delong_bro.
+Revisjon r2 (30.10.2026): like mange resultater per utøver (1e-6), følsomhetsmodellene,
+mediering, nivåtertiler, kjønn og exit-banene (prestasjon i fire varianter og volum).
 """
 
 import json
@@ -194,6 +196,76 @@ def main():
     sjekk("negativ delta retainers", sd_py["andel_negativ_delta_retainers"], sd_r["neg_ret"], 1e-3)
     sjekk("kvartal Q1", sd_py["kvartal_Q1"], sd_r["q1"], 1e-3)
     sjekk("kvartal Q4", sd_py["kvartal_Q4"], sd_r["q4"], 1e-3)
+
+    # ---- revisjon r2 (audit 30.10.2026): alle størrelser er deterministiske, også like mange
+    # resultater (eksakt forventning), så toleransene er de samme som over
+    ad = pd.read_csv(HERE.parent / "data_private" / "analysedata.csv", low_memory=False)
+    prim = ad[ad["kohort_primar"] & ad["skaarbar"] & ~ad["liten_gruppecelle"]]
+    rl = pd.read_csv(HERE.parent / "data_private" / "r_delta_lik_rader.csv")
+    mm = prim[["athlete_id", "delta_lik"]].merge(rl, on="athlete_id", how="outer", indicator=True)
+    sjekk("like mange: rader bare i én implementasjon", 0, (mm["_merge"] != "both").sum(), 0)
+    sjekk("like mange: maks |Δ_lik py − R|", 0, (mm["delta_lik_x"] - mm["delta_lik_y"]).abs().max(), 1e-6)
+    dl = pd.read_csv(R / "delta_lik.csv").set_index("senior")
+    for s in [0, 1]:
+        g = prim.loc[prim["senior"] == s, "delta_lik"]
+        sjekk(f"like mange median senior={s}", g.median(), dl.at[s, "median_lik"], 1e-6)
+        sjekk(f"like mange andel negativ senior={s}", (g < 0).mean(), dl.at[s, "andel_neg_lik"], 1e-12)
+
+    fs = pd.read_csv(TAB / "modeller" / "r2_h1_folsomhet.csv")
+    for an, ran, rv_ in [("like_mange_resultater", "r2_like_mange", "delta_lik_z"),
+                         ("k13_og_k15_minst_3", "r2_k_minst_3", "delta_z"),
+                         ("splines_k_og_volum", "r2_splines", "delta_z"),
+                         ("bare_utendors", "r2_bare_utendors", "dx_z"),
+                         ("ovelsesjusterte_poeng", "r2_ovelsesjustert", "dx_z"),
+                         ("tidlig_niva_per_100p_gitt_senere", "r2_l1l2", "l1"),
+                         ("senere_niva_per_100p_gitt_tidlig", "r2_l1l2", "l2")]:
+        sel_r = (lg["analyse"] == ran) & (lg["variabel"] == rv_)
+        or_sjekk(fs, fs["analyse"] == an, lg, sel_r, f"r2 {an}")
+        sjekk(f"r2 {an} hendelser", fs.loc[fs["analyse"] == an, "hendelser"].iloc[0],
+              lg.loc[sel_r, "hendelser"].iloc[0], 0)
+
+    mr = pd.read_csv(TAB / "modeller" / "r2_mediering.csv").set_index("storrelse")
+    for st, ran, tol in [("a_sti_ubetinget_SD_per_kvartal", "delta_z_paa_kvartal", 1e-6),
+                         ("a_sti_betinget_M1_SD_per_kvartal", "r2_a_sti_betinget", 1e-6),
+                         ("niva_1314_SD_per_kvartal", "r2_niva_per_kvartal", 1e-6),
+                         ("kvartal_OR_bare_M0", "r2_kvartal_M0", 2e-4)]:
+        t, rr = mr.loc[st], lg[(lg["analyse"] == ran) & (lg["variabel"] == "kvartal_c")].iloc[0]
+        sjekk(f"r2 {st}", t["estimat"], rr["OR"], tol)
+        sjekk(f"r2 {st} ki_lav", t["ki_lav"], rr["KI_lav"], tol)
+        sjekk(f"r2 {st} ki_hoy", t["ki_hoy"], rr["KI_hoy"], tol)
+        sjekk(f"r2 {st} n", t["n"], rr["n"], 0)
+
+    nt = pd.read_csv(TAB / "modeller" / "r2_nivatertiler.csv")
+    ntr = pd.read_csv(R / "nivatertiler.csv")
+    for utv, pre, inter in [("alle", "nivastrata_", "nivainteraksjon"),
+                            ("k_minst_3", "r2_nivastrata_k3_", "r2_nivainteraksjon_k3")]:
+        for t_ in ["lav", "midt", "hoy"]:
+            sel = (nt["utvalg"] == utv) & (nt["tertil"] == t_)
+            or_sjekk(nt, sel, lg, (lg["analyse"] == pre + t_) & (lg["variabel"] == "delta_z"), f"r2 nivå {utv} {t_}")
+            rt = ntr[(ntr["utvalg"] == utv) & (ntr["ntert"] == t_)].iloc[0]
+            sjekk(f"r2 nivå {utv} {t_} median k15", nt.loc[sel, "median_k15"].iloc[0], rt["median_k15"], 0)
+            sjekk(f"r2 nivå {utv} {t_} sd Δz", nt.loc[sel, "sd_delta_z"].iloc[0], rt["sd_delta_z"], 1e-9)
+        or_sjekk(nt, (nt["utvalg"] == utv) & (nt["tertil"] == "interaksjon"),
+                 lg, (lg["analyse"] == inter) & (lg["variabel"] == "dxn"), f"r2 nivåinteraksjon {utv}")
+
+    kj = pd.read_csv(TAB / "modeller" / "r2_kjonn.csv").set_index("gruppe")
+    for g in ["menn", "kvinner"]:
+        rr = lg[lg["analyse"] == f"r2_kjonn_{g}"].iloc[0]
+        for kol in ["OR", "KI_lav", "KI_hoy"]:
+            sjekk(f"r2 kjønn {g} {kol}", kj.at[g, kol], rr[kol], 2e-4)
+        sjekk(f"r2 kjønn {g} p interaksjon", kj.at[g, "p_interaksjon"], rr["p"], 1e-4)
+
+    f2 = pd.read_csv(TAB / "manus" / "fig2_data.csv")
+    eb = pd.read_csv(R / "exit_baner.csv").set_index("t")
+    ev = pd.read_csv(R / "exit_volum.csv").set_index("t")
+    for panel, rdf, kol in [("Age-graded performance", eb, "lik"), ("ujustert", eb, "raa"),
+                            ("sesongmedian", eb, "med"), ("antall_resultater", eb, "k"),
+                            ("Competition volume", ev, "dager")]:
+        p = f2[f2["panel"] == panel].set_index("t")
+        for t_ in ["T-3", "T-2", "T-1", "T-0"]:
+            sjekk(f"exit {panel} {t_} median", p.at[t_, "median"], rdf.at[t_, kol], 1e-6)
+            sjekk(f"exit {panel} {t_} n", p.at[t_, "n"], rdf.at[t_, "n"], 0)
+    sjekk("exit kandidater", f2["n_kandidater"].iloc[0], ev["n_kandidater"].iloc[0], 0)
 
     if feil:
         print(f"AVVIK ({len(feil)}):")

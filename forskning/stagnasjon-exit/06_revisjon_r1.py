@@ -244,7 +244,7 @@ def main():
     spec5 = importlib.util.spec_from_file_location("m05", HERE / "05_figurer_tabeller.py")
     m05 = importlib.util.module_from_spec(spec5)
     spec5.loader.exec_module(m05)
-    b2, sesong = m05.last_grunnlag()
+    b2, sesong, _ = m05.last_grunnlag()
     p2 = b2[b2["prim"]]
     s = sesong.merge(p2[["athlete_id", "senior"]], on="athlete_id", how="inner")
     s = s[s["tyrving_m3"].notna() & s["alder"].between(13, 18)]

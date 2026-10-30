@@ -1,3 +1,18 @@
 Warning message:
 package 'data.table' was built under R version 4.3.3 
+fjern_kopier: 12990 sonetvillinger, 746 eksakte dubletter
+Warning message:
+package 'fixest' was built under R version 4.3.3 
+øvelsessett F jumps 1 
+øvelsessett F middle_distance 1 
+øvelsessett F sprint 1 
+øvelsessett F throws 1 
+øvelsessett M jumps 1 
+øvelsessett M middle_distance 1 
+øvelsessett M sprint 1 
+øvelsessett M throws 2 
 uavhengig A1 ferdig
+Warning messages:
+1: package 'data.table' was built under R version 4.3.3 
+2: package 'pROC' was built under R version 4.3.3 
+delong_bro ferdig
