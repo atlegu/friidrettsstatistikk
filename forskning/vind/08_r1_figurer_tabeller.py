@@ -94,10 +94,13 @@ def fig3_asym(a):
             ax.bar(x + off, v, width=0.36, color=farge, label=lab,
                    yerr=[v - lo, hi - v], capsize=3,
                    error_kw={"ecolor": "#333333", "lw": 1.2})
+            if enhet.startswith("Seconds"):
+                ax.scatter(x + off, t[f"drag_{kol}"].to_numpy(), marker="D", s=46, color="black",
+                           zorder=5, label="Drag-only prediction" if kol == "medvind" else None)
         ax.set_xticks(x, [NAVN[k] for k in koder])
         ax.set_ylabel(enhet)
         ax.axhline(0, color=GRAA, lw=0.8)
-    akser[0].set_title("Sprints: headwind costs more than tailwind gives")
+    akser[0].set_title("Sprints: observed slopes and drag-only prediction")
     akser[1].set_title("Horizontal jumps")
     akser[0].legend(frameon=False, fontsize=9)
     fig.suptitle("Asymmetry of the wind effect (within athlete × season; "
@@ -183,11 +186,11 @@ def main():
 
     # ---- Figurer -------------------------------------------------------------------------
     alder_panel(a, ["60m", "100m", "200m"], "s",
-                "Benefit of +1 m/s tailwind by age: sprints (seconds; within athlete × season)",
-                "fig1_effect_by_age.png", "Seconds faster per +1 m/s")
+                "Effect per m/s of wind by age (linear fit): sprints (seconds; within athlete × season)",
+                "fig1_effect_by_age.png", "Seconds per m/s")
     alder_panel(a, ["60m", "100m", "200m", "lengde", "tresteg"], "%",
-                "Benefit of +1 m/s tailwind by age: percent of performance",
-                "fig2_effect_by_age_pct.png", "Percent improvement per +1 m/s")
+                "Effect per m/s of wind by age (linear fit): percent of performance",
+                "fig2_effect_by_age_pct.png", "Percent per m/s")
     fig3_asym(asym)
     fig4_niva(tert)
     fig5_hekk(hk)
@@ -202,10 +205,10 @@ def main():
             continue
         t, p = nat.iloc[0], pst.iloc[0]
         rader.append({"Event": NAVN[kode], "Unit": t["enhet"],
-                      "Gain per +1 m/s (95% CI)": fmt(t["gevinst_per_ms"],
+                      "Per m/s, linear (95% CI)": fmt(t["gevinst_per_ms"],
                                                       t["ki_lav"], t["ki_hoy"]),
-                      "Percent per +1 m/s (95% CI)": fmt(p["gevinst_per_ms"], p["ki_lav"],
-                                                         p["ki_hoy"]),
+                      "Percent per m/s (95% CI)": fmt(p["gevinst_per_ms"], p["ki_lav"],
+                                                      p["ki_hoy"]),
                       "n": f"{t['n']:,}", "Athlete-seasons": f"{t['celler']:,}"})
     pd.DataFrame(rader).to_csv(TABM / "table2_main.csv", index=False)
 
@@ -244,15 +247,15 @@ def main():
     t4["Headwind loss per −1 m/s (95% CI)"] = t4.apply(
         lambda t: fmt(t["motvind"], t["motvind_ki_lav"], t["motvind_ki_hoy"]), axis=1)
     t4["ratio_obs"] = t4["ratio_obs"].map(lambda x: f"{x:.2f}")
-    t4["ratio_teoretisk_v2"] = t4["ratio_teoretisk_v2"].map(
+    t4["ratio_drag_estimator"] = t4["ratio_drag_estimator"].map(
         lambda x: "—" if pd.isna(x) else f"{x:.2f}")
     t4["p_lik_meet"] = t4["p_lik_meet"].map(lambda p: "<0.001" if p < 0.001 else f"{p:.3f}")
     t4 = t4.set_index("event").loc[[k for k in REKKE if k in set(t4["event"])]].reset_index()
     (t4[["Event", "Unit", "Tailwind gain per +1 m/s (95% CI)",
-         "Headwind loss per −1 m/s (95% CI)", "ratio_obs", "ratio_teoretisk_v2",
+         "Headwind loss per −1 m/s (95% CI)", "ratio_obs", "ratio_drag_estimator",
          "p_lik_meet", "n"]]
-     .rename(columns={"ratio_obs": "Ratio head/tail", "ratio_teoretisk_v2":
-                      "v² benchmark ratio", "p_lik_meet": "p equal slopes"})
+     .rename(columns={"ratio_obs": "Ratio head/tail", "ratio_drag_estimator":
+                      "Drag-only ratio (same estimator)", "p_lik_meet": "p equal slopes"})
      .to_csv(TABM / "table4_asymmetry.csv", index=False))
 
     # ---- Tabell 5: hekk ------------------------------------------------------------------
@@ -279,8 +282,8 @@ def main():
             for b in BANDREKKE:
                 t = vindu[(vindu["event"] == kode) & (vindu["kjonn"] == kj)
                           & (vindu["aldersband"] == b)]
-                rad[b] = (f"{t['fordel_2ms_s'].iloc[0]:.2f} s "
-                          f"({t['fordel_i_sd'].iloc[0]:.2f} SD)" if len(t) else "—")
+                rad[b] = (f"{t['fordel_0_2_s'].iloc[0]:.2f} s "
+                          f"({t['fordel_0_2_i_robust_skala'].iloc[0]:.2f})" if len(t) else "—")
             rader.append(rad)
     pd.DataFrame(rader).to_csv(TABM / "table6_advantage_sd.csv", index=False)
 

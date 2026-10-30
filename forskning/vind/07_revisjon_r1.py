@@ -65,6 +65,28 @@ def pst_rad(res, kode, merk, ekstra=None):
             "n": res["n"], "celler": res["celler"], **(ekstra or {})}
 
 
+def drag_referanse(g, kode):
+    """Ren drag-fysikk lagt på de observerte vindene og estimert med de samme modellene.
+
+    (2v+1)/(2v-1) er forholdet ved nøyaktig ±1 m/s, mens modellen gir helninger midlet over hele
+    vindfordelingen på hver side (audit 30.10.2026, funn A6-1). Sannheten Δt = c·t·((v−w)² − v²)/v²
+    (t = cellesnittet, v = distanse/t) estimeres som de observerte tidene; c kalibreres slik at den
+    symmetriske helningen er lik den observerte, så grenhelninger og kvadratledd blir sammenlignbare.
+    """
+    g = g.copy()
+    t = g.groupby("celle")["y"].transform("mean")
+    v = DIST[kode] / t
+    g["ysim"] = t * ((v - g["wind"]) ** 2 - v ** 2) / v ** 2
+    g["wind2"] = g["wind"] ** 2
+    c = (m03.estimer(g, "y", cluster="meet_id")["wind"][0]
+         / m03.estimer(g, "ysim", cluster="meet_id")["wind"][0])
+    ps = m03.estimer(g, "ysim", vindkolonner=("wind_pos", "wind_neg"), cluster="meet_id")
+    qs = m03.estimer(g, "ysim", vindkolonner=("wind", "wind2"), cluster="meet_id")
+    return {"ratio_drag": ps["wind_neg"][0] / ps["wind_pos"][0],
+            "drag_medvind": -c * ps["wind_pos"][0], "drag_motvind": -c * ps["wind_neg"][0],
+            "drag_kvad": c * qs["wind2"][0]}
+
+
 def main():
     import statsmodels
     logger.info(f"versjoner: python {sys.version.split()[0]}, pandas {pd.__version__}, "
@@ -91,16 +113,17 @@ def main():
             skala = 1 if kode in TIDS else 100
             bp, sep = ra["wind_pos"]
             bn, sen = ra["wind_neg"]
-            m, navn = ra["_modell"], ra["_navn"]
+            m, navn, V = ra["_modell"], ra["_navn"], ra["_V"]
             i, j = navn.index("wind_pos"), navn.index("wind_neg")
             diff = m.params[i] - m.params[j]
-            se_d = float(np.sqrt(m.cov_params()[i, i] + m.cov_params()[j, j]
-                                 - 2 * m.cov_params()[i, j]))
+            se_d = float(np.sqrt(V[i, i] + V[j, j]
+                                 - 2 * V[i, j]))
             if kode in DIST:
                 vbar = DIST[kode] / float(g["y"].mean())
                 teor = ((2 * vbar + 1) / (2 * vbar - 1))
+                drag = drag_referanse(g, kode)
             else:
-                teor = np.nan
+                teor, drag = np.nan, {}
             asym.append({"event": kode,
                          "medvind": (s * bp * skala),
                          "medvind_ki_lav": (s * bp * skala - 1.96 * sep * skala),
@@ -110,6 +133,10 @@ def main():
                          "motvind_ki_hoy": (s * bn * skala + 1.96 * sen * skala),
                          "ratio_obs": (abs(bn / bp)) if bp != 0 else np.nan,
                          "ratio_teoretisk_v2": teor,
+                         "ratio_drag_estimator": drag.get("ratio_drag", np.nan),
+                         "drag_medvind": drag.get("drag_medvind", np.nan),
+                         "drag_motvind": drag.get("drag_motvind", np.nan),
+                         "drag_kvad": drag.get("drag_kvad", np.nan),
                          "p_lik_meet": (float(2 * (1 - scst.norm.cdf(abs(diff / se_d)))))
                          if se_d > 0 else np.nan,
                          "n": ra["n"], "celler": ra["celler"]})
@@ -191,13 +218,32 @@ def main():
                     continue
                 bp, sep = r["wind_pos"]
                 bn, sen = r["wind_neg"]
+                # Verdien av +2,0 m/s fra helningen over 0..+2 (knekk ved 0 og +2): helningen
+                # flater ut over +2, så hele medvindsgrenen undervurderer vinduet (funn A6-5)
+                r02 = m03.estimer(gg.assign(w02=gg["wind"].clip(0, 2), w2p=(gg["wind"] - 2).clip(lower=0)),
+                                  "y", vindkolonner=("w02", "w2p", "wind_neg"), cluster="meet_id")
+                b02, se02 = r02["w02"]
+                b2p = r02["w2p"][0]
                 g3 = gg[gg["n_i_celle"] >= 3]
                 nn = g3.groupby("celle")["y"].count()
                 frih = max(int((nn - 1).sum()), 1)
                 sd_pool = float(np.sqrt(g3["_res2"].sum() / frih))
+                # Robust skala (1,4826·MAD av residualene innen celle, frihetsgradskorrigert): noen
+                # grove registreringsfeil (f.eks. 200 m-tider under 100 m) blåser opp den klassiske
+                # SD-en (funn A6-4); helningene påvirkes ikke merkbart
+                res = res_adj[g3.index]
+                skala_robust = float(1.4826 * np.median(np.abs(res - res.median()))
+                                     * np.sqrt(len(res) / frih))
                 sd_gammel = float(dm_raa[gg.index].std())
                 fordel = -2 * bp
                 vindu.append({"event": kode, "kjonn": kj, "aldersband": band,
+                              "medvind_0_2_s_per_ms": (-b02),
+                              "over_2_s_per_ms": (-b2p),
+                              "fordel_0_2_s": (-2 * b02),
+                              "fordel_0_2_ki_lav": (-2 * b02 - 1.96 * 2 * se02),
+                              "fordel_0_2_ki_hoy": (-2 * b02 + 1.96 * 2 * se02),
+                              "skala_robust": skala_robust,
+                              "fordel_0_2_i_robust_skala": (-2 * b02 / skala_robust),
                               "medvind_s_per_ms": (-bp),
                               "medvind_ki_lav": (-bp - 1.96 * sep),
                               "medvind_ki_hoy": (-bp + 1.96 * sep),
@@ -335,7 +381,7 @@ def main():
                   & (d["aldersband"] == band)]
             if not len(t) or not len(g):
                 continue
-            fordel = float(t["fordel_2ms_s"].iloc[0])
+            fordel = float(t["fordel_0_2_s"].iloc[0])
             snitt = float(g["y"].mean())
             p0 = beregn_tyrving_poeng(round(snitt * 100), "100m", "time", kj, t_alder, tabell)
             p1 = beregn_tyrving_poeng(round((snitt - fordel) * 100), "100m", "time",
@@ -343,14 +389,16 @@ def main():
             if p0 is None or p1 is None:
                 continue
             rows.append({"kjonn": kj, "aldersband": band, "tabellalder": t_alder,
-                         "snitt_tid_s": (snitt), "fordel_2ms_s": fordel,
+                         "snitt_tid_s": (snitt), "fordel_0_2_s": fordel,
                          "poeng_uten": p0, "poeng_med": p1,
                          "tyrvingpoeng_for_2ms": (p1 - p0)})
     pd.DataFrame(rows).to_csv(EST / "r1_tyrvingpoeng.csv", index=False)
     logger.info(f"tyrvingpoeng: {rows}")
 
     # ---- Listeomstokking 2025: 100 m klasse 14 og senior (R3-2) --------------------------
-    b_band = {(r["kjonn"], r["aldersband"]): r["medvind_s_per_ms"]
+    # Korreksjon til stille luft med samme stykkevise medvindsfunksjon som i H5:
+    # helningen over 0..+2 opp til +2, og helningen over +2 for resten
+    b_band = {(r["kjonn"], r["aldersband"]): (r["medvind_0_2_s_per_ms"], r["over_2_s_per_ms"])
               for r in vindu if r["event"] == "100m"}
     oms = []
     for kj in ["M", "F"]:
@@ -361,7 +409,9 @@ def main():
                   & d["alder"].between(lo, hi)].copy()
             if g["athlete_id"].nunique() < 60:
                 continue
-            g["y_korr"] = g["y"] + b_band[(kj, band)] * g["wind"].clip(lower=0)
+            b02, b2p = b_band[(kj, band)]
+            w = g["wind"].clip(lower=0)
+            g["y_korr"] = g["y"] + b02 * w.clip(upper=2) + b2p * (w - 2).clip(lower=0)
             topp = (g.sort_values("y").drop_duplicates("athlete_id")
                     .nsmallest(50, "y").reset_index(drop=True))
             topp2 = (g.sort_values("y_korr").drop_duplicates("athlete_id")
@@ -371,6 +421,7 @@ def main():
             oms.append({"kjonn": kj, "liste": navn,
                         "n_utovere": int(g["athlete_id"].nunique()),
                         "plassendringer_topp10": sum(a != b for a, b in zip(f10, e10)),
+                        "nye_i_topp10": len(set(e10) - set(f10)),
                         "nye_i_topp50": len(set(topp2["athlete_id"]) - set(topp["athlete_id"])),
                         "andel_topp50_vind_over_1": (float((topp["wind"] > 1).mean()))})
     pd.DataFrame(oms).to_csv(EST / "r1_listeomstokk.csv", index=False)

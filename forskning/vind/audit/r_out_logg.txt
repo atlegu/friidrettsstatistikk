@@ -1,4 +1,37 @@
 Warning messages:
 1: package 'data.table' was built under R version 4.3.3 
 2: package 'fixest' was built under R version 4.3.3 
+fjern_kopier: 47962 sonetvillinger, 771 eksakte dubletter
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)7', 'factor(mnd)8' and 'factor(mnd)9' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)8' and 'factor(mnd)9' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8' and 'factor(mnd)9' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7' and 'factor(mnd)8' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)7', 'factor(mnd)8' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)6', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+fjern_kopier: 47962 sonetvillinger, 771 eksakte dubletter
+fjern_kopier: 0 sonetvillinger, 190 eksakte dubletter
 uavhengig A6 ferdig

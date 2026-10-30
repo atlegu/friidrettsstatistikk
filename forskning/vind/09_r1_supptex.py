@@ -89,7 +89,7 @@ def t2():
                       f"{tall(a['gevinst_per_ms'], d)} {enhet} ({tall(a['ki_lav'], d)}--{tall(a['ki_hoy'], d)})",
                       ki(p["gevinst_per_ms"], p["ki_lav"], p["ki_hoy"], 3),
                       tusen(a["n"]), tusen(a["celler"])])
-    hode = ["Event", "Gain per +1 m/s (95\\,\\% CI)", "Percent per +1 m/s (95\\,\\% CI)", "n",
+    hode = ["Event", "Per m/s, linear (95\\,\\% CI)", "Percent per m/s (95\\,\\% CI)", "n",
             "Athlete-seasons"]
     return tabular(hode, rader, "lcccc")
 
@@ -124,10 +124,10 @@ def t4():
                       ki(t["medvind"], t["medvind_ki_lav"], t["medvind_ki_hoy"], d),
                       ki(t["motvind"], t["motvind_ki_lav"], t["motvind_ki_hoy"], d),
                       f"{t['ratio_obs']:.2f}",
-                      "---" if pd.isna(t["ratio_teoretisk_v2"]) else f"{t['ratio_teoretisk_v2']:.2f}",
+                      "---" if pd.isna(t["ratio_drag_estimator"]) else f"{t['ratio_drag_estimator']:.2f}",
                       "$<$0.001" if p < 0.001 else f"{p:.3f}"])
     hode = ["Event", "Unit", "Tailwind gain per +1 m/s", "Headwind loss per $-$1 m/s", "Ratio",
-            "$v^2$ benchmark", "p equal slopes"]
+            "Drag-only ratio", "p equal slopes"]
     return tabular(hode, rader, "llccccc")
 
 
@@ -158,7 +158,7 @@ def t6():
             rad = [NAVN[k], navn]
             for b in BAND:
                 t = v[(v["event"] == k) & (v["kjonn"] == kj) & (v["aldersband"] == b)]
-                rad.append(f"{t['fordel_2ms_s'].iloc[0]:.2f} s ({t['fordel_i_sd'].iloc[0]:.2f} SD)"
+                rad.append(f"{t['fordel_0_2_s'].iloc[0]:.2f} s ({t['fordel_0_2_i_robust_skala'].iloc[0]:.2f})"
                            if len(t) else "---")
             rader.append(rad)
     hode = ["Event", "Sex"] + [band_tex(b) for b in BAND]
@@ -207,18 +207,19 @@ def s3():
     for _, t in v.iterrows():
         rader.append([NAVN[t["event"]], "Boys/men" if t["kjonn"] == "M" else "Girls/women",
                       band_tex(t["aldersband"]),
+                      f"{t['medvind_0_2_s_per_ms']:.3f}",
                       ki(t["medvind_s_per_ms"], t["medvind_ki_lav"], t["medvind_ki_hoy"], 3),
                       ki(t["motvind_s_per_ms"], t["motvind_ki_lav"], t["motvind_ki_hoy"], 3),
                       tusen(t["n"])])
     for k in HOPP:
         t = s[s["event"] == k].iloc[0]
-        rader.append([NAVN[k], "Both", "all",
+        rader.append([NAVN[k], "Both", "all", "---",
                       ki(t["medvind"], t["medvind_ki_lav"], t["medvind_ki_hoy"], 2) + " cm",
                       ki(t["motvind"], t["motvind_ki_lav"], t["motvind_ki_hoy"], 2) + " cm",
                       tusen(t["n"])])
-    hode = ["Event", "Sex", "Age band", "Tailwind slope per +1 m/s (95\\,\\% CI)",
+    hode = ["Event", "Sex", "Age band", "Tailwind 0 to +2", "Tailwind slope per +1 m/s (95\\,\\% CI)",
             "Headwind slope per $-$1 m/s (95\\,\\% CI)", "n"]
-    return tabular(hode, rader, "lllccc")
+    return tabular(hode, rader, "lllcccc")
 
 
 def s4():
@@ -242,11 +243,25 @@ def s5():
     return tabular(["Event", "Linear term (SE)", "Quadratic term (SE)", "n"], rader, "lccc")
 
 
+def s6():
+    fe = pd.read_csv(EST / "r2_stevne_fe_alder.csv")
+    rader = []
+    for k in ["60m", "100m", "200m"]:
+        for kj, navn in [("M", "Boys/men"), ("F", "Girls/women")]:
+            rad = [NAVN[k], navn]
+            for b in BAND:
+                t = fe[(fe["event"] == k) & (fe["kjonn"] == kj) & (fe["aldersband"] == b)]
+                rad.append(ki(*t.iloc[0][["stevne_fe_s", "stevne_fe_ki_lav", "stevne_fe_ki_hoy"]], 3)
+                           if len(t) else "---")
+            rader.append(rad)
+    return tabular(["Event", "Sex"] + [band_tex(b) for b in BAND], rader, "llcccccc")
+
+
 def main():
     for navn, fn in [("t1", t1), ("t2", t2), ("t3", t3), ("t4", t4), ("t5", t5), ("t6", t6),
-                     ("s1", s1), ("s2", s2), ("s3", s3), ("s4", s4), ("s5", s5)]:
+                     ("s1", s1), ("s2", s2), ("s3", s3), ("s4", s4), ("s5", s5), ("s6", s6)]:
         (UT / f"{navn}.tex").write_text(fn())
-    logger.info(f"t1–t6 og s1–s5 skrevet til {UT}/")
+    logger.info(f"t1–t6 og s1–s6 skrevet til {UT}/")
 
 
 if __name__ == "__main__":

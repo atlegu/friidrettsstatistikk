@@ -86,6 +86,11 @@ def asym():
         sjekk(f"asym {rr['event']} medvind", t["medvind"], rr["medvind"], tol)
         sjekk(f"asym {rr['event']} motvind", t["motvind"], rr["motvind"], tol)
         sjekk(f"asym {rr['event']} p_lik", t["p_lik_meet"], rr["p_lik"], 2e-3)
+        if "ratio_drag" in rr and not pd.isna(rr["ratio_drag"]):
+            sjekk(f"asym {rr['event']} drag-forhold", t["ratio_drag_estimator"], rr["ratio_drag"], 1e-3)
+            sjekk(f"asym {rr['event']} drag medvind", t["drag_medvind"], rr["drag_medvind"], 2e-4)
+            sjekk(f"asym {rr['event']} drag motvind", t["drag_motvind"], rr["drag_motvind"], 2e-4)
+            sjekk(f"asym {rr['event']} drag kvad", t["drag_kvad"], rr["drag_kvad"], 2e-5)
         n += 1
     return n
 
@@ -107,6 +112,10 @@ def vindu():
         sjekk(f"vindu ... {rr['aldersband']} fordel2ms", t["fordel_2ms_s"], rr["fordel_2ms"], 1e-3)
         sjekk(f"vindu ... {rr['aldersband']} sd_pool", t["sd_poolet_adj"], rr["sd_pool"], 2e-3)
         sjekk(f"vindu ... {rr['aldersband']} fordel_i_sd", t["fordel_i_sd"], rr["fordel_i_sd"], 2e-2)
+        sjekk(f"vindu ... {rr['aldersband']} fordel 0-2", t["fordel_0_2_s"], rr["fordel_0_2"], 1e-3)
+        sjekk(f"vindu ... {rr['aldersband']} robust skala", t["skala_robust"], rr["skala_robust"], 2e-3)
+        sjekk(f"vindu ... {rr['aldersband']} fordel 0-2 / robust", t["fordel_0_2_i_robust_skala"],
+              rr["fordel_0_2_robust"], 2e-2)
         n += 1
     if len(r) != len(p):
         feil.append(f"vindu: radantall R={len(r)} python={len(p)}")
@@ -211,10 +220,31 @@ def kvad():
     return len(r)
 
 
+def stevne_fe():
+    r = pd.read_csv(R / "stevne_fe_alder.csv")
+    p = pd.read_csv(EST / "r2_stevne_fe_alder.csv")
+    for _, rr in r.iterrows():
+        t = p[(p["event"] == rr["event"]) & (p["kjonn"] == rr["kjonn"]) & (p["aldersband"] == rr["aldersband"])]
+        if not len(t):
+            feil.append(f"stevne-FE {rr['event']} {rr['kjonn']} {rr['aldersband']}: mangler i python")
+            continue
+        t = t.iloc[0]
+        sjekk(f"stevne-FE {rr['event']} {rr['kjonn']} {rr['aldersband']} estimat", t["stevne_fe_s"], rr["stevne_fe"], 2e-4)
+        # KI: i nesten mettede to-veis-celler (200 m gutter 10-11: 1 301 resultater, 498 celler, 526
+        # stevner) tar Python ut månedsdummyer som numerisk absorbert, mens fixest beholder dem; tre
+        # regressorer i forskjell gir 0,2 % ulik SE. Toleransen 1e-3 dekker dette.
+        for k_r, k_p in [("ki_lav", "stevne_fe_ki_lav"), ("ki_hoy", "stevne_fe_ki_hoy")]:
+            sjekk(f"stevne-FE {rr['event']} {rr['kjonn']} {rr['aldersband']} {k_p}", t[k_p], rr[k_r], 1e-3)
+        sjekk(f"stevne-FE {rr['event']} {rr['kjonn']} {rr['aldersband']} n", t["n"], rr["n"], 0)
+    if len(r) != len(p):
+        feil.append(f"stevne-FE: radantall R={len(r)} python={len(p)}")
+    return len(r)
+
+
 def main():
     deler = [("utvalg", utvalg), ("hoved", hoved), ("alder", alder),
              ("asym", asym), ("vindu", vindu), ("hekk", hekk),
-             ("tertil", tertil), ("deskriptiv", deskriptiv), ("kvad", kvad)]
+             ("tertil", tertil), ("deskriptiv", deskriptiv), ("kvad", kvad), ("stevne-FE", stevne_fe)]
     for navn, fn in deler:
         n = fn()
         print(f"{navn}: {n} enheter sammenlignet")

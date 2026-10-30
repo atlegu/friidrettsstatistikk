@@ -81,13 +81,22 @@ def estimer(d, y_kol, vindkolonner=("wind",), meet_fe=False, cluster="athlete_id
     X = Md.drop(columns=[y_kol]).to_numpy()
     navn = Md.drop(columns=[y_kol]).columns.tolist()
     m = sm.OLS(y, X).fit(cov_type="cluster", cov_kwds={"groups": d[cluster]})
+    V = np.asarray(m.cov_params())
+    # De absorberte cellene telles i småutvalgskorreksjonen når de ikke er nøstet i klyngene,
+    # som i fixest (audit 30.10.2026, funn A6-7): ved stevneklynging blir variansen
+    # (n - k)/(n - k - celler) ganger større. Ved utøverklynging er cellene nøstet i klyngene.
+    if d.groupby("celle")[cluster].nunique().max() > 1:
+        n, k_reg, c = len(d), X.shape[1], d["celle"].nunique()
+        V = V * (n - k_reg) / (n - k_reg - c)
+    se = np.sqrt(np.clip(np.diag(V), 0, None))
     ut = {}
     for k in Xk:
         i = navn.index(k)
-        ut[k] = (float(m.params[i]), float(m.bse[i]))
+        ut[k] = (float(m.params[i]), float(se[i]))
     ut["n"] = len(d)
     ut["celler"] = int(d["celle"].nunique())
     ut["_modell"] = m
+    ut["_V"] = V
     ut["_navn"] = navn
     return ut
 
@@ -175,11 +184,11 @@ def main():
         skala = 1 if kode in TIDSKODER else 100
         bp, sep = r["wind_pos"]
         bn, sen = r["wind_neg"]
-        m, navn = r["_modell"], r["_navn"]
+        m, navn, V = r["_modell"], r["_navn"], r["_V"]
         i, j = navn.index("wind_pos"), navn.index("wind_neg")
         diff = m.params[i] - m.params[j]
-        se_d = float(np.sqrt(m.cov_params()[i, i] + m.cov_params()[j, j]
-                             - 2 * m.cov_params()[i, j]))
+        se_d = float(np.sqrt(V[i, i] + V[j, j]
+                             - 2 * V[i, j]))
         asym.append({"event": kode,
                      "medvind_gevinst_per_ms": round(s * bp * skala, 4),
                      "medvind_ki": f"{s*bp*skala - 1.96*sep*skala:.4f}..{s*bp*skala + 1.96*sep*skala:.4f}",

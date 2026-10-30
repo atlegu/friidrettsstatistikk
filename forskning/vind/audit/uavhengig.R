@@ -71,7 +71,9 @@ bygg <- function(resfil, koder_tid_alle = FALSE) {
 }
 
 # ---- Estimering: within utøver x sesong, måned- og rundedummyer, stevneklynget ---------
-est <- function(dd, ykol = "y", vind = "wind", min_n = 300, min_celler = 100) {
+# Småutvalgskorreksjon som fixest-standard: absorberte celler telles når de ikke er nøstet i
+# stevneklyngene (audit 30.10.2026, funn A6-7); med fe2 = TRUE også stevne-FE (nøstet, telles ikke)
+est <- function(dd, ykol = "y", vind = "wind", min_n = 300, min_celler = 100, fe2 = FALSE) {
   dd <- dd[n_i_celle >= 2]
   if (nrow(dd) < min_n || uniqueN(dd$celle) < min_celler) return(NULL)
   dd <- copy(dd)
@@ -79,9 +81,9 @@ est <- function(dd, ykol = "y", vind = "wind", min_n = 300, min_celler = 100) {
   topp <- names(sort(table(dd$runde), decreasing = TRUE))[seq_len(min(5, uniqueN(dd$runde)))]
   dd[, rnd := fifelse(runde %chin% topp, runde, "annet")]
   fml <- as.formula(paste(ykol, "~", paste(vind, collapse = " + "),
-                          "+ factor(mnd) + factor(rnd) | celle"))
+                          "+ factor(mnd) + factor(rnd) | celle", if (fe2) " + meet_id" else ""))
   m <- feols(fml, data = dd, vcov = cluster ~ meet_id,
-             ssc = ssc(adj = TRUE, fixef.K = "none", cluster.adj = TRUE))
+             ssc = ssc(adj = TRUE, fixef.K = "nested", cluster.adj = TRUE))
   list(m = m, n = nrow(dd), celler = uniqueN(dd$celle))
 }
 
@@ -160,11 +162,24 @@ asy <- rbindlist(lapply(sort(unique(d$event_code)), function(k) {
   s <- if (k %in% TID) -1 else 1; sk <- if (k %in% TID) 1 else 100
   dif <- b["wind_pos"] - b["wind_neg"]
   sed <- sqrt(V["wind_pos", "wind_pos"] + V["wind_neg", "wind_neg"] - 2 * V["wind_pos", "wind_neg"])
-  data.table(event = k,
+  ut <- data.table(event = k,
              medvind = s * b["wind_pos"] * sk, motvind = s * b["wind_neg"] * sk,
              med_se = sqrt(V["wind_pos", "wind_pos"]) * sk, mot_se = sqrt(V["wind_neg", "wind_neg"]) * sk,
              p_lik = 2 * (1 - pnorm(abs(dif / sed))), n = r$n)
-}))
+  # Drag-referanse for samme estimator: ren drag-fysikk på de observerte vindene (A6-1)
+  if (k %chin% c("60m", "100m", "200m")) {
+    g <- copy(d[event_code == k])
+    lengde <- c("60m" = 60, "100m" = 100, "200m" = 200)[[k]]
+    g[, tm := mean(y), by = celle][, v := lengde / tm]
+    g[, ysim := tm * ((v - wind)^2 - v^2) / v^2][, wind2 := wind^2]
+    cc <- coef(est(g)$m)["wind"] / coef(est(g, "ysim")$m)["wind"]
+    ps <- coef(est(g, "ysim", vind = c("wind_pos", "wind_neg"))$m)
+    qs <- coef(est(g, "ysim", vind = c("wind", "wind2"))$m)
+    ut[, `:=`(ratio_drag = ps["wind_neg"] / ps["wind_pos"], drag_medvind = -cc * ps["wind_pos"],
+              drag_motvind = -cc * ps["wind_neg"], drag_kvad = cc * qs["wind2"])]
+  }
+  ut
+}), fill = TRUE)
 fwrite(asy, "audit/r_out/asym.csv")
 
 # ---- Kvadratisk form (rå enheter: s for løp, m for hopp), stevneklynget -----------------
@@ -193,13 +208,30 @@ vin <- rbindlist(lapply(c("60m", "100m", "200m"), function(k) rbindlist(lapply(c
     g3 <- g[n_i_celle >= 3]
     frih <- max(sum(g3[, .N, by = celle]$N - 1), 1)
     sdp <- sqrt(sum(g3$res2) / frih)
+    # Verdien av +2,0 fra helningen over 0..+2 (knekk ved 0 og +2) og robust skala (MAD) (A6-4/5)
+    g02 <- copy(g)[, `:=`(w02 = pmin(pmax(wind, 0), 2), w2p = pmax(wind - 2, 0))]
+    b02 <- coef(est(g02, vind = c("w02", "w2p", "wind_neg"))$m)["w02"]
+    rob <- mad(g3$y_adj - g3$cm_adj) * sqrt(nrow(g3) / frih)
     data.table(event = k, kjonn = kj, aldersband = b,
                medvind = -bb["wind_pos"], med_se = sqrt(V["wind_pos", "wind_pos"]),
                motvind = -bb["wind_neg"], mot_se = sqrt(V["wind_neg", "wind_neg"]),
                fordel_2ms = -2 * bb["wind_pos"], sd_pool = sdp,
-               fordel_i_sd = -2 * bb["wind_pos"] / sdp, n = r$n)
+               fordel_i_sd = -2 * bb["wind_pos"] / sdp,
+               fordel_0_2 = -2 * b02, skala_robust = rob, fordel_0_2_robust = -2 * b02 / rob, n = r$n)
   }))))), fill = TRUE)
 fwrite(vin, "audit/r_out/vindu.csv")
+
+# ---- Stevne-FE per kjønn og aldersbånd (tabell S6) ---------------------------------------
+fe <- rbindlist(lapply(c("60m", "100m", "200m"), function(k) rbindlist(lapply(c("M", "F"), function(kj)
+  rbindlist(lapply(unique(d[event_code == k & gender == kj, aldersband]), function(b) {
+    g <- d[event_code == k & gender == kj & aldersband == b]
+    r <- est(g, fe2 = TRUE)
+    if (is.null(r)) return(NULL)
+    bb <- coef(r$m)["wind"]; se <- sqrt(vcov(r$m)["wind", "wind"])
+    data.table(event = k, kjonn = kj, aldersband = b, stevne_fe = -bb,
+               ki_lav = -bb - qnorm(.975) * se, ki_hoy = -bb + qnorm(.975) * se, n = r$n)
+  }))))), fill = TRUE)
+fwrite(fe, "audit/r_out/stevne_fe_alder.csv")
 
 # ---- Evnetertiler av utøversesonger (celler >= 2), vindjustert cellesnitt ----------------
 cel <- d[n_i_celle >= 2, .(cm = mean(y_adj)), by = .(celle, event_code, gender, aldersband)]
