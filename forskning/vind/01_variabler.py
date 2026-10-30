@@ -11,6 +11,7 @@ Output: data_private/analyseklar.csv (rader med vindverdi som passerer filtrene)
 
 import json
 import logging
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -18,6 +19,8 @@ import pandas as pd
 
 HERE = Path(__file__).parent
 DATA = HERE / "data_private"
+sys.path.insert(0, str(HERE.parent))
+from rens_felles import fjern_kopier  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -45,6 +48,9 @@ def main():
     utv = pd.read_csv(DATA / "utovere.csv").rename(columns={"id": "athlete_id"})
     me = pd.read_csv(DATA / "meets.csv").rename(columns={"id": "meet_id"})
     flyt = {"rader_uttrekk": len(r)}
+    r, kopier = fjern_kopier(r)
+    flyt["ekskl_sonetvilling_brettkode"] = kopier["sonetvilling"]
+    flyt["ekskl_eksakt_dublett"] = kopier["eksakt_dublett"]
 
     r = r.merge(utv, on="athlete_id", how="left")
     r = r.merge(me[["meet_id", "indoor", "krets", "level"]], on="meet_id", how="left")

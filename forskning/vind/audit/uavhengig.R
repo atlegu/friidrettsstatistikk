@@ -16,8 +16,27 @@ GRENSER <- list("60m" = c(6.4, 16), "80m" = c(8.5, 20), "100m" = c(9.5, 22),
 band_av <- function(a) fcase(a <= 11, "10-11", a <= 13, "12-13", a <= 15, "14-15",
                              a <= 17, "16-17", a <= 19, "18-19", default = "20-34")
 
+# Importkopier (audit 30.10.2026): brettraden i lengde/tresteg fjernes når en OK-rad under
+# sonekoden har samme utøver, dato, resultat og vind; deretter eksakte dubletter (utøver,
+# dato, øvelse, resultat, vind, runde) blant OK-radene, lavest id beholdes (C-sortering).
+fjern_kopier <- function(r) {
+  r <- copy(r)
+  r[, `:=`(vk = fifelse(is.na(wind), -99, round(wind, 1)),
+           rk = fifelse(is.na(round) | round == "", "NA", as.character(round)), rad = .I)]
+  sone <- unique(r[status == "OK" & event_code %chin% c("lengde_sone_05m", "tresteg_sone_05m"),
+                   .(athlete_id, date, performance_value, vk,
+                     brett = fifelse(event_code == "lengde_sone_05m", "lengde", "tresteg"))])
+  brett <- r[status == "OK" & event_code %chin% c("lengde", "tresteg")]
+  tv <- brett[sone, on = .(athlete_id, date, performance_value, vk, event_code = brett), nomatch = 0L, rad]
+  kand <- r[status == "OK" & !(rad %in% tv)]
+  setorderv(kand, "id")
+  du <- kand[duplicated(kand, by = c("athlete_id", "date", "event_code", "performance_value", "vk", "rk")), rad]
+  cat(sprintf("fjern_kopier: %d sonetvillinger, %d eksakte dubletter\n", length(unique(tv)), length(du)))
+  r[!(rad %in% c(tv, du))][, c("vk", "rk", "rad") := NULL][]
+}
+
 bygg <- function(resfil, koder_tid_alle = FALSE) {
-  r <- fread(resfil)
+  r <- fjern_kopier(fread(resfil))
   utv <- fread("data_private/utovere.csv"); setnames(utv, "id", "athlete_id")
   me <- fread("data_private/meets.csv"); setnames(me, "id", "meet_id")
   d <- merge(r, utv, by = "athlete_id", all.x = TRUE)
@@ -201,7 +220,9 @@ fwrite(data.table(i16_18 = mean(w >= 1.6 & w <= 1.8), i18_20 = mean(w > 1.8 & w 
                   null = mean(w == 0), to = mean(w == 2.0)), "audit/r_out/bunching.csv")
 fwrite(d[event_code %chin% TID, .(snitt = mean(y)), by = event_code][
   , per_sekund := beta_h[event_code] / snitt], "audit/r_out/per_sekund.csv")
-r0 <- fread("data_private/resultater.csv", select = c("event_code", "meet_id", "wind", "status"))
+r0 <- fjern_kopier(fread("data_private/resultater.csv",
+                         select = c("id", "athlete_id", "date", "performance_value", "round",
+                                    "event_code", "meet_id", "wind", "status")))
 me0 <- fread("data_private/meets.csv"); setnames(me0, "id", "meet_id")
 r0 <- merge(r0, me0[, .(meet_id, indoor)], by = "meet_id", all.x = TRUE)
 ute <- r0[status == "OK" & !(tolower(as.character(indoor)) %in% "true")]

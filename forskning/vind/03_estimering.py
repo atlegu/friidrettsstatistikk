@@ -36,18 +36,33 @@ def dummies(d):
     return pd.concat([mnd, rnd], axis=1)
 
 
-def demean(M, grupper, grupper2=None, iterasjoner=25):
-    """Within-transformasjon; to-veis ved iterativ demeaning når grupper2 er satt."""
+def _gruppesnitt(X, kode, n, antall):
+    return np.column_stack([np.bincount(kode, weights=X[:, j], minlength=n)
+                            for j in range(X.shape[1])]) / antall[:, None]
+
+
+def demean(M, grupper, grupper2=None, tol=1e-10, maks=100_000):
+    """Within-transformasjon; to-veis ved alternerende projeksjoner når grupper2 er satt.
+
+    To-veis itereres til største gruppesnitt for den første grupperingen er under tol. Den
+    tidligere faste grensen på 25 runder konvergerte ikke (det trengs 600-2 300 runder), selv
+    om estimatene var like på fire-fem siffer (audit 30.10.2026, funn A6-8).
+    """
     M = M.astype(float)
     if grupper2 is None:
         return M - M.groupby(grupper).transform("mean")
-    X = M.copy()
-    for _ in range(iterasjoner):
-        X = X - X.groupby(grupper).transform("mean")
-        X = X - X.groupby(grupper2).transform("mean")
-        if X.groupby(grupper).transform("mean").abs().to_numpy().max() < 1e-9:
+    X = M.to_numpy(copy=True)
+    a, b = pd.factorize(grupper)[0], pd.factorize(grupper2)[0]
+    na, nb = a.max() + 1, b.max() + 1
+    ca, cb = np.bincount(a, minlength=na).astype(float), np.bincount(b, minlength=nb).astype(float)
+    for runde in range(1, maks + 1):
+        X -= _gruppesnitt(X, a, na, ca)[a]
+        X -= _gruppesnitt(X, b, nb, cb)[b]
+        if runde % 10 == 0 and np.abs(_gruppesnitt(X, a, na, ca)).max() < tol:
             break
-    return X
+    else:
+        logger.warning(f"to-veis demeaning konvergerte ikke på {maks} runder")
+    return pd.DataFrame(X, index=M.index, columns=M.columns)
 
 
 def estimer(d, y_kol, vindkolonner=("wind",), meet_fe=False, cluster="athlete_id"):
@@ -57,7 +72,8 @@ def estimer(d, y_kol, vindkolonner=("wind",), meet_fe=False, cluster="athlete_id
         return None
     M = pd.concat([d[y_kol], d[list(vindkolonner)], dummies(d)], axis=1)
     Md = demean(M, d["celle"], d["meet_id"] if meet_fe else None)
-    Md = Md.loc[:, (Md.abs() > 1e-12).any(axis=0)]
+    # absorberte kolonner (f.eks. måned under stevne-FE) er null opp til konvergenstoleransen
+    Md = Md.loc[:, Md.abs().max(axis=0) > 1e-6 * M.abs().max(axis=0).replace(0, 1)]
     y = Md[y_kol].to_numpy()
     Xk = [k for k in vindkolonner if k in Md.columns]
     if not Xk:

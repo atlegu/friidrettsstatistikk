@@ -28,6 +28,7 @@ $PY 07_revisjon_r1.py
 $PY 10_eiv_kalibrering.py
 $PY 08_r1_figurer_tabeller.py
 $PY 09_r1_supptex.py
+$PY 11_audit_alternativer.py
 
 echo "== 2. Manus (full LaTeX-syklus)"
 (

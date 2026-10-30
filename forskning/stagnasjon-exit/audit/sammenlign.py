@@ -6,6 +6,7 @@ logit-OR/KI 2e-4 (region er konstant i A1, så modellene skal være identiske);
 klyngede/Cox/E-verdi 2e-3–0.02. CV-baserte størrelser dekkes av delong_bro.
 """
 
+import json
 import sys
 from pathlib import Path
 
@@ -56,10 +57,15 @@ def or_sjekk(py_df, py_sel, r_df, r_sel, navn, tol=2e-4, med_n=True):
 
 def main():
     u = pd.read_csv(R / "utvalg.csv").iloc[0]
-    for navn, fasit in [("landmark", 4910), ("landmark_med_kjonn", 4909),
-                        ("uten_fodselsdato", 43), ("uten_skaarbar", 734),
-                        ("ekskl_smaacelle", 3), ("n_prim_for_dropna", 3808),
-                        ("n_prim_modeller", 3808), ("seniorer", 648)]:
+    flyt = json.loads((HERE.parent / "data_private" / "flyt.json").read_text())
+    opps = json.loads((TAB / "modeller" / "oppsummering.json").read_text())
+    for navn, fasit in [("landmark", flyt["landmark_13_14_og_15_16"]),
+                        ("landmark_med_kjonn", flyt["landmark_med_kjonn"]),
+                        ("uten_fodselsdato", flyt["landmark_uten_fodselsdato"]),
+                        ("uten_skaarbar", flyt["uten_skaarbar_tyrving_i_hovedgruppen"]),
+                        ("ekskl_smaacelle", flyt["ekskludert_gruppecelle_under_20"]),
+                        ("n_prim_for_dropna", flyt["primaerutvalg_fodt_1998_2005"]),
+                        ("n_prim_modeller", opps["n"]), ("seniorer", opps["seniorer"])]:
         sjekk(f"utvalg {navn}", fasit, u[navn], 0)
     rk = pd.read_csv(R / "radkontroll.csv").iloc[0]
     for k in ["kun_R", "kun_py", "ulik_vol", "ulik_k", "ulik_senior"]:

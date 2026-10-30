@@ -40,3 +40,32 @@ Alle data leses fra `data_private/` (frosset uttrekk 29.10.2026, 20:45–20:48 U
 1. **A3-1 (tekst mot kode, må rettes):** region-kovariaten er vakuøs (konstant), og formuleringen «18 districts plus unknown» er ikke sann for noen fil i prosjektet — feltet finnes ikke i registeret (meets.krets 0,9 % utfylt; clubs uten geografi). Fjerning endrer ingen estimater (verifiseres i fase 3). Retting: fjern region fra §2 og tabellnoter/-tekster; begrensningsavsnittet («geography … none of which the registry measures») blir da konsistent i stedet for selvmotsigende.
 2. **A3-2 (kvantifiseres i fase 3):** antall utøvere med reelt første resultat før fylte 10 (debut forskjøvet til 10+) telles og dokumenteres her; ventet ≤ noen titalls (116 rader totalt under 10).
 3. **A3-3 (info):** `aktiv17`-kolonnen i analysedata er runde 1-sporet; manusets tall kommer fra 05_revisjon_r1.py. R-reimplementasjonen bygger landmarken fra manusdefinisjonen og skal reprodusere r1-tallene.
+
+## Fase 2–4 (30.10.2026) — retting, uavhengig implementasjon, tallsporing
+
+- **A3-2 (kvantifisert):** 33 debuter er forskjøvet av ekskluderte tidligere rader: 8 fra resultater før fylte 10 og 25 fra ikke-godkjente resultater (`r1_debutforskyvning.csv`). Teksten er oppdatert.
+- **Dobbel avrunding (rettet):** Full presisjon lagres og avrundes én gang ved visning.
+- **Tabeller fra kode:** t1–t4 og s1–s3 genereres av `06_manustabeller.py`. S1 bruker sekvensiell flyt (731 med debut ≥ 17 blant dem med kjent kjønn).
+- **Uavhengig R** (`audit/uavhengig.R`) reproduserer utvalg, logit, retention og Cox. `audit/sammenlign.py` passerer.
+- **Tallsporing** (`audit/kontroll_tall.py`) passerer: 112 punkter, inkludert svarbrev og sitater.
+
+## Fase 7 (30.10.2026) — uavhengige agenter, verifisert med egen kode
+
+**Data:** Sonetvillingene (D1) og de eksakte dublettene (D3) i A1/A6 berører ikke A3. Det finnes ingen sonehopp ved 20 år eller eldre, og debut og volum bruker datoer. Kontrollert mot A1-uttrekket: av 449 A3-seniorer som kan kontrolleres, mister ingen status når kopiene fjernes. A3-uttrekket har ikke øvelse og resultat, så eksakte dubletter kan ikke fjernes direkte; virkningen er null der den kan måles.
+
+**D4 Dekning 2011.**
+- Stevner med resultater i juni, august og september var 164, 118 og 143 i 2011, mot 238, 197 og 201 i 2012.
+- Kull 2001 har lavest andel debut ved 10 år (32,6 %, mot 36–42 % i kull 2002–2005). «No left truncation» og «measured exactly» er for sterkt.
+- H1 uten 2001-kullet: OR 0,60 / 0,51 / 0,74 / 0,63 / 1,05 / 1,84 for debut 11–16, trend 0,995.
+
+**Statistikk (krever Atles beslutning om tekst; alternativene i `07_audit_alternativer.py` → `tables/audit/`):**
+- **KM med forsinket inngang (A3-1):** Estimatoren er ugyldig når frafallsrisikoen avhenger av tid siden debut. Direkte andel aktiv ved 20 år (kull 2001–2004) er 4,2 / 3,3 / 4,5 %, mot KM 2,7 / 1,7 / 1,3. Ved 16 år er de direkte andelene 14,0 / 13,7 / 31,0 %.
+- **Høyre arm av U-en (A3-2):** Den forklares av avstanden til den faste utfallsalderen. Ved lik karrierelengde (minst to konkurransedager i et år minst fire år etter debut) faller andelen fra 20,4 % (debut 10) til 4,5–6,6 % (14–16), justert OR 0,70 per år (0,68–0,73). Etter fem og seks år er OR 0,69 og 0,66.
+- **Cox på alderskala, HR 1,32 (A3-3):** Proporsjonalitetsantakelsen er brutt per konstruksjon, og alder = debutalder + varighet.
+- **«The U is formal» (A3-4):** LR-testen viser bare ikke-linearitet.
+- **Fødselskvartal-interaksjonen (A3-5):** Utvalget er selektert. 98,5 % av seniorene har fødselsdato, mot 51,9 % av de andre; andelen er 39 % ved debut 10 og 94 % ved debut 16.
+- **Mindre punkter:** H3-ordbruk; «altered nothing material» ved siden av p = 0,03; følsomhetsanalyse for manglende kjønn (549 i primærkullene, konsentrert ved debut 10–12).
+
+## Fase 5 — RUN_ALL.sh
+
+`RUN_ALL.sh` (`set -eo pipefail`, hashkontroll, `SOURCE_DATE_EPOCH`) kjører 01–07, full LaTeX-syklus med referansekontroll, uavhengig R, sammenligning og tallkontroll.

@@ -1,11 +1,13 @@
 steg,antall
 utovere_fodt_1998_2006,32447
+fjernet_sonetvilling_brettkode,12990
+fjernet_eksakt_dublett,746
 ok_resultat_13_14,12938
 landmark_13_14_og_15_16,4910
 landmark_uten_kjonn,1
 landmark_uten_fodselsdato,43
 landmark_med_kjonn,4909
-uten_skaarbar_tyrving_i_hovedgruppen,734
-ekskludert_gruppecelle_under_20,3
-primaerutvalg_fodt_1998_2005,3808
-primaerutvalg_seniorer,648
+uten_skaarbar_tyrving_i_hovedgruppen,666
+ekskludert_gruppecelle_under_20,19
+primaerutvalg_fodt_1998_2005,3856
+primaerutvalg_seniorer,652

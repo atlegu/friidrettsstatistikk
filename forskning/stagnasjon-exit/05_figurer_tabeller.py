@@ -35,9 +35,9 @@ FIG = HERE / "figures"
 TABM = HERE / "tables" / "manus"
 FIG.mkdir(exist_ok=True)
 TABM.mkdir(parents=True, exist_ok=True)
-sys.path.insert(0, "/Users/atleguttormsen/Dropbox/Aktuelt1/Florida25/Statistikk/"
-                   "forskning/ncc-kohort/revision_r1/analysis")
-from tyrving_r2 import beregn_tyrving_poeng, parse_tyrving_xls  # noqa: E402
+sys.path.insert(0, str(HERE.parent))
+from a1_tyrving import beregn_tyrving_poeng, parse_tyrving_xls  # noqa: E402
+from rens_felles import fjern_kopier  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -69,6 +69,7 @@ def last_grunnlag():
     base["aktiv_naa"] = (base["birth_year"] + base["siste_alder"]) >= 2025
 
     r = pd.read_csv(DATA / "resultater.csv", parse_dates=["date"], low_memory=False)
+    r, _ = fjern_kopier(r)
     r = r.drop(columns=["birth_year"], errors="ignore").merge(
         base[["athlete_id", "birth_year", "gender", "hovedgruppe"]], on="athlete_id", how="inner")
     r["alder"] = r["date"].dt.year - r["birth_year"]

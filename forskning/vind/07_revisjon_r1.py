@@ -32,6 +32,8 @@ EST = HERE / "tables" / "estimering"
 spec = importlib.util.spec_from_file_location("m03", HERE / "03_estimering.py")
 m03 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m03)
+sys.path.insert(0, str(HERE.parent))
+from rens_felles import fjern_kopier  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -213,6 +215,7 @@ def main():
 
     # ---- Hekk: stevneklynget + snittid per kode (R1-m4) ----------------------------------
     hr = pd.read_csv(DATA / "resultater_hekk.csv", parse_dates=["date"], low_memory=False)
+    hr, _ = fjern_kopier(hr)
     utv = pd.read_csv(DATA / "utovere.csv").rename(columns={"id": "athlete_id"})
     me = pd.read_csv(DATA / "meets.csv").rename(columns={"id": "meet_id"})
     hr = hr.merge(utv, on="athlete_id", how="left")
@@ -302,7 +305,9 @@ def main():
 
     # ---- Manglende vind etter stevnenivå; innendørsrader per øvelse ----------------------
     r0 = pd.read_csv(DATA / "resultater.csv", low_memory=False,
-                     usecols=["event_code", "meet_id", "wind", "status", "date"])
+                     usecols=["id", "athlete_id", "event_code", "meet_id", "wind", "status",
+                              "date", "performance_value", "round"])
+    r0, _ = fjern_kopier(r0)
     r0 = r0.merge(me[["meet_id", "indoor", "level"]], on="meet_id", how="left")
     ute = r0[(r0["status"] == "OK") & (r0["indoor"].astype(str) != "True")].copy()
     ute["mangler"] = ute["wind"].isna()

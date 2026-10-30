@@ -45,3 +45,58 @@ NA-mønsteret i analysedata stemmer med flyten (43 uten fødselsdato; 734 uten s
 
 1. **A1-1 (tekst mot kode, må rettes):** «region»-kovariaten er vakuøs — kildefeltet (meets.krets) er tomt for 99,1 % av stevnene, og klubbtabellen har ingen geografi (county: 0 av 2 484). Konstant kovariat → fjerning endrer ingen estimater (verifiseres bit-eksakt i fase 3). Retting: fjern «region» fra kovariatlistene i §2 og tabellnoten; geografi står allerede som umålt begrensning. Ingen tall endres.
 2. **A1-2 (info):** `region`-kolonnen i analysedata beholdes som runde 1-spor; R-reimplementasjonen estimerer uten den og reproduserer publiserte tall eksakt.
+
+## Fase 2–4 (30.10.2026) — retting, uavhengig implementasjon, tallsporing
+
+- **A1-3 (tertilkonvensjon, dokumentert):** `pd.qcut` bruker `np.percentile` med q = 0,33333333333333326 (1 ULP under 1/3), mens R type 7 har fuzz. Grenseverdier havner derfor i ulik tertil. R-koden replikerer pandas-konvensjonen eksplisitt.
+- **Dobbel avrunding (rettet):** Modellfilene lagret avrundede tall som tabellene avrundet på nytt. Nå lagres full presisjon og avrundes én gang ved visning.
+- **Tabeller fra kode:** t1–t4 og s1 genereres av `07_manustabeller.py` og `\input`-es; ingen tall skrives for hånd.
+- **Uavhengig R** (`audit/uavhengig.R`, data.table + survival, skrevet fra metodeteksten; Tyrving-poengene leses fra den delte, validerte komponenten via `audit/eksport_tyrving.py`) reproduserer utvalget rad for rad og alle OR-er. DeLong er verifisert med pROC (`audit/delong_bro.R`).
+- **Tallsporing** (`audit/kontroll_tall.py`): tabellceller, ankrede fraser, svarbrevet, sitatene og ordtellingen.
+
+## Fase 7 (30.10.2026) — uavhengige agenter, verifisert med egen kode og rettet
+
+**D1 Sonehopp lagret to ganger (rettet).**
+- **Omfang:** 12 990 brettrader (11 354 lengde, 1 636 tresteg) er kopier av sonehopp (samme utøver, dato, resultat, vind), nesten alle ved 13 år. Begge radene ble poengsatt (sonehopp mot brettnormen), så samme hopp kunne fylle to av de tre beste plassene i W1 og telle dobbelt i valget av hovedgruppe.
+- **Opphav og verifisering:** som i A6 (reimportene 19.05 og 24.08–06.09.2026; kilden viser bare sonekoden).
+- **Retting:** `forskning/rens_felles.py`, speilet uavhengig i R. R finner de samme 12 990.
+
+**D2 Redskaper uten Tyrving-poeng (rettet).**
+- **Feilen:** `tyrving_r2._SPEC` manglet kule 5 kg, diskos 1,5 kg, slegge 5 kg/120 cm og spyd 700 g (gutter 16), spyd 500 g (jenter 15–16), liten ball 150 g (13–14) og flere hekke-, hinder- og kappgangkoder, selv om parametertabellen har radene. Mannlige kastere hadde derfor null poengsatte resultater ved 16 år; 43,5 % av resultatene deres ved 15–16 var uten poeng.
+- **Retting:** `a1_tyrving.py` kompletterer koblingen bare for A1 (IJSSC-modulen er fryst og uendret). Hver ny kobling er kontrollert mot tabellrader for kjønn og alder.
+
+**D3 Eksakte dubletter (rettet).** 746 rader like på utøver, dato, øvelse, resultat, vind og runde; lavest id beholdes.
+
+**Følger av D1–D3:**
+- n går fra 3 808 til 3 856, og seniorene fra 648 til 652.
+- H1 går fra OR 2,02 (1,73–2,37) til 2,20 (1,87–2,59), og ΔAUC fra 0,009 til 0,011.
+- Hovedgrupper (sprint / hopp / mellomdistanse / kast) går fra 34,1 / 33,4 / 18,9 / 13,6 % til 37,5 / 28,0 / 19,5 / 15,1 %.
+- Median fremgang går fra −10 (+30 / −18) til −4 (+36 / −14).
+- Spesifikasjonskontrollen går fra 1,00 til 1,02.
+- Uavhengig R reproduserer alt på nytt; `audit/sammenlign.py` leser nå utvalgstallene fra flyt.json og oppsummering.json i stedet for innskrevne konstanter.
+
+**Statistikk (krever Atles beslutning om tekst; alternativene i `08_audit_alternativer.py` → `tables/audit/`):**
+- **«Nedgangen før exit» (A1-1):** Den skyldes færre resultater (median 10, 10, 8 og 3 fra T−3 til T0). Med like mange resultater er nest siste sesong +5,0 (1,0–9,0) og siste sesong −11,8 (−17,2 til −7,1).
+- **Mediering (A1-2):** Betinget a-sti er +0,025 (−0,001 til 0,051), og kvartal i M0 har OR 0,97 (0,90–1,05).
+- **Nivågradienten (A1-3):** Med k ≥ 3 blir den 2,60 / 2,16 / 2,73, med interaksjon 1,01.
+- **E-verdi (A1-4):** √OR gir 2,33 (2,08).
+- **Kjønn i én modell (A1-6):** 2,20 mot 2,20, p = 0,99.
+- **Tidligere nivå gitt senere nivå:** OR 0,76 per 100 poeng (0,67–0,86).
+- **Følsomhet for H1:**
+
+  | Analyse | OR |
+  |---|---|
+  | Like mange resultater | 1,85 |
+  | Splines | 2,12 |
+  | k ≥ 3 | 2,49 |
+  | Bare utendørs | 1,96 |
+  | Øvelsesjusterte poeng | 1,91 |
+
+  Poengene er ikke sammenlignbare på tvers av øvelser; liten ball har median 156–286.
+- **Avvik fra ANALYSEPLAN** (klubbgrupperte folder, parret bootstrap, residualvariant, tilfeldig klubbintercept) må beskrives.
+
+**D4 Dekning 2011.** 1998-kullets 13-årssesong er 2011, året med tynnest dekning. «Electronically complete from 2011» må mykes opp. Kohortdummiene tar opp nivåforskjellen.
+
+## Fase 5 — RUN_ALL.sh
+
+Det gamle `RUN_ALL.sh` kjørte uttrekket på nytt og er erstattet. Det nye (`set -eo pipefail`, hashkontroll, `SOURCE_DATE_EPOCH`) kjører 01–08, full LaTeX-syklus med referansekontroll, eksport av Tyrving-poeng, uavhengig R, DeLong-broen, sammenligning og tallkontroll. Status 30.10: tallkontrollen feiler på 98 av 133 punkter til teksten er oppdatert etter D1–D3. Avledede filer (analysedata.csv, flyt.json) har nye hasher; råuttrekket er uendret.

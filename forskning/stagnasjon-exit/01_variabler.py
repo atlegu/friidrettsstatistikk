@@ -23,9 +23,9 @@ import pandas as pd
 
 HERE = Path(__file__).parent
 DATA = HERE / "data_private"
-sys.path.insert(0, "/Users/atleguttormsen/Dropbox/Aktuelt1/Florida25/Statistikk/"
-                   "forskning/ncc-kohort/revision_r1/analysis")
-from tyrving_r2 import beregn_tyrving_poeng, parse_tyrving_xls  # noqa: E402
+sys.path.insert(0, str(HERE.parent))
+from a1_tyrving import beregn_tyrving_poeng, parse_tyrving_xls  # noqa: E402
+from rens_felles import fjern_kopier  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -54,6 +54,9 @@ def main():
     utv = pd.read_csv(DATA / "utovere.csv")
     r = pd.read_csv(DATA / "resultater.csv", parse_dates=["date"], low_memory=False)
     flyt = {"utovere_fodt_1998_2006": len(utv)}
+    r, kopier = fjern_kopier(r)   # sonetvillinger og eksakte dubletter (rens_felles.py)
+    flyt["fjernet_sonetvilling_brettkode"] = kopier["sonetvilling"]
+    flyt["fjernet_eksakt_dublett"] = kopier["eksakt_dublett"]
 
     r = r.drop(columns=["birth_year"], errors="ignore")
     r = r.merge(utv.rename(columns={"id": "athlete_id"}), on="athlete_id", how="inner")

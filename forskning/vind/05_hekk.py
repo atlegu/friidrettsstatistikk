@@ -11,6 +11,7 @@ Output: tables/estimering/hekk.csv, figures/fig5_hurdles.png
 
 import importlib.util
 import logging
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -27,6 +28,8 @@ FIG = HERE / "figures"
 spec = importlib.util.spec_from_file_location("est03", HERE / "03_estimering.py")
 est03 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(est03)
+sys.path.insert(0, str(HERE.parent))
+from rens_felles import fjern_kopier  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -52,6 +55,7 @@ def aldersband(a):
 
 def main():
     r = pd.read_csv(DATA / "resultater_hekk.csv", parse_dates=["date"], low_memory=False)
+    r, _ = fjern_kopier(r)
     utv = pd.read_csv(DATA / "utovere.csv").rename(columns={"id": "athlete_id"})
     me = pd.read_csv(DATA / "meets.csv").rename(columns={"id": "meet_id"})
     r = r.merge(utv, on="athlete_id", how="left")

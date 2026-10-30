@@ -11,8 +11,27 @@ setwd(dirname(dirname(normalizePath(sub("--file=", "", grep("--file=", commandAr
 dir.create("audit/r_out", showWarnings = FALSE)
 z975 <- qnorm(.975)
 
+# Importkopier (audit 30.10.2026): brettraden i lengde/tresteg fjernes når en OK-rad under
+# sonekoden har samme utøver, dato, resultat og vind; deretter eksakte dubletter (utøver,
+# dato, øvelse, resultat, vind, runde) blant OK-radene, lavest id beholdes (C-sortering).
+fjern_kopier <- function(r) {
+  r <- copy(r)
+  r[, `:=`(vk = fifelse(is.na(wind), -99, round(wind, 1)),
+           rk = fifelse(is.na(round) | round == "", "NA", as.character(round)), rad = .I)]
+  sone <- unique(r[status == "OK" & event_code %chin% c("lengde_sone_05m", "tresteg_sone_05m"),
+                   .(athlete_id, date, performance_value, vk,
+                     brett = fifelse(event_code == "lengde_sone_05m", "lengde", "tresteg"))])
+  brett <- r[status == "OK" & event_code %chin% c("lengde", "tresteg")]
+  tv <- brett[sone, on = .(athlete_id, date, performance_value, vk, event_code = brett), nomatch = 0L, rad]
+  kand <- r[status == "OK" & !(rad %in% tv)]
+  setorderv(kand, "id")
+  du <- kand[duplicated(kand, by = c("athlete_id", "date", "event_code", "performance_value", "vk", "rk")), rad]
+  cat(sprintf("fjern_kopier: %d sonetvillinger, %d eksakte dubletter\n", length(unique(tv)), length(du)))
+  r[!(rad %in% c(tv, du))][, c("vk", "rk", "rad") := NULL][]
+}
+
 utv <- fread("data_private/utovere.csv"); setnames(utv, "id", "athlete_id")
-r <- fread("data_private/resultater.csv", drop = "birth_year")
+r <- fjern_kopier(fread("data_private/resultater.csv", drop = "birth_year"))
 r <- merge(r, utv, by = "athlete_id")
 r <- r[status == "OK"]
 r[, date := as.IDate(date)][, aar := year(date)][, alder := aar - birth_year]
@@ -37,7 +56,7 @@ base <- merge(base, hg, by = "athlete_id", all.x = TRUE)
 
 # ---- Tyrving (delt komponent) + vindgyldighet ----------------------------------------------
 sc <- fread("audit/tyrving_scored.csv")
-sc <- sc[athlete_id %chin% base$athlete_id]
+sc <- sc[athlete_id %chin% base$athlete_id & id %chin% r$id]
 ev <- fread("data_private/events.csv")
 vindov <- ev[tolower(as.character(wind_measured)) == "true", code]
 sc[, vind_ulovlig := tolower(as.character(is_wind_legal)) == "false"]

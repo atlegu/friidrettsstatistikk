@@ -40,3 +40,49 @@ Kjernen ble gjennomgått i revisjonsrunden (stevneklynging, medvindsgren-H5, vin
 ## Funn
 
 1. **A6-1 (tekst, må rettes):** «(4.3 % of outdoor rows)» har feil nevner (analysefilen). Riktig med samme basis som tertilsetningen: **4,9 % av godkjente utendørsrader** (23 435 av 479 247); flytens 18 692 er antallet ved eksklusjonspunktet. Rettes i §2.1.
+
+## Fase 2–4 (30.10.2026) — retting, uavhengig implementasjon, tallsporing
+
+- **A6-2 (rettet):** nivåtertilene var radbaserte (like mange resultater per tertil, lavtertilen fikk om lag 50 % flere celler, og en grensecelle kunne deles). Nå tertiler av utøversesonger med celle-id som deterministisk tie-break (`07_revisjon_r1.py`).
+- **A6-3 (rettet):** flatreferansen for hekk ble tatt fra samlet modalbånd (20–34 for guttene i 100 m hekk 84 cm, som alle er 14–15); nå kjønnets eget modalbånd.
+- **Dobbel avrunding (rettet):** estimatfilene lagret avrundede tall som tabellene avrundet på nytt; nå lagres full presisjon og avrundes én gang ved visning.
+- **Tabeller fra kode:** t1–t6 og s1–s5 genereres av `09_r1_supptex.py` og `\input`-es; ingen tall skrives for hånd.
+- **Uavhengig R** (`audit/uavhengig.R`, data.table + fixest, skrevet fra metodeteksten) reproduserer utvalget som eksakt multisett og alle estimater; `audit/sammenlign.py` passerer.
+- **Tallsporing** (`audit/kontroll_tall.py`): hver tabellcelle, ankrede fraser i sammendrag, tekst og supplement, alle tall i svarbrevet, sitatene i brevet og ordtellingen.
+
+## Fase 7 (30.10.2026) — uavhengige agenter, verifisert med egen kode og rettet
+
+Agentenes rapporter: data, statistikk og filer. Hvert funn under er kontrollert med egne skript før retting.
+
+**D1 Sonehopp lagret to ganger (rettet i koden).**
+- **Omfang:** 42 691 lengde- og 5 271 trestegrader har en identisk OK-tvilling under sonekoden (utøver, dato, resultat, vind), 92 % i samme stevne. Nesten alle er ved 11–13 år, i alle år 2011–2025.
+- **Opphav:** I databasen har alle 3 865 par fra 2016 en sonerad fra januar 2026 og en brettrad fra 19.05.2026 eller 28.–31.08.2026 (reimportene). Kildens utøversider viser hoppet bare under «Lengde (Sone 0,5m)» (9 av 10 kontrollerte; det tiende mangler vind).
+- **Retting:** `forskning/rens_felles.py` fjerner brettkopien (47 962 rader). Regelen er speilet uavhengig i R, som finner de samme 47 962.
+- **Følger:**
+  - Lengde går fra 2,88 til 3,15 cm per m/s (2,91–3,39), tresteg fra 4,10 til 4,16.
+  - Lengdehoppets asymmetri går fra p = 0,999 til 0,226 (medvind 2,98 / motvind 3,54).
+  - 12–13 år i lengde: gutter fra 2,69 til 3,46, jenter fra 1,90 til 2,63.
+  - Utvalget går fra 433 566 / 315 288 / 79 330 til 401 240 / 300 989 / 76 048.
+  - Sprint er uendret.
+
+**D3 Eksakte dubletter (rettet).**
+- **Omfang:** 771 rader like på utøver, dato, øvelse, resultat, vind og runde, de fleste fra stevner lagret som to stevneposter; lavest id beholdes. Hekkuttrekket har 190.
+- **Følge:** Sprintestimatene er uendret på rapportert presisjon.
+
+**Grove feil i 100 m (ikke rettet i data; robust skala foreslått).** 37 rader avviker mer enn 3 s fra cellens median, for eksempel 21,90 s for en 18-åring. Dette er trolig 200 m-tider med feil kode. Rimelighetsgrensene gjelder hele øvelsen. Helningene påvirkes ikke merkbart, men den klassiske SD-nevneren i H5 blåses opp (menn 100 m 18–19 år: 0,346 mot robust 0,126).
+
+**Statistikk (krever Atles beslutning om tekst; alternativene i `11_audit_alternativer.py` → `tables/audit/`):**
+- **v²-referansen (A6-1):** (2v+1)/(2v−1) er forholdet ved ±1 m/s, ikke for estimatoren. Drag-sannhet gjennom estimatoren gir 1,84 / 1,72 / 1,85 (60 / 100 / 200 m), mot observert 1,52 / 1,66 / 2,36.
+- **«Medvind verdt» er symmetriske helninger (A6-2):** Medvindsgrenen 0,047 / 0,065 / 0,078 s er 20–36 % lavere.
+- **H5 (A6-4/5):** Robust skala gir 0,24–1,12. For menn på 100 m stiger andelen fra 0,58 til 1,12 med alderen. 0–2-segmentet gir 0,113 / 0,139 / 0,194 s.
+- **Valg av beste forsøk (A6-6):** Egen simulering gir demping (2,4–2,9 cm mot sann 3,0), ikke økning.
+- **«Bracketing … both lower bounds» og EIV-kalibreringen (A6-3):** Påstanden er logisk uholdbar, og kalibreringen er tilpasset, ikke testet. Aldersgradienten overlever stevne-FE.
+- **Standardfeil (A6-7):** Med de absorberte cellene talt i småutvalgskorreksjonen (fixest-standard) blir SE 12–17 % større (60/100/200 m) og 34–37 % større (80/150 m).
+- **Toveis demeaning (A6-8, rettet):** stoppet etter 25 runder uten å konvergere. Nå itereres det til toleranse 1e-10 med rask numpy-implementasjon. Estimatene er like på fem siffer; absorberte kolonner fjernes med relativ grense.
+- **Tekst:** «Month dummies equivalent to year × month» er usant.
+
+**D4 Dekning 2011.** Stevner med resultater i juni, august og september var 164, 118 og 143 i 2011, mot 238, 197 og 201 i 2012. «Electronically complete from 2011» må mykes opp.
+
+## Fase 5 — RUN_ALL.sh
+
+`RUN_ALL.sh` (`set -eo pipefail`, hashkontroll når FREEZE-filene finnes, `SOURCE_DATE_EPOCH`) kjører 01, 02, 03, 05, 07, 10, 08, 09, 11, full LaTeX-syklus med kontroll av udefinerte referanser og «??», deretter uavhengig R, sammenligning og tallkontroll. 04 og 06 er erstattet av 08/09 og kjøres ikke. Status 30.10: tallkontrollen feiler på 43 av 142 punkter til teksten er oppdatert etter D1/D3. Avledede filer (analyseklar.csv, flyt.json, missing.csv) har nye hasher; råuttrekket er uendret.
