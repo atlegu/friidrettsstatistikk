@@ -36,12 +36,22 @@ echo "== 2. Manus (full LaTeX-syklus)"
   bibtex main > /dev/null || [ $? -eq 1 ]
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
+  # egen tittelside (JSS er dobbeltanonym; manus har ingen forfatteropplysninger)
+  pdflatex -interaction=nonstopmode -halt-on-error title_page.tex > /dev/null
 )
 if grep -Eq "Reference .* undefined|Citation .* undefined" manus/main.log; then
   echo "FEIL: udefinerte referanser"; exit 1
 fi
 if pdftotext manus/main.pdf - | grep -q '??'; then
   echo "FEIL: ?? i PDF"; exit 1
+fi
+# anonymitet: ingen forfatteropplysninger i manus-PDF-en eller metadataene (selvsitering i
+# tredje person, «Guttormsen (2026)», er tillatt)
+if pdftotext manus/main.pdf - | grep -Eq "Atle|NMBU|ORCID|nmbu\.no|\bAGG\b|Ås|author's initiative|from the author"; then
+  echo "FEIL: identifiserende tekst i det anonymiserte manuset"; exit 1
+fi
+if pdfinfo manus/main.pdf | grep -Eq "^Author: +[^ ]"; then
+  echo "FEIL: forfatter i PDF-metadataene"; exit 1
 fi
 
 echo "== 3. Uavhengig R-implementasjon og tallsporing"

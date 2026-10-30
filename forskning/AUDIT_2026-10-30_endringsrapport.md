@@ -253,10 +253,10 @@ Punkt 2–3 ble skrevet inn etter ditt «Ja, skriv inn». Punkt 1, 4 og 5 ble sk
 
 Filgjennomgangen (fase 7) fant også disse formkravene, men de kom ikke med i listen over. De krever et valg eller en handling fra deg.
 
-- **A6, JSS er dobbeltanonym (blokkerende).**
-  - Manus har navn, ORCID, adresse og «AGG» på tittelsiden og i erklæringene.
-  - Det trengs en egen tittelside og et anonymisert manus der «the author's initiative» blir «a post-plan decision» og «from the author» blir «on request», og erklæringsoverskriften skal være «Disclosure of interest».
-  - Gjøres når eliteenden (S8) er committet. Den andre økten jobber i A6 nå.
+- **A6, JSS er dobbeltanonym: RETTET 30.10.2026.**
+  - **Tittelside:** `manus/title_page.tex` er en egen fil med forfatter, ORCID og kontaktinformasjon. Den har også Disclosure of interest, Funding, Author contributions, KI-bruk og Acknowledgements.
+  - **Manus:** Forfatterblokken er erstattet med en anonymiseringsnotis, «the author's initiative» er blitt «by a post-plan decision», og «available from the author» er blitt «available on request».
+  - **Sjekk:** RUN_ALL stopper hvis manus-PDF-en har forfatteropplysninger i teksten eller metadataene. Selvsitering i tredje person, «Guttormsen (2026)», er tillatt.
 - **Upubliserte følgestudier i referanselistene (A1 og A3).**
   - SMO godtar bare publiserte arbeider, «in press» eller preprint. SJMSS (AMA) lister ikke innsendte manus.
   - Dette gjelder dropout-artikkelen («under review») og A1, som A3 siterer som «in preparation».
