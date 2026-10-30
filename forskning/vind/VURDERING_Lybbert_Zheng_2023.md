@@ -84,7 +84,7 @@ Alle med A6-estimatoren (FE utøver × sesong, måned og runde, stevneklynger). 
 
 ## Det som er nyttig for A6
 
-- Det er den eneste befolkningsstudien av vind hos løpere under elitenivå. Nyhetspåstanden i A6 er rettet til «Almost every empirical estimate …», og innledningen nevner studien og at den ikke ser på skalering med alder eller nivå.
+- Det er den eneste befolkningsstudien av vind hos løpere under elitenivå. Nyhetspåstanden i A6 er rettet. I det nye sammendraget (30.10, JSS-grensen på 200 ord) lyder den «Almost all wind-effect estimates in athletics come from elite seniors», og innledningen nevner studien og at den ikke ser på skalering med alder eller nivå.
 - Kjønnsforskjellen i asymmetri finnes også hos oss. Forklaringen (fart) gir et godt diskusjonspunkt og tabell S7.
 - Medvindshelningen deres (0,050 s per m/s) er lavere enn vår (0,065 på 100 m). Det kan skyldes design (utøver-FE uten sesong, dårlig kontroll, ulik måling). Ikke tatt inn i manus.
 - Vindmåleren måler 10 s fra start. For tregere løpere dekker den dermed en mindre del av løpet (14–15 s på 100 m for de yngste). Det er verdt å huske ved tolkning av aldersgradienten. Ikke tatt inn i manus.
@@ -106,4 +106,4 @@ Alle med A6-estimatoren (FE utøver × sesong, måned og runde, stevneklynger). 
 ## Til din vurdering
 
 - Om «feeling fast»-testen (utflating over +2) skal inn som en setning eller tabell. Den støtter fysikktolkningen på 100 m, men er uklar på 60 og 200 m.
-- A6-beslutningene fra auditen (H5-påstandene og poengsetningen) står fortsatt åpne, se endringsrapportens avsnitt 8.
+- A6-beslutningene fra auditen (H5-påstandene og poengsetningen) ble skrevet inn 30.10.2026 etter ditt ja (endringsrapportens avsnitt 8). Sammendraget sier nå også at drag-asymmetrien ved egen fart gjelder for begge kjønn.

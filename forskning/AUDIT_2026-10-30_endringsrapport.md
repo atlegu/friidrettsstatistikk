@@ -175,7 +175,7 @@ Hvert punkt er verifisert med min egen kode. Under «Forslag» står det jeg vil
 | Fase | Status |
 |---|---|
 | 0–4: inventar, dataregler, uavhengig R, tallsporing | Ferdig. R reproduserer alle analysene, også de nye. |
-| 5: `RUN_ALL.sh` | Grønn for alle tre, deterministisk. Tallkontroll: A1 143, A3 102, A6 140 ankrede sjekker, 0 feil, 0 udekkede tall. |
+| 5: `RUN_ALL.sh` | Grønn for alle tre, deterministisk. Tallkontroll: A1 143, A3 102, A6 193 ankrede sjekker (etter Lybbert & Zheng og H5-omskrivingen), 0 feil, 0 udekkede tall. A6 kjøres helt på nytt med `RUN_ALL.sh` når eliteenden (S8, egen økt) er ferdig. |
 | 6: endringsrapport og omskriving | Du godtok alle forslagene; teksten er skrevet om. Svarbrevene oppdateres ikke. |
 | 7: uavhengige agenter | Ferdig. |
 | 8: frysing og siste smale gjennomgang | Fryst (`FREEZE.md` og hashfiler i hver mappe, kontrollert først i `RUN_ALL.sh`). Gjennomgangen er gjort; rettingene står i avsnitt 7, og avsnitt 8 lister det du må avgjøre. |
@@ -224,16 +224,16 @@ Dette endrer en hovedpåstand, så jeg har ikke skrevet det inn. Tallene er veri
    - **Funnet:** Alle 107 debut-16-utøvere i kull 2004–05 debuterte i koronaårene og konverterte 10,3 %, mot 5,4 % for de andre debut-16-utøverne. Uten debuter i 2020–21 er OR 1,32 (0,79–2,19), og med koronaflagg 1,38 (0,86–2,19). Kohorthalvdelene er 1,35 mot 3,08.
    - **Det som står:** U-formens venstre arm (debut 10 mot 11–14; LR 30,5, p = 1,2e-5 uten koronadebuter) og 17–19-armen.
    - **Forslag:** Ta «highest for debut at 16 (6.6 %; OR 1.73)» ut av sammendraget, rapporter estimatet uten koronadebuter, nevn forskjøvet debut i koronaårene som forklaring, og presiser «replication across cohort halves» og «observed 6.6 %».
-2. **A6, H5 «størst for de yngste».**
+2. **A6, H5 «størst for de yngste». SKREVET INN 30.10.2026 etter Atles ja.**
    - **Funnet:** For gutter er vinduet flatt i sekunder (100 m: 0,165 / 0,146 / 0,139 / 0,158 / 0,146 s). Som andel av løpstid er det ikke størst for de yngste. Bare jentene har et fall, og KI-ene overlapper.
-   - **Forslag:** Skriv om sammendragets to siste setninger, avsnittet om H5, Implications og Conclusion til «omtrent likt i sekunder for gutter, større for de yngste jentene». Fjern «largest share of race time», «exactly where raw marks are most used to rank and select» og den udokumenterte setningen om hvem regelen ble kalibrert på.
-3. **A6, Tyrving-poengene.** «Similar points … so the inequity is specific to raw-seconds comparisons» stemmer ikke. Poengene speiler sekundene (22–29 mot 17–25). Forslag: fjern denne delen av Implications-konklusjonen (den falske «because the senior tables are steeper» er alt fjernet).
+   - **Skrevet inn:** Sammendraget, H5-avsnittet, Implications og Conclusion sier nå «omtrent likt i sekunder for gutter, større for jenter enn for seniorkvinner». Andel av løpstid er oppgitt: 1,10 mot 1,27 % for gutter, 0,95 mot 0,87 % for jenter. «Largest share of race time», «exactly where raw marks are most used to rank and select» og kalibreringssetningen er fjernet.
+3. **A6, Tyrving-poengene. SKREVET INN 30.10.2026.** «Similar points … so the inequity is specific to raw-seconds comparisons» er fjernet. H5 sier nå at ungdomsmarginen i poeng har omtrent samme forhold som i sekunder.
 4. **A1, tittel og hovedsetning.** «Stagnation before exit» / «Stagnation precedes exit» holder delvis: sammenhengen gjelder også blant dem som er aktive etter 16, men prestasjonen holder seg til siste sesong hos de utholdende frafallerne. Forslag: behold tittelen, men skriv sammendragets konklusjon som «Low progression accompanies and precedes exit». Alternativt en nøytral tittel.
 5. **A1, switcher-analysen.** Den følger planen, men justerer for nivå og antall fra en annen øvelsesgruppe enn fremgangen for 32 % av utvalget. Konsistent spesifikasjon ga om lag 2,24 før datarettingen. Velg mellom planens versjon med en merknad og den konsistente.
 6. **A1, interesseerklæringen.** «Non-commercial statistics platform». Hvis Athlete Mindset AS-tilbudet til NFIF gjelder deg, bør det trolig oppgis.
 
 **Formkrav (uendret siden filgjennomgangen):**
-- Sammendragene er for lange: A1 530 ord mot 350 (og «Methods» er ikke en tillatt overskrift), A3 301 mot 250, A6 404 mot 200.
-- A6 har 7 nøkkelord mot høyst 6, og JSS krever et avsnitt om «Sample size estimation and justification».
+- Sammendragene er for lange: A1 530 ord mot 350 (og «Methods» er ikke en tillatt overskrift) og A3 301 mot 250. A6 er rettet 30.10: 197 ord mot 200.
+- A6 er rettet 30.10: 6 nøkkelord, og Methods har fått avsnittet «Sample size estimation and justification».
 - Figurfilene har feil nummer i navnet (A1: fig2/fig3, A3: fig3/fig4) og bør døpes om før opplasting.
 - A3 må levere supplementet som egne filer for å holde seg innenfor 8 visningselementer.

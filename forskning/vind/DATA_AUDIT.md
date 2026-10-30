@@ -136,3 +136,21 @@ Vurderingen står i `VURDERING_Lybbert_Zheng_2023.md`. De tolker at motvind kost
   - Innen stevne er forholdet 1,59 og 1,46.
   - Drag ved fast fart: 1,43 (10,0 s), 1,57 (12,60 s), 1,69 (14,56 s).
 - **Tekst:** Nyhetspåstanden er rettet, studien er nevnt i innledningen, avviket står i Methods, kjønnsforskjellen i H4 og et eget diskusjonsavsnitt er lagt til. Tallkontroll: 160 ankrede sjekker, 0 udekkede tall.
+
+## H5 og JSS-kravene, Atles beslutning 30.10.2026 («Ja, skriv inn»)
+
+Endringsrapportens avsnitt 8, punkt 2–3, er skrevet inn. Ingen tall er endret; bare påstandene om tallene.
+
+- **H5 (Results):** Fra 12 år er vinduet verdt 0,11–0,25 s på 100 og 200 m.
+  - **Gutter:** ingen klar aldersgradient i sekunder (100 m 0,14–0,16 s, 200 m 0,13–0,19 s i båndene 12–13 til 20–34, med felles KI-overlapp). Aldersfallet i den lineære helningen ligger i motvindshelningen.
+  - **Jenter:** større før seniorårene (100 m 0,15 mot 0,11 s, 200 m 0,25 mot 0,14 s), med overlappende intervaller.
+  - **Som andel av løpstid:** 1,10 mot 1,27 % for gutter og menn, 0,95 mot 0,87 % for jenter og kvinner.
+  - **Tyrving-poengene:** ungdomsmarginen har omtrent samme forhold som i sekunder.
+- **Implications og Conclusion:**
+  - «Largest contribution in seconds and share of race time», «similar points … raw-seconds» og kalibreringssetningen er fjernet.
+  - Talentsetningen gjelder nå den lineære helningen.
+- **JSS:** Sammendraget har 197 ord (grense 200), det er 6 nøkkelord, og Methods har fått «Sample size estimation and justification» med KI-halvbredder.
+- **Tallkontroll:** 193 ankrede sjekker, 0 feil, 0 udekkede tall, kjørt på commit-tilstanden.
+  - Kontrollen teller også ordene i sammendraget og antall nøkkelord.
+  - PDF-en er bygget fra samme tilstand: 29 sider, ingen udefinerte referanser.
+- **Samtidig arbeid:** En annen økt legger inn eliteenden (tabell S8) i samme mappe. Den er ikke med i denne kontrollen, og `RUN_ALL.sh` kjøres når den er ferdig.

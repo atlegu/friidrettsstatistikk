@@ -19,7 +19,7 @@ import pandas as pd
 HER = Path(__file__).resolve().parent
 PROSJ = HER.parent
 sys.path.insert(0, str(PROSJ.parent))
-from audit_felles import Kontroll, avrund as f, ordtelling, tall_i  # noqa: E402
+from audit_felles import Kontroll, avrund as f, normaliser, ordtelling, tall_i  # noqa: E402
 from rens_felles import fjern_kopier  # noqa: E402
 
 EST = PROSJ / "tables" / "estimering"
@@ -102,44 +102,44 @@ def krav(betingelse, hvorfor):
 
 
 # ================================================================ ABSTRACT
-k.need("abstract", f"{flyt['rader_analyseklar']} analysed results, of which "
-       f"{flyt['rader_i_celler_min2']}, lying in {flyt['celler_min2']} athlete-season-event cells",
-       "utvalg")
+# Sammendraget skrevet om 30.10.2026 etter Atles beslutning om H5 (endringsrapporten avsnitt 8,
+# punkt 2–3) og JSS-kravene. Nyhets- og drag-påstanden ankres i Lybbert & Zheng-blokken nederst,
+# påstandene om gutter og jenter i H5-blokken.
+sammendrag = k.raa.split("\\section*{Abstract}", 1)[1].split("\\textbf{Keywords:}", 1)
+abs_ord = len([x for x in re.sub(r"\\[a-zA-Z]+\s*", " ", normaliser(sammendrag[0])).split()
+               if re.search(r"[A-Za-z0-9]", x)])
+krav(abs_ord <= 200, f"sammendraget har høyst 200 ord (JSS): {abs_ord}")
+nokkelord = sammendrag[1].split("\n", 1)[0].split(";")
+krav(len(nokkelord) <= 6, f"høyst 6 nøkkelord (JSS): {len(nokkelord)}")
+k.need("abstract", f"at ages 10--34 ({flyt['rader_analyseklar']} results)", "utvalg")
 k.need("abstract", f"results changed by {f(h('60m')['gevinst_per_ms'], 3)} s on 60 m, "
        f"{f(h('100m')['gevinst_per_ms'], 3)} s on 100 m, {f(h('200m')['gevinst_per_ms'], 3)} s on "
        f"200 m, {f(h('lengde')['gevinst_per_ms'], 1)} cm in the long jump and "
        f"{f(h('tresteg')['gevinst_per_ms'], 1)} cm in the triple jump", "hovedeffekter")
-k.need("abstract", f"a metre per second was worth {f(asy.loc['60m', 'medvind'], 3)}, "
-       f"{f(asy.loc['100m', 'medvind'], 3)} and {f(asy.loc['200m', 'medvind'], 3)} s in the three sprints",
-       "medvindsgren")
 elite = [asy.loc["100m", "medvind"] / 0.06, asy.loc["100m", "medvind"] / 0.04]
-k.need("abstract", f"about {f(elite[0], 1)}--{f(elite[1], 1)} times the published elite estimates", "elite-forhold")
 k.need("abstract", f"(200 m, males: {f(a('200m', 'M', '10-11')['gevinst_per_ms'], 3)} s per m/s "
        f"at 10--11 to {f(a('200m', 'M', '20-34')['gevinst_per_ms'], 3)} at 20--34)", "200 m alder")
 rett = [ps.loc[e, "per_sekund"] for e in ["60m", "80m", "100m"]]
 sving = [ps.loc[e, "per_sekund"] for e in ["150m", "200m"]]
-per_sek = (f"{f(min(rett), 4)}--{f(max(rett), 4)} s per m/s in the straight sprints against "
-           f"{f(min(sving), 4)}--{f(max(sving), 4)} in the bend events")
-k.need("abstract", per_sek, "per sekund")
 k.need("abstract", f"(100 m: {f(asy.loc['100m', 'motvind'], 3)} vs. "
-       f"{f(asy.loc['100m', 'medvind'], 3)} s per m/s, p < 0.001)", "asymmetri 100 m")
+       f"{f(asy.loc['100m', 'medvind'], 3)} s per m/s)", "asymmetri 100 m")
 krav(asy.loc["100m", "p_lik_meet"] < 0.001, "100 m p < 0.001")
 rel = {e: asy.loc[e, "ratio_obs"] / asy.loc[e, "ratio_drag_estimator"] for e in ["60m", "100m", "200m"]}
 krav(abs(rel["100m"] - 1) < 0.05 and rel["60m"] < 0.9 and rel["200m"] > 1.15,
      f"100 m ≈ drag, 60 m under, 200 m over ({ {e: round(x, 3) for e, x in rel.items()} })")
-k.need("abstract", "on the 100 m by about as much as drag physics predicts for the observed winds, on the 60 m by "
-       "less and on the 200 m by more", "drag-påstand (krav over)")
-h100 = hk[(hk["kjonn"] != "begge") & hk["kode"].str.startswith(("100mh", "110mh"))
+h100 =hk[(hk["kjonn"] != "begge") & hk["kode"].str.startswith(("100mh", "110mh"))
           & hk["flat_ref"].notna()].copy()
 h100["ratio"] = h100["gevinst_s_per_ms"] / h100["flat_ref"] - 1
 h60 = hk[(hk["kjonn"] != "begge") & hk["kode"].str.startswith("60mh")].copy()
 h60["ratio"] = h60["gevinst_s_per_ms"] / h60["flat_ref"] - 1
-k.need("abstract", f"mostly exceeded the flat 100 m (by up to {pst(h100['ratio'].max())}%)", "hekk maks")
 krav((h100["ratio"] > 0).sum() > len(h100) / 2, "100/110 m hekk «mostly exceeded»")
-v12 = [v("100m", kj, "12-13")["fordel_0_2_s"] for kj in ["M", "F"]]
-vs = [v("100m", kj, "20-34")["fordel_0_2_s"] for kj in ["M", "F"]]
-k.need("abstract", f"worth {f(min(v12), 2)}--{f(max(v12), 2)} s on the 100 m at 12--13 against "
-       f"{f(min(vs), 2)}--{f(max(vs), 2)} s among seniors", "H5 abstract")
+FRA12 = ["12-13", "14-15", "16-17", "18-19", "20-34"]
+vf = vin[vin["event"].isin(["100m", "200m"]) & vin["aldersband"].isin(FRA12)]
+spenn12 = f"{f(vf['fordel_0_2_s'].min(), 2)}--{f(vf['fordel_0_2_s'].max(), 2)} s on the 100 and 200 m"
+vindu12 = f"{spenn12} from age 12"
+k.need("abstract", f"A legal +2.0 m/s tailwind was worth {vindu12}, roughly equal across ages for boys, larger for "
+       "girls than for senior women, and enough to reorder 2025 season lists at youth and senior ages",
+       "H5 sammendrag (gutter/jenter og listene: krav i H5-blokken)")
 r12 = [v("100m", kj, "12-13")["fordel_0_2_i_robust_skala"] for kj in ["M", "F"]]
 r20 = [v("100m", kj, "20-34")["fordel_0_2_i_robust_skala"] for kj in ["M", "F"]]
 krav(max(r12) < min(r20), "robust andel: seniorer over 12–13 på 100 m («most … among seniors»)")
@@ -204,6 +204,18 @@ krav(all(0.4 <= bredde[e] <= 0.6 for e in ["60m", "100m", "200m"])
      f"KI-bredde utøver/stevne: { {e: round(x, 2) for e, x in bredde.items()} }")
 k.need("methods", "intervals roughly half as wide in the large sprints and somewhat narrower ones elsewhere",
        "klyngebredde")
+# «Sample size estimation and justification» (JSS-krav, lagt til 30.10.2026)
+krav(all(bredde[e] < 1 for e in SPRINT + HOPP), "stevneklynger gir bredere KI enn utøverklynger i alle øvelser")
+k.need("methods", f"estimates are reported only where at least {m03.MIN_N} results in {m03.MIN_CELLER} "
+       "athlete-seasons contribute, and standard errors are clustered on meet, which gives wider intervals than the "
+       "athlete clustering of the analysis plan", "utvalgsstørrelse: regler")
+hmeet = hov[hov["analyse"] == "hoved_meet"].set_index("event")
+halvb = (hmeet["ki_hoy"] - hmeet["ki_lav"]) / 2
+store = ["60m", "100m", "200m"]
+k.need("methods", f"95% confidence intervals have half-widths of {f(halvb[store].min(), 3)}--"
+       f"{f(halvb[store].max(), 3)} s per m/s in the 60, 100 and 200 m ({f(halvb['80m'], 3)} and "
+       f"{f(halvb['150m'], 3)} in the small 80 and 150 m events) and {f(halvb[HOPP].min(), 1)}--"
+       f"{f(halvb[HOPP].max(), 1)} cm in the four jump events", "utvalgsstørrelse: presisjon")
 import statsmodels  # noqa: E402
 k.need("methods", f"Python {sys.version.split()[0]} with pandas {pd.__version__}, numpy "
        f"{np.__version__} and statsmodels {statsmodels.__version__}", "versjoner")
@@ -340,11 +352,52 @@ k.need("results", f"{f(g76['gevinst_s_per_ms'], 3)} s per m/s for girls' 76.2 cm
        f"{g76['modal_aldersband'].replace('-', '--')} and {f(b84['gevinst_s_per_ms'], 3)} for boys' 84 cm "
        f"at {b84['modal_aldersband'].replace('-', '--')}, against {f(w84['gevinst_s_per_ms'], 3)} for the "
        f"senior women's 84 cm", "aldersgradient hekk")
-k.need("results", f"{f(v('100m', 'M', '12-13')['fordel_0_2_s'], 2)} s on the boys' 100 m at 12--13 and "
-       f"{f(v('100m', 'F', '12-13')['fordel_0_2_s'], 2)} s for girls, against "
-       f"{f(v('100m', 'M', '20-34')['fordel_0_2_s'], 2)} and {f(v('100m', 'F', '20-34')['fordel_0_2_s'], 2)} "
-       f"s among seniors; {f(v('200m', 'F', '12-13')['fordel_0_2_s'], 2)} s on the girls' 200 m at 12--13 "
-       f"against {f(v('200m', 'F', '20-34')['fordel_0_2_s'], 2)} s for senior women", "H5 sekunder")
+# H5 etter Atles beslutning 30.10.2026 (endringsrapporten avsnitt 8, punkt 2): i sekunder er vinduet
+# ikke størst for de yngste guttene; bare jentene har et fall, og intervallene overlapper.
+k.need("results", f"From age 12 the window was worth {spenn12}", "H5 spenn fra 12 år")
+gutt_v = {e: vf[(vf["event"] == e) & (vf["kjonn"] == "M")].set_index("aldersband").sort_index()
+          for e in ["100m", "200m"]}
+for e, g in gutt_v.items():
+    krav(g["fordel_0_2_ki_lav"].max() <= g["fordel_0_2_ki_hoy"].min(),
+         f"gutter {e}: alle bånd fra 12–13 har et felles KI-overlapp")
+    krav(not g["fordel_0_2_s"].is_monotonic_decreasing, f"gutter {e}: ingen fallende aldersrekke")
+    krav(g.loc["12-13", "fordel_0_2_s"] / g.loc["20-34", "fordel_0_2_s"] < 1.2,
+         f"gutter {e}: 12–13 under 1,2 × seniorene («about as much»)")
+k.need("results", f"For boys and men it showed no clear age trend in seconds: "
+       f"{f(gutt_v['100m']['fordel_0_2_s'].min(), 2)}--{f(gutt_v['100m']['fordel_0_2_s'].max(), 2)} s on the 100 m "
+       f"and {f(gutt_v['200m']['fordel_0_2_s'].min(), 2)}--{f(gutt_v['200m']['fordel_0_2_s'].max(), 2)} s on the "
+       "200 m in the bands from 12--13 to 20--34, with overlapping intervals", "H5 gutter (krav over)")
+g100 = (v("100m", "M", "12-13"), v("100m", "M", "20-34"))
+fall = {s: g100[0][s] - g100[1][s] for s in ["motvind_s_per_ms", "medvind_s_per_ms", "medvind_0_2_s_per_ms"]}
+krav(fall["motvind_s_per_ms"] > 3 * max(fall["medvind_s_per_ms"], fall["medvind_0_2_s_per_ms"]),
+     f"gutter 100 m: aldersfallet ligger i motvindshelningen ({ {s: round(x, 4) for s, x in fall.items()} })")
+k.need("results", "On the boys' 100 m the age decline of the linear slope (Section 3.3) lies mainly in the headwind "
+       "slope (Table S3)", "H5 motvind (krav over)")
+jente_v = {e: vf[(vf["event"] == e) & (vf["kjonn"] == "F")].set_index("aldersband").sort_index()
+           for e in ["100m", "200m"]}
+for e, g in jente_v.items():
+    sen, ung = g.loc["20-34"], g.drop("20-34")
+    krav((ung["fordel_0_2_s"] > sen["fordel_0_2_s"]).all(), f"jenter {e}: hvert bånd 12–19 over seniorkvinnene")
+    krav((ung["fordel_0_2_ki_lav"] <= sen["fordel_0_2_ki_hoy"]).all(), f"jenter {e}: KI overlapper seniorkvinnenes")
+k.need("results", f"For girls and women the window was larger before senior age, also with overlapping intervals: "
+       f"{f(jente_v['100m'].loc['12-13', 'fordel_0_2_s'], 2)} s on the 100 m at 12--13 against "
+       f"{f(jente_v['100m'].loc['20-34', 'fordel_0_2_s'], 2)} s at 20--34, and "
+       f"{f(jente_v['200m'].loc['12-13', 'fordel_0_2_s'], 2)} against "
+       f"{f(jente_v['200m'].loc['20-34', 'fordel_0_2_s'], 2)} s on the 200 m", "H5 jenter (krav over)")
+tyi = tyr.set_index(["kjonn", "aldersband"])
+for kj in ["M", "F"]:
+    for b in ["12-13", "20-34"]:
+        krav(abs(tyi.loc[(kj, b), "fordel_0_2_s"] - v("100m", kj, b)["fordel_0_2_s"]) < 1e-12
+             and abs(tyi.loc[(kj, b), "snitt_tid_s"] - snitt("100m", kj, b)) < 1e-6,
+             f"poengfila bruker samme vindu og snittid som analysen ({kj} {b})")
+andel = {(kj, b): tyi.loc[(kj, b), "fordel_0_2_s"] / tyi.loc[(kj, b), "snitt_tid_s"]
+         for kj in ["M", "F"] for b in ["12-13", "20-34"]}
+krav(andel[("M", "12-13")] < andel[("M", "20-34")], "andel av løpstid: gutter 12–13 under seniormenn")
+krav(0 < andel[("F", "12-13")] - andel[("F", "20-34")] < 0.002, "andel av løpstid: jenter bare litt over seniorkvinnene")
+k.need("results", f"As a share of race time it was smaller for boys aged 12--13 than for senior men on the 100 m "
+       f"({pst(andel[('M', '12-13')], 2)} against {pst(andel[('M', '20-34')], 2)}% of the mean time) and only "
+       f"slightly larger for girls than for senior women ({pst(andel[('F', '12-13')], 2)} against "
+       f"{pst(andel[('F', '20-34')], 2)}%)", "H5 andel av løpstid (krav over)")
 ra = vin["fordel_0_2_i_robust_skala"]
 k.need("results", f"the window is worth {f(ra.min(), 2)}--{f(ra.max(), 2)} of the robust scale across events, "
        "sexes and ages", "H5 robust spenn")
@@ -358,6 +411,13 @@ t19 = [ty[(kj, "20-34")] for kj in ["M", "F"]]
 krav(set(tyr["tabellalder"]) == {13, 19}, "tabellalder 13 og 19")
 k.need("results", f"converts to {int(min(t13))}--{int(max(t13))} points at age 13 against "
        f"{int(min(t19))}--{int(max(t19))} points on the oldest (age-19) table", "Tyrving")
+# endringsrapporten avsnitt 8, punkt 3: poengene speiler sekundene (ikke «similar points»)
+prop = {kj: (ty[(kj, "12-13")] / ty[(kj, "20-34")],
+             tyi.loc[(kj, "12-13"), "fordel_0_2_s"] / tyi.loc[(kj, "20-34"), "fordel_0_2_s"]) for kj in ["M", "F"]}
+krav(all(abs(p - s) < 0.1 for p, s in prop.values()),
+     f"poengforholdet ≈ sekundforholdet: { {kj: (round(p, 3), round(s, 3)) for kj, (p, s) in prop.items()} }")
+k.need("results", "on the oldest (age-19) table, a youth margin of about the same proportion as in seconds",
+       "Tyrving-proporsjon (krav over)")
 om = oms.set_index(["kjonn", "liste"])
 krav(om.loc[("F", "klasse 14"), "nye_i_topp10"] == 1 and om.loc[("M", "senior"), "nye_i_topp10"] == 1
      and om.loc[("F", "senior"), "nye_i_topp10"] == 2 and om.loc[("M", "klasse 14"), "nye_i_topp10"] == 0,
@@ -427,11 +487,31 @@ krav(0.37 <= under <= 0.43, f"«up to two-fifths» ({under:.3f})")
 k.need("discussion", "understates youth wind effects by up to two-fifths", "undervurdering")
 k.need("discussion", f"(on the 100 m, {f(min(r12), 2)}--{f(max(r12), 2)} of the robust scale at 12--13 against "
        f"{f(min(r20), 2)}--{f(max(r20), 2)} at 20--34)", "H5 diskusjon")
+# Implications etter Atles beslutning 30.10.2026 (endringsrapporten avsnitt 8, punkt 2–3)
+k.need("discussion", "In seconds, a legal tailwind is worth about as much to boys aged 12--13 as to senior men and "
+       "more to girls than to senior women", "vindu gutter/jenter (krav i H5-blokken)")
+r12_200 = [v("200m", kj, "12-13")["fordel_0_2_i_robust_skala"] for kj in ["M", "F"]]
+r20_200 = [v("200m", kj, "20-34")["fordel_0_2_i_robust_skala"] for kj in ["M", "F"]]
+krav(max(r12_200) < min(r20_200), "robust andel: seniorer over 12–13 også på 200 m")
+k.need("discussion", "relative to athletes' own within-season variability it is worth less for the young than for "
+       "seniors", "robust andel (krav over og i sammendragsblokken)")
+krav(vin[vin["event"].isin(["100m", "200m"])]["fordel_0_2_s"].min() > 0.10,
+     "vinduet er over en tidel i alle aldersbånd på 100 og 200 m")
+k.need("discussion", "What it does in every age band is move 100 and 200 m marks by more than a tenth of a second",
+       "en tidel (krav over)")
+krav(all(a(e, kj, b)["gevinst_per_ms"] > a(e, kj, "20-34")["gevinst_per_ms"]
+         for e in ["100m", "200m"] for kj in ["M", "F"] for b in FRA12[:-1]),
+     "lineær helning 12–19 over 20–34 på 100 og 200 m, begge kjønn")
+k.need("discussion", "a metre per second of wind moves those times by more seconds than at senior level",
+       "talentsetningen (krav over)")
 k.need("discussion", f"({flyt['rader_analyseklar']} analysed results, {flyt['rader_i_celler_min2']} of them "
        f"identifying; {flyt['celler_min2']} athlete-season-event cells)", "styrker")
 k.need("discussion", f"missing wind ({pst(mvn['mean'], 1)}% of approved outdoor results", "begrensning")
 k.need("conclusion", f"Per m/s of wind they are {pst(min(gutt + jente))}--{pst(max(gutt + jente))}% larger for "
        f"child sprinters than for seniors", "konklusjon")
+k.need("conclusion", f"a +2.0 m/s tailwind is worth {vindu12} --- roughly the same across ages for boys and men, "
+       "more for girls than for senior women --- enough to reorder season lists at youth and senior ages alike",
+       "konklusjon H5 (krav i H5-blokken)")
 
 # ================================================================ SUPPLEMENT-NOTER
 k.need("supplementary material", f"$1.8 \\times {f(v('100m', 'F', '12-13')['medvind_0_2_s_per_ms'], 3)} = "
@@ -477,7 +557,10 @@ k.need("discussion", f"Their girls' ratio remains above the {f(Fa['forhold_drag'
        "jenter i USA over drag")
 krav(Fa["snitt_tid"] < 14.557, "våre jenter raskere enn de amerikanske (14,56 s)")
 k.need("introduction", "it did not examine how the effects scale with age or ability", "Lybbert & Zheng i innledningen")
-k.need("abstract", "Almost every empirical estimate of how wind affects", "nyhetspåstand")
+k.need("abstract", "Almost all wind-effect estimates in athletics come from elite seniors", "nyhetspåstand")
+krav(Ma["ki_lav"] <= Ma["forhold_drag"] <= Ma["ki_hoy"], "gutter: drag innenfor KI («in both sexes»)")
+k.need("abstract", "on the 100 m by about as much as drag physics predicts at athletes' own speeds, in both sexes",
+       "drag-påstand (krav: begge kjønn innenfor KI; 100 m samlet innen 5 %)")
 k.need("methods", "and the sex- and age-specific asymmetry comparison (Table S7) were added after the plan", "planavvik S7")
 
 # ================================================================ TABELLER mot R (uavhengig)
