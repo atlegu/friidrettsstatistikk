@@ -1,6 +1,5 @@
-%% Sports Medicine - Open — Original Research Article — FIRST DRAFT (29 Oct 2026)
+%% Sports Medicine - Open — Original Research Article
 %% Reference style: Vancouver (numbered, square brackets) — unsrt.bst with natbib [numbers]
-%% Builds on the accepted SMO manuscript's LaTeX setup (RAE paper, SMOA-D-26-00548).
 
 \documentclass[12pt,a4paper]{article}
 
@@ -59,7 +58,7 @@ E-mail: atle.guttormsen@nmbu.no
 
 \vspace{1.5cm}
 
-{\noindent\textbf{Word count:} $\sim$4\,500 (main text, excluding abstract, references, tables, and figure legends)}
+{\noindent\textbf{Word count:} $\sim$4\,900 (main text, excluding abstract, references, tables, and figure legends)}
 
 \end{titlepage}
 
@@ -93,7 +92,7 @@ E-mail: atle.guttormsen@nmbu.no
 % ════════════════════════════════════════════════════════════
 \section{Background}
 
-Withdrawal from organised youth sport is extensive, and its documented predictors are mostly motivational and structural rather than performance-related: loss of enjoyment is the dominant prospective predictor \cite{vanyperen2021,crane2015} --- and stagnating visible progress is a plausible upstream erosion of exactly that enjoyment and perceived competence --- costs and social background shape who leaves \cite{espedalen2022}, a large share of turnover in talent systems is the system's own de-selection \cite{gullichbarth2026,filo2026}, and markers of early specialisation have failed to predict actual dropout when tested directly \cite{larson2019}. Performance itself has an ambiguous role. Junior performance predicts senior performance poorly \cite{kearney2018,barth2022,gullich2025}, and in the most direct registry test to date, performance level at a single early milestone added little to a simple behavioural signal --- how often the athlete competed \cite{guttormsen2026dropout}.
+Withdrawal from organised youth sport is extensive, and its documented predictors are mostly motivational and structural rather than performance-related: loss of enjoyment is the dominant prospective predictor \cite{vanyperen2021,crane2015} --- and stagnating visible progress is a plausible upstream erosion of exactly that enjoyment and perceived competence --- costs and social background shape who leaves \cite{espedalen2022}, a large share of turnover in talent systems is the system's own de-selection \cite{gullichbarth2026,filo2026}, and markers of early specialisation have failed to predict actual dropout when tested directly \cite{larson2019}. Performance itself has an ambiguous role. Junior performance predicts senior performance poorly \cite{kearney2018,barth2022,gullich2025}, and in the most direct registry test to date, performance level at a single early milestone discriminated senior retention somewhat less well than a simple behavioural signal --- how often the athlete competed --- though it added complementary information \cite{guttormsen2026dropout}.
 
 Three analyses of the same national registry motivate the present study. First, a longitudinal study of performance development showed that cross-sectional youth rankings are dominated by compositional turnover --- the best performers at one age are largely different people from the best at the next --- without studying who exits or why \cite{guttormsen2026development}. Second, a 14-year cohort study showed that exit is behaviourally foreshadowed: future dropouts' competition volume fell 12\,\% below their own earlier level two seasons before exit and 23\,\% one season before, and volume at ages 13--14 predicted senior retention better than age-graded performance level did \cite{guttormsen2026dropout}. Third, a population-wide analysis of relative age found the birth-quarter skew fully established at age 10 and stable to age 25, and proposed a mastery-experience interpretation: in a sport where every result is an objective personal measure, visible personal progress may retain athletes independently of rank --- and it stated the direct test, namely ``whether within-athlete performance \emph{progression}, rather than performance level, predicts retention among relatively younger athletes specifically'' \cite{guttormsen2026rae}. To our knowledge, no study with complete national coverage has linked objective within-athlete performance trajectories to a prospectively defined exit outcome while adjusting for the behavioural participation signal.
 
@@ -122,13 +121,13 @@ The primary outcome, identical to the companion cohort study \cite{guttormsen202
 
 \subsection{Covariates}
 
-Sex; birth cohort; performance level (mean of three best scores at 13--14, standardised); competition volume as distinct competition days at 13--14 and at 15--16, so that volume enters as level \emph{and} change, mirroring the companion study; $k_{13}$ and $k_{15}$; region (modal competition district at 13--14); and baseline club (modal club at 13--14) with a club-size proxy (log of the number of study athletes in the club). Birth quarter (Q1--Q4) was computed from exact birth dates.
+Sex; birth cohort; performance level (mean of three best scores at 13--14, standardised); competition volume as distinct competition days at 13--14 and at 15--16, so that volume enters as level \emph{and} change, mirroring the companion study; $k_{13}$ and $k_{15}$; and baseline club (modal club at 13--14) with a club-size proxy (log of the number of study athletes in the club). Region could not be adjusted for: the registry records the competition district for under 1\,\% of meets. Birth quarter (Q1--Q4) was computed from exact birth dates.
 
 \subsection{Statistical analysis}
 
-Nested logistic models were fitted on the primary sample: M0 (sex, cohort, region, club size), M1 (M0 + level + volume 13--14 + volume 15--16 + $k_{13}$ + $k_{15}$), and M2 (M1 + $\Delta$). H1 is the OR per SD of $\Delta$ in M2 and the gain in discrimination from M1 to M2, estimated by stratified 5-fold cross-validation repeated 20 times, with calibration slope and Brier score from out-of-fold predictions. Percentile intervals over the 20 repetitions describe only the Monte Carlo variability of the resampling procedure on this one dataset; sampling uncertainty for AUC differences is therefore quantified with paired DeLong 95\,\% confidence intervals computed on the out-of-fold predictions, and the two kinds of interval are labelled as such wherever both appear. One property of M2 should be stated openly: because $\Delta$ is the difference between the 15--16 and 13--14 scores, a model containing both baseline level and $\Delta$ is a reparametrisation of one containing the 13--14 and 15--16 levels. The progression estimand is therefore equivalent to asking how much the \emph{later} performance level adds given the earlier one --- deliberately the same ``level and change'' logic the companion study applied to competition volume \cite{guttormsen2026dropout}. H2 adds a $\Delta \times$ birth-quarter linear interaction (Q1$\to$Q4), with stratified ORs for athletes born Q1--Q2 and Q3--Q4. H3 compares cross-validated AUC between (sex + volumes + $k$ + $\Delta$) and (sex + volumes + $k$ + level). Secondary analyses were a landmark Cox model from age 17 (censoring athletes active in 2025--2026) and exit-aligned descriptive trajectories: among non-censored dropouts whose final season fell at ages 16--19, the within-athlete change in points and in competition days at the three seasons before the final one, relative to the athlete's own level three seasons before exit (bootstrap CIs for medians).
+Nested logistic models were fitted on the primary sample: M0 (sex, cohort, club size), M1 (M0 + level + volume 13--14 + volume 15--16 + $k_{13}$ + $k_{15}$), and M2 (M1 + $\Delta$). H1 is the OR per SD of $\Delta$ in M2 and the gain in discrimination from M1 to M2, estimated by stratified 5-fold cross-validation repeated 20 times, with calibration slope and Brier score from out-of-fold predictions. Percentile intervals over the 20 repetitions describe only the Monte Carlo variability of the resampling procedure on this one dataset; sampling uncertainty for AUC differences is therefore quantified with paired DeLong 95\,\% confidence intervals computed on the out-of-fold predictions, and the two kinds of interval are labelled as such wherever both appear. One property of M2 should be stated openly: because $\Delta$ is the difference between the 15--16 and 13--14 scores, a model containing both baseline level and $\Delta$ is a reparametrisation of one containing the 13--14 and 15--16 levels. The progression estimand is therefore equivalent to asking how much the \emph{later} performance level adds given the earlier one --- deliberately the same ``level and change'' logic the companion study applied to competition volume \cite{guttormsen2026dropout}. H2 adds a $\Delta \times$ birth-quarter linear interaction (Q1$\to$Q4), with stratified ORs for athletes born Q1--Q2 and Q3--Q4. H3 compares cross-validated AUC between (sex + volumes + $k$ + $\Delta$) and (sex + volumes + $k$ + level). Secondary analyses were a landmark Cox model from age 17 (censoring athletes active in 2025--2026) and exit-aligned descriptive trajectories: among non-censored dropouts whose final season fell at ages 16--19, the within-athlete change in points and in competition days in each of the last three active seasons (the final season and the two before it), relative to the athlete's own level three seasons before exit (bootstrap CIs for medians).
 
-Pre-specified robustness analyses varied the exposure (season best; mean of all results; wind-legal marks only; progression in the best event group at 15--16, recovering event-group switchers), required $k \geq 2$ in both windows, excluded cohorts whose 15--16 window overlapped the COVID-19 seasons 2020--2021 (born 2004--2005) and tested a COVID-window interaction, varied the outcome, replicated the estimate in the two cohort halves (born 1998--2001 and 2002--2005), and re-estimated under club-clustered robust standard errors and GEE with exchangeable club correlation. A specification check regressed the outcome on progression \emph{within} the baseline window (age 13 to 14), which should carry little signal if the main estimate reflects development across windows rather than a mechanical artefact of result counts. E-values quantified the unmeasured confounding needed to explain the primary association away \cite{vanderweele2017}; because the outcome is common (17.0\,\%), the odds ratio was first converted to a risk ratio by the prevalence formula RR = OR / (1 $-$ p$_0$ + p$_0$ $\cdot$ OR) with p$_0$ = 0.17, and the E-value statement is on the risk-ratio scale. Analyses used Python 3.13 (pandas, statsmodels, scikit-learn, lifelines). Two-sided $\alpha$ = 0.05 for H1; H2 was directional in its prediction (the sign of the interaction) but is tested and reported with conventional two-sided intervals. The opportunity-unequal primary outcome definition keeps all available follow-up and maximises events; the fixed-window outcome at ages 20--21 equalises opportunity across cohorts and is reported in robustness, including separately per cohort half, and the partially observed 2026 season contributes results through 29 October.
+Pre-specified robustness analyses varied the exposure (season best; mean of all results; wind-legal marks only; progression in the best event group at 15--16, recovering event-group switchers), required $k \geq 2$ in both windows, excluded cohorts whose 15--16 window overlapped the COVID-19 seasons 2020--2021 (born 2004--2005) and tested a COVID-window interaction, varied the outcome, replicated the estimate in the two cohort halves (born 1998--2001 and 2002--2005), and re-estimated under club-clustered robust standard errors and GEE with exchangeable club correlation. A specification check regressed the outcome on progression \emph{within} the baseline window (age 13 to 14), which should carry little signal if the main estimate reflects development across windows rather than a mechanical artefact of result counts. E-values quantified the unmeasured confounding needed to explain the primary association away \cite{vanderweele2017}; because the outcome is common (17.0\,\%), the odds ratio was first converted to a risk ratio by the prevalence formula RR = OR / (1 $-$ p$_0$ + p$_0$ $\cdot$ OR) with p$_0$ = 0.17, and the E-value statement is on the risk-ratio scale. Analyses used Python 3.13.7 with pandas 2.3.3, numpy 2.4.1, statsmodels 0.14.6, scikit-learn 1.8.0 and lifelines 0.30.3. Two-sided $\alpha$ = 0.05 for H1; H2 was directional in its prediction (the sign of the interaction) but is tested and reported with conventional two-sided intervals. The opportunity-unequal primary outcome definition keeps all available follow-up and maximises events; the fixed-window outcome at ages 20--21 equalises opportunity across cohorts and is reported in robustness, including separately per cohort half, and the partially observed 2026 season contributes results through 29 October.
 
 \subsection{Ethics and transparency}
 
@@ -139,35 +138,14 @@ The data are public competition results. In line with the Norwegian children's s
 
 \subsection{Sample and descriptive differences}
 
-Table~\ref{tab:char} describes the primary sample. Future senior retainers differed from future dropouts already at ages 13--14: they competed twice as often (median 29 vs.\ 13 competition days) and scored higher (median 940 vs.\ 815 age-graded points), and over the following two seasons they moved in opposite directions --- retainers' median points rose to 979 while dropouts' fell to 794, and retainers' median progression was +30 points against $-$18 for dropouts. Figure~\ref{fig:age} shows the same divergence season by season: among athletes competing in their main event group at a given age, future retainers pulled away from the age norms (median 903 points at 13, 969 at 16), while future dropouts tracked roughly parallel to the norms at a level about 100 points lower, with an apparent late rise (826 at 16, 847 at 18) that reflects progressive selection, since ever fewer and increasingly persistent dropouts remain in the group at higher ages.
+Table~\ref{tab:char} describes the primary sample. Future senior retainers differed from future dropouts already at ages 13--14: they competed twice as often (median 29 vs.\ 13 competition days) and scored higher (median 940 vs.\ 815 age-graded points), and over the following two seasons they moved in opposite directions --- retainers' median points rose to 979 while dropouts' fell to 794, and retainers' median progression was +30 points against $-$18 for dropouts. Figure~\ref{fig:age} shows the same divergence season by season: among athletes competing in their main event group at a given age, future retainers pulled away from the age norms (median 903 points at 13, 969 at 16), while future dropouts started about 100 points lower (median 799 at 13) and tracked roughly parallel to the norms, with an apparent late rise (826 at 16, 847 at 18) that reflects progressive selection, since ever fewer and increasingly persistent dropouts remain in the group at higher ages.
 
 \begin{table}[H]
 \centering
 \caption{Characteristics of the primary landmark sample (born 1998--2005), by senior-retention status.}
 \label{tab:char}
 \small
-\begin{tabular}{lccc}
-\toprule
-Characteristic & All & Senior retainers & Future dropouts \\
-\midrule
-n & 3\,808 & 648 & 3\,160 \\
-Female, \% & 53.3 & 46.6 & 54.7 \\
-Cohort A (born 1998--2001), \% & 48.0 & 49.4 & 47.8 \\
-Main event group: sprints, \% & 34.1 & 32.7 & 34.4 \\
-Main event group: jumps, \% & 33.4 & 30.9 & 33.9 \\
-Main event group: middle distance, \% & 18.9 & 19.4 & 18.8 \\
-Main event group: throws, \% & 13.6 & 17.0 & 12.9 \\
-Born Q1, \% & 29.1 & 29.5 & 29.1 \\
-Born Q4, \% & 18.7 & 17.0 & 19.0 \\
-Competition days 13--14, median (IQR) & 15 (5--28) & 29 (15--43) & 13 (4--24) \\
-Competition days 15--16, median (IQR) & 10 (3--25) & 34 (22--48) & 7 (2--18) \\
-Scored results 13--14 ($k_{13}$), median (IQR) & 14 (5--28) & 28 (15--47) & 13 (4--24) \\
-Scored results 15--16 ($k_{15}$), median (IQR) & 7 (2--19) & 27 (15--44) & 5 (2--14) \\
-Age-graded points 13--14, median (IQR) & 835 (716--925) & 940 (843--1010) & 815 (697--902) \\
-Age-graded points 15--16, median (IQR) & 824 (702--929) & 979 (891--1037) & 794 (680--895) \\
-Progression, points, median (IQR) & $-$10 ($-$67--47) & 30 ($-$14--75) & $-$18 ($-$76--38) \\
-\bottomrule
-\end{tabular}
+\input{t1}
 \vspace{0.3em}
 \parbox{0.92\textwidth}{\footnotesize Exact birth dates exist for 3\,781 of the 3\,808 (99.3\,\%); among these, the full quarter distribution is Q1 29.3, Q2 27.2, Q3 24.7, Q4 18.8\,\%.}
 \end{table}
@@ -192,31 +170,15 @@ Two further heterogeneity analyses ground claims made below. Across baseline-lev
 \caption{Nested logistic models for senior activity (age $\geq$20) in the primary sample (n = 3\,808; 648 events). OR (95\,\% CI) per SD unless noted.}
 \label{tab:models}
 \small
-\begin{tabular}{lcc}
-\toprule
-Predictor & M1 & M2 \\
-\midrule
-Progression 13--14 $\to$ 15--16, per SD & --- & 2.02 (1.73--2.37) \\
-Performance level 13--14, per SD & 1.70 (1.45--2.00) & 2.35 (1.97--2.81) \\
-Competition days 13--14, per SD & 0.79 (0.59--1.06) & 0.95 (0.70--1.28) \\
-Competition days 15--16, per SD & 3.86 (3.14--4.76) & 3.15 (2.54--3.92) \\
-Scored results 13--14, per result & 1.00 (0.98--1.01) & 1.00 (0.98--1.01) \\
-Scored results 15--16, per result & 1.00 (0.99--1.01) & 0.99 (0.98--1.00) \\
-Female (vs.\ male) & 0.63 (0.51--0.77) & 0.59 (0.48--0.73) \\
-\midrule
-Cross-validated AUC & 0.855 & 0.864 \\
-$\Delta$AUC M2 $-$ M1, DeLong 95\,\% CI & \multicolumn{2}{c}{0.009 (0.003--0.015); repetition spread 0.008--0.010} \\
-Calibration slope / Brier (M2) & \multicolumn{2}{c}{0.97 / 0.098} \\
-\bottomrule
-\end{tabular}
+\input{t2}
 \vspace{0.3em}
-\parbox{0.92\textwidth}{\footnotesize Both models additionally adjust for birth cohort, region, and club size. Because progression is the difference between the 15--16 and 13--14 scores, M2 is a reparametrisation of a model with both period levels; the progression OR equals the contribution of the later level given the earlier one.}
+\parbox{0.92\textwidth}{\footnotesize Both models additionally adjust for birth cohort and club size. Because progression is the difference between the 15--16 and 13--14 scores, M2 is a reparametrisation of a model with both period levels; the progression OR equals the contribution of the later level given the earlier one.}
 \end{table}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{fig3_retention_by_progression.png}
-\caption{Senior retention by progression quintile within tertiles of competition volume at ages 15--16 (cut points at 5 and 19 competition days across the two seasons; ties assigned by rank, so the intervals are effectively [0, 5], (5, 19] and (19, 106]). The progression gradient is concentrated where engagement is still present; this stratified display is exploratory.}
+\caption{Senior retention by progression quintile within tertiles of competition volume at ages 15--16 (equal-sized tertiles by rank: 1--5, 5--19 and 19--106 competition days across the two seasons, with athletes on the boundary values 5 and 19 split between adjacent tertiles). The progression gradient is concentrated where engagement is still present; this stratified display is exploratory.}
 \label{fig:quintile}
 \end{figure}
 
@@ -224,7 +186,7 @@ Calibration slope / Brier (M2) & \multicolumn{2}{c}{0.97 / 0.098} \\
 
 The pre-specified moderation test did not find the predicted pattern (Table~\ref{tab:h2h3}). The progression $\times$ birth-quarter interaction was null (OR 0.95 per quarter, 95\,\% CI 0.85--1.07, $p$ = 0.40), with a point estimate in the \emph{opposite} direction of the prediction. Progression predicted retention in both halves of the birth year: OR 2.19 (1.76--2.72) among athletes born in Q1--Q2 and 1.89 (1.49--2.41) among those born in Q3--Q4.
 
-Moderation is, however, not the only route by which mastery experience could serve relatively younger athletes. Because the age-graded tables are calibrated to calendar-year classes, later-born athletes carry a within-class maturity deficit at 13--14 that closes with age --- so they should show \emph{greater measured progression}, and the mechanism would then run through exposure rather than through effect modification. Both implications held. Median progression rose monotonically across quarters, from $-$16.7 points (Q1) to $+$0.3 points (Q4), a gradient of +0.07 SD per quarter (p $<$ 0.001). And in this sample the birth-quarter retention trend --- OR 1.09 per quarter (0.99--1.21) without progression in the model, weaker than the 1.16 reported in the companion cohort --- attenuated to 1.07 (0.97--1.18) when progression was added. The mediation evidence is directionally consistent but modest: the trend itself is imprecise here, so we read this as keeping the mediated form of the account open rather than establishing it.
+Moderation is, however, not the only route by which mastery experience could serve relatively younger athletes. Because the age-graded tables are calibrated to calendar-year classes, later-born athletes carry a within-class maturity deficit at 13--14 that closes with age --- so they should show \emph{greater measured progression}, and the mechanism would then run through exposure rather than through effect modification. Both implications held. Median progression rose monotonically across quarters, from $-$16.7 points (Q1) to $+$0.3 points (Q4), a gradient of +0.07 SD per quarter (p $<$ 0.001). And in this sample the birth-quarter retention trend --- OR 1.09 per quarter (0.99--1.20) without progression in the model, weaker than the 1.16 reported in the companion cohort \cite{guttormsen2026dropout} --- attenuated to 1.07 (0.97--1.18) when progression was added. The mediation evidence is directionally consistent but modest: the trend itself is imprecise here, so we read this as keeping the mediated form of the account open rather than establishing it.
 
 \subsection{Progression versus level (H3)}
 
@@ -235,21 +197,7 @@ Given sex and competition volume, replacing performance level with progression l
 \caption{Relative-age specificity (H2) and progression versus level (H3).}
 \label{tab:h2h3}
 \small
-\begin{tabular}{lcc}
-\toprule
-Analysis & Estimate & $p$ \\
-\midrule
-Progression $\times$ birth-quarter trend, OR per quarter (n = 3\,781) & 0.952 (0.849--1.067) & 0.40 \\
-Progression per SD, born Q1--Q2 & 2.19 (1.76--2.72) & $<$.001 \\
-Progression per SD, born Q3--Q4 & 1.89 (1.49--2.41) & $<$.001 \\
-Progression on birth quarter, SD per quarter (mediation step) & +0.07 (0.04--0.10) & $<$.001 \\
-Birth-quarter retention trend without / with progression & 1.09 (0.99--1.21) / 1.07 (0.97--1.18) & \\
-\midrule
-CV-AUC: sex + volume + progression (n = 3\,808) & 0.854 (repetition spread 0.853--0.855) & \\
-CV-AUC: sex + volume + level & 0.855 (repetition spread 0.854--0.856) & \\
-Difference (progression $-$ level), DeLong 95\,\% CI & $-$0.001 ($-$0.010 to 0.007) & 0.75 \\
-\bottomrule
-\end{tabular}
+\resizebox{\textwidth}{!}{\input{t3}}
 \end{table}
 
 \subsection{The slide before exit}
@@ -259,18 +207,18 @@ Figure~\ref{fig:slide} aligns non-censored dropouts at their final active season
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{fig2_exit_aligned.png}
-\caption{Within-athlete change over the four last active seasons among dropouts with a final season at ages 16--19 (medians with bootstrap 95\,\% CIs, relative to the athlete's own level three seasons before exit). Left: age-graded performance (points; n = 1\,011 of 3\,160 dropouts with scorable main-group results in all four seasons --- a persistent-competitor selection). Right: competition volume (days; n = 1\,497). The final-season performance drop is partly mechanical, as fewer competitions mean fewer attempts behind the mean-of-three-best score.}
+\caption{Within-athlete change over the four last active seasons among dropouts with a final season at ages 16--19 (medians with bootstrap 95\,\% CIs, relative to the athlete's own level three seasons before exit). Left: age-graded performance (points; n = 1\,011 of the 1\,923 non-censored dropouts with a final season at 16--19, those with scorable main-group results in all four seasons --- a persistent-competitor selection). Right: competition volume (days; n = 1\,497). The final-season performance drop is partly mechanical, as fewer competitions mean fewer attempts behind the mean-of-three-best score.}
 \label{fig:slide}
 \end{figure}
 
 \subsection{Time-to-event and robustness}
 
-In the landmark Cox model from age 17, progression was associated with a lower hazard of exit (HR 0.86 per SD, 95\,\% CI 0.83--0.90), alongside level (HR 0.82), dominant later volume (HR 0.47 per SD), null earlier volume given later (HR 1.01), and a higher hazard for women (HR 1.19, 95\,\% CI 1.11--1.28); Kaplan--Meier curves by progression tertile separated from the landmark onward (Figure~\ref{fig:km}). Table~\ref{tab:robust} collects the robustness analyses: the primary OR was stable across exposure definitions (season best 1.93; wind-legal marks 2.00; progression in the best event group at 15--16, estimated inclusively on all athletes scorable under that definition --- n = 4\,071, recovering 363 of the 734 excluded from the primary definition while 94 primary athletes drop out of it --- 1.83, 95\,\% CI 1.61--2.07), strengthened when progression was measured from at least two results per window (2.18), held without the COVID-affected cohorts (1.95) with no clear COVID interaction (1.22, CI 0.91--1.63), held across outcome definitions (1.82--2.07; attenuated to 1.35 for the nearer outcome of activity at $\geq$18), replicated almost identically in the two cohort halves (2.00 and 2.03), and was unchanged under club-clustered inference. The within-baseline specification check was null (OR 1.00, 95\,\% CI 0.88--1.13), consistent with the cross-window estimate not being an artefact of result counts or regression mechanics --- though the one-season change is noisier than the two-window contrast and attenuated by measurement error, so this check is supportive rather than decisive. The E-value for the primary estimate was 2.84 (2.45 for the CI bound): an unmeasured confounder would need to roughly triple both the odds of high progression and of senior activity to explain the association away.
+In the landmark Cox model from age 17, progression was associated with a lower hazard of exit (HR 0.86 per SD, 95\,\% CI 0.83--0.90), alongside level (HR 0.82), dominant later volume (HR 0.47 per SD), null earlier volume given later (HR 1.01), and a higher hazard for women (HR 1.19, 95\,\% CI 1.11--1.28); Kaplan--Meier curves by progression tertile separated from the landmark onward (Figure~\ref{fig:km}). Table~\ref{tab:robust} collects the robustness analyses: the primary OR was stable across exposure definitions (season best 1.93; wind-legal marks 2.00; progression in the best event group at 15--16, estimated inclusively on all athletes scorable under that definition --- n = 4\,071, recovering 357 of the 734 excluded from the primary definition while 94 primary athletes drop out of it --- 1.83, 95\,\% CI 1.61--2.07), strengthened when progression was measured from at least two results per window (2.18), held without the COVID-affected cohorts (1.95) with no clear COVID interaction (1.22, CI 0.91--1.63), held across outcome definitions (1.82--2.07; attenuated to 1.35 for the nearer outcome of activity at $\geq$18), replicated almost identically in the two cohort halves (2.00 and 2.03), and was unchanged under club-clustered inference. The within-baseline specification check was null (OR 1.00, 95\,\% CI 0.88--1.13), consistent with the cross-window estimate not being an artefact of result counts or regression mechanics --- though the one-season change is noisier than the two-window contrast and attenuated by measurement error, so this check is supportive rather than decisive. The E-value for the primary estimate was 2.84 (2.45 for the CI bound): an unmeasured confounder would need a risk-ratio association of about 2.8 with both progression and senior activity to explain the association away.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{fig4_km_progression.png}
-\caption{Kaplan--Meier curves for continued participation after the landmark, by tertile of progression. Time origin is the end of the age-16 season; athletes whose final season was the landmark year itself appear as events immediately after the origin, which produces the initial drop before age 17. Athletes active in 2025--2026 are censored.}
+\caption{Kaplan--Meier curves for continued participation after the landmark, by tertile of progression. Time origin is the end of the age-16 season; athletes whose final season was the landmark year itself appear as events immediately after the origin, which produces the initial drop before age 17. Athletes active in 2025--2026 are censored; shaded bands are 95\,\% CIs.}
 \label{fig:km}
 \end{figure}
 
@@ -279,29 +227,7 @@ In the landmark Cox model from age 17, progression was associated with a lower h
 \caption{Robustness of the progression--retention association. OR (95\,\% CI) per SD of the exposure named; outcome is senior activity unless stated.}
 \label{tab:robust}
 \small
-\begin{tabular}{lccc}
-\toprule
-Analysis & n & Events & OR (95\,\% CI) \\
-\midrule
-Primary: $\Delta$ mean of 3 best, main event group & 3\,808 & 648 & 2.02 (1.73--2.37) \\
-Exposure: season best (maximum) & 3\,808 & 648 & 1.93 (1.66--2.25) \\
-Exposure: mean of all results & 3\,808 & 648 & 1.59 (1.39--1.82) \\
-Exposure: wind-legal marks only & 3\,761 & 646 & 2.00 (1.71--2.34) \\
-Exposure: best event group at 15--16, inclusive sample & 4\,071 & 663 & 1.83 (1.61--2.07) \\
-Specification check: $\Delta$ within ages 13$\to$14 & 2\,735 & 561 & 1.00 (0.88--1.13) \\
-Excluding cohorts born 2004--2005 (COVID window) & 2\,894 & 498 & 1.95 (1.63--2.33) \\
-Progression $\times$ COVID-window interaction & 3\,808 & 648 & 1.22 (0.91--1.63) \\
-$\geq$2 scored results in both windows & 2\,997 & 625 & 2.18 (1.84--2.60) \\
-Outcome: $\geq$1 result at age $\geq$20 & 3\,808 & 749 & 1.82 (1.58--2.09) \\
-Outcome: $\geq$2 results in a year, ages 20--21 & 3\,808 & 612 & 2.07 (1.76--2.44) \\
-Outcome: active at $\geq$18 (cohorts incl.\ 2006) & 4\,172 & 1\,640 & 1.35 (1.22--1.50) \\
-Cohort A (born 1998--2001) & 1\,829 & 320 & 2.00 (1.60--2.51) \\
-Cohort B (born 2002--2005) & 1\,979 & 328 & 2.03 (1.62--2.54) \\
-Club-clustered robust SE & 3\,808 & 648 & 2.02 (1.70--2.41) \\
-GEE, exchangeable club correlation & 3\,808 & 648 & 2.01 (1.70--2.38) \\
-E-value for the primary OR (CI bound) & & & 2.84 (2.45) \\
-\bottomrule
-\end{tabular}
+\input{t4}
 \end{table}
 
 \FloatBarrier
@@ -323,23 +249,23 @@ The reparametrisation noted in Methods gives the finding a second, equivalent re
 
 The study was designed as the direct test the relative-age paper called for \cite{guttormsen2026rae}, and the outcome is split in an informative way. ``Mastery experience'' is not an invention of that paper: it is the strongest source of self-efficacy beliefs in Bandura's account \cite{bandura1977}, maps onto perceived competence in self-determination-based models of youth sport motivation, and corresponds to task (self-referenced) orientation in achievement goal theory \cite{nicholls1984}. What the construct adds beyond a generic ``commitment'' story is a specific claim about \emph{reinforcement}: athletes stay where they can observe their own progress, and the account therefore predicts heterogeneity by access to other reinforcement --- rank above all. In this system the signals are concrete: athletes most directly observe times, distances and placings, while age-graded points are printed on Norwegian youth result lists and used for club awards, so the registry's progression measure is an objective correlate of signals athletes actually receive, not a researcher-only abstraction (though it is not perception itself).
 
-The heterogeneity predictions were tested in two forms and supported in neither. The birth-quarter moderation was null with the point estimate in the wrong direction, and the more direct rank-based form fared no better: the progression--retention association, now estimated within baseline-level tertiles, was present at every level and, if anything, \emph{strengthened} with level (OR 1.63, 1.86, 2.37 from lowest to highest tertile) --- the opposite gradient from the one a rank-deprivation reading predicts. What survives is the mediated form: later-born athletes do experience more measured progression (+0.07 SD per quarter), exactly as calendar-calibrated tables imply for athletes whose within-class maturity deficit is closing, and the (weak) birth-quarter retention trend attenuated when progression was controlled. On our pre-stated rules, the registry evidence favours a general progression--retention link, rejects reinforcement-deprivation moderation in both tested forms, and leaves the mediated mastery pathway open but unproven.
+The heterogeneity predictions were tested in two forms and supported in neither. The birth-quarter moderation was null with the point estimate in the wrong direction, and the more direct rank-based form fared no better: the progression--retention association, estimated within baseline-level tertiles, was present at every level and, if anything, \emph{strengthened} with level (OR 1.63, 1.86, 2.37 from lowest to highest tertile) --- the opposite gradient from the one a rank-deprivation reading predicts. What survives is the mediated form: later-born athletes do experience more measured progression (+0.07 SD per quarter), exactly as calendar-calibrated tables imply for athletes whose within-class maturity deficit is closing, and the (weak) birth-quarter retention trend attenuated when progression was controlled. On our pre-stated rules, the registry evidence favours a general progression--retention link, rejects reinforcement-deprivation moderation in both tested forms, and leaves the mediated mastery pathway open but unproven.
 
 Four processes, none separable in registry data, can produce the general link. Visible progress may sustain motivation (the mastery reading, in its unconditional form). Commitment may run the other way: athletes who have already decided to stay train more and therefore progress more, so that progression partly \emph{measures} commitment rather than causing it. Biological maturation can drive both sides at once: on calendar-calibrated tables a late maturer and a disengaging athlete look alike while the deficit lasts, and maturation timing also shapes exit --- making maturation the leading rival explanation, not an afterthought. And third causes --- injury above all --- can simultaneously halt development and drive exit; injury was the most common stated reason for dropout in the one long-term Norwegian athletics follow-up \cite{enoksen2011} and is invisible in competition records. The exit-aligned trajectories are equally consistent with all four. What the registry adds is not the mechanism but the observability: whichever process operates, it writes itself into ordinary competition records one to two seasons before the athlete disappears.
 
 \subsection{The sex gap persists}
 
-As in the companion cohort \cite{guttormsen2026dropout}, women left more often than men with the same volume, level, \emph{and now progression} (OR 0.59; Cox HR 1.19). The gap is not explained by women developing less --- it is conditional on development --- nor by women responding less to their own progress: the progression--retention association was, if anything, stronger in women (OR 2.25 vs.\ 1.90; interaction p = 0.86). Its sources --- which may include competing time demands, environment, and body-related factors around puberty documented in the qualitative literature \cite{fraserthomas2008,crane2015} --- remain the most consequential unexplained pattern in this registry, and a study of its own.
+As in the companion cohort \cite{guttormsen2026dropout}, women left more often than men with the same volume, level, \emph{and now progression} (OR 0.59; Cox HR 1.19). The gap is not explained by women developing less --- it is conditional on development --- nor by women responding less to their own progress: the progression--retention association was similar in women and men (stratified ORs 2.25 and 1.90; interaction p = 0.86). Its sources --- which may include competing time demands, environment, and body-related factors around puberty documented in the qualitative literature \cite{fraserthomas2008,crane2015} --- remain the most consequential unexplained pattern in this registry, and a study of its own.
 
 \subsection{Practical implications}
 
-Norwegian athletics already possesses, in its ordinary results database, both of the early-warning signals this research programme has now documented: declining participation \cite{guttormsen2026dropout} and, from this study, stagnating or declining age-graded performance among athletes who still compete. For a federation or club, the two signals answer different questions. Falling volume flags \emph{who} is disengaging; falling progression helps interpret \emph{why} a still-active athlete may be at risk, and identifies athletes whose exit the volume signal alone would catch only later. Given the modest incremental discrimination, we would not propose progression-based automated flags; the appropriate use is informal and conversational, and it needs the scale stated. One progression-SD is roughly 115 age-graded points over two seasons; an athlete slipping by that much relative to their own trajectory carries about twice the odds of departure at the group level, and negative progression was half again as common among future dropouts as among retainers (59.5 vs.\ 33.5\,\%). But the median pre-exit decline in the penultimate season ($-$7 points, $\approx$0.06 SD) is well inside normal fluctuation for a single athlete --- which is precisely why these are conversation-starters for coaches, not selection or flagging criteria. It also bears saying that leaving one sport in adolescence is often normative sampling rather than failure \cite{fraserthomas2008,crane2015}, so the conversation's purpose is understanding, not retention at any cost. The exploratory volume dependence (Figure~\ref{fig:quintile}) suggests the conversation is most valuable while the athlete still competes regularly; once participation has collapsed, progression distinguishes little. Any operational use should respect the governance constraints discussed for behavioural monitoring in the companion paper (legal basis, designated recipients, opt-out) \cite{guttormsen2026dropout}, and none of this evidence supports using progression for talent \emph{selection} --- the companion development study shows precisely that early rankings mislead \cite{guttormsen2026development}.
+Norwegian athletics already possesses, in its ordinary results database, both of the early-warning signals this research programme has now documented: declining participation \cite{guttormsen2026dropout} and, from this study, stagnating or declining age-graded performance among athletes who still compete. For a federation or club, the two signals answer different questions. Falling volume flags \emph{who} is disengaging; falling progression helps interpret \emph{why} a still-active athlete may be at risk, and identifies athletes whose exit the volume signal alone would catch only later. Given the modest incremental discrimination, we would not propose progression-based automated flags; the appropriate use is informal and conversational, and it needs the scale stated. One progression-SD is roughly 115 age-graded points over two seasons; an athlete slipping by that much relative to their own trajectory carries about twice the odds of departure at the group level, and negative progression was nearly twice as common among future dropouts as among retainers (59.5 vs.\ 33.5\,\%). But the median pre-exit decline in the penultimate season ($-$7 points, $\approx$0.06 SD) is well inside normal fluctuation for a single athlete --- which is precisely why these are conversation-starters for coaches, not selection or flagging criteria. It also bears saying that leaving one sport in adolescence is often normative sampling rather than failure \cite{fraserthomas2008,crane2015}, so the conversation's purpose is understanding, not retention at any cost. The exploratory volume dependence (Figure~\ref{fig:quintile}) suggests the conversation is most valuable while the athlete still competes regularly; once participation has collapsed, progression distinguishes little. Any operational use should respect the governance constraints discussed for behavioural monitoring in the companion paper (legal basis, designated recipients, opt-out) \cite{guttormsen2026dropout}, and none of this evidence supports using progression for talent \emph{selection} --- the companion development study shows precisely that early rankings mislead \cite{guttormsen2026development}.
 
 \subsection{Strengths and limitations}
 
 Strengths include complete national coverage of sanctioned competition from 2011, a landmark design that makes conditioning explicit, an exposure constructed to resist the mechanical maximum-of-$n$ bias and adjusted for result counts, internal replication across cohorts, a null within-baseline specification check, and sensitivity to clustering, COVID-19 exposure, and definitional choices.
 
-The limitations are those of registry research, stated in advance. First, the estimates are associations; no causal effect of progression is claimed, and the three mechanisms above cannot be separated. Second, exit from the athletics registry is not exit from sport: transfer to other sports is invisible, which is why a null H1 would have been uninterpretable --- the asymmetry cuts the other way for the positive finding, since sport transfer would, if anything, generate athletes who leave \emph{while} progressing. Third, injury, training, and biological maturation are unobserved; maturation deserves emphasis, because on calendar-calibrated tables a late maturer whose deficit has not yet closed is indistinguishable from a stagnating athlete, and if late maturers also exit more, the progression--retention association would arise without any motivational mechanism --- the mediated-mastery and maturation readings of the birth-quarter results are observationally equivalent here. Fourth, the age-graded tables are unequally demanding across event groups; standardisation within sex and event group addresses comparisons, not the tables themselves. Fifth, the primary definition measures progression within the athlete's original main event group; athletes who changed groups entirely are excluded from the primary analysis, though the switcher-inclusive sensitivity gave the same answer. Sixth, results generalise to athletes still active at 15--16 in an open, club-based, low-cost competition system; absolute rates and thresholds will differ in gate-kept or pay-to-play systems. Finally, the study was not externally preregistered; the analysis plan, hypotheses, estimands, and interpretation rules were committed to version control before any exposure--outcome model was estimated, and all deviations would have been reported as such.
+The limitations are those of registry research, stated in advance. First, the estimates are associations; no causal effect of progression is claimed, and the four processes above cannot be separated. Second, exit from the athletics registry is not exit from sport: transfer to other sports is invisible, which is why a null H1 would have been uninterpretable --- the asymmetry cuts the other way for the positive finding, since sport transfer would, if anything, generate athletes who leave \emph{while} progressing. Third, injury, training, and biological maturation are unobserved; maturation deserves emphasis, because on calendar-calibrated tables a late maturer whose deficit has not yet closed is indistinguishable from a stagnating athlete, and if late maturers also exit more, the progression--retention association would arise without any motivational mechanism --- the mediated-mastery and maturation readings of the birth-quarter results are observationally equivalent here. Fourth, the age-graded tables are unequally demanding across event groups; standardisation within sex and event group addresses comparisons, not the tables themselves. Fifth, the primary definition measures progression within the athlete's original main event group; athletes who changed groups entirely are excluded from the primary analysis, though the switcher-inclusive sensitivity gave the same answer. Sixth, results generalise to athletes still active at 15--16 in an open, club-based, low-cost competition system; absolute rates and thresholds will differ in gate-kept or pay-to-play systems. Finally, the study was not externally preregistered; the analysis plan, hypotheses, estimands, and interpretation rules were committed to version control before any exposure--outcome model was estimated, and all deviations would have been reported as such.
 
 % ════════════════════════════════════════════════════════════
 \section{Conclusions}
@@ -356,7 +282,7 @@ Among Norwegian youth track-and-field athletes still competing at ages 15--16, w
 
 \medskip\noindent\textbf{Ethics approval and consent.} The study analyses public competition results and falls outside the scope of the Norwegian Health Research Act; an assessment from Sikt was obtained. No individual athlete is identified. In accordance with the Norwegian children's sport regulations, no performance data below age 13 were analysed.
 
-\medskip\noindent\textbf{Data availability.} The underlying data are the Norwegian Athletics Federation's public competition results. Aggregate outputs and all analysis code are available from the author; athlete-level analysis files are regenerable from the registry with the deposited code.
+\medskip\noindent\textbf{Data availability.} The underlying data are the Norwegian Athletics Federation's public competition results. Aggregate outputs and all analysis code are available from the author; athlete-level analysis files are regenerable from the registry with the analysis code.
 
 \medskip\noindent\textbf{Author contributions.} AGG conceived the study, performed all analyses, and wrote the manuscript.
 
@@ -373,24 +299,7 @@ Among Norwegian youth track-and-field athletes still competing at ages 15--16, w
 \centering
 \caption*{\textbf{Supplementary Table S1.} Sample flow.}
 \small
-\begin{tabular}{lr}
-\toprule
-Step & n \\
-\midrule
-Athletes born 1998--2006 in the registry extract & 32\,447 \\
-With $\geq$1 approved result at age 13--14 & 12\,938 \\
-Also competing at ages 15--16 (landmark condition) & 4\,910 \\
-With known sex & 4\,909 \\
-\quad excluded: no scorable main-group points in both windows & 734 \\
-\quad excluded: sex $\times$ event-group cells with $<$20 athletes & 3 \\
-\quad retained only for the activity-at-$\geq$18 outcome (born 2006) & 364 \\
-Primary sample (born 1998--2005) & 3\,808 \\
-\quad active seniors & 648 \\
-\quad with exact birth date (H2 analyses) & 3\,781 \\
-Exit-aligned trajectory subsamples (performance / volume) & 1\,011 / 1\,497 \\
-Inclusive best-group exposure sample & 4\,071 \\
-\bottomrule
-\end{tabular}
+\input{s1}
 \vspace{0.2em}
 \parbox{0.8\textwidth}{\footnotesize The completed STROBE checklist accompanies the submission; the time-stamped analysis plan (committed before estimation) is available with the analysis code.}
 \end{table}

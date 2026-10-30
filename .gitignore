@@ -60,3 +60,10 @@ scraper/logs/kilde_utover/
 forskning/stagnasjon-exit/data_private/
 forskning/debutalder/data_private/
 forskning/vind/data_private/
+
+# Audit: filer med data på utøvernivå (aldri i git)
+forskning/stagnasjon-exit/audit/tyrving_scored.csv
+forskning/stagnasjon-exit/audit/oof.csv
+forskning/*/manus/main.aux
+forskning/*/manus/main.blg
+forskning/*/manus/main.out

@@ -80,8 +80,8 @@ def main():
     df = Xk.shape[1] - Xl.shape[1]
     from scipy import stats as scst
     p = float(1 - scst.chi2.cdf(lr, df))
-    pd.DataFrame([{"llf_linear": ml.llf, "llf_kategorisk": mk.llf, "LR": round(lr, 2),
-                   "df": df, "p": f"{p:.2e}" if p < 0.001 else round(p, 4)}]).to_csv(
+    pd.DataFrame([{"llf_linear": ml.llf, "llf_kategorisk": mk.llf, "LR": (lr),
+                   "df": df, "p": f"{p:.2e}" if p < 0.001 else (p)}]).to_csv(
         TAB / "r1_lrt.csv", index=False)
     logger.info(f"LRT U-form: LR={lr:.1f}, df={df}, p={p:.2e}")
 
@@ -104,7 +104,7 @@ def main():
     kj = (prim.groupby(["debut_alder", "gender"])["senior"]
           .agg(n="size", hendelser="sum", andel="mean").reset_index())
     lo, hi = proportion_confint(kj["hendelser"], kj["n"], method="wilson")
-    kj["andel_pst"] = (kj["andel"] * 100).round(2)
+    kj["andel_pst"] = (kj["andel"] * 100)
     kj["ki"] = [f"{l*100:.1f}–{h*100:.1f}" for l, h in zip(lo, hi)]
     kj.drop(columns="andel").to_csv(TAB / "r1_kjonn_konvertering.csv", index=False)
     pi = prim.copy()
@@ -128,8 +128,8 @@ def main():
             treff = sum((a, da + k) in aktiv_sett for a in mulig["athlete_id"])
             l, h = proportion_confint(treff, len(mulig), method="wilson")
             rader_k.append({"debut_alder": int(da), "k": k, "n": len(mulig),
-                            "aktive": treff, "andel": round(treff / len(mulig), 4),
-                            "ki_lav": round(float(l), 4), "ki_hoy": round(float(h), 4)})
+                            "aktive": treff, "andel": (treff / len(mulig)),
+                            "ki_lav": (float(l)), "ki_hoy": (float(h))})
     pd.DataFrame(rader_k).to_csv(TAB / "r1_retention_ci.csv", index=False)
 
     # ---- R1-6: full koeffisienttabell + covid-flagg ------------------------------------
@@ -138,13 +138,44 @@ def main():
     ci = mf.conf_int()
     pd.DataFrame({"variabel": Xf.columns, "OR": np.exp(mf.params.values),
                   "KI_lav": np.exp(ci[0].values), "KI_hoy": np.exp(ci[1].values),
-                  "p": mf.pvalues.values}).round(4).to_csv(
+                  "p": mf.pvalues.values}).to_csv(
         TAB / "r1_h1_full_koeffisienter.csv", index=False)
     pc = prim.copy()
     pc["covid_debut"] = pc["covid_debut"].astype(float)
     rc = m03.logit_rader(pc, ["debut_alder", "covid_debut"] + JUST, "senior",
                          "r1_med_covid_flagg")
     rc.to_csv(TAB / "r1_covid_flagg.csv", index=False)
+
+    # ---- KM med forsinket inntreden per debutgruppe: overlevelse ved hel alder ------------
+    # (tallgrunnlag for «converge from about age 16»; audit 30.10.2026)
+    from lifelines import KaplanMeierFitter
+    km = prim.copy()
+    km["slutt"] = np.maximum(km["siste_alder"], km["debut_alder"]) + 0.5
+    km["hendelse"] = (~km["aktiv_naa"].astype(bool)).astype(int)
+    km["gruppe"] = pd.cut(km["debut_alder"], [9, 11, 13, 16], labels=["10-11", "12-13", "14-16"])
+    km_rader = []
+    for gnavn, g in km.groupby("gruppe", observed=True):
+        kmf = KaplanMeierFitter().fit(g["slutt"], g["hendelse"], entry=g["debut_alder"].astype(float))
+        for alder in range(14, 26):
+            km_rader.append({"gruppe": str(gnavn), "alder": alder,
+                             "overlevelse": float(kmf.survival_function_at_times(alder + 0.5).iloc[0])})
+    pd.DataFrame(km_rader).to_csv(TAB / "r1_km_alder.csv", index=False)
+
+    # ---- Debutforskyvning: utøvere med tidligere rader som ble utelatt før debut ---------
+    # (ikke-godkjente rader eller rader før fylte 10; audit 30.10.2026, A3-2)
+    utv = pd.read_csv(DATA / "utovere.csv").rename(columns={"id": "athlete_id"})
+    rr = pd.read_csv(DATA / "resultater.csv", usecols=["athlete_id", "date", "status"],
+                     parse_dates=["date"])
+    rr = rr.merge(utv[["athlete_id", "birth_year"]], on="athlete_id")
+    forste = rr.groupby("athlete_id")["date"].min().rename("forste_rad")
+    pf = prim.merge(forste, left_on="athlete_id", right_index=True, how="left")
+    pf["debut_dato"] = pd.to_datetime(pf["debut_dato"])
+    tidligere = pf[pf["forste_rad"] < pf["debut_dato"]]
+    ny_alder = tidligere["forste_rad"].dt.year - tidligere["birth_year"]
+    pd.DataFrame([{"primaer_med_tidligere_utelatte_rader": len(tidligere),
+                   "av_disse_annen_debutalder": int((ny_alder != tidligere["debut_alder"]).sum()),
+                   "av_disse_forste_rad_under_10": int((ny_alder < 10).sum())}]).to_csv(
+        TAB / "r1_debutforskyvning.csv", index=False)
 
     logger.info(f"ferdig; r1-tabeller i {TAB}/")
 

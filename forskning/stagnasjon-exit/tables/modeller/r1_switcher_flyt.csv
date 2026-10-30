@@ -4,5 +4,9 @@ prim_uten_bg2,94
 ekskluderte_734_med_bg2,363
 inklusiv_n,4071
 inklusiv_hendelser,663
-inklusiv_OR,1.827
+ekskluderte_734_i_modell,357
+prim_i_modell,3714
+inklusiv_OR,1.8272470889323003
 inklusiv_KI,1.610–2.074
+inklusiv_KI_lav,1.6097262561791694
+inklusiv_KI_hoy,2.074161312331815

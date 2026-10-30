@@ -24,6 +24,8 @@ TAB = HERE / "tables" / "modeller"
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
+# region er NA for hele primærutvalget (meets.krets utfylt for <1 % av stevnene) -> konstant,
+# null dummykolonner, ingen effekt på estimatene (audit 30.10.2026, A3-1); står igjen for sporbarhet.
 JUST = ["gender", "birth_year", "region", "log_klubbstorrelse"]
 KAT = ["gender", "birth_year", "region", "debut_kat"]
 

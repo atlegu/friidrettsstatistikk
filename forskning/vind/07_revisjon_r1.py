@@ -47,9 +47,9 @@ def rad_av(res, kode, merk, ekstra=None):
     skala = 1 if kode in TIDS else 100
     g = s * b * skala
     return {"analyse": merk, "event": kode, "enhet": "s" if kode in TIDS else "cm",
-            "gevinst_per_ms": round(g, 4),
-            "ki_lav": round(g - 1.96 * se * skala, 4),
-            "ki_hoy": round(g + 1.96 * se * skala, 4),
+            "gevinst_per_ms": (g),
+            "ki_lav": (g - 1.96 * se * skala),
+            "ki_hoy": (g + 1.96 * se * skala),
             "n": res["n"], "celler": res["celler"], **(ekstra or {})}
 
 
@@ -57,9 +57,9 @@ def pst_rad(res, kode, merk, ekstra=None):
     b, se = res["wind"]
     s = -1 if kode in TIDS else 1
     return {"analyse": merk, "event": kode, "enhet": "%",
-            "gevinst_per_ms": round(s * 100 * b, 4),
-            "ki_lav": round(s * 100 * b - 1.96 * 100 * se, 4),
-            "ki_hoy": round(s * 100 * b + 1.96 * 100 * se, 4),
+            "gevinst_per_ms": (s * 100 * b),
+            "ki_lav": (s * 100 * b - 1.96 * 100 * se),
+            "ki_hoy": (s * 100 * b + 1.96 * 100 * se),
             "n": res["n"], "celler": res["celler"], **(ekstra or {})}
 
 
@@ -96,19 +96,19 @@ def main():
                                  - 2 * m.cov_params()[i, j]))
             if kode in DIST:
                 vbar = DIST[kode] / float(g["y"].mean())
-                teor = round((2 * vbar + 1) / (2 * vbar - 1), 2)
+                teor = ((2 * vbar + 1) / (2 * vbar - 1))
             else:
                 teor = np.nan
             asym.append({"event": kode,
-                         "medvind": round(s * bp * skala, 4),
-                         "medvind_ki_lav": round(s * bp * skala - 1.96 * sep * skala, 4),
-                         "medvind_ki_hoy": round(s * bp * skala + 1.96 * sep * skala, 4),
-                         "motvind": round(s * bn * skala, 4),
-                         "motvind_ki_lav": round(s * bn * skala - 1.96 * sen * skala, 4),
-                         "motvind_ki_hoy": round(s * bn * skala + 1.96 * sen * skala, 4),
-                         "ratio_obs": round(abs(bn / bp), 2) if bp != 0 else np.nan,
+                         "medvind": (s * bp * skala),
+                         "medvind_ki_lav": (s * bp * skala - 1.96 * sep * skala),
+                         "medvind_ki_hoy": (s * bp * skala + 1.96 * sep * skala),
+                         "motvind": (s * bn * skala),
+                         "motvind_ki_lav": (s * bn * skala - 1.96 * sen * skala),
+                         "motvind_ki_hoy": (s * bn * skala + 1.96 * sen * skala),
+                         "ratio_obs": (abs(bn / bp)) if bp != 0 else np.nan,
                          "ratio_teoretisk_v2": teor,
-                         "p_lik_meet": round(float(2 * (1 - scst.norm.cdf(abs(diff / se_d)))), 5)
+                         "p_lik_meet": (float(2 * (1 - scst.norm.cdf(abs(diff / se_d)))))
                          if se_d > 0 else np.nan,
                          "n": ra["n"], "celler": ra["celler"]})
         for kj in ["M", "F"]:
@@ -126,6 +126,18 @@ def main():
     pd.DataFrame(asym).to_csv(EST / "r1_asym_meet.csv", index=False)
     logger.info("stevneklynget hoved/alder/asym ferdig")
 
+    # ---- Kvadratisk form, stevneklynget (S5; runde 1 hadde utøverklynger) ----------------
+    d["wind2"] = d["wind"] ** 2
+    kvad = []
+    for kode in koder:
+        r = m03.estimer(d[d["event_code"] == kode], "y", vindkolonner=("wind", "wind2"),
+                        cluster="meet_id")
+        if r:
+            kvad.append({"event": kode, "beta_lin": r["wind"][0], "se_lin": r["wind"][1],
+                         "beta_kvad": r["wind2"][0], "se_kvad": r["wind2"][1],
+                         "n": r["n"], "celler": r["celler"]})
+    pd.DataFrame(kvad).to_csv(EST / "r1_kvad_meet.csv", index=False)
+
     # ---- Vindjusterte merker; tertiler på nytt (R2-6) -----------------------------------
     beta = {r["event"]: r["gevinst_per_ms"] for r in hoved if r["analyse"] == "hoved_meet"}
     er_tid = d["event_code"].isin(list(TIDS))
@@ -134,17 +146,26 @@ def main():
                           d["y"] - d["event_code"].map(beta).fillna(0) / 100 * d["wind"])
 
     cm_adj = d.groupby("celle")["y_adj"].transform("mean")
-    d["prest_adj"] = np.where(er_tid, -cm_adj, cm_adj)
-    grp = d.groupby(["event_code", "gender", "aldersband"])["prest_adj"]
-    d["adj_z"] = (d["prest_adj"] - grp.transform("mean")) / grp.transform("std")
 
-    def tertil(s):
-        if s.notna().sum() < 30 or s.nunique() < 3:
-            return pd.Series(index=s.index, dtype="object")
-        return pd.qcut(s.rank(method="first"), 3, labels=["lav", "midt", "hoy"])
-
-    d["tert_adj"] = (d.groupby(["event_code", "gender", "aldersband"])["adj_z"]
-                     .transform(tertil))
+    # Tertiler av utøversesonger (celler med >=2 resultater), ikke av rader: analyseplanen
+    # definerer nivå per celle. Radbaserte tertiler (audit 30.10.2026, funn A6-2) ga like
+    # mange RESULTATER per tertil, så lavtertilen fikk ~50 % flere celler, og en grensecelle
+    # kunne deles. Rang innen øvelse x kjønn x bånd med celle-id som deterministisk tie-break;
+    # tertil = floor(3*(rang-1)/m), grupper under 30 celler får ingen tertil.
+    gr = ["event_code", "gender", "aldersband"]
+    celler = (d[d["n_i_celle"] >= 2].groupby("celle")
+              .agg(event_code=("event_code", "first"), gender=("gender", "first"),
+                   aldersband=("aldersband", "first"), cm_adj=("y_adj", "mean"))
+              .reset_index())
+    celler["prest_adj"] = np.where(celler["event_code"].isin(list(TIDS)),
+                                   -celler["cm_adj"], celler["cm_adj"])
+    celler = celler.sort_values(gr + ["prest_adj", "celle"]).reset_index(drop=True)
+    celler["rang"] = celler.groupby(gr).cumcount() + 1
+    celler["m"] = celler.groupby(gr)["celle"].transform("size")
+    t_idx = np.floor(3 * (celler["rang"] - 1) / celler["m"]).astype(int)
+    celler["tert_adj"] = np.where(celler["m"] >= 30,
+                                  np.array(["lav", "midt", "hoy"])[t_idx], None)
+    d["tert_adj"] = d["celle"].map(celler.set_index("celle")["tert_adj"])
     tert = []
     for kode in koder:
         for t, gg in d[d["event_code"] == kode].groupby("tert_adj", observed=True):
@@ -175,16 +196,16 @@ def main():
                 sd_gammel = float(dm_raa[gg.index].std())
                 fordel = -2 * bp
                 vindu.append({"event": kode, "kjonn": kj, "aldersband": band,
-                              "medvind_s_per_ms": round(-bp, 4),
-                              "medvind_ki_lav": round(-bp - 1.96 * sep, 4),
-                              "medvind_ki_hoy": round(-bp + 1.96 * sep, 4),
-                              "motvind_s_per_ms": round(-bn, 4),
-                              "motvind_ki_lav": round(-bn - 1.96 * sen, 4),
-                              "motvind_ki_hoy": round(-bn + 1.96 * sen, 4),
-                              "fordel_2ms_s": round(fordel, 3),
-                              "sd_poolet_adj": round(sd_pool, 3),
-                              "fordel_i_sd": round(fordel / sd_pool, 2) if sd_pool > 0 else np.nan,
-                              "sd_runde1": round(sd_gammel, 3),
+                              "medvind_s_per_ms": (-bp),
+                              "medvind_ki_lav": (-bp - 1.96 * sep),
+                              "medvind_ki_hoy": (-bp + 1.96 * sep),
+                              "motvind_s_per_ms": (-bn),
+                              "motvind_ki_lav": (-bn - 1.96 * sen),
+                              "motvind_ki_hoy": (-bn + 1.96 * sen),
+                              "fordel_2ms_s": (fordel),
+                              "sd_poolet_adj": (sd_pool),
+                              "fordel_i_sd": (fordel / sd_pool) if sd_pool > 0 else np.nan,
+                              "sd_runde1": (sd_gammel),
                               "n": r["n"], "celler": r["celler"]})
     vv = pd.DataFrame(vindu)
     vv.to_csv(EST / "r1_vindu_medvind.csv", index=False)
@@ -212,6 +233,13 @@ def main():
                    + "_" + hr["event_code"])
     hr["n_i_celle"] = hr.groupby("celle")["id"].transform("count")
     hr["runde"] = hr["round"].fillna("ukjent").astype(str)
+    banddef = [(10, 11, "10-11"), (12, 13, "12-13"), (14, 15, "14-15"),
+               (16, 17, "16-17"), (18, 19, "18-19"), (20, 34, "20-34")]
+    hr["aldersband"] = hr["alder"].map(lambda a: next(n for lo, hi, n in banddef if lo <= a <= hi))
+    # Flatreferansen tas fra kjønnets EGET modalbånd i koden (audit 30.10.2026, funn A6-3:
+    # samlet modalbånd ga 20-34 for guttene i 100 m hekk 84 cm, som alle er 14-15).
+    adf = pd.DataFrame(alder)
+    flat_kode = {"60mh": "60m", "80mh": None, "100mh": "100m", "110mh": "100m"}
     hekk = []
     for kode, g in hr.groupby("event_code"):
         for kj in ["begge", "M", "F"]:
@@ -220,13 +248,25 @@ def main():
             if not res:
                 continue
             b, se = res["wind"]
-            hekk.append({"kode": kode, "kjonn": kj,
-                         "gevinst_s_per_ms": round(-b, 4),
-                         "ki_lav": round(-b - 1.96 * se, 4),
-                         "ki_hoy": round(-b + 1.96 * se, 4),
-                         "snitt_tid_s": round(float(gg["y"].mean()), 2),
-                         "per_sekund": round(-b / gg["y"].mean(), 5),
-                         "n": res["n"], "celler": res["celler"]})
+            band_mod = gg["aldersband"].value_counts().sort_index().idxmax()
+            fk = flat_kode[kode.split("_")[0]]
+            ref = adf[(adf["event"] == fk) & (adf["kjonn"] == kj) & (adf["aldersband"] == band_mod)
+                      & (adf["enhet"] == "s")] if (fk and kj != "begge") else adf.iloc[0:0]
+            rad_h = {"kode": kode, "kjonn": kj,
+                     "gevinst_s_per_ms": (-b),
+                     "ki_lav": (-b - 1.96 * se),
+                     "ki_hoy": (-b + 1.96 * se),
+                     "snitt_tid_s": (float(gg["y"].mean())),
+                     "per_sekund": (-b / gg["y"].mean()),
+                     "modal_aldersband": band_mod, "flat_ref_ovelse": fk or "",
+                     "flat_ref": float(ref["gevinst_per_ms"].iloc[0]) if len(ref) else np.nan,
+                     "flat_ref_ki_lav": float(ref["ki_lav"].iloc[0]) if len(ref) else np.nan,
+                     "flat_ref_ki_hoy": float(ref["ki_hoy"].iloc[0]) if len(ref) else np.nan,
+                     "n": res["n"], "celler": res["celler"]}
+            rad_h["ki_overlapper_flat"] = (bool(rad_h["ki_lav"] <= rad_h["flat_ref_ki_hoy"]
+                                                and rad_h["ki_hoy"] >= rad_h["flat_ref_ki_lav"])
+                                           if len(ref) else np.nan)
+            hekk.append(rad_h)
     pd.DataFrame(hekk).to_csv(EST / "r1_hekk_meet.csv", index=False)
     logger.info("hekk stevneklynget ferdig")
 
@@ -236,14 +276,14 @@ def main():
         g = d[d["event_code"] == kode]
         if kode in beta and len(g):
             snitt = float(g["y"].mean())
-            perdur.append({"event": kode, "snitt_tid_s": round(snitt, 2),
+            perdur.append({"event": kode, "snitt_tid_s": (snitt),
                            "gevinst_per_ms": beta[kode],
-                           "per_sekund": round(beta[kode] / snitt, 5)})
+                           "per_sekund": (beta[kode] / snitt)})
     pd.DataFrame(perdur).to_csv(EST / "r1_per_sekund.csv", index=False)
 
     # ---- Bunching og robusthet rundt +2,0 (R2-7) -----------------------------------------
     w = d["wind"]
-    bunch = [{"intervall": lab, "andel": round(float(m), 5)} for lab, m in [
+    bunch = [{"intervall": lab, "andel": (float(m))} for lab, m in [
         ("[1.6,1.8]", ((w >= 1.6) & (w <= 1.8)).mean()),
         ("(1.8,2.0]", ((w > 1.8) & (w <= 2.0)).mean()),
         ("(2.0,2.2]", ((w > 2.0) & (w <= 2.2)).mean()),
@@ -262,12 +302,18 @@ def main():
 
     # ---- Manglende vind etter stevnenivå; innendørsrader per øvelse ----------------------
     r0 = pd.read_csv(DATA / "resultater.csv", low_memory=False,
-                     usecols=["event_code", "meet_id", "wind", "status"])
+                     usecols=["event_code", "meet_id", "wind", "status", "date"])
     r0 = r0.merge(me[["meet_id", "indoor", "level"]], on="meet_id", how="left")
     ute = r0[(r0["status"] == "OK") & (r0["indoor"].astype(str) != "True")].copy()
     ute["mangler"] = ute["wind"].isna()
     (ute.groupby(ute["level"].fillna("ukjent"))["mangler"].agg(["mean", "count"])
-     .round(4).to_csv(EST / "r1_missingvind_nivaa.csv"))
+     .to_csv(EST / "r1_missingvind_nivaa.csv"))
+    storr = ute.groupby("meet_id")["event_code"].transform("count")
+    ute["stevnestr"] = pd.qcut(storr, 3, labels=["minste tredel", "midtre", "storste tredel"])
+    (ute.groupby("stevnestr", observed=True)["mangler"].agg(["mean", "count"])
+     .to_csv(EST / "r1_missingvind_storrelse.csv"))
+    ute["aar"] = pd.to_datetime(ute["date"]).dt.year
+    ute.groupby("aar")["mangler"].mean().to_csv(EST / "r1_missingvind_aar.csv")
     (r0[r0["indoor"].astype(str) == "True"].groupby("event_code").size()
      .rename("innendorsrader").to_csv(EST / "r1_innendors_per_ovelse.csv"))
 
@@ -292,9 +338,9 @@ def main():
             if p0 is None or p1 is None:
                 continue
             rows.append({"kjonn": kj, "aldersband": band, "tabellalder": t_alder,
-                         "snitt_tid_s": round(snitt, 2), "fordel_2ms_s": fordel,
+                         "snitt_tid_s": (snitt), "fordel_2ms_s": fordel,
                          "poeng_uten": p0, "poeng_med": p1,
-                         "tyrvingpoeng_for_2ms": round(p1 - p0, 1)})
+                         "tyrvingpoeng_for_2ms": (p1 - p0)})
     pd.DataFrame(rows).to_csv(EST / "r1_tyrvingpoeng.csv", index=False)
     logger.info(f"tyrvingpoeng: {rows}")
 
@@ -321,7 +367,7 @@ def main():
                         "n_utovere": int(g["athlete_id"].nunique()),
                         "plassendringer_topp10": sum(a != b for a, b in zip(f10, e10)),
                         "nye_i_topp50": len(set(topp2["athlete_id"]) - set(topp["athlete_id"])),
-                        "andel_topp50_vind_over_1": round(float((topp["wind"] > 1).mean()), 2)})
+                        "andel_topp50_vind_over_1": (float((topp["wind"] > 1).mean()))})
     pd.DataFrame(oms).to_csv(EST / "r1_listeomstokk.csv", index=False)
 
     logger.info(f"ferdig; r1-filer i {EST}/")

@@ -1,0 +1,4 @@
+Warning messages:
+1: package 'data.table' was built under R version 4.3.3 
+2: package 'fixest' was built under R version 4.3.3 
+uavhengig A6 ferdig

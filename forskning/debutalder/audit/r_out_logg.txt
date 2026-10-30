@@ -1,0 +1,6 @@
+Warning message:
+package 'data.table' was built under R version 4.3.3 
+Warning message:
+In coxph(Surv(debut_alder, slutt, hendelse) ~ debut_alder + kvinne +  :
+  a variable appears on both the left and right sides of the formula
+uavhengig A3 ferdig

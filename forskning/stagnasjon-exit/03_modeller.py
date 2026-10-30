@@ -29,6 +29,8 @@ SEED = 20261029
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
+# region er NA for alle (meets.krets utfylt for <1 % av stevnene) -> konstant «ukjent», gir null
+# dummykolonner og påvirker ingen estimater (audit 30.10.2026, A1-1); står igjen for sporbarhet.
 M0_KOL = ["gender", "birth_year", "region", "log_klubbstorrelse"]
 M1_KOL = M0_KOL + ["niva_w1_z", "vol1314_g", "vol1516_g", "k13", "k15"]
 M2_KOL = M1_KOL + ["delta_z"]

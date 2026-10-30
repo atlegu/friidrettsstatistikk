@@ -39,7 +39,8 @@ NAVN = {"60m": "60 m", "80m": "80 m", "100m": "100 m", "150m": "150 m", "200m": 
         "lengde": "Long jump", "lengde_sone_05m": "Long jump (zone)",
         "tresteg": "Triple jump", "tresteg_sone_05m": "Triple jump (zone)"}
 FARGER = {"60m": BLAA, "100m": GRONN, "200m": ROD,
-          "lengde": GRONN, "lengde_sone_05m": GRAA, "tresteg": ROD}
+          "lengde": "#6a3d9a", "lengde_sone_05m": GRAA, "tresteg": "#e6850e"}
+STIL = {"lengde": ("s--", 1.8), "lengde_sone_05m": ("s--", 1.8), "tresteg": ("^--", 1.8)}
 HEKKNAVN = {"60mh_68cm": "60 m hurdles 68 cm", "60mh_76_2cm": "60 m hurdles 76.2 cm",
             "80mh_76_2cm": "80 m hurdles 76.2 cm", "80mh_84cm": "80 m hurdles 84 cm",
             "100mh_76_2cm": "100 m hurdles 76.2 cm", "100mh_84cm": "100 m hurdles 84 cm",
@@ -61,16 +62,18 @@ def alder_panel(a, koder, enhet, tittel, fil, ylab):
             ax.errorbar(x, g["gevinst_per_ms"],
                         yerr=[g["gevinst_per_ms"] - g["ki_lav"],
                               g["ki_hoy"] - g["gevinst_per_ms"]],
-                        fmt="o-", lw=2.2, ms=6, capsize=3,
-                        color=FARGER.get(kode, GRAA), label=NAVN[kode])
+                        fmt=STIL.get(kode, ("o-", 2.2))[0], lw=STIL.get(kode, ("o-", 2.2))[1], ms=6,
+                        capsize=3, color=FARGER.get(kode, GRAA), label=NAVN[kode])
         ax.axhline(0, color=GRAA, lw=1, ls="--")
         ax.set_xticks(x, BANDREKKE)
         ax.set_xlabel("Age band")
         ax.set_title(kjnavn)
         ax.set_ylabel(ylab)
-    akser[0].legend(frameon=False, fontsize=9, loc="upper right")
+    handles, labels = akser[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=len(labels), frameon=False, fontsize=9.5,
+               bbox_to_anchor=(0.5, -0.02))
     fig.suptitle(tittel, fontsize=13)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
     fig.savefig(FIG / fil, bbox_inches="tight")
     plt.close(fig)
 
@@ -136,9 +139,8 @@ def fig4_niva(n):
     plt.close(fig)
 
 
-def fig5_hekk(hk, meta):
-    modal = meta[meta["kjonn"] == "begge"][["kode", "modal_aldersband"]]
-    p = hk[hk["kjonn"] == "begge"].merge(modal, on="kode", how="left")
+def fig5_hekk(hk):
+    p = hk[hk["kjonn"] == "begge"].copy()
     rekkef = [k for k in HEKKNAVN if k in set(p["kode"])]
     p = p.set_index("kode").loc[rekkef].reset_index()
     yposs = np.arange(len(p))[::-1]
@@ -148,17 +150,15 @@ def fig5_hekk(hk, meta):
                       p["ki_hoy"] - p["gevinst_s_per_ms"]],
                 fmt="o", color=BLAA, ms=7, capsize=3, lw=1.8,
                 label="Short hurdles (within athlete × season; 95% CI, meet-clustered)")
-    refs = hk[hk["kjonn"] != "begge"].merge(
-        meta[["kode", "kjonn", "flat_sprint_ref_s"]], on=["kode", "kjonn"], how="left")
-    refs = refs[refs["flat_sprint_ref_s"].astype(str) != ""]
+    refs = hk[(hk["kjonn"] != "begge") & hk["flat_ref"].notna()]
     for _, t in refs.iterrows():
-        if t["kode"] in rekkef and pd.notna(t["flat_sprint_ref_s"]):
+        if t["kode"] in rekkef:
             yp = yposs[rekkef.index(t["kode"])]
-            ax.plot(float(t["flat_sprint_ref_s"]), yp, marker="D", ms=6,
+            ax.plot(float(t["flat_ref"]), yp, marker="D", ms=6,
                     color=GRONN if t["kjonn"] == "M" else ROD,
                     linestyle="none", alpha=0.85)
     ax.plot([], [], marker="D", color=GRONN, linestyle="none",
-            label="Flat sprint reference, boys/men (same distance class, modal age band)")
+            label="Flat sprint reference, boys/men (same distance class, own modal age band)")
     ax.plot([], [], marker="D", color=ROD, linestyle="none",
             label="Flat sprint reference, girls/women")
     etiketter = [f"{HEKKNAVN[k]}  ({p.set_index('kode').loc[k, 'modal_aldersband']})"
@@ -180,10 +180,6 @@ def main():
     tert = pd.read_csv(EST / "r1_tertil_adj.csv")
     vindu = pd.read_csv(EST / "r1_vindu_medvind.csv")
     hk = pd.read_csv(EST / "r1_hekk_meet.csv")
-    meta = (pd.read_csv(EST / "hekk.csv")[["kode", "kjonn", "modal_aldersband",
-                                           "flat_sprint_ref_s"]]
-            .drop_duplicates())
-    meta_kode = meta[["kode", "modal_aldersband"]].drop_duplicates()
 
     # ---- Figurer -------------------------------------------------------------------------
     alder_panel(a, ["60m", "100m", "200m"], "s",
@@ -194,7 +190,7 @@ def main():
                 "fig2_effect_by_age_pct.png", "Percent improvement per +1 m/s")
     fig3_asym(asym)
     fig4_niva(tert)
-    fig5_hekk(hk, meta)
+    fig5_hekk(hk)
     logger.info("fig1–fig5 regenerert med stevneklyngede KI")
 
     # ---- Tabell 2: hovedeffekter ---------------------------------------------------------
@@ -247,6 +243,11 @@ def main():
         lambda t: fmt(t["medvind"], t["medvind_ki_lav"], t["medvind_ki_hoy"]), axis=1)
     t4["Headwind loss per −1 m/s (95% CI)"] = t4.apply(
         lambda t: fmt(t["motvind"], t["motvind_ki_lav"], t["motvind_ki_hoy"]), axis=1)
+    t4["ratio_obs"] = t4["ratio_obs"].map(lambda x: f"{x:.2f}")
+    t4["ratio_teoretisk_v2"] = t4["ratio_teoretisk_v2"].map(
+        lambda x: "—" if pd.isna(x) else f"{x:.2f}")
+    t4["p_lik_meet"] = t4["p_lik_meet"].map(lambda p: "<0.001" if p < 0.001 else f"{p:.3f}")
+    t4 = t4.set_index("event").loc[[k for k in REKKE if k in set(t4["event"])]].reset_index()
     (t4[["Event", "Unit", "Tailwind gain per +1 m/s (95% CI)",
          "Headwind loss per −1 m/s (95% CI)", "ratio_obs", "ratio_teoretisk_v2",
          "p_lik_meet", "n"]]
@@ -255,16 +256,18 @@ def main():
      .to_csv(TABM / "table4_asymmetry.csv", index=False))
 
     # ---- Tabell 5: hekk ------------------------------------------------------------------
-    t5 = hk[hk["kjonn"] != "begge"].merge(meta, on=["kode", "kjonn"], how="left")
-    t5 = t5.merge(meta_kode, on="kode", how="left", suffixes=("", "_k"))
-    t5["modal_aldersband"] = t5["modal_aldersband"].fillna(t5["modal_aldersband_k"])
+    t5 = hk[hk["kjonn"] != "begge"].copy()
+    t5["_rekke"] = t5["kode"].map({k: i for i, k in enumerate(HEKKNAVN)})
+    t5 = t5.sort_values(["_rekke", "kjonn"], ascending=[True, False])
     t5["Event (hurdle height)"] = t5["kode"].map(HEKKNAVN)
     t5["Sex"] = t5["kjonn"].map({"M": "Boys/men", "F": "Girls/women"})
     t5["Gain per +1 m/s (95% CI), s"] = t5.apply(
         lambda t: fmt(t["gevinst_s_per_ms"], t["ki_lav"], t["ki_hoy"]), axis=1)
-    t5["Flat sprint reference, s"] = t5["flat_sprint_ref_s"]
+    t5["Flat sprint reference (95% CI), s"] = t5.apply(
+        lambda t: "—" if pd.isna(t["flat_ref"])
+        else fmt(t["flat_ref"], t["flat_ref_ki_lav"], t["flat_ref_ki_hoy"]), axis=1)
     (t5[["Event (hurdle height)", "Sex", "modal_aldersband",
-         "Gain per +1 m/s (95% CI), s", "Flat sprint reference, s", "n", "celler"]]
+         "Gain per +1 m/s (95% CI), s", "Flat sprint reference (95% CI), s", "n", "celler"]]
      .rename(columns={"modal_aldersband": "Modal age band", "celler": "Athlete-seasons"})
      .to_csv(TABM / "table5_hurdles.csv", index=False))
 
@@ -315,20 +318,26 @@ def main():
 
     # ---- Tabell S4: effekt per sekund løpstid --------------------------------------------
     pdur = pd.read_csv(EST / "r1_per_sekund.csv")
+    pdur = pdur.set_index("event").loc[[k for k in SPRINT if k in set(pdur["event"])]].reset_index()
     pdur["Event"] = pdur["event"].map(NAVN)
     flat = pdur[["Event", "snitt_tid_s", "gevinst_per_ms", "per_sekund"]]
     hkb = hk[hk["kjonn"] == "begge"].copy()
+    hkb = hkb.set_index("kode").loc[[k for k in HEKKNAVN if k in set(hkb["kode"])]].reset_index()
     hkb["Event"] = hkb["kode"].map(HEKKNAVN)
     hkb = hkb.rename(columns={"gevinst_s_per_ms": "gevinst_per_ms"})[
         ["Event", "snitt_tid_s", "gevinst_per_ms", "per_sekund"]]
-    (pd.concat([flat, hkb])
+    s4 = pd.concat([flat, hkb])
+    s4["snitt_tid_s"] = s4["snitt_tid_s"].map(lambda x: f"{x:.2f}")
+    s4["gevinst_per_ms"] = s4["gevinst_per_ms"].map(lambda x: f"{x:.3f}")
+    s4["per_sekund"] = s4["per_sekund"].map(lambda x: f"{x:.5f}")
+    (s4
      .rename(columns={"snitt_tid_s": "Mean time, s",
                       "gevinst_per_ms": "Gain per +1 m/s, s",
                       "per_sekund": "Gain per +1 m/s per second of race time"})
      .to_csv(TABM / "tableS_perduration.csv", index=False))
 
     # ---- Tabell S5: kvadratisk form ------------------------------------------------------
-    kv = pd.read_csv(EST / "kvad.csv")
+    kv = pd.read_csv(EST / "r1_kvad_meet.csv")
     kv["Event"] = kv["event"].map(NAVN)
     kv["Linear term (SE)"] = kv.apply(lambda t: f"{t['beta_lin']:.4f} ({t['se_lin']:.4f})",
                                       axis=1)

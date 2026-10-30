@@ -113,9 +113,9 @@ def main():
     for navn, pa, pb in [("M2_minus_M1", oof2, oof1),
                          ("volum+fremgang_minus_volum+niva", oof_f, oof_n)]:
         a1, a2, diff, lo, hi, p = delong_diff(y, pa, pb)
-        rader.append({"kontrast": navn, "auc_a": round(a1, 4), "auc_b": round(a2, 4),
-                      "diff": round(diff, 4), "ki_lav": round(lo, 4),
-                      "ki_hoy": round(hi, 4), "p": round(float(p), 4)})
+        rader.append({"kontrast": navn, "auc_a": (a1), "auc_b": (a2),
+                      "diff": (diff), "ki_lav": (lo),
+                      "ki_hoy": (hi), "p": (float(p))})
         logger.info(f"DeLong {navn}: diff {diff:.4f} [{lo:.4f}, {hi:.4f}], p={p:.3f}")
     pd.DataFrame(rader).to_csv(TAB / "r1_delong.csv", index=False)
 
@@ -125,7 +125,7 @@ def main():
     ford = dq.groupby("kvartal").agg(n=("delta", "size"),
                                      delta_poeng_median=("delta", "median"),
                                      delta_poeng_snitt=("delta", "mean"),
-                                     delta_z_snitt=("delta_z", "mean")).round(3)
+                                     delta_z_snitt=("delta_z", "mean"))
     trend = sm.OLS(dq["delta_z"], sm.add_constant(dq["kvartal_c"])).fit(
         cov_type="cluster", cov_kwds={"groups": dq["club_id"].fillna("ukjent")})
     ford.to_csv(TAB / "r1_delta_per_kvartal.csv")
@@ -134,14 +134,14 @@ def main():
     kv_u = uten[uten["variabel"] == "kvartal_c"].iloc[0]
     kv_m = med[med["variabel"] == "kvartal_c"].iloc[0]
     pd.DataFrame([
-        {"modell": "uten_delta", "OR_per_kvartal": round(kv_u["OR"], 4),
-         "KI_lav": round(kv_u["KI_lav"], 4), "KI_hoy": round(kv_u["KI_hoy"], 4), "n": len(dq)},
-        {"modell": "med_delta", "OR_per_kvartal": round(kv_m["OR"], 4),
-         "KI_lav": round(kv_m["KI_lav"], 4), "KI_hoy": round(kv_m["KI_hoy"], 4), "n": len(dq)},
+        {"modell": "uten_delta", "OR_per_kvartal": (kv_u["OR"]),
+         "KI_lav": (kv_u["KI_lav"]), "KI_hoy": (kv_u["KI_hoy"]), "n": len(dq)},
+        {"modell": "med_delta", "OR_per_kvartal": (kv_m["OR"]),
+         "KI_lav": (kv_m["KI_lav"]), "KI_hoy": (kv_m["KI_hoy"]), "n": len(dq)},
         {"modell": "delta_z_paa_kvartal_c_OLS",
-         "OR_per_kvartal": round(float(trend.params["kvartal_c"]), 4),
-         "KI_lav": round(float(trend.conf_int().loc["kvartal_c"][0]), 4),
-         "KI_hoy": round(float(trend.conf_int().loc["kvartal_c"][1]), 4), "n": len(dq)},
+         "OR_per_kvartal": (float(trend.params["kvartal_c"])),
+         "KI_lav": (float(trend.conf_int().loc["kvartal_c"][0])),
+         "KI_hoy": (float(trend.conf_int().loc["kvartal_c"][1])), "n": len(dq)},
     ]).to_csv(TAB / "r1_mediering.csv", index=False)
     logger.info(f"kvartalstrend uten Δ: {kv_u['OR']:.3f} [{kv_u['KI_lav']:.3f},{kv_u['KI_hoy']:.3f}]; "
                 f"med Δ: {kv_m['OR']:.3f} [{kv_m['KI_lav']:.3f},{kv_m['KI_hoy']:.3f}]; "
@@ -192,18 +192,18 @@ def main():
     base = pd.read_csv(DATA / "analysedata.csv")
     prim = base[base["kohort_primar"] & base["skaarbar"] & ~base["liten_gruppecelle"]]
     sd = {
-        "sd_delta_poeng_pooled": round(float(prim["delta"].std()), 1),
+        "sd_delta_poeng_pooled": (float(prim["delta"].std())),
         "sd_delta_poeng_cellespenn": f"{prim.groupby(['gender','hovedgruppe'])['delta'].std().min():.0f}"
                                      f"–{prim.groupby(['gender','hovedgruppe'])['delta'].std().max():.0f}",
-        "sd_niva_poeng": round(float(prim["niva_w1"].std()), 1),
-        "sd_vol1314_dager": round(float(prim["vol1314"].std()), 1),
-        "sd_vol1516_dager": round(float(prim["vol1516"].std()), 1),
-        "andel_negativ_delta_dropouts": round(float((prim.loc[prim["senior"] == 0, "delta"] < 0).mean()), 3),
-        "andel_negativ_delta_retainers": round(float((prim.loc[prim["senior"] == 1, "delta"] < 0).mean()), 3),
-        "kvartal_Q1": round(float((prim["kvartal"] == 1).sum() / prim["kvartal"].notna().sum()), 3),
-        "kvartal_Q2": round(float((prim["kvartal"] == 2).sum() / prim["kvartal"].notna().sum()), 3),
-        "kvartal_Q3": round(float((prim["kvartal"] == 3).sum() / prim["kvartal"].notna().sum()), 3),
-        "kvartal_Q4": round(float((prim["kvartal"] == 4).sum() / prim["kvartal"].notna().sum()), 3),
+        "sd_niva_poeng": (float(prim["niva_w1"].std())),
+        "sd_vol1314_dager": (float(prim["vol1314"].std())),
+        "sd_vol1516_dager": (float(prim["vol1516"].std())),
+        "andel_negativ_delta_dropouts": (float((prim.loc[prim["senior"] == 0, "delta"] < 0).mean())),
+        "andel_negativ_delta_retainers": (float((prim.loc[prim["senior"] == 1, "delta"] < 0).mean())),
+        "kvartal_Q1": (float((prim["kvartal"] == 1).sum() / prim["kvartal"].notna().sum())),
+        "kvartal_Q2": (float((prim["kvartal"] == 2).sum() / prim["kvartal"].notna().sum())),
+        "kvartal_Q3": (float((prim["kvartal"] == 3).sum() / prim["kvartal"].notna().sum())),
+        "kvartal_Q4": (float((prim["kvartal"] == 4).sum() / prim["kvartal"].notna().sum())),
         "primaer_uten_kvartal": int(prim["kvartal"].isna().sum()),
     }
     pd.DataFrame([sd]).T.rename(columns={0: "verdi"}).to_csv(TAB / "r1_sd_og_andeler.csv")
@@ -225,12 +225,17 @@ def main():
                                             & base["delta_bg2_z"].notna()].shape[0]),
         "inklusiv_n": len(inkl),
         "inklusiv_hendelser": int(inkl["senior"].sum()),
+        # av de 734 med bg2-skår: hvor mange som faktisk kommer i modellen (krever også nivå 13-14)
+        "ekskluderte_734_i_modell": int((~inkl["skaarbar"]).sum()),
+        "prim_i_modell": int(inkl["skaarbar"].sum()),
     }
     kol = [c for c in m03.M2_KOL if c != "delta_z"] + ["delta_bg2_z"]
     _, u = m03.logit_or(inkl, kol)
     t = u[u["variabel"] == "delta_bg2_z"].iloc[0]
-    flyt["inklusiv_OR"] = round(float(t["OR"]), 3)
+    flyt["inklusiv_OR"] = (float(t["OR"]))
     flyt["inklusiv_KI"] = f"{t['KI_lav']:.3f}–{t['KI_hoy']:.3f}"
+    flyt["inklusiv_KI_lav"] = float(t["KI_lav"])
+    flyt["inklusiv_KI_hoy"] = float(t["KI_hoy"])
     pd.DataFrame([flyt]).T.rename(columns={0: "verdi"}).to_csv(TAB / "r1_switcher_flyt.csv")
     logger.info(f"inklusiv bg2: n={flyt['inklusiv_n']} (hvorav {flyt['ekskluderte_734_med_bg2']} "
                 f"fra de 734), OR {flyt['inklusiv_OR']} [{flyt['inklusiv_KI']}]")

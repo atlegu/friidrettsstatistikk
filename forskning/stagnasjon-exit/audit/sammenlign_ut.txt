@@ -1,0 +1,13 @@
+AVVIK (12):
+  - nivastrata lav OR: python=1.6280491020954089 R=1.62766735798889 (diff 3.82e-04 > 0.0002)
+  - nivastrata lav KI_lav: python=1.1695004566346288 R=1.16916541816517 (diff 3.35e-04 > 0.0002)
+  - nivastrata lav KI_hoy: python=2.2663897767606773 R=2.26597621440104 (diff 4.14e-04 > 0.0002)
+  - nivastrata lav n: python=1269.0 R=1270 (diff 1.00e+00 > 0)
+  - nivastrata midt OR: python=1.8564922088587148 R=1.8546665210558 (diff 1.83e-03 > 0.0002)
+  - nivastrata midt KI_lav: python=1.391693199742141 R=1.39037051835772 (diff 1.32e-03 > 0.0002)
+  - nivastrata midt KI_hoy: python=2.4765252299800737 R=2.47400808554846 (diff 2.52e-03 > 0.0002)
+  - nivastrata midt n: python=1269.0 R=1270 (diff 1.00e+00 > 0)
+  - nivastrata hoy OR: python=2.373265242137811 R=2.37620447719403 (diff 2.94e-03 > 0.0002)
+  - nivastrata hoy KI_lav: python=1.8211623859474129 R=1.82351016576092 (diff 2.35e-03 > 0.0002)
+  - nivastrata hoy KI_hoy: python=3.0927433780757223 R=3.09641691253245 (diff 3.67e-03 > 0.0002)
+  - nivastrata hoy n: python=1270.0 R=1268 (diff 2.00e+00 > 0)

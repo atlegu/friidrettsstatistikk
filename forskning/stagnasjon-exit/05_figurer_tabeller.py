@@ -96,11 +96,14 @@ def fig1(base, sesong):
     s = sesong.merge(prim[["athlete_id", "senior"]], on="athlete_id", how="inner")
     s = s[s["tyrving_m3"].notna() & s["alder"].between(13, 18)]
     fig, ax = plt.subplots(figsize=(8.6, 5.6))
-    for verdi, farge, mark, navn in [(1, GRONN, "o", "Senior retainers (active ≥ age 20)"),
-                                     (0, ROD, "s", "Future dropouts (last active < age 20)")]:
+    figdata = []
+    for verdi, farge, mark, navn in [(1, GRONN, "o", "Active seniors (≥2 results in a year at ≥20)"),
+                                     (0, ROD, "s", "Not active seniors")]:
         g = s[s["senior"] == verdi]
         st = g.groupby("alder")["tyrving_m3"].agg(
             median="median", q1=lambda x: x.quantile(0.25), q3=lambda x: x.quantile(0.75))
+        figdata.append(st.assign(senior=verdi,
+                                 n=g.groupby("alder")["athlete_id"].nunique()).reset_index())
         n0 = int(g.loc[g["alder"] == 13, "athlete_id"].nunique())
         ax.plot(st.index, st["median"], color=farge, marker=mark, lw=2.8, ms=8,
                 label=f"{navn} (n = {n0:,} at 13)")
@@ -114,6 +117,7 @@ def fig1(base, sesong):
     fig.tight_layout()
     fig.savefig(FIG / "fig1_performance_by_age.png", bbox_inches="tight")
     plt.close(fig)
+    pd.concat(figdata).to_csv(TABM / "fig1_data.csv", index=False)
 
 
 # ---------------------------------------------------------------------------- figur 2
@@ -138,9 +142,12 @@ def fig2(base, sesong):
     D = np.array(rader_d)
 
     fig, akser = plt.subplots(1, 2, figsize=(10.5, 4.8), sharex=True)
+    figdata = []
     for ax, M, navn, enhet in [(akser[0], T, "Age-graded performance", "points vs. own level at T−3"),
                                (akser[1], D, "Competition volume", "days vs. own level at T−3")]:
         med, lo, hi = zip(*[boot_median_ci(M[:, k]) for k in range(4)])
+        figdata += [{"panel": navn, "t": f"T-{3 - k}", "median": med[k], "ki_lav": lo[k],
+                     "ki_hoy": hi[k], "n": len(M), "n_kandidater": len(exits)} for k in range(4)]
         ax.axhline(0, color=GRAA, lw=1, ls="--")
         ax.plot(range(4), med, color=ROD, marker="s", lw=2.8, ms=8)
         ax.fill_between(range(4), lo, hi, color=ROD, alpha=0.18)
@@ -153,6 +160,7 @@ def fig2(base, sesong):
     fig.tight_layout()
     fig.savefig(FIG / "fig2_exit_aligned.png", bbox_inches="tight")
     plt.close(fig)
+    pd.DataFrame(figdata).to_csv(TABM / "fig2_data.csv", index=False)
     return len(T), len(D)
 
 
@@ -166,10 +174,15 @@ def fig3(base):
     fig, ax = plt.subplots(figsize=(8.2, 5.4))
     farger = {"Low volume 15–16": ROD, "Mid volume 15–16": GRAA,
               "High volume 15–16": GRONN}
+    figdata = []
     for navn, g in p.groupby("voltert", observed=True):
         andel = g.groupby("kvintil", observed=True)["senior"].mean() * 100
         ax.plot(andel.index.astype(int), andel.values, marker="o", lw=2.6, ms=7,
                 color=farger[str(navn)], label=f"{navn} (n = {len(g):,})")
+        figdata += [{"voltertil": str(navn), "kvintil": int(q), "andel_pst": a_,
+                     "n_tertil": len(g), "vol_min": int(g["vol1516"].min()),
+                     "vol_maks": int(g["vol1516"].max())} for q, a_ in andel.items()]
+    pd.DataFrame(figdata).to_csv(TABM / "fig3_data.csv", index=False)
     ax.set_xlabel("Progression quintile, ages 13–14 → 15–16 (1 = largest decline)")
     ax.set_ylabel("Active as senior, age ≥ 20 (%)")
     ax.set_title("Senior retention by performance progression and competition volume")
