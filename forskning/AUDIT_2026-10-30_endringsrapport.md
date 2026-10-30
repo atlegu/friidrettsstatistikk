@@ -155,7 +155,10 @@ Hvert punkt er verifisert med min egen kode. Under «Forslag» står det jeg vil
 ## 4. Utenfor de tre manusene (din beslutning)
 
 - **Plattformen har de samme kopiene.** 47 962 kopier ligger i databasen og vises på friidrettsresultater.no. Opprydding betyr sletting, så den krever ditt ja, og den bør gjøres med reservetabell som ved ryddingen 03.10. I tillegg trengs en sperre i importen.
-- **IJSSC (til vurdering)** bruker samme `tyrving_r2.py` med de samme manglende koblingene. Det gjelder poeng per alder 13–16, blant annet `tyrving_slope_13_16` og poeng ved 15 år. Uttrekket er fra begynnelsen av oktober og har sonekopiene. Virkningen er ikke kvantifisert.
+- **IJSSC (til vurdering)** bruker samme `tyrving_r2.py` med de samme manglende koblingene. Det gjelder poeng per alder 13–16, blant annet `tyrving_slope_13_16` og poeng ved 15 år.
+  - IJSSC-dataene har blant annet 1 483 resultater i spyd 500 g, 1 073 i kule 5 kg, 808 i spyd 700 g, 702 i diskos 1,5 kg og 1 515 i liten ball, som modulen ikke gir poeng.
+  - Sonekopiene rammer derimot ikke IJSSC: dataene bygger på uttrekket fra mai 2026, før kopiene kom inn.
+  - Virkningen på de rapporterte tallene er ikke kvantifisert.
 - **Andre analyser på databasen etter 19.05.2026** med lengde eller tresteg for 11–13-åringer kan ha kopiene: RAE-revisjonen, Lekene-trend, fagnytt og trenerartikkelen.
 
 ## 5. Det koden ikke kan verifisere
