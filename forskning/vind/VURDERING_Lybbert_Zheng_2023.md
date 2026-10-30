@@ -99,12 +99,11 @@ Alle med A6-estimatoren (FE utøver × sesong, måned og runde, stevneklynger). 
   - Lybbert & Zheng i innledningen.
   - Avviket i Methods (lagt til etter planen).
   - Nytt avsnitt i H4-resultatene.
-  - Nytt diskusjonsavsnitt: «A headwind penalty is not a psychological effect».
+  - Nytt diskusjonsavsnitt: «Asymmetry, speed and the psychological interpretation» (mildere overskrift etter Atles ønske).
   - Referansen er lagt til.
 - **Tallkontroll:** 160 ankrede sjekker, 0 udekkede tall. Ordtelling ~4 900.
 
 ## Til din vurdering
 
-- Tonen i diskusjonsavsnittet. Overskriften er bastant, og en mildere variant er for eksempel «Asymmetry, speed and the psychological interpretation».
 - Om «feeling fast»-testen (utflating over +2) skal inn som en setning eller tabell. Den støtter fysikktolkningen på 100 m, men er uklar på 60 og 200 m.
 - A6-beslutningene fra auditen (H5-påstandene og poengsetningen) står fortsatt åpne, se endringsrapportens avsnitt 8.
