@@ -218,7 +218,7 @@ Tre uavhengige agenter gikk gjennom definisjoner, tabell- og figurnoter og påst
 
 ## 8. Det du måtte avgjøre (alt avgjort og skrevet inn 30.10.2026)
 
-Punkt 2–3 ble skrevet inn etter ditt «Ja, skriv inn». Punkt 1, 4 og 5 ble skrevet inn etter «Gjør det andre» (commit 49cf90d for A3, A1 i egen commit). Punkt 6 er avgjort: Athlete Mindset er ikke relevant, og erklæringen står uendret.
+Punkt 2–3 ble skrevet inn etter ditt «Ja, skriv inn». Punkt 1, 4 og 5 ble skrevet inn etter «Gjør det andre» (commit 49cf90d for A3 og c299517 for A1). Punkt 6 er avgjort: Athlete Mindset er ikke relevant, og erklæringen står uendret.
 
 1. **A3, debut-16-armen. SKREVET INN 30.10.2026.**
    - **Funnet:** Alle 107 debut-16-utøvere i kull 2004–05 debuterte i koronaårene og konverterte 10,3 %, mot 5,4 % for de andre debut-16-utøverne. Uten debuter i 2020–21 er OR 1,32 (0,79–2,19), og med koronaflagg 1,38 (0,86–2,19). Kohorthalvdelene er 1,35 mot 3,08.
