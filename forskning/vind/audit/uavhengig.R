@@ -89,9 +89,33 @@ est <- function(dd, ykol = "y", vind = "wind", min_n = 300, min_celler = 100, fe
   dd[, mnd := pmin(pmax(maaned, 4), 10)]
   topp <- names(sort(table(dd$runde), decreasing = TRUE))[seq_len(min(5, uniqueN(dd$runde)))]
   dd[, rnd := fifelse(runde %chin% topp, runde, "annet")]
-  fml <- as.formula(paste(ykol, "~", paste(vind, collapse = " + "),
-                          "+ factor(mnd) + factor(rnd) | celle", if (fe2) " + meet_id" else ""))
-  m <- feols(fml, data = dd, vcov = cluster ~ meet_id,
+  # Kontrolldummyer som FE-ene absorberer, eller som er (nær) lineærkombinasjoner av de andre, tas ut som i
+  # 03_estimering.py: et fullt sett rundedummyer er kollineært med den absorberte konstanten når referanse-
+  # kategorien bare finnes i stevner med én rad, og nær-kollinearitet gjorde stevne-FE-standardfeilene
+  # avhengige av flyttallsstøy (eliteende.csv ulik mellom kjøringer, 30.10.2026). fixest fjerner bare
+  # eksakt kollineære kolonner. Demeaning til 1e-12 før rangkontrollen; vindkolonnene holdes fast.
+  trm <- c(if (uniqueN(dd$mnd) > 1) "factor(mnd)", if (uniqueN(dd$rnd) > 1) "factor(rnd)")
+  X <- if (length(trm)) model.matrix(as.formula(paste("~", paste(trm, collapse = " + "))), dd)[, -1, drop = FALSE]
+       else matrix(0, nrow(dd), 0)
+  kn <- character(0)
+  if (ncol(X)) {
+    f <- if (fe2) list(dd$celle, dd$meet_id) else list(dd$celle)
+    Xd <- demean(X, f, tol = 1e-12, iter = 100000)
+    Vd <- demean(as.matrix(dd[, ..vind]), f, tol = 1e-12, iter = 100000)
+    beh <- which(apply(abs(Xd), 2, max) > 1e-6 * pmax(apply(abs(X), 2, max), 1))
+    A <- cbind(Vd, Xd[, beh, drop = FALSE]); keep <- seq_len(ncol(Vd))
+    for (j in seq_len(length(beh)) + ncol(Vd)) {
+      s <- svd(A[, c(keep, j), drop = FALSE], nu = 0, nv = 0)$d
+      if (s[length(s)] > 1e-8 * s[1]) keep <- c(keep, j)
+    }
+    K <- X[, beh[keep[keep > ncol(Vd)] - ncol(Vd)], drop = FALSE]
+    if (ncol(K)) {
+      kn <- paste0("k", seq_len(ncol(K)))
+      dd[, (kn) := as.data.table(unname(K))]
+    }
+  }
+  fml <- as.formula(paste(ykol, "~", paste(c(vind, kn), collapse = " + "), "| celle", if (fe2) " + meet_id" else ""))
+  m <- feols(fml, data = dd, vcov = cluster ~ meet_id, fixef.tol = 1e-10, fixef.iter = 100000,
              ssc = ssc(adj = TRUE, fixef.K = "nested", cluster.adj = TRUE))
   list(m = m, n = nrow(dd), celler = uniqueN(dd$celle))
 }
