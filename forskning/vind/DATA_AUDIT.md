@@ -204,3 +204,9 @@ Endringsrapportens avsnitt 8, punkt 2–3, er skrevet inn. Ingen tall er endret;
 - Bidragssetningen følger høydeartikkelen. SG samlet inn TFRRS-profilene som `tfrrs_shared` bygger på (den eksterne valideringen, tabell S8), og reviderte manus kritisk. Begge godkjenner endelig versjon. **Atle og Simen må bekrefte setningen før innsending.**
 - Simen står selv i registerutvalget: 75 av 392 797 rader i `analyseklar.csv` (36 651 utøvere). Det er ungdomsresultater fra 2011–2020 (alder 10–19), mest lengde og 60 m. Én utøver kan ikke flytte estimatene, så det er ikke skrevet inn i erklæringen. I høydeartikkelen ble det opplyst «for full transparency».
 - Anonymitetskontrollene i RUN_ALL og kontrollskriptet ser nå også etter «Simen» og «SG».
+
+## Tittel, Atles valg 30.10.2026
+
+- Tittelen er forkortet fra 22 til 16 ord: «How much is the wind worth? Sprints and horizontal jumps from age 10 to senior level». Den korte tittelen øverst på sidene er uendret.
+- «age 10» er den nedre aldersgrensen i utvalget (alder 10–34, `ekskl_alder_utenfor_10_34` i `flyt.json`). Tallkontrollen dekker den med unntaket `age 1[03]`, som for «from age 10» i teksten.
+- Arbeidstittelen i `ANALYSEPLAN.md` og i den simulerte fagfellevurderingen (`manus/REFEREE_RUNDE1.md`) er historisk og står urørt.
