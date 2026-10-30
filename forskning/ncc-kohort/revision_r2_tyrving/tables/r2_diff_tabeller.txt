@@ -1,0 +1,42 @@
+--- R1/manuscript/11_tables.md
++++ R2/manuscript/11_tables.md
+@@ -282 +282 @@
+-| {+Performance-trajectory comparison (Table S15)+} | {+1,721+} | {+Complete case on Tyrving at both age 13 and age 14+} |
++| {+Performance-trajectory comparison (Table S15)+} | {+1,722+} | {+Complete case on Tyrving at both age 13 and age 14+} |
+@@ -286 +286 @@
+-| {+Event-concentration confound models (S18 B/C)+} | {+2,135 / 2,135+} | {+Complete case on primary-category Tyrving+} |
++| {+Event-concentration confound models (S18 B/C)+} | {+2,136 / 2,136+} | {+Complete case on primary-category Tyrving+} |
+@@ -350 +350 @@
+-| Sex + Tyrving + performance trajectory (Δ13–14) | {+1,721+} | {+0.737+} |
++| Sex + Tyrving + performance trajectory (Δ13–14) | {+1,722+} | {+0.737+} |
+@@ -353 +353 @@
+-| {+Sex + pre-milestone volume (trajectory subsample)+} | {+1,721+} | {+0.736+} |
++| {+Sex + pre-milestone volume (trajectory subsample)+} | {+1,722+} | {+0.736+} |
+@@ -356 +356 @@
+-*Note.* {+Both+} predictors {+are+} observed during the baseline window {+(ages 13–14). Volume versus baseline Tyrving: difference 0.040 (95% CI 0.006–0.074); adding+} Tyrving {+to volume: 0.023 (95% CI 0.007–0.038); volume versus Tyrving with its within-baseline trajectory (subsample with Tyrving at+} both {+ages): −0.001 (95% CI −0.042 to 0.039); volume versus+} the {+within-event percentile at+} the {+meet: 0.051 (95% CI 0.019–0.083). Differences+} with {+corrected 95% CIs: Supplementary Table S27.+}
++*Note.* {+Both+} predictors {+are+} observed during the baseline window {+(ages 13–14). Volume versus baseline Tyrving: difference 0.040 (95% CI 0.006–0.074); adding+} Tyrving {+to volume: 0.023 (95% CI 0.007–0.038); volume versus Tyrving with its within-baseline trajectory (subsample with Tyrving at+} both {+ages): −0.001 (95% CI −0.042 to 0.040); volume versus+} the {+within-event percentile at+} the {+meet: 0.051 (95% CI 0.019–0.083). Differences+} with {+corrected 95% CIs: Supplementary Table S27.+}
+@@ -386 +386 @@
+-| Full model (all 22 predictors) | 22 | {+1,501+} | {+0.83 (±0.02)+} |
++| Full model (all 22 predictors) | 22 | {+1,501+} | {+0.84 (±0.02)+} |
+@@ -401,2 +401,2 @@
+-| {+n = 2,135+} | {+Tyrving (z)+} | {+1.17+} | {+[0.92, 1.49]+} | {+.193+} |
+-|  | **{+HHI, ages 13–14 (z)+}** | **{+1.07+}** | **{+[0.94, 1.23]+}** | **{+.302+}** |
++| {+n = 2,136+} | {+Tyrving (z)+} | {+1.17+} | {+[0.92, 1.48]+} | {+.202+} |
++|  | **{+HHI, ages 13–14 (z)+}** | **{+1.07+}** | **{+[0.94, 1.23]+}** | **{+.305+}** |
+@@ -404 +404 @@
+-|  | Tyrving main category (z) | {+1.80+} | {+[1.36, 2.38]+} | {+< .001+} |
++|  | Tyrving main category (z) | {+1.81+} | {+[1.37, 2.40]+} | {+< .001+} |
+@@ -406,5 +406,5 @@
+-| {+n = 2,135+} | Tyrving main category (z) | {+2.07+} | {+[1.70, 2.51]+} | {+< .001+} |
+-|  | **{+HHI, ages 13–14 (z)+}** | **{+1.06+}** | **{+[0.93, 1.21]+}** | **{+.390+}** |
+-|  | Pre-milestone volume (z) | {+1.83+} | {+[1.60, 2.09]+} | < .001 |
+-
+-*Note.* Correlations: HHI vs. Tyrving best, r = {+0.02;+} HHI vs. Tyrving main category, r = {+0.12;+} Tyrving best vs. Tyrving main, r = {+0.78.+} The HHI {+coefficient+} is {+not stable+} across the three specifications (OR {+1.06–1.18; 1.07 [0.94, 1.23] once main-category+} Tyrving is {+added); main-category Tyrving has an independent+} association {+(OR 1.80–2.07).+}
++| {+n = 2,136+} | Tyrving main category (z) | {+2.07+} | {+[1.71, 2.52]+} | {+< .001+} |
++|  | **{+HHI, ages 13–14 (z)+}** | **{+1.06+}** | **{+[0.93, 1.21]+}** | **{+.392+}** |
++|  | Pre-milestone volume (z) | {+1.83+} | {+[1.59, 2.09]+} | < .001 |
++
++*Note.* Correlations: HHI vs. Tyrving best, r = {+0.02;+} HHI vs. Tyrving main category, r = {+0.12;+} Tyrving best vs. Tyrving main, r = {+0.78.+} The HHI {+coefficient+} is {+not stable+} across the three specifications (OR {+1.06–1.18; 1.07 [0.94, 1.23] once main-category+} Tyrving is {+added); main-category Tyrving has an independent+} association {+(OR 1.81–2.07).+}
+@@ -539 +539 @@
+-| {+Sex + volume vs. sex + Tyrving + Tyrving change 13–14+} | {+1,721+} | {+0.737+} | {+0.736+} | {+−0.001+} | {+[−0.042, +0.039]+} | {+.943+} |
++| {+Sex + volume vs. sex + Tyrving + Tyrving change 13–14+} | {+1,722+} | {+0.737+} | {+0.736+} | {+−0.001+} | {+[−0.042, +0.040]+} | {+.953+} |

@@ -1,0 +1,4 @@
+Effect,HR,CI,E-value (point),E-value (CI bound)
+Volume at age 15-16 (per SD),0.35,"[0.33, 0.38]",5.16,4.7
+Championship types (per type),0.74,"[0.69, 0.8]",2.04,1.81
+"Tyrving at baseline (per SD, M2)",0.86,"[0.82, 0.9]",1.6,1.46

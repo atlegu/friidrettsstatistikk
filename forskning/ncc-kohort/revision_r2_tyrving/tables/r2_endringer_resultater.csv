@@ -1,0 +1,10 @@
+fil,nokkel,R1,R2
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/auc_a,0.7372213693918402,0.7370585580039399
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/auc_b,0.7357678621075877,0.7358334253463396
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/diff,-0.001453507284252674,-0.0012251326576004163
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/hi,0.03891789454223203,0.03973946593013158
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/lo,-0.041824909110737385,-0.04218973124533241
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/n,1721.0,1722.0
+r1_results.json,/dauc::Sex + volume vs. sex + Tyrving + Tyrving change 13-14/p,0.9431928610557776,0.9527991803372114
+r1_text_numbers.json,/rho_milestonevol_tyr15,0.6261732428699542,0.6397471649875323
+r1_text_numbers.json,/rho_vol_peak_pre15,0.5176794907490443,0.5217763899369463

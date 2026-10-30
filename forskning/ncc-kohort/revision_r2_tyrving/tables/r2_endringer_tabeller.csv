@@ -1,0 +1,67 @@
+fil,rad,kolonne,etikett,R1,R2
+tables/rerun/table4_rf_importance.csv,2,Feature,vol_age_15,vol_age_15,tyrving_slope_13_16
+tables/rerun/table4_rf_importance.csv,3,Feature,tyrving_slope_13_16,tyrving_slope_13_16,vol_age_15
+tables/rerun/table4_rf_importance.csv,5,Feature,n_msk_typer,n_msk_typer,tyrving_peak_pre15
+tables/rerun/table4_rf_importance.csv,6,Feature,tyrving_peak_pre15,tyrving_peak_pre15,n_msk_typer
+tables/rerun/table4_rf_importance.csv,8,Feature,stevner_per_ar_tidlig,stevner_per_ar_tidlig,hhi_change
+tables/rerun/table4_rf_importance.csv,9,Feature,hhi_early,hhi_early,stevner_per_ar_tidlig
+tables/rerun/table4_rf_importance.csv,10,Feature,hhi_change,hhi_change,hhi_early
+tables/rerun/table4_rf_importance.csv,0,Importance,vol_age_16,0.1494,0.1456
+tables/rerun/table4_rf_importance.csv,1,Importance,vol_milepael,0.1191,0.1185
+tables/rerun/table4_rf_importance.csv,2,Importance,vol_age_15,0.0754,0.0837
+tables/rerun/table4_rf_importance.csv,3,Importance,tyrving_slope_13_16,0.067,0.074
+tables/rerun/table4_rf_importance.csv,4,Importance,vol_trend_milepael,0.0619,0.0599
+tables/rerun/table4_rf_importance.csv,5,Importance,n_msk_typer,0.0568,0.054
+tables/rerun/table4_rf_importance.csv,6,Importance,tyrving_peak_pre15,0.0555,0.0536
+tables/rerun/table4_rf_importance.csv,7,Importance,tyrving_best,0.0455,0.046
+tables/rerun/table4_rf_importance.csv,8,Importance,stevner_per_ar_tidlig,0.0378,0.0381
+tables/rerun/table4_rf_importance.csv,9,Importance,hhi_early,0.0374,0.037
+tables/rerun/table4_rf_importance.csv,10,Importance,hhi_change,0.0369,0.0358
+tables/rerun/table4_rf_importance.csv,11,Importance,um_15_16,0.0364,0.0344
+tables/rerun/table4_rf_importance.csv,12,Importance,vol_age_14,0.0347,0.0327
+tables/rerun/table4_rf_importance.csv,13,Importance,vol_pre_milepael,0.0319,0.0325
+tables/rerun/table4_rf_importance.csv,14,Importance,helaars_sum_13_16,0.0305,0.0306
+tables/rerun/table4_rf_importance.csv,15,Importance,hhi_age_15,0.0273,0.0268
+tables/rerun/table4_rf_importance.csv,16,Importance,stevner_baseline_ar,0.0247,0.0257
+tables/rerun/table4_rf_importance.csv,17,Importance,vol_age_13,0.0234,0.0227
+tables/rerun/table4_rf_importance.csv,18,Importance,early_n_kategorier,0.016,0.0167
+tables/rerun/table4_rf_importance.csv,20,Importance,female,0.0109,0.0103
+tables/rerun/table4_rf_importance.csv,21,Importance,baseline_n_kategorier,0.0094,0.0093
+tables/rerun/table5_auc_comparison.csv,4,AUC (logistic),Full (all candidates),0.829689,0.83574
+tables/rerun/table5_auc_comparison.csv,4,AUC SD (logistic),Full (all candidates),0.018347,0.017215
+tables/rerun/table5_auc_comparison.csv,4,AUC (RF),Full (all candidates),0.824203,0.830252
+tables/rerun/table5_auc_comparison.csv,4,AUC SD (RF),Full (all candidates),0.014112,0.01444
+tables/rerun/tableS18_specialization_confound.csv,4,OR,Model B: + tyrving_main,0.557051,0.557436
+tables/rerun/tableS18_specialization_confound.csv,5,OR,Model B: + tyrving_main,1.17237,1.168426
+tables/rerun/tableS18_specialization_confound.csv,6,OR,Model B: + tyrving_main,1.074169,1.073579
+tables/rerun/tableS18_specialization_confound.csv,7,OR,Model B: + tyrving_main,1.840448,1.838305
+tables/rerun/tableS18_specialization_confound.csv,8,OR,Model B: + tyrving_main,1.803443,1.81471
+tables/rerun/tableS18_specialization_confound.csv,9,OR,Model C: tyrving_main replaces tyrving_best,0.563465,0.563779
+tables/rerun/tableS18_specialization_confound.csv,10,OR,Model C: tyrving_main replaces tyrving_best,2.065008,2.072372
+tables/rerun/tableS18_specialization_confound.csv,11,OR,Model C: tyrving_main replaces tyrving_best,1.060909,1.060637
+tables/rerun/tableS18_specialization_confound.csv,12,OR,Model C: tyrving_main replaces tyrving_best,1.827467,1.825467
+tables/rerun/tableS18_specialization_confound.csv,4,CI low,Model B: + tyrving_main,0.431134,0.431427
+tables/rerun/tableS18_specialization_confound.csv,5,CI low,Model B: + tyrving_main,0.922685,0.919715
+tables/rerun/tableS18_specialization_confound.csv,6,CI low,Model B: + tyrving_main,0.937774,0.937257
+tables/rerun/tableS18_specialization_confound.csv,7,CI low,Model B: + tyrving_main,1.607323,1.605361
+tables/rerun/tableS18_specialization_confound.csv,8,CI low,Model B: + tyrving_main,1.364746,1.3727
+tables/rerun/tableS18_specialization_confound.csv,9,CI low,Model C: tyrving_main replaces tyrving_best,0.436421,0.436663
+tables/rerun/tableS18_specialization_confound.csv,10,CI low,Model C: tyrving_main replaces tyrving_best,1.700283,1.705778
+tables/rerun/tableS18_specialization_confound.csv,11,CI low,Model C: tyrving_main replaces tyrving_best,0.927185,0.926943
+tables/rerun/tableS18_specialization_confound.csv,12,CI low,Model C: tyrving_main replaces tyrving_best,1.596599,1.59478
+tables/rerun/tableS18_specialization_confound.csv,4,CI high,Model B: + tyrving_main,0.719742,0.720249
+tables/rerun/tableS18_specialization_confound.csv,5,CI high,Model B: + tyrving_main,1.489621,1.484393
+tables/rerun/tableS18_specialization_confound.csv,6,CI high,Model B: + tyrving_main,1.230401,1.229728
+tables/rerun/tableS18_specialization_confound.csv,7,CI high,Model B: + tyrving_main,2.107387,2.10505
+tables/rerun/tableS18_specialization_confound.csv,8,CI high,Model B: + tyrving_main,2.383157,2.399047
+tables/rerun/tableS18_specialization_confound.csv,9,CI high,Model C: tyrving_main replaces tyrving_best,0.72749,0.727901
+tables/rerun/tableS18_specialization_confound.csv,10,CI high,Model C: tyrving_main replaces tyrving_best,2.507969,2.517751
+tables/rerun/tableS18_specialization_confound.csv,11,CI high,Model C: tyrving_main replaces tyrving_best,1.213918,1.213614
+tables/rerun/tableS18_specialization_confound.csv,12,CI high,Model C: tyrving_main replaces tyrving_best,2.091719,2.089524
+tables/rerun/tableS18_specialization_confound.csv,5,p,Model B: + tyrving_main,0.193109,0.202437
+tables/rerun/tableS18_specialization_confound.csv,6,p,Model B: + tyrving_main,0.301757,0.305495
+tables/rerun/tableS18_specialization_confound.csv,8,p,Model B: + tyrving_main,3.4e-05,2.9e-05
+tables/rerun/tableS18_specialization_confound.csv,11,p,Model C: tyrving_main replaces tyrving_best,0.389714,0.391791
+tables/tableS27_auc_differences.csv,6,n,Sex + volume vs. sex + Tyrving + Tyrving change 13-14,1721,1722
+tables/tableS27_auc_differences.csv,6,95% CI,Sex + volume vs. sex + Tyrving + Tyrving change 13-14,"[-0.042, +0.039]","[-0.042, +0.040]"
+tables/tableS27_auc_differences.csv,6,p,Sex + volume vs. sex + Tyrving + Tyrving change 13-14,.943,.953

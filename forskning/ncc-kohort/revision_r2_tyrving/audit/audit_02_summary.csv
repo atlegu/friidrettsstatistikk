@@ -1,0 +1,18 @@
+Check,Value
+old extract: rows / unique ids,"230,868 / 230,536"
+re-extract (created <= 2026-05-18): rows / unique ids,"226,760 / 226,760"
+ids in re-extract missing from old extract,334
+ids in old extract absent from re-extract (deleted/reassigned since),"4,110"
+athletes affected by missing rows,240
+analysis data vs. old extract re-derived: vol_pre_milepael identical,1.0000
+analysis data vs. old extract re-derived: aktiv_senior identical,1.0000
+analysis data vs. old extract re-derived: siste_aktive_ar identical,1.0000
+complete vs. old extract: vol_pre_milepael differs (athletes; mean diff),242 ; -0.070
+complete vs. old extract: vol_age_14 differs (athletes; mean diff),165 ; -0.057
+complete vs. old extract: vol_age_15 differs (athletes; mean diff),196 ; -0.105
+complete vs. old extract: vol_age_16 differs (athletes; mean diff),202 ; -0.131
+complete vs. old extract: res_age_14 differs (athletes; mean diff),225 ; -0.092
+complete vs. old extract: res_age_16 differs (athletes; mean diff),203 ; -0.211
+complete vs. old extract: siste_aktive_ar differs (athletes; mean diff),42 ; -0.035
+complete vs. old extract: aktiv_senior differs (athletes; mean diff),9 ; -0.004
+complete vs. old extract: aktiv_naa differs (athletes; mean diff),4 ; -0.002

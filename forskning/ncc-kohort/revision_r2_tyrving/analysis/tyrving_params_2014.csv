@@ -1,0 +1,561 @@
+sex,age,event,spec,type,mult,nmult,ref,I,J,K,L
+M,19,60 m,,time_sec,100,100,7.2,2.7,,,
+M,19,80 m,,time_sec,100,100,9.3,2.2,,,
+M,19,100 m,,time_sec,100,100,11.25,1.7,,,
+M,19,200 m,,time_sec,100,100,22.5,0.85,,,
+M,19,300 m,,time_sec,100,100,36.15,0.6,,,
+M,19,400 m,,time_sec,100,100,50.4,0.4,,,
+M,19,600 m,,time_minsec,10,10,82.0,2.6,,,
+M,19,800 m,,time_minsec,10,10,114.0,1.8,,,
+M,19,1000 m,,time_minsec,10,10,150.0,1.1,,,
+M,19,1500 m,,time_minsec,10,10,240.0,0.7,,,
+M,19,2000 m,,time_minsec,10,10,338.0,0.5,,,
+M,19,3000 m,,time_minsec,10,10,523.0,0.27,,,
+M,19,5000 m,,time_minsec,10,10,910.0,0.15,,,
+M,19,10000 m,,time_minsec,10,10,1950.0,0.06,,,
+M,19,1000 m,Kappgang,time_minsec,10,10,240.0,0.7,,,
+M,19,2000 m,Kappgang,time_minsec,10,10,505.0,0.3,,,
+M,19,3000 m,Kappgang,time_minsec,10,10,788.0,0.18,,,
+M,19,5000 m,Kappgang,time_minsec,10,10,1350.0,0.11,,,
+M,19,10000 m,Kappgang,time_minsec,10,10,2850.0,0.05,,,
+M,19,20000 m,Kappgang,time_minsec,10,10,5880.0,0.02,,,
+M,19,110 m hekk,"100,0cm/9,14m",time_sec,100,100,15.0,1.0,,,
+M,19,110 m hekk,"106,7cm/9,14m",time_sec,100,100,15.4,1.0,,,
+M,19,200 m hekk,"76,2cm/18,29m",time_sec,100,100,26.0,0.6,,,
+M,19,300 m hekk,"91,4cm/35m",time_sec,100,100,40.0,0.46,,,
+M,19,400 m hekk,"91,4cm/35m",time_sec,100,100,55.5,0.34,,,
+M,19,2000 m hinder,"91,4cm",time_minsec,10,10,370.0,0.41,,,
+M,19,3000 m hinder,"91,4cm",time_minsec,10,10,585.0,0.27,,,
+M,19,Høyde,,field_linear,100,100,1.99,7.0,,,
+M,19,Høyde uten tilløp,,field_linear,100,100,1.61,8.5,,,
+M,19,Stav,,field_piecewise,100,100,4.5,,1.7,3.5,7.0
+M,19,Lengde,,field_linear,100,100,6.95,2.0,,,
+M,19,Lengde uten tilløp,,field_linear,100,100,3.15,5.0,,,
+M,19,Tresteg,,field_linear,100,100,14.3,1.0,,,
+M,19,Kule,6kg,field_piecewise,100,100,15.2,,0.3,0.6,1.2
+M,19,Diskos,"1,75kg",field_piecewise,100,100,48.0,,0.13,0.25,0.5
+M,19,Slegge,"6kg/121,5cm",field_piecewise,100,100,62.0,,0.1,0.2,0.4
+M,19,Spyd,"0,8kg",field_piecewise,100,100,62.0,,0.1,0.2,0.4
+F,19,60 m,,time_sec,100,100,7.9,2.7,,,
+F,19,80 m,,time_sec,100,100,10.1,2.1,,,
+F,19,100 m,,time_sec,100,100,12.4,1.6,,,
+F,19,200 m,,time_sec,100,100,25.55,0.78,,,
+F,19,300 m,,time_sec,100,100,40.5,0.5,,,
+F,19,400 m,,time_sec,100,100,57.0,0.38,,,
+F,19,600 m,,time_minsec,10,10,94.0,2.4,,,
+F,19,800 m,,time_minsec,10,10,132.5,1.5,,,
+F,19,1000 m,,time_minsec,10,10,179.0,1.0,,,
+F,19,1500 m,,time_minsec,10,10,275.0,0.6,,,
+F,19,2000 m,,time_minsec,10,10,385.0,0.4,,,
+F,19,3000 m,,time_minsec,10,10,600.0,0.23,,,
+F,19,5000 m,,time_minsec,10,10,1055.0,0.13,,,
+F,19,10000 m,,time_minsec,10,10,2280.0,0.06,,,
+F,19,1000 m,Kappgang,time_minsec,10,10,266.0,0.7,,,
+F,19,2000 m,Kappgang,time_minsec,10,10,570.0,0.3,,,
+F,19,3000 m,Kappgang,time_minsec,10,10,895.0,0.18,,,
+F,19,5000 m,Kappgang,time_minsec,10,10,1524.0,0.1,,,
+F,19,10000 m,Kappgang,time_minsec,10,10,3300.0,0.05,,,
+F,19,20000 m,Kappgang,time_minsec,10,10,6720.0,0.02,,,
+F,19,100 m hekk,"84,0cm/8,5m",time_sec,100,100,14.7,1.0,,,
+F,19,200 m hekk,"76,2cm/19m",time_sec,100,100,29.5,0.5,,,
+F,19,300 m hekk,"76,2cm/35m",time_sec,100,100,45.2,0.4,,,
+F,19,400 m hekk,"76,2cm/35m",time_sec,100,100,62.5,0.3,,,
+F,19,2000 m hinder,"76,2cm",time_minsec,10,10,410.0,0.35,,,
+F,19,3000 m hinder,"76,2cm",time_minsec,10,10,650.0,0.2,,,
+F,19,Høyde,,field_linear,100,100,1.7,7.5,,,
+F,19,Høyde uten tilløp,,field_linear,100,100,1.38,9.5,,,
+F,19,Stav,,field_piecewise,100,100,3.4,,2.0,4.0,8.0
+F,19,Lengde,,field_linear,100,100,5.7,2.1,,,
+F,19,Lengde uten tilløp,,field_linear,100,100,2.66,6.0,,,
+F,19,Tresteg,,field_linear,100,100,12.6,1.0,,,
+F,19,Kule,4kg,field_piecewise,100,100,11.7,,0.3,0.6,1.2
+F,19,Diskos,1kg,field_piecewise,100,100,43.0,,0.15,0.3,0.6
+F,19,Slegge,"4kg/119,5cm",field_piecewise,100,100,48.0,,0.12,0.25,0.5
+F,19,Spyd,"0,6kg",field_piecewise,100,100,43.0,,0.13,0.25,0.5
+M,18,60 m,,time_sec,100,100,7.25,2.7,,,
+M,18,80 m,,time_sec,100,100,9.35,2.2,,,
+M,18,100 m,,time_sec,100,100,11.35,1.7,,,
+M,18,200 m,,time_sec,100,100,22.65,0.85,,,
+M,18,300 m,,time_sec,100,100,36.45,0.6,,,
+M,18,400 m,,time_sec,100,100,51.0,0.4,,,
+M,18,600 m,,time_minsec,10,10,83.0,2.6,,,
+M,18,800 m,,time_minsec,10,10,115.5,1.8,,,
+M,18,1000 m,,time_minsec,10,10,153.0,1.1,,,
+M,18,1500 m,,time_minsec,10,10,242.0,0.7,,,
+M,18,2000 m,,time_minsec,10,10,341.0,0.45,,,
+M,18,3000 m,,time_minsec,10,10,530.0,0.27,,,
+M,18,5000 m,,time_minsec,10,10,930.0,0.15,,,
+M,18,10000 m,,time_minsec,10,10,1980.0,0.06,,,
+M,18,1000 m,Kappgang,time_minsec,10,10,242.0,0.7,,,
+M,18,2000 m,Kappgang,time_minsec,10,10,510.0,0.3,,,
+M,18,3000 m,Kappgang,time_minsec,10,10,796.0,0.18,,,
+M,18,5000 m,Kappgang,time_minsec,10,10,1365.0,0.11,,,
+M,18,10000 m,Kappgang,time_minsec,10,10,2890.0,0.05,,,
+M,18,20000 m,Kappgang,time_minsec,10,10,6000.0,0.02,,,
+M,18,110 m hekk,"100,0cm/9,14m",time_sec,100,100,15.3,1.0,,,
+M,18,110 m hekk,"106,7cm/9,14m",time_sec,100,100,15.7,1.0,,,
+M,18,200 m hekk,"76,2cm/18,29m",time_sec,100,100,26.5,0.6,,,
+M,18,300 m hekk,"91,4cm/35m",time_sec,100,100,40.5,0.46,,,
+M,18,400 m hekk,"91,4cm/35m",time_sec,100,100,56.0,0.34,,,
+M,18,2000 m hinder,"91,4cm",time_minsec,10,10,375.0,0.41,,,
+M,18,3000 m hinder,"91,4cm",time_minsec,10,10,595.0,0.27,,,
+M,18,Høyde,,field_linear,100,100,1.96,7.0,,,
+M,18,Høyde uten tilløp,,field_linear,100,100,1.59,8.5,,,
+M,18,Stav,,field_piecewise,100,100,4.3,,1.7,3.5,7.0
+M,18,Lengde,,field_linear,100,100,6.8,2.0,,,
+M,18,Lengde uten tilløp,,field_linear,100,100,3.1,5.0,,,
+M,18,Tresteg,,field_linear,100,100,14.0,1.0,,,
+M,18,Kule,6kg,field_piecewise,100,100,14.6,,0.3,0.6,1.2
+M,18,Diskos,"1,75kg",field_piecewise,100,100,46.0,,0.13,0.25,0.5
+M,18,Slegge,"6kg/121,5cm",field_piecewise,100,100,56.0,,0.1,0.2,0.4
+M,18,Spyd,"0,8kg",field_piecewise,100,100,59.0,,0.1,0.2,0.4
+F,18,60 m,,time_sec,100,100,7.95,2.7,,,
+F,18,80 m,,time_sec,100,100,10.15,2.1,,,
+F,18,100 m,,time_sec,100,100,12.5,1.6,,,
+F,18,200 m,,time_sec,100,100,25.7,0.78,,,
+F,18,300 m,,time_sec,100,100,40.8,0.5,,,
+F,18,400 m,,time_sec,100,100,57.5,0.38,,,
+F,18,600 m,,time_minsec,10,10,95.0,2.4,,,
+F,18,800 m,,time_minsec,10,10,133.0,1.5,,,
+F,18,1000 m,,time_minsec,10,10,180.0,1.0,,,
+F,18,1500 m,,time_minsec,10,10,277.0,0.6,,,
+F,18,2000 m,,time_minsec,10,10,389.0,0.4,,,
+F,18,3000 m,,time_minsec,10,10,607.0,0.23,,,
+F,18,5000 m,,time_minsec,10,10,1065.0,0.13,,,
+F,18,10000 m,,time_minsec,10,10,2310.0,0.06,,,
+F,18,1000 m,Kappgang,time_minsec,10,10,268.0,0.7,,,
+F,18,2000 m,Kappgang,time_minsec,10,10,574.0,0.3,,,
+F,18,3000 m,Kappgang,time_minsec,10,10,900.0,0.18,,,
+F,18,5000 m,Kappgang,time_minsec,10,10,1538.0,0.1,,,
+F,18,10000 m,Kappgang,time_minsec,10,10,3330.0,0.05,,,
+F,18,20000 m,Kappgang,time_minsec,10,10,6810.0,0.02,,,
+F,18,100 m hekk,"84,0cm/8,5m",time_sec,100,100,14.9,1.0,,,
+F,18,200 m hekk,"76,2cm/19m",time_sec,100,100,29.7,0.5,,,
+F,18,300 m hekk,"76,2cm/35m",time_sec,100,100,45.5,0.4,,,
+F,18,400 m hekk,"76,2cm/35m",time_sec,100,100,63.1,0.3,,,
+F,18,2000 m hinder,"76,2cm",time_minsec,10,10,420.0,0.35,,,
+F,18,3000 m hinder,"76,2cm",time_minsec,10,10,670.0,0.2,,,
+F,18,Høyde,,field_linear,100,100,1.68,7.5,,,
+F,18,Høyde uten tilløp,,field_linear,100,100,1.37,9.5,,,
+F,18,Stav,,field_piecewise,100,100,3.3,,2.0,4.0,8.0
+F,18,Lengde,,field_linear,100,100,5.63,2.1,,,
+F,18,Lengde uten tilløp,,field_linear,100,100,2.64,6.0,,,
+F,18,Tresteg,,field_linear,100,100,12.4,1.0,,,
+F,18,Kule,4kg,field_piecewise,100,100,11.4,,0.3,0.6,1.2
+F,18,Diskos,1kg,field_piecewise,100,100,42.0,,0.15,0.3,0.6
+F,18,Slegge,"4kg/119,5cm",field_piecewise,100,100,46.0,,0.12,0.25,0.5
+F,18,Spyd,"0,6kg",field_piecewise,100,100,42.0,,0.13,0.25,0.5
+M,17,60 m,,time_sec,100,100,7.3,2.7,,,
+M,17,80 m,,time_sec,100,100,9.45,2.2,,,
+M,17,100 m,,time_sec,100,100,11.5,1.7,,,
+M,17,200 m,,time_sec,100,100,23.0,0.85,,,
+M,17,300 m,,time_sec,100,100,36.85,0.6,,,
+M,17,400 m,,time_sec,100,100,51.5,0.4,,,
+M,17,600 m,,time_minsec,10,10,84.0,2.6,,,
+M,17,800 m,,time_minsec,10,10,117.5,1.8,,,
+M,17,1000 m,,time_minsec,10,10,156.0,1.1,,,
+M,17,1500 m,,time_minsec,10,10,246.0,0.7,,,
+M,17,2000 m,,time_minsec,10,10,346.0,0.45,,,
+M,17,3000 m,,time_minsec,10,10,540.0,0.27,,,
+M,17,5000 m,,time_minsec,10,10,950.0,0.15,,,
+M,17,1000 m,Kappgang,time_minsec,10,10,246.0,0.7,,,
+M,17,2000 m,Kappgang,time_minsec,10,10,518.0,0.3,,,
+M,17,3000 m,Kappgang,time_minsec,10,10,810.0,0.18,,,
+M,17,5000 m,Kappgang,time_minsec,10,10,1395.0,0.11,,,
+M,17,10000 m,Kappgang,time_minsec,10,10,2960.0,0.05,,,
+M,17,110 m hekk,"91,4cm/9,14m",time_sec,100,100,15.3,1.0,,,
+M,17,110 m hekk,"100,0cm/9,14m",time_sec,100,100,15.8,1.0,,,
+M,17,200 m hekk,"76,2cm/18,29m",time_sec,100,100,27.0,0.6,,,
+M,17,300 m hekk,"84,0cm/35m",time_sec,100,100,41.0,0.46,,,
+M,17,400 m hekk,"84,0cm/35m",time_sec,100,100,57.0,0.34,,,
+M,17,2000 m hinder,"91,4cm",time_minsec,10,10,385.0,0.41,,,
+M,17,3000 m hinder,"91,4cm",time_minsec,10,10,610.0,0.27,,,
+M,17,Høyde,,field_linear,100,100,1.93,7.0,,,
+M,17,Høyde uten tilløp,,field_linear,100,100,1.55,8.5,,,
+M,17,Stav,,field_piecewise,100,100,4.05,,1.7,3.5,7.0
+M,17,Lengde,,field_linear,100,100,6.6,2.0,,,
+M,17,Lengde uten tilløp,,field_linear,100,100,3.05,5.0,,,
+M,17,Tresteg,,field_linear,100,100,13.7,1.0,,,
+M,17,Kule,5kg,field_piecewise,100,100,15.8,,0.3,0.6,1.2
+M,17,Diskos,"1,5kg",field_piecewise,100,100,48.0,,0.13,0.25,0.5
+M,17,Slegge,5kg/120cm,field_piecewise,100,100,59.0,,0.1,0.2,0.4
+M,17,Spyd,"0,7kg",field_piecewise,100,100,60.0,,0.1,0.2,0.4
+F,17,60 m,,time_sec,100,100,8.0,2.7,,,
+F,17,80 m,,time_sec,100,100,10.25,2.1,,,
+F,17,100 m,,time_sec,100,100,12.6,1.6,,,
+F,17,200 m,,time_sec,100,100,25.9,0.78,,,
+F,17,300 m,,time_sec,100,100,41.2,0.5,,,
+F,17,400 m,,time_sec,100,100,58.0,0.38,,,
+F,17,600 m,,time_minsec,10,10,96.0,2.4,,,
+F,17,800 m,,time_minsec,10,10,134.0,1.5,,,
+F,17,1000 m,,time_minsec,10,10,181.5,1.0,,,
+F,17,1500 m,,time_minsec,10,10,279.0,0.6,,,
+F,17,2000 m,,time_minsec,10,10,393.0,0.4,,,
+F,17,3000 m,,time_minsec,10,10,615.0,0.23,,,
+F,17,5000 m,,time_minsec,10,10,1080.0,0.13,,,
+F,17,1000 m,Kappgang,time_minsec,10,10,270.0,0.7,,,
+F,17,2000 m,Kappgang,time_minsec,10,10,578.0,0.3,,,
+F,17,3000 m,Kappgang,time_minsec,10,10,906.0,0.18,,,
+F,17,5000 m,Kappgang,time_minsec,10,10,1555.0,0.1,,,
+F,17,10000 m,Kappgang,time_minsec,10,10,3390.0,0.05,,,
+F,17,100 m hekk,"76,2cm/8,5m",time_sec,100,100,15.0,1.0,,,
+F,17,200 m hekk,"76,2cm/19m",time_sec,100,100,30.0,0.5,,,
+F,17,300 m hekk,"76,2cm/35m",time_sec,100,100,45.9,0.4,,,
+F,17,2000 m hinder,"76,2cm",time_minsec,10,10,430.0,0.35,,,
+F,17,3000 m hinder,"76,2cm",time_minsec,10,10,700.0,0.2,,,
+F,17,Høyde,,field_linear,100,100,1.66,7.5,,,
+F,17,Høyde uten tilløp,,field_linear,100,100,1.36,9.5,,,
+F,17,Stav,,field_piecewise,100,100,3.2,,2.0,4.0,8.0
+F,17,Lengde,,field_linear,100,100,5.55,2.1,,,
+F,17,Lengde uten tilløp,,field_linear,100,100,2.62,6.0,,,
+F,17,Tresteg,,field_linear,100,100,12.2,1.0,,,
+F,17,Kule,3kg,field_linear,100,100,12.6,1.2,0.3,0.6,1.2
+F,17,Diskos,1kg,field_piecewise,100,100,40.0,,0.15,0.3,0.6
+F,17,Slegge,"3kg/119,5cm",field_piecewise,100,100,44.0,,0.12,0.25,0.5
+F,17,Spyd,"0,5kg",field_piecewise,100,100,42.0,,0.13,0.25,0.5
+M,16,60 m,,time_sec,100,100,7.4,2.7,,,
+M,16,80 m,,time_sec,100,100,9.6,2.2,,,
+M,16,100 m,,time_sec,100,100,11.7,1.7,,,
+M,16,200 m,,time_sec,100,100,23.5,0.85,,,
+M,16,300 m,,time_sec,100,100,37.6,0.6,,,
+M,16,400 m,,time_sec,100,100,52.5,0.4,,,
+M,16,600 m,,time_minsec,10,10,86.0,2.6,,,
+M,16,800 m,,time_minsec,10,10,120.0,1.8,,,
+M,16,1000 m,,time_minsec,10,10,159.0,1.1,,,
+M,16,1500 m,,time_minsec,10,10,252.0,0.7,,,
+M,16,2000 m,,time_minsec,10,10,355.0,0.45,,,
+M,16,3000 m,,time_minsec,10,10,552.0,0.27,,,
+M,16,1000 m,Kappgang,time_minsec,10,10,254.0,0.7,,,
+M,16,2000 m,Kappgang,time_minsec,10,10,531.0,0.3,,,
+M,16,3000 m,Kappgang,time_minsec,10,10,830.0,0.18,,,
+M,16,5000 m,Kappgang,time_minsec,10,10,1440.0,0.11,,,
+M,16,10000 m,Kappgang,time_minsec,10,10,3060.0,0.05,,,
+M,16,100 m hekk,"91,4cm/8,5m",time_sec,100,100,14.5,1.1,,,
+M,16,200 m hekk,"76,2cm/18,29m",time_sec,100,100,27.6,0.6,,,
+M,16,300 m hekk,"84,0cm/35m",time_sec,100,100,41.8,0.46,,,
+M,16,1500 m hinder,"76,2cm",time_minsec,10,10,280.0,0.55,,,
+M,16,Høyde,,field_linear,100,100,1.88,7.0,,,
+M,16,Høyde uten tilløp,,field_linear,100,100,1.5,8.5,,,
+M,16,Stav,,field_piecewise,100,100,3.8,,1.7,3.5,7.0
+M,16,Lengde,,field_linear,100,100,6.4,2.0,,,
+M,16,Lengde uten tilløp,,field_linear,100,100,2.98,5.0,,,
+M,16,Tresteg,,field_linear,100,100,13.3,1.0,,,
+M,16,Kule,5kg,field_piecewise,100,100,14.6,,0.3,0.6,1.2
+M,16,Diskos,"1,5kg",field_piecewise,100,100,45.0,,0.13,0.25,0.5
+M,16,Slegge,5kg/120cm,field_piecewise,100,100,52.0,,0.1,0.2,0.4
+M,16,Spyd,"0,7kg",field_piecewise,100,100,55.0,,0.1,0.2,0.4
+F,16,60 m,,time_sec,100,100,8.05,2.7,,,
+F,16,80 m,,time_sec,100,100,10.35,2.1,,,
+F,16,100 m,,time_sec,100,100,12.75,1.6,,,
+F,16,200 m,,time_sec,100,100,26.15,0.78,,,
+F,16,300 m,,time_sec,100,100,41.7,0.5,,,
+F,16,400 m,,time_sec,100,100,58.8,0.38,,,
+F,16,600 m,,time_minsec,10,10,97.0,2.4,,,
+F,16,800 m,,time_minsec,10,10,136.0,1.5,,,
+F,16,1000 m,,time_minsec,10,10,184.0,1.0,,,
+F,16,1500 m,,time_minsec,10,10,282.0,0.6,,,
+F,16,2000 m,,time_minsec,10,10,398.0,0.4,,,
+F,16,3000 m,,time_minsec,10,10,625.0,0.23,,,
+F,16,1000 m,Kappgang,time_minsec,10,10,272.0,0.7,,,
+F,16,2000 m,Kappgang,time_minsec,10,10,588.0,0.3,,,
+F,16,3000 m,Kappgang,time_minsec,10,10,920.0,0.18,,,
+F,16,5000 m,Kappgang,time_minsec,10,10,1585.0,0.1,,,
+F,16,10000 m,Kappgang,time_minsec,10,10,3450.0,0.05,,,
+F,16,80 m hekk,"76,2cm/8m",time_sec,100,100,12.2,1.4,,,
+F,16,200 m hekk,"76,2cm/19m",time_sec,100,100,30.4,0.5,,,
+F,16,300 m hekk,"76,2cm/35m",time_sec,100,100,46.4,0.4,,,
+F,16,1500 m hinder,"76,2cm",time_minsec,10,10,325.0,0.46,,,
+F,16,Høyde,,field_linear,100,100,1.64,7.5,,,
+F,16,Høyde uten tilløp,,field_linear,100,100,1.35,9.5,,,
+F,16,Stav,,field_piecewise,100,100,3.1,,2.0,4.0,8.0
+F,16,Lengde,,field_linear,100,100,5.47,2.1,,,
+F,16,Lengde uten tilløp,,field_linear,100,100,2.59,6.0,,,
+F,16,Tresteg,,field_linear,100,100,11.9,1.0,,,
+F,16,Kule,3kg,field_piecewise,100,100,12.0,,0.3,0.6,1.2
+F,16,Diskos,1kg,field_piecewise,100,100,37.0,,0.15,0.3,0.6
+F,16,Slegge,"3kg/119,5cm",field_piecewise,100,100,41.0,,0.12,0.25,0.5
+F,16,Spyd,"0,5kg",field_piecewise,100,100,40.0,,0.13,0.25,0.5
+M,15,60 m,,time_sec,100,100,7.55,2.7,,,
+M,15,80 m,,time_sec,100,100,9.8,2.2,,,
+M,15,100 m,,time_sec,100,100,11.95,1.7,,,
+M,15,200 m,,time_sec,100,100,24.0,0.85,,,
+M,15,300 m,,time_sec,100,100,38.6,0.6,,,
+M,15,400 m,,time_sec,100,100,54.3,0.4,,,
+M,15,600 m,,time_minsec,10,10,88.5,2.6,,,
+M,15,800 m,,time_minsec,10,10,124.0,1.8,,,
+M,15,1000 m,,time_minsec,10,10,164.0,1.1,,,
+M,15,1500 m,,time_minsec,10,10,260.0,0.7,,,
+M,15,2000 m,,time_minsec,10,10,365.0,0.45,,,
+M,15,1000 m,Kappgang,time_minsec,10,10,262.0,0.7,,,
+M,15,2000 m,Kappgang,time_minsec,10,10,548.0,0.3,,,
+M,15,3000 m,Kappgang,time_minsec,10,10,854.0,0.18,,,
+M,15,5000 m,Kappgang,time_minsec,10,10,1500.0,0.11,,,
+M,15,10000 m,Kappgang,time_minsec,10,10,3180.0,0.05,,,
+M,15,100 m hekk,"84,0cm/8,5m",time_sec,100,100,14.0,1.1,,,
+M,15,200 m hekk,"76,2cm/18,29m",time_sec,100,100,28.4,0.6,,,
+M,15,300 m hekk,"76,2cm/35m",time_sec,100,100,43.0,0.46,,,
+M,15,1500 m hinder,"76,2cm",time_minsec,10,10,288.0,0.55,,,
+M,15,Høyde,,field_linear,100,100,1.8,7.0,,,
+M,15,Høyde uten tilløp,,field_linear,100,100,1.44,8.5,,,
+M,15,Stav,,field_piecewise,100,100,3.5,,1.7,3.5,7.0
+M,15,Lengde,,field_linear,100,100,6.15,2.0,,,
+M,15,Lengde uten tilløp,,field_linear,100,100,2.88,5.0,,,
+M,15,Tresteg,,field_linear,100,100,12.8,1.0,,,
+M,15,Kule,4kg,field_piecewise,100,100,15.3,,0.3,0.6,1.2
+M,15,Diskos,1kg,field_piecewise,100,100,51.0,,0.13,0.25,0.5
+M,15,Slegge,"4kg/119,5cm",field_piecewise,100,100,50.0,,0.1,0.2,0.4
+M,15,Spyd,"0,6kg",field_piecewise,100,100,52.0,,0.1,0.2,0.4
+F,15,60 m,,time_sec,100,100,8.15,2.7,,,
+F,15,80 m,,time_sec,100,100,10.5,2.1,,,
+F,15,100 m,,time_sec,100,100,12.9,1.6,,,
+F,15,200 m,,time_sec,100,100,26.5,0.78,,,
+F,15,300 m,,time_sec,100,100,42.5,0.5,,,
+F,15,400 m,,time_sec,100,100,60.0,0.38,,,
+F,15,600 m,,time_minsec,10,10,98.5,2.4,,,
+F,15,800 m,,time_minsec,10,10,138.5,1.5,,,
+F,15,1000 m,,time_minsec,10,10,186.5,1.0,,,
+F,15,1500 m,,time_minsec,10,10,286.0,0.6,,,
+F,15,2000 m,,time_minsec,10,10,406.0,0.4,,,
+F,15,1000 m,Kappgang,time_minsec,10,10,275.0,0.7,,,
+F,15,2000 m,Kappgang,time_minsec,10,10,600.0,0.3,,,
+F,15,3000 m,Kappgang,time_minsec,10,10,936.0,0.18,,,
+F,15,5000 m,Kappgang,time_minsec,10,10,1615.0,0.1,,,
+F,15,10000 m,Kappgang,time_minsec,10,10,3540.0,0.05,,,
+F,15,80 m hekk,"76,2cm/8m",time_sec,100,100,12.5,1.4,,,
+F,15,200 m hekk,"76,2cm/19m",time_sec,100,100,31.0,0.5,,,
+F,15,300 m hekk,"76,2cm/35m",time_sec,100,100,47.0,0.4,,,
+F,15,1500 m hinder,"76,2cm",time_minsec,10,10,330.0,0.46,,,
+F,15,Høyde,,field_linear,100,100,1.61,7.5,,,
+F,15,Høyde uten tilløp,,field_linear,100,100,1.33,9.5,,,
+F,15,Stav,,field_piecewise,100,100,2.95,,2.0,4.0,8.0
+F,15,Lengde,,field_linear,100,100,5.36,2.1,,,
+F,15,Lengde uten tilløp,,field_linear,100,100,2.54,6.0,,,
+F,15,Tresteg,,field_linear,100,100,11.4,1.0,,,
+F,15,Kule,3kg,field_piecewise,100,100,11.4,,0.3,0.6,1.2
+F,15,Diskos,"0,75kg",field_piecewise,100,100,43.0,,0.15,0.3,0.6
+F,15,Slegge,"3kg/119,5cm",field_piecewise,100,100,38.0,,0.12,0.25,0.5
+F,15,Spyd,"0,5kg",field_piecewise,100,100,38.0,,0.13,0.25,0.5
+M,14,60 m,,time_sec,100,100,7.75,2.7,,,
+M,14,80 m,,time_sec,100,100,10.05,2.2,,,
+M,14,100 m,,time_sec,100,100,12.35,1.7,,,
+M,14,200 m,,time_sec,100,100,24.8,0.85,,,
+M,14,300 m,,time_sec,100,100,40.0,0.6,,,
+M,14,400 m,,time_sec,100,100,56.5,0.4,,,
+M,14,600 m,,time_minsec,10,10,91.0,2.6,,,
+M,14,800 m,,time_minsec,10,10,129.0,1.8,,,
+M,14,1000 m,,time_minsec,10,10,169.0,1.1,,,
+M,14,1500 m,,time_minsec,10,10,268.0,0.7,,,
+M,14,2000 m,,time_minsec,10,10,380.0,0.45,,,
+M,14,1000 m,Kappgang,time_minsec,10,10,271.0,0.7,,,
+M,14,2000 m,Kappgang,time_minsec,10,10,570.0,0.3,,,
+M,14,3000 m,Kappgang,time_minsec,10,10,892.0,0.18,,,
+M,14,5000 m,Kappgang,time_minsec,10,10,1600.0,0.11,,,
+M,14,80 m hekk,"84,0cm/8m",time_sec,100,100,12.05,1.4,,,
+M,14,200 m hekk,"76,2cm/18,29m",time_sec,100,100,29.2,0.6,,,
+M,14,300 m hekk,"76,2cm/35m",time_sec,100,100,44.7,0.46,,,
+M,14,1500 m hinder,"76,2cm",time_minsec,10,10,300.0,0.55,,,
+M,14,Høyde,,field_linear,100,100,1.72,7.0,,,
+M,14,Høyde uten tilløp,,field_linear,100,100,1.37,8.5,,,
+M,14,Stav,,field_piecewise,100,100,3.2,,1.7,3.5,7.0
+M,14,Lengde,,field_linear,100,100,5.75,2.0,,,
+M,14,Lengde uten tilløp,,field_linear,100,100,2.75,5.0,,,
+M,14,Tresteg,,field_linear,100,100,12.0,1.0,,,
+M,14,Kule,4kg,field_piecewise,100,100,13.3,,0.3,0.6,1.2
+M,14,Diskos,1kg,field_piecewise,100,100,44.0,,0.13,0.25,0.5
+M,14,Slegge,"4kg/119,5cm",field_piecewise,100,100,41.0,,0.1,0.2,0.4
+M,14,Spyd,"0,6kg",field_piecewise,100,100,46.0,,0.1,0.2,0.4
+M,14,Liten ball,150g,field_piecewise,100,100,80.0,,0.08,0.15,0.3
+F,14,60 m,,time_sec,100,100,8.25,2.7,,,
+F,14,80 m,,time_sec,100,100,10.65,2.1,,,
+F,14,100 m,,time_sec,100,100,13.1,1.6,,,
+F,14,200 m,,time_sec,100,100,27.1,0.78,,,
+F,14,300 m,,time_sec,100,100,43.4,0.5,,,
+F,14,400 m,,time_sec,100,100,61.6,0.38,,,
+F,14,600 m,,time_minsec,10,10,100.0,2.4,,,
+F,14,800 m,,time_minsec,10,10,141.0,1.5,,,
+F,14,1000 m,,time_minsec,10,10,189.0,1.0,,,
+F,14,1500 m,,time_minsec,10,10,295.0,0.6,,,
+F,14,2000 m,,time_minsec,10,10,418.0,0.4,,,
+F,14,1000 m,Kappgang,time_minsec,10,10,280.0,0.7,,,
+F,14,2000 m,Kappgang,time_minsec,10,10,620.0,0.3,,,
+F,14,3000 m,Kappgang,time_minsec,10,10,962.0,0.18,,,
+F,14,5000 m,Kappgang,time_minsec,10,10,1660.0,0.1,,,
+F,14,60 m hekk,"76,2cm/7,5m",time_sec,100,100,9.7,1.9,,,
+F,14,200 m hekk,"76,2cm/19m",time_sec,100,100,31.6,0.5,,,
+F,14,300 m hekk,"76,2cm/35m",time_sec,100,100,48.0,0.4,,,
+F,14,1500 m hinder,"76,2cm",time_minsec,10,10,340.0,0.46,,,
+F,14,Høyde,,field_linear,100,100,1.58,7.5,,,
+F,14,Høyde uten tilløp,,field_linear,100,100,1.3,9.5,,,
+F,14,Stav,,field_piecewise,100,100,2.8,,2.0,4.0,8.0
+F,14,Lengde,,field_linear,100,100,5.25,2.1,,,
+F,14,Lengde uten tilløp,,field_linear,100,100,2.48,6.0,,,
+F,14,Tresteg,,field_linear,100,100,10.8,1.0,,,
+F,14,Kule,3kg,field_piecewise,100,100,10.8,,0.3,0.6,1.2
+F,14,Diskos,"0,75kg",field_piecewise,100,100,38.0,,0.15,0.3,0.6
+F,14,Slegge,"3kg/119,5cm",field_piecewise,100,100,34.0,,0.12,0.25,0.5
+F,14,Spyd,"0,4kg",field_piecewise,100,100,39.0,,0.13,0.25,0.5
+F,14,Liten ball,150g,field_piecewise,100,100,62.0,,0.1,0.2,0.4
+M,13,60 m,,time_sec,100,100,8.0,2.7,,,
+M,13,80 m,,time_sec,100,100,10.4,2.2,,,
+M,13,100 m,,time_sec,100,100,12.8,1.7,,,
+M,13,200 m,,time_sec,100,100,26.0,0.85,,,
+M,13,300 m,,time_sec,100,100,42.0,0.6,,,
+M,13,600 m,,time_minsec,10,10,94.5,2.6,,,
+M,13,1500 m,,time_minsec,10,10,278.0,0.7,,,
+M,13,1000 m,Kappgang,time_minsec,10,10,282.0,0.7,,,
+M,13,2000 m,Kappgang,time_minsec,10,10,594.0,0.3,,,
+M,13,3000 m,Kappgang,time_minsec,10,10,924.0,0.18,,,
+M,13,60 m hekk,"76,2cm/7,5m",time_sec,100,100,9.8,2.0,,,
+M,13,200 m hekk,"68,0cm/18,29m",time_sec,100,100,31.2,0.6,,,
+M,13,Høyde,,field_linear,100,100,1.61,7.0,,,
+M,13,Høyde uten tilløp,,field_linear,100,100,1.29,8.5,,,
+M,13,Stav,,field_piecewise,100,100,2.9,,1.7,3.5,7.0
+M,13,Lengde,,field_linear,100,100,5.35,2.0,,,
+M,13,Lengde uten tilløp,,field_linear,100,100,2.6,5.0,,,
+M,13,Tresteg,,field_linear,100,100,11.1,1.0,,,
+M,13,Kule,3kg,field_piecewise,100,100,13.5,,0.3,0.6,1.2
+M,13,Diskos,"0,75kg",field_piecewise,100,100,40.0,,0.13,0.25,0.5
+M,13,Slegge,"3kg/119,5cm",field_piecewise,100,100,37.0,,0.1,0.2,0.4
+M,13,Spyd,"0,4kg",field_piecewise,100,100,45.0,,0.1,0.2,0.4
+M,13,Liten ball,150g,field_piecewise,100,100,70.0,,0.08,0.15,0.3
+F,13,60 m,,time_sec,100,100,8.4,2.7,,,
+F,13,80 m,,time_sec,100,100,10.85,2.1,,,
+F,13,100 m,,time_sec,100,100,13.4,1.6,,,
+F,13,200 m,,time_sec,100,100,27.7,0.78,,,
+F,13,300 m,,time_sec,100,100,44.5,0.5,,,
+F,13,600 m,,time_minsec,10,10,102.0,2.4,,,
+F,13,1500 m,,time_minsec,10,10,305.0,0.6,,,
+F,13,1000 m,Kappgang,time_minsec,10,10,288.0,0.7,,,
+F,13,2000 m,Kappgang,time_minsec,10,10,640.0,0.3,,,
+F,13,3000 m,Kappgang,time_minsec,10,10,1002.0,0.18,,,
+F,13,60 m hekk,"76,2cm/7,5m",time_sec,100,100,10.1,1.9,,,
+F,13,200 m hekk,"68,0cm/19m",time_sec,100,100,32.4,0.5,,,
+F,13,Høyde,,field_linear,100,100,1.52,7.5,,,
+F,13,Høyde uten tilløp,,field_linear,100,100,1.26,9.5,,,
+F,13,Stav,,field_piecewise,100,100,2.5,,2.0,4.0,8.0
+F,13,Lengde,,field_linear,100,100,5.0,2.1,,,
+F,13,Lengde uten tilløp,,field_linear,100,100,2.4,6.0,,,
+F,13,Tresteg,,field_linear,100,100,10.2,1.0,,,
+F,13,Kule,2kg,field_piecewise,100,100,11.2,,0.3,0.6,1.2
+F,13,Diskos,"0,6kg",field_piecewise,100,100,38.0,,0.15,0.3,0.6
+F,13,Slegge,2kg/110cm,field_piecewise,100,100,38.0,,0.12,0.25,0.5
+F,13,Spyd,"0,4kg",field_piecewise,100,100,36.0,,0.13,0.25,0.5
+F,13,Liten ball,150g,field_piecewise,100,100,56.0,,0.1,0.2,0.4
+M,12,60 m,,time_sec,100,100,8.4,2.7,,,
+M,12,80 m,,time_sec,100,100,10.9,2.2,,,
+M,12,100 m,,time_sec,100,100,13.5,1.7,,,
+M,12,200 m,,time_sec,100,100,27.6,0.85,,,
+M,12,300 m,,time_sec,100,100,45.0,0.6,,,
+M,12,600 m,,time_minsec,10,10,99.0,2.6,,,
+M,12,1500 m,,time_minsec,10,10,294.0,0.7,,,
+M,12,1000 m,Kappgang,time_minsec,10,10,300.0,0.7,,,
+M,12,60 m hekk,"76,2cm/7m",time_sec,100,100,10.2,2.0,,,
+M,12,200 m hekk,"68,0cm/18,29m",time_sec,100,100,32.8,0.6,,,
+M,12,Høyde,,field_linear,100,100,1.5,7.0,,,
+M,12,Høyde uten tilløp,,field_linear,100,100,1.2,8.5,,,
+M,12,Stav,,field_piecewise,100,100,2.6,,1.7,3.5,7.0
+M,12,Lengde,,field_linear,100,100,4.95,2.0,,,
+M,12,Lengde uten tilløp,,field_linear,100,100,2.45,5.0,,,
+M,12,Tresteg,,field_linear,100,100,10.1,1.0,,,
+M,12,Kule,3kg,field_piecewise,100,100,11.3,,0.3,0.6,1.2
+M,12,Diskos,"0,75kg",field_piecewise,100,100,32.0,,0.13,0.25,0.5
+M,12,Slegge,2kg/110cm,field_piecewise,100,100,38.0,,0.1,0.2,0.4
+M,12,Spyd,"0,4kg",field_piecewise,100,100,38.0,,0.1,0.2,0.4
+M,12,Liten ball,150g,field_piecewise,100,100,63.0,,0.08,0.15,0.3
+M,12,Slengball,1kg/Kort reim,field_piecewise,100,100,36.0,,0.08,0.15,0.3
+F,12,60 m,,time_sec,100,100,8.55,2.7,,,
+F,12,80 m,,time_sec,100,100,11.1,2.1,,,
+F,12,100 m,,time_sec,100,100,13.8,1.6,,,
+F,12,200 m,,time_sec,100,100,28.5,0.78,,,
+F,12,300 m,,time_sec,100,100,45.8,0.5,,,
+F,12,600 m,,time_minsec,10,10,105.0,2.4,,,
+F,12,1500 m,,time_minsec,10,10,315.0,0.6,,,
+F,12,1000 m,Kappgang,time_minsec,10,10,303.0,0.7,,,
+F,12,60 m hekk,"76,2cm/7m",time_sec,100,100,10.5,1.9,,,
+F,12,200 m hekk,"68,0cm/19m",time_sec,100,100,34.0,0.5,,,
+F,12,Høyde,,field_linear,100,100,1.44,7.5,,,
+F,12,Høyde uten tilløp,,field_linear,100,100,1.2,9.5,,,
+F,12,Stav,,field_piecewise,100,100,2.2,,2.0,4.0,8.0
+F,12,Lengde,,field_linear,100,100,4.7,2.1,,,
+F,12,Lengde uten tilløp,,field_linear,100,100,2.3,6.0,,,
+F,12,Tresteg,,field_linear,100,100,9.5,1.0,,,
+F,12,Kule,2kg,field_piecewise,100,100,10.2,,0.3,0.6,1.2
+F,12,Diskos,"0,6kg",field_piecewise,100,100,32.0,,0.15,0.3,0.6
+F,12,Slegge,2kg/110cm,field_piecewise,100,100,33.0,,0.12,0.25,0.5
+F,12,Spyd,"0,4kg",field_piecewise,100,100,32.0,,0.13,0.25,0.5
+F,12,Liten ball,150g,field_piecewise,100,100,50.0,,0.1,0.2,0.4
+F,12,Slengball,1kg/Kort reim,field_piecewise,100,100,31.0,,0.13,0.25,0.5
+M,11,40 m,,time_sec,100,100,6.4,3.5,,,
+M,11,60 m,,time_sec,100,100,8.8,2.7,,,
+M,11,80 m,,time_sec,100,100,11.55,2.2,,,
+M,11,200 m,,time_sec,100,100,29.2,0.85,,,
+M,11,600 m,,time_minsec,10,10,105.0,2.6,,,
+M,11,1000 m,Kappgang,time_minsec,10,10,320.0,0.7,,,
+M,11,60 m hekk,"68,0cm/6,5m",time_sec,100,100,10.5,2.0,,,
+M,11,200 m hekk,"68,0cm/18,29m",time_sec,100,100,34.8,0.6,,,
+M,11,Høyde,,field_linear,100,100,1.38,7.0,,,
+M,11,Høyde uten tilløp,,field_linear,100,100,1.1,8.5,,,
+M,11,Stav,,field_piecewise,100,100,2.3,,1.7,3.5,7.0
+M,11,Lengde,,field_linear,100,100,4.55,2.0,,,
+M,11,Lengde uten tilløp,,field_linear,100,100,2.28,5.0,,,
+M,11,Tresteg,,field_linear,100,100,9.2,1.0,,,
+M,11,Kule,2kg,field_piecewise,100,100,10.5,,0.3,0.6,1.2
+M,11,Diskos,"0,6kg",field_piecewise,100,100,28.0,,0.13,0.25,0.5
+M,11,Slegge,2kg/110cm,field_piecewise,100,100,30.0,,0.1,0.2,0.4
+M,11,Spyd,"0,4kg",field_piecewise,100,100,32.0,,0.1,0.2,0.4
+M,11,Liten ball,150g,field_piecewise,100,100,55.0,,0.08,0.15,0.3
+M,11,Slengball,1kg/Kort reim,field_piecewise,100,100,30.0,,0.08,0.15,0.3
+F,11,40 m,,time_sec,100,100,6.4,3.5,,,
+F,11,60 m,,time_sec,100,100,8.85,2.7,,,
+F,11,80 m,,time_sec,100,100,11.6,2.1,,,
+F,11,200 m,,time_sec,100,100,29.7,0.78,,,
+F,11,600 m,,time_minsec,10,10,110.0,2.4,,,
+F,11,1000 m,Kappgang,time_minsec,10,10,320.0,0.7,,,
+F,11,60 m hekk,"68,0cm/6,5m",time_sec,100,100,10.9,1.9,,,
+F,11,200 m hekk,"68,0cm/19m",time_sec,100,100,36.0,0.5,,,
+F,11,Høyde,,field_linear,100,100,1.34,7.5,,,
+F,11,Høyde uten tilløp,,field_linear,100,100,1.1,9.5,,,
+F,11,Stav,,field_piecewise,100,100,2.0,,2.0,4.0,8.0
+F,11,Lengde,,field_linear,100,100,4.35,2.1,,,
+F,11,Lengde uten tilløp,,field_linear,100,100,2.18,6.0,,,
+F,11,Tresteg,,field_linear,100,100,8.8,1.0,,,
+F,11,Kule,2kg,field_piecewise,100,100,8.8,,0.3,0.6,1.2
+F,11,Diskos,"0,6kg",field_piecewise,100,100,26.0,,0.15,0.3,0.6
+F,11,Slegge,2kg/110cm,field_piecewise,100,100,27.0,,0.12,0.25,0.5
+F,11,Spyd,"0,4kg",field_piecewise,100,100,27.0,,0.13,0.25,0.5
+F,11,Liten ball,150g,field_piecewise,100,100,43.0,,0.1,0.2,0.4
+F,11,Slengball,1kg/Kort reim,field_piecewise,100,100,26.0,,0.13,0.25,0.5
+M,10,40 m,,time_sec,100,100,6.6,3.5,,,
+M,10,60 m,,time_sec,100,100,9.2,2.7,,,
+M,10,80 m,,time_sec,100,100,12.15,2.2,,,
+M,10,600 m,,time_minsec,10,10,112.0,2.6,,,
+M,10,60 m hekk,"68,0cm/6,5m",time_sec,100,100,11.3,2.0,,,
+M,10,Høyde,,field_linear,100,100,1.25,7.0,,,
+M,10,Høyde uten tilløp,,field_linear,100,100,1.0,8.5,,,
+M,10,Stav,,field_piecewise,100,100,2.0,,1.7,3.5,7.0
+M,10,Lengde,,field_linear,100,100,4.15,2.0,,,
+M,10,Lengde uten tilløp,,field_linear,100,100,2.1,5.0,,,
+M,10,Tresteg,,field_linear,100,100,8.2,1.0,,,
+M,10,Kule,2kg,field_piecewise,100,100,8.5,,0.3,0.6,1.2
+M,10,Diskos,"0,6kg",field_piecewise,100,100,22.0,,0.13,0.25,0.5
+M,10,Slegge,2kg/110cm,field_piecewise,100,100,22.0,,0.1,0.2,0.4
+M,10,Spyd,"0,4kg",field_piecewise,100,100,25.0,,0.1,0.2,0.4
+M,10,Liten ball,150g,field_piecewise,100,100,48.0,,0.08,0.15,0.3
+M,10,Slengball,1kg/Kort reim,field_piecewise,100,100,24.0,,0.08,0.15,0.3
+F,10,40 m,,time_sec,100,100,6.6,3.5,,,
+F,10,60 m,,time_sec,100,100,9.25,2.7,,,
+F,10,80 m,,time_sec,100,100,12.2,2.1,,,
+F,10,600 m,,time_minsec,10,10,115.0,2.4,,,
+F,10,60 m hekk,"68,0cm/6,5m",time_sec,100,100,11.6,1.9,,,
+F,10,Høyde,,field_linear,100,100,1.22,7.5,,,
+F,10,Høyde uten tilløp,,field_linear,100,100,1.0,9.5,,,
+F,10,Stav,,field_piecewise,100,100,1.8,,2.0,4.0,8.0
+F,10,Lengde,,field_linear,100,100,4.1,2.1,,,
+F,10,Lengde uten tilløp,,field_linear,100,100,2.05,6.0,,,
+F,10,Tresteg,,field_linear,100,100,8.0,1.0,,,
+F,10,Kule,2 kg,field_piecewise,100,100,6.8,,0.3,0.6,1.2
+F,10,Diskos,"0,6 kg",field_piecewise,100,100,18.0,,0.15,0.3,0.6
+F,10,Slegge,2 kg/110cm,field_piecewise,100,100,20.0,,0.12,0.25,0.5
+F,10,Spyd,"0,4 kg",field_piecewise,100,100,20.0,,0.13,0.25,0.5
+F,10,Liten ball,150g,field_piecewise,100,100,38.0,,0.1,0.2,0.4
+F,10,Slengball,1kg/Kort reim,field_piecewise,100,100,20.0,,0.13,0.25,0.5

@@ -1,0 +1,16 @@
+Model,Covariate,HR,CI low,CI high,p,C-index,n
+M1: Sex only,female,1.040561,0.952465,1.136805,0.378361,0.498404,2138
+M2: + Performance,female,1.159906,1.059731,1.26955,0.001287,0.627347,2136
+M2: + Performance,tyrving_z,0.740674,0.711775,0.770746,0.0,0.627347,2136
+M3: + Specialization,female,1.168652,1.067474,1.27942,0.000743,0.629282,2136
+M3: + Specialization,tyrving_z,0.738749,0.709931,0.768738,0.0,0.629282,2136
+M3: + Specialization,hhi_early_z,1.055056,1.008594,1.103658,0.01968,0.629282,2136
+M4: + Volume at milestone,female,1.132194,1.034432,1.239196,0.007046,0.844982,2136
+M4: + Volume at milestone,tyrving_z,0.879625,0.841448,0.919534,0.0,0.844982,2136
+M4: + Volume at milestone,hhi_early_z,0.975342,0.932652,1.019986,0.274239,0.844982,2136
+M4: + Volume at milestone,vol_milepael_z,0.369512,0.34586,0.394782,0.0,0.844982,2136
+M5: + Championship types,female,1.158335,1.058261,1.267873,0.001431,0.845253,2136
+M5: + Championship types,tyrving_z,0.920408,0.879098,0.963659,0.0004,0.845253,2136
+M5: + Championship types,hhi_early_z,0.9737,0.931046,1.018307,0.243541,0.845253,2136
+M5: + Championship types,vol_milepael_z,0.484458,0.445856,0.526402,0.0,0.845253,2136
+M5: + Championship types,n_msk_typer,0.696548,0.647805,0.748957,0.0,0.845253,2136
