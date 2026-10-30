@@ -443,6 +443,43 @@ krav(rob.loc["150m"][["celler_min3", "periode_2011_2019", "periode_2021_2026"]].
      "S2-note: 150 m mangler celler≥3 og periodekolonner")
 krav(fa.loc[("200m", "M", "10-11"), "stevne_fe_se"] > 0.03, "S6-note: 200 m 10–11 uinformativ med stevne-FE")
 
+# ================================================================ LYBBERT & ZHENG (2023)
+la = les("r2_asym_100m.csv")
+df = les("r2_drag_fart.csv").set_index("gruppe")["forhold_drag"]
+la_alle = la[la["aldersband"] == "alle"].set_index(["kjonn", "stevne_fe"])
+Fa, Ma = la_alle.loc[("F", False)], la_alle.loc[("M", False)]
+Ff, Mf = la_alle.loc[("F", True)], la_alle.loc[("M", True)]
+band = la[la["aldersband"] != "alle"]
+inne = ((band["forhold_drag"] >= band["ki_lav"]) & (band["forhold_drag"] <= band["ki_hoy"]))
+ute = band[~inne]
+krav(len(ute) == 1 and (ute["ki_hoy"] < ute["forhold_drag"]).all(), "ett bånd utenfor, og det ligger under drag")
+krav(Fa["forhold"] > Ma["forhold"] and Fa["forhold_drag"] > Ma["forhold_drag"], "jenter mer asymmetriske, som drag")
+krav(Fa["ki_lav"] <= Fa["forhold_drag"] <= Fa["ki_hoy"], "jenter: drag innenfor KI («equals the drag prediction»)")
+krav(Ma["forhold"] < Ma["forhold_drag"], "gutter: under drag («falls short»)")
+krav(Ff["forhold"] < Fa["forhold"] and Mf["forhold"] < Ma["forhold"], "mindre asymmetri innen stevner")
+krav(df["elite_menn"] < df["us_hs_gutter"] < df["us_hs_jenter"], "drag-asymmetrien vokser når farten faller")
+k.need("results", f"(head/tail ratio {f(Fa['forhold'], 2)}, 95% CI {f(Fa['ki_lav'], 2)}--{f(Fa['ki_hoy'], 2)}, against "
+       f"{f(Ma['forhold'], 2)}, {f(Ma['ki_lav'], 2)}--{f(Ma['ki_hoy'], 2)})", "asymmetri etter kjønn")
+k.need("results", f"({f(Fa['forhold_drag'], 2)} and {f(Ma['forhold_drag'], 2)} at their own speeds)", "drag etter kjønn")
+k.need("results", f"in {int(inne.sum())} of the {len(band)} sex × age bands the drag-only ratio lay inside the observed "
+       "interval, and the exception lay below it", "bånd innenfor")
+k.need("results", f"the ratios were {f(Ff['forhold'], 2)} and {f(Mf['forhold'], 2)} against drag-only "
+       f"{f(Ff['forhold_drag'], 2)} and {f(Mf['forhold_drag'], 2)}", "stevne-FE asymmetri")
+# Lybbert & Zheng tabell 2 (FE): medvind −0,050/−0,049; motvind × vind −0,037/−0,053 (gutter/jenter)
+lz_g, lz_j = (0.050 + 0.037) / 0.050, (0.049 + 0.053) / 0.049
+k.need("discussion", f"head/tail ratios of {f(lz_g, 2)} for boys and {f(lz_j, 2)} for girls", "Lybbert & Zheng tabell 2")
+k.need("discussion", f"gives a ratio of {f(df['elite_menn'], 2)} at a uniform elite 10.0 s, {f(df['us_hs_gutter'], 2)} at their "
+       f"boys' mean of 12.60 s and {f(df['us_hs_jenter'], 2)} at their girls' mean of 14.56 s", "drag ved fast fart")
+k.need("discussion", f"({f(Ma['forhold_drag'], 2)} for our boys and men, averaging {f(Ma['snitt_tid'], 2)} s, and "
+       f"{f(Fa['forhold_drag'], 2)} for our girls and women, averaging {f(Fa['snitt_tid'], 2)} s)", "drag i blandet utvalg")
+krav(abs(lz_g - Ma["forhold_drag"]) < 0.10, "gutter i USA ≈ drag for blandet utvalg («about what drag predicts»)")
+k.need("discussion", f"Their girls' ratio remains above the {f(Fa['forhold_drag'], 2)} of our faster girls and women",
+       "jenter i USA over drag")
+krav(Fa["snitt_tid"] < 14.557, "våre jenter raskere enn de amerikanske (14,56 s)")
+k.need("introduction", "it did not examine how the effects scale with age or ability", "Lybbert & Zheng i innledningen")
+k.need("abstract", "Almost every empirical estimate of how wind affects", "nyhetspåstand")
+k.need("methods", "and the sex- and age-specific asymmetry comparison (Table S7) were added after the plan", "planavvik S7")
+
 # ================================================================ TABELLER mot R (uavhengig)
 rh = pd.read_csv(R / "hoved.csv")
 for tex in ["t2"]:
@@ -457,7 +494,7 @@ for tex in ["t2"]:
             FEIL.append(f"t2 {navn}: vist {vist[:3]}, R gir {forvent}")
         else:
             k.n_ok += 1
-for t in ["t1", "t2", "t3", "t4", "t5", "t6", "s1", "s2", "s3", "s4", "s5", "s6"]:
+for t in ["t1", "t2", "t3", "t4", "t5", "t6", "s1", "s2", "s3", "s4", "s5", "s6", "s7"]:
     krav(f"\\input{{{t}}}" in k.raa, f"\\input{{{t}}} i manus (genererte tabeller)")
 
 # ================================================================ ORDTELLING
@@ -466,6 +503,7 @@ k.need("tittelside", f"Word count: $\\sim${int(round(ord_n, -2))}", f"ordtelling
 
 # ================================================================ DEKNING
 UNNTAK = [
+    r"\$\(2v\+w\)/\(2v-w\)\$",
     r"\\vspace\*?\{[^}]*\}", r"\d*\.?\d+\\textwidth", r"width=\d*\.?\d+\\textwidth",
     r"orcid\.org/[\d-]+\}\{ORCID: [\d-]+\}", r"Box 5003, 1432", r"\$\^\{?1,?\*?\}?\$", r"\$\^1\$",
     r"\\setcounter\{table\}\{0\}", r"\\begin\{titlepage\}", r"\{S\\arabic\{table\}\}",

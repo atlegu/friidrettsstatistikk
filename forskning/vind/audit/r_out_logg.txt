@@ -5,6 +5,10 @@ fjern_kopier: 47962 sonetvillinger, 8907 flerdagskopier, 770 eksakte dubletter
 The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
 The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
 The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
+The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
 The variables 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
 The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).
 The variables 'factor(mnd)5', 'factor(mnd)6', 'factor(mnd)7', 'factor(mnd)8', 'factor(mnd)9' and 'factor(mnd)10' have been removed because of collinearity (see $collin.var).

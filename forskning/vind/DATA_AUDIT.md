@@ -124,3 +124,15 @@ En uavhengig agent gikk gjennom definisjoner, noter og påstander (`final_review
   - den usanne «senior tables are steeper» er fjernet.
 - **Status:** 140 ankrede sjekker, 0 feil, 0 udekkede tall; R-speilet passerer.
 - **Atles beslutning:** H5-påstandene om at vinduet er størst for de yngste, og poengsetningen i Implications. Se endringsrapportens avsnitt 8.
+
+## Lybbert & Zheng (2023), Atles beskjed 30.10.2026
+
+Vurderingen står i `VURDERING_Lybbert_Zheng_2023.md`. De tolker at motvind koster amerikanske high school-løpere mer enn en drag-modell for elitemenn tilsier, som psykologi. Drag-asymmetrien vokser når farten faller, og de bruker referanse ved elitefart.
+
+- **Ny analyse (lagt til etter planen):** motvind/medvind på 100 m per kjønn og aldersbånd mot drag ved egen fart gjennom A6-estimatoren, med og uten stevne-FE (`07b_revisjon_r2.py` → `r2_asym_100m.csv`, `r2_drag_fart.csv`; tabell S7). R-speilet gir de samme tallene (`audit/r_out/lz_*.csv`).
+- **Resultat:**
+  - Jenter og kvinner 1,77 (1,58–1,96) mot drag 1,73; gutter og menn 1,54 (1,36–1,71) mot 1,67.
+  - Drag ligger innenfor intervallet i 9 av 10 kjønns- og aldersgrupper, og unntaket ligger under.
+  - Innen stevne er forholdet 1,59 og 1,46.
+  - Drag ved fast fart: 1,43 (10,0 s), 1,57 (12,60 s), 1,69 (14,56 s).
+- **Tekst:** Nyhetspåstanden er rettet, studien er nevnt i innledningen, avviket står i Methods, kjønnsforskjellen i H4 og et eget diskusjonsavsnitt er lagt til. Tallkontroll: 160 ankrede sjekker, 0 udekkede tall.

@@ -191,6 +191,37 @@ asy <- rbindlist(lapply(sort(unique(d$event_code)), function(k) {
 }), fill = TRUE)
 fwrite(asy, "audit/r_out/asym.csv")
 
+# ---- Lybbert & Zheng (2023): motvind/medvind på 100 m per kjønn og alder mot drag ved egen fart ----
+dr_forhold <- function(g, fe2 = FALSE, fast_tid = NULL) {
+  g <- copy(g)
+  if (is.null(fast_tid)) g[, tm := mean(y), by = celle] else g[, tm := fast_tid]
+  g[, v := 100 / tm][, ysim := tm * ((v - wind)^2 - v^2) / v^2]
+  b <- coef(est(g, "ysim", vind = c("wind_pos", "wind_neg"), fe2 = fe2)$m)
+  unname(b["wind_neg"] / b["wind_pos"])
+}
+lz_rad <- function(g, kj, band, fe2) {
+  r <- est(g, vind = c("wind_pos", "wind_neg"), fe2 = fe2)
+  if (is.null(r)) return(NULL)
+  b <- coef(r$m); V <- vcov(r$m)
+  R <- unname(b["wind_neg"] / b["wind_pos"])
+  se <- abs(R) * sqrt(V["wind_neg", "wind_neg"] / b["wind_neg"]^2 + V["wind_pos", "wind_pos"] / b["wind_pos"]^2
+                      - 2 * V["wind_neg", "wind_pos"] / (b["wind_neg"] * b["wind_pos"]))
+  data.table(kjonn = kj, aldersband = band, stevne_fe = fe2, n = r$n, medvind_s = -unname(b["wind_pos"]),
+             motvind_s = -unname(b["wind_neg"]), forhold = R, ki_lav = R - 1.96 * se, ki_hoy = R + 1.96 * se,
+             forhold_drag = dr_forhold(g, fe2))
+}
+d100 <- d[event_code == "100m"]
+lz <- rbindlist(c(
+  lapply(split(d100, by = c("gender", "aldersband")), function(g) lz_rad(g, g$gender[1], g$aldersband[1], FALSE)),
+  lapply(split(d100, by = "gender"), function(g) lz_rad(g, g$gender[1], "alle", FALSE)),
+  lapply(split(d100, by = "gender"), function(g) lz_rad(g, g$gender[1], "alle", TRUE))), fill = TRUE)
+num <- names(lz)[vapply(lz, is.double, logical(1))]
+lz[, (num) := lapply(.SD, signif, 10), .SDcols = num]   # toveis FE: maskinpresisjonsstøy (se stevne-FE)
+fwrite(lz, "audit/r_out/lz_asym.csv")
+fart <- data.table(gruppe = c("elite_menn", "us_hs_gutter", "us_hs_jenter"), tid_s = c(10.0, 12.603, 14.557))
+fart[, forhold_drag := sapply(tid_s, function(tt) dr_forhold(d100, FALSE, tt))]
+fwrite(fart, "audit/r_out/lz_fart.csv")
+
 # ---- Kvadratisk form (rå enheter: s for løp, m for hopp), stevneklynget -----------------
 d[, wind2 := wind^2]
 kv <- rbindlist(lapply(sort(unique(d$event_code)), function(k) {

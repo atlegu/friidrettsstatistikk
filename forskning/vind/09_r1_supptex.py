@@ -257,11 +257,29 @@ def s6():
     return tabular(["Event", "Sex"] + [band_tex(b) for b in BAND], rader, "llcccccc")
 
 
+def s7():
+    """Motvind/medvind på 100 m per kjønn og aldersbånd mot drag ved egen fart (Lybbert & Zheng-testen)."""
+    a = pd.read_csv(EST / "r2_asym_100m.csv")
+    rader = []
+    for kj, navn in [("F", "Girls/women"), ("M", "Boys/men")]:
+        for b, fe in [(b, False) for b in BAND] + [("alle", False), ("alle", True)]:
+            t = a[(a["kjonn"] == kj) & (a["aldersband"] == b) & (a["stevne_fe"] == fe)]
+            if not len(t):
+                continue
+            t = t.iloc[0]
+            etikett = band_tex(b) if b != "alle" else ("All ages, meet FE" if fe else "All ages")
+            rader.append([navn, etikett, tusen(t["n"]), tall(t["snitt_tid"], 2), tall(t["medvind_s"], 3),
+                          tall(t["motvind_s"], 3), ki(t["forhold"], t["ki_lav"], t["ki_hoy"], 2),
+                          tall(t["forhold_drag"], 2)])
+    return tabular(["Sex", "Age band", "n", "Mean time (s)", "Tailwind slope", "Headwind slope",
+                    "Head/tail ratio (95\\,\\% CI)", "Drag-only ratio"], rader, "llrccccc")
+
+
 def main():
     for navn, fn in [("t1", t1), ("t2", t2), ("t3", t3), ("t4", t4), ("t5", t5), ("t6", t6),
-                     ("s1", s1), ("s2", s2), ("s3", s3), ("s4", s4), ("s5", s5), ("s6", s6)]:
+                     ("s1", s1), ("s2", s2), ("s3", s3), ("s4", s4), ("s5", s5), ("s6", s6), ("s7", s7)]:
         (UT / f"{navn}.tex").write_text(fn())
-    logger.info(f"t1–t6 og s1–s6 skrevet til {UT}/")
+    logger.info(f"t1–t6 og s1–s7 skrevet til {UT}/")
 
 
 if __name__ == "__main__":

@@ -241,10 +241,30 @@ def stevne_fe():
     return len(r)
 
 
+def lybbert():
+    """Lybbert & Zheng-testen: asymmetri på 100 m per kjønn og alder mot drag, og drag ved fast fart."""
+    r = pd.read_csv(R / "lz_asym.csv")
+    p = pd.read_csv(EST / "r2_asym_100m.csv")
+    m = p.merge(r, on=["kjonn", "aldersband", "stevne_fe"], suffixes=("", "_r"), how="outer", indicator=True)
+    if (m["_merge"] != "both").any():
+        feil.append(f"lybbert: {(m['_merge'] != 'both').sum()} rader bare i én implementasjon")
+    for _, t in m[m["_merge"] == "both"].iterrows():
+        tol = 1e-4 if t["stevne_fe"] else 1e-6
+        for k in ["medvind_s", "motvind_s", "forhold", "ki_lav", "ki_hoy", "forhold_drag"]:
+            sjekk(f"lybbert {t['kjonn']} {t['aldersband']} fe={t['stevne_fe']} {k}", t[k], t[k + "_r"], tol)
+        sjekk(f"lybbert {t['kjonn']} {t['aldersband']} n", t["n"], t["n_r"], 0)
+    fr = pd.read_csv(R / "lz_fart.csv").set_index("gruppe")
+    fp = pd.read_csv(EST / "r2_drag_fart.csv").set_index("gruppe")
+    for g in fp.index:
+        sjekk(f"drag ved fast fart {g}", fp.at[g, "forhold_drag"], fr.at[g, "forhold_drag"], 1e-9)
+    return len(m) + len(fp)
+
+
 def main():
     deler = [("utvalg", utvalg), ("hoved", hoved), ("alder", alder),
              ("asym", asym), ("vindu", vindu), ("hekk", hekk),
-             ("tertil", tertil), ("deskriptiv", deskriptiv), ("kvad", kvad), ("stevne-FE", stevne_fe)]
+             ("tertil", tertil), ("deskriptiv", deskriptiv), ("kvad", kvad), ("stevne-FE", stevne_fe),
+             ("lybbert", lybbert)]
     for navn, fn in deler:
         n = fn()
         print(f"{navn}: {n} enheter sammenlignet")
