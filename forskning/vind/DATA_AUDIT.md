@@ -199,7 +199,7 @@ Endringsrapportens avsnitt 8, punkt 2–3, er skrevet inn. Ingen tall er endret;
 
 ## Medforfatter, Atles beslutning 30.10.2026
 
-- Simen Guttormsen er medforfatter med samme tilknytning som Atle (Handelshøyskolen, NMBU). Atle er fortsatt korresponderende forfatter.
+- Simen Guttormsen er medforfatter med samme tilknytning som Atle (Handelshøyskolen, NMBU). Atle er fortsatt korresponderende forfatter. E-posten og ORCID-en til Simen (0009-0002-2533-8561) står på tittelsiden. Kontrollsifferet stemmer, og ORCID-registeret har navnet hans.
 - Erklæringene på tittelsiden står i flertall. Plattformsetningen gjelder bare AGG; git-loggen for friidrettsresultater.no har bare Atle som forfatter.
 - Bidragssetningen følger høydeartikkelen. SG samlet inn TFRRS-profilene som `tfrrs_shared` bygger på (den eksterne valideringen, tabell S8), og reviderte manus kritisk. Begge godkjenner endelig versjon. **Atle og Simen må bekrefte setningen før innsending.**
 - Simen står selv i registerutvalget: 75 av 392 797 rader i `analyseklar.csv` (36 651 utøvere). Det er ungdomsresultater fra 2011–2020 (alder 10–19), mest lengde og 60 m. Én utøver kan ikke flytte estimatene, så det er ikke skrevet inn i erklæringen. I høydeartikkelen ble det opplyst «for full transparency».
