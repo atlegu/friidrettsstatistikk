@@ -1352,3 +1352,24 @@ velge karusell 1 som stevne, sesong ble valgt uten hensyn til innendørs/utendø
 og femkamppoeng ble «1552.00». Tolkningen ligger nå i `web/src/lib/resultatliste.ts`
 med samme regler som skriptet. Gjennomgangen hopper over rader som alt ligger i
 stevnet. Testbatch 74650c8a (venter på gjennomgang) skal gi 0 nye, 48 hoppet over.
+
+## 2026-10-30 — Sonehopp lagret to ganger: sperre i importen, rydding venter på Atles ja
+
+- **Funn** (dataauditen av A1/A3/A6): 56 931 brettrader i lengde/tresteg er kopier av et sonehopp under
+  `lengde_sone_05m`/`tresteg_sone_05m` (samme utøver, resultat og vind): 48 085 samme dag og 8 846 i
+  flerdagsstevner (brettraden med startdatoen, sonen 1–6 dager senere i en søskenpost). Kom fra
+  `update_results.py` 13.02 (7), 22.08 (3) og 24.08–06.09 (29 052), `import_youth_stats.py` 19.05 (27 752)
+  og `import_historical.py` 14.02 (117). Kilden viser hoppene bare under sonen (26 av 26 kontrollert
+  mot hurtiglagrede utøversider). Ryddingen 03.10 sammenlignet bare innen én kode.
+- **Rot rettet** (122099a): «Lengde/Tresteg (Sone 0,5m)» gir nå sonekoden i `update_results.py` og
+  `import_youth_stats.py`; ny `kodegrupper.py`; `_uten_kryssdubletter()` i `update_results.py` og
+  kryss-kode-sjekk i `import_youth_stats.py` og `import_historical.py`. Virker i nattkjøringen først
+  når det er pushet.
+- **Rydding klar, ikke kjørt:** `rydd_kryssdubletter.py` (`migrations/kryssdubletter.sql`), reserve i
+  `opprydding_kryssdubletter` og `opprydding_kryssposter` (81 poster blir tomme, 4 får alias).
+  Tørrkjøring med tall per kodepar og år: `opprydding/KRYSSDUBLETTER_2026-10-30.md`.
+- **Kontroll:** `test_fullstendighet.py --bare kryssdubletter` (4 avvik til ryddingen er kjørt; ikke
+  lagt i nattkjøringen).
+- **Ikke med i ryddingen:** samme øvelse under to koder (slegge 2 kg 1 356, 3000 m hinder 1 090,
+  kappgang 660, mangekamp 223, 80 m hekk 29, 1 mile 21) — koden må velges først. Sonehopp i 2026 fra
+  februar ligger under brettkoden (feil kode, ikke kopier).

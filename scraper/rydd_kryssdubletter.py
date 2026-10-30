@@ -141,7 +141,7 @@ def kartlegg(fra_aar, til_aar):
         n = sum(aarene.values())
         if n >= 10:
             log.info('  %-44s %-44s %7d  %d', a, b, n, nyest_a[(a, b)])
-    log.info('  (par med få rader er som regel tilfeldig like verdier, f.eks. 60 m 11,00 og høyde 1,10)')
+    log.info('  (par med få rader er som regel tilfeldig like verdier, f.eks. diskos 1 kg og spyd 500 g)')
     log.info('Kartleggingen er skrevet til %s', fil)
 
 

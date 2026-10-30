@@ -187,8 +187,10 @@ $$;
 
 -- Kartlegging for tørrkjøringsrapporten: alle kodepar med samme resultattype der to OK-rader har
 -- samme utøver, dato, resultatverdi og vind. kode_a < kode_b; a_nyest = paret der raden under
--- kode_a ble lagt inn sist. Treffer også tilfeldig like resultater (60 m 11,00 og høyde 1,10 har
--- samme verdi), så par med få rader er ikke nødvendigvis kopier.
+-- kode_a ble lagt inn sist. Treffer også tilfeldig like resultater (diskos 1 kg og spyd 500 g
+-- samme dag), så par med få rader er ikke nødvendigvis kopier. Mangekamp med samme antall øvelser
+-- tas med selv om resultattypen er ulik: de fulle kodene («7_k_100mh-...») står med «distance»,
+-- den generelle («7_k») med «points».
 create or replace function kartlegg_kryssdubletter(p_fra date, p_til date)
 returns table (kode_a text, kode_b text, antall bigint, a_nyest bigint)
 language sql
@@ -202,7 +204,9 @@ as $$
   join events ea on ea.id = x.event_id
   join results y on y.athlete_id = x.athlete_id and y.date = x.date and y.performance_value = x.performance_value
                 and y.wind is not distinct from x.wind and y.status = 'OK' and y.event_id <> x.event_id
-  join events eb on eb.id = y.event_id and eb.code > ea.code and eb.result_type = ea.result_type
+  join events eb on eb.id = y.event_id and eb.code > ea.code
+                and (eb.result_type = ea.result_type
+                     or substring(eb.code from '^(\d+)_k(?:_|$)') = substring(ea.code from '^(\d+)_k(?:_|$)'))
   where x.status = 'OK' and x.performance_value is not null and x.date between p_fra and p_til
   group by 1, 2;
 $$;
@@ -264,7 +268,9 @@ as $$
   join results o on o.athlete_id = n.athlete_id and o.date = n.date and o.performance_value + 0 = n.performance_value
                 and o.wind is not distinct from n.wind and o.event_id <> n.event_id and o.status = 'OK'
                 and o.created_at::date <> n.created_at::date
-  join events eo on eo.id = o.event_id and eo.result_type = en.result_type
+  join events eo on eo.id = o.event_id
+                and (eo.result_type = en.result_type
+                     or substring(eo.code from '^(\d+)_k(?:_|$)') = substring(en.code from '^(\d+)_k(?:_|$)'))
   where n.created_at >= p_fra and n.status = 'OK' and n.performance_value is not null
   group by 1, 2;
 $$;
