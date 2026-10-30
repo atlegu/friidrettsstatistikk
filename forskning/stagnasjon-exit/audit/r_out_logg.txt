@@ -1,6 +1,6 @@
 Warning message:
 package 'data.table' was built under R version 4.3.3 
-fjern_kopier: 12990 sonetvillinger, 746 eksakte dubletter
+fjern_kopier: 12990 sonetvillinger, 5780 flerdagskopier, 746 eksakte dubletter
 Warning message:
 package 'fixest' was built under R version 4.3.3 
 øvelsessett F jumps 1 

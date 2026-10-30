@@ -141,10 +141,12 @@ def main():
     res = pd.DataFrame(rader)
     res.to_csv(TAB / "robusthet_or.csv", index=False)
 
-    # 7) Landmark-Cox: klokke fra fylte 17; sensur for utøvere aktive i 2025/2026
-    cx = prim.copy()
+    # 7) Landmark-Cox: klokke fra slutten av 16-årssesongen, bare utøvere under risiko der (resultat
+    #    etter fylte 16); sensur for utøvere aktive i 2025/2026. Audit 30.10.2026: før kom frafallere
+    #    som sluttet ved 15-16 inn som hendelser ved t = 0,1 (54 % av hendelsene).
+    cx = prim[prim["siste_alder"] >= 17].copy()
     cx["aktiv_naa"] = (cx["birth_year"] + cx["siste_alder"]) >= 2025
-    cx["tid"] = np.maximum(cx["siste_alder"] - 16, 0.1)
+    cx["tid"] = cx["siste_alder"] - 16
     cx["hendelse"] = (~cx["aktiv_naa"]).astype(int)
     kov = ["delta_z", "niva_w1_z", "vol1314_g", "vol1516_g", "k13", "k15"]
     cd = cx[["tid", "hendelse"] + kov].assign(kvinne=(cx["gender"] == "F").astype(float))

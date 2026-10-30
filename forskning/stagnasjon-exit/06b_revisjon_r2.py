@@ -126,7 +126,9 @@ def ovelsesjustert(sc):
 
 def folsomhet(d, sc):
     rader = [or_rad("primaer", d, "delta_z"), or_rad("like_mange_resultater", d, "delta_lik_z"),
-             or_rad("k13_og_k15_minst_3", d[(d["k13"] >= 3) & (d["k15"] >= 3)], "delta_z")]
+             or_rad("k13_og_k15_minst_3", d[(d["k13"] >= 3) & (d["k15"] >= 3)], "delta_z"),
+             # siste sesong etter eksponeringsvinduet (audit 30.10.2026: 58 % av frafallerne sluttet ved 15-16)
+             or_rad("aktiv_etter_16", d[d["siste_alder"] >= 17], "delta_z")]
     f = ("senior ~ C(gender) + C(birth_year) + log_klubbstorrelse + niva_w1_z + delta_z"
          " + bs(k13, df=4) + bs(k15, df=4) + bs(vol1314_g, df=4) + bs(vol1516_g, df=4)")
     m = smf.logit(f, data=d).fit(disp=0)

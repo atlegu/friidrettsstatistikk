@@ -65,6 +65,7 @@ def main():
                         ("landmark_med_kjonn", flyt["landmark_med_kjonn"]),
                         ("uten_fodselsdato", flyt["landmark_uten_fodselsdato"]),
                         ("uten_skaarbar", flyt["uten_skaarbar_tyrving_i_hovedgruppen"]),
+                        ("landmark_1998_2005", flyt["landmark_fodt_1998_2005"]),
                         ("ekskl_smaacelle", flyt["ekskludert_gruppecelle_under_20"]),
                         ("n_prim_for_dropna", flyt["primaerutvalg_fodt_1998_2005"]),
                         ("n_prim_modeller", opps["n"]), ("seniorer", opps["seniorer"])]:
@@ -214,6 +215,7 @@ def main():
     fs = pd.read_csv(TAB / "modeller" / "r2_h1_folsomhet.csv")
     for an, ran, rv_ in [("like_mange_resultater", "r2_like_mange", "delta_lik_z"),
                          ("k13_og_k15_minst_3", "r2_k_minst_3", "delta_z"),
+                         ("aktiv_etter_16", "r2_aktiv_etter_16", "delta_z"),
                          ("splines_k_og_volum", "r2_splines", "delta_z"),
                          ("bare_utendors", "r2_bare_utendors", "dx_z"),
                          ("ovelsesjusterte_poeng", "r2_ovelsesjustert", "dx_z"),

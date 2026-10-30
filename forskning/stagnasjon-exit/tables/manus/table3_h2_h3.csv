@@ -1,7 +1,7 @@
 Analysis,Estimate,p
-Progression × birth-quarter trend (OR),0.944 (0.842–1.059),0.33
-"Progression per SD, born Q1–Q2",2.45 (1.95–3.07),1.0e-14
-"Progression per SD, born Q3–Q4",2.00 (1.57–2.55),2.7e-08
-CV-AUC: sex + volume + progression,0.8550 (0.8542–0.8557),
-CV-AUC: sex + volume + level,0.8551 (0.8539–0.8560),
-Difference (progression − level),-0.0001 (-0.0009–0.0009),
+Progression × birth-quarter trend (OR),0.946 (0.843–1.062),0.35
+"Progression per SD, born Q1–Q2",2.43 (1.94–3.06),1.7e-14
+"Progression per SD, born Q3–Q4",2.08 (1.62–2.65),5.3e-09
+CV-AUC: sex + volume + progression,0.8540 (0.8527–0.8550),
+CV-AUC: sex + volume + level,0.8544 (0.8536–0.8552),
+Difference (progression − level),-0.0004 (-0.0011–0.0004),

@@ -151,8 +151,12 @@ krav(1.28 <= r12t <= 1.38, f"«roughly a third more time» (forhold {r12t:.3f})"
 k.need("introduction", "a 12-year-old needs roughly a third more time over 100 m", "tidsforhold")
 
 # ================================================================ METHODS
-k.need("methods", f"we removed two kinds of duplicate record: {flyt['ekskl_sonetvilling_brettkode']} board-jump rows",
+k.need("methods", f"we removed duplicate records: {flyt['ekskl_sonetvilling_brettkode']} board-jump rows",
        "sonetvillinger")
+k.need("methods", f"{flyt['ekskl_flerdagskopi_brettkode']} such copies from multi-day meets, dated to the meet's first day",
+       "flerdagskopier (rens_felles)")
+k.need("methods", f"the {flyt['ekskl_2026_brettkode_11_13']} board-event jumps at ages 11--13 in 2026 were also excluded",
+       "2026: sonehopp under brettkoden")
 k.need("methods", f"and {flyt['ekskl_eksakt_dublett']} exact duplicates", "eksakte dubletter")
 k.need("methods", f"Of {flyt['rader_uttrekk']} extracted rows in the main events, "
        f"{flyt['rader_analyseklar']} entered the analysis", "flyt")
@@ -261,11 +265,16 @@ k.need("results", f"the straight sprints line up at {f(min(rett), 4)}--{f(max(re
        f"{f(ps.loc['150m', 'per_sekund'], 4)}, 200 m {f(ps.loc['200m', 'per_sekund'], 4)})", "svingløp")
 lavere = 1 - np.mean(sving) / np.mean(rett)
 krav(0.27 <= lavere <= 0.40, f"«a third lower» ({lavere:.3f})")
-lf12, lf20 = a("lengde", "F", "12-13", "cm")["gevinst_per_ms"], a("lengde", "F", "20-34", "cm")["gevinst_per_ms"]
-lm12, lm20 = a("lengde", "M", "12-13", "cm")["gevinst_per_ms"], a("lengde", "M", "20-34", "cm")["gevinst_per_ms"]
-k.need("results", f"(long jump: {f(lf12, 1)} cm per m/s at 12--13 to {f(lf20, 1)} at 20--34)", "lengde jenter")
-k.need("results", f"but not for boys and men ({f(lm12, 1)} at 12--13, {f(lm20, 1)} at 20--34)", "lengde gutter")
-krav(lf20 > lf12 and lm20 <= lm12, "lengde: stiger for jenter, ikke for gutter")
+# brettøvelsene har ikke estimat under 14-15 år etter at sonekopiene og 2026-sonehoppene under
+# brettkoden er tatt ut (audit 30.10.2026): de yngste hopper fra sone
+krav(al[(al["event"].isin(["lengde", "tresteg"])) & (al["aldersband"].isin(["10-11", "12-13"]))].empty,
+     "ingen brettestimat under 14-15 år")
+lf14, lf20 = a("lengde", "F", "14-15", "cm")["gevinst_per_ms"], a("lengde", "F", "20-34", "cm")["gevinst_per_ms"]
+lm14, lm20 = a("lengde", "M", "14-15", "cm")["gevinst_per_ms"], a("lengde", "M", "20-34", "cm")["gevinst_per_ms"]
+k.need("results", f"(long jump: {f(lf14, 1)} cm per m/s at 14--15 to {f(lf20, 1)} at 20--34)", "lengde jenter")
+k.need("results", f"but not for boys and men ({f(lm14, 1)} at 14--15, {f(lm20, 1)} at 20--34)", "lengde gutter")
+krav(lf20 > lf14 and lm20 <= lm14, "lengde: stiger for jenter, ikke for gutter")
+k.need("results", "below 14 nearly all horizontal jumps are made from a take-off zone", "brett fra 14-15")
 k.need("results", f"(100 m: {f(tt('100m', 'lav')['gevinst_per_ms'], 3)} s against "
        f"{f(tt('100m', 'hoy')['gevinst_per_ms'], 3)} in the highest tertile; 60 m: "
        f"{f(tt('60m', 'lav')['gevinst_per_ms'], 3)} against {f(tt('60m', 'hoy')['gevinst_per_ms'], 3)}; "
@@ -350,13 +359,16 @@ krav(set(tyr["tabellalder"]) == {13, 19}, "tabellalder 13 og 19")
 k.need("results", f"converts to {int(min(t13))}--{int(max(t13))} points at age 13 against "
        f"{int(min(t19))}--{int(max(t19))} points on the oldest (age-19) table", "Tyrving")
 om = oms.set_index(["kjonn", "liste"])
-krav(om.loc[("F", "klasse 14"), "nye_i_topp10"] == 2 and om.loc[("M", "senior"), "nye_i_topp10"] == 2
-     and om.loc[("M", "klasse 14"), "nye_i_topp10"] == 0, "nye i topp 10: 2 (jenter 14), 2 (senior menn), 0 (gutter 14)")
-krav(("F", "senior") not in om.index, "seniorkvinner under terskelen (ingen liste)")
-k.need("results", "brings two new athletes into the top 10 of the girls' class-14 list and of the senior men's "
-       "list (none in the boys' class-14 list)", "listeomstokk (krav over)")
-k.need("results", f"in the senior men's list {pst(om.loc[('M', 'senior'), 'andel_topp50_vind_over_1'])}% of top-50 marks",
-       "andel med medvind")
+krav(om.loc[("F", "klasse 14"), "nye_i_topp10"] == 1 and om.loc[("M", "senior"), "nye_i_topp10"] == 1
+     and om.loc[("F", "senior"), "nye_i_topp10"] == 2 and om.loc[("M", "klasse 14"), "nye_i_topp10"] == 0,
+     "nye i topp 10: 1 (jenter 14), 1 (senior menn), 2 (senior kvinner), 0 (gutter 14)")
+k.need("results", "(legal marks only, wind ≤ +2.0 m/s; senior lists open to all ages)", "lovlige lister, åpen klasse")
+krav(flyt["ekskl_vind_over_8"] >= 0, "vindgrense ±8 i flyten")
+k.need("methods", "the linear model uses readings within ±8 rather than ±5 m/s", "planavvik vindspenn (ANALYSEPLAN §4)")
+k.need("results", "brings one new athlete into the top 10 of the girls' class-14 list and of the senior men's list and two "
+       "into the senior women's list (none in the boys' class-14 list)", "listeomstokk (krav over)")
+k.need("results", f"in the senior lists {pst(om.loc[('M', 'senior'), 'andel_topp50_vind_over_1'])}% (men) and "
+       f"{pst(om.loc[('F', 'senior'), 'andel_topp50_vind_over_1'])}% (women) of top-50 marks", "andel med medvind")
 fe = rob["stevne_fe"] / rob["primaer"] - 1
 k.need("results", f"attenuated the 60, 100 and 200 m estimates by "
        f"{pst(-fe[['60m', '100m', '200m']].max())}--{pst(-fe[['60m', '100m', '200m']].min())}% "
@@ -382,6 +394,9 @@ krav(max(abs(x) for x in endr.values()) < 0.08,
      f"«essentially unchanged» i store sprint: maks {max(abs(x) for x in endr.values()):.3f}")
 k.need("results", "Estimates were essentially unchanged when cells required three or more results",
        "robusthet (kvalitativ; tall i S2)")
+tj = [rob.loc[e, "periode_2021_2026"] / rob.loc[e, "primaer"] - 1 for e in ["tresteg", "tresteg_sone_05m"]]
+k.need("results", f"except the triple jumps, whose 2021--2026 estimates were {pst(min(tj))}--{pst(max(tj))}% higher",
+       "tresteg i periodehalvdelene")
 
 
 # ================================================================ DISCUSSION / CONCLUSION

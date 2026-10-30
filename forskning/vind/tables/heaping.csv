@@ -1,8 +1,8 @@
 mål,verdi
-"andel eksakt 0,0",0.0884
-"andel hele m/s (x,0)",0.1609
-andel medvind (>0),0.5779
-andel motvind (<0),0.3337
+"andel eksakt 0,0",0.087
+"andel hele m/s (x,0)",0.1595
+andel medvind (>0),0.5778
+andel motvind (<0),0.3352
 median,0.3
 p5,-2.1
 p95,2.7

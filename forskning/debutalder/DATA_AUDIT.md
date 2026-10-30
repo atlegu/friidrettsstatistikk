@@ -85,3 +85,22 @@ Atle godtok punkt 14–19 i `../AUDIT_2026-10-30_endringsrapport.md`. Svarbrevet
 ## Fase 5 — RUN_ALL.sh
 
 `RUN_ALL.sh` (`set -eo pipefail`, hashkontroll mot FREEZE-filene, `SOURCE_DATE_EPOCH`) kjører 01, 02, 03, 04, 05, 05b og 06, full LaTeX-syklus med kontroll av udefinerte referanser og «??», deretter uavhengig R, sammenligning og tallkontroll. Grønn og deterministisk 30.10.2026 (to kjøringer gir like hasher på alle utdata).
+
+## Fase 8 (30.10.2026) — siste smale gjennomgang
+
+En uavhengig agent gikk gjennom definisjoner, noter og påstander (`final_review_A3.md` i øktens kladdemappe). Hvert funn er verifisert med egen kode.
+
+- **Ordlyd rettet:**
+  - LR-testen er merket som lagt til etter planen;
+  - Q4-underskuddet erstatter den usanne Q1-påstanden;
+  - 2020-sesongen er «COVID-disrupted», ikke «cancelled»;
+  - det relative gapet er presisert;
+  - datoen er «October 2026»;
+  - formen på gradienten ved lik karrierelengde er beskrevet (bratt fall 10→14, flat etter 14), og «persisted least» er rettet;
+  - kausal ordbruk er dempet;
+  - første-sesong-ordlyden er presisert;
+  - «replicated three times» er dempet;
+  - avvik fra planen er opplyst.
+- **Typografi:** caption-pakken er lagt inn, så PDF-en ikke lenger viser «Table 5: *».
+- **Status:** 102 ankrede sjekker, 0 feil, 0 udekkede tall.
+- **Atles beslutning:** debut-16-armen hviler på debutanter fra koronaårene (uten debuter i 2020–21: OR 1,32, 0,79–2,19). Se endringsrapportens avsnitt 8.

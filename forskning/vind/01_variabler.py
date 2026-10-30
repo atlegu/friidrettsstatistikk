@@ -50,6 +50,7 @@ def main():
     flyt = {"rader_uttrekk": len(r)}
     r, kopier = fjern_kopier(r)
     flyt["ekskl_sonetvilling_brettkode"] = kopier["sonetvilling"]
+    flyt["ekskl_flerdagskopi_brettkode"] = kopier["flerdagskopi"]
     flyt["ekskl_eksakt_dublett"] = kopier["eksakt_dublett"]
 
     r = r.merge(utv, on="athlete_id", how="left")
@@ -75,6 +76,11 @@ def main():
     r = steg("ekskl_uten_fodselsaar", r["birth_year"].notna())
     r["alder"] = (r["aar"] - r["birth_year"]).astype(int)
     r = steg("ekskl_alder_utenfor_10_34", r["alder"].between(10, 34))
+    # Fra februar 2026 la importen sonehopp under brettkoden (feil kode, ikke kopier; kan bare
+    # avgjøres mot kilden): uttrekket har 0 utendørs sonerader i 2026 mot 1 736 ved 11–13 år i
+    # 2025. Brettkodede hopp i 2026 ved 11–13 år holdes derfor utenfor (audit 30.10.2026).
+    r = steg("ekskl_2026_brettkode_11_13", ~((r["aar"] == 2026) & r["event_code"].isin(["lengde", "tresteg"])
+                                             & r["alder"].between(11, 13)))
     flyt["uten_vindverdi"] = int(r["wind"].isna().sum())
     r = r[r["wind"].notna()].copy()
     r = steg("ekskl_vind_over_8", r["wind"].abs() <= 8)

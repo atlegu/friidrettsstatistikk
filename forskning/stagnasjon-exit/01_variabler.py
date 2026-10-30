@@ -82,6 +82,7 @@ def main():
     flyt = {"utovere_fodt_1998_2006": len(utv)}
     r, kopier = fjern_kopier(r)   # sonetvillinger og eksakte dubletter (rens_felles.py)
     flyt["fjernet_sonetvilling_brettkode"] = kopier["sonetvilling"]
+    flyt["fjernet_flerdagskopi_brettkode"] = kopier["flerdagskopi"]
     flyt["fjernet_eksakt_dublett"] = kopier["eksakt_dublett"]
 
     r = r.drop(columns=["birth_year"], errors="ignore")
@@ -90,13 +91,13 @@ def main():
     r["aar"] = r["date"].dt.year
     r = r[r["status"] == "OK"].copy()
     r["manuell"] = r["is_manual_time"].astype(str) == "True"
-    r["vind_ulovlig"] = r["is_wind_legal"].astype(str) == "False"
 
     ev = pd.read_csv(DATA / "events.csv")
     vindovelser = set(ev.loc[ev["wind_measured"].astype(str) == "True", "code"])
     me = pd.read_csv(DATA / "meets.csv")
     kl = pd.read_csv(DATA / "clubs.csv").rename(columns={"id": "club_id", "name": "club_name"})
-    r = r.merge(me.rename(columns={"id": "meet_id"})[["meet_id", "krets"]], on="meet_id", how="left")
+    r = r.merge(me.rename(columns={"id": "meet_id"})[["meet_id", "krets", "indoor"]], on="meet_id", how="left")
+    r["inne"] = r["indoor"].astype(str) == "True"
 
     # ---- Flyt: kvalifisering og landmark -------------------------------------------------
     har1314 = r.loc[r["alder"].isin([13, 14])].groupby("athlete_id").size()
@@ -131,7 +132,12 @@ def main():
                                         sc["result_type"], sc["gender"], sc["alder"])
     ]
     sc = sc[sc["tyrving"].notna()].copy()
-    sc["vindgyldig"] = ~(sc["event_code"].isin(vindovelser) & sc["vind_ulovlig"])
+    # vindlovlig: øvelsen måler ikke vind, merket er satt innendørs, eller lovlig vind er
+    # registrert. Utendørs vindmerker uten vindmåling regnes ikke som lovlige (audit 30.10.2026;
+    # før ble manglende is_wind_legal tolket som lovlig, 21 063 merker i primærutvalget).
+    lovlig = ((sc["is_wind_legal"].astype(str) == "True")
+              | (sc["is_wind_legal"].isna() & (sc["wind"] <= 2.0)))   # 171 rader har vind uten flagg
+    sc["vindgyldig"] = ~sc["event_code"].isin(vindovelser) | sc["inne"] | lovlig
 
     def vindu_poeng(d, gruppe_map, aldre, kun_vindgyldig=False):
         """{athlete_id: liste med tyrvingpoeng i utøverens gruppe og aldersvindu}."""
@@ -207,7 +213,9 @@ def main():
     # ---- Primærutvalg og standardisering --------------------------------------------------
     base["skaarbar"] = (base["k13"] >= 1) & (base["k15"] >= 1)
     flyt["landmark_med_kjonn"] = len(base)
-    flyt["uten_skaarbar_tyrving_i_hovedgruppen"] = int((~base["skaarbar"]).sum())
+    # begge eksklusjonene telles blant primærkullene, så flyten (S1) summerer (audit 30.10.2026)
+    flyt["landmark_fodt_1998_2005"] = int(base["kohort_primar"].sum())
+    flyt["uten_skaarbar_tyrving_i_hovedgruppen"] = int((base["kohort_primar"] & ~base["skaarbar"]).sum())
     prim0 = base["kohort_primar"] & base["skaarbar"]
     celler = base.loc[prim0].groupby(["gender", "hovedgruppe"]).size()
     smaa = {k for k, v in celler.items() if v < 20}

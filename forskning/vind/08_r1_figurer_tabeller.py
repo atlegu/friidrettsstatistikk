@@ -168,7 +168,7 @@ def fig5_hekk(hk):
                  for k in rekkef]
     ax.set_yticks(yposs, etiketter, fontsize=9)
     ax.axvline(0, color=GRAA, lw=1, ls="--")
-    ax.set_xlabel("Seconds faster per +1 m/s tailwind")
+    ax.set_xlabel("Effect per m/s of wind (s; linear fit over head- and tailwinds)")
     ax.set_title("Wind effect in short hurdles, by class-specific event code")
     ax.legend(frameon=False, fontsize=8.5, loc="lower right")
     fig.tight_layout()

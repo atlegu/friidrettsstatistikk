@@ -114,3 +114,17 @@ Atle godtok punkt 6–13 i `../AUDIT_2026-10-30_endringsrapport.md`. Svarbrevet 
 Det gamle `RUN_ALL.sh` kjørte uttrekket på nytt og er erstattet. Det nye (`set -eo pipefail`, hashkontroll mot FREEZE-filene, `SOURCE_DATE_EPOCH`) kjører 01–07 med 06b, full LaTeX-syklus med kontroll av udefinerte referanser og «??», eksport av Tyrving-poeng, uavhengig R, DeLong-broen, sammenligning og tallkontroll. Avledede filer (analysedata.csv, flyt.json) har nye hasher etter D1–D3; råuttrekket er uendret og fryst.
 
 **Determinisme (30.10.2026):** Kjeden er grønn fra start til slutt. R-speilet kjører fixest med én tråd, og to R-kjøringer ga like hasher på alle utdata, identiske med RUN_ALL-kjøringen.
+
+## Fase 8 (30.10.2026) — siste smale gjennomgang
+
+En uavhengig agent gikk gjennom definisjoner, noter og påstander (`final_review_A1.md` i øktens kladdemappe). Hvert funn er verifisert med egen kode; kodeendringene står i `FREEZE.md`.
+
+- **Rettet i koden:**
+  - sonekopier fra flerdagsstevner (5 780, `rens_felles.py`);
+  - «wind-legal» regnet merker uten vindmåling som lovlige (nå: innendørs lovlig, ute kreves registrert lovlig vind);
+  - landmark-Cox og KM-figuren tok med frafallere som sluttet ved 15–16 år (nå bare de 2 001 som konkurrerte etter fylte 16);
+  - S1 summerte ikke (begge eksklusjonene telles nå blant kull 1998–2005).
+- **Ny analyse:** H1 blant dem som konkurrerte etter fylte 16 er OR 1,83 (1,55–2,17), fordi 58 % av frafallerne har siste sesong i eksponeringsvinduet. Den er lagt til etter estimeringen og merket slik.
+- **Ordlyd rettet:** post hoc-analyser og avvik fra planen er opplyst, tolkningsregelen er presisert, kohortbeskrivelsen og exit-delutvalget presisert, «equally»/«same» er dempet, «equalised» er rettet og de praktiske påstandene uten dekning er tatt ut. Medieringen er begrunnet med størrelse (indirekte OR om lag 1,02, høyst 1,06), siden KI for den betingede a-stien nå utelukker null.
+- **Status:** 143 ankrede sjekker, 0 feil, 0 udekkede tall; R-speilet passerer.
+- **Atles beslutning:** tittel og hovedsetning («Stagnation precedes exit»), switcher-spesifikasjonen og interesseerklæringen. Se endringsrapportens avsnitt 8.

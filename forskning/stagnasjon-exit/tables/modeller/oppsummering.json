@@ -1,16 +1,16 @@
 {
-  "n": 3856,
-  "seniorer": 652,
-  "H1_OR_per_SD": 2.2,
+  "n": 3877,
+  "seniorer": 654,
+  "H1_OR_per_SD": 2.237,
   "H1_KI": [
-    1.871,
-    2.587
+    1.901,
+    2.632
   ],
-  "H1_delta_AUC": 0.0114,
-  "H2_interaksjon_OR": 0.944,
+  "H1_delta_AUC": 0.0117,
+  "H2_interaksjon_OR": 0.946,
   "H2_KI": [
-    0.842,
-    1.059
+    0.843,
+    1.062
   ],
-  "H3_AUC_diff": -0.0001
+  "H3_AUC_diff": -0.0004
 }

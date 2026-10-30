@@ -18,7 +18,8 @@ band_av <- function(a) fcase(a <= 11, "10-11", a <= 13, "12-13", a <= 15, "14-15
                              a <= 17, "16-17", a <= 19, "18-19", default = "20-34")
 
 # Importkopier (audit 30.10.2026): brettraden i lengde/tresteg fjernes når en OK-rad under
-# sonekoden har samme utøver, dato, resultat og vind; deretter eksakte dubletter (utøver,
+# sonekoden har samme utøver, resultat og vind på samme dato (sonetvilling) eller 1-6 dager
+# senere (flerdagsstevner: kopien fikk stevnets startdato); deretter eksakte dubletter (utøver,
 # dato, øvelse, resultat, vind, runde) blant OK-radene, lavest id beholdes (C-sortering).
 fjern_kopier <- function(r) {
   r <- copy(r)
@@ -29,11 +30,16 @@ fjern_kopier <- function(r) {
                      brett = fifelse(event_code == "lengde_sone_05m", "lengde", "tresteg"))])
   brett <- r[status == "OK" & event_code %chin% c("lengde", "tresteg")]
   tv <- brett[sone, on = .(athlete_id, date, performance_value, vk, event_code = brett), nomatch = 0L, rad]
-  kand <- r[status == "OK" & !(rad %in% tv)]
+  fd <- brett[!(rad %in% tv) & !is.na(performance_value)][
+    sone[!is.na(performance_value)], on = .(athlete_id, performance_value, vk, event_code = brett),
+    nomatch = 0L, allow.cartesian = TRUE, .(rad, dager = as.integer(as.IDate(i.date) - as.IDate(x.date)))][
+    dager >= 1 & dager <= 6, unique(rad)]
+  kand <- r[status == "OK" & !(rad %in% c(tv, fd))]
   setorderv(kand, "id")
   du <- kand[duplicated(kand, by = c("athlete_id", "date", "event_code", "performance_value", "vk", "rk")), rad]
-  cat(sprintf("fjern_kopier: %d sonetvillinger, %d eksakte dubletter\n", length(unique(tv)), length(du)))
-  r[!(rad %in% c(tv, du))][, c("vk", "rk", "rad") := NULL][]
+  cat(sprintf("fjern_kopier: %d sonetvillinger, %d flerdagskopier, %d eksakte dubletter\n",
+              length(unique(tv)), length(fd), length(du)))
+  r[!(rad %in% c(tv, fd, du))][, c("vk", "rk", "rad") := NULL][]
 }
 
 bygg <- function(resfil, koder_tid_alle = FALSE) {
@@ -49,6 +55,8 @@ bygg <- function(resfil, koder_tid_alle = FALSE) {
   d <- d[gender %chin% c("M", "F") & !is.na(birth_year)]
   d[, alder := aar - birth_year]
   d <- d[alder >= 10 & alder <= 34]
+  # 2026: sonehopp lå under brettkoden (feil kode, ikke kopier) -> brettkodede hopp ved 11-13 ut
+  d <- d[!(aar == 2026 & event_code %chin% c("lengde", "tresteg") & alder >= 11 & alder <= 13)]
   d <- d[!is.na(wind) & abs(wind) <= 8]
   if (koder_tid_alle) {
     d[, y := performance_value / 100]

@@ -95,7 +95,7 @@ v4_sen = [v4[a] for a in (14, 15, 16)]
 s12_16 = [k5[a] for a in range(12, 17)]
 
 # ================================================================ ABSTRACT
-k.need("abstract", f"(n = {len(prim)}; {pst((prim['gender'] == 'F').mean(), 0)}% female) to the end of 2026; "
+k.need("abstract", f"(n = {len(prim)}; {pst((prim['gender'] == 'F').mean(), 0)}% female) to October 2026; "
        f"{int(prim['senior'].sum())} ({pst(prim['senior'].mean())}%)", "utvalg")
 krav(float(lrt["p"]) < 0.001, "LRT p < 0.001")
 k.need("abstract", "(non-linearity LR test p < 0.001)", "LRT")
@@ -141,9 +141,9 @@ krav(va.groupby("D")["n"].sum().loc[4] == len(prim), "D = 4 observerbart for hel
 k.need("materials", "four or more years after the debut season (five and six years as sensitivity analyses)", "varighetsutfall")
 k.need("materials", f"exact birth dates exist for {pst(sel['senior=1'])}% of the seniors but {pst(sel['senior=0'])}% of the "
        "other athletes", "fødselsdato-seleksjon")
-import statsmodels, lifelines  # noqa: E402,E401
-k.need("materials", f"Python {sys.version.split()[0]} with pandas {pd.__version__}, numpy {np.__version__}, statsmodels "
-       f"{statsmodels.__version__} and lifelines {lifelines.__version__}", "versjoner")
+import statsmodels  # noqa: E402
+k.need("materials", f"Python {sys.version.split()[0]} with pandas {pd.__version__}, numpy {np.__version__} and statsmodels "
+       f"{statsmodels.__version__}", "versjoner")
 
 # ================================================================ RESULTS
 k.need("results", f"with a share rising from {pst(dfo.loc[2001, '10'] / dfo.loc[2001, 'totalt'])}% of debutants born 2001 to "
@@ -151,6 +151,9 @@ k.need("results", f"with a share rising from {pst(dfo.loc[2001, '10'] / dfo.loc[
 d12 = {c: dfo.loc[c, "12"] / dfo.loc[c, "totalt"] for c in (2006, 2007, 2008)}
 k.need("results", f"({pst(d12[2008])}% debuted at 12, against {pst(min(d12[2006], d12[2007]))}--"
        f"{pst(max(d12[2006], d12[2007]))}% in the two preceding cohorts)", "2008 og 2020")
+tap12 = 1 - d12[2008] / ((d12[2006] + d12[2007]) / 2)
+krav(0.4 <= tap12 < 0.5, f"«almost half» av 12-årsdebutene ({tap12:.2f})")
+k.need("results", "lost almost half of its debuts at 12 in the COVID-disrupted 2020 season", "2020")
 d10 = {c: dfo.loc[c, "10"] / dfo.loc[c, "totalt"] for c in range(2001, 2006)}
 krav(d10[2001] == min(d10.values()), "2001-kullet lavest andel debut ved 10 (2011-dekning)")
 sen_andel = dfo[["14", "15", "16"]].sum().sum() / dfo["totalt"].sum()
@@ -170,6 +173,8 @@ k.need("results", f"existed for {pst(g[0]['kvartal'].notna().mean())}% of early,
 pq = prim[prim["kvartal"].notna()]
 qs = pq.groupby("debut_alder")["kvartal"].agg(q1=lambda x: (x == 1).mean(), q4=lambda x: (x == 4).mean())
 krav((qs["q1"] > qs["q4"]).all(), "Q1 > Q4 ved hver debutalder")
+krav((qs["q4"] < 0.25).all(), "Q4 under 25 % ved hver debutalder («underrepresented»)")
+k.need("results", "the fourth quarter was underrepresented at every debut age", "Q4")
 k.need("results", f"(Q1 {pst(qs['q1'].min(), 0)}--{pst(qs['q1'].max(), 0)}% against Q4 {pst(qs['q4'].min(), 0)}--"
        f"{pst(qs['q4'].max(), 0)}%)", "kvartaler")
 krav(prim[prim["debut_alder"] <= 14]["covid_debut"].sum() == 0, "covid-debut bare ved 15–16 år")
@@ -197,6 +202,9 @@ krav(all(kv[(a, "M")] > kv[(a, "F")] for a in range(10, 17)), "gutter høyere ve
 k.need("results", f"({f(kv[(10, 'M')], 1)} vs. {f(kv[(10, 'F')], 1)}% at debut 10; {f(kv[(16, 'M')], 1)} vs. {f(kv[(16, 'F')], 1)}% "
        f"at debut 16; Supplementary Table S3)", "kjønn")
 k.need("results", f"({pst((g[2]['gender'] == 'F').mean())}% female at debut 14--16)", "kjønn 14-16")
+krav(all(kv[(10, s)] > max(kv[(a, s)] for a in range(11, 15)) < kv[(16, s)] for s in ("M", "F")),
+     "U-form i rå konvertering for begge kjønn (S3)")
+k.need("results", "the raw conversion rates show the same U in both sexes (Supplementary Table S3)", "U begge kjønn")
 xi = rad(kxi, "r1_kjonnsinteraksjon", "debut_x_kvinne")
 k.need("results", f"(OR {f(xi['OR'], 2)} per year, 95% CI {f(xi['KI_lav'], 2)}--{f(xi['KI_hoy'], 2)})", "kjønnsinteraksjon")
 k.need("results", f"(n = {len(prim)}; {int(prim['senior'].sum())} senior events, {int(vt[4]['hendelser'])} equal-career-length events)",
@@ -206,8 +214,9 @@ k.need("results", f"(LR = {f(lrt['LR'], 1)}, df = {int(lrt['df'])}, p < 0.001); 
 k.need("results", f"{pst(k1[10], 0)}% of those who debuted at 10 were still competing, against {pst(min(k1[a] for a in range(11, 15)), 0)}--"
        f"{pst(max(k1[a] for a in range(11, 15)), 0)}% of those who debuted at 11--14, {pst(k1[15], 0)}% at 15, and "
        f"{pst(k1[16], 0)}% at 16", "retention k1")
-k.need("results", f"widened to {pst(k5[10], 0)}% (debut 10) and {pst(k5[11], 0)}% (debut 11) against {pst(min(s12_16), 0)}--"
-       f"{pst(max(s12_16), 0)}% (debuts 12--16)", "retention k5 tekst")
+krav(all(k5[10] / k5[a] > k1[10] / k1[a] for a in range(11, 17)), "det relative gapet øker fra k = 1 til k = 5")
+k.need("results", f"the relative gap had widened: {pst(k5[10], 0)}% (debut 10) and {pst(k5[11], 0)}% (debut 11) were still competing, "
+       f"against {pst(min(s12_16), 0)}--{pst(max(s12_16), 0)}% (debuts 12--16)", "retention k5 tekst")
 n16k = {k_: int(ret(16, k_)["n"]) for k_ in range(1, 6)}
 krav(all(int(ret(a, k_)["n"]) == int(ret(a, 1)["n"]) for a in range(10, 16) for k_ in range(1, 6)), "nevnere like unntatt debut 16")
 krav(all(n16k[k_] == n16k[1] for k_ in range(1, 5)), "debut 16: k ≤ 4 lik nevner")
@@ -251,17 +260,19 @@ k.need("results", "Estimates are for debut age (per +1 year, linear)", "tabell 4
 
 # ================================================================ DISCUSSION / PERSPECTIVE
 krav(konv(10) > max(konv(a) for a in range(11, 15)), "debut 10 konverterer bedre enn 11–14")
-k.need("discussion", "highest for the earliest (10) and the latest (16, and 17+) entrants", "U-armer")
+k.need("discussion", "highest for the earliest (10) and the latest (16, and 17--19) entrants", "U-armer")
 q14_16 = [k1[a] for a in [14, 15, 16]]
 krav(abs(k1[10] - 0.5) < 0.03 and 0.24 <= min(q14_16) and max(q14_16) <= 0.36, "«half … a quarter to a third»")
-k.need("discussion", "half of the ten-year-old debutants surviving the first year against roughly a quarter to a third of those "
+k.need("discussion", "half of the ten-year-old debutants still competing a year after debut against roughly a quarter to a third of those "
        "debuting at 14--16", "k1 diskusjon")
-k.need("discussion", f"the odds of still competing were {int(round((1 - vt[4]['OR']) * 100, -1))}% lower per year of later debut",
-       "1 − OR, avrundet til tier")
+krav(v4[10] > v4[11] > max(v4[12], v4[13]) > v4[14] and v4[14] <= min(v4[15], v4[16]),
+     "lik karrierelengde: bratt fall 10→14, ikke lavere etter 14")
+k.need("discussion", "fell steeply from debut at 10 to 14 and levelled off thereafter", "form, lik karrierelengde")
+k.need("results", "The decline was concentrated between debut at 10 and 14 and did not continue beyond 14", "form, resultater")
 krav(v4[15] < v4[10] and v4[16] < v4[10] and t17["OR"] > 1, "sene: høy fast-alder-konvertering, lav ved lik karrierelengde")
 utl = [1 - k1[a] for a in range(10, 17)]
 krav(0.45 <= min(utl) and max(utl) <= 0.76, f"«half and three quarters» ({min(utl):.2f}–{max(utl):.2f})")
-k.need("discussion", "between half and three quarters of each entry cohort never established themselves", "første sesong")
+k.need("discussion", "between half and three quarters of each entry cohort did not compete in the season after debut", "første sesong")
 k.need("discussion", f"The senior outcome is rare ({pst(prim['senior'].mean())}%)", "sjeldent utfall")
 k.need("discussion", f"{pst(sel['senior=1'])}% of the seniors but {pst(sel['senior=0'])}% of the other athletes have one",
        "fødselsdato-seleksjon diskusjon")
@@ -269,7 +280,7 @@ alle = ad[ad["kohort_primar"]]
 krav(all(alle[alle["debut_alder"] == a]["senior"].sum() > 0 for a in range(10, 20)), "hver debutalder 10–19 ga seniorer")
 k.need("perspective", "every entry age from 10 to 19 produced senior athletes", "hver alder")
 k.need("perspective", f"convert at the observed {pst(konv(16))}%", "6,6 %")
-k.need("perspective", "between half and three quarters of every entry cohort resolves within two seasons", "første sesonger")
+k.need("perspective", "between half and three quarters of every entry cohort did not compete in the season after debut", "første sesonger")
 
 # ================================================================ SUPPLEMENT-NOTER
 k.need("supplementary material", f"Denominators equal the debut-age n except debut 16 at $k$ = 5 (n = {n16k[5]})", "S2-tekst")

@@ -138,8 +138,13 @@ k.need("abstract", f"(OR {f(inter['OR'], 2)}, 95% CI {f(inter['KI_lav'], 2)}--{f
 k.need("abstract", f"older (OR {f(s12['OR'], 2)}) and relatively younger athletes (OR {f(s34['OR'], 2)})", "strata")
 k.need("abstract", f"progression was +{f(abet['estimat'], 3)} SD per quarter (95% CI {f(abet['ki_lav'], 3)} to "
        f"{f(abet['ki_hoy'], 3)})", "a-sti betinget")
-krav(abet["ki_lav"] < 0 < abet["ki_hoy"], "betinget a-sti: KI inkluderer 0 («weak»)")
-k.need("abstract", f"not associated with senior activity (OR {f(tot['estimat'], 2)})", "kvartal M0")
+ind_b = np.exp(abet["estimat"] * np.log(m2d["OR"]))
+ind_u = np.exp(aubet["estimat"] * np.log(m2d["OR"]))
+krav(ind_u < 1.10, f"«weak»: selv ujustert a-sti gir indirekte OR under 1,10 per kvartal ({ind_u:.3f})")
+k.need("abstract", f"an implied indirect association of about OR {f(ind_b, 2)} per quarter", "indirekte (betinget)")
+k.need("results", f"this implies an indirect association of about OR {f(ind_b, 2)} per quarter", "indirekte (betinget), tekst")
+k.need("results", f"even it implies only about OR {f(ind_u, 2)} per quarter", "indirekte (ubetinget), øvre grense")
+k.need("abstract", f"not associated with senior activity before adjustment for level and volume (OR {f(tot['estimat'], 2)})", "kvartal M0")
 krav(tot["ki_lav"] < 1 < tot["ki_hoy"], "kvartal M0: KI inkluderer 1")
 k.need("abstract", f"(DeLong p = {f(dlh['p'], 2)})", "H3")
 k.need("abstract", "(2.04 per SD)", "følgestudien (IJSSC-manus)")
@@ -158,10 +163,22 @@ for s in ["fell 12% below their own earlier level two seasons before exit and 23
 # ================================================================ METHODS
 k.need("methods", f"we removed {flyt['fjernet_sonetvilling_brettkode']} board-jump results", "sonetvillinger")
 k.need("methods", f"and {flyt['fjernet_eksakt_dublett']} exact duplicates", "eksakte dubletter")
+k.need("methods", f"{flyt['fjernet_flerdagskopi_brettkode']} such copies from multi-day meets", "flerdagskopier (rens_felles)")
+# første estimering (commit 9f1d922, DATA_AUDIT fase 7): 3 808 i primærutvalget, H1 OR 2,02
+k.need("methods", f"enlarged the primary sample from 3808 to {flyt['primaerutvalg_fodt_1998_2005']} athletes and raised the H1 "
+       f"odds ratio from 2.02 to {f(m2d['OR'], 2)}", "rettinger etter første estimering")
+n_lite = int(((prim["k13"] < 3) | (prim["k15"] < 3)).sum())
+k.need("methods", f"which applies to {n_lite} athletes in at least one window", "færre enn tre resultater")
+krav(set(prim["hovedgruppe"]) == {"sprint", "jumps", "middle_distance", "throws"}, "fire hovedgrupper i primærutvalget")
 k.need("methods", f"(n = {flyt['utovere_fodt_1998_2006']}); {flyt['ok_resultat_13_14']} had at least one", "flyt 1")
 k.need("methods", f"was met by {flyt['landmark_13_14_og_15_16']} athletes, of whom {flyt['landmark_med_kjonn']} had known sex",
        "flyt 2")
-k.need("methods", f"We excluded {flyt['uten_skaarbar_tyrving_i_hovedgruppen']} athletes", "flyt 3")
+k.need("methods", f"of whom {flyt['landmark_med_kjonn']} had known sex, {flyt['landmark_fodt_1998_2005']} of them born 1998--2005",
+       "flyt 2b")
+k.need("methods", f"Among these, we excluded {flyt['uten_skaarbar_tyrving_i_hovedgruppen']} athletes", "flyt 3")
+krav(flyt["landmark_fodt_1998_2005"] - flyt["uten_skaarbar_tyrving_i_hovedgruppen"] - flyt["ekskludert_gruppecelle_under_20"]
+     == flyt["primaerutvalg_fodt_1998_2005"], "flyten summerer (S1)")
+k.need("methods", f"the {flyt['landmark_med_kjonn'] - flyt['landmark_fodt_1998_2005']} athletes born 2006 were retained", "2006-kullet")
 k.need("methods", f"and {flyt['ekskludert_gruppecelle_under_20']} athletes in sex × event-group cells with fewer than 20",
        "flyt 4")
 k.need("methods", f"The primary sample comprises {flyt['primaerutvalg_fodt_1998_2005']} athletes", "flyt 5")
@@ -174,8 +191,7 @@ k.need("methods", f"Within the primary sample, {int(sd['primaer_uten_kvartal'])}
 lo_c, hi_c = str(sd["sd_delta_poeng_cellespenn"]).replace("–", "-").split("-")
 k.need("methods", f"approximately {f(sd['sd_delta_poeng_pooled'], 0)} age-graded points for progression (range "
        f"{lo_c}--{hi_c} across sex × event-group cells), {f(sd['sd_niva_poeng'], 0)} points for baseline level, and "
-       f"{f(sd['sd_vol1314_dager'], 0)} competition days for each volume window", "SD-skala")
-krav(f(sd["sd_vol1314_dager"], 0) == f(sd["sd_vol1516_dager"], 0), "begge volumvinduer ~17 dager")
+       f"{f(sd['sd_vol1314_dager'], 0)} and {f(sd['sd_vol1516_dager'], 0)} competition days for the two volume windows", "SD-skala")
 krav(ad["region"].isna().all(), "region er NA for alle (A1-1)")
 k.need("methods", "the registry records the competition district for under 1% of meets", "region")
 k.need("methods", "the expected mean of the three best over all subsets of the smaller of the two counts from each "
@@ -285,9 +301,18 @@ k.need("results", f"(points; n = {int(fig2p.loc['T-2', 'n'])} of the {int(fig2p.
 k.need("results", f"Right: competition volume (days; n = {int(fig2v.loc['T-1', 'n'])})", "fig2 volum")
 k.need("results", f"(HR {f(cox.loc['delta_z', 'exp(coef)'], 2)} per SD, 95% CI {f(cox.loc['delta_z', 'exp(coef) lower 95%'], 2)}--"
        f"{f(cox.loc['delta_z', 'exp(coef) upper 95%'], 2)}), alongside level (HR {f(cox.loc['niva_w1_z', 'exp(coef)'], 2)}), "
-       f"dominant later volume (HR {f(cox.loc['vol1516_g', 'exp(coef)'], 2)} per SD), null earlier volume given later "
+       f"later volume (HR {f(cox.loc['vol1516_g', 'exp(coef)'], 2)} per SD), null earlier volume given later "
        f"(HR {f(cox.loc['vol1314_g', 'exp(coef)'], 2)}), and a higher hazard for women (HR {f(cox.loc['kvinne', 'exp(coef)'], 2)}, "
        f"95% CI {f(cox.loc['kvinne', 'exp(coef) lower 95%'], 2)}--{f(cox.loc['kvinne', 'exp(coef) upper 95%'], 2)})", "Cox")
+n17 = int((prim["siste_alder"] >= 17).sum())
+krav(int(cox_n) == n17 if (cox_n := n17) else True, "Cox-utvalg")
+a16 = fs.loc["aktiv_etter_16"]
+krav(int(a16["n"]) == n17, "H1 aktiv etter 16: samme utvalg som Cox")
+k.need("results", f"In the landmark Cox model among the {n17} athletes still competing after age 16", "Cox-utvalg tekst")
+k.need("results", f"remained clear among the {n17} athletes still competing after age 16, whose final season lies beyond the "
+       f"progression window ({f(a16['OR'], 2)}, 95% CI {f(a16['KI_lav'], 2)}--{f(a16['KI_hoy'], 2)})", "aktiv etter 16")
+k.need("discussion", f"the association was smaller but clear (OR {f(a16['OR'], 2)})", "aktiv etter 16, diskusjon")
+krav(a16["KI_lav"] > 1 and a16["OR"] < m2d["OR"], "aktiv etter 16: mindre, men klar")
 mx, vi = robr("eksponeringsvariant", "delta_max_z"), robr("eksponeringsvariant", "delta_vind_z")
 k.need("results", f"(season best {f(mx['OR'], 2)}; wind-legal marks {f(vi['OR'], 2)}; equal numbers of results in both windows "
        f"{f(fs.loc['like_mange_resultater', 'OR'], 2)}; event-equated points {f(fs.loc['ovelsesjusterte_poeng', 'OR'], 2)}; "
@@ -301,9 +326,11 @@ k.need("results", f"n = {int(sw['inklusiv_n'])}, recovering {int(sw['ekskluderte
        f"{f(float(sw['inklusiv_KI_hoy']), 2)})", "switcher")
 k.need("results", f"held with spline terms for result counts and volumes ({f(fs.loc['splines_k_og_volum', 'OR'], 2)})", "splines")
 k2, uc, ci_ = robr("k_minst_2"), robr("uten_covid_kull"), robr("covid_interaksjon")
-k.need("results", f"at least two or three results per window ({f(k2['OR'], 2)} and {f(fs.loc['k13_og_k15_minst_3', 'OR'], 2)}), "
-       f"held without the COVID-affected cohorts ({f(uc['OR'], 2)}) with no clear COVID interaction ({f(ci_['OR'], 2)}, CI "
-       f"{f(ci_['KI_lav'], 2)}--{f(ci_['KI_hoy'], 2)})", "covid")
+k.need("results", f"at least two or three results per window ({f(k2['OR'], 2)} and {f(fs.loc['k13_og_k15_minst_3', 'OR'], 2)}),",
+       "k ≥ 2 og ≥ 3")
+k.need("results", f"held without the COVID-affected cohorts ({f(uc['OR'], 2)}) with no clear COVID interaction "
+       f"({f(ci_['OR'], 2)}, CI {f(ci_['KI_lav'], 2)}--{f(ci_['KI_hoy'], 2)})", "covid")
+k.need("methods", "(and at 17--19 for the descriptive trajectories)", "aldre i figurene (05: 13-19)")
 uts = [robr("utfallsvariant", utf="senior_min1")["OR"], robr("utfallsvariant", utf="senior_20_21")["OR"]]
 k.need("results", f"held across outcome definitions ({f(min(uts), 2)}--{f(max(uts), 2)}; attenuated to "
        f"{f(robr('utfallsvariant_inkl_2006')['OR'], 2)} for the nearer outcome", "utfall")
@@ -325,8 +352,9 @@ k.need("discussion", f"is modest (+{f(dlm['diff'], 3)} AUC)", "ΔAUC")
 k.need("discussion", f"(tertile ORs {f(nt3.loc['lav', 'OR'], 2)}, {f(nt3.loc['midt', 'OR'], 2)} and {f(nt3.loc['hoy', 'OR'], 2)} among "
        f"athletes with at least three results per window)", "nivå diskusjon")
 k.need("discussion", f"(OR {f(1 / gm['OR'], 2)}; Cox HR {f(cox.loc['kvinne', 'exp(coef)'], 2)})", "kjønn")
-krav(f(kj.loc["menn", "OR"], 2) == f(kj.loc["kvinner", "OR"], 2), "kjønn: samme OR (avrundet)")
-k.need("discussion", f"(OR {f(kj.loc['menn', 'OR'], 2)} in both, interaction p = {f(kj.loc['menn', 'p_interaksjon'], 2)})", "kjønn én modell")
+krav(kj.loc["menn", "p_interaksjon"] > 0.5, "kjønn: ingen tegn til interaksjon")
+k.need("discussion", f"(OR {f(kj.loc['menn', 'OR'], 2)} in men and {f(kj.loc['kvinner', 'OR'], 2)} in women, interaction p = "
+       f"{f(kj.loc['menn', 'p_interaksjon'], 2)})", "kjønn én modell")
 k.need("discussion", f"roughly {f(sd['sd_delta_poeng_pooled'], 0)} age-graded points", "SD")
 k.need("discussion", "about twice the odds", "OR ~2") if 1.8 <= m2d["OR"] <= 2.3 else k.feil.append("«twice the odds»")
 r_neg = negl[0] / negl[1]

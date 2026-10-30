@@ -12,7 +12,8 @@ dir.create("audit/r_out", showWarnings = FALSE)
 z975 <- qnorm(.975)
 
 # Importkopier (audit 30.10.2026): brettraden i lengde/tresteg fjernes når en OK-rad under
-# sonekoden har samme utøver, dato, resultat og vind; deretter eksakte dubletter (utøver,
+# sonekoden har samme utøver, resultat og vind på samme dato (sonetvilling) eller 1-6 dager
+# senere (flerdagsstevner: kopien fikk stevnets startdato); deretter eksakte dubletter (utøver,
 # dato, øvelse, resultat, vind, runde) blant OK-radene, lavest id beholdes (C-sortering).
 fjern_kopier <- function(r) {
   r <- copy(r)
@@ -23,11 +24,16 @@ fjern_kopier <- function(r) {
                      brett = fifelse(event_code == "lengde_sone_05m", "lengde", "tresteg"))])
   brett <- r[status == "OK" & event_code %chin% c("lengde", "tresteg")]
   tv <- brett[sone, on = .(athlete_id, date, performance_value, vk, event_code = brett), nomatch = 0L, rad]
-  kand <- r[status == "OK" & !(rad %in% tv)]
+  fd <- brett[!(rad %in% tv) & !is.na(performance_value)][
+    sone[!is.na(performance_value)], on = .(athlete_id, performance_value, vk, event_code = brett),
+    nomatch = 0L, allow.cartesian = TRUE, .(rad, dager = as.integer(as.IDate(i.date) - as.IDate(x.date)))][
+    dager >= 1 & dager <= 6, unique(rad)]
+  kand <- r[status == "OK" & !(rad %in% c(tv, fd))]
   setorderv(kand, "id")
   du <- kand[duplicated(kand, by = c("athlete_id", "date", "event_code", "performance_value", "vk", "rk")), rad]
-  cat(sprintf("fjern_kopier: %d sonetvillinger, %d eksakte dubletter\n", length(unique(tv)), length(du)))
-  r[!(rad %in% c(tv, du))][, c("vk", "rk", "rad") := NULL][]
+  cat(sprintf("fjern_kopier: %d sonetvillinger, %d flerdagskopier, %d eksakte dubletter\n",
+              length(unique(tv)), length(fd), length(du)))
+  r[!(rad %in% c(tv, fd, du))][, c("vk", "rk", "rad") := NULL][]
 }
 
 utv <- fread("data_private/utovere.csv"); setnames(utv, "id", "athlete_id")
@@ -59,9 +65,13 @@ sc <- fread("audit/tyrving_scored.csv")
 sc <- sc[athlete_id %chin% base$athlete_id & id %chin% r$id]
 ev <- fread("data_private/events.csv")
 vindov <- ev[tolower(as.character(wind_measured)) == "true", code]
-sc[, vind_ulovlig := tolower(as.character(is_wind_legal)) == "false"]
-sc[is.na(vind_ulovlig), vind_ulovlig := FALSE]
-sc[, vindgyldig := !(event_code %chin% vindov & vind_ulovlig)]
+# vindlovlig = ikke vindøvelse, innendørs, eller registrert lovlig vind (manglende måling ute: nei)
+inne_id <- merge(r[, .(id, meet_id)], fread("data_private/meets.csv")[, .(meet_id = id, indoor)],
+                 by = "meet_id")[tolower(as.character(indoor)) == "true", id]
+sc <- merge(sc, r[, .(id, vind_r = wind)], by = "id", all.x = TRUE)
+sc[, vindgyldig := !(event_code %chin% vindov) | id %chin% inne_id |
+     tolower(as.character(is_wind_legal)) %in% "true" |
+     (is.na(is_wind_legal) & !is.na(vind_r) & vind_r <= 2)]
 sc <- merge(sc, base[, .(athlete_id, hovedgruppe)], by = "athlete_id")
 
 mean3 <- function(x) if (!length(x)) NA_real_ else mean(sort(x, decreasing = TRUE)[seq_len(min(3, length(x)))])
@@ -148,7 +158,8 @@ prim[, bk := factor(birth_year)]
 fwrite(data.table(landmark = length(landmark),
                   landmark_med_kjonn = nrow(base),
                   uten_fodselsdato = sum(is.na(base$kvartal)),
-                  uten_skaarbar = sum(!base$skaarbar),
+                  landmark_1998_2005 = sum(base$kohort_primar),
+                  uten_skaarbar = sum(base$kohort_primar & !base$skaarbar),
                   ekskl_smaacelle = sum(base$kohort_primar & base$skaarbar & base$liten),
                   n_prim_for_dropna = sum(prim_m),
                   n_prim_modeller = nrow(prim),
@@ -338,6 +349,7 @@ pl <- merge(copy(prim), ll[, .(athlete_id, delta_lik)], by = "athlete_id", all.x
 std_prim(pl, "delta_lik")
 ut$r2_lik <- eksp_or(pl, "delta_lik_z", "r2_like_mange")
 ut$r2_k3 <- eksp_or(prim[k13 >= 3 & k15 >= 3], "delta_z", "r2_k_minst_3")
+ut$r2_a17 <- eksp_or(prim[siste_alder >= 17], "delta_z", "r2_aktiv_etter_16")
 ms <- glm(senior ~ gender + bk + log_klubb_f + niva_w1_z + delta_z + bs(k13, df = 4) + bs(k15, df = 4)
           + bs(vol1314_g, df = 4) + bs(vol1516_g, df = 4), binomial, prim)
 ut$r2_spl <- or_rader(ms, "r2_splines", nrow(prim), sum(prim$senior))[variabel == "delta_z"]
@@ -458,9 +470,9 @@ fwrite(pl[, .(athlete_id, k13, k15, delta_lik)], "data_private/r_delta_lik_rader
 fwrite(rbindlist(ut, fill = TRUE), "audit/r_out/logit.csv")
 
 # Cox landmark fra 17
-cx <- copy(prim)
+cx <- copy(prim)[siste_alder >= 17]   # landmark: bare de som er under risiko etter 16-årssesongen
 cx[, aktiv_naa := (birth_year + siste_alder) >= 2025]
-cx[, tid := pmax(siste_alder - 16, 0.1)]
+cx[, tid := siste_alder - 16]
 cx[, hendelse := as.integer(!aktiv_naa)]
 cx[, kvinne := as.numeric(gender == "F")]
 cm <- coxph(Surv(tid, hendelse) ~ delta_z + niva_w1_z + vol1314_g + vol1516_g + k13 + k15 + kvinne,

@@ -26,3 +26,4 @@ En tekstendring som endrer en setning tallkontrollen ankrer på, krever også en
 | Dato | Fil | Grunn | Virkning |
 |---|---|---|---|
 | 30.10.2026 | — | Frysing etter audit og omskriving | — |
+| 30.10.2026 | `audit/kontroll_tall.py` | Siste smale gjennomgang: ordlyd rettet der den var usann eller sa mer enn tallene (B2–B7, C2–C4, C7), og ankrene følger den nye ordlyden. Nye kontrollpåstander: Q4 under 25 % ved hver debutalder, 2008-kullet mistet nesten halvparten av 12-årsdebutene, det relative gapet øker fra k = 1 til k = 5, nedgangen ved lik karrierelengde stanser etter 14, og U-formen i rå konvertering for begge kjønn. Lifelines er tatt ut av programvarelisten (ingen overlevelsesmodell rapporteres). | Ingen tall endres |

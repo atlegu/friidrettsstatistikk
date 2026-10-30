@@ -102,3 +102,25 @@ Atle godtok punkt 1–5, 20 og 21 i `../AUDIT_2026-10-30_endringsrapport.md`. Sv
 `RUN_ALL.sh` (`set -eo pipefail`, hashkontroll mot FREEZE-filene, `SOURCE_DATE_EPOCH`) kjører 01, 02, 03, 05, 07, 07b, 10, 08 og 09, full LaTeX-syklus med kontroll av udefinerte referanser og «??», deretter uavhengig R, sammenligning og tallkontroll. 04 og 06 er erstattet av 08/09 og kjøres ikke. Avledede filer (analyseklar.csv, flyt.json, missing.csv) har nye hasher etter D1/D3; råuttrekket er uendret og fryst.
 
 **Determinisme (30.10.2026):** To kjøringer ga like hasher på alle Python-utdata (tabeller, figurer, PDF, avledede data). Bare R-filen `stevne_fe_alder.csv` skilte seg, med 1e-13 i KI-ene. Fixest kjører nå med én tråd, men toveis FE (utøversesong + stevne) ga fortsatt maskinpresisjonsstøy (1,8e-16) mellom R-prosesser med samme radrekkefølge. Den filen avrundes derfor til 10 gjeldende siffer før skriving. Nå er alle R-utdata like mellom kjøringer.
+
+## Fase 8 (30.10.2026) — siste smale gjennomgang
+
+En uavhengig agent gikk gjennom definisjoner, noter og påstander (`final_review_A6.md` i øktens kladdemappe). Hvert funn er verifisert med egen kode; kodeendringene står i `FREEZE.md`.
+
+- **Rettet i koden:**
+  - sonekopier fra flerdagsstevner (8 907, `rens_felles.py`);
+  - sonehopp under brettkoden i 2026 (1 597 rader ved 11–13 år tatt ut);
+  - 2025-listene (nå bare lovlige merker, åpen seniorklasse og seniorkvinner med);
+  - ±0,2-kontrollen (flyttall);
+  - aksen i figur 5.
+- **Følge:** Brettestimatene ved 12–13 år forsvinner; de var artefakter av feilkodede sonehopp. Lengde går fra 3,15 til 3,16 cm, og sprint er uendret.
+- **Ordlyd rettet:**
+  - dragsamsvaret gjelder 100 m;
+  - kalibreringen av drag-referansen er beskrevet;
+  - avvik fra planen er opplyst;
+  - tresteg er unntaket i periodekontrollen;
+  - eksponeringstid-ordbruken er dempet;
+  - hekkesammenligningen er presisert;
+  - den usanne «senior tables are steeper» er fjernet.
+- **Status:** 140 ankrede sjekker, 0 feil, 0 udekkede tall; R-speilet passerer.
+- **Atles beslutning:** H5-påstandene om at vinduet er størst for de yngste, og poengsetningen i Implications. Se endringsrapportens avsnitt 8.

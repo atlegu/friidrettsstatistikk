@@ -225,7 +225,8 @@ def fig4(base):
     p = base[base["prim"]].copy()
     p["tertil"] = pd.qcut(p["delta_z"], 3, labels=["Lowest progression tertile",
                                                    "Middle tertile", "Highest progression tertile"])
-    p["tid"] = np.maximum(p["siste_alder"] - 16, 0.1)
+    p = p[p["siste_alder"] >= 17].copy()   # under risiko ved landmark (tertiler fra hele primærutvalget)
+    p["tid"] = p["siste_alder"] - 16
     p["hendelse"] = (~p["aktiv_naa"]).astype(int)
     fig, ax = plt.subplots(figsize=(8.2, 5.4))
     farger = [ROD, GRAA, GRONN]

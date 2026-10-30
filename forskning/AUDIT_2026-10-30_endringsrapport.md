@@ -170,14 +170,70 @@ Hvert punkt er verifisert med min egen kode. Under «Forslag» står det jeg vil
 - De 37 grove avvikene på 100 m mot kilden (sannsynligvis 200 m-tider med feil øvelseskode).
 - Din gjennomlesing av den endelige teksten.
 
-## 6. Status for revisjonsfasene
+## 6. Status for revisjonsfasene (oppdatert 30.10.2026, kveld)
 
 | Fase | Status |
 |---|---|
-| 0–4: inventar, dataregler, uavhengig R, tallsporing | Ferdig. R reproduserer de rettede analysene (A6: alle sammenligninger, A1: rad for rad og alle OR-er). |
-| 5: `RUN_ALL.sh` | Skrevet for alle tre. Tallkontrollen feiler til teksten er oppdatert: A6 43 av 142, A1 98 av 133. A3 består alle 112. |
-| 6: endringsrapport | Dette dokumentet. |
-| 7: uavhengige agenter (data, statistikk, filer) | Ferdig. Alle funn er verifisert med egen kode. |
-| 8: frysing (`FREEZE.md`, hashfiler) og siste smale gjennomgang | Etter at teksten er skrevet om etter dine beslutninger. |
+| 0–4: inventar, dataregler, uavhengig R, tallsporing | Ferdig. R reproduserer alle analysene, også de nye. |
+| 5: `RUN_ALL.sh` | Grønn for alle tre, deterministisk. Tallkontroll: A1 143, A3 102, A6 140 ankrede sjekker, 0 feil, 0 udekkede tall. |
+| 6: endringsrapport og omskriving | Du godtok alle forslagene; teksten er skrevet om. Svarbrevene oppdateres ikke. |
+| 7: uavhengige agenter | Ferdig. |
+| 8: frysing og siste smale gjennomgang | Fryst (`FREEZE.md` og hashfiler i hver mappe, kontrollert først i `RUN_ALL.sh`). Gjennomgangen er gjort; rettingene står i avsnitt 7, og avsnitt 8 lister det du må avgjøre. |
 
-Koden for alternativene: `vind/11_audit_alternativer.py`, `stagnasjon-exit/08_audit_alternativer.py` og `debutalder/07_audit_alternativer.py`. Utdataene ligger i `tables/audit/` i hver artikkel.
+Alternativskriptene er nå en del av kjedene: `stagnasjon-exit/06b_revisjon_r2.py`, `debutalder/05b_revisjon_r2.py` og `vind/07b_revisjon_r2.py` (og 07). Utdataene ligger som `r2_*.csv` i `tables/modeller/` (A1, A3) og `tables/estimering/` (A6).
+
+## 7. Siste smale gjennomgang (fase 8): funnet og rettet
+
+Tre uavhengige agenter gikk gjennom definisjoner, tabell- og figurnoter og påstander. Jeg verifiserte hvert funn med egen kode før retting. Alle kodeendringer står i `FREEZE.md` i hver mappe.
+
+**Datafeil (rettet i koden, speilet i R):**
+- **Sonekopier fra flerdagsstevner (A1, A6).** Ryddeøkten i `scraper/` fant 8 846 brettkopier av sonehopp der brettraden har stevnets startdato og sonehoppet ligger 1–6 dager senere. Samme-dato-regelen fanget dem ikke. `rens_felles.py` fjerner dem nå: 5 780 i A1 og 8 907 i A6. En placebovariant med sonen før brettraden ga 1 og 6 treff, så regelen er presis.
+- **Sonehopp under brettkoden i 2026 (A6).** Fra februar 2026 la importen sonehopp under brettkoden. Det er feil kode, ikke kopier. 1 597 brettkodede hopp ved 11–13 år i 2026 er tatt ut.
+
+**Følger:**
+- A6: Brettestimatene for lengde og tresteg ved 12–13 år forsvinner, fordi gruppene faller under minstekravet. De besto stort sett av feilkodede sonehopp, så 3,46/2,63 cm var artefakter. Sonehoppene for 10–13 år og alle sprinttall er uendret. Lengde går fra 3,15 til 3,16 cm, og utvalget fra 401 240 til 392 797.
+- A1: Primærutvalget går fra 3 856 (652) til 3 877 (654), og H1 fra OR 2,20 til 2,24 (1,90–2,63).
+
+**Gjennomføringsfeil:**
+- **A6, listene.** 2025-listene tok med medvind over +2,0, «senior» var 20–34 år, og seniorkvinnene falt stille ut. Med lovlige merker og åpen seniorklasse gir still-luft-korreksjonen 1 ny på topp 10 for jenter 14, 1 for seniormenn, 2 for seniorkvinner og 0 for gutter 14 (før: 2/2/–/0). Andelen av topp 50 med medvind over +1 er 66 % for menn og 56 % for kvinner (før: 86 % for menn).
+- **A6, ±0,2-kontrollen.** På grunn av flyttall tok den ut 1,8–2,1 og beholdt +2,2.
+- **A1, «wind-legal».** Merker uten vindmåling ble regnet som lovlige. Med riktig regel (innendørs er lovlig, ute kreves registrert lovlig vind) blir OR 2,17.
+- **A1, landmark-Cox og KM-figuren.** Frafallere som sluttet ved 15–16 år kom inn som hendelser ved t = 0,1. Nå er bare de 2 001 som konkurrerte etter fylte 16 med: progresjon HR 0,84 (0,79–0,90), kvinner HR 1,29.
+- **A1, S1.** Flyten summerte ikke, fordi to eksklusjoner var talt over ulike kull. Begge telles nå blant kull 1998–2005: 578 uten skårbare poeng og 20 i små celler.
+
+**Fra R-speilingen (A1):**
+- «Like mange resultater» regnes nå eksakt. Trekkstøyen ga 24,2 mot 25,5 % i Python og R.
+- Øvelsesjusteringen er identifisert innen hvert redskapssett, fordi guttekastene skifter redskap ved 16 år.
+
+**Ny robusthetsanalyse (A1).** 58 % av frafallerne har siste sesong inne i 15–16-vinduet. Blant de 2 001 som konkurrerte etter fylte 16, er H1 OR 1,83 (1,55–2,17): mindre, men klar.
+
+**Mediering (A1).** Den betingede a-stien er nå +0,026 (0,001–0,052), så KI utelukker null. «Weak» begrunnes nå med størrelse: den implisitte indirekte effekten er om lag OR 1,02 per kvartal, og høyst 1,06 med ujustert a-sti.
+
+**Ordlyd rettet uten at konklusjoner endres:**
+- Avvik fra planen og analyser lagt til etter estimeringen er opplyst (alle tre).
+- Det som ble sagt å gjelde «hver»/«samme»/«equally», er presisert til det tallene viser.
+- Feil faktasetninger er rettet, for eksempel «cancelled 2020 season», «Q1 overrepresented at every debut age» og «straight sprints».
+- Drag-referansens kalibrering er beskrevet.
+- Tresteg er unntaket i periodekontrollen (+14–24 %).
+
+## 8. Det du må avgjøre
+
+Dette endrer en hovedpåstand, så jeg har ikke skrevet det inn. Tallene er verifisert og forslagene klare.
+
+1. **A3, debut-16-armen.**
+   - **Funnet:** Alle 107 debut-16-utøvere i kull 2004–05 debuterte i koronaårene og konverterte 10,3 %, mot 5,4 % for de andre debut-16-utøverne. Uten debuter i 2020–21 er OR 1,32 (0,79–2,19), og med koronaflagg 1,38 (0,86–2,19). Kohorthalvdelene er 1,35 mot 3,08.
+   - **Det som står:** U-formens venstre arm (debut 10 mot 11–14; LR 30,5, p = 1,2e-5 uten koronadebuter) og 17–19-armen.
+   - **Forslag:** Ta «highest for debut at 16 (6.6 %; OR 1.73)» ut av sammendraget, rapporter estimatet uten koronadebuter, nevn forskjøvet debut i koronaårene som forklaring, og presiser «replication across cohort halves» og «observed 6.6 %».
+2. **A6, H5 «størst for de yngste».**
+   - **Funnet:** For gutter er vinduet flatt i sekunder (100 m: 0,165 / 0,146 / 0,139 / 0,158 / 0,146 s). Som andel av løpstid er det ikke størst for de yngste. Bare jentene har et fall, og KI-ene overlapper.
+   - **Forslag:** Skriv om sammendragets to siste setninger, avsnittet om H5, Implications og Conclusion til «omtrent likt i sekunder for gutter, større for de yngste jentene». Fjern «largest share of race time», «exactly where raw marks are most used to rank and select» og den udokumenterte setningen om hvem regelen ble kalibrert på.
+3. **A6, Tyrving-poengene.** «Similar points … so the inequity is specific to raw-seconds comparisons» stemmer ikke. Poengene speiler sekundene (22–29 mot 17–25). Forslag: fjern denne delen av Implications-konklusjonen (den falske «because the senior tables are steeper» er alt fjernet).
+4. **A1, tittel og hovedsetning.** «Stagnation before exit» / «Stagnation precedes exit» holder delvis: sammenhengen gjelder også blant dem som er aktive etter 16, men prestasjonen holder seg til siste sesong hos de utholdende frafallerne. Forslag: behold tittelen, men skriv sammendragets konklusjon som «Low progression accompanies and precedes exit». Alternativt en nøytral tittel.
+5. **A1, switcher-analysen.** Den følger planen, men justerer for nivå og antall fra en annen øvelsesgruppe enn fremgangen for 32 % av utvalget. Konsistent spesifikasjon ga om lag 2,24 før datarettingen. Velg mellom planens versjon med en merknad og den konsistente.
+6. **A1, interesseerklæringen.** «Non-commercial statistics platform». Hvis Athlete Mindset AS-tilbudet til NFIF gjelder deg, bør det trolig oppgis.
+
+**Formkrav (uendret siden filgjennomgangen):**
+- Sammendragene er for lange: A1 530 ord mot 350 (og «Methods» er ikke en tillatt overskrift), A3 301 mot 250, A6 404 mot 200.
+- A6 har 7 nøkkelord mot høyst 6, og JSS krever et avsnitt om «Sample size estimation and justification».
+- Figurfilene har feil nummer i navnet (A1: fig2/fig3, A3: fig3/fig4) og bør døpes om før opplasting.
+- A3 må levere supplementet som egne filer for å holde seg innenfor 8 visningselementer.

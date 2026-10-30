@@ -342,7 +342,8 @@ def main():
     ]]
     rob2 = []
     for kode in koder:
-        g = d[(d["event_code"] == kode) & ((d["wind"] - 2.0).abs() > 0.2)]
+        # avstand i tideler: (vind - 2,0).abs() > 0,2 beholdt +2,2 og tok ut +1,8 (flyttall)
+        g = d[(d["event_code"] == kode) & ((d["wind"] * 10).round() - 20).abs().gt(2)]
         r = m03.estimer(g, "y", cluster="meet_id")
         if r:
             rob2.append(rad_av(r, kode, "uten_vindu_rundt_2.0"))
@@ -396,22 +397,23 @@ def main():
     logger.info(f"tyrvingpoeng: {rows}")
 
     # ---- Listeomstokking 2025: 100 m klasse 14 og senior (R3-2) --------------------------
-    # Korreksjon til stille luft med samme stykkevise medvindsfunksjon som i H5:
-    # helningen over 0..+2 opp til +2, og helningen over +2 for resten
-    b_band = {(r["kjonn"], r["aldersband"]): (r["medvind_0_2_s_per_ms"], r["over_2_s_per_ms"])
-              for r in vindu if r["event"] == "100m"}
+    # Som de nasjonale årslistene: bare lovlige merker (vind <= +2,0), og senior er åpen klasse
+    # (alle aldre i filen). Hver rad korrigeres til stille luft med medvindshelningen over
+    # 0..+2 for egen kjønns- og aldersgruppe (H5). Audit 30.10.2026: listene tok med medvind
+    # over +2,0, senior var 20-34 år, og lister med under 60 utøvere falt stille ut.
+    b02 = {(r["kjonn"], r["aldersband"]): r["medvind_0_2_s_per_ms"] for r in vindu if r["event"] == "100m"}
     oms = []
     for kj in ["M", "F"]:
-        for navn, lo, hi, band in [("klasse 14", 14, 14, "14-15"), ("senior", 20, 34, "20-34")]:
-            if (kj, band) not in b_band:
-                continue
+        for navn, lo, hi in [("klasse 14", 14, 14), ("senior", 10, 34)]:
             g = d[(d["event_code"] == "100m") & (d["gender"] == kj) & (d["aar"] == 2025)
-                  & d["alder"].between(lo, hi)].copy()
-            if g["athlete_id"].nunique() < 60:
+                  & d["alder"].between(lo, hi) & (d["wind"] <= 2.0)].copy()
+            helning = g["aldersband"].map(lambda b: b02.get((kj, b), np.nan))
+            uten = int(helning.isna().sum())
+            g, helning = g[helning.notna()], helning[helning.notna()]
+            if g["athlete_id"].nunique() < 50:
+                logger.info(f"liste {kj} {navn}: bare {g['athlete_id'].nunique()} utøvere, hoppes over")
                 continue
-            b02, b2p = b_band[(kj, band)]
-            w = g["wind"].clip(lower=0)
-            g["y_korr"] = g["y"] + b02 * w.clip(upper=2) + b2p * (w - 2).clip(lower=0)
+            g["y_korr"] = g["y"] + helning * g["wind"].clip(lower=0)
             topp = (g.sort_values("y").drop_duplicates("athlete_id")
                     .nsmallest(50, "y").reset_index(drop=True))
             topp2 = (g.sort_values("y_korr").drop_duplicates("athlete_id")
@@ -419,7 +421,7 @@ def main():
             f10 = list(topp["athlete_id"].head(10))
             e10 = list(topp2["athlete_id"].head(10))
             oms.append({"kjonn": kj, "liste": navn,
-                        "n_utovere": int(g["athlete_id"].nunique()),
+                        "n_utovere": int(g["athlete_id"].nunique()), "rader_uten_helning": uten,
                         "plassendringer_topp10": sum(a != b for a, b in zip(f10, e10)),
                         "nye_i_topp10": len(set(e10) - set(f10)),
                         "nye_i_topp50": len(set(topp2["athlete_id"]) - set(topp["athlete_id"])),
