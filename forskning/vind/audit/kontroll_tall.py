@@ -781,10 +781,10 @@ for s in ["Measurement in Physical Education and Exercise Science", "Section: Ex
     krav(s in k.raa, f"manus har «{s}»")
 for s in ["The author ", "The author's", "takes full responsibility"]:
     krav(s not in k.raa, f"erklæringene står i flertall («{s}» finnes ikke)")
-# Taylor & Francis' KI-erklæring: verktøy og versjon, bruksvilkår, ansvar inkludert referansene
+# KI-erklæringen er Atles egen tekst (31.10.2026): verktøy og versjon, og forfatternes fulle ansvar
 ki = k.raa.split("\\textbf{Declaration of generative AI use.}", 1)[1].split("\\textbf{", 1)[0]
-for s in ["Claude Opus 5.5", "terms of use", "originality and accuracy", "accuracy of the references"]:
-    krav(s in ki, f"KI-erklæringen har «{s}» (T&F-policy)")
+for s in ["Anthropic Claude (Opus 5.5)", "take full responsibility"]:
+    krav(s in ki, f"KI-erklæringen har «{s}»")
 # rekkefølgen MPEES krever: tittelside, sammendrag, tekst, erklæringer, referanser, tabeller, figurer, figurtekster
 rekke = ["\\section*{Abstract}", "\\section{Introduction}", "\\section*{Declarations}", "\\bibliography{references}",
          "\\label{tab:sample}", "\\includegraphics", "\\section*{Figure captions}"]
@@ -834,7 +834,7 @@ UNNTAK = [
     r"200 m times filed as 100 m", r"exactly ±1 m/s", r"20--34 \(", r"1\.4826 ×",
     r"version 1\.2", r"\b(19|20)\d\d--(19|20)\d\d\b",
     r"\\hyphenpenalty=10000",   # tittelsats uten orddeling (30.10.2026), ikke et tall i teksten
-    r"Opus 5\.5, Fable 5 and 5\.1, and Haiku 5\.5",   # modellversjonene i KI-erklæringen (MPEES, 31.10.2026)
+    r"Opus 5\.5",   # modellversjonen i KI-erklæringen (Atles tekst, 31.10.2026)
 ]
 k.need("tables and figures", f"Dashes: fewer than {m03.MIN_N} results in {m03.MIN_CELLER} athlete-seasons", "tabellnote 3")
 ks.need("*", f"Codes with fewer than {m03.MIN_N} results for one sex", "tabellnote 5")

@@ -281,5 +281,5 @@ Filgjennomgangen (fase 7) fant også disse formkravene, men de kom ikke med i li
   - **Delavsnittet om utvalgsstørrelse** følger redaksjonens sjekkliste (Abt mfl. 2025). Det har en følsomhetsanalyse med alle inndata: minste påvisbare effekt med tosidig Wald-test, α = 0,05 og styrke 0,80. Minste effekt av interesse er én registreringsenhet over +2,0-vinduet, altså 0,005 s og 0,5 cm per m/s.
   - **Følgebrevet** er et utkast. Det sier at begge forfatterne har godkjent innsendingen, så det kan bare sendes etter at Simen har godkjent den endelige versjonen.
 - **A6, mål byttet fra JSS til MPEES 31.10.2026** (Atles beslutning; han har to artikler inne hos JSS). Pakken ligger i `vind/MPEES_opplasting/`, og JSS-pakken ligger i commit 3b8911e. Detaljene står i `vind/DATA_AUDIT.md`. To punkter venter på deg:
-  - **KI-erklæringen.** Taylor & Francis tillater ikke at generativ KI lager førsteutkast til manus eller deler av det. Erklæringen sier sannferdig «draft and edit text». Dette gjelder alle T&F-tidsskrifter, også JSS.
+  - **KI-erklæringen: AVGJORT 31.10.2026.** Atle valgte sin egen tekst (språk og lesbarhet, struktur, kontroll av analysekode og feilsøking; Claude Opus 5.5).
   - **IRB-setningen MPEES ber om.** A6 trengte ikke godkjenning etter norsk lov, og det står i Methods og i følgebrevet.

@@ -6,7 +6,7 @@ Kravene er hentet fra MPEES' forfatterveiledning og tidsskriftets side om omfang
 
 ## Før du sender
 
-1. **KI-erklæringen må avklares.** Taylor & Francis tillater ikke at generativ KI lager førsteutkast til et manus eller deler av det; språkvask og hjelp med kode er tillatt. Erklæringen i manus sier, sannferdig, at Claude er brukt til å «draft and edit text». Den inneholder også det T&F krever: verktøy og versjon, at forfatterne har sjekket bruksvilkårene, og at de tar fullt ansvar, også for referansene. Du må bestemme om A6 kan sendes til et T&F-tidsskrift med denne erklæringen. Regelen gjelder både MPEES og JSS.
+1. **KI-erklæringen** er Atles egen tekst (31.10.2026): «Anthropic Claude (Opus 5.5) was used … to improve language and readability, assist with structuring the text, check analysis code and identify errors …». Taylor & Francis ber også om en bekreftelse på at bruksvilkårene er sjekket. Den står ikke i teksten.
 2. **Simen** må godkjenne den endelige versjonen. Følgebrevet sier at begge forfatterne har godkjent innsendingen. Bidragssetningen er tatt ut av manus. Rollene føres i stedet inn i portalen (se under).
 3. **Les gjennom** manus og supplement. Disse delene er nye:
    - sammendraget (150 ord);
@@ -45,7 +45,7 @@ MPEES vil ha figurene som egne filer. Filene følger trykkrekkefølgen og har 30
   - SG: Data curation (TFRRS-profilene), Resources, Writing – review & editing.
 - **Funding:** ingen.
 - **Disclosure statement:** som i manus.
-- **Generative AI:** som erklæringen i manus; se punkt 1.
+- **Generative AI:** som erklæringen i manus.
 - **«Is there a data set associated with the paper?»** Nei. Analysedatasettet kan ikke deles (GDPR), og koden deponeres ved aksept. Se Data availability i manus.
 - **Farger i trykt utgave:** nei. Farger på nett er gratis, mens farger på trykk koster £300 per figur.
 - **Open access (Open Select):** valgfritt, mot publiseringsavgift. Sjekk om NMBUs avtale med Taylor & Francis dekker den. Uten open access er publisering gratis.
@@ -58,5 +58,5 @@ MPEES vil ha figurene som egne filer. Filene følger trykkrekkefølgen og har 30
   - Manus har høyst 30 sider, og tittelsiden med forfatterne er side 1.
   - Elementene står i MPEES-rekkefølgen.
   - Det er ingen britiske stavemåter i manus, supplement eller følgebrev.
-  - KI-erklæringen har de delene T&F krever.
+  - KI-erklæringen oppgir verktøy og versjon.
 - **Filene:** `MANIFEST.sha256` har hashen til hver opplastingsfil. Sjekk med `shasum -a 256 -c MANIFEST.sha256` i denne mappen.
