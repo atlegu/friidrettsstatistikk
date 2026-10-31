@@ -25,38 +25,50 @@ $PY 07_revisjon_r1.py
 $PY 07b_revisjon_r2.py
 $PY 10_eiv_kalibrering.py
 $PY 11_eliteende.py
+$PY 12_utvalgsstorrelse.py
 $PY 08_r1_figurer_tabeller.py
 $PY 09_r1_supptex.py
 
-echo "== 2. Manus (full LaTeX-syklus)"
+echo "== 2. Manus, supplement, tittelside og følgebrev (full LaTeX-syklus)"
 (
   cd manus
-  rm -f main.aux main.bbl main.blg
+  rm -f main.aux main.bbl main.blg supplement.aux
+  # manus og supplement (egen fil, JSS) viser til hverandre med xr-hyper: supplementet først, så
+  # manus med bibtex, så supplementet på nytt når main.aux finnes
+  pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
   bibtex main > /dev/null || [ $? -eq 1 ]
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
-  # egen tittelside (JSS er dobbeltanonym; manus har ingen forfatteropplysninger)
+  pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
+  pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
+  # egen tittelside (JSS er dobbeltanonym; manus har ingen forfatteropplysninger) og følgebrev
   pdflatex -interaction=nonstopmode -halt-on-error title_page.tex > /dev/null
+  pdflatex -interaction=nonstopmode -halt-on-error cover_letter.tex > /dev/null
 )
-if grep -Eq "Reference .* undefined|Citation .* undefined" manus/main.log; then
-  echo "FEIL: udefinerte referanser"; exit 1
-fi
-if pdftotext manus/main.pdf - | grep -q '??'; then
-  echo "FEIL: ?? i PDF"; exit 1
-fi
-# anonymitet: ingen forfatteropplysninger i manus-PDF-en eller metadataene (selvsitering i
-# tredje person, «Guttormsen (2026)», er tillatt)
-if pdftotext manus/main.pdf - | grep -Eq "Atle|Simen|NMBU|ORCID|nmbu\.no|\bAGG\b|\bSG\b|Ås|author's initiative|from the author"; then
-  echo "FEIL: identifiserende tekst i det anonymiserte manuset"; exit 1
-fi
-if pdfinfo manus/main.pdf | grep -Eq "^Author: +[^ ]"; then
-  echo "FEIL: forfatter i PDF-metadataene"; exit 1
-fi
+for f in main supplement; do
+  if grep -Eq "Reference .* undefined|Citation .* undefined|There were undefined references" manus/$f.log; then
+    echo "FEIL: udefinerte referanser i $f"; exit 1
+  fi
+  if pdftotext manus/$f.pdf - | grep -q '??'; then
+    echo "FEIL: ?? i $f.pdf"; exit 1
+  fi
+  # anonymitet: ingen forfatteropplysninger i PDF-ene eller metadataene (selvsitering i tredje
+  # person, «Guttormsen (2026)», er tillatt)
+  if pdftotext manus/$f.pdf - | grep -Eq "Atle|Simen|NMBU|ORCID|nmbu\.no|\bAGG\b|\bSG\b|Ås|author's initiative|from the author"; then
+    echo "FEIL: identifiserende tekst i $f.pdf"; exit 1
+  fi
+  if pdfinfo manus/$f.pdf | grep -Eq "^Author: +[^ ]"; then
+    echo "FEIL: forfatter i PDF-metadataene ($f.pdf)"; exit 1
+  fi
+done
 
 echo "== 3. Uavhengig R-implementasjon og tallsporing"
 Rscript audit/uavhengig.R > audit/r_out_logg.txt 2>&1
 $PY audit/sammenlign.py
 $PY audit/kontroll_tall.py
+
+echo "== 4. Opplastingsmappen til JSS (bare fra en kontrollert tilstand)"
+$PY 13_jss_pakke.py
 
 echo "RUN_ALL A6 OK"

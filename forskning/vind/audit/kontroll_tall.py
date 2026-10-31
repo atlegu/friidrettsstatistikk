@@ -90,6 +90,9 @@ def ki_s(r, dd=3, enhet=" s"):
 
 
 k = Kontroll(PROSJ / "manus" / "main.tex", "A6 manus")
+# supplementet er egen fil fra 31.10.2026 (JSS); manus viser til S-tabellene med \ref{S-…}, som
+# normaliseringen fjerner, så ankrene her slutter på «Table )»
+ks = Kontroll(PROSJ / "manus" / "supplement.tex", "A6 supplement")
 FEIL = k.feil
 
 
@@ -204,18 +207,53 @@ krav(all(0.4 <= bredde[e] <= 0.6 for e in ["60m", "100m", "200m"])
      f"KI-bredde utøver/stevne: { {e: round(x, 2) for e, x in bredde.items()} }")
 k.need("methods", "intervals roughly half as wide in the large sprints and somewhat narrower ones elsewhere",
        "klyngebredde")
-# «Sample size estimation and justification» (JSS-krav, lagt til 30.10.2026)
+# «Sample size estimation and justification» (JSS-krav, lagt til 30.10.2026). Følsomhetsanalysen med alle
+# inndata (12_utvalgsstorrelse.py) erstattet KI-halvbreddene 31.10.2026, etter redaksjonens sjekkliste
+# (Abt mfl. 2025): formål, tidspunkt, utfall, test, programvare, inndata, minste effekt av interesse, frafall.
 krav(all(bredde[e] < 1 for e in SPRINT + HOPP), "stevneklynger gir bredere KI enn utøverklynger i alle øvelser")
 k.need("methods", f"estimates are reported only where at least {m03.MIN_N} results in {m03.MIN_CELLER} "
        "athlete-seasons contribute, and standard errors are clustered on meet, which gives wider intervals than the "
        "athlete clustering of the analysis plan", "utvalgsstørrelse: regler")
-hmeet = hov[hov["analyse"] == "hoved_meet"].set_index("event")
-halvb = (hmeet["ki_hoy"] - hmeet["ki_lav"]) / 2
-store = ["60m", "100m", "200m"]
-k.need("methods", f"95% confidence intervals have half-widths of {f(halvb[store].min(), 3)}--"
-       f"{f(halvb[store].max(), 3)} s per m/s in the 60, 100 and 200 m ({f(halvb['80m'], 3)} and "
-       f"{f(halvb['150m'], 3)} in the small 80 and 150 m events) and {f(halvb[HOPP].min(), 1)}--"
-       f"{f(halvb[HOPP].max(), 1)} cm in the four jump events", "utvalgsstørrelse: presisjon")
+md = les("r4_mde.csv")
+mh = md[md["nivaa"] == "hoved"].set_index("event")
+r0 = md.iloc[0]
+k.need("methods", f"at $\\alpha$ = {f(r0['alfa'], 2)} with power {f(r0['styrke'], 2)}, MDE = ({f(r0['z_alfa'], 2)} + "
+       f"{f(r0['z_styrke'], 2)}) × SE", "MDE: inndata")
+krav(abs(mh.loc["100m", "sesoi"] - 0.01 / 2) < 1e-12 and abs(mh.loc["lengde", "sesoi"] - 1 / 2) < 1e-12,
+     "minste effekt av interesse i r4_mde = én registreringsenhet over +2,0 m/s")
+k.need("methods", f"{f(0.01 / 2, 3)} s per m/s in the sprints, which are timed to 0.01 s, and {f(1 / 2, 1)} cm per m/s "
+       "in the jumps, measured to 1 cm", "MDE: minste effekt av interesse")
+under = {e for e in mh.index if mh.loc[e, "mde_under_sesoi"]}
+krav(under == {"60m", "100m", "lengde", "lengde_sone_05m"}, f"MDE under minste effekt av interesse: {sorted(under)}")
+k.need("methods", f"At event level the MDE was {f(mh.loc['60m', 'mde'], 3)} and {f(mh.loc['100m', 'mde'], 3)} s per m/s "
+       f"in the 60 and 100 m and {f(mh.loc['lengde', 'mde'], 1)} and {f(mh.loc['lengde_sone_05m', 'mde'], 1)} cm in the "
+       f"long jump and its zone variant, all below that threshold, against {f(mh.loc['200m', 'mde'], 3)} s in the "
+       f"200 m, {f(mh.loc['80m', 'mde'], 3)} and {f(mh.loc['150m', 'mde'], 3)} s in the small 80 and 150 m events, and "
+       f"{f(mh.loc['tresteg', 'mde'], 1)} and {f(mh.loc['tresteg_sone_05m', 'mde'], 1)} cm in the two triple jumps",
+       "MDE per øvelse")
+ma = md[(md["nivaa"] == "alder") & md["event"].isin(["60m", "100m", "200m"]) & (md["enhet"] == "s")]
+k.need("methods", f"it ranged from {f(ma['mde'].min(), 3)} to {f(ma['mde'].max(), 3)} s per m/s (median "
+       f"{f(ma['mde'].median(), 3)}), largest for the 200 m at 10--11", "MDE aldersbånd")
+topp2 = ma.nlargest(2, "mde")
+krav(set(zip(topp2["event"], topp2["aldersband"])) == {("200m", "10-11")} and set(topp2["kjonn"]) == {"M", "F"},
+     "største MDE: 200 m 10–11 for begge kjønn")
+krav("The 60 m rows at 16--17 and the 200 m rows at 10--11 rest on thin samples" in k.raa,
+     "tabell 6-noten merker 200 m 10–11 som tynt utvalg")
+# samme formel på R-speilets KI (bygget med qnorm(0,975)) gir de samme viste tallene
+rhm = pd.read_csv(R / "hoved.csv").query("analyse == 'hoved'").set_index("event")
+ral = pd.read_csv(R / "alder.csv").query("event in ['60m', '100m', '200m'] and enhet == 's'")
+
+
+def r_mde(t):
+    return (r0["z_alfa"] + r0["z_styrke"]) * (t["ki_hoy"] - t["ki_lav"]) / (2 * r0["z_alfa"])
+
+
+vist_py = [f(mh.loc[e, "mde"], 3 if e in SPRINT else 1) for e in SPRINT + HOPP]
+vist_r = [f(r_mde(rhm.loc[e]), 3 if e in SPRINT else 1) for e in SPRINT + HOPP]
+krav(vist_py == vist_r, f"MDE per øvelse: R gir de samme viste tallene ({vist_r} mot {vist_py})")
+krav(len(ral) == len(ma) and [f(x, 3) for x in (r_mde(ral).min(), r_mde(ral).max(), r_mde(ral).median())]
+     == [f(x, 3) for x in (ma["mde"].min(), ma["mde"].max(), ma["mde"].median())],
+     "MDE i aldersbåndene: R gir samme spenn og median")
 import statsmodels  # noqa: E402
 k.need("methods", f"Python {sys.version.split()[0]} with pandas {pd.__version__}, numpy "
        f"{np.__version__} and statsmodels {statsmodels.__version__}", "versjoner")
@@ -307,7 +345,7 @@ k.need("results", f"cost {f(asy.loc['100m', 'motvind'], 3)} s against a +1 m/s t
 krav(all(asy.loc[e, "motvind"] > asy.loc[e, "medvind"] for e in ["60m", "100m", "200m"]),
      "motvind > medvind i store sprintøvelser")
 k.need("results", f"(200 m: +{f(kv.loc['200m', 'beta_kvad'], 4)} s per (m/s)$^2$, SE "
-       f"{f(kv.loc['200m', 'se_kvad'], 4)}; Table S5)", "kvadratisk")
+       f"{f(kv.loc['200m', 'se_kvad'], 4)}; Table )", "kvadratisk")
 teor = asy.loc[SPRINT, "ratio_teoretisk_v2"]
 k.need("results", f"$(2v+1)/(2v-1) \\approx$ {f(teor.min(), 2)}--{f(teor.max(), 2)} describes a wind of exactly",
        "±1-forholdet")
@@ -372,7 +410,7 @@ fall = {s: g100[0][s] - g100[1][s] for s in ["motvind_s_per_ms", "medvind_s_per_
 krav(fall["motvind_s_per_ms"] > 3 * max(fall["medvind_s_per_ms"], fall["medvind_0_2_s_per_ms"]),
      f"gutter 100 m: aldersfallet ligger i motvindshelningen ({ {s: round(x, 4) for s, x in fall.items()} })")
 k.need("results", "On the boys' 100 m the age decline of the linear slope (Section 3.3) lies mainly in the headwind "
-       "slope (Table S3)", "H5 motvind (krav over)")
+       "slope (Table )", "H5 motvind (krav over)")
 jente_v = {e: vf[(vf["event"] == e) & (vf["kjonn"] == "F")].set_index("aldersband").sort_index()
            for e in ["100m", "200m"]}
 for e, g in jente_v.items():
@@ -445,7 +483,7 @@ for (e, kj), g in fe_a.groupby(["event", "kjonn"]):
     ok_fe.append(g["stevne_fe_s"].iloc[0] > g["stevne_fe_s"].iloc[-1])
 krav(all(ok_fe), "stevne-FE: yngste godt målte bånd over 20–34 (eller eldste) i hver serie")
 k.need("results", f"(men's 100 m: {f(fa.loc[('100m', 'M', '12-13'), 'stevne_fe_s'], 3)} s per m/s at 12--13 to "
-       f"{f(fa.loc[('100m', 'M', '20-34'), 'stevne_fe_s'], 3)} at 20--34; Table S6)", "stevne-FE alder")
+       f"{f(fa.loc[('100m', 'M', '20-34'), 'stevne_fe_s'], 3)} at 20--34; Table )", "stevne-FE alder")
 varianter = ["celler_min3", "uten_vind_0", "periode_2011_2019", "periode_2021_2026"]
 endr = {(e, vv): rob.loc[e, vv] / rob.loc[e, "primaer"] - 1 for e in ["60m", "100m", "200m"]
         for vv in varianter if not pd.isna(rob.loc[e].get(vv))}
@@ -513,12 +551,12 @@ k.need("conclusion", f"a +2.0 m/s tailwind is worth {vindu12} --- roughly the sa
        "more for girls than for senior women --- enough to reorder season lists at youth and senior ages alike",
        "konklusjon H5 (krav i H5-blokken)")
 
-# ================================================================ SUPPLEMENT-NOTER
-k.need("supplementary material", f"$1.8 \\times {f(v('100m', 'F', '12-13')['medvind_0_2_s_per_ms'], 3)} = "
-       f"{f(1.8 * v('100m', 'F', '12-13')['medvind_0_2_s_per_ms'], 2)}$", "regneeksempel")
-k.need("supplementary material", f"Straight flat sprints cluster at {f(min(rett), 4)}--{f(max(rett), 4)}",
-       "S4-note")
-k.need("supplementary material", f"e.g. {f(kv.loc['lengde', 'beta_lin'], 4)} m = {f(100 * kv.loc['lengde', 'beta_lin'], 2)} cm", "S5-tekst")
+# ================================================================ SUPPLEMENT-NOTER (egen fil fra 31.10.2026)
+ks.need("*", f"$1.8 \\times {f(v('100m', 'F', '12-13')['medvind_0_2_s_per_ms'], 3)} = "
+        f"{f(1.8 * v('100m', 'F', '12-13')['medvind_0_2_s_per_ms'], 2)}$", "regneeksempel (korreksjonstabellen)")
+ks.need("*", f"Straight flat sprints cluster at {f(min(rett), 4)}--{f(max(rett), 4)}", "note til per sekund-tabellen")
+ks.need("*", f"e.g. {f(kv.loc['lengde', 'beta_lin'], 4)} m = {f(100 * kv.loc['lengde', 'beta_lin'], 2)} cm",
+        "tekst i den kvadratiske tabellen")
 krav(rob.loc["150m"][["celler_min3", "periode_2011_2019", "periode_2021_2026"]].isna().all(),
      "S2-note: 150 m mangler celler≥3 og periodekolonner")
 krav(fa.loc[("200m", "M", "10-11"), "stevne_fe_se"] > 0.03, "S6-note: 200 m 10–11 uinformativ med stevne-FE")
@@ -561,8 +599,8 @@ k.need("abstract", "Almost all wind-effect estimates in athletics come from elit
 krav(Ma["ki_lav"] <= Ma["forhold_drag"] <= Ma["ki_hoy"], "gutter: drag innenfor KI («in both sexes»)")
 k.need("abstract", "on the 100 m by about as much as drag physics predicts at athletes' own speeds, in both sexes",
        "drag-påstand (krav: begge kjønn innenfor KI; 100 m samlet innen 5 %)")
-k.need("methods", "the sex- and age-specific asymmetry comparison (Table S7) and the external-sample comparison (Table S8) were "
-       "added after the plan", "planavvik S7 og S8")
+k.need("methods", "the sex- and age-specific asymmetry comparison (Table ) and the external-sample comparison (Table ) were "
+       "added after the plan", "planavvik: asymmetri etter kjønn og alder og eliteenden")
 
 # ================================================================ ELITEENDEN (tabell S8, 11_eliteende.py)
 ee = les("r3_eliteende.csv").set_index(["kilde", "event", "kjonn"])
@@ -626,7 +664,7 @@ k.need("results", f"({f(tfm['ratio_obs'], 2)} and {f(tff['ratio_obs'], 2)} again
        f"{f(tff['ratio_drag'], 2)}, men and women)", "TFRRS asymmetri")
 krav(all(x["ratio_ki_lav"] <= x["ratio_drag"] <= x["ratio_ki_hoy"] for x in (tfm, tff)), "college: drag innenfor KI («matched»)")
 k.need("results", f"({f(tpm['ratio_obs'], 2)} and {f(tpf['ratio_obs'], 2)} against {f(tpm['ratio_drag'], 2)} and "
-       f"{f(tpf['ratio_drag'], 2)}; Table S8)", "Tilastopaja asymmetri")
+       f"{f(tpf['ratio_drag'], 2)}; Table )", "Tilastopaja asymmetri")
 krav(all(x["ratio_drag"] < x["ratio_ki_lav"] for x in (tpm, tpf)), "finalister: drag under KI («exceeded»)")
 fall = [1 - x["over_2_vs_0_2"] for x in seks]
 fall_d = [1 - x["over_2_vs_0_2_drag"] for x in seks]
@@ -637,10 +675,10 @@ krav(min(fall) > 0 and max(fall) <= max(fall_d), "medvindshelningen over +2 lave
 prim = eer[eer["analyse"] == "primaer"].set_index(["kilde", "event", "kjonn"])["gevinst_per_ms"]
 sp = eer[eer["event"].isin(["100m", "200m"]) & (eer["analyse"] != "primaer")]
 maks = max(abs(r["gevinst_per_ms"] / prim[(r["kilde"], r["event"], r["kjonn"])] - 1) for _, r in sp.iterrows())
-k.need("supplementary material", f"the 100 and 200 m slopes moved by at most {pst(maks)}%", "ekstern robusthet (S8-note)")
+ks.need("*", f"the 100 and 200 m slopes moved by at most {pst(maks)}%", "ekstern robusthet (note til eliteenden)")
 demp = [1 - x["stevne_fe"] / x["gevinst_per_ms"] for x in seks]
-k.need("supplementary material", f"attenuated the 100 m slopes by {pst(min(demp))}--{pst(max(demp))}% in all three samples",
-       "ekstern stevne-FE (S8-note)")
+ks.need("*", f"attenuated the 100 m slopes by {pst(min(demp))}--{pst(max(demp))}% in all three samples",
+        "ekstern stevne-FE (note til eliteenden)")
 k.need("discussion", f"and the {f(min(obs), 3)}--{f(max(obs), 3)} s per m/s that the same estimator returns in collegiate "
        "and world-class 100 m samples", "eliteenden i diskusjonen")
 k.need("discussion", f"the collegiate and world-class 100 m slopes lie {pst(min(rel))}--{pst(max(rel))}% below the registry's",
@@ -705,12 +743,34 @@ for tex in ["t2"]:
             FEIL.append(f"t2 {navn}: vist {vist[:3]}, R gir {forvent}")
         else:
             k.n_ok += 1
-for t in ["t1", "t2", "t3", "t4", "t5", "t6", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"]:
+for t in ["t1", "t2", "t3", "t4", "t5", "t6"]:
     krav(f"\\input{{{t}}}" in k.raa, f"\\input{{{t}}} i manus (genererte tabeller)")
+for t in ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"]:
+    krav(f"\\input{{{t}}}" in ks.raa, f"\\input{{{t}}} i supplementet (genererte tabeller)")
+
+# ================================================================ JSS-FORMKRAV (31.10.2026)
+# S-tabellene nummereres etter første sitering i manus (xr-hyper; numrene står i supplement.aux)
+forst = list(dict.fromkeys(re.findall(r"\\ref\{S-(tab:[a-z]+)\}", k.raa.split("\\begin{document}", 1)[1])))
+nummer = dict(re.findall(r"\\newlabel\{(tab:[a-z]+)\}\{\{(S\d+)\}", (PROSJ / "manus" / "supplement.aux").read_text()))
+krav(len(forst) == len(nummer) == 8 and [nummer.get(x) for x in forst] == [f"S{i}" for i in range(1, 9)],
+     f"S-tabellene nummereres etter første sitering i manus: {[(x, nummer.get(x)) for x in forst]}")
+figfiler = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{fig(\d)_[a-z_]+\.png\}", k.raa)
+krav(figfiler == ["1", "2", "3", "4", "5"], f"figurfilene har trykkrekkefølgens nummer ({figfiler})")
+for s in ["Atle", "Simen", "NMBU", "ORCID", "nmbu.no", "Guttormsen", "Ås"]:
+    krav(s not in ks.raa, f"anonymt supplement: «{s}» står ikke i supplement.tex")
 
 # ================================================================ ORDTELLING
 ord_n = ordtelling(PROSJ / "manus" / "main.tex")
 k.need("tittelside", f"Word count: $\\sim${int(round(ord_n, -2))}", f"ordtelling ({ord_n})")
+# følgebrevet (utkast til forfatterne) oppgir samme ordtelling og antall tabeller og figurer
+brev = (PROSJ / "manus" / "cover_letter.tex").read_text()
+ord100 = int(round(ord_n, -2))
+krav(f"about {ord100:,} words" in brev, f"følgebrevet oppgir ordtellingen «about {ord100:,} words»")
+som_ord = {5: "five", 6: "six", 8: "eight"}
+n_tab, n_fig, n_sup = k.raa.count("\\begin{table}"), k.raa.count("\\begin{figure}"), ks.raa.count("\\begin{table}")
+krav(f"with {som_ord.get(n_tab)} tables, {som_ord.get(n_fig)} figures and {som_ord.get(n_sup)} supplementary tables"
+     in brev, f"følgebrevet: {n_tab} tabeller, {n_fig} figurer, {n_sup} S-tabeller")
+krav("guideline of approximately 4,000 words" in brev, "følgebrevet gjengir JSS' veiledning (om lag 4 000 ord)")
 
 # ================================================================ DEKNING
 UNNTAK = [
@@ -735,6 +795,7 @@ UNNTAK = [
     r"ages 11--13", r"0 to \+2 m/s", r"above \+2\b", r"\+2\b(?= \()", r"1\.4826( times| \$\\times\$)",
     r"200 m times filed as 100 m", r"exactly ±1 m/s", r"20--34 \(", r"1\.4826 ×",
     r"version 1\.2", r"\b(19|20)\d\d--(19|20)\d\d\b",
+    r"\\hyphenpenalty=10000",   # tittelsats uten orddeling (30.10.2026), ikke et tall i teksten
 ]
 k.need("results", f"Dashes: fewer than {m03.MIN_N} results in {m03.MIN_CELLER} athlete-seasons", "tabellnote 3")
 k.need("results", f"Codes with fewer than {m03.MIN_N} results for one sex", "tabellnote 5")
@@ -754,6 +815,7 @@ for s in ["Guttormsen", "Simen Guttormsen$^{1}$", "ORCID", "Disclosure of intere
 for s in ["The author ", "The author's", "takes full responsibility"]:
     krav(s not in kt.raa, f"tittelsiden står i flertall («{s}» finnes ikke)")
 kode_m = k.rapport(UNNTAK)
+kode_s = ks.rapport(UNNTAK)
 kode_t = kt.rapport(UNNTAK)
-print(f"\nA6 TOTALT: {k.n_ok + kt.n_ok} sjekker OK, {len(k.feil) + len(kt.feil)} feil")
-sys.exit(1 if (kode_m or kode_t) else 0)
+print(f"\nA6 TOTALT: {k.n_ok + ks.n_ok + kt.n_ok} sjekker OK, {len(k.feil) + len(ks.feil) + len(kt.feil)} feil")
+sys.exit(1 if (kode_m or kode_s or kode_t) else 0)

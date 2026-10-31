@@ -7,6 +7,11 @@ etiketter i fig5 (R3-m), tertiler på vindjustert sesongsnitt i fig4 (R2-6),
 tabell 4 med observert og teoretisk asymmetriforhold (R1-3), tabell 6 fra
 medvindsgrenen med poolet justert SD (R2-5), og nye S-tabeller: per sekund
 løpstid, korreksjonstabell, kvadratisk form.
+
+31.10.2026 (JSS, se FREEZE.md): figur 3 og 4 er punktestimater med KI i stedet
+for stolper (JSS fraråder stolpediagrammer), filnavnene følger trykkrekkefølgen
+(fig3_level, fig4_asymmetry), overtitlene er tatt ut (tittelen står i
+figurteksten), og forklaringen i figur 5 står under plottet.
 """
 
 import logging
@@ -52,7 +57,7 @@ def fmt(g, lo, hi, des=3):
     return f"{g:.{des}f} ({lo:.{des}f}–{hi:.{des}f})"
 
 
-def alder_panel(a, koder, enhet, tittel, fil, ylab):
+def alder_panel(a, koder, enhet, fil, ylab):
     fig, akser = plt.subplots(1, 2, figsize=(11.5, 5.0), sharey=False)
     x = np.arange(len(BANDREKKE))
     for ax, kj, kjnavn in [(akser[0], "M", "Boys/men"), (akser[1], "F", "Girls/women")]:
@@ -72,45 +77,13 @@ def alder_panel(a, koder, enhet, tittel, fil, ylab):
     handles, labels = akser[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=len(labels), frameon=False, fontsize=9.5,
                bbox_to_anchor=(0.5, -0.02))
-    fig.suptitle(tittel, fontsize=13)
     fig.tight_layout(rect=(0, 0.06, 1, 1))
     fig.savefig(FIG / fil, bbox_inches="tight")
     plt.close(fig)
 
 
-def fig3_asym(a):
-    spr = [k for k in ["60m", "100m", "200m"] if k in set(a["event"])]
-    hop = [k for k in ["lengde", "lengde_sone_05m", "tresteg"] if k in set(a["event"])]
-    fig, akser = plt.subplots(1, 2, figsize=(11.2, 4.9))
-    for ax, koder, enhet in [(akser[0], spr, "Seconds per m/s"),
-                             (akser[1], hop, "Centimetres per m/s")]:
-        x = np.arange(len(koder))
-        t = a.set_index("event").loc[koder]
-        for off, kol, farge, lab in [(-0.18, "medvind", GRONN, "Gain per +1 m/s tailwind"),
-                                     (0.18, "motvind", ROD, "Loss per −1 m/s headwind")]:
-            v = t[kol].to_numpy()
-            lo = t[f"{kol}_ki_lav"].to_numpy()
-            hi = t[f"{kol}_ki_hoy"].to_numpy()
-            ax.bar(x + off, v, width=0.36, color=farge, label=lab,
-                   yerr=[v - lo, hi - v], capsize=3,
-                   error_kw={"ecolor": "#333333", "lw": 1.2})
-            if enhet.startswith("Seconds"):
-                ax.scatter(x + off, t[f"drag_{kol}"].to_numpy(), marker="D", s=46, color="black",
-                           zorder=5, label="Drag-only prediction" if kol == "medvind" else None)
-        ax.set_xticks(x, [NAVN[k] for k in koder])
-        ax.set_ylabel(enhet)
-        ax.axhline(0, color=GRAA, lw=0.8)
-    akser[0].set_title("Sprints: observed slopes and drag-only prediction")
-    akser[1].set_title("Horizontal jumps")
-    akser[0].legend(frameon=False, fontsize=9)
-    fig.suptitle("Asymmetry of the wind effect (within athlete × season; "
-                 "95% CI, meet-clustered)", fontsize=13)
-    fig.tight_layout()
-    fig.savefig(FIG / "fig3_asymmetry.png", bbox_inches="tight")
-    plt.close(fig)
-
-
-def fig4_niva(n):
+def fig3_niva(n):
+    """Figur 3: punktestimat med 95 %-KI per evnetertil (JSS fraråder stolpediagrammer)."""
     spr = [k for k in ["60m", "100m", "200m"] if k in set(n["event"])]
     hop = [k for k in ["lengde", "tresteg"] if k in set(n["event"])]
     farger = {"lav": ROD, "midt": GRAA, "hoy": GRONN}
@@ -119,6 +92,7 @@ def fig4_niva(n):
     for ax, koder, enhet in [(akser[0], spr, "Seconds per m/s"),
                              (akser[1], hop, "Centimetres per m/s")]:
         x = np.arange(len(koder))
+        bunn = 0.0
         for i, tert in enumerate(["lav", "midt", "hoy"]):
             v, lo, hi = [], [], []
             for k in koder:
@@ -127,18 +101,52 @@ def fig4_niva(n):
                 lo.append(t["ki_lav"].iloc[0] if len(t) else np.nan)
                 hi.append(t["ki_hoy"].iloc[0] if len(t) else np.nan)
             v, lo, hi = map(np.array, (v, lo, hi))
-            ax.bar(x + (i - 1) * 0.26, v, width=0.26, color=farger[tert],
-                   label=navn_t[tert], yerr=[v - lo, hi - v], capsize=3,
-                   error_kw={"ecolor": "#333333", "lw": 1.2})
+            bunn = min(bunn, np.nanmin(lo))
+            ax.errorbar(x + (i - 1) * 0.22, v, yerr=[v - lo, hi - v], fmt="o", ms=7, capsize=3,
+                        lw=1.6, color=farger[tert], label=navn_t[tert])
         ax.set_xticks(x, [NAVN[k] for k in koder])
+        ax.set_xlim(-0.5, len(koder) - 0.5)
+        ax.set_ylim(bottom=bunn)   # fra null, som stolpene: forskjellene skal ikke forstørres
         ax.set_ylabel(enhet)
     akser[0].set_title("Sprints: weaker athletes gain more per m/s")
     akser[1].set_title("Horizontal jumps")
-    akser[0].legend(frameon=False, fontsize=9)
-    fig.suptitle("Wind effect by wind-adjusted ability tertile "
-                 "(95% CI, meet-clustered)", fontsize=13)
+    akser[0].legend(frameon=False, fontsize=9, loc="upper left")
     fig.tight_layout()
-    fig.savefig(FIG / "fig4_level.png", bbox_inches="tight")
+    fig.savefig(FIG / "fig3_level.png", bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig4_asym(a):
+    """Figur 4: med- og motvindshelning som punktestimat med 95 %-KI; drag-prediksjonen som svart
+    strek ved punktet den predikerer (sprint)."""
+    spr = [k for k in ["60m", "100m", "200m"] if k in set(a["event"])]
+    hop = [k for k in ["lengde", "lengde_sone_05m", "tresteg"] if k in set(a["event"])]
+    fig, akser = plt.subplots(1, 2, figsize=(11.2, 4.9))
+    for ax, koder, enhet in [(akser[0], spr, "Seconds per m/s"),
+                             (akser[1], hop, "Centimetres per m/s")]:
+        x = np.arange(len(koder))
+        t = a.set_index("event").loc[koder]
+        bunn = 0.0
+        for off, kol, farge, lab in [(-0.15, "medvind", GRONN, "Gain per +1 m/s tailwind"),
+                                     (0.15, "motvind", ROD, "Loss per −1 m/s headwind")]:
+            v = t[kol].to_numpy()
+            lo = t[f"{kol}_ki_lav"].to_numpy()
+            hi = t[f"{kol}_ki_hoy"].to_numpy()
+            bunn = min(bunn, np.nanmin(lo))
+            if enhet.startswith("Seconds"):
+                ax.hlines(t[f"drag_{kol}"].to_numpy(), x + off - 0.11, x + off + 0.11, color="black",
+                          lw=2.4, zorder=2, label="Drag-only prediction" if kol == "medvind" else None)
+            ax.errorbar(x + off, v, yerr=[v - lo, hi - v], fmt="o", ms=7, capsize=3, lw=1.6,
+                        color=farge, label=lab, zorder=3)
+        ax.set_xticks(x, [NAVN[k] for k in koder])
+        ax.set_xlim(-0.5, len(koder) - 0.5)
+        ax.set_ylim(bottom=bunn)
+        ax.set_ylabel(enhet)
+    akser[0].set_title("Sprints: observed slopes and drag-only prediction")
+    akser[1].set_title("Horizontal jumps")
+    akser[0].legend(frameon=False, fontsize=9, loc="upper left")
+    fig.tight_layout()
+    fig.savefig(FIG / "fig4_asymmetry.png", bbox_inches="tight")
     plt.close(fig)
 
 
@@ -169,8 +177,8 @@ def fig5_hekk(hk):
     ax.set_yticks(yposs, etiketter, fontsize=9)
     ax.axvline(0, color=GRAA, lw=1, ls="--")
     ax.set_xlabel("Effect per m/s of wind (s; linear fit over head- and tailwinds)")
-    ax.set_title("Wind effect in short hurdles, by class-specific event code")
-    ax.legend(frameon=False, fontsize=8.5, loc="lower right")
+    # under plottet: inne i aksene dekket forklaringen nederste rad
+    ax.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.12))
     fig.tight_layout()
     fig.savefig(FIG / "fig5_hurdles.png", bbox_inches="tight")
     plt.close(fig)
@@ -185,14 +193,11 @@ def main():
     hk = pd.read_csv(EST / "r1_hekk_meet.csv")
 
     # ---- Figurer -------------------------------------------------------------------------
-    alder_panel(a, ["60m", "100m", "200m"], "s",
-                "Effect per m/s of wind by age (linear fit): sprints (seconds; within athlete × season)",
-                "fig1_effect_by_age.png", "Seconds per m/s")
+    alder_panel(a, ["60m", "100m", "200m"], "s", "fig1_effect_by_age.png", "Seconds per m/s")
     alder_panel(a, ["60m", "100m", "200m", "lengde", "tresteg"], "%",
-                "Effect per m/s of wind by age (linear fit): percent of performance",
                 "fig2_effect_by_age_pct.png", "Percent per m/s")
-    fig3_asym(asym)
-    fig4_niva(tert)
+    fig3_niva(tert)
+    fig4_asym(asym)
     fig5_hekk(hk)
     logger.info("fig1–fig5 regenerert med stevneklyngede KI")
 

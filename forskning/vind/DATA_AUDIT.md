@@ -210,3 +210,30 @@ Endringsrapportens avsnitt 8, punkt 2–3, er skrevet inn. Ingen tall er endret;
 - Tittelen er forkortet fra 22 til 16 ord: «How much is the wind worth? Sprints and horizontal jumps from age 10 to senior level». Den korte tittelen øverst på sidene er uendret.
 - «age 10» er den nedre aldersgrensen i utvalget (alder 10–34, `ekskl_alder_utenfor_10_34` i `flyt.json`). Tallkontrollen dekker den med unntaket `age 1[03]`, som for «from age 10» i teksten.
 - Arbeidstittelen i `ANALYSEPLAN.md` og i den simulerte fagfellevurderingen (`manus/REFEREE_RUNDE1.md`) er historisk og står urørt.
+
+## Innsending til JSS, Atles bestilling 31.10.2026
+
+Atle bestilte: «Bygg opp A6 så den kan sendes til Journal of Sports Sciences». Arbeidet er målt mot JSS' forfatterveiledning, oppdatert 26.10.2026. Den ble lest i nettleseren fordi nettstedet stengte ute skriptet, og den stemmer med teksten Atle limte inn. Delavsnittet om utvalgsstørrelse er i tillegg målt mot redaksjonens krav (Abt mfl. 2025, doi 10.1080/02640414.2025.2499403). Kodeendringene står i `FREEZE.md`.
+
+- **Krav som alt var oppfylt:**
+  - Manus er dobbeltanonymt og har løpende linjenummer.
+  - Sammendraget har under 200 ord, og det er 6 nøkkelord.
+  - Methods har etikksetning med Helsinki-erklæringen, og manus har Data availability.
+  - Disclosure of interest, Funding og KI-erklæringen står på tittelsiden.
+  - Stavemåten er konsekvent britisk, og alle referansene er sitert i teksten.
+- **Rettet:**
+  - **Figurer:** Figur 3 og 4 viser punktestimater med KI, fordi JSS fraråder stolpediagrammer. Filnavnene følger trykkrekkefølgen. Bildene har ikke lenger egne titler, og forklaringen i figur 5 dekket nederste rad og står nå under plottet. Tallene i figurene er de samme.
+  - **Supplementet** er en egen fil, `manus/supplement.tex`. S-tabellene er nummerert etter første sitering i manus (gammel → ny: S7→S1, S8→S2, S2→S3, S4→S4, S1→S5, S5→S6, S3→S7, S6→S8). Kontrollen sjekker nummereringen mot `supplement.aux`. Eliteenden er derfor tabell S2, ikke S8 som i avsnittene over.
+  - **Delavsnittet om utvalgsstørrelse** har fått en følsomhetsanalyse med alle inndata redaksjonen ber om: formål, tidspunkt, utfall, test, programvare, α og styrke, minste effekt av interesse med begrunnelse, effekttype og frafall. Analysen ligger i `12_utvalgsstorrelse.py`, som skriver `tables/estimering/r4_mde.csv`.
+    - Minste påvisbare effekt (MDE) per øvelse: 0,003 s (60 m), 0,004 s (100 m), 0,013 s (200 m), 0,018 og 0,053 s (80 og 150 m), 0,4 og 0,3 cm (lengde fra brett og fra sone) og 0,9 og 1,4 cm (tresteg fra brett og fra sone).
+    - I aldersbåndene for 60, 100 og 200 m er MDE 0,004–0,086 s (median 0,014), størst for 200 m ved 10–11 år.
+    - Minste effekt av interesse er én registreringsenhet over +2,0-vinduet: 0,005 s og 0,5 cm per m/s. 60 m, 100 m og lengde (begge varianter) ligger under den.
+    - De samme tallene regnes fra R-speilets KI og gir like viste verdier.
+    - Lakens (2022) er lagt til og sjekket mot CrossRef.
+  - **Tallkontrollen:** Tittelsatsen fra 30.10.2026 (`\hyphenpenalty=10000`) ga et udekket tall, men kontrollen ble ikke kjørt til grønt etter den endringen. Den har nå et eget unntak, og ingen tall i teksten er berørt.
+- **Nye filer:** `12_utvalgsstorrelse.py`, `13_jss_pakke.py`, `manus/supplement.tex` og `manus/cover_letter.tex` (utkast). I tillegg mappen `JSS_opplasting/` med README, svar til portalen og `MANIFEST.sha256`. Mappen bygges sist i RUN_ALL.
+- **Status:** `RUN_ALL.sh` er grønn.
+  - Tallkontrollen ga 312 ankrede sjekker (307 i manus, 5 i supplementet), 0 feil og 0 udekkede tall.
+  - R-speilet passerer, og to kjøringer ga like hasher på alle 91 utdatafiler.
+  - Manus har 26 sider, supplementet 5, tittelsiden 1 og følgebrevet 1.
+- **Ordtelling:** 6 008 ord løpende tekst. JSS anbefaler om lag 4 000, men kaller det «a guideline and not a limit». Atle avgjør om teksten skal kortes.
