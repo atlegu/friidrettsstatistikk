@@ -4,9 +4,10 @@
 
 Kjøres sist i RUN_ALL.sh, etter at alle kontroller er grønne, så mappen bare oppdateres fra en
 kontrollert tilstand. Innhold:
-  01_Manuscript.pdf               manus/main.pdf (med forfatteropplysninger; MPEES er enkeltanonym)
-  02_Supplementary_material.pdf   manus/supplement.pdf
-  03_Cover_letter.pdf             manus/cover_letter.pdf (utkast til forfatterne)
+  01_Manuscript_with_author_details.pdf   manus/main.pdf
+  02_Manuscript_anonymous.pdf             manus/main_anonymous.pdf (portalen krever begge)
+  03_Supplementary_material.pdf           manus/supplement.pdf (uten forfatteropplysninger)
+  04_Cover_letter.pdf                     manus/cover_letter.pdf (utkast til forfatterne)
   Figure1.tif … Figure3.tif       figurene i trykkrekkefølgen fra main.tex (S-figurene står i supplementet): RGB på hvit bunn, LZW, 300 dpi
   MANIFEST.sha256                 sha256 for filene over
 README_opplasting.md er håndskrevet og overskrives ikke; skriptet stopper hvis den ikke nevner hver fil.
@@ -31,13 +32,18 @@ UT = HERE / "MPEES_opplasting"
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-PDF = {"01_Manuscript.pdf": MANUS / "main.pdf",
-       "02_Supplementary_material.pdf": MANUS / "supplement.pdf",
-       "03_Cover_letter.pdf": MANUS / "cover_letter.pdf"}
+PDF = {"01_Manuscript_with_author_details.pdf": MANUS / "main.pdf",
+       "02_Manuscript_anonymous.pdf": MANUS / "main_anonymous.pdf",
+       "03_Supplementary_material.pdf": MANUS / "supplement.pdf",
+       "04_Cover_letter.pdf": MANUS / "cover_letter.pdf"}
 
 
 def main():
     UT.mkdir(exist_ok=True)
+    # PDF-er fra en tidligere filliste skal ikke bli liggende
+    for x in UT.glob("*.pdf"):
+        if x.name not in PDF:
+            x.unlink()
     filer = []
     for navn, kilde in PDF.items():
         shutil.copyfile(kilde, UT / navn)

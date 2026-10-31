@@ -6,6 +6,8 @@
 %% (APA-style) references via natbib + apalike. The supplementary material is in supplement.tex (separate
 %% file); its tables and figures are cited through xr-hyper (prefix S-) and numbered there in the order of
 %% their first citation here.
+%% main_anonymous.tex inputs this file with \anonymous defined: no author details on p. 1, and no
+%% identifying sentence in the disclosure statement.
 
 \documentclass[12pt,a4paper]{article}
 
@@ -39,6 +41,12 @@ Section: Exercise Science
 \bigskip
 {\noindent\Large\bfseries\raggedright\hyphenpenalty=10000 How much is the wind worth? Sprints and horizontal jumps from age 10 to senior level\par}
 
+\ifdefined\anonymous
+\bigskip
+\noindent Anonymous version for peer review: author details are in the manuscript with author details.
+
+\medskip
+\else
 \bigskip
 \noindent Atle G.\ Guttormsen$^{1,*}$ (\href{https://orcid.org/0000-0003-0188-8462}{ORCID: 0000-0003-0188-8462})\\
 Simen Guttormsen$^{1}$ (\href{https://orcid.org/0009-0002-2533-8561}{ORCID: 0009-0002-2533-8561})
@@ -50,6 +58,7 @@ Simen Guttormsen$^{1}$ (\href{https://orcid.org/0009-0002-2533-8561}{ORCID: 0009
 \noindent $^*$Corresponding author: Atle G.\ Guttormsen, School of Economics and Business, Norwegian University of Life Sciences (NMBU), P.O.\ Box 5003, 1432 Ås, Norway. E-mail: atle.guttormsen@nmbu.no
 
 \medskip
+\fi
 \noindent \textbf{Running head:} Wind effects across age and ability
 
 \noindent \textbf{Word count:} $\sim$5\,500 (main text, excluding abstract, references, tables, and figure captions)
@@ -162,7 +171,7 @@ Wind effects in athletics are not a constant to be borrowed from elite studies: 
 
 \textbf{Acknowledgments.} The authors thank the Norwegian Athletics Federation, whose systematic registration of results --- wind readings included, down to the youngest classes --- makes measurement research of this kind possible, and Tilastopaja Oy (Turku, Finland), which compiled the competition records of the championship finalists and permitted their use in this study.
 
-\textbf{Disclosure statement.} The authors report there are no competing interests to declare. AGG maintains a non-commercial statistics platform built on the federation's public results database.
+\textbf{Disclosure statement.} The authors report there are no competing interests to declare.\ifdefined\anonymous\else{} AGG maintains a non-commercial statistics platform built on the federation's public results database.\fi
 
 \textbf{Funding.} The authors received no funding for this work.
 

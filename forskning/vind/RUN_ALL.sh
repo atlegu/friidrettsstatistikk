@@ -32,7 +32,7 @@ $PY 09_r1_supptex.py
 echo "== 2. Manus, supplement og følgebrev (full LaTeX-syklus)"
 (
   cd manus
-  rm -f main.aux main.bbl main.blg supplement.aux
+  rm -f main.aux main.bbl main.blg supplement.aux main_anonymous.aux main_anonymous.bbl main_anonymous.blg
   # manus og supplement (egen fil) viser til hverandre med xr-hyper: supplementet først, så
   # manus med bibtex, så supplementet på nytt når main.aux finnes
   pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
@@ -42,15 +42,29 @@ echo "== 2. Manus, supplement og følgebrev (full LaTeX-syklus)"
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
-  # MPEES er enkeltanonym: tittelsiden med forfatterne er side 1 i manus (ingen egen tittelside)
+  # MPEES-portalen krever også en anonym versjon: main.tex med \anonymous definert
+  pdflatex -interaction=nonstopmode -halt-on-error main_anonymous.tex > /dev/null
+  bibtex main_anonymous > /dev/null || [ $? -eq 1 ]
+  pdflatex -interaction=nonstopmode -halt-on-error main_anonymous.tex > /dev/null
+  pdflatex -interaction=nonstopmode -halt-on-error main_anonymous.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error cover_letter.tex > /dev/null
 )
-for f in main supplement; do
+for f in main main_anonymous supplement; do
   if grep -Eq "Reference .* undefined|Citation .* undefined|There were undefined references" manus/$f.log; then
     echo "FEIL: udefinerte referanser i $f"; exit 1
   fi
   if pdftotext manus/$f.pdf - | grep -q '??'; then
     echo "FEIL: ?? i $f.pdf"; exit 1
+  fi
+done
+# anonym versjon og supplement: ingen forfatteropplysninger i teksten eller metadataene (selvsitering i
+# tredje person, «Guttormsen (2026)», er tillatt)
+for f in main_anonymous supplement; do
+  if pdftotext manus/$f.pdf - | grep -Eq "Atle|Simen|NMBU|ORCID|nmbu\.no|\bAGG\b|\bSG\b|Ås|Corresponding author"; then
+    echo "FEIL: identifiserende tekst i $f.pdf"; exit 1
+  fi
+  if pdfinfo manus/$f.pdf | grep -Eq "^Author: +[^ ]"; then
+    echo "FEIL: forfatter i PDF-metadataene ($f.pdf)"; exit 1
   fi
 done
 # MPEES: manus har forfatteropplysningene på side 1 og høyst om lag 30 sider i alt

@@ -19,13 +19,14 @@ Kravene er hentet fra MPEES' forfatterveiledning og tidsskriftets side om omfang
 
 ## Filene og hvor de skal i portalen
 
-Portalen er Routledge Submission Portal: <https://rp.tandfonline.com/submission/create?journalCode=HMPE>. MPEES bruker enkeltanonym vurdering. Manus lastes derfor opp som «Manuscript – with author details», og det trengs ingen anonym versjon. Veiledningen sier at manus kan sendes i Word. Godtar ikke portalen PDF, kan LaTeX-kilden (`manus/main.tex` med tabellfilene og figurene) lastes opp i stedet.
+Portalen er Routledge Submission Portal: <https://rp.tandfonline.com/submission/create?journalCode=HMPE>. Forfatterveiledningen sier enkeltanonym vurdering, men portalen krever både «Manuscript – with author details» og «Manuscript – anonymous» (skjermbilde fra Atle 31.10.2026). Begge versjonene bygges fra `manus/main.tex`. Veiledningen sier at manus kan sendes i Word. Godtar ikke portalen PDF, kan LaTeX-kilden (`manus/main.tex` med tabellfilene og figurene) lastes opp i stedet.
 
 | Fil | Portalfelt | Merknad |
 |---|---|---|
-| `01_Manuscript.pdf` | Manuscript – with author details | 30 sider i MPEES-formatet. Side 1 er tittelsiden (forfattere, ORCID, korresponderende forfatter, løpetittel, ordtelling, seksjon), og side 2 har sammendrag og nøkkelord. Deretter kommer teksten med linjenummer, erklæringene og referansene. Til slutt kommer tabellene (én per side), figurene og listen over figurtekster. |
-| `02_Supplementary_material.pdf` | Supplemental material | Supplementary Methods, tabell S1–S10 og figur S1–S2, nummerert etter første sitering i manus. Publiseres på nett (Figshare). |
-| `03_Cover_letter.pdf` | Cover letter | Utkast; se punkt 4 over. |
+| `01_Manuscript_with_author_details.pdf` | Manuscript – with author details | 30 sider i MPEES-formatet. Side 1 er tittelsiden (forfattere, ORCID, korresponderende forfatter, løpetittel, ordtelling, seksjon), og side 2 har sammendrag og nøkkelord. Deretter kommer teksten med linjenummer, erklæringene og referansene. Til slutt kommer tabellene (én per side), figurene og listen over figurtekster. |
+| `02_Manuscript_anonymous.pdf` | Manuscript – anonymous | Samme manus. Side 1 har tittel, seksjon, løpetittel og ordtelling, men ingen forfatteropplysninger. Disclosure-setningen om AGGs statistikkplattform er tatt ut. Selvsiteringen står i tredje person. |
+| `03_Supplementary_material.pdf` | Supplemental material | Supplementary Methods, tabell S1–S10 og figur S1–S2, nummerert etter første sitering i manus. Uten forfatteropplysninger. Publiseres på nett (Figshare). |
+| `04_Cover_letter.pdf` | Cover letter | Utkast; se punkt 4 over. |
 | `Figure1.tif` | Figure | Effekt per m/s etter alder, sekunder |
 | `Figure2.tif` | Figure | Samme i prosent, sprint og hopp |
 | `Figure3.tif` | Figure | Motvind mot medvind, med drag-prediksjon |
@@ -56,6 +57,7 @@ MPEES vil ha figurene som egne filer. Filene følger trykkrekkefølgen og har 30
 - **Henvisninger:** ingen udefinerte referanser og ingen «??». S-tabellene og S-figurene er nummerert etter første sitering, og figurfilene følger trykkrekkefølgen.
 - **MPEES-formatet:**
   - Manus har høyst 30 sider, og tittelsiden med forfatterne er side 1.
+  - Den anonyme versjonen og supplementet har ingen forfatteropplysninger i teksten eller PDF-metadataene.
   - Elementene står i MPEES-rekkefølgen.
   - Det er ingen britiske stavemåter i manus, supplement eller følgebrev.
   - KI-erklæringen oppgir verktøy og versjon.
