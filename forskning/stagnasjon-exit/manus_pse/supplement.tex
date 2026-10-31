@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[british]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa,backend=biber,natbib=true]{biblatex}
+\addbibresource{references.bib}
+\begin{document}
+
+\noindent\textbf{Supplementary material}
+
+\bigskip
+\noindent{\large\bfseries Stagnation before exit: performance progression and retention in youth track and field\par}
+
+\medskip
+\noindent Anonymised manuscript. Table and section numbers follow the order of first citation in the main text.
+
+\begin{table}[H]
+\centering
+\caption*{\textbf{Table S1.} Sample flow.}
+\small
+\input{../manus/s1}
+\vspace{0.2em}
+\parbox{0.8\textwidth}{\footnotesize The completed STROBE checklist accompanies the submission; the time-stamped analysis plan (committed before estimation) is available with the analysis code. Abbreviation: STROBE, Strengthening the Reporting of Observational Studies in Epidemiology.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption*{\textbf{Table S2.} Robustness of the progression--retention association. OR (95\,\% CI) per SD of the exposure named (per 100 points for the earlier level given the later level); outcome is senior activity unless stated. Abbreviations: CI, confidence interval; COVID-19, coronavirus disease 2019; GEE, generalised estimating equations; OR, odds ratio; SD, standard deviation; SE, standard error.}
+
+\small
+\input{../manus/t4}
+\end{table}
+
+
+\section*{S3. Deviations from the analysis plan}
+
+\noindent the H3 interval is a DeLong interval rather than a paired bootstrap; club-grouped cross-validation folds, the exposure defined as residuals against panel growth curves, and a random club intercept were not run (club-clustered standard errors and GEE take the place of the last); the Cox model omits cohort and club size; the cohort replication was run for the H1 odds ratio only, not for H2, H3 or the AUC gain; region, planned as a covariate, is not recorded (see Covariates); and the switcher analysis takes baseline level and result counts from the best event group, where the plan took them from the main group (the planned version is shown alongside in Table S2).
+
+\printbibliography[heading=none]
+
+\end{document}
