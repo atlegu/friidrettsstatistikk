@@ -33,6 +33,9 @@ BLOB = {
     "0f7a34fce926bf1df273847881bf1cc6": "forskning/trenerseminar_2026/presentasjon/bilder/web_utover.png",
     "e28fc358f61090fb0e5819aaae6c52eb": "forskning/trenerseminar_2026/presentasjon/bilder/web_sammenlign.png",
     "6422efc64c5cfd9626f332477908dbfb": "forskning/trenerseminar_2026/presentasjon/bilder/g11_spyd_sladdet.png",
+    "4ae348ab3279a10f84b292aa5822b243": "forskning/trenerseminar_2026/presentasjon/bilder/debut_u.png",
+    "9bf5423eb64712833dc81820cf100ca2": "forskning/trenerseminar_2026/presentasjon/bilder/exit_aligned.png",
+    "20498ec99ff90b1a5d24599be0385c32": "forskning/trenerseminar_2026/presentasjon/bilder/fremgang_volum.png",
 }
 
 

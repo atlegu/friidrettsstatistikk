@@ -254,3 +254,25 @@ Alle figurene er laget i samme stil (blå #1F4E79, oransje #D9480F) og passer sa
 - **Utøveren som forsvant**, der stevnetallet falt først.
 - **Kast i egen klubb**: hvem kan spyd?
 - **Ett øyeblikk der du selv tok feil om en 15-åring**, i den ene eller andre retningen. Det gjør resten troverdig.
+
+---
+
+## Oppdatering 31. oktober 2026: to nye studier lagt inn
+
+Foredraget har nå 43 slides. Fire er nye, bygget på manusene i `forskning/stagnasjon-exit/` (fremgang og frafall) og `forskning/debutalder/` (debutalder og frafall). Begge er upubliserte; si «ny analyse, ikke publisert ennå».
+
+**Slide 14, etter «Døren som gror igjen»: «Ingen alder er for sen. Men den første sesongen er filteret.»**
+17 496 utøvere som debuterte som 10–16-åringer. Alle debutaldre ga seniorer; 16-årsdebutantene konverterte best (6,6 prosent mot 3,8 for 10-åringene), men de forsvinner fortest målt fra egen start: halvparten av 10-årsdebutantene er med året etter, én av fire av 15-årsdebutantene. Den typiske debutanten konkurrerer én dag. Spørsmål til salen: hva gjør klubben med en 10-åring etter det første stevnet?
+
+**Slide 21, etter varsellampen: «Deltakelsen faller først. Prestasjonen holder til siste sesong.»**
+3 877 utøvere. Utøvere som sluttet som 16–19-åringer, fulgt bakover: stevnetallet faller nest siste sesong (−2), nivået holder seg (+4) og faller først i den siste (−12 poeng). Fremgang fra 13–14 til 15–16 predikerer seniorstatus utover stevnetall og nivå (OR 2,2 per SD).
+
+**Slide 22: «Fremgang teller, men bare der utøveren fortsatt er med.»**
+Blant dem med mange stevner som 15–16-åring: 21 prosent av dem med størst tilbakegang blir seniorer, 49 prosent av dem med størst fremgang. Blant dem som nesten ikke konkurrerer: 2–4 prosent uansett. Fremgang beskytter like mye for januar- og desemberbarn, begge kjønn og alle nivåer (mestringsteoriens RA-spesifikke prediksjon falt).
+
+**Slide 24, ny «én setning» etter «Tell starter»: «Det utøveren gjør nå, slår alt du vet om fortiden.»**
+Tre studier, samme svar: stevner 15–16 slår 13–14; nivå 15–16 slår 13–14; debutalder betyr ingenting blant 17-åringer gitt dagens volum.
+
+**Rådene** er nå fem: tell starter; se etter fremgang, ikke plassering; 18 er ikke ferdig; den første sesongen avgjør; kast med barna. Relativ alder/modning står som «én ting å huske» i samme boks.
+
+**Tid.** Fire slides til i et 45-minutters foredrag koster 3–4 minutter. Kandidater for kutt hvis det blir trangt: slide 7 (superskoene, kan sies i én setning på slide 6), slide 17 (relativ alder mot modning, kan sies muntlig på slide 16), og en av de to «finn utøveren»-rundene.
