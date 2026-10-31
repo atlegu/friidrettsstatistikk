@@ -135,7 +135,7 @@ Replikk: «Antall stevner som 13–14-åring treffer bedre enn prestasjonsnivåe
 
 ### Del 4: Hva er normal utvikling? (8 min)
 
-**Slide 22. Kurven alle bruker.**
+**Slide 22. De beste forteller lite om de fleste.**
 Vis tverrsnittskurven fra Tønnessen mfl. (2015), som Gundersen og Tønnessen brukte i Fagnytt 2023. «Dette er den beste kurven vi har hatt. Den henger på klubbkontorer over hele landet. Og den har en feil som ikke er Espens skyld: de hundre beste 13-åringene og de hundre beste 20-åringene er forskjellige mennesker.»
 
 **Slide 23. Når vi følger de samme.**
