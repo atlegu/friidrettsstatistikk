@@ -12,6 +12,10 @@ løpstid, korreksjonstabell, kvadratisk form.
 for stolper (JSS fraråder stolpediagrammer), filnavnene følger trykkrekkefølgen
 (fig3_level, fig4_asymmetry), overtitlene er tatt ut (tittelen står i
 figurteksten), og forklaringen i figur 5 står under plottet.
+
+31.10.2026 (MPEES, se FREEZE.md): asymmetrifiguren er figur 3 i manus, evne- og hekkfiguren er
+supplementsfigur S1 og S2 (filnavn etter trykkrekkefølgen); markører og linjetyper skiller seriene
+også i gråtoner (fargetrykk koster ekstra), og aksene har amerikansk staving.
 """
 
 import logging
@@ -45,7 +49,9 @@ NAVN = {"60m": "60 m", "80m": "80 m", "100m": "100 m", "150m": "150 m", "200m": 
         "tresteg": "Triple jump", "tresteg_sone_05m": "Triple jump (zone)"}
 FARGER = {"60m": BLAA, "100m": GRONN, "200m": ROD,
           "lengde": "#6a3d9a", "lengde_sone_05m": GRAA, "tresteg": "#e6850e"}
-STIL = {"lengde": ("s--", 1.8), "lengde_sone_05m": ("s--", 1.8), "tresteg": ("^--", 1.8)}
+# markør og linjetype per serie, så seriene skilles også i gråtoner
+STIL = {"60m": ("o-", 2.2), "100m": ("s-", 2.2), "200m": ("^-", 2.2),
+        "lengde": ("D--", 1.8), "lengde_sone_05m": ("D--", 1.8), "tresteg": ("v--", 1.8)}
 HEKKNAVN = {"60mh_68cm": "60 m hurdles 68 cm", "60mh_76_2cm": "60 m hurdles 76.2 cm",
             "80mh_76_2cm": "80 m hurdles 76.2 cm", "80mh_84cm": "80 m hurdles 84 cm",
             "100mh_76_2cm": "100 m hurdles 76.2 cm", "100mh_84cm": "100 m hurdles 84 cm",
@@ -82,15 +88,16 @@ def alder_panel(a, koder, enhet, fil, ylab):
     plt.close(fig)
 
 
-def fig3_niva(n):
-    """Figur 3: punktestimat med 95 %-KI per evnetertil (JSS fraråder stolpediagrammer)."""
+def fig_s1_niva(n):
+    """Figur S1: punktestimat med 95 %-KI per evnetertil (JSS fraråder stolpediagrammer)."""
     spr = [k for k in ["60m", "100m", "200m"] if k in set(n["event"])]
     hop = [k for k in ["lengde", "tresteg"] if k in set(n["event"])]
     farger = {"lav": ROD, "midt": GRAA, "hoy": GRONN}
+    markorer = {"lav": "v", "midt": "o", "hoy": "^"}
     navn_t = {"lav": "Lowest ability tertile", "midt": "Middle", "hoy": "Highest"}
     fig, akser = plt.subplots(1, 2, figsize=(11.2, 4.9))
     for ax, koder, enhet in [(akser[0], spr, "Seconds per m/s"),
-                             (akser[1], hop, "Centimetres per m/s")]:
+                             (akser[1], hop, "Centimeters per m/s")]:
         x = np.arange(len(koder))
         bunn = 0.0
         for i, tert in enumerate(["lav", "midt", "hoy"]):
@@ -102,7 +109,7 @@ def fig3_niva(n):
                 hi.append(t["ki_hoy"].iloc[0] if len(t) else np.nan)
             v, lo, hi = map(np.array, (v, lo, hi))
             bunn = min(bunn, np.nanmin(lo))
-            ax.errorbar(x + (i - 1) * 0.22, v, yerr=[v - lo, hi - v], fmt="o", ms=7, capsize=3,
+            ax.errorbar(x + (i - 1) * 0.22, v, yerr=[v - lo, hi - v], fmt=markorer[tert], ms=7, capsize=3,
                         lw=1.6, color=farger[tert], label=navn_t[tert])
         ax.set_xticks(x, [NAVN[k] for k in koder])
         ax.set_xlim(-0.5, len(koder) - 0.5)
@@ -112,23 +119,23 @@ def fig3_niva(n):
     akser[1].set_title("Horizontal jumps")
     akser[0].legend(frameon=False, fontsize=9, loc="upper left")
     fig.tight_layout()
-    fig.savefig(FIG / "fig3_level.png", bbox_inches="tight")
+    fig.savefig(FIG / "figS1_level.png", bbox_inches="tight")
     plt.close(fig)
 
 
-def fig4_asym(a):
-    """Figur 4: med- og motvindshelning som punktestimat med 95 %-KI; drag-prediksjonen som svart
+def fig3_asym(a):
+    """Figur 3: med- og motvindshelning som punktestimat med 95 %-KI; drag-prediksjonen som svart
     strek ved punktet den predikerer (sprint)."""
     spr = [k for k in ["60m", "100m", "200m"] if k in set(a["event"])]
     hop = [k for k in ["lengde", "lengde_sone_05m", "tresteg"] if k in set(a["event"])]
     fig, akser = plt.subplots(1, 2, figsize=(11.2, 4.9))
     for ax, koder, enhet in [(akser[0], spr, "Seconds per m/s"),
-                             (akser[1], hop, "Centimetres per m/s")]:
+                             (akser[1], hop, "Centimeters per m/s")]:
         x = np.arange(len(koder))
         t = a.set_index("event").loc[koder]
         bunn = 0.0
-        for off, kol, farge, lab in [(-0.15, "medvind", GRONN, "Gain per +1 m/s tailwind"),
-                                     (0.15, "motvind", ROD, "Loss per −1 m/s headwind")]:
+        for off, kol, farge, mk, fyll, lab in [(-0.15, "medvind", GRONN, "o", GRONN, "Gain per +1 m/s tailwind"),
+                                               (0.15, "motvind", ROD, "s", "white", "Loss per −1 m/s headwind")]:
             v = t[kol].to_numpy()
             lo = t[f"{kol}_ki_lav"].to_numpy()
             hi = t[f"{kol}_ki_hoy"].to_numpy()
@@ -136,7 +143,7 @@ def fig4_asym(a):
             if enhet.startswith("Seconds"):
                 ax.hlines(t[f"drag_{kol}"].to_numpy(), x + off - 0.11, x + off + 0.11, color="black",
                           lw=2.4, zorder=2, label="Drag-only prediction" if kol == "medvind" else None)
-            ax.errorbar(x + off, v, yerr=[v - lo, hi - v], fmt="o", ms=7, capsize=3, lw=1.6,
+            ax.errorbar(x + off, v, yerr=[v - lo, hi - v], fmt=mk, ms=7, mfc=fyll, mew=1.6, capsize=3, lw=1.6,
                         color=farge, label=lab, zorder=3)
         ax.set_xticks(x, [NAVN[k] for k in koder])
         ax.set_xlim(-0.5, len(koder) - 0.5)
@@ -146,11 +153,11 @@ def fig4_asym(a):
     akser[1].set_title("Horizontal jumps")
     akser[0].legend(frameon=False, fontsize=9, loc="upper left")
     fig.tight_layout()
-    fig.savefig(FIG / "fig4_asymmetry.png", bbox_inches="tight")
+    fig.savefig(FIG / "fig3_asymmetry.png", bbox_inches="tight")
     plt.close(fig)
 
 
-def fig5_hekk(hk):
+def fig_s2_hekk(hk):
     p = hk[hk["kjonn"] == "begge"].copy()
     rekkef = [k for k in HEKKNAVN if k in set(p["kode"])]
     p = p.set_index("kode").loc[rekkef].reset_index()
@@ -165,12 +172,12 @@ def fig5_hekk(hk):
     for _, t in refs.iterrows():
         if t["kode"] in rekkef:
             yp = yposs[rekkef.index(t["kode"])]
-            ax.plot(float(t["flat_ref"]), yp, marker="D", ms=6,
+            ax.plot(float(t["flat_ref"]), yp, marker="D", ms=6, mew=1.4,
                     color=GRONN if t["kjonn"] == "M" else ROD,
-                    linestyle="none", alpha=0.85)
+                    mfc=GRONN if t["kjonn"] == "M" else "white", linestyle="none", alpha=0.85)
     ax.plot([], [], marker="D", color=GRONN, linestyle="none",
             label="Flat sprint reference, boys/men (same distance class, own modal age band)")
-    ax.plot([], [], marker="D", color=ROD, linestyle="none",
+    ax.plot([], [], marker="D", color=ROD, mfc="white", mew=1.4, linestyle="none",
             label="Flat sprint reference, girls/women")
     etiketter = [f"{HEKKNAVN[k]}  ({p.set_index('kode').loc[k, 'modal_aldersband']})"
                  for k in rekkef]
@@ -180,7 +187,7 @@ def fig5_hekk(hk):
     # under plottet: inne i aksene dekket forklaringen nederste rad
     ax.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.12))
     fig.tight_layout()
-    fig.savefig(FIG / "fig5_hurdles.png", bbox_inches="tight")
+    fig.savefig(FIG / "figS2_hurdles.png", bbox_inches="tight")
     plt.close(fig)
 
 
@@ -196,10 +203,10 @@ def main():
     alder_panel(a, ["60m", "100m", "200m"], "s", "fig1_effect_by_age.png", "Seconds per m/s")
     alder_panel(a, ["60m", "100m", "200m", "lengde", "tresteg"], "%",
                 "fig2_effect_by_age_pct.png", "Percent per m/s")
-    fig3_niva(tert)
-    fig4_asym(asym)
-    fig5_hekk(hk)
-    logger.info("fig1–fig5 regenerert med stevneklyngede KI")
+    fig3_asym(asym)
+    fig_s1_niva(tert)
+    fig_s2_hekk(hk)
+    logger.info("fig1–fig3 og figS1–figS2 regenerert med stevneklyngede KI")
 
     # ---- Tabell 2: hovedeffekter ---------------------------------------------------------
     rader = []

@@ -1,18 +1,18 @@
 """
-13_jss_pakke.py — A6: opplastingsmappen til Journal of Sports Sciences (JSS_opplasting/).
+13_opplasting.py — A6: opplastingsmappen til Measurement in Physical Education and Exercise Science
+(MPEES_opplasting/). Var 13_jss_pakke.py; JSS-pakken ligger i commit 3b8911e.
 
 Kjøres sist i RUN_ALL.sh, etter at alle kontroller er grønne, så mappen bare oppdateres fra en
 kontrollert tilstand. Innhold:
-  01_Manuscript_anonymised.pdf    manus/main.pdf (dobbeltanonym, linjenummerert)
-  02_Title_page.pdf               manus/title_page.pdf
-  03_Supplementary_material.pdf   manus/supplement.pdf
-  04_Cover_letter.pdf             manus/cover_letter.pdf (utkast til forfatterne)
-  Figure1.tif … Figure5.tif       figurene i trykkrekkefølgen fra main.tex: RGB på hvit bunn, LZW, 300 dpi
+  01_Manuscript.pdf               manus/main.pdf (med forfatteropplysninger; MPEES er enkeltanonym)
+  02_Supplementary_material.pdf   manus/supplement.pdf
+  03_Cover_letter.pdf             manus/cover_letter.pdf (utkast til forfatterne)
+  Figure1.tif … Figure3.tif       figurene i trykkrekkefølgen fra main.tex (S-figurene står i supplementet): RGB på hvit bunn, LZW, 300 dpi
   MANIFEST.sha256                 sha256 for filene over
 README_opplasting.md er håndskrevet og overskrives ikke; skriptet stopper hvis den ikke nevner hver fil.
 
 Inndata: manus/*.pdf, manus/main.tex, figures/*.png
-Utdata:  JSS_opplasting/
+Utdata:  MPEES_opplasting/
 """
 
 import hashlib
@@ -26,15 +26,14 @@ from PIL import Image
 HERE = Path(__file__).parent
 MANUS = HERE / "manus"
 FIG = HERE / "figures"
-UT = HERE / "JSS_opplasting"
+UT = HERE / "MPEES_opplasting"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-PDF = {"01_Manuscript_anonymised.pdf": MANUS / "main.pdf",
-       "02_Title_page.pdf": MANUS / "title_page.pdf",
-       "03_Supplementary_material.pdf": MANUS / "supplement.pdf",
-       "04_Cover_letter.pdf": MANUS / "cover_letter.pdf"}
+PDF = {"01_Manuscript.pdf": MANUS / "main.pdf",
+       "02_Supplementary_material.pdf": MANUS / "supplement.pdf",
+       "03_Cover_letter.pdf": MANUS / "cover_letter.pdf"}
 
 
 def main():
@@ -62,7 +61,7 @@ def main():
         "".join(f"{hashlib.sha256((UT / n).read_bytes()).hexdigest()}  {n}\n" for n in filer))
     readme = UT / "README_opplasting.md"
     if not readme.exists():
-        raise SystemExit("JSS_opplasting/README_opplasting.md mangler")
+        raise SystemExit("MPEES_opplasting/README_opplasting.md mangler")
     mangler = [n for n in filer if n not in readme.read_text()]
     if mangler:
         raise SystemExit(f"README_opplasting.md nevner ikke: {mangler}")

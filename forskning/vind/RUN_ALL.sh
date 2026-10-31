@@ -29,11 +29,11 @@ $PY 12_utvalgsstorrelse.py
 $PY 08_r1_figurer_tabeller.py
 $PY 09_r1_supptex.py
 
-echo "== 2. Manus, supplement, tittelside og følgebrev (full LaTeX-syklus)"
+echo "== 2. Manus, supplement og følgebrev (full LaTeX-syklus)"
 (
   cd manus
   rm -f main.aux main.bbl main.blg supplement.aux
-  # manus og supplement (egen fil, JSS) viser til hverandre med xr-hyper: supplementet først, så
+  # manus og supplement (egen fil) viser til hverandre med xr-hyper: supplementet først, så
   # manus med bibtex, så supplementet på nytt når main.aux finnes
   pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
@@ -42,8 +42,7 @@ echo "== 2. Manus, supplement, tittelside og følgebrev (full LaTeX-syklus)"
   pdflatex -interaction=nonstopmode -halt-on-error main.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
   pdflatex -interaction=nonstopmode -halt-on-error supplement.tex > /dev/null
-  # egen tittelside (JSS er dobbeltanonym; manus har ingen forfatteropplysninger) og følgebrev
-  pdflatex -interaction=nonstopmode -halt-on-error title_page.tex > /dev/null
+  # MPEES er enkeltanonym: tittelsiden med forfatterne er side 1 i manus (ingen egen tittelside)
   pdflatex -interaction=nonstopmode -halt-on-error cover_letter.tex > /dev/null
 )
 for f in main supplement; do
@@ -53,22 +52,23 @@ for f in main supplement; do
   if pdftotext manus/$f.pdf - | grep -q '??'; then
     echo "FEIL: ?? i $f.pdf"; exit 1
   fi
-  # anonymitet: ingen forfatteropplysninger i PDF-ene eller metadataene (selvsitering i tredje
-  # person, «Guttormsen (2026)», er tillatt)
-  if pdftotext manus/$f.pdf - | grep -Eq "Atle|Simen|NMBU|ORCID|nmbu\.no|\bAGG\b|\bSG\b|Ås|author's initiative|from the author"; then
-    echo "FEIL: identifiserende tekst i $f.pdf"; exit 1
-  fi
-  if pdfinfo manus/$f.pdf | grep -Eq "^Author: +[^ ]"; then
-    echo "FEIL: forfatter i PDF-metadataene ($f.pdf)"; exit 1
-  fi
 done
+# MPEES: manus har forfatteropplysningene på side 1 og høyst om lag 30 sider i alt
+if ! pdftotext -f 1 -l 1 manus/main.pdf - | grep -q "Corresponding author"; then
+  echo "FEIL: tittelsiden med forfatteropplysninger mangler på side 1 i main.pdf"; exit 1
+fi
+SIDER=$(pdfinfo manus/main.pdf | awk '/^Pages:/ {print $2}')
+if [ "$SIDER" -gt 30 ]; then
+  echo "FEIL: main.pdf har $SIDER sider (MPEES: høyst om lag 30)"; exit 1
+fi
+echo "main.pdf: $SIDER sider"
 
 echo "== 3. Uavhengig R-implementasjon og tallsporing"
 Rscript audit/uavhengig.R > audit/r_out_logg.txt 2>&1
 $PY audit/sammenlign.py
 $PY audit/kontroll_tall.py
 
-echo "== 4. Opplastingsmappen til JSS (bare fra en kontrollert tilstand)"
-$PY 13_jss_pakke.py
+echo "== 4. Opplastingsmappen til MPEES (bare fra en kontrollert tilstand)"
+$PY 13_opplasting.py
 
 echo "RUN_ALL A6 OK"

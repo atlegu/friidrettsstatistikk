@@ -237,3 +237,35 @@ Atle bestilte: «Bygg opp A6 så den kan sendes til Journal of Sports Sciences»
   - R-speilet passerer, og to kjøringer ga like hasher på alle 91 utdatafiler.
   - Manus har 26 sider, supplementet 5, tittelsiden 1 og følgebrevet 1.
 - **Ordtelling:** 6 008 ord løpende tekst. JSS anbefaler om lag 4 000, men kaller det «a guideline and not a limit». Atle avgjør om teksten skal kortes.
+
+## Til MPEES i stedet for JSS, Atles beslutning 31.10.2026
+
+Atle skrev: «La oss prøve denne for vind artikkelen» og la ved forfatterveiledningen til *Measurement in Physical Education and Exercise Science* (MPEES). Han har allerede to artikler inne hos JSS. Tidsskriftets side om omfang og seksjoner og Taylor & Francis' KI-regler er lest i nettleseren 31.10.2026. Kodeendringene står i `FREEZE.md`. JSS-versjonen ligger i commit 3b8911e.
+
+- **MPEES-kravene og hvordan de er møtt:**
+  - **Fagfellevurdering:** MPEES bruker enkeltanonym vurdering, så tittelsiden med forfatterne er side 1 i manus. Den egne tittelsiden og anonymitetskontrollen er tatt bort.
+  - **Sammendrag:** høyst 150 ord. Sammendraget er kortet fra 197 til 150 ord. Disse delene er tatt ut: «linear fit»-merknaden, de fem sprintøvelsene og fire hoppøvelsene, asymmetritallene for 100 m, «in both sexes» og H5-setningen om gutter, jenter og 2025-listene. Alle tallene står fortsatt i resultatdelen.
+  - **Nøkkelord:** 4–5 kreves. Det er nå 5: «registry study» og «age-group competition» er erstattet med «performance measurement».
+  - **Staving:** MPEES krever amerikansk staving (metre → meter, analysed → analyzed, standardise → standardize med flere), også i figuraksene. Kontrollen leter etter britiske former.
+  - **Oppsett:**
+    - dobbel linjeavstand med 25 linjer per side (MPEES: 23–25), hvert element på ny side, alle avsnitt med innrykk, alle sider nummerert og linjenummer;
+    - rekkefølge: tittelside, sammendrag, tekst, erklæringer, referanser, tabeller (én per side), figurer, figurtekster som liste.
+  - **Lengde:** høyst om lag 30 sider inkludert alt. JSS-teksten ga 36 sider i dette oppsettet. Disse delene er derfor flyttet ordrett til supplementet:
+    - hekkeutvidelsen med tabell og figur (S6, figur S2);
+    - asymmetritabellen (S2) og evnefiguren (figur S1);
+    - detaljene om dublettfjerningen, MDE-avsnittet og listen over planavvik, som «Supplementary Methods».
+    Manus har nå korte henvisninger og en to-setningers oppsummering av MDE. Etikkavsnittet i erklæringene var dobbelt og er tatt bort; Helsinki-setningen står i Methods. Bidragssetningen er tatt ut, fordi rollene føres inn i portalen. Manus har 30 sider og om lag 5 500 ord.
+  - **Figurer:** egne filer på 300 dpi. Fargetrykk koster £300 per figur, så markører og linjetyper skiller seriene også i gråtoner.
+  - **Seksjon og etikk:**
+    - Forfatterne skal oppgi seksjon. Manus og følgebrevet foreslår Exercise Science.
+    - MPEES ber om en IRB-setning. Methods forklarer at godkjenning ikke var nødvendig etter norsk lov, slik T&F' etikkregler åpner for, og følgebrevet sier det samme.
+  - **Følgebrev:** MPEES-versjonen sier at manus ikke er publisert eller sendt samtidig andre steder. Den oppgir seksjon, sidetall, ordtelling og antall tabeller og figurer, og kontrollen sjekker disse tallene.
+- **T&F' KI-regler:** Taylor & Francis tillater ikke at generativ KI lager førsteutkast til et manus eller deler av det. Erklæringen skal ha verktøy og versjon, si at bruksvilkårene er sjekket, og si at forfatterne tar fullt ansvar, også for referansene.
+  - Erklæringen i manus har nå alle disse delene. Den sier fortsatt sannferdig at Claude er brukt til å «draft and edit text».
+  - Modellene er hentet fra øktloggene: Claude Opus 5.5, Fable 5 og 5.1 og Haiku 5.5, september–oktober 2026.
+  - Atle avgjør om A6 kan sendes til et T&F-tidsskrift med denne erklæringen. Regelen gjelder også JSS.
+- **Nye og endrede filer:** `13_opplasting.py` (var `13_jss_pakke.py`), `MPEES_opplasting/` (README, PDF-er, TIFF-figurer, MANIFEST), `manus/main.tex`, `manus/supplement.tex` og `manus/cover_letter.tex`. `manus/title_page.tex` og `JSS_opplasting/` er fjernet; begge ligger i 3b8911e. `figures/fig5_hurdles.png` er en mellomfil fra `05_hekk.py` og brukes ikke.
+- **Status:** `RUN_ALL.sh` er grønn.
+  - Tallkontrollen ga 310 ankrede sjekker (285 i manus, 25 i supplementet), 0 feil og 0 udekkede tall.
+  - R-speilet passerer, og to kjøringer ga like hasher på alle 102 utdatafiler.
+  - Manus har 30 sider, supplementet 9 og følgebrevet 1.
