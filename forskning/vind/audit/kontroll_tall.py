@@ -783,7 +783,7 @@ for s in ["The author ", "The author's", "takes full responsibility"]:
     krav(s not in k.raa, f"erklæringene står i flertall («{s}» finnes ikke)")
 # KI-erklæringen er Atles egen tekst (31.10.2026): verktøy og versjon, og forfatternes fulle ansvar
 ki = k.raa.split("\\textbf{Declaration of generative AI use.}", 1)[1].split("\\textbf{", 1)[0]
-for s in ["Anthropic Claude (Opus 5.5)", "take full responsibility"]:
+for s in ["Anthropic Claude (Opus 5.5)", "terms of use", "take full responsibility"]:
     krav(s in ki, f"KI-erklæringen har «{s}»")
 # rekkefølgen MPEES krever: tittelside, sammendrag, tekst, erklæringer, referanser, tabeller, figurer, figurtekster
 rekke = ["\\section*{Abstract}", "\\section{Introduction}", "\\section*{Declarations}", "\\bibliography{references}",

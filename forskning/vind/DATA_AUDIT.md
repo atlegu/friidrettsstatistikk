@@ -270,3 +270,4 @@ Atle skrev: «La oss prøve denne for vind artikkelen» og la ved forfatterveile
   - R-speilet passerer, og to kjøringer ga like hasher på alle 102 utdatafiler.
   - Manus har 30 sider, supplementet 9 og følgebrevet 1.
 - **KI-erklæringen, Atles tekst 31.10.2026:** «Anthropic Claude (Opus 5.5) was used during the preparation of this manuscript to improve language and readability, assist with structuring the text, check analysis code and identify errors. All output was reviewed, edited, and verified by the authors, who take full responsibility for the content of the manuscript.» Den erstatter utkastet over. Kontrollen krever verktøy og versjon og forfatternes ansvar.
+- **KI-erklæringen, tillegg 31.10.2026:** Atle har sjekket bruksvilkårene for verktøyet. Erklæringen bekrefter det nå, slik Taylor & Francis krever.

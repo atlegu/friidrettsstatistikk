@@ -6,7 +6,7 @@ Kravene er hentet fra MPEES' forfatterveiledning og tidsskriftets side om omfang
 
 ## Før du sender
 
-1. **KI-erklæringen** er Atles egen tekst (31.10.2026): «Anthropic Claude (Opus 5.5) was used … to improve language and readability, assist with structuring the text, check analysis code and identify errors …». Taylor & Francis ber også om en bekreftelse på at bruksvilkårene er sjekket. Den står ikke i teksten.
+1. **KI-erklæringen** er Atles egen tekst (31.10.2026): «Anthropic Claude (Opus 5.5) was used … to improve language and readability, assist with structuring the text, check analysis code and identify errors …». Atle har sjekket bruksvilkårene, og erklæringen bekrefter det, slik Taylor & Francis krever.
 2. **Simen** må godkjenne den endelige versjonen. Følgebrevet sier at begge forfatterne har godkjent innsendingen. Bidragssetningen er tatt ut av manus. Rollene føres i stedet inn i portalen (se under).
 3. **Les gjennom** manus og supplement. Disse delene er nye:
    - sammendraget (150 ord);
