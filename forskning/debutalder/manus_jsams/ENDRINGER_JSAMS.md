@@ -42,7 +42,7 @@ Tallkontrollen (`tallkontroll_jsams.py`) viser at alle tall i JSAMS-versjonen st
 ## Atle må avgjøre før innsending
 
 - [ ] Underdisiplin: «Physical activity and public health (as relevant to sport and exercise)» er valgt; «Sports science» er alternativet. Står på tittelsiden og i følgebrevet.
-- [ ] Dato i følgebrevet (`cover_letter.md`, «Ås, [date]»), deretter `python3 lag_docx.py` på nytt.
+- [x] Følgebrevet er datert Ås, 1 November 2026.
 - [ ] Les Conclusion og Practical implications; de er nye tekster, ikke flyttet tekst.
 - [ ] Godta at tabell 3 er tatt ut og tabell 4 ligger i supplementet (ellers må to figurer ut i stedet).
 - [ ] Sammendraget er nøyaktig 250 ord etter vår telling; Word kan telle «n», «=» og «[CI]» annerledes. Sjekk tellingen i Word før opplasting.

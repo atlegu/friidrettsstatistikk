@@ -4,7 +4,7 @@ Norwegian University of Life Sciences (NMBU)
 P.O. Box 5003, 1432 Ås, Norway
 atle.guttormsen@nmbu.no
 
-Ås, [date]
+Ås, 1 November 2026
 
 Editor-in-Chief
 Journal of Science and Medicine in Sport
