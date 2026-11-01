@@ -1,6 +1,6 @@
 # PSE-versjonen av A1 «Stagnation before exit»
 
-Laget 31.10.2026 for innsending til *Psychology of Sport and Exercise* (Elsevier, FEPSAC; NMBU-avtale ut 2027). Det fryste manuset i `../manus/` er ikke rørt. Alt her bygges fra det med `kompiler.sh`, som kjører `bygg_pse.py` og så pdflatex/biber.
+Laget 31.10.2026, Word-versjoner 01.11.2026, for innsending til *Psychology of Sport and Exercise* (Elsevier, FEPSAC; NMBU-avtale ut 2027). Det fryste manuset i `../manus/` er ikke rørt. Alt her bygges fra det med `kompiler.sh`, som kjører `bygg_pse.py` og så pdflatex/biber.
 
 ## Filer
 
@@ -12,9 +12,11 @@ Laget 31.10.2026 for innsending til *Psychology of Sport and Exercise* (Elsevier
 | `highlights.md` / `.docx` | Fem punkter, alle ≤ 85 tegn |
 | `cover_letter.md` / `.docx` | Følgebrev med begrunnelse for lengden |
 | `declaration_of_interests.md` / `.docx` | Interesseerklæring (Elseviers skjema fylles ut i innsendingssystemet; dette er teksten) |
+| `main_anonymised.docx`, `title_page.docx`, `supplement.docx` | **Word-versjonene som lastes opp** (Elsevier vil ha .docx som kildefil). Lages av `lag_docx.py` fra de samme .tex-filene: pandoc + citeproc (APA 7 fra CSL), Times New Roman 12, dobbel linjeavstand, «Table N.»/«Figure N.» i bildetekstene, henvisninger som ren tekst |
 | `references.bib` | APA-klar kopi av referanselisten, med tre nye referanser (Ryan & Deci 2000, Harter 1978, Hsieh mfl. 1998; CrossRef-verifisert 31.10.2026) |
 | `bygg_pse.py` | Setter sammen hovedfil og supplement fra det fryste manuset |
 | `tallkontroll_pse.py` | Alle tall i PSE-versjonen må stå i det fryste manuset eller i hvitlisten |
+| `lag_docx.py` | Word-versjonene (kjøres etter `kompiler.sh`; trenger pandoc og python-docx) |
 
 ## Hva som er endret, og hvorfor
 
@@ -33,7 +35,8 @@ Ingen tall er endret. `tallkontroll_pse.py` finner åtte nye tall, alle fra styr
 
 | | Ord |
 |---|---|
-| PSE-versjonen totalt, uten linjenumre (sammendrag, tekst, tabeller, figurtekster, referanser) | 8 727 |
+| PSE-versjonen totalt, Word-telling av .docx (sammendrag, tekst, tabeller, figurtekster, referanser) | 8 560 |
+| Samme, talt fra PDF-en uten linjenumre | 8 727 |
 | Hovedtekst (Introduction til Data availability) | 6 373 |
 | Fryst SMO-versjon totalt, samme måte | 8 866 |
 | PSE-grense | 8 000 |
@@ -54,8 +57,10 @@ Overskridelsen begrunnes i følgebrevet. Vil Atle under grensen, er de nærmeste
 ## Bygging
 
 ```bash
-./kompiler.sh && python3 tallkontroll_pse.py
+./kompiler.sh && python3 tallkontroll_pse.py && python3 lag_docx.py
 ```
+
+PDF-ene er kontrollversjoner; det er .docx-filene som sendes inn. Figurene lastes i tillegg opp som egne PNG-filer.
 
 biber fra TeX Live feiler på denne maskinen (lipo-utpakkingen). `kompiler.sh` bruker en utpakket arm64-biber; stien kan overstyres med `BIBER=...`. Lag den slik om den mangler:
 `lipo /usr/local/texlive/2025/bin/universal-darwin/biber -thin arm64 -output <sti>`.
