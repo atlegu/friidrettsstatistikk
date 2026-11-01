@@ -10,6 +10,7 @@ Innsendingsversjon for *Journal of Science and Medicine in Sport* (Elsevier; Ori
 | `title_page.docx` / `.pdf` | Tittelside med forfatter, ORCID, adresse, artikkeltype og underdisiplin, ordtellinger, antall tabeller/figurer/referanser, preprint, interesser, finansiering, etikk, bidrag, beslektede manus | Title page |
 | `supplement.docx` / `.pdf` | Tabell S1–S4 (som i SJMSS-supplementet) og S5 (robusthetstabellen, tidligere tabell 4) | Supplementary material |
 | `cover_letter.docx` / `.md` | Følgebrev med kategori, underdisiplin, finansiering, etikk, ikke-under-vurdering-erklæring, KI-bruk, preprint og beslektede manus | Cover letter |
+| `declaration_of_interests.docx`, `acknowledgement_funding_ethics.docx`, `credit_author_statement.docx` | De tre erklæringene Editorial Manager krever som egne filer (interesser; takk, finansiering og etisk samsvar; CRediT) | Declaration of Interest; Acknowledgement/Funding/Ethical Compliance; CRediT Author Statement |
 | `strobe_checklist.docx` / `.md` | STROBE-sjekkliste med henvisninger til avsnitt i JSAMS-manuset | Supplementary material |
 | `references.bib`, `jsams.bst`, `jsams.csl` | JSAMS-kopi av bibliografien (forkortede journaltitler, uten de to upubliserte manusene) og de to stilfilene | — |
 | `figurer_opplasting/Figure_1–4.tiff` | Figurene som LZW-komprimert TIFF, 300 dpi, 2 421–2 541 piksler brede, 0,2–0,4 MB | Figure |
