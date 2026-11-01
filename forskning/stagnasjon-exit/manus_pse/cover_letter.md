@@ -1,4 +1,4 @@
-Ås, [date]
+Ås, 1 November 2026
 
 Editors-in-Chief
 *Psychology of Sport and Exercise*
