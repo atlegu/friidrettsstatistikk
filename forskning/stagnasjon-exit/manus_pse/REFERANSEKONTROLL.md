@@ -28,4 +28,4 @@
 
 ## Det fryste SMO-manuset
 
-De fire setningene merket *SMO* står uendret i `../manus/main.tex`. Hvis SMO-versjonen noen gang skal brukes, bør de rettes der også (tekstendring, tillatt etter FREEZE.md).
+Setningene merket *SMO* ble rettet også i `../manus/main.tex` 01.11.2026 (Atles beslutning), sammen med turnovertallene fra JSAMS-artikkelen; `main.pdf` er bygd på nytt og `audit/kontroll_tall.py` kjørt.

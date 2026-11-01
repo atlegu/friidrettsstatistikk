@@ -116,9 +116,7 @@ mast = bytt(mast, "which would bias the test toward the null.",
 sex = bytt(sex, r"\subsection{The sex gap persists}", r"\subsection{The sex gap persists}\label{sec:sex}")
 sex = bytt(sex, r"As in the companion cohort \cite{guttormsen2026dropout}", r"As in the earlier cohort study \citep{guttormsen2026dropout}")
 
-sex = bytt(sex, r"body-related factors around puberty documented in the qualitative literature \cite{fraserthomas2008,crane2015}", r"competing priorities and physical factors around puberty documented in the dropout literature \cite{crane2015,fraserthomas2008}")
-prak = bytt(prak, r"leaving one sport in adolescence is often normative sampling rather than failure \cite{fraserthomas2008,crane2015}", r"leaving one sport in adolescence often reflects competing priorities or a change of activity rather than failure \cite{crane2015,fraserthomas2008}")
-prak = bytt(prak, r"the companion development study shows precisely that early rankings mislead \cite{guttormsen2026development}", r"the development study shows precisely that early rankings understate later development \cite{guttormsen2026development}")
+prak = bytt(prak, r"the companion development study shows precisely that early rankings understate later development \cite{guttormsen2026development}", r"the development study shows precisely that early rankings understate later development \cite{guttormsen2026development}")
 prak = bytt(prak, "both of the early-warning signals this research programme has now documented",
             "both of the early-warning signals the registry studies have now documented")
 prak = bytt(prak, r"discussed for behavioural monitoring in the companion paper (legal basis, designated recipients, opt-out) \cite{guttormsen2026dropout}",
