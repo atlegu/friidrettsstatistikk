@@ -40,15 +40,19 @@ Bygges med `./kompiler.sh` (bygg + pdflatex/bibtex), kontrolleres med `tallkontr
 
 Tallkontrollen (`tallkontroll_jsams.py`) viser at alle tall i JSAMS-versjonen står i det fryste manuset eller tabellene, med to forklarte unntak (avsnittshenvisningen 3.5 og modellversjonen 5.5). PDF-ene er bygget i full syklus uten udefinerte referanser eller manglende nummer.
 
-## Atle må avgjøre før innsending
+## Innsendt
 
-- [ ] Underdisiplin: «Physical activity and public health (as relevant to sport and exercise)» er valgt; «Sports science» er alternativet. Står på tittelsiden og i følgebrevet.
+Manuset ble sendt inn til JSAMS via Editorial Manager 1. november 2026 (Original Research, Physical Activity & Public Health, klassifisering Physical activity; supplement og STROBE som e-Component, figurene som TIFF enkeltvis). Sammendraget ble kortet til 239 ord fordi Editorial Manager telte 261 ved 250 i vår telling.
+
+## Sjekkliste før innsending (gjennomført)
+
+- [x] Underdisiplin: «Physical activity and public health (as relevant to sport and exercise)» er valgt; «Sports science» er alternativet. Står på tittelsiden og i følgebrevet.
 - [x] Følgebrevet er datert Ås, 1 November 2026.
-- [ ] Les Conclusion og Practical implications; de er nye tekster, ikke flyttet tekst.
-- [ ] Godta at tabell 3 er tatt ut og tabell 4 ligger i supplementet (ellers må to figurer ut i stedet).
-- [ ] Sammendraget er nøyaktig 250 ord etter vår telling; Word kan telle «n», «=» og «[CI]» annerledes. Sjekk tellingen i Word før opplasting.
-- [ ] JSAMS ber om etisk godkjenningsnummer og dato; manuset forklarer at godkjenning ikke var påkrevd og at Sikt bekreftet bruken uten referansenummer (Atles beslutning 01.11.2026 for A1).
-- [ ] Editorial Manager vil ha figurene som egne filer (TIFF-ene i `figurer_opplasting/`) og trolig sammendraget i et eget felt.
+- [x] Les Conclusion og Practical implications; de er nye tekster, ikke flyttet tekst.
+- [x] Godta at tabell 3 er tatt ut og tabell 4 ligger i supplementet (ellers må to figurer ut i stedet).
+- [x] Sammendraget er nøyaktig 250 ord etter vår telling; Word kan telle «n», «=» og «[CI]» annerledes. Sjekk tellingen i Word før opplasting.
+- [x] JSAMS ber om etisk godkjenningsnummer og dato; manuset forklarer at godkjenning ikke var påkrevd og at Sikt bekreftet bruken uten referansenummer (Atles beslutning 01.11.2026 for A1).
+- [x] Editorial Manager vil ha figurene som egne filer (TIFF-ene i `figurer_opplasting/`) og trolig sammendraget i et eget felt.
 
 ## Tynning 01.11.2026
 
