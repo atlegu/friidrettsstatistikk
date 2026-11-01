@@ -45,7 +45,7 @@ Overskridelsen begrunnes i følgebrevet. Vil Atle under grensen, er de nærmeste
 
 ## Atle må gjøre før innsending
 
-- [ ] Sikt-referansenummer og dato inn i `main_anonymised.tex` (Ethics and transparency) og `title_page.tex`.
+- [x] Sikt: ingen referansenummer eller dato oppgis (Atles beslutning 01.11.2026); klammene er fjernet.
 - [ ] KI-erklæringen: sett inn modellnavn/versjon slik du vil ha det (nå «Anthropic Claude»); ordlyden følger A6.
 - [ ] Vurder R² = 0,25 i styrkeberegningen og om interaksjonsberegningen skal stå.
 - [ ] Godta at tabell 4 ligger i supplementet, eller flytt den tilbake (én linje i `bygg_pse.py`).

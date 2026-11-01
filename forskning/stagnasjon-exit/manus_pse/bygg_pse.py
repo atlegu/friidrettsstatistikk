@@ -66,8 +66,6 @@ metode = bytt(metode, r"deliberately the same ``level and change'' logic the com
 metode = bytt(metode, "As for the companion study of the same registry, the study is not",
               "As for the earlier studies of the same registry, the study is not")
 metode = bytt(metode, " A large language model (Claude, Anthropic) assisted with programming and manuscript drafting; the author reviewed and verified all code, output and text.", "")
-metode = bytt(metode, "raises no data-protection concerns.",
-              "raises no data-protection concerns [Sikt reference number and date to be inserted at submission].")
 
 # Avvik fra analyseplanen → supplement S3
 m = re.search(r"Deviations from the analysis plan: (.*?)\n", metode, re.S)
@@ -109,7 +107,6 @@ m = re.search(r"The study was designed as the direct test.*?\(though it is not p
 if not m:
     raise SystemExit("fant ikke første avsnitt i mestringsdelen")
 mast = mast.replace(m.group(0), MAST_FORSTE)
-mast = bytt(mast, r"\cite{enoksen2011} and is invisible in competition records.", r"\cite{enoksen2011} and is invisible in competition records. The same follow-up recorded stagnation in performance among the reasons athletes themselves gave for leaving, which matches the pattern reported here but cannot separate the processes either.")
 mast = bytt(mast, "which would bias the test toward the null.",
             "which would bias the test toward the null. In the terms of achievement goal theory, the data also cannot tell whether retained athletes experienced competence through self-referenced improvement or through the rank that improvement also buys; the null moderation shows only that the first source did not visibly compensate for the second where the second was scarcest.")
 
