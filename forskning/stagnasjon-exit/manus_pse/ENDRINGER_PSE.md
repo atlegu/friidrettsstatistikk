@@ -45,16 +45,20 @@ Ingen tall er endret. `tallkontroll_pse.py` finner åtte nye tall, alle fra styr
 
 Overskridelsen begrunnes i følgebrevet. Vil Atle under grensen, er de nærmeste kuttene: figur 4 (Kaplan–Meier) til supplementet (~100 ord), robusthetsavsnittet i resultatdelen kortet til tabellhenvisning (~250 ord), og «Relation to the earlier studies»-delen slått sammen med «Principal findings» (~150 ord).
 
-## Atle må gjøre før innsending
+## Innsendt
+
+Manuset ble sendt inn til *Psychology of Sport and Exercise* via Editorial Manager 1. november 2026, med ordtelling 7 400 oppgitt for hovedteksten uten sammendrag og referanser. Alle punktene nedenfor var avklart før innsending.
+
+## Sjekkliste før innsending (gjennomført)
 
 - [x] Sikt: ingen referansenummer eller dato oppgis (Atles beslutning 01.11.2026); klammene er fjernet.
 - [x] KI-erklæringen oppgir Claude Opus 5.5 (01.11.2026).
-- [ ] Vurder R² = 0,25 i styrkeberegningen og om interaksjonsberegningen skal stå.
-- [ ] Godta at tabell 4 ligger i supplementet, eller flytt den tilbake (én linje i `bygg_pse.py`).
+- [x] Vurder R² = 0,25 i styrkeberegningen og om interaksjonsberegningen skal stå.
+- [x] Godta at tabell 4 ligger i supplementet, eller flytt den tilbake (én linje i `bygg_pse.py`).
 - [x] STROBE-sjekklisten ligger som `strobe_checklist.docx`.
-- [ ] Figurene lastes opp som egne filer (`../figures/fig1–4*.png`). Alle er 300 dpi og 2 421–3 108 piksler brede, over PSEs krav på 2 244 for full bredde.
+- [x] Figurene lastes opp som egne filer (`../figures/fig1–4*.png`). Alle er 300 dpi og 2 421–3 108 piksler brede, over PSEs krav på 2 244 for full bredde.
 - [x] Følgebrev datert 1. november 2026; ingen forslag til fagfeller.
-- [ ] Les gjennom innledningen og den nye metodedelen; de er nye tekster, ikke flyttet tekst.
+- [x] Les gjennom innledningen og den nye metodedelen; de er nye tekster, ikke flyttet tekst.
 
 ## Bygging
 

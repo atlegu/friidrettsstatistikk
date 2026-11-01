@@ -50,6 +50,6 @@ hovedgruppen i begge vinduer), hvorav **648 (17,0 %) aktive seniorer**.
 - Ingen eksponering–utfall-analyse før OSF-registrering; 03/04 har teknisk sperre.
 - Tolkningsasymmetri forhåndsdefinert: nullfunn falsifiserer ikke mastery (idrettsbytte).
 
-## PSE-versjon (31.10.2026)
+## PSE-versjon (31.10.2026) — INNSENDT 01.11.2026
 
-`manus_pse/` inneholder innsendingsversjonen for *Psychology of Sport and Exercise* (Atles valg 31.10.2026 på grunn av publiseringsavgiftene i SMO/EJSS/SJMSS): anonymisert hovedfil med teorien i innledningen, APA 7, egen tittelside, supplement (S1–S3), highlights, følgebrev. Bygges fra det fryste manuset med `manus_pse/kompiler.sh`; `manus_pse/tallkontroll_pse.py` sikrer at ingen tall avviker. Se `manus_pse/ENDRINGER_PSE.md`.
+Status og innsendingsinnhold står i [PROJECT_STATUS.md](PROJECT_STATUS.md). `manus_pse/` inneholder innsendingsversjonen for *Psychology of Sport and Exercise* (Atles valg 31.10.2026 på grunn av publiseringsavgiftene i SMO/EJSS/SJMSS): anonymisert hovedfil med teorien i innledningen, APA 7, egen tittelside, supplement (S1–S3), highlights, følgebrev. Bygges fra det fryste manuset med `manus_pse/kompiler.sh`; `manus_pse/tallkontroll_pse.py` sikrer at ingen tall avviker. Se `manus_pse/ENDRINGER_PSE.md`.
