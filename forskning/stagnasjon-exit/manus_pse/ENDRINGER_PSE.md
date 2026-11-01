@@ -9,6 +9,7 @@ Laget 31.10.2026, Word-versjoner 01.11.2026, for innsending til *Psychology of S
 | `main_anonymised.tex` / `.pdf` | Anonymisert hovedfil (sammendrag, hovedtekst, tabell 1–3, figur 1–4, referanser) |
 | `title_page.tex` / `.pdf` | Egen tittelside med forfatter, ORCID, CRediT, interessekonflikter, finansiering, etikk, takk |
 | `supplement.tex` / `.pdf` | Tabell S1 (utvalgsflyt), tabell S2 (robusthet, tidligere tabell 4), S3 (avvik fra analyseplanen) |
+| `abstract.docx` | Sammendrag med nøkkelord som egen fil (eget punkt i opplastingen; hentes automatisk fra hovedfilen) |
 | `highlights.md` / `.docx` | Fem punkter, alle ≤ 85 tegn |
 | `cover_letter.md` / `.docx` | Følgebrev med begrunnelse for lengden |
 | `declaration_of_interests.md` / `.docx` | Interesseerklæring (Elseviers skjema fylles ut i innsendingssystemet; dette er teksten) |

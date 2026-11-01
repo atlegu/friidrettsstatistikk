@@ -89,7 +89,15 @@ def stil(maal: Path):
     d.save(maal)
 
 
-for navn, nummerer in (("main_anonymised", True), ("supplement", False), ("title_page", False)):
+# Sammendraget som egen fil (eget opplastingselement i Editorial Manager), hentet fra hovedfilen
+hoved = (HER / "main_anonymised.tex").read_text(encoding="utf-8")
+m = re.search(r"\\section\*\{Abstract\}(.*?)\\newpage", hoved, re.S)
+if not m:
+    sys.exit("fant ikke sammendraget")
+(HER / "abstract.tex").write_text(
+    "\\documentclass{article}\n\\begin{document}\n\\section*{Abstract}\n" + m.group(1).strip() + "\n\\end{document}\n", encoding="utf-8")
+
+for navn, nummerer in (("main_anonymised", True), ("supplement", False), ("title_page", False), ("abstract", False)):
     pandoc(HER / f"{navn}.tex", HER / f"{navn}.docx", nummerer)
     stil(HER / f"{navn}.docx")
     print(f"{navn}.docx")
