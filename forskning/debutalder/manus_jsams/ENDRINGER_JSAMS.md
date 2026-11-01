@@ -31,7 +31,7 @@ Bygges med `./kompiler.sh` (bygg + pdflatex/bibtex), kontrolleres med `tallkontr
 
 | | Manuset | JSAMS-grense |
 |---|---|---|
-| Hovedtekst (Introduction til og med Practical implications) | 4 657 ord | 5 000 |
+| Hovedtekst (Introduction til og med Practical implications) | 4 497 ord | 5 000 |
 | Sammendrag | 250 ord | 250 |
 | Tabeller + figurer i hovedteksten | 2 + 4 = 6 | 6 |
 | Referanser | 11 | 40 |
@@ -48,3 +48,7 @@ Tallkontrollen (`tallkontroll_jsams.py`) viser at alle tall i JSAMS-versjonen st
 - [ ] Sammendraget er nøyaktig 250 ord etter vår telling; Word kan telle «n», «=» og «[CI]» annerledes. Sjekk tellingen i Word før opplasting.
 - [ ] JSAMS ber om etisk godkjenningsnummer og dato; manuset forklarer at godkjenning ikke var påkrevd og at Sikt bekreftet bruken uten referansenummer (Atles beslutning 01.11.2026 for A1).
 - [ ] Editorial Manager vil ha figurene som egne filer (TIFF-ene i `figurer_opplasting/`) og trolig sammendraget i et eget felt.
+
+## Tynning 01.11.2026
+
+Resultatdelen gjengir ikke lenger tabellene: konverteringsprosent per debutalder, kjønnstall, retention-andeler per k og robusthetsestimatene med intervaller står nå bare i tabell 2, figur 3 og 4 og tabell S2–S5, og teksten viser dit. Tallene som bærer argumentet er beholdt. Endringen er gjort i det fryste manuset (logget i `../FREEZE.md`), så SJMSS- og JSAMS-versjonen har samme tekst. Hovedteksten gikk fra 392 til 291 tall, resultatdelen fra 262 til 161.

@@ -197,9 +197,10 @@ krav(prim[prim["debut_alder"] <= 14]["covid_debut"].sum() == 0, "covid-debut bar
 k.need("results", f"Of the {len(prim)} debutants, {int(prim['senior'].sum())} ({pst(prim['senior'].mean())}%) were active", "H1 n")
 n10, s10 = len(prim[prim["debut_alder"] == 10]), int(prim[prim["debut_alder"] == 10]["senior"].sum())
 n16, s16 = len(prim[prim["debut_alder"] == 16]), int(prim[prim["debut_alder"] == 16]["senior"].sum())
-k.need("results", f"it was {pst(konv(10))}% for debut at 10 ({s10}/{n10}), fell to {pst(konv(11))}% at 11, {pst(konv(12))}% at 12, "
-       f"{pst(konv(13))}% at 13 and {pst(konv(14))}% at 14, and rose to {pst(konv(15))}% at 15 and {pst(konv(16))}% at 16 "
-       f"({s16}/{n16})", "rå konvertering")
+krav(all(konv(a) < konv(10) for a in range(11, 15)) and min(konv(15), konv(16)) > max(konv(a) for a in range(11, 15)),
+     "rå konvertering: lavere ved 11–14 enn ved 10, høyere igjen ved 15 og 16 (tynnet 01.11.2026; tallene i tabell 2)")
+k.need("results", f"it was {pst(konv(10))}% for debut at 10, lower at every age from 11 to 14, and higher again at 15 and 16",
+       "rå konvertering")
 k.need("results", f"(LR = {f(lrt['LR'], 1)}, df = {int(lrt['df'])}, p = {float(lrt['p']):.1e}".replace("e-0", " × 10$^{-")
        .replace("p = 3.3 × 10$^{-8", "p = 3.3 × 10$^{-8}$"), "LRT tekst")
 sign = [a for a in [11, 12, 14] if kat[a]["KI_hoy"] < 1]
@@ -222,11 +223,8 @@ k.need("results", f"All {int(k16.loc[True, 'n'])} debut-16 athletes born 2004--2
 krav(u16["KI_lav"] < 1 and fl16["KI_lav"] < 1, "debut 16 ikke signifikant uten koronadebuter / med flagg")
 krav(f(min(lav_u), 2) == f(min(lav), 2) and f(max(lav_u), 2) == f(max(lav), 2), "11–14 uendret uten koronadebuter")
 krav(float(clr.loc["uten_covid_debut", "p"]) < 0.001, "ikke-lineær uten koronadebuter")
-k.need("results", f"Excluding 2020--2021 debuts, the debut-16 odds ratio was {f(u16['OR'], 2)} (95% CI {f(u16['KI_lav'], 2)}--"
-       f"{f(u16['KI_hoy'], 2)}), and with a COVID-19 flag in the model {f(fl16['OR'], 2)} (95% CI {f(fl16['KI_lav'], 2)}--"
-       f"{f(fl16['KI_hoy'], 2)}), while the odds at 11--14 were unchanged (OR {f(min(lav_u), 2)}--{f(max(lav_u), 2)}) and the "
-       f"association remained non-linear (LR = {f(clr.loc['uten_covid_debut', 'LR'], 1)}, df = "
-       f"{int(clr.loc['uten_covid_debut', 'df'])}, p = {sci(float(clr.loc['uten_covid_debut', 'p']))}", "debut 16 uten korona")
+k.need("results", "excluding 2020--2021 debuts or adding a COVID-19 flag left the odds at 11--14 unchanged and the association "
+       "non-linear, while the debut-16 estimate was no longer significant", "debut 16 uten korona (tallene i tabell 4; krav over)")
 k.need("results", "the debut-16 senior estimate rests on 28 events and is not robust to excluding debuts in 2020--2021",
        "tabell 2: debut 16 (krav over)")
 k.need("materials", "and the COVID-19 exclusion, the COVID-19 flag and the cohort split applied to the categorical coding",
@@ -237,40 +235,38 @@ k.need("results", "between four (debut at 16) and ten (debut at 10) seasons to c
        "avstand til utfallsalder (20 − debutalder)")
 kv = kk.set_index(["debut_alder", "gender"])["andel_pst"]
 krav(all(kv[(a, "M")] > kv[(a, "F")] for a in range(10, 17)), "gutter høyere ved hver debutalder")
-k.need("results", f"({f(kv[(10, 'M')], 1)} vs. {f(kv[(10, 'F')], 1)}% at debut 10; {f(kv[(16, 'M')], 1)} vs. {f(kv[(16, 'F')], 1)}% "
-       f"at debut 16; Supplementary Table S2)", "kjønn")
-k.need("results", f"({pst((g[2]['gender'] == 'F').mean())}% female at debut 14--16)", "kjønn 14-16")
+k.need("results", "Conversion was higher for boys than girls at every debut age", "kjønn (tallene i S2; krav over)")
+k.need("results", "the late-entry channel is male-tilted in composition", "kjønn 14-16 (tallet i tabell 1)")
 krav(all(kv[(10, s)] > max(kv[(a, s)] for a in range(11, 15)) < kv[(16, s)] for s in ("M", "F")),
      "U-form i rå konvertering for begge kjønn (S3)")
-k.need("results", "the raw conversion rates show the same U in both sexes (Supplementary Table S2)", "U begge kjønn")
+k.need("results", "the raw conversion rates show the same U in both sexes", "U begge kjønn")
 xi = rad(kxi, "r1_kjonnsinteraksjon", "debut_x_kvinne")
-k.need("results", f"(OR {f(xi['OR'], 2)} per year, 95% CI {f(xi['KI_lav'], 2)}--{f(xi['KI_hoy'], 2)})", "kjønnsinteraksjon")
+krav(xi["OR"] < 1 < xi["KI_hoy"], "kjønnsinteraksjon: negativ retning, ikke signifikant (tallene i S2)")
+k.need("results", "interaction was directionally negative but not significant (Supplementary Table S2)", "kjønnsinteraksjon")
 k.need("results", f"(n = {len(prim)}; {int(prim['senior'].sum())} senior events, {int(vt[4]['hendelser'])} equal-career-length events)",
        "tabell 2 tittel")
 k.need("results", f"(LR = {f(lrt['LR'], 1)}, df = {int(lrt['df'])}, p < 0.001); the debut-16 senior estimate rests on {s16} events",
        "tabell 2 tekst")
-k.need("results", f"{pst(k1[10], 0)}% of those who debuted at 10 were still competing, against {pst(min(k1[a] for a in range(11, 15)), 0)}--"
-       f"{pst(max(k1[a] for a in range(11, 15)), 0)}% of those who debuted at 11--14, {pst(k1[15], 0)}% at 15, and "
-       f"{pst(k1[16], 0)}% at 16", "retention k1")
+k.need("results", f"{pst(k1[10], 0)}% of those who debuted at 10 were still competing, against {pst(min(k1[a] for a in range(11, 17)), 0)}--"
+       f"{pst(max(k1[a] for a in range(11, 17)), 0)}% of those who debuted at 11--16", "retention k1")
 krav(all(k5[10] / k5[a] > k1[10] / k1[a] for a in range(11, 17)), "det relative gapet øker fra k = 1 til k = 5")
-k.need("results", f"the relative gap had widened: {pst(k5[10], 0)}% (debut 10) and {pst(k5[11], 0)}% (debut 11) were still competing, "
-       f"against {pst(min(s12_16), 0)}--{pst(max(s12_16), 0)}% (debuts 12--16)", "retention k5 tekst")
+k.need("results", f"the relative gap had widened: {pst(k5[10], 0)}% (debut 10) against {pst(min(k5[a] for a in range(11, 17)), 0)}--"
+       f"{pst(max(k5[a] for a in range(11, 17)), 0)}% (debuts 11--16)", "retention k5 tekst")
 n16k = {k_: int(ret(16, k_)["n"]) for k_ in range(1, 6)}
 krav(all(int(ret(a, k_)["n"]) == int(ret(a, 1)["n"]) for a in range(10, 16) for k_ in range(1, 6)), "nevnere like unntatt debut 16")
 krav(all(n16k[k_] == n16k[1] for k_ in range(1, 5)), "debut 16: k ≤ 4 lik nevner")
-k.need("results", f"({n16k[1]} at $k$ = 1 to {n16k[5]} at $k$ = 5)", "nevnere tekst")
+k.need("results", "shrink only for debut at 16", "nevnere tekst (tallene i tabell 3 og S3)")
 k.need("results", f"shrink from {n16k[1]} ($k \\leq 4$) to {n16k[5]} ($k$ = 5)", "nevnere tabelltekst")
 k.need("results", f"{pst(v4[10])}% of those who debuted at 10 competed on at least two days in a season four or more years later, "
-       f"against {pst(v4[11])}% at 11, {pst(min(v4[12], v4[13]))}--{pst(max(v4[12], v4[13]))}% at 12--13 and "
-       f"{pst(min(v4_sen))}--{pst(max(v4_sen))}% at 14--16, an adjusted OR of {f(vt[4]['OR'], 2)} per year of later debut "
-       f"(95% CI {f(vt[4]['KI_lav'], 2)}--{f(vt[4]['KI_hoy'], 2)}), essentially unchanged at five ({f(vt[5]['OR'], 2)}) and six "
-       f"years ({f(vt[6]['OR'], 2)}; Supplementary Table S4)", "lik karrierelengde tekst")
+       f"against {pst(min(v4_sen))}--{pst(max(v4_sen))}% of those who debuted at 14--16, an adjusted OR of {f(vt[4]['OR'], 2)} "
+       f"per year of later debut (95% CI {f(vt[4]['KI_lav'], 2)}--{f(vt[4]['KI_hoy'], 2)}), essentially unchanged at five and six "
+       f"years (Supplementary Table S4)", "lik karrierelengde tekst (11 og 12–13 bare i tabell 2 og S4)")
 krav(abs(vt[5]["OR"] - vt[4]["OR"]) < 0.05 and abs(vt[6]["OR"] - vt[4]["OR"]) < 0.05, "«essentially unchanged» ved 5 og 6 år")
-k.need("results", f"({pst(da[(16, '14-16')])}% with a result at 16 or later, against {pst(da[(16, '10-11')])} and "
-       f"{pst(da[(16, '12-13')])}% in the earlier groups)", "andel ved 16")
-k.need("results", f"at 20, {pst(da[(20, '10-11')])}, {pst(da[(20, '12-13')])} and {pst(da[(20, '14-16')])}% of the three groups "
-       f"were still competing, and at 21, {pst(da[(21, '10-11')])}, {pst(da[(21, '12-13')])} and {pst(da[(21, '14-16')])}%",
-       "andel ved 20 og 21")
+krav(da[(16, "14-16")] > 2 * max(da[(16, "10-11")], da[(16, "12-13")]), "«far more» ved 16: sen gruppe over det dobbelte")
+k.need("results", "the late group had far more athletes still competing at 16", "andel ved 16 (tallene i figur 4)")
+krav(all(max(da[(t, g_)] for g_ in ("10-11", "12-13", "14-16")) - min(da[(t, g_)] for g_ in ("10-11", "12-13", "14-16")) < 0.013
+         for t in (20, 21)), "ved 20 og 21: de tre gruppene innenfor om lag ett prosentpoeng")
+k.need("results", "at 20 and 21, the three groups were within about a percentage point of one another", "andel ved 20 og 21")
 for t in (19, 20, 21):
     krav(abs(da[(t, "10-11")] - da[(t, "14-16")]) < 0.01, f"«close from about 19» ved {t} (tidlig mot sen < 1 pp)")
 k.need("results", f"Of the {len(prim)} debutants, {n_lm} ({pst(n_lm / len(prim))}%) competed in the age-17 season itself; {s_lm} of these "
@@ -280,29 +276,20 @@ k.need("results", f"(OR {f(h3m['OR'], 2)}, 95% CI {f(h3m['KI_lav'], 2)}--{f(h3m[
 ro = {n: rad(rob, n) for n in ["uten_covid_debut", "utfall_min1", "utfall_aktiv17_debut_10_14", "betinget_debutvolum",
                                "kohort_2001_2003", "kohort_2004_2005"]}
 ut01, uk = rad(u01, "uten_2001_trend"), rad(ukj, "med_ukjent_kjonn_trend")
-k.need("results", f"Excluding COVID-era debuts gave {f(ro['uten_covid_debut']['OR'], 2)} (95% CI {f(ro['uten_covid_debut']['KI_lav'], 2)}--"
-       f"{f(ro['uten_covid_debut']['KI_hoy'], 2)}); excluding the 2001 cohort, whose debut-at-10 season fell in the thinly "
-       f"covered 2011, gave {f(ut01['OR'], 2)}; including the {int(uk['n_ukjent'])} athletes without registered sex as a separate "
-       f"category gave {f(uk['OR'], 2)}, with debut-10 conversion {pst(uk['konvertering_debut10'])} instead of {pst(konv(10))}%; "
-       f"the one-result senior outcome gave {f(ro['utfall_min1']['OR'], 2)}; activity at 17 among debuts at 10--14 gave "
-       f"{f(ro['utfall_aktiv17_debut_10_14']['OR'], 2)}; conditioning on debut-season volume gave a borderline "
-       f"{f(ro['betinget_debutvolum']['OR'], 2)} (95% CI {f(ro['betinget_debutvolum']['KI_lav'], 2)}--"
-       f"{f(ro['betinget_debutvolum']['KI_hoy'], 2)}); and the cohort halves agreed on the linear trend "
-       f"({f(ro['kohort_2001_2003']['OR'], 2)} and {f(ro['kohort_2004_2005']['OR'], 2)})", "robusthet")
+rob_or = [ro[n]["OR"] for n in ["uten_covid_debut", "utfall_min1", "utfall_aktiv17_debut_10_14", "betinget_debutvolum"]] + [ut01["OR"], uk["OR"]]
+k.need("results", f"including the {int(uk['n_ukjent'])} athletes without registered sex as a separate category", "ukjent kjønn n")
+k.need("results", "using activity at 17 among debuts at 10--14", "robusthet: aktiv ved 17 (estimatet i tabell 4)")
+k.need("results", f"all gave odds ratios between {f(min(rob_or), 2)} and {f(max(rob_or), 2)} per year, and the cohort halves agreed "
+       "on the linear trend and on the non-linearity", "robusthet (enkeltestimatene i tabell 4)")
 h16 = {n: rad(c16, f"{n}_kategorisk", "debut_kat_16") for n in ["kohort_2001_2003", "kohort_2004_2005"]}
 krav(all(float(clr.loc[n, "p"]) < 0.001 for n in h16), "U-formen (ikke-linearitet) replikerer i begge kohorthalvdeler")
 krav(h16["kohort_2001_2003"]["KI_lav"] < 1 < h16["kohort_2004_2005"]["KI_lav"], "debut 16: bare 2004–2005 signifikant")
-k.need("results", f"and on the non-linearity (LR test p = {sci(float(clr.loc['kohort_2001_2003', 'p']))} and "
-       f"{sci(float(clr.loc['kohort_2004_2005', 'p']))}), but not on the elevation at 16 (OR "
-       f"{f(h16['kohort_2001_2003']['OR'], 2)}, 95% CI {f(h16['kohort_2001_2003']['KI_lav'], 2)}--"
-       f"{f(h16['kohort_2001_2003']['KI_hoy'], 2)}, for those born 2001--2003, against {f(h16['kohort_2004_2005']['OR'], 2)}, "
-       f"95% CI {f(h16['kohort_2004_2005']['KI_lav'], 2)}--{f(h16['kohort_2004_2005']['KI_hoy'], 2)}, for those born "
-       "2004--2005, whose debut-16 group consists entirely of 2020--2021 debuts)", "kohorthalvdeler: debut 16")
+k.need("results", "The elevation at 16 was the one result that did not replicate: it was confined to those born 2004--2005, "
+       "whose debut-16 group consists entirely of 2020--2021 debuts", "kohorthalvdeler: debut 16 (tallene i tabell 4; krav over)")
 krav(all(0.9 <= x <= 1.1 for x in [ro[n]["OR"] for n in ro] + [ut01["OR"], uk["OR"]]), "ingen variant langt fra null")
 t17 = rad(d17, "r1_debut_17_19", "debut_kat_17")
 k.need("results", f"excluding the {int(fd17.get(20, 0))} athletes whose first registered result came at age 20 or later", "debut 20+")
-k.need("results", f"(OR {f(t17['OR'], 2)} vs. debut at 10, 95% CI {f(t17['KI_lav'], 2)}--{f(t17['KI_hoy'], 2)}; within the late group, "
-       f"{int(fd17[17])} debuted at 17, {int(fd17[18])} at 18 and {int(fd17[19])} at 19)", "debut 17-19")
+k.need("results", f"(OR {f(t17['OR'], 2)} vs. debut at 10, 95% CI {f(t17['KI_lav'], 2)}--{f(t17['KI_hoy'], 2)})", "debut 17-19")
 k.need("results", "Estimates are for debut age (per +1 year, linear)", "tabell 4 tekst")
 
 # ================================================================ DISCUSSION / PERSPECTIVE
