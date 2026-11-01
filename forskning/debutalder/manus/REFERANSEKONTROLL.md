@@ -1,0 +1,23 @@
+# Referansekontroll A3 «Does starting age predict who stays?» — 01.11.2026
+
+Grunnlag: `../RefDebut.pdf` (sammendrag av ni kilder), `../Overuse_injuries_and_burnout_in_youth_sp.pdf` (DiFiori 2014, fulltekst), Frontiers-fulltekst for Van Yperen 2022 (lest i nettleser), sammendraget i IJSSC-manuset (`../../ncc-kohort/IJSSC_R1_opplasting/MANUSCRIPT_R1_clean.docx`) og RAE-manuset (`../../RAE/revisjon3/`). Alle ti DOI-er sjekket mot CrossRef 01.11.2026: tittel, år, bind, hefte og sider stemmer.
+
+| Kilde | Hva manuset sa | Kilden sier | Dom | Rettet til |
+|---|---|---|---|---|
+| DiFiori 2014 | «early competitive engagement risks burnout and withdrawal» | «early intensive training and competition at young ages … can lead to overuse injury and burnout» | For sterkt: erklæringen handler om intensiv trening og konkurranse, og om skade og utbrenthet, ikke om deltakelse i konkurranse som sådan | «intensive training and competition at young ages risk overuse injury and burnout»; slutningen om senere inngang er merket som vår lesning |
+| DiFiori 2014 (diskusjon) | «specialised, high-volume, year-round involvement» | Samme | OK | — |
+| Van Yperen 2022 | 1 762 nederlandske spillere, prospektiv, frafalte startet senere, «recommended recruiting from early childhood» | Nederlandske KNVB-spillere bekreftet i fulltekst; «dropouts … were older at the time they started»; «dropout rates may be reduced by attracting and engaging youth at a very young age (from 6 years)» | «recommended» er sterkere enn «may be reduced» | «suggested that attracting children from about age six might reduce dropout» |
+| Van Yperen 2022 (H2 og diskusjon) | senere innmeldte faller fra raskere | Startalder er en aldersgruppekategori; signifikant for langtidsfrafall, samme retning for korttid | OK, med forbehold om konstrukt som manuset alt tar | — |
+| Larson 2019 | «failed to predict actual dropout in the one study that measured both» | «Empirical evidence … is lacking»; 137 svømmere 12–13 år, spørreskjema; «ES items were not positively related to burnout and dropout» | «the one study» kan ikke belegges; «actual dropout» er mer enn sammendraget sier | «In one of the few studies to measure both, markers … were not positively related to burnout or dropout among age-group swimmers followed by survey» (tallet 137 utelatt fordi tallkontrollen ikke dekker eksterne tall) |
+| Crane & Temple 2015 | «systematic reviews … identify motivational and social factors rather than starting age» | Fem områder: manglende glede, opplevd kompetanse, sosialt press, konkurrerende prioriteringer, fysiske faktorer (modning, skader) | Delvis: fysiske faktorer manglet | De fem områdene nevnt ordrett, «not starting age» |
+| Espedalen & Seippel 2024 | Sitert som «systematic review» | Spørreundersøkelse (Ung i Oslo 2015, N = 2 355) om seks grunner til å slutte etter sosial bakgrunn | FEIL: ikke en systematisk oversikt | «a Norwegian survey of dropouts' own reasons likewise points to skills, friends, parents and cost» |
+| Barth et al. 2022 | «eventual elites often entered their main sport later» | Voksne verdensklasseutøvere hadde senere hovedidrettsstart enn nasjonalklasse; motsatt for juniorer | OK, presisert | «adult world-class athletes started their main sport later than national-class peers» |
+| Güllich et al. 2025 | Samme påstand om startalder | Sammendraget nevner ikke startalder; sier at unge og voksne toppytere er «largely two discrete populations» | Startalder kan ikke belegges fra sammendraget | «youth and adult top performers are largely different people» |
+| Guttormsen (RAE, in press) | «fully established at the entry stage and stable thereafter» | «established by age 10 and stable through senior level … points to pre-entry selection» | OK | — |
+| Guttormsen (IJSSC, under review) | volum 13–14 «somewhat better than performance»; exit forutgås av atferdsmessig tilbaketrekning | «discriminated retention somewhat better than age-normed performance»; «Participation declined within athletes before exit» | OK | — |
+| Guttormsen (A1 stagnasjon) | «progression predicts retention beyond volume … recent window dominates» | Stemmer med A1 (OR 2,24 utover volum; Δ13→14 null) | OK; bib-noten oppdatert | «Manuscript submitted for publication» (PSE 01.11.2026) |
+| Korn 1997 | aldersskala Cox med forsinket inntreden | Anbefaler alder som tidsskala, stratifisering på kohort | OK | — |
+| Anderson 1983 | landmark-analyse | Metodens opphav | OK | — |
+| von Elm 2007 | STROBE | — | OK | — |
+
+Tallkontrollen etter rettingene: 125 sjekker OK, 0 feil, 0 udekkede tall. PDF bygget i full syklus (pdflatex, bibtex, pdflatex ×2), ingen «??».
