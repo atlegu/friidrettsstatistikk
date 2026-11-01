@@ -66,8 +66,8 @@ metode = bytt(metode, r"\section{Materials and methods}", r"\section{Methods}")
 #    ikke i referanselisten; og «companion» røper forfatteren i et dobbelt anonymisert manus ──
 intro = bytt(intro, r"and that exit is preceded by behavioural withdrawal \cite{guttormsen2026dropout}.",
              "and that exit is preceded by behavioural withdrawal (unpublished data).")
-intro = bytt(intro, r"A companion study of performance trajectories found that progression predicts retention beyond volume --- but that, here too, the \emph{recent} window dominates the earlier one \cite{guttormsen2026progression}.",
-             r"A further study of performance trajectories in the registry found that progression predicts retention beyond volume --- but that, here too, the \emph{recent} window dominates the earlier one (unpublished data).")
+intro = bytt(intro, r"A companion study of performance trajectories found that progression predicts retention beyond volume, but that, here too, the \emph{recent} window dominates the earlier one \cite{guttormsen2026progression}.",
+             r"A further study of performance trajectories in the registry found that progression predicts retention beyond volume, but that, here too, the \emph{recent} window dominates the earlier one (unpublished data).")
 intro = bytt(intro, r"current behaviour dominates history \cite{guttormsen2026dropout,guttormsen2026progression}?",
              "current behaviour dominates history (unpublished data)?")
 metode = bytt(metode, r"identical to the companion studies \cite{guttormsen2026dropout,guttormsen2026progression}",
@@ -139,7 +139,7 @@ TITTEL = r"""
 \begin{center}
 {\LARGE\bfseries Does starting age predict who stays? Competition debut and long-term participation in youth track and field\par}
 \vspace{0.5em}
-{\normalsize Anonymised manuscript --- Original Research\par}
+{\normalsize Anonymised manuscript (Original Research)\par}
 \end{center}
 """
 
