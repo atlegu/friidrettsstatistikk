@@ -9,6 +9,7 @@ Laget 31.10.2026, Word-versjoner 01.11.2026, for innsending til *Psychology of S
 | `main_anonymised.tex` / `.pdf` | Anonymisert hovedfil (sammendrag, hovedtekst, tabell 1–3, figur 1–4, referanser) |
 | `title_page.tex` / `.pdf` | Egen tittelside med forfatter, ORCID, CRediT, interessekonflikter, finansiering, etikk, takk |
 | `supplement.tex` / `.pdf` | Tabell S1 (utvalgsflyt), tabell S2 (robusthet, tidligere tabell 4), S3 (avvik fra analyseplanen) |
+| `strobe_checklist.md` / `.docx` | STROBE-sjekkliste for kohortstudier med seksjonshenvisninger til PSE-manuset (skrevet 01.11.2026) |
 | `abstract.docx` | Sammendrag med nøkkelord som egen fil (eget punkt i opplastingen; hentes automatisk fra hovedfilen) |
 | `highlights.md` / `.docx` | Fem punkter, alle ≤ 85 tegn |
 | `cover_letter.md` / `.docx` | Følgebrev med begrunnelse for lengden |
@@ -50,7 +51,7 @@ Overskridelsen begrunnes i følgebrevet. Vil Atle under grensen, er de nærmeste
 - [x] KI-erklæringen oppgir Claude Opus 5.5 (01.11.2026).
 - [ ] Vurder R² = 0,25 i styrkeberegningen og om interaksjonsberegningen skal stå.
 - [ ] Godta at tabell 4 ligger i supplementet, eller flytt den tilbake (én linje i `bygg_pse.py`).
-- [ ] STROBE-sjekklisten (nevnt i teksten og følgebrevet) legges ved som egen fil.
+- [x] STROBE-sjekklisten ligger som `strobe_checklist.docx`.
 - [ ] Figurene lastes opp som egne filer (`../figures/fig1–4*.png`). Alle er 300 dpi og 2 421–3 108 piksler brede, over PSEs krav på 2 244 for full bredde.
 - [x] Følgebrev datert 1. november 2026; ingen forslag til fagfeller.
 - [ ] Les gjennom innledningen og den nye metodedelen; de er nye tekster, ikke flyttet tekst.
