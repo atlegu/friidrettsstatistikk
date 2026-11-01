@@ -17,7 +17,7 @@ from docx.enum.text import WD_LINE_SPACING
 from docx.shared import Pt, Cm
 
 HER = Path(__file__).resolve().parent
-CSL = Path("/usr/local/texlive/2025/texmf-dist/tex/latex/citation-style-language/styles/vancouver.csl")
+CSL = HER / "jsams.csl"   # vancouver.csl fra TeX Live med «et al» etter tre forfattere
 if not CSL.exists():
     sys.exit(f"finner ikke {CSL}")
 TMP = HER / "_pandoc_tmp"
@@ -44,8 +44,8 @@ def forbered(tex: str) -> str:
     for k in ("\\small\n", "\\scriptsize\n", "\\linenumbers", "\\doublespacing"):
         tex = tex.replace(k, "")
     tex = re.sub(r"\\multicolumn\{2\}\{c\}\{([^}]*)\}", lambda m: m.group(1) + " &", tex)
-    tex = tex.replace("\\bibliographystyle{unsrt}\n", "")
-    tex = tex.replace("\\bibliography{../manus/references}", "\\section*{References}")
+    tex = tex.replace("\\bibliographystyle{jsams}\n", "")
+    tex = tex.replace("\\bibliography{references}", "\\section*{References}")
     return tex
 
 
@@ -53,7 +53,7 @@ def pandoc(kilde: Path, maal: Path, nummerer: bool):
     tmp = TMP / kilde.name
     tmp.write_text(forbered(kilde.read_text(encoding="utf-8")), encoding="utf-8")
     cmd = ["pandoc", str(tmp), "-f", "latex", "-t", "docx", "--citeproc",
-           "--bibliography", str(HER.parent / "manus" / "references.bib"), "--csl", str(CSL),
+           "--bibliography", str(HER / "references.bib"), "--csl", str(CSL),
            "--resource-path", f"{HER}:{HER.parent / 'figures'}:{HER.parent / 'manus'}", "-o", str(maal)]
     if nummerer:
         cmd.append("--number-sections")

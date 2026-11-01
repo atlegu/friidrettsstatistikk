@@ -62,6 +62,28 @@ persp = linjer(L_PERSP, L_DEKL - 1)
 # ── Metode ───────────────────────────────────────────────────────────────────
 metode = bytt(metode, r"\section{Materials and methods}", r"\section{Methods}")
 
+# ── De to manusene som ennå ikke er antatt: JSAMS vil ha dem som «unpublished data» i teksten,
+#    ikke i referanselisten; og «companion» røper forfatteren i et dobbelt anonymisert manus ──
+intro = bytt(intro, r"and that exit is preceded by behavioural withdrawal \cite{guttormsen2026dropout}.",
+             "and that exit is preceded by behavioural withdrawal (unpublished data).")
+intro = bytt(intro, r"A companion study of performance trajectories found that progression predicts retention beyond volume --- but that, here too, the \emph{recent} window dominates the earlier one \cite{guttormsen2026progression}.",
+             r"A further study of performance trajectories in the registry found that progression predicts retention beyond volume --- but that, here too, the \emph{recent} window dominates the earlier one (unpublished data).")
+intro = bytt(intro, r"current behaviour dominates history \cite{guttormsen2026dropout,guttormsen2026progression}?",
+             "current behaviour dominates history (unpublished data)?")
+metode = bytt(metode, r"identical to the companion studies \cite{guttormsen2026dropout,guttormsen2026progression}",
+              "identical to the earlier studies of this registry (unpublished data)")
+metode = bytt(metode, "As for the companion registry studies, the study is not",
+              "As for the earlier studies of the same registry, the study is not")
+resultat = bytt(resultat, r"what the companion studies found for early competition volume \cite{guttormsen2026dropout} and early performance \cite{guttormsen2026progression}:",
+                "what earlier analyses of this registry found for early competition volume and early performance (unpublished data):")
+disk = bytt(disk, "a pattern that companion analyses of this registry found with two other exposures.",
+            "a pattern that earlier analyses of this registry found with two other exposures (unpublished data).")
+disk = bytt(disk, r"but later volume dominates it \cite{guttormsen2026dropout}.", "but later volume dominates it.")
+disk = bytt(disk, r"but through the most recent window \cite{guttormsen2026progression}.", "but through the most recent window.")
+for t in (intro, metode, resultat, disk):
+    if "companion" in t or "guttormsen2026dropout" in t or "guttormsen2026progression" in t:
+        raise SystemExit("gjenstående «companion» eller sitering av upublisert manus")
+
 # ── Resultater: tabell 3 (varighet) og tabell 4 (robusthet) ut av hovedteksten ──
 m = re.search(r"\\begin\{table\}\[H\]\n\\centering\n\\caption\{Proportion still competing.*?\\end\{table\}\n\n", resultat, re.S)
 if not m:
@@ -171,8 +193,8 @@ SLUTT = r"""
 
 \noindent During the preparation of this work the author used Anthropic Claude (Claude Opus 5.5) in order to improve language and readability, assist with structuring the text, check analysis code and identify errors. After using this tool, the author reviewed and edited the content as needed and takes full responsibility for the content of the publication.
 
-\bibliographystyle{unsrt}
-\bibliography{../manus/references}
+\bibliographystyle{jsams}
+\bibliography{references}
 
 \end{document}
 """
@@ -193,7 +215,10 @@ if abs_ord > 250:
 ord_hoved = ordtelling(HER / "main_anonymised.tex", fra=r"\section{Introduction}", til=r"\section*{Acknowledgments}")
 if ord_hoved > 5000:
     raise SystemExit(f"hovedteksten har {ord_hoved} ord (> 5 000)")
-n_ref = len(re.findall(r"^@", (HER.parent / "manus" / "references.bib").read_text(encoding="utf-8"), re.M))
+n_ref = len(re.findall(r"^@", (HER / "references.bib").read_text(encoding="utf-8"), re.M))
+for key in re.findall(r"^@\w+\{([^,]+),", (HER / "references.bib").read_text(encoding="utf-8"), re.M):
+    if ("\\cite{" + key) not in hoved and ("," + key) not in hoved:
+        raise SystemExit(f"referanse uten sitering: {key}")
 if "subjects" in hoved:
     raise SystemExit("«subjects» forekommer")
 for cite in re.findall(r"\\cite\{([^}]*)\}", hoved):
