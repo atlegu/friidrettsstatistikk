@@ -1,5 +1,7 @@
 # Referansekontroll A3 «Does starting age predict who stays?» — 01.11.2026
 
+**Runde 2 (fulltekst), samme dag:** se avsnittet nederst. Fulltekst lest for DiFiori 2014, Van Yperen 2022 (PMC8801566), Barth et al. 2022 (PMC9124658), Espedalen & Seippel 2024 (artikkelen ligger i Espedalens avhandling, `../../Espedalen LE 26 - uten art 1.pdf`) og Güllich et al. 2025 (det strukturerte sammendraget på science.org; selve teksten er bak betalingsmur). Crane & Temple 2015, Larson et al. 2019, Korn et al. 1997 og Anderson et al. 1983 er bak betalingsmur og er kontrollert mot sammendraget alene.
+
 Grunnlag: `../RefDebut.pdf` (sammendrag av ni kilder), `../Overuse_injuries_and_burnout_in_youth_sp.pdf` (DiFiori 2014, fulltekst, lest i sin helhet for begge siteringsstedene), Frontiers-fulltekst for Van Yperen 2022 (lest i nettleser), sammendraget i IJSSC-manuset (`../../ncc-kohort/IJSSC_R1_opplasting/MANUSCRIPT_R1_clean.docx`) og RAE-manuset (`../../RAE/revisjon3/`). Alle ti DOI-er sjekket mot CrossRef 01.11.2026: tittel, år, bind, hefte og sider stemmer.
 
 | Kilde | Hva manuset sa | Kilden sier | Dom | Rettet til |
@@ -21,3 +23,19 @@ Grunnlag: `../RefDebut.pdf` (sammendrag av ni kilder), `../Overuse_injuries_and_
 | von Elm 2007 | STROBE | — | OK | — |
 
 Tallkontrollen etter rettingene: 125 sjekker OK, 0 feil, 0 udekkede tall. PDF bygget i full syklus (pdflatex, bibtex, pdflatex ×2), ingen «??».
+
+## Runde 2: fulltekstkontroll 01.11.2026
+
+| Kilde | Lest | Funn | Følge for manuset |
+|---|---|---|---|
+| Van Yperen 2022 | Fulltekst (Europe PMC) | Nederlandske KNVB-spillere bekreftet. Startalder er aldersgruppen ved innmelding (1 = U6 … 8 = senior): langtidsfrafalte 2,62 mot 2,17 for de som ble (p < 0,001); korttidsfrafall samme retning, ikke signifikant. Konklusjon: «dropout rates may be reduced by attracting and engaging youth at a very young age (from 6 years)». | Manusets ordlyd stemmer. Ingen endring. |
+| Barth et al. 2022 | Fulltekst (Europe PMC) | «adult world-class athletes had … a later main-sport start» enn nasjonalklasse; «higher-performing juniors had an earlier main-sport start». Artikkelen kaller selv datagrunnlaget retrospektive idrettsbiografiske intervjuer og spørreskjemaer, og nevner «selection effects (e.g., survivor bias)» som begrensning. Frafall omtales ikke. | Manusets «retrospective expertise literature … samples on success» har dekning i kildens egen begrensningstekst. Ingen endring. |
+| Güllich et al. 2025 | Strukturert sammendrag (science.org); fullteksten er lukket | «international-level youth athletes and later international-level adult athletes are nearly 90% different individuals». Startalder nevnes ikke i sammendragene. | Manuset siterer nå bare «largely different people» (rettet i runde 1). Ingen endring. |
+| Espedalen & Seippel 2024 | Fulltekst (avhandlingen) | Seks forhåndsdefinerte grunner: skolearbeid, for strenge ferdighetskrav, venner sluttet, klubben manglet tilbud, for dyrt, foreldre mislikte deltakelsen. Vanligst: skolearbeid, manglende ferdigheter, venner som sluttet. Sjeldnest: for dyrt og foreldre. Startalder er ikke blant grunnene. | Runde 1-ordlyden «points to skills, friends, parents and cost» ga et skjevt bilde (foreldre og kostnad var de sjeldneste grunnene). Rettet til: de vanligste var skolearbeid, manglende ferdigheter og venner som sluttet, mens kostnad og foreldre var sosialt mønstret. |
+| DiFiori 2014 | Fulltekst (lokal PDF) | Se runde 1. | Innarbeidet. |
+| Larson et al. 2019 | Bare sammendrag (Human Kinetics blokkerer) | 137 svømmere 12–13 år og foreldre, spørreskjema med idrettshistorikk fra 6 år; «the ES items were not positively related to burnout and dropout». Hvordan frafall ble målt, fremgår ikke. | «followed by survey» fjernet, siden sammendraget ikke sier om frafallet ble observert senere eller rapportert. Manuset sier nå bare det sammendraget dekker. |
+| Crane & Temple 2015 | Bare sammendrag (SAGE, lukket) | De fem områdene gjengis ordrett. Om startalder eller spesialisering omtales i selve teksten, kan ikke avgjøres; referanselisten har Delorme (relativ alder) og Hecimovich (spesialisering). | Manusets «not starting age» hviler på at startalder ikke er blant de fem områdene i sammendraget. Vil Atle ha det bekreftet, må fullteksten leses med NMBU-tilgang. |
+| Korn et al. 1997 | Bare sammendrag (OUP, lukket) | Anbefaler alder som tidsskala og stratifisering på fødselskohort. Forsinket inntreden nevnes ikke i sammendraget, men følger av aldersskala med inntreden ved alder ved baseline. | Ingen endring. |
+| Anderson et al. 1983 | Bare sammendrag (ASCO blokkerer) | Standardreferansen for landmark-metoden. | Ingen endring. |
+
+Tallkontrollen etter runde 2: 125 sjekker OK, 0 feil. Hovedteksten er 4 564 ord; tittelsiden sier om lag 4 600.
