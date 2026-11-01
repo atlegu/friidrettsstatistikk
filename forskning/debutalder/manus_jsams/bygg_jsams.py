@@ -148,11 +148,11 @@ SAMMENDRAG = r"""
 
 \noindent\textbf{Objectives:} To test whether age at first registered competition predicts long-term participation, and whether entry history adds information beyond current engagement.
 
-\noindent\textbf{Design:} Population-based registry cohort study.
+\noindent\textbf{Design:} Registry-based cohort study.
 
 \noindent\textbf{Methods:} All athletes born 2001--2005 with a first registered competition at ages 10--16 (n = 17\,496; 50\,\% female) were followed in the national athletics registry to October 2026. The outcome was senior activity (two or more results in a season from age 20). Debut age was modelled categorically and linearly by logistic regression adjusted for sex, cohort and club size; persistence was compared at equal career length; a landmark analysis at age 17 added current competition volume.
 
-\noindent\textbf{Results:} 546 (3.1\,\%) became active seniors. Conversion was U-shaped in debut age (non-linearity p $<$ 0.001): relative to debut at 10, adjusted odds were lowest for debuts at 11--14 (odds ratio 0.53--0.75) and equal by 15, with a null linear trend (odds ratio 0.99 per year, 95\,\% confidence interval [CI] 0.94--1.04). At equal career length, later starters persisted less: 20.4\,\% of those debuting at 10 competed four or more years later, against 4.5--6.6\,\% for debuts at 14--16 (odds ratio 0.70 per year, 95\,\% CI 0.68--0.72). At the age-17 landmark, earlier debut appeared advantageous (odds ratio 0.85 per year, 95\,\% CI 0.80--0.90) but not after adjusting for current volume (odds ratio 0.99, 95\,\% CI 0.92--1.05).
+\noindent\textbf{Results:} 546 (3.1\,\%) became active seniors. Conversion was U-shaped (non-linearity p $<$ 0.001): relative to debut at 10, adjusted odds were lowest for debuts at 11--14 (odds ratio 0.53--0.75) and equal by 15, with a null linear trend (odds ratio 0.99 per year, 95\,\% confidence interval [CI] 0.94--1.04). At equal career length, later starters persisted less: 20.4\,\% of those debuting at 10 competed four or more years later, against 4.5--6.6\,\% for debuts at 14--16 (odds ratio 0.70 per year, 95\,\% CI 0.68--0.72). At the age-17 landmark, earlier debut appeared advantageous (odds ratio 0.85 per year, 95\,\% CI 0.80--0.90) but not after adjusting for current volume (odds ratio 0.99, 95\,\% CI 0.92--1.05).
 
 \noindent\textbf{Conclusions:} Early competitive entry did not undermine retention: per year of career, early entrants persisted longest. Among older adolescents, current engagement predicted retention better than entry history.
 
