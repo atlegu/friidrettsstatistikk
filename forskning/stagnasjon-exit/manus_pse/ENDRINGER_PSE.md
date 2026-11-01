@@ -35,8 +35,8 @@ Ingen tall er endret. `tallkontroll_pse.py` finner åtte nye tall, alle fra styr
 
 | | Ord |
 |---|---|
-| PSE-versjonen totalt, Word-telling av .docx (sammendrag, tekst, tabeller, figurtekster, referanser) | 8 560 |
-| Samme, talt fra PDF-en uten linjenumre | 8 727 |
+| PSE-versjonen totalt, Word-telling av .docx (sammendrag, tekst, tabeller, figurtekster, referanser) | 8 690 |
+| Samme, talt fra PDF-en uten linjenumre | 8 854 |
 | Hovedtekst (Introduction til Data availability) | 6 373 |
 | Fryst SMO-versjon totalt, samme måte | 8 866 |
 | PSE-grense | 8 000 |

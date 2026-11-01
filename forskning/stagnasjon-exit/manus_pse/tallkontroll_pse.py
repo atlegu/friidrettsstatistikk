@@ -30,6 +30,7 @@ HVITLISTE = {
     "1.15": "minste påviselig OR per SD, 80 % styrke (Hsieh 1998)",
     "1.18": "minste påviselig OR per SD, 90 % styrke",
     "1.14": "minste påviselig interaksjons-OR per kvartal, 80 % styrke",
+    "33": "årlig turnover i topp-100, nedre grense (JSAMS-artikkelen, resultatdelen)", "59": "årlig turnover i topp-100, øvre grense (JSAMS-artikkelen)",
     "80": "styrke 80 %", "90": "styrke 90 %", "0.05": "alfa",
     "1": "S1/H1-nummerering", "2": "S2/H2-nummerering", "3": "S3/H3-nummerering",
 }
