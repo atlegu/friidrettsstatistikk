@@ -285,7 +285,7 @@ TITTELSIDE = r"""%% JSAMS title page (not for review). Built by bygg_jsams.py.
 \noindent\textbf{Author contributions:} AGG conceived the study, performed all analyses, and wrote the manuscript.
 
 \medskip
-\noindent\textbf{Related manuscripts:} Three other studies of the same registry are cited in the manuscript (a relative-age study in press, a competition-volume cohort study under review, and a performance-progression study under review). They use different exposures and samples, and no text or result overlaps with the present manuscript.
+\noindent\textbf{Related work:} A longitudinal performance-development study of the same registry is published in this journal (\emph{J Sci Med Sport} 2026, \href{https://doi.org/10.1016/j.jsams.2026.07.006}{doi:10.1016/j.jsams.2026.07.006}); it concerns performance trajectories, not retention, and is not cited. Three further studies of the registry are cited in the manuscript: a relative-age study in press (\emph{Sports Medicine -- Open}), a competition-volume cohort study under review (\emph{International Journal of Sports Science \& Coaching}), and a performance-progression study under review (\emph{Psychology of Sport and Exercise}). They use different exposures and samples, and no text or result overlaps with the present manuscript.
 
 \medskip
 \noindent\textbf{Social media handle:} none.
