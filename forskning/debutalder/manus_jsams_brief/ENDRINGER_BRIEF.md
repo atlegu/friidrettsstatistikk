@@ -19,17 +19,17 @@ Bygges med `./kompiler.sh` (kontroll + pdflatex/bibtex) og `python3 lag_docx.py`
 
 - **Beholdt i teksten:** debutmønsteret i to setninger; U-formen med LR-testen, kategoriestimatene og nulltrenden; koronaforbeholdet for debut 16; varighetsklokken (51 mot 26–40 prosent etter ett år, 17 mot 3–10 etter fem; 20,4 mot 4,5–6,6 ved lik karrierelengde, OR 0,70); landmark ved 17 (0,85 → 0,99); robusthetsspennet 0,94–1,00. Diskusjonen beholder de to klokkene, seleksjonslesningen, første-sesong-filteret, «nåtilstand slår historie» og begrensningene.
 - **Flyttet til supplementet:** tabell 1 (karakteristikk) → S6; figur 1, 2 og 4 → S1–S3; robusthetstabellen er S5 som før.
-- **Tatt ut:** kjønnsinteraksjonen (står i S2), debut 17–19-analysen, aldersklokkens tall, mekanismediskusjonen om de to armene, Practical implications. Referansene er redusert fra 11 til 7 (Korn, Larson, Crane og Espedalen ut).
+- **Tatt ut:** kjønnsinteraksjonen (står i S2), debut 17–19-analysen, aldersklokkens tall, mekanismediskusjonen om de to armene, Practical implications. Referansene er redusert fra 12 til 8 (Korn, Larson, Crane og Espedalen ut); utviklingsartikkelen i JSAMS (doi:10.1016/j.jsams.2026.07.006) er lagt til i innledningen 03.11.2026, i alle tre versjoner.
 - **Ikke endret:** ingen analyse, ingen tall. Teksten er kondensert fra det fryste manuset, ikke skrevet på nytt.
 
 ## Mot grensene
 
 | | Brief Report | Grense |
 |---|---|---|
-| Hovedtekst | 1 319 ord | 1 500 |
+| Hovedtekst | 1 332 ord | 1 500 |
 | Sammendrag | 93 ord | 100 |
 | Tabeller + figurer | 1 + 1 | 2 |
-| Referanser | 7 | 20 |
+| Referanser | 8 | 20 |
 
 Editorial Manager teller om lag 4 prosent flere ord enn vår teller (ved forrige innsending 261 mot 250 i sammendraget), så sammendraget er holdt under 95.
 

@@ -35,7 +35,7 @@ Bygges med `./kompiler.sh` (bygg + pdflatex/bibtex), kontrolleres med `tallkontr
 | Hovedtekst (Introduction til og med Practical implications) | 4 497 ord | 5 000 |
 | Sammendrag | 250 ord | 250 |
 | Tabeller + figurer i hovedteksten | 2 + 4 = 6 | 6 |
-| Referanser | 11 | 40 |
+| Referanser | 12 | 40 |
 | Nøkkelord | 6 (5 MeSH) | 6, minst 4 MeSH |
 
 Tallkontrollen (`tallkontroll_jsams.py`) viser at alle tall i JSAMS-versjonen står i det fryste manuset eller tabellene, med to forklarte unntak (avsnittshenvisningen 3.5 og modellversjonen 5.5). PDF-ene er bygget i full syklus uten udefinerte referanser eller manglende nummer.
