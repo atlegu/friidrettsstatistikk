@@ -1,6 +1,6 @@
 # Status — A3 «Does starting age predict who stays? Competition debut and long-term participation in youth track and field»
 
-**Sist oppdatert:** 1. november 2026
+**Sist oppdatert:** 3. november 2026
 
 ## Hvor artikkelen står
 
@@ -14,7 +14,9 @@
 | 01.11.2026 | JSAMS-versjon bygget i `manus_jsams/`; tankestreker fjernet og resultatdelen tynnet for tall i det fryste manuset (begge versjoner) |
 | **01.11.2026** | **Innsendt til Journal of Science and Medicine in Sport via Editorial Manager** (Original Research, Physical Activity & Public Health; klassifisering Physical activity) |
 
-Manuskriptnummer fra Editorial Manager: *(føres inn når bekreftelsen kommer)*
+| **03.11.2026** | **Avvist av redaktøren (JSAMS-D-26-02238) uten fagfellevurdering**: «relevant research question but, as a game with public numbers, does not reach the threshold for a full-scale article»; Tim Meyer åpner for Brief Report (1 500 ord, 2 visningselementer, 20 referanser, 100 ords sammendrag) etter «substantial shortening» |
+
+Manuskriptnummer: JSAMS-D-26-02238 (avvist 03.11.2026)
 
 ## Hva som ble sendt inn
 
@@ -40,6 +42,10 @@ Upubliserte følgestudier (frafall i IJSSC, A1 i PSE) omtales i teksten som «un
 - U-form i konvertering: OR 0,53–0,75 for debut 11–14 mot debut 10, 1,00 ved 15; lineær trend null (0,99 per år)
 - Ved lik karrierelengde fortsetter senere debutanter mindre: 20,4 % mot 4,5–6,6 %, OR 0,70 per år
 - Landmark ved 17: 0,85 per år uten, 0,99 med nåværende konkurransevolum («nåtilstand slår historie»)
+
+## Veien videre (vurdering 03.11.2026)
+
+To alternativer: (1) Brief Report i JSAMS, der redaktøren selv åpner døren, nivå 2 fra 2027 og Elsevier-avtale; fullversjonen deponeres som preprint og siteres fra rapporten. (2) Fullversjonen til German Journal of Exercise and Sport Research (Springer-avtale ut 2027, 5 000 ord, dobbelt anonym) eller EPER. Se vurderingen i samtalen 03.11 og `TIDSSKRIFTVURDERING_2026-11-01.md`.
 
 ## Når svaret kommer
 
