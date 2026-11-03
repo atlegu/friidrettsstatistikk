@@ -16,7 +16,9 @@
 
 | **03.11.2026** | **Avvist av redaktøren (JSAMS-D-26-02238) uten fagfellevurdering**: «relevant research question but, as a game with public numbers, does not reach the threshold for a full-scale article»; Tim Meyer åpner for Brief Report (1 500 ord, 2 visningselementer, 20 referanser, 100 ords sammendrag) etter «substantial shortening» |
 
-Manuskriptnummer: JSAMS-D-26-02238 (avvist 03.11.2026)
+| 03.11.2026 | **Brief Report-versjon bygget** i `manus_jsams_brief/` (1 319 ord, 1 tabell + 1 figur, 7 referanser, supplement S1–S6 og figur S1–S3); venter på Atles gjennomlesing og innsending |
+
+Manuskriptnummer: JSAMS-D-26-02238 (avvist 03.11.2026; Brief Report sendes som ny innsending med henvisning til nummeret)
 
 ## Hva som ble sendt inn
 

@@ -27,3 +27,7 @@ Python: `scraper/venv`. Data i `data_private/` (git-ignorert, regenererbart).
 - **H2 bruker alder som tidsskala med inntreden ved debut** — håndterer at sene debutanter ikke kan falle fra før de har begynt.
 - **Ingen nivådata brukes overhodet** (barneidrettsbestemmelsene; studien trenger dem ikke).
 - Måltidsskrift: Scandinavian Journal of Medicine & Science in Sports / EJSS.
+
+## Brief Report (03.11.2026)
+
+Etter redaktøravvisningen (JSAMS-D-26-02238, «a brief report seems possible») er en Brief Report-versjon bygget i `manus_jsams_brief/`: 1 319 ord, én tabell og én figur, resten i supplementet. `kontroll_brief.py` sjekker tall mot det fryste manuset og JSAMS' grenser. Se `manus_jsams_brief/ENDRINGER_BRIEF.md`.
