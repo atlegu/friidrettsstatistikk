@@ -40,7 +40,7 @@ feil = [n for n in nye if n not in HVITLISTE]
 print(f"tall i Brief Report: {len(brief)}; nye mot fryst: {len(nye)}; uforklarte: {feil}")
 
 hoved = (HER / "main_brief.tex").read_text(encoding="utf-8")
-ord_hoved = ordtelling(HER / "main_brief.tex", fra=r"\section{Introduction}", til=r"\section*{Acknowledgments}")
+ord_hoved = ordtelling(HER / "main_brief.tex", fra=r"\section{Introduction}", til=r"\bibliographystyle")
 abs_m = re.search(r"\\section\*\{Abstract\}(.*?)\\vspace\{0\.5em\}", hoved, re.S)
 abs_tekst = re.sub(r"\\[a-zA-Z]+\*?|[{}$\\]", " ", abs_m.group(1).replace(r"\,", ""))
 abs_ord = len(re.findall(r"[A-Za-z0-9][A-Za-z0-9'’.,–-]*", abs_tekst))
@@ -107,6 +107,15 @@ TITTELSIDE = r"""%% JSAMS Brief Report title page (not for review). Written by k
 
 \medskip
 \noindent\textbf{Related work:} A longitudinal performance-development study of the same registry is published in this journal (\emph{J Sci Med Sport} 2026, \href{https://doi.org/10.1016/j.jsams.2026.07.006}{doi:10.1016/j.jsams.2026.07.006}); it concerns performance trajectories, not retention, and is cited in the Introduction. Three further studies of the registry are cited in the manuscript: a relative-age study in press (\emph{Sports Medicine -- Open}), a competition-volume cohort study under review (\emph{International Journal of Sports Science \& Coaching}), and a performance-progression study under review (\emph{Psychology of Sport and Exercise}). They use different exposures and samples, and no text or result overlaps with the present manuscript.
+
+\medskip
+\noindent\textbf{Acknowledgments:} The author thanks the Norwegian Athletics Federation, whose systematic registration of competition results makes population research of this kind possible. This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+
+\medskip
+\noindent\textbf{Data availability:} The competition records are publicly accessible via the Norwegian Athletics Federation's online register for ages 13 and above; records for the 10--12 age classes are not publicly released. The derived dataset contains personal data (dates of birth) and cannot be shared; the analysis code will be deposited in a public repository upon acceptance. Supplementary Tables S1--S6 and Figures S1--S3 accompany the submission.
+
+\medskip
+\noindent\textbf{Declaration of generative AI and AI-assisted technologies in the writing process:} During the preparation of this work the author used Anthropic Claude (Claude Opus 5.5) in order to improve language and readability, assist with structuring the text, check analysis code and identify errors. After using this tool, the author reviewed and edited the content as needed and takes full responsibility for the content of the publication.
 
 \medskip
 \noindent\textbf{Social media handle:} none.

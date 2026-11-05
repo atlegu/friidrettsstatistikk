@@ -39,3 +39,7 @@ Editorial Manager teller om lag 4 prosent flere ord enn vår teller (ved forrige
 - [ ] Preprint av fullversjonen (SportRxiv eller lignende) før innsending, slik at de fulle analysene forblir siterbare? Tittelsiden sier nå «not available on a preprint server»; endres hvis preprint legges ut.
 - [ ] Editorial Manager: velg artikkeltype Brief Report; oppgi manuskriptnummeret JSAMS-D-26-02238 i følgebrevet (står der) og i skjemaets felt for tidligere innsending hvis det finnes.
 - [ ] Figur 1 lastes opp som `figurer_opplasting/Figure_3.tiff` (filnavnet følger fullversjonens nummerering; døp om til Figure_1 ved opplasting).
+
+## Returnert av redaksjonen 05.11.2026 (teknisk sjekk)
+
+JSAMS' redaksjonskontor sendte innsendingen tilbake før fagfellevurdering: under dobbelt anonym vurdering skal Acknowledgments, Data availability og KI-erklæringen ikke stå i manusfilen. De tre avsnittene er flyttet til tittelsiden (`title_page_brief.docx`), og manusfilen slutter nå med Conclusion og referanselisten. Samme endring er gjort i fullversjonen (`../manus_jsams/`). Ordtelling og tall er uendret. Last opp `main_brief.docx` og `title_page_brief.docx` på nytt.
