@@ -1373,3 +1373,27 @@ stevnet. Testbatch 74650c8a (venter på gjennomgang) skal gi 0 nye, 48 hoppet ov
 - **Ikke med i ryddingen:** samme øvelse under to koder (slegge 2 kg 1 356, 3000 m hinder 1 090,
   kappgang 660, mangekamp 223, 80 m hekk 29, 1 mile 21) — koden må velges først. Sonehopp i 2026 fra
   februar ligger under brettkoden (feil kode, ikke kopier).
+
+## 2026-11-08 — Offentlig statistikk fra 13 år (var: fra 12 år)
+
+- **Regel (Atle):** resultatlister samles ned til 7 år, statistikken lagrer fra
+  10 år, bare statistikk fra 13 år er offentlig. Hvordan 7–12-åringer skal vises
+  i resultatlistene (stevnesider, utøverprofiler) avklares med NFIF og er ikke
+  endret.
+- **Migrering:** `migrations/aldersgrense_13.sql`. `skjult_alder()` skjuler nå
+  til og med 12 år, `results_full` har ny kolonne `skjult_barn` som også bruker
+  fødselsår når full fødselsdato mangler. `get_all_time_best`, `norgesrekorder`
+  og `klubbrekorder` er patchet i gjeldende definisjon (første forsøk feilet
+  fordi `get_all_time_best` har fått ny returtype siden 15.10; ingenting ble
+  skrevet).
+- **Tørrkjøring:** 277 474 rader blir skjult i offentlige lister (151 220
+  tolvåringer, 126 254 barn med bare fødselsår), 4 544 av dem i 2026. Ingen fra
+  13 år skjules, ingen skjulte blir synlige. Etterpå: 8 195 skjulte rader i 2026.
+- **Nettsiden:** filteret byttet fra aldersgruppe til `skjult_barn` på forsiden,
+  i statistikk, klubbsider og eksport. Utøversiden viser bare fødselsår.
+  «Spør AI» er tatt ut av menyen, og /spor sender til forsiden.
+- **Kontroll lokalt:** ingen av 109 barn i en testklubb vises på klubbside,
+  klubbstatistikk, alle tiders, klubbrekorder, forside eller statistikk.
+- **Gjenstår:** full fødselsdato ligger fortsatt i sidedataene og i det åpne
+  API-et, og barn vises på stevnesider og utøverprofiler til policyen med NFIF
+  er på plass.

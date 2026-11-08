@@ -52,8 +52,8 @@ async function getClubResults(clubId: string) {
     .from("results_full")
     .select("*")
     .eq("club_id", clubId)
-    // Barn til og med 11 år vises ikke offentlig (get_age_group gir «Yngre»)
-    .or("age_group.is.null,age_group.neq.Yngre")
+    // Statistikk for barn til og med 12 år vises ikke offentlig (skjult_alder() i basen)
+    .not("skjult_barn", "is", true)
     .order("date", { ascending: false })
     .limit(20)
 

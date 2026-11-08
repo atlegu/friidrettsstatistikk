@@ -50,7 +50,6 @@ const navigation = [
     name: "Aktivitet",
     href: "/aktivitet",
   },
-  { name: "Spør AI", href: "/spor" },
 ]
 
 export function Header() {

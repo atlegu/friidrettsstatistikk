@@ -79,8 +79,8 @@ async function getTopResults(
     .eq("status", "OK")
     .not("performance_value", "is", null)
     .gt("performance_value", 0)
-          // Barn til og med 11 år vises ikke offentlig (get_age_group gir «Yngre»)
-          .or("age_group.is.null,age_group.neq.Yngre")
+          // Statistikk for barn til og med 12 år vises ikke offentlig (skjult_alder() i basen)
+          .not("skjult_barn", "is", true)
 
   // Handle composite age groups
   if (ageGroup !== "all") {

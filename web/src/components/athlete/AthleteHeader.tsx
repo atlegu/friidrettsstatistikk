@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { CopyLink } from "@/components/ui/copy-link"
 import { CompareLink } from "@/components/athlete/CompareLink"
-import { calculateAge, formatDate } from "@/lib/date-utils"
+import { calculateAge } from "@/lib/date-utils"
 
 interface AthleteStats {
   totalResults: number
@@ -39,10 +39,10 @@ function getInitials(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()
 }
 
+/** Bare fødselsår vises offentlig, aldri full fødselsdato (personvern). */
 function formatBirthInfo(birthDate: string | null, birthYear: number | null): string | null {
-  if (birthDate) return formatDate(birthDate)
-  if (birthYear) return `Født ${birthYear}`
-  return null
+  const aar = birthDate ? Number(birthDate.slice(0, 4)) : birthYear
+  return aar ? `Født ${aar}` : null
 }
 
 /** Ett nøkkeltall i toppen. Vises bare når det finnes. */

@@ -11,7 +11,7 @@ import { formatPerformance } from "@/lib/format-performance"
  * Bare for innloggede administratorer: listene inneholder navn og fødselsår,
  * og masseuttrekk av personopplysninger skal ikke være åpent for alle. Hver
  * nedlasting logges i eksport_logg (hvem, hva, når, antall rader). Barn til og
- * med 11 år er aldri med, samme regel som på nettsiden.
+ * med 12 år er aldri med, samme regel som på nettsiden.
  *
  *   /api/eksport?type=arsliste&aar=2026&event=…&gender=M&age=Senior&venue=outdoor
  *   /api/eksport?type=alltime&event=…&gender=F&age=Senior&venue=outdoor&timing=electronic&wind=legal
@@ -86,7 +86,7 @@ export async function GET(req: NextRequest) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const alle = await hentAlle<any>(
       (fra, til) => {
-        let q = supabase.from("results_full").select(felt).or("age_group.is.null,age_group.neq.Yngre")
+        let q = supabase.from("results_full").select(felt).not("skjult_barn", "is", true)
         q = type === "klubb" ? q.eq("club_id", id).eq("season_year", aar).eq("status", "OK") : q.eq("meet_id", id)
         return q.order("event_name").order("performance_value").range(fra, til)
       },

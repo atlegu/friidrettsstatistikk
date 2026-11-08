@@ -1474,6 +1474,7 @@ export type Database = {
           season_indoor: boolean | null
           season_name: string | null
           season_year: number | null
+          skjult_barn: boolean | null
           splits: Json | null
           status: Database["public"]["Enums"]["result_status"] | null
           verified: boolean | null

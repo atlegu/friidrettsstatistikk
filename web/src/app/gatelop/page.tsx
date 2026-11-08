@@ -22,7 +22,7 @@ const DISTANSER = [
 ]
 
 /** Aldersklasser som i Kondis' statistikk: ungdom og femårsklasser fra 40 år.
- *  Barn til og med 11 år vises ikke offentlig (skjult_alder() i basen). */
+ *  Barn til og med 12 år vises ikke offentlig (skjult_alder() i basen). */
 const KLASSER: { id: string; navn: string; fra: number | null; til: number | null }[] = [
   { id: "", navn: "Alle", fra: null, til: null },
   { id: "12-13", navn: "12–13", fra: 12, til: 13 },
