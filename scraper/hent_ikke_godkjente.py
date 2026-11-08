@@ -152,6 +152,23 @@ def ikke_godkjente(html):
     return ut
 
 
+def vent_paa_nett(maks_timer: float = 6):
+    """Vent til både kilden og Supabase svarer på navneoppslag (nettbrudd, Mac i dvale)."""
+    verter = ['www.minfriidrettsstatistikk.info', os.environ['SUPABASE_URL'].split('//')[1].split('/')[0]]
+    start = time.time()
+    while True:
+        try:
+            for v in verter:
+                socket.getaddrinfo(v, 443)
+            return
+        except OSError:
+            if time.time() - start > maks_timer * 3600:
+                raise
+            if int(time.time() - start) % 600 < 30:
+                log.warning(f"Venter på nett ({int(time.time() - start) // 60} min)")
+            time.sleep(30)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--apply', action='store_true')
@@ -183,6 +200,7 @@ def main():
                 break
             except Exception as e:
                 log.warning(f"Feil ved henting av køen (forsøk {forsok + 1}): {e.__class__.__name__}: {str(e)[:120]}")
+                vent_paa_nett()
                 time.sleep(15 * (forsok + 1))
                 _http11()
         if not ko:
@@ -190,7 +208,14 @@ def main():
         for a in ko:
             behandlet += 1
             try:
-                rader = ikke_godkjente(hent_side(a['external_id']))
+                try:
+                    rader = ikke_godkjente(hent_side(a['external_id']))
+                except (httpx.TransportError, requests.ConnectionError, requests.Timeout):
+                    # Nettbrudd (19.10.2026 03:18: navneoppslaget feilet): vent til
+                    # nettet er tilbake og prøv samme utøver igjen. Før ble utøveren
+                    # merket som kontrollert med feil, og kom ikke tilbake i køen.
+                    vent_paa_nett()
+                    rader = ikke_godkjente(hent_side(a['external_id']))
             except Exception as e:
                 teller['feil ved henting'] += 1
                 if args.apply:
