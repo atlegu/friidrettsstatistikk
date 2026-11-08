@@ -1397,3 +1397,14 @@ stevnet. Testbatch 74650c8a (venter på gjennomgang) skal gi 0 nye, 48 hoppet ov
 - **Gjenstår:** full fødselsdato ligger fortsatt i sidedataene og i det åpne
   API-et, og barn vises på stevnesider og utøverprofiler til policyen med NFIF
   er på plass.
+
+## 2026-11-08 — Rydding før finalemøtet med NFIF
+
+- **Importer:** fem ventende importer avvist med merknad, ingen rader berørt.
+  Fire like testopplastinger av Midt-Norsk 3000m Challenge (januar, stevnet
+  ligger i basen fra kilden) og kontrollkjøringen Skansemyren-171026 (stevnet
+  lagt inn 18.10 med importer_resultatliste.py).
+- **Elea Jørstad Bock, 13,10 (−1,3), European Athletics Championships
+  10.08.2026:** flyttet fra 100 m hekk (76,2 cm) til 100 m hekk (84,0 cm). Kilden
+  hadde feil hekkehøyde. Avvik 329 satt til «rettet». Stevnet er eldre enn
+  seks uker, så avstemmingen mot kilden legger ikke raden inn på nytt.
