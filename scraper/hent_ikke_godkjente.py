@@ -33,12 +33,14 @@ import argparse
 import logging
 import os
 import re
+import socket
 import sys
 import time
 from collections import Counter
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+import httpx
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
