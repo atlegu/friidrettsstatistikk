@@ -194,9 +194,9 @@ Tidsplanen i tilbudet forutsatte en avtale tidligere i høst. Vi har bevisst ven
 
 ## 4a. Deponering
 
-Ja. All programvaren, både for innsamling og kvalitetssikring og for presentasjon, deponeres hos en uavhengig deponeringsagent og oppdateres jevnlig. Athlete Mindset dekker kostnaden.
+Ja. NFIF får i avtalen en bruksrett til all programvaren, både for innsamling og kvalitetssikring og for presentasjon, som gjelder ved konkurs eller avvikling. NFIF kan da drive plattformen videre selv eller med en leverandør NFIF velger. Bruksretten gjelder NFIFs egen drift av statistikken, ikke videresalg.
 
-NFIF får i avtalen en bruksrett til programvaren som gjelder ved konkurs eller avvikling. Ved en slik hendelse utleveres programvaren og driftsdokumentasjonen fra deponiet, og NFIF kan drive plattformen videre selv eller med en leverandør NFIF velger. Bruksretten gjelder NFIFs egen drift av statistikken, ikke videresalg.
+Kildekoden ligger i dag i versjonskontroll med full historikk. Hvordan programvaren og driftsdokumentasjonen gjøres tilgjengelig for NFIF ved en slik hendelse, for eksempel gjennom deponering hos en uavhengig tredjepart, avklarer vi med NFIF når avtalen utformes.
 
 I tillegg eier NFIF dataene fullt ut. Vi tilbyr en automatisk kopi av hele databasen til et lagringssted NFIF eier, slik at dataene alltid ligger hos NFIF.
 
@@ -205,7 +205,7 @@ I tillegg eier NFIF dataene fullt ut. Vi tilbyr en automatisk kopi av hele datab
 NFIFs risiko holdes lav gjennom selve avtalen:
 
 - Etableringen faktureres med halvparten ved signering og halvparten ved driftsstart. Første halvdel dekker løsningen som allerede er utviklet og som NFIF får tilgang til fra signering. Driften faktureres kvartalsvis.
-- Dataene ligger alltid også hos NFIF, og programvaren er deponert, jf. 4a.
+- Dataene ligger alltid også hos NFIF, og NFIF har bruksrett til programvaren ved konkurs eller avvikling, jf. 4a.
 - Avtalen kan ikke overdras til andre uten NFIFs samtykke.
 
 Ansvarsforsikring kan tegnes dersom NFIF krever det. Kostnaden legges da til prisen.
@@ -242,7 +242,7 @@ Løsningen har tre deler:
 - **Programvaren for innsamling og kvalitetssikring** eies av Athlete Mindset AS.
 - **Programvaren for presentasjon** eies av Athlete Mindset AS.
 
-**Ved avslutning, uansett årsak,** får NFIF alle data utlevert i åpne formater (CSV og en standard PostgreSQL-dump) innen 30 dager. Utleveringen følger med en overordnet dokumentasjon av datamodellen og reglene, og er uten gebyr. Ved ordinær oppsigelse eller utløp følger ikke programvaren med. Ved konkurs eller avvikling får NFIF bruksrett til programvaren fra deponiet, jf. 4a.
+**Ved avslutning, uansett årsak,** får NFIF alle data utlevert i åpne formater (CSV og en standard PostgreSQL-dump) innen 30 dager. Utleveringen følger med en overordnet dokumentasjon av datamodellen og reglene, og er uten gebyr. Ved ordinær oppsigelse eller utløp følger ikke programvaren med. Ved konkurs eller avvikling får NFIF bruksrett til programvaren, jf. 4a.
 
 **Sletting:** Når NFIF har bekreftet at dataene er mottatt, slettes de hos oss og hos våre underleverandører. Vi gir skriftlig bekreftelse på slettingen, i tråd med databehandleravtalen.
 
@@ -256,7 +256,7 @@ Vi bistår ved overgang til NFIF eller en ny leverandør etter timepris, 950 kr 
 
 Vi har allerede redusert etableringsprisen med 51 prosent, og driftsprisen er satt lavt for den jobben den dekker: innsamling, kvalitetssikring og avviksbehandling, slik at NFIFs egen innsats holdes under én time i uken. Vi ser ikke rom for ytterligere reduksjon uten å kutte i omfanget.
 
-I stedet gir vi NFIF mer trygghet. Ved konkurs eller avvikling får NFIF bruksrett til all programvaren, både innsamling, kvalitetssikring og presentasjon, fra et deponi som Athlete Mindset betaler for, jf. 4a. NFIF kan da drive plattformen videre uten avbrudd. Sammen med at NFIF eier dataene og har en løpende kopi av dem, fjerner dette risikoen ved å velge en mindre leverandør.
+I stedet gir vi NFIF mer trygghet. Ved konkurs eller avvikling får NFIF bruksrett til all programvaren, både innsamling, kvalitetssikring og presentasjon, jf. 4a. NFIF kan da drive plattformen videre uten avbrudd. Sammen med at NFIF eier dataene og har en løpende kopi av dem, fjerner dette risikoen ved å velge en mindre leverandør.
 
 ## 6c. Revidert tilbud
 
